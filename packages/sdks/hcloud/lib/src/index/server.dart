@@ -8,14 +8,10 @@ import 'server_state.dart';
 ///
 /// ### `datacenter` attribute
 ///
-/// The `datacenter` attribute is deprecated, use the `location` attribute instead.
+/// The `datacenter` attribute is marked for removal since `v1.67.0`, you must use the `location` attribute instead.
 ///
-/// See our the [API changelog](https://docs.hetzner.cloud/changelog#2025-12-16-phasing-out-datacenters) for more details.
-///
-/// &gt; Please upgrade to `v1.58.0+` of the provider to avoid issues once the Hetzner Cloud API no longer accepts
-/// and returns the `datacenter` attribute. This version of the provider remains backward compatible by preserving
-/// the `datacenter` value in the state and by extracting the `location` name from the `datacenter` attribute when
-/// communicating with the API.
+/// See our [deprecation](https://docs.hetzner.cloud/changelog#2025-12-16-phasing-out-datacenters) and
+/// [removal](https://docs.hetzner.cloud/changelog#2026-07-01-removing-datacenters) changelog for more details.
 ///
 /// ## Example Usage
 ///
@@ -106,6 +102,26 @@ import 'server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// # Create a new server running debian
+/// resource "hcloud_server" "node1" {
+///   name        = "node1"
+///   image       = "debian-12"
+///   server_type = "cx23"
+///   public_nets {
+///     ipv4_enabled = true
+///     ipv6_enabled = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +131,8 @@ import 'server_state.dart';
 /// import com.pulumi.hcloud.Server;
 /// import com.pulumi.hcloud.ServerArgs;
 /// import com.pulumi.hcloud.inputs.ServerPublicNetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -183,7 +199,7 @@ import 'server_state.dart';
 ///     },
 ///     publicNets: [{
 ///         ipv4Enabled: true,
-///         ipv4: primaryIp1.id,
+///         ipv4: primaryIp1.id.apply(x =>Number(x)),
 ///         ipv6Enabled: false,
 ///     }],
 /// });
@@ -212,7 +228,7 @@ import 'server_state.dart';
 ///     },
 ///     public_nets=[{
 ///         "ipv4_enabled": True,
-///         "ipv4": primary_ip1.id,
+///         "ipv4": primary_ip1.id.apply(lambda x: int(x)),
 ///         "ipv6_enabled": False,
 ///     }])
 /// ```
@@ -308,6 +324,41 @@ import 'server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// ### Server creation with one linked primary ip (ipv4)
+/// resource "hcloud_primaryip" "primary_ip_1" {
+///   name          = "primary_ip_test"
+///   location      = "hel1"
+///   type          = "ipv4"
+///   assignee_type = "server"
+///   auto_delete   = true
+///   labels = {
+///     "hallo" = "welt"
+///   }
+/// }
+/// resource "hcloud_server" "server_test" {
+///   name        = "test-server"
+///   image       = "ubuntu-24.04"
+///   server_type = "cx23"
+///   location    = "hel1"
+///   labels = {
+///     "test" = "tessst1"
+///   }
+///   public_nets {
+///     ipv4_enabled = true
+///     ipv4         = hcloud_primaryip.primary_ip_1.id
+///     ipv6_enabled = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -319,8 +370,8 @@ import 'server_state.dart';
 /// import com.pulumi.hcloud.Server;
 /// import com.pulumi.hcloud.ServerArgs;
 /// import com.pulumi.hcloud.inputs.ServerPublicNetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -400,9 +451,9 @@ import 'server_state.dart';
 ///     name: "network",
 ///     ipRange: "10.0.0.0/16",
 /// });
-/// const network_subnet = new hcloud.NetworkSubnet("network-subnet", {
+/// const networkSubnet = new hcloud.NetworkSubnet("network_subnet", {
 ///     type: "cloud",
-///     networkId: network.id,
+///     networkId: network.id.apply(x =>Number(x)),
 ///     networkZone: "eu-central",
 ///     ipRange: "10.0.1.0/24",
 /// });
@@ -412,15 +463,13 @@ import 'server_state.dart';
 ///     image: "ubuntu-24.04",
 ///     location: "nbg1",
 ///     networks: [{
-///         networkId: network.id,
+///         subnetId: networkSubnet.id,
 ///         ip: "10.0.1.5",
 ///         aliasIps: [
 ///             "10.0.1.6",
 ///             "10.0.1.7",
 ///         ],
 ///     }],
-/// }, {
-///     dependsOn: [network_subnet],
 /// });
 /// ```
 /// ```python
@@ -430,9 +479,9 @@ import 'server_state.dart';
 /// network = hcloud.Network("network",
 ///     name="network",
 ///     ip_range="10.0.0.0/16")
-/// network_subnet = hcloud.NetworkSubnet("network-subnet",
+/// network_subnet = hcloud.NetworkSubnet("network_subnet",
 ///     type="cloud",
-///     network_id=network.id,
+///     network_id=network.id.apply(lambda x: int(x)),
 ///     network_zone="eu-central",
 ///     ip_range="10.0.1.0/24")
 /// server = hcloud.Server("server",
@@ -441,14 +490,13 @@ import 'server_state.dart';
 ///     image="ubuntu-24.04",
 ///     location="nbg1",
 ///     networks=[{
-///         "network_id": network.id,
+///         "subnet_id": network_subnet.id,
 ///         "ip": "10.0.1.5",
 ///         "alias_ips": [
 ///             "10.0.1.6",
 ///             "10.0.1.7",
 ///         ],
-///     }],
-///     opts = pulumi.ResourceOptions(depends_on=[network_subnet]))
+///     }])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -464,7 +512,7 @@ import 'server_state.dart';
 ///         IpRange = "10.0.0.0/16",
 ///     });
 ///
-///     var network_subnet = new HCloud.NetworkSubnet("network-subnet", new()
+///     var networkSubnet = new HCloud.NetworkSubnet("network_subnet", new()
 ///     {
 ///         Type = "cloud",
 ///         NetworkId = network.Id,
@@ -482,7 +530,7 @@ import 'server_state.dart';
 ///         {
 ///             new HCloud.Inputs.ServerNetworkArgs
 ///             {
-///                 NetworkId = network.Id,
+///                 SubnetId = networkSubnet.Id,
 ///                 Ip = "10.0.1.5",
 ///                 AliasIps = new[]
 ///                 {
@@ -490,12 +538,6 @@ import 'server_state.dart';
 ///                     "10.0.1.7",
 ///                 },
 ///             },
-///         },
-///     }, new CustomResourceOptions
-///     {
-///         DependsOn =
-///         {
-///             network_subnet,
 ///         },
 ///     });
 ///
@@ -518,7 +560,7 @@ import 'server_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		network_subnet, err := hcloud.NewNetworkSubnet(ctx, "network-subnet", &hcloud.NetworkSubnetArgs{
+/// 		networkSubnet, err := hcloud.NewNetworkSubnet(ctx, "network_subnet", &hcloud.NetworkSubnetArgs{
 /// 			Type:        pulumi.String("cloud"),
 /// 			NetworkId:   network.ID(),
 /// 			NetworkZone: pulumi.String("eu-central"),
@@ -534,22 +576,51 @@ import 'server_state.dart';
 /// 			Location:   pulumi.String("nbg1"),
 /// 			Networks: hcloud.ServerNetworkTypeArray{
 /// 				&hcloud.ServerNetworkTypeArgs{
-/// 					NetworkId: network.ID(),
-/// 					Ip:        pulumi.String("10.0.1.5"),
+/// 					SubnetId: networkSubnet.ID(),
+/// 					Ip:       pulumi.String("10.0.1.5"),
 /// 					AliasIps: pulumi.StringArray{
 /// 						pulumi.String("10.0.1.6"),
 /// 						pulumi.String("10.0.1.7"),
 /// 					},
 /// 				},
 /// 			},
-/// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			network_subnet,
-/// 		}))
+/// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_network" "network" {
+///   name     = "network"
+///   ip_range = "10.0.0.0/16"
+/// }
+/// resource "hcloud_networksubnet" "network_subnet" {
+///   type         = "cloud"
+///   network_id   = hcloud_network.network.id
+///   network_zone = "eu-central"
+///   ip_range     = "10.0.1.0/24"
+/// }
+/// resource "hcloud_server" "server" {
+///   name        = "server"
+///   server_type = "cx23"
+///   image       = "ubuntu-24.04"
+///   location    = "nbg1"
+///   networks {
+///     subnet_id = hcloud_networksubnet.network_subnet.id
+///     ip        = "10.0.1.5"
+///     alias_ips = ["10.0.1.6", "10.0.1.7"]
+///   }
 /// }
 /// ```
 /// ```java
@@ -565,9 +636,8 @@ import 'server_state.dart';
 /// import com.pulumi.hcloud.Server;
 /// import com.pulumi.hcloud.ServerArgs;
 /// import com.pulumi.hcloud.inputs.ServerNetworkArgs;
-/// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -584,7 +654,7 @@ import 'server_state.dart';
 ///             .ipRange("10.0.0.0/16")
 ///             .build());
 ///
-///         var network_subnet = new NetworkSubnet("network-subnet", NetworkSubnetArgs.builder()
+///         var networkSubnet = new NetworkSubnet("networkSubnet", NetworkSubnetArgs.builder()
 ///             .type("cloud")
 ///             .networkId(network.id())
 ///             .networkZone("eu-central")
@@ -597,15 +667,13 @@ import 'server_state.dart';
 ///             .image("ubuntu-24.04")
 ///             .location("nbg1")
 ///             .networks(ServerNetworkArgs.builder()
-///                 .networkId(network.id())
+///                 .subnetId(networkSubnet.id())
 ///                 .ip("10.0.1.5")
 ///                 .aliasIps(
 ///                     "10.0.1.6",
 ///                     "10.0.1.7")
 ///                 .build())
-///             .build(), CustomResourceOptions.builder()
-///                 .dependsOn(network_subnet)
-///                 .build());
+///             .build());
 ///
 ///     }
 /// }
@@ -617,8 +685,9 @@ import 'server_state.dart';
 ///     properties:
 ///       name: network
 ///       ipRange: 10.0.0.0/16
-///   network-subnet:
+///   networkSubnet:
 ///     type: hcloud:NetworkSubnet
+///     name: network_subnet
 ///     properties:
 ///       type: cloud
 ///       networkId: ${network.id}
@@ -632,14 +701,11 @@ import 'server_state.dart';
 ///       image: ubuntu-24.04
 ///       location: nbg1
 ///       networks:
-///         - networkId: ${network.id}
+///         - subnetId: ${networkSubnet.id}
 ///           ip: 10.0.1.5
 ///           aliasIps:
 ///             - 10.0.1.6
 ///             - 10.0.1.7
-///     options:
-///       dependsOn:
-///         - ${["network-subnet"]}
 /// ```
 ///
 ///
@@ -658,7 +724,7 @@ import 'server_state.dart';
 /// // Create a new server from the snapshot
 /// const fromSnapshot = new hcloud.Server("from_snapshot", {
 ///     name: "from-snapshot",
-///     image: packerSnapshot.then(packerSnapshot => packerSnapshot.id),
+///     image: output(packerSnapshot.then(packerSnapshot => packerSnapshot.id)).apply(x =>String(x)),
 ///     serverType: "cx23",
 ///     publicNets: [{
 ///         ipv4Enabled: true,
@@ -676,7 +742,7 @@ import 'server_state.dart';
 /// # Create a new server from the snapshot
 /// from_snapshot = hcloud.Server("from_snapshot",
 ///     name="from-snapshot",
-///     image=packer_snapshot.id,
+///     image=output(packer_snapshot.id).apply(lambda x: str(x)),
 ///     server_type="cx23",
 ///     public_nets=[{
 ///         "ipv4_enabled": True,
@@ -753,6 +819,32 @@ import 'server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getimage" "packerSnapshot" {
+///   with_selector = "app=foobar"
+///   most_recent   = true
+/// }
+///
+/// # Create a new server from the snapshot
+/// resource "hcloud_server" "from_snapshot" {
+///   name        = "from-snapshot"
+///   image       = data.hcloud_getimage.packerSnapshot.id
+///   server_type = "cx23"
+///   public_nets {
+///     ipv4_enabled = true
+///     ipv6_enabled = true
+///   }
+/// }
+/// # Get image infos because we need the ID
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -764,8 +856,8 @@ import 'server_state.dart';
 /// import com.pulumi.hcloud.Server;
 /// import com.pulumi.hcloud.ServerArgs;
 /// import com.pulumi.hcloud.inputs.ServerPublicNetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -824,7 +916,7 @@ import 'server_state.dart';
 /// ## Primary IPs
 ///
 /// When creating a server without linking at least one ´primary_ip´, it automatically creates & assigns two (ipv4 & ipv6).
-/// With the public_net block, you can enable or link primary ips. If you don't define this block, two primary ips (ipv4, ipv6) will be created and assigned to the server automatically.
+/// With the publicNet block, you can enable or link primary ips. If you don't define this block, two primary ips (ipv4, ipv6) will be created and assigned to the server automatically.
 ///
 /// ## Import
 ///
@@ -834,7 +926,7 @@ import 'server_state.dart';
 /// $ pulumi import hcloud:index/server:Server example "$SERVER_ID"
 /// ```
 class Server extends pulumi.CustomResource {
-  /// Enable the use of deprecated images (default: false). **Note** Deprecated images will be removed after three months. Using them is then no longer possible.
+  /// Unused attribute, consider removing it from your configuration.
   late final pulumi.Output<bool?> allowDeprecatedImages;
   /// (string) The backup window of the server, if enabled.
   late final pulumi.Output<String> backupWindow;
@@ -842,18 +934,18 @@ class Server extends pulumi.CustomResource {
   late final pulumi.Output<bool?> backups;
   /// The datacenter name to create the server in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
   late final pulumi.Output<String> datacenter;
-  /// Enable or disable delete protection (Needs to be the same as `rebuild_protection`). See "Delete Protection" in the Provider Docs for details.
+  /// Enable or disable delete protection (Needs to be the same as `rebuildProtection`). See "Delete Protection" in the Provider Docs for details.
   late final pulumi.Output<bool?> deleteProtection;
   /// Firewall IDs the server should be attached to on creation.
   late final pulumi.Output<List<int>> firewallIds;
   /// Ignores any updates
-  /// to the `firewall_ids` argument which were received from the server.
+  /// to the `firewallIds` argument which were received from the server.
   /// This should not be used in normal cases. See the documentation of the
   /// `hcloud.FirewallAttachment` resource for a reason to use this
   /// argument.
   late final pulumi.Output<bool?> ignoreRemoteFirewallIds;
   /// Name or ID of the image the server is created from. **Note** the `image` property is only required when using the resource to create servers. As the Hetzner Cloud API may return servers without an image ID set it is not marked as required in the Terraform Provider itself. Thus, users will get an error from the underlying client library if they forget to set the property and try to create a server.
-  late final pulumi.Output<String?> image;
+  late final pulumi.Output<String> image;
   /// (string) The IPv4 address.
   late final pulumi.Output<String> ipv4Address;
   /// (string) The first IPv6 address of the assigned network.
@@ -879,7 +971,7 @@ class Server extends pulumi.CustomResource {
   /// In this block you can either enable / disable ipv4 and ipv6 or link existing primary IPs (checkout the examples).
   /// If this block is not defined, two primary (ipv4 & ipv6) ips getting auto generated.
   late final pulumi.Output<List<Map<String, dynamic>>?> publicNets;
-  /// Enable or disable rebuild protection (Needs to be the same as `delete_protection`).
+  /// Enable or disable rebuild protection (Needs to be the same as `deleteProtection`).
   late final pulumi.Output<bool?> rebuildProtection;
   /// Enable and boot in to the specified rescue system. This enables simple installation of custom operating systems. `linux64` or `linux32`
   late final pulumi.Output<String?> rescue;
@@ -887,11 +979,11 @@ class Server extends pulumi.CustomResource {
   late final pulumi.Output<String> serverType;
   /// Whether to try shutting the server down gracefully before deleting it.
   late final pulumi.Output<bool?> shutdownBeforeDeletion;
-  /// SSH key IDs or names which should be injected into the server at creation time. Once the server is created, you can not update the list of SSH Keys. If you do change this, you will be prompted to destroy and recreate the server. You can avoid this by setting lifecycle.ignore_changes to `[ ssh_keys ]`.
+  /// SSH key IDs or names which should be injected into the server at creation time. Once the server is created, you can not update the list of SSH Keys. If you do change this, you will be prompted to destroy and recreate the server. You can avoid this by setting lifecycle.ignore_changes to `[ sshKeys ]`.
   late final pulumi.Output<List<String>?> sshKeys;
   /// (string) The status of the server.
   late final pulumi.Output<String> status;
-  /// Cloud-Init user data to use during server creation
+  /// Cloud-Init user data to use during server creation. This field is limited to 32KiB.
   late final pulumi.Output<String?> userData;
 
   /// Creates a new [Server].
@@ -915,7 +1007,7 @@ class Server extends pulumi.CustomResource {
     deleteProtection = registerOutput<bool?>('deleteProtection');
     firewallIds = registerOutput<List<int>>('firewallIds');
     ignoreRemoteFirewallIds = registerOutput<bool?>('ignoreRemoteFirewallIds');
-    image = registerOutput<String?>('image');
+    image = registerOutput<String>('image');
     ipv4Address = registerOutput<String>('ipv4Address');
     ipv6Address = registerOutput<String>('ipv6Address');
     ipv6Network = registerOutput<String>('ipv6Network');
@@ -967,7 +1059,7 @@ class Server extends pulumi.CustomResource {
     deleteProtection = registerOutput<bool?>('deleteProtection');
     firewallIds = registerOutput<List<int>>('firewallIds');
     ignoreRemoteFirewallIds = registerOutput<bool?>('ignoreRemoteFirewallIds');
-    image = registerOutput<String?>('image');
+    image = registerOutput<String>('image');
     ipv4Address = registerOutput<String>('ipv4Address');
     ipv6Address = registerOutput<String>('ipv6Address');
     ipv6Network = registerOutput<String>('ipv6Network');

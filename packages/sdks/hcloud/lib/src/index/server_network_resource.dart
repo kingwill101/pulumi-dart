@@ -21,13 +21,13 @@ import 'server_network_state.dart';
 ///     ipRange: "10.0.0.0/16",
 /// });
 /// const subnet1 = new hcloud.NetworkSubnet("subnet1", {
-///     networkId: network.id,
+///     networkId: network.id.apply(x =>Number(x)),
 ///     type: "cloud",
 ///     networkZone: "eu-central",
 ///     ipRange: "10.0.1.0/24",
 /// });
 /// const node1Subnet1 = new hcloud.ServerNetwork("node1_subnet1", {
-///     serverId: node1.id,
+///     serverId: node1.id.apply(x =>Number(x)),
 ///     subnetId: subnet1.id,
 ///     ip: "10.0.1.5",
 ///     aliasIps: ["10.0.1.10"],
@@ -45,12 +45,12 @@ import 'server_network_state.dart';
 ///     name="network",
 ///     ip_range="10.0.0.0/16")
 /// subnet1 = hcloud.NetworkSubnet("subnet1",
-///     network_id=network.id,
+///     network_id=network.id.apply(lambda x: int(x)),
 ///     type="cloud",
 ///     network_zone="eu-central",
 ///     ip_range="10.0.1.0/24")
 /// node1_subnet1 = hcloud.ServerNetwork("node1_subnet1",
-///     server_id=node1.id,
+///     server_id=node1.id.apply(lambda x: int(x)),
 ///     subnet_id=subnet1.id,
 ///     ip="10.0.1.5",
 ///     alias_ips=["10.0.1.10"])
@@ -146,6 +146,37 @@ import 'server_network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_server" "node1" {
+///   name        = "node1"
+///   image       = "debian-12"
+///   server_type = "cx23"
+/// }
+/// resource "hcloud_network" "network" {
+///   name     = "network"
+///   ip_range = "10.0.0.0/16"
+/// }
+/// resource "hcloud_networksubnet" "subnet1" {
+///   network_id   = hcloud_network.network.id
+///   type         = "cloud"
+///   network_zone = "eu-central"
+///   ip_range     = "10.0.1.0/24"
+/// }
+/// resource "hcloud_servernetwork" "node1_subnet1" {
+///   server_id = hcloud_server.node1.id
+///   subnet_id = hcloud_networksubnet.subnet1.id
+///   ip        = "10.0.1.5"
+///   alias_ips = ["10.0.1.10"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -160,8 +191,8 @@ import 'server_network_state.dart';
 /// import com.pulumi.hcloud.NetworkSubnetArgs;
 /// import com.pulumi.hcloud.ServerNetwork;
 /// import com.pulumi.hcloud.ServerNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -247,11 +278,11 @@ class ServerNetworkResource extends pulumi.CustomResource {
   late final pulumi.Output<String> ip;
   /// MAC address of the Server on the Network.
   late final pulumi.Output<String> macAddress;
-  /// ID of the Network to attach the Server to. Using `subnet_id` is preferred. Required if `subnet_id` is not set. If `subnet_id` or `ip` are not set, the Server will be attached to the last subnet (ordered by `ip_range`).
+  /// ID of the Network to attach the Server to. Using `subnetId` is preferred. Required if `subnetId` is not set. If `subnetId` or `ip` are not set, the Server will be attached to the last subnet (ordered by `ipRange`).
   late final pulumi.Output<int> networkId;
   /// ID of the Server.
   late final pulumi.Output<int> serverId;
-  /// ID of the Subnet to attach the Server to. Required if `network_id` is not set.
+  /// ID of the Subnet to attach the Server to. Required if `networkId` is not set.
   late final pulumi.Output<String?> subnetId;
 
   /// Creates a new [ServerNetworkResource].

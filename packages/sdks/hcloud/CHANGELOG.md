@@ -2,7 +2,7 @@
 
 All notable changes to this package will be documented in this file.
 
-## 1.32.1
+## 1.41.0
 
 - Initial generated release.
 

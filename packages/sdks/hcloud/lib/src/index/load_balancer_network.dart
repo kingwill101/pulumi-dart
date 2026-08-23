@@ -21,13 +21,13 @@ import 'load_balancer_network_state.dart';
 ///     ipRange: "10.0.0.0/16",
 /// });
 /// const subnet = new hcloud.NetworkSubnet("subnet", {
-///     networkId: network.id,
+///     networkId: network.id.apply(x =>Number(x)),
 ///     type: "cloud",
 ///     networkZone: "eu-central",
 ///     ipRange: "10.0.1.0/24",
 /// });
 /// const attachment = new hcloud.LoadBalancerNetwork("attachment", {
-///     loadBalancerId: main.id,
+///     loadBalancerId: main.id.apply(x =>Number(x)),
 ///     subnetId: subnet.id,
 ///     ip: "10.0.1.5",
 /// });
@@ -44,12 +44,12 @@ import 'load_balancer_network_state.dart';
 ///     name="network",
 ///     ip_range="10.0.0.0/16")
 /// subnet = hcloud.NetworkSubnet("subnet",
-///     network_id=network.id,
+///     network_id=network.id.apply(lambda x: int(x)),
 ///     type="cloud",
 ///     network_zone="eu-central",
 ///     ip_range="10.0.1.0/24")
 /// attachment = hcloud.LoadBalancerNetwork("attachment",
-///     load_balancer_id=main.id,
+///     load_balancer_id=main.id.apply(lambda x: int(x)),
 ///     subnet_id=subnet.id,
 ///     ip="10.0.1.5")
 /// ```
@@ -137,6 +137,36 @@ import 'load_balancer_network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_loadbalancer" "main" {
+///   name               = "main"
+///   load_balancer_type = "lb11"
+///   network_zone       = "eu-central"
+/// }
+/// resource "hcloud_network" "network" {
+///   name     = "network"
+///   ip_range = "10.0.0.0/16"
+/// }
+/// resource "hcloud_networksubnet" "subnet" {
+///   network_id   = hcloud_network.network.id
+///   type         = "cloud"
+///   network_zone = "eu-central"
+///   ip_range     = "10.0.1.0/24"
+/// }
+/// resource "hcloud_loadbalancernetwork" "attachment" {
+///   load_balancer_id = hcloud_loadbalancer.main.id
+///   subnet_id        = hcloud_networksubnet.subnet.id
+///   ip               = "10.0.1.5"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +181,8 @@ import 'load_balancer_network_state.dart';
 /// import com.pulumi.hcloud.NetworkSubnetArgs;
 /// import com.pulumi.hcloud.LoadBalancerNetwork;
 /// import com.pulumi.hcloud.LoadBalancerNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,9 +264,9 @@ class LoadBalancerNetwork extends pulumi.CustomResource {
   late final pulumi.Output<String> ip;
   /// ID of the Load Balancer.
   late final pulumi.Output<int> loadBalancerId;
-  /// ID of the Network to attach the Load Balancer to. Using `subnet_id` is preferred. Required if `subnet_id` is not set. If `subnet_id` or `ip` are not set, the Load Balancer will be attached to the last subnet (ordered by `ip_range`).
+  /// ID of the Network to attach the Load Balancer to. Using `subnetId` is preferred. Required if `subnetId` is not set. If `subnetId` or `ip` are not set, the Load Balancer will be attached to the last subnet (ordered by `ipRange`).
   late final pulumi.Output<int> networkId;
-  /// ID of the Subnet to attach the Load Balancer to. Required if `network_id` is not set.
+  /// ID of the Subnet to attach the Load Balancer to. Required if `networkId` is not set.
   late final pulumi.Output<String?> subnetId;
 
   /// Creates a new [LoadBalancerNetwork].

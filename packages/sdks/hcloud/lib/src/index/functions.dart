@@ -78,6 +78,8 @@ import 'get_zone_rrsets_args.dart';
 import 'get_zone_rrsets_result.dart';
 import 'get_zones_args.dart';
 import 'get_zones_result.dart';
+import 'idna_args.dart';
+import 'txt_record_args.dart';
 
 /// Provides details about a specific Hetzner Cloud Certificate.
 ///
@@ -130,13 +132,13 @@ import 'get_zones_result.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := hcloud.LookupCertificate(ctx, &hcloud.LookupCertificateArgs{
+/// 		_, err := hcloud.GetCertificate(ctx, &hcloud.LookupCertificateArgs{
 /// 			Name: pulumi.StringRef("sample-certificate-1"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupCertificate(ctx, &hcloud.LookupCertificateArgs{
+/// 		_, err = hcloud.GetCertificate(ctx, &hcloud.LookupCertificateArgs{
 /// 			Id: pulumi.IntRef(4711),
 /// 		}, nil)
 /// 		if err != nil {
@@ -144,6 +146,22 @@ import 'get_zones_result.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getcertificate" "sampleCertificate1" {
+///   name = "sample-certificate-1"
+/// }
+/// data "hcloud_getcertificate" "sampleCertificate2" {
+///   id = "4711"
 /// }
 /// ```
 /// ```java
@@ -154,8 +172,8 @@ import 'get_zones_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,6 +278,19 @@ Future<GetCertificateResult> getCertificate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getcertificates" "sampleCertificate1" {
+///   with_selector = "key=value"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -268,8 +299,8 @@ Future<GetCertificateResult> getCertificate(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetCertificatesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -314,6 +345,11 @@ Future<GetCertificatesResult> getCertificates(
 /// Provides details about a specific Hetzner Cloud Datacenter.
 ///
 /// Use this resource to get detailed information about a specific Datacenter.
+///
+/// &gt; The `hcloud.getDatacenter` data source is deprecated, and will be removed after 1 Oct. 2026.
+/// After this date, requests to the datacenters API endpoints will return `HTTP 410 Gone`.
+/// Please use the `hcloud.getLocation` data source instead.
+/// See the [changelog](https://docs.hetzner.cloud/changelog#2026-06-02-datacenters-deprecated) for more details.
 ///
 /// ## Example Usage
 ///
@@ -382,6 +418,22 @@ Future<GetCertificatesResult> getCertificates(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getdatacenter" "byId" {
+///   id = 4
+/// }
+/// data "hcloud_getdatacenter" "byName" {
+///   name = "fsn1-dc14"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -390,8 +442,8 @@ Future<GetCertificatesResult> getCertificates(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetDatacenterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -446,6 +498,11 @@ Future<GetDatacenterResult> getDatacenter(
 ///
 /// This resource may be useful to create highly available infrastructure, distributed across several Datacenters.
 ///
+/// &gt; The `hcloud.getDatacenters` data source is deprecated, and will be removed after 1 Oct. 2026.
+/// After this date, requests to the datacenters API endpoints will return `HTTP 410 Gone`.
+/// Please use the `hcloud.getLocations` data source instead.
+/// See the [changelog](https://docs.hetzner.cloud/changelog#2026-06-02-datacenters-deprecated) for more details.
+///
 /// ## Example Usage
 ///
 ///
@@ -454,28 +511,12 @@ Future<GetDatacenterResult> getDatacenter(
 /// import * as hcloud from "@pulumi/hcloud";
 ///
 /// const all = hcloud.getDatacenters({});
-/// const workers: hcloud.Server[] = [];
-/// for (const range = {value: 0}; range.value < 5; range.value++) {
-///     workers.push(new hcloud.Server(`workers-${range.value}`, {
-///         name: `node${range.value}`,
-///         image: "debian-12",
-///         serverType: "cx23",
-///         datacenter: all.then(all => all.datacenters[range.value]).then(datacenters => datacenters.name),
-///     }));
-/// }
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_hcloud as hcloud
 ///
 /// all = hcloud.get_datacenters()
-/// workers = []
-/// for range in [{"value": i} for i in range(0, 5)]:
-///     workers.append(hcloud.Server(f"workers-{range['value']}",
-///         name=f"node{range['value']}",
-///         image="debian-12",
-///         server_type="cx23",
-///         datacenter=all.datacenters[range["value"]]["name"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -487,19 +528,37 @@ Future<GetDatacenterResult> getDatacenter(
 /// {
 ///     var all = HCloud.GetDatacenters.Invoke();
 ///
-///     var workers = new List<HCloud.Server>();
-///     for (var rangeIndex = 0; rangeIndex < 5; rangeIndex++)
-///     {
-///         var range = new { Value = rangeIndex };
-///         workers.Add(new HCloud.Server($"workers-{range.Value}", new()
-///         {
-///             Name = $"node{range.Value}",
-///             Image = "debian-12",
-///             ServerType = "cx23",
-///             Datacenter = all.Apply(getDatacentersResult => getDatacentersResult.Datacenters)[range.Value].Apply(datacenters => datacenters.Name),
-///         }));
-///     }
 /// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := hcloud.GetDatacenters(ctx, map[string]interface{}{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getdatacenters" "all" {
+/// }
 /// ```
 /// ```java
 /// package generated_program;
@@ -508,11 +567,8 @@ Future<GetDatacenterResult> getDatacenter(
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
-/// import com.pulumi.hcloud.Server;
-/// import com.pulumi.hcloud.ServerArgs;
-/// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -526,18 +582,15 @@ Future<GetDatacenterResult> getDatacenter(
 ///     public static void stack(Context ctx) {
 ///         final var all = HcloudFunctions.getDatacenters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
 ///
-///         for (var i = 0; i < 5; i++) {
-///             new Server("workers-" + i, ServerArgs.builder()
-///                 .name(String.format("node%s", range.value()))
-///                 .image("debian-12")
-///                 .serverType("cx23")
-///                 .datacenter(all.datacenters()[range.value()].name())
-///                 .build());
-///
-///
-/// }
 ///     }
 /// }
+/// ```
+/// ```yaml
+/// variables:
+///   all:
+///     fn::invoke:
+///       function: hcloud:getDatacenters
+///       arguments: {}
 /// ```
 /// [options] Invoke options controlling this call.
 Future<GetDatacentersResult> getDatacenters(
@@ -604,13 +657,13 @@ Future<GetDatacentersResult> getDatacenters(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := hcloud.LookupFirewall(ctx, &hcloud.LookupFirewallArgs{
+/// 		_, err := hcloud.GetFirewall(ctx, &hcloud.LookupFirewallArgs{
 /// 			Name: pulumi.StringRef("sample-firewall-1"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupFirewall(ctx, &hcloud.LookupFirewallArgs{
+/// 		_, err = hcloud.GetFirewall(ctx, &hcloud.LookupFirewallArgs{
 /// 			Id: pulumi.IntRef(4711),
 /// 		}, nil)
 /// 		if err != nil {
@@ -618,6 +671,22 @@ Future<GetDatacentersResult> getDatacenters(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getfirewall" "sampleFirewall1" {
+///   name = "sample-firewall-1"
+/// }
+/// data "hcloud_getfirewall" "sampleFirewall2" {
+///   id = "4711"
 /// }
 /// ```
 /// ```java
@@ -628,8 +697,8 @@ Future<GetDatacentersResult> getDatacenters(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetFirewallArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -734,6 +803,19 @@ Future<GetFirewallResult> getFirewall(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getfirewalls" "sampleFirewall1" {
+///   with_selector = "key=value"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -742,8 +824,8 @@ Future<GetFirewallResult> getFirewall(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetFirewallsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -811,24 +893,25 @@ Future<GetFirewallsResult> getFirewalls(
 ///     withSelector: "key=value",
 /// });
 /// const main: hcloud.FloatingIpAssignment[] = [];
-/// for (const range = {value: 0}; range.value < counter; range.value++) {
-///     main.push(new hcloud.FloatingIpAssignment(`main-${range.value}`, {
+/// for (let range = 0; range < counter; range++) {
+///     main.push(new hcloud.FloatingIpAssignment(`main-${range}`, {
 ///         floatingIpId: ip1.then(ip1 => ip1.id),
-///         serverId: mainHcloudServer.id,
+///         serverId: Number(mainHcloudServer.id),
 ///     }));
 /// }
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_hcloud as hcloud
 ///
 /// ip1 = hcloud.get_floating_ip(ip_address="1.2.3.4")
 /// ip2 = hcloud.get_floating_ip(with_selector="key=value")
-/// main = []
-/// for range in [{"value": i} for i in range(0, counter)]:
-///     main.append(hcloud.FloatingIpAssignment(f"main-{range['value']}",
+/// main: list[hcloud.FloatingIpAssignment] = []
+/// for main_range in [{"value": i} for i in range(0, counter)]:
+///     main.append(hcloud.FloatingIpAssignment(f"main-{main_range['value']}",
 ///         floating_ip_id=ip1.id,
-///         server_id=main_hcloud_server["id"]))
+///         server_id=int(main_hcloud_server["id"])))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -872,13 +955,13 @@ Future<GetFirewallsResult> getFirewalls(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		ip1, err := hcloud.LookupFloatingIp(ctx, &hcloud.LookupFloatingIpArgs{
+/// 		ip1, err := hcloud.GetFloatingIp(ctx, &hcloud.LookupFloatingIpArgs{
 /// 			IpAddress: pulumi.StringRef("1.2.3.4"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupFloatingIp(ctx, &hcloud.LookupFloatingIpArgs{
+/// 		_, err = hcloud.GetFloatingIp(ctx, &hcloud.LookupFloatingIpArgs{
 /// 			WithSelector: pulumi.StringRef("key=value"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -901,6 +984,28 @@ Future<GetFirewallsResult> getFirewalls(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getfloatingip" "ip1" {
+///   ip_address = "1.2.3.4"
+/// }
+/// data "hcloud_getfloatingip" "ip2" {
+///   with_selector = "key=value"
+/// }
+///
+/// resource "hcloud_floatingipassignment" "main" {
+///   for_each       = counter
+///   floating_ip_id = data.hcloud_getfloatingip.ip1.id
+///   server_id      = mainHcloudServer.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -912,8 +1017,8 @@ Future<GetFirewallsResult> getFirewalls(
 /// import com.pulumi.hcloud.FloatingIpAssignment;
 /// import com.pulumi.hcloud.FloatingIpAssignmentArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1033,6 +1138,19 @@ Future<GetFloatingIpResult> getFloatingIp(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getfloatingips" "ip2" {
+///   with_selector = "key=value"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1041,8 +1159,8 @@ Future<GetFloatingIpResult> getFloatingIp(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetFloatingIpsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1085,10 +1203,10 @@ Future<GetFloatingIpsResult> getFloatingIps(
 }
 
 /// Provides details about a Hetzner Cloud Image.
-/// This resource is useful if you want to use a non-terraform managed image.
 ///
-/// When relevant, it is recommended to always provide the image architecture
-/// (`with_architecture`) when fetching images.
+/// It is recommended to always provide the image architecture (using ''with_architecture'').
+///
+/// See the [Image API documentation](https://docs.hetzner.cloud/reference/cloud#images) for more details.
 ///
 /// ## Example Usage
 ///
@@ -1110,6 +1228,7 @@ Future<GetFloatingIpsResult> getFloatingIps(
 /// });
 /// const byLabel = hcloud.getImage({
 ///     withSelector: "key=value",
+///     mostRecent: true,
 /// });
 /// const main = new hcloud.Server("main", {image: byName.id});
 /// ```
@@ -1122,7 +1241,8 @@ Future<GetFloatingIpsResult> getFloatingIps(
 ///     with_architecture="x86")
 /// by_name_arm = hcloud.get_image(name="debian-12",
 ///     with_architecture="arm")
-/// by_label = hcloud.get_image(with_selector="key=value")
+/// by_label = hcloud.get_image(with_selector="key=value",
+///     most_recent=True)
 /// main = hcloud.Server("main", image=by_name["id"])
 /// ```
 /// ```csharp
@@ -1153,6 +1273,7 @@ Future<GetFloatingIpsResult> getFloatingIps(
 ///     var byLabel = HCloud.GetImage.Invoke(new()
 ///     {
 ///         WithSelector = "key=value",
+///         MostRecent = true,
 ///     });
 ///
 ///     var main = new HCloud.Server("main", new()
@@ -1194,6 +1315,7 @@ Future<GetFloatingIpsResult> getFloatingIps(
 /// 		}
 /// 		_, err = hcloud.GetImage(ctx, &hcloud.GetImageArgs{
 /// 			WithSelector: pulumi.StringRef("key=value"),
+/// 			MostRecent:   pulumi.BoolRef(true),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -1208,6 +1330,35 @@ Future<GetFloatingIpsResult> getFloatingIps(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getimage" "byId" {
+///   id = 114690387
+/// }
+/// data "hcloud_getimage" "byNameX86" {
+///   name              = "debian-12"
+///   with_architecture = "x86"
+/// }
+/// data "hcloud_getimage" "byNameArm" {
+///   name              = "debian-12"
+///   with_architecture = "arm"
+/// }
+/// data "hcloud_getimage" "byLabel" {
+///   with_selector = "key=value"
+///   most_recent   = true
+/// }
+///
+/// resource "hcloud_server" "main" {
+///   image = byName.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1218,8 +1369,8 @@ Future<GetFloatingIpsResult> getFloatingIps(
 /// import com.pulumi.hcloud.inputs.GetImageArgs;
 /// import com.pulumi.hcloud.Server;
 /// import com.pulumi.hcloud.ServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1247,6 +1398,7 @@ Future<GetFloatingIpsResult> getFloatingIps(
 ///
 ///         final var byLabel = HcloudFunctions.getImage(GetImageArgs.builder()
 ///             .withSelector("key=value")
+///             .mostRecent(true)
 ///             .build());
 ///
 ///         var main = new Server("main", ServerArgs.builder()
@@ -1267,7 +1419,7 @@ Future<GetFloatingIpsResult> getFloatingIps(
 ///     fn::invoke:
 ///       function: hcloud:getImage
 ///       arguments:
-///         id: '114690387'
+///         id: 1.14690387e+08
 ///   byNameX86:
 ///     fn::invoke:
 ///       function: hcloud:getImage
@@ -1285,6 +1437,7 @@ Future<GetFloatingIpsResult> getFloatingIps(
 ///       function: hcloud:getImage
 ///       arguments:
 ///         withSelector: key=value
+///         mostRecent: true
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_image_get_image_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1301,10 +1454,11 @@ Future<GetImageResult> getImage(
   return GetImageResult.fromMap(result);
 }
 
-/// Provides details about multiple Hetzner Cloud Images.
+/// Provides a list of Hetzner Storage Images.
 ///
-/// When relevant, it is recommended to always provide the image architecture
-/// (`with_architecture`) when fetching images.
+/// It is recommended to always provide the image architecture (using ''with_architecture'').
+///
+/// See the [Image API documentation](https://docs.hetzner.cloud/reference/cloud#images) for more details.
 ///
 /// ## Example Usage
 ///
@@ -1378,6 +1532,22 @@ Future<GetImageResult> getImage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getimages" "byArchitecture" {
+///   with_architectures = ["x86"]
+/// }
+/// data "hcloud_getimages" "byLabel" {
+///   with_selector = "key=value"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1386,8 +1556,8 @@ Future<GetImageResult> getImage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetImagesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1501,19 +1671,19 @@ Future<GetImagesResult> getImages(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := hcloud.LookupLoadBalancer(ctx, &hcloud.LookupLoadBalancerArgs{
+/// 		_, err := hcloud.GetLoadBalancer(ctx, &hcloud.LookupLoadBalancerArgs{
 /// 			Name: pulumi.StringRef("my-load-balancer"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupLoadBalancer(ctx, &hcloud.LookupLoadBalancerArgs{
+/// 		_, err = hcloud.GetLoadBalancer(ctx, &hcloud.LookupLoadBalancerArgs{
 /// 			Id: pulumi.IntRef(123),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupLoadBalancer(ctx, &hcloud.LookupLoadBalancerArgs{
+/// 		_, err = hcloud.GetLoadBalancer(ctx, &hcloud.LookupLoadBalancerArgs{
 /// 			WithSelector: pulumi.StringRef("key=value"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -1521,6 +1691,25 @@ Future<GetImagesResult> getImages(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getloadbalancer" "lb1" {
+///   name = "my-load-balancer"
+/// }
+/// data "hcloud_getloadbalancer" "lb2" {
+///   id = "123"
+/// }
+/// data "hcloud_getloadbalancer" "lb3" {
+///   with_selector = "key=value"
 /// }
 /// ```
 /// ```java
@@ -1531,8 +1720,8 @@ Future<GetImagesResult> getImages(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetLoadBalancerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1687,6 +1876,28 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getloadbalancertype" "byId" {
+///   id = 1
+/// }
+/// data "hcloud_getloadbalancertype" "byName" {
+///   name = "lb11"
+/// }
+///
+/// resource "hcloud_loadbalancer" "main" {
+///   name               = "my-load-balancer"
+///   load_balancer_type = name
+///   location           = "fsn1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1697,8 +1908,8 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// import com.pulumi.hcloud.inputs.GetLoadBalancerTypeArgs;
 /// import com.pulumi.hcloud.LoadBalancer;
 /// import com.pulumi.hcloud.LoadBalancerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1809,6 +2020,18 @@ Future<GetLoadBalancerTypeResult> getLoadBalancerType(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getloadbalancertypes" "all" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1816,8 +2039,8 @@ Future<GetLoadBalancerTypeResult> getLoadBalancerType(
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1917,6 +2140,21 @@ Future<GetLoadBalancerTypesResult> getLoadBalancerTypes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getloadbalancers" "lb2" {
+/// }
+/// data "hcloud_getloadbalancers" "lb3" {
+///   with_selector = "key=value"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1925,8 +2163,8 @@ Future<GetLoadBalancerTypesResult> getLoadBalancerTypes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetLoadBalancersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2046,6 +2284,22 @@ Future<GetLoadBalancersResult> getLoadBalancers(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getlocation" "byId" {
+///   id = 1
+/// }
+/// data "hcloud_getlocation" "byName" {
+///   name = "fsn1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2054,8 +2308,8 @@ Future<GetLoadBalancersResult> getLoadBalancers(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2119,27 +2373,28 @@ Future<GetLocationResult> getLocation(
 ///
 /// const all = hcloud.getLocations({});
 /// const workers: hcloud.Server[] = [];
-/// for (const range = {value: 0}; range.value < 5; range.value++) {
-///     workers.push(new hcloud.Server(`workers-${range.value}`, {
-///         name: `node${range.value}`,
+/// for (let range = 0; range < 5; range++) {
+///     workers.push(new hcloud.Server(`workers-${range}`, {
+///         name: `node${range}`,
 ///         image: "debian-12",
 ///         serverType: "cx23",
-///         location: all.then(all => all.locations[range.value]).then(locations => locations.name),
+///         location: all.then(all => all.locations)[range].name,
 ///     }));
 /// }
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_hcloud as hcloud
 ///
 /// all = hcloud.get_locations()
-/// workers = []
-/// for range in [{"value": i} for i in range(0, 5)]:
-///     workers.append(hcloud.Server(f"workers-{range['value']}",
-///         name=f"node{range['value']}",
+/// workers: list[hcloud.Server] = []
+/// for workers_range in [{"value": i} for i in range(0, 5)]:
+///     workers.append(hcloud.Server(f"workers-{workers_range['value']}",
+///         name=f"node{workers_range['value']}",
 ///         image="debian-12",
 ///         server_type="cx23",
-///         location=all.locations[range["value"]]["name"]))
+///         location=all.locations[workers_range["value"]]["name"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2160,10 +2415,65 @@ Future<GetLocationResult> getLocation(
 ///             Name = $"node{range.Value}",
 ///             Image = "debian-12",
 ///             ServerType = "cx23",
-///             Location = all.Apply(getLocationsResult => getLocationsResult.Locations)[range.Value].Apply(locations => locations.Name),
+///             Location = all.Apply(getLocationsResult => getLocationsResult.Locations)[range.Value].Name,
 ///         }));
 ///     }
 /// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		all, err := hcloud.GetLocations(ctx, map[string]interface{}{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		var workers []*hcloud.Server
+/// 		for index := 0; index < 5; index++ {
+/// 			key0 := index
+/// 			val0 := index
+/// 			__res, err := hcloud.NewServer(ctx, fmt.Sprintf("workers-%v", key0), &hcloud.ServerArgs{
+/// 				Name:       pulumi.Sprintf("node%v", val0),
+/// 				Image:      pulumi.String("debian-12"),
+/// 				ServerType: pulumi.String("cx23"),
+/// 				Location:   all.Locations[val0].Name,
+/// 			})
+/// 			if err != nil {
+/// 				return err
+/// 			}
+/// 			workers = append(workers, __res)
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getlocations" "all" {
+/// }
+///
+/// resource "hcloud_server" "workers" {
+///   count       = 5
+///   name        ="node${count.index}"
+///   image       = "debian-12"
+///   server_type = "cx23"
+///   location    = element(data.hcloud_getlocations.all.locations, count.index).name
+/// }
 /// ```
 /// ```java
 /// package generated_program;
@@ -2175,8 +2485,8 @@ Future<GetLocationResult> getLocation(
 /// import com.pulumi.hcloud.Server;
 /// import com.pulumi.hcloud.ServerArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2280,19 +2590,19 @@ Future<GetLocationsResult> getLocations(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := hcloud.LookupNetwork(ctx, &hcloud.LookupNetworkArgs{
+/// 		_, err := hcloud.GetNetwork(ctx, &hcloud.LookupNetworkArgs{
 /// 			Id: pulumi.IntRef(1234),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupNetwork(ctx, &hcloud.LookupNetworkArgs{
+/// 		_, err = hcloud.GetNetwork(ctx, &hcloud.LookupNetworkArgs{
 /// 			Name: pulumi.StringRef("my-network"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupNetwork(ctx, &hcloud.LookupNetworkArgs{
+/// 		_, err = hcloud.GetNetwork(ctx, &hcloud.LookupNetworkArgs{
 /// 			WithSelector: pulumi.StringRef("key=value"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -2300,6 +2610,25 @@ Future<GetLocationsResult> getLocations(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getnetwork" "network1" {
+///   id = "1234"
+/// }
+/// data "hcloud_getnetwork" "network2" {
+///   name = "my-network"
+/// }
+/// data "hcloud_getnetwork" "network3" {
+///   with_selector = "key=value"
 /// }
 /// ```
 /// ```java
@@ -2310,8 +2639,8 @@ Future<GetLocationsResult> getLocations(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2419,11 +2748,11 @@ Future<GetNetworkResult> getNetwork(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := hcloud.LookupNetwork(ctx, &hcloud.LookupNetworkArgs{}, nil)
+/// 		_, err := hcloud.GetNetwork(ctx, &hcloud.LookupNetworkArgs{}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupNetwork(ctx, &hcloud.LookupNetworkArgs{
+/// 		_, err = hcloud.GetNetwork(ctx, &hcloud.LookupNetworkArgs{
 /// 			WithSelector: pulumi.StringRef("key=value"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -2431,6 +2760,21 @@ Future<GetNetworkResult> getNetwork(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getnetwork" "network2" {
+/// }
+/// data "hcloud_getnetwork" "network3" {
+///   with_selector = "key=value"
 /// }
 /// ```
 /// ```java
@@ -2441,8 +2785,8 @@ Future<GetNetworkResult> getNetwork(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2542,13 +2886,13 @@ Future<GetNetworksResult> getNetworks(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := hcloud.LookupPlacementGroup(ctx, &hcloud.LookupPlacementGroupArgs{
+/// 		_, err := hcloud.GetPlacementGroup(ctx, &hcloud.LookupPlacementGroupArgs{
 /// 			Name: pulumi.StringRef("sample-placement-group-1"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupPlacementGroup(ctx, &hcloud.LookupPlacementGroupArgs{
+/// 		_, err = hcloud.GetPlacementGroup(ctx, &hcloud.LookupPlacementGroupArgs{
 /// 			Id: pulumi.IntRef(4711),
 /// 		}, nil)
 /// 		if err != nil {
@@ -2556,6 +2900,22 @@ Future<GetNetworksResult> getNetworks(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getplacementgroup" "samplePlacementGroup1" {
+///   name = "sample-placement-group-1"
+/// }
+/// data "hcloud_getplacementgroup" "samplePlacementGroup2" {
+///   id = "4711"
 /// }
 /// ```
 /// ```java
@@ -2566,8 +2926,8 @@ Future<GetNetworksResult> getNetworks(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetPlacementGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2680,6 +3040,21 @@ Future<GetPlacementGroupResult> getPlacementGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getplacementgroups" "samplePlacementGroup1" {
+/// }
+/// data "hcloud_getplacementgroups" "samplePlacementGroup2" {
+///   with_selector = "key=value"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2688,8 +3063,8 @@ Future<GetPlacementGroupResult> getPlacementGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetPlacementGroupsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2740,32 +3115,18 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 
 /// Provides details about a Hetzner Cloud Primary IP.
 ///
-/// This resource can be useful when you need to determine a Primary IP ID based on the IP address.
-///
-/// Side note:
-///
-/// If a server is getting created, it has to have a primary ip. If a server is getting created without defining primary ips, two of them (one ipv4 and one ipv6) getting created & attached.
-/// Currently, Primary IPs can be only attached to servers.
+/// See the [Primary IPs API documentation](https://docs.hetzner.cloud/reference/cloud#tag/primary-ips) for more details.
 ///
 /// ## Deprecations
 ///
 /// ### `datacenter` attribute
 ///
-/// The `datacenter` attribute is deprecated, use the `location` attribute instead.
+/// The `datacenter` attribute is marked for removal since `v1.67.0`, you must use the `location` attribute instead.
 ///
-/// See our the [API changelog](https://docs.hetzner.cloud/changelog#2025-12-16-phasing-out-datacenters) for more details.
-///
-/// &gt; Please upgrade to `v1.58.0+` of the provider to avoid issues once the Hetzner Cloud API no longer returns the `datacenter` attribute.
+/// See our [deprecation](https://docs.hetzner.cloud/changelog#2025-12-16-phasing-out-datacenters) and
+/// [removal](https://docs.hetzner.cloud/changelog#2026-07-01-removing-datacenters) changelog for more details.
 ///
 /// ## Example Usage
-///
-/// # Data Source: hcloud.PrimaryIp
-///
-/// Provides details about a Hetzner Cloud Primary IP.
-/// This resource can be useful when you need to determine a Primary IP ID based on the IP address.
-///
-///
-/// ### Additional Examples
 ///
 ///
 /// ```typescript
@@ -2786,12 +3147,12 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 ///     name: "test-server",
 ///     image: "ubuntu-24.04",
 ///     serverType: "cx23",
-///     datacenter: "fsn1-dc14",
+///     location: "fsn1",
 ///     labels: {
 ///         test: "tessst1",
 ///     },
 ///     publicNets: [{
-///         ipv4: ip1HcloudPrimaryIp.id,
+///         ipv4: Number(ip1HcloudPrimaryIp.id),
 ///     }],
 /// });
 /// ```
@@ -2807,12 +3168,12 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 ///     name="test-server",
 ///     image="ubuntu-24.04",
 ///     server_type="cx23",
-///     datacenter="fsn1-dc14",
+///     location="fsn1",
 ///     labels={
 ///         "test": "tessst1",
 ///     },
 ///     public_nets=[{
-///         "ipv4": ip1_hcloud_primary_ip["id"],
+///         "ipv4": int(ip1_hcloud_primary_ip["id"]),
 ///     }])
 /// ```
 /// ```csharp
@@ -2844,7 +3205,7 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 ///         Name = "test-server",
 ///         Image = "ubuntu-24.04",
 ///         ServerType = "cx23",
-///         Datacenter = "fsn1-dc14",
+///         Location = "fsn1",
 ///         Labels =
 ///         {
 ///             { "test", "tessst1" },
@@ -2870,19 +3231,19 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := hcloud.LookupPrimaryIp(ctx, &hcloud.LookupPrimaryIpArgs{
+/// 		_, err := hcloud.GetPrimaryIp(ctx, &hcloud.LookupPrimaryIpArgs{
 /// 			IpAddress: pulumi.StringRef("1.2.3.4"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupPrimaryIp(ctx, &hcloud.LookupPrimaryIpArgs{
+/// 		_, err = hcloud.GetPrimaryIp(ctx, &hcloud.LookupPrimaryIpArgs{
 /// 			Name: pulumi.StringRef("primary_ip_1"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupPrimaryIp(ctx, &hcloud.LookupPrimaryIpArgs{
+/// 		_, err = hcloud.GetPrimaryIp(ctx, &hcloud.LookupPrimaryIpArgs{
 /// 			WithSelector: pulumi.StringRef("key=value"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -2893,7 +3254,7 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 /// 			Name:       pulumi.String("test-server"),
 /// 			Image:      pulumi.String("ubuntu-24.04"),
 /// 			ServerType: pulumi.String("cx23"),
-/// 			Datacenter: pulumi.String("fsn1-dc14"),
+/// 			Location:   pulumi.String("fsn1"),
 /// 			Labels: pulumi.StringMap{
 /// 				"test": pulumi.String("tessst1"),
 /// 			},
@@ -2910,6 +3271,39 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getprimaryip" "ip1" {
+///   ip_address = "1.2.3.4"
+/// }
+/// data "hcloud_getprimaryip" "ip2" {
+///   name = "primary_ip_1"
+/// }
+/// data "hcloud_getprimaryip" "ip3" {
+///   with_selector = "key=value"
+/// }
+///
+/// // Link a server to an existing primary IP
+/// resource "hcloud_server" "server_test" {
+///   name        = "test-server"
+///   image       = "ubuntu-24.04"
+///   server_type = "cx23"
+///   location    = "fsn1"
+///   labels = {
+///     "test" = "tessst1"
+///   }
+///   public_nets {
+///     ipv4 = ip1HcloudPrimaryIp.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2921,8 +3315,8 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 /// import com.pulumi.hcloud.Server;
 /// import com.pulumi.hcloud.ServerArgs;
 /// import com.pulumi.hcloud.inputs.ServerPublicNetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2951,7 +3345,7 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 ///             .name("test-server")
 ///             .image("ubuntu-24.04")
 ///             .serverType("cx23")
-///             .datacenter("fsn1-dc14")
+///             .location("fsn1")
 ///             .labels(Map.of("test", "tessst1"))
 ///             .publicNets(ServerPublicNetArgs.builder()
 ///                 .ipv4(ip1HcloudPrimaryIp.id())
@@ -2971,7 +3365,7 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 ///       name: test-server
 ///       image: ubuntu-24.04
 ///       serverType: cx23
-///       datacenter: fsn1-dc14
+///       location: fsn1
 ///       labels:
 ///         test: tessst1
 ///       publicNets:
@@ -3008,7 +3402,18 @@ Future<GetPrimaryIpResult> getPrimaryIp(
   return GetPrimaryIpResult.fromMap(result);
 }
 
-/// Provides details about multiple Hetzner Cloud Primary IPs.
+/// Provides a list of Hetzner Cloud Primary IPs.
+///
+/// See the [Primary IPs API documentation](https://docs.hetzner.cloud/reference/cloud#tag/primary-ips) for more details.
+///
+/// ## Deprecations
+///
+/// ### `datacenter` attribute
+///
+/// The `datacenter` attribute is marked for removal since `v1.67.0`, you must use the `location` attribute instead.
+///
+/// See our [deprecation](https://docs.hetzner.cloud/changelog#2025-12-16-phasing-out-datacenters) and
+/// [removal](https://docs.hetzner.cloud/changelog#2026-07-01-removing-datacenters) changelog for more details.
 ///
 /// ## Example Usage
 ///
@@ -3062,6 +3467,19 @@ Future<GetPrimaryIpResult> getPrimaryIp(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getprimaryips" "ip2" {
+///   with_selector = "key=value"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3070,8 +3488,8 @@ Future<GetPrimaryIpResult> getPrimaryIp(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetPrimaryIpsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3120,11 +3538,10 @@ Future<GetPrimaryIpsResult> getPrimaryIps(
 ///
 /// ### `datacenter` attribute
 ///
-/// The `datacenter` attribute is deprecated, use the `location` attribute instead.
+/// The `datacenter` attribute is marked for removal since `v1.67.0`, you must use the `location` attribute instead.
 ///
-/// See our the [API changelog](https://docs.hetzner.cloud/changelog#2025-12-16-phasing-out-datacenters) for more details.
-///
-/// &gt; Please upgrade to `v1.58.0+` of the provider to avoid issues once the Hetzner Cloud API no longer returns the `datacenter` attribute.
+/// See our [deprecation](https://docs.hetzner.cloud/changelog#2025-12-16-phasing-out-datacenters) and
+/// [removal](https://docs.hetzner.cloud/changelog#2026-07-01-removing-datacenters) changelog for more details.
 ///
 /// ## Example Usage
 ///
@@ -3186,19 +3603,19 @@ Future<GetPrimaryIpsResult> getPrimaryIps(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := hcloud.LookupServer(ctx, &hcloud.LookupServerArgs{
+/// 		_, err := hcloud.GetServer(ctx, &hcloud.LookupServerArgs{
 /// 			Name: pulumi.StringRef("my-server"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupServer(ctx, &hcloud.LookupServerArgs{
+/// 		_, err = hcloud.GetServer(ctx, &hcloud.LookupServerArgs{
 /// 			Id: pulumi.IntRef(123),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupServer(ctx, &hcloud.LookupServerArgs{
+/// 		_, err = hcloud.GetServer(ctx, &hcloud.LookupServerArgs{
 /// 			WithSelector: pulumi.StringRef("key=value"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -3206,6 +3623,25 @@ Future<GetPrimaryIpsResult> getPrimaryIps(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getserver" "s1" {
+///   name = "my-server"
+/// }
+/// data "hcloud_getserver" "s2" {
+///   id = "123"
+/// }
+/// data "hcloud_getserver" "s3" {
+///   with_selector = "key=value"
 /// }
 /// ```
 /// ```java
@@ -3216,8 +3652,8 @@ Future<GetPrimaryIpsResult> getPrimaryIps(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3376,6 +3812,29 @@ Future<GetServerResult> getServer(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getservertype" "byId" {
+///   id = 22
+/// }
+/// data "hcloud_getservertype" "byName" {
+///   name = "cx23"
+/// }
+///
+/// resource "hcloud_server" "main" {
+///   name        = "my-server"
+///   location    = "fsn1"
+///   image       = "debian-12"
+///   server_type = data.hcloud_getservertype.byName.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3386,8 +3845,8 @@ Future<GetServerResult> getServer(
 /// import com.pulumi.hcloud.inputs.GetServerTypeArgs;
 /// import com.pulumi.hcloud.Server;
 /// import com.pulumi.hcloud.ServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3500,6 +3959,18 @@ Future<GetServerTypeResult> getServerType(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getservertypes" "all" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3507,8 +3978,8 @@ Future<GetServerTypeResult> getServerType(
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3601,6 +4072,19 @@ Future<GetServerTypesResult> getServerTypes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getservers" "s3" {
+///   with_selector = "key=value"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3609,8 +4093,8 @@ Future<GetServerTypesResult> getServerTypes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetServersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3676,9 +4160,9 @@ Future<GetServersResult> getServers(
 ///     withSelector: "key=value",
 /// });
 /// const main = new hcloud.Server("main", {sshKeys: [
-///     byId.then(byId => byId.id),
-///     byName.then(byName => byName.id),
-///     byFingerprint.then(byFingerprint => byFingerprint.id),
+///     output(byId.then(byId => byId.id)).apply(x =>String(x)),
+///     output(byName.then(byName => byName.id)).apply(x =>String(x)),
+///     output(byFingerprint.then(byFingerprint => byFingerprint.id)).apply(x =>String(x)),
 /// ]});
 /// ```
 /// ```python
@@ -3690,9 +4174,9 @@ Future<GetServersResult> getServers(
 /// by_fingerprint = hcloud.get_ssh_key(fingerprint="55:58:dc:bd:61:6e:7d:24:07:a7:7d:9b:be:99:83:a8")
 /// by_label = hcloud.get_ssh_key(with_selector="key=value")
 /// main = hcloud.Server("main", ssh_keys=[
-///     by_id.id,
-///     by_name.id,
-///     by_fingerprint.id,
+///     output(by_id.id).apply(lambda x: str(x)),
+///     output(by_name.id).apply(lambda x: str(x)),
+///     output(by_fingerprint.id).apply(lambda x: str(x)),
 /// ])
 /// ```
 /// ```csharp
@@ -3745,25 +4229,25 @@ Future<GetServersResult> getServers(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		byId, err := hcloud.LookupSshKey(ctx, &hcloud.LookupSshKeyArgs{
+/// 		byId, err := hcloud.GetSshKey(ctx, &hcloud.LookupSshKeyArgs{
 /// 			Id: pulumi.IntRef(24332897),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		byName, err := hcloud.LookupSshKey(ctx, &hcloud.LookupSshKeyArgs{
+/// 		byName, err := hcloud.GetSshKey(ctx, &hcloud.LookupSshKeyArgs{
 /// 			Name: pulumi.StringRef("my-ssh-key"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		byFingerprint, err := hcloud.LookupSshKey(ctx, &hcloud.LookupSshKeyArgs{
+/// 		byFingerprint, err := hcloud.GetSshKey(ctx, &hcloud.LookupSshKeyArgs{
 /// 			Fingerprint: pulumi.StringRef("55:58:dc:bd:61:6e:7d:24:07:a7:7d:9b:be:99:83:a8"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupSshKey(ctx, &hcloud.LookupSshKeyArgs{
+/// 		_, err = hcloud.GetSshKey(ctx, &hcloud.LookupSshKeyArgs{
 /// 			WithSelector: pulumi.StringRef("key=value"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -3783,6 +4267,32 @@ Future<GetServersResult> getServers(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getsshkey" "byId" {
+///   id = 24332897
+/// }
+/// data "hcloud_getsshkey" "byName" {
+///   name = "my-ssh-key"
+/// }
+/// data "hcloud_getsshkey" "byFingerprint" {
+///   fingerprint = "55:58:dc:bd:61:6e:7d:24:07:a7:7d:9b:be:99:83:a8"
+/// }
+/// data "hcloud_getsshkey" "byLabel" {
+///   with_selector = "key=value"
+/// }
+///
+/// resource "hcloud_server" "main" {
+///   ssh_keys = [data.hcloud_getsshkey.byId.id, data.hcloud_getsshkey.byName.id, data.hcloud_getsshkey.byFingerprint.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3793,8 +4303,8 @@ Future<GetServersResult> getServers(
 /// import com.pulumi.hcloud.inputs.GetSshKeyArgs;
 /// import com.pulumi.hcloud.Server;
 /// import com.pulumi.hcloud.ServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3959,6 +4469,25 @@ Future<GetSshKeyResult> getSshKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getsshkeys" "all" {
+/// }
+/// data "hcloud_getsshkeys" "byLabel" {
+///   with_selector = "foo=bar"
+/// }
+///
+/// resource "hcloud_server" "main" {
+///   ssh_keys = data.hcloud_getsshkeys.all.ssh_keys[*].name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3969,8 +4498,8 @@ Future<GetSshKeyResult> getSshKey(
 /// import com.pulumi.hcloud.inputs.GetSshKeysArgs;
 /// import com.pulumi.hcloud.Server;
 /// import com.pulumi.hcloud.ServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4075,19 +4604,19 @@ Future<GetSshKeysResult> getSshKeys(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := hcloud.LookupStorageBox(ctx, &hcloud.LookupStorageBoxArgs{
+/// 		_, err := hcloud.GetStorageBox(ctx, &hcloud.LookupStorageBoxArgs{
 /// 			Id: pulumi.IntRef(1333),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupStorageBox(ctx, &hcloud.LookupStorageBoxArgs{
+/// 		_, err = hcloud.GetStorageBox(ctx, &hcloud.LookupStorageBoxArgs{
 /// 			Name: pulumi.StringRef("backups"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupStorageBox(ctx, &hcloud.LookupStorageBoxArgs{
+/// 		_, err = hcloud.GetStorageBox(ctx, &hcloud.LookupStorageBoxArgs{
 /// 			WithSelector: pulumi.StringRef("env=production"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -4095,6 +4624,25 @@ Future<GetSshKeysResult> getSshKeys(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getstoragebox" "byId" {
+///   id = 1333
+/// }
+/// data "hcloud_getstoragebox" "byName" {
+///   name = "backups"
+/// }
+/// data "hcloud_getstoragebox" "byLabelSelector" {
+///   with_selector = "env=production"
 /// }
 /// ```
 /// ```java
@@ -4105,8 +4653,8 @@ Future<GetSshKeysResult> getSshKeys(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetStorageBoxArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4173,10 +4721,35 @@ Future<GetStorageBoxResult> getStorageBox(
 /// ## Example Usage
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getstorageboxsnapshot" "byId" {
+///   storage_box_id = var.storageBoxId
+///   id             = 2
+/// }
+/// data "hcloud_getstorageboxsnapshot" "byName" {
+///   storage_box_id = var.storageBoxId
+///   name           = "2025-02-12T11-35-19"
+/// }
+/// data "hcloud_getstoragebox" "byLabelSelector" {
+///   storage_box_id = var.storageBoxId
+///   with_selector  = "env=production"
+/// }
+///
+/// variable "storageBoxId" {
+/// }
+/// ```
 /// ```yaml
 /// configuration:
 ///   storageBoxId:
-///     type: dynamic
+///     type: object
 /// variables:
 ///   byId:
 ///     fn::invoke:
@@ -4226,10 +4799,10 @@ Future<GetStorageBoxSnapshotResult> getStorageBoxSnapshot(
 /// const config = new pulumi.Config();
 /// const storageBoxId = config.requireObject<any>("storageBoxId");
 /// const all = hcloud.getStorageBoxSnapshots({
-///     storageBoxId: storageBoxId,
+///     storageBoxId: Number(storageBoxId),
 /// });
 /// const byLabelSelector = hcloud.getStorageBoxSnapshots({
-///     storageBoxId: storageBoxId,
+///     storageBoxId: Number(storageBoxId),
 ///     withSelector: "env=production",
 /// });
 /// ```
@@ -4239,8 +4812,8 @@ Future<GetStorageBoxSnapshotResult> getStorageBoxSnapshot(
 ///
 /// config = pulumi.Config()
 /// storage_box_id = config.require_object("storageBoxId")
-/// all = hcloud.get_storage_box_snapshots(storage_box_id=storage_box_id)
-/// by_label_selector = hcloud.get_storage_box_snapshots(storage_box_id=storage_box_id,
+/// all = hcloud.get_storage_box_snapshots(storage_box_id=int(storage_box_id))
+/// by_label_selector = hcloud.get_storage_box_snapshots(storage_box_id=int(storage_box_id),
 ///     with_selector="env=production")
 /// ```
 /// ```csharp
@@ -4278,7 +4851,8 @@ Future<GetStorageBoxSnapshotResult> getStorageBoxSnapshot(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		storageBoxId := cfg.RequireObject("storageBoxId")
+/// 		var storageBoxId interface{}
+/// 		cfg.RequireObject("storageBoxId", &storageBoxId)
 /// 		_, err := hcloud.GetStorageBoxSnapshots(ctx, &hcloud.GetStorageBoxSnapshotsArgs{
 /// 			StorageBoxId: storageBoxId,
 /// 		}, nil)
@@ -4296,6 +4870,26 @@ Future<GetStorageBoxSnapshotResult> getStorageBoxSnapshot(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getstorageboxsnapshots" "all" {
+///   storage_box_id = var.storageBoxId
+/// }
+/// data "hcloud_getstorageboxsnapshots" "byLabelSelector" {
+///   storage_box_id = var.storageBoxId
+///   with_selector  = "env=production"
+/// }
+///
+/// variable "storageBoxId" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4304,8 +4898,8 @@ Future<GetStorageBoxSnapshotResult> getStorageBoxSnapshot(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetStorageBoxSnapshotsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4318,7 +4912,7 @@ Future<GetStorageBoxSnapshotResult> getStorageBoxSnapshot(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var storageBoxId = config.get("storageBoxId");
+///         final var storageBoxId = config.require("storageBoxId");
 ///         final var all = HcloudFunctions.getStorageBoxSnapshots(GetStorageBoxSnapshotsArgs.builder()
 ///             .storageBoxId(storageBoxId)
 ///             .build());
@@ -4334,7 +4928,7 @@ Future<GetStorageBoxSnapshotResult> getStorageBoxSnapshot(
 /// ```yaml
 /// configuration:
 ///   storageBoxId:
-///     type: dynamic
+///     type: object
 /// variables:
 ///   all:
 ///     fn::invoke:
@@ -4377,19 +4971,19 @@ Future<GetStorageBoxSnapshotsResult> getStorageBoxSnapshots(
 /// const config = new pulumi.Config();
 /// const storageBoxId = config.requireObject<any>("storageBoxId");
 /// const byId = hcloud.getStorageBoxSubaccount({
-///     storageBoxId: storageBoxId,
+///     storageBoxId: Number(storageBoxId),
 ///     id: 2,
 /// });
 /// const byName = hcloud.getStorageBoxSubaccount({
-///     storageBoxId: storageBoxId,
+///     storageBoxId: Number(storageBoxId),
 ///     name: "badger",
 /// });
 /// const byUsername = hcloud.getStorageBoxSubaccount({
-///     storageBoxId: storageBoxId,
+///     storageBoxId: Number(storageBoxId),
 ///     username: "u507137-sub1",
 /// });
 /// const byLabelSelector = hcloud.getStorageBoxSubaccount({
-///     storageBoxId: storageBoxId,
+///     storageBoxId: Number(storageBoxId),
 ///     withSelector: "team=billing",
 /// });
 /// ```
@@ -4399,13 +4993,13 @@ Future<GetStorageBoxSnapshotsResult> getStorageBoxSnapshots(
 ///
 /// config = pulumi.Config()
 /// storage_box_id = config.require_object("storageBoxId")
-/// by_id = hcloud.get_storage_box_subaccount(storage_box_id=storage_box_id,
+/// by_id = hcloud.get_storage_box_subaccount(storage_box_id=int(storage_box_id),
 ///     id=2)
-/// by_name = hcloud.get_storage_box_subaccount(storage_box_id=storage_box_id,
+/// by_name = hcloud.get_storage_box_subaccount(storage_box_id=int(storage_box_id),
 ///     name="badger")
-/// by_username = hcloud.get_storage_box_subaccount(storage_box_id=storage_box_id,
+/// by_username = hcloud.get_storage_box_subaccount(storage_box_id=int(storage_box_id),
 ///     username="u507137-sub1")
-/// by_label_selector = hcloud.get_storage_box_subaccount(storage_box_id=storage_box_id,
+/// by_label_selector = hcloud.get_storage_box_subaccount(storage_box_id=int(storage_box_id),
 ///     with_selector="team=billing")
 /// ```
 /// ```csharp
@@ -4456,29 +5050,30 @@ Future<GetStorageBoxSnapshotsResult> getStorageBoxSnapshots(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		storageBoxId := cfg.RequireObject("storageBoxId")
-/// 		_, err := hcloud.LookupStorageBoxSubaccount(ctx, &hcloud.LookupStorageBoxSubaccountArgs{
+/// 		var storageBoxId interface{}
+/// 		cfg.RequireObject("storageBoxId", &storageBoxId)
+/// 		_, err := hcloud.GetStorageBoxSubaccount(ctx, &hcloud.LookupStorageBoxSubaccountArgs{
 /// 			StorageBoxId: storageBoxId,
 /// 			Id:           pulumi.IntRef(2),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupStorageBoxSubaccount(ctx, &hcloud.LookupStorageBoxSubaccountArgs{
+/// 		_, err = hcloud.GetStorageBoxSubaccount(ctx, &hcloud.LookupStorageBoxSubaccountArgs{
 /// 			StorageBoxId: storageBoxId,
 /// 			Name:         pulumi.StringRef("badger"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupStorageBoxSubaccount(ctx, &hcloud.LookupStorageBoxSubaccountArgs{
+/// 		_, err = hcloud.GetStorageBoxSubaccount(ctx, &hcloud.LookupStorageBoxSubaccountArgs{
 /// 			StorageBoxId: storageBoxId,
 /// 			Username:     pulumi.StringRef("u507137-sub1"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupStorageBoxSubaccount(ctx, &hcloud.LookupStorageBoxSubaccountArgs{
+/// 		_, err = hcloud.GetStorageBoxSubaccount(ctx, &hcloud.LookupStorageBoxSubaccountArgs{
 /// 			StorageBoxId: storageBoxId,
 /// 			WithSelector: pulumi.StringRef("team=billing"),
 /// 		}, nil)
@@ -4489,6 +5084,35 @@ Future<GetStorageBoxSnapshotsResult> getStorageBoxSnapshots(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getstorageboxsubaccount" "byId" {
+///   storage_box_id = var.storageBoxId
+///   id             = 2
+/// }
+/// data "hcloud_getstorageboxsubaccount" "byName" {
+///   storage_box_id = var.storageBoxId
+///   name           = "badger"
+/// }
+/// data "hcloud_getstorageboxsubaccount" "byUsername" {
+///   storage_box_id = var.storageBoxId
+///   username       = "u507137-sub1"
+/// }
+/// data "hcloud_getstorageboxsubaccount" "byLabelSelector" {
+///   storage_box_id = var.storageBoxId
+///   with_selector  = "team=billing"
+/// }
+///
+/// variable "storageBoxId" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4497,8 +5121,8 @@ Future<GetStorageBoxSnapshotsResult> getStorageBoxSnapshots(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetStorageBoxSubaccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4511,7 +5135,7 @@ Future<GetStorageBoxSnapshotsResult> getStorageBoxSnapshots(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var storageBoxId = config.get("storageBoxId");
+///         final var storageBoxId = config.require("storageBoxId");
 ///         final var byId = HcloudFunctions.getStorageBoxSubaccount(GetStorageBoxSubaccountArgs.builder()
 ///             .storageBoxId(storageBoxId)
 ///             .id(2)
@@ -4538,7 +5162,7 @@ Future<GetStorageBoxSnapshotsResult> getStorageBoxSnapshots(
 /// ```yaml
 /// configuration:
 ///   storageBoxId:
-///     type: dynamic
+///     type: object
 /// variables:
 ///   byId:
 ///     fn::invoke:
@@ -4594,10 +5218,10 @@ Future<GetStorageBoxSubaccountResult> getStorageBoxSubaccount(
 /// const config = new pulumi.Config();
 /// const storageBoxId = config.requireObject<any>("storageBoxId");
 /// const all = hcloud.getStorageBoxSubaccounts({
-///     storageBoxId: storageBoxId,
+///     storageBoxId: Number(storageBoxId),
 /// });
 /// const byLabelSelector = hcloud.getStorageBoxSubaccounts({
-///     storageBoxId: storageBoxId,
+///     storageBoxId: Number(storageBoxId),
 ///     withSelector: "team=billing",
 /// });
 /// ```
@@ -4607,8 +5231,8 @@ Future<GetStorageBoxSubaccountResult> getStorageBoxSubaccount(
 ///
 /// config = pulumi.Config()
 /// storage_box_id = config.require_object("storageBoxId")
-/// all = hcloud.get_storage_box_subaccounts(storage_box_id=storage_box_id)
-/// by_label_selector = hcloud.get_storage_box_subaccounts(storage_box_id=storage_box_id,
+/// all = hcloud.get_storage_box_subaccounts(storage_box_id=int(storage_box_id))
+/// by_label_selector = hcloud.get_storage_box_subaccounts(storage_box_id=int(storage_box_id),
 ///     with_selector="team=billing")
 /// ```
 /// ```csharp
@@ -4646,7 +5270,8 @@ Future<GetStorageBoxSubaccountResult> getStorageBoxSubaccount(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		storageBoxId := cfg.RequireObject("storageBoxId")
+/// 		var storageBoxId interface{}
+/// 		cfg.RequireObject("storageBoxId", &storageBoxId)
 /// 		_, err := hcloud.GetStorageBoxSubaccounts(ctx, &hcloud.GetStorageBoxSubaccountsArgs{
 /// 			StorageBoxId: storageBoxId,
 /// 		}, nil)
@@ -4664,6 +5289,26 @@ Future<GetStorageBoxSubaccountResult> getStorageBoxSubaccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getstorageboxsubaccounts" "all" {
+///   storage_box_id = var.storageBoxId
+/// }
+/// data "hcloud_getstorageboxsubaccounts" "byLabelSelector" {
+///   storage_box_id = var.storageBoxId
+///   with_selector  = "team=billing"
+/// }
+///
+/// variable "storageBoxId" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4672,8 +5317,8 @@ Future<GetStorageBoxSubaccountResult> getStorageBoxSubaccount(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetStorageBoxSubaccountsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4686,7 +5331,7 @@ Future<GetStorageBoxSubaccountResult> getStorageBoxSubaccount(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var storageBoxId = config.get("storageBoxId");
+///         final var storageBoxId = config.require("storageBoxId");
 ///         final var all = HcloudFunctions.getStorageBoxSubaccounts(GetStorageBoxSubaccountsArgs.builder()
 ///             .storageBoxId(storageBoxId)
 ///             .build());
@@ -4702,7 +5347,7 @@ Future<GetStorageBoxSubaccountResult> getStorageBoxSubaccount(
 /// ```yaml
 /// configuration:
 ///   storageBoxId:
-///     type: dynamic
+///     type: object
 /// variables:
 ///   all:
 ///     fn::invoke:
@@ -4802,6 +5447,22 @@ Future<GetStorageBoxSubaccountsResult> getStorageBoxSubaccounts(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getstorageboxtype" "byId" {
+///   id = 1333
+/// }
+/// data "hcloud_getstorageboxtype" "byName" {
+///   name = "bx11"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4810,8 +5471,8 @@ Future<GetStorageBoxSubaccountsResult> getStorageBoxSubaccounts(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetStorageBoxTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4911,6 +5572,18 @@ Future<GetStorageBoxTypeResult> getStorageBoxType(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getstorageboxtypes" "all" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4918,8 +5591,8 @@ Future<GetStorageBoxTypeResult> getStorageBoxType(
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5021,6 +5694,21 @@ Future<GetStorageBoxTypesResult> getStorageBoxTypes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getstorageboxes" "all" {
+/// }
+/// data "hcloud_getstorageboxes" "byLabelSelector" {
+///   with_selector = "env=production"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5029,8 +5717,8 @@ Future<GetStorageBoxTypesResult> getStorageBoxTypes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetStorageBoxesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5142,19 +5830,19 @@ Future<GetStorageBoxesResult> getStorageBoxes(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := hcloud.LookupVolume(ctx, &hcloud.LookupVolumeArgs{
+/// 		_, err := hcloud.GetVolume(ctx, &hcloud.LookupVolumeArgs{
 /// 			Id: pulumi.IntRef(1234),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupVolume(ctx, &hcloud.LookupVolumeArgs{
+/// 		_, err = hcloud.GetVolume(ctx, &hcloud.LookupVolumeArgs{
 /// 			Name: pulumi.StringRef("my-volume"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupVolume(ctx, &hcloud.LookupVolumeArgs{
+/// 		_, err = hcloud.GetVolume(ctx, &hcloud.LookupVolumeArgs{
 /// 			WithSelector: pulumi.StringRef("key=value"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -5162,6 +5850,25 @@ Future<GetStorageBoxesResult> getStorageBoxes(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getvolume" "volume1" {
+///   id = "1234"
+/// }
+/// data "hcloud_getvolume" "volume2" {
+///   name = "my-volume"
+/// }
+/// data "hcloud_getvolume" "volume3" {
+///   with_selector = "key=value"
 /// }
 /// ```
 /// ```java
@@ -5172,8 +5879,8 @@ Future<GetStorageBoxesResult> getStorageBoxes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetVolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5295,6 +6002,21 @@ Future<GetVolumeResult> getVolume(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getvolumes" "volume_" {
+/// }
+/// data "hcloud_getvolumes" "volume3" {
+///   with_selector = "key=value"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5303,8 +6025,8 @@ Future<GetVolumeResult> getVolume(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetVolumesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5419,19 +6141,19 @@ Future<GetVolumesResult> getVolumes(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := hcloud.LookupZone(ctx, &hcloud.LookupZoneArgs{
+/// 		_, err := hcloud.GetZone(ctx, &hcloud.LookupZoneArgs{
 /// 			Id: pulumi.IntRef(1234),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupZone(ctx, &hcloud.LookupZoneArgs{
+/// 		_, err = hcloud.GetZone(ctx, &hcloud.LookupZoneArgs{
 /// 			Name: pulumi.StringRef("example.com"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupZone(ctx, &hcloud.LookupZoneArgs{
+/// 		_, err = hcloud.GetZone(ctx, &hcloud.LookupZoneArgs{
 /// 			WithSelector: pulumi.StringRef("key=value"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -5439,6 +6161,25 @@ Future<GetVolumesResult> getVolumes(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getzone" "byId" {
+///   id = 1234
+/// }
+/// data "hcloud_getzone" "byName" {
+///   name = "example.com"
+/// }
+/// data "hcloud_getzone" "byLabel" {
+///   with_selector = "key=value"
 /// }
 /// ```
 /// ```java
@@ -5449,8 +6190,8 @@ Future<GetVolumesResult> getVolumes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetZoneArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5595,20 +6336,20 @@ Future<GetZoneResult> getZone(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := hcloud.LookupZone(ctx, &hcloud.LookupZoneArgs{
+/// 		example, err := hcloud.GetZone(ctx, &hcloud.LookupZoneArgs{
 /// 			Name: pulumi.StringRef("example.com"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupZoneRrset(ctx, &hcloud.LookupZoneRrsetArgs{
+/// 		_, err = hcloud.GetZoneRrset(ctx, &hcloud.LookupZoneRrsetArgs{
 /// 			Zone: example.Name,
 /// 			Id:   pulumi.StringRef("www/A"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupZoneRrset(ctx, &hcloud.LookupZoneRrsetArgs{
+/// 		_, err = hcloud.GetZoneRrset(ctx, &hcloud.LookupZoneRrsetArgs{
 /// 			Zone: example.Name,
 /// 			Name: pulumi.StringRef("www"),
 /// 			Type: pulumi.StringRef("A"),
@@ -5616,7 +6357,7 @@ Future<GetZoneResult> getZone(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.LookupZoneRrset(ctx, &hcloud.LookupZoneRrsetArgs{
+/// 		_, err = hcloud.GetZoneRrset(ctx, &hcloud.LookupZoneRrsetArgs{
 /// 			Zone:         example.Name,
 /// 			WithSelector: pulumi.StringRef("key=value"),
 /// 		}, nil)
@@ -5625,6 +6366,32 @@ Future<GetZoneResult> getZone(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getzone" "example" {
+///   name = "example.com"
+/// }
+/// data "hcloud_getzonerrset" "byId" {
+///   zone = data.hcloud_getzone.example.name
+///   id   = "www/A"
+/// }
+/// data "hcloud_getzonerrset" "byNameAndType" {
+///   zone = data.hcloud_getzone.example.name
+///   name = "www"
+///   type = "A"
+/// }
+/// data "hcloud_getzonerrset" "byLabel" {
+///   zone          = data.hcloud_getzone.example.name
+///   with_selector = "key=value"
 /// }
 /// ```
 /// ```java
@@ -5636,8 +6403,8 @@ Future<GetZoneResult> getZone(
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetZoneArgs;
 /// import com.pulumi.hcloud.inputs.GetZoneRrsetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5781,7 +6548,7 @@ Future<GetZoneRrsetResult> getZoneRrset(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := hcloud.LookupZone(ctx, &hcloud.LookupZoneArgs{
+/// 		example, err := hcloud.GetZone(ctx, &hcloud.LookupZoneArgs{
 /// 			Name: pulumi.StringRef("example.com"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -5804,6 +6571,26 @@ Future<GetZoneRrsetResult> getZoneRrset(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getzone" "example" {
+///   name = "example.com"
+/// }
+/// data "hcloud_getzonerrsets" "all" {
+///   zone = data.hcloud_getzone.example.name
+/// }
+/// data "hcloud_getzonerrsets" "byLabel" {
+///   zone          = data.hcloud_getzone.example.name
+///   with_selector = "key=value"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5813,8 +6600,8 @@ Future<GetZoneRrsetResult> getZoneRrset(
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetZoneArgs;
 /// import com.pulumi.hcloud.inputs.GetZoneRrsetsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5940,6 +6727,21 @@ Future<GetZoneRrsetsResult> getZoneRrsets(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_getzones" "all" {
+/// }
+/// data "hcloud_getzones" "byLabel" {
+///   with_selector = "key=value"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5948,8 +6750,8 @@ Future<GetZoneRrsetsResult> getZoneRrsets(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.HcloudFunctions;
 /// import com.pulumi.hcloud.inputs.GetZonesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5996,4 +6798,51 @@ Future<GetZonesResult> getZones(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetZonesResult.fromMap(result);
+}
+
+/// Converts a Internationalized Domain Name (IDN) to ASCII using Punycode.
+///
+/// The conversion is defined by Golang's IDNA package. See https://pkg.go.dev/golang.org/x/net/idna
+/// for more details.
+///
+/// ## Signature
+///
+/// &lt;!-- signature generated by tfplugindocs --&gt;
+/// ```text
+/// idna(domain string) string
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_idna_idna_args_doc}
+/// [options] Invoke options controlling this call.
+Future<Map<String, dynamic>> idna(
+  IdnaArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  return await deployment.invoke<Map<String, dynamic>>(
+    'hcloud:index/idna:idna',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+}
+
+/// Format a TXT record by splitting it in quoted strings of 255 characters.
+///
+/// ## Signature
+///
+/// &lt;!-- signature generated by tfplugindocs --&gt;
+/// ```text
+/// txt_record(record string) string
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_txt_record_txt_record_args_doc}
+/// [options] Invoke options controlling this call.
+Future<Map<String, dynamic>> txtRecord(
+  TxtRecordArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  return await deployment.invoke<Map<String, dynamic>>(
+    'hcloud:index/txtRecord:txtRecord',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
 }

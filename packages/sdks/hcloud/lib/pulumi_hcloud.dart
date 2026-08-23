@@ -263,6 +263,7 @@ class _IndexModuleNamespace {
   final GetZonesZoneAuthoritativeNameserversArgs = module_index.GetZonesZoneAuthoritativeNameservers.new;
   final GetZonesZonePrimaryNameserver = module_index.GetZonesZonePrimaryNameserver.new;
   final GetZonesZonePrimaryNameserverArgs = module_index.GetZonesZonePrimaryNameserver.new;
+  final IdnaArgs = module_index.IdnaArgs.new;
   final LoadBalancer = module_index.LoadBalancer.new;
   final LoadBalancerAlgorithm = module_index.LoadBalancerAlgorithm.new;
   final LoadBalancerAlgorithmArgs = module_index.LoadBalancerAlgorithm.new;
@@ -351,6 +352,7 @@ class _IndexModuleNamespace {
   final StorageBoxSubaccountArgs = module_index.StorageBoxSubaccountArgs.new;
   final StorageBoxSubaccountState = module_index.StorageBoxSubaccountState.new;
   final StorageBoxSubaccountStateArgs = module_index.StorageBoxSubaccountState.new;
+  final TxtRecordArgs = module_index.TxtRecordArgs.new;
   final UploadedCertificate = module_index.UploadedCertificate.new;
   final UploadedCertificateArgs = module_index.UploadedCertificateArgs.new;
   final UploadedCertificateState = module_index.UploadedCertificateState.new;
@@ -423,6 +425,8 @@ class _IndexModuleNamespace {
   final getZoneRrset = module_index.getZoneRrset;
   final getZoneRrsets = module_index.getZoneRrsets;
   final getZones = module_index.getZones;
+  final idna = module_index.idna;
+  final txtRecord = module_index.txtRecord;
 }
 
 class _ProvidersModuleNamespace {

@@ -8,7 +8,7 @@ class FloatingIpState {
   final pulumi.Input<bool>? deleteProtection;
   /// Description of the Floating IP.
   final pulumi.Input<String>? description;
-  /// Name of home location (routing is optimized for that location). Optional if `server_id` argument is passed.
+  /// Name of home location (routing is optimized for that location). Optional if `serverId` argument is passed.
   final pulumi.Input<String>? homeLocation;
   /// (string) IP Address of the Floating IP.
   final pulumi.Input<String>? ipAddress;
@@ -18,7 +18,7 @@ class FloatingIpState {
   final pulumi.Input<Map<String, String>>? labels;
   /// Name of the Floating IP.
   final pulumi.Input<String>? name;
-  /// Server to assign the Floating IP to. Optional if `home_location` argument is passed.
+  /// Server to assign the Floating IP to. Optional if `homeLocation` argument is passed.
   final pulumi.Input<int>? serverId;
   /// Type of the Floating IP. `ipv4` `ipv6`
   final pulumi.Input<String>? type;
@@ -26,12 +26,12 @@ class FloatingIpState {
   /// Creates a new [FloatingIpState].
   /// [deleteProtection] Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.
   /// [description] Description of the Floating IP.
-  /// [homeLocation] Name of home location (routing is optimized for that location). Optional if `server_id` argument is passed.
+  /// [homeLocation] Name of home location (routing is optimized for that location). Optional if `serverId` argument is passed.
   /// [ipAddress] (string) IP Address of the Floating IP.
   /// [ipNetwork] (string) IPv6 subnet. (Only set if `type` is `ipv6`)
   /// [labels] User-defined labels (key-value pairs) should be created with.
   /// [name] Name of the Floating IP.
-  /// [serverId] Server to assign the Floating IP to. Optional if `home_location` argument is passed.
+  /// [serverId] Server to assign the Floating IP to. Optional if `homeLocation` argument is passed.
   /// [type] Type of the Floating IP. `ipv4` `ipv6`
   const FloatingIpState({
     this.deleteProtection,
@@ -73,4 +73,3 @@ class FloatingIpState {
     );
   }
 }
-

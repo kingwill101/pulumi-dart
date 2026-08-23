@@ -16,7 +16,7 @@ import 'snapshot_state.dart';
 ///     image: "debian-12",
 ///     serverType: "cx23",
 /// });
-/// const my_snapshot = new hcloud.Snapshot("my-snapshot", {serverId: node1.id});
+/// const my_snapshot = new hcloud.Snapshot("my-snapshot", {serverId: node1.id.apply(x =>Number(x))});
 /// ```
 /// ```python
 /// import pulumi
@@ -26,7 +26,7 @@ import 'snapshot_state.dart';
 ///     name="node1",
 ///     image="debian-12",
 ///     server_type="cx23")
-/// my_snapshot = hcloud.Snapshot("my-snapshot", server_id=node1.id)
+/// my_snapshot = hcloud.Snapshot("my-snapshot", server_id=node1.id.apply(lambda x: int(x)))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -78,6 +78,24 @@ import 'snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_server" "node1" {
+///   name        = "node1"
+///   image       = "debian-12"
+///   server_type = "cx23"
+/// }
+/// resource "hcloud_snapshot" "my-snapshot" {
+///   server_id = hcloud_server.node1.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +106,8 @@ import 'snapshot_state.dart';
 /// import com.pulumi.hcloud.ServerArgs;
 /// import com.pulumi.hcloud.Snapshot;
 /// import com.pulumi.hcloud.SnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

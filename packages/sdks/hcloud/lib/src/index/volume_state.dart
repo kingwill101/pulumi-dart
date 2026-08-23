@@ -8,7 +8,7 @@ class VolumeState {
   final pulumi.Input<bool>? automount;
   /// Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.
   ///
-  /// **Note:** When you want to attach multiple volumes to a server, please use the `hcloud.VolumeAttachment` resource and the `location` argument instead of the `server_id` argument.
+  /// **Note:** When you want to attach multiple volumes to a server, please use the `hcloud.VolumeAttachment` resource and the `location` argument instead of the `serverId` argument.
   final pulumi.Input<bool>? deleteProtection;
   /// Format volume after creation. `xfs` or `ext4`
   final pulumi.Input<String>? format;
@@ -16,7 +16,7 @@ class VolumeState {
   final pulumi.Input<Map<String, String>>? labels;
   /// (string) Device path on the file system for the Volume.
   final pulumi.Input<String>? linuxDevice;
-  /// The location name of the volume to create, not allowed if server_id argument is passed. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
+  /// The location name of the volume to create, not allowed if serverId argument is passed. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   final pulumi.Input<String>? location;
   /// Name of the volume to create (must be unique per project).
   final pulumi.Input<String>? name;
@@ -31,7 +31,7 @@ class VolumeState {
   /// [format] Format volume after creation. `xfs` or `ext4`
   /// [labels] User-defined labels (key-value pairs).
   /// [linuxDevice] (string) Device path on the file system for the Volume.
-  /// [location] The location name of the volume to create, not allowed if server_id argument is passed. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
+  /// [location] The location name of the volume to create, not allowed if serverId argument is passed. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   /// [name] Name of the volume to create (must be unique per project).
   /// [serverId] Server to attach the Volume to, not allowed if location argument is passed.
   /// [size] Size of the volume (in GB).
@@ -75,4 +75,3 @@ class VolumeState {
     );
   }
 }
-

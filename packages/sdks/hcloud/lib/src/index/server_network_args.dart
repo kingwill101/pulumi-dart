@@ -11,19 +11,19 @@ class ServerNetworkArgs {
   final pulumi.Input<List<String>>? aliasIps;
   /// IP to assign to the Server.
   final pulumi.Input<String>? ip;
-  /// ID of the Network to attach the Server to. Using `subnet_id` is preferred. Required if `subnet_id` is not set. If `subnet_id` or `ip` are not set, the Server will be attached to the last subnet (ordered by `ip_range`).
+  /// ID of the Network to attach the Server to. Using `subnetId` is preferred. Required if `subnetId` is not set. If `subnetId` or `ip` are not set, the Server will be attached to the last subnet (ordered by `ipRange`).
   final pulumi.Input<int>? networkId;
   /// ID of the Server.
   final pulumi.Input<int> serverId;
-  /// ID of the Subnet to attach the Server to. Required if `network_id` is not set.
+  /// ID of the Subnet to attach the Server to. Required if `networkId` is not set.
   final pulumi.Input<String>? subnetId;
 
   /// Creates a new [ServerNetworkArgs].
   /// [aliasIps] Additional IPs to assign to the Server.
   /// [ip] IP to assign to the Server.
-  /// [networkId] ID of the Network to attach the Server to. Using `subnet_id` is preferred. Required if `subnet_id` is not set. If `subnet_id` or `ip` are not set, the Server will be attached to the last subnet (ordered by `ip_range`).
+  /// [networkId] ID of the Network to attach the Server to. Using `subnetId` is preferred. Required if `subnetId` is not set. If `subnetId` or `ip` are not set, the Server will be attached to the last subnet (ordered by `ipRange`).
   /// [serverId] ID of the Server.
-  /// [subnetId] ID of the Subnet to attach the Server to. Required if `network_id` is not set.
+  /// [subnetId] ID of the Subnet to attach the Server to. Required if `networkId` is not set.
   const ServerNetworkArgs({
     this.aliasIps,
     this.ip,
@@ -52,4 +52,3 @@ class ServerNetworkArgs {
     );
   }
 }
-

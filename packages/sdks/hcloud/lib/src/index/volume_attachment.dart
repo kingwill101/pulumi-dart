@@ -15,15 +15,15 @@ import 'volume_attachment_state.dart';
 ///     name: "node1",
 ///     image: "debian-12",
 ///     serverType: "cx23",
-///     datacenter: "nbg1-dc3",
+///     location: "nbg1",
 /// });
 /// const master = new hcloud.Volume("master", {
 ///     location: "nbg1",
 ///     size: 10,
 /// });
 /// const main = new hcloud.VolumeAttachment("main", {
-///     volumeId: master.id,
-///     serverId: node1.id,
+///     volumeId: master.id.apply(x =>Number(x)),
+///     serverId: node1.id.apply(x =>Number(x)),
 ///     automount: true,
 /// });
 /// ```
@@ -35,13 +35,13 @@ import 'volume_attachment_state.dart';
 ///     name="node1",
 ///     image="debian-12",
 ///     server_type="cx23",
-///     datacenter="nbg1-dc3")
+///     location="nbg1")
 /// master = hcloud.Volume("master",
 ///     location="nbg1",
 ///     size=10)
 /// main = hcloud.VolumeAttachment("main",
-///     volume_id=master.id,
-///     server_id=node1.id,
+///     volume_id=master.id.apply(lambda x: int(x)),
+///     server_id=node1.id.apply(lambda x: int(x)),
 ///     automount=True)
 /// ```
 /// ```csharp
@@ -57,7 +57,7 @@ import 'volume_attachment_state.dart';
 ///         Name = "node1",
 ///         Image = "debian-12",
 ///         ServerType = "cx23",
-///         Datacenter = "nbg1-dc3",
+///         Location = "nbg1",
 ///     });
 ///
 ///     var master = new HCloud.Volume("master", new()
@@ -89,7 +89,7 @@ import 'volume_attachment_state.dart';
 /// 			Name:       pulumi.String("node1"),
 /// 			Image:      pulumi.String("debian-12"),
 /// 			ServerType: pulumi.String("cx23"),
-/// 			Datacenter: pulumi.String("nbg1-dc3"),
+/// 			Location:   pulumi.String("nbg1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -113,6 +113,31 @@ import 'volume_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_volumeattachment" "main" {
+///   volume_id = hcloud_volume.master.id
+///   server_id = hcloud_server.node1.id
+///   automount = true
+/// }
+/// resource "hcloud_server" "node1" {
+///   name        = "node1"
+///   image       = "debian-12"
+///   server_type = "cx23"
+///   location    = "nbg1"
+/// }
+/// resource "hcloud_volume" "master" {
+///   location = "nbg1"
+///   size     = 10
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -125,8 +150,8 @@ import 'volume_attachment_state.dart';
 /// import com.pulumi.hcloud.VolumeArgs;
 /// import com.pulumi.hcloud.VolumeAttachment;
 /// import com.pulumi.hcloud.VolumeAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -142,7 +167,7 @@ import 'volume_attachment_state.dart';
 ///             .name("node1")
 ///             .image("debian-12")
 ///             .serverType("cx23")
-///             .datacenter("nbg1-dc3")
+///             .location("nbg1")
 ///             .build());
 ///
 ///         var master = new Volume("master", VolumeArgs.builder()
@@ -173,7 +198,7 @@ import 'volume_attachment_state.dart';
 ///       name: node1
 ///       image: debian-12
 ///       serverType: cx23
-///       datacenter: nbg1-dc3
+///       location: nbg1
 ///   master:
 ///     type: hcloud:Volume
 ///     properties:
@@ -184,7 +209,7 @@ import 'volume_attachment_state.dart';
 ///
 /// ## Import
 ///
-/// Volume Attachments can be imported using the `volume_id`:
+/// Volume Attachments can be imported using the `volumeId`:
 ///
 /// ```sh
 /// $ pulumi import hcloud:index/volumeAttachment:VolumeAttachment example "$VOLUME_ID"

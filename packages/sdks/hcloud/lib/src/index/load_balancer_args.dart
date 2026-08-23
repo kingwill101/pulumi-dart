@@ -17,7 +17,7 @@ class LoadBalancerArgs {
   final pulumi.Input<Map<String, String>>? labels;
   /// Type of the Load Balancer.
   final pulumi.Input<String> loadBalancerType;
-  /// The location name of the Load Balancer. Require when no network_zone is set. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
+  /// The location name of the Load Balancer. Require when no networkZone is set. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   final pulumi.Input<String>? location;
   /// Name of the Load Balancer.
   final pulumi.Input<String>? name;
@@ -30,7 +30,7 @@ class LoadBalancerArgs {
   /// [deleteProtection] Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.
   /// [labels] User-defined labels (key-value pairs) should be created with.
   /// [loadBalancerType] Type of the Load Balancer.
-  /// [location] The location name of the Load Balancer. Require when no network_zone is set. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
+  /// [location] The location name of the Load Balancer. Require when no networkZone is set. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   /// [name] Name of the Load Balancer.
   /// [networkZone] The Network Zone of the Load Balancer. Require when no location is set.
   /// [targets] Optional.
@@ -71,4 +71,3 @@ class LoadBalancerArgs {
     );
   }
 }
-

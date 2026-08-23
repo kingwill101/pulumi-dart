@@ -19,7 +19,7 @@ import 'volume_state.dart';
 /// const master = new hcloud.Volume("master", {
 ///     name: "volume1",
 ///     size: 50,
-///     serverId: node1.id,
+///     serverId: node1.id.apply(x =>Number(x)),
 ///     automount: true,
 ///     format: "ext4",
 /// });
@@ -35,7 +35,7 @@ import 'volume_state.dart';
 /// master = hcloud.Volume("master",
 ///     name="volume1",
 ///     size=50,
-///     server_id=node1.id,
+///     server_id=node1.id.apply(lambda x: int(x)),
 ///     automount=True,
 ///     format="ext4")
 /// ```
@@ -97,6 +97,28 @@ import 'volume_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_server" "node1" {
+///   name        = "node1"
+///   image       = "debian-12"
+///   server_type = "cx23"
+/// }
+/// resource "hcloud_volume" "master" {
+///   name      = "volume1"
+///   size      = 50
+///   server_id = hcloud_server.node1.id
+///   automount = true
+///   format    = "ext4"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +129,8 @@ import 'volume_state.dart';
 /// import com.pulumi.hcloud.ServerArgs;
 /// import com.pulumi.hcloud.Volume;
 /// import com.pulumi.hcloud.VolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -168,7 +190,7 @@ class Volume extends pulumi.CustomResource {
   late final pulumi.Output<bool?> automount;
   /// Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.
   ///
-  /// **Note:** When you want to attach multiple volumes to a server, please use the `hcloud.VolumeAttachment` resource and the `location` argument instead of the `server_id` argument.
+  /// **Note:** When you want to attach multiple volumes to a server, please use the `hcloud.VolumeAttachment` resource and the `location` argument instead of the `serverId` argument.
   late final pulumi.Output<bool?> deleteProtection;
   /// Format volume after creation. `xfs` or `ext4`
   late final pulumi.Output<String?> format;
@@ -176,7 +198,7 @@ class Volume extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> labels;
   /// (string) Device path on the file system for the Volume.
   late final pulumi.Output<String> linuxDevice;
-  /// The location name of the volume to create, not allowed if server_id argument is passed. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
+  /// The location name of the volume to create, not allowed if serverId argument is passed. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   late final pulumi.Output<String> location;
   /// Name of the volume to create (must be unique per project).
   late final pulumi.Output<String> name;

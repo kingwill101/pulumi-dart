@@ -3,62 +3,69 @@
 
 /// Result data returned by getImage.
 class GetImageResult {
-  /// (string) Architecture of the Image.
+  /// CPU architecture compatible with the Image.
   final String architecture;
-  /// (string) Date when the Image was created (in ISO-8601 format).
+  /// Point in time when the Image was created (in RFC3339 format).
   final String created;
-  /// (string) Point in time when the image is considered to be deprecated (in ISO-8601 format).
+  /// Point in time when the Image was marked as deprecated (in RFC3339 format).
   final String deprecated;
-  /// (string) Description of the Image.
+  /// Description of the Image.
   final String description;
-  /// (int) Unique ID of the Image.
-  final int id;
+  /// ID of the Image.
+  final int? id;
+  /// Include deprecated images.
   final bool? includeDeprecated;
+  /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   final Map<String, String> labels;
+  /// Sort results by created date, and return the most recent result.
   final bool? mostRecent;
-  /// (string) Name of the Image, only present when the Image is of type `system`.
-  final String name;
-  /// (string) Flavor of operating system contained in the image, could be `ubuntu`, `centos`, `debian`, `fedora` or `unknown`.
+  /// Name of the Image, only present when the type is `system`.
+  final String? name;
+  /// Flavor of the operating system contained in the Image.
   final String osFlavor;
-  /// (string) Operating system version.
+  /// Version of the operating system contained in the Image.
   final String osVersion;
-  /// (bool) Indicates that rapid deploy of the image is available.
+  /// Whether the Image is optimized for a rapid deployment.
   final bool rapidDeploy;
+  /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   final String? selector;
-  /// (string) Type of the Image, could be `system`, `backup` or `snapshot`.
+  /// Type of the Image, for example `system`, `backup` or `snapshot`.
   final String type;
+  /// Filter results by architecture, for example `x86` (default) or `arm`.
   final String? withArchitecture;
+  /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
   final String? withSelector;
+  /// Filter results by statuses, for example `creating` or `available`.
   final List<String>? withStatuses;
 
   /// Creates a new [GetImageResult].
-  /// [architecture] (string) Architecture of the Image.
-  /// [created] (string) Date when the Image was created (in ISO-8601 format).
-  /// [deprecated] (string) Point in time when the image is considered to be deprecated (in ISO-8601 format).
-  /// [description] (string) Description of the Image.
-  /// [id] (int) Unique ID of the Image.
-  /// [includeDeprecated] Optional.
-  /// [labels] Required.
-  /// [mostRecent] Optional.
-  /// [name] (string) Name of the Image, only present when the Image is of type `system`.
-  /// [osFlavor] (string) Flavor of operating system contained in the image, could be `ubuntu`, `centos`, `debian`, `fedora` or `unknown`.
-  /// [osVersion] (string) Operating system version.
-  /// [rapidDeploy] (bool) Indicates that rapid deploy of the image is available.
-  /// [selector] Optional.
-  /// [type] (string) Type of the Image, could be `system`, `backup` or `snapshot`.
-  /// [withArchitecture] Optional.
-  /// [withSelector] Optional.
-  /// [withStatuses] Optional.
+  /// [architecture] CPU architecture compatible with the Image.
+  /// [created] Point in time when the Image was created (in RFC3339 format).
+  /// [deprecated] Point in time when the Image was marked as deprecated (in RFC3339 format).
+  /// [description] Description of the Image.
+  /// [id] ID of the Image.
+  /// [includeDeprecated] Include deprecated images.
+  /// [labels] User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
+  /// [mostRecent] Sort results by created date, and return the most recent result.
+  /// [name] Name of the Image, only present when the type is `system`.
+  /// [osFlavor] Flavor of the operating system contained in the Image.
+  /// [osVersion] Version of the operating system contained in the Image.
+  /// [rapidDeploy] Whether the Image is optimized for a rapid deployment.
+  /// [selector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
+  /// [type] Type of the Image, for example `system`, `backup` or `snapshot`.
+  /// [withArchitecture] Filter results by architecture, for example `x86` (default) or `arm`.
+  /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
+  /// [withStatuses] Filter results by statuses, for example `creating` or `available`.
   const GetImageResult({
     required this.architecture,
     required this.created,
     required this.deprecated,
     required this.description,
-    required this.id,
+    this.id,
     this.includeDeprecated,
     required this.labels,
     this.mostRecent,
-    required this.name,
+    this.name,
     required this.osFlavor,
     required this.osVersion,
     required this.rapidDeploy,
@@ -75,11 +82,11 @@ class GetImageResult {
       'created': created,
       'deprecated': deprecated,
       'description': description,
-      'id': id,
+      'id': ?id,
       'includeDeprecated': ?includeDeprecated,
       'labels': labels,
       'mostRecent': ?mostRecent,
-      'name': name,
+      'name': ?name,
       'osFlavor': osFlavor,
       'osVersion': osVersion,
       'rapidDeploy': rapidDeploy,
@@ -97,11 +104,11 @@ class GetImageResult {
       created: map['created'] as String,
       deprecated: map['deprecated'] as String,
       description: map['description'] as String,
-      id: map['id'] as int,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as int; })(),
       includeDeprecated: (() { final guardedValue = map['includeDeprecated']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       labels: (map['labels'] as Map).cast<String, String>(),
       mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       osFlavor: map['osFlavor'] as String,
       osVersion: map['osVersion'] as String,
       rapidDeploy: map['rapidDeploy'] as bool,
@@ -113,4 +120,3 @@ class GetImageResult {
     );
   }
 }
-

@@ -5,16 +5,16 @@ import 'get_primary_ips_primary_ip.dart';
 
 /// Result data returned by getPrimaryIps.
 class GetPrimaryIpsResult {
-  /// The provider-assigned unique ID for this managed resource.
+  /// The ID of this resource.
   final String id;
-  /// (list) List of all matching primary ips. See `data.hcloud_primary_ip` for schema.
   final List<GetPrimaryIpsPrimaryIp> primaryIps;
+  /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   final String? withSelector;
 
   /// Creates a new [GetPrimaryIpsResult].
-  /// [id] The provider-assigned unique ID for this managed resource.
-  /// [primaryIps] (list) List of all matching primary ips. See `data.hcloud_primary_ip` for schema.
-  /// [withSelector] Optional.
+  /// [id] The ID of this resource.
+  /// [primaryIps] Required.
+  /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   const GetPrimaryIpsResult({
     required this.id,
     required this.primaryIps,
@@ -37,4 +37,3 @@ class GetPrimaryIpsResult {
     );
   }
 }
-

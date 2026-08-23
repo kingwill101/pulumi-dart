@@ -22,7 +22,7 @@ import 'placement_group_state.dart';
 ///     name: "node1",
 ///     image: "debian-12",
 ///     serverType: "cx23",
-///     placementGroupId: my_placement_group.id,
+///     placementGroupId: my_placement_group.id.apply(x =>Number(x)),
 /// });
 /// ```
 /// ```python
@@ -39,7 +39,7 @@ import 'placement_group_state.dart';
 ///     name="node1",
 ///     image="debian-12",
 ///     server_type="cx23",
-///     placement_group_id=my_placement_group.id)
+///     placement_group_id=my_placement_group.id.apply(lambda x: int(x)))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -102,6 +102,29 @@ import 'placement_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_placementgroup" "my-placement-group" {
+///   name = "my-placement-group"
+///   type = "spread"
+///   labels = {
+///     "key" = "value"
+///   }
+/// }
+/// resource "hcloud_server" "node1" {
+///   name               = "node1"
+///   image              = "debian-12"
+///   server_type        = "cx23"
+///   placement_group_id = hcloud_placementgroup.my-placement-group.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +135,8 @@ import 'placement_group_state.dart';
 /// import com.pulumi.hcloud.PlacementGroupArgs;
 /// import com.pulumi.hcloud.Server;
 /// import com.pulumi.hcloud.ServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

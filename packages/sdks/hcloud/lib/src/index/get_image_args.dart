@@ -9,29 +9,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageArgs {
   /// ID of the Image.
   final pulumi.Input<int>? id;
-  /// Also return the image if it is marked as deprecated.
+  /// Include deprecated images.
   final pulumi.Input<bool>? includeDeprecated;
-  /// If more than one result is returned, use the most recent Image.
+  /// Sort results by created date, and return the most recent result.
   final pulumi.Input<bool>? mostRecent;
-  /// Name of the Image.
+  /// Name of the Image, only present when the type is `system`.
   final pulumi.Input<String>? name;
+  /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   final pulumi.Input<String>? selector;
-  /// Select only images with this architecture, could be `x86` (default) or `arm`.
+  /// Filter results by architecture, for example `x86` (default) or `arm`.
   final pulumi.Input<String>? withArchitecture;
-  /// [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
+  /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
   final pulumi.Input<String>? withSelector;
-  /// Select only images with the specified status, could contain `creating` or `available`.
+  /// Filter results by statuses, for example `creating` or `available`.
   final pulumi.Input<List<String>>? withStatuses;
 
   /// Creates a new [GetImageArgs].
   /// [id] ID of the Image.
-  /// [includeDeprecated] Also return the image if it is marked as deprecated.
-  /// [mostRecent] If more than one result is returned, use the most recent Image.
-  /// [name] Name of the Image.
-  /// [selector] Optional.
-  /// [withArchitecture] Select only images with this architecture, could be `x86` (default) or `arm`.
-  /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  /// [withStatuses] Select only images with the specified status, could contain `creating` or `available`.
+  /// [includeDeprecated] Include deprecated images.
+  /// [mostRecent] Sort results by created date, and return the most recent result.
+  /// [name] Name of the Image, only present when the type is `system`.
+  /// [selector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
+  /// [withArchitecture] Filter results by architecture, for example `x86` (default) or `arm`.
+  /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
+  /// [withStatuses] Filter results by statuses, for example `creating` or `available`.
   const GetImageArgs({
     this.id,
     this.includeDeprecated,
@@ -69,4 +70,3 @@ class GetImageArgs {
     );
   }
 }
-

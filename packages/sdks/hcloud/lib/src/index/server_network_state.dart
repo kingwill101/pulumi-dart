@@ -10,20 +10,20 @@ class ServerNetworkState {
   final pulumi.Input<String>? ip;
   /// MAC address of the Server on the Network.
   final pulumi.Input<String>? macAddress;
-  /// ID of the Network to attach the Server to. Using `subnet_id` is preferred. Required if `subnet_id` is not set. If `subnet_id` or `ip` are not set, the Server will be attached to the last subnet (ordered by `ip_range`).
+  /// ID of the Network to attach the Server to. Using `subnetId` is preferred. Required if `subnetId` is not set. If `subnetId` or `ip` are not set, the Server will be attached to the last subnet (ordered by `ipRange`).
   final pulumi.Input<int>? networkId;
   /// ID of the Server.
   final pulumi.Input<int>? serverId;
-  /// ID of the Subnet to attach the Server to. Required if `network_id` is not set.
+  /// ID of the Subnet to attach the Server to. Required if `networkId` is not set.
   final pulumi.Input<String>? subnetId;
 
   /// Creates a new [ServerNetworkState].
   /// [aliasIps] Additional IPs to assign to the Server.
   /// [ip] IP to assign to the Server.
   /// [macAddress] MAC address of the Server on the Network.
-  /// [networkId] ID of the Network to attach the Server to. Using `subnet_id` is preferred. Required if `subnet_id` is not set. If `subnet_id` or `ip` are not set, the Server will be attached to the last subnet (ordered by `ip_range`).
+  /// [networkId] ID of the Network to attach the Server to. Using `subnetId` is preferred. Required if `subnetId` is not set. If `subnetId` or `ip` are not set, the Server will be attached to the last subnet (ordered by `ipRange`).
   /// [serverId] ID of the Server.
-  /// [subnetId] ID of the Subnet to attach the Server to. Required if `network_id` is not set.
+  /// [subnetId] ID of the Subnet to attach the Server to. Required if `networkId` is not set.
   const ServerNetworkState({
     this.aliasIps,
     this.ip,
@@ -55,4 +55,3 @@ class ServerNetworkState {
     );
   }
 }
-

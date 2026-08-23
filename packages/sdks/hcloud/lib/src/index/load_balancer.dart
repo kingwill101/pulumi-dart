@@ -24,8 +24,8 @@ import 'load_balancer_state.dart';
 /// });
 /// const loadBalancerTarget = new hcloud.LoadBalancerTarget("load_balancer_target", {
 ///     type: "server",
-///     loadBalancerId: loadBalancer.id,
-///     serverId: myServer.id,
+///     loadBalancerId: loadBalancer.id.apply(x =>Number(x)),
+///     serverId: myServer.id.apply(x =>Number(x)),
 /// });
 /// ```
 /// ```python
@@ -42,8 +42,8 @@ import 'load_balancer_state.dart';
 ///     location="nbg1")
 /// load_balancer_target = hcloud.LoadBalancerTarget("load_balancer_target",
 ///     type="server",
-///     load_balancer_id=load_balancer.id,
-///     server_id=my_server.id)
+///     load_balancer_id=load_balancer.id.apply(lambda x: int(x)),
+///     server_id=my_server.id.apply(lambda x: int(x)))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -114,6 +114,31 @@ import 'load_balancer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_server" "my_server" {
+///   name        = "server-%d"
+///   server_type = "cx23"
+///   image       = "ubuntu-24.04"
+/// }
+/// resource "hcloud_loadbalancer" "load_balancer" {
+///   name               = "my-load-balancer"
+///   load_balancer_type = "lb11"
+///   location           = "nbg1"
+/// }
+/// resource "hcloud_loadbalancertarget" "load_balancer_target" {
+///   type             = "server"
+///   load_balancer_id = hcloud_loadbalancer.load_balancer.id
+///   server_id        = hcloud_server.my_server.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +151,8 @@ import 'load_balancer_state.dart';
 /// import com.pulumi.hcloud.LoadBalancerArgs;
 /// import com.pulumi.hcloud.LoadBalancerTarget;
 /// import com.pulumi.hcloud.LoadBalancerTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -206,7 +231,7 @@ class LoadBalancer extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> labels;
   /// Type of the Load Balancer.
   late final pulumi.Output<String> loadBalancerType;
-  /// The location name of the Load Balancer. Require when no network_zone is set. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
+  /// The location name of the Load Balancer. Require when no networkZone is set. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   late final pulumi.Output<String> location;
   /// Name of the Load Balancer.
   late final pulumi.Output<String> name;

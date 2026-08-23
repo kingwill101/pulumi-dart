@@ -5,24 +5,28 @@ import 'get_images_image.dart';
 
 /// Result data returned by getImages.
 class GetImagesResult {
-  /// The provider-assigned unique ID for this managed resource.
+  /// The ID of this resource.
   final String id;
-  /// (list) List of all matching images. See `data.hcloud_image` for schema.
   final List<GetImagesImage> images;
+  /// Include deprecated images.
   final bool? includeDeprecated;
+  /// Sort results by created date.
   final bool? mostRecent;
+  /// Filter results by architecture, for example `x86` or `arm`.
   final List<String>? withArchitectures;
+  /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
   final String? withSelector;
+  /// Filter results by statuses, for example `creating` or `available`.
   final List<String>? withStatuses;
 
   /// Creates a new [GetImagesResult].
-  /// [id] The provider-assigned unique ID for this managed resource.
-  /// [images] (list) List of all matching images. See `data.hcloud_image` for schema.
-  /// [includeDeprecated] Optional.
-  /// [mostRecent] Optional.
-  /// [withArchitectures] Optional.
-  /// [withSelector] Optional.
-  /// [withStatuses] Optional.
+  /// [id] The ID of this resource.
+  /// [images] Required.
+  /// [includeDeprecated] Include deprecated images.
+  /// [mostRecent] Sort results by created date.
+  /// [withArchitectures] Filter results by architecture, for example `x86` or `arm`.
+  /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
+  /// [withStatuses] Filter results by statuses, for example `creating` or `available`.
   const GetImagesResult({
     required this.id,
     required this.images,
@@ -57,4 +61,3 @@ class GetImagesResult {
     );
   }
 }
-

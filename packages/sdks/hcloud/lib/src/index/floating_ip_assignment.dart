@@ -15,15 +15,15 @@ import 'floating_ip_assignment_state.dart';
 ///     name: "node1",
 ///     image: "debian-12",
 ///     serverType: "cx23",
-///     datacenter: "fsn1-dc8",
+///     location: "fsn1",
 /// });
 /// const master = new hcloud.FloatingIp("master", {
 ///     type: "ipv4",
 ///     homeLocation: "nbg1",
 /// });
 /// const main = new hcloud.FloatingIpAssignment("main", {
-///     floatingIpId: master.id,
-///     serverId: node1.id,
+///     floatingIpId: master.id.apply(x =>Number(x)),
+///     serverId: node1.id.apply(x =>Number(x)),
 /// });
 /// ```
 /// ```python
@@ -34,13 +34,13 @@ import 'floating_ip_assignment_state.dart';
 ///     name="node1",
 ///     image="debian-12",
 ///     server_type="cx23",
-///     datacenter="fsn1-dc8")
+///     location="fsn1")
 /// master = hcloud.FloatingIp("master",
 ///     type="ipv4",
 ///     home_location="nbg1")
 /// main = hcloud.FloatingIpAssignment("main",
-///     floating_ip_id=master.id,
-///     server_id=node1.id)
+///     floating_ip_id=master.id.apply(lambda x: int(x)),
+///     server_id=node1.id.apply(lambda x: int(x)))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -55,7 +55,7 @@ import 'floating_ip_assignment_state.dart';
 ///         Name = "node1",
 ///         Image = "debian-12",
 ///         ServerType = "cx23",
-///         Datacenter = "fsn1-dc8",
+///         Location = "fsn1",
 ///     });
 ///
 ///     var master = new HCloud.FloatingIp("master", new()
@@ -86,7 +86,7 @@ import 'floating_ip_assignment_state.dart';
 /// 			Name:       pulumi.String("node1"),
 /// 			Image:      pulumi.String("debian-12"),
 /// 			ServerType: pulumi.String("cx23"),
-/// 			Datacenter: pulumi.String("fsn1-dc8"),
+/// 			Location:   pulumi.String("fsn1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -109,6 +109,30 @@ import 'floating_ip_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_floatingipassignment" "main" {
+///   floating_ip_id = hcloud_floatingip.master.id
+///   server_id      = hcloud_server.node1.id
+/// }
+/// resource "hcloud_server" "node1" {
+///   name        = "node1"
+///   image       = "debian-12"
+///   server_type = "cx23"
+///   location    = "fsn1"
+/// }
+/// resource "hcloud_floatingip" "master" {
+///   type          = "ipv4"
+///   home_location = "nbg1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +145,8 @@ import 'floating_ip_assignment_state.dart';
 /// import com.pulumi.hcloud.FloatingIpArgs;
 /// import com.pulumi.hcloud.FloatingIpAssignment;
 /// import com.pulumi.hcloud.FloatingIpAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,7 +162,7 @@ import 'floating_ip_assignment_state.dart';
 ///             .name("node1")
 ///             .image("debian-12")
 ///             .serverType("cx23")
-///             .datacenter("fsn1-dc8")
+///             .location("fsn1")
 ///             .build());
 ///
 ///         var master = new FloatingIp("master", FloatingIpArgs.builder()
@@ -167,7 +191,7 @@ import 'floating_ip_assignment_state.dart';
 ///       name: node1
 ///       image: debian-12
 ///       serverType: cx23
-///       datacenter: fsn1-dc8
+///       location: fsn1
 ///   master:
 ///     type: hcloud:FloatingIp
 ///     properties:
@@ -178,7 +202,7 @@ import 'floating_ip_assignment_state.dart';
 ///
 /// ## Import
 ///
-/// Floating IP Assignments can be imported using the `floating_ip_id`:
+/// Floating IP Assignments can be imported using the `floatingIpId`:
 ///
 /// ```sh
 /// $ pulumi import hcloud:index/floatingIpAssignment:FloatingIpAssignment example "$FLOATING_IP_ID"

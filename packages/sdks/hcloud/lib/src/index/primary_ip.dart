@@ -2,23 +2,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'primary_ip_args.dart';
 import 'primary_ip_state.dart';
 
-/// Provides a Hetzner Cloud Primary IP to represent a publicly-accessible static IP address that can be mapped to one of your servers.
+/// Provides a Hetzner Cloud Primary IP resource.
 ///
-/// If a server is getting created, it has to have a primary ip. If a server is getting created without defining primary ips, two of them (one ipv4 and one ipv6) getting created & attached.
-/// Currently, Primary IPs can be only attached to servers.
+/// See the [Primary IP API documentation](https://docs.hetzner.cloud/reference/cloud#tag/primary-ips) for more details.
 ///
 /// ## Deprecations
 ///
 /// ### `datacenter` attribute
 ///
-/// The `datacenter` attribute is deprecated, use the `location` attribute instead.
+/// The `datacenter` attribute is marked for removal since `v1.67.0`, you must use the `location` attribute instead.
 ///
-/// See our the [API changelog](https://docs.hetzner.cloud/changelog#2025-12-16-phasing-out-datacenters) for more details.
-///
-/// &gt; Please upgrade to `v1.58.0+` of the provider to avoid issues once the Hetzner Cloud API no longer accepts
-/// and returns the `datacenter` attribute. This version of the provider remains backward compatible by preserving
-/// the `datacenter` value in the state and by extracting the `location` name from the `datacenter` attribute when
-/// communicating with the API.
+/// See our [deprecation](https://docs.hetzner.cloud/changelog#2025-12-16-phasing-out-datacenters) and
+/// [removal](https://docs.hetzner.cloud/changelog#2026-07-01-removing-datacenters) changelog for more details.
 ///
 /// ## Example Usage
 ///
@@ -28,26 +23,22 @@ import 'primary_ip_state.dart';
 /// import * as hcloud from "@pulumi/hcloud";
 ///
 /// const main = new hcloud.PrimaryIp("main", {
-///     name: "primary_ip_test",
-///     datacenter: "fsn1-dc14",
+///     name: "primary-ip",
+///     location: "fsn1",
 ///     type: "ipv4",
-///     assigneeType: "server",
-///     autoDelete: true,
+///     autoDelete: false,
 ///     labels: {
-///         hallo: "welt",
+///         key: "value",
 ///     },
 /// });
 /// // Link a server to a primary IP
-/// const serverTest = new hcloud.Server("server_test", {
-///     name: "test-server",
+/// const mainServer = new hcloud.Server("main", {
+///     name: "server",
 ///     image: "ubuntu-24.04",
 ///     serverType: "cx23",
-///     datacenter: "fsn1-dc14",
-///     labels: {
-///         test: "tessst1",
-///     },
+///     location: "fsn1",
 ///     publicNets: [{
-///         ipv4: main.id,
+///         ipv4: main.id.apply(x =>Number(x)),
 ///     }],
 /// });
 /// ```
@@ -56,25 +47,21 @@ import 'primary_ip_state.dart';
 /// import pulumi_hcloud as hcloud
 ///
 /// main = hcloud.PrimaryIp("main",
-///     name="primary_ip_test",
-///     datacenter="fsn1-dc14",
+///     name="primary-ip",
+///     location="fsn1",
 ///     type="ipv4",
-///     assignee_type="server",
-///     auto_delete=True,
+///     auto_delete=False,
 ///     labels={
-///         "hallo": "welt",
+///         "key": "value",
 ///     })
 /// # Link a server to a primary IP
-/// server_test = hcloud.Server("server_test",
-///     name="test-server",
+/// main_server = hcloud.Server("main",
+///     name="server",
 ///     image="ubuntu-24.04",
 ///     server_type="cx23",
-///     datacenter="fsn1-dc14",
-///     labels={
-///         "test": "tessst1",
-///     },
+///     location="fsn1",
 ///     public_nets=[{
-///         "ipv4": main.id,
+///         "ipv4": main.id.apply(lambda x: int(x)),
 ///     }])
 /// ```
 /// ```csharp
@@ -87,28 +74,23 @@ import 'primary_ip_state.dart';
 /// {
 ///     var main = new HCloud.PrimaryIp("main", new()
 ///     {
-///         Name = "primary_ip_test",
-///         Datacenter = "fsn1-dc14",
+///         Name = "primary-ip",
+///         Location = "fsn1",
 ///         Type = "ipv4",
-///         AssigneeType = "server",
-///         AutoDelete = true,
+///         AutoDelete = false,
 ///         Labels =
 ///         {
-///             { "hallo", "welt" },
+///             { "key", "value" },
 ///         },
 ///     });
 ///
 ///     // Link a server to a primary IP
-///     var serverTest = new HCloud.Server("server_test", new()
+///     var mainServer = new HCloud.Server("main", new()
 ///     {
-///         Name = "test-server",
+///         Name = "server",
 ///         Image = "ubuntu-24.04",
 ///         ServerType = "cx23",
-///         Datacenter = "fsn1-dc14",
-///         Labels =
-///         {
-///             { "test", "tessst1" },
-///         },
+///         Location = "fsn1",
 ///         PublicNets = new[]
 ///         {
 ///             new HCloud.Inputs.ServerPublicNetArgs
@@ -131,27 +113,23 @@ import 'primary_ip_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		main, err := hcloud.NewPrimaryIp(ctx, "main", &hcloud.PrimaryIpArgs{
-/// 			Name:         pulumi.String("primary_ip_test"),
-/// 			Datacenter:   pulumi.String("fsn1-dc14"),
-/// 			Type:         pulumi.String("ipv4"),
-/// 			AssigneeType: pulumi.String("server"),
-/// 			AutoDelete:   pulumi.Bool(true),
+/// 			Name:       pulumi.String("primary-ip"),
+/// 			Location:   pulumi.String("fsn1"),
+/// 			Type:       pulumi.String("ipv4"),
+/// 			AutoDelete: pulumi.Bool(false),
 /// 			Labels: pulumi.StringMap{
-/// 				"hallo": pulumi.String("welt"),
+/// 				"key": pulumi.String("value"),
 /// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// Link a server to a primary IP
-/// 		_, err = hcloud.NewServer(ctx, "server_test", &hcloud.ServerArgs{
-/// 			Name:       pulumi.String("test-server"),
+/// 		_, err = hcloud.NewServer(ctx, "main", &hcloud.ServerArgs{
+/// 			Name:       pulumi.String("server"),
 /// 			Image:      pulumi.String("ubuntu-24.04"),
 /// 			ServerType: pulumi.String("cx23"),
-/// 			Datacenter: pulumi.String("fsn1-dc14"),
-/// 			Labels: pulumi.StringMap{
-/// 				"test": pulumi.String("tessst1"),
-/// 			},
+/// 			Location:   pulumi.String("fsn1"),
 /// 			PublicNets: hcloud.ServerPublicNetArray{
 /// 				&hcloud.ServerPublicNetArgs{
 /// 					Ipv4: main.ID(),
@@ -165,6 +143,35 @@ import 'primary_ip_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_primaryip" "main" {
+///   name        = "primary-ip"
+///   location    = "fsn1"
+///   type        = "ipv4"
+///   auto_delete = false
+///   labels = {
+///     "key" = "value"
+///   }
+/// }
+/// // Link a server to a primary IP
+/// resource "hcloud_server" "main" {
+///   name        = "server"
+///   image       = "ubuntu-24.04"
+///   server_type = "cx23"
+///   location    = "fsn1"
+///   public_nets {
+///     ipv4 = hcloud_primaryip.main.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -176,8 +183,8 @@ import 'primary_ip_state.dart';
 /// import com.pulumi.hcloud.Server;
 /// import com.pulumi.hcloud.ServerArgs;
 /// import com.pulumi.hcloud.inputs.ServerPublicNetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,21 +197,19 @@ import 'primary_ip_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var main = new PrimaryIp("main", PrimaryIpArgs.builder()
-///             .name("primary_ip_test")
-///             .datacenter("fsn1-dc14")
+///             .name("primary-ip")
+///             .location("fsn1")
 ///             .type("ipv4")
-///             .assigneeType("server")
-///             .autoDelete(true)
-///             .labels(Map.of("hallo", "welt"))
+///             .autoDelete(false)
+///             .labels(Map.of("key", "value"))
 ///             .build());
 ///
 ///         // Link a server to a primary IP
-///         var serverTest = new Server("serverTest", ServerArgs.builder()
-///             .name("test-server")
+///         var mainServer = new Server("mainServer", ServerArgs.builder()
+///             .name("server")
 ///             .image("ubuntu-24.04")
 ///             .serverType("cx23")
-///             .datacenter("fsn1-dc14")
-///             .labels(Map.of("test", "tessst1"))
+///             .location("fsn1")
 ///             .publicNets(ServerPublicNetArgs.builder()
 ///                 .ipv4(main.id())
 ///                 .build())
@@ -218,24 +223,21 @@ import 'primary_ip_state.dart';
 ///   main:
 ///     type: hcloud:PrimaryIp
 ///     properties:
-///       name: primary_ip_test
-///       datacenter: fsn1-dc14
+///       name: primary-ip
+///       location: fsn1
 ///       type: ipv4
-///       assigneeType: server
-///       autoDelete: true
+///       autoDelete: false
 ///       labels:
-///         hallo: welt
+///         key: value
 ///   # Link a server to a primary IP
-///   serverTest:
+///   mainServer:
 ///     type: hcloud:Server
-///     name: server_test
+///     name: main
 ///     properties:
-///       name: test-server
+///       name: server
 ///       image: ubuntu-24.04
 ///       serverType: cx23
-///       datacenter: fsn1-dc14
-///       labels:
-///         test: tessst1
+///       location: fsn1
 ///       publicNets:
 ///         - ipv4: ${main.id}
 /// ```
@@ -243,36 +245,33 @@ import 'primary_ip_state.dart';
 ///
 /// ## Import
 ///
-/// Primary IPs can be imported using its `id`:
+/// The `pulumi import` command can be used, for example:
 ///
 /// ```sh
 /// $ pulumi import hcloud:index/primaryIp:PrimaryIp example "$PRIMARY_IP_ID"
 /// ```
 class PrimaryIp extends pulumi.CustomResource {
-  /// ID of the assigned resource.
+  /// ID of the resource the Primary IP should be assigned to.
   late final pulumi.Output<int> assigneeId;
-  /// The type of the assigned resource. Currently supported: `server`
+  /// Type of the resource the Primary IP should be assigned to.
   late final pulumi.Output<String> assigneeType;
-  /// Whether auto delete is enabled.
-  /// `Important note:`It is recommended to set `auto_delete` to `false`, because if a server assigned to the managed ip is getting deleted, it will also delete the primary IP which will break the TF state.
+  /// Whether auto delete is enabled. Setting `autoDelete` to `true` is not recommended, because if a server assigned to the managed ip is deleted, it will also delete the primary IP which will break the terraform state.
   late final pulumi.Output<bool> autoDelete;
-  /// The datacenter name to create the resource in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
+  /// Name of the Datacenter for the Primary IP. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
   late final pulumi.Output<String> datacenter;
-  /// Whether delete protection is enabled. See "Delete Protection" in the Provider Docs for details.
-  ///
-  /// Note: At least one of `location`, `datacenter` or `assignee_id` is required.
-  late final pulumi.Output<bool?> deleteProtection;
-  /// (string) IP Address of the Primary IP.
+  /// Whether delete protection is enabled.
+  late final pulumi.Output<bool> deleteProtection;
+  /// IP address of the Primary IP.
   late final pulumi.Output<String> ipAddress;
-  /// (string) IPv6 subnet of the Primary IP for IPv6 addresses. (Only set if `type` is `ipv6`)
+  /// IP network of the Primary IP for IPv6 addresses. Only set if `type` is `ipv6`.
   late final pulumi.Output<String> ipNetwork;
-  /// User-defined labels (key-value pairs).
-  late final pulumi.Output<Map<String, String>?> labels;
-  /// The location name to create the resource in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
+  /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
+  late final pulumi.Output<Map<String, String>> labels;
+  /// Name of the Location for the Primary IP. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   late final pulumi.Output<String> location;
   /// Name of the Primary IP.
   late final pulumi.Output<String> name;
-  /// Type of the Primary IP. `ipv4` or `ipv6`
+  /// Type of the Primary IP (`ipv4` or `ipv6`).
   late final pulumi.Output<String> type;
 
   /// Creates a new [PrimaryIp].
@@ -293,10 +292,10 @@ class PrimaryIp extends pulumi.CustomResource {
     assigneeType = registerOutput<String>('assigneeType');
     autoDelete = registerOutput<bool>('autoDelete');
     datacenter = registerOutput<String>('datacenter');
-    deleteProtection = registerOutput<bool?>('deleteProtection');
+    deleteProtection = registerOutput<bool>('deleteProtection');
     ipAddress = registerOutput<String>('ipAddress');
     ipNetwork = registerOutput<String>('ipNetwork');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
@@ -329,10 +328,10 @@ class PrimaryIp extends pulumi.CustomResource {
     assigneeType = registerOutput<String>('assigneeType');
     autoDelete = registerOutput<bool>('autoDelete');
     datacenter = registerOutput<String>('datacenter');
-    deleteProtection = registerOutput<bool?>('deleteProtection');
+    deleteProtection = registerOutput<bool>('deleteProtection');
     ipAddress = registerOutput<String>('ipAddress');
     ipNetwork = registerOutput<String>('ipNetwork');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');

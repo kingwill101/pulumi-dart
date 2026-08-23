@@ -23,8 +23,8 @@ import 'load_balancer_target_state.dart';
 /// });
 /// const loadBalancerTarget = new hcloud.LoadBalancerTarget("load_balancer_target", {
 ///     type: "server",
-///     loadBalancerId: loadBalancer.id,
-///     serverId: myServer.id,
+///     loadBalancerId: loadBalancer.id.apply(x =>Number(x)),
+///     serverId: myServer.id.apply(x =>Number(x)),
 /// });
 /// ```
 /// ```python
@@ -41,8 +41,8 @@ import 'load_balancer_target_state.dart';
 ///     location="nbg1")
 /// load_balancer_target = hcloud.LoadBalancerTarget("load_balancer_target",
 ///     type="server",
-///     load_balancer_id=load_balancer.id,
-///     server_id=my_server.id)
+///     load_balancer_id=load_balancer.id.apply(lambda x: int(x)),
+///     server_id=my_server.id.apply(lambda x: int(x)))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -113,6 +113,31 @@ import 'load_balancer_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_server" "my_server" {
+///   name        = "my-server"
+///   server_type = "cx23"
+///   image       = "ubuntu-24.04"
+/// }
+/// resource "hcloud_loadbalancer" "load_balancer" {
+///   name               = "my-load-balancer"
+///   load_balancer_type = "lb11"
+///   location           = "nbg1"
+/// }
+/// resource "hcloud_loadbalancertarget" "load_balancer_target" {
+///   type             = "server"
+///   load_balancer_id = hcloud_loadbalancer.load_balancer.id
+///   server_id        = hcloud_server.my_server.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -125,8 +150,8 @@ import 'load_balancer_target_state.dart';
 /// import com.pulumi.hcloud.LoadBalancerArgs;
 /// import com.pulumi.hcloud.LoadBalancerTarget;
 /// import com.pulumi.hcloud.LoadBalancerTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -193,7 +218,7 @@ import 'load_balancer_target_state.dart';
 /// Where _identifier_ depends on the _type_:
 ///
 /// - `server`: server id, for example: `123`
-/// - `label_selector`: label selector, for example: `foo=bar`
+/// - `labelSelector`: label selector, for example: `foo=bar`
 /// - `ip`: ip address, for example: `203.0.113.123`
 ///
 /// ```sh
@@ -206,7 +231,7 @@ class LoadBalancerTargetResource extends pulumi.CustomResource {
   /// `type` is `ip`.
   late final pulumi.Output<String?> ip;
   /// Label Selector selecting targets
-  /// for this Load Balancer. Required if `type` is `label_selector`.
+  /// for this Load Balancer. Required if `type` is `labelSelector`.
   late final pulumi.Output<String?> labelSelector;
   /// ID of the Load Balancer to which
   /// the target gets attached.
@@ -215,11 +240,11 @@ class LoadBalancerTargetResource extends pulumi.CustomResource {
   /// target for this Load Balancer. Required if `type` is `server`
   late final pulumi.Output<int?> serverId;
   /// Type of the target. Possible values
-  /// `server`, `label_selector`, `ip`.
+  /// `server`, `labelSelector`, `ip`.
   late final pulumi.Output<String> type;
   /// use the private IP to connect to
   /// Load Balancer targets. Only allowed if type is `server` or
-  /// `label_selector`.
+  /// `labelSelector`.
   late final pulumi.Output<bool> usePrivateIp;
 
   /// Creates a new [LoadBalancerTargetResource].

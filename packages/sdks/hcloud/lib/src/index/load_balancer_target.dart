@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerTarget {
   final pulumi.Input<int>? serverId;
-  /// (string) Type of the Load Balancer Algorithm. `round_robin` or `least_connections`
+  /// (string) Type of the Load Balancer Algorithm. `roundRobin` or `leastConnections`
   final pulumi.Input<String> type;
   final pulumi.Input<bool>? usePrivateIp;
 
   /// Creates a new [LoadBalancerTarget].
   /// [serverId] Optional.
-  /// [type] (string) Type of the Load Balancer Algorithm. `round_robin` or `least_connections`
+  /// [type] (string) Type of the Load Balancer Algorithm. `roundRobin` or `leastConnections`
   /// [usePrivateIp] Optional.
   const LoadBalancerTarget({
     this.serverId,
@@ -34,4 +34,3 @@ class LoadBalancerTarget {
     );
   }
 }
-

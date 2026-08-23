@@ -37,7 +37,7 @@ import 'firewall_state.dart';
 ///     name: "node1",
 ///     image: "debian-12",
 ///     serverType: "cx23",
-///     firewallIds: [myfirewall.id],
+///     firewallIds: [myfirewall.id.apply(x =>Number(x))],
 /// });
 /// ```
 /// ```python
@@ -69,7 +69,7 @@ import 'firewall_state.dart';
 ///     name="node1",
 ///     image="debian-12",
 ///     server_type="cx23",
-///     firewall_ids=[myfirewall.id])
+///     firewall_ids=[myfirewall.id.apply(lambda x: int(x))])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -171,6 +171,36 @@ import 'firewall_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_firewall" "myfirewall" {
+///   name = "my-firewall"
+///   rules {
+///     direction  = "in"
+///     protocol   = "icmp"
+///     source_ips = ["0.0.0.0/0", "::/0"]
+///   }
+///   rules {
+///     direction  = "in"
+///     protocol   = "tcp"
+///     port       = "80-85"
+///     source_ips = ["0.0.0.0/0", "::/0"]
+///   }
+/// }
+/// resource "hcloud_server" "node1" {
+///   name         = "node1"
+///   image        = "debian-12"
+///   server_type  = "cx23"
+///   firewall_ids = [hcloud_firewall.myfirewall.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +212,8 @@ import 'firewall_state.dart';
 /// import com.pulumi.hcloud.inputs.FirewallRuleArgs;
 /// import com.pulumi.hcloud.Server;
 /// import com.pulumi.hcloud.ServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

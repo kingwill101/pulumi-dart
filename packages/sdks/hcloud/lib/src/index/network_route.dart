@@ -16,7 +16,7 @@ import 'network_route_state.dart';
 ///     ipRange: "10.0.0.0/8",
 /// });
 /// const privNet = new hcloud.NetworkRoute("privNet", {
-///     networkId: mynet.id,
+///     networkId: mynet.id.apply(x =>Number(x)),
 ///     destination: "10.100.1.0/24",
 ///     gateway: "10.0.1.1",
 /// });
@@ -29,7 +29,7 @@ import 'network_route_state.dart';
 ///     name="my-net",
 ///     ip_range="10.0.0.0/8")
 /// priv_net = hcloud.NetworkRoute("privNet",
-///     network_id=mynet.id,
+///     network_id=mynet.id.apply(lambda x: int(x)),
 ///     destination="10.100.1.0/24",
 ///     gateway="10.0.1.1")
 /// ```
@@ -85,6 +85,25 @@ import 'network_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_network" "mynet" {
+///   name     = "my-net"
+///   ip_range = "10.0.0.0/8"
+/// }
+/// resource "hcloud_networkroute" "privNet" {
+///   network_id  = hcloud_network.mynet.id
+///   destination = "10.100.1.0/24"
+///   gateway     = "10.0.1.1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +114,8 @@ import 'network_route_state.dart';
 /// import com.pulumi.hcloud.NetworkArgs;
 /// import com.pulumi.hcloud.NetworkRoute;
 /// import com.pulumi.hcloud.NetworkRouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -147,9 +166,9 @@ import 'network_route_state.dart';
 /// $ pulumi import hcloud:index/networkRoute:NetworkRoute example "$NETWORK_ID-$DESTINATION"
 /// ```
 class NetworkRoute extends pulumi.CustomResource {
-  /// Destination network or host of this route. Must be a subnet of the ip_range of the Network. Must not overlap with an existing ip_range in any subnets or with any destinations in other routes or with the first ip of the networks ip_range or with 172.31.1.1.
+  /// Destination network or host of this route. Must be a subnet of the ipRange of the Network. Must not overlap with an existing ipRange in any subnets or with any destinations in other routes or with the first ip of the networks ipRange or with 172.31.1.1.
   late final pulumi.Output<String> destination;
-  /// Gateway for the route. Cannot be the first ip of the networks ip_range and also cannot be 172.31.1.1 as this IP is being used as a gateway for the public network interface of servers.
+  /// Gateway for the route. Cannot be the first ip of the networks ipRange and also cannot be 172.31.1.1 as this IP is being used as a gateway for the public network interface of servers.
   late final pulumi.Output<String> gateway;
   /// ID of the Network the route should be added to.
   late final pulumi.Output<int> networkId;

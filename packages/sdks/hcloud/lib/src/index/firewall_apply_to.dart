@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallApplyTo {
   /// Label Selector to select servers the firewall should be applied to (only one
-  /// of `server` and `label_selector`can be applied in one block)
+  /// of `server` and `labelSelector`can be applied in one block)
   final pulumi.Input<String>? labelSelector;
   /// ID of the server you want to apply the firewall to (only one of `server`
-  /// and `label_selector`can be applied in one block)
+  /// and `labelSelector`can be applied in one block)
   final pulumi.Input<int>? server;
 
   /// Creates a new [FirewallApplyTo].
@@ -32,4 +32,3 @@ class FirewallApplyTo {
     );
   }
 }
-

@@ -7,13 +7,13 @@ class GetLoadBalancerTarget {
   final pulumi.Input<String> labelSelector;
   /// (int) ID of the server which should be a target for this Load Balancer.
   final pulumi.Input<int> serverId;
-  /// (string) Type of the target. `server` or `label_selector`
+  /// (string) Type of the target. `server` or `labelSelector`
   final pulumi.Input<String> type;
 
   /// Creates a new [GetLoadBalancerTarget].
   /// [labelSelector] (string) Label Selector to add a group of resources based on the label.
   /// [serverId] (int) ID of the server which should be a target for this Load Balancer.
-  /// [type] (string) Type of the target. `server` or `label_selector`
+  /// [type] (string) Type of the target. `server` or `labelSelector`
   const GetLoadBalancerTarget({
     required this.labelSelector,
     required this.serverId,
@@ -36,4 +36,3 @@ class GetLoadBalancerTarget {
     );
   }
 }
-

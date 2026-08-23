@@ -10,17 +10,17 @@ class LoadBalancerNetworkState {
   final pulumi.Input<String>? ip;
   /// ID of the Load Balancer.
   final pulumi.Input<int>? loadBalancerId;
-  /// ID of the Network to attach the Load Balancer to. Using `subnet_id` is preferred. Required if `subnet_id` is not set. If `subnet_id` or `ip` are not set, the Load Balancer will be attached to the last subnet (ordered by `ip_range`).
+  /// ID of the Network to attach the Load Balancer to. Using `subnetId` is preferred. Required if `subnetId` is not set. If `subnetId` or `ip` are not set, the Load Balancer will be attached to the last subnet (ordered by `ipRange`).
   final pulumi.Input<int>? networkId;
-  /// ID of the Subnet to attach the Load Balancer to. Required if `network_id` is not set.
+  /// ID of the Subnet to attach the Load Balancer to. Required if `networkId` is not set.
   final pulumi.Input<String>? subnetId;
 
   /// Creates a new [LoadBalancerNetworkState].
   /// [enablePublicInterface] Wether the Load Balancer public interface is enabled. Default is `true`.
   /// [ip] IP to assign to the Load Balancer.
   /// [loadBalancerId] ID of the Load Balancer.
-  /// [networkId] ID of the Network to attach the Load Balancer to. Using `subnet_id` is preferred. Required if `subnet_id` is not set. If `subnet_id` or `ip` are not set, the Load Balancer will be attached to the last subnet (ordered by `ip_range`).
-  /// [subnetId] ID of the Subnet to attach the Load Balancer to. Required if `network_id` is not set.
+  /// [networkId] ID of the Network to attach the Load Balancer to. Using `subnetId` is preferred. Required if `subnetId` is not set. If `subnetId` or `ip` are not set, the Load Balancer will be attached to the last subnet (ordered by `ipRange`).
+  /// [subnetId] ID of the Subnet to attach the Load Balancer to. Required if `networkId` is not set.
   const LoadBalancerNetworkState({
     this.enablePublicInterface,
     this.ip,
@@ -49,4 +49,3 @@ class LoadBalancerNetworkState {
     );
   }
 }
-

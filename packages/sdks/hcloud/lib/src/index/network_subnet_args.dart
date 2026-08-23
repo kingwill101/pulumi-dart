@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_network_subnet_network_subnet_args_doc}
 class NetworkSubnetArgs {
-  /// Range to allocate IPs from. Must be a subnet of the ip_range of the Network and must not overlap with any other subnets or with any destinations in routes.
+  /// Range to allocate IPs from. Must be a subnet of the ipRange of the Network and must not overlap with any other subnets or with any destinations in routes.
   final pulumi.Input<String> ipRange;
   /// ID of the Network the subnet should be added to.
   final pulumi.Input<int> networkId;
@@ -19,7 +19,7 @@ class NetworkSubnetArgs {
   final pulumi.Input<int>? vswitchId;
 
   /// Creates a new [NetworkSubnetArgs].
-  /// [ipRange] Range to allocate IPs from. Must be a subnet of the ip_range of the Network and must not overlap with any other subnets or with any destinations in routes.
+  /// [ipRange] Range to allocate IPs from. Must be a subnet of the ipRange of the Network and must not overlap with any other subnets or with any destinations in routes.
   /// [networkId] ID of the Network the subnet should be added to.
   /// [networkZone] Name of network zone.
   /// [type] Type of subnet. `server`, `cloud` or `vswitch`
@@ -52,4 +52,3 @@ class NetworkSubnetArgs {
     );
   }
 }
-

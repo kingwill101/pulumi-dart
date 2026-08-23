@@ -7,26 +7,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_rdns_rdns_args_doc}
 class RdnsArgs {
-  /// The DNS address the `ip_address` should resolve to.
+  /// Domain name `ipAddress` should point to.
   final pulumi.Input<String> dnsPtr;
-  /// The Floating IP the `ip_address` belongs to.
+  /// ID of the Floating IP the `ipAddress` belongs to.
   final pulumi.Input<int>? floatingIpId;
-  /// The IP address that should point to `dns_ptr`.
+  /// IP address that should point to `dnsPtr`.
   final pulumi.Input<String> ipAddress;
-  /// The Load Balancer the `ip_address` belongs to.
+  /// ID of the Load Balancer the `ipAddress` belongs to.
   final pulumi.Input<int>? loadBalancerId;
-  /// The Primary IP the `ip_address` belongs to.
+  /// ID of the Primary IP the `ipAddress` belongs to.
   final pulumi.Input<int>? primaryIpId;
-  /// The server the `ip_address` belongs to.
+  /// ID of the Server the `ipAddress` belongs to.
   final pulumi.Input<int>? serverId;
 
   /// Creates a new [RdnsArgs].
-  /// [dnsPtr] The DNS address the `ip_address` should resolve to.
-  /// [floatingIpId] The Floating IP the `ip_address` belongs to.
-  /// [ipAddress] The IP address that should point to `dns_ptr`.
-  /// [loadBalancerId] The Load Balancer the `ip_address` belongs to.
-  /// [primaryIpId] The Primary IP the `ip_address` belongs to.
-  /// [serverId] The server the `ip_address` belongs to.
+  /// [dnsPtr] Domain name `ipAddress` should point to.
+  /// [floatingIpId] ID of the Floating IP the `ipAddress` belongs to.
+  /// [ipAddress] IP address that should point to `dnsPtr`.
+  /// [loadBalancerId] ID of the Load Balancer the `ipAddress` belongs to.
+  /// [primaryIpId] ID of the Primary IP the `ipAddress` belongs to.
+  /// [serverId] ID of the Server the `ipAddress` belongs to.
   const RdnsArgs({
     required this.dnsPtr,
     this.floatingIpId,
@@ -58,4 +58,3 @@ class RdnsArgs {
     );
   }
 }
-

@@ -24,8 +24,8 @@ import 'firewall_attachment_state.dart';
 /// });
 /// const basicFirewall = new hcloud.Firewall("basic_firewall", {name: "basic_firewall"});
 /// const fwRef = new hcloud.FirewallAttachment("fw_ref", {
-///     firewallId: basicFirewall.id,
-///     serverIds: [testServer.id],
+///     firewallId: basicFirewall.id.apply(x =>Number(x)),
+///     serverIds: [testServer.id.apply(x =>Number(x))],
 /// });
 /// ```
 /// ```python
@@ -38,8 +38,8 @@ import 'firewall_attachment_state.dart';
 ///     image="ubuntu-24.04")
 /// basic_firewall = hcloud.Firewall("basic_firewall", name="basic_firewall")
 /// fw_ref = hcloud.FirewallAttachment("fw_ref",
-///     firewall_id=basic_firewall.id,
-///     server_ids=[test_server.id])
+///     firewall_id=basic_firewall.id.apply(lambda x: int(x)),
+///     server_ids=[test_server.id.apply(lambda x: int(x))])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -109,6 +109,28 @@ import 'firewall_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_server" "test_server" {
+///   name        = "test-server"
+///   server_type = "cx23"
+///   image       = "ubuntu-24.04"
+/// }
+/// resource "hcloud_firewall" "basic_firewall" {
+///   name = "basic_firewall"
+/// }
+/// resource "hcloud_firewallattachment" "fw_ref" {
+///   firewall_id = hcloud_firewall.basic_firewall.id
+///   server_ids  = [hcloud_server.test_server.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +143,8 @@ import 'firewall_attachment_state.dart';
 /// import com.pulumi.hcloud.FirewallArgs;
 /// import com.pulumi.hcloud.FirewallAttachment;
 /// import com.pulumi.hcloud.FirewallAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -193,7 +215,7 @@ import 'firewall_attachment_state.dart';
 /// });
 /// const basicFirewall = new hcloud.Firewall("basic_firewall", {name: "basic_firewall"});
 /// const fwRef = new hcloud.FirewallAttachment("fw_ref", {
-///     firewallId: basicFirewall.id,
+///     firewallId: basicFirewall.id.apply(x =>Number(x)),
 ///     labelSelectors: ["firewall-attachment=test-server"],
 /// });
 /// ```
@@ -210,7 +232,7 @@ import 'firewall_attachment_state.dart';
 ///     })
 /// basic_firewall = hcloud.Firewall("basic_firewall", name="basic_firewall")
 /// fw_ref = hcloud.FirewallAttachment("fw_ref",
-///     firewall_id=basic_firewall.id,
+///     firewall_id=basic_firewall.id.apply(lambda x: int(x)),
 ///     label_selectors=["firewall-attachment=test-server"])
 /// ```
 /// ```csharp
@@ -288,6 +310,31 @@ import 'firewall_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_server" "test_server" {
+///   name        = "test-server"
+///   server_type = "cx23"
+///   image       = "ubuntu-24.04"
+///   labels = {
+///     "firewall-attachment" = "test-server"
+///   }
+/// }
+/// resource "hcloud_firewall" "basic_firewall" {
+///   name = "basic_firewall"
+/// }
+/// resource "hcloud_firewallattachment" "fw_ref" {
+///   firewall_id     = hcloud_firewall.basic_firewall.id
+///   label_selectors = ["firewall-attachment=test-server"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -300,8 +347,8 @@ import 'firewall_attachment_state.dart';
 /// import com.pulumi.hcloud.FirewallArgs;
 /// import com.pulumi.hcloud.FirewallAttachment;
 /// import com.pulumi.hcloud.FirewallAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -360,7 +407,7 @@ import 'firewall_attachment_state.dart';
 ///
 /// ### Ensure a server is attached to a Firewall on first boot
 ///
-/// The `firewall_ids` property of the `hcloud.Server` resource ensures that
+/// The `firewallIds` property of the `hcloud.Server` resource ensures that
 /// a server is attached to the specified Firewalls before its first boot.
 /// This is **not** the case when using the `hcloud.FirewallAttachment`
 /// resource to attach servers to a Firewall. In some scenarios this may
@@ -370,7 +417,7 @@ import 'firewall_attachment_state.dart';
 /// _before_ it first boots. However, the workaround requires two Firewalls.
 /// Additionally the server resource definition needs to ignore any remote
 /// changes to the `hcloud_server.firewall_ids` property. This is done using
-/// the `ignore_remote_firewall_ids` property of `hcloud.Server`.
+/// the `ignoreRemoteFirewallIds` property of `hcloud.Server`.
 ///
 ///
 /// ```typescript
@@ -384,7 +431,7 @@ import 'firewall_attachment_state.dart';
 ///     serverType: "cx23",
 ///     image: "ubuntu-24.04",
 ///     ignoreRemoteFirewallIds: true,
-///     firewallIds: [denyAll.id],
+///     firewallIds: [denyAll.id.apply(x =>Number(x))],
 /// });
 /// const allowRules = new hcloud.Firewall("allow_rules", {
 ///     name: "allow_rules",
@@ -403,12 +450,12 @@ import 'firewall_attachment_state.dart';
 ///     }],
 /// });
 /// const denyAllAtt = new hcloud.FirewallAttachment("deny_all_att", {
-///     firewallId: denyAll.id,
-///     serverIds: [testServer.id],
+///     firewallId: denyAll.id.apply(x =>Number(x)),
+///     serverIds: [testServer.id.apply(x =>Number(x))],
 /// });
 /// const allowRulesAtt = new hcloud.FirewallAttachment("allow_rules_att", {
-///     firewallId: allowRules.id,
-///     serverIds: [testServer.id],
+///     firewallId: allowRules.id.apply(x =>Number(x)),
+///     serverIds: [testServer.id.apply(x =>Number(x))],
 /// });
 /// ```
 /// ```python
@@ -422,7 +469,7 @@ import 'firewall_attachment_state.dart';
 ///     server_type="cx23",
 ///     image="ubuntu-24.04",
 ///     ignore_remote_firewall_ids=True,
-///     firewall_ids=[deny_all.id])
+///     firewall_ids=[deny_all.id.apply(lambda x: int(x))])
 /// allow_rules = hcloud.Firewall("allow_rules",
 ///     name="allow_rules",
 ///     rules=[{
@@ -437,11 +484,11 @@ import 'firewall_attachment_state.dart';
 ///             args=[test_server.ipv4_address]).result],
 ///     }])
 /// deny_all_att = hcloud.FirewallAttachment("deny_all_att",
-///     firewall_id=deny_all.id,
-///     server_ids=[test_server.id])
+///     firewall_id=deny_all.id.apply(lambda x: int(x)),
+///     server_ids=[test_server.id.apply(lambda x: int(x))])
 /// allow_rules_att = hcloud.FirewallAttachment("allow_rules_att",
-///     firewall_id=allow_rules.id,
-///     server_ids=[test_server.id])
+///     firewall_id=allow_rules.id.apply(lambda x: int(x)),
+///     server_ids=[test_server.id.apply(lambda x: int(x))])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -599,6 +646,52 @@ import 'firewall_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "std_format" "invoke_0" {
+///   input = "%s/32"
+///   args  = [hcloud_server.test_server.ipv4_address]
+/// }
+///
+/// resource "hcloud_firewall" "deny_all" {
+///   name = "deny_all"
+/// }
+/// resource "hcloud_server" "test_server" {
+///   name                       = "test-server"
+///   server_type                = "cx23"
+///   image                      = "ubuntu-24.04"
+///   ignore_remote_firewall_ids = true
+///   firewall_ids               = [hcloud_firewall.deny_all.id]
+/// }
+/// resource "hcloud_firewall" "allow_rules" {
+///   name = "allow_rules"
+///   rules {
+///     direction       = "in"
+///     protocol        = "tcp"
+///     port            = "22"
+///     source_ips      = ["0.0.0.0/0", "::/0"]
+///     destination_ips = [data.std_format.invoke_0.result]
+///   }
+/// }
+/// resource "hcloud_firewallattachment" "deny_all_att" {
+///   firewall_id = hcloud_firewall.deny_all.id
+///   server_ids  = [hcloud_server.test_server.id]
+/// }
+/// resource "hcloud_firewallattachment" "allow_rules_att" {
+///   firewall_id = hcloud_firewall.allow_rules.id
+///   server_ids  = [hcloud_server.test_server.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -614,8 +707,8 @@ import 'firewall_attachment_state.dart';
 /// import com.pulumi.std.inputs.FormatArgs;
 /// import com.pulumi.hcloud.FirewallAttachment;
 /// import com.pulumi.hcloud.FirewallAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -4,44 +4,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering PrimaryIp resources.
 class PrimaryIpState {
-  /// ID of the assigned resource.
+  /// ID of the resource the Primary IP should be assigned to.
   final pulumi.Input<int>? assigneeId;
-  /// The type of the assigned resource. Currently supported: `server`
+  /// Type of the resource the Primary IP should be assigned to.
   final pulumi.Input<String>? assigneeType;
-  /// Whether auto delete is enabled.
-  /// `Important note:`It is recommended to set `auto_delete` to `false`, because if a server assigned to the managed ip is getting deleted, it will also delete the primary IP which will break the TF state.
+  /// Whether auto delete is enabled. Setting `autoDelete` to `true` is not recommended, because if a server assigned to the managed ip is deleted, it will also delete the primary IP which will break the terraform state.
   final pulumi.Input<bool>? autoDelete;
-  /// The datacenter name to create the resource in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
+  /// Name of the Datacenter for the Primary IP. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
   final pulumi.Input<String>? datacenter;
-  /// Whether delete protection is enabled. See "Delete Protection" in the Provider Docs for details.
-  ///
-  /// Note: At least one of `location`, `datacenter` or `assignee_id` is required.
+  /// Whether delete protection is enabled.
   final pulumi.Input<bool>? deleteProtection;
-  /// (string) IP Address of the Primary IP.
+  /// IP address of the Primary IP.
   final pulumi.Input<String>? ipAddress;
-  /// (string) IPv6 subnet of the Primary IP for IPv6 addresses. (Only set if `type` is `ipv6`)
+  /// IP network of the Primary IP for IPv6 addresses. Only set if `type` is `ipv6`.
   final pulumi.Input<String>? ipNetwork;
-  /// User-defined labels (key-value pairs).
+  /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   final pulumi.Input<Map<String, String>>? labels;
-  /// The location name to create the resource in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
+  /// Name of the Location for the Primary IP. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   final pulumi.Input<String>? location;
   /// Name of the Primary IP.
   final pulumi.Input<String>? name;
-  /// Type of the Primary IP. `ipv4` or `ipv6`
+  /// Type of the Primary IP (`ipv4` or `ipv6`).
   final pulumi.Input<String>? type;
 
   /// Creates a new [PrimaryIpState].
-  /// [assigneeId] ID of the assigned resource.
-  /// [assigneeType] The type of the assigned resource. Currently supported: `server`
-  /// [autoDelete] Whether auto delete is enabled.
-  /// [datacenter] The datacenter name to create the resource in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
-  /// [deleteProtection] Whether delete protection is enabled. See "Delete Protection" in the Provider Docs for details.
-  /// [ipAddress] (string) IP Address of the Primary IP.
-  /// [ipNetwork] (string) IPv6 subnet of the Primary IP for IPv6 addresses. (Only set if `type` is `ipv6`)
-  /// [labels] User-defined labels (key-value pairs).
-  /// [location] The location name to create the resource in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
+  /// [assigneeId] ID of the resource the Primary IP should be assigned to.
+  /// [assigneeType] Type of the resource the Primary IP should be assigned to.
+  /// [autoDelete] Whether auto delete is enabled. Setting `autoDelete` to `true` is not recommended, because if a server assigned to the managed ip is deleted, it will also delete the primary IP which will break the terraform state.
+  /// [datacenter] Name of the Datacenter for the Primary IP. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
+  /// [deleteProtection] Whether delete protection is enabled.
+  /// [ipAddress] IP address of the Primary IP.
+  /// [ipNetwork] IP network of the Primary IP for IPv6 addresses. Only set if `type` is `ipv6`.
+  /// [labels] User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
+  /// [location] Name of the Location for the Primary IP. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   /// [name] Name of the Primary IP.
-  /// [type] Type of the Primary IP. `ipv4` or `ipv6`
+  /// [type] Type of the Primary IP (`ipv4` or `ipv6`).
   const PrimaryIpState({
     this.assigneeId,
     this.assigneeType,
@@ -88,4 +85,3 @@ class PrimaryIpState {
     );
   }
 }
-

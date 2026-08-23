@@ -18,7 +18,7 @@ import 'floating_ip_state.dart';
 /// });
 /// const master = new hcloud.FloatingIp("master", {
 ///     type: "ipv4",
-///     serverId: node1.id,
+///     serverId: node1.id.apply(x =>Number(x)),
 /// });
 /// ```
 /// ```python
@@ -31,7 +31,7 @@ import 'floating_ip_state.dart';
 ///     server_type="cx23")
 /// master = hcloud.FloatingIp("master",
 ///     type="ipv4",
-///     server_id=node1.id)
+///     server_id=node1.id.apply(lambda x: int(x)))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -85,6 +85,25 @@ import 'floating_ip_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_server" "node1" {
+///   name        = "node1"
+///   image       = "debian-12"
+///   server_type = "cx23"
+/// }
+/// resource "hcloud_floatingip" "master" {
+///   type      = "ipv4"
+///   server_id = hcloud_server.node1.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +114,8 @@ import 'floating_ip_state.dart';
 /// import com.pulumi.hcloud.ServerArgs;
 /// import com.pulumi.hcloud.FloatingIp;
 /// import com.pulumi.hcloud.FloatingIpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -150,7 +169,7 @@ class FloatingIp extends pulumi.CustomResource {
   late final pulumi.Output<bool?> deleteProtection;
   /// Description of the Floating IP.
   late final pulumi.Output<String?> description;
-  /// Name of home location (routing is optimized for that location). Optional if `server_id` argument is passed.
+  /// Name of home location (routing is optimized for that location). Optional if `serverId` argument is passed.
   late final pulumi.Output<String> homeLocation;
   /// (string) IP Address of the Floating IP.
   late final pulumi.Output<String> ipAddress;
@@ -160,7 +179,7 @@ class FloatingIp extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> labels;
   /// Name of the Floating IP.
   late final pulumi.Output<String> name;
-  /// Server to assign the Floating IP to. Optional if `home_location` argument is passed.
+  /// Server to assign the Floating IP to. Optional if `homeLocation` argument is passed.
   late final pulumi.Output<int> serverId;
   /// Type of the Floating IP. `ipv4` `ipv6`
   late final pulumi.Output<String> type;

@@ -163,6 +163,42 @@ import 'load_balancer_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_loadbalancer" "load_balancer" {
+///   name               = "my-load-balancer"
+///   load_balancer_type = "lb11"
+///   location           = "nbg1"
+/// }
+/// resource "hcloud_loadbalancerservice" "load_balancer_service" {
+///   load_balancer_id = hcloud_loadbalancer.load_balancer.id
+///   protocol         = "http"
+///   http = {
+///     sticky_sessions = true
+///     cookie_name     = "EXAMPLE_STICKY"
+///   }
+///   health_check = {
+///     protocol = "http"
+///     port     = 80
+///     interval = 10
+///     timeout  = 5
+///     http = {
+///       domain       = "example.com"
+///       path         = "/healthz"
+///       response     = "OK"
+///       tls          = true
+///       status_codes = ["200"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -176,8 +212,8 @@ import 'load_balancer_service_state.dart';
 /// import com.pulumi.hcloud.inputs.LoadBalancerServiceHttpArgs;
 /// import com.pulumi.hcloud.inputs.LoadBalancerServiceHealthCheckArgs;
 /// import com.pulumi.hcloud.inputs.LoadBalancerServiceHealthCheckHttpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -250,6 +286,296 @@ import 'load_balancer_service_state.dart';
 ///           tls: true
 ///           statusCodes:
 ///             - '200'
+/// ```
+///
+///
+/// ### TLS Termination and Passthrough
+///
+/// The Hetzner Cloud API has no dedicated "TLS passthrough" option. Whether the Load
+/// Balancer terminates TLS or passes it through to the targets is determined by the
+/// service `protocol`:
+///
+/// - **TLS termination** — set `protocol = "https"` and attach one or more
+/// `certificates`. The Load Balancer terminates the TLS connection, so it can
+/// inspect and modify HTTP traffic (sticky sessions, HTTP-to-HTTPS redirects, HTTP
+/// health checks, etc.).
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as hcloud from "@pulumi/hcloud";
+///
+/// const tlsTermination = new hcloud.LoadBalancerService("tls_termination", {
+///     loadBalancerId: loadBalancer.id,
+///     protocol: "https",
+///     listenPort: 443,
+///     destinationPort: 80,
+///     http: {
+///         certificates: [cert.id],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_hcloud as hcloud
+///
+/// tls_termination = hcloud.LoadBalancerService("tls_termination",
+///     load_balancer_id=load_balancer["id"],
+///     protocol="https",
+///     listen_port=443,
+///     destination_port=80,
+///     http={
+///         "certificates": [cert["id"]],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using HCloud = Pulumi.HCloud;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var tlsTermination = new HCloud.LoadBalancerService("tls_termination", new()
+///     {
+///         LoadBalancerId = loadBalancer.Id,
+///         Protocol = "https",
+///         ListenPort = 443,
+///         DestinationPort = 80,
+///         Http = new HCloud.Inputs.LoadBalancerServiceHttpArgs
+///         {
+///             Certificates = new[]
+///             {
+///                 cert.Id,
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := hcloud.NewLoadBalancerService(ctx, "tls_termination", &hcloud.LoadBalancerServiceArgs{
+/// 			LoadBalancerId:  pulumi.Any(loadBalancer.Id),
+/// 			Protocol:        pulumi.String("https"),
+/// 			ListenPort:      pulumi.Int(443),
+/// 			DestinationPort: pulumi.Int(80),
+/// 			Http: &hcloud.LoadBalancerServiceHttpArgs{
+/// 				Certificates: pulumi.IntArray{
+/// 					cert.Id,
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_loadbalancerservice" "tls_termination" {
+///   load_balancer_id = loadBalancer.id
+///   protocol         = "https"
+///   listen_port      = 443
+///   destination_port = 80
+///   http = {
+///     certificates = [cert.id]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.hcloud.LoadBalancerService;
+/// import com.pulumi.hcloud.LoadBalancerServiceArgs;
+/// import com.pulumi.hcloud.inputs.LoadBalancerServiceHttpArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var tlsTermination = new LoadBalancerService("tlsTermination", LoadBalancerServiceArgs.builder()
+///             .loadBalancerId(loadBalancer.id())
+///             .protocol("https")
+///             .listenPort(443)
+///             .destinationPort(80)
+///             .http(LoadBalancerServiceHttpArgs.builder()
+///                 .certificates(cert.id())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   tlsTermination:
+///     type: hcloud:LoadBalancerService
+///     name: tls_termination
+///     properties:
+///       loadBalancerId: ${loadBalancer.id}
+///       protocol: https
+///       listenPort: 443
+///       destinationPort: 80
+///       http:
+///         certificates:
+///           - ${cert.id}
+/// ```
+///
+///
+/// - **TLS passthrough** — set `protocol = "tcp"` and forward the TLS port (usually
+/// `443`). The Load Balancer forwards the raw TCP stream to the targets, which
+/// terminate TLS themselves. No `certificates` are configured on the Load Balancer,
+/// and HTTP-level features are unavailable because the traffic stays encrypted.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as hcloud from "@pulumi/hcloud";
+///
+/// const tlsPassthrough = new hcloud.LoadBalancerService("tls_passthrough", {
+///     loadBalancerId: loadBalancer.id,
+///     protocol: "tcp",
+///     listenPort: 443,
+///     destinationPort: 443,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_hcloud as hcloud
+///
+/// tls_passthrough = hcloud.LoadBalancerService("tls_passthrough",
+///     load_balancer_id=load_balancer["id"],
+///     protocol="tcp",
+///     listen_port=443,
+///     destination_port=443)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using HCloud = Pulumi.HCloud;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var tlsPassthrough = new HCloud.LoadBalancerService("tls_passthrough", new()
+///     {
+///         LoadBalancerId = loadBalancer.Id,
+///         Protocol = "tcp",
+///         ListenPort = 443,
+///         DestinationPort = 443,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := hcloud.NewLoadBalancerService(ctx, "tls_passthrough", &hcloud.LoadBalancerServiceArgs{
+/// 			LoadBalancerId:  pulumi.Any(loadBalancer.Id),
+/// 			Protocol:        pulumi.String("tcp"),
+/// 			ListenPort:      pulumi.Int(443),
+/// 			DestinationPort: pulumi.Int(443),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_loadbalancerservice" "tls_passthrough" {
+///   load_balancer_id = loadBalancer.id
+///   protocol         = "tcp"
+///   listen_port      = 443
+///   destination_port = 443
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.hcloud.LoadBalancerService;
+/// import com.pulumi.hcloud.LoadBalancerServiceArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var tlsPassthrough = new LoadBalancerService("tlsPassthrough", LoadBalancerServiceArgs.builder()
+///             .loadBalancerId(loadBalancer.id())
+///             .protocol("tcp")
+///             .listenPort(443)
+///             .destinationPort(443)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   tlsPassthrough:
+///     type: hcloud:LoadBalancerService
+///     name: tls_passthrough
+///     properties:
+///       loadBalancerId: ${loadBalancer.id}
+///       protocol: tcp
+///       listenPort: 443
+///       destinationPort: 443
 /// ```
 ///
 ///

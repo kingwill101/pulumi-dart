@@ -18,7 +18,7 @@ class LoadBalancerState {
   final pulumi.Input<Map<String, String>>? labels;
   /// Type of the Load Balancer.
   final pulumi.Input<String>? loadBalancerType;
-  /// The location name of the Load Balancer. Require when no network_zone is set. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
+  /// The location name of the Load Balancer. Require when no networkZone is set. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   final pulumi.Input<String>? location;
   /// Name of the Load Balancer.
   final pulumi.Input<String>? name;
@@ -37,7 +37,7 @@ class LoadBalancerState {
   /// [ipv6] (string) IPv6 Address of the Load Balancer.
   /// [labels] User-defined labels (key-value pairs) should be created with.
   /// [loadBalancerType] Type of the Load Balancer.
-  /// [location] The location name of the Load Balancer. Require when no network_zone is set. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
+  /// [location] The location name of the Load Balancer. Require when no networkZone is set. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   /// [name] Name of the Load Balancer.
   /// [networkId] (int) ID of the first private network that this Load Balancer is connected to.
   /// [networkIp] (string) IP of the Load Balancer in the first private network that it is connected to.
@@ -92,4 +92,3 @@ class LoadBalancerState {
     );
   }
 }
-

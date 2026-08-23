@@ -2,434 +2,46 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rdns_args.dart';
 import 'rdns_state.dart';
 
-/// Provides a Hetzner Cloud Reverse DNS Entry to create, modify and reset reverse dns entries for Hetzner Cloud Servers, Primary IPs, Floating IPs or Load Balancers.
+/// Provides Hetzner Cloud reverse DNS (rDNS) entries for Servers, Primary IPs, Floating IPs or Load Balancers.
 ///
 /// ## Example Usage
 ///
-/// For servers:
-///
 ///
 /// ```typescript
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as hcloud from "@pulumi/hcloud";
 ///
-/// const node1 = new hcloud.Server("node1", {
-///     name: "node1",
-///     image: "debian-12",
-///     serverType: "cx23",
-/// });
-/// const master = new hcloud.Rdns("master", {
-///     serverId: node1.id,
-///     ipAddress: node1.ipv4Address,
+/// // For Servers
+/// const server1 = new hcloud.Server("server1", {name: "server1"});
+/// const server1Rdns = new hcloud.Rdns("server1", {
+///     serverId: server1.id.apply(x =>Number(x)),
+///     ipAddress: server1.ipv4Address,
 ///     dnsPtr: "example.com",
 /// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_hcloud as hcloud
-///
-/// node1 = hcloud.Server("node1",
-///     name="node1",
-///     image="debian-12",
-///     server_type="cx23")
-/// master = hcloud.Rdns("master",
-///     server_id=node1.id,
-///     ip_address=node1.ipv4_address,
-///     dns_ptr="example.com")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using HCloud = Pulumi.HCloud;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var node1 = new HCloud.Server("node1", new()
-///     {
-///         Name = "node1",
-///         Image = "debian-12",
-///         ServerType = "cx23",
-///     });
-///
-///     var master = new HCloud.Rdns("master", new()
-///     {
-///         ServerId = node1.Id,
-///         IpAddress = node1.Ipv4Address,
-///         DnsPtr = "example.com",
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		node1, err := hcloud.NewServer(ctx, "node1", &hcloud.ServerArgs{
-/// 			Name:       pulumi.String("node1"),
-/// 			Image:      pulumi.String("debian-12"),
-/// 			ServerType: pulumi.String("cx23"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = hcloud.NewRdns(ctx, "master", &hcloud.RdnsArgs{
-/// 			ServerId:  node1.ID(),
-/// 			IpAddress: node1.Ipv4Address,
-/// 			DnsPtr:    pulumi.String("example.com"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.hcloud.Server;
-/// import com.pulumi.hcloud.ServerArgs;
-/// import com.pulumi.hcloud.Rdns;
-/// import com.pulumi.hcloud.RdnsArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var node1 = new Server("node1", ServerArgs.builder()
-///             .name("node1")
-///             .image("debian-12")
-///             .serverType("cx23")
-///             .build());
-///
-///         var master = new Rdns("master", RdnsArgs.builder()
-///             .serverId(node1.id())
-///             .ipAddress(node1.ipv4Address())
-///             .dnsPtr("example.com")
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   node1:
-///     type: hcloud:Server
-///     properties:
-///       name: node1
-///       image: debian-12
-///       serverType: cx23
-///   master:
-///     type: hcloud:Rdns
-///     properties:
-///       serverId: ${node1.id}
-///       ipAddress: ${node1.ipv4Address}
-///       dnsPtr: example.com
-/// ```
-///
-///
-/// For Primary IPs:
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as hcloud from "@pulumi/hcloud";
-///
-/// const primary1 = new hcloud.PrimaryIp("primary1", {
-///     datacenter: "nbg1-dc3",
+/// // For Primary IPs
+/// const primaryIp1 = new hcloud.PrimaryIp("primary_ip1", {
+///     name: "primary_ip1",
 ///     type: "ipv4",
 /// });
-/// const primary1Rdns = new hcloud.Rdns("primary1", {
-///     primaryIpId: primary1.id,
-///     ipAddress: primary1.ipAddress,
+/// const primaryIp1Rdns = new hcloud.Rdns("primary_ip1", {
+///     primaryIpId: primaryIp1.id.apply(x =>Number(x)),
+///     ipAddress: primaryIp1.ipAddress,
 ///     dnsPtr: "example.com",
 /// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_hcloud as hcloud
-///
-/// primary1 = hcloud.PrimaryIp("primary1",
-///     datacenter="nbg1-dc3",
-///     type="ipv4")
-/// primary1_rdns = hcloud.Rdns("primary1",
-///     primary_ip_id=primary1.id,
-///     ip_address=primary1.ip_address,
-///     dns_ptr="example.com")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using HCloud = Pulumi.HCloud;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var primary1 = new HCloud.PrimaryIp("primary1", new()
-///     {
-///         Datacenter = "nbg1-dc3",
-///         Type = "ipv4",
-///     });
-///
-///     var primary1Rdns = new HCloud.Rdns("primary1", new()
-///     {
-///         PrimaryIpId = primary1.Id,
-///         IpAddress = primary1.IpAddress,
-///         DnsPtr = "example.com",
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		primary1, err := hcloud.NewPrimaryIp(ctx, "primary1", &hcloud.PrimaryIpArgs{
-/// 			Datacenter: pulumi.String("nbg1-dc3"),
-/// 			Type:       pulumi.String("ipv4"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = hcloud.NewRdns(ctx, "primary1", &hcloud.RdnsArgs{
-/// 			PrimaryIpId: primary1.ID(),
-/// 			IpAddress:   primary1.IpAddress,
-/// 			DnsPtr:      pulumi.String("example.com"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.hcloud.PrimaryIp;
-/// import com.pulumi.hcloud.PrimaryIpArgs;
-/// import com.pulumi.hcloud.Rdns;
-/// import com.pulumi.hcloud.RdnsArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var primary1 = new PrimaryIp("primary1", PrimaryIpArgs.builder()
-///             .datacenter("nbg1-dc3")
-///             .type("ipv4")
-///             .build());
-///
-///         var primary1Rdns = new Rdns("primary1Rdns", RdnsArgs.builder()
-///             .primaryIpId(primary1.id())
-///             .ipAddress(primary1.ipAddress())
-///             .dnsPtr("example.com")
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   primary1:
-///     type: hcloud:PrimaryIp
-///     properties:
-///       datacenter: nbg1-dc3
-///       type: ipv4
-///   primary1Rdns:
-///     type: hcloud:Rdns
-///     name: primary1
-///     properties:
-///       primaryIpId: ${primary1.id}
-///       ipAddress: ${primary1.ipAddress}
-///       dnsPtr: example.com
-/// ```
-///
-///
-/// For Floating IPs:
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as hcloud from "@pulumi/hcloud";
-///
-/// const floating1 = new hcloud.FloatingIp("floating1", {
-///     homeLocation: "nbg1",
+/// // For Floating IPs
+/// const floatingIp1 = new hcloud.FloatingIp("floating_ip1", {
+///     name: "floating_ip1",
 ///     type: "ipv4",
 /// });
-/// const floatingMaster = new hcloud.Rdns("floating_master", {
-///     floatingIpId: floating1.id,
-///     ipAddress: floating1.ipAddress,
+/// const floatingIp1Rdns = new hcloud.Rdns("floating_ip1", {
+///     floatingIpId: floatingIp1.id.apply(x =>Number(x)),
+///     ipAddress: floatingIp1.ipAddress,
 ///     dnsPtr: "example.com",
 /// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_hcloud as hcloud
-///
-/// floating1 = hcloud.FloatingIp("floating1",
-///     home_location="nbg1",
-///     type="ipv4")
-/// floating_master = hcloud.Rdns("floating_master",
-///     floating_ip_id=floating1.id,
-///     ip_address=floating1.ip_address,
-///     dns_ptr="example.com")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using HCloud = Pulumi.HCloud;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var floating1 = new HCloud.FloatingIp("floating1", new()
-///     {
-///         HomeLocation = "nbg1",
-///         Type = "ipv4",
-///     });
-///
-///     var floatingMaster = new HCloud.Rdns("floating_master", new()
-///     {
-///         FloatingIpId = floating1.Id,
-///         IpAddress = floating1.IpAddress,
-///         DnsPtr = "example.com",
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		floating1, err := hcloud.NewFloatingIp(ctx, "floating1", &hcloud.FloatingIpArgs{
-/// 			HomeLocation: pulumi.String("nbg1"),
-/// 			Type:         pulumi.String("ipv4"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = hcloud.NewRdns(ctx, "floating_master", &hcloud.RdnsArgs{
-/// 			FloatingIpId: floating1.ID(),
-/// 			IpAddress:    floating1.IpAddress,
-/// 			DnsPtr:       pulumi.String("example.com"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.hcloud.FloatingIp;
-/// import com.pulumi.hcloud.FloatingIpArgs;
-/// import com.pulumi.hcloud.Rdns;
-/// import com.pulumi.hcloud.RdnsArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var floating1 = new FloatingIp("floating1", FloatingIpArgs.builder()
-///             .homeLocation("nbg1")
-///             .type("ipv4")
-///             .build());
-///
-///         var floatingMaster = new Rdns("floatingMaster", RdnsArgs.builder()
-///             .floatingIpId(floating1.id())
-///             .ipAddress(floating1.ipAddress())
-///             .dnsPtr("example.com")
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   floating1:
-///     type: hcloud:FloatingIp
-///     properties:
-///       homeLocation: nbg1
-///       type: ipv4
-///   floatingMaster:
-///     type: hcloud:Rdns
-///     name: floating_master
-///     properties:
-///       floatingIpId: ${floating1.id}
-///       ipAddress: ${floating1.ipAddress}
-///       dnsPtr: example.com
-/// ```
-///
-///
-/// For Load Balancers:
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as hcloud from "@pulumi/hcloud";
-///
-/// const loadBalancer1 = new hcloud.LoadBalancer("load_balancer1", {
-///     name: "load_balancer1",
-///     loadBalancerType: "lb11",
-///     location: "fsn1",
-/// });
-/// const loadBalancerMaster = new hcloud.Rdns("load_balancer_master", {
-///     loadBalancerId: loadBalancer1.id,
+/// // For Load Balancers
+/// const loadBalancer1 = new hcloud.LoadBalancer("load_balancer1", {name: "load_balancer1"});
+/// const loadBalancer1Rdns = new hcloud.Rdns("load_balancer1", {
+///     loadBalancerId: loadBalancer1.id.apply(x =>Number(x)),
 ///     ipAddress: loadBalancer1.ipv4,
 ///     dnsPtr: "example.com",
 /// });
@@ -438,12 +50,32 @@ import 'rdns_state.dart';
 /// import pulumi
 /// import pulumi_hcloud as hcloud
 ///
-/// load_balancer1 = hcloud.LoadBalancer("load_balancer1",
-///     name="load_balancer1",
-///     load_balancer_type="lb11",
-///     location="fsn1")
-/// load_balancer_master = hcloud.Rdns("load_balancer_master",
-///     load_balancer_id=load_balancer1.id,
+/// # For Servers
+/// server1 = hcloud.Server("server1", name="server1")
+/// server1_rdns = hcloud.Rdns("server1",
+///     server_id=server1.id.apply(lambda x: int(x)),
+///     ip_address=server1.ipv4_address,
+///     dns_ptr="example.com")
+/// # For Primary IPs
+/// primary_ip1 = hcloud.PrimaryIp("primary_ip1",
+///     name="primary_ip1",
+///     type="ipv4")
+/// primary_ip1_rdns = hcloud.Rdns("primary_ip1",
+///     primary_ip_id=primary_ip1.id.apply(lambda x: int(x)),
+///     ip_address=primary_ip1.ip_address,
+///     dns_ptr="example.com")
+/// # For Floating IPs
+/// floating_ip1 = hcloud.FloatingIp("floating_ip1",
+///     name="floating_ip1",
+///     type="ipv4")
+/// floating_ip1_rdns = hcloud.Rdns("floating_ip1",
+///     floating_ip_id=floating_ip1.id.apply(lambda x: int(x)),
+///     ip_address=floating_ip1.ip_address,
+///     dns_ptr="example.com")
+/// # For Load Balancers
+/// load_balancer1 = hcloud.LoadBalancer("load_balancer1", name="load_balancer1")
+/// load_balancer1_rdns = hcloud.Rdns("load_balancer1",
+///     load_balancer_id=load_balancer1.id.apply(lambda x: int(x)),
 ///     ip_address=load_balancer1.ipv4,
 ///     dns_ptr="example.com")
 /// ```
@@ -455,14 +87,54 @@ import 'rdns_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
+///     // For Servers
+///     var server1 = new HCloud.Server("server1", new()
+///     {
+///         Name = "server1",
+///     });
+///
+///     var server1Rdns = new HCloud.Rdns("server1", new()
+///     {
+///         ServerId = server1.Id,
+///         IpAddress = server1.Ipv4Address,
+///         DnsPtr = "example.com",
+///     });
+///
+///     // For Primary IPs
+///     var primaryIp1 = new HCloud.PrimaryIp("primary_ip1", new()
+///     {
+///         Name = "primary_ip1",
+///         Type = "ipv4",
+///     });
+///
+///     var primaryIp1Rdns = new HCloud.Rdns("primary_ip1", new()
+///     {
+///         PrimaryIpId = primaryIp1.Id,
+///         IpAddress = primaryIp1.IpAddress,
+///         DnsPtr = "example.com",
+///     });
+///
+///     // For Floating IPs
+///     var floatingIp1 = new HCloud.FloatingIp("floating_ip1", new()
+///     {
+///         Name = "floating_ip1",
+///         Type = "ipv4",
+///     });
+///
+///     var floatingIp1Rdns = new HCloud.Rdns("floating_ip1", new()
+///     {
+///         FloatingIpId = floatingIp1.Id,
+///         IpAddress = floatingIp1.IpAddress,
+///         DnsPtr = "example.com",
+///     });
+///
+///     // For Load Balancers
 ///     var loadBalancer1 = new HCloud.LoadBalancer("load_balancer1", new()
 ///     {
 ///         Name = "load_balancer1",
-///         LoadBalancerType = "lb11",
-///         Location = "fsn1",
 ///     });
 ///
-///     var loadBalancerMaster = new HCloud.Rdns("load_balancer_master", new()
+///     var loadBalancer1Rdns = new HCloud.Rdns("load_balancer1", new()
 ///     {
 ///         LoadBalancerId = loadBalancer1.Id,
 ///         IpAddress = loadBalancer1.Ipv4,
@@ -481,15 +153,61 @@ import 'rdns_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		loadBalancer1, err := hcloud.NewLoadBalancer(ctx, "load_balancer1", &hcloud.LoadBalancerArgs{
-/// 			Name:             pulumi.String("load_balancer1"),
-/// 			LoadBalancerType: pulumi.String("lb11"),
-/// 			Location:         pulumi.String("fsn1"),
+/// 		// For Servers
+/// 		server1, err := hcloud.NewServer(ctx, "server1", &hcloud.ServerArgs{
+/// 			Name: pulumi.String("server1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = hcloud.NewRdns(ctx, "load_balancer_master", &hcloud.RdnsArgs{
+/// 		_, err = hcloud.NewRdns(ctx, "server1", &hcloud.RdnsArgs{
+/// 			ServerId:  server1.ID(),
+/// 			IpAddress: server1.Ipv4Address,
+/// 			DnsPtr:    pulumi.String("example.com"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		// For Primary IPs
+/// 		primaryIp1, err := hcloud.NewPrimaryIp(ctx, "primary_ip1", &hcloud.PrimaryIpArgs{
+/// 			Name: pulumi.String("primary_ip1"),
+/// 			Type: pulumi.String("ipv4"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = hcloud.NewRdns(ctx, "primary_ip1", &hcloud.RdnsArgs{
+/// 			PrimaryIpId: primaryIp1.ID(),
+/// 			IpAddress:   primaryIp1.IpAddress,
+/// 			DnsPtr:      pulumi.String("example.com"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		// For Floating IPs
+/// 		floatingIp1, err := hcloud.NewFloatingIp(ctx, "floating_ip1", &hcloud.FloatingIpArgs{
+/// 			Name: pulumi.String("floating_ip1"),
+/// 			Type: pulumi.String("ipv4"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = hcloud.NewRdns(ctx, "floating_ip1", &hcloud.RdnsArgs{
+/// 			FloatingIpId: floatingIp1.ID(),
+/// 			IpAddress:    floatingIp1.IpAddress,
+/// 			DnsPtr:       pulumi.String("example.com"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		// For Load Balancers
+/// 		loadBalancer1, err := hcloud.NewLoadBalancer(ctx, "load_balancer1", &hcloud.LoadBalancerArgs{
+/// 			Name: pulumi.String("load_balancer1"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = hcloud.NewRdns(ctx, "load_balancer1", &hcloud.RdnsArgs{
 /// 			LoadBalancerId: loadBalancer1.ID(),
 /// 			IpAddress:      loadBalancer1.Ipv4,
 /// 			DnsPtr:         pulumi.String("example.com"),
@@ -501,18 +219,72 @@ import 'rdns_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// // For Servers
+/// resource "hcloud_server" "server1" {
+///   name = "server1"
+/// }
+/// resource "hcloud_rdns" "server1" {
+///   server_id  = hcloud_server.server1.id
+///   ip_address = hcloud_server.server1.ipv4_address
+///   dns_ptr    = "example.com"
+/// }
+/// // For Primary IPs
+/// resource "hcloud_primaryip" "primary_ip1" {
+///   name = "primary_ip1"
+///   type = "ipv4"
+/// }
+/// resource "hcloud_rdns" "primary_ip1" {
+///   primary_ip_id = hcloud_primaryip.primary_ip1.id
+///   ip_address    = hcloud_primaryip.primary_ip1.ip_address
+///   dns_ptr       = "example.com"
+/// }
+/// // For Floating IPs
+/// resource "hcloud_floatingip" "floating_ip1" {
+///   name = "floating_ip1"
+///   type = "ipv4"
+/// }
+/// resource "hcloud_rdns" "floating_ip1" {
+///   floating_ip_id = hcloud_floatingip.floating_ip1.id
+///   ip_address     = hcloud_floatingip.floating_ip1.ip_address
+///   dns_ptr        = "example.com"
+/// }
+/// // For Load Balancers
+/// resource "hcloud_loadbalancer" "load_balancer1" {
+///   name = "load_balancer1"
+/// }
+/// resource "hcloud_rdns" "load_balancer1" {
+///   load_balancer_id = hcloud_loadbalancer.load_balancer1.id
+///   ip_address       = hcloud_loadbalancer.load_balancer1.ipv4
+///   dns_ptr          = "example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.hcloud.LoadBalancer;
-/// import com.pulumi.hcloud.LoadBalancerArgs;
+/// import com.pulumi.hcloud.Server;
+/// import com.pulumi.hcloud.ServerArgs;
 /// import com.pulumi.hcloud.Rdns;
 /// import com.pulumi.hcloud.RdnsArgs;
-/// import java.util.List;
+/// import com.pulumi.hcloud.PrimaryIp;
+/// import com.pulumi.hcloud.PrimaryIpArgs;
+/// import com.pulumi.hcloud.FloatingIp;
+/// import com.pulumi.hcloud.FloatingIpArgs;
+/// import com.pulumi.hcloud.LoadBalancer;
+/// import com.pulumi.hcloud.LoadBalancerArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -524,13 +296,47 @@ import 'rdns_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var loadBalancer1 = new LoadBalancer("loadBalancer1", LoadBalancerArgs.builder()
-///             .name("load_balancer1")
-///             .loadBalancerType("lb11")
-///             .location("fsn1")
+///         // For Servers
+///         var server1 = new Server("server1", ServerArgs.builder()
+///             .name("server1")
 ///             .build());
 ///
-///         var loadBalancerMaster = new Rdns("loadBalancerMaster", RdnsArgs.builder()
+///         var server1Rdns = new Rdns("server1Rdns", RdnsArgs.builder()
+///             .serverId(server1.id())
+///             .ipAddress(server1.ipv4Address())
+///             .dnsPtr("example.com")
+///             .build());
+///
+///         // For Primary IPs
+///         var primaryIp1 = new PrimaryIp("primaryIp1", PrimaryIpArgs.builder()
+///             .name("primary_ip1")
+///             .type("ipv4")
+///             .build());
+///
+///         var primaryIp1Rdns = new Rdns("primaryIp1Rdns", RdnsArgs.builder()
+///             .primaryIpId(primaryIp1.id())
+///             .ipAddress(primaryIp1.ipAddress())
+///             .dnsPtr("example.com")
+///             .build());
+///
+///         // For Floating IPs
+///         var floatingIp1 = new FloatingIp("floatingIp1", FloatingIpArgs.builder()
+///             .name("floating_ip1")
+///             .type("ipv4")
+///             .build());
+///
+///         var floatingIp1Rdns = new Rdns("floatingIp1Rdns", RdnsArgs.builder()
+///             .floatingIpId(floatingIp1.id())
+///             .ipAddress(floatingIp1.ipAddress())
+///             .dnsPtr("example.com")
+///             .build());
+///
+///         // For Load Balancers
+///         var loadBalancer1 = new LoadBalancer("loadBalancer1", LoadBalancerArgs.builder()
+///             .name("load_balancer1")
+///             .build());
+///
+///         var loadBalancer1Rdns = new Rdns("loadBalancer1Rdns", RdnsArgs.builder()
 ///             .loadBalancerId(loadBalancer1.id())
 ///             .ipAddress(loadBalancer1.ipv4())
 ///             .dnsPtr("example.com")
@@ -541,16 +347,55 @@ import 'rdns_state.dart';
 /// ```
 /// ```yaml
 /// resources:
+///   # For Servers
+///   server1:
+///     type: hcloud:Server
+///     properties:
+///       name: server1
+///   server1Rdns:
+///     type: hcloud:Rdns
+///     name: server1
+///     properties:
+///       serverId: ${server1.id}
+///       ipAddress: ${server1.ipv4Address}
+///       dnsPtr: example.com
+///   # For Primary IPs
+///   primaryIp1:
+///     type: hcloud:PrimaryIp
+///     name: primary_ip1
+///     properties:
+///       name: primary_ip1
+///       type: ipv4
+///   primaryIp1Rdns:
+///     type: hcloud:Rdns
+///     name: primary_ip1
+///     properties:
+///       primaryIpId: ${primaryIp1.id}
+///       ipAddress: ${primaryIp1.ipAddress}
+///       dnsPtr: example.com
+///   # For Floating IPs
+///   floatingIp1:
+///     type: hcloud:FloatingIp
+///     name: floating_ip1
+///     properties:
+///       name: floating_ip1
+///       type: ipv4
+///   floatingIp1Rdns:
+///     type: hcloud:Rdns
+///     name: floating_ip1
+///     properties:
+///       floatingIpId: ${floatingIp1.id}
+///       ipAddress: ${floatingIp1.ipAddress}
+///       dnsPtr: example.com
+///   # For Load Balancers
 ///   loadBalancer1:
 ///     type: hcloud:LoadBalancer
 ///     name: load_balancer1
 ///     properties:
 ///       name: load_balancer1
-///       loadBalancerType: lb11
-///       location: fsn1
-///   loadBalancerMaster:
+///   loadBalancer1Rdns:
 ///     type: hcloud:Rdns
-///     name: load_balancer_master
+///     name: load_balancer1
 ///     properties:
 ///       loadBalancerId: ${loadBalancer1.id}
 ///       ipAddress: ${loadBalancer1.ipv4}
@@ -560,48 +405,47 @@ import 'rdns_state.dart';
 ///
 /// ## Import
 ///
-/// Reverse DNS entries can be imported using a compound ID with the following format:
-/// `&lt;prefix (s for server/ f for floating ip / l for load balancer)&gt;-&lt;server, floating ip or load balancer ID&gt;-&lt;IP address&gt;`
+/// The `pulumi import` command can be used, for example:
 ///
 /// ```sh
-/// $ pulumi import hcloud:index/rdns:Rdns example "$PREFIX-$ID-$IP"
+/// $ pulumi import hcloud:index/rdns:Rdns example "$RESOURCE_PREFIX-$ID-$IP"
 /// ```
 ///
-/// import reverse dns entry on server with id 123, ip 192.168.100.1
+/// A Server with id 132022102 and ip 203.0.113.10
 ///
 /// ```sh
-/// $ pulumi import hcloud:index/rdns:Rdns myrdns s-123-192.168.100.1
+/// $ pulumi import hcloud:index/rdns:Rdns server1 "s-132022102-203.0.113.10"
 /// ```
 ///
-/// import reverse dns entry on primary ip with id 123, ip 2001:db8::1
+/// A Primary IP with id 582026301 and ip 2001:db8::1
 ///
 /// ```sh
-/// $ pulumi import hcloud:index/rdns:Rdns myrdns p-123-2001:db8::1
+/// $ pulumi import hcloud:index/rdns:Rdns primary_ip1 "p-582026301-2001:db8::1"
 /// ```
 ///
-/// import reverse dns entry on floating ip with id 123, ip 2001:db8::1
+/// A Floating IP with id 912300308 and ip 2001:db8::1
 ///
 /// ```sh
-/// $ pulumi import hcloud:index/rdns:Rdns myrdns f-123-2001:db8::1
+/// $ pulumi import hcloud:index/rdns:Rdns floating_ip1 "f-912300308-2001:db8::1"
 /// ```
 ///
-/// import reverse dns entry on load balancer with id 123, ip 2001:db8::1
+/// A Load Balancer with id 747590326 and ip 203.0.113.25
 ///
 /// ```sh
-/// $ pulumi import hcloud:index/rdns:Rdns myrdns l-123-2001:db8::1
+/// $ pulumi import hcloud:index/rdns:Rdns load_balancer1 "l-747590326-203.0.113.25"
 /// ```
 class Rdns extends pulumi.CustomResource {
-  /// The DNS address the `ip_address` should resolve to.
+  /// Domain name `ipAddress` should point to.
   late final pulumi.Output<String> dnsPtr;
-  /// The Floating IP the `ip_address` belongs to.
+  /// ID of the Floating IP the `ipAddress` belongs to.
   late final pulumi.Output<int?> floatingIpId;
-  /// The IP address that should point to `dns_ptr`.
+  /// IP address that should point to `dnsPtr`.
   late final pulumi.Output<String> ipAddress;
-  /// The Load Balancer the `ip_address` belongs to.
+  /// ID of the Load Balancer the `ipAddress` belongs to.
   late final pulumi.Output<int?> loadBalancerId;
-  /// The Primary IP the `ip_address` belongs to.
+  /// ID of the Primary IP the `ipAddress` belongs to.
   late final pulumi.Output<int?> primaryIpId;
-  /// The server the `ip_address` belongs to.
+  /// ID of the Server the `ipAddress` belongs to.
   late final pulumi.Output<int?> serverId;
 
   /// Creates a new [Rdns].
