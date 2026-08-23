@@ -11,6 +11,8 @@ type ResourceMethod struct {
 	ArgsDocsMacro          string
 	ArgsClass              string
 	ResultClass            string
+	ReturnType             string
+	ReturnPlain            bool
 	HasReturn              bool
 	TokenLiteral           string
 	HasPackageRegistration bool

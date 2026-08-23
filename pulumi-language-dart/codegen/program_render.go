@@ -36,9 +36,23 @@ func renderDartProgram(program dartProgram) []byte {
 	}
 	body.WriteString("class GeneratedStack extends pulumi.Stack {\n")
 	body.WriteString("  late final List<pulumi.OutputProperty> _outputProperties;\n\n")
-	body.WriteString("  GeneratedStack() {\n")
+	if program.NeedsAsyncInitialization {
+		body.WriteString("  GeneratedStack();\n\n")
+		body.WriteString("  Future<void> initialize() async {\n")
+	} else {
+		body.WriteString("  GeneratedStack() {\n")
+	}
 	if len(program.Configs) > 0 {
 		body.WriteString("    final config = pulumi.Config();\n")
+	}
+	for _, reference := range program.ResourceReferences {
+		fmt.Fprintf(
+			&body,
+			"    pulumi.ResourceReferenceRegistry.register(%s, (urn) => %s.%s.reference(urn));\n",
+			dartStringLiteral(reference.Token),
+			programModuleAlias(reference.Package, reference.Module),
+			reference.ClassName,
+		)
 	}
 	for _, statement := range program.Statements {
 		if statement.Config != nil {
@@ -79,7 +93,14 @@ func renderDartProgram(program dartProgram) []byte {
 	body.WriteString("  List<pulumi.OutputProperty> getOutputProperties() => _outputProperties;\n")
 	body.WriteString("}\n\n")
 	body.WriteString("Future<void> main() async {\n")
-	body.WriteString("  await pulumi.Deployment.runOrThrow(() => GeneratedStack());\n")
+	if program.NeedsAsyncInitialization {
+		body.WriteString("  await pulumi.Deployment.runOrThrow(() async {\n")
+		body.WriteString("    final stack = GeneratedStack();\n")
+		body.WriteString("    await stack.initialize();\n")
+		body.WriteString("  });\n")
+	} else {
+		body.WriteString("  await pulumi.Deployment.runOrThrow(() => GeneratedStack());\n")
+	}
 	body.WriteString("}\n")
 	return []byte(body.String())
 }

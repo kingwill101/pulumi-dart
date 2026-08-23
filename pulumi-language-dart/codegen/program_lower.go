@@ -2,9 +2,9 @@ package codegen
 
 import (
 	"fmt"
-	"sort"
 
 	"github.com/pulumi/pulumi/pkg/v3/codegen/pcl"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 )
 
 func lowerDartProgram(program *pcl.Program) (dartProgram, error) {
@@ -78,34 +78,31 @@ func lowerDartProgram(program *pcl.Program) (dartProgram, error) {
 		}
 	}
 	result.Imports = lowerer.sortedImports()
+	result.NeedsAsyncInitialization = *lowerer.needsAsyncInitialization
+	result.ResourceReferences = lowerer.sortedResourceReferences()
 	return result, nil
 }
 
 type programLowerer struct {
-	names            map[string]string
-	usedNames        map[string]int
-	typedObjectNames map[string]bool
-	imports          map[string]dartProgramImport
-	functions        map[string]programFunction
+	names                    map[string]string
+	usedNames                map[string]int
+	typedObjectNames         map[string]bool
+	imports                  map[string]dartProgramImport
+	functions                map[string]programFunction
+	methods                  map[string]programMethod
+	resourceTypes            map[string]*schema.Resource
+	resourceReferences       map[string]dartProgramResourceReference
+	needsAsyncInitialization *bool
 }
 
 func newProgramLowerer(program *pcl.Program) programLowerer {
 	return programLowerer{
 		names: map[string]string{}, usedNames: map[string]int{},
 		typedObjectNames: map[string]bool{}, imports: map[string]dartProgramImport{},
-		functions: programFunctions(program.Packages()),
+		functions:                programFunctions(program.Packages()),
+		methods:                  programMethods(program.Packages()),
+		resourceTypes:            programResourceTypes(program.Packages()),
+		resourceReferences:       map[string]dartProgramResourceReference{},
+		needsAsyncInitialization: new(bool),
 	}
-}
-
-func (lowerer programLowerer) sortedImports() []dartProgramImport {
-	keys := make([]string, 0, len(lowerer.imports))
-	for key := range lowerer.imports {
-		keys = append(keys, key)
-	}
-	sort.Strings(keys)
-	imports := make([]dartProgramImport, len(keys))
-	for index, key := range keys {
-		imports[index] = lowerer.imports[key]
-	}
-	return imports
 }

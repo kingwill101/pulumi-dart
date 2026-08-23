@@ -11,6 +11,9 @@ func (lowerer programLowerer) functionCallExpression(expression *model.FunctionC
 	if expression.Name == pcl.Invoke {
 		return lowerer.invokeExpression(expression)
 	}
+	if expression.Name == pcl.Call {
+		return lowerer.callExpression(expression)
+	}
 	arguments := make([]string, len(expression.Args))
 	for index, argument := range expression.Args {
 		lowered, err := lowerer.expression(argument)

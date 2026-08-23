@@ -408,7 +408,10 @@ class DeploymentImpl extends Deployment
     );
 
     try {
-      func();
+      final result = func();
+      if (result is Future) {
+        await result;
+      }
       await _instance!.registerOutputs();
       await _instance!.logger.waitForPendingLogs();
       return _instance!.logger.loggedErrors ? 1 : 0;
@@ -481,7 +484,6 @@ class DeploymentImpl extends Deployment
         }
 
         serializedProps[entry.key] = serialized;
-
         final urns = await _expandDependencies(
           serializer.dependentResources,
           fromResource: resource,
@@ -748,6 +750,17 @@ class DeploymentImpl extends Deployment
         );
       }
       readId = id;
+    } else if (resource.isResourceReference) {
+      final urnData = await opts.urn!.toOutput().getData();
+      final urn = urnData.value;
+      if (!urnData.isKnown || urn == null || urn.isEmpty) {
+        throw ArgumentError(
+          'Cannot read resource "${resource.getResourceName()}" with an unknown or empty urn.',
+        );
+      }
+      readId = urn;
+      await _hydrateResourceReference(resource, urn);
+      return;
     } else {
       final urnData = await opts.urn!.toOutput().getData();
       final urn = urnData.value;
@@ -811,6 +824,34 @@ class DeploymentImpl extends Deployment
     resource.resolveUrn(response.urn);
     resource.resolveOutputs(response.properties);
     resource.resolveId(readId, isKnown: true);
+  }
+
+  Future<void> _hydrateResourceReference(
+    CustomResource resource,
+    String urn,
+  ) async {
+    final response = await monitor.invoke(
+      ResourceInvokeRequest(
+        tok: 'pulumi:pulumi:getResource',
+        args: Struct(fields: {'urn': Value(stringValue: urn)}.entries),
+        acceptResources: true,
+      ),
+    );
+    if (response.failures.isNotEmpty) {
+      throw Exception(
+        'Failed to hydrate resource reference: '
+        '${response.failures.map((failure) => failure.reason).join(', ')}',
+      );
+    }
+    final fields = response.return_1.fields;
+    final state = fields['state'];
+    if (state == null || !state.hasStructValue()) {
+      throw StateError('getResource returned no state for $urn');
+    }
+    final id = fields['id']?.stringValue ?? '';
+    resource.resolveUrn(urn);
+    resource.resolveOutputs(state.structValue);
+    resource.resolveId(id, isKnown: id.isNotEmpty);
   }
 
   @override

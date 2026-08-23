@@ -21,4 +21,16 @@ class Custom extends pulumi.CustomResource {
         ) {
     value = registerOutput<String>('value');
   }
+
+  /// Creates a typed reference to an existing [Custom] resource.
+  Custom.reference(String urn)
+    : super(
+        'component:index:Custom',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    value = registerOutput<String>('value');
+  }
 }

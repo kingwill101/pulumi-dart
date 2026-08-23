@@ -67,5 +67,11 @@ func lowerBoundResourceMethod(spec *packageSchema, pkg *schema.Package, used map
 		result.ResultClass = value.ClassName
 	}
 	result.HasReturn = method.Function.Outputs != nil || method.Function.ReturnType != nil
+	if method.Function.ReturnType != nil {
+		result.ReturnType = dartTypeSpecFromSchemaType(
+			method.Function.ReturnType, named, true, pkg.Name,
+		)
+		result.ReturnPlain = method.Function.ReturnTypePlain
+	}
 	return result
 }

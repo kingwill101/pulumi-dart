@@ -16,10 +16,10 @@ func (lowerer programLowerer) scopeTraversalExpression(expression *model.ScopeTr
 		return "", fmt.Errorf("unknown variable %q", expression.RootName)
 	}
 	if _, resourceRoot := expression.Parts[0].(*pcl.Resource); resourceRoot {
-		return lowerResourceOutputTraversal(name, expression)
+		return lowerer.resourceOutputTraversal(name, expression)
 	}
 	if _, resourceRoot := expression.Parts[0].(*pcl.ReadResource); resourceRoot {
-		return lowerResourceOutputTraversal(name, expression)
+		return lowerer.resourceOutputTraversal(name, expression)
 	}
 	rootType := model.GetTraversableType(expression.Parts[0])
 	if len(expression.Traversal) > 1 && model.ContainsOutputs(rootType) {
@@ -61,8 +61,11 @@ func (lowerer programLowerer) relativeTraversalExpression(
 	if err != nil {
 		return "", err
 	}
+	if callExpression(expression.Source) != nil && !model.ContainsOutputs(expression.Source.Type()) {
+		return lowerDartTraversal(source, expression.Traversal, true)
+	}
 	if model.ContainsOutputs(expression.Source.Type()) {
-		typed := invokeExpression(expression.Source) != nil
+		typed := invokeExpression(expression.Source) != nil || callExpression(expression.Source) != nil
 		traversed, err := lowerDartTraversal("value", expression.Traversal, typed)
 		if err != nil {
 			return "", err

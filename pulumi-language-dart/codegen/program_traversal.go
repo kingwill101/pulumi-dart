@@ -13,10 +13,17 @@ func lowerDartTraversal(source string, traversal hcl.Traversal, properties bool)
 	return lowerDartTraversalWithNullAwareProperties(source, traversal, properties, false)
 }
 
-func lowerResourceOutputTraversal(source string, expression *model.ScopeTraversalExpression) (string, error) {
+func (lowerer programLowerer) resourceOutputTraversal(
+	source string, expression *model.ScopeTraversalExpression,
+) (string, error) {
 	traversal := expression.Traversal[1:]
 	if len(traversal) <= 1 {
 		return lowerDartTraversal(source, traversal, true)
+	}
+	if reference, ok := resourceReferenceType(expression); ok {
+		if err := lowerer.registerResourceReference(reference); err != nil {
+			return "", err
+		}
 	}
 	output, err := lowerDartTraversal(source, traversal[:1], true)
 	if err != nil {
@@ -70,7 +77,8 @@ func resourceTraversalPropertyAccess(expression *model.ScopeTraversalExpression)
 				schemaType = wrapped.ElementType
 			default:
 				object, isObject := schemaType.(*schema.ObjectType)
-				result[index] = isObject && object.Token != ""
+				_, isResource := schemaType.(*schema.ResourceType)
+				result[index] = (isObject && object.Token != "") || isResource
 				goto next
 			}
 		}

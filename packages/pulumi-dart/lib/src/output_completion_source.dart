@@ -228,12 +228,6 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
       return _coerceList(value, targetType) as T;
     }
 
-    if (value is Resource && isNullableTarget) {
-      // Resource references that cannot be hydrated into the generated concrete
-      // type are surfaced as null for nullable outputs instead of crashing.
-      return null;
-    }
-
     try {
       return value as T;
     } on TypeError {

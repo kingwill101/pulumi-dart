@@ -41,6 +41,8 @@ func (lowerer programLowerer) typedProviderExpression(
 	switch typ := typ.(type) {
 	case *schema.UnionType:
 		return lowerer.providerUnionExpression(defaultPackage, expression, typ)
+	case *schema.ResourceType:
+		return lowerer.providerResourceReferenceExpression(defaultPackage, expression, typ, nullable)
 	case *schema.EnumType:
 		return lowerer.providerEnumExpression(defaultPackage, expression, typ)
 	case *schema.ObjectType:
@@ -97,16 +99,4 @@ func unwrapProviderInputType(typ schema.Type) schema.Type {
 			return typ
 		}
 	}
-}
-
-func resourceInputProperty(resource *pcl.Resource, name string) *schema.Property {
-	if resource.Schema == nil {
-		return nil
-	}
-	for _, property := range resource.Schema.InputProperties {
-		if property.Name == name {
-			return property
-		}
-	}
-	return nil
 }

@@ -151,6 +151,7 @@ export 'src/resource/component_resource.dart';
 export 'src/resource/custom_resource.dart';
 export 'src/resource/provider_resource.dart';
 export 'src/resource/dependency_resource.dart';
+export 'src/resource/resource_reference_registry.dart';
 export 'src/resource/resource_transformation.dart';
 export 'src/stack_reference.dart';
 export 'src/stash.dart';

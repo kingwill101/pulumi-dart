@@ -42,7 +42,9 @@ ParsedUrn parseUrn(String urn) {
     );
   }
 
-  final typ = parts[2];
+  // Child resource URNs qualify the leaf type with each parent type using `$`.
+  // Resource construction and package lookup operate on the leaf type.
+  final typ = parts[2].split(r'$').last;
   final typeParts = typ.split(':');
   if (typeParts.length != 3) {
     throw FormatException(

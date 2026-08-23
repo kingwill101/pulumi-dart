@@ -101,6 +101,9 @@ class CustomResourceOptions extends ResourceOptions {
 /// {@endtemplate}
 ///
 class CustomResource extends Resource {
+  /// Whether this instance represents a resource value returned over RPC.
+  final bool isResourceReference;
+
   late Output<String> id;
   final Completer<OutputData<String>> _idCompleter =
       Completer<OutputData<String>>();
@@ -112,6 +115,7 @@ class CustomResource extends Resource {
     CustomResourceOptions options, {
     bool remote = false,
     bool dependency = false,
+    this.isResourceReference = false,
     models.RegisterPackageRequest? registerPackageRequest,
     List<String> additionalSecretOutputs = const [],
   }) : super(

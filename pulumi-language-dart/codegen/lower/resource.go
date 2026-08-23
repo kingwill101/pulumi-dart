@@ -87,6 +87,8 @@ func resourceMembers(resource Resource) dartir.ResourceMembers {
 			ArgsDocsMacro:          method.ArgsDocsMacro,
 			ArgsClass:              method.Method.ArgsClass,
 			ResultClass:            method.Method.ResultClass,
+			ReturnType:             method.Method.ReturnType.DartType,
+			ReturnPlain:            method.Method.ReturnPlain,
 			HasReturn:              method.Method.HasReturn,
 			TokenLiteral:           darttext.StringLiteral(methodToken),
 			HasPackageRegistration: resource.HasPackageRegistration,
@@ -110,11 +112,4 @@ func resourceMembers(resource Resource) dartir.ResourceMembers {
 		OutputAssignments: assignments,
 	}
 	return members
-}
-
-func resourceConstructorParameterNames(kind dartir.ResourceKind, hasArgsClass bool) []string {
-	if (kind == dartir.ProviderResource || kind == dartir.ComponentResource) && !hasArgsClass {
-		return []string{"name", "options"}
-	}
-	return []string{"name", "args", "options"}
 }

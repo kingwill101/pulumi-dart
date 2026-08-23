@@ -37,6 +37,14 @@ func writeResourceMethod(b *strings.Builder, method dartir.ResourceMethod) {
 		fmt.Fprintf(b, "  Future<%s> %s%s async {\n    final deployment = pulumi.DeploymentImpl.instance as pulumi.DeploymentImpl;\n    final result = await deployment.callWithResult<Map<String, dynamic>>(\n      %s,\n      %s,\n      self: this%s,\n    );\n    return %s.fromMap(result);\n  }\n", method.ResultClass, method.Name, signature, method.TokenLiteral, callArgs, registrationArg, method.ResultClass)
 		return
 	}
+	if method.ReturnType != "" {
+		unwrapArg := ""
+		if method.ReturnPlain {
+			unwrapArg = ",\n      unwrapSingleReturn: true"
+		}
+		fmt.Fprintf(b, "  Future<%s> %s%s async {\n    final deployment = pulumi.DeploymentImpl.instance as pulumi.DeploymentImpl;\n    return await deployment.callWithResult<%s>(\n      %s,\n      %s,\n      self: this%s%s,\n    );\n  }\n", method.ReturnType, method.Name, signature, method.ReturnType, method.TokenLiteral, callArgs, registrationArg, unwrapArg)
+		return
+	}
 	if method.HasReturn {
 		fmt.Fprintf(b, "  Future<Map<String, dynamic>> %s%s async {\n    final deployment = pulumi.DeploymentImpl.instance as pulumi.DeploymentImpl;\n    return await deployment.callWithResult<Map<String, dynamic>>(\n      %s,\n      %s,\n      self: this%s,\n    );\n  }\n", method.Name, signature, method.TokenLiteral, callArgs, registrationArg)
 		return

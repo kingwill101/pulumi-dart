@@ -326,6 +326,27 @@ abstract class Resource {
     }
 
     final data = Deserializer.deserialize<Object?>(value);
+    if (data.value case Output nested) {
+      unawaited(
+        nested
+            .apply<Object?>((value) => value)
+            .getData()
+            .then(
+              (inner) => source.setValue(
+                OutputData<Object?>(
+                  value: inner.value,
+                  isKnown: data.isKnown && inner.isKnown,
+                  isSecret: data.isSecret || inner.isSecret,
+                  resources: {...data.resources, ...inner.resources, this},
+                ),
+              ),
+              onError: (Object error) => source.trySetException(
+                error is Exception ? error : Exception(error.toString()),
+              ),
+            ),
+      );
+      return;
+    }
     source.setValue(
       OutputData<Object?>(
         value: data.value,

@@ -47,6 +47,7 @@ mixin CallMixin {
     Resource? self,
     models.CallOptions? options,
     models.RegisterPackageRequest? registerPackageRequest,
+    bool unwrapSingleReturn = false,
   }) async {
     final requestArgs = Map<String, dynamic>.from(args);
     if (self != null) {
@@ -81,17 +82,37 @@ mixin CallMixin {
       );
     }
 
-    return _deserializeCallResponse<T>(response.return_1);
+    return _deserializeCallResponse<T>(
+      response.return_1,
+      unwrapSingleReturn: unwrapSingleReturn,
+    );
   }
 
   /// Deserializes monitor call responses using Pulumi wire semantics.
-  T _deserializeCallResponse<T>(Struct response) {
+  T _deserializeCallResponse<T>(
+    Struct response, {
+    required bool unwrapSingleReturn,
+  }) {
     if (T == Null) {
       return null as T;
     }
     final decoded = Deserializer.deserialize<dynamic>(
       Value()..structValue = response,
     );
-    return decoded.value as T;
+    final value = decoded.value;
+    if (unwrapSingleReturn && value is Map<String, dynamic>) {
+      return _coerceCallResult<T>(value['res']);
+    }
+    return _coerceCallResult<T>(value);
+  }
+
+  T _coerceCallResult<T>(Object? value) {
+    if (T == int && value is num) {
+      return value.toInt() as T;
+    }
+    if (T == double && value is num) {
+      return value.toDouble() as T;
+    }
+    return value as T;
   }
 }

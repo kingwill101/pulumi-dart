@@ -46,6 +46,8 @@ type ResourceMethod struct {
 	Comment     string
 	ArgsClass   string
 	ResultClass string
+	ReturnType  Type
+	ReturnPlain bool
 	HasReturn   bool
 }
 

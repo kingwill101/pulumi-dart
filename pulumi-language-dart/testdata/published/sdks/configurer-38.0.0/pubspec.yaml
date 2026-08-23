@@ -1,0 +1,11 @@
+name: pulumi_configurer
+description: Generated Pulumi Dart project.
+version: 38.0.0
+publish_to: none
+environment:
+    sdk: '>=3.11.0 <4.0.0'
+dependencies:
+    pulumi:
+        path: ROOT/artifacts/pulumi
+dev_dependencies:
+    lints: ^6.1.0

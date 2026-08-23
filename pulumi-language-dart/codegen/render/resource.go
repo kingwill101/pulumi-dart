@@ -17,6 +17,7 @@ func Resource(declaration dartir.ResourceClass) []byte {
 	writeResourceConstructorDocs(&b, declaration)
 	writeResourceConstructor(&b, declaration)
 	WriteResourceMembers(&b, declaration.Members)
+	writeResourceReferenceConstructor(&b, declaration)
 	b.WriteString("}\n")
 	return []byte(b.String())
 }

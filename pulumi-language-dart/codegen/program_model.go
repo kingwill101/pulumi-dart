@@ -1,12 +1,21 @@
 package codegen
 
 type dartProgram struct {
-	Imports    []dartProgramImport
-	Configs    []dartProgramConfig
-	Locals     []dartProgramLocal
-	Resources  []dartProgramResource
-	Statements []dartProgramStatement
-	Outputs    []dartProgramOutput
+	Imports                  []dartProgramImport
+	Configs                  []dartProgramConfig
+	Locals                   []dartProgramLocal
+	Resources                []dartProgramResource
+	Statements               []dartProgramStatement
+	Outputs                  []dartProgramOutput
+	NeedsAsyncInitialization bool
+	ResourceReferences       []dartProgramResourceReference
+}
+
+type dartProgramResourceReference struct {
+	Token     string
+	Package   string
+	Module    string
+	ClassName string
 }
 
 type dartProgramImport struct {

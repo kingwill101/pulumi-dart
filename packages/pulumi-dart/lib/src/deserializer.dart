@@ -181,10 +181,16 @@ class Deserializer {
     final (_, id) = _tryGetStringValue(fields, Constants.resourceIdName);
 
     final urnParts = urn!.split("::");
-    if (urnParts.length > 2 && urnParts[2].startsWith("pulumi:providers:")) {
-      final package = urnParts[2].substring("pulumi:providers:".length);
+    final type = urnParts.length > 2 ? urnParts[2].split(r'$').last : '';
+    if (type.startsWith("pulumi:providers:")) {
+      final package = type.substring("pulumi:providers:".length);
       final provider = ProviderResource.reference(package, urn, id: id);
       return (true, provider);
+    }
+
+    final typed = ResourceReferenceRegistry.construct(type, urn);
+    if (typed != null) {
+      return (true, typed);
     }
 
     return (true, DependencyResource(urn));
