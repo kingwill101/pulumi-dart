@@ -4,7 +4,7 @@ import 'package:pulumi/src/deserializer.dart';
 import 'package:pulumi/src/settings.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 
-import '../pulumirpc/pulumi/resource.pbgrpc.dart';
+import '../pulumirpc/pulumi/resource.pbgrpc.dart' hide ResourceOptions;
 
 /// {@template pulumi.resource_registry.summary}
 /// Registry used to construct resources from type tokens at runtime.

@@ -22,12 +22,14 @@ class GetMappingRequest extends $pb.GeneratedMessage {
     $core.String? provider,
     $core.String? pulumiProvider,
     MapperParameterizationHint? parameterizationHint,
+    $core.String? ecosystem,
   }) {
     final result = create();
     if (provider != null) result.provider = provider;
     if (pulumiProvider != null) result.pulumiProvider = pulumiProvider;
     if (parameterizationHint != null)
       result.parameterizationHint = parameterizationHint;
+    if (ecosystem != null) result.ecosystem = ecosystem;
     return result;
   }
 
@@ -49,6 +51,7 @@ class GetMappingRequest extends $pb.GeneratedMessage {
     ..aOM<MapperParameterizationHint>(
         3, _omitFieldNames ? '' : 'parameterizationHint',
         subBuilder: MapperParameterizationHint.create)
+    ..aOS(4, _omitFieldNames ? '' : 'ecosystem')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -104,6 +107,23 @@ class GetMappingRequest extends $pb.GeneratedMessage {
   void clearParameterizationHint() => $_clearField(3);
   @$pb.TagNumber(3)
   MapperParameterizationHint ensureParameterizationHint() => $_ensure(2);
+
+  /// The ecosystem whose mappings are being requested (e.g. "terraform"). This identifies the source ecosystem
+  /// the caller consumes, which is not necessarily the caller's own name -- the hcl converter, for instance,
+  /// executes Terraform programs and so requests "terraform" mappings. If left empty, the mapper falls back to
+  /// the conversion key it was configured with: most mapper instances (those served to `plugin run` and to
+  /// providers and language runtimes) default to "terraform", while `pulumi convert` and `pulumi import` default
+  /// it to the source converter's plugin name. Setting this field lets a caller request a specific ecosystem
+  /// regardless of that configured default, which is particularly useful for `plugin run` and providers
+  /// accessing the mapper.
+  @$pb.TagNumber(4)
+  $core.String get ecosystem => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set ecosystem($core.String value) => $_setString(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasEcosystem() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearEcosystem() => $_clearField(4);
 }
 
 /// `MapperPackageParameterizationHint` is the type of hints that may be passed to [](codegen.Mapper.GetMapping) when it

@@ -17,12 +17,156 @@ import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart' as $4;
 
 import 'alias.pb.dart' as $6;
 import 'callback.pb.dart' as $3;
+import 'provider.pb.dart' as $2;
 import 'resource.pbenum.dart';
 import 'source.pb.dart' as $5;
 
 export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 export 'resource.pbenum.dart';
+
+/// DeploymentInfo returns monitor execution state currently sent to programs
+/// and/or providers through other channels.
+class DeploymentInfo extends $pb.GeneratedMessage {
+  factory DeploymentInfo({
+    $core.String? project,
+    $core.String? stack,
+    $core.String? organization,
+    $core.Iterable<$core.MapEntry<$core.String, $core.String>>? config,
+    $core.Iterable<$core.String>? configSecretKeys,
+    $core.bool? dryRun,
+    $core.int? parallel,
+    $core.Iterable<ResourceMonitorFeature>? supportedFeatures,
+  }) {
+    final result = create();
+    if (project != null) result.project = project;
+    if (stack != null) result.stack = stack;
+    if (organization != null) result.organization = organization;
+    if (config != null) result.config.addEntries(config);
+    if (configSecretKeys != null)
+      result.configSecretKeys.addAll(configSecretKeys);
+    if (dryRun != null) result.dryRun = dryRun;
+    if (parallel != null) result.parallel = parallel;
+    if (supportedFeatures != null)
+      result.supportedFeatures.addAll(supportedFeatures);
+    return result;
+  }
+
+  DeploymentInfo._();
+
+  factory DeploymentInfo.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory DeploymentInfo.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'DeploymentInfo',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'pulumirpc'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'project')
+    ..aOS(2, _omitFieldNames ? '' : 'stack')
+    ..aOS(3, _omitFieldNames ? '' : 'organization')
+    ..m<$core.String, $core.String>(4, _omitFieldNames ? '' : 'config',
+        entryClassName: 'DeploymentInfo.ConfigEntry',
+        keyFieldType: $pb.PbFieldType.OS,
+        valueFieldType: $pb.PbFieldType.OS,
+        packageName: const $pb.PackageName('pulumirpc'))
+    ..pPS(5, _omitFieldNames ? '' : 'configSecretKeys',
+        protoName: 'configSecretKeys')
+    ..aOB(6, _omitFieldNames ? '' : 'dryRun', protoName: 'dryRun')
+    ..aI(7, _omitFieldNames ? '' : 'parallel')
+    ..pc<ResourceMonitorFeature>(
+        8, _omitFieldNames ? '' : 'supportedFeatures', $pb.PbFieldType.KE,
+        protoName: 'supportedFeatures',
+        valueOf: ResourceMonitorFeature.valueOf,
+        enumValues: ResourceMonitorFeature.values,
+        defaultEnumValue:
+            ResourceMonitorFeature.RESOURCE_MONITOR_FEATURE_SECRETS)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  DeploymentInfo clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  DeploymentInfo copyWith(void Function(DeploymentInfo) updates) =>
+      super.copyWith((message) => updates(message as DeploymentInfo))
+          as DeploymentInfo;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static DeploymentInfo create() => DeploymentInfo._();
+  @$core.override
+  DeploymentInfo createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static DeploymentInfo getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DeploymentInfo>(create);
+  static DeploymentInfo? _defaultInstance;
+
+  /// The project name.
+  @$pb.TagNumber(1)
+  $core.String get project => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set project($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasProject() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearProject() => $_clearField(1);
+
+  /// The stack name.
+  @$pb.TagNumber(2)
+  $core.String get stack => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set stack($core.String value) => $_setString(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasStack() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearStack() => $_clearField(2);
+
+  /// The organization name.
+  @$pb.TagNumber(3)
+  $core.String get organization => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set organization($core.String value) => $_setString(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasOrganization() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearOrganization() => $_clearField(3);
+
+  /// The stack configuration values.
+  @$pb.TagNumber(4)
+  $pb.PbMap<$core.String, $core.String> get config => $_getMap(3);
+
+  /// Configuration keys whose values are secret.
+  @$pb.TagNumber(5)
+  $pb.PbList<$core.String> get configSecretKeys => $_getList(4);
+
+  /// True if the current execution is preview/dry-run.
+  @$pb.TagNumber(6)
+  $core.bool get dryRun => $_getBF(5);
+  @$pb.TagNumber(6)
+  set dryRun($core.bool value) => $_setBool(5, value);
+  @$pb.TagNumber(6)
+  $core.bool hasDryRun() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearDryRun() => $_clearField(6);
+
+  /// Requested operation parallelism (<=1 for serial execution).
+  @$pb.TagNumber(7)
+  $core.int get parallel => $_getIZ(6);
+  @$pb.TagNumber(7)
+  set parallel($core.int value) => $_setSignedInt32(6, value);
+  @$pb.TagNumber(7)
+  $core.bool hasParallel() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearParallel() => $_clearField(7);
+
+  /// The set of monitor-supported protocol features.
+  @$pb.TagNumber(8)
+  $pb.PbList<ResourceMonitorFeature> get supportedFeatures => $_getList(7);
+}
 
 /// SupportsFeatureRequest allows a client to test if the resource monitor supports a certain feature, which it may use
 /// to control the format or types of messages it sends.
@@ -157,6 +301,7 @@ class ReadResourceRequest extends $pb.GeneratedMessage {
     $core.String? packageRef,
     $5.StackTrace? stackTrace,
     $core.String? parentStackTraceHandle,
+    $core.bool? acceptsByteString,
   }) {
     final result = create();
     if (id != null) result.id = id;
@@ -179,6 +324,7 @@ class ReadResourceRequest extends $pb.GeneratedMessage {
     if (stackTrace != null) result.stackTrace = stackTrace;
     if (parentStackTraceHandle != null)
       result.parentStackTraceHandle = parentStackTraceHandle;
+    if (acceptsByteString != null) result.acceptsByteString = acceptsByteString;
     return result;
   }
 
@@ -225,6 +371,7 @@ class ReadResourceRequest extends $pb.GeneratedMessage {
         protoName: 'stackTrace', subBuilder: $5.StackTrace.create)
     ..aOS(18, _omitFieldNames ? '' : 'parentStackTraceHandle',
         protoName: 'parentStackTraceHandle')
+    ..aOB(19, _omitFieldNames ? '' : 'acceptsByteString')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -387,6 +534,17 @@ class ReadResourceRequest extends $pb.GeneratedMessage {
   $core.bool hasParentStackTraceHandle() => $_has(16);
   @$pb.TagNumber(18)
   void clearParentStackTraceHandle() => $_clearField(18);
+
+  /// When true operations may return strings containing bytes that are not valid UTF-8, marshaled as objects
+  /// carrying the byte string signature and a base64 encoding of the string's bytes.
+  @$pb.TagNumber(19)
+  $core.bool get acceptsByteString => $_getBF(17);
+  @$pb.TagNumber(19)
+  set acceptsByteString($core.bool value) => $_setBool(17, value);
+  @$pb.TagNumber(19)
+  $core.bool hasAcceptsByteString() => $_has(17);
+  @$pb.TagNumber(19)
+  void clearAcceptsByteString() => $_clearField(19);
 }
 
 /// ReadResourceResponse contains the result of reading a resource's state.
@@ -523,11 +681,13 @@ class RegisterResourceRequest_CustomTimeouts extends $pb.GeneratedMessage {
     $core.String? create_1,
     $core.String? update,
     $core.String? delete,
+    $core.String? read,
   }) {
     final result = create();
     if (create_1 != null) result.create_1 = create_1;
     if (update != null) result.update = update;
     if (delete != null) result.delete = delete;
+    if (read != null) result.read = read;
     return result;
   }
 
@@ -548,6 +708,7 @@ class RegisterResourceRequest_CustomTimeouts extends $pb.GeneratedMessage {
     ..aOS(1, _omitFieldNames ? '' : 'create')
     ..aOS(2, _omitFieldNames ? '' : 'update')
     ..aOS(3, _omitFieldNames ? '' : 'delete')
+    ..aOS(4, _omitFieldNames ? '' : 'read')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -599,6 +760,15 @@ class RegisterResourceRequest_CustomTimeouts extends $pb.GeneratedMessage {
   $core.bool hasDelete() => $_has(2);
   @$pb.TagNumber(3)
   void clearDelete() => $_clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get read => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set read($core.String value) => $_setString(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasRead() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearRead() => $_clearField(4);
 }
 
 class RegisterResourceRequest_ResourceHooksBinding
@@ -740,7 +910,9 @@ class RegisterResourceRequest extends $pb.GeneratedMessage {
     $core.Iterable<$core.String>? hideDiffs,
     $core.Iterable<$core.String>? replaceWith,
     $4.Value? replacementTrigger,
+    $core.String? snippetId,
     $core.Iterable<$core.MapEntry<$core.String, $core.String>>? envVarMappings,
+    $core.bool? acceptsByteString,
   }) {
     final result = create();
     if (type != null) result.type = type;
@@ -792,8 +964,10 @@ class RegisterResourceRequest extends $pb.GeneratedMessage {
     if (replaceWith != null) result.replaceWith.addAll(replaceWith);
     if (replacementTrigger != null)
       result.replacementTrigger = replacementTrigger;
+    if (snippetId != null) result.snippetId = snippetId;
     if (envVarMappings != null)
       result.envVarMappings.addEntries(envVarMappings);
+    if (acceptsByteString != null) result.acceptsByteString = acceptsByteString;
     return result;
   }
 
@@ -891,12 +1065,14 @@ class RegisterResourceRequest extends $pb.GeneratedMessage {
     ..pPS(38, _omitFieldNames ? '' : 'replaceWith')
     ..aOM<$4.Value>(39, _omitFieldNames ? '' : 'replacementTrigger',
         subBuilder: $4.Value.create)
+    ..aOS(40, _omitFieldNames ? '' : 'snippetId', protoName: 'snippetId')
     ..m<$core.String, $core.String>(41, _omitFieldNames ? '' : 'envVarMappings',
         protoName: 'envVarMappings',
         entryClassName: 'RegisterResourceRequest.EnvVarMappingsEntry',
         keyFieldType: $pb.PbFieldType.OS,
         valueFieldType: $pb.PbFieldType.OS,
         packageName: const $pb.PackageName('pulumirpc'))
+    ..aOB(42, _omitFieldNames ? '' : 'acceptsByteString')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -1222,8 +1398,28 @@ class RegisterResourceRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(39)
   $4.Value ensureReplacementTrigger() => $_ensure(38);
 
+  @$pb.TagNumber(40)
+  $core.String get snippetId => $_getSZ(39);
+  @$pb.TagNumber(40)
+  set snippetId($core.String value) => $_setString(39, value);
+  @$pb.TagNumber(40)
+  $core.bool hasSnippetId() => $_has(39);
+  @$pb.TagNumber(40)
+  void clearSnippetId() => $_clearField(40);
+
   @$pb.TagNumber(41)
-  $pb.PbMap<$core.String, $core.String> get envVarMappings => $_getMap(39);
+  $pb.PbMap<$core.String, $core.String> get envVarMappings => $_getMap(40);
+
+  /// When true operations may return strings containing bytes that are not valid UTF-8, marshaled as objects
+  /// carrying the byte string signature and a base64 encoding of the string's bytes.
+  @$pb.TagNumber(42)
+  $core.bool get acceptsByteString => $_getBF(41);
+  @$pb.TagNumber(42)
+  set acceptsByteString($core.bool value) => $_setBool(41, value);
+  @$pb.TagNumber(42)
+  $core.bool hasAcceptsByteString() => $_has(41);
+  @$pb.TagNumber(42)
+  void clearAcceptsByteString() => $_clearField(42);
 }
 
 /// PropertyDependencies describes the resources that a particular property depends on.
@@ -1298,6 +1494,7 @@ class RegisterResourceResponse extends $pb.GeneratedMessage {
                 RegisterResourceResponse_PropertyDependencies>>?
         propertyDependencies,
     Result? result,
+    $core.bool? unknown,
   }) {
     final result$ = create();
     if (urn != null) result$.urn = urn;
@@ -1308,6 +1505,7 @@ class RegisterResourceResponse extends $pb.GeneratedMessage {
     if (propertyDependencies != null)
       result$.propertyDependencies.addEntries(propertyDependencies);
     if (result != null) result$.result = result;
+    if (unknown != null) result$.unknown = unknown;
     return result$;
   }
 
@@ -1341,6 +1539,7 @@ class RegisterResourceResponse extends $pb.GeneratedMessage {
             RegisterResourceResponse_PropertyDependencies.getDefault,
         packageName: const $pb.PackageName('pulumirpc'))
     ..aE<Result>(7, _omitFieldNames ? '' : 'result', enumValues: Result.values)
+    ..aOB(8, _omitFieldNames ? '' : 'unknown')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -1416,6 +1615,15 @@ class RegisterResourceResponse extends $pb.GeneratedMessage {
   $core.bool hasResult() => $_has(6);
   @$pb.TagNumber(7)
   void clearResult() => $_clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.bool get unknown => $_getBF(7);
+  @$pb.TagNumber(8)
+  set unknown($core.bool value) => $_setBool(7, value);
+  @$pb.TagNumber(8)
+  $core.bool hasUnknown() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearUnknown() => $_clearField(8);
 }
 
 /// RegisterResourceOutputsRequest adds extra resource outputs created by the program after registration has occurred.
@@ -1505,6 +1713,9 @@ class ResourceInvokeRequest extends $pb.GeneratedMessage {
     $core.String? packageRef,
     $5.StackTrace? stackTrace,
     $core.String? parentStackTraceHandle,
+    $core.bool? acceptsByteString,
+    $core.Iterable<$core.String>? dependsOn,
+    $core.String? parent,
   }) {
     final result = create();
     if (tok != null) result.tok = tok;
@@ -1520,6 +1731,9 @@ class ResourceInvokeRequest extends $pb.GeneratedMessage {
     if (stackTrace != null) result.stackTrace = stackTrace;
     if (parentStackTraceHandle != null)
       result.parentStackTraceHandle = parentStackTraceHandle;
+    if (acceptsByteString != null) result.acceptsByteString = acceptsByteString;
+    if (dependsOn != null) result.dependsOn.addAll(dependsOn);
+    if (parent != null) result.parent = parent;
     return result;
   }
 
@@ -1559,6 +1773,9 @@ class ResourceInvokeRequest extends $pb.GeneratedMessage {
         protoName: 'stackTrace', subBuilder: $5.StackTrace.create)
     ..aOS(11, _omitFieldNames ? '' : 'parentStackTraceHandle',
         protoName: 'parentStackTraceHandle')
+    ..aOB(12, _omitFieldNames ? '' : 'acceptsByteString')
+    ..pPS(13, _omitFieldNames ? '' : 'dependsOn', protoName: 'dependsOn')
+    ..aOS(15, _omitFieldNames ? '' : 'parent')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -1680,6 +1897,114 @@ class ResourceInvokeRequest extends $pb.GeneratedMessage {
   $core.bool hasParentStackTraceHandle() => $_has(10);
   @$pb.TagNumber(11)
   void clearParentStackTraceHandle() => $_clearField(11);
+
+  /// When true operations may return strings containing bytes that are not valid UTF-8, marshaled as objects
+  /// carrying the byte string signature and a base64 encoding of the string's bytes.
+  @$pb.TagNumber(12)
+  $core.bool get acceptsByteString => $_getBF(11);
+  @$pb.TagNumber(12)
+  set acceptsByteString($core.bool value) => $_setBool(11, value);
+  @$pb.TagNumber(12)
+  $core.bool hasAcceptsByteString() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearAcceptsByteString() => $_clearField(12);
+
+  /// The URNs of the resources this invoke depends on.
+  ///
+  /// The engine will advertise `INVOKE_DEPENDS_ON` when it reads this field.
+  @$pb.TagNumber(13)
+  $pb.PbList<$core.String> get dependsOn => $_getList(12);
+
+  /// An optional URN of the resource this invoke is parented to. When `provider` is empty, the invoke is served by
+  /// the provider its parent's `providers` option names for the invoke's package, the same resolution applied to
+  /// resource registrations. Only respected when the monitor advertises `INVOKE_PARENT`.
+  @$pb.TagNumber(15)
+  $core.String get parent => $_getSZ(13);
+  @$pb.TagNumber(15)
+  set parent($core.String value) => $_setString(13, value);
+  @$pb.TagNumber(15)
+  $core.bool hasParent() => $_has(13);
+  @$pb.TagNumber(15)
+  void clearParent() => $_clearField(15);
+}
+
+class ResourceInvokeResponse extends $pb.GeneratedMessage {
+  factory ResourceInvokeResponse({
+    $4.Struct? return_1,
+    $core.Iterable<$2.CheckFailure>? failures,
+    $core.bool? unknown,
+  }) {
+    final result = create();
+    if (return_1 != null) result.return_1 = return_1;
+    if (failures != null) result.failures.addAll(failures);
+    if (unknown != null) result.unknown = unknown;
+    return result;
+  }
+
+  ResourceInvokeResponse._();
+
+  factory ResourceInvokeResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ResourceInvokeResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ResourceInvokeResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'pulumirpc'),
+      createEmptyInstance: create)
+    ..aOM<$4.Struct>(1, _omitFieldNames ? '' : 'return',
+        subBuilder: $4.Struct.create)
+    ..pPM<$2.CheckFailure>(2, _omitFieldNames ? '' : 'failures',
+        subBuilder: $2.CheckFailure.create)
+    ..aOB(3, _omitFieldNames ? '' : 'unknown')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ResourceInvokeResponse clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ResourceInvokeResponse copyWith(
+          void Function(ResourceInvokeResponse) updates) =>
+      super.copyWith((message) => updates(message as ResourceInvokeResponse))
+          as ResourceInvokeResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ResourceInvokeResponse create() => ResourceInvokeResponse._();
+  @$core.override
+  ResourceInvokeResponse createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static ResourceInvokeResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ResourceInvokeResponse>(create);
+  static ResourceInvokeResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $4.Struct get return_1 => $_getN(0);
+  @$pb.TagNumber(1)
+  set return_1($4.Struct value) => $_setField(1, value);
+  @$pb.TagNumber(1)
+  $core.bool hasReturn_1() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearReturn_1() => $_clearField(1);
+  @$pb.TagNumber(1)
+  $4.Struct ensureReturn_1() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $pb.PbList<$2.CheckFailure> get failures => $_getList(1);
+
+  /// True if the result must be treated as wholly unknown, which the monitor reports when it declines to service an
+  /// invoke whose dependencies are pending creation.
+  @$pb.TagNumber(3)
+  $core.bool get unknown => $_getBF(2);
+  @$pb.TagNumber(3)
+  set unknown($core.bool value) => $_setBool(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasUnknown() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearUnknown() => $_clearField(3);
 }
 
 /// ArgumentDependencies describes the resources that a particular argument depends on.
@@ -1753,6 +2078,7 @@ class ResourceCallRequest extends $pb.GeneratedMessage {
     $core.String? packageRef,
     $5.StackTrace? stackTrace,
     $core.String? parentStackTraceHandle,
+    $core.bool? acceptsByteString,
   }) {
     final result = create();
     if (tok != null) result.tok = tok;
@@ -1769,6 +2095,7 @@ class ResourceCallRequest extends $pb.GeneratedMessage {
     if (stackTrace != null) result.stackTrace = stackTrace;
     if (parentStackTraceHandle != null)
       result.parentStackTraceHandle = parentStackTraceHandle;
+    if (acceptsByteString != null) result.acceptsByteString = acceptsByteString;
     return result;
   }
 
@@ -1816,6 +2143,7 @@ class ResourceCallRequest extends $pb.GeneratedMessage {
         protoName: 'stackTrace', subBuilder: $5.StackTrace.create)
     ..aOS(19, _omitFieldNames ? '' : 'parentStackTraceHandle',
         protoName: 'parentStackTraceHandle')
+    ..aOB(20, _omitFieldNames ? '' : 'acceptsByteString')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -1931,6 +2259,17 @@ class ResourceCallRequest extends $pb.GeneratedMessage {
   $core.bool hasParentStackTraceHandle() => $_has(10);
   @$pb.TagNumber(19)
   void clearParentStackTraceHandle() => $_clearField(19);
+
+  /// When true operations may return strings containing bytes that are not valid UTF-8, marshaled as objects
+  /// carrying the byte string signature and a base64 encoding of the string's bytes.
+  @$pb.TagNumber(20)
+  $core.bool get acceptsByteString => $_getBF(11);
+  @$pb.TagNumber(20)
+  set acceptsByteString($core.bool value) => $_setBool(11, value);
+  @$pb.TagNumber(20)
+  $core.bool hasAcceptsByteString() => $_has(11);
+  @$pb.TagNumber(20)
+  void clearAcceptsByteString() => $_clearField(20);
 }
 
 /// TransformResourceOptions is a subset of all resource options that are relevant to transforms.
@@ -2191,6 +2530,278 @@ class TransformResourceOptions extends $pb.GeneratedMessage {
   void clearReplacementTrigger() => $_clearField(20);
   @$pb.TagNumber(20)
   $4.Value ensureReplacementTrigger() => $_ensure(19);
+}
+
+/// ResourceOptions is a subset of all resource options that are relevant to
+/// hook callbacks.
+class ResourceOptions extends $pb.GeneratedMessage {
+  factory ResourceOptions({
+    $core.Iterable<$core.String>? dependsOn,
+    $core.bool? protect,
+    $core.Iterable<$core.String>? ignoreChanges,
+    $core.Iterable<$core.String>? replaceOnChanges,
+    $core.String? version,
+    $core.Iterable<$6.Alias>? aliases,
+    $core.String? provider,
+    RegisterResourceRequest_CustomTimeouts? customTimeouts,
+    $core.String? pluginDownloadUrl,
+    $core.bool? retainOnDelete,
+    $core.String? deletedWith,
+    $core.bool? deleteBeforeReplace,
+    $core.Iterable<$core.String>? additionalSecretOutputs,
+    $core.Iterable<$core.MapEntry<$core.String, $core.String>>? providers,
+    $core.Iterable<$core.MapEntry<$core.String, $core.List<$core.int>>>?
+        pluginChecksums,
+    RegisterResourceRequest_ResourceHooksBinding? hooks,
+    $core.String? import,
+    $core.Iterable<$core.String>? hideDiff,
+    $core.Iterable<$core.String>? replaceWith,
+    $4.Value? replacementTrigger,
+    $core.String? parent,
+  }) {
+    final result = create();
+    if (dependsOn != null) result.dependsOn.addAll(dependsOn);
+    if (protect != null) result.protect = protect;
+    if (ignoreChanges != null) result.ignoreChanges.addAll(ignoreChanges);
+    if (replaceOnChanges != null)
+      result.replaceOnChanges.addAll(replaceOnChanges);
+    if (version != null) result.version = version;
+    if (aliases != null) result.aliases.addAll(aliases);
+    if (provider != null) result.provider = provider;
+    if (customTimeouts != null) result.customTimeouts = customTimeouts;
+    if (pluginDownloadUrl != null) result.pluginDownloadUrl = pluginDownloadUrl;
+    if (retainOnDelete != null) result.retainOnDelete = retainOnDelete;
+    if (deletedWith != null) result.deletedWith = deletedWith;
+    if (deleteBeforeReplace != null)
+      result.deleteBeforeReplace = deleteBeforeReplace;
+    if (additionalSecretOutputs != null)
+      result.additionalSecretOutputs.addAll(additionalSecretOutputs);
+    if (providers != null) result.providers.addEntries(providers);
+    if (pluginChecksums != null)
+      result.pluginChecksums.addEntries(pluginChecksums);
+    if (hooks != null) result.hooks = hooks;
+    if (import != null) result.import = import;
+    if (hideDiff != null) result.hideDiff.addAll(hideDiff);
+    if (replaceWith != null) result.replaceWith.addAll(replaceWith);
+    if (replacementTrigger != null)
+      result.replacementTrigger = replacementTrigger;
+    if (parent != null) result.parent = parent;
+    return result;
+  }
+
+  ResourceOptions._();
+
+  factory ResourceOptions.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ResourceOptions.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ResourceOptions',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'pulumirpc'),
+      createEmptyInstance: create)
+    ..pPS(1, _omitFieldNames ? '' : 'dependsOn')
+    ..aOB(2, _omitFieldNames ? '' : 'protect')
+    ..pPS(3, _omitFieldNames ? '' : 'ignoreChanges')
+    ..pPS(4, _omitFieldNames ? '' : 'replaceOnChanges')
+    ..aOS(5, _omitFieldNames ? '' : 'version')
+    ..pPM<$6.Alias>(6, _omitFieldNames ? '' : 'aliases',
+        subBuilder: $6.Alias.create)
+    ..aOS(7, _omitFieldNames ? '' : 'provider')
+    ..aOM<RegisterResourceRequest_CustomTimeouts>(
+        8, _omitFieldNames ? '' : 'customTimeouts',
+        subBuilder: RegisterResourceRequest_CustomTimeouts.create)
+    ..aOS(9, _omitFieldNames ? '' : 'pluginDownloadUrl')
+    ..aOB(10, _omitFieldNames ? '' : 'retainOnDelete')
+    ..aOS(11, _omitFieldNames ? '' : 'deletedWith')
+    ..aOB(12, _omitFieldNames ? '' : 'deleteBeforeReplace')
+    ..pPS(13, _omitFieldNames ? '' : 'additionalSecretOutputs')
+    ..m<$core.String, $core.String>(14, _omitFieldNames ? '' : 'providers',
+        entryClassName: 'ResourceOptions.ProvidersEntry',
+        keyFieldType: $pb.PbFieldType.OS,
+        valueFieldType: $pb.PbFieldType.OS,
+        packageName: const $pb.PackageName('pulumirpc'))
+    ..m<$core.String, $core.List<$core.int>>(
+        15, _omitFieldNames ? '' : 'pluginChecksums',
+        entryClassName: 'ResourceOptions.PluginChecksumsEntry',
+        keyFieldType: $pb.PbFieldType.OS,
+        valueFieldType: $pb.PbFieldType.OY,
+        packageName: const $pb.PackageName('pulumirpc'))
+    ..aOM<RegisterResourceRequest_ResourceHooksBinding>(
+        16, _omitFieldNames ? '' : 'hooks',
+        subBuilder: RegisterResourceRequest_ResourceHooksBinding.create)
+    ..aOS(17, _omitFieldNames ? '' : 'import')
+    ..pPS(18, _omitFieldNames ? '' : 'hideDiff')
+    ..pPS(19, _omitFieldNames ? '' : 'replaceWith')
+    ..aOM<$4.Value>(20, _omitFieldNames ? '' : 'replacementTrigger',
+        subBuilder: $4.Value.create)
+    ..aOS(21, _omitFieldNames ? '' : 'parent')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ResourceOptions clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ResourceOptions copyWith(void Function(ResourceOptions) updates) =>
+      super.copyWith((message) => updates(message as ResourceOptions))
+          as ResourceOptions;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ResourceOptions create() => ResourceOptions._();
+  @$core.override
+  ResourceOptions createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static ResourceOptions getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ResourceOptions>(create);
+  static ResourceOptions? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $pb.PbList<$core.String> get dependsOn => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.bool get protect => $_getBF(1);
+  @$pb.TagNumber(2)
+  set protect($core.bool value) => $_setBool(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasProtect() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearProtect() => $_clearField(2);
+
+  @$pb.TagNumber(3)
+  $pb.PbList<$core.String> get ignoreChanges => $_getList(2);
+
+  @$pb.TagNumber(4)
+  $pb.PbList<$core.String> get replaceOnChanges => $_getList(3);
+
+  @$pb.TagNumber(5)
+  $core.String get version => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set version($core.String value) => $_setString(4, value);
+  @$pb.TagNumber(5)
+  $core.bool hasVersion() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearVersion() => $_clearField(5);
+
+  @$pb.TagNumber(6)
+  $pb.PbList<$6.Alias> get aliases => $_getList(5);
+
+  @$pb.TagNumber(7)
+  $core.String get provider => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set provider($core.String value) => $_setString(6, value);
+  @$pb.TagNumber(7)
+  $core.bool hasProvider() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearProvider() => $_clearField(7);
+
+  @$pb.TagNumber(8)
+  RegisterResourceRequest_CustomTimeouts get customTimeouts => $_getN(7);
+  @$pb.TagNumber(8)
+  set customTimeouts(RegisterResourceRequest_CustomTimeouts value) =>
+      $_setField(8, value);
+  @$pb.TagNumber(8)
+  $core.bool hasCustomTimeouts() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearCustomTimeouts() => $_clearField(8);
+  @$pb.TagNumber(8)
+  RegisterResourceRequest_CustomTimeouts ensureCustomTimeouts() => $_ensure(7);
+
+  @$pb.TagNumber(9)
+  $core.String get pluginDownloadUrl => $_getSZ(8);
+  @$pb.TagNumber(9)
+  set pluginDownloadUrl($core.String value) => $_setString(8, value);
+  @$pb.TagNumber(9)
+  $core.bool hasPluginDownloadUrl() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearPluginDownloadUrl() => $_clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.bool get retainOnDelete => $_getBF(9);
+  @$pb.TagNumber(10)
+  set retainOnDelete($core.bool value) => $_setBool(9, value);
+  @$pb.TagNumber(10)
+  $core.bool hasRetainOnDelete() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearRetainOnDelete() => $_clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.String get deletedWith => $_getSZ(10);
+  @$pb.TagNumber(11)
+  set deletedWith($core.String value) => $_setString(10, value);
+  @$pb.TagNumber(11)
+  $core.bool hasDeletedWith() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearDeletedWith() => $_clearField(11);
+
+  @$pb.TagNumber(12)
+  $core.bool get deleteBeforeReplace => $_getBF(11);
+  @$pb.TagNumber(12)
+  set deleteBeforeReplace($core.bool value) => $_setBool(11, value);
+  @$pb.TagNumber(12)
+  $core.bool hasDeleteBeforeReplace() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearDeleteBeforeReplace() => $_clearField(12);
+
+  @$pb.TagNumber(13)
+  $pb.PbList<$core.String> get additionalSecretOutputs => $_getList(12);
+
+  @$pb.TagNumber(14)
+  $pb.PbMap<$core.String, $core.String> get providers => $_getMap(13);
+
+  @$pb.TagNumber(15)
+  $pb.PbMap<$core.String, $core.List<$core.int>> get pluginChecksums =>
+      $_getMap(14);
+
+  @$pb.TagNumber(16)
+  RegisterResourceRequest_ResourceHooksBinding get hooks => $_getN(15);
+  @$pb.TagNumber(16)
+  set hooks(RegisterResourceRequest_ResourceHooksBinding value) =>
+      $_setField(16, value);
+  @$pb.TagNumber(16)
+  $core.bool hasHooks() => $_has(15);
+  @$pb.TagNumber(16)
+  void clearHooks() => $_clearField(16);
+  @$pb.TagNumber(16)
+  RegisterResourceRequest_ResourceHooksBinding ensureHooks() => $_ensure(15);
+
+  @$pb.TagNumber(17)
+  $core.String get import => $_getSZ(16);
+  @$pb.TagNumber(17)
+  set import($core.String value) => $_setString(16, value);
+  @$pb.TagNumber(17)
+  $core.bool hasImport() => $_has(16);
+  @$pb.TagNumber(17)
+  void clearImport() => $_clearField(17);
+
+  @$pb.TagNumber(18)
+  $pb.PbList<$core.String> get hideDiff => $_getList(17);
+
+  @$pb.TagNumber(19)
+  $pb.PbList<$core.String> get replaceWith => $_getList(18);
+
+  @$pb.TagNumber(20)
+  $4.Value get replacementTrigger => $_getN(19);
+  @$pb.TagNumber(20)
+  set replacementTrigger($4.Value value) => $_setField(20, value);
+  @$pb.TagNumber(20)
+  $core.bool hasReplacementTrigger() => $_has(19);
+  @$pb.TagNumber(20)
+  void clearReplacementTrigger() => $_clearField(20);
+  @$pb.TagNumber(20)
+  $4.Value ensureReplacementTrigger() => $_ensure(19);
+
+  @$pb.TagNumber(21)
+  $core.String get parent => $_getSZ(20);
+  @$pb.TagNumber(21)
+  set parent($core.String value) => $_setString(20, value);
+  @$pb.TagNumber(21)
+  $core.bool hasParent() => $_has(20);
+  @$pb.TagNumber(21)
+  void clearParent() => $_clearField(21);
 }
 
 class TransformRequest extends $pb.GeneratedMessage {
@@ -2650,6 +3261,8 @@ class ResourceHookRequest extends $pb.GeneratedMessage {
     $4.Struct? oldInputs,
     $4.Struct? newOutputs,
     $4.Struct? oldOutputs,
+    ResourceOptions? oldOptions,
+    ResourceOptions? newOptions,
   }) {
     final result = create();
     if (urn != null) result.urn = urn;
@@ -2660,6 +3273,8 @@ class ResourceHookRequest extends $pb.GeneratedMessage {
     if (oldInputs != null) result.oldInputs = oldInputs;
     if (newOutputs != null) result.newOutputs = newOutputs;
     if (oldOutputs != null) result.oldOutputs = oldOutputs;
+    if (oldOptions != null) result.oldOptions = oldOptions;
+    if (newOptions != null) result.newOptions = newOptions;
     return result;
   }
 
@@ -2688,6 +3303,10 @@ class ResourceHookRequest extends $pb.GeneratedMessage {
         subBuilder: $4.Struct.create)
     ..aOM<$4.Struct>(8, _omitFieldNames ? '' : 'oldOutputs',
         subBuilder: $4.Struct.create)
+    ..aOM<ResourceOptions>(9, _omitFieldNames ? '' : 'oldOptions',
+        subBuilder: ResourceOptions.create)
+    ..aOM<ResourceOptions>(10, _omitFieldNames ? '' : 'newOptions',
+        subBuilder: ResourceOptions.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -2788,6 +3407,28 @@ class ResourceHookRequest extends $pb.GeneratedMessage {
   void clearOldOutputs() => $_clearField(8);
   @$pb.TagNumber(8)
   $4.Struct ensureOldOutputs() => $_ensure(7);
+
+  @$pb.TagNumber(9)
+  ResourceOptions get oldOptions => $_getN(8);
+  @$pb.TagNumber(9)
+  set oldOptions(ResourceOptions value) => $_setField(9, value);
+  @$pb.TagNumber(9)
+  $core.bool hasOldOptions() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearOldOptions() => $_clearField(9);
+  @$pb.TagNumber(9)
+  ResourceOptions ensureOldOptions() => $_ensure(8);
+
+  @$pb.TagNumber(10)
+  ResourceOptions get newOptions => $_getN(9);
+  @$pb.TagNumber(10)
+  set newOptions(ResourceOptions value) => $_setField(10, value);
+  @$pb.TagNumber(10)
+  $core.bool hasNewOptions() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearNewOptions() => $_clearField(10);
+  @$pb.TagNumber(10)
+  ResourceOptions ensureNewOptions() => $_ensure(9);
 }
 
 /// ResourceHookResponse is the response object for resource hook callbacks in CallbackInvokeResponse.
@@ -2857,6 +3498,8 @@ class ErrorHookRequest extends $pb.GeneratedMessage {
     $4.Struct? oldOutputs,
     $core.String? failedOperation,
     $core.Iterable<$core.String>? errors,
+    ResourceOptions? oldOptions,
+    ResourceOptions? newOptions,
   }) {
     final result = create();
     if (urn != null) result.urn = urn;
@@ -2868,6 +3511,8 @@ class ErrorHookRequest extends $pb.GeneratedMessage {
     if (oldOutputs != null) result.oldOutputs = oldOutputs;
     if (failedOperation != null) result.failedOperation = failedOperation;
     if (errors != null) result.errors.addAll(errors);
+    if (oldOptions != null) result.oldOptions = oldOptions;
+    if (newOptions != null) result.newOptions = newOptions;
     return result;
   }
 
@@ -2896,6 +3541,10 @@ class ErrorHookRequest extends $pb.GeneratedMessage {
         subBuilder: $4.Struct.create)
     ..aOS(8, _omitFieldNames ? '' : 'failedOperation')
     ..pPS(9, _omitFieldNames ? '' : 'errors')
+    ..aOM<ResourceOptions>(10, _omitFieldNames ? '' : 'oldOptions',
+        subBuilder: ResourceOptions.create)
+    ..aOM<ResourceOptions>(11, _omitFieldNames ? '' : 'newOptions',
+        subBuilder: ResourceOptions.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -2997,6 +3646,28 @@ class ErrorHookRequest extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(9)
   $pb.PbList<$core.String> get errors => $_getList(8);
+
+  @$pb.TagNumber(10)
+  ResourceOptions get oldOptions => $_getN(9);
+  @$pb.TagNumber(10)
+  set oldOptions(ResourceOptions value) => $_setField(10, value);
+  @$pb.TagNumber(10)
+  $core.bool hasOldOptions() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearOldOptions() => $_clearField(10);
+  @$pb.TagNumber(10)
+  ResourceOptions ensureOldOptions() => $_ensure(9);
+
+  @$pb.TagNumber(11)
+  ResourceOptions get newOptions => $_getN(10);
+  @$pb.TagNumber(11)
+  set newOptions(ResourceOptions value) => $_setField(11, value);
+  @$pb.TagNumber(11)
+  $core.bool hasNewOptions() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearNewOptions() => $_clearField(11);
+  @$pb.TagNumber(11)
+  ResourceOptions ensureNewOptions() => $_ensure(10);
 }
 
 /// ErrorHookResponse is the response object for error hook callbacks in CallbackInvokeResponse.
@@ -3074,6 +3745,7 @@ class RegisterPackageRequest extends $pb.GeneratedMessage {
     $core.Iterable<$core.MapEntry<$core.String, $core.List<$core.int>>>?
         checksums,
     Parameterization? parameterization,
+    Parameterization? extension_6,
   }) {
     final result = create();
     if (name != null) result.name = name;
@@ -3081,6 +3753,7 @@ class RegisterPackageRequest extends $pb.GeneratedMessage {
     if (downloadUrl != null) result.downloadUrl = downloadUrl;
     if (checksums != null) result.checksums.addEntries(checksums);
     if (parameterization != null) result.parameterization = parameterization;
+    if (extension_6 != null) result.extension_6 = extension_6;
     return result;
   }
 
@@ -3107,6 +3780,8 @@ class RegisterPackageRequest extends $pb.GeneratedMessage {
         valueFieldType: $pb.PbFieldType.OY,
         packageName: const $pb.PackageName('pulumirpc'))
     ..aOM<Parameterization>(5, _omitFieldNames ? '' : 'parameterization',
+        subBuilder: Parameterization.create)
+    ..aOM<Parameterization>(6, _omitFieldNames ? '' : 'extension',
         subBuilder: Parameterization.create)
     ..hasRequiredFields = false;
 
@@ -3170,6 +3845,17 @@ class RegisterPackageRequest extends $pb.GeneratedMessage {
   void clearParameterization() => $_clearField(5);
   @$pb.TagNumber(5)
   Parameterization ensureParameterization() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  Parameterization get extension_6 => $_getN(5);
+  @$pb.TagNumber(6)
+  set extension_6(Parameterization value) => $_setField(6, value);
+  @$pb.TagNumber(6)
+  $core.bool hasExtension_6() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearExtension_6() => $_clearField(6);
+  @$pb.TagNumber(6)
+  Parameterization ensureExtension_6() => $_ensure(5);
 }
 
 class RegisterPackageResponse extends $pb.GeneratedMessage {
@@ -3314,11 +4000,13 @@ class RegisterResourceHookRequest extends $pb.GeneratedMessage {
     $core.String? name,
     $3.Callback? callback,
     $core.bool? onDryRun,
+    $core.bool? ignoreErrors,
   }) {
     final result = create();
     if (name != null) result.name = name;
     if (callback != null) result.callback = callback;
     if (onDryRun != null) result.onDryRun = onDryRun;
+    if (ignoreErrors != null) result.ignoreErrors = ignoreErrors;
     return result;
   }
 
@@ -3339,6 +4027,7 @@ class RegisterResourceHookRequest extends $pb.GeneratedMessage {
     ..aOM<$3.Callback>(2, _omitFieldNames ? '' : 'callback',
         subBuilder: $3.Callback.create)
     ..aOB(3, _omitFieldNames ? '' : 'onDryRun')
+    ..aOB(4, _omitFieldNames ? '' : 'ignoreErrors')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -3393,6 +4082,16 @@ class RegisterResourceHookRequest extends $pb.GeneratedMessage {
   $core.bool hasOnDryRun() => $_has(2);
   @$pb.TagNumber(3)
   void clearOnDryRun() => $_clearField(3);
+
+  /// If true, errors from this hook are logged as warnings instead of failing the program.
+  @$pb.TagNumber(4)
+  $core.bool get ignoreErrors => $_getBF(3);
+  @$pb.TagNumber(4)
+  set ignoreErrors($core.bool value) => $_setBool(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasIgnoreErrors() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearIgnoreErrors() => $_clearField(4);
 }
 
 class RegisterErrorHookRequest extends $pb.GeneratedMessage {

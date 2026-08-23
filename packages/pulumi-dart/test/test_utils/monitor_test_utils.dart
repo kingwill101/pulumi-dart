@@ -18,7 +18,7 @@ abstract class BaseMonitor implements monitorpkg.Monitor {
   }
 
   @override
-  Future<InvokeResponse> invoke(ResourceInvokeRequest request) async {
+  Future<ResourceInvokeResponse> invoke(ResourceInvokeRequest request) async {
     throw GrpcError.unimplemented('invoke not used in this test');
   }
 

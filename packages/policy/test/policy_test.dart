@@ -70,6 +70,7 @@ void main() {
               createSeconds: 0,
               updateSeconds: 0,
               deleteSeconds: 0,
+              readSeconds: 0,
             ),
             additionalSecretOutputs: [],
           ),
@@ -259,6 +260,7 @@ void main() {
             expect(child.opts.customTimeouts.createSeconds, equals(10));
             expect(child.opts.customTimeouts.updateSeconds, equals(20));
             expect(child.opts.customTimeouts.deleteSeconds, equals(30));
+            expect(child.opts.customTimeouts.readSeconds, equals(40));
             expect(child.opts.parent, equals(parent.urn));
             expect(child.opts.additionalSecretOutputs, contains('token'));
 
@@ -326,6 +328,7 @@ void main() {
                         create_1: 10,
                         update: 20,
                         delete: 30,
+                        read: 40,
                       ),
                   parent: parentUrn,
                 ),

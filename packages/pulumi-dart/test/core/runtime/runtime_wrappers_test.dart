@@ -76,6 +76,12 @@ class _CapturingMonitorService extends ResourceMonitorServiceBase {
   bool supportsFeatureValue = true;
 
   @override
+  Future<pulumirpc.DeploymentInfo> getDeploymentInfo(
+    ServiceCall call,
+    Empty request,
+  ) async => pulumirpc.DeploymentInfo();
+
+  @override
   Future<pulumirpc.SupportsFeatureResponse> supportsFeature(
     ServiceCall call,
     pulumirpc.SupportsFeatureRequest request,
@@ -86,12 +92,12 @@ class _CapturingMonitorService extends ResourceMonitorServiceBase {
   }
 
   @override
-  Future<providerpb.InvokeResponse> invoke(
+  Future<pulumirpc.ResourceInvokeResponse> invoke(
     ServiceCall call,
     pulumirpc.ResourceInvokeRequest request,
   ) async {
     invokeRequest = request;
-    return providerpb.InvokeResponse(
+    return pulumirpc.ResourceInvokeResponse(
       return_1: Struct()..fields['invoked'] = (Value()..stringValue = 'ok'),
     );
   }

@@ -21,13 +21,20 @@ const Callback$json = {
   '2': [
     {'1': 'target', '3': 1, '4': 1, '5': 9, '10': 'target'},
     {'1': 'token', '3': 2, '4': 1, '5': 9, '10': 'token'},
+    {
+      '1': 'accepts_byte_string',
+      '3': 3,
+      '4': 1,
+      '5': 8,
+      '10': 'acceptsByteString'
+    },
   ],
 };
 
 /// Descriptor for `Callback`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List callbackDescriptor = $convert.base64Decode(
     'CghDYWxsYmFjaxIWCgZ0YXJnZXQYASABKAlSBnRhcmdldBIUCgV0b2tlbhgCIAEoCVIFdG9rZW'
-    '4=');
+    '4SLgoTYWNjZXB0c19ieXRlX3N0cmluZxgDIAEoCFIRYWNjZXB0c0J5dGVTdHJpbmc=');
 
 @$core.Deprecated('Use callbackInvokeRequestDescriptor instead')
 const CallbackInvokeRequest$json = {

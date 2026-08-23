@@ -324,6 +324,7 @@ class PackageDependency extends $pb.GeneratedMessage {
     $core.Iterable<$core.MapEntry<$core.String, $core.List<$core.int>>>?
         checksums,
     PackageParameterization? parameterization,
+    PackageParameterization? extension_7,
   }) {
     final result = create();
     if (name != null) result.name = name;
@@ -332,6 +333,7 @@ class PackageDependency extends $pb.GeneratedMessage {
     if (server != null) result.server = server;
     if (checksums != null) result.checksums.addEntries(checksums);
     if (parameterization != null) result.parameterization = parameterization;
+    if (extension_7 != null) result.extension_7 = extension_7;
     return result;
   }
 
@@ -359,6 +361,8 @@ class PackageDependency extends $pb.GeneratedMessage {
         valueFieldType: $pb.PbFieldType.OY,
         packageName: const $pb.PackageName('pulumirpc'))
     ..aOM<PackageParameterization>(6, _omitFieldNames ? '' : 'parameterization',
+        subBuilder: PackageParameterization.create)
+    ..aOM<PackageParameterization>(7, _omitFieldNames ? '' : 'extension',
         subBuilder: PackageParameterization.create)
     ..hasRequiredFields = false;
 
@@ -422,7 +426,7 @@ class PackageDependency extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $pb.PbMap<$core.String, $core.List<$core.int>> get checksums => $_getMap(4);
 
-  /// The optional parameterization for this package.
+  /// The optional replacement parameterization for this package.
   @$pb.TagNumber(6)
   PackageParameterization get parameterization => $_getN(5);
   @$pb.TagNumber(6)
@@ -433,6 +437,126 @@ class PackageDependency extends $pb.GeneratedMessage {
   void clearParameterization() => $_clearField(6);
   @$pb.TagNumber(6)
   PackageParameterization ensureParameterization() => $_ensure(5);
+
+  /// The optional extension parameterization for this package.
+  @$pb.TagNumber(7)
+  PackageParameterization get extension_7 => $_getN(6);
+  @$pb.TagNumber(7)
+  set extension_7(PackageParameterization value) => $_setField(7, value);
+  @$pb.TagNumber(7)
+  $core.bool hasExtension_7() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearExtension_7() => $_clearField(7);
+  @$pb.TagNumber(7)
+  PackageParameterization ensureExtension_7() => $_ensure(6);
+}
+
+class PackageSpec extends $pb.GeneratedMessage {
+  factory PackageSpec({
+    $core.String? source,
+    $core.String? version,
+    $core.Iterable<$core.String>? parameters,
+    $core.Iterable<$core.MapEntry<$core.String, $core.List<$core.int>>>?
+        checksums,
+    $core.String? server,
+  }) {
+    final result = create();
+    if (source != null) result.source = source;
+    if (version != null) result.version = version;
+    if (parameters != null) result.parameters.addAll(parameters);
+    if (checksums != null) result.checksums.addEntries(checksums);
+    if (server != null) result.server = server;
+    return result;
+  }
+
+  PackageSpec._();
+
+  factory PackageSpec.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory PackageSpec.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'PackageSpec',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'pulumirpc'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'source')
+    ..aOS(2, _omitFieldNames ? '' : 'version')
+    ..pPS(3, _omitFieldNames ? '' : 'parameters')
+    ..m<$core.String, $core.List<$core.int>>(
+        4, _omitFieldNames ? '' : 'checksums',
+        entryClassName: 'PackageSpec.ChecksumsEntry',
+        keyFieldType: $pb.PbFieldType.OS,
+        valueFieldType: $pb.PbFieldType.OY,
+        packageName: const $pb.PackageName('pulumirpc'))
+    ..aOS(5, _omitFieldNames ? '' : 'server')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  PackageSpec clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  PackageSpec copyWith(void Function(PackageSpec) updates) =>
+      super.copyWith((message) => updates(message as PackageSpec))
+          as PackageSpec;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static PackageSpec create() => PackageSpec._();
+  @$core.override
+  PackageSpec createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static PackageSpec getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<PackageSpec>(create);
+  static PackageSpec? _defaultInstance;
+
+  /// The "name" of the plugin.
+  ///
+  /// Source may be one of:
+  /// - A simple name, like "pkg"
+  /// - A registry double or triple: "org/pkg", "source/org/pkg"
+  /// - A git URL, "git://github.com/pulumi/pulumi-example/path"
+  /// - An un-prefixed URL, like github.com/pulumi/pulumi-example/path
+  /// - A local path, like /usr/bin/pkg
+  @$pb.TagNumber(1)
+  $core.String get source => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set source($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasSource() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSource() => $_clearField(1);
+
+  /// The version of the provider, may be Semver 2.0 or a git hash.
+  @$pb.TagNumber(2)
+  $core.String get version => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set version($core.String value) => $_setString(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasVersion() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearVersion() => $_clearField(2);
+
+  /// Any parameters needed to configure the package.
+  @$pb.TagNumber(3)
+  $pb.PbList<$core.String> get parameters => $_getList(2);
+
+  /// if set will be used to validate the plugin downloaded matches. This is keyed by
+  /// "$os-$arch", e.g. "linux-x64".
+  @$pb.TagNumber(4)
+  $pb.PbMap<$core.String, $core.List<$core.int>> get checksums => $_getMap(3);
+
+  @$pb.TagNumber(5)
+  $core.String get server => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set server($core.String value) => $_setString(4, value);
+  @$pb.TagNumber(5)
+  $core.bool hasServer() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearServer() => $_clearField(5);
 }
 
 const $core.bool _omitFieldNames =

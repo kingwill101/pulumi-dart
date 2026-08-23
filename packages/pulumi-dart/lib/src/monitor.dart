@@ -31,7 +31,7 @@ class Monitor {
   }
 
   /// Invokes a provider function through the monitor.
-  Future<InvokeResponse> invoke(ResourceInvokeRequest request) async {
+  Future<ResourceInvokeResponse> invoke(ResourceInvokeRequest request) async {
     return await _client.invoke(request);
   }
 

@@ -19,6 +19,7 @@ import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart'
         RegisterResourceResponse,
         ResourceCallRequest,
         ResourceInvokeRequest,
+        ResourceInvokeResponse,
         ResourceMonitorClient;
 import 'package:test/test.dart';
 
@@ -42,7 +43,7 @@ class _CountingMonitor implements monitorpkg.Monitor {
   }
 
   @override
-  Future<InvokeResponse> invoke(ResourceInvokeRequest request) async {
+  Future<ResourceInvokeResponse> invoke(ResourceInvokeRequest request) async {
     throw GrpcError.unimplemented('invoke not used in this test');
   }
 

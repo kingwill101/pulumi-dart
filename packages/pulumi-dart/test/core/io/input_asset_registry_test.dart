@@ -8,14 +8,23 @@ import 'package:pulumi/src/resource/registry.dart';
 import 'package:pulumi/src/settings.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/callback.pb.dart' as callbackpb;
 import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart' as providerpb;
-import 'package:pulumi/src/pulumirpc/pulumi/resource.pb.dart' as pulumirpc;
-import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart';
+import 'package:pulumi/src/pulumirpc/pulumi/resource.pb.dart'
+    as pulumirpc
+    hide ResourceOptions;
+import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart'
+    hide ResourceOptions;
 import 'package:test/test.dart';
 import '../../mocks/mock_engine.dart';
 import '../../test_utils/monitor_test_utils.dart';
 
 class _RegistryMonitorService extends ResourceMonitorServiceBase {
   pulumirpc.RegisterResourceRequest? registerResourceRequest;
+
+  @override
+  Future<pulumirpc.DeploymentInfo> getDeploymentInfo(
+    ServiceCall call,
+    Empty request,
+  ) async => pulumirpc.DeploymentInfo();
 
   @override
   Future<pulumirpc.SupportsFeatureResponse> supportsFeature(
@@ -26,7 +35,7 @@ class _RegistryMonitorService extends ResourceMonitorServiceBase {
   }
 
   @override
-  Future<providerpb.InvokeResponse> invoke(
+  Future<pulumirpc.ResourceInvokeResponse> invoke(
     ServiceCall call,
     pulumirpc.ResourceInvokeRequest request,
   ) async {

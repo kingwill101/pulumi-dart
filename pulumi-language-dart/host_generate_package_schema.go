@@ -36,7 +36,14 @@ func bindGeneratedPackageSchema(
 	if closer != nil {
 		defer closer.Close()
 	}
-	pkg, diagnostics, bindErr := schema.BindSpec(result.packageSpec, loader, schema.ValidationOptions{
+	if loader == nil && schemaContainsExternalReferences(rawSchema) {
+		return parseGeneratedPackageSchema(result, rawSchema, loadExternal)
+	}
+	bindLoader := loader
+	if bindLoader == nil {
+		bindLoader = schema.NewNullLoader()
+	}
+	pkg, diagnostics, bindErr := schema.BindSpec(result.packageSpec, bindLoader, schema.ValidationOptions{
 		AllowDanglingReferences: true,
 	})
 	if bindErr != nil {

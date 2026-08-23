@@ -6,7 +6,7 @@ PULUMI_DIR := thirdparty/pulumi
 PULUMI_PROTO_DIR := $(PULUMI_DIR)/proto
 PROTOBUF_REPO := https://github.com/protocolbuffers/protobuf.git
 PROTOBUF_DIR := .protobuf
-PULUMI_VERSION ?= v3.223.0
+PULUMI_VERSION ?= v3.257.0
 PROTOC_PLUGIN_VERSION ?= 25.0.0
 
 install::

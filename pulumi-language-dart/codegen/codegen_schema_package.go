@@ -25,7 +25,7 @@ func boundPackageParameterization(pkg *schema.Package, packageVersion string) *p
 	if pkg.Parameterization == nil {
 		return nil
 	}
-	pluginVersion := pkg.Parameterization.BaseProvider.Version.String()
+	pluginVersion := pkg.Parameterization.BasePlugin.Version.String()
 	if packageVersion == "" {
 		packageVersion = pluginVersion
 	}
@@ -39,7 +39,7 @@ func boundPackageParameterization(pkg *schema.Package, packageVersion string) *p
 		packageVersion = pluginVersion
 	}
 	return &packageParameterizationSpec{
-		PluginName: pkg.Parameterization.BaseProvider.Name, PluginVersion: pluginVersion,
+		PluginName: pkg.Parameterization.BasePlugin.Name, PluginVersion: pluginVersion,
 		PackageName: pkg.Name, PackageVersion: packageVersion, DownloadURL: pkg.PluginDownloadURL,
 		Value: append([]byte(nil), pkg.Parameterization.Parameter...),
 	}

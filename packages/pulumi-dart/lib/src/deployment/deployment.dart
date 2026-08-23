@@ -24,7 +24,7 @@ import 'package:pulumi/src/struct_converter.dart';
 import '../engine.dart';
 import '../engine_logger.dart';
 import '../output.dart';
-import '../pulumirpc/pulumi/resource.pbgrpc.dart';
+import '../pulumirpc/pulumi/resource.pbgrpc.dart' hide ResourceOptions;
 import '../resource/resource.dart';
 import '../resource/resource_options.dart';
 import '../resource/custom_resource.dart';
@@ -575,6 +575,9 @@ class DeploymentImpl extends Deployment
         }
         if (opts.customTimeouts!.delete != null) {
           customTimeouts.delete = opts.customTimeouts!.delete!;
+        }
+        if (opts.customTimeouts!.read != null) {
+          customTimeouts.read = opts.customTimeouts!.read!;
         }
         request.customTimeouts = customTimeouts;
       }

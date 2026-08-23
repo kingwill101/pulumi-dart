@@ -25,6 +25,12 @@ class _TransformRegistrationMonitorService extends ResourceMonitorServiceBase {
   _TransformRegistrationMonitorService({required this.featureSupport});
 
   @override
+  Future<pulumirpc.DeploymentInfo> getDeploymentInfo(
+    ServiceCall call,
+    Empty request,
+  ) async => pulumirpc.DeploymentInfo();
+
+  @override
   Future<pulumirpc.SupportsFeatureResponse> supportsFeature(
     ServiceCall call,
     pulumirpc.SupportsFeatureRequest request,
@@ -35,7 +41,7 @@ class _TransformRegistrationMonitorService extends ResourceMonitorServiceBase {
   }
 
   @override
-  Future<providerpb.InvokeResponse> invoke(
+  Future<pulumirpc.ResourceInvokeResponse> invoke(
     ServiceCall call,
     pulumirpc.ResourceInvokeRequest request,
   ) async {

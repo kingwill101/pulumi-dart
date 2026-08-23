@@ -22,7 +22,10 @@ class CustomTimeouts {
   /// Delete operation timeout.
   final String? delete;
 
-  const CustomTimeouts({this.create, this.update, this.delete});
+  /// Read operation timeout.
+  final String? read;
+
+  const CustomTimeouts({this.create, this.update, this.delete, this.read});
 }
 
 /// {@template pulumi.resource_options.summary}

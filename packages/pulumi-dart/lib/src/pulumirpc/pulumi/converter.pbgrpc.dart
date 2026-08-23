@@ -50,6 +50,15 @@ class ConverterClient extends $grpc.Client {
     return $createUnaryCall(_$convertProgram, request, options: options);
   }
 
+  /// ConvertSnippet generates a single PCL file from a single source file in the target ecosystem. It is used when
+  /// callers need to convert a small source fragment, such as an input file, rather than a full Pulumi program.
+  $grpc.ResponseFuture<$0.ConvertSnippetResponse> convertSnippet(
+    $0.ConvertSnippetRequest request, {
+    $grpc.CallOptions? options,
+  }) {
+    return $createUnaryCall(_$convertSnippet, request, options: options);
+  }
+
   // method descriptors
 
   static final _$convertState =
@@ -62,6 +71,11 @@ class ConverterClient extends $grpc.Client {
           '/pulumirpc.Converter/ConvertProgram',
           ($0.ConvertProgramRequest value) => value.writeToBuffer(),
           $0.ConvertProgramResponse.fromBuffer);
+  static final _$convertSnippet =
+      $grpc.ClientMethod<$0.ConvertSnippetRequest, $0.ConvertSnippetResponse>(
+          '/pulumirpc.Converter/ConvertSnippet',
+          ($0.ConvertSnippetRequest value) => value.writeToBuffer(),
+          $0.ConvertSnippetResponse.fromBuffer);
 }
 
 @$pb.GrpcServiceName('pulumirpc.Converter')
@@ -87,6 +101,15 @@ abstract class ConverterServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) =>
             $0.ConvertProgramRequest.fromBuffer(value),
         ($0.ConvertProgramResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.ConvertSnippetRequest,
+            $0.ConvertSnippetResponse>(
+        'ConvertSnippet',
+        convertSnippet_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $0.ConvertSnippetRequest.fromBuffer(value),
+        ($0.ConvertSnippetResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.ConvertStateResponse> convertState_Pre(
@@ -106,4 +129,13 @@ abstract class ConverterServiceBase extends $grpc.Service {
 
   $async.Future<$0.ConvertProgramResponse> convertProgram(
       $grpc.ServiceCall call, $0.ConvertProgramRequest request);
+
+  $async.Future<$0.ConvertSnippetResponse> convertSnippet_Pre(
+      $grpc.ServiceCall $call,
+      $async.Future<$0.ConvertSnippetRequest> $request) async {
+    return convertSnippet($call, await $request);
+  }
+
+  $async.Future<$0.ConvertSnippetResponse> convertSnippet(
+      $grpc.ServiceCall call, $0.ConvertSnippetRequest request);
 }

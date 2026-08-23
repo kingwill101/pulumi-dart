@@ -512,7 +512,7 @@ func normalizeDartBuildTargetPath(programDirectory, buildTarget string) string {
 }
 
 func shouldEmitCompileCacheLogs() bool {
-	if logging.V(5) {
+	if logging.V(5).Enabled() {
 		return true
 	}
 	switch strings.TrimSpace(strings.ToLower(os.Getenv("PULUMI_DART_COMPILE_CACHE_LOGS"))) {
@@ -917,7 +917,7 @@ func (host *dartLanguageHost) ensureCompiledDartProgram(
 	}
 
 	compileArgs := []string{"compile", "exe", entryPoint, "-o", buildTarget}
-	if logging.V(5) {
+	if logging.V(5).Enabled() {
 		logging.V(5).Infof("Compiling Dart Pulumi program: %s %s", host.exec, strings.Join(compileArgs, " "))
 	}
 	if shouldEmitCompileCacheLogs() {
@@ -1387,7 +1387,7 @@ func (host *dartLanguageHost) RunDartCommand(
 	ctx context.Context, engineClient pulumirpc.EngineClient, args []string, logToUser bool,
 ) (string, error) {
 	commandStr := strings.Join(args, " ")
-	if logging.V(5) {
+	if logging.V(5).Enabled() {
 		logging.V(5).Infoln("Language host launching process: ", host.exec, commandStr)
 	}
 
@@ -1920,7 +1920,7 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 		args = append(args, req.GetArgs()...)
 	}
 
-	if logging.V(5) {
+	if logging.V(5).Enabled() {
 		commandStr := strings.Join(args, " ")
 		logging.V(5).Infoln("Language host launching process: ", executable, commandStr)
 	}

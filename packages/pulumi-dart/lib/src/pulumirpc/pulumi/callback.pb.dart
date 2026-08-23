@@ -20,10 +20,12 @@ class Callback extends $pb.GeneratedMessage {
   factory Callback({
     $core.String? target,
     $core.String? token,
+    $core.bool? acceptsByteString,
   }) {
     final result = create();
     if (target != null) result.target = target;
     if (token != null) result.token = token;
+    if (acceptsByteString != null) result.acceptsByteString = acceptsByteString;
     return result;
   }
 
@@ -42,6 +44,7 @@ class Callback extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'target')
     ..aOS(2, _omitFieldNames ? '' : 'token')
+    ..aOB(3, _omitFieldNames ? '' : 'acceptsByteString')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -81,6 +84,18 @@ class Callback extends $pb.GeneratedMessage {
   $core.bool hasToken() => $_has(1);
   @$pb.TagNumber(2)
   void clearToken() => $_clearField(2);
+
+  /// True if and only if the callback host supports strings containing bytes that are not valid UTF-8, marshaled
+  /// as objects carrying the byte string signature and a base64 encoding of the string's bytes. If true, the
+  /// caller may pass such values to the callback.
+  @$pb.TagNumber(3)
+  $core.bool get acceptsByteString => $_getBF(2);
+  @$pb.TagNumber(3)
+  set acceptsByteString($core.bool value) => $_setBool(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasAcceptsByteString() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearAcceptsByteString() => $_clearField(3);
 }
 
 class CallbackInvokeRequest extends $pb.GeneratedMessage {

@@ -13,7 +13,7 @@ import 'alias.dart';
 import 'input.dart';
 import 'invoke.dart';
 import 'pulumirpc/pulumi/alias.pb.dart' as aliaspb;
-import 'pulumirpc/pulumi/resource.pbgrpc.dart';
+import 'pulumirpc/pulumi/resource.pbgrpc.dart' hide ResourceOptions;
 import 'pulumirpc/pulumi/resource.pb.dart' as pulumirpc;
 import 'resource/component_resource.dart';
 import 'resource/custom_resource.dart';
@@ -448,6 +448,9 @@ class CallbackServer implements ICallbackServer {
             delete: protoOpts.customTimeouts.hasDelete()
                 ? protoOpts.customTimeouts.delete
                 : null,
+            read: protoOpts.customTimeouts.hasRead()
+                ? protoOpts.customTimeouts.read
+                : null,
           )
         : null;
     final deletedWith =
@@ -568,6 +571,7 @@ class CallbackServer implements ICallbackServer {
         create_1: options.customTimeouts!.create,
         update: options.customTimeouts!.update,
         delete: options.customTimeouts!.delete,
+        read: options.customTimeouts!.read,
       );
     }
     if (options.deletedWith != null) {

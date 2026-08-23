@@ -791,9 +791,11 @@ class GetRequiredPackagesRequest extends $pb.GeneratedMessage {
 class GetRequiredPackagesResponse extends $pb.GeneratedMessage {
   factory GetRequiredPackagesResponse({
     $core.Iterable<$2.PackageDependency>? packages,
+    $core.Iterable<$2.PackageSpec>? specs,
   }) {
     final result = create();
     if (packages != null) result.packages.addAll(packages);
+    if (specs != null) result.specs.addAll(specs);
     return result;
   }
 
@@ -812,6 +814,8 @@ class GetRequiredPackagesResponse extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..pPM<$2.PackageDependency>(1, _omitFieldNames ? '' : 'packages',
         subBuilder: $2.PackageDependency.create)
+    ..pPM<$2.PackageSpec>(2, _omitFieldNames ? '' : 'specs',
+        subBuilder: $2.PackageSpec.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -839,6 +843,12 @@ class GetRequiredPackagesResponse extends $pb.GeneratedMessage {
   /// The packages required by the program specified by the request.
   @$pb.TagNumber(1)
   $pb.PbList<$2.PackageDependency> get packages => $_getList(0);
+
+  /// The package specs required by the program specified by the request.
+  ///
+  /// Only specs not included in packages should be included.
+  @$pb.TagNumber(2)
+  $pb.PbList<$2.PackageSpec> get specs => $_getList(1);
 }
 
 /// `RunRequest` is the type of requests sent as part of a [](pulumirpc.LanguageRuntime.Run) call.
@@ -860,6 +870,7 @@ class RunRequest extends $pb.GeneratedMessage {
     ProgramInfo? info,
     $core.String? loaderTarget,
     $core.bool? attachDebugger,
+    $core.String? mapperTarget,
   }) {
     final result = create();
     if (project != null) result.project = project;
@@ -879,6 +890,7 @@ class RunRequest extends $pb.GeneratedMessage {
     if (info != null) result.info = info;
     if (loaderTarget != null) result.loaderTarget = loaderTarget;
     if (attachDebugger != null) result.attachDebugger = attachDebugger;
+    if (mapperTarget != null) result.mapperTarget = mapperTarget;
     return result;
   }
 
@@ -918,6 +930,7 @@ class RunRequest extends $pb.GeneratedMessage {
         subBuilder: ProgramInfo.create)
     ..aOS(15, _omitFieldNames ? '' : 'loaderTarget')
     ..aOB(16, _omitFieldNames ? '' : 'attachDebugger')
+    ..aOS(17, _omitFieldNames ? '' : 'mapperTarget')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -1104,6 +1117,16 @@ class RunRequest extends $pb.GeneratedMessage {
   $core.bool hasAttachDebugger() => $_has(15);
   @$pb.TagNumber(16)
   void clearAttachDebugger() => $_clearField(16);
+
+  /// The target of a codegen.MapperServer to use for getting mappings from other ecosystems to Pulumi.
+  @$pb.TagNumber(17)
+  $core.String get mapperTarget => $_getSZ(16);
+  @$pb.TagNumber(17)
+  set mapperTarget($core.String value) => $_setString(16, value);
+  @$pb.TagNumber(17)
+  $core.bool hasMapperTarget() => $_has(16);
+  @$pb.TagNumber(17)
+  void clearMapperTarget() => $_clearField(17);
 }
 
 /// `RunResponse` is the type of responses sent by a [](pulumirpc.LanguageRuntime.Run) call.
