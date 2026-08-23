@@ -82,6 +82,13 @@ func (lowerer programLowerer) functionCallExpression(expression *model.FunctionC
 		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.fileBase64")
 	case "filebase64sha256":
 		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.fileBase64Sha256")
+	case "entries":
+		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.mapEntries")
+	case "lookup":
+		if len(arguments) != 3 {
+			return "", fmt.Errorf("lookup expects three arguments")
+		}
+		return "pulumi.mapLookup(" + strings.Join(arguments, ", ") + ")", nil
 	case "min", "max":
 		if len(arguments) == 0 {
 			return "", fmt.Errorf("%s expects at least one argument", expression.Name)
@@ -90,23 +97,13 @@ func (lowerer programLowerer) functionCallExpression(expression *model.FunctionC
 		if expression.Name == "max" {
 			comparison = ">"
 		}
-		return "[" + strings.Join(arguments, ", ") + "].reduce(" +
+		values := "[" + strings.Join(arguments, ", ") + "]"
+		if expression.ExpandFinal && len(arguments) == 1 {
+			values = "(" + arguments[0] + ")"
+		}
+		return values + ".reduce(" +
 			"(left, right) => left " + comparison + " right ? left : right)", nil
 	default:
 		return "", fmt.Errorf("unsupported function %q", expression.Name)
 	}
-}
-
-func noArgumentBuiltin(name string, arguments []string, result string) (string, error) {
-	if len(arguments) != 0 {
-		return "", fmt.Errorf("%s expects no arguments", name)
-	}
-	return result, nil
-}
-
-func oneArgumentBuiltin(name string, arguments []string, function string) (string, error) {
-	if len(arguments) != 1 {
-		return "", fmt.Errorf("%s expects one argument", name)
-	}
-	return function + "(" + arguments[0] + ")", nil
 }

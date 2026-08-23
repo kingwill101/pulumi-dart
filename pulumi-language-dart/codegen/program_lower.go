@@ -95,6 +95,8 @@ func (lowerer programLowerer) expression(expression model.Expression) (string, e
 		return lowerer.relativeTraversalExpression(expression)
 	case *model.ConditionalExpression:
 		return lowerer.conditionalExpression(expression)
+	case *model.ForExpression:
+		return lowerer.forExpression(expression)
 	case *model.ScopeTraversalExpression:
 		name, ok := lowerer.names[expression.RootName]
 		if !ok {

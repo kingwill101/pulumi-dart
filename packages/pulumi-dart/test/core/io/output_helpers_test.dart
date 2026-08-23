@@ -38,6 +38,19 @@ void main() {
       expect(fileBase64Sha256(path), hasLength(44));
     });
 
+    test('map builtins preserve entries, nulls, and fallbacks', () {
+      final value = <String, dynamic>{'present': null, 'other': 42};
+      expect(
+        mapEntries(value),
+        equals([
+          {'key': 'present', 'value': null},
+          {'key': 'other', 'value': 42},
+        ]),
+      );
+      expect(mapLookup(value, 'present', 'fallback'), isNull);
+      expect(mapLookup(value, 'missing', 'fallback'), equals('fallback'));
+    });
+
     test('output unwraps nested map/list input values', () async {
       final value = output({
         Input.fromValue('hello'): Output.create('world'),
