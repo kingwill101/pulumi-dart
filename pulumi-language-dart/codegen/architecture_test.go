@@ -56,6 +56,7 @@ func isGeneratorFile(relative string) bool {
 		strings.HasPrefix(relative, "dartpub/") ||
 		strings.HasPrefix(relative, "generator/") ||
 		strings.HasPrefix(relative, "host_generate_package") ||
+		strings.HasPrefix(relative, "host_generate_workspace") ||
 		relative == "host_generate.go" ||
 		relative == "generate_pack_test.go"
 }

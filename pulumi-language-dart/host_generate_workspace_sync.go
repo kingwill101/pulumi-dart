@@ -10,75 +10,6 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-func findNearestPubWorkspaceRoot(outputDir string) string {
-	if strings.TrimSpace(outputDir) == "" {
-		return ""
-	}
-
-	absOutputDir, err := filepath.Abs(outputDir)
-	if err != nil {
-		return ""
-	}
-
-	for searchDir := absOutputDir; ; searchDir = filepath.Dir(searchDir) {
-		pubspecPath := filepath.Join(searchDir, "pubspec.yaml")
-		if _, err := workspaceMembersFromPubspec(pubspecPath); err == nil {
-			return searchDir
-		}
-
-		parent := filepath.Dir(searchDir)
-		if parent == searchDir {
-			return ""
-		}
-	}
-}
-
-// outputDirWithinWorkspaceMembers reports whether absOutputDir is equal to or
-// nested under any declared workspace member.
-func outputDirWithinWorkspaceMembers(workspaceRoot, absOutputDir string) bool {
-	workspaceMembers, err := workspaceMembersFromPubspec(filepath.Join(workspaceRoot, "pubspec.yaml"))
-	if err != nil {
-		return false
-	}
-
-	for _, member := range workspaceMembers {
-		memberPath := strings.TrimSpace(member)
-		if memberPath == "" {
-			continue
-		}
-		absMemberDir := filepath.Clean(filepath.Join(workspaceRoot, memberPath))
-		rel, err := filepath.Rel(absMemberDir, absOutputDir)
-		if err != nil {
-			continue
-		}
-		if rel == "." || (rel != ".." && !strings.HasPrefix(rel, ".."+string(filepath.Separator))) {
-			return true
-		}
-	}
-
-	return false
-}
-
-// workspaceMembersFromPubspec loads workspace members from pubspec.yaml.
-func workspaceMembersFromPubspec(pubspecPath string) ([]string, error) {
-	pubspecData, err := os.ReadFile(pubspecPath)
-	if err != nil {
-		return nil, err
-	}
-
-	var pubspec struct {
-		Workspace []string `yaml:"workspace"`
-	}
-	if err := yaml.Unmarshal(pubspecData, &pubspec); err != nil {
-		return nil, err
-	}
-	if len(pubspec.Workspace) == 0 {
-		return nil, fmt.Errorf("workspace field not found in %s", pubspecPath)
-	}
-
-	return pubspec.Workspace, nil
-}
-
 // syncGeneratedCodeToWorkspaceMember mirrors generated lib sources into an
 // existing workspace package when package identity matches.
 func syncGeneratedCodeToWorkspaceMember(generatedDir, packageName string) error {
@@ -169,38 +100,6 @@ func syncGeneratedCodeToWorkspaceMember(generatedDir, packageName string) error 
 
 	if err := copyDirContents(generatedLibDir, targetLibDir); err != nil {
 		return fmt.Errorf("failed to copy generated lib to workspace member: %w", err)
-	}
-
-	return nil
-}
-
-// copyDirContents recursively copies directory contents from src to dst.
-func copyDirContents(src, dst string) error {
-	entries, err := os.ReadDir(src)
-	if err != nil {
-		return err
-	}
-
-	for _, entry := range entries {
-		srcPath := filepath.Join(src, entry.Name())
-		dstPath := filepath.Join(dst, entry.Name())
-
-		if entry.IsDir() {
-			if err := os.MkdirAll(dstPath, 0o700); err != nil {
-				return err
-			}
-			if err := copyDirContents(srcPath, dstPath); err != nil {
-				return err
-			}
-		} else {
-			data, err := os.ReadFile(srcPath)
-			if err != nil {
-				return err
-			}
-			if err := os.WriteFile(dstPath, data, 0o600); err != nil {
-				return err
-			}
-		}
 	}
 
 	return nil
