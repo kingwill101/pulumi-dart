@@ -20,7 +20,7 @@ class GetFirewallResult {
   /// The name of the Firewall.
   final String name;
   final List<GetFirewallOutboundRule> outboundRules;
-  /// A set of object containing the fields, `droplet_id`,
+  /// A set of object containing the fields, `dropletId`,
   /// `removing`, and `status`.  It is provided to detail exactly which Droplets
   /// are having their security policies updated.  When empty, all changes
   /// have been successfully applied.
@@ -39,7 +39,7 @@ class GetFirewallResult {
   /// [inboundRules] Required.
   /// [name] The name of the Firewall.
   /// [outboundRules] Required.
-  /// [pendingChanges] A set of object containing the fields, `droplet_id`,
+  /// [pendingChanges] A set of object containing the fields, `dropletId`,
   /// [status] A status string indicating the current state of the Firewall.
   /// [tags] The names of the Tags assigned to the Firewall.
   const GetFirewallResult({
@@ -85,4 +85,3 @@ class GetFirewallResult {
     );
   }
 }
-

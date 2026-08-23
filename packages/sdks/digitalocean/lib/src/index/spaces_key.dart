@@ -68,6 +68,19 @@ import 'spaces_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_spaceskey" "foobar" {
+///   name = "foobar"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +89,8 @@ import 'spaces_key_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.SpacesKey;
 /// import com.pulumi.digitalocean.SpacesKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -180,6 +193,23 @@ import 'spaces_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_spaceskey" "foobar" {
+///   name = "foobar"
+///   grants {
+///     bucket     = "my-bucket"
+///     permission = "read"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -189,8 +219,8 @@ import 'spaces_key_state.dart';
 /// import com.pulumi.digitalocean.SpacesKey;
 /// import com.pulumi.digitalocean.SpacesKeyArgs;
 /// import com.pulumi.digitalocean.inputs.SpacesKeyGrantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -300,6 +330,23 @@ import 'spaces_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_spaceskey" "foobar" {
+///   name = "foobar"
+///   grants {
+///     bucket     = ""
+///     permission = "fullaccess"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -309,8 +356,8 @@ import 'spaces_key_state.dart';
 /// import com.pulumi.digitalocean.SpacesKey;
 /// import com.pulumi.digitalocean.SpacesKeyArgs;
 /// import com.pulumi.digitalocean.inputs.SpacesKeyGrantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

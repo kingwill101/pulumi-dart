@@ -9,7 +9,7 @@ class VpcNatGatewayState {
   /// Created at timestamp for the VPC NAT Gateway.
   final pulumi.Input<String>? createdAt;
   /// Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
-  /// `public_gateways` embedding the reserved `ipv4` addresses.
+  /// `publicGateways` embedding the reserved `ipv4` addresses.
   final pulumi.Input<List<VpcNatGatewayEgress>>? egresses;
   /// The egress timeout value for ICMP connections of the VPC NAT Gateway.
   final pulumi.Input<int>? icmpTimeoutSeconds;
@@ -101,4 +101,3 @@ class VpcNatGatewayState {
     );
   }
 }
-

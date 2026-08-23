@@ -9,7 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NfsArgs {
   /// A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
   final pulumi.Input<String>? name;
-  /// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+  /// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+  /// &gt; **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
   final pulumi.Input<String>? performanceTier;
   /// The region where the NFS share will be created.
   final pulumi.Input<String> region;
@@ -21,7 +22,7 @@ class NfsArgs {
 
   /// Creates a new [NfsArgs].
   /// [name] A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
-  /// [performanceTier] The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+  /// [performanceTier] The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
   /// [region] The region where the NFS share will be created.
   /// [size] The size of the NFS share in GiB. Minimum size is 50 GiB.
   /// [tags] Optional.
@@ -57,4 +58,3 @@ class NfsArgs {
     );
   }
 }
-

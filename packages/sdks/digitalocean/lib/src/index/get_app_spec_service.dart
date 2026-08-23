@@ -11,6 +11,7 @@ import 'get_app_spec_service_github.dart';
 import 'get_app_spec_service_gitlab.dart';
 import 'get_app_spec_service_health_check.dart';
 import 'get_app_spec_service_image.dart';
+import 'get_app_spec_service_liveness_health_check.dart';
 import 'get_app_spec_service_log_destination.dart';
 import 'get_app_spec_service_route.dart';
 import 'get_app_spec_service_termination.dart';
@@ -50,13 +51,14 @@ class GetAppSpecService {
   final pulumi.Input<String>? instanceSizeSlug;
   /// A list of ports on which this service will listen for internal traffic.
   final pulumi.Input<List<int>> internalPorts;
+  final pulumi.Input<GetAppSpecServiceLivenessHealthCheck>? livenessHealthCheck;
   /// Describes a log forwarding destination.
   final pulumi.Input<List<GetAppSpecServiceLogDestination>>? logDestinations;
   /// The name of the component.
   final pulumi.Input<String> name;
   final pulumi.Input<List<GetAppSpecServiceRoute>> routes;
   /// An optional run command to override the component's default.
-  final pulumi.Input<String> runCommand;
+  final pulumi.Input<String>? runCommand;
   /// An optional path to the working directory to use for the build.
   final pulumi.Input<String>? sourceDir;
   /// Contains a component's termination parameters.
@@ -80,6 +82,7 @@ class GetAppSpecService {
   /// [instanceCount] The amount of instances that this component should be scaled to.
   /// [instanceSizeSlug] The instance size to use for this component.
   /// [internalPorts] A list of ports on which this service will listen for internal traffic.
+  /// [livenessHealthCheck] Optional.
   /// [logDestinations] Describes a log forwarding destination.
   /// [name] The name of the component.
   /// [routes] Required.
@@ -104,10 +107,11 @@ class GetAppSpecService {
     this.instanceCount,
     this.instanceSizeSlug,
     required this.internalPorts,
+    this.livenessHealthCheck,
     this.logDestinations,
     required this.name,
     required this.routes,
-    required this.runCommand,
+    this.runCommand,
     this.sourceDir,
     this.termination,
   });
@@ -131,10 +135,11 @@ class GetAppSpecService {
       'instanceCount': ?instanceCount,
       'instanceSizeSlug': ?instanceSizeSlug,
       'internalPorts': internalPorts,
+      'livenessHealthCheck': ?pulumi.Input.mapOptionalInputValue<GetAppSpecServiceLivenessHealthCheck, Map<String, dynamic>>(livenessHealthCheck, (value) => value.toMap()),
       'logDestinations': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecServiceLogDestination>, List<Map<String, dynamic>>>(logDestinations, (value) => pulumi.Input.encodeList<GetAppSpecServiceLogDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'routes': pulumi.Input.mapInputValue<List<GetAppSpecServiceRoute>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<GetAppSpecServiceRoute, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'runCommand': runCommand,
+      'runCommand': ?runCommand,
       'sourceDir': ?sourceDir,
       'termination': ?pulumi.Input.mapOptionalInputValue<GetAppSpecServiceTermination, Map<String, dynamic>>(termination, (value) => value.toMap()),
     };
@@ -159,13 +164,13 @@ class GetAppSpecService {
       instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       instanceSizeSlug: (() { final guardedValue = map['instanceSizeSlug']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       internalPorts: pulumi.Input.fromValue((map['internalPorts'] as List).cast<int>()),
+      livenessHealthCheck: (() { final guardedValue = map['livenessHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetAppSpecServiceLivenessHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logDestinations: (() { final guardedValue = map['logDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppSpecServiceLogDestination>(guardedValue, (value) => GetAppSpecServiceLogDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       routes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppSpecServiceRoute>(map['routes']!, (value) => GetAppSpecServiceRoute.fromMap((value as Map).cast<String, dynamic>()))),
-      runCommand: pulumi.Input.fromValue(map['runCommand'] as String),
+      runCommand: (() { final guardedValue = map['runCommand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceDir: (() { final guardedValue = map['sourceDir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       termination: (() { final guardedValue = map['termination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetAppSpecServiceTermination.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

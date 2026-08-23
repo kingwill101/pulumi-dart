@@ -6,7 +6,7 @@ import 'get_app_spec_function_log_destination_open_search_basic_auth.dart';
 class GetAppSpecFunctionLogDestinationOpenSearch {
   /// OpenSearch basic auth
   final pulumi.Input<GetAppSpecFunctionLogDestinationOpenSearchBasicAuth> basicAuth;
-  /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+  /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
   final pulumi.Input<String>? clusterName;
   /// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
   final pulumi.Input<String>? endpoint;
@@ -15,7 +15,7 @@ class GetAppSpecFunctionLogDestinationOpenSearch {
 
   /// Creates a new [GetAppSpecFunctionLogDestinationOpenSearch].
   /// [basicAuth] OpenSearch basic auth
-  /// [clusterName] The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+  /// [clusterName] The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
   /// [endpoint] OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
   /// [indexName] The index name to use for the logs. If not set, the default index name is `logs`.
   const GetAppSpecFunctionLogDestinationOpenSearch({
@@ -43,4 +43,3 @@ class GetAppSpecFunctionLogDestinationOpenSearch {
     );
   }
 }
-

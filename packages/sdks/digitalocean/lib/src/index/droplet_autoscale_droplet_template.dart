@@ -9,6 +9,8 @@ class DropletAutoscaleDropletTemplate {
   final pulumi.Input<bool>? ipv6;
   /// Project UUID to create the Droplet Autoscale pool underlying resource(s).
   final pulumi.Input<String>? projectId;
+  /// A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+  final pulumi.Input<bool>? publicNetworking;
   /// Region slug of the Droplet Autoscale pool underlying resource(s).
   final pulumi.Input<String> region;
   /// Size slug of the Droplet Autoscale pool underlying resource(s).
@@ -31,6 +33,7 @@ class DropletAutoscaleDropletTemplate {
   /// [image] Image slug of the Droplet Autoscale pool underlying resource(s).
   /// [ipv6] Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).
   /// [projectId] Project UUID to create the Droplet Autoscale pool underlying resource(s).
+  /// [publicNetworking] A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
   /// [region] Region slug of the Droplet Autoscale pool underlying resource(s).
   /// [size] Size slug of the Droplet Autoscale pool underlying resource(s).
   /// [sshKeys] SSH fingerprints to add to the Droplet Autoscale pool underlying resource(s).
@@ -42,6 +45,7 @@ class DropletAutoscaleDropletTemplate {
     required this.image,
     this.ipv6,
     this.projectId,
+    this.publicNetworking,
     required this.region,
     required this.size,
     required this.sshKeys,
@@ -56,6 +60,7 @@ class DropletAutoscaleDropletTemplate {
       'image': image,
       'ipv6': ?ipv6,
       'projectId': ?projectId,
+      'publicNetworking': ?publicNetworking,
       'region': region,
       'size': size,
       'sshKeys': sshKeys,
@@ -71,6 +76,7 @@ class DropletAutoscaleDropletTemplate {
       image: pulumi.Input.fromValue(map['image'] as String),
       ipv6: (() { final guardedValue = map['ipv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworking: (() { final guardedValue = map['publicNetworking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
       size: pulumi.Input.fromValue(map['size'] as String),
       sshKeys: pulumi.Input.fromValue((map['sshKeys'] as List).cast<String>()),
@@ -81,4 +87,3 @@ class DropletAutoscaleDropletTemplate {
     );
   }
 }
-

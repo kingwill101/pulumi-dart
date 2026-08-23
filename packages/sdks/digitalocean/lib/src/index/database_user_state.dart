@@ -11,7 +11,7 @@ class DatabaseUserState {
   final pulumi.Input<String>? accessKey;
   /// The ID of the original source database cluster.
   final pulumi.Input<String>? clusterId;
-  /// The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+  /// The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
   final pulumi.Input<String>? mysqlAuthPlugin;
   /// The name for the database user.
   final pulumi.Input<String>? name;
@@ -27,7 +27,7 @@ class DatabaseUserState {
   /// [accessCert] Access certificate for TLS client authentication. (Kafka only)
   /// [accessKey] Access key for TLS client authentication. (Kafka only)
   /// [clusterId] The ID of the original source database cluster.
-  /// [mysqlAuthPlugin] The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+  /// [mysqlAuthPlugin] The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
   /// [name] The name for the database user.
   /// [password] Password for the database user.
   /// [role] Role for the database user. The value will be either "primary" or "normal".
@@ -69,4 +69,3 @@ class DatabaseUserState {
     );
   }
 }
-

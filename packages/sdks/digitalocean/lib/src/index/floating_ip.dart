@@ -6,7 +6,7 @@ import 'floating_ip_state.dart';
 ///
 /// Provides a DigitalOcean Floating IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
 ///
-/// &gt; **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `digitalocean.FloatingIp` resource by setting a `droplet_id` or using the `digitalocean.FloatingIpAssignment` resource, but the two cannot be used together.
+/// &gt; **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `digitalocean.FloatingIp` resource by setting a `dropletId` or using the `digitalocean.FloatingIpAssignment` resource, but the two cannot be used together.
 ///
 /// ## Example Usage
 ///
@@ -24,7 +24,7 @@ import 'floating_ip_state.dart';
 ///     privateNetworking: true,
 /// });
 /// const foobarFloatingIp = new digitalocean.FloatingIp("foobar", {
-///     dropletId: foobar.id,
+///     dropletId: foobar.id.apply(x =>Number(x)),
 ///     region: foobar.region,
 /// });
 /// ```
@@ -40,7 +40,7 @@ import 'floating_ip_state.dart';
 ///     ipv6=True,
 ///     private_networking=True)
 /// foobar_floating_ip = digitalocean.FloatingIp("foobar",
-///     droplet_id=foobar.id,
+///     droplet_id=foobar.id.apply(lambda x: int(x)),
 ///     region=foobar.region)
 /// ```
 /// ```csharp
@@ -73,6 +73,8 @@ import 'floating_ip_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -91,7 +93,7 @@ import 'floating_ip_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewFloatingIp(ctx, "foobar", &digitalocean.FloatingIpArgs{
-/// 			DropletId: foobar.ID(),
+/// 			DropletId: foobar.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			Region:    foobar.Region,
 /// 		})
 /// 		if err != nil {
@@ -99,6 +101,28 @@ import 'floating_ip_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_droplet" "foobar" {
+///   name               = "baz"
+///   size               = "s-1vcpu-1gb"
+///   image              = "ubuntu-18-04-x64"
+///   region             = "sgp1"
+///   ipv6               = true
+///   private_networking = true
+/// }
+/// resource "digitalocean_floatingip" "foobar" {
+///   droplet_id = digitalocean_droplet.foobar.id
+///   region     = digitalocean_droplet.foobar.region
 /// }
 /// ```
 /// ```java
@@ -111,8 +135,8 @@ import 'floating_ip_state.dart';
 /// import com.pulumi.digitalocean.DropletArgs;
 /// import com.pulumi.digitalocean.FloatingIp;
 /// import com.pulumi.digitalocean.FloatingIpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

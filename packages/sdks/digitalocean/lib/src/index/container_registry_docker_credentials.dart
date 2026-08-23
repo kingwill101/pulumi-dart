@@ -60,6 +60,19 @@ import 'container_registry_docker_credentials_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_containerregistrydockercredentials" "example" {
+///   registry_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +81,8 @@ import 'container_registry_docker_credentials_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.ContainerRegistryDockerCredentials;
 /// import com.pulumi.digitalocean.ContainerRegistryDockerCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -99,7 +112,7 @@ import 'container_registry_docker_credentials_state.dart';
 ///
 /// ### Docker Provider Example
 ///
-/// Use the `endpoint` and `docker_credentials` with the Docker provider:
+/// Use the `endpoint` and `dockerCredentials` with the Docker provider:
 ///
 ///
 /// ```typescript
@@ -148,7 +161,7 @@ import 'container_registry_docker_credentials_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupContainerRegistry(ctx, &digitalocean.LookupContainerRegistryArgs{
+/// 		_, err := digitalocean.GetContainerRegistry(ctx, &digitalocean.LookupContainerRegistryArgs{
 /// 			Name: "example",
 /// 		}, nil)
 /// 		if err != nil {
@@ -164,6 +177,23 @@ import 'container_registry_docker_credentials_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getcontainerregistry" "example" {
+///   name = "example"
+/// }
+///
+/// resource "digitalocean_containerregistrydockercredentials" "example" {
+///   registry_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -174,8 +204,8 @@ import 'container_registry_docker_credentials_state.dart';
 /// import com.pulumi.digitalocean.inputs.GetContainerRegistryArgs;
 /// import com.pulumi.digitalocean.ContainerRegistryDockerCredentials;
 /// import com.pulumi.digitalocean.ContainerRegistryDockerCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -216,7 +246,7 @@ import 'container_registry_docker_credentials_state.dart';
 ///
 /// ### Kubernetes Example
 ///
-/// Combined with the Kubernetes Provider's `kubernetes_secret` resource, you can
+/// Combined with the Kubernetes Provider's `kubernetesSecret` resource, you can
 /// access the registry from inside your cluster:
 ///
 ///
@@ -246,7 +276,7 @@ import 'container_registry_docker_credentials_state.dart';
 ///
 /// example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
 /// example = digitalocean.get_kubernetes_cluster(name="prod-cluster-01")
-/// example_secret = kubernetes.index.Secret("example",
+/// example_secret = kubernetes.Secret("example",
 ///     metadata=[{
 ///         name: docker-cfg,
 ///     }],
@@ -274,7 +304,7 @@ import 'container_registry_docker_credentials_state.dart';
 ///         Name = "prod-cluster-01",
 ///     });
 ///
-///     var exampleSecret = new Kubernetes.Index.Secret("example", new()
+///     var exampleSecret = new Kubernetes.Secret("example", new()
 ///     {
 ///         Metadata = new[]
 ///         {
@@ -309,19 +339,19 @@ import 'container_registry_docker_credentials_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = digitalocean.LookupKubernetesCluster(ctx, &digitalocean.LookupKubernetesClusterArgs{
+/// 		_, err = digitalocean.GetKubernetesCluster(ctx, &digitalocean.LookupKubernetesClusterArgs{
 /// 			Name: "prod-cluster-01",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = kubernetes.NewSecret(ctx, "example", &kubernetes.SecretArgs{
-/// 			Metadata: []map[string]interface{}{
-/// 				map[string]interface{}{
+/// 			Metadata: []map[string]string{
+/// 				{
 /// 					"name": "docker-cfg",
 /// 				},
 /// 			},
-/// 			Data: map[string]interface{}{
+/// 			Data: map[string]pulumi.String{
 /// 				".dockerconfigjson": exampleContainerRegistryDockerCredentials.DockerCredentials,
 /// 			},
 /// 			Type: "kubernetes.io/dockerconfigjson",
@@ -331,6 +361,35 @@ import 'container_registry_docker_credentials_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///     kubernetes = {
+///       source = "pulumi/kubernetes"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getkubernetescluster" "example" {
+///   name = "prod-cluster-01"
+/// }
+///
+/// resource "digitalocean_containerregistrydockercredentials" "example" {
+///   registry_name = "example"
+/// }
+/// resource "kubernetes_secret" "example" {
+///   metadata = [{
+///     "name" = "docker-cfg"
+///   }]
+///   data = {
+///     ".dockerconfigjson" = digitalocean_containerregistrydockercredentials.example.docker_credentials
+///   }
+///   type = "kubernetes.io/dockerconfigjson"
 /// }
 /// ```
 /// ```java
@@ -345,8 +404,8 @@ import 'container_registry_docker_credentials_state.dart';
 /// import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
 /// import com.pulumi.kubernetes.Secret;
 /// import com.pulumi.kubernetes.SecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -367,7 +426,7 @@ import 'container_registry_docker_credentials_state.dart';
 ///             .build());
 ///
 ///         var exampleSecret = new Secret("exampleSecret", SecretArgs.builder()
-///             .metadata(List.of(Map.of("name", "docker-cfg")))
+///             .metadata(Arrays.asList(Map.of("name", "docker-cfg")))
 ///             .data(Map.of(".dockerconfigjson", exampleContainerRegistryDockerCredentials.dockerCredentials()))
 ///             .type("kubernetes.io/dockerconfigjson")
 ///             .build());

@@ -92,7 +92,7 @@ import 'tag_state.dart';
 /// 			Region: pulumi.String(digitalocean.RegionNYC3),
 /// 			Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 /// 			Tags: pulumi.StringArray{
-/// 				foobar.ID(),
+/// 				foobar.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -100,6 +100,28 @@ import 'tag_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// # Create a new tag
+/// resource "digitalocean_tag" "foobar" {
+///   name = "foobar"
+/// }
+/// # Create a new Droplet in nyc3 with the foobar tag
+/// resource "digitalocean_droplet" "web" {
+///   image  = "ubuntu-18-04-x64"
+///   name   = "web-1"
+///   region = "nyc3"
+///   size   = "s-1vcpu-1gb"
+///   tags   = [digitalocean_tag.foobar.id]
 /// }
 /// ```
 /// ```java
@@ -112,8 +134,8 @@ import 'tag_state.dart';
 /// import com.pulumi.digitalocean.TagArgs;
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

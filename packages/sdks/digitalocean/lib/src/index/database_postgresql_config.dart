@@ -93,7 +93,7 @@ import 'database_postgresql_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDatabasePostgresqlConfig(ctx, "example", &digitalocean.DatabasePostgresqlConfigArgs{
-/// 			ClusterId: exampleDatabaseCluster.ID(),
+/// 			ClusterId: exampleDatabaseCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			Timezone:  pulumi.String("UTC"),
 /// 			WorkMem:   pulumi.Int(16),
 /// 		})
@@ -102,6 +102,29 @@ import 'database_postgresql_config_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasepostgresqlconfig" "example" {
+///   cluster_id = digitalocean_databasecluster.example.id
+///   timezone   = "UTC"
+///   work_mem   = 16
+/// }
+/// resource "digitalocean_databasecluster" "example" {
+///   name       = "example-postgresql-cluster"
+///   engine     = "pg"
+///   version    = "15"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
 /// }
 /// ```
 /// ```java
@@ -114,8 +137,8 @@ import 'database_postgresql_config_state.dart';
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
 /// import com.pulumi.digitalocean.DatabasePostgresqlConfig;
 /// import com.pulumi.digitalocean.DatabasePostgresqlConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,7 +197,7 @@ import 'database_postgresql_config_state.dart';
 /// $ pulumi import digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig example 52556c07-788e-4d41-b8a7-c796432197d1
 /// ```
 class DatabasePostgresqlConfig extends pulumi.CustomResource {
-  /// Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+  /// Specifies a fraction, in a decimal value, of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
   late final pulumi.Output<double> autovacuumAnalyzeScaleFactor;
   /// Specifies the minimum number of inserted, updated, or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
   late final pulumi.Output<int> autovacuumAnalyzeThreshold;
@@ -184,11 +207,11 @@ class DatabasePostgresqlConfig extends pulumi.CustomResource {
   late final pulumi.Output<int> autovacuumMaxWorkers;
   /// Specifies the minimum delay, in seconds, between autovacuum runs on any given database. The default is one minute.
   late final pulumi.Output<int> autovacuumNaptime;
-  /// Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuum_cost_delay value, which is 20 milliseconds.
+  /// Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuumCostDelay value, which is 20 milliseconds.
   late final pulumi.Output<int> autovacuumVacuumCostDelay;
-  /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+  /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
   late final pulumi.Output<int> autovacuumVacuumCostLimit;
-  /// Specifies a fraction, in a decimal value, of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+  /// Specifies a fraction, in a decimal value, of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
   late final pulumi.Output<double> autovacuumVacuumScaleFactor;
   /// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
   late final pulumi.Output<int> autovacuumVacuumThreshold;
@@ -202,7 +225,7 @@ class DatabasePostgresqlConfig extends pulumi.CustomResource {
   late final pulumi.Output<int> bgwriterFlushAfter;
   /// The maximum number of buffers that the background writer can write. Setting this to zero disables background writing. Default is 100.
   late final pulumi.Output<int> bgwriterLruMaxpages;
-  /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+  /// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
   late final pulumi.Output<double> bgwriterLruMultiplier;
   /// The ID of the target PostgreSQL cluster.
   late final pulumi.Output<String> clusterId;
@@ -256,7 +279,7 @@ class DatabasePostgresqlConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> pgStatStatementsTrack;
   /// PGBouncer connection pooling settings
   late final pulumi.Output<List<Map<String, dynamic>>> pgbouncers;
-  /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+  /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
   late final pulumi.Output<double> sharedBuffersPercentage;
   /// PostgreSQL temporary file limit in KiB. If -1, sets to unlimited.
   late final pulumi.Output<int> tempFileLimit;

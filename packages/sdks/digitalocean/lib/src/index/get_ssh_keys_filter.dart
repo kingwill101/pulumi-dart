@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSshKeysFilter {
   final pulumi.Input<bool>? all;
-  /// Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+  /// Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
   final pulumi.Input<String> key;
   final pulumi.Input<String>? matchBy;
   /// A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
@@ -12,7 +12,7 @@ class GetSshKeysFilter {
 
   /// Creates a new [GetSshKeysFilter].
   /// [all] Optional.
-  /// [key] Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+  /// [key] Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
   /// [matchBy] Optional.
   /// [values] A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
   const GetSshKeysFilter({
@@ -40,4 +40,3 @@ class GetSshKeysFilter {
     );
   }
 }
-

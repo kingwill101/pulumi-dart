@@ -124,6 +124,32 @@ import 'ssh_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// # Create a new SSH key
+/// resource "digitalocean_sshkey" "default" {
+///   name       = "Terraform Example"
+///   public_key = file("/Users/terraform/.ssh/id_rsa.pub")
+/// }
+/// # Create a new Droplet using the SSH key
+/// resource "digitalocean_droplet" "web" {
+///   image    = "ubuntu-18-04-x64"
+///   name     = "web-1"
+///   region   = "nyc3"
+///   size     = "s-1vcpu-1gb"
+///   ssh_keys = [digitalocean_sshkey.default.fingerprint]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -136,8 +162,8 @@ import 'ssh_key_state.dart';
 /// import com.pulumi.std.inputs.FileArgs;
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

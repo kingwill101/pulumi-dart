@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_cluster_backup_restore.dart';
 import 'database_cluster_maintenance_window.dart';
+import 'database_cluster_storage_autoscale.dart';
 
 /// Input properties used for looking up and filtering DatabaseCluster resources.
 class DatabaseClusterState {
@@ -13,7 +14,7 @@ class DatabaseClusterState {
   final pulumi.Input<String>? database;
   /// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
   final pulumi.Input<String>? engine;
-  /// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+  /// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
   final pulumi.Input<String>? evictionPolicy;
   /// Database cluster's hostname.
   final pulumi.Input<String>? host;
@@ -43,6 +44,8 @@ class DatabaseClusterState {
   final pulumi.Input<String>? size;
   /// A comma separated string specifying the  SQL modes for a MySQL cluster.
   final pulumi.Input<String>? sqlMode;
+  /// Storage autoscaling configuration for the database cluster.
+  final pulumi.Input<DatabaseClusterStorageAutoscale>? storageAutoscale;
   /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
   final pulumi.Input<String>? storageSizeMib;
   /// A list of tag names to be applied to the database cluster.
@@ -72,7 +75,7 @@ class DatabaseClusterState {
   /// [clusterUrn] The uniform resource name of the database cluster.
   /// [database] Name of the cluster's default database.
   /// [engine] Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
-  /// [evictionPolicy] A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+  /// [evictionPolicy] A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
   /// [host] Database cluster's hostname.
   /// [maintenanceWindows] Defines when the automatic maintenance should be performed for the database cluster.
   /// [metricsEndpoints] A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
@@ -87,6 +90,7 @@ class DatabaseClusterState {
   /// [region] DigitalOcean region where the cluster will reside.
   /// [size] Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
   /// [sqlMode] A comma separated string specifying the  SQL modes for a MySQL cluster.
+  /// [storageAutoscale] Storage autoscaling configuration for the database cluster.
   /// [storageSizeMib] Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
   /// [tags] A list of tag names to be applied to the database cluster.
   /// [uiDatabase] Name of the OpenSearch dashboard db.
@@ -118,6 +122,7 @@ class DatabaseClusterState {
     this.region,
     this.size,
     this.sqlMode,
+    this.storageAutoscale,
     this.storageSizeMib,
     this.tags,
     this.uiDatabase,
@@ -152,6 +157,7 @@ class DatabaseClusterState {
       'region': ?region,
       'size': ?size,
       'sqlMode': ?sqlMode,
+      'storageAutoscale': ?pulumi.Input.mapOptionalInputValue<DatabaseClusterStorageAutoscale, Map<String, dynamic>>(storageAutoscale, (value) => value.toMap()),
       'storageSizeMib': ?storageSizeMib,
       'tags': ?tags,
       'uiDatabase': ?uiDatabase,
@@ -187,6 +193,7 @@ class DatabaseClusterState {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sqlMode: (() { final guardedValue = map['sqlMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAutoscale: (() { final guardedValue = map['storageAutoscale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseClusterStorageAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       storageSizeMib: (() { final guardedValue = map['storageSizeMib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       uiDatabase: (() { final guardedValue = map['uiDatabase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -201,4 +208,3 @@ class DatabaseClusterState {
     );
   }
 }
-

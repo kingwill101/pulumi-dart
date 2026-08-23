@@ -142,7 +142,7 @@ import 'kubernetes_node_pool_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewKubernetesNodePool(ctx, "bar", &digitalocean.KubernetesNodePoolArgs{
-/// 			ClusterId: foo.ID(),
+/// 			ClusterId: foo.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:      pulumi.String("backend-pool"),
 /// 			Size:      pulumi.String(digitalocean.DropletSlugDropletC2),
 /// 			NodeCount: pulumi.Int(2),
@@ -168,6 +168,42 @@ import 'kubernetes_node_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_kubernetescluster" "foo" {
+///   name    = "foo"
+///   region  = "nyc1"
+///   version = "1.22.8-do.1"
+///   node_pool = {
+///     name       = "front-end-pool"
+///     size       = "s-2vcpu-2gb"
+///     node_count = 3
+///   }
+/// }
+/// resource "digitalocean_kubernetesnodepool" "bar" {
+///   cluster_id = digitalocean_kubernetescluster.foo.id
+///   name       = "backend-pool"
+///   size       = "c-2"
+///   node_count = 2
+///   tags       = ["backend"]
+///   labels = {
+///     "service"  = "backend"
+///     "priority" = "high"
+///   }
+///   taints {
+///     key    = "workloadKind"
+///     value  = "database"
+///     effect = "NoSchedule"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -180,8 +216,8 @@ import 'kubernetes_node_pool_state.dart';
 /// import com.pulumi.digitalocean.KubernetesNodePool;
 /// import com.pulumi.digitalocean.KubernetesNodePoolArgs;
 /// import com.pulumi.digitalocean.inputs.KubernetesNodePoolTaintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -331,6 +367,24 @@ import 'kubernetes_node_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_kubernetesnodepool" "autoscale-pool-01" {
+///   cluster_id = foo.id
+///   name       = "autoscale-pool-01"
+///   size       = "s-1vcpu-2gb"
+///   auto_scale = true
+///   min_nodes  = 1
+///   max_nodes  = 5
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -339,8 +393,8 @@ import 'kubernetes_node_pool_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.KubernetesNodePool;
 /// import com.pulumi.digitalocean.KubernetesNodePoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -398,6 +452,10 @@ class KubernetesNodePool extends pulumi.CustomResource {
   late final pulumi.Output<bool?> autoScale;
   /// The ID of the Kubernetes cluster to which the node pool is associated.
   late final pulumi.Output<String> clusterId;
+  /// The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+  ///
+  /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+  late final pulumi.Output<String?> gpuPartitionMode;
   /// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
   late final pulumi.Output<Map<String, String>?> labels;
   /// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
@@ -415,8 +473,6 @@ class KubernetesNodePool extends pulumi.CustomResource {
   /// A list of tag names to be applied to the Kubernetes cluster.
   late final pulumi.Output<List<String>?> tags;
   /// A list of taints applied to all nodes in the pool.
-  ///
-  /// This resource supports customized create timeouts. The default timeout is 30 minutes.
   late final pulumi.Output<List<Map<String, dynamic>>?> taints;
 
   /// Creates a new [KubernetesNodePool].
@@ -436,6 +492,7 @@ class KubernetesNodePool extends pulumi.CustomResource {
     actualNodeCount = registerOutput<int>('actualNodeCount');
     autoScale = registerOutput<bool?>('autoScale');
     clusterId = registerOutput<String>('clusterId');
+    gpuPartitionMode = registerOutput<String?>('gpuPartitionMode');
     labels = registerOutput<Map<String, String>?>('labels');
     maxNodes = registerOutput<int?>('maxNodes');
     minNodes = registerOutput<int?>('minNodes');
@@ -473,6 +530,7 @@ class KubernetesNodePool extends pulumi.CustomResource {
     actualNodeCount = registerOutput<int>('actualNodeCount');
     autoScale = registerOutput<bool?>('autoScale');
     clusterId = registerOutput<String>('clusterId');
+    gpuPartitionMode = registerOutput<String?>('gpuPartitionMode');
     labels = registerOutput<Map<String, String>?>('labels');
     maxNodes = registerOutput<int?>('maxNodes');
     minNodes = registerOutput<int?>('minNodes');

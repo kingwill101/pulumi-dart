@@ -98,7 +98,7 @@ import 'database_redis_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDatabaseRedisConfig(ctx, "example", &digitalocean.DatabaseRedisConfigArgs{
-/// 			ClusterId:            exampleDatabaseCluster.ID(),
+/// 			ClusterId:            exampleDatabaseCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			MaxmemoryPolicy:      pulumi.String("allkeys-lru"),
 /// 			NotifyKeyspaceEvents: pulumi.String("KEA"),
 /// 			Timeout:              pulumi.Int(90),
@@ -108,6 +108,30 @@ import 'database_redis_config_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databaseredisconfig" "example" {
+///   cluster_id             = digitalocean_databasecluster.example.id
+///   maxmemory_policy       = "allkeys-lru"
+///   notify_keyspace_events = "KEA"
+///   timeout                = 90
+/// }
+/// resource "digitalocean_databasecluster" "example" {
+///   name       = "example-redis-cluster"
+///   engine     = "redis"
+///   version    = "7"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
 /// }
 /// ```
 /// ```java
@@ -120,8 +144,8 @@ import 'database_redis_config_state.dart';
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
 /// import com.pulumi.digitalocean.DatabaseRedisConfig;
 /// import com.pulumi.digitalocean.DatabaseRedisConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -25,7 +25,7 @@ import 'volume_state.dart';
 ///     region: digitalocean.Region.NYC1,
 /// });
 /// const foobarVolumeAttachment = new digitalocean.VolumeAttachment("foobar", {
-///     dropletId: foobarDroplet.id,
+///     dropletId: foobarDroplet.id.apply(x =>Number(x)),
 ///     volumeId: foobar.id,
 /// });
 /// ```
@@ -45,7 +45,7 @@ import 'volume_state.dart';
 ///     image="ubuntu-18-04-x64",
 ///     region=digitalocean.Region.NYC1)
 /// foobar_volume_attachment = digitalocean.VolumeAttachment("foobar",
-///     droplet_id=foobar_droplet.id,
+///     droplet_id=foobar_droplet.id.apply(lambda x: int(x)),
 ///     volume_id=foobar.id)
 /// ```
 /// ```csharp
@@ -85,6 +85,8 @@ import 'volume_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -111,14 +113,41 @@ import 'volume_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewVolumeAttachment(ctx, "foobar", &digitalocean.VolumeAttachmentArgs{
-/// 			DropletId: foobarDroplet.ID(),
-/// 			VolumeId:  foobar.ID(),
+/// 			DropletId: foobarDroplet.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+/// 			VolumeId:  foobar.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_volume" "foobar" {
+///   region                  = "nyc1"
+///   name                    = "baz"
+///   size                    = 100
+///   initial_filesystem_type = "ext4"
+///   description             = "an example volume"
+/// }
+/// resource "digitalocean_droplet" "foobar" {
+///   name   = "baz"
+///   size   = "s-1vcpu-1gb"
+///   image  = "ubuntu-18-04-x64"
+///   region = "nyc1"
+/// }
+/// resource "digitalocean_volumeattachment" "foobar" {
+///   droplet_id = digitalocean_droplet.foobar.id
+///   volume_id  = digitalocean_volume.foobar.id
 /// }
 /// ```
 /// ```java
@@ -133,8 +162,8 @@ import 'volume_state.dart';
 /// import com.pulumi.digitalocean.DropletArgs;
 /// import com.pulumi.digitalocean.VolumeAttachment;
 /// import com.pulumi.digitalocean.VolumeAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -257,7 +286,7 @@ import 'volume_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		foobar, err := digitalocean.LookupVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
+/// 		foobar, err := digitalocean.GetVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
 /// 			Name: pulumi.StringRef("baz"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -276,6 +305,26 @@ import 'volume_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getvolumesnapshot" "foobar" {
+///   name = "baz"
+/// }
+///
+/// resource "digitalocean_volume" "foobar" {
+///   region      = "lon1"
+///   name        = "foo"
+///   size        = data.digitalocean_getvolumesnapshot.foobar.min_disk_size
+///   snapshot_id = data.digitalocean_getvolumesnapshot.foobar.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -286,8 +335,8 @@ import 'volume_state.dart';
 /// import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
 /// import com.pulumi.digitalocean.Volume;
 /// import com.pulumi.digitalocean.VolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

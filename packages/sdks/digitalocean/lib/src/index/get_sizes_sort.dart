@@ -6,7 +6,7 @@ class GetSizesSort {
   /// The sort direction. This may be either `asc` or `desc`.
   final pulumi.Input<String>? direction;
   /// Sort the sizes by this key. This may be one of `slug`,
-  /// `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+  /// `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
   final pulumi.Input<String> key;
 
   /// Creates a new [GetSizesSort].
@@ -31,4 +31,3 @@ class GetSizesSort {
     );
   }
 }
-

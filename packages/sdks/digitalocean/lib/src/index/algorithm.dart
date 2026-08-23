@@ -14,4 +14,3 @@ enum Algorithm {
     throw ArgumentError('Unknown Algorithm value: $value');
   }
 }
-

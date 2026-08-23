@@ -57,6 +57,19 @@ import 'reserved_ipv6_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_reservedipv6" "foobar" {
+///   region_slug = "nyc3"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +78,8 @@ import 'reserved_ipv6_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.ReservedIpv6;
 /// import com.pulumi.digitalocean.ReservedIpv6Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

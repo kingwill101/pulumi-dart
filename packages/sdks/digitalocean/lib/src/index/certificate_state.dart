@@ -10,7 +10,7 @@ class CertificateState {
   final pulumi.Input<String>? certificateChain;
   /// List of fully qualified domain names (FQDNs) for
   /// which the certificate will be issued. The domains must be managed using
-  /// DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
+  /// DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
   final pulumi.Input<List<String>>? domains;
   /// The contents of a PEM-formatted public
   /// TLS certificate. Only valid when type is `custom`.
@@ -26,7 +26,7 @@ class CertificateState {
   final pulumi.Input<String>? sha1Fingerprint;
   final pulumi.Input<String>? state;
   /// The type of certificate to provision. Can be either
-  /// `custom` or `lets_encrypt`. Defaults to `custom`.
+  /// `custom` or `letsEncrypt`. Defaults to `custom`.
   final pulumi.Input<String>? type;
   /// The UUID of the certificate
   final pulumi.Input<String>? uuid;
@@ -85,4 +85,3 @@ class CertificateState {
     );
   }
 }
-

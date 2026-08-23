@@ -4,24 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecIngressRuleMatchPath {
   /// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-  final pulumi.Input<String> prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [GetAppSpecIngressRuleMatchPath].
   /// [prefix] The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
   const GetAppSpecIngressRuleMatchPath({
-    required this.prefix,
+    this.prefix,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'prefix': prefix,
+      'prefix': ?prefix,
     };
   }
 
   factory GetAppSpecIngressRuleMatchPath.fromMap(Map<String, dynamic> map) {
     return GetAppSpecIngressRuleMatchPath(
-      prefix: pulumi.Input.fromValue(map['prefix'] as String),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

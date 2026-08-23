@@ -11,6 +11,7 @@ import 'app_spec_service_github.dart';
 import 'app_spec_service_gitlab.dart';
 import 'app_spec_service_health_check.dart';
 import 'app_spec_service_image.dart';
+import 'app_spec_service_liveness_health_check.dart';
 import 'app_spec_service_log_destination.dart';
 import 'app_spec_service_route.dart';
 import 'app_spec_service_termination.dart';
@@ -50,6 +51,8 @@ class AppSpecService {
   final pulumi.Input<String>? instanceSizeSlug;
   /// A list of ports on which this service will listen for internal traffic.
   final pulumi.Input<List<int>>? internalPorts;
+  /// A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+  final pulumi.Input<AppSpecServiceLivenessHealthCheck>? livenessHealthCheck;
   /// Describes a log forwarding destination.
   final pulumi.Input<List<AppSpecServiceLogDestination>>? logDestinations;
   /// The name of the component.
@@ -81,6 +84,7 @@ class AppSpecService {
   /// [instanceCount] The amount of instances that this component should be scaled to.
   /// [instanceSizeSlug] The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
   /// [internalPorts] A list of ports on which this service will listen for internal traffic.
+  /// [livenessHealthCheck] A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
   /// [logDestinations] Describes a log forwarding destination.
   /// [name] The name of the component.
   /// [routes] An HTTP paths that should be routed to this component.
@@ -105,6 +109,7 @@ class AppSpecService {
     this.instanceCount,
     this.instanceSizeSlug,
     this.internalPorts,
+    this.livenessHealthCheck,
     this.logDestinations,
     required this.name,
     this.routes,
@@ -132,6 +137,7 @@ class AppSpecService {
       'instanceCount': ?instanceCount,
       'instanceSizeSlug': ?instanceSizeSlug,
       'internalPorts': ?internalPorts,
+      'livenessHealthCheck': ?pulumi.Input.mapOptionalInputValue<AppSpecServiceLivenessHealthCheck, Map<String, dynamic>>(livenessHealthCheck, (value) => value.toMap()),
       'logDestinations': ?pulumi.Input.mapOptionalInputValue<List<AppSpecServiceLogDestination>, List<Map<String, dynamic>>>(logDestinations, (value) => pulumi.Input.encodeList<AppSpecServiceLogDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'routes': ?pulumi.Input.mapOptionalInputValue<List<AppSpecServiceRoute>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<AppSpecServiceRoute, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -160,6 +166,7 @@ class AppSpecService {
       instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       instanceSizeSlug: (() { final guardedValue = map['instanceSizeSlug']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       internalPorts: (() { final guardedValue = map['internalPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
+      livenessHealthCheck: (() { final guardedValue = map['livenessHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppSpecServiceLivenessHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logDestinations: (() { final guardedValue = map['logDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppSpecServiceLogDestination>(guardedValue, (value) => AppSpecServiceLogDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       routes: (() { final guardedValue = map['routes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppSpecServiceRoute>(guardedValue, (value) => AppSpecServiceRoute.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -169,4 +176,3 @@ class AppSpecService {
     );
   }
 }
-

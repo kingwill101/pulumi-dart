@@ -13,7 +13,7 @@ import 'spaces_bucket_cors_configuration_state.dart';
 ///
 /// The authentication requirement can be met by either setting the
 /// `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
-/// the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
+/// the provider's `spacesAccessId` and `spacesSecretKey` arguments to the
 /// access ID and secret you generate via the DigitalOcean control panel. For
 /// example:
 ///
@@ -60,6 +60,18 @@ import 'spaces_bucket_cors_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_spacesbucket" "static-assets" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +79,8 @@ import 'spaces_bucket_cors_configuration_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.SpacesBucket;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -207,7 +219,7 @@ import 'spaces_bucket_cors_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewSpacesBucketCorsConfiguration(ctx, "test", &digitalocean.SpacesBucketCorsConfigurationArgs{
-/// 			Bucket: foobar.ID(),
+/// 			Bucket: foobar.ID().ToIDOutput().ToStringOutput(),
 /// 			Region: pulumi.String("nyc3"),
 /// 			CorsRules: digitalocean.SpacesBucketCorsConfigurationCorsRuleArray{
 /// 				&digitalocean.SpacesBucketCorsConfigurationCorsRuleArgs{
@@ -235,6 +247,31 @@ import 'spaces_bucket_cors_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_spacesbucket" "foobar" {
+///   name   = "foobar"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_spacesbucketcorsconfiguration" "test" {
+///   bucket = digitalocean_spacesbucket.foobar.id
+///   region = "nyc3"
+///   cors_rules {
+///     allowed_headers = ["*"]
+///     allowed_methods = ["PUT", "POST"]
+///     allowed_origins = ["https://s3-website-test.hashicorp.com"]
+///     expose_headers  = ["ETag"]
+///     max_age_seconds = 3000
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -246,8 +283,8 @@ import 'spaces_bucket_cors_configuration_state.dart';
 /// import com.pulumi.digitalocean.SpacesBucketCorsConfiguration;
 /// import com.pulumi.digitalocean.SpacesBucketCorsConfigurationArgs;
 /// import com.pulumi.digitalocean.inputs.SpacesBucketCorsConfigurationCorsRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

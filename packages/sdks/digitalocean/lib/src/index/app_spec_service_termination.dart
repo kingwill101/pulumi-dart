@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppSpecServiceTermination {
   /// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
   ///
-  /// A `static_site` can contain:
+  /// A `staticSite` can contain:
   final pulumi.Input<int>? drainSeconds;
   /// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
   ///
@@ -34,4 +34,3 @@ class AppSpecServiceTermination {
     );
   }
 }
-

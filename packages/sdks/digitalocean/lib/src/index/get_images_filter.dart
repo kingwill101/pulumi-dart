@@ -7,8 +7,8 @@ class GetImagesFilter {
   /// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
   /// that all of the `values` are present in the list or set.
   final pulumi.Input<bool>? all;
-  /// Filter the images by this key. This may be one of `distribution`, `error_message`,
-  /// `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
+  /// Filter the images by this key. This may be one of `distribution`, `errorMessage`,
+  /// `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
   /// `tags`, or `type`.
   final pulumi.Input<String> key;
   /// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
@@ -21,7 +21,7 @@ class GetImagesFilter {
 
   /// Creates a new [GetImagesFilter].
   /// [all] Set to `true` to require that a field match all of the `values` instead of just one or more of
-  /// [key] Filter the images by this key. This may be one of `distribution`, `error_message`,
+  /// [key] Filter the images by this key. This may be one of `distribution`, `errorMessage`,
   /// [matchBy] One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// [values] A list of values to match against the `key` field. Only retrieves images
   const GetImagesFilter({
@@ -49,4 +49,3 @@ class GetImagesFilter {
     );
   }
 }
-

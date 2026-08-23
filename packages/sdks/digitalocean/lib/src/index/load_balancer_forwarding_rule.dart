@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerForwardingRule {
-  /// **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
+  /// **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificateName` instead.
   final pulumi.Input<String>? certificateId;
   /// The unique name of the TLS certificate to be used for SSL termination.
   final pulumi.Input<String>? certificateName;
@@ -19,7 +19,7 @@ class LoadBalancerForwardingRule {
   final pulumi.Input<bool>? tlsPassthrough;
 
   /// Creates a new [LoadBalancerForwardingRule].
-  /// [certificateId] **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
+  /// [certificateId] **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificateName` instead.
   /// [certificateName] The unique name of the TLS certificate to be used for SSL termination.
   /// [entryPort] An integer representing the port on which the Load Balancer instance will listen.
   /// [entryProtocol] The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
@@ -60,4 +60,3 @@ class LoadBalancerForwardingRule {
     );
   }
 }
-

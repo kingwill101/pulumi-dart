@@ -26,7 +26,7 @@ import 'floating_ip_assignment_state.dart';
 /// });
 /// const foobarFloatingIpAssignment = new digitalocean.FloatingIpAssignment("foobar", {
 ///     ipAddress: foobar.ipAddress,
-///     dropletId: foobarDroplet.id,
+///     dropletId: foobarDroplet.id.apply(x =>Number(x)),
 /// });
 /// ```
 /// ```python
@@ -43,7 +43,7 @@ import 'floating_ip_assignment_state.dart';
 ///     private_networking=True)
 /// foobar_floating_ip_assignment = digitalocean.FloatingIpAssignment("foobar",
 ///     ip_address=foobar.ip_address,
-///     droplet_id=foobar_droplet.id)
+///     droplet_id=foobar_droplet.id.apply(lambda x: int(x)))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -80,6 +80,8 @@ import 'floating_ip_assignment_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -105,13 +107,38 @@ import 'floating_ip_assignment_state.dart';
 /// 		}
 /// 		_, err = digitalocean.NewFloatingIpAssignment(ctx, "foobar", &digitalocean.FloatingIpAssignmentArgs{
 /// 			IpAddress: foobar.IpAddress,
-/// 			DropletId: foobarDroplet.ID(),
+/// 			DropletId: foobarDroplet.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_floatingip" "foobar" {
+///   region = "sgp1"
+/// }
+/// resource "digitalocean_droplet" "foobar" {
+///   name               = "baz"
+///   size               = "s-1vcpu-1gb"
+///   image              = "ubuntu-18-04-x64"
+///   region             = "sgp1"
+///   ipv6               = true
+///   private_networking = true
+/// }
+/// resource "digitalocean_floatingipassignment" "foobar" {
+///   ip_address = digitalocean_floatingip.foobar.ip_address
+///   droplet_id = digitalocean_droplet.foobar.id
 /// }
 /// ```
 /// ```java
@@ -126,8 +153,8 @@ import 'floating_ip_assignment_state.dart';
 /// import com.pulumi.digitalocean.DropletArgs;
 /// import com.pulumi.digitalocean.FloatingIpAssignment;
 /// import com.pulumi.digitalocean.FloatingIpAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

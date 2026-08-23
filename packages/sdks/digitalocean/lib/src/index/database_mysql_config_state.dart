@@ -38,11 +38,11 @@ class DatabaseMysqlConfigState {
   final pulumi.Input<int>? interactiveTimeout;
   /// The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
   final pulumi.Input<String>? internalTmpMemStorageEngine;
-  /// The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+  /// The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
   final pulumi.Input<double>? longQueryTime;
   /// The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
   final pulumi.Input<int>? maxAllowedPacket;
-  /// The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
+  /// The maximum size, in bytes, of internal in-memory tables. Also set `tmpTableSize`. Default is `16777216` (16M)
   final pulumi.Input<int>? maxHeapTableSize;
   /// The time, in seconds, to wait for more data from an existing connection. aborting the read.
   final pulumi.Input<int>? netReadTimeout;
@@ -56,7 +56,7 @@ class DatabaseMysqlConfigState {
   final pulumi.Input<String>? sqlMode;
   /// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
   final pulumi.Input<bool>? sqlRequirePrimaryKey;
-  /// The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
+  /// The maximum size, in bytes, of internal in-memory tables. Also set `maxHeapTableSize`. Default is `16777216` (16M).
   final pulumi.Input<int>? tmpTableSize;
   /// The number of seconds the server waits for activity on a noninteractive connection before closing it.
   final pulumi.Input<int>? waitTimeout;
@@ -79,16 +79,16 @@ class DatabaseMysqlConfigState {
   /// [innodbRollbackOnTimeout] When enabled, transaction timeouts cause InnoDB to abort and roll back the entire transaction.
   /// [interactiveTimeout] The time, in seconds, the server waits for activity on an interactive. connection before closing it.
   /// [internalTmpMemStorageEngine] The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
-  /// [longQueryTime] The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+  /// [longQueryTime] The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
   /// [maxAllowedPacket] The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
-  /// [maxHeapTableSize] The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
+  /// [maxHeapTableSize] The maximum size, in bytes, of internal in-memory tables. Also set `tmpTableSize`. Default is `16777216` (16M)
   /// [netReadTimeout] The time, in seconds, to wait for more data from an existing connection. aborting the read.
   /// [netWriteTimeout] The number of seconds to wait for a block to be written to a connection before aborting the write.
   /// [slowQueryLog] When enabled, captures slow queries. When disabled, also truncates the mysql.slow_log table. Default is false.
   /// [sortBufferSize] The sort buffer size, in bytes, for `ORDER BY` optimization. Default is `262144`. (256K).
   /// [sqlMode] Global SQL mode. If empty, uses MySQL server defaults. Must only include uppercase alphabetic characters, underscores, and commas.
   /// [sqlRequirePrimaryKey] Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
-  /// [tmpTableSize] The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
+  /// [tmpTableSize] The maximum size, in bytes, of internal in-memory tables. Also set `maxHeapTableSize`. Default is `16777216` (16M).
   /// [waitTimeout] The number of seconds the server waits for activity on a noninteractive connection before closing it.
   const DatabaseMysqlConfigState({
     this.backupHour,
@@ -187,4 +187,3 @@ class DatabaseMysqlConfigState {
     );
   }
 }
-

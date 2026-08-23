@@ -35,6 +35,7 @@ class GetLoadBalancerResult {
   final int sizeUnit;
   final String status;
   final List<GetLoadBalancerStickySession> stickySessions;
+  final String subnetUuid;
   final List<String> targetLoadBalancerIds;
   final String type;
   final String vpcUuid;
@@ -65,6 +66,7 @@ class GetLoadBalancerResult {
   /// [sizeUnit] Required.
   /// [status] Required.
   /// [stickySessions] Required.
+  /// [subnetUuid] Required.
   /// [targetLoadBalancerIds] Required.
   /// [type] Required.
   /// [vpcUuid] Required.
@@ -94,6 +96,7 @@ class GetLoadBalancerResult {
     required this.sizeUnit,
     required this.status,
     required this.stickySessions,
+    required this.subnetUuid,
     required this.targetLoadBalancerIds,
     required this.type,
     required this.vpcUuid,
@@ -126,6 +129,7 @@ class GetLoadBalancerResult {
       'sizeUnit': sizeUnit,
       'status': status,
       'stickySessions': pulumi.Input.encodeList<GetLoadBalancerStickySession, Map<String, dynamic>>(stickySessions, (value) => value.toMap()),
+      'subnetUuid': subnetUuid,
       'targetLoadBalancerIds': targetLoadBalancerIds,
       'type': type,
       'vpcUuid': vpcUuid,
@@ -159,10 +163,10 @@ class GetLoadBalancerResult {
       sizeUnit: map['sizeUnit'] as int,
       status: map['status'] as String,
       stickySessions: pulumi.Input.decodeList<GetLoadBalancerStickySession>(map['stickySessions']!, (value) => GetLoadBalancerStickySession.fromMap((value as Map).cast<String, dynamic>())),
+      subnetUuid: map['subnetUuid'] as String,
       targetLoadBalancerIds: (map['targetLoadBalancerIds'] as List).cast<String>(),
       type: map['type'] as String,
       vpcUuid: map['vpcUuid'] as String,
     );
   }
 }
-

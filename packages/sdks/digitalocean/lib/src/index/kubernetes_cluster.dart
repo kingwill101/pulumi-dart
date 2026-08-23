@@ -1,11 +1,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kubernetes_cluster_amd_gpu_device_metrics_exporter_plugin.dart';
 import 'kubernetes_cluster_amd_gpu_device_plugin.dart';
+import 'kubernetes_cluster_amd_gpu_dra_driver.dart';
 import 'kubernetes_cluster_args.dart';
 import 'kubernetes_cluster_control_plane_firewall.dart';
+import 'kubernetes_cluster_coredns_autoscaler.dart';
 import 'kubernetes_cluster_maintenance_policy.dart';
 import 'kubernetes_cluster_node_pool.dart';
 import 'kubernetes_cluster_nvidia_gpu_device_plugin.dart';
+import 'kubernetes_cluster_nvidia_gpu_dra_driver.dart';
+import 'kubernetes_cluster_p2p_oci_registry_plugin.dart';
 import 'kubernetes_cluster_rdma_shared_device_plugin.dart';
 import 'kubernetes_cluster_routing_agent.dart';
 import 'kubernetes_cluster_state.dart';
@@ -122,6 +126,31 @@ import 'kubernetes_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_kubernetescluster" "foo" {
+///   name    = "foo"
+///   region  = "nyc1"
+///   version = "latest"
+///   node_pool = {
+///     name       = "worker-pool"
+///     size       = "s-2vcpu-2gb"
+///     node_count = 3
+///     taints = [{
+///       "key"    = "workloadKind"
+///       "value"  = "database"
+///       "effect" = "NoSchedule"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,8 +160,9 @@ import 'kubernetes_cluster_state.dart';
 /// import com.pulumi.digitalocean.KubernetesCluster;
 /// import com.pulumi.digitalocean.KubernetesClusterArgs;
 /// import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolTaintArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -275,6 +305,28 @@ import 'kubernetes_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_kubernetescluster" "foo" {
+///   name    = "foo"
+///   region  = "nyc1"
+///   version = "1.22.8-do.1"
+///   node_pool = {
+///     name       = "autoscale-worker-pool"
+///     size       = "s-2vcpu-2gb"
+///     auto_scale = true
+///     min_nodes  = 1
+///     max_nodes  = 5
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -284,8 +336,8 @@ import 'kubernetes_cluster_state.dart';
 /// import com.pulumi.digitalocean.KubernetesCluster;
 /// import com.pulumi.digitalocean.KubernetesClusterArgs;
 /// import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -330,7 +382,7 @@ import 'kubernetes_cluster_state.dart';
 /// ```
 ///
 ///
-/// Note that, currently, each node pool must always have at least one node and when using autoscaling the min_nodes must be greater than or equal to 1.
+/// Note that, currently, each node pool must always have at least one node and when using autoscaling the minNodes must be greater than or equal to 1.
 /// &gt; Autoscaling to zero (`min_nodes=0`) is in [private preview](https://docs.digitalocean.com/release-notes/kubernetes/#2025-01-07) and not available for public use.
 ///
 /// ### Auto Upgrade Example
@@ -454,6 +506,35 @@ import 'kubernetes_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getkubernetesversions" "example" {
+///   version_prefix = "1.22."
+/// }
+///
+/// resource "digitalocean_kubernetescluster" "foo" {
+///   name         = "foo"
+///   region       = "nyc1"
+///   auto_upgrade = true
+///   version      = data.digitalocean_getkubernetesversions.example.latest_version
+///   maintenance_policy = {
+///     start_time = "04:00"
+///     day        = "sunday"
+///   }
+///   node_pool = {
+///     name       = "default"
+///     size       = "s-1vcpu-2gb"
+///     node_count = 3
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -466,8 +547,8 @@ import 'kubernetes_cluster_state.dart';
 /// import com.pulumi.digitalocean.KubernetesClusterArgs;
 /// import com.pulumi.digitalocean.inputs.KubernetesClusterMaintenancePolicyArgs;
 /// import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -529,6 +610,177 @@ import 'kubernetes_cluster_state.dart';
 ///
 /// Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
 ///
+/// ### Isolated Workers Example
+///
+/// Kubernetes clusters may also be configured to use [isolated worker nodes](https://docs.digitalocean.com/products/kubernetes/concepts/isolated-workers/).
+/// When enabled, each worker node runs on dedicated hardware. The cluster's VPC must have a NAT gateway attached.
+/// For example:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const foo = new digitalocean.KubernetesCluster("foo", {
+///     name: "foo",
+///     region: digitalocean.Region.NYC1,
+///     version: "latest",
+///     isolatedWorkers: true,
+///     vpcUuid: example.id,
+///     nodePool: {
+///         name: "worker-pool",
+///         size: "s-2vcpu-2gb",
+///         nodeCount: 3,
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// foo = digitalocean.KubernetesCluster("foo",
+///     name="foo",
+///     region=digitalocean.Region.NYC1,
+///     version="latest",
+///     isolated_workers=True,
+///     vpc_uuid=example["id"],
+///     node_pool={
+///         "name": "worker-pool",
+///         "size": "s-2vcpu-2gb",
+///         "node_count": 3,
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var foo = new DigitalOcean.KubernetesCluster("foo", new()
+///     {
+///         Name = "foo",
+///         Region = DigitalOcean.Region.NYC1,
+///         Version = "latest",
+///         IsolatedWorkers = true,
+///         VpcUuid = example.Id,
+///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+///         {
+///             Name = "worker-pool",
+///             Size = "s-2vcpu-2gb",
+///             NodeCount = 3,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
+/// 			Name:            pulumi.String("foo"),
+/// 			Region:          pulumi.String(digitalocean.RegionNYC1),
+/// 			Version:         pulumi.String("latest"),
+/// 			IsolatedWorkers: pulumi.Bool(true),
+/// 			VpcUuid:         pulumi.Any(example.Id),
+/// 			NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
+/// 				Name:      pulumi.String("worker-pool"),
+/// 				Size:      pulumi.String("s-2vcpu-2gb"),
+/// 				NodeCount: pulumi.Int(3),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_kubernetescluster" "foo" {
+///   name             = "foo"
+///   region           = "nyc1"
+///   version          = "latest"
+///   isolated_workers = true
+///   vpc_uuid         = example.id
+///   node_pool = {
+///     name       = "worker-pool"
+///     size       = "s-2vcpu-2gb"
+///     node_count = 3
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.KubernetesCluster;
+/// import com.pulumi.digitalocean.KubernetesClusterArgs;
+/// import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var foo = new KubernetesCluster("foo", KubernetesClusterArgs.builder()
+///             .name("foo")
+///             .region("nyc1")
+///             .version("latest")
+///             .isolatedWorkers(true)
+///             .vpcUuid(example.id())
+///             .nodePool(KubernetesClusterNodePoolArgs.builder()
+///                 .name("worker-pool")
+///                 .size("s-2vcpu-2gb")
+///                 .nodeCount(3)
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   foo:
+///     type: digitalocean:KubernetesCluster
+///     properties:
+///       name: foo
+///       region: nyc1
+///       version: latest
+///       isolatedWorkers: true
+///       vpcUuid: ${example.id}
+///       nodePool:
+///         name: worker-pool
+///         size: s-2vcpu-2gb
+///         nodeCount: 3
+/// ```
+///
+///
 /// ### Kubernetes Terraform Provider Example
 ///
 /// The cluster's kubeconfig is exported as an attribute allowing you to use it with
@@ -585,7 +837,7 @@ import 'kubernetes_cluster_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupKubernetesCluster(ctx, &digitalocean.LookupKubernetesClusterArgs{
+/// 		_, err := digitalocean.GetKubernetesCluster(ctx, &digitalocean.LookupKubernetesClusterArgs{
 /// 			Name: "prod-cluster-01",
 /// 		}, nil)
 /// 		if err != nil {
@@ -593,6 +845,19 @@ import 'kubernetes_cluster_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getkubernetescluster" "example" {
+///   name = "prod-cluster-01"
 /// }
 /// ```
 /// ```java
@@ -603,8 +868,8 @@ import 'kubernetes_cluster_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -675,8 +940,8 @@ import 'kubernetes_cluster_state.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -717,13 +982,15 @@ import 'kubernetes_cluster_state.dart';
 /// $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mynodepool 9d76f410-9284-4436-9633-4066852442c8
 /// ```
 class KubernetesCluster extends pulumi.CustomResource {
-  /// Block containing options for the AMD GPU device metrics exporter component.
+  /// Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
   late final pulumi.Output<KubernetesClusterAmdGpuDeviceMetricsExporterPlugin> amdGpuDeviceMetricsExporterPlugin;
-  /// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+  /// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amdGpuDraDriver`.
   late final pulumi.Output<KubernetesClusterAmdGpuDevicePlugin> amdGpuDevicePlugin;
+  /// Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amdGpuDevicePlugin`.
+  late final pulumi.Output<KubernetesClusterAmdGpuDraDriver> amdGpuDraDriver;
   /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
   late final pulumi.Output<bool?> autoUpgrade;
-  /// Block containing options for cluster auto-scaling.
+  /// Block containing options for cluster auto-scaling. For more information.
   late final pulumi.Output<List<Map<String, dynamic>>?> clusterAutoscalerConfigurations;
   /// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
   late final pulumi.Output<String> clusterSubnet;
@@ -731,28 +998,37 @@ class KubernetesCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> clusterUrn;
   /// A block representing the cluster's control plane firewall
   late final pulumi.Output<KubernetesClusterControlPlaneFirewall> controlPlaneFirewall;
+  /// Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
+  late final pulumi.Output<KubernetesClusterCorednsAutoscaler> corednsAutoscaler;
   /// The date and time when the node was created.
   late final pulumi.Output<String> createdAt;
   /// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
   late final pulumi.Output<bool?> destroyAllAssociatedResources;
   /// The base URL of the API server on the Kubernetes master node.
   late final pulumi.Output<String> endpoint;
-  /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
-  late final pulumi.Output<bool?> ha;
+  /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
+  late final pulumi.Output<bool> ha;
   /// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
   late final pulumi.Output<String> ipv4Address;
+  /// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+  late final pulumi.Output<bool?> isolatedWorkers;
   /// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
   late final pulumi.Output<List<Map<String, dynamic>>> kubeConfigs;
   /// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
   late final pulumi.Output<int?> kubeconfigExpireSeconds;
-  /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
+  /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
   late final pulumi.Output<KubernetesClusterMaintenancePolicy> maintenancePolicy;
   /// A name for the Kubernetes cluster.
   late final pulumi.Output<String> name;
   /// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
   late final pulumi.Output<KubernetesClusterNodePool> nodePool;
-  /// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+  /// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
   late final pulumi.Output<KubernetesClusterNvidiaGpuDevicePlugin> nvidiaGpuDevicePlugin;
+  /// Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidiaGpuDevicePlugin`.
+  late final pulumi.Output<KubernetesClusterNvidiaGpuDraDriver> nvidiaGpuDraDriver;
+  /// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+  late final pulumi.Output<KubernetesClusterP2pOciRegistryPlugin> p2pOciRegistryPlugin;
+  /// Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
   late final pulumi.Output<KubernetesClusterRdmaSharedDevicePlugin> rdmaSharedDevicePlugin;
   /// The slug identifier for the region where the Kubernetes cluster will be created.
   late final pulumi.Output<String> region;
@@ -762,6 +1038,8 @@ class KubernetesCluster extends pulumi.CustomResource {
   late final pulumi.Output<KubernetesClusterRoutingAgent> routingAgent;
   /// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
   late final pulumi.Output<String> serviceSubnet;
+  /// Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+  late final pulumi.Output<List<Map<String, dynamic>>> ssos;
   /// A string indicating the current status of the individual node.
   late final pulumi.Output<String> status;
   /// Enable/disable surge upgrades for a cluster. Default: true
@@ -774,6 +1052,8 @@ class KubernetesCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> version;
   /// The ID of the VPC where the Kubernetes cluster will be located.
   late final pulumi.Output<String> vpcUuid;
+  /// The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpcUuid` is also set.
+  late final pulumi.Output<String> workerSubnetUuid;
 
   /// Creates a new [KubernetesCluster].
   /// [name] The Pulumi resource name.
@@ -791,33 +1071,40 @@ class KubernetesCluster extends pulumi.CustomResource {
         ) {
     amdGpuDeviceMetricsExporterPlugin = registerOutput<KubernetesClusterAmdGpuDeviceMetricsExporterPlugin>('amdGpuDeviceMetricsExporterPlugin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterAmdGpuDeviceMetricsExporterPlugin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     amdGpuDevicePlugin = registerOutput<KubernetesClusterAmdGpuDevicePlugin>('amdGpuDevicePlugin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterAmdGpuDevicePlugin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    amdGpuDraDriver = registerOutput<KubernetesClusterAmdGpuDraDriver>('amdGpuDraDriver', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterAmdGpuDraDriver.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoUpgrade = registerOutput<bool?>('autoUpgrade');
     clusterAutoscalerConfigurations = registerOutput<List<Map<String, dynamic>>?>('clusterAutoscalerConfigurations');
     clusterSubnet = registerOutput<String>('clusterSubnet');
     clusterUrn = registerOutput<String>('clusterUrn');
     controlPlaneFirewall = registerOutput<KubernetesClusterControlPlaneFirewall>('controlPlaneFirewall', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterControlPlaneFirewall.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    corednsAutoscaler = registerOutput<KubernetesClusterCorednsAutoscaler>('corednsAutoscaler', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterCorednsAutoscaler.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
     destroyAllAssociatedResources = registerOutput<bool?>('destroyAllAssociatedResources');
     endpoint = registerOutput<String>('endpoint');
-    ha = registerOutput<bool?>('ha');
+    ha = registerOutput<bool>('ha');
     ipv4Address = registerOutput<String>('ipv4Address');
+    isolatedWorkers = registerOutput<bool?>('isolatedWorkers');
     kubeConfigs = registerOutput<List<Map<String, dynamic>>>('kubeConfigs');
     kubeconfigExpireSeconds = registerOutput<int?>('kubeconfigExpireSeconds');
     maintenancePolicy = registerOutput<KubernetesClusterMaintenancePolicy>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     nodePool = registerOutput<KubernetesClusterNodePool>('nodePool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodePool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nvidiaGpuDevicePlugin = registerOutput<KubernetesClusterNvidiaGpuDevicePlugin>('nvidiaGpuDevicePlugin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNvidiaGpuDevicePlugin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nvidiaGpuDraDriver = registerOutput<KubernetesClusterNvidiaGpuDraDriver>('nvidiaGpuDraDriver', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNvidiaGpuDraDriver.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    p2pOciRegistryPlugin = registerOutput<KubernetesClusterP2pOciRegistryPlugin>('p2pOciRegistryPlugin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterP2pOciRegistryPlugin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rdmaSharedDevicePlugin = registerOutput<KubernetesClusterRdmaSharedDevicePlugin>('rdmaSharedDevicePlugin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterRdmaSharedDevicePlugin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     registryIntegration = registerOutput<bool?>('registryIntegration');
     routingAgent = registerOutput<KubernetesClusterRoutingAgent>('routingAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterRoutingAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceSubnet = registerOutput<String>('serviceSubnet');
+    ssos = registerOutput<List<Map<String, dynamic>>>('ssos');
     status = registerOutput<String>('status');
     surgeUpgrade = registerOutput<bool?>('surgeUpgrade');
     tags = registerOutput<List<String>?>('tags');
     updatedAt = registerOutput<String>('updatedAt');
     version = registerOutput<String>('version');
     vpcUuid = registerOutput<String>('vpcUuid');
+    workerSubnetUuid = registerOutput<String>('workerSubnetUuid');
   }
 
   /// Gets an existing [KubernetesCluster] resource's state with the given [name] and [id].
@@ -845,32 +1132,39 @@ class KubernetesCluster extends pulumi.CustomResource {
         ) {
     amdGpuDeviceMetricsExporterPlugin = registerOutput<KubernetesClusterAmdGpuDeviceMetricsExporterPlugin>('amdGpuDeviceMetricsExporterPlugin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterAmdGpuDeviceMetricsExporterPlugin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     amdGpuDevicePlugin = registerOutput<KubernetesClusterAmdGpuDevicePlugin>('amdGpuDevicePlugin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterAmdGpuDevicePlugin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    amdGpuDraDriver = registerOutput<KubernetesClusterAmdGpuDraDriver>('amdGpuDraDriver', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterAmdGpuDraDriver.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoUpgrade = registerOutput<bool?>('autoUpgrade');
     clusterAutoscalerConfigurations = registerOutput<List<Map<String, dynamic>>?>('clusterAutoscalerConfigurations');
     clusterSubnet = registerOutput<String>('clusterSubnet');
     clusterUrn = registerOutput<String>('clusterUrn');
     controlPlaneFirewall = registerOutput<KubernetesClusterControlPlaneFirewall>('controlPlaneFirewall', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterControlPlaneFirewall.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    corednsAutoscaler = registerOutput<KubernetesClusterCorednsAutoscaler>('corednsAutoscaler', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterCorednsAutoscaler.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
     destroyAllAssociatedResources = registerOutput<bool?>('destroyAllAssociatedResources');
     endpoint = registerOutput<String>('endpoint');
-    ha = registerOutput<bool?>('ha');
+    ha = registerOutput<bool>('ha');
     ipv4Address = registerOutput<String>('ipv4Address');
+    isolatedWorkers = registerOutput<bool?>('isolatedWorkers');
     kubeConfigs = registerOutput<List<Map<String, dynamic>>>('kubeConfigs');
     kubeconfigExpireSeconds = registerOutput<int?>('kubeconfigExpireSeconds');
     maintenancePolicy = registerOutput<KubernetesClusterMaintenancePolicy>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     nodePool = registerOutput<KubernetesClusterNodePool>('nodePool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodePool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nvidiaGpuDevicePlugin = registerOutput<KubernetesClusterNvidiaGpuDevicePlugin>('nvidiaGpuDevicePlugin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNvidiaGpuDevicePlugin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nvidiaGpuDraDriver = registerOutput<KubernetesClusterNvidiaGpuDraDriver>('nvidiaGpuDraDriver', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNvidiaGpuDraDriver.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    p2pOciRegistryPlugin = registerOutput<KubernetesClusterP2pOciRegistryPlugin>('p2pOciRegistryPlugin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterP2pOciRegistryPlugin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rdmaSharedDevicePlugin = registerOutput<KubernetesClusterRdmaSharedDevicePlugin>('rdmaSharedDevicePlugin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterRdmaSharedDevicePlugin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     registryIntegration = registerOutput<bool?>('registryIntegration');
     routingAgent = registerOutput<KubernetesClusterRoutingAgent>('routingAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterRoutingAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceSubnet = registerOutput<String>('serviceSubnet');
+    ssos = registerOutput<List<Map<String, dynamic>>>('ssos');
     status = registerOutput<String>('status');
     surgeUpgrade = registerOutput<bool?>('surgeUpgrade');
     tags = registerOutput<List<String>?>('tags');
     updatedAt = registerOutput<String>('updatedAt');
     version = registerOutput<String>('version');
     vpcUuid = registerOutput<String>('vpcUuid');
+    workerSubnetUuid = registerOutput<String>('workerSubnetUuid');
   }
 }

@@ -133,7 +133,7 @@ import 'database_kafka_schema_registry_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDatabaseKafkaSchemaRegistry(ctx, "schema-01", &digitalocean.DatabaseKafkaSchemaRegistryArgs{
-/// 			ClusterId:   kafka_example.ID(),
+/// 			ClusterId:   kafka_example.ID().ToIDOutput().ToStringOutput(),
 /// 			SubjectName: pulumi.String("test-schema"),
 /// 			SchemaType:  pulumi.String("avro"),
 /// 			Schema: pulumi.String(`{
@@ -155,6 +155,31 @@ import 'database_kafka_schema_registry_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasekafkaschemaregistry" "schema-01" {
+///   cluster_id   = digitalocean_databasecluster.kafka-example.id
+///   subject_name = "test-schema"
+///   schema_type  = "avro"
+///   schema       = "{\n  \\\"type\\\": \\\"record\\\",\n  \\\"namespace\\\": \\\"example\\\",\n  \\\"name\\\": \\\"TestRecord\\\",\n  \\\"fields\\\": [\n    {\\\"name\\\": \\\"id\\\", \\\"type\\\": \\\"string\\\"},\n    {\\\"name\\\": \\\"name\\\", \\\"type\\\": \\\"string\\\"},\n    {\\\"name\\\": \\\"value\\\", \\\"type\\\": \\\"int\\\"}\n  ]\n}\n"
+/// }
+/// resource "digitalocean_databasecluster" "kafka-example" {
+///   name       = "example-kafka-cluster"
+///   engine     = "kafka"
+///   version    = "3.5"
+///   size       = "gd-2vcpu-8gb"
+///   region     = "blr1"
+///   node_count = 3
+///   tags       = ["production"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -165,8 +190,8 @@ import 'database_kafka_schema_registry_state.dart';
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
 /// import com.pulumi.digitalocean.DatabaseKafkaSchemaRegistry;
 /// import com.pulumi.digitalocean.DatabaseKafkaSchemaRegistryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

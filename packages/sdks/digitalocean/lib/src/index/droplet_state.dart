@@ -22,10 +22,19 @@ class DropletState {
   final pulumi.Input<bool>? dropletAgent;
   /// The uniform resource name of the Droplet
   final pulumi.Input<String>? dropletUrn;
+  /// The partition mode for a GPU Droplet. Omit to
+  /// create a full GPU (equivalent to `PARTITION_MODE_SPX_NPS1`). Valid values are
+  /// `PARTITION_MODE_SPX_NPS1` and `PARTITION_MODE_DPX_NPS2`. Only supported on GPU
+  /// sizes that advertise the mode in their `supportedPartitionModes` (see the
+  /// `digitalocean.getSizes` data source). Changing this forces a new resource to be
+  /// created.
+  ///
+  /// &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+  ///
+  /// &gt; **NOTE:** Read-back of `gpuPartitionMode` on an existing Droplet is not yet available from the DigitalOcean API. The value is only returned when the Droplet is created, so this provider preserves the configured value rather than refreshing it.
+  final pulumi.Input<String>? gpuPartitionMode;
   /// A boolean indicating whether the droplet
   /// should be gracefully shut down before it is deleted.
-  ///
-  /// &gt; **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
   final pulumi.Input<bool>? gracefulShutdown;
   /// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
   final pulumi.Input<String>? image;
@@ -54,8 +63,12 @@ class DropletState {
   /// Droplet monthly price
   final pulumi.Input<double>? priceMonthly;
   /// **Deprecated** Boolean controlling if private networking
-  /// is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+  /// is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
   final pulumi.Input<bool>? privateNetworking;
+  /// A boolean indicating whether to enables public networking for the Droplet or not.
+  /// By default, this is always enabled on new droplets.
+  /// But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+  final pulumi.Input<bool>? publicNetworking;
   /// The region where the Droplet will be created.
   final pulumi.Input<String>? region;
   /// Boolean controlling whether to increase the disk
@@ -92,6 +105,7 @@ class DropletState {
   /// [disk] The size of the instance's disk in GB
   /// [dropletAgent] A boolean indicating whether to install the
   /// [dropletUrn] The uniform resource name of the Droplet
+  /// [gpuPartitionMode] The partition mode for a GPU Droplet. Omit to
   /// [gracefulShutdown] A boolean indicating whether the droplet
   /// [image] The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
   /// [ipv4Address] The IPv4 address
@@ -105,6 +119,7 @@ class DropletState {
   /// [priceHourly] Droplet hourly price
   /// [priceMonthly] Droplet monthly price
   /// [privateNetworking] **Deprecated** Boolean controlling if private networking
+  /// [publicNetworking] A boolean indicating whether to enables public networking for the Droplet or not.
   /// [region] The region where the Droplet will be created.
   /// [resizeDisk] Boolean controlling whether to increase the disk
   /// [size] The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
@@ -122,6 +137,7 @@ class DropletState {
     this.disk,
     this.dropletAgent,
     this.dropletUrn,
+    this.gpuPartitionMode,
     this.gracefulShutdown,
     this.image,
     this.ipv4Address,
@@ -135,6 +151,7 @@ class DropletState {
     this.priceHourly,
     this.priceMonthly,
     this.privateNetworking,
+    this.publicNetworking,
     this.region,
     this.resizeDisk,
     this.size,
@@ -155,6 +172,7 @@ class DropletState {
       'disk': ?disk,
       'dropletAgent': ?dropletAgent,
       'dropletUrn': ?dropletUrn,
+      'gpuPartitionMode': ?gpuPartitionMode,
       'gracefulShutdown': ?gracefulShutdown,
       'image': ?image,
       'ipv4Address': ?ipv4Address,
@@ -168,6 +186,7 @@ class DropletState {
       'priceHourly': ?priceHourly,
       'priceMonthly': ?priceMonthly,
       'privateNetworking': ?privateNetworking,
+      'publicNetworking': ?publicNetworking,
       'region': ?region,
       'resizeDisk': ?resizeDisk,
       'size': ?size,
@@ -189,6 +208,7 @@ class DropletState {
       disk: (() { final guardedValue = map['disk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       dropletAgent: (() { final guardedValue = map['dropletAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dropletUrn: (() { final guardedValue = map['dropletUrn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gpuPartitionMode: (() { final guardedValue = map['gpuPartitionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gracefulShutdown: (() { final guardedValue = map['gracefulShutdown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv4Address: (() { final guardedValue = map['ipv4Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -202,6 +222,7 @@ class DropletState {
       priceHourly: (() { final guardedValue = map['priceHourly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       priceMonthly: (() { final guardedValue = map['priceMonthly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       privateNetworking: (() { final guardedValue = map['privateNetworking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      publicNetworking: (() { final guardedValue = map['publicNetworking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resizeDisk: (() { final guardedValue = map['resizeDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -215,4 +236,3 @@ class DropletState {
     );
   }
 }
-

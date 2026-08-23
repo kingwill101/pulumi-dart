@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSshKeysSort {
   /// The sort direction. This may be either `asc` or `desc`.
   final pulumi.Input<String>? direction;
-  /// Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+  /// Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
   final pulumi.Input<String> key;
 
   /// Creates a new [GetSshKeysSort].
   /// [direction] The sort direction. This may be either `asc` or `desc`.
-  /// [key] Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+  /// [key] Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
   const GetSshKeysSort({
     this.direction,
     required this.key,
@@ -30,4 +30,3 @@ class GetSshKeysSort {
     );
   }
 }
-

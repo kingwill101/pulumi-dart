@@ -12,6 +12,10 @@ class KubernetesNodePoolState {
   final pulumi.Input<bool>? autoScale;
   /// The ID of the Kubernetes cluster to which the node pool is associated.
   final pulumi.Input<String>? clusterId;
+  /// The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+  ///
+  /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+  final pulumi.Input<String>? gpuPartitionMode;
   /// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
   final pulumi.Input<Map<String, String>>? labels;
   /// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
@@ -29,14 +33,13 @@ class KubernetesNodePoolState {
   /// A list of tag names to be applied to the Kubernetes cluster.
   final pulumi.Input<List<String>>? tags;
   /// A list of taints applied to all nodes in the pool.
-  ///
-  /// This resource supports customized create timeouts. The default timeout is 30 minutes.
   final pulumi.Input<List<KubernetesNodePoolTaint>>? taints;
 
   /// Creates a new [KubernetesNodePoolState].
   /// [actualNodeCount] A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
   /// [autoScale] Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
   /// [clusterId] The ID of the Kubernetes cluster to which the node pool is associated.
+  /// [gpuPartitionMode] The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
   /// [labels] A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
   /// [maxNodes] If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
   /// [minNodes] If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
@@ -50,6 +53,7 @@ class KubernetesNodePoolState {
     this.actualNodeCount,
     this.autoScale,
     this.clusterId,
+    this.gpuPartitionMode,
     this.labels,
     this.maxNodes,
     this.minNodes,
@@ -66,6 +70,7 @@ class KubernetesNodePoolState {
       'actualNodeCount': ?actualNodeCount,
       'autoScale': ?autoScale,
       'clusterId': ?clusterId,
+      'gpuPartitionMode': ?gpuPartitionMode,
       'labels': ?labels,
       'maxNodes': ?maxNodes,
       'minNodes': ?minNodes,
@@ -83,6 +88,7 @@ class KubernetesNodePoolState {
       actualNodeCount: (() { final guardedValue = map['actualNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       autoScale: (() { final guardedValue = map['autoScale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       clusterId: (() { final guardedValue = map['clusterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gpuPartitionMode: (() { final guardedValue = map['gpuPartitionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       maxNodes: (() { final guardedValue = map['maxNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       minNodes: (() { final guardedValue = map['minNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
@@ -95,4 +101,3 @@ class KubernetesNodePoolState {
     );
   }
 }
-

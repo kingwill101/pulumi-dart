@@ -96,7 +96,7 @@ import 'database_valkey_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDatabaseValkeyConfig(ctx, "example", &digitalocean.DatabaseValkeyConfigArgs{
-/// 			ClusterId:             exampleDatabaseCluster.ID(),
+/// 			ClusterId:             exampleDatabaseCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			NotifyKeyspaceEvents:  pulumi.String("KEA"),
 /// 			Timeout:               pulumi.Int(90),
 /// 			ValkeyMaxmemoryPolicy: pulumi.String("allkeys-random"),
@@ -106,6 +106,30 @@ import 'database_valkey_config_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasevalkeyconfig" "example" {
+///   cluster_id              = digitalocean_databasecluster.example.id
+///   notify_keyspace_events  = "KEA"
+///   timeout                 = 90
+///   valkey_maxmemory_policy = "allkeys-random"
+/// }
+/// resource "digitalocean_databasecluster" "example" {
+///   name       = "example-valkey-cluster"
+///   engine     = "valkey"
+///   version    = "8"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
 /// }
 /// ```
 /// ```java
@@ -118,8 +142,8 @@ import 'database_valkey_config_state.dart';
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
 /// import com.pulumi.digitalocean.DatabaseValkeyConfig;
 /// import com.pulumi.digitalocean.DatabaseValkeyConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -184,7 +208,7 @@ class DatabaseValkeyConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> aclChannelsDefault;
   /// The ID of the target Valkey cluster.
   late final pulumi.Output<String> clusterId;
-  /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
+  /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
   late final pulumi.Output<bool> frequentSnapshots;
   /// The Valkey IO thread count.
   late final pulumi.Output<int> ioThreads;

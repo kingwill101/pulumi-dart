@@ -7,7 +7,7 @@ class GetTagsFilter {
   /// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
   /// that all of the `values` are present in the list or set.
   final pulumi.Input<bool>? all;
-  /// Filter the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
+  /// Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
   final pulumi.Input<String> key;
   /// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
@@ -19,7 +19,7 @@ class GetTagsFilter {
 
   /// Creates a new [GetTagsFilter].
   /// [all] Set to `true` to require that a field match all of the `values` instead of just one or more of
-  /// [key] Filter the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
+  /// [key] Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
   /// [matchBy] One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// [values] Only retrieves tags which keys has value that matches
   const GetTagsFilter({
@@ -47,4 +47,3 @@ class GetTagsFilter {
     );
   }
 }
-

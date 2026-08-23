@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_nat_gateway_egress_public_gateway.dart';
 
 class VpcNatGatewayEgress {
-  /// List of public gateway IPs
+  /// Set of public gateway IPs
   final pulumi.Input<List<VpcNatGatewayEgressPublicGateway>>? publicGateways;
 
   /// Creates a new [VpcNatGatewayEgress].
-  /// [publicGateways] List of public gateway IPs
+  /// [publicGateways] Set of public gateway IPs
   const VpcNatGatewayEgress({
     this.publicGateways,
   });
@@ -25,4 +25,3 @@ class VpcNatGatewayEgress {
     );
   }
 }
-

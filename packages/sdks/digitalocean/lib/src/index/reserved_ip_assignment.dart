@@ -24,7 +24,7 @@ import 'reserved_ip_assignment_state.dart';
 /// });
 /// const exampleReservedIpAssignment = new digitalocean.ReservedIpAssignment("example", {
 ///     ipAddress: example.ipAddress,
-///     dropletId: exampleDroplet.id,
+///     dropletId: exampleDroplet.id.apply(x =>Number(x)),
 /// });
 /// ```
 /// ```python
@@ -41,7 +41,7 @@ import 'reserved_ip_assignment_state.dart';
 ///     private_networking=True)
 /// example_reserved_ip_assignment = digitalocean.ReservedIpAssignment("example",
 ///     ip_address=example.ip_address,
-///     droplet_id=example_droplet.id)
+///     droplet_id=example_droplet.id.apply(lambda x: int(x)))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -78,6 +78,8 @@ import 'reserved_ip_assignment_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -103,13 +105,38 @@ import 'reserved_ip_assignment_state.dart';
 /// 		}
 /// 		_, err = digitalocean.NewReservedIpAssignment(ctx, "example", &digitalocean.ReservedIpAssignmentArgs{
 /// 			IpAddress: example.IpAddress,
-/// 			DropletId: exampleDroplet.ID(),
+/// 			DropletId: exampleDroplet.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_reservedip" "example" {
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_droplet" "example" {
+///   name               = "baz"
+///   size               = "s-1vcpu-1gb"
+///   image              = "ubuntu-22-04-x64"
+///   region             = "nyc3"
+///   ipv6               = true
+///   private_networking = true
+/// }
+/// resource "digitalocean_reservedipassignment" "example" {
+///   ip_address = digitalocean_reservedip.example.ip_address
+///   droplet_id = digitalocean_droplet.example.id
 /// }
 /// ```
 /// ```java
@@ -124,8 +151,8 @@ import 'reserved_ip_assignment_state.dart';
 /// import com.pulumi.digitalocean.DropletArgs;
 /// import com.pulumi.digitalocean.ReservedIpAssignment;
 /// import com.pulumi.digitalocean.ReservedIpAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

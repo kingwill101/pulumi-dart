@@ -41,4 +41,3 @@ class ReservedIpv6State {
     );
   }
 }
-

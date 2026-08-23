@@ -7,7 +7,7 @@ import 'uptime_alert_notification.dart';
 class UptimeAlertState {
   /// A unique identifier for a check
   final pulumi.Input<String>? checkId;
-  /// The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
+  /// The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
   final pulumi.Input<String>? comparison;
   /// A human-friendly display name.
   final pulumi.Input<String>? name;
@@ -17,17 +17,17 @@ class UptimeAlertState {
   final pulumi.Input<String>? period;
   /// The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
   final pulumi.Input<int>? threshold;
-  /// The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
+  /// The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
   final pulumi.Input<String>? type;
 
   /// Creates a new [UptimeAlertState].
   /// [checkId] A unique identifier for a check
-  /// [comparison] The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
+  /// [comparison] The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
   /// [name] A human-friendly display name.
   /// [notifications] The notification settings for a trigger alert.
   /// [period] Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
   /// [threshold] The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
-  /// [type] The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
+  /// [type] The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
   const UptimeAlertState({
     this.checkId,
     this.comparison,
@@ -62,4 +62,3 @@ class UptimeAlertState {
     );
   }
 }
-

@@ -9,6 +9,8 @@ class GetDropletsDroplet {
   final pulumi.Input<String> createdAt;
   /// The size of the Droplet's disk in GB.
   final pulumi.Input<int> disk;
+  /// the GPU partition mode the Droplet was created with
+  final pulumi.Input<String> gpuPartitionMode;
   /// The ID of the Droplet.
   final pulumi.Input<int> id;
   /// The Droplet image ID or slug.
@@ -58,6 +60,7 @@ class GetDropletsDroplet {
   /// [backups] Whether backups are enabled.
   /// [createdAt] the creation date for the Droplet
   /// [disk] The size of the Droplet's disk in GB.
+  /// [gpuPartitionMode] the GPU partition mode the Droplet was created with
   /// [id] The ID of the Droplet.
   /// [image] The Droplet image ID or slug.
   /// [ipv4Address] The Droplet's public IPv4 address
@@ -84,6 +87,7 @@ class GetDropletsDroplet {
     required this.backups,
     required this.createdAt,
     required this.disk,
+    required this.gpuPartitionMode,
     required this.id,
     required this.image,
     required this.ipv4Address,
@@ -113,6 +117,7 @@ class GetDropletsDroplet {
       'backups': backups,
       'createdAt': createdAt,
       'disk': disk,
+      'gpuPartitionMode': gpuPartitionMode,
       'id': id,
       'image': image,
       'ipv4Address': ipv4Address,
@@ -143,6 +148,7 @@ class GetDropletsDroplet {
       backups: pulumi.Input.fromValue(map['backups'] as bool),
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
       disk: pulumi.Input.fromValue(map['disk'] as int),
+      gpuPartitionMode: pulumi.Input.fromValue(map['gpuPartitionMode'] as String),
       id: pulumi.Input.fromValue(map['id'] as int),
       image: pulumi.Input.fromValue(map['image'] as String),
       ipv4Address: pulumi.Input.fromValue(map['ipv4Address'] as String),
@@ -168,4 +174,3 @@ class GetDropletsDroplet {
     );
   }
 }
-

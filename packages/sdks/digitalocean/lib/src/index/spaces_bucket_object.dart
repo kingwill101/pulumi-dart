@@ -14,7 +14,7 @@ import 'spaces_bucket_object_state.dart';
 ///
 /// The authentication requirement can be met by either setting the
 /// `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
-/// the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
+/// the provider's `spacesAccessId` and `spacesSecretKey` arguments to the
 /// access ID and secret you generate via the DigitalOcean control panel. For
 /// example:
 ///
@@ -61,6 +61,18 @@ import 'spaces_bucket_object_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_spacesbucket" "static-assets" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +80,8 @@ import 'spaces_bucket_object_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.SpacesBucket;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -186,6 +198,27 @@ import 'spaces_bucket_object_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_spacesbucket" "foobar" {
+///   name   = "foobar"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_spacesbucketobject" "index" {
+///   region       = digitalocean_spacesbucket.foobar.region
+///   bucket       = digitalocean_spacesbucket.foobar.name
+///   key          = "index.html"
+///   content      = "<html><body><p>This page is empty.</p></body></html>"
+///   content_type = "text/html"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -196,8 +229,8 @@ import 'spaces_bucket_object_state.dart';
 /// import com.pulumi.digitalocean.SpacesBucketArgs;
 /// import com.pulumi.digitalocean.SpacesBucketObject;
 /// import com.pulumi.digitalocean.SpacesBucketObjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -251,13 +284,13 @@ class SpacesBucketObject extends pulumi.CustomResource {
   late final pulumi.Output<String?> acl;
   /// The name of the bucket to put the file in.
   late final pulumi.Output<String> bucket;
-  /// Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+  /// Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
   late final pulumi.Output<String?> cacheControl;
   /// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
   late final pulumi.Output<String?> content;
   /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
   late final pulumi.Output<String?> contentBase64;
-  /// Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+  /// Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
   late final pulumi.Output<String?> contentDisposition;
   /// Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
   late final pulumi.Output<String?> contentEncoding;
@@ -270,7 +303,7 @@ class SpacesBucketObject extends pulumi.CustomResource {
   /// Allow the object to be deleted by removing any legal hold on any object version.
   /// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
   ///
-  /// If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+  /// If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
   ///
   /// &gt; **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
   late final pulumi.Output<bool?> forceDestroy;

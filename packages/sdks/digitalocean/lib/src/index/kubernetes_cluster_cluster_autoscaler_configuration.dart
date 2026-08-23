@@ -3,16 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterClusterAutoscalerConfiguration {
+  /// A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
   final pulumi.Input<List<String>>? expanders;
   /// String setting how long a node should be unneeded before it's eligible for scale down.
-  ///
-  /// This resource supports customized create timeouts. The default timeout is 30 minutes.
   final pulumi.Input<String>? scaleDownUnneededTime;
   /// Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
   final pulumi.Input<double>? scaleDownUtilizationThreshold;
 
   /// Creates a new [KubernetesClusterClusterAutoscalerConfiguration].
-  /// [expanders] Optional.
+  /// [expanders] A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
   /// [scaleDownUnneededTime] String setting how long a node should be unneeded before it's eligible for scale down.
   /// [scaleDownUtilizationThreshold] Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
   const KubernetesClusterClusterAutoscalerConfiguration({
@@ -37,4 +36,3 @@ class KubernetesClusterClusterAutoscalerConfiguration {
     );
   }
 }
-

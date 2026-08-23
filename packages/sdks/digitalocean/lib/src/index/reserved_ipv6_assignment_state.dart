@@ -31,4 +31,3 @@ class ReservedIpv6AssignmentState {
     );
   }
 }
-

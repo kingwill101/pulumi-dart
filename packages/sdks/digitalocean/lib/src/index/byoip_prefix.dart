@@ -81,6 +81,23 @@ import 'byoip_prefix_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// # Create a new BYOIP prefix
+/// resource "digitalocean_byoipprefix" "example" {
+///   prefix     = "192.0.2.0/24"
+///   signature  = prefixSignature
+///   region     = "nyc3"
+///   advertised = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +106,8 @@ import 'byoip_prefix_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.ByoipPrefix;
 /// import com.pulumi.digitalocean.ByoipPrefixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

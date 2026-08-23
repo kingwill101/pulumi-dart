@@ -15,7 +15,7 @@ import 'spaces_bucket_logging_state.dart';
 ///
 /// The authentication requirement can be met by either setting the
 /// `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
-/// the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
+/// the provider's `spacesAccessId` and `spacesSecretKey` arguments to the
 /// access ID and secret you generate via the DigitalOcean control panel. For
 /// example:
 ///
@@ -62,6 +62,18 @@ import 'spaces_bucket_logging_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_spacesbucket" "static-assets" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +81,8 @@ import 'spaces_bucket_logging_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.SpacesBucket;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,8 +201,8 @@ import 'spaces_bucket_logging_state.dart';
 /// 		}
 /// 		_, err = digitalocean.NewSpacesBucketLogging(ctx, "example", &digitalocean.SpacesBucketLoggingArgs{
 /// 			Region:       pulumi.String("%s"),
-/// 			Bucket:       assets.ID(),
-/// 			TargetBucket: logs.ID(),
+/// 			Bucket:       assets.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetBucket: logs.ID().ToIDOutput().ToStringOutput(),
 /// 			TargetPrefix: pulumi.String("access-logs/"),
 /// 		})
 /// 		if err != nil {
@@ -198,6 +210,30 @@ import 'spaces_bucket_logging_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_spacesbucket" "assets" {
+///   name   = "assets"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_spacesbucket" "logs" {
+///   name   = "logs"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_spacesbucketlogging" "example" {
+///   region        = "%s"
+///   bucket        = digitalocean_spacesbucket.assets.id
+///   target_bucket = digitalocean_spacesbucket.logs.id
+///   target_prefix = "access-logs/"
 /// }
 /// ```
 /// ```java
@@ -210,8 +246,8 @@ import 'spaces_bucket_logging_state.dart';
 /// import com.pulumi.digitalocean.SpacesBucketArgs;
 /// import com.pulumi.digitalocean.SpacesBucketLogging;
 /// import com.pulumi.digitalocean.SpacesBucketLoggingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -45,6 +45,7 @@ import 'droplet_autoscale_state.dart';
 /// - apt-get update
 /// - apt-get install -y stress-ng
 /// `,
+///         publicNetworking: false,
 ///     },
 /// });
 /// ```
@@ -80,6 +81,7 @@ import 'droplet_autoscale_state.dart';
 /// - apt-get update
 /// - apt-get install -y stress-ng
 /// """,
+///         "public_networking": False,
 ///     })
 /// ```
 /// ```csharp
@@ -137,6 +139,7 @@ import 'droplet_autoscale_state.dart';
 /// - apt-get update
 /// - apt-get install -y stress-ng
 /// ",
+///             PublicNetworking = false,
 ///         },
 ///     });
 ///
@@ -186,10 +189,10 @@ import 'droplet_autoscale_state.dart';
 /// 				Region: pulumi.String("nyc3"),
 /// 				Image:  pulumi.String("ubuntu-24-04-x64"),
 /// 				Tags: pulumi.StringArray{
-/// 					my_tag.ID(),
+/// 					my_tag.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				SshKeys: pulumi.StringArray{
-/// 					my_ssh_key.ID(),
+/// 					my_ssh_key.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				WithDropletAgent: pulumi.Bool(true),
 /// 				Ipv6:             pulumi.Bool(true),
@@ -199,6 +202,7 @@ import 'droplet_autoscale_state.dart';
 /// - apt-get update
 /// - apt-get install -y stress-ng
 /// `),
+/// 				PublicNetworking: pulumi.Bool(false),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -206,6 +210,47 @@ import 'droplet_autoscale_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_sshkey" "my-ssh-key" {
+///   name       = "terraform-example"
+///   public_key = file("/Users/terraform/.ssh/id_rsa.pub")
+/// }
+/// resource "digitalocean_tag" "my-tag" {
+///   name = "terraform-example"
+/// }
+/// resource "digitalocean_dropletautoscale" "my-autoscale-pool" {
+///   name = "terraform-example"
+///   config = {
+///     min_instances             = 10
+///     max_instances             = 50
+///     target_cpu_utilization    = 0.5
+///     target_memory_utilization = 0.5
+///     cooldown_minutes          = 5
+///   }
+///   droplet_template = {
+///     size               = "c-2"
+///     region             = "nyc3"
+///     image              = "ubuntu-24-04-x64"
+///     tags               = [digitalocean_tag.my-tag.id]
+///     ssh_keys           = [digitalocean_sshkey.my-ssh-key.id]
+///     with_droplet_agent = true
+///     ipv6               = true
+///     user_data          = "\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n"
+///     public_networking  = false
+///   }
 /// }
 /// ```
 /// ```java
@@ -224,8 +269,8 @@ import 'droplet_autoscale_state.dart';
 /// import com.pulumi.digitalocean.DropletAutoscaleArgs;
 /// import com.pulumi.digitalocean.inputs.DropletAutoscaleConfigArgs;
 /// import com.pulumi.digitalocean.inputs.DropletAutoscaleDropletTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -272,6 +317,7 @@ import 'droplet_autoscale_state.dart';
 /// - apt-get update
 /// - apt-get install -y stress-ng
 ///                 """)
+///                 .publicNetworking(false)
 ///                 .build())
 ///             .build());
 ///
@@ -319,6 +365,7 @@ import 'droplet_autoscale_state.dart';
 ///           runcmd:
 ///           - apt-get update
 ///           - apt-get install -y stress-ng
+///         publicNetworking: false
 /// ```
 ///
 ///

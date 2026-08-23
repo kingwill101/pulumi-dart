@@ -89,6 +89,22 @@ import 'project_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_project" "playground" {
+///   name        = "playground"
+///   description = "A project to represent development resources."
+///   purpose     = "Web Application"
+///   environment = "Development"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +113,8 @@ import 'project_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.Project;
 /// import com.pulumi.digitalocean.ProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,6 +250,29 @@ import 'project_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_droplet" "foobar" {
+///   name   = "example"
+///   size   = "s-1vcpu-1gb"
+///   image  = "ubuntu-22-04-x64"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_project" "playground" {
+///   name        = "playground"
+///   description = "A project to represent development resources."
+///   purpose     = "Web Application"
+///   environment = "Development"
+///   resources   = [digitalocean_droplet.foobar.droplet_urn]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -244,8 +283,8 @@ import 'project_state.dart';
 /// import com.pulumi.digitalocean.DropletArgs;
 /// import com.pulumi.digitalocean.Project;
 /// import com.pulumi.digitalocean.ProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

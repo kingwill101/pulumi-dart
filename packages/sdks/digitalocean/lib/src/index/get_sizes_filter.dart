@@ -8,8 +8,8 @@ class GetSizesFilter {
   /// that all of the `values` are present in the list or set.
   final pulumi.Input<bool>? all;
   /// Filter the sizes by this key. This may be one of `slug`,
-  /// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
-  /// `price_hourly`, or `available`.
+  /// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+  /// `priceHourly`, or `available`.
   final pulumi.Input<String> key;
   /// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
@@ -49,4 +49,3 @@ class GetSizesFilter {
     );
   }
 }
-

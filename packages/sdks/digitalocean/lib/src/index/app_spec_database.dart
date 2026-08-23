@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecDatabase {
-  /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+  /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
   final pulumi.Input<String>? clusterName;
   /// The name of the MySQL or PostgreSQL database to configure.
   final pulumi.Input<String>? dbName;
@@ -21,7 +21,7 @@ class AppSpecDatabase {
   final pulumi.Input<String>? version;
 
   /// Creates a new [AppSpecDatabase].
-  /// [clusterName] The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+  /// [clusterName] The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
   /// [dbName] The name of the MySQL or PostgreSQL database to configure.
   /// [dbUser] The name of the MySQL or PostgreSQL user to configure.
   /// [engine] The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
@@ -62,4 +62,3 @@ class AppSpecDatabase {
     );
   }
 }
-

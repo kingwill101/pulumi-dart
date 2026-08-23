@@ -9,6 +9,8 @@ class GetDropletResult {
   /// The size of the Droplets disk in GB.
   final int disk;
   final bool? gpu;
+  /// The GPU partition mode the Droplet was created with. Note that read-back of this value from the DigitalOcean API is not yet available, so it is currently empty.
+  final String gpuPartitionMode;
   /// The ID of the Droplet.
   final int id;
   /// The Droplet image ID or slug.
@@ -59,6 +61,7 @@ class GetDropletResult {
   /// [createdAt] Required.
   /// [disk] The size of the Droplets disk in GB.
   /// [gpu] Optional.
+  /// [gpuPartitionMode] The GPU partition mode the Droplet was created with. Note that read-back of this value from the DigitalOcean API is not yet available, so it is currently empty.
   /// [id] The ID of the Droplet.
   /// [image] The Droplet image ID or slug.
   /// [ipv4Address] The Droplets public IPv4 address
@@ -87,6 +90,7 @@ class GetDropletResult {
     required this.createdAt,
     required this.disk,
     this.gpu,
+    required this.gpuPartitionMode,
     required this.id,
     required this.image,
     required this.ipv4Address,
@@ -118,6 +122,7 @@ class GetDropletResult {
       'createdAt': createdAt,
       'disk': disk,
       'gpu': ?gpu,
+      'gpuPartitionMode': gpuPartitionMode,
       'id': id,
       'image': image,
       'ipv4Address': ipv4Address,
@@ -150,6 +155,7 @@ class GetDropletResult {
       createdAt: map['createdAt'] as String,
       disk: map['disk'] as int,
       gpu: (() { final guardedValue = map['gpu']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      gpuPartitionMode: map['gpuPartitionMode'] as String,
       id: map['id'] as int,
       image: map['image'] as String,
       ipv4Address: map['ipv4Address'] as String,
@@ -176,4 +182,3 @@ class GetDropletResult {
     );
   }
 }
-

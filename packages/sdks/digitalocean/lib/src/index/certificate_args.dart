@@ -13,7 +13,7 @@ class CertificateArgs {
   final pulumi.Input<String>? certificateChain;
   /// List of fully qualified domain names (FQDNs) for
   /// which the certificate will be issued. The domains must be managed using
-  /// DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
+  /// DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
   final pulumi.Input<List<String>>? domains;
   /// The contents of a PEM-formatted public
   /// TLS certificate. Only valid when type is `custom`.
@@ -24,7 +24,7 @@ class CertificateArgs {
   /// corresponding to the SSL certificate. Only valid when type is `custom`.
   final pulumi.Input<String>? privateKey;
   /// The type of certificate to provision. Can be either
-  /// `custom` or `lets_encrypt`. Defaults to `custom`.
+  /// `custom` or `letsEncrypt`. Defaults to `custom`.
   final pulumi.Input<String>? type;
 
   /// Creates a new [CertificateArgs].
@@ -65,4 +65,3 @@ class CertificateArgs {
     );
   }
 }
-
