@@ -2,8 +2,10 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:grpc/grpc.dart';
-import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart' as emptypb;
-import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart' as structpb;
+import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart'
+    as emptypb;
+import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart'
+    as structpb;
 import 'package:pulumi/src/pulumirpc/pulumi/plugin.pb.dart' as pluginpb;
 import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart' as providerpb;
 import 'package:pulumi/src/pulumirpc/pulumi/provider.pbgrpc.dart';
@@ -31,7 +33,8 @@ class DebugProvider extends ResourceProviderServiceBase {
     providerpb.GetSchemaRequest request,
   ) async {
     return providerpb.GetSchemaResponse()
-      ..schema = '{"name":"debugplugin","version":"0.0.1","resources":{"debugplugin:index:MyDebugResource":{}}}';
+      ..schema =
+          '{"name":"debugplugin","version":"0.0.1","resources":{"debugplugin:index:MyDebugResource":{}}}';
   }
 
   @override
@@ -102,7 +105,9 @@ class DebugProvider extends ResourceProviderServiceBase {
   ) async {
     return providerpb.CreateResponse()
       ..id = 'dummyID'
-      ..properties = request.hasProperties() ? request.properties : structpb.Struct();
+      ..properties = request.hasProperties()
+          ? request.properties
+          : structpb.Struct();
   }
 
   @override
@@ -112,6 +117,12 @@ class DebugProvider extends ResourceProviderServiceBase {
   ) async {
     return providerpb.ReadResponse();
   }
+
+  @override
+  Stream<providerpb.ListResponse> list(
+    ServiceCall call,
+    providerpb.ListRequest request,
+  ) => const Stream<providerpb.ListResponse>.empty();
 
   @override
   Future<providerpb.UpdateResponse> update(
@@ -138,10 +149,7 @@ class DebugProvider extends ResourceProviderServiceBase {
   }
 
   @override
-  Future<emptypb.Empty> cancel(
-    ServiceCall call,
-    emptypb.Empty request,
-  ) async {
+  Future<emptypb.Empty> cancel(ServiceCall call, emptypb.Empty request) async {
     return emptypb.Empty();
   }
 
