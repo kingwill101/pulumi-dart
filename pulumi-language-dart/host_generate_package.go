@@ -11,7 +11,6 @@ import (
 	"strings"
 
 	codegen "github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen"
-	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/packagegen"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource/plugin"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
@@ -217,7 +216,7 @@ func (host *dartLanguageHost) GeneratePackage(
 	if err := os.MkdirAll(sdkDir, 0o700); err != nil {
 		return nil, fmt.Errorf("failed to create generated SDK source directory: %w", err)
 	}
-	generatedPackage, err := packagegen.Generate(packagegen.Input{
+	generatedPackage, err := codegen.GeneratePackage(codegen.PackageInput{
 		Schema:         spec,
 		PackageName:    packageName,
 		SDKLibraryName: packageName + "_sdk",

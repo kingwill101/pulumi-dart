@@ -1,32 +1,31 @@
-package packagegen
+package codegen
 
 import (
 	"testing"
 
-	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
-func TestGenerateValidatesInput(t *testing.T) {
-	_, err := Generate(Input{})
+func TestGeneratePackageValidatesInput(t *testing.T) {
+	_, err := GeneratePackage(PackageInput{})
 	assert.EqualError(t, err, "package schema is required")
 
-	_, err = Generate(Input{Schema: &codegen.PackageSchema{}})
+	_, err = GeneratePackage(PackageInput{Schema: &PackageSchema{}})
 	assert.EqualError(t, err, "Dart package name is required")
 }
 
-func TestGenerateReturnsDeterministicallyOrderedPackageFiles(t *testing.T) {
+func TestGeneratePackageReturnsDeterministicallyOrderedFiles(t *testing.T) {
 	schemaJSON := `{
   "name": "sample",
   "resources": {
     "sample:index:Bucket": {"inputProperties": {}, "properties": {}}
   }
 }`
-	spec, err := codegen.ParsePackageSchema(schemaJSON, t.TempDir())
+	spec, err := ParsePackageSchema(schemaJSON, t.TempDir())
 	require.NoError(t, err)
 
-	result, err := Generate(Input{
+	result, err := GeneratePackage(PackageInput{
 		Schema:         spec,
 		PackageName:    "pulumi_sample",
 		SDKLibraryName: "pulumi_sample_sdk",
