@@ -7,37 +7,6 @@ import (
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/lower"
 )
 
-func toSnakeCaseIdentifier(value string) string {
-	if value == "" {
-		return "generated"
-	}
-
-	var out []rune
-	var prev rune
-	for i, r := range value {
-		isUpper := r >= 'A' && r <= 'Z'
-		isLower := r >= 'a' && r <= 'z'
-		isDigit := r >= '0' && r <= '9'
-		if isUpper {
-			if i > 0 && (prev >= 'a' && prev <= 'z' || prev >= '0' && prev <= '9') {
-				out = append(out, '_')
-			}
-			out = append(out, r-'A'+'a')
-		} else if isLower || isDigit {
-			out = append(out, r)
-		} else if len(out) > 0 && out[len(out)-1] != '_' {
-			out = append(out, '_')
-		}
-		prev = r
-	}
-
-	result := strings.Trim(strings.TrimSpace(string(out)), "_")
-	if result == "" {
-		return "generated"
-	}
-	return result
-}
-
 func collectReferenceTypes(typeSpec packageTypeSpec, refs map[string]struct{}) {
 	if typeSpec.ReferenceType != "" && !typeSpec.IsExternalRef {
 		refs[typeSpec.ReferenceType] = struct{}{}

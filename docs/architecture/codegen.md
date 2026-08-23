@@ -34,6 +34,6 @@ features are introduced only after the pipeline split, in focused changes to
 the Dart IR, lowering, and render stages.
 
 Each stage has direct table or golden tests. End-to-end RPC tests cover only
-boundary behavior. Production files target roughly 120 lines (160 maximum)
+boundary behavior. Production files have a 120-line maximum
 and test files roughly 200 lines (450 maximum); cohesive fixtures and static
 tables require a documented exception.

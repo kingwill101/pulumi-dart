@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	productionFileCeiling = 160
+	productionFileCeiling = 120
 	testFileCeiling       = 450
 )
 
