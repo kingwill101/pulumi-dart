@@ -84,6 +84,7 @@ func lowerBoundFunctions(
 			"Result",
 			"InvokeResult",
 		); classSpec != nil {
+			classSpec.AllowMissingProperties = true
 			classSpec.CanonicalName = canonicalTypeName(base, "Result")
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			functionSpec.ResultClass = classSpec.ClassName

@@ -26,6 +26,16 @@ func TestGenerateDartProgramBooleanOutput(t *testing.T) {
 	assert.Equal(t, "true", result)
 }
 
+func TestLowerDartProgramIntegralNumberAvoidsDoubleLiteral(t *testing.T) {
+	t.Parallel()
+
+	result, err := lowerDartProgramExpression(&model.LiteralValueExpression{
+		Value: cty.NumberFloatVal(1234567890),
+	})
+	require.NoError(t, err)
+	assert.Equal(t, "1234567890", result)
+}
+
 func TestLowerDartProgramExpressionOperators(t *testing.T) {
 	t.Parallel()
 

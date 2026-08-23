@@ -2,6 +2,7 @@ package codegen
 
 import (
 	"fmt"
+	"math/big"
 
 	"github.com/zclconf/go-cty/cty"
 )
@@ -16,7 +17,11 @@ func lowerDartLiteral(value cty.Value) (string, error) {
 	case cty.String:
 		return dartStringLiteral(value.AsString()), nil
 	case cty.Number:
-		return value.AsBigFloat().Text('g', -1), nil
+		number := value.AsBigFloat()
+		if integer, accuracy := number.Int(nil); accuracy == big.Exact {
+			return integer.String(), nil
+		}
+		return number.Text('g', -1), nil
 	}
 	return "", fmt.Errorf("unsupported literal type %s", value.Type().FriendlyName())
 }

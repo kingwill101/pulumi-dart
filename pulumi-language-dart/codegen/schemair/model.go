@@ -52,12 +52,13 @@ type ResourceMethod struct {
 }
 
 type ObjectClass struct {
-	ClassName      string
-	CanonicalName  string
-	ModulePath     string
-	Comment        string
-	UsesInputTypes bool
-	Properties     []Property
+	ClassName              string
+	CanonicalName          string
+	ModulePath             string
+	Comment                string
+	UsesInputTypes         bool
+	AllowMissingProperties bool
+	Properties             []Property
 }
 
 type Property struct {

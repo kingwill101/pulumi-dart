@@ -31,3 +31,20 @@ func TestObjectClassLowersPropertiesAndMappings(t *testing.T) {
 	require.Equal(t, "Displayed <name>.", actual.Properties[0].Docs)
 	require.Equal(t, "displayName", actual.Properties[0].ToMapExpression)
 }
+
+func TestObjectClassAllowsPartialInvokeResults(t *testing.T) {
+	t.Parallel()
+
+	actual := ObjectClass(schemair.ObjectClass{
+		ClassName:              "Result",
+		AllowMissingProperties: true,
+		Properties: []schemair.Property{{
+			Name: "value", FieldName: "value", Required: true,
+			TypeSpec: schemair.Type{Kind: "scalar", DartType: "String"},
+		}},
+	}, nil, "")
+
+	require.False(t, actual.Properties[0].Required)
+	require.Equal(t, "String?", actual.Properties[0].FieldType)
+	require.Contains(t, actual.Properties[0].FromMapExpression, "guardedValue")
+}

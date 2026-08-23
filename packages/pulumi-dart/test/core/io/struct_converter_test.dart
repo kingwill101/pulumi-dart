@@ -110,6 +110,16 @@ void main() {
         providerValue.structValue.fields[Constants.resourceIdName]?.stringValue,
         equals('provider-id'),
       );
+
+      final previewProvider = ProviderResource.reference(
+        'aws',
+        'urn:pulumi:dev::proj::pulumi:providers:aws::preview',
+      );
+      final previewValue = await StructConverter.toValue(previewProvider);
+      expect(
+        previewValue.structValue.fields[Constants.resourceIdName]?.stringValue,
+        equals(Constants.unknownValue),
+      );
     });
 
     test(
