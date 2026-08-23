@@ -265,8 +265,6 @@ class Deserializer {
     var isSecret = false;
 
     for (var entry in struct.fields.entries) {
-      if (entry.key.startsWith('__')) continue;
-
       var elementData = deserialize(entry.value);
       (isKnown, isSecret) = OutputData.combine(elementData, isKnown, isSecret);
       result[entry.key] = elementData.value;
