@@ -4,7 +4,7 @@ import 'application_app_role_state.dart';
 
 /// Manages an app role for an application registration.
 ///
-/// This resource is analogous to the `app_role` block in the `azuread.Application` resource. When using these resources together, you should use the `ignore_changes` lifecycle meta-argument (see example below).
+/// This resource is analogous to the `appRole` block in the `azuread.Application` resource. When using these resources together, you should use the `ignoreChanges` lifecycle meta-argument (see example below).
 ///
 /// ## API Permissions
 ///
@@ -41,7 +41,7 @@ import 'application_app_role_state.dart';
 /// import pulumi_random as random
 ///
 /// example = azuread.ApplicationRegistration("example", display_name="example")
-/// example_administrator = random.index.Uuid("example_administrator")
+/// example_administrator = random.Uuid("example_administrator")
 /// example_administer = azuread.ApplicationAppRole("example_administer",
 ///     application_id=example.id,
 ///     role_id=example_administrator["id"],
@@ -64,7 +64,7 @@ import 'application_app_role_state.dart';
 ///         DisplayName = "example",
 ///     });
 ///
-///     var exampleAdministrator = new Random.Index.Uuid("example_administrator");
+///     var exampleAdministrator = new Random.Uuid("example_administrator");
 ///
 ///     var exampleAdminister = new AzureAD.ApplicationAppRole("example_administer", new()
 ///     {
@@ -119,6 +119,32 @@ import 'application_app_role_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name = "example"
+/// }
+/// resource "random_uuid" "example_administrator" {
+/// }
+/// resource "azuread_applicationapprole" "example_administer" {
+///   application_id       = azuread_applicationregistration.example.id
+///   role_id              = random_uuid.example_administrator.id
+///   allowed_member_types = ["User"]
+///   description          = "My role description"
+///   display_name         = "Administer"
+///   value                = "admin"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +156,8 @@ import 'application_app_role_state.dart';
 /// import com.pulumi.random.Uuid;
 /// import com.pulumi.azuread.ApplicationAppRole;
 /// import com.pulumi.azuread.ApplicationAppRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -249,6 +275,22 @@ import 'application_app_role_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationapprole" "example_administer" {
+///   application_id = azuread_application.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -259,8 +301,8 @@ import 'application_app_role_state.dart';
 /// import com.pulumi.azuread.ApplicationArgs;
 /// import com.pulumi.azuread.ApplicationAppRole;
 /// import com.pulumi.azuread.ApplicationAppRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -315,7 +357,7 @@ class ApplicationAppRoleResource extends pulumi.CustomResource {
   late final pulumi.Output<String> displayName;
   /// The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Tip** Use the `random_uuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
+  /// &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
   late final pulumi.Output<String> roleId;
   /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
   ///

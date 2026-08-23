@@ -8,7 +8,7 @@ class AccessPackageAssignmentPolicyApprovalSettings {
   final pulumi.Input<bool>? approvalRequired;
   /// Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
   final pulumi.Input<bool>? approvalRequiredForExtension;
-  /// An `approval_stage` block specifying the process to obtain an approval, as documented below.
+  /// An `approvalStage` block specifying the process to obtain an approval, as documented below.
   final pulumi.Input<List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStage>>? approvalStages;
   /// Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
   final pulumi.Input<bool>? requestorJustificationRequired;
@@ -16,7 +16,7 @@ class AccessPackageAssignmentPolicyApprovalSettings {
   /// Creates a new [AccessPackageAssignmentPolicyApprovalSettings].
   /// [approvalRequired] Whether an approval is required.
   /// [approvalRequiredForExtension] Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
-  /// [approvalStages] An `approval_stage` block specifying the process to obtain an approval, as documented below.
+  /// [approvalStages] An `approvalStage` block specifying the process to obtain an approval, as documented below.
   /// [requestorJustificationRequired] Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
   const AccessPackageAssignmentPolicyApprovalSettings({
     this.approvalRequired,
@@ -43,4 +43,3 @@ class AccessPackageAssignmentPolicyApprovalSettings {
     );
   }
 }
-

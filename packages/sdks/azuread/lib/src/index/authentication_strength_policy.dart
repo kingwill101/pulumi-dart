@@ -199,6 +199,26 @@ import 'authentication_strength_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_authenticationstrengthpolicy" "example" {
+///   display_name         = "Example Authentication Strength Policy"
+///   description          = "Policy for demo purposes"
+///   allowed_combinations = ["fido2", "password"]
+/// }
+/// resource "azuread_authenticationstrengthpolicy" "example2" {
+///   display_name         = "Example Authentication Strength Policy"
+///   description          = "Policy for demo purposes with all possible combinations"
+///   allowed_combinations = ["fido2", "password", "deviceBasedPush", "temporaryAccessPassOneTime", "federatedMultiFactor", "federatedSingleFactor", "hardwareOath,federatedSingleFactor", "microsoftAuthenticatorPush,federatedSingleFactor", "password,hardwareOath", "password,microsoftAuthenticatorPush", "password,sms", "password,softwareOath", "password,voice", "sms", "sms,federatedSingleFactor", "softwareOath,federatedSingleFactor", "temporaryAccessPassMultiUse", "voice,federatedSingleFactor", "windowsHelloForBusiness", "x509CertificateMultiFactor", "x509CertificateSingleFactor"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +227,8 @@ import 'authentication_strength_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AuthenticationStrengthPolicy;
 /// import com.pulumi.azuread.AuthenticationStrengthPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

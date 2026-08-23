@@ -13,11 +13,11 @@ class ApplicationAppRole {
   final pulumi.Input<bool>? enabled;
   /// The unique identifier of the app role. Must be a valid UUID.
   ///
-  /// &gt; **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
+  /// &gt; **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
   final pulumi.Input<String> id;
   /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
   ///
-  /// &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles (`app_role`) and permission scopes (`oauth2_permission_scope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
+  /// &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles (`appRole`) and permission scopes (`oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
   final pulumi.Input<String>? value;
 
   /// Creates a new [ApplicationAppRole].
@@ -58,4 +58,3 @@ class ApplicationAppRole {
     );
   }
 }
-

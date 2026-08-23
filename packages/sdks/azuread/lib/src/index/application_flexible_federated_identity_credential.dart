@@ -100,6 +100,27 @@ import 'application_flexible_federated_identity_credential_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationflexiblefederatedidentitycredential" "example" {
+///   application_id             = azuread_applicationregistration.example.id
+///   claims_matching_expression = "claims['sub'] matches 'repo:contoso/contoso-repo:ref:refs/heads/*' and claims['job_workflow_ref'] matches 'contoso/contoso-prod/.github/workflows/*.yml@refs/heads/main'"
+///   display_name               = "my-repo-deploy"
+///   description                = "Deployments for my-repo"
+///   audience                   = "api://AzureADTokenExchange"
+///   issuer                     = "https://token.actions.githubusercontent.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +131,8 @@ import 'application_flexible_federated_identity_credential_state.dart';
 /// import com.pulumi.azuread.ApplicationRegistrationArgs;
 /// import com.pulumi.azuread.ApplicationFlexibleFederatedIdentityCredential;
 /// import com.pulumi.azuread.ApplicationFlexibleFederatedIdentityCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

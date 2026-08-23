@@ -15,7 +15,7 @@ class ConditionalAccessPolicyConditions {
   final pulumi.Input<List<String>>? authenticationFlowTransferMethods;
   /// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
   final pulumi.Input<List<String>> clientAppTypes;
-  /// An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+  /// An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
   final pulumi.Input<ConditionalAccessPolicyConditionsClientApplications>? clientApplications;
   /// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
   final pulumi.Input<ConditionalAccessPolicyConditionsDevices>? devices;
@@ -38,7 +38,7 @@ class ConditionalAccessPolicyConditions {
   /// [applications] An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
   /// [authenticationFlowTransferMethods] A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
   /// [clientAppTypes] A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
-  /// [clientApplications] An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+  /// [clientApplications] An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
   /// [devices] A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
   /// [insiderRiskLevels] The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
   /// [locations] A `locations` block as documented below, which specifies locations included in and excluded from the policy.
@@ -96,4 +96,3 @@ class ConditionalAccessPolicyConditions {
     );
   }
 }
-

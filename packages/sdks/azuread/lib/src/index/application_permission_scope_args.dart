@@ -21,7 +21,7 @@ class ApplicationPermissionScopeArgs {
   final pulumi.Input<String>? userConsentDescription;
   /// Display name for the delegated permission that appears in the end user consent experience.
   ///
-  /// &gt; **Tip** Use the `random_uuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
+  /// &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
   final pulumi.Input<String>? userConsentDisplayName;
   /// The value that is used for the `scp` claim in OAuth access tokens.
   ///
@@ -74,4 +74,3 @@ class ApplicationPermissionScopeArgs {
     );
   }
 }
-

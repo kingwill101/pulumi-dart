@@ -227,12 +227,12 @@ import 'synchronization_job_provision_on_demand_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		exampleGetServicePrincipal := azuread.LookupServicePrincipalOutput(ctx, azuread.GetServicePrincipalOutputArgs{
+/// 		exampleGetServicePrincipal := azuread.GetServicePrincipalOutput(ctx, azuread.GetServicePrincipalOutputArgs{
 /// 			ObjectId: exampleApplicationFromTemplate.ServicePrincipalObjectId,
 /// 		}, nil)
 /// 		_, err = azuread.NewSynchronizationSecret(ctx, "example", &azuread.SynchronizationSecretArgs{
 /// 			ServicePrincipalId: pulumi.String(exampleGetServicePrincipal.ApplyT(func(exampleGetServicePrincipal azuread.GetServicePrincipalResult) (*string, error) {
-/// 				return &exampleGetServicePrincipal.Id, nil
+/// 				return exampleGetServicePrincipal.Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Credentials: azuread.SynchronizationSecretCredentialArray{
 /// 				&azuread.SynchronizationSecretCredentialArgs{
@@ -250,7 +250,7 @@ import 'synchronization_job_provision_on_demand_state.dart';
 /// 		}
 /// 		exampleSynchronizationJob, err := azuread.NewSynchronizationJob(ctx, "example", &azuread.SynchronizationJobArgs{
 /// 			ServicePrincipalId: pulumi.String(exampleGetServicePrincipal.ApplyT(func(exampleGetServicePrincipal azuread.GetServicePrincipalResult) (*string, error) {
-/// 				return &exampleGetServicePrincipal.Id, nil
+/// 				return exampleGetServicePrincipal.Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			TemplateId: pulumi.String("dataBricks"),
 /// 			Enabled:    pulumi.Bool(true),
@@ -280,6 +280,61 @@ import 'synchronization_job_provision_on_demand_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getclientconfig" "current" {
+/// }
+/// data "azuread_getapplicationtemplate" "example" {
+///   display_name = "Azure Databricks SCIM Provisioning Connector"
+/// }
+/// data "azuread_getserviceprincipal" "exampleGetServicePrincipal" {
+///   object_id = azuread_applicationfromtemplate.example.service_principal_object_id
+/// }
+///
+/// resource "azuread_group" "example" {
+///   display_name     = "example"
+///   owners           = [data.azuread_getclientconfig.current.object_id]
+///   security_enabled = true
+/// }
+/// resource "azuread_applicationfromtemplate" "example" {
+///   display_name = "example"
+///   template_id  = data.azuread_getapplicationtemplate.example.template_id
+/// }
+/// resource "azuread_synchronizationsecret" "example" {
+///   service_principal_id = data.azuread_getserviceprincipal.exampleGetServicePrincipal.id
+///   credentials {
+///     key   = "BaseAddress"
+///     value = "https://adb-example.azuredatabricks.net/api/2.0/preview/scim"
+///   }
+///   credentials {
+///     key   = "SecretToken"
+///     value = "some-token"
+///   }
+/// }
+/// resource "azuread_synchronizationjob" "example" {
+///   service_principal_id = data.azuread_getserviceprincipal.exampleGetServicePrincipal.id
+///   template_id          = "dataBricks"
+///   enabled              = true
+/// }
+/// resource "azuread_synchronizationjobprovisionondemand" "example" {
+///   service_principal_id   = azuread_synchronizationjob.example.service_principal_id
+///   synchronization_job_id = azuread_synchronizationjob.example.id
+///   parameters {
+///     rule_id = ""
+///     subjects {
+///       object_id        = azuread_group.example.object_id
+///       object_type_name = "Group"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -301,8 +356,9 @@ import 'synchronization_job_provision_on_demand_state.dart';
 /// import com.pulumi.azuread.SynchronizationJobProvisionOnDemand;
 /// import com.pulumi.azuread.SynchronizationJobProvisionOnDemandArgs;
 /// import com.pulumi.azuread.inputs.SynchronizationJobProvisionOnDemandParameterArgs;
-/// import java.util.List;
+/// import com.pulumi.azuread.inputs.SynchronizationJobProvisionOnDemandParameterSubjectArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

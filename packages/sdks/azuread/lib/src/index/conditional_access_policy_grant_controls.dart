@@ -13,7 +13,7 @@ class ConditionalAccessPolicyGrantControls {
   final pulumi.Input<String> operator;
   /// List of terms of use IDs required by the policy.
   ///
-  /// &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
+  /// &gt; At least one of `authenticationStrengthPolicyId`, `builtInControls` or `termsOfUse` must be specified.
   final pulumi.Input<List<String>>? termsOfUses;
 
   /// Creates a new [ConditionalAccessPolicyGrantControls].
@@ -50,4 +50,3 @@ class ConditionalAccessPolicyGrantControls {
     );
   }
 }
-

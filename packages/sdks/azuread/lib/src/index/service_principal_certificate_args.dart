@@ -9,13 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePrincipalCertificateArgs {
   /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
   ///
-  /// &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+  /// &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
   final pulumi.Input<String>? encoding;
   /// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
   final pulumi.Input<String>? endDate;
   /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
   ///
-  /// &gt; One of `end_date` or `end_date_relative` must be set. The maximum duration is determined by Azure AD.
+  /// &gt; One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
   final pulumi.Input<String>? endDateRelative;
   /// A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
   final pulumi.Input<String>? keyId;
@@ -74,4 +74,3 @@ class ServicePrincipalCertificateArgs {
     );
   }
 }
-

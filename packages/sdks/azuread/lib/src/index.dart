@@ -118,6 +118,7 @@ export 'index/conditional_access_policy.dart';
 export 'index/conditional_access_policy_args.dart';
 export 'index/conditional_access_policy_conditions.dart';
 export 'index/conditional_access_policy_conditions_applications.dart';
+export 'index/conditional_access_policy_conditions_applications_filter.dart';
 export 'index/conditional_access_policy_conditions_client_applications.dart';
 export 'index/conditional_access_policy_conditions_client_applications_filter.dart';
 export 'index/conditional_access_policy_conditions_devices.dart';

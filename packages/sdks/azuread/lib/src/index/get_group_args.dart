@@ -19,7 +19,7 @@ class GetGroupArgs {
   final pulumi.Input<String>? objectId;
   /// Whether the group is a security group.
   ///
-  /// &gt; One of `display_name`, `object_id` or `mail_nickname` must be specified.
+  /// &gt; One of `displayName`, `objectId` or `mailNickname` must be specified.
   final pulumi.Input<bool>? securityEnabled;
 
   /// Creates a new [GetGroupArgs].
@@ -60,4 +60,3 @@ class GetGroupArgs {
     );
   }
 }
-

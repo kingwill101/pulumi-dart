@@ -15,7 +15,7 @@ class ApplicationApiAccessArgs {
   final pulumi.Input<List<String>>? roleIds;
   /// A set of scope IDs to be granted to the application, as published by the API.
   ///
-  /// &gt; At least one of `role_ids` or `scope_ids` must be specified.
+  /// &gt; At least one of `roleIds` or `scopeIds` must be specified.
   final pulumi.Input<List<String>>? scopeIds;
 
   /// Creates a new [ApplicationApiAccessArgs].
@@ -48,4 +48,3 @@ class ApplicationApiAccessArgs {
     );
   }
 }
-

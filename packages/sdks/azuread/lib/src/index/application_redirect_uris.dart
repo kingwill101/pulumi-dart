@@ -197,6 +197,34 @@ import 'application_redirect_uris_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationredirecturis" "example_public" {
+///   application_id = azuread_applicationregistration.example.id
+///   type           = "PublicClient"
+///   redirect_uris  = ["myapp://auth", "sample.mobile.app.bundie.id://auth", "https://login.microsoftonline.com/common/oauth2/nativeclient", "https://login.live.com/oauth20_desktop.srf", "ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222", "urn:ietf:wg:oauth:2.0:foo"]
+/// }
+/// resource "azuread_applicationredirecturis" "example_spa" {
+///   application_id = azuread_applicationregistration.example.id
+///   type           = "SPA"
+///   redirect_uris  = ["https://mobile.example.com/", "https://beta.example.com/"]
+/// }
+/// resource "azuread_applicationredirecturis" "example_web" {
+///   application_id = azuread_applicationregistration.example.id
+///   type           = "Web"
+///   redirect_uris  = ["https://app.example.com/", "https://classic.example.com/", "urn:ietf:wg:oauth:2.0:oob"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +235,8 @@ import 'application_redirect_uris_state.dart';
 /// import com.pulumi.azuread.ApplicationRegistrationArgs;
 /// import com.pulumi.azuread.ApplicationRedirectUris;
 /// import com.pulumi.azuread.ApplicationRedirectUrisArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

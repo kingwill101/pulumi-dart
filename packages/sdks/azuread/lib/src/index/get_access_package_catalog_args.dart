@@ -11,7 +11,7 @@ class GetAccessPackageCatalogArgs {
   final pulumi.Input<String>? displayName;
   /// The ID of this access package catalog.
   ///
-  /// &gt; One of `display_name` or `object_id` must be specified.
+  /// &gt; One of `displayName` or `objectId` must be specified.
   final pulumi.Input<String>? objectId;
 
   /// Creates a new [GetAccessPackageCatalogArgs].
@@ -36,4 +36,3 @@ class GetAccessPackageCatalogArgs {
     );
   }
 }
-

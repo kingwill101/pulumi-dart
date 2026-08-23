@@ -69,6 +69,20 @@ import 'service_principal_claims_mapping_policy_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_serviceprincipalclaimsmappingpolicyassignment" "app" {
+///   claims_mapping_policy_id = myPolicy.id
+///   service_principal_id     = myPrincipal.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +91,8 @@ import 'service_principal_claims_mapping_policy_assignment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.ServicePrincipalClaimsMappingPolicyAssignment;
 /// import com.pulumi.azuread.ServicePrincipalClaimsMappingPolicyAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

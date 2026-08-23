@@ -15,7 +15,7 @@ class GetServicePrincipalsResult {
   /// The object IDs of the service principals.
   final List<String> objectIds;
   final bool? returnAll;
-  /// A list of service principals. Each `service_principal` object provides the attributes documented below.
+  /// A list of service principals. Each `servicePrincipal` object provides the attributes documented below.
   final List<GetServicePrincipalsServicePrincipal> servicePrincipals;
 
   /// Creates a new [GetServicePrincipalsResult].
@@ -25,7 +25,7 @@ class GetServicePrincipalsResult {
   /// [ignoreMissing] Optional.
   /// [objectIds] The object IDs of the service principals.
   /// [returnAll] Optional.
-  /// [servicePrincipals] A list of service principals. Each `service_principal` object provides the attributes documented below.
+  /// [servicePrincipals] A list of service principals. Each `servicePrincipal` object provides the attributes documented below.
   const GetServicePrincipalsResult({
     required this.clientIds,
     required this.displayNames,
@@ -60,4 +60,3 @@ class GetServicePrincipalsResult {
     );
   }
 }
-

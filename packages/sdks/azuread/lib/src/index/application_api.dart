@@ -8,16 +8,16 @@ class ApplicationApi {
   final pulumi.Input<List<String>>? knownClientApplications;
   /// Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
   final pulumi.Input<bool>? mappedClaimsEnabled;
-  /// One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+  /// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
   final pulumi.Input<List<ApplicationApiOauth2PermissionScope>>? oauth2PermissionScopes;
-  /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+  /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
   final pulumi.Input<int>? requestedAccessTokenVersion;
 
   /// Creates a new [ApplicationApi].
   /// [knownClientApplications] A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
   /// [mappedClaimsEnabled] Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
-  /// [oauth2PermissionScopes] One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
-  /// [requestedAccessTokenVersion] The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+  /// [oauth2PermissionScopes] One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+  /// [requestedAccessTokenVersion] The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
   const ApplicationApi({
     this.knownClientApplications,
     this.mappedClaimsEnabled,
@@ -43,4 +43,3 @@ class ApplicationApi {
     );
   }
 }
-

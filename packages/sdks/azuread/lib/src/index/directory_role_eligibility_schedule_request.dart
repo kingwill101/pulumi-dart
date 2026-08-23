@@ -80,7 +80,7 @@ import 'directory_role_eligibility_schedule_request_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+/// 		example, err := azuread.GetUser(ctx, &azuread.LookupUserArgs{
 /// 			UserPrincipalName: pulumi.StringRef("jdoe@example.com"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -105,6 +105,29 @@ import 'directory_role_eligibility_schedule_request_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getuser" "example" {
+///   user_principal_name = "jdoe@example.com"
+/// }
+///
+/// resource "azuread_directoryrole" "example" {
+///   display_name = "Application Administrator"
+/// }
+/// resource "azuread_directoryroleeligibilityschedulerequest" "example" {
+///   role_definition_id = azuread_directoryrole.example.template_id
+///   principal_id       = data.azuread_getuser.example.object_id
+///   directory_scope_id = "/"
+///   justification      = "Example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +140,8 @@ import 'directory_role_eligibility_schedule_request_state.dart';
 /// import com.pulumi.azuread.DirectoryRoleArgs;
 /// import com.pulumi.azuread.DirectoryRoleEligibilityScheduleRequest;
 /// import com.pulumi.azuread.DirectoryRoleEligibilityScheduleRequestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -172,7 +195,7 @@ import 'directory_role_eligibility_schedule_request_state.dart';
 /// ```
 ///
 ///
-/// &gt; Note the use of the `template_id` attribute when referencing built-in roles.
+/// &gt; Note the use of the `templateId` attribute when referencing built-in roles.
 ///
 /// ## Import
 ///

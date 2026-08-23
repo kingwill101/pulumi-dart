@@ -16,7 +16,7 @@ class GetApplicationResult {
   final List<GetApplicationApi> apis;
   /// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
   final Map<String, String> appRoleIds;
-  /// A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+  /// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
   final List<GetApplicationAppRole> appRoles;
   /// The Client ID for the application.
   final String clientId;
@@ -51,23 +51,23 @@ class GetApplicationResult {
   final bool oauth2PostResponseRequired;
   /// The application's object ID.
   final String objectId;
-  /// An `optional_claims` block as documented below.
+  /// An `optionalClaims` block as documented below.
   final List<GetApplicationOptionalClaim> optionalClaims;
   /// A list of object IDs of principals that are assigned ownership of the application.
   final List<String> owners;
   /// URL of the application's privacy statement.
   final String privacyStatementUrl;
-  /// A `public_client` block as documented below.
+  /// A `publicClient` block as documented below.
   final List<GetApplicationPublicClient> publicClients;
   /// The verified publisher domain for the application.
   final String publisherDomain;
-  /// A collection of `required_resource_access` blocks as documented below.
+  /// A collection of `requiredResourceAccess` blocks as documented below.
   final List<GetApplicationRequiredResourceAccess> requiredResourceAccesses;
   /// References application context information from a Service or Asset Management database.
   final String serviceManagementReference;
   /// The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
   final String signInAudience;
-  /// A `single_page_application` block as documented below.
+  /// A `singlePageApplication` block as documented below.
   final List<GetApplicationSinglePageApplication> singlePageApplications;
   /// URL of the application's support page.
   final String supportUrl;
@@ -81,7 +81,7 @@ class GetApplicationResult {
   /// Creates a new [GetApplicationResult].
   /// [apis] An `api` block as documented below.
   /// [appRoleIds] A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
-  /// [appRoles] A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+  /// [appRoles] A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
   /// [clientId] The Client ID for the application.
   /// [description] Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
   /// [deviceOnlyAuthEnabled] Specifies whether this application supports device authentication without a user.
@@ -99,15 +99,15 @@ class GetApplicationResult {
   /// [oauth2PermissionScopeIds] A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
   /// [oauth2PostResponseRequired] Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. When `false`, only GET requests are allowed.
   /// [objectId] The application's object ID.
-  /// [optionalClaims] An `optional_claims` block as documented below.
+  /// [optionalClaims] An `optionalClaims` block as documented below.
   /// [owners] A list of object IDs of principals that are assigned ownership of the application.
   /// [privacyStatementUrl] URL of the application's privacy statement.
-  /// [publicClients] A `public_client` block as documented below.
+  /// [publicClients] A `publicClient` block as documented below.
   /// [publisherDomain] The verified publisher domain for the application.
-  /// [requiredResourceAccesses] A collection of `required_resource_access` blocks as documented below.
+  /// [requiredResourceAccesses] A collection of `requiredResourceAccess` blocks as documented below.
   /// [serviceManagementReference] References application context information from a Service or Asset Management database.
   /// [signInAudience] The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
-  /// [singlePageApplications] A `single_page_application` block as documented below.
+  /// [singlePageApplications] A `singlePageApplication` block as documented below.
   /// [supportUrl] URL of the application's support page.
   /// [tags] A list of tags applied to the application.
   /// [termsOfServiceUrl] URL of the application's terms of service statement.
@@ -224,4 +224,3 @@ class GetApplicationResult {
     );
   }
 }
-

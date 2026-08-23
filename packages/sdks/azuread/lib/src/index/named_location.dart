@@ -145,6 +145,30 @@ import 'named_location_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_namedlocation" "example-ip" {
+///   display_name = "IP Named Location"
+///   ip = {
+///     ip_ranges = ["1.1.1.1/32", "2.2.2.2/32"]
+///     trusted   = true
+///   }
+/// }
+/// resource "azuread_namedlocation" "example-country" {
+///   display_name = "Country Named Location"
+///   country = {
+///     countries_and_regions                 = ["GB", "US"]
+///     include_unknown_countries_and_regions = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -155,8 +179,8 @@ import 'named_location_state.dart';
 /// import com.pulumi.azuread.NamedLocationArgs;
 /// import com.pulumi.azuread.inputs.NamedLocationIpArgs;
 /// import com.pulumi.azuread.inputs.NamedLocationCountryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

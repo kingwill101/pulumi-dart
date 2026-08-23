@@ -199,6 +199,45 @@ import 'group_role_management_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_group" "example" {
+///   display_name     = "group-name"
+///   security_enabled = true
+/// }
+/// resource "azuread_user" "member" {
+///   user_principal_name = "jdoe@example.com"
+///   display_name        = "J. Doe"
+///   mail_nickname       = "jdoe"
+///   password            = "SecretP@sswd99!"
+/// }
+/// resource "azuread_grouprolemanagementpolicy" "example" {
+///   group_id = azuread_group.example.id
+///   role_id  = "member"
+///   active_assignment_rules = {
+///     expire_after = "P365D"
+///   }
+///   eligible_assignment_rules = {
+///     expiration_required = false
+///   }
+///   notification_rules = {
+///     eligible_assignments = {
+///       approver_notifications = {
+///         notification_level    = "Critical"
+///         default_recipients    = false
+///         additional_recipients = ["someone@example.com", "someone.else@example.com"]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -216,8 +255,8 @@ import 'group_role_management_policy_state.dart';
 /// import com.pulumi.azuread.inputs.GroupRoleManagementPolicyNotificationRulesArgs;
 /// import com.pulumi.azuread.inputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs;
 /// import com.pulumi.azuread.inputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -305,19 +344,19 @@ import 'group_role_management_policy_state.dart';
 ///
 /// Because these policies are created automatically by Entra ID, they will auto-import on first use.
 class GroupRoleManagementPolicy extends pulumi.CustomResource {
-  /// An `activation_rules` block as defined below.
+  /// An `activationRules` block as defined below.
   late final pulumi.Output<GroupRoleManagementPolicyActivationRules> activationRules;
-  /// An `active_assignment_rules` block as defined below.
+  /// An `activeAssignmentRules` block as defined below.
   late final pulumi.Output<GroupRoleManagementPolicyActiveAssignmentRules> activeAssignmentRules;
   /// (String) The description of this policy.
   late final pulumi.Output<String> description;
   /// (String) The display name of this policy.
   late final pulumi.Output<String> displayName;
-  /// An `eligible_assignment_rules` block as defined below.
+  /// An `eligibleAssignmentRules` block as defined below.
   late final pulumi.Output<GroupRoleManagementPolicyEligibleAssignmentRules> eligibleAssignmentRules;
   /// The ID of the Azure AD group for which the policy applies.
   late final pulumi.Output<String> groupId;
-  /// A `notification_rules` block as defined below.
+  /// A `notificationRules` block as defined below.
   late final pulumi.Output<GroupRoleManagementPolicyNotificationRules> notificationRules;
   /// The type of assignment this policy coveres. Can be either `member` or `owner`.
   late final pulumi.Output<String> roleId;

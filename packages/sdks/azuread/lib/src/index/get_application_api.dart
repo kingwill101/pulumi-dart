@@ -8,7 +8,7 @@ class GetApplicationApi {
   final pulumi.Input<List<String>> knownClientApplications;
   /// Allows an application to use claims mapping without specifying a custom signing key.
   final pulumi.Input<bool> mappedClaimsEnabled;
-  /// One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+  /// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
   final pulumi.Input<List<GetApplicationApiOauth2PermissionScope>> oauth2PermissionScopes;
   /// The access token version expected by this resource. Possible values are `1` or `2`.
   final pulumi.Input<int> requestedAccessTokenVersion;
@@ -16,7 +16,7 @@ class GetApplicationApi {
   /// Creates a new [GetApplicationApi].
   /// [knownClientApplications] A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
   /// [mappedClaimsEnabled] Allows an application to use claims mapping without specifying a custom signing key.
-  /// [oauth2PermissionScopes] One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+  /// [oauth2PermissionScopes] One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
   /// [requestedAccessTokenVersion] The access token version expected by this resource. Possible values are `1` or `2`.
   const GetApplicationApi({
     required this.knownClientApplications,
@@ -43,4 +43,3 @@ class GetApplicationApi {
     );
   }
 }
-

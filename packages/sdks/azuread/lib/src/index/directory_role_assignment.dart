@@ -76,7 +76,7 @@ import 'directory_role_assignment_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+/// 		example, err := azuread.GetUser(ctx, &azuread.LookupUserArgs{
 /// 			UserPrincipalName: pulumi.StringRef("jdoe@example.com"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -99,6 +99,27 @@ import 'directory_role_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getuser" "example" {
+///   user_principal_name = "jdoe@example.com"
+/// }
+///
+/// resource "azuread_directoryrole" "example" {
+///   display_name = "Security administrator"
+/// }
+/// resource "azuread_directoryroleassignment" "example" {
+///   role_id             = azuread_directoryrole.example.template_id
+///   principal_object_id = data.azuread_getuser.example.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +132,8 @@ import 'directory_role_assignment_state.dart';
 /// import com.pulumi.azuread.DirectoryRoleArgs;
 /// import com.pulumi.azuread.DirectoryRoleAssignment;
 /// import com.pulumi.azuread.DirectoryRoleAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -162,7 +183,7 @@ import 'directory_role_assignment_state.dart';
 /// ```
 ///
 ///
-/// &gt; Note the use of the `template_id` attribute when referencing built-in roles.
+/// &gt; Note the use of the `templateId` attribute when referencing built-in roles.
 ///
 /// *Assignment for a custom role*
 ///
@@ -258,7 +279,7 @@ import 'directory_role_assignment_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+/// 		example, err := azuread.GetUser(ctx, &azuread.LookupUserArgs{
 /// 			UserPrincipalName: pulumi.StringRef("jdoe@example.com"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -291,6 +312,32 @@ import 'directory_role_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getuser" "example" {
+///   user_principal_name = "jdoe@example.com"
+/// }
+///
+/// resource "azuread_customdirectoryrole" "example" {
+///   display_name = "My Custom Role"
+///   enabled      = true
+///   version      = "1.0"
+///   permissions {
+///     allowed_resource_actions = ["microsoft.directory/applications/basic/update", "microsoft.directory/applications/standard/read"]
+///   }
+/// }
+/// resource "azuread_directoryroleassignment" "example" {
+///   role_id             = azuread_customdirectoryrole.example.object_id
+///   principal_object_id = data.azuread_getuser.example.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -304,8 +351,8 @@ import 'directory_role_assignment_state.dart';
 /// import com.pulumi.azuread.inputs.CustomDirectoryRolePermissionArgs;
 /// import com.pulumi.azuread.DirectoryRoleAssignment;
 /// import com.pulumi.azuread.DirectoryRoleAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -467,7 +514,7 @@ import 'directory_role_assignment_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		example, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+/// 		example, err := azuread.GetUser(ctx, &azuread.LookupUserArgs{
 /// 			UserPrincipalName: pulumi.StringRef("jdoe@example.com"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -494,6 +541,38 @@ import 'directory_role_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "std_format" "invoke_0" {
+///   input = "/%s"
+///   args  = [azuread_application.example.object_id]
+/// }
+/// data "azuread_getuser" "example" {
+///   user_principal_name = "jdoe@example.com"
+/// }
+///
+/// resource "azuread_directoryrole" "example" {
+///   display_name = "Cloud application administrator"
+/// }
+/// resource "azuread_application" "example" {
+///   display_name = "My Application"
+/// }
+/// resource "azuread_directoryroleassignment" "example" {
+///   role_id             = azuread_directoryrole.example.template_id
+///   principal_object_id = data.azuread_getuser.example.object_id
+///   directory_scope_id  = data.std_format.invoke_0.result
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -510,8 +589,8 @@ import 'directory_role_assignment_state.dart';
 /// import com.pulumi.azuread.DirectoryRoleAssignmentArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FormatArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -582,7 +661,7 @@ import 'directory_role_assignment_state.dart';
 /// ```
 ///
 ///
-/// &gt; Note the use of the `template_id` attribute when referencing built-in roles.
+/// &gt; Note the use of the `templateId` attribute when referencing built-in roles.
 ///
 /// ## Import
 ///
@@ -592,9 +671,9 @@ import 'directory_role_assignment_state.dart';
 /// $ pulumi import azuread:index/directoryRoleAssignment:DirectoryRoleAssignment example ePROZI_iKE653D_d6aoLHyr-lKgHI8ZGiIdz8CLVcng-1
 /// ```
 class DirectoryRoleAssignment extends pulumi.CustomResource {
-  /// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
+  /// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appScopeId;
-  /// Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
+  /// Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
   late final pulumi.Output<String> directoryScopeId;
   /// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalObjectId;

@@ -92,7 +92,7 @@ import 'access_package_catalog_role_assignment_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+/// 		example, err := azuread.GetUser(ctx, &azuread.LookupUserArgs{
 /// 			UserPrincipalName: pulumi.StringRef("jdoe@example.com"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -123,6 +123,32 @@ import 'access_package_catalog_role_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getuser" "example" {
+///   user_principal_name = "jdoe@example.com"
+/// }
+/// data "azuread_getaccesspackagecatalogrole" "exampleGetAccessPackageCatalogRole" {
+///   display_name = "Catalog owner"
+/// }
+///
+/// resource "azuread_accesspackagecatalog" "example" {
+///   display_name = "example-access-package-catalog"
+///   description  = "Example access package catalog"
+/// }
+/// resource "azuread_accesspackagecatalogroleassignment" "example" {
+///   role_id             = data.azuread_getaccesspackagecatalogrole.exampleGetAccessPackageCatalogRole.object_id
+///   principal_object_id = data.azuread_getuser.example.object_id
+///   catalog_id          = azuread_accesspackagecatalog.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -136,8 +162,8 @@ import 'access_package_catalog_role_assignment_state.dart';
 /// import com.pulumi.azuread.AccessPackageCatalogArgs;
 /// import com.pulumi.azuread.AccessPackageCatalogRoleAssignment;
 /// import com.pulumi.azuread.AccessPackageCatalogRoleAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

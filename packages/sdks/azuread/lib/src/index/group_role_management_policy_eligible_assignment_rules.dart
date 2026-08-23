@@ -7,7 +7,7 @@ class GroupRoleManagementPolicyEligibleAssignmentRules {
   final pulumi.Input<bool>? expirationRequired;
   /// The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.
   ///
-  /// One of `expiration_required` or `expire_after` must be provided.
+  /// One of `expirationRequired` or `expireAfter` must be provided.
   final pulumi.Input<String>? expireAfter;
 
   /// Creates a new [GroupRoleManagementPolicyEligibleAssignmentRules].
@@ -32,4 +32,3 @@ class GroupRoleManagementPolicyEligibleAssignmentRules {
     );
   }
 }
-

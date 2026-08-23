@@ -16,7 +16,7 @@ class PrivilegedAccessGroupAssignmentScheduleState {
   final pulumi.Input<String>? justification;
   /// Is this assigment permanently valid.
   ///
-  /// At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
+  /// At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
   final pulumi.Input<bool>? permanentAssignment;
   /// The Object ID of the principal to be assigned to the above group. Can be either a user or a group.
   final pulumi.Input<String>? principalId;
@@ -87,4 +87,3 @@ class PrivilegedAccessGroupAssignmentScheduleState {
     );
   }
 }
-

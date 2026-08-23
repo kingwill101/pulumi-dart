@@ -209,6 +209,46 @@ import 'application_pre_authorized_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "authorized" {
+///   display_name = "example-authorized-app"
+/// }
+/// resource "azuread_application" "authorizer" {
+///   display_name = "example-authorizing-app"
+///   api = {
+///     oauth2_permission_scopes = [{
+///       "adminConsentDescription" = "Administer the application"
+///       "adminConsentDisplayName" = "Administer"
+///       "enabled"                 = true
+///       "id"                      = "00000000-0000-0000-0000-000000000000"
+///       "type"                    = "Admin"
+///       "value"                   = "administer"
+///       }, {
+///       "adminConsentDescription" = "Access the application"
+///       "adminConsentDisplayName" = "Access"
+///       "enabled"                 = true
+///       "id"                      = "11111111-1111-1111-1111-111111111111"
+///       "type"                    = "User"
+///       "userConsentDescription"  = "Access the application"
+///       "userConsentDisplayName"  = "Access"
+///       "value"                   = "user_impersonation"
+///     }]
+///   }
+/// }
+/// resource "azuread_applicationpreauthorized" "example" {
+///   application_id       = azuread_application.authorizer.id
+///   authorized_client_id = azuread_applicationregistration.authorized.client_id
+///   permission_ids       = ["00000000-0000-0000-0000-000000000000", "11111111-1111-1111-1111-111111111111"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -220,10 +260,11 @@ import 'application_pre_authorized_state.dart';
 /// import com.pulumi.azuread.Application;
 /// import com.pulumi.azuread.ApplicationArgs;
 /// import com.pulumi.azuread.inputs.ApplicationApiArgs;
+/// import com.pulumi.azuread.inputs.ApplicationApiOauth2PermissionScopeArgs;
 /// import com.pulumi.azuread.ApplicationPreAuthorized;
 /// import com.pulumi.azuread.ApplicationPreAuthorizedArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

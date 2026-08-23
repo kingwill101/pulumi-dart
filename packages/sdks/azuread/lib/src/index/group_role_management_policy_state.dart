@@ -8,31 +8,31 @@ import 'group_role_management_policy_notification_rules.dart';
 
 /// Input properties used for looking up and filtering GroupRoleManagementPolicy resources.
 class GroupRoleManagementPolicyState {
-  /// An `activation_rules` block as defined below.
+  /// An `activationRules` block as defined below.
   final pulumi.Input<GroupRoleManagementPolicyActivationRules>? activationRules;
-  /// An `active_assignment_rules` block as defined below.
+  /// An `activeAssignmentRules` block as defined below.
   final pulumi.Input<GroupRoleManagementPolicyActiveAssignmentRules>? activeAssignmentRules;
   /// (String) The description of this policy.
   final pulumi.Input<String>? description;
   /// (String) The display name of this policy.
   final pulumi.Input<String>? displayName;
-  /// An `eligible_assignment_rules` block as defined below.
+  /// An `eligibleAssignmentRules` block as defined below.
   final pulumi.Input<GroupRoleManagementPolicyEligibleAssignmentRules>? eligibleAssignmentRules;
   /// The ID of the Azure AD group for which the policy applies.
   final pulumi.Input<String>? groupId;
-  /// A `notification_rules` block as defined below.
+  /// A `notificationRules` block as defined below.
   final pulumi.Input<GroupRoleManagementPolicyNotificationRules>? notificationRules;
   /// The type of assignment this policy coveres. Can be either `member` or `owner`.
   final pulumi.Input<String>? roleId;
 
   /// Creates a new [GroupRoleManagementPolicyState].
-  /// [activationRules] An `activation_rules` block as defined below.
-  /// [activeAssignmentRules] An `active_assignment_rules` block as defined below.
+  /// [activationRules] An `activationRules` block as defined below.
+  /// [activeAssignmentRules] An `activeAssignmentRules` block as defined below.
   /// [description] (String) The description of this policy.
   /// [displayName] (String) The display name of this policy.
-  /// [eligibleAssignmentRules] An `eligible_assignment_rules` block as defined below.
+  /// [eligibleAssignmentRules] An `eligibleAssignmentRules` block as defined below.
   /// [groupId] The ID of the Azure AD group for which the policy applies.
-  /// [notificationRules] A `notification_rules` block as defined below.
+  /// [notificationRules] A `notificationRules` block as defined below.
   /// [roleId] The type of assignment this policy coveres. Can be either `member` or `owner`.
   const GroupRoleManagementPolicyState({
     this.activationRules,
@@ -71,4 +71,3 @@ class GroupRoleManagementPolicyState {
     );
   }
 }
-

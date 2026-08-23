@@ -23,9 +23,9 @@ class ProviderArgs {
   final pulumi.Input<String>? clientSecret;
   /// The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
   final pulumi.Input<String>? clientSecretFilePath;
-  /// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
+  /// Disable the Terraform Partner ID, which is used if a custom `partnerId` isn't specified
   final pulumi.Input<bool>? disableTerraformPartnerId;
-  /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
+  /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadataHost` is specified.
   final pulumi.Input<String>? environment;
   /// The Hostname which should be used for the Azure Metadata Service.
   final pulumi.Input<String>? metadataHost;
@@ -61,8 +61,8 @@ class ProviderArgs {
   /// [clientIdFilePath] The path to a file containing the Client ID which should be used for service principal authentication
   /// [clientSecret] The application password to use when authenticating as a Service Principal using a Client Secret
   /// [clientSecretFilePath] The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
-  /// [disableTerraformPartnerId] Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
-  /// [environment] The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
+  /// [disableTerraformPartnerId] Disable the Terraform Partner ID, which is used if a custom `partnerId` isn't specified
+  /// [environment] The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadataHost` is specified.
   /// [metadataHost] The Hostname which should be used for the Azure Metadata Service.
   /// [msiEndpoint] The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
   /// [oidcRequestToken] The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
@@ -154,4 +154,3 @@ class ProviderArgs {
     );
   }
 }
-

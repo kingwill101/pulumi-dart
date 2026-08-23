@@ -156,6 +156,28 @@ import 'custom_directory_role_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_customdirectoryrole" "example" {
+///   display_name = "My Custom Role"
+///   description  = "Allows reading applications and updating groups"
+///   enabled      = true
+///   version      = "1.0"
+///   permissions {
+///     allowed_resource_actions = ["microsoft.directory/applications/basic/update", "microsoft.directory/applications/create", "microsoft.directory/applications/standard/read"]
+///   }
+///   permissions {
+///     allowed_resource_actions = ["microsoft.directory/groups/allProperties/read", "microsoft.directory/groups/allProperties/read", "microsoft.directory/groups/basic/update", "microsoft.directory/groups/create", "microsoft.directory/groups/delete"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -165,8 +187,8 @@ import 'custom_directory_role_state.dart';
 /// import com.pulumi.azuread.CustomDirectoryRole;
 /// import com.pulumi.azuread.CustomDirectoryRoleArgs;
 /// import com.pulumi.azuread.inputs.CustomDirectoryRolePermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

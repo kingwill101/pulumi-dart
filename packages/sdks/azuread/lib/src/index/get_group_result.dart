@@ -15,7 +15,7 @@ class GetGroupResult {
   final String description;
   /// The display name for the group.
   final String displayName;
-  /// A `dynamic_membership` block as documented below.
+  /// A `dynamicMembership` block as documented below.
   final List<GetGroupDynamicMembership> dynamicMemberships;
   /// Indicates whether people external to the organization can send messages to the group. Only set for Unified groups.
   final bool externalSendersAllowed;
@@ -32,7 +32,7 @@ class GetGroupResult {
   final bool mailEnabled;
   /// The mail alias for the group, unique in the organisation.
   final String mailNickname;
-  /// List of object IDs of the group members. When `include_transitive_members` is `true`, contains a list of object IDs of all transitive group members.
+  /// List of object IDs of the group members. When `includeTransitiveMembers` is `true`, contains a list of object IDs of all transitive group members.
   final List<String> members;
   /// The object ID of the group.
   final String objectId;
@@ -73,7 +73,7 @@ class GetGroupResult {
   /// [behaviors] A list of behaviors for a Microsoft 365 group, such as `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details.
   /// [description] The optional description of the group.
   /// [displayName] The display name for the group.
-  /// [dynamicMemberships] A `dynamic_membership` block as documented below.
+  /// [dynamicMemberships] A `dynamicMembership` block as documented below.
   /// [externalSendersAllowed] Indicates whether people external to the organization can send messages to the group. Only set for Unified groups.
   /// [hideFromAddressLists] Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Only set for Unified groups.
   /// [hideFromOutlookClients] Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Only set for Unified groups.
@@ -82,7 +82,7 @@ class GetGroupResult {
   /// [mail] The SMTP address for the group.
   /// [mailEnabled] Whether the group is mail-enabled.
   /// [mailNickname] The mail alias for the group, unique in the organisation.
-  /// [members] List of object IDs of the group members. When `include_transitive_members` is `true`, contains a list of object IDs of all transitive group members.
+  /// [members] List of object IDs of the group members. When `includeTransitiveMembers` is `true`, contains a list of object IDs of all transitive group members.
   /// [objectId] The object ID of the group.
   /// [onpremisesDomainName] The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
   /// [onpremisesGroupType] The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
@@ -205,4 +205,3 @@ class GetGroupResult {
     );
   }
 }
-

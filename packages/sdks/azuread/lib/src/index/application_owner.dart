@@ -110,6 +110,28 @@ import 'application_owner_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_user" "jane" {
+///   user_principal_name = "jane.fischer@example.com"
+///   display_name        = "Jane Fischer"
+///   password            = "Ch@ngeMe"
+/// }
+/// resource "azuread_applicationowner" "example_jane" {
+///   application_id  = azuread_applicationregistration.example.id
+///   owner_object_id = azuread_user.jane.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +144,8 @@ import 'application_owner_state.dart';
 /// import com.pulumi.azuread.UserArgs;
 /// import com.pulumi.azuread.ApplicationOwner;
 /// import com.pulumi.azuread.ApplicationOwnerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

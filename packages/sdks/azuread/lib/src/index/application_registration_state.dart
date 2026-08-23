@@ -32,7 +32,7 @@ class ApplicationRegistrationState {
   final pulumi.Input<String>? privacyStatementUrl;
   /// The verified publisher domain for the application.
   final pulumi.Input<String>? publisherDomain;
-  /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
+  /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
   final pulumi.Input<int>? requestedAccessTokenVersion;
   /// References application context information from a Service or Asset Management database.
   final pulumi.Input<String>? serviceManagementReference;
@@ -58,7 +58,7 @@ class ApplicationRegistrationState {
   /// [objectId] The object ID of the application within the tenant.
   /// [privacyStatementUrl] URL of the privacy statement for the application.
   /// [publisherDomain] The verified publisher domain for the application.
-  /// [requestedAccessTokenVersion] The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
+  /// [requestedAccessTokenVersion] The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
   /// [serviceManagementReference] References application context information from a Service or Asset Management database.
   /// [signInAudience] The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
   /// [supportUrl] URL of the support page for the application.
@@ -133,4 +133,3 @@ class ApplicationRegistrationState {
     );
   }
 }
-

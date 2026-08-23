@@ -9,13 +9,13 @@ class GetDirectoryRoleTemplatesResult {
   final String id;
   /// The object IDs of the role templates.
   final List<String> objectIds;
-  /// A list of role templates. Each `role_template` object provides the attributes documented below.
+  /// A list of role templates. Each `roleTemplate` object provides the attributes documented below.
   final List<GetDirectoryRoleTemplatesRoleTemplate> roleTemplates;
 
   /// Creates a new [GetDirectoryRoleTemplatesResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [objectIds] The object IDs of the role templates.
-  /// [roleTemplates] A list of role templates. Each `role_template` object provides the attributes documented below.
+  /// [roleTemplates] A list of role templates. Each `roleTemplate` object provides the attributes documented below.
   const GetDirectoryRoleTemplatesResult({
     required this.id,
     required this.objectIds,
@@ -38,4 +38,3 @@ class GetDirectoryRoleTemplatesResult {
     );
   }
 }
-

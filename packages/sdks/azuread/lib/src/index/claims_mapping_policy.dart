@@ -164,6 +164,36 @@ import 'claims_mapping_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_claimsmappingpolicy" "my_policy" {
+///   definitions = [jsonencode({
+///     "ClaimsMappingPolicy" = {
+///       "ClaimsSchema" = [{
+///         "ID"            = "employeeid"
+///         "JwtClaimType"  = "name"
+///         "SamlClaimType" = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
+///         "Source"        = "user"
+///         }, {
+///         "ID"            = "tenantcountry"
+///         "JwtClaimType"  = "country"
+///         "SamlClaimType" = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country"
+///         "Source"        = "company"
+///       }]
+///       "IncludeBasicClaimSet" = "true"
+///       "Version"              = 1
+///     }
+///   })]
+///   display_name = "My Policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -173,8 +203,8 @@ import 'claims_mapping_policy_state.dart';
 /// import com.pulumi.azuread.ClaimsMappingPolicy;
 /// import com.pulumi.azuread.ClaimsMappingPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

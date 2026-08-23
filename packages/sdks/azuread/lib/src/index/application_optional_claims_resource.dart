@@ -4,7 +4,7 @@ import 'application_optional_claims_state.dart';
 
 /// Manages optional claims for an application registration.
 ///
-/// This resource is analogous to the `optional_claims` block in the `azuread.Application` resource. When using these resources together, you should use the `ignore_changes` lifecycle meta-argument (see example below).
+/// This resource is analogous to the `optionalClaims` block in the `azuread.Application` resource. When using these resources together, you should use the `ignoreChanges` lifecycle meta-argument (see example below).
 ///
 /// ## API Permissions
 ///
@@ -170,6 +170,37 @@ import 'application_optional_claims_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationoptionalclaims" "example" {
+///   application_id = azuread_applicationregistration.example.id
+///   access_tokens {
+///     name = "myclaim"
+///   }
+///   access_tokens {
+///     name = "otherclaim"
+///   }
+///   id_tokens {
+///     name                  = "userclaim"
+///     source                = "user"
+///     essential             = true
+///     additional_properties = ["emit_as_roles"]
+///   }
+///   saml2_tokens {
+///     name = "samlexample"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +214,8 @@ import 'application_optional_claims_state.dart';
 /// import com.pulumi.azuread.inputs.ApplicationOptionalClaimsAccessTokenArgs;
 /// import com.pulumi.azuread.inputs.ApplicationOptionalClaimsIdTokenArgs;
 /// import com.pulumi.azuread.inputs.ApplicationOptionalClaimsSaml2TokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -256,15 +287,15 @@ import 'application_optional_claims_state.dart';
 /// $ pulumi import azuread:index/applicationOptionalClaims:ApplicationOptionalClaims example /applications/00000000-0000-0000-0000-000000000000
 /// ```
 class ApplicationOptionalClaimsResource extends pulumi.CustomResource {
-  /// One or more `access_token` blocks as documented below.
+  /// One or more `accessToken` blocks as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> accessTokens;
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
-  /// One or more `id_token` blocks as documented below.
+  /// One or more `idToken` blocks as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> idTokens;
-  /// One or more `saml2_token` blocks as documented below.
+  /// One or more `saml2Token` blocks as documented below.
   ///
-  /// &gt; At least one of `access_token`, `id_token` or `saml2_token` must be specified
+  /// &gt; At least one of `accessToken`, `idToken` or `saml2Token` must be specified
   late final pulumi.Output<List<Map<String, dynamic>>?> saml2Tokens;
 
   /// Creates a new [ApplicationOptionalClaimsResource].

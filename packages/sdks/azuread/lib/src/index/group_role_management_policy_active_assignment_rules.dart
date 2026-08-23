@@ -13,7 +13,7 @@ class GroupRoleManagementPolicyActiveAssignmentRules {
   final pulumi.Input<bool>? requireMultifactorAuthentication;
   /// Is ticket information required to create new assignments.
   ///
-  /// One of `expiration_required` or `expire_after` must be provided.
+  /// One of `expirationRequired` or `expireAfter` must be provided.
   final pulumi.Input<bool>? requireTicketInfo;
 
   /// Creates a new [GroupRoleManagementPolicyActiveAssignmentRules].
@@ -50,4 +50,3 @@ class GroupRoleManagementPolicyActiveAssignmentRules {
     );
   }
 }
-

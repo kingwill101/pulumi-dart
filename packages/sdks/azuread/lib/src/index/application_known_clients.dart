@@ -104,6 +104,26 @@ import 'application_known_clients_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_applicationregistration" "example" {
+///   display_name = "example"
+/// }
+/// resource "azuread_applicationregistration" "client" {
+///   display_name = "example client"
+/// }
+/// resource "azuread_applicationknownclients" "example" {
+///   application_id   = azuread_applicationregistration.example.id
+///   known_client_ids = [azuread_applicationregistration.client.client_id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +134,8 @@ import 'application_known_clients_state.dart';
 /// import com.pulumi.azuread.ApplicationRegistrationArgs;
 /// import com.pulumi.azuread.ApplicationKnownClients;
 /// import com.pulumi.azuread.ApplicationKnownClientsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

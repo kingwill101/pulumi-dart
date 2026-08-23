@@ -162,13 +162,13 @@ import 'app_role_assignment_state.dart';
 /// 					ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
 /// 						&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 /// 							Id: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-/// 								return appRoleIds.User.Read.All, nil
+/// 								return appRoleIds["User.Read.All"], nil
 /// 							}).(pulumi.StringOutput),
 /// 							Type: pulumi.String("Role"),
 /// 						},
 /// 						&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 /// 							Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-/// 								return oauth2PermissionScopeIds.User.ReadWrite, nil
+/// 								return oauth2PermissionScopeIds["User.ReadWrite"], nil
 /// 							}).(pulumi.StringOutput),
 /// 							Type: pulumi.String("Scope"),
 /// 						},
@@ -187,7 +187,7 @@ import 'app_role_assignment_state.dart';
 /// 		}
 /// 		_, err = azuread.NewAppRoleAssignment(ctx, "example", &azuread.AppRoleAssignmentArgs{
 /// 			AppRoleId: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-/// 				return appRoleIds.User.Read.All, nil
+/// 				return appRoleIds["User.Read.All"], nil
 /// 			}).(pulumi.StringOutput),
 /// 			PrincipalObjectId: exampleServicePrincipal.ObjectId,
 /// 			ResourceObjectId:  msgraph.ObjectId,
@@ -197,6 +197,45 @@ import 'app_role_assignment_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getapplicationpublishedappids" "wellKnown" {
+/// }
+///
+/// resource "azuread_serviceprincipal" "msgraph" {
+///   client_id    = data.azuread_getapplicationpublishedappids.wellKnown.result.microsoftGraph
+///   use_existing = true
+/// }
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+///   required_resource_accesses {
+///     resource_app_id = data.azuread_getapplicationpublishedappids.wellKnown.result.microsoftGraph
+///     resource_accesses {
+///       id   = azuread_serviceprincipal.msgraph.app_role_ids["User.Read.All"]
+///       type = "Role"
+///     }
+///     resource_accesses {
+///       id   = azuread_serviceprincipal.msgraph.oauth2_permission_scope_ids["User.ReadWrite"]
+///       type = "Scope"
+///     }
+///   }
+/// }
+/// resource "azuread_serviceprincipal" "example" {
+///   client_id = azuread_application.example.client_id
+/// }
+/// resource "azuread_approleassignment" "example" {
+///   app_role_id         = azuread_serviceprincipal.msgraph.app_role_ids["User.Read.All"]
+///   principal_object_id = azuread_serviceprincipal.example.object_id
+///   resource_object_id  = azuread_serviceprincipal.msgraph.object_id
 /// }
 /// ```
 /// ```java
@@ -211,10 +250,11 @@ import 'app_role_assignment_state.dart';
 /// import com.pulumi.azuread.Application;
 /// import com.pulumi.azuread.ApplicationArgs;
 /// import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+/// import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessResourceAccessArgs;
 /// import com.pulumi.azuread.AppRoleAssignment;
 /// import com.pulumi.azuread.AppRoleAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -276,9 +316,9 @@ import 'app_role_assignment_state.dart';
 ///       requiredResourceAccesses:
 ///         - resourceAppId: ${wellKnown.result.microsoftGraph}
 ///           resourceAccesses:
-///             - id: ${msgraph.appRoleIds"User.Read.All"[%!s(MISSING)]}
+///             - id: ${msgraph.appRoleIds["User.Read.All"]}
 ///               type: Role
-///             - id: ${msgraph.oauth2PermissionScopeIds"User.ReadWrite"[%!s(MISSING)]}
+///             - id: ${msgraph.oauth2PermissionScopeIds["User.ReadWrite"]}
 ///               type: Scope
 ///   exampleServicePrincipal:
 ///     type: azuread:ServicePrincipal
@@ -289,7 +329,7 @@ import 'app_role_assignment_state.dart';
 ///     type: azuread:AppRoleAssignment
 ///     name: example
 ///     properties:
-///       appRoleId: ${msgraph.appRoleIds"User.Read.All"[%!s(MISSING)]}
+///       appRoleId: ${msgraph.appRoleIds["User.Read.All"]}
 ///       principalObjectId: ${exampleServicePrincipal.objectId}
 ///       resourceObjectId: ${msgraph.objectId}
 /// variables:
@@ -475,7 +515,7 @@ import 'app_role_assignment_state.dart';
 /// 					ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
 /// 						&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 /// 							Id: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-/// 								return appRoleIds.Query.All, nil
+/// 								return appRoleIds["Query.All"], nil
 /// 							}).(pulumi.StringOutput),
 /// 							Type: pulumi.String("Role"),
 /// 						},
@@ -494,7 +534,7 @@ import 'app_role_assignment_state.dart';
 /// 		}
 /// 		_, err = azuread.NewAppRoleAssignment(ctx, "example", &azuread.AppRoleAssignmentArgs{
 /// 			AppRoleId: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-/// 				return appRoleIds.Query.All, nil
+/// 				return appRoleIds["Query.All"], nil
 /// 			}).(pulumi.StringOutput),
 /// 			PrincipalObjectId: exampleServicePrincipal.ObjectId,
 /// 			ResourceObjectId:  internalServicePrincipal.ObjectId,
@@ -504,6 +544,48 @@ import 'app_role_assignment_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_application" "internal" {
+///   display_name = "internal"
+///   app_roles {
+///     allowed_member_types = ["Application"]
+///     description          = "Apps can query the database"
+///     display_name         = "Query"
+///     enabled              = true
+///     id                   = "00000000-0000-0000-0000-111111111111"
+///     value                = "Query.All"
+///   }
+/// }
+/// resource "azuread_serviceprincipal" "internal" {
+///   client_id = azuread_application.internal.client_id
+/// }
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+///   required_resource_accesses {
+///     resource_app_id = azuread_application.internal.client_id
+///     resource_accesses {
+///       id   = azuread_serviceprincipal.internal.app_role_ids["Query.All"]
+///       type = "Role"
+///     }
+///   }
+/// }
+/// resource "azuread_serviceprincipal" "example" {
+///   client_id = azuread_application.example.client_id
+/// }
+/// resource "azuread_approleassignment" "example" {
+///   app_role_id         = azuread_serviceprincipal.internal.app_role_ids["Query.All"]
+///   principal_object_id = azuread_serviceprincipal.example.object_id
+///   resource_object_id  = azuread_serviceprincipal.internal.object_id
 /// }
 /// ```
 /// ```java
@@ -518,10 +600,11 @@ import 'app_role_assignment_state.dart';
 /// import com.pulumi.azuread.ServicePrincipal;
 /// import com.pulumi.azuread.ServicePrincipalArgs;
 /// import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+/// import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessResourceAccessArgs;
 /// import com.pulumi.azuread.AppRoleAssignment;
 /// import com.pulumi.azuread.AppRoleAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -599,7 +682,7 @@ import 'app_role_assignment_state.dart';
 ///       requiredResourceAccesses:
 ///         - resourceAppId: ${internal.clientId}
 ///           resourceAccesses:
-///             - id: ${internalServicePrincipal.appRoleIds"Query.All"[%!s(MISSING)]}
+///             - id: ${internalServicePrincipal.appRoleIds["Query.All"]}
 ///               type: Role
 ///   exampleServicePrincipal:
 ///     type: azuread:ServicePrincipal
@@ -610,7 +693,7 @@ import 'app_role_assignment_state.dart';
 ///     type: azuread:AppRoleAssignment
 ///     name: example
 ///     properties:
-///       appRoleId: ${internalServicePrincipal.appRoleIds"Query.All"[%!s(MISSING)]}
+///       appRoleId: ${internalServicePrincipal.appRoleIds["Query.All"]}
 ///       principalObjectId: ${exampleServicePrincipal.objectId}
 ///       resourceObjectId: ${internalServicePrincipal.objectId}
 /// ```

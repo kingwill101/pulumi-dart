@@ -57,7 +57,7 @@ class UserArgs {
   final pulumi.Input<String>? mobilePhone;
   /// The office location in the user's place of business.
   final pulumi.Input<String>? officeLocation;
-  /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user account.
+  /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `userPrincipalName` property when creating a new user account.
   final pulumi.Input<String>? onpremisesImmutableId;
   /// A list of additional email addresses for the user.
   final pulumi.Input<List<String>>? otherMails;
@@ -108,7 +108,7 @@ class UserArgs {
   /// [managerId] The object ID of the user's manager.
   /// [mobilePhone] The primary cellular telephone number for the user.
   /// [officeLocation] The office location in the user's place of business.
-  /// [onpremisesImmutableId] The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user account.
+  /// [onpremisesImmutableId] The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `userPrincipalName` property when creating a new user account.
   /// [otherMails] A list of additional email addresses for the user.
   /// [password] The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
   /// [postalCode] The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
@@ -240,4 +240,3 @@ class UserArgs {
     );
   }
 }
-

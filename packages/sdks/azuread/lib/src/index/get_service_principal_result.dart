@@ -44,7 +44,7 @@ class GetServicePrincipalResult {
   final List<String> notificationEmailAddresses;
   /// A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
   final Map<String, String> oauth2PermissionScopeIds;
-  /// A collection of OAuth 2.0 delegated permissions exposed by the associated application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+  /// A collection of OAuth 2.0 delegated permissions exposed by the associated application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
   final List<GetServicePrincipalOauth2PermissionScope> oauth2PermissionScopes;
   /// The object ID of the service principal.
   final String objectId;
@@ -54,7 +54,7 @@ class GetServicePrincipalResult {
   final List<String> redirectUris;
   /// The URL where the service exposes SAML metadata for federation.
   final String samlMetadataUrl;
-  /// A `saml_single_sign_on` block as documented below.
+  /// A `samlSingleSignOn` block as documented below.
   final List<GetServicePrincipalSamlSingleSignOn> samlSingleSignOns;
   /// A list of identifier URI(s), copied over from the associated application.
   final List<String> servicePrincipalNames;
@@ -84,12 +84,12 @@ class GetServicePrincipalResult {
   /// [notes] A free text field to capture information about the service principal, typically used for operational purposes.
   /// [notificationEmailAddresses] A list of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
   /// [oauth2PermissionScopeIds] A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
-  /// [oauth2PermissionScopes] A collection of OAuth 2.0 delegated permissions exposed by the associated application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+  /// [oauth2PermissionScopes] A collection of OAuth 2.0 delegated permissions exposed by the associated application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
   /// [objectId] The object ID of the service principal.
   /// [preferredSingleSignOnMode] The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
   /// [redirectUris] A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
   /// [samlMetadataUrl] The URL where the service exposes SAML metadata for federation.
-  /// [samlSingleSignOns] A `saml_single_sign_on` block as documented below.
+  /// [samlSingleSignOns] A `samlSingleSignOn` block as documented below.
   /// [servicePrincipalNames] A list of identifier URI(s), copied over from the associated application.
   /// [signInAudience] The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
   /// [tags] A list of tags applied to the service principal.
@@ -191,4 +191,3 @@ class GetServicePrincipalResult {
     );
   }
 }
-

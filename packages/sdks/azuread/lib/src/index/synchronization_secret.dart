@@ -132,12 +132,12 @@ import 'synchronization_secret_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		exampleGetServicePrincipal := azuread.LookupServicePrincipalOutput(ctx, azuread.GetServicePrincipalOutputArgs{
+/// 		exampleGetServicePrincipal := azuread.GetServicePrincipalOutput(ctx, azuread.GetServicePrincipalOutputArgs{
 /// 			ObjectId: exampleApplicationFromTemplate.ServicePrincipalObjectId,
 /// 		}, nil)
 /// 		_, err = azuread.NewSynchronizationSecret(ctx, "example", &azuread.SynchronizationSecretArgs{
 /// 			ServicePrincipalId: pulumi.String(exampleGetServicePrincipal.ApplyT(func(exampleGetServicePrincipal azuread.GetServicePrincipalResult) (*string, error) {
-/// 				return &exampleGetServicePrincipal.Id, nil
+/// 				return exampleGetServicePrincipal.Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Credentials: azuread.SynchronizationSecretCredentialArray{
 /// 				&azuread.SynchronizationSecretCredentialArgs{
@@ -157,6 +157,38 @@ import 'synchronization_secret_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getapplicationtemplate" "example" {
+///   display_name = "Azure Databricks SCIM Provisioning Connector"
+/// }
+/// data "azuread_getserviceprincipal" "exampleGetServicePrincipal" {
+///   object_id = azuread_applicationfromtemplate.example.service_principal_object_id
+/// }
+///
+/// resource "azuread_applicationfromtemplate" "example" {
+///   display_name = "example"
+///   template_id  = data.azuread_getapplicationtemplate.example.template_id
+/// }
+/// resource "azuread_synchronizationsecret" "example" {
+///   service_principal_id = data.azuread_getserviceprincipal.exampleGetServicePrincipal.id
+///   credentials {
+///     key   = "BaseAddress"
+///     value = "abc"
+///   }
+///   credentials {
+///     key   = "SecretToken"
+///     value = "some-token"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,8 +203,8 @@ import 'synchronization_secret_state.dart';
 /// import com.pulumi.azuread.SynchronizationSecret;
 /// import com.pulumi.azuread.SynchronizationSecretArgs;
 /// import com.pulumi.azuread.inputs.SynchronizationSecretCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

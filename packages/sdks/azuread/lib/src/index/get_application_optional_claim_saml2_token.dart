@@ -42,4 +42,3 @@ class GetApplicationOptionalClaimSaml2Token {
     );
   }
 }
-

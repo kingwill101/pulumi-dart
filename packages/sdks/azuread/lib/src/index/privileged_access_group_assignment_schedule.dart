@@ -129,6 +129,33 @@ import 'privileged_access_group_assignment_schedule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_group" "example" {
+///   display_name     = "group-name"
+///   security_enabled = true
+/// }
+/// resource "azuread_user" "member" {
+///   user_principal_name = "jdoe@example.com"
+///   display_name        = "J. Doe"
+///   mail_nickname       = "jdoe"
+///   password            = "SecretP@sswd99!"
+/// }
+/// resource "azuread_privilegedaccessgroupassignmentschedule" "example" {
+///   group_id        = pim.id
+///   principal_id    = azuread_user.member.id
+///   assignment_type = "member"
+///   duration        = "P30D"
+///   justification   = "as requested"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +168,8 @@ import 'privileged_access_group_assignment_schedule_state.dart';
 /// import com.pulumi.azuread.UserArgs;
 /// import com.pulumi.azuread.PrivilegedAccessGroupAssignmentSchedule;
 /// import com.pulumi.azuread.PrivilegedAccessGroupAssignmentScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -223,7 +250,7 @@ class PrivilegedAccessGroupAssignmentSchedule extends pulumi.CustomResource {
   late final pulumi.Output<String?> justification;
   /// Is this assigment permanently valid.
   ///
-  /// At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
+  /// At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
   late final pulumi.Output<bool> permanentAssignment;
   /// The Object ID of the principal to be assigned to the above group. Can be either a user or a group.
   late final pulumi.Output<String> principalId;

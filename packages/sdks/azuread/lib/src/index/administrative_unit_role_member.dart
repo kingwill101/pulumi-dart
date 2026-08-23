@@ -84,7 +84,7 @@ import 'administrative_unit_role_member_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+/// 		example, err := azuread.GetUser(ctx, &azuread.LookupUserArgs{
 /// 			UserPrincipalName: pulumi.StringRef("jdoe@example.com"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -114,6 +114,31 @@ import 'administrative_unit_role_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getuser" "example" {
+///   user_principal_name = "jdoe@example.com"
+/// }
+///
+/// resource "azuread_administrativeunit" "example" {
+///   display_name = "Example-AU"
+/// }
+/// resource "azuread_directoryrole" "example" {
+///   display_name = "Security administrator"
+/// }
+/// resource "azuread_administrativeunitrolemember" "example" {
+///   role_object_id                = azuread_directoryrole.example.object_id
+///   administrative_unit_object_id = azuread_administrativeunit.example.object_id
+///   member_object_id              = data.azuread_getuser.example.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +153,8 @@ import 'administrative_unit_role_member_state.dart';
 /// import com.pulumi.azuread.DirectoryRoleArgs;
 /// import com.pulumi.azuread.AdministrativeUnitRoleMember;
 /// import com.pulumi.azuread.AdministrativeUnitRoleMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

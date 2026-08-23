@@ -11,9 +11,9 @@ class GetApplicationArgs {
   final pulumi.Input<String>? clientId;
   /// Specifies the display name of the application.
   final pulumi.Input<String>? displayName;
-  /// Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
+  /// Specifies any identifier URI of the application. See also the `identifierUris` attribute which contains a list of all identifier URIs for the application.
   ///
-  /// &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+  /// &gt; One of `clientId`, `displayName`, `objectId`, or `identifierUri` must be specified.
   final pulumi.Input<String>? identifierUri;
   /// Specifies the Object ID of the application.
   final pulumi.Input<String>? objectId;
@@ -21,7 +21,7 @@ class GetApplicationArgs {
   /// Creates a new [GetApplicationArgs].
   /// [clientId] Specifies the Client ID of the application.
   /// [displayName] Specifies the display name of the application.
-  /// [identifierUri] Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
+  /// [identifierUri] Specifies any identifier URI of the application. See also the `identifierUris` attribute which contains a list of all identifier URIs for the application.
   /// [objectId] Specifies the Object ID of the application.
   const GetApplicationArgs({
     this.clientId,
@@ -48,4 +48,3 @@ class GetApplicationArgs {
     );
   }
 }
-

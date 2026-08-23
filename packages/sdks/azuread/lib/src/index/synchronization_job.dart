@@ -148,12 +148,12 @@ import 'synchronization_job_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		exampleGetServicePrincipal := azuread.LookupServicePrincipalOutput(ctx, azuread.GetServicePrincipalOutputArgs{
+/// 		exampleGetServicePrincipal := azuread.GetServicePrincipalOutput(ctx, azuread.GetServicePrincipalOutputArgs{
 /// 			ObjectId: exampleApplicationFromTemplate.ServicePrincipalObjectId,
 /// 		}, nil)
 /// 		_, err = azuread.NewSynchronizationSecret(ctx, "example", &azuread.SynchronizationSecretArgs{
 /// 			ServicePrincipalId: pulumi.String(exampleGetServicePrincipal.ApplyT(func(exampleGetServicePrincipal azuread.GetServicePrincipalResult) (*string, error) {
-/// 				return &exampleGetServicePrincipal.Id, nil
+/// 				return exampleGetServicePrincipal.Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Credentials: azuread.SynchronizationSecretCredentialArray{
 /// 				&azuread.SynchronizationSecretCredentialArgs{
@@ -171,7 +171,7 @@ import 'synchronization_job_state.dart';
 /// 		}
 /// 		_, err = azuread.NewSynchronizationJob(ctx, "example", &azuread.SynchronizationJobArgs{
 /// 			ServicePrincipalId: pulumi.String(exampleGetServicePrincipal.ApplyT(func(exampleGetServicePrincipal azuread.GetServicePrincipalResult) (*string, error) {
-/// 				return &exampleGetServicePrincipal.Id, nil
+/// 				return exampleGetServicePrincipal.Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			TemplateId: pulumi.String("dataBricks"),
 /// 			Enabled:    pulumi.Bool(true),
@@ -181,6 +181,43 @@ import 'synchronization_job_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getapplicationtemplate" "example" {
+///   display_name = "Azure Databricks SCIM Provisioning Connector"
+/// }
+/// data "azuread_getserviceprincipal" "exampleGetServicePrincipal" {
+///   object_id = azuread_applicationfromtemplate.example.service_principal_object_id
+/// }
+///
+/// resource "azuread_applicationfromtemplate" "example" {
+///   display_name = "example"
+///   template_id  = data.azuread_getapplicationtemplate.example.template_id
+/// }
+/// resource "azuread_synchronizationsecret" "example" {
+///   service_principal_id = data.azuread_getserviceprincipal.exampleGetServicePrincipal.id
+///   credentials {
+///     key   = "BaseAddress"
+///     value = "https://adb-example.azuredatabricks.net/api/2.0/preview/scim"
+///   }
+///   credentials {
+///     key   = "SecretToken"
+///     value = "some-token"
+///   }
+/// }
+/// resource "azuread_synchronizationjob" "example" {
+///   service_principal_id = data.azuread_getserviceprincipal.exampleGetServicePrincipal.id
+///   template_id          = "dataBricks"
+///   enabled              = true
 /// }
 /// ```
 /// ```java
@@ -199,8 +236,8 @@ import 'synchronization_job_state.dart';
 /// import com.pulumi.azuread.inputs.SynchronizationSecretCredentialArgs;
 /// import com.pulumi.azuread.SynchronizationJob;
 /// import com.pulumi.azuread.SynchronizationJobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

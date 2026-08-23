@@ -7,7 +7,7 @@ import 'conditional_access_policy_state.dart';
 
 /// Manages a Conditional Access Policy within Azure Active Directory.
 ///
-/// &gt; **Licensing Requirements** Specifying `client_applications` property requires the activation of Microsoft Entra on your tenant and the availability of sufficient Workload Identities Premium licences (one per service principal managed by a conditional access).
+/// &gt; **Licensing Requirements** Specifying `clientApplications` property requires the activation of Microsoft Entra on your tenant and the availability of sufficient Workload Identities Premium licences (one per service principal managed by a conditional access).
 ///
 /// &gt; **API Limits** This resource is subject to a restrictive API request limit of 1 request/second. Whilst Terraform will automatically back-off and retry throttled requests, if you have a large number of resource changes to make, you may wish to reduce parallelism or specify extended custom resource timeouts.
 ///
@@ -294,6 +294,58 @@ import 'conditional_access_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_conditionalaccesspolicy" "example" {
+///   display_name = "example policy"
+///   state        = "disabled"
+///   conditions = {
+///     client_app_types    = ["all"]
+///     sign_in_risk_levels = ["medium"]
+///     user_risk_levels    = ["medium"]
+///     applications = {
+///       included_applications = ["All"]
+///       excluded_applications = []
+///     }
+///     devices = {
+///       filter = {
+///         mode = "exclude"
+///         rule = "device.operatingSystem eq \"Doors\""
+///       }
+///     }
+///     locations = {
+///       included_locations = ["All"]
+///       excluded_locations = ["AllTrusted"]
+///     }
+///     platforms = {
+///       included_platforms = ["android"]
+///       excluded_platforms = ["iOS"]
+///     }
+///     users = {
+///       included_users = ["All"]
+///       excluded_users = ["GuestsOrExternalUsers"]
+///     }
+///   }
+///   grant_controls = {
+///     operator          = "OR"
+///     built_in_controls = ["mfa"]
+///   }
+///   session_controls = {
+///     application_enforced_restrictions_enabled = true
+///     disable_resilience_defaults               = false
+///     sign_in_frequency                         = 10
+///     sign_in_frequency_period                  = "hours"
+///     cloud_app_security_policy                 = "monitorOnly"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -311,8 +363,8 @@ import 'conditional_access_policy_state.dart';
 /// import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsUsersArgs;
 /// import com.pulumi.azuread.inputs.ConditionalAccessPolicyGrantControlsArgs;
 /// import com.pulumi.azuread.inputs.ConditionalAccessPolicySessionControlsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -583,6 +635,40 @@ import 'conditional_access_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getclientconfig" "current" {
+/// }
+///
+/// resource "azuread_conditionalaccesspolicy" "example" {
+///   display_name = "example policy"
+///   state        = "disabled"
+///   conditions = {
+///     client_app_types = ["all"]
+///     applications = {
+///       included_applications = ["All"]
+///     }
+///     client_applications = {
+///       included_service_principals = [data.azuread_getclientconfig.current.object_id]
+///       excluded_service_principals = []
+///     }
+///     users = {
+///       included_users = ["None"]
+///     }
+///   }
+///   grant_controls = {
+///     operator          = "OR"
+///     built_in_controls = ["block"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -597,8 +683,8 @@ import 'conditional_access_policy_state.dart';
 /// import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsClientApplicationsArgs;
 /// import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsUsersArgs;
 /// import com.pulumi.azuread.inputs.ConditionalAccessPolicyGrantControlsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -837,6 +923,40 @@ import 'conditional_access_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getclientconfig" "current" {
+/// }
+///
+/// resource "azuread_conditionalaccesspolicy" "example" {
+///   display_name = "example policy"
+///   state        = "disabled"
+///   conditions = {
+///     client_app_types = ["all"]
+///     applications = {
+///       included_applications = ["All"]
+///     }
+///     client_applications = {
+///       included_service_principals = ["ServicePrincipalsInMyTenant"]
+///       excluded_service_principals = [data.azuread_getclientconfig.current.object_id]
+///     }
+///     users = {
+///       included_users = ["None"]
+///     }
+///   }
+///   grant_controls = {
+///     operator          = "OR"
+///     built_in_controls = ["block"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -851,8 +971,8 @@ import 'conditional_access_policy_state.dart';
 /// import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsClientApplicationsArgs;
 /// import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsUsersArgs;
 /// import com.pulumi.azuread.inputs.ConditionalAccessPolicyGrantControlsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -936,13 +1056,13 @@ class ConditionalAccessPolicy extends pulumi.CustomResource {
   late final pulumi.Output<ConditionalAccessPolicyConditions> conditions;
   /// The friendly name for this Conditional Access Policy.
   late final pulumi.Output<String> displayName;
-  /// A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+  /// A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
   late final pulumi.Output<ConditionalAccessPolicyGrantControls?> grantControls;
   /// The object ID of the policy
   late final pulumi.Output<String> objectId;
-  /// A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+  /// A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
   ///
-  /// &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
+  /// &gt; Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
   late final pulumi.Output<ConditionalAccessPolicySessionControls?> sessionControls;
   /// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
   late final pulumi.Output<String> state;

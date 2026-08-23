@@ -90,7 +90,7 @@ import 'get_users_result.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := azuread.LookupAccessPackage(ctx, &azuread.LookupAccessPackageArgs{
+/// 		_, err := azuread.GetAccessPackage(ctx, &azuread.LookupAccessPackageArgs{
 /// 			ObjectId: pulumi.StringRef("00000000-0000-0000-0000-000000000000"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -98,6 +98,19 @@ import 'get_users_result.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getaccesspackage" "example" {
+///   object_id = "00000000-0000-0000-0000-000000000000"
 /// }
 /// ```
 /// ```java
@@ -108,8 +121,8 @@ import 'get_users_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -183,7 +196,7 @@ import 'get_users_result.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := azuread.LookupAccessPackage(ctx, &azuread.LookupAccessPackageArgs{
+/// 		_, err := azuread.GetAccessPackage(ctx, &azuread.LookupAccessPackageArgs{
 /// 			CatalogId:   pulumi.StringRef("00000000-0000-0000-0000-000000000000"),
 /// 			DisplayName: pulumi.StringRef("My access package Catalog"),
 /// 		}, nil)
@@ -194,6 +207,20 @@ import 'get_users_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getaccesspackage" "example" {
+///   catalog_id   = "00000000-0000-0000-0000-000000000000"
+///   display_name = "My access package Catalog"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -202,8 +229,8 @@ import 'get_users_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -302,7 +329,7 @@ Future<GetAccessPackageResult> getAccessPackage(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := azuread.LookupAccessPackageCatalog(ctx, &azuread.LookupAccessPackageCatalogArgs{
+/// 		_, err := azuread.GetAccessPackageCatalog(ctx, &azuread.LookupAccessPackageCatalogArgs{
 /// 			ObjectId: pulumi.StringRef("00000000-0000-0000-0000-000000000000"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -310,6 +337,19 @@ Future<GetAccessPackageResult> getAccessPackage(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getaccesspackagecatalog" "example" {
+///   object_id = "00000000-0000-0000-0000-000000000000"
 /// }
 /// ```
 /// ```java
@@ -320,8 +360,8 @@ Future<GetAccessPackageResult> getAccessPackage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -392,7 +432,7 @@ Future<GetAccessPackageResult> getAccessPackage(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := azuread.LookupAccessPackageCatalog(ctx, &azuread.LookupAccessPackageCatalogArgs{
+/// 		_, err := azuread.GetAccessPackageCatalog(ctx, &azuread.LookupAccessPackageCatalogArgs{
 /// 			DisplayName: pulumi.StringRef("My access package Catalog"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -400,6 +440,19 @@ Future<GetAccessPackageResult> getAccessPackage(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getaccesspackagecatalog" "example" {
+///   display_name = "My access package Catalog"
 /// }
 /// ```
 /// ```java
@@ -410,8 +463,8 @@ Future<GetAccessPackageResult> getAccessPackage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -518,6 +571,19 @@ Future<GetAccessPackageCatalogResult> getAccessPackageCatalog(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getaccesspackagecatalogrole" "example" {
+///   display_name = "Catalog owner"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -526,8 +592,8 @@ Future<GetAccessPackageCatalogResult> getAccessPackageCatalog(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -607,6 +673,19 @@ Future<GetAccessPackageCatalogResult> getAccessPackageCatalog(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getaccesspackagecatalogrole" "example" {
+///   object_id = "00000000-0000-0000-0000-000000000000"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -615,8 +694,8 @@ Future<GetAccessPackageCatalogResult> getAccessPackageCatalog(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -713,7 +792,7 @@ Future<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := azuread.LookupAdministrativeUnit(ctx, &azuread.LookupAdministrativeUnitArgs{
+/// 		_, err := azuread.GetAdministrativeUnit(ctx, &azuread.LookupAdministrativeUnitArgs{
 /// 			DisplayName: pulumi.StringRef("Example-AU"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -721,6 +800,19 @@ Future<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getadministrativeunit" "example" {
+///   display_name = "Example-AU"
 /// }
 /// ```
 /// ```java
@@ -731,8 +823,8 @@ Future<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -802,7 +894,7 @@ Future<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := azuread.LookupAdministrativeUnit(ctx, &azuread.LookupAdministrativeUnitArgs{
+/// 		_, err := azuread.GetAdministrativeUnit(ctx, &azuread.LookupAdministrativeUnitArgs{
 /// 			ObjectId: pulumi.StringRef("00000000-0000-0000-0000-000000000000"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -810,6 +902,19 @@ Future<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getadministrativeunit" "example" {
+///   object_id = "00000000-0000-0000-0000-000000000000"
 /// }
 /// ```
 /// ```java
@@ -820,8 +925,8 @@ Future<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -921,7 +1026,7 @@ Future<GetAdministrativeUnitResult> getAdministrativeUnit(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := azuread.LookupApplication(ctx, &azuread.LookupApplicationArgs{
+/// 		example, err := azuread.GetApplication(ctx, &azuread.LookupApplicationArgs{
 /// 			DisplayName: pulumi.StringRef("My First AzureAD Application"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -932,6 +1037,23 @@ Future<GetAdministrativeUnitResult> getAdministrativeUnit(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getapplication" "example" {
+///   display_name = "My First AzureAD Application"
+/// }
+///
+/// output "applicationObjectId" {
+///   value = data.azuread_getapplication.example.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -940,8 +1062,8 @@ Future<GetAdministrativeUnitResult> getAdministrativeUnit(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1046,6 +1168,22 @@ Future<GetApplicationResult> getApplication(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getapplicationpublishedappids" "wellKnown" {
+/// }
+///
+/// output "publishedAppIds" {
+///   value = data.azuread_getapplicationpublishedappids.wellKnown.result
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1053,8 +1191,8 @@ Future<GetApplicationResult> getApplication(
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1208,13 +1346,13 @@ Future<GetApplicationResult> getApplication(
 /// 					ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
 /// 						&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 /// 							Id: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-/// 								return appRoleIds.User.Read.All, nil
+/// 								return appRoleIds["User.Read.All"], nil
 /// 							}).(pulumi.StringOutput),
 /// 							Type: pulumi.String("Role"),
 /// 						},
 /// 						&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 /// 							Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-/// 								return oauth2PermissionScopeIds.User.ReadWrite, nil
+/// 								return oauth2PermissionScopeIds["User.ReadWrite"], nil
 /// 							}).(pulumi.StringOutput),
 /// 							Type: pulumi.String("Scope"),
 /// 						},
@@ -1229,6 +1367,37 @@ Future<GetApplicationResult> getApplication(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getapplicationpublishedappids" "wellKnown" {
+/// }
+///
+/// resource "azuread_serviceprincipal" "msgraph" {
+///   client_id    = data.azuread_getapplicationpublishedappids.wellKnown.result["MicrosoftGraph"]
+///   use_existing = true
+/// }
+/// resource "azuread_application" "example" {
+///   display_name = "example"
+///   required_resource_accesses {
+///     resource_app_id = data.azuread_getapplicationpublishedappids.wellKnown.result["MicrosoftGraph"]
+///     resource_accesses {
+///       id   = azuread_serviceprincipal.msgraph.app_role_ids["User.Read.All"]
+///       type = "Role"
+///     }
+///     resource_accesses {
+///       id   = azuread_serviceprincipal.msgraph.oauth2_permission_scope_ids["User.ReadWrite"]
+///       type = "Scope"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1241,8 +1410,9 @@ Future<GetApplicationResult> getApplication(
 /// import com.pulumi.azuread.Application;
 /// import com.pulumi.azuread.ApplicationArgs;
 /// import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
-/// import java.util.List;
+/// import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessResourceAccessArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1294,9 +1464,9 @@ Future<GetApplicationResult> getApplication(
 ///       requiredResourceAccesses:
 ///         - resourceAppId: ${wellKnown.result.MicrosoftGraph}
 ///           resourceAccesses:
-///             - id: ${msgraph.appRoleIds"User.Read.All"[%!s(MISSING)]}
+///             - id: ${msgraph.appRoleIds["User.Read.All"]}
 ///               type: Role
-///             - id: ${msgraph.oauth2PermissionScopeIds"User.ReadWrite"[%!s(MISSING)]}
+///             - id: ${msgraph.oauth2PermissionScopeIds["User.ReadWrite"]}
 ///               type: Scope
 /// variables:
 ///   wellKnown:
@@ -1383,6 +1553,23 @@ Future<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIds(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getapplicationtemplate" "example" {
+///   display_name = "Marketo"
+/// }
+///
+/// output "applicationTemplateId" {
+///   value = data.azuread_getapplicationtemplate.example.template_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1391,8 +1578,8 @@ Future<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIds(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1495,6 +1682,22 @@ Future<GetApplicationTemplateResult> getApplicationTemplate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getclientconfig" "current" {
+/// }
+///
+/// output "objectId" {
+///   value = data.azuread_getclientconfig.current.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1502,8 +1705,8 @@ Future<GetApplicationTemplateResult> getApplicationTemplate(
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1614,6 +1817,23 @@ Future<GetClientConfigResult> getClientConfig(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getdirectoryobject" "example" {
+///   object_id = "00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// output "objectType" {
+///   value = data.azuread_getdirectoryobject.example.type
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1622,8 +1842,8 @@ Future<GetClientConfigResult> getClientConfig(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1659,7 +1879,7 @@ Future<GetClientConfigResult> getClientConfig(
 ///
 /// The following attributes are exported:
 ///
-/// * `object_id` - The object ID of the directory object.
+/// * `objectId` - The object ID of the directory object.
 /// * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_directory_object_get_directory_object_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1738,6 +1958,22 @@ Future<GetDirectoryObjectResult> getDirectoryObject(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getdirectoryroletemplates" "current" {
+/// }
+///
+/// output "roles" {
+///   value = data.azuread_getdirectoryroletemplates.current.object_ids
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1745,8 +1981,8 @@ Future<GetDirectoryObjectResult> getDirectoryObject(
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1849,6 +2085,22 @@ Future<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getdirectoryroles" "current" {
+/// }
+///
+/// output "roles" {
+///   value = data.azuread_getdirectoryroles.current.object_ids
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1856,8 +2108,8 @@ Future<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates(
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1960,6 +2212,22 @@ Future<GetDirectoryRolesResult> getDirectoryRoles(
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getdomains" "aadDomains" {
+/// }
+///
+/// output "domainNames" {
+///   value = data.azuread_getdomains.aadDomains.domains[*].domain_name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1968,8 +2236,8 @@ Future<GetDirectoryRolesResult> getDirectoryRoles(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetDomainsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2060,7 +2328,7 @@ Future<GetDomainsResult> getDomains(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := azuread.LookupGroup(ctx, &azuread.LookupGroupArgs{
+/// 		_, err := azuread.GetGroup(ctx, &azuread.LookupGroupArgs{
 /// 			DisplayName:     pulumi.StringRef("MyGroupName"),
 /// 			SecurityEnabled: pulumi.BoolRef(true),
 /// 		}, nil)
@@ -2071,6 +2339,20 @@ Future<GetDomainsResult> getDomains(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getgroup" "example" {
+///   display_name     = "MyGroupName"
+///   security_enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2079,8 +2361,8 @@ Future<GetDomainsResult> getDomains(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2199,12 +2481,31 @@ Future<GetGroupResult> getGroup(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_ = azuread.LookupGroupRoleManagementPolicyOutput(ctx, azuread.GetGroupRoleManagementPolicyOutputArgs{
+/// 		_ = azuread.GetGroupRoleManagementPolicyOutput(ctx, azuread.GetGroupRoleManagementPolicyOutputArgs{
 /// 			GroupId: example.ID(),
 /// 			RoleId:  pulumi.String("owner"),
 /// 		}, nil)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getgrouprolemanagementpolicy" "ownersPolicy" {
+///   group_id = azuread_group.example.id
+///   role_id  = "owner"
+/// }
+///
+/// resource "azuread_group" "example" {
+///   display_name     = "group-name"
+///   security_enabled = true
 /// }
 /// ```
 /// ```java
@@ -2217,8 +2518,8 @@ Future<GetGroupResult> getGroup(
 /// import com.pulumi.azuread.GroupArgs;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetGroupRoleManagementPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2349,6 +2650,19 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getgroups" "example" {
+///   display_names = ["group-a", "group-b"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2357,8 +2671,8 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetGroupsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2442,6 +2756,19 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getgroups" "sales" {
+///   display_name_prefix = "sales-"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2450,8 +2777,8 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetGroupsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2531,6 +2858,19 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getgroups" "all" {
+///   return_all = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2539,8 +2879,8 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetGroupsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2624,6 +2964,20 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getgroups" "mailEnabled" {
+///   mail_enabled = true
+///   return_all   = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2632,8 +2986,8 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetGroupsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2723,6 +3077,21 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getgroups" "securityOnly" {
+///   mail_enabled     = false
+///   return_all       = true
+///   security_enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2731,8 +3100,8 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetGroupsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2830,7 +3199,7 @@ Future<GetGroupsResult> getGroups(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := azuread.LookupNamedLocation(ctx, &azuread.LookupNamedLocationArgs{
+/// 		_, err := azuread.GetNamedLocation(ctx, &azuread.LookupNamedLocationArgs{
 /// 			DisplayName: "My Named Location",
 /// 		}, nil)
 /// 		if err != nil {
@@ -2838,6 +3207,19 @@ Future<GetGroupsResult> getGroups(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getnamedlocation" "example" {
+///   display_name = "My Named Location"
 /// }
 /// ```
 /// ```java
@@ -2848,8 +3230,8 @@ Future<GetGroupsResult> getGroups(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetNamedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2885,20 +3267,20 @@ Future<GetGroupsResult> getGroups(
 /// * `country` - A `country` block as documented below, which describes a country-based named location.
 /// * `id` - The ID of the named location.
 /// * `ip` - An `ip` block as documented below, which describes an IP-based named location.
-/// * `object_id` - The object ID of the named location.
+/// * `objectId` - The object ID of the named location.
 ///
 /// ---
 ///
 /// `country` block exports the following:
 ///
-/// * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
-/// * `include_unknown_countries_and_regions` - Whether IP addresses that don't map to a country or region are included in the named location.
+/// * `countriesAndRegions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
+/// * `includeUnknownCountriesAndRegions` - Whether IP addresses that don't map to a country or region are included in the named location.
 ///
 /// ---
 ///
 /// `ip` block exports the following:
 ///
-/// * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+/// * `ipRanges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
 /// * `trusted` - Whether the named location is trusted.
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_named_location_get_named_location_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2969,7 +3351,7 @@ Future<GetNamedLocationResult> getNamedLocation(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := azuread.LookupServicePrincipal(ctx, &azuread.LookupServicePrincipalArgs{
+/// 		_, err := azuread.GetServicePrincipal(ctx, &azuread.LookupServicePrincipalArgs{
 /// 			DisplayName: pulumi.StringRef("my-awesome-application"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -2977,6 +3359,19 @@ Future<GetNamedLocationResult> getNamedLocation(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getserviceprincipal" "example" {
+///   display_name = "my-awesome-application"
 /// }
 /// ```
 /// ```java
@@ -2987,8 +3382,8 @@ Future<GetNamedLocationResult> getNamedLocation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3059,7 +3454,7 @@ Future<GetNamedLocationResult> getNamedLocation(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := azuread.LookupServicePrincipal(ctx, &azuread.LookupServicePrincipalArgs{
+/// 		_, err := azuread.GetServicePrincipal(ctx, &azuread.LookupServicePrincipalArgs{
 /// 			ClientId: pulumi.StringRef("00000000-0000-0000-0000-000000000000"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -3067,6 +3462,19 @@ Future<GetNamedLocationResult> getNamedLocation(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getserviceprincipal" "example" {
+///   client_id = "00000000-0000-0000-0000-000000000000"
 /// }
 /// ```
 /// ```java
@@ -3077,8 +3485,8 @@ Future<GetNamedLocationResult> getNamedLocation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3149,7 +3557,7 @@ Future<GetNamedLocationResult> getNamedLocation(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := azuread.LookupServicePrincipal(ctx, &azuread.LookupServicePrincipalArgs{
+/// 		_, err := azuread.GetServicePrincipal(ctx, &azuread.LookupServicePrincipalArgs{
 /// 			ObjectId: pulumi.StringRef("00000000-0000-0000-0000-000000000000"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -3157,6 +3565,19 @@ Future<GetNamedLocationResult> getNamedLocation(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getserviceprincipal" "example" {
+///   object_id = "00000000-0000-0000-0000-000000000000"
 /// }
 /// ```
 /// ```java
@@ -3167,8 +3588,8 @@ Future<GetNamedLocationResult> getNamedLocation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3287,6 +3708,19 @@ Future<GetServicePrincipalResult> getServicePrincipal(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getserviceprincipals" "example" {
+///   display_names = ["example-app", "another-app"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3295,8 +3729,8 @@ Future<GetServicePrincipalResult> getServicePrincipal(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3398,6 +3832,19 @@ Future<GetServicePrincipalResult> getServicePrincipal(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getserviceprincipals" "example" {
+///   client_ids = ["11111111-0000-0000-0000-000000000000", "22222222-0000-0000-0000-000000000000", "33333333-0000-0000-0000-000000000000"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3406,8 +3853,8 @@ Future<GetServicePrincipalResult> getServicePrincipal(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3511,6 +3958,19 @@ Future<GetServicePrincipalResult> getServicePrincipal(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getserviceprincipals" "example" {
+///   object_ids = ["00000000-0000-0000-0000-000000000000", "00000000-0000-0000-0000-111111111111", "00000000-0000-0000-0000-222222222222"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3519,8 +3979,8 @@ Future<GetServicePrincipalResult> getServicePrincipal(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3620,7 +4080,7 @@ Future<GetServicePrincipalsResult> getServicePrincipals(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+/// 		_, err := azuread.GetUser(ctx, &azuread.LookupUserArgs{
 /// 			UserPrincipalName: pulumi.StringRef("user@example.com"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -3628,6 +4088,19 @@ Future<GetServicePrincipalsResult> getServicePrincipals(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getuser" "example" {
+///   user_principal_name = "user@example.com"
 /// }
 /// ```
 /// ```java
@@ -3638,8 +4111,8 @@ Future<GetServicePrincipalsResult> getServicePrincipals(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3756,6 +4229,19 @@ Future<GetUserResult> getUser(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_getusers" "users" {
+///   user_principal_names = ["kat@example.com", "byte@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3764,8 +4250,8 @@ Future<GetUserResult> getUser(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.AzureadFunctions;
 /// import com.pulumi.azuread.inputs.GetUsersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -77,6 +77,22 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azuread_user" "example" {
+///   user_principal_name = "jdoe@example.com"
+///   display_name        = "J. Doe"
+///   mail_nickname       = "jdoe"
+///   password            = "SecretP@sswd99!"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +101,8 @@ import 'user_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azuread.User;
 /// import com.pulumi.azuread.UserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,7 +208,7 @@ class User extends pulumi.CustomResource {
   late final pulumi.Output<String> onpremisesDistinguishedName;
   /// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
   late final pulumi.Output<String> onpremisesDomainName;
-  /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user account.
+  /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `userPrincipalName` property when creating a new user account.
   late final pulumi.Output<String> onpremisesImmutableId;
   /// The on-premise SAM account name of the user.
   late final pulumi.Output<String> onpremisesSamAccountName;
