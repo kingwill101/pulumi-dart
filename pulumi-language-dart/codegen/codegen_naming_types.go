@@ -48,44 +48,6 @@ func claimUniqueIdentifierFromCandidates(candidates []string, used map[string]in
 	}
 }
 
-var dartReservedIdentifiers = map[string]struct{}{
-	"assert": {}, "break": {}, "case": {}, "catch": {}, "class": {}, "const": {}, "continue": {},
-	"default": {}, "do": {}, "else": {}, "enum": {}, "extends": {}, "false": {}, "final": {},
-	"finally": {}, "for": {}, "if": {}, "in": {}, "is": {}, "new": {}, "null": {}, "rethrow": {},
-	"return": {}, "super": {}, "switch": {}, "this": {}, "throw": {}, "true": {}, "try": {},
-	"var": {}, "void": {}, "while": {}, "with": {},
-	"bool": {}, "double": {}, "dynamic": {}, "int": {}, "num": {}, "string": {}, "String": {},
-	"object": {}, "Object": {}, "never": {}, "Never": {},
-}
-
-var dartDisallowedFieldNames = map[string]struct{}{
-	"runtimeType":     {},
-	"hashCode":        {},
-	"toString":        {},
-	"noSuchMethod":    {},
-	"toMap":           {},
-	"fromMap":         {},
-	"transformations": {},
-	"childResources":  {},
-}
-
-var dartDisallowedTypeNames = map[string]struct{}{
-	"ComponentResource":     {},
-	"CustomResource":        {},
-	"CustomResourceOptions": {},
-	"Deployment":            {},
-	"Function":              {},
-	"Input":                 {},
-	"InputArgs":             {},
-	"InvokeOptions":         {},
-	"List":                  {},
-	"Map":                   {},
-	"Output":                {},
-	"Resource":              {},
-	"ResourceOptions":       {},
-	"Set":                   {},
-}
-
 func sanitizeTypeName(name string) string {
 	if name == "" {
 		return "GeneratedType"
@@ -133,28 +95,4 @@ func claimUniqueTypeName(base string, used map[string]int) string {
 			return candidate
 		}
 	}
-}
-
-func propertyFieldName(name string, used map[string]int) string {
-	candidate := toDartClassName(name)
-	if candidate == "" {
-		candidate = "value"
-	}
-	runes := []rune(candidate)
-	if len(runes) > 0 && runes[0] >= 'A' && runes[0] <= 'Z' {
-		runes[0] = runes[0] - 'A' + 'a'
-	}
-	candidate = string(runes)
-	if _, reserved := dartReservedIdentifiers[candidate]; reserved {
-		candidate += "_"
-	}
-	if _, disallowed := dartDisallowedFieldNames[candidate]; disallowed {
-		candidate += "_"
-	}
-	count := used[candidate]
-	used[candidate] = count + 1
-	if count == 0 {
-		return candidate
-	}
-	return fmt.Sprintf("%s%d", candidate, count+1)
 }
