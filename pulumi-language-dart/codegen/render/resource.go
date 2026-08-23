@@ -64,11 +64,12 @@ func writeResourceConstructor(b *strings.Builder, declaration dartir.ResourceCla
 }
 
 func writeProviderConstructor(b *strings.Builder, declaration dartir.ResourceClass) {
+	registration := registrationArgument(declaration.HasPackageRegistration)
 	if declaration.ArgsClass != "" {
-		fmt.Fprintf(b, "  %s(\n    String name, {\n    %s? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.CustomResourceOptions(),\n        )", declaration.Name, declaration.ArgsClass, declaration.TokenLiteral)
+		fmt.Fprintf(b, "  %s(\n    String name, {\n    %s? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.CustomResourceOptions()%s,\n        )", declaration.Name, declaration.ArgsClass, declaration.TokenLiteral, registration)
 		return
 	}
-	fmt.Fprintf(b, "  %s(\n    String name, {\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          const <String, pulumi.Input<dynamic>>{},\n          options ?? pulumi.CustomResourceOptions(),\n        )", declaration.Name, declaration.TokenLiteral)
+	fmt.Fprintf(b, "  %s(\n    String name, {\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          const <String, pulumi.Input<dynamic>>{},\n          options ?? pulumi.CustomResourceOptions()%s,\n        )", declaration.Name, declaration.TokenLiteral, registration)
 }
 
 func writeComponentConstructor(b *strings.Builder, declaration dartir.ResourceClass) {

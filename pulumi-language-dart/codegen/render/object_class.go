@@ -21,7 +21,7 @@ func ObjectClass(declaration dartir.ObjectClass) []byte {
 	writeObjectConstructor(&b, declaration)
 	writeObjectToMap(&b, declaration.Properties)
 	writeObjectFromMap(&b, declaration)
-	b.WriteString("}\n\n")
+	b.WriteString("}\n")
 	return []byte(b.String())
 }
 

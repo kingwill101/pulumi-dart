@@ -75,7 +75,6 @@ class SampleConfig {
 
 const config = SampleConfig();
 
-
 // FILE: index.dart
 export 'index/functions.dart';
 export 'index/get_widget_details_args.dart';
@@ -136,7 +135,6 @@ class GetWidgetDetailsArgs {
   }
 }
 
-
 // FILE: index/get_widget_details_result.dart
 // ignore_for_file: unused_element, unnecessary_cast
 
@@ -170,7 +168,6 @@ class GetWidgetDetailsResult {
     );
   }
 }
-
 
 // FILE: index/widget.dart
 import 'package:pulumi/pulumi.dart' as pulumi;
@@ -238,7 +235,6 @@ class WidgetArgs {
   }
 }
 
-
 // FILE: index/widget_metadata.dart
 // ignore_for_file: unused_element, unnecessary_cast
 
@@ -272,7 +268,6 @@ class WidgetMetadata {
   }
 }
 
-
 // FILE: index/widget_mode.dart
 enum WidgetMode {
   readOnly("read-only"),
@@ -290,7 +285,6 @@ enum WidgetMode {
     throw ArgumentError('Unknown WidgetMode value: $value');
   }
 }
-
 
 // FILE: providers.dart
 export 'providers/provider_provider.dart';

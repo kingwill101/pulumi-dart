@@ -18,6 +18,7 @@ type Package struct {
 }
 
 type Parameterization struct {
+	IsExtension    bool
 	PluginName     string
 	PluginVersion  string
 	PackageName    string

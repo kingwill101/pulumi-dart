@@ -24,4 +24,5 @@ func TestConfigRendersOptionalAndRequiredAccessors(t *testing.T) {
 	assert.Contains(t, source, "int requireCount()")
 	assert.Contains(t, source, "Missing required config value 'count'.")
 	assert.Contains(t, source, "bool get countIsSecret")
+	assert.NotEqual(t, "\n\n", source[len(source)-2:])
 }

@@ -11,6 +11,7 @@ func PackageRegistration(parameterization *schemair.Parameterization) *dartir.Pa
 		return nil
 	}
 	return &dartir.PackageRegistration{
+		IsExtension:    parameterization.IsExtension,
 		PluginName:     parameterization.PluginName,
 		PluginVersion:  parameterization.PluginVersion,
 		DownloadURL:    parameterization.DownloadURL,

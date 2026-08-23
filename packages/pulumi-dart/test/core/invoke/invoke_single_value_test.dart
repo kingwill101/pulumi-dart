@@ -1,6 +1,7 @@
 import 'package:grpc/grpc.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 import 'package:pulumi/src/deployment/invoke.dart';
+import 'package:pulumi/src/deployment/models.dart' as deployment_models;
 import 'package:pulumi/src/monitor.dart' as monitorpkg;
 import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart'
@@ -83,6 +84,11 @@ class _InvokeHarness with InvokeMixin {
   final monitorpkg.Monitor monitor;
 
   _InvokeHarness(this.monitor);
+
+  @override
+  Future<String?> resolvePackageRef(
+    deployment_models.RegisterPackageRequest request,
+  ) async => (await monitor.registerPackage(request.toProto())).ref;
 }
 
 void main() {

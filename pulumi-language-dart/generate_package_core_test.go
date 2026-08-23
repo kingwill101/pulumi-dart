@@ -225,6 +225,41 @@ func TestGeneratePackageEmitsParameterizedPackageRegistration(t *testing.T) {
 	)
 }
 
+func TestGeneratePackageEmitsExtensionPackageRegistration(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "extension",
+		"version": "4.5.6",
+		"extensionParameterization": {
+			"baseProvider": {
+				"name": "base",
+				"version": "1.2.3"
+			},
+			"parameter": "ZXh0"
+		},
+		"resources": {
+			"extension:index:Thing": {}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_extension")
+	assert.Contains(t, content, `name: "base",`)
+	assert.Contains(t, content, `version: "1.2.3",`)
+	assert.Contains(t, content, "extensionParameterization: pulumi.Parameterization(")
+	assert.Contains(t, content, `name: "extension",`)
+	assert.Contains(t, content, `version: "4.5.6",`)
+	assert.Contains(t, content, `value: <int>[101, 120, 116],`)
+}
+
 func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 	t.Parallel()
 

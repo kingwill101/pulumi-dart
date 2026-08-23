@@ -108,6 +108,11 @@ class _InvokeCallHarness with InvokeMixin, CallMixin {
   final Monitor monitor;
 
   _InvokeCallHarness(this.monitor);
+
+  @override
+  Future<String?> resolvePackageRef(
+    deployment_models.RegisterPackageRequest request,
+  ) async => (await monitor.registerPackage(request.toProto())).ref;
 }
 
 void main() {

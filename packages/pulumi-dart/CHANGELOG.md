@@ -1,3 +1,14 @@
+## Unreleased
+
+- Preserve provider properties whose names begin with `__` during serialization.
+- Refresh the Pulumi RPC protocol and add `CustomTimeouts.read` support across
+  resource options, transforms, provider authoring, and policy types.
+- Add typed `Output.recover` error recovery with Pulumi metadata propagation.
+- Generate positional invoke signatures for schemas using
+  `multiArgumentInputs`.
+- Support extension-parameterized provider packages and deduplicate package
+  registration within a deployment.
+
 ## 3.0.0
 
 - First stable release of the Pulumi core SDK for Dart.

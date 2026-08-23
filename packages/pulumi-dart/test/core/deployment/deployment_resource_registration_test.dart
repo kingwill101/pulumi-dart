@@ -25,8 +25,10 @@ import '../../mocks/mock_engine.dart';
 
 class _FakeMonitor implements monitorpkg.Monitor {
   RegisterResourceRequest? capturedRegisterResourceRequest;
+  ReadResourceRequest? capturedReadResourceRequest;
   final List<RegisterResourceRequest> capturedRegisterResourceRequests = [];
   RegisterPackageRequest? capturedRegisterPackageRequest;
+  final List<RegisterPackageRequest> capturedRegisterPackageRequests = [];
   Object? registerPackageError;
   Object? registerResourceError;
   String registerPackageRef = 'pkg-ref-default';
@@ -64,6 +66,7 @@ class _FakeMonitor implements monitorpkg.Monitor {
     RegisterPackageRequest request,
   ) async {
     capturedRegisterPackageRequest = request;
+    capturedRegisterPackageRequests.add(request);
     if (registerPackageError != null) {
       throw registerPackageError!;
     }
@@ -75,7 +78,10 @@ class _FakeMonitor implements monitorpkg.Monitor {
     Resource resource,
     ReadResourceRequest request,
   ) async {
-    throw GrpcError.unimplemented('readResource not used in this test');
+    capturedReadResourceRequest = request;
+    return ReadResourceResponse()
+      ..urn = 'urn:pulumi:stack::project::${request.type}::${request.name}'
+      ..properties = Struct();
   }
 
   @override
@@ -257,6 +263,62 @@ void main() {
       },
     );
 
+    test(
+      'deduplicates identical package registrations in a deployment',
+      () async {
+        final request = deployment_models.RegisterPackageRequest(
+          name: 'pulumi-pkg',
+          version: '1.0.0',
+          extensionParameterization: deployment_models.Parameterization(
+            name: 'extension',
+            version: '2.0.0',
+            value: [1, 2, 3],
+          ),
+        );
+
+        _PackageBackedResource('one', registerPackageRequest: request);
+        _PackageBackedResource('two', registerPackageRequest: request);
+        await deployment.registerOutputs();
+
+        expect(monitor.capturedRegisterPackageRequests, hasLength(1));
+        expect(monitor.capturedRegisterResourceRequests, hasLength(2));
+        expect(
+          monitor.capturedRegisterResourceRequests.map(
+            (item) => item.packageRef,
+          ),
+          everyElement('pkg-ref-default'),
+        );
+      },
+    );
+
+    test(
+      'forwards package reference when reading an existing resource',
+      () async {
+        _PackageBackedResource(
+          'existing',
+          registerPackageRequest: deployment_models.RegisterPackageRequest(
+            name: 'pulumi-base',
+            version: '1.0.0',
+            extensionParameterization: deployment_models.Parameterization(
+              name: 'extension',
+              version: '2.0.0',
+              value: [1, 2, 3],
+            ),
+          ),
+          options: CustomResourceOptions(id: Input.fromValue('existing-id')),
+        );
+
+        await deployment.registerOutputs();
+
+        expect(monitor.capturedReadResourceRequest, isNotNull);
+        expect(
+          monitor.capturedReadResourceRequest!.packageRef,
+          'pkg-ref-default',
+        );
+        expect(monitor.capturedRegisterResourceRequest, isNull);
+      },
+    );
+
     test('surfaces registerPackage failure before resource RPC', () async {
       monitor.registerPackageError = StateError('register package failed');
 
@@ -274,6 +336,26 @@ void main() {
       await expectResourceFailure(resource, failureMatcher);
       expect(monitor.capturedRegisterResourceRequest, isNull);
     });
+
+    test(
+      'evicts failed package registrations so they can be retried',
+      () async {
+        final request = deployment_models.RegisterPackageRequest(
+          name: 'pulumi-pkg',
+          version: '1.0.0',
+        );
+        monitor.registerPackageError = StateError('temporary failure');
+
+        await expectLater(
+          deployment.resolvePackageRef(request),
+          throwsStateError,
+        );
+        monitor.registerPackageError = null;
+
+        expect(await deployment.resolvePackageRef(request), 'pkg-ref-default');
+        expect(monitor.capturedRegisterPackageRequests, hasLength(2));
+      },
+    );
 
     test(
       'resource registration failures fail pending outputs before rethrow',
