@@ -178,7 +178,7 @@ in
     mkdir -p "$artifact_root/bin"
 
     dart pub get
-    dart compile exe repodoc/bin/repodoc.dart -o "$artifact_root/bin/repodoc"
+    dart compile exe repodoc/bin/repodoc_integration.dart -o "$artifact_root/bin/repodoc"
     (cd pulumi-language-dart && go build -buildvcs=false -o "$artifact_root/bin/pulumi-language-dart" .)
     (cd integration_tests && GOFLAGS=-buildvcs=false go test -c \
       -o "$artifact_root/bin/pulumi-dart-integration-tests" .)
