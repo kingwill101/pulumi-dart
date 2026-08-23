@@ -78,6 +78,12 @@ func DecodeExpression(typeSpec schemair.Type, sourceExpr string) string {
 		if typeSpec.DartType == "" || typeSpec.DartType == "dynamic" {
 			return sourceExpr
 		}
+		if typeSpec.DartType == "int" {
+			return fmt.Sprintf("(%s as num).toInt()", sourceExpr)
+		}
+		if typeSpec.DartType == "double" {
+			return fmt.Sprintf("(%s as num).toDouble()", sourceExpr)
+		}
 		return fmt.Sprintf("%s as %s", sourceExpr, typeSpec.DartType)
 	}
 }

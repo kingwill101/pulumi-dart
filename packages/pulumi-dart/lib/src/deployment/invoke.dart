@@ -6,6 +6,7 @@ import 'package:pulumi/src/source_position.dart';
 import 'package:pulumi/src/struct_converter.dart';
 
 import '../pulumirpc/pulumi/resource.pb.dart' as pb;
+import '../output.dart';
 import 'models.dart' as models;
 
 /// {@template pulumi.deployment.invoke_mixin}
@@ -26,6 +27,21 @@ mixin InvokeMixin {
   ///
   /// [token] is typically in `pkg:module:function` form.
   Future<T> invoke<T>(
+    String token,
+    Map<String, dynamic> args, {
+    models.InvokeOptions? options,
+    models.RegisterPackageRequest? registerPackageRequest,
+  }) async {
+    final data = await invokeOutputData<T>(
+      token,
+      args,
+      options: options,
+      registerPackageRequest: registerPackageRequest,
+    );
+    return data.value as T;
+  }
+
+  Future<OutputData<T>> invokeOutputData<T>(
     String token,
     Map<String, dynamic> args, {
     models.InvokeOptions? options,
@@ -81,13 +97,23 @@ mixin InvokeMixin {
   }
 
   /// Deserializes monitor invoke responses using Pulumi wire semantics.
-  T _deserializeInvokeResponse<T>(Struct response) {
+  OutputData<T> _deserializeInvokeResponse<T>(Struct response) {
     if (T == Null) {
-      return null as T;
+      return OutputData<T>(
+        value: null,
+        isKnown: true,
+        isSecret: false,
+        resources: {},
+      );
     }
     final decoded = Deserializer.deserialize<dynamic>(
       Value()..structValue = response,
     );
-    return decoded.value as T;
+    return OutputData<T>(
+      value: decoded.value as T,
+      isKnown: decoded.isKnown,
+      isSecret: decoded.isSecret,
+      resources: decoded.resources,
+    );
   }
 }

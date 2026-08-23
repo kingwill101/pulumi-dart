@@ -49,8 +49,8 @@ func (lowerer programLowerer) typedProviderExpression(
 		if err != nil {
 			return "", err
 		}
-		if typ == schema.NumberType && !model.ContainsOutputs(expression.Type()) {
-			return "(" + value + ").toDouble()", nil
+		if converted, ok := providerPrimitiveConversion(expression, typ, value); ok {
+			return converted, nil
 		}
 		return value, nil
 	}

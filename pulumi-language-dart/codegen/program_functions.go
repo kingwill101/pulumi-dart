@@ -5,9 +5,13 @@ import (
 	"strings"
 
 	"github.com/pulumi/pulumi/pkg/v3/codegen/hcl2/model"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/pcl"
 )
 
 func (lowerer programLowerer) functionCallExpression(expression *model.FunctionCallExpression) (string, error) {
+	if expression.Name == pcl.Invoke {
+		return lowerer.invokeExpression(expression)
+	}
 	arguments := make([]string, len(expression.Args))
 	for index, argument := range expression.Args {
 		lowered, err := lowerer.expression(argument)

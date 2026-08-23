@@ -170,6 +170,21 @@ void main() {
       expect(result, isNull);
     });
 
+    test('invokeOutputData preserves secret metadata from results', () async {
+      monitor.invokePayload = {
+        'value': Output.createSecret(Output.create('sensitive')),
+      };
+
+      final result = await harness.invokeOutputData<Map<String, dynamic>>(
+        'test:index:getSecret',
+        {},
+      );
+
+      expect(result.value, equals({'value': 'sensitive'}));
+      expect(result.isKnown, isTrue);
+      expect(result.isSecret, isTrue);
+    });
+
     test(
       'invoke defaults provider/version/plugin fields when options are unset',
       () async {

@@ -99,17 +99,17 @@ Future<OutputData<T>> _invokeOutputData<T>(
           async: options.async,
         );
 
-  final result = await Deployment.instance.invoke<T>(
+  final result = await Deployment.instance.invokeOutputData<T>(
     token,
     inputMetadata.values,
     options: toDeploymentInvokeOptions(invokeOptions),
     registerPackageRequest: registerPackageRequest,
   );
   return OutputData<T>(
-    value: result,
-    isKnown: true,
-    isSecret: isSecret,
-    resources: resources,
+    value: result.value,
+    isKnown: result.isKnown,
+    isSecret: isSecret || result.isSecret,
+    resources: {...resources, ...result.resources},
   );
 }
 

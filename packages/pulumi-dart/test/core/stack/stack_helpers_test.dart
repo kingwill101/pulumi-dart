@@ -91,6 +91,24 @@ class _RecordingDeployment extends Deployment {
   }
 
   @override
+  Future<OutputData<T>> invokeOutputData<T>(
+    String token,
+    Map<String, dynamic> args, {
+    deployment_models.InvokeOptions? options,
+    deployment_models.RegisterPackageRequest? registerPackageRequest,
+  }) async => OutputData<T>(
+    value: await invoke<T>(
+      token,
+      args,
+      options: options,
+      registerPackageRequest: registerPackageRequest,
+    ),
+    isKnown: true,
+    isSecret: false,
+    resources: {},
+  );
+
+  @override
   Future<T> invokeSingle<T>(
     String token,
     Map<String, dynamic> args, {

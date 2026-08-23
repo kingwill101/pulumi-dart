@@ -18,11 +18,16 @@ func (lowerer programLowerer) scopeTraversalExpression(expression *model.ScopeTr
 	}
 	rootType := model.GetTraversableType(expression.Parts[0])
 	if len(expression.Traversal) > 1 && model.ContainsOutputs(rootType) {
-		traversed, err := lowerDartTraversal("value", expression.Traversal[1:], false)
+		typed := lowerer.typedObjectNames[name]
+		traversed, err := lowerDartTraversal("value", expression.Traversal[1:], typed)
 		if err != nil {
 			return "", err
 		}
-		return "pulumi.output(" + name + ").apply<dynamic>((value) => " + traversed + ")", nil
+		apply := ".apply<dynamic>"
+		if typed {
+			return name + ".apply((value) => " + traversed + ")", nil
+		}
+		return "pulumi.output(" + name + ")" + apply + "((value) => " + traversed + ")", nil
 	}
 	return lowerDartTraversal(name, expression.Traversal[1:], false)
 }
@@ -52,11 +57,16 @@ func (lowerer programLowerer) relativeTraversalExpression(
 		return "", err
 	}
 	if model.ContainsOutputs(expression.Source.Type()) {
-		traversed, err := lowerDartTraversal("value", expression.Traversal, false)
+		typed := invokeExpression(expression.Source) != nil
+		traversed, err := lowerDartTraversal("value", expression.Traversal, typed)
 		if err != nil {
 			return "", err
 		}
-		return "pulumi.output(" + source + ").apply<dynamic>((value) => " + traversed + ")", nil
+		apply := ".apply<dynamic>"
+		if typed {
+			return source + ".apply((value) => " + traversed + ")", nil
+		}
+		return "pulumi.output(" + source + ")" + apply + "((value) => " + traversed + ")", nil
 	}
 	return lowerDartTraversal(source, expression.Traversal, false)
 }

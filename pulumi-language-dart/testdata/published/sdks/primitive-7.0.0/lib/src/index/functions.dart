@@ -16,3 +16,14 @@ Future<InvokeResult> invoke(
   );
   return InvokeResult.fromMap(result);
 }
+
+pulumi.Output<InvokeResult> invokeOutput(
+  InvokeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'primitive:index:invoke',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(InvokeResult.fromMap);
+}

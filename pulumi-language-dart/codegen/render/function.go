@@ -68,6 +68,7 @@ func writeInvokeFunction(b *strings.Builder, function dartir.InvokeFunction) {
 			registrationArg,
 			function.ResultClass,
 		)
+		writeInvokeOutputFunction(b, function)
 		return
 	}
 	fmt.Fprintf(
@@ -79,4 +80,5 @@ func writeInvokeFunction(b *strings.Builder, function dartir.InvokeFunction) {
 		invokeArgs,
 		registrationArg,
 	)
+	writeInvokeOutputFunction(b, function)
 }

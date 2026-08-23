@@ -16,6 +16,10 @@ func renderDartProgram(program dartProgram) []byte {
 			imports[key] = resource
 		}
 	}
+	for _, imported := range program.Imports {
+		key := imported.Package + "\x00" + imported.Module
+		imports[key] = dartProgramResource{Package: imported.Package, Module: imported.Module}
+	}
 	importKeys := make([]string, 0, len(imports))
 	for key := range imports {
 		importKeys = append(importKeys, key)
@@ -35,10 +39,6 @@ func renderDartProgram(program dartProgram) []byte {
 	body.WriteString("  GeneratedStack() {\n")
 	if len(program.Configs) > 0 {
 		body.WriteString("    final config = pulumi.Config();\n")
-		for _, config := range program.Configs {
-			fmt.Fprintf(&body, "    final %s = %s;\n", config.Name, config.Expression)
-		}
-		body.WriteString("\n")
 	}
 	for _, version := range program.RequiredPulumiVersions {
 		fmt.Fprintf(&body, "    pulumi.Deployment.instance.requirePulumiVersion(%s);\n", version)
@@ -47,6 +47,9 @@ func renderDartProgram(program dartProgram) []byte {
 		body.WriteString("\n")
 	}
 	for _, statement := range program.Statements {
+		if statement.Config != nil {
+			fmt.Fprintf(&body, "    final %s = %s;\n", statement.Config.Name, statement.Config.Expression)
+		}
 		if statement.Local != nil {
 			fmt.Fprintf(&body, "    final %s = %s;\n", statement.Local.Name, statement.Local.Expression)
 		}

@@ -28,6 +28,13 @@ func TestDecodeExpressionForNestedObjectCollection(t *testing.T) {
 	require.True(t, NeedsDecodeListHelper(typeSpec))
 }
 
+func TestDecodeExpressionNormalizesWireNumbers(t *testing.T) {
+	t.Parallel()
+
+	require.Equal(t, "(raw as num).toInt()", DecodeExpression(schemair.Type{Kind: "scalar", DartType: "int"}, "raw"))
+	require.Equal(t, "(raw as num).toDouble()", DecodeExpression(schemair.Type{Kind: "scalar", DartType: "double"}, "raw"))
+}
+
 func TestObjectPropertyTypeWrapsInputs(t *testing.T) {
 	t.Parallel()
 

@@ -13,7 +13,12 @@ func (lowerer programLowerer) providerArrayExpression(
 ) (string, error) {
 	tuple, ok := expression.(*model.TupleConsExpression)
 	if !ok {
-		return lowerer.expression(expression)
+		value, err := lowerer.expression(expression)
+		if err != nil || !model.ContainsOutputs(expression.Type()) {
+			return value, err
+		}
+		element := providerSchemaValueDartType(elementType)
+		return fmt.Sprintf("pulumi.output(%s).apply<List<%s>>((value) => (value as List).cast<%s>())", value, element, element), nil
 	}
 	items := make([]string, len(tuple.Expressions))
 	for index, item := range tuple.Expressions {
@@ -31,7 +36,12 @@ func (lowerer programLowerer) providerMapExpression(
 ) (string, error) {
 	object, ok := expression.(*model.ObjectConsExpression)
 	if !ok {
-		return lowerer.expression(expression)
+		value, err := lowerer.expression(expression)
+		if err != nil || !model.ContainsOutputs(expression.Type()) {
+			return value, err
+		}
+		element := providerSchemaValueDartType(elementType)
+		return fmt.Sprintf("pulumi.output(%s).apply<Map<String, %s>>((value) => (value as Map).cast<String, %s>())", value, element, element), nil
 	}
 	items := make([]string, len(object.Items))
 	for index, item := range object.Items {
@@ -46,4 +56,19 @@ func (lowerer programLowerer) providerMapExpression(
 		items[index] = key + ": " + value
 	}
 	return "{" + strings.Join(items, ", ") + "}", nil
+}
+
+func providerSchemaValueDartType(typ schema.Type) string {
+	typ = unwrapProviderInputType(typ)
+	if primitive, ok := providerPrimitiveDartType(typ); ok {
+		return primitive
+	}
+	switch typ := typ.(type) {
+	case *schema.ArrayType:
+		return "List<" + providerSchemaValueDartType(typ.ElementType) + ">"
+	case *schema.MapType:
+		return "Map<String, " + providerSchemaValueDartType(typ.ElementType) + ">"
+	default:
+		return "dynamic"
+	}
 }

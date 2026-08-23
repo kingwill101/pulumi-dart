@@ -41,8 +41,8 @@ class InvokeResult {
     return InvokeResult(
       boolean: map['boolean'] as bool,
       booleanMap: (map['booleanMap'] as Map).cast<String, bool>(),
-      float: map['float'] as double,
-      integer: map['integer'] as int,
+      float: (map['float'] as num).toDouble(),
+      integer: (map['integer'] as num).toInt(),
       numberArray: (map['numberArray'] as List).cast<double>(),
       string_: map['string'] as String,
     );

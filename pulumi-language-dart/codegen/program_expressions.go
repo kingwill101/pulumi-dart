@@ -8,7 +8,7 @@ import (
 )
 
 func lowerDartProgramExpression(expression model.Expression) (string, error) {
-	return (programLowerer{names: map[string]string{}, usedNames: map[string]int{}}).expression(expression)
+	return (programLowerer{names: map[string]string{}, usedNames: map[string]int{}, typedObjectNames: map[string]bool{}, imports: map[string]dartProgramImport{}, functions: map[string]programFunction{}}).expression(expression)
 }
 
 func (lowerer programLowerer) expression(expression model.Expression) (string, error) {

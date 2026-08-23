@@ -176,6 +176,14 @@ abstract class Deployment {
     models.RegisterPackageRequest? registerPackageRequest,
   });
 
+  /// Invokes a provider function while retaining Pulumi result metadata.
+  Future<OutputData<T>> invokeOutputData<T>(
+    String token,
+    Map<String, dynamic> args, {
+    models.InvokeOptions? options,
+    models.RegisterPackageRequest? registerPackageRequest,
+  });
+
   /// Invokes a provider function and unwraps single-property result payloads.
   Future<T> invokeSingle<T>(
     String token,
