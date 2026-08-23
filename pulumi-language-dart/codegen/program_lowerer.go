@@ -14,6 +14,7 @@ type programLowerer struct {
 	methods                  map[string]programMethod
 	resourceTypes            map[string]*schema.Resource
 	resourceReferences       map[string]dartProgramResourceReference
+	rangedResourceKinds      map[string]string
 	needsAsyncInitialization *bool
 	specialProviders         map[string]struct{}
 	componentMode            bool
@@ -27,6 +28,7 @@ func newProgramLowerer(program *pcl.Program) programLowerer {
 		methods:                  programMethods(program.Packages()),
 		resourceTypes:            programResourceTypes(program.Packages()),
 		resourceReferences:       map[string]dartProgramResourceReference{},
+		rangedResourceKinds:      map[string]string{},
 		needsAsyncInitialization: new(bool),
 		specialProviders:         map[string]struct{}{},
 	}

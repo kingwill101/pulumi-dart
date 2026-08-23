@@ -11,6 +11,9 @@ import (
 func (lowerer programLowerer) providerArrayExpression(
 	pkg string, expression model.Expression, elementType schema.Type, nullable bool,
 ) (string, error) {
+	if forExpression, ok := expression.(*model.ForExpression); ok {
+		return lowerer.providerArrayForExpression(pkg, forExpression, elementType)
+	}
 	tuple, ok := expression.(*model.TupleConsExpression)
 	if !ok {
 		value, err := lowerer.expression(expression)

@@ -23,4 +23,17 @@ class Container extends pulumi.CustomResource {
     details = registerOutput<List<Detail>>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Detail>(guardedValue, (value) => Detail.fromMap((value as Map).cast<String, dynamic>())); });
     inputs = registerOutput<List<String>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
+
+  /// Creates a typed reference to an existing [Container] resource.
+  Container.reference(String urn)
+    : super(
+        'nestedobject:index:Container',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    details = registerOutput<List<Detail>>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Detail>(guardedValue, (value) => Detail.fromMap((value as Map).cast<String, dynamic>())); });
+    inputs = registerOutput<List<String>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
 }

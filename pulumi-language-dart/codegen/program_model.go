@@ -76,6 +76,13 @@ type dartProgramResource struct {
 	Inputs            []dartProgramResourceInput
 	OptionsClass      string
 	Options           []dartProgramResourceOption
+	Range             *dartProgramResourceRange
+}
+
+type dartProgramResourceRange struct {
+	Expression string
+	Kind       string
+	IsOutput   bool
 }
 
 type dartProgramResourceInput struct {

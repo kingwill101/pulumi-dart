@@ -14,8 +14,13 @@ func (lowerer programLowerer) forExpression(expression *model.ForExpression) (st
 	keyName, valueName, restore := lowerer.bindForVariables(expression)
 	defer restore()
 
+	isOutput := model.ContainsOutputs(expression.Collection.Type())
+	collectionValue := collection
+	if isOutput {
+		collectionValue = "collection"
+	}
 	mapCollection := isDartMapType(model.ResolveOutputs(expression.Collection.Type()))
-	loop := dartForLoop(collection, keyName, valueName, mapCollection)
+	loop := dartForLoop(collectionValue, keyName, valueName, mapCollection)
 	condition := ""
 	if expression.Condition != nil {
 		lowered, err := lowerer.expression(expression.Condition)
@@ -29,19 +34,31 @@ func (lowerer programLowerer) forExpression(expression *model.ForExpression) (st
 		return "", fmt.Errorf("value: %w", err)
 	}
 	if expression.Key == nil {
-		return "[" + loop + condition + " " + value + "]", nil
+		result := "[" + loop + condition + " " + value + "]"
+		if isOutput {
+			result = "pulumi.output(" + collection + ").apply((collection) => " + result + ")"
+		}
+		return result, nil
 	}
 	key, err := lowerer.expression(expression.Key)
 	if err != nil {
 		return "", fmt.Errorf("key: %w", err)
 	}
-	return "{" + loop + condition + " " + key + ": " + value + "}", nil
+	result := "{" + loop + condition + " " + key + ": " + value + "}"
+	if isOutput {
+		result = "pulumi.output(" + collection + ").apply((collection) => " + result + ")"
+	}
+	return result, nil
 }
 
 func (lowerer programLowerer) bindForVariables(expression *model.ForExpression) (string, string, func()) {
 	valueName := propertyFieldName(expression.ValueVariable.Name, lowerer.usedNames)
 	oldValue, hadValue := lowerer.names[expression.ValueVariable.Name]
 	lowerer.names[expression.ValueVariable.Name] = valueName
+	oldTyped, hadTyped := lowerer.typedObjectNames[valueName]
+	if collectionElementIsTypedObject(expression.Collection.Type()) {
+		lowerer.typedObjectNames[valueName] = true
+	}
 	keyName := ""
 	oldKey, hadKey := "", false
 	if expression.KeyVariable != nil {
@@ -53,6 +70,11 @@ func (lowerer programLowerer) bindForVariables(expression *model.ForExpression) 
 		restoreProgramName(lowerer.names, expression.ValueVariable.Name, oldValue, hadValue)
 		if expression.KeyVariable != nil {
 			restoreProgramName(lowerer.names, expression.KeyVariable.Name, oldKey, hadKey)
+		}
+		if hadTyped {
+			lowerer.typedObjectNames[valueName] = oldTyped
+		} else {
+			delete(lowerer.typedObjectNames, valueName)
 		}
 	}
 }
@@ -82,7 +104,7 @@ func dartForLoop(collection, key, value string, mapCollection bool) string {
 		return "for (final MapEntry(key: " + key + ", value: " + value + ") in (" + collection + ").entries)"
 	}
 	if key == "" {
-		return "for (final " + value + " in " + collection + ")"
+		return "for (final " + value + " in (" + collection + " as Iterable))"
 	}
-	return "for (final (" + key + ", " + value + ") in (" + collection + ").indexed)"
+	return "for (final (" + key + ", " + value + ") in (" + collection + " as Iterable).indexed)"
 }

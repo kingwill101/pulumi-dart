@@ -55,6 +55,8 @@ func (lowerer programLowerer) expression(expression model.Expression) (string, e
 		return lowerer.conditionalExpression(expression)
 	case *model.ForExpression:
 		return lowerer.forExpression(expression)
+	case *model.SplatExpression:
+		return lowerer.splatExpression(expression)
 	case *model.ScopeTraversalExpression:
 		return lowerer.scopeTraversalExpression(expression)
 	default:

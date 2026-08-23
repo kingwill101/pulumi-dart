@@ -116,6 +116,7 @@ library;
 // Value flow and conversion primitives.
 export 'src/output.dart';
 export 'src/output_helpers.dart';
+export 'src/range.dart';
 export 'src/iterable.dart';
 export 'src/input.dart';
 export 'src/input_collections.dart';

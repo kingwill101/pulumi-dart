@@ -5,6 +5,7 @@ import (
 
 	"github.com/pulumi/pulumi/pkg/v3/codegen/hcl2/model"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/pcl"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 )
 
 func (lowerer programLowerer) scopeTraversalExpression(expression *model.ScopeTraversalExpression) (string, error) {
@@ -37,7 +38,7 @@ func (lowerer programLowerer) scopeTraversalExpression(expression *model.ScopeTr
 		}
 		return "pulumi.output(" + name + ")" + apply + "((value) => " + traversed + ")", nil
 	}
-	return lowerDartTraversal(name, expression.Traversal[1:], false)
+	return lowerDartTraversal(name, expression.Traversal[1:], lowerer.typedObjectNames[name])
 }
 
 func (lowerer programLowerer) indexExpression(expression *model.IndexExpression) (string, error) {
@@ -68,7 +69,7 @@ func (lowerer programLowerer) relativeTraversalExpression(
 		return lowerDartTraversal(source, expression.Traversal, true)
 	}
 	if model.ContainsOutputs(expression.Source.Type()) {
-		typed := typedResultExpression(expression.Source)
+		typed := typedResultExpression(expression.Source) || expressionResultIsTypedObject(expression.Source) || expressionIndexesResource(expression.Source)
 		traversed, err := lowerDartTraversal("value", expression.Traversal, typed)
 		if err != nil {
 			return "", err
@@ -80,6 +81,35 @@ func (lowerer programLowerer) relativeTraversalExpression(
 		return "pulumi.output(" + source + ")" + apply + "((value) => " + traversed + ")", nil
 	}
 	return lowerDartTraversal(source, expression.Traversal, false)
+}
+
+func expressionIndexesResource(expression model.Expression) bool {
+	index, ok := expression.(*model.IndexExpression)
+	if !ok {
+		return false
+	}
+	traversal, ok := index.Collection.(*model.ScopeTraversalExpression)
+	if !ok || len(traversal.Parts) == 0 {
+		return false
+	}
+	_, ok = traversal.Parts[0].(*pcl.Resource)
+	return ok
+}
+
+func expressionResultIsTypedObject(expression model.Expression) bool {
+	typ := model.ResolveOutputs(expression.Type())
+	schemaType, ok := pcl.GetSchemaForType(typ)
+	if !ok {
+		return false
+	}
+	switch value := schemaType.(type) {
+	case *schema.ResourceType:
+		return true
+	case *schema.ObjectType:
+		return value.Token != ""
+	default:
+		return false
+	}
 }
 
 func typedResultExpression(expression model.Expression) bool {

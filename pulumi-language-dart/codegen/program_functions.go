@@ -33,13 +33,7 @@ func (lowerer programLowerer) functionCallExpression(expression *model.FunctionC
 	}
 	switch expression.Name {
 	case "length":
-		if len(arguments) != 1 {
-			return "", fmt.Errorf("length expects one argument")
-		}
-		if model.ResolveOutputs(expression.Args[0].Type()) == model.StringType {
-			return "pulumi.stringLength(" + arguments[0] + ")", nil
-		}
-		return "(" + arguments[0] + ").length", nil
+		return lowerLengthBuiltin(expression, arguments)
 	case "toJSON":
 		if len(arguments) != 1 {
 			return "", fmt.Errorf("toJSON expects one argument")

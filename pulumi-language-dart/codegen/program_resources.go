@@ -34,6 +34,14 @@ func (lowerer programLowerer) resource(resource *pcl.Resource) (dartProgramResou
 func (lowerer programLowerer) providerResource(
 	resource *pcl.Resource, name, token string,
 ) (dartProgramResource, error) {
+	rangeSpec, restoreRange, err := lowerer.resourceRange(resource)
+	if err != nil {
+		return dartProgramResource{}, err
+	}
+	defer restoreRange()
+	if rangeSpec != nil {
+		lowerer.rangedResourceKinds[resource.Name()] = rangeSpec.Kind
+	}
 	pkg, module, member, diagnostics := pcl.DecomposeToken(token, resource.SyntaxNode().Range())
 	if diagnostics.HasErrors() {
 		return dartProgramResource{}, fmt.Errorf("invalid resource token %q", token)
@@ -81,5 +89,6 @@ func (lowerer programLowerer) providerResource(
 		PrefixLogicalName: lowerer.componentMode,
 		Package:           pkg, Module: module, Class: className,
 		ArgsClass: argsClass, Inputs: inputs, OptionsClass: optionsClass, Options: options,
+		Range: rangeSpec,
 	}, nil
 }

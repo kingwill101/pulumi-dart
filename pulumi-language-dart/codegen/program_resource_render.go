@@ -6,10 +6,16 @@ import (
 )
 
 func renderDartProgramResource(resource dartProgramResource) string {
+	if resource.Range != nil {
+		return renderRangedDartProgramResource(resource)
+	}
+	return "    final " + resource.Name + " = " + renderDartProgramResourceValue(resource, dartStringLiteral(resource.LogicalName)) + ";\n"
+}
+
+func renderDartProgramResourceValue(resource dartProgramResource, logicalName string) string {
 	options := renderDartProgramResourceOptions(resource)
-	logicalName := dartStringLiteral(resource.LogicalName)
 	if resource.PrefixLogicalName {
-		logicalName = "name + " + dartStringLiteral("-"+resource.LogicalName)
+		logicalName = "name + " + dartStringLiteral("-") + " + (" + logicalName + ")"
 	}
 	switch resource.Type {
 	case "read":
@@ -22,42 +28,61 @@ func renderDartProgramResource(resource dartProgramResource) string {
 			}
 			state = ", state: " + qualifier + "." + resource.StateClass + "(" + fields.String() + ")"
 		}
-		return fmt.Sprintf(
-			"    final %s = %s.%s.get(%s, (%s).input()%s%s);\n",
-			resource.Name, qualifier, resource.Class, logicalName, resource.ID, state, options,
-		)
+		return fmt.Sprintf("%s.%s.get(%s, (%s).input()%s%s)", qualifier, resource.Class, logicalName, resource.ID, state, options)
 	case "provider":
 		qualifier := programModuleAlias(resource.Package, resource.Module)
 		if len(resource.Inputs) == 0 {
-			return fmt.Sprintf(
-				"    final %s = %s.%s(%s);\n",
-				resource.Name, qualifier, resource.Class, logicalName+options,
-			)
+			return fmt.Sprintf("%s.%s(%s)", qualifier, resource.Class, logicalName+options)
 		}
 		var inputs strings.Builder
 		for _, input := range resource.Inputs {
-			fmt.Fprintf(&inputs, "%s: (%s).input(), ", input.Name, input.Expression)
+			fmt.Fprintf(&inputs, "%s: pulumi.Input.asInput(%s), ", input.Name, input.Expression)
 		}
 		return fmt.Sprintf(
-			"    final %s = %s.%s(%s, args: %s.%s(%s)%s);\n",
-			resource.Name, qualifier, resource.Class, logicalName,
+			"%s.%s(%s, args: %s.%s(%s)%s)",
+			qualifier, resource.Class, logicalName,
 			qualifier, resource.ArgsClass, inputs.String(), options,
 		)
 	case "stackReference":
 		return fmt.Sprintf(
-			"    final %s = pulumi.StackReference(%s, args: pulumi.StackReferenceArgs(name: (%s).input()));\n",
-			resource.Name,
-			dartStringLiteral(resource.LogicalName),
+			"pulumi.StackReference(%s, args: pulumi.StackReferenceArgs(name: (%s).input()))",
+			logicalName,
 			resource.Input,
 		)
 	default:
 		return fmt.Sprintf(
-			"    final %s = pulumi.Stash(%s, pulumi.StashArgs(input: (%s).input()));\n",
-			resource.Name,
-			dartStringLiteral(resource.LogicalName),
+			"pulumi.Stash(%s, pulumi.StashArgs(input: (%s).input()))",
+			logicalName,
 			resource.Input,
 		)
 	}
+}
+
+func renderRangedDartProgramResource(resource dartProgramResource) string {
+	rng := resource.Range
+	name := dartStringLiteral(resource.LogicalName)
+	if rng.Kind != "bool" {
+		name = dartStringLiteral(resource.LogicalName+"-") + " + range.key.toString()"
+	}
+	value := renderDartProgramResourceValue(resource, name)
+	var collection string
+	switch rng.Kind {
+	case "bool":
+		collection = "(" + rng.Expression + ") ? " + value + " : null"
+	case "map":
+		collection = "{for (final range in pulumi.rangeEntries(" + rng.Expression + ")) range.key.toString(): " + value + "}"
+	default:
+		collection = "[for (final range in pulumi.rangeEntries(" + rng.Expression + ")) " + value + "]"
+	}
+	if rng.IsOutput {
+		collection = strings.Replace(
+			collection,
+			"pulumi.rangeEntries("+rng.Expression+")",
+			"await pulumi.resolveRangeEntries("+rng.Expression+")",
+			1,
+		)
+	}
+	return "    final " + resource.Name + " = " + collection + ";\n"
 }
 
 func renderDartProgramResourceOptions(resource dartProgramResource) string {
