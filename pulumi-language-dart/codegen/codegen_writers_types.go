@@ -5,54 +5,6 @@ import (
 	"strings"
 )
 
-// writeGeneratedConfigClass emits the generated config accessor class and the
-// module-level config singleton instance.
-func writeGeneratedConfigClass(b *strings.Builder, configSpec packageConfigSpec) {
-	writeDartDocComment(b, "", configSpec.Comment)
-	fmt.Fprintf(b, "class %s {\n", configSpec.ClassName)
-	fmt.Fprintf(b, "  const %s();\n\n", configSpec.ClassName)
-	b.WriteString(
-		"  String? _raw(String key) {\n" +
-			"    final deployment = pulumi.Deployment.instance;\n" +
-			"    return deployment.getConfig(key);\n" +
-			"  }\n\n",
-	)
-	b.WriteString(
-		"  bool _isSecret(String key) {\n" +
-			"    final deployment = pulumi.Deployment.instance;\n" +
-			"    return deployment.isConfigSecret(key);\n" +
-			"  }\n\n",
-	)
-
-	for _, property := range configSpec.Properties {
-		writeDartDocComment(b, "  ", property.Comment)
-		getterType := configPropertyGetterType(property)
-		fmt.Fprintf(b, "  %s get %s {\n", getterType, property.FieldName)
-		fmt.Fprintf(b, "    final raw = _raw(%s);\n", dartStringLiteral(property.Name))
-		fmt.Fprintf(b, "    return %s;\n", configPropertyParseExpression(property, "raw"))
-		b.WriteString("  }\n\n")
-
-		if property.Required {
-			methodName := "require" + toDartClassName(property.FieldName)
-			returnType := propertyBaseDartType(property)
-			fmt.Fprintf(b, "  %s %s() {\n", returnType, methodName)
-			fmt.Fprintf(b, "    final value = %s;\n", property.FieldName)
-			fmt.Fprintf(
-				b,
-				"    if (value == null) {\n      throw ArgumentError(\"Missing required config value %s.\");\n    }\n",
-				dartStringLiteral(property.Name),
-			)
-			b.WriteString("    return value;\n")
-			b.WriteString("  }\n\n")
-		}
-
-		fmt.Fprintf(b, "  bool get %sIsSecret => _isSecret(%s);\n\n", property.FieldName, dartStringLiteral(property.Name))
-	}
-
-	b.WriteString("}\n\n")
-	b.WriteString(fmt.Sprintf("const config = %s();\n\n", configSpec.ClassName))
-}
-
 // writeGeneratedObjectClass emits generated object/args/result classes with
 // constructor docs plus toMap/fromMap conversion helpers.
 func writeGeneratedObjectClass(b *strings.Builder, objectClass packageObjectClassSpec) {

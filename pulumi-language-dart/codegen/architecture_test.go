@@ -19,7 +19,6 @@ const (
 // These predate the staged generator architecture. Delete entries as each
 // responsibility is migrated; do not add entries for new code.
 var legacyOversizedFiles = map[string]string{
-	"codegen/codegen_emit_library.go":      "legacy combined-library renderer",
 	"codegen/codegen_raw_external.go":      "legacy raw-schema and external-reference resolver",
 	"codegen/codegen_schema_bind.go":       "legacy bound-schema lowering",
 	"codegen/codegen_schema_parse.go":      "legacy raw-schema lowering",
