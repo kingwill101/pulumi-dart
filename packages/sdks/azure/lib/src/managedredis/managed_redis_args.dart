@@ -10,13 +10,13 @@ import 'managed_redis_identity.dart';
 /// {@endtemplate}
 /// {@macro pulumi_managedredis_managed_redis_managed_redis_args_doc}
 class ManagedRedisArgs {
-  /// A `customer_managed_key` block as defined below.
+  /// A `customerManagedKey` block as defined below.
   final pulumi.Input<ManagedRedisCustomerManagedKey>? customerManagedKey;
-  /// A `default_database` block as defined below.
+  /// A `defaultDatabase` block as defined below.
   ///
-  /// &gt; **Note:** `default_database` is Required when creating a new Managed Redis.
+  /// &gt; **Note:** `defaultDatabase` is Required when creating a new Managed Redis.
   ///
-  /// &gt; **Note:** A `default_database` can be deleted or recreated in-place but most properties will trigger an entire cluster replacement if changed. Data will be lost and Managed Redis will be unavailable during recreation.
+  /// &gt; **Note:** A `defaultDatabase` can be deleted or recreated in-place but most properties will trigger an entire cluster replacement if changed. Data will be lost and Managed Redis will be unavailable during recreation.
   final pulumi.Input<ManagedRedisDefaultDatabase>? defaultDatabase;
   /// Whether to enable high availability for the Managed Redis instance. Defaults to `true`. Changing this forces a new Managed Redis instance to be created.
   final pulumi.Input<bool>? highAvailabilityEnabled;
@@ -34,14 +34,14 @@ class ManagedRedisArgs {
   ///
   /// &gt; **Note:** `Enterprise_` and `EnterpriseFlash_` prefixed SKUs were previously used by Redis Enterprise, and [not supported by Managed Redis](https://learn.microsoft.com/azure/redis/migrate/migrate-overview).
   ///
-  /// &gt; **Note:** Changing `sku_name` to a lower tier is restricted by Azure under certain conditions, in which case the resource will be marked for recreation. Validation for this is on a best-effort basis, if the provider is unable to determine whether it can change the SKU in-place, it will attempt to do regardless and this request may fail. Please refer to the [Azure documentation](https://learn.microsoft.com/en-us/azure/redis/how-to-scale) for more information.
+  /// &gt; **Note:** Changing `skuName` to a lower tier is restricted by Azure under certain conditions, in which case the resource will be marked for recreation. Validation for this is on a best-effort basis, if the provider is unable to determine whether it can change the SKU in-place, it will attempt to do regardless and this request may fail. Please refer to the [Azure documentation](https://learn.microsoft.com/en-us/azure/redis/how-to-scale) for more information.
   final pulumi.Input<String> skuName;
   /// A mapping of tags which should be assigned to the Managed Redis instance.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ManagedRedisArgs].
-  /// [customerManagedKey] A `customer_managed_key` block as defined below.
-  /// [defaultDatabase] A `default_database` block as defined below.
+  /// [customerManagedKey] A `customerManagedKey` block as defined below.
+  /// [defaultDatabase] A `defaultDatabase` block as defined below.
   /// [highAvailabilityEnabled] Whether to enable high availability for the Managed Redis instance. Defaults to `true`. Changing this forces a new Managed Redis instance to be created.
   /// [identity] An `identity` block as defined below.
   /// [location] The Azure Region where the Managed Redis instance should exist. Refer to "Redis Cache" on the [product availability documentation](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/table) for supported locations. Changing this forces a new Managed Redis instance to be created.
@@ -93,4 +93,3 @@ class ManagedRedisArgs {
     );
   }
 }
-

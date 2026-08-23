@@ -7,7 +7,7 @@ class LoggerApplicationInsights {
   final pulumi.Input<String>? connectionString;
   /// The instrumentation key used to push data to Application Insights.
   ///
-  /// &gt; **Note:** Either `connection_string` or `instrumentation_key` have to be specified.
+  /// &gt; **Note:** Either `connectionString` or `instrumentationKey` have to be specified.
   final pulumi.Input<String>? instrumentationKey;
 
   /// Creates a new [LoggerApplicationInsights].
@@ -32,4 +32,3 @@ class LoggerApplicationInsights {
     );
   }
 }
-

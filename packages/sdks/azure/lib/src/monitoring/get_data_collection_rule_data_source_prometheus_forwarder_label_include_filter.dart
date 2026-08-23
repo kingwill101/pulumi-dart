@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataCollectionRuleDataSourcePrometheusForwarderLabelIncludeFilter {
-  /// The label of the filter. This label should be unique across all `label_include_fileter` block. Possible value is `microsoft_metrics_include_label`.
+  /// The label of the filter. This label should be unique across all `labelIncludeFileter` block. Possible value is `microsoftMetricsIncludeLabel`.
   final pulumi.Input<String> label;
   /// The value of the filter.
   final pulumi.Input<String> value;
 
   /// Creates a new [GetDataCollectionRuleDataSourcePrometheusForwarderLabelIncludeFilter].
-  /// [label] The label of the filter. This label should be unique across all `label_include_fileter` block. Possible value is `microsoft_metrics_include_label`.
+  /// [label] The label of the filter. This label should be unique across all `labelIncludeFileter` block. Possible value is `microsoftMetricsIncludeLabel`.
   /// [value] The value of the filter.
   const GetDataCollectionRuleDataSourcePrometheusForwarderLabelIncludeFilter({
     required this.label,
@@ -30,4 +30,3 @@ class GetDataCollectionRuleDataSourcePrometheusForwarderLabelIncludeFilter {
     );
   }
 }
-

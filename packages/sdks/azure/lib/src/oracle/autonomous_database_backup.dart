@@ -114,6 +114,31 @@ import 'autonomous_database_backup_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "East US"
+/// }
+/// resource "azure_oracle_autonomousdatabase" "example" {
+///   name                = "example-adb"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_oracle_autonomousdatabasebackup" "example" {
+///   name                     = "example-backup"
+///   autonomous_database_id   = azure_oracle_autonomousdatabase.example.id
+///   retention_period_in_days = 120
+///   backup_type              = "Full"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +151,8 @@ import 'autonomous_database_backup_state.dart';
 /// import com.pulumi.azure.oracle.AutonomousDatabaseArgs;
 /// import com.pulumi.azure.oracle.AutonomousDatabaseBackup;
 /// import com.pulumi.azure.oracle.AutonomousDatabaseBackupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

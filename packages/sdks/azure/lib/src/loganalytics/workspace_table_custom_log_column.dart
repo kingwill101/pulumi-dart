@@ -9,14 +9,14 @@ class WorkspaceTableCustomLogColumn {
   final pulumi.Input<String>? displayName;
   /// Specifies the name of the column.
   final pulumi.Input<String> name;
-  /// The data type of the column. Possible values are `boolean`, `datetime`, `dynamic`, `guid`, `int`, `long`, `real`, and `string`.
+  /// The data type of the column. Possible values are `boolean`, `dateTime`, `dynamic`, `guid`, `int`, `long`, `real`, and `string`.
   final pulumi.Input<String> type;
 
   /// Creates a new [WorkspaceTableCustomLogColumn].
   /// [description] The description of the column.
   /// [displayName] The display name of the column.
   /// [name] Specifies the name of the column.
-  /// [type] The data type of the column. Possible values are `boolean`, `datetime`, `dynamic`, `guid`, `int`, `long`, `real`, and `string`.
+  /// [type] The data type of the column. Possible values are `boolean`, `dateTime`, `dynamic`, `guid`, `int`, `long`, `real`, and `string`.
   const WorkspaceTableCustomLogColumn({
     this.description,
     this.displayName,
@@ -42,4 +42,3 @@ class WorkspaceTableCustomLogColumn {
     );
   }
 }
-

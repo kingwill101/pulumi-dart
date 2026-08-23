@@ -204,7 +204,7 @@ import 'backup_instance_blog_storage_state.dart';
 /// 			Scope:              exampleAccount.ID(),
 /// 			RoleDefinitionName: pulumi.String("Storage Account Backup Contributor"),
 /// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -234,6 +234,55 @@ import 'backup_instance_blog_storage_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "storageaccountname"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_dataprotection_backupvault" "example" {
+///   name                = "example-backup-vault"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   datastore_type      = "VaultStore"
+///   redundancy          = "LocallyRedundant"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_authorization_assignment" "example" {
+///   scope                = azure_storage_account.example.id
+///   role_definition_name = "Storage Account Backup Contributor"
+///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+/// }
+/// resource "azure_dataprotection_backuppolicyblobstorage" "example" {
+///   name                                   = "example-backup-policy"
+///   vault_id                               = azure_dataprotection_backupvault.example.id
+///   operational_default_retention_duration = "P30D"
+/// }
+/// resource "azure_dataprotection_backupinstanceblogstorage" "example" {
+///   depends_on         = [azure_authorization_assignment.example]
+///   name               = "example-backup-instance"
+///   vault_id           = azure_dataprotection_backupvault.example.id
+///   location           = azure_core_resourcegroup.example.location
+///   storage_account_id = azure_storage_account.example.id
+///   backup_policy_id   = azure_dataprotection_backuppolicyblobstorage.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -254,8 +303,8 @@ import 'backup_instance_blog_storage_state.dart';
 /// import com.pulumi.azure.dataprotection.BackupInstanceBlogStorage;
 /// import com.pulumi.azure.dataprotection.BackupInstanceBlogStorageArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -377,7 +426,7 @@ import 'backup_instance_blog_storage_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.DataProtection` - 2024-04-01
+/// * `Microsoft.DataProtection` - 2025-07-01
 ///
 /// ## Import
 ///
@@ -397,7 +446,7 @@ class BackupInstanceBlogStorage extends pulumi.CustomResource {
   late final pulumi.Output<String> protectionState;
   /// The list of the container names of the source Storage Account.
   ///
-  /// &gt; **Note:** The `storage_account_container_names` should be specified in the vaulted backup policy/operational and vaulted hybrid backup policy. Removing the `storage_account_container_names` will force a new resource to be created since it can't be removed once specified.
+  /// &gt; **Note:** The `storageAccountContainerNames` should be specified in the vaulted backup policy/operational and vaulted hybrid backup policy. Removing the `storageAccountContainerNames` will force a new resource to be created since it can't be removed once specified.
   late final pulumi.Output<List<String>?> storageAccountContainerNames;
   /// The ID of the source Storage Account. Changing this forces a new Backup Instance Blob Storage to be created.
   late final pulumi.Output<String> storageAccountId;

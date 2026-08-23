@@ -178,6 +178,45 @@ import 'public_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "example-app-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     tier = "Standard"
+///     size = "S1"
+///   }
+/// }
+/// resource "azure_appservice_appservice" "example" {
+///   name                = "example-app-service"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   app_service_plan_id = azure_appservice_plan.example.id
+/// }
+/// resource "azure_appservice_publiccertificate" "example" {
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   app_service_name     = azure_appservice_appservice.example.name
+///   certificate_name     = "example-public-certificate"
+///   certificate_location = "Unknown"
+///   blob                 = filebase64("app_service_public_certificate.cer")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +234,8 @@ import 'public_certificate_state.dart';
 /// import com.pulumi.azure.appservice.PublicCertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

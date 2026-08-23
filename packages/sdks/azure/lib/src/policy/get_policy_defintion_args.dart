@@ -9,17 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyDefintionArgs {
   /// Specifies the display name of the Policy Definition. Conflicts with `name`.
   ///
-  /// &gt; **Note:** Looking up policies by `display_name` is not recommended by the Azure Policy team as the property is not unique nor immutable. As such errors may occur when there are multiple policy definitions with same display name or the display name is changed. To avoid these types of errors you may wish to use the `name` property instead.
+  /// &gt; **Note:** Looking up policies by `displayName` is not recommended by the Azure Policy team as the property is not unique nor immutable. As such errors may occur when there are multiple policy definitions with same display name or the display name is changed. To avoid these types of errors you may wish to use the `name` property instead.
   final pulumi.Input<String>? displayName;
   /// Only retrieve Policy Definitions from this Management Group.
   final pulumi.Input<String>? managementGroupName;
-  /// Specifies the name of the Policy Definition. Conflicts with `display_name`.
+  /// Specifies the name of the Policy Definition. Conflicts with `displayName`.
   final pulumi.Input<String>? name;
 
   /// Creates a new [GetPolicyDefintionArgs].
   /// [displayName] Specifies the display name of the Policy Definition. Conflicts with `name`.
   /// [managementGroupName] Only retrieve Policy Definitions from this Management Group.
-  /// [name] Specifies the name of the Policy Definition. Conflicts with `display_name`.
+  /// [name] Specifies the name of the Policy Definition. Conflicts with `displayName`.
   const GetPolicyDefintionArgs({
     this.displayName,
     this.managementGroupName,
@@ -42,4 +42,3 @@ class GetPolicyDefintionArgs {
     );
   }
 }
-

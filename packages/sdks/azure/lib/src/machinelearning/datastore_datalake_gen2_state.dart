@@ -85,4 +85,3 @@ class DatastoreDatalakeGen2State {
     );
   }
 }
-

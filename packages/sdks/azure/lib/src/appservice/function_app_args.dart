@@ -16,13 +16,13 @@ class FunctionAppArgs {
   final pulumi.Input<String> appServicePlanId;
   /// A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
   ///
-  /// &gt; **NOTE:** The values for `AzureWebJobsStorage` and `FUNCTIONS_EXTENSION_VERSION` will be filled by other input arguments and shouldn't be configured separately. `AzureWebJobsStorage` is filled based on `storage_account_name` and `storage_account_access_key`. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`.
+  /// &gt; **NOTE:** The values for `AzureWebJobsStorage` and `FUNCTIONS_EXTENSION_VERSION` will be filled by other input arguments and shouldn't be configured separately. `AzureWebJobsStorage` is filled based on `storageAccountName` and `storageAccountAccessKey`. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`.
   final pulumi.Input<Map<String, String>>? appSettings;
-  /// A `auth_settings` block as defined below.
+  /// A `authSettings` block as defined below.
   final pulumi.Input<FunctionAppAuthSettings>? authSettings;
   /// The mode of the Function App's client certificates requirement for incoming requests. Possible values are `Required` and `Optional`.
   final pulumi.Input<String>? clientCertMode;
-  /// An `connection_string` block as defined below.
+  /// An `connectionString` block as defined below.
   final pulumi.Input<List<FunctionAppConnectionString>>? connectionStrings;
   /// The amount of memory in gigabyte-seconds that your application is allowed to consume per day. Setting this value only affects function apps under the consumption plan.
   final pulumi.Input<int>? dailyMemoryTimeQuota;
@@ -46,15 +46,15 @@ class FunctionAppArgs {
   final pulumi.Input<String>? osType;
   /// The name of the resource group in which to create the Function App. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-  /// A `site_config` object as defined below.
+  /// A `siteConfig` object as defined below.
   final pulumi.Input<FunctionAppSiteConfig>? siteConfig;
-  /// A `source_control` block, as defined below.
+  /// A `sourceControl` block, as defined below.
   final pulumi.Input<FunctionAppSourceControl>? sourceControl;
   /// The access key which will be used to access the backend storage account for the Function App.
   ///
   /// &gt; **Note:** When integrating a `CI/CD pipeline` and expecting to run from a deployed package in `Azure` you must seed your `app settings` as part of the application code for function app to be successfully deployed. `Important Default key pairs`: (`"WEBSITE_RUN_FROM_PACKAGE" = ""`, `"FUNCTIONS_WORKER_RUNTIME" = "node"` (or python, etc), `"WEBSITE_NODE_DEFAULT_VERSION" = "10.14.1"`, `"APPINSIGHTS_INSTRUMENTATIONKEY" = ""`).
   ///
-  /// &gt; **Note:**  When using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
+  /// &gt; **Note:**  When using an App Service Plan in the `Free` or `Shared` Tiers `use32BitWorkerProcess` must be set to `true`.
   final pulumi.Input<String> storageAccountAccessKey;
   /// The backend storage account name which will be used by this Function App (such as the dashboard, logs). Changing this forces a new resource to be created.
   final pulumi.Input<String> storageAccountName;
@@ -66,9 +66,9 @@ class FunctionAppArgs {
   /// Creates a new [FunctionAppArgs].
   /// [appServicePlanId] The ID of the App Service Plan within which to create this Function App.
   /// [appSettings] A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
-  /// [authSettings] A `auth_settings` block as defined below.
+  /// [authSettings] A `authSettings` block as defined below.
   /// [clientCertMode] The mode of the Function App's client certificates requirement for incoming requests. Possible values are `Required` and `Optional`.
-  /// [connectionStrings] An `connection_string` block as defined below.
+  /// [connectionStrings] An `connectionString` block as defined below.
   /// [dailyMemoryTimeQuota] The amount of memory in gigabyte-seconds that your application is allowed to consume per day. Setting this value only affects function apps under the consumption plan.
   /// [enableBuiltinLogging] Should the built-in logging of this Function App be enabled? Defaults to `true`.
   /// [enabled] Is the Function App enabled? Defaults to `true`.
@@ -79,8 +79,8 @@ class FunctionAppArgs {
   /// [name] Specifies the name of the Function App. Changing this forces a new resource to be created. Limit the function name to 32 characters to avoid naming collisions. For more information about [Function App naming rule](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftweb).
   /// [osType] A string indicating the Operating System type for this function app. Possible values are `linux` and ``(empty string). Changing this forces a new resource to be created. Defaults to `""`.
   /// [resourceGroupName] The name of the resource group in which to create the Function App. Changing this forces a new resource to be created.
-  /// [siteConfig] A `site_config` object as defined below.
-  /// [sourceControl] A `source_control` block, as defined below.
+  /// [siteConfig] A `siteConfig` object as defined below.
+  /// [sourceControl] A `sourceControl` block, as defined below.
   /// [storageAccountAccessKey] The access key which will be used to access the backend storage account for the Function App.
   /// [storageAccountName] The backend storage account name which will be used by this Function App (such as the dashboard, logs). Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
@@ -161,4 +161,3 @@ class FunctionAppArgs {
     );
   }
 }
-

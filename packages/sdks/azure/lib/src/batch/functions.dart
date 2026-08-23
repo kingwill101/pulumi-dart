@@ -73,6 +73,24 @@ import 'get_pool_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_batch_getaccount" "example" {
+///   name                = "testbatchaccount"
+///   resource_group_name = "test"
+/// }
+///
+/// output "poolAllocationMode" {
+///   value = data.azure_batch_getaccount.example.pool_allocation_mode
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +99,8 @@ import 'get_pool_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.batch.BatchFunctions;
 /// import com.pulumi.azure.batch.inputs.GetAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -206,6 +224,25 @@ Future<GetAccountResult> getAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_batch_getapplication" "example" {
+///   name                = "testapplication"
+///   resource_group_name = "test"
+///   account_name        = "testbatchaccount"
+/// }
+///
+/// output "batchApplicationId" {
+///   value = data.azure_batch_getapplication.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +251,8 @@ Future<GetAccountResult> getAccount(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.batch.BatchFunctions;
 /// import com.pulumi.azure.batch.inputs.GetApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -343,6 +380,25 @@ Future<GetApplicationResult> getApplication(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_batch_getcertificate" "example" {
+///   name                = "SHA1-42C107874FD0E4A9583292A2F1098E8FE4B2EDDA"
+///   account_name        = "examplebatchaccount"
+///   resource_group_name = "example"
+/// }
+///
+/// output "thumbprint" {
+///   value = data.azure_batch_getcertificate.example.thumbprint
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -351,8 +407,8 @@ Future<GetApplicationResult> getApplication(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.batch.BatchFunctions;
 /// import com.pulumi.azure.batch.inputs.GetCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -471,6 +527,21 @@ Future<GetCertificateResult> getCertificate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_batch_getpool" "example" {
+///   name                = "examplebatchpool"
+///   account_name        = "examplebatchaccount"
+///   resource_group_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -479,8 +550,8 @@ Future<GetCertificateResult> getCertificate(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.batch.BatchFunctions;
 /// import com.pulumi.azure.batch.inputs.GetPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -9,14 +9,14 @@ class GetAppIngressTrafficWeight {
   final pulumi.Input<bool> latestRevision;
   /// The percentage of traffic which should be sent this revision.
   final pulumi.Input<int> percentage;
-  /// The suffix string to which this `traffic_weight` applies.
+  /// The suffix string to which this `trafficWeight` applies.
   final pulumi.Input<String> revisionSuffix;
 
   /// Creates a new [GetAppIngressTrafficWeight].
   /// [label] The label to apply to the revision as a name prefix for routing traffic.
   /// [latestRevision] This traffic Weight relates to the latest stable Container Revision.
   /// [percentage] The percentage of traffic which should be sent this revision.
-  /// [revisionSuffix] The suffix string to which this `traffic_weight` applies.
+  /// [revisionSuffix] The suffix string to which this `trafficWeight` applies.
   const GetAppIngressTrafficWeight({
     required this.label,
     required this.latestRevision,
@@ -42,4 +42,3 @@ class GetAppIngressTrafficWeight {
     );
   }
 }
-

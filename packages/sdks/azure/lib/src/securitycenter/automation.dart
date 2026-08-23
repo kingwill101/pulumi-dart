@@ -25,8 +25,7 @@ import 'automation_state.dart';
 /// });
 /// const exampleEventHub = new azure.eventhub.EventHub("example", {
 ///     name: "acceptanceTestEventHub",
-///     namespaceName: exampleEventHubNamespace.name,
-///     resourceGroupName: example.name,
+///     namespaceId: exampleEventHubNamespace.id,
 ///     partitionCount: 2,
 ///     messageRetention: 2,
 /// });
@@ -78,8 +77,7 @@ import 'automation_state.dart';
 ///     capacity=2)
 /// example_event_hub = azure.eventhub.EventHub("example",
 ///     name="acceptanceTestEventHub",
-///     namespace_name=example_event_hub_namespace.name,
-///     resource_group_name=example.name,
+///     namespace_id=example_event_hub_namespace.id,
 ///     partition_count=2,
 ///     message_retention=2)
 /// example_authorization_rule = azure.eventhub.AuthorizationRule("example",
@@ -140,8 +138,7 @@ import 'automation_state.dart';
 ///     var exampleEventHub = new Azure.EventHub.EventHub("example", new()
 ///     {
 ///         Name = "acceptanceTestEventHub",
-///         NamespaceName = exampleEventHubNamespace.Name,
-///         ResourceGroupName = example.Name,
+///         NamespaceId = exampleEventHubNamespace.Id,
 ///         PartitionCount = 2,
 ///         MessageRetention = 2,
 ///     });
@@ -236,11 +233,10 @@ import 'automation_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
-/// 			Name:              pulumi.String("acceptanceTestEventHub"),
-/// 			NamespaceName:     exampleEventHubNamespace.Name,
-/// 			ResourceGroupName: example.Name,
-/// 			PartitionCount:    pulumi.Int(2),
-/// 			MessageRetention:  pulumi.Int(2),
+/// 			Name:             pulumi.String("acceptanceTestEventHub"),
+/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			PartitionCount:   pulumi.Int(2),
+/// 			MessageRetention: pulumi.Int(2),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -296,6 +292,67 @@ import 'automation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "example" {
+///   name                = "example-namespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+///   capacity            = 2
+/// }
+/// resource "azure_eventhub_eventhub" "example" {
+///   name              = "acceptanceTestEventHub"
+///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   partition_count   = 2
+///   message_retention = 2
+/// }
+/// resource "azure_eventhub_authorizationrule" "example" {
+///   name                = "example-rule"
+///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
+///   eventhub_name       = azure_eventhub_eventhub.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   listen              = true
+///   send                = false
+///   manage              = false
+/// }
+/// resource "azure_securitycenter_automation" "example" {
+///   name                = "example-automation"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   actions {
+///     type              = "EventHub"
+///     resource_id       = azure_eventhub_eventhub.example.id
+///     connection_string = azure_eventhub_authorizationrule.example.primary_connection_string
+///   }
+///   sources {
+///     event_source = "Alerts"
+///     rule_sets {
+///       rules {
+///         property_path  = "properties.metadata.severity"
+///         operator       = "Equals"
+///         expected_value = "High"
+///         property_type  = "String"
+///       }
+///     }
+///   }
+///   scopes = ["/subscriptions/${data.azure_core_getclientconfig.current.subscription_id}"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -315,8 +372,10 @@ import 'automation_state.dart';
 /// import com.pulumi.azure.securitycenter.AutomationArgs;
 /// import com.pulumi.azure.securitycenter.inputs.AutomationActionArgs;
 /// import com.pulumi.azure.securitycenter.inputs.AutomationSourceArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.securitycenter.inputs.AutomationSourceRuleSetArgs;
+/// import com.pulumi.azure.securitycenter.inputs.AutomationSourceRuleSetRuleArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,8 +404,7 @@ import 'automation_state.dart';
 ///
 ///         var exampleEventHub = new EventHub("exampleEventHub", EventHubArgs.builder()
 ///             .name("acceptanceTestEventHub")
-///             .namespaceName(exampleEventHubNamespace.name())
-///             .resourceGroupName(example.name())
+///             .namespaceId(exampleEventHubNamespace.id())
 ///             .partitionCount(2)
 ///             .messageRetention(2)
 ///             .build());
@@ -408,8 +466,7 @@ import 'automation_state.dart';
 ///     name: example
 ///     properties:
 ///       name: acceptanceTestEventHub
-///       namespaceName: ${exampleEventHubNamespace.name}
-///       resourceGroupName: ${example.name}
+///       namespaceId: ${exampleEventHubNamespace.id}
 ///       partitionCount: 2
 ///       messageRetention: 2
 ///   exampleAuthorizationRule:

@@ -82,4 +82,3 @@ class DatastoreDatalakeGen2Args {
     );
   }
 }
-

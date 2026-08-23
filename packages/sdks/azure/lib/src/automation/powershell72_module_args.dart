@@ -10,7 +10,7 @@ import 'powershell72_module_module_link.dart';
 class Powershell72ModuleArgs {
   /// The ID of Automation Account to manage this Watcher. Changing this forces a new Watcher to be created.
   final pulumi.Input<String> automationAccountId;
-  /// A `module_link` block as defined below.
+  /// A `moduleLink` block as defined below.
   final pulumi.Input<Powershell72ModuleModuleLink> moduleLink;
   /// Specifies the name of the Module. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -19,7 +19,7 @@ class Powershell72ModuleArgs {
 
   /// Creates a new [Powershell72ModuleArgs].
   /// [automationAccountId] The ID of Automation Account to manage this Watcher. Changing this forces a new Watcher to be created.
-  /// [moduleLink] A `module_link` block as defined below.
+  /// [moduleLink] A `moduleLink` block as defined below.
   /// [name] Specifies the name of the Module. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   const Powershell72ModuleArgs({
@@ -47,4 +47,3 @@ class Powershell72ModuleArgs {
     );
   }
 }
-

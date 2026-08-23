@@ -14,13 +14,15 @@ class NatGatewayState {
   final pulumi.Input<String>? resourceGroupName;
   /// The resource GUID property of the NAT Gateway.
   final pulumi.Input<String>? resourceGuid;
-  /// The SKU which should be used. At this time the only supported value is `Standard`. Defaults to `Standard`.
+  /// The SKU which should be used. Possible values are `Standard` and `StandardV2`. Defaults to `Standard`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? skuName;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A list of Availability Zones in which this NAT Gateway should be located. Changing this forces a new NAT Gateway to be created.
+  /// A list of Availability Zones in which this NAT Gateway should be located. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Only one Availability Zone can be defined. For more information, please check out the [Azure documentation](https://learn.microsoft.com/en-us/azure/nat-gateway/nat-overview#availability-zones)
+  /// &gt; **Note:** For `Standard`, `zones` may be omitted for a no-zone deployment or set to a single Availability Zone. For more information, please see the [Azure documentation](https://learn.microsoft.com/azure/nat-gateway/nat-overview#availability-zones).
+  ///
+  /// &gt; **Note:** `zones` must be omitted when `skuName` is set to `StandardV2`. `StandardV2` NAT Gateways are zone-redundant by default and Azure automatically deploys across all available zones. For more information, please see the [Azure documentation](https://learn.microsoft.com/azure/nat-gateway/nat-overview#standardv2-nat-gateway).
   final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [NatGatewayState].
@@ -29,9 +31,9 @@ class NatGatewayState {
   /// [name] Specifies the name of the NAT Gateway. Changing this forces a new resource to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group in which the NAT Gateway should exist. Changing this forces a new resource to be created.
   /// [resourceGuid] The resource GUID property of the NAT Gateway.
-  /// [skuName] The SKU which should be used. At this time the only supported value is `Standard`. Defaults to `Standard`.
+  /// [skuName] The SKU which should be used. Possible values are `Standard` and `StandardV2`. Defaults to `Standard`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  /// [zones] A list of Availability Zones in which this NAT Gateway should be located. Changing this forces a new NAT Gateway to be created.
+  /// [zones] A list of Availability Zones in which this NAT Gateway should be located. Changing this forces a new resource to be created.
   const NatGatewayState({
     this.idleTimeoutInMinutes,
     this.location,
@@ -69,4 +71,3 @@ class NatGatewayState {
     );
   }
 }
-

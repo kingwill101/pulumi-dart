@@ -177,6 +177,44 @@ import 'subscription_cost_management_view_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_subscriptioncostmanagementview" "example" {
+///   name            = "example"
+///   display_name    = "Cost View per Month"
+///   chart_type      = "StackedColumn"
+///   accumulated     = false
+///   subscription_id = "/subscription/00000000-0000-0000-0000-000000000000"
+///   report_type     = "Usage"
+///   timeframe       = "MonthToDate"
+///   dataset = {
+///     granularity = "Monthly"
+///     aggregations = [{
+///       "name"       = "totalCost"
+///       "columnName" = "Cost"
+///     }]
+///   }
+///   pivots {
+///     type = "Dimension"
+///     name = "ServiceName"
+///   }
+///   pivots {
+///     type = "Dimension"
+///     name = "ResourceLocation"
+///   }
+///   pivots {
+///     type = "Dimension"
+///     name = "ResourceGroupName"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -186,9 +224,10 @@ import 'subscription_cost_management_view_state.dart';
 /// import com.pulumi.azure.core.SubscriptionCostManagementView;
 /// import com.pulumi.azure.core.SubscriptionCostManagementViewArgs;
 /// import com.pulumi.azure.core.inputs.SubscriptionCostManagementViewDatasetArgs;
+/// import com.pulumi.azure.core.inputs.SubscriptionCostManagementViewDatasetAggregationArgs;
 /// import com.pulumi.azure.core.inputs.SubscriptionCostManagementViewPivotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

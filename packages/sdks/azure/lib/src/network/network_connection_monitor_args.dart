@@ -24,9 +24,9 @@ class NetworkConnectionMonitorArgs {
   final pulumi.Input<List<String>>? outputWorkspaceResourceIds;
   /// A mapping of tags which should be assigned to the Network Connection Monitor.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A `test_configuration` block as defined below.
+  /// A `testConfiguration` block as defined below.
   final pulumi.Input<List<NetworkConnectionMonitorTestConfiguration>> testConfigurations;
-  /// A `test_group` block as defined below.
+  /// A `testGroup` block as defined below.
   final pulumi.Input<List<NetworkConnectionMonitorTestGroup>> testGroups;
 
   /// Creates a new [NetworkConnectionMonitorArgs].
@@ -37,8 +37,8 @@ class NetworkConnectionMonitorArgs {
   /// [notes] The description of the Network Connection Monitor.
   /// [outputWorkspaceResourceIds] A list of IDs of the Log Analytics Workspace which will accept the output from the Network Connection Monitor.
   /// [tags] A mapping of tags which should be assigned to the Network Connection Monitor.
-  /// [testConfigurations] A `test_configuration` block as defined below.
-  /// [testGroups] A `test_group` block as defined below.
+  /// [testConfigurations] A `testConfiguration` block as defined below.
+  /// [testGroups] A `testGroup` block as defined below.
   const NetworkConnectionMonitorArgs({
     required this.endpoints,
     this.location,
@@ -79,4 +79,3 @@ class NetworkConnectionMonitorArgs {
     );
   }
 }
-

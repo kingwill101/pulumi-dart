@@ -154,6 +154,40 @@ import 'host_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_desktopvirtualization_hostpool" "example" {
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   name                     = "pooleddepthfirst"
+///   friendly_name            = "pooleddepthfirst"
+///   validate_environment     = true
+///   start_vm_on_connect      = true
+///   custom_rdp_properties    = "audiocapturemode:i:1;audiomode:i:0;"
+///   description              = "Acceptance Test: A pooled host pool - pooleddepthfirst"
+///   type                     = "Pooled"
+///   maximum_sessions_allowed = 50
+///   load_balancer_type       = "DepthFirst"
+///   scheduled_agent_updates = {
+///     enabled = true
+///     schedules = [{
+///       "dayOfWeek" = "Saturday"
+///       "hourOfDay" = 2
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -165,8 +199,9 @@ import 'host_pool_state.dart';
 /// import com.pulumi.azure.desktopvirtualization.HostPool;
 /// import com.pulumi.azure.desktopvirtualization.HostPoolArgs;
 /// import com.pulumi.azure.desktopvirtualization.inputs.HostPoolScheduledAgentUpdatesArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.desktopvirtualization.inputs.HostPoolScheduledAgentUpdatesScheduleArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -242,7 +277,7 @@ import 'host_pool_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.DesktopVirtualization` - 2024-04-03
+/// * `Microsoft.DesktopVirtualization` - 2025-10-10
 ///
 /// ## Import
 ///
@@ -271,7 +306,7 @@ class HostPool extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// `Automatic` assignment – The service will select an available host and assign it to an user. Possible values are `Automatic` and `Direct`. `Direct` Assignment – Admin selects a specific host to assign to an user. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `personal_desktop_assignment_type` is required if the `type` of your Virtual Desktop Host Pool is `Personal`
+  /// &gt; **Note:** `personalDesktopAssignmentType` is required if the `type` of your Virtual Desktop Host Pool is `Personal`
   late final pulumi.Output<String?> personalDesktopAssignmentType;
   /// Option to specify the preferred Application Group type for the Virtual Desktop Host Pool. Valid options are `None`, `Desktop` or `RailApplications`. Default is `Desktop`.
   late final pulumi.Output<String?> preferredAppGroupType;
@@ -279,7 +314,7 @@ class HostPool extends pulumi.CustomResource {
   late final pulumi.Output<String?> publicNetworkAccess;
   /// The name of the resource group in which to create the Virtual Desktop Host Pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `scheduled_agent_updates` block as defined below. This enables control of when Agent Updates will be applied to Session Hosts.
+  /// A `scheduledAgentUpdates` block as defined below. This enables control of when Agent Updates will be applied to Session Hosts.
   late final pulumi.Output<HostPoolScheduledAgentUpdates?> scheduledAgentUpdates;
   /// Enables or disables the Start VM on Connection Feature. Defaults to `false`.
   late final pulumi.Output<bool?> startVmOnConnect;

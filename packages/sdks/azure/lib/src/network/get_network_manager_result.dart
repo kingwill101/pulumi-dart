@@ -6,7 +6,7 @@ import 'get_network_manager_scope.dart';
 
 /// Result data returned by getNetworkManager.
 class GetNetworkManagerResult {
-  /// One or more `cross_tenant_scopes` blocks as defined below.
+  /// One or more `crossTenantScopes` blocks as defined below.
   final List<GetNetworkManagerCrossTenantScope> crossTenantScopes;
   /// A description of the Network Manager.
   final String description;
@@ -24,7 +24,7 @@ class GetNetworkManagerResult {
   final Map<String, String> tags;
 
   /// Creates a new [GetNetworkManagerResult].
-  /// [crossTenantScopes] One or more `cross_tenant_scopes` blocks as defined below.
+  /// [crossTenantScopes] One or more `crossTenantScopes` blocks as defined below.
   /// [description] A description of the Network Manager.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] The Azure Region where the Network Manager exists.
@@ -73,4 +73,3 @@ class GetNetworkManagerResult {
     );
   }
 }
-

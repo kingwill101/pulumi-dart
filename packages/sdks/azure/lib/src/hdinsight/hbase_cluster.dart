@@ -294,6 +294,69 @@ import 'hbase_cluster_storage_account_gen2.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "hdinsightstor"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "hdinsight"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_hdinsight_hbasecluster" "example" {
+///   name                = "example-hdicluster"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cluster_version     = "3.6"
+///   tier                = "Standard"
+///   component_version = {
+///     hbase = "1.1"
+///   }
+///   gateway = {
+///     username = "acctestusrgw"
+///     password = "Password123!"
+///   }
+///   storage_accounts {
+///     storage_container_id = azure_storage_container.example.id
+///     storage_account_key  = azure_storage_account.example.primary_access_key
+///     is_default           = true
+///   }
+///   roles = {
+///     head_node = {
+///       vm_size  = "Standard_D3_V2"
+///       username = "acctestusrvm"
+///       password = "AccTestvdSC4daf986!"
+///     }
+///     worker_node = {
+///       vm_size               = "Standard_D3_V2"
+///       username              = "acctestusrvm"
+///       password              = "AccTestvdSC4daf986!"
+///       target_instance_count = 3
+///     }
+///     zookeeper_node = {
+///       vm_size  = "Standard_D3_V2"
+///       username = "acctestusrvm"
+///       password = "AccTestvdSC4daf986!"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -315,8 +378,8 @@ import 'hbase_cluster_storage_account_gen2.dart';
 /// import com.pulumi.azure.hdinsight.inputs.HBaseClusterRolesHeadNodeArgs;
 /// import com.pulumi.azure.hdinsight.inputs.HBaseClusterRolesWorkerNodeArgs;
 /// import com.pulumi.azure.hdinsight.inputs.HBaseClusterRolesZookeeperNodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -463,11 +526,11 @@ import 'hbase_cluster_storage_account_gen2.dart';
 class HBaseCluster extends pulumi.CustomResource {
   /// Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterVersion;
-  /// A `component_version` block as defined below.
+  /// A `componentVersion` block as defined below.
   late final pulumi.Output<HBaseClusterComponentVersion> componentVersion;
-  /// A `compute_isolation` block as defined below.
+  /// A `computeIsolation` block as defined below.
   late final pulumi.Output<HBaseClusterComputeIsolation?> computeIsolation;
-  /// One or more `disk_encryption` block as defined below.
+  /// One or more `diskEncryption` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> diskEncryptions;
   /// An `extension` block as defined below.
   late final pulumi.Output<HBaseClusterExtension?> extension;
@@ -485,19 +548,19 @@ class HBaseCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A `network` block as defined below.
   late final pulumi.Output<HBaseClusterNetwork?> network;
-  /// A `private_link_configuration` block as defined below.
+  /// A `privateLinkConfiguration` block as defined below.
   late final pulumi.Output<HBaseClusterPrivateLinkConfiguration?> privateLinkConfiguration;
   /// Specifies the name of the Resource Group in which this HDInsight HBase Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A `roles` block as defined below.
   late final pulumi.Output<HBaseClusterRoles> roles;
-  /// A `security_profile` block as defined below. Changing this forces a new resource to be created.
+  /// A `securityProfile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<HBaseClusterSecurityProfile?> securityProfile;
   /// The SSH Connectivity Endpoint for this HDInsight HBase Cluster.
   late final pulumi.Output<String> sshEndpoint;
-  /// A `storage_account_gen2` block as defined below.
+  /// A `storageAccountGen2` block as defined below.
   late final pulumi.Output<HBaseClusterStorageAccountGen2?> storageAccountGen2;
-  /// One or more `storage_account` block as defined below.
+  /// One or more `storageAccount` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
   /// A map of Tags which should be assigned to this HDInsight HBase Cluster.
   late final pulumi.Output<Map<String, String>?> tags;

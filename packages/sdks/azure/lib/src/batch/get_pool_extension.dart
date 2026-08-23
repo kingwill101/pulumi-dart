@@ -7,7 +7,7 @@ class GetPoolExtension {
   final pulumi.Input<bool> autoUpgradeMinorVersion;
   /// The name of the Batch pool.
   final pulumi.Input<String> name;
-  /// The extension can contain either `protected_settings` or `provision_after_extensions` or no protected settings at all.
+  /// The extension can contain either `protectedSettings` or `provisionAfterExtensions` or no protected settings at all.
   final pulumi.Input<String> protectedSettings;
   /// The collection of extension names. Collection of extension names after which this extension needs to be provisioned.
   final pulumi.Input<List<String>> provisionAfterExtensions;
@@ -23,7 +23,7 @@ class GetPoolExtension {
   /// Creates a new [GetPoolExtension].
   /// [autoUpgradeMinorVersion] Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   /// [name] The name of the Batch pool.
-  /// [protectedSettings] The extension can contain either `protected_settings` or `provision_after_extensions` or no protected settings at all.
+  /// [protectedSettings] The extension can contain either `protectedSettings` or `provisionAfterExtensions` or no protected settings at all.
   /// [provisionAfterExtensions] The collection of extension names. Collection of extension names after which this extension needs to be provisioned.
   /// [publisher] The name of the extension handler publisher.The name of the extension handler publisher.
   /// [settingsJson] JSON formatted public settings for the extension.
@@ -66,4 +66,3 @@ class GetPoolExtension {
     );
   }
 }
-

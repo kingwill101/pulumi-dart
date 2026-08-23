@@ -7,7 +7,7 @@ import 'event_hub_namespace_network_rulesets_virtual_network_rule.dart';
 class EventHubNamespaceNetworkRulesets {
   /// The default action to take when a rule is not matched. Possible values are `Allow` and `Deny`.
   final pulumi.Input<String> defaultAction;
-  /// One or more `ip_rule` blocks as defined below.
+  /// One or more `ipRule` blocks as defined below.
   final pulumi.Input<List<EventHubNamespaceNetworkRulesetsIpRule>>? ipRules;
   /// Is public network access enabled for the EventHub Namespace? Defaults to `true`.
   ///
@@ -15,15 +15,15 @@ class EventHubNamespaceNetworkRulesets {
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
   /// Whether Trusted Microsoft Services are allowed to bypass firewall.
   final pulumi.Input<bool>? trustedServiceAccessEnabled;
-  /// One or more `virtual_network_rule` blocks as defined below.
+  /// One or more `virtualNetworkRule` blocks as defined below.
   final pulumi.Input<List<EventHubNamespaceNetworkRulesetsVirtualNetworkRule>>? virtualNetworkRules;
 
   /// Creates a new [EventHubNamespaceNetworkRulesets].
   /// [defaultAction] The default action to take when a rule is not matched. Possible values are `Allow` and `Deny`.
-  /// [ipRules] One or more `ip_rule` blocks as defined below.
+  /// [ipRules] One or more `ipRule` blocks as defined below.
   /// [publicNetworkAccessEnabled] Is public network access enabled for the EventHub Namespace? Defaults to `true`.
   /// [trustedServiceAccessEnabled] Whether Trusted Microsoft Services are allowed to bypass firewall.
-  /// [virtualNetworkRules] One or more `virtual_network_rule` blocks as defined below.
+  /// [virtualNetworkRules] One or more `virtualNetworkRule` blocks as defined below.
   const EventHubNamespaceNetworkRulesets({
     required this.defaultAction,
     this.ipRules,
@@ -52,4 +52,3 @@ class EventHubNamespaceNetworkRulesets {
     );
   }
 }
-

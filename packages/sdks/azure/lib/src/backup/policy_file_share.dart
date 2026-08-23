@@ -279,6 +279,54 @@ import 'policy_file_share_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tfex-recovery_vault"
+///   location = "West Europe"
+/// }
+/// resource "azure_recoveryservices_vault" "example" {
+///   name                = "tfex-recovery-vault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_backup_policyfileshare" "policy" {
+///   name                = "tfex-recovery-vault-policy"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   recovery_vault_name = azure_recoveryservices_vault.example.name
+///   timezone            = "UTC"
+///   backup = {
+///     frequency = "Daily"
+///     time      = "23:00"
+///   }
+///   retention_daily = {
+///     count = 10
+///   }
+///   retention_weekly = {
+///     count    = 7
+///     weekdays = ["Sunday", "Wednesday", "Friday", "Saturday"]
+///   }
+///   retention_monthly = {
+///     count    = 7
+///     weekdays = ["Sunday", "Wednesday"]
+///     weeks    = ["First", "Last"]
+///   }
+///   retention_yearly = {
+///     count    = 7
+///     weekdays = ["Sunday"]
+///     weeks    = ["Last"]
+///     months   = ["January"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -296,8 +344,8 @@ import 'policy_file_share_state.dart';
 /// import com.pulumi.azure.backup.inputs.PolicyFileShareRetentionWeeklyArgs;
 /// import com.pulumi.azure.backup.inputs.PolicyFileShareRetentionMonthlyArgs;
 /// import com.pulumi.azure.backup.inputs.PolicyFileShareRetentionYearlyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -426,7 +474,7 @@ class PolicyFileShare extends pulumi.CustomResource {
   late final pulumi.Output<PolicyFileShareBackup> backup;
   /// The backup tier to use. Possible values are `vault-standard` and `snapshot`. Defaults to `snapshot`.
   ///
-  /// &gt; **Note:** When `backup_tier` is set to `vault-standard`, the `snapshot_retention_in_days` value must be less than the `retention_daily` count.
+  /// &gt; **Note:** When `backupTier` is set to `vault-standard`, the `snapshotRetentionInDays` value must be less than the `retentionDaily` count.
   late final pulumi.Output<String?> backupTier;
   /// Specifies the name of the policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
@@ -434,13 +482,13 @@ class PolicyFileShare extends pulumi.CustomResource {
   late final pulumi.Output<String> recoveryVaultName;
   /// The name of the resource group in which to create the policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// Configures the policy daily retention as documented in the `retention_daily` block below.
+  /// Configures the policy daily retention as documented in the `retentionDaily` block below.
   late final pulumi.Output<PolicyFileShareRetentionDaily> retentionDaily;
-  /// Configures the policy monthly retention as documented in the `retention_monthly` block below.
+  /// Configures the policy monthly retention as documented in the `retentionMonthly` block below.
   late final pulumi.Output<PolicyFileShareRetentionMonthly?> retentionMonthly;
-  /// Configures the policy weekly retention as documented in the `retention_weekly` block below.
+  /// Configures the policy weekly retention as documented in the `retentionWeekly` block below.
   late final pulumi.Output<PolicyFileShareRetentionWeekly?> retentionWeekly;
-  /// Configures the policy yearly retention as documented in the `retention_yearly` block below.
+  /// Configures the policy yearly retention as documented in the `retentionYearly` block below.
   late final pulumi.Output<PolicyFileShareRetentionYearly?> retentionYearly;
   /// The number of days to retain the snapshots. Defaults to `0`.
   late final pulumi.Output<int?> snapshotRetentionInDays;

@@ -14,7 +14,7 @@ class ConfigurationArgs {
   final pulumi.Input<ConfigurationAntimalware>? antimalware;
   /// Whether the automation account is enabled. Defaults to `false`.
   final pulumi.Input<bool>? automationAccountEnabled;
-  /// A `azure_security_baseline` block as defined below.
+  /// A `azureSecurityBaseline` block as defined below.
   final pulumi.Input<ConfigurationAzureSecurityBaseline>? azureSecurityBaseline;
   /// A `backup` block as defined below.
   final pulumi.Input<ConfigurationBackup>? backup;
@@ -39,7 +39,7 @@ class ConfigurationArgs {
   /// Creates a new [ConfigurationArgs].
   /// [antimalware] A `antimalware` block as defined below.
   /// [automationAccountEnabled] Whether the automation account is enabled. Defaults to `false`.
-  /// [azureSecurityBaseline] A `azure_security_baseline` block as defined below.
+  /// [azureSecurityBaseline] A `azureSecurityBaseline` block as defined below.
   /// [backup] A `backup` block as defined below.
   /// [bootDiagnosticsEnabled] Whether the boot diagnostics are enabled. Defaults to `false`.
   /// [defenderForCloudEnabled] Whether the defender for cloud is enabled. Defaults to `false`.
@@ -102,4 +102,3 @@ class ConfigurationArgs {
     );
   }
 }
-

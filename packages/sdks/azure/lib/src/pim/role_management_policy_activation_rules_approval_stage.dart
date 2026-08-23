@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role_management_policy_activation_rules_approval_stage_primary_approver.dart';
 
 class RoleManagementPolicyActivationRulesApprovalStage {
-  /// One or more `primary_approver` blocks as defined below.
+  /// One or more `primaryApprover` blocks as defined below.
   final pulumi.Input<List<RoleManagementPolicyActivationRulesApprovalStagePrimaryApprover>> primaryApprovers;
 
   /// Creates a new [RoleManagementPolicyActivationRulesApprovalStage].
-  /// [primaryApprovers] One or more `primary_approver` blocks as defined below.
+  /// [primaryApprovers] One or more `primaryApprover` blocks as defined below.
   const RoleManagementPolicyActivationRulesApprovalStage({
     required this.primaryApprovers,
   });
@@ -25,4 +25,3 @@ class RoleManagementPolicyActivationRulesApprovalStage {
     );
   }
 }
-

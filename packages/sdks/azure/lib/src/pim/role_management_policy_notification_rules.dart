@@ -6,17 +6,17 @@ import 'role_management_policy_notification_rules_eligible_activations.dart';
 import 'role_management_policy_notification_rules_eligible_assignments.dart';
 
 class RoleManagementPolicyNotificationRules {
-  /// A `notification_target` block as defined below to configure notfications on active role assignments.
+  /// A `notificationTarget` block as defined below to configure notfications on active role assignments.
   final pulumi.Input<RoleManagementPolicyNotificationRulesActiveAssignments>? activeAssignments;
-  /// A `notification_target` block as defined below for configuring notifications on activation of eligible role.
+  /// A `notificationTarget` block as defined below for configuring notifications on activation of eligible role.
   final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleActivations>? eligibleActivations;
-  /// A `notification_target` block as defined below to configure notification on eligible role assignments.
+  /// A `notificationTarget` block as defined below to configure notification on eligible role assignments.
   final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleAssignments>? eligibleAssignments;
 
   /// Creates a new [RoleManagementPolicyNotificationRules].
-  /// [activeAssignments] A `notification_target` block as defined below to configure notfications on active role assignments.
-  /// [eligibleActivations] A `notification_target` block as defined below for configuring notifications on activation of eligible role.
-  /// [eligibleAssignments] A `notification_target` block as defined below to configure notification on eligible role assignments.
+  /// [activeAssignments] A `notificationTarget` block as defined below to configure notfications on active role assignments.
+  /// [eligibleActivations] A `notificationTarget` block as defined below for configuring notifications on activation of eligible role.
+  /// [eligibleAssignments] A `notificationTarget` block as defined below to configure notification on eligible role assignments.
   const RoleManagementPolicyNotificationRules({
     this.activeAssignments,
     this.eligibleActivations,
@@ -39,4 +39,3 @@ class RoleManagementPolicyNotificationRules {
     );
   }
 }
-

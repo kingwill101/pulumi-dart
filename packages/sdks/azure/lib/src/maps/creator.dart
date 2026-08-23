@@ -142,6 +142,37 @@ import 'creator_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_maps_account" "example" {
+///   name                = "example-maps-account"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "G2"
+///   tags = {
+///     "environment" = "Test"
+///   }
+/// }
+/// resource "azure_maps_creator" "example" {
+///   name            = "example-maps-creator"
+///   maps_account_id = azure_maps_account.example.id
+///   location        = azure_core_resourcegroup.example.location
+///   storage_units   = 1
+///   tags = {
+///     "environment" = "Test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +185,8 @@ import 'creator_state.dart';
 /// import com.pulumi.azure.maps.AccountArgs;
 /// import com.pulumi.azure.maps.Creator;
 /// import com.pulumi.azure.maps.CreatorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

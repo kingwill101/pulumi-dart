@@ -12,17 +12,17 @@ class BastionHostArgs {
   final pulumi.Input<bool>? copyPasteEnabled;
   /// Is File Copy feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `file_copy_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `fileCopyEnabled` is only supported when `sku` is `Standard` or `Premium`.
   final pulumi.Input<bool>? fileCopyEnabled;
-  /// A `ip_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// A `ipConfiguration` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<BastionHostIpConfiguration>? ipConfiguration;
   /// Is IP Connect feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `ip_connect_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `ipConnectEnabled` is only supported when `sku` is `Standard` or `Premium`.
   final pulumi.Input<bool>? ipConnectEnabled;
   /// Is Kerberos authentication feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `kerberos_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `kerberosEnabled` is only supported when `sku` is `Standard` or `Premium`.
   final pulumi.Input<bool>? kerberosEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. Review [Azure Bastion Host FAQ](https://docs.microsoft.com/azure/bastion/bastion-faq) for supported locations.
   final pulumi.Input<String>? location;
@@ -32,15 +32,15 @@ class BastionHostArgs {
   final pulumi.Input<String> resourceGroupName;
   /// The number of scale units with which to provision the Bastion Host. Possible values are between `2` and `50`. Defaults to `2`.
   ///
-  /// &gt; **Note:** `scale_units` only can be changed when `sku` is `Standard` or `Premium`. `scale_units` is always `2` when `sku` is `Basic`.
+  /// &gt; **Note:** `scaleUnits` only can be changed when `sku` is `Standard` or `Premium`. `scaleUnits` is always `2` when `sku` is `Basic`.
   final pulumi.Input<int>? scaleUnits;
   /// Is Session Recording feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `session_recording_enabled` is only supported when `sku` is `Premium`.
+  /// &gt; **Note:** `sessionRecordingEnabled` is only supported when `sku` is `Premium`.
   final pulumi.Input<bool>? sessionRecordingEnabled;
   /// Is Shareable Link feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `shareable_link_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `shareableLinkEnabled` is only supported when `sku` is `Standard` or `Premium`.
   final pulumi.Input<bool>? shareableLinkEnabled;
   /// The SKU of the Bastion Host. Accepted values are `Developer`, `Basic`, `Standard` and `Premium`. Defaults to `Basic`.
   ///
@@ -50,7 +50,7 @@ class BastionHostArgs {
   final pulumi.Input<Map<String, String>>? tags;
   /// Is Tunneling feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `tunneling_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `tunnelingEnabled` is only supported when `sku` is `Standard` or `Premium`.
   final pulumi.Input<bool>? tunnelingEnabled;
   /// The ID of the Virtual Network for the Developer Bastion Host. Changing this forces a new resource to be created.
   final pulumi.Input<String>? virtualNetworkId;
@@ -60,7 +60,7 @@ class BastionHostArgs {
   /// Creates a new [BastionHostArgs].
   /// [copyPasteEnabled] Is Copy/Paste feature enabled for the Bastion Host. Defaults to `true`.
   /// [fileCopyEnabled] Is File Copy feature enabled for the Bastion Host. Defaults to `false`.
-  /// [ipConfiguration] A `ip_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// [ipConfiguration] A `ipConfiguration` block as defined below. Changing this forces a new resource to be created.
   /// [ipConnectEnabled] Is IP Connect feature enabled for the Bastion Host. Defaults to `false`.
   /// [kerberosEnabled] Is Kerberos authentication feature enabled for the Bastion Host. Defaults to `false`.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. Review [Azure Bastion Host FAQ](https://docs.microsoft.com/azure/bastion/bastion-faq) for supported locations.
@@ -135,4 +135,3 @@ class BastionHostArgs {
     );
   }
 }
-

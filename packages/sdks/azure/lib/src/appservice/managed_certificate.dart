@@ -272,10 +272,10 @@ import 'managed_certificate_state.dart';
 /// 		_, err = dns.NewTxtRecord(ctx, "example", &dns.TxtRecordArgs{
 /// 			Name: pulumi.String("asuid.mycustomhost.contoso.com"),
 /// 			ZoneName: pulumi.String(example.ApplyT(func(example dns.GetZoneResult) (*string, error) {
-/// 				return &example.Name, nil
+/// 				return example.Name, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example dns.GetZoneResult) (*string, error) {
-/// 				return &example.ResourceGroupName, nil
+/// 				return example.ResourceGroupName, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Ttl: pulumi.Int(300),
 /// 			Records: dns.TxtRecordRecordArray{
@@ -290,10 +290,10 @@ import 'managed_certificate_state.dart';
 /// 		exampleCNameRecord, err := dns.NewCNameRecord(ctx, "example", &dns.CNameRecordArgs{
 /// 			Name: pulumi.String("example-adcr"),
 /// 			ZoneName: pulumi.String(example.ApplyT(func(example dns.GetZoneResult) (*string, error) {
-/// 				return &example.Name, nil
+/// 				return example.Name, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example dns.GetZoneResult) (*string, error) {
-/// 				return &example.ResourceGroupName, nil
+/// 				return example.ResourceGroupName, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Ttl:    pulumi.Int(300),
 /// 			Record: exampleAppService.DefaultSiteHostname,
@@ -309,7 +309,8 @@ import 'managed_certificate_state.dart';
 /// 					exampleCNameRecord.ZoneName,
 /// 				},
 /// 			}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// 				return invoke.Result, nil
+/// 				val := invoke.Result
+/// 				return &val, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			AppServiceName:    exampleAppService.Name,
 /// 			ResourceGroupName: exampleResourceGroup.Name,
@@ -333,6 +334,74 @@ import 'managed_certificate_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_dns_getzone" "example" {
+///   name                = "mydomain.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "example-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   kind                = "Linux"
+///   reserved            = true
+///   sku = {
+///     tier = "Basic"
+///     size = "B1"
+///   }
+/// }
+/// resource "azure_appservice_appservice" "example" {
+///   name                = "example-app"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   app_service_plan_id = azure_appservice_plan.example.id
+/// }
+/// resource "azure_dns_txtrecord" "example" {
+///   name                = "asuid.mycustomhost.contoso.com"
+///   zone_name           = data.azure_dns_getzone.example.name
+///   resource_group_name = data.azure_dns_getzone.example.resource_group_name
+///   ttl                 = 300
+///   records {
+///     value = azure_appservice_appservice.example.custom_domain_verification_id
+///   }
+/// }
+/// resource "azure_dns_cnamerecord" "example" {
+///   name                = "example-adcr"
+///   zone_name           = data.azure_dns_getzone.example.name
+///   resource_group_name = data.azure_dns_getzone.example.resource_group_name
+///   ttl                 = 300
+///   record              = azure_appservice_appservice.example.default_site_hostname
+/// }
+/// resource "azure_appservice_customhostnamebinding" "example" {
+///   hostname            = join(".", [azure_dns_cnamerecord.example.name, azure_dns_cnamerecord.example.zone_name])
+///   app_service_name    = azure_appservice_appservice.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_appservice_managedcertificate" "example" {
+///   custom_hostname_binding_id = azure_appservice_customhostnamebinding.example.id
+/// }
+/// resource "azure_appservice_certificatebinding" "example" {
+///   hostname_binding_id = azure_appservice_customhostnamebinding.example.id
+///   certificate_id      = azure_appservice_managedcertificate.example.id
+///   ssl_state           = "SniEnabled"
 /// }
 /// ```
 /// ```java
@@ -363,8 +432,8 @@ import 'managed_certificate_state.dart';
 /// import com.pulumi.azure.appservice.ManagedCertificateArgs;
 /// import com.pulumi.azure.appservice.CertificateBinding;
 /// import com.pulumi.azure.appservice.CertificateBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -530,6 +599,13 @@ import 'managed_certificate_state.dart';
 ///         resourceGroupName: ${exampleResourceGroup.name}
 /// ```
 ///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.Web` - 2023-12-01
 ///
 /// ## Import
 ///

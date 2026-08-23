@@ -5,22 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppIngressTrafficWeight {
   /// The label to apply to the revision as a name prefix for routing traffic.
   final pulumi.Input<String>? label;
-  /// This traffic Weight applies to the latest stable Container Revision. At most only one `traffic_weight` block can have the `latest_revision` set to `true`.
+  /// This traffic Weight applies to the latest stable Container Revision. At most only one `trafficWeight` block can have the `latestRevision` set to `true`.
   final pulumi.Input<bool>? latestRevision;
   /// The percentage of traffic which should be sent this revision.
   ///
   /// &gt; **Note:** The cumulative values for `weight` must equal 100 exactly and explicitly, no default weights are assumed.
   final pulumi.Input<int> percentage;
-  /// The suffix string to which this `traffic_weight` applies.
+  /// The suffix string to which this `trafficWeight` applies.
   ///
-  /// &gt; **Note:** If `latest_revision` is `false`, the `revision_suffix` shall be specified.
+  /// &gt; **Note:** If `latestRevision` is `false`, the `revisionSuffix` shall be specified.
   final pulumi.Input<String>? revisionSuffix;
 
   /// Creates a new [AppIngressTrafficWeight].
   /// [label] The label to apply to the revision as a name prefix for routing traffic.
-  /// [latestRevision] This traffic Weight applies to the latest stable Container Revision. At most only one `traffic_weight` block can have the `latest_revision` set to `true`.
+  /// [latestRevision] This traffic Weight applies to the latest stable Container Revision. At most only one `trafficWeight` block can have the `latestRevision` set to `true`.
   /// [percentage] The percentage of traffic which should be sent this revision.
-  /// [revisionSuffix] The suffix string to which this `traffic_weight` applies.
+  /// [revisionSuffix] The suffix string to which this `trafficWeight` applies.
   const AppIngressTrafficWeight({
     this.label,
     this.latestRevision,
@@ -46,4 +46,3 @@ class AppIngressTrafficWeight {
     );
   }
 }
-

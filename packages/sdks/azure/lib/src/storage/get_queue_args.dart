@@ -13,16 +13,16 @@ class GetQueueArgs {
   final pulumi.Input<String> name;
   /// The name of the Storage Account where the Queue exists. This property will become Required in version 5.0 of the Provider.
   ///
-  /// &gt; **Note:** One of `storage_account_name` or `storage_account_id` must be specified. When specifying `storage_account_id` the resource will use the Resource Manager API, rather than the Data Plane API.
+  /// &gt; **Note:** One of `storageAccountName` or `storageAccountId` must be specified. When specifying `storageAccountId` the resource will use the Resource Manager API, rather than the Data Plane API.
   final pulumi.Input<String>? storageAccountId;
-  /// The name of the Storage Account where the Queue exists. This property is deprecated in favour of `storage_account_id`.
+  /// The name of the Storage Account where the Queue exists. This property is deprecated in favour of `storageAccountId`.
   final pulumi.Input<String>? storageAccountName;
 
   /// Creates a new [GetQueueArgs].
   /// [metadata] A mapping of MetaData for this Queue.
   /// [name] The name of the Queue.
   /// [storageAccountId] The name of the Storage Account where the Queue exists. This property will become Required in version 5.0 of the Provider.
-  /// [storageAccountName] The name of the Storage Account where the Queue exists. This property is deprecated in favour of `storage_account_id`.
+  /// [storageAccountName] The name of the Storage Account where the Queue exists. This property is deprecated in favour of `storageAccountId`.
   const GetQueueArgs({
     this.metadata,
     required this.name,
@@ -48,4 +48,3 @@ class GetQueueArgs {
     );
   }
 }
-

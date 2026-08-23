@@ -308,6 +308,67 @@ import 'firewall_application_rule_collection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "testvnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "AzureFirewallSubnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "testpip"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+///   sku                 = "Standard"
+/// }
+/// resource "azure_network_firewall" "example" {
+///   name                = "testfirewall"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "AZFW_VNet"
+///   sku_tier            = "Standard"
+///   ip_configurations {
+///     name                 = "configuration"
+///     subnet_id            = azure_network_subnet.example.id
+///     public_ip_address_id = azure_network_publicip.example.id
+///   }
+/// }
+/// resource "azure_network_firewallapplicationrulecollection" "example" {
+///   name                = "testcollection"
+///   azure_firewall_name = azure_network_firewall.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   priority            = 100
+///   action              = "Allow"
+///   rules {
+///     name             = "testrule"
+///     source_addresses = ["10.0.0.0/16"]
+///     target_fqdns     = ["*.google.com"]
+///     protocols {
+///       port = "443"
+///       type = "Https"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -328,8 +389,9 @@ import 'firewall_application_rule_collection_state.dart';
 /// import com.pulumi.azure.network.FirewallApplicationRuleCollection;
 /// import com.pulumi.azure.network.FirewallApplicationRuleCollectionArgs;
 /// import com.pulumi.azure.network.inputs.FirewallApplicationRuleCollectionRuleArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.network.inputs.FirewallApplicationRuleCollectionRuleProtocolArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

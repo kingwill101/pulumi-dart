@@ -27,7 +27,7 @@ import 'grafana_managed_private_endpoint_state.dart';
 ///     name: "example-dg",
 ///     resourceGroupName: example.name,
 ///     location: example.location,
-///     grafanaMajorVersion: "11",
+///     grafanaMajorVersion: "12",
 ///     publicNetworkAccessEnabled: false,
 ///     azureMonitorWorkspaceIntegrations: [{
 ///         resourceId: exampleWorkspace.id,
@@ -58,7 +58,7 @@ import 'grafana_managed_private_endpoint_state.dart';
 ///     name="example-dg",
 ///     resource_group_name=example.name,
 ///     location=example.location,
-///     grafana_major_version="11",
+///     grafana_major_version="12",
 ///     public_network_access_enabled=False,
 ///     azure_monitor_workspace_integrations=[{
 ///         "resource_id": example_workspace.id,
@@ -98,7 +98,7 @@ import 'grafana_managed_private_endpoint_state.dart';
 ///         Name = "example-dg",
 ///         ResourceGroupName = example.Name,
 ///         Location = example.Location,
-///         GrafanaMajorVersion = "11",
+///         GrafanaMajorVersion = "12",
 ///         PublicNetworkAccessEnabled = false,
 ///         AzureMonitorWorkspaceIntegrations = new[]
 ///         {
@@ -156,7 +156,7 @@ import 'grafana_managed_private_endpoint_state.dart';
 /// 			Name:                       pulumi.String("example-dg"),
 /// 			ResourceGroupName:          example.Name,
 /// 			Location:                   example.Location,
-/// 			GrafanaMajorVersion:        pulumi.String("11"),
+/// 			GrafanaMajorVersion:        pulumi.String("12"),
 /// 			PublicNetworkAccessEnabled: pulumi.Bool(false),
 /// 			AzureMonitorWorkspaceIntegrations: dashboard.GrafanaAzureMonitorWorkspaceIntegrationArray{
 /// 				&dashboard.GrafanaAzureMonitorWorkspaceIntegrationArgs{
@@ -184,6 +184,44 @@ import 'grafana_managed_private_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "Canada Central"
+/// }
+/// resource "azure_monitoring_workspace" "example" {
+///   name                          = "example-mamw"
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   location                      = azure_core_resourcegroup.example.location
+///   public_network_access_enabled = false
+/// }
+/// resource "azure_dashboard_grafana" "example" {
+///   name                          = "example-dg"
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   location                      = azure_core_resourcegroup.example.location
+///   grafana_major_version         = 12
+///   public_network_access_enabled = false
+///   azure_monitor_workspace_integrations {
+///     resource_id = azure_monitoring_workspace.example.id
+///   }
+/// }
+/// resource "azure_dashboard_grafanamanagedprivateendpoint" "example" {
+///   grafana_id                   = azure_dashboard_grafana.example.id
+///   name                         = "example-mpe"
+///   location                     = azure_dashboard_grafana.example.location
+///   private_link_resource_id     = azure_monitoring_workspace.example.id
+///   group_ids                    = ["prometheusMetrics"]
+///   private_link_resource_region = azure_dashboard_grafana.example.location
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -199,8 +237,8 @@ import 'grafana_managed_private_endpoint_state.dart';
 /// import com.pulumi.azure.dashboard.inputs.GrafanaAzureMonitorWorkspaceIntegrationArgs;
 /// import com.pulumi.azure.dashboard.GrafanaManagedPrivateEndpoint;
 /// import com.pulumi.azure.dashboard.GrafanaManagedPrivateEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -228,7 +266,7 @@ import 'grafana_managed_private_endpoint_state.dart';
 ///             .name("example-dg")
 ///             .resourceGroupName(example.name())
 ///             .location(example.location())
-///             .grafanaMajorVersion("11")
+///             .grafanaMajorVersion("12")
 ///             .publicNetworkAccessEnabled(false)
 ///             .azureMonitorWorkspaceIntegrations(GrafanaAzureMonitorWorkspaceIntegrationArgs.builder()
 ///                 .resourceId(exampleWorkspace.id())
@@ -269,7 +307,7 @@ import 'grafana_managed_private_endpoint_state.dart';
 ///       name: example-dg
 ///       resourceGroupName: ${example.name}
 ///       location: ${example.location}
-///       grafanaMajorVersion: 11
+///       grafanaMajorVersion: 12
 ///       publicNetworkAccessEnabled: false
 ///       azureMonitorWorkspaceIntegrations:
 ///         - resourceId: ${exampleWorkspace.id}

@@ -95,6 +95,24 @@ import 'get_table_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getaccount" "example" {
+///   name                = "packerimages"
+///   resource_group_name = "packer-storage"
+/// }
+///
+/// output "storageAccountTier" {
+///   value = data.azure_storage_getaccount.example.account_tier
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +121,8 @@ import 'get_table_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.storage.StorageFunctions;
 /// import com.pulumi.azure.storage.inputs.GetAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -143,7 +161,7 @@ import 'get_table_result.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Storage` - 2023-05-01
+/// * `Microsoft.Storage` - 2025-08-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_account_get_account_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAccountResult> getAccount(
@@ -325,7 +343,7 @@ Future<GetAccountResult> getAccount(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		storage, err := storage.NewAccount(ctx, "storage", &storage.AccountArgs{
+/// 		storage2, err := storage.NewAccount(ctx, "storage", &storage.AccountArgs{
 /// 			Name:                   pulumi.String("storageaccountname"),
 /// 			ResourceGroupName:      rg.Name,
 /// 			Location:               rg.Location,
@@ -337,14 +355,14 @@ Future<GetAccountResult> getAccount(
 /// 		}
 /// 		container, err := storage.NewContainer(ctx, "container", &storage.ContainerArgs{
 /// 			Name:                pulumi.String("mycontainer"),
-/// 			StorageAccountName:  storage.Name,
+/// 			StorageAccountName:  storage2.Name,
 /// 			ContainerAccessType: pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		example := storage.GetAccountBlobContainerSASOutput(ctx, storage.GetAccountBlobContainerSASOutputArgs{
-/// 			ConnectionString: storage.PrimaryConnectionString,
+/// 			ConnectionString: storage2.PrimaryConnectionString,
 /// 			ContainerName:    container.Name,
 /// 			HttpsOnly:        pulumi.Bool(true),
 /// 			IpAddress:        pulumi.String("168.1.5.65"),
@@ -365,10 +383,61 @@ Future<GetAccountResult> getAccount(
 /// 			ContentType:        pulumi.String("application/json"),
 /// 		}, nil)
 /// 		ctx.Export("sasUrlQueryString", example.ApplyT(func(example storage.GetAccountBlobContainerSASResult) (*string, error) {
-/// 			return &example.Sas, nil
+/// 			return example.Sas, nil
 /// 		}).(pulumi.StringPtrOutput))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getaccountblobcontainersas" "example" {
+///   connection_string = azure_storage_account.storage.primary_connection_string
+///   container_name    = azure_storage_container.container.name
+///   https_only        = true
+///   ip_address        = "168.1.5.65"
+///   start             = "2018-03-21"
+///   expiry            = "2018-03-21"
+///   permissions = {
+///     read   = true
+///     add    = true
+///     create = false
+///     write  = false
+///     delete = true
+///     list   = true
+///   }
+///   cache_control       = "max-age=5"
+///   content_disposition = "inline"
+///   content_encoding    = "deflate"
+///   content_language    = "en-US"
+///   content_type        = "application/json"
+/// }
+///
+/// resource "azure_core_resourcegroup" "rg" {
+///   name     = "resourceGroupName"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "storage" {
+///   name                     = "storageaccountname"
+///   resource_group_name      = azure_core_resourcegroup.rg.name
+///   location                 = azure_core_resourcegroup.rg.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "container" {
+///   name                  = "mycontainer"
+///   storage_account_name  = azure_storage_account.storage.name
+///   container_access_type = "private"
+/// }
+/// output "sasUrlQueryString" {
+///   value = data.azure_storage_getaccountblobcontainersas.example.sas
 /// }
 /// ```
 /// ```java
@@ -386,8 +455,8 @@ Future<GetAccountResult> getAccount(
 /// import com.pulumi.azure.storage.StorageFunctions;
 /// import com.pulumi.azure.storage.inputs.GetAccountBlobContainerSASArgs;
 /// import com.pulumi.azure.storage.inputs.GetAccountBlobContainerSASPermissionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -742,10 +811,68 @@ Future<GetAccountBlobContainerSASResult> getAccountBlobContainerSAS(
 /// 			},
 /// 		}, nil)
 /// 		ctx.Export("sasUrlQueryString", example.ApplyT(func(example storage.GetAccountSASResult) (*string, error) {
-/// 			return &example.Sas, nil
+/// 			return example.Sas, nil
 /// 		}).(pulumi.StringPtrOutput))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getaccountsas" "example" {
+///   connection_string = azure_storage_account.example.primary_connection_string
+///   https_only        = true
+///   signed_version    = "2022-11-02"
+///   resource_types = {
+///     service   = true
+///     container = false
+///     object    = false
+///   }
+///   services = {
+///     blob  = true
+///     queue = false
+///     table = false
+///     file  = false
+///   }
+///   start  = "2018-03-21T00:00:00Z"
+///   expiry = "2020-03-21T00:00:00Z"
+///   permissions = {
+///     read    = true
+///     write   = true
+///     delete  = false
+///     list    = false
+///     add     = true
+///     create  = true
+///     update  = false
+///     process = false
+///     tag     = false
+///     filter  = false
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "resourceGroupName"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "storageaccountname"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+///   tags = {
+///     "environment" = "staging"
+///   }
+/// }
+/// output "sasUrlQueryString" {
+///   value = data.azure_storage_getaccountsas.example.sas
 /// }
 /// ```
 /// ```java
@@ -763,8 +890,8 @@ Future<GetAccountBlobContainerSASResult> getAccountBlobContainerSAS(
 /// import com.pulumi.azure.storage.inputs.GetAccountSASResourceTypesArgs;
 /// import com.pulumi.azure.storage.inputs.GetAccountSASServicesArgs;
 /// import com.pulumi.azure.storage.inputs.GetAccountSASPermissionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -903,8 +1030,7 @@ Future<GetAccountSASResult> getAccountSAS(
 ///
 /// const example = azure.storage.getBlob({
 ///     name: "example-blob-name",
-///     storageAccountName: "example-storage-account-name",
-///     storageContainerName: "example-storage-container-name",
+///     storageContainerId: "example-storage-container-id",
 /// });
 /// ```
 /// ```python
@@ -912,8 +1038,7 @@ Future<GetAccountSASResult> getAccountSAS(
 /// import pulumi_azure as azure
 ///
 /// example = azure.storage.get_blob(name="example-blob-name",
-///     storage_account_name="example-storage-account-name",
-///     storage_container_name="example-storage-container-name")
+///     storage_container_id="example-storage-container-id")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -926,8 +1051,7 @@ Future<GetAccountSASResult> getAccountSAS(
 ///     var example = Azure.Storage.GetBlob.Invoke(new()
 ///     {
 ///         Name = "example-blob-name",
-///         StorageAccountName = "example-storage-account-name",
-///         StorageContainerName = "example-storage-container-name",
+///         StorageContainerId = "example-storage-container-id",
 ///     });
 ///
 /// });
@@ -943,15 +1067,28 @@ Future<GetAccountSASResult> getAccountSAS(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := storage.LookupBlob(ctx, &storage.LookupBlobArgs{
-/// 			Name:                 "example-blob-name",
-/// 			StorageAccountName:   "example-storage-account-name",
-/// 			StorageContainerName: "example-storage-container-name",
+/// 			Name:               "example-blob-name",
+/// 			StorageContainerId: pulumi.StringRef("example-storage-container-id"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getblob" "example" {
+///   name                 = "example-blob-name"
+///   storage_container_id = "example-storage-container-id"
 /// }
 /// ```
 /// ```java
@@ -962,8 +1099,8 @@ Future<GetAccountSASResult> getAccountSAS(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.storage.StorageFunctions;
 /// import com.pulumi.azure.storage.inputs.GetBlobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -977,8 +1114,7 @@ Future<GetAccountSASResult> getAccountSAS(
 ///     public static void stack(Context ctx) {
 ///         final var example = StorageFunctions.getBlob(GetBlobArgs.builder()
 ///             .name("example-blob-name")
-///             .storageAccountName("example-storage-account-name")
-///             .storageContainerName("example-storage-container-name")
+///             .storageContainerId("example-storage-container-id")
 ///             .build());
 ///
 ///     }
@@ -991,8 +1127,7 @@ Future<GetAccountSASResult> getAccountSAS(
 ///       function: azure:storage:getBlob
 ///       arguments:
 ///         name: example-blob-name
-///         storageAccountName: example-storage-account-name
-///         storageContainerName: example-storage-container-name
+///         storageContainerId: example-storage-container-id
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_blob_get_blob_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1070,6 +1205,23 @@ Future<GetBlobResult> getBlob(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getcontainers" "example" {
+///   storage_account_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Storage/storageAccounts/sa1"
+/// }
+///
+/// output "containerId" {
+///   value = data.azure_storage_getcontainers.example.containers[0].resource_manager_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1078,8 +1230,8 @@ Future<GetBlobResult> getBlob(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.storage.StorageFunctions;
 /// import com.pulumi.azure.storage.inputs.GetContainersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1208,6 +1360,28 @@ Future<GetContainersResult> getContainers(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getaccount" "example" {
+///   name                = "storageaccountname"
+///   resource_group_name = "resourcegroupname"
+/// }
+/// data "azure_storage_getencryptionscope" "exampleGetEncryptionScope" {
+///   name               = "existingStorageES"
+///   storage_account_id = data.azure_storage_getaccount.example.id
+/// }
+///
+/// output "id" {
+///   value = data.azure_storage_getencryptionscope.exampleGetEncryptionScope.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1217,8 +1391,8 @@ Future<GetContainersResult> getContainers(
 /// import com.pulumi.azure.storage.StorageFunctions;
 /// import com.pulumi.azure.storage.inputs.GetAccountArgs;
 /// import com.pulumi.azure.storage.inputs.GetEncryptionScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1268,7 +1442,7 @@ Future<GetContainersResult> getContainers(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Storage` - 2023-05-01
+/// * `Microsoft.Storage` - 2025-08-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_encryption_scope_get_encryption_scope_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetEncryptionScopeResult> getEncryptionScope(
@@ -1357,6 +1531,23 @@ Future<GetEncryptionScopeResult> getEncryptionScope(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getaccount" "example" {
+///   name                = "storageaccountname"
+///   resource_group_name = "resourcegroupname"
+/// }
+/// data "azure_storage_getpolicy" "exampleGetPolicy" {
+///   storage_account_id = data.azure_storage_getaccount.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1366,8 +1557,8 @@ Future<GetEncryptionScopeResult> getEncryptionScope(
 /// import com.pulumi.azure.storage.StorageFunctions;
 /// import com.pulumi.azure.storage.inputs.GetAccountArgs;
 /// import com.pulumi.azure.storage.inputs.GetPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1412,7 +1603,7 @@ Future<GetEncryptionScopeResult> getEncryptionScope(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Storage` - 2023-05-01
+/// * `Microsoft.Storage` - 2025-08-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_policy_get_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicyResult> getPolicy(
@@ -1486,6 +1677,20 @@ Future<GetPolicyResult> getPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getqueue" "example" {
+///   name                 = "example-queue-name"
+///   storage_account_name = "example-storage-account-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1494,8 +1699,8 @@ Future<GetPolicyResult> getPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.storage.StorageFunctions;
 /// import com.pulumi.azure.storage.inputs.GetQueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1531,7 +1736,7 @@ Future<GetPolicyResult> getPolicy(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Storage` - 2023-05-01
+/// * `Microsoft.Storage` - 2025-08-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_queue_get_queue_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetQueueResult> getQueue(
@@ -1626,6 +1831,24 @@ Future<GetQueueResult> getQueue(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getaccount" "example" {
+///   name                = "exampleaccount"
+///   resource_group_name = "examples"
+/// }
+/// data "azure_storage_getshare" "exampleGetShare" {
+///   name               = "existing"
+///   storage_account_id = data.azure_storage_getaccount.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1635,8 +1858,8 @@ Future<GetQueueResult> getQueue(
 /// import com.pulumi.azure.storage.StorageFunctions;
 /// import com.pulumi.azure.storage.inputs.GetAccountArgs;
 /// import com.pulumi.azure.storage.inputs.GetShareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1683,7 +1906,7 @@ Future<GetQueueResult> getQueue(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Storage` - 2023-05-01
+/// * `Microsoft.Storage` - 2025-08-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_share_get_share_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetShareResult> getShare(
@@ -1776,6 +1999,24 @@ Future<GetShareResult> getShare(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getaccount" "example" {
+///   name                = "exampleaccount"
+///   resource_group_name = "examples"
+/// }
+/// data "azure_storage_getstoragecontainer" "exampleGetStorageContainer" {
+///   name               = "example-container-name"
+///   storage_account_id = data.azure_storage_getaccount.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1785,8 +2026,8 @@ Future<GetShareResult> getShare(
 /// import com.pulumi.azure.storage.StorageFunctions;
 /// import com.pulumi.azure.storage.inputs.GetAccountArgs;
 /// import com.pulumi.azure.storage.inputs.GetStorageContainerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1833,7 +2074,7 @@ Future<GetShareResult> getShare(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Storage` - 2023-05-01
+/// * `Microsoft.Storage` - 2025-08-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_storage_container_get_storage_container_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetStorageContainerResult> getStorageContainer(
@@ -1914,6 +2155,24 @@ Future<GetStorageContainerResult> getStorageContainer(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getsync" "example" {
+///   name                = "existingStorageSyncName"
+///   resource_group_name = "existingResGroup"
+/// }
+///
+/// output "id" {
+///   value = data.azure_storage_getsync.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1922,8 +2181,8 @@ Future<GetStorageContainerResult> getStorageContainer(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.storage.StorageFunctions;
 /// import com.pulumi.azure.storage.inputs.GetSyncArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2043,6 +2302,24 @@ Future<GetSyncResult> getSync(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getsyncgroup" "example" {
+///   name            = "existing-ss-group"
+///   storage_sync_id = "existing-ss-id"
+/// }
+///
+/// output "id" {
+///   value = data.azure_storage_getsyncgroup.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2051,8 +2328,8 @@ Future<GetSyncResult> getSync(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.storage.StorageFunctions;
 /// import com.pulumi.azure.storage.inputs.GetSyncGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2156,13 +2433,27 @@ Future<GetSyncGroupResult> getSyncGroup(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := storage.LookupTable(ctx, &storage.LookupTableArgs{
 /// 			Name:               "example-table-name",
-/// 			StorageAccountName: "example-storage-account-name",
+/// 			StorageAccountName: pulumi.StringRef("example-storage-account-name"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_gettable" "example" {
+///   name                 = "example-table-name"
+///   storage_account_name = "example-storage-account-name"
 /// }
 /// ```
 /// ```java
@@ -2173,8 +2464,8 @@ Future<GetSyncGroupResult> getSyncGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.storage.StorageFunctions;
 /// import com.pulumi.azure.storage.inputs.GetTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2276,6 +2567,20 @@ Future<GetTableResult> getTable(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_gettableentities" "example" {
+///   storage_table_id = exampleAzurermStorageTable.id
+///   filter           = "PartitionKey eq 'example'"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2284,8 +2589,8 @@ Future<GetTableResult> getTable(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.storage.StorageFunctions;
 /// import com.pulumi.azure.storage.inputs.GetTableEntitiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2391,6 +2696,21 @@ Future<GetTableEntitiesResult> getTableEntities(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_gettableentity" "example" {
+///   storage_table_id = exampleAzurermStorageTable.id
+///   partition_key    = "example-partition-key"
+///   row_key          = "example-row-key"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2399,8 +2719,8 @@ Future<GetTableEntitiesResult> getTableEntities(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.storage.StorageFunctions;
 /// import com.pulumi.azure.storage.inputs.GetTableEntityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

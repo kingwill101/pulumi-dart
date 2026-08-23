@@ -9,13 +9,13 @@ import 'vault_monitoring.dart';
 class VaultState {
   /// Whether to enable the Classic experience for VMware replication. If set to `false` VMware machines will be protected using the new stateless ASR replication appliance. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? classicVmwareReplicationEnabled;
-  /// Is cross region restore enabled for this Vault? Only can be `true`, when `storage_mode_type` is `GeoRedundant`. Defaults to `false`.
+  /// Is cross region restore enabled for this Vault? Only can be `true`, when `storageModeType` is `GeoRedundant`. Defaults to `false`.
   ///
-  /// &gt; **Note:** Once `cross_region_restore_enabled` is set to `true`, changing it back to `false` forces a new Recovery Service Vault to be created.
+  /// &gt; **Note:** Once `crossRegionRestoreEnabled` is set to `true`, changing it back to `false` forces a new Recovery Service Vault to be created.
   final pulumi.Input<bool>? crossRegionRestoreEnabled;
   /// An `encryption` block as defined below. Required with `identity`.
   ///
-  /// !&gt; **Note:** Once Encryption with your own key has been Enabled it's not possible to Disable it.
+  /// &gt; **Note:** Once Encryption with your own key has been Enabled it's not possible to Disable it.
   final pulumi.Input<VaultEncryption>? encryption;
   /// An `identity` block as defined below.
   final pulumi.Input<VaultIdentity>? identity;
@@ -35,7 +35,6 @@ class VaultState {
   final pulumi.Input<String>? resourceGroupName;
   /// Sets the vault's SKU. Possible values include: `Standard`, `RS0`.
   final pulumi.Input<String>? sku;
-  /// Is soft delete enable for this Vault? Defaults to `true`.
   final pulumi.Input<bool>? softDeleteEnabled;
   /// The storage type of the Recovery Services Vault. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Defaults to `GeoRedundant`.
   final pulumi.Input<String>? storageModeType;
@@ -44,7 +43,7 @@ class VaultState {
 
   /// Creates a new [VaultState].
   /// [classicVmwareReplicationEnabled] Whether to enable the Classic experience for VMware replication. If set to `false` VMware machines will be protected using the new stateless ASR replication appliance. Changing this forces a new resource to be created.
-  /// [crossRegionRestoreEnabled] Is cross region restore enabled for this Vault? Only can be `true`, when `storage_mode_type` is `GeoRedundant`. Defaults to `false`.
+  /// [crossRegionRestoreEnabled] Is cross region restore enabled for this Vault? Only can be `true`, when `storageModeType` is `GeoRedundant`. Defaults to `false`.
   /// [encryption] An `encryption` block as defined below. Required with `identity`.
   /// [identity] An `identity` block as defined below.
   /// [immutability] Immutability Settings of vault, possible values include: `Locked`, `Unlocked` and `Disabled`.
@@ -54,7 +53,7 @@ class VaultState {
   /// [publicNetworkAccessEnabled] Is it enabled to access the vault from public networks. Defaults to `true`.
   /// [resourceGroupName] The name of the resource group in which to create the Recovery Services Vault. Changing this forces a new resource to be created.
   /// [sku] Sets the vault's SKU. Possible values include: `Standard`, `RS0`.
-  /// [softDeleteEnabled] Is soft delete enable for this Vault? Defaults to `true`.
+  /// [softDeleteEnabled] Optional.
   /// [storageModeType] The storage type of the Recovery Services Vault. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Defaults to `GeoRedundant`.
   /// [tags] A mapping of tags to assign to the resource.
   const VaultState({
@@ -112,4 +111,3 @@ class VaultState {
     );
   }
 }
-

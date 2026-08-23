@@ -22,6 +22,14 @@ class WebAppState {
   final pulumi.Input<String>? luisKey;
   /// The Microsoft Application ID for the Web App Bot. Changing this forces a new resource to be created.
   final pulumi.Input<String>? microsoftAppId;
+  /// The Microsoft Application Tenant ID for the Bot Channels Registration. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? microsoftAppTenantId;
+  /// The Microsoft Application Type for the Bot Channels Registration. Possible values are `MultiTenant`, `SingleTenant` and `UserAssignedMSI`. Defaults to `MultiTenant`. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** Creation of `azure.bot.WebApp` resources using the `MultiTenant` type is no longer supported by Azure, existing resources can continue using this type.
+  final pulumi.Input<String>? microsoftAppType;
+  /// The ID of Microsoft Application User Assigned Identity for the Bot Channels Registration. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? microsoftAppUserAssignedIdentityId;
   /// Specifies the name of the Web App Bot. Changing this forces a new resource to be created. Must be globally unique.
   final pulumi.Input<String>? name;
   /// The name of the resource group in which to create the Web App Bot. Changing this forces a new resource to be created.
@@ -41,6 +49,9 @@ class WebAppState {
   /// [luisAppIds] A list of LUIS App IDs to associate with the Web App Bot.
   /// [luisKey] The LUIS key to associate with the Web App Bot.
   /// [microsoftAppId] The Microsoft Application ID for the Web App Bot. Changing this forces a new resource to be created.
+  /// [microsoftAppTenantId] The Microsoft Application Tenant ID for the Bot Channels Registration. Changing this forces a new resource to be created.
+  /// [microsoftAppType] The Microsoft Application Type for the Bot Channels Registration. Possible values are `MultiTenant`, `SingleTenant` and `UserAssignedMSI`. Defaults to `MultiTenant`. Changing this forces a new resource to be created.
+  /// [microsoftAppUserAssignedIdentityId] The ID of Microsoft Application User Assigned Identity for the Bot Channels Registration. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Web App Bot. Changing this forces a new resource to be created. Must be globally unique.
   /// [resourceGroupName] The name of the resource group in which to create the Web App Bot. Changing this forces a new resource to be created.
   /// [sku] The SKU of the Web App Bot. Valid values include `F0` or `S1`. Changing this forces a new resource to be created.
@@ -55,6 +66,9 @@ class WebAppState {
     this.luisAppIds,
     this.luisKey,
     this.microsoftAppId,
+    this.microsoftAppTenantId,
+    this.microsoftAppType,
+    this.microsoftAppUserAssignedIdentityId,
     this.name,
     this.resourceGroupName,
     this.sku,
@@ -72,6 +86,9 @@ class WebAppState {
       'luisAppIds': ?luisAppIds,
       'luisKey': ?luisKey,
       'microsoftAppId': ?microsoftAppId,
+      'microsoftAppTenantId': ?microsoftAppTenantId,
+      'microsoftAppType': ?microsoftAppType,
+      'microsoftAppUserAssignedIdentityId': ?microsoftAppUserAssignedIdentityId,
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
       'sku': ?sku,
@@ -90,6 +107,9 @@ class WebAppState {
       luisAppIds: (() { final guardedValue = map['luisAppIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       luisKey: (() { final guardedValue = map['luisKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       microsoftAppId: (() { final guardedValue = map['microsoftAppId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      microsoftAppTenantId: (() { final guardedValue = map['microsoftAppTenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      microsoftAppType: (() { final guardedValue = map['microsoftAppType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      microsoftAppUserAssignedIdentityId: (() { final guardedValue = map['microsoftAppUserAssignedIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -97,4 +117,3 @@ class WebAppState {
     );
   }
 }
-

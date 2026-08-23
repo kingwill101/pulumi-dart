@@ -319,6 +319,68 @@ import 'function_app_function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-group"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplesa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   name                = "example-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   os_type             = "Linux"
+///   sku_name            = "S1"
+/// }
+/// resource "azure_appservice_linuxfunctionapp" "example" {
+///   name                       = "example-function-app"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   service_plan_id            = azure_appservice_serviceplan.example.id
+///   storage_account_name       = azure_storage_account.example.name
+///   storage_account_access_key = azure_storage_account.example.primary_access_key
+///   site_config = {
+///     application_stack = {
+///       python_version = "3.9"
+///     }
+///   }
+/// }
+/// resource "azure_appservice_functionappfunction" "example" {
+///   name            = "example-function-app-function"
+///   function_app_id = azure_appservice_linuxfunctionapp.example.id
+///   language        = "Python"
+///   test_data = jsonencode({
+///     "name" = "Azure"
+///   })
+///   config_json = jsonencode({
+///     "bindings" = [{
+///       "authLevel" = "function"
+///       "direction" = "in"
+///       "methods"   = ["get", "post"]
+///       "name"      = "req"
+///       "type"      = "httpTrigger"
+///       }, {
+///       "direction" = "out"
+///       "name"      = "$return"
+///       "type"      = "http"
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -338,8 +400,8 @@ import 'function_app_function_state.dart';
 /// import com.pulumi.azure.appservice.FunctionAppFunction;
 /// import com.pulumi.azure.appservice.FunctionAppFunctionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -833,6 +895,75 @@ import 'function_app_function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-group"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplesa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   name                = "example-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   os_type             = "Windows"
+///   sku_name            = "S1"
+/// }
+/// resource "azure_appservice_windowsfunctionapp" "example" {
+///   name                       = "example-function-app"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   service_plan_id            = azure_appservice_serviceplan.example.id
+///   storage_account_name       = azure_storage_account.example.name
+///   storage_account_access_key = azure_storage_account.example.primary_access_key
+///   site_config = {
+///     application_stack = {
+///       dotnet_version = "6"
+///     }
+///   }
+/// }
+/// resource "azure_appservice_functionappfunction" "example" {
+///   name            = "example-function-app-function"
+///   function_app_id = azure_appservice_windowsfunctionapp.example.id
+///   language        = "CSharp"
+///   files {
+///     name    = "run.csx"
+///     content = file("exampledata/run.csx")
+///   }
+///   test_data = jsonencode({
+///     "name" = "Azure"
+///   })
+///   config_json = jsonencode({
+///     "bindings" = [{
+///       "authLevel" = "function"
+///       "direction" = "in"
+///       "methods"   = ["get", "post"]
+///       "name"      = "req"
+///       "type"      = "httpTrigger"
+///       }, {
+///       "direction" = "out"
+///       "name"      = "$return"
+///       "type"      = "http"
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -855,8 +986,8 @@ import 'function_app_function_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

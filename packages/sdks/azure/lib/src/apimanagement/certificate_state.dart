@@ -24,7 +24,7 @@ class CertificateState {
   final pulumi.Input<String>? password;
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Either `data` or `key_vault_secret_id` must be specified - but not both.
+  /// &gt; **Note:** Either `data` or `keyVaultSecretId` must be specified - but not both.
   final pulumi.Input<String>? resourceGroupName;
   /// The Subject of this Certificate.
   final pulumi.Input<String>? subject;
@@ -85,4 +85,3 @@ class CertificateState {
     );
   }
 }
-

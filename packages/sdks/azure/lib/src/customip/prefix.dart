@@ -137,6 +137,33 @@ import 'prefix_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_customip_prefix" "example" {
+///   name                          = "example-CustomIPPrefix"
+///   location                      = azure_core_resourcegroup.example.location
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   cidr                          = "1.2.3.4/22"
+///   zones                         = ["1", "2", "3"]
+///   commissioning_enabled         = true
+///   roa_validity_end_date         = "2099-12-12"
+///   wan_validation_signed_message = "signed message for WAN validation"
+///   tags = {
+///     "env" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +174,8 @@ import 'prefix_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.customip.Prefix;
 /// import com.pulumi.azure.customip.PrefixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,11 +261,11 @@ import 'prefix_state.dart';
 ///     location: test.location,
 ///     resourceGroupName: test.name,
 ///     parentCustomIpPrefixId: global.id,
-///     cidr: global.cidr.apply(cidr => std.cidrsubnetOutput({
-///         input: cidr,
+///     cidr: std.cidrsubnetOutput({
+///         input: global.cidr,
 ///         newbits: 16,
 ///         netnum: 1,
-///     })).apply(invoke => invoke.result),
+///     }).apply(invoke => invoke.result),
 ///     zones: ["1"],
 /// });
 /// ```
@@ -262,9 +289,9 @@ import 'prefix_state.dart';
 ///     location=test["location"],
 ///     resource_group_name=test["name"],
 ///     parent_custom_ip_prefix_id=global_.id,
-///     cidr=global_.cidr.apply(lambda cidr: std.cidrsubnet_output(input=cidr,
+///     cidr=std.cidrsubnet_output(input=global_.cidr,
 ///         newbits=16,
-///         netnum=1)).apply(lambda invoke: invoke.result),
+///         netnum=1).apply(lambda invoke: invoke.result),
 ///     zones=["1"])
 /// ```
 /// ```csharp
@@ -298,12 +325,12 @@ import 'prefix_state.dart';
 ///         Location = test.Location,
 ///         ResourceGroupName = test.Name,
 ///         ParentCustomIpPrefixId = @global.Id,
-///         Cidr = @global.Cidr.Apply(cidr => Std.Cidrsubnet.Invoke(new()
+///         Cidr = Std.Cidrsubnet.Invoke(new()
 ///         {
-///             Input = cidr,
+///             Input = @global.Cidr,
 ///             Newbits = 16,
 ///             Netnum = 1,
-///         })).Apply(invoke => invoke.Result),
+///         }).Apply(invoke => invoke.Result),
 ///         Zones = new[]
 ///         {
 ///             "1",
@@ -321,52 +348,82 @@ import 'prefix_state.dart';
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := core.NewResourceGroup(ctx, "example", &core.ResourceGroupArgs{
-/// Name: pulumi.String("example-resources"),
-/// Location: pulumi.String("West Europe"),
-/// })
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := core.NewResourceGroup(ctx, "example", &core.ResourceGroupArgs{
+/// 			Name:     pulumi.String("example-resources"),
+/// 			Location: pulumi.String("West Europe"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		global, err := customip.NewPrefix(ctx, "global", &customip.PrefixArgs{
+/// 			Name:                       pulumi.String("example-Global-CustomIPPrefix"),
+/// 			Location:                   pulumi.Any(test.Location),
+/// 			ResourceGroupName:          pulumi.Any(test.Name),
+/// 			Cidr:                       pulumi.String("2001:db8:1::/48"),
+/// 			RoaValidityEndDate:         pulumi.String("2199-12-12"),
+/// 			WanValidationSignedMessage: pulumi.String("signed message for WAN validation"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = customip.NewPrefix(ctx, "regional", &customip.PrefixArgs{
+/// 			Name:                   pulumi.String("example-Regional-CustomIPPrefix"),
+/// 			Location:               pulumi.Any(test.Location),
+/// 			ResourceGroupName:      pulumi.Any(test.Name),
+/// 			ParentCustomIpPrefixId: global.ID(),
+/// 			Cidr: pulumi.String(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+/// 				Input:   global.Cidr,
+/// 				Newbits: pulumi.Int(16),
+/// 				Netnum:  pulumi.Int(1),
+/// 			}, nil).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
+/// 				val := invoke.Result
+/// 				return &val, nil
+/// 			}).(pulumi.StringPtrOutput)),
+/// 			Zones: pulumi.StringArray{
+/// 				pulumi.String("1"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// global, err := customip.NewPrefix(ctx, "global", &customip.PrefixArgs{
-/// Name: pulumi.String("example-Global-CustomIPPrefix"),
-/// Location: pulumi.Any(test.Location),
-/// ResourceGroupName: pulumi.Any(test.Name),
-/// Cidr: pulumi.String("2001:db8:1::/48"),
-/// RoaValidityEndDate: pulumi.String("2199-12-12"),
-/// WanValidationSignedMessage: pulumi.String("signed message for WAN validation"),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
 /// }
-/// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
-/// Input: cidr,
-/// Newbits: 16,
-/// Netnum: 1,
-/// }, nil)
-/// if err != nil {
-/// return err
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
 /// }
-/// _, err = customip.NewPrefix(ctx, "regional", &customip.PrefixArgs{
-/// Name: pulumi.String("example-Regional-CustomIPPrefix"),
-/// Location: pulumi.Any(test.Location),
-/// ResourceGroupName: pulumi.Any(test.Name),
-/// ParentCustomIpPrefixId: global.ID(),
-/// Cidr: pulumi.String(global.Cidr.ApplyT(func(cidr string) (std.CidrsubnetResult, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-/// return invoke.Result, nil
-/// }).(pulumi.StringPtrOutput)),
-/// Zones: pulumi.StringArray{
-/// pulumi.String("1"),
-/// },
-/// })
-/// if err != nil {
-/// return err
+/// resource "azure_customip_prefix" "global" {
+///   name                          = "example-Global-CustomIPPrefix"
+///   location                      = test.location
+///   resource_group_name           = test.name
+///   cidr                          = "2001:db8:1::/48"
+///   roa_validity_end_date         = "2199-12-12"
+///   wan_validation_signed_message = "signed message for WAN validation"
 /// }
-/// return nil
-/// })
+/// resource "azure_customip_prefix" "regional" {
+///   name                       = "example-Regional-CustomIPPrefix"
+///   location                   = test.location
+///   resource_group_name        = test.name
+///   parent_custom_ip_prefix_id = azure_customip_prefix.global.id
+///   cidr                       = cidrsubnet(azure_customip_prefix.global.cidr, 16, 1)
+///   zones                      = ["1"]
 /// }
 /// ```
 /// ```java
@@ -381,8 +438,8 @@ import 'prefix_state.dart';
 /// import com.pulumi.azure.customip.PrefixArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.CidrsubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -413,11 +470,11 @@ import 'prefix_state.dart';
 ///             .location(test.location())
 ///             .resourceGroupName(test.name())
 ///             .parentCustomIpPrefixId(global.id())
-///             .cidr(global.cidr().applyValue(_cidr -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-///                 .input(_cidr)
+///             .cidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+///                 .input(global.cidr())
 ///                 .newbits(16)
 ///                 .netnum(1)
-///                 .build())).applyValue(_invoke -> _invoke.result()))
+///                 .build()).applyValue(_invoke -> _invoke.result()))
 ///             .zones("1")
 ///             .build());
 ///
@@ -472,11 +529,11 @@ class Prefix extends pulumi.CustomResource {
   late final pulumi.Output<String> cidr;
   /// Specifies that the custom IP prefix should be commissioned after provisioning in Azure. Defaults to `false`.
   ///
-  /// !&gt; **Note:** Changing the value of `commissioning_enabled` from `true` to `false` causes the IP prefix to stop being advertised by Azure and is functionally equivalent to deleting it when used in a production setting.
+  /// &gt; **Note:** Changing the value of `commissioningEnabled` from `true` to `false` causes the IP prefix to stop being advertised by Azure and is functionally equivalent to deleting it when used in a production setting.
   late final pulumi.Output<bool?> commissioningEnabled;
   /// Specifies that the custom IP prefix should not be publicly advertised on the Internet when commissioned (regional commissioning feature). Defaults to `false`.
   ///
-  /// !&gt; **Note:** Changing the value of `internet_advertising_disabled` from `true` to `false` causes the IP prefix to stop being advertised by Azure and is functionally equivalent to deleting it when used in a production setting.
+  /// &gt; **Note:** Changing the value of `internetAdvertisingDisabled` from `true` to `false` causes the IP prefix to stop being advertised by Azure and is functionally equivalent to deleting it when used in a production setting.
   late final pulumi.Output<bool?> internetAdvertisingDisabled;
   /// The location where the Custom IP Prefix should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;

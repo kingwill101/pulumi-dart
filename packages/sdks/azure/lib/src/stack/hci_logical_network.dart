@@ -163,6 +163,40 @@ import 'hci_logical_network_subnet.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_stack_hcilogicalnetwork" "example" {
+///   name                = "example-hci-ln"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   custom_location_id  = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ExtendedLocation/customLocations/cl1"
+///   virtual_switch_name = "ConvergedSwitch(managementcompute)"
+///   dns_servers         = ["10.0.0.7", "10.0.0.8"]
+///   subnet = {
+///     ip_allocation_method = "Static"
+///     address_prefix       = "10.0.0.0/24"
+///     vlan_id              = 123
+///     route = {
+///       "addressPrefix"    = "0.0.0.0/0"
+///       "nextHopIpAddress" = "10.0.0.1"
+///     }
+///   }
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -174,8 +208,8 @@ import 'hci_logical_network_subnet.dart';
 /// import com.pulumi.azure.stack.HciLogicalNetwork;
 /// import com.pulumi.azure.stack.HciLogicalNetworkArgs;
 /// import com.pulumi.azure.stack.inputs.HciLogicalNetworkSubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

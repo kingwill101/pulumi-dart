@@ -90,6 +90,26 @@ import 'private_link_scope_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_monitoring_privatelinkscope" "example" {
+///   name                  = "example-ampls"
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   ingestion_access_mode = "PrivateOnly"
+///   query_access_mode     = "Open"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +120,8 @@ import 'private_link_scope_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.monitoring.PrivateLinkScope;
 /// import com.pulumi.azure.monitoring.PrivateLinkScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

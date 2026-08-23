@@ -15,9 +15,9 @@ class GetAlertRuleTemplateScheduledTemplate {
   final pulumi.Input<String> severity;
   /// A list of categories of attacks by which to classify the rule.
   final pulumi.Input<List<String>> tactics;
-  /// The alert trigger operator, combined with `trigger_threshold`, setting alert threshold of this Sentinel Scheduled Alert Rule Template.
+  /// The alert trigger operator, combined with `triggerThreshold`, setting alert threshold of this Sentinel Scheduled Alert Rule Template.
   final pulumi.Input<String> triggerOperator;
-  /// The baseline number of query results generated, combined with `trigger_operator`, setting alert threshold of this Sentinel Scheduled Alert Rule Template.
+  /// The baseline number of query results generated, combined with `triggerOperator`, setting alert threshold of this Sentinel Scheduled Alert Rule Template.
   final pulumi.Input<int> triggerThreshold;
 
   /// Creates a new [GetAlertRuleTemplateScheduledTemplate].
@@ -27,8 +27,8 @@ class GetAlertRuleTemplateScheduledTemplate {
   /// [queryPeriod] The ISO 8601 timespan duration, which determine the time period of the data covered by the query.
   /// [severity] The alert severity of this Sentinel Scheduled Alert Rule Template.
   /// [tactics] A list of categories of attacks by which to classify the rule.
-  /// [triggerOperator] The alert trigger operator, combined with `trigger_threshold`, setting alert threshold of this Sentinel Scheduled Alert Rule Template.
-  /// [triggerThreshold] The baseline number of query results generated, combined with `trigger_operator`, setting alert threshold of this Sentinel Scheduled Alert Rule Template.
+  /// [triggerOperator] The alert trigger operator, combined with `triggerThreshold`, setting alert threshold of this Sentinel Scheduled Alert Rule Template.
+  /// [triggerThreshold] The baseline number of query results generated, combined with `triggerOperator`, setting alert threshold of this Sentinel Scheduled Alert Rule Template.
   const GetAlertRuleTemplateScheduledTemplate({
     required this.description,
     required this.query,
@@ -66,4 +66,3 @@ class GetAlertRuleTemplateScheduledTemplate {
     );
   }
 }
-

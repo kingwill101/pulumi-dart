@@ -16,6 +16,7 @@ class ZipBlob extends pulumi.CustomResource {
   late final pulumi.Output<String?> sourceContent;
   late final pulumi.Output<String?> sourceUri;
   late final pulumi.Output<String> storageAccountName;
+  late final pulumi.Output<String> storageContainerId;
   late final pulumi.Output<String> storageContainerName;
   late final pulumi.Output<String> type;
   late final pulumi.Output<String> url;
@@ -47,6 +48,7 @@ class ZipBlob extends pulumi.CustomResource {
     sourceContent = registerOutput<String?>('sourceContent');
     sourceUri = registerOutput<String?>('sourceUri');
     storageAccountName = registerOutput<String>('storageAccountName');
+    storageContainerId = registerOutput<String>('storageContainerId');
     storageContainerName = registerOutput<String>('storageContainerName');
     type = registerOutput<String>('type');
     url = registerOutput<String>('url');
@@ -88,6 +90,7 @@ class ZipBlob extends pulumi.CustomResource {
     sourceContent = registerOutput<String?>('sourceContent');
     sourceUri = registerOutput<String?>('sourceUri');
     storageAccountName = registerOutput<String>('storageAccountName');
+    storageContainerId = registerOutput<String>('storageContainerId');
     storageContainerName = registerOutput<String>('storageContainerName');
     type = registerOutput<String>('type');
     url = registerOutput<String>('url');

@@ -20,7 +20,7 @@ class ServiceAdditionalLocation {
   final pulumi.Input<String>? publicIpAddressId;
   /// Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard and Premium SKU.
   final pulumi.Input<List<String>>? publicIpAddresses;
-  /// A `virtual_network_configuration` block as defined below. Required when `virtual_network_type` is `External` or `Internal`.
+  /// A `virtualNetworkConfiguration` block as defined below. Required when `virtualNetworkType` is `External` or `Internal`.
   final pulumi.Input<ServiceAdditionalLocationVirtualNetworkConfiguration>? virtualNetworkConfiguration;
   /// A list of availability zones.
   final pulumi.Input<List<String>>? zones;
@@ -33,7 +33,7 @@ class ServiceAdditionalLocation {
   /// [privateIpAddresses] The Private IP addresses of the API Management Service. Available only when the API Manager instance is using Virtual Network mode.
   /// [publicIpAddressId] ID of a standard SKU IPv4 Public IP.
   /// [publicIpAddresses] Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard and Premium SKU.
-  /// [virtualNetworkConfiguration] A `virtual_network_configuration` block as defined below. Required when `virtual_network_type` is `External` or `Internal`.
+  /// [virtualNetworkConfiguration] A `virtualNetworkConfiguration` block as defined below. Required when `virtualNetworkType` is `External` or `Internal`.
   /// [zones] A list of availability zones.
   const ServiceAdditionalLocation({
     this.capacity,
@@ -75,4 +75,3 @@ class ServiceAdditionalLocation {
     );
   }
 }
-

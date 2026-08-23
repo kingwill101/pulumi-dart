@@ -10,7 +10,7 @@ import 'hci_deployment_setting_scale_unit.dart';
 class HciDeploymentSettingArgs {
   /// Specifies a list of IDs of Azure ARC machine resource to be part of cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<List<String>> arcResourceIds;
-  /// One or more `scale_unit` blocks as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// One or more `scaleUnit` blocks as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<List<HciDeploymentSettingScaleUnit>> scaleUnits;
   /// The ID of the Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String> stackHciClusterId;
@@ -19,7 +19,7 @@ class HciDeploymentSettingArgs {
 
   /// Creates a new [HciDeploymentSettingArgs].
   /// [arcResourceIds] Specifies a list of IDs of Azure ARC machine resource to be part of cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
-  /// [scaleUnits] One or more `scale_unit` blocks as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// [scaleUnits] One or more `scaleUnit` blocks as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [stackHciClusterId] The ID of the Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [version] The deployment template version. The format must be a set of numbers separated by dots such as `10.0.0.0`. Changing this forces a new Stack HCI Deployment Setting to be created.
   const HciDeploymentSettingArgs({
@@ -47,4 +47,3 @@ class HciDeploymentSettingArgs {
     );
   }
 }
-

@@ -94,6 +94,27 @@ import 'namespace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "notificationhub-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_notificationhub_namespace" "example" {
+///   name                = "myappnamespace"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   namespace_type      = "NotificationHub"
+///   sku_name            = "Free"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +125,8 @@ import 'namespace_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.notificationhub.Namespace;
 /// import com.pulumi.azure.notificationhub.NamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

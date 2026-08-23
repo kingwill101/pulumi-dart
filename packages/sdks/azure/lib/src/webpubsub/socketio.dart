@@ -92,6 +92,26 @@ import 'socketio_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_webpubsub_socketio" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Free_F1" [0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +122,8 @@ import 'socketio_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.webpubsub.Socketio;
 /// import com.pulumi.azure.webpubsub.SocketioArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,7 +195,7 @@ class Socketio extends pulumi.CustomResource {
   late final pulumi.Output<String> primaryConnectionString;
   /// Whether public network access is enabled. Defaults to `Enabled`. Possible values are `Enabled` and `Disabled`.
   ///
-  /// &gt; **Note:** `public_network_access` cannot be set to `Disabled` when `sku` is `Free_F1`.
+  /// &gt; **Note:** `publicNetworkAccess` cannot be set to `Disabled` when `sku` is `Free_F1`.
   late final pulumi.Output<String?> publicNetworkAccess;
   /// The publicly accessible port for client-side usage of the Web PubSub Service.
   late final pulumi.Output<int> publicPort;
@@ -195,7 +215,7 @@ class Socketio extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// Whether the service should request a client certificate during a TLS handshake. Defaults to `false`.
   ///
-  /// &gt; **Note:** `tls_client_cert_enabled` cannot be set to `true` when `sku` is `Free_F1`.
+  /// &gt; **Note:** `tlsClientCertEnabled` cannot be set to `true` when `sku` is `Free_F1`.
   late final pulumi.Output<bool?> tlsClientCertEnabled;
 
   /// Creates a new [Socketio].

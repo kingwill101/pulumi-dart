@@ -31,7 +31,7 @@ class HciVirtualHardDiskArgs {
   final pulumi.Input<String> resourceGroupName;
   /// The ID of the Azure Stack HCI Storage Path used for this Virtual Hard Disk. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   ///
-  /// &gt; **Note:** If `storage_path_id` is not specified, the Virtual Hard Disk will be placed in a high availability Storage Path. If you experience a diff you may need to add this to `ignore_changes`.
+  /// &gt; **Note:** If `storagePathId` is not specified, the Virtual Hard Disk will be placed in a high availability Storage Path. If you experience a diff you may need to add this to `ignoreChanges`.
   final pulumi.Input<String>? storagePathId;
   /// A mapping of tags which should be assigned to the Azure Stack HCI Virtual Hard Disk.
   final pulumi.Input<Map<String, String>>? tags;
@@ -102,4 +102,3 @@ class HciVirtualHardDiskArgs {
     );
   }
 }
-

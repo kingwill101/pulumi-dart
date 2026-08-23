@@ -141,6 +141,24 @@ import 'get_vpn_server_configuration_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getapplicationgateway" "example" {
+///   name                = "existing-app-gateway"
+///   resource_group_name = "existing-resources"
+/// }
+///
+/// output "id" {
+///   value = data.azure_network_getapplicationgateway.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -149,8 +167,8 @@ import 'get_vpn_server_configuration_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetApplicationGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -270,6 +288,24 @@ Future<GetApplicationGatewayResult> getApplicationGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getapplicationsecuritygroup" "example" {
+///   name                = "tf-appsecuritygroup"
+///   resource_group_name = "my-resource-group"
+/// }
+///
+/// output "applicationSecurityGroupId" {
+///   value = data.azure_network_getapplicationsecuritygroup.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -278,8 +314,8 @@ Future<GetApplicationGatewayResult> getApplicationGateway(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetApplicationSecurityGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -403,6 +439,27 @@ Future<GetApplicationSecurityGroupResult> getApplicationSecurityGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getexpressroutecircuit" "example" {
+///   resource_group_name = exampleAzurermResourceGroup.name
+///   name                = exampleAzurermExpressRouteCircuit.name
+/// }
+///
+/// output "expressRouteCircuitId" {
+///   value = data.azure_network_getexpressroutecircuit.example.id
+/// }
+/// output "serviceKey" {
+///   value = data.azure_network_getexpressroutecircuit.example.service_key
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -411,8 +468,8 @@ Future<GetApplicationSecurityGroupResult> getApplicationSecurityGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetExpressRouteCircuitArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -534,6 +591,24 @@ Future<GetExpressRouteCircuitResult> getExpressRouteCircuit(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getfirewall" "example" {
+///   name                = "firewall1"
+///   resource_group_name = "firewall-RG"
+/// }
+///
+/// output "firewallPrivateIp" {
+///   value = data.azure_network_getfirewall.example.ip_configurations[0].private_ip_address
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -542,8 +617,8 @@ Future<GetExpressRouteCircuitResult> getExpressRouteCircuit(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetFirewallArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -663,6 +738,24 @@ Future<GetFirewallResult> getFirewall(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getfirewallpolicy" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_network_getfirewallpolicy.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -671,8 +764,8 @@ Future<GetFirewallResult> getFirewall(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetFirewallPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -792,6 +885,24 @@ Future<GetFirewallPolicyResult> getFirewallPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getgatewayconnection" "example" {
+///   name                = "production"
+///   resource_group_name = "networking"
+/// }
+///
+/// output "virtualNetworkGatewayConnectionId" {
+///   value = data.azure_network_getgatewayconnection.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -800,8 +911,8 @@ Future<GetFirewallPolicyResult> getFirewallPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetGatewayConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -921,6 +1032,24 @@ Future<GetGatewayConnectionResult> getGatewayConnection(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getipgroup" "example" {
+///   name                = "example1-ipgroup"
+///   resource_group_name = "example-rg"
+/// }
+///
+/// output "cidrs" {
+///   value = data.azure_network_getipgroup.example.cidrs
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -929,8 +1058,8 @@ Future<GetGatewayConnectionResult> getGatewayConnection(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetIpGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1050,6 +1179,24 @@ Future<GetIpGroupResult> getIpGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getipgroups" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "ids" {
+///   value = data.azure_network_getipgroups.example.ids
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1058,8 +1205,8 @@ Future<GetIpGroupResult> getIpGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetIpGroupsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1179,6 +1326,24 @@ Future<GetIpGroupsResult> getIpGroups(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getlocalnetworkgateway" "example" {
+///   name                = "existing-local-network-gateway"
+///   resource_group_name = "existing-resources"
+/// }
+///
+/// output "id" {
+///   value = data.azure_network_getlocalnetworkgateway.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1187,8 +1352,8 @@ Future<GetIpGroupsResult> getIpGroups(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetLocalNetworkGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1331,6 +1496,24 @@ Future<GetNatGatewayResult> getNatGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getnetworkddosprotectionplan" "example" {
+///   name                = exampleAzurermNetworkDdosProtectionPlan.name
+///   resource_group_name = exampleAzurermNetworkDdosProtectionPlan.resourceGroupName
+/// }
+///
+/// output "ddosProtectionPlanId" {
+///   value = data.azure_network_getnetworkddosprotectionplan.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1339,8 +1522,8 @@ Future<GetNatGatewayResult> getNatGateway(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetNetworkDdosProtectionPlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1460,6 +1643,24 @@ Future<GetNetworkDdosProtectionPlanResult> getNetworkDdosProtectionPlan(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getnetworkinterface" "example" {
+///   name                = "acctest-nic"
+///   resource_group_name = "networking"
+/// }
+///
+/// output "networkInterfaceId" {
+///   value = data.azure_network_getnetworkinterface.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1468,8 +1669,8 @@ Future<GetNetworkDdosProtectionPlanResult> getNetworkDdosProtectionPlan(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetNetworkInterfaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1671,6 +1872,37 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+/// data "azure_network_getnetworkmanager" "example" {
+///   name                = azure_network_networkmanager.example.name
+///   resource_group_name = azure_network_networkmanager.example.resource_group_name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-network-manager"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///   }
+///   scope_accesses = ["Connectivity", "SecurityAdmin"]
+///   description    = "example network manager"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1686,8 +1918,8 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
 /// import com.pulumi.azure.network.inputs.NetworkManagerScopeArgs;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetNetworkManagerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1850,6 +2082,24 @@ Future<GetNetworkManagerResult> getNetworkManager(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getnetworkmanagerconnectivityconfiguration" "example" {
+///   name               = "existing"
+///   network_manager_id = "TODO"
+/// }
+///
+/// output "id" {
+///   value = data.azure_network_getnetworkmanagerconnectivityconfiguration.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1858,8 +2108,8 @@ Future<GetNetworkManagerResult> getNetworkManager(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetNetworkManagerConnectivityConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2080,10 +2330,49 @@ Future<GetNetworkManagerConnectivityConfigurationResult> getNetworkManagerConnec
 /// 			NetworkManagerId: exampleNetworkManager.ID(),
 /// 		}, nil)
 /// 		ctx.Export("id", example.ApplyT(func(example network.GetNetworkManagerIpamPoolResult) (*string, error) {
-/// 			return &example.Id, nil
+/// 			return example.Id, nil
 /// 		}).(pulumi.StringPtrOutput))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+/// data "azure_network_getnetworkmanageripampool" "example" {
+///   name               = azure_network_networkmanageripampool.example.name
+///   network_manager_id = azure_network_networkmanager.example.id
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-network-manager"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///   }
+/// }
+/// resource "azure_network_networkmanageripampool" "example" {
+///   name               = "example-ipam-pool"
+///   location           = "West Europe"
+///   network_manager_id = azure_network_networkmanager.example.id
+///   display_name       = "example-pool"
+///   address_prefixes   = ["10.0.0.0/24"]
+/// }
+/// output "id" {
+///   value = data.azure_network_getnetworkmanageripampool.example.id
 /// }
 /// ```
 /// ```java
@@ -2103,8 +2392,8 @@ Future<GetNetworkManagerConnectivityConfigurationResult> getNetworkManagerConnec
 /// import com.pulumi.azure.network.NetworkManagerIpamPoolArgs;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetNetworkManagerIpamPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2382,6 +2671,41 @@ Future<GetNetworkManagerIpamPoolResult> getNetworkManagerIpamPool(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+/// data "azure_network_getnetworkmanagernetworkgroup" "example" {
+///   name               = azure_network_networkmanagernetworkgroup.example.name
+///   network_manager_id = azure_network_networkmanager.example.id
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-network-manager"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///   }
+///   scope_accesses = ["Connectivity", "SecurityAdmin"]
+///   description    = "example network manager"
+/// }
+/// resource "azure_network_networkmanagernetworkgroup" "example" {
+///   name               = "example-group"
+///   network_manager_id = azure_network_networkmanager.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2399,8 +2723,8 @@ Future<GetNetworkManagerIpamPoolResult> getNetworkManagerIpamPool(
 /// import com.pulumi.azure.network.NetworkManagerNetworkGroupArgs;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetNetworkManagerNetworkGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2574,6 +2898,24 @@ Future<GetNetworkManagerNetworkGroupResult> getNetworkManagerNetworkGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getnetworksecuritygroup" "example" {
+///   name                = "example"
+///   resource_group_name = exampleAzurermResourceGroup.name
+/// }
+///
+/// output "location" {
+///   value = data.azure_network_getnetworksecuritygroup.example.location
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2582,8 +2924,8 @@ Future<GetNetworkManagerNetworkGroupResult> getNetworkManagerNetworkGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetNetworkSecurityGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2703,6 +3045,24 @@ Future<GetNetworkSecurityGroupResult> getNetworkSecurityGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getnetworksecurityperimeter" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_network_getnetworksecurityperimeter.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2711,8 +3071,8 @@ Future<GetNetworkSecurityGroupResult> getNetworkSecurityGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetNetworkSecurityPerimeterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2851,6 +3211,28 @@ Future<GetNetworkSecurityPerimeterResult> getNetworkSecurityPerimeter(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getnetworksecurityperimeter" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+/// data "azure_network_getnetworksecurityperimeterprofile" "exampleGetNetworkSecurityPerimeterProfile" {
+///   name                          = "existing"
+///   network_security_perimeter_id = data.azure_network_getnetworksecurityperimeter.example.id
+/// }
+///
+/// output "id" {
+///   value = data.azure_network_getnetworksecurityperimeterprofile.exampleGetNetworkSecurityPerimeterProfile.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2860,8 +3242,8 @@ Future<GetNetworkSecurityPerimeterResult> getNetworkSecurityPerimeter(
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetNetworkSecurityPerimeterArgs;
 /// import com.pulumi.azure.network.inputs.GetNetworkSecurityPerimeterProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2992,6 +3374,24 @@ Future<GetNetworkSecurityPerimeterProfileResult> getNetworkSecurityPerimeterProf
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getnetworkwatcher" "example" {
+///   name                = exampleAzurermNetworkWatcher.name
+///   resource_group_name = exampleAzurermResourceGroup.name
+/// }
+///
+/// output "networkWatcherId" {
+///   value = data.azure_network_getnetworkwatcher.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3000,8 +3400,8 @@ Future<GetNetworkSecurityPerimeterProfileResult> getNetworkSecurityPerimeterProf
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetNetworkWatcherArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3127,6 +3527,27 @@ Future<GetNetworkWatcherResult> getNetworkWatcher(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getpublicip" "example" {
+///   name                = "name_of_public_ip"
+///   resource_group_name = "name_of_resource_group"
+/// }
+///
+/// output "domainNameLabel" {
+///   value = data.azure_network_getpublicip.example.domain_name_label
+/// }
+/// output "publicIpAddress" {
+///   value = data.azure_network_getpublicip.example.ip_address
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3135,8 +3556,8 @@ Future<GetNetworkWatcherResult> getNetworkWatcher(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetPublicIPArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3453,10 +3874,72 @@ Future<GetNetworkWatcherResult> getNetworkWatcher(
 /// 			ResourceGroupName: exampleVirtualMachine.ResourceGroupName,
 /// 		}, nil)
 /// 		ctx.Export("publicIpAddress", example.ApplyT(func(example network.GetPublicIPResult) (*string, error) {
-/// 			return &example.IpAddress, nil
+/// 			return example.IpAddress, nil
 /// 		}).(pulumi.StringPtrOutput))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getpublicip" "example" {
+///   name                = azure_network_publicip.example.name
+///   resource_group_name = azure_compute_virtualmachine.example.resource_group_name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "test-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "test-network"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "acctsub"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                    = "test-pip"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   allocation_method       = "Dynamic"
+///   idle_timeout_in_minutes = 30
+///   tags = {
+///     "environment" = "test"
+///   }
+/// }
+/// resource "azure_network_networkinterface" "example" {
+///   name                = "test-nic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "testconfiguration1"
+///     subnet_id                     = azure_network_subnet.example.id
+///     private_ip_address_allocation = "Static"
+///     private_ip_address            = "10.0.2.5"
+///     public_ip_address_id          = azure_network_publicip.example.id
+///   }
+/// }
+/// resource "azure_compute_virtualmachine" "example" {
+///   name                  = "test-vm"
+///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   network_interface_ids = [azure_network_networkinterface.example.id]
+/// }
+/// output "publicIpAddress" {
+///   value = data.azure_network_getpublicip.example.ip_address
 /// }
 /// ```
 /// ```java
@@ -3480,8 +3963,8 @@ Future<GetNetworkWatcherResult> getNetworkWatcher(
 /// import com.pulumi.azure.compute.VirtualMachineArgs;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetPublicIPArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3700,6 +4183,20 @@ Future<GetPublicIPResult> getPublicIP(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getpublicips" "example" {
+///   resource_group_name = "pip-test"
+///   attachment_status   = "Attached"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3708,8 +4205,8 @@ Future<GetPublicIPResult> getPublicIP(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetPublicIPsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3828,6 +4325,24 @@ Future<GetPublicIPsResult> getPublicIPs(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getpublicipprefix" "example" {
+///   name                = "name_of_public_ip"
+///   resource_group_name = "name_of_resource_group"
+/// }
+///
+/// output "publicIpPrefix" {
+///   value = data.azure_network_getpublicipprefix.example.ip_prefix
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3836,8 +4351,8 @@ Future<GetPublicIPsResult> getPublicIPs(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetPublicIpPrefixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3957,6 +4472,24 @@ Future<GetPublicIpPrefixResult> getPublicIpPrefix(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getroutefilter" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_network_getroutefilter.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3965,8 +4498,8 @@ Future<GetPublicIpPrefixResult> getPublicIpPrefix(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetRouteFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4079,6 +4612,20 @@ Future<GetRouteFilterResult> getRouteFilter(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getroutetable" "example" {
+///   name                = "myroutetable"
+///   resource_group_name = "some-resource-group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4087,8 +4634,8 @@ Future<GetRouteFilterResult> getRouteFilter(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetRouteTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4213,6 +4760,28 @@ Future<GetRouteTableResult> getRouteTable(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getservicetags" "example" {
+///   location        = "westcentralus"
+///   service         = "AzureKeyVault"
+///   location_filter = "northeurope"
+/// }
+///
+/// output "addressPrefixes" {
+///   value = data.azure_network_getservicetags.example.address_prefixes
+/// }
+/// output "ipv4Cidrs" {
+///   value = data.azure_network_getservicetags.example.ipv4_cidrs
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4221,8 +4790,8 @@ Future<GetRouteTableResult> getRouteTable(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetServiceTagsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4350,6 +4919,25 @@ Future<GetServiceTagsResult> getServiceTags(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getsubnet" "example" {
+///   name                 = "backend"
+///   virtual_network_name = "production"
+///   resource_group_name  = "networking"
+/// }
+///
+/// output "subnetId" {
+///   value = data.azure_network_getsubnet.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4358,8 +4946,8 @@ Future<GetServiceTagsResult> getServiceTags(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetSubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4479,6 +5067,23 @@ Future<GetSubnetResult> getSubnet(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_gettrafficmanager" "example" {
+///   name = "World"
+/// }
+///
+/// output "locationCode" {
+///   value = data.azure_network_gettrafficmanager.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4487,8 +5092,8 @@ Future<GetSubnetResult> getSubnet(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetTrafficManagerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4606,6 +5211,24 @@ Future<GetTrafficManagerResult> getTrafficManager(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_gettrafficmanagerprofile" "example" {
+///   name                = "test"
+///   resource_group_name = "test"
+/// }
+///
+/// output "trafficRoutingMethod" {
+///   value = data.azure_network_gettrafficmanagerprofile.example.traffic_routing_method
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4614,8 +5237,8 @@ Future<GetTrafficManagerResult> getTrafficManager(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetTrafficManagerProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4735,6 +5358,24 @@ Future<GetTrafficManagerProfileResult> getTrafficManagerProfile(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getvirtualhub" "example" {
+///   name                = "example-hub"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "virtualHubId" {
+///   value = data.azure_network_getvirtualhub.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4743,8 +5384,8 @@ Future<GetTrafficManagerProfileResult> getTrafficManagerProfile(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetVirtualHubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4868,6 +5509,25 @@ Future<GetVirtualHubResult> getVirtualHub(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getvirtualhubconnection" "example" {
+///   name                = "example-connection"
+///   resource_group_name = "example-resources"
+///   virtual_hub_name    = "example-hub-name"
+/// }
+///
+/// output "virtualHubConnectionId" {
+///   value = data.azure_network_getvirtualhubconnection.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4876,8 +5536,8 @@ Future<GetVirtualHubResult> getVirtualHub(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetVirtualHubConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5003,6 +5663,25 @@ Future<GetVirtualHubConnectionResult> getVirtualHubConnection(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getvirtualhubroutetable" "example" {
+///   name                = "example-hub-route-table"
+///   resource_group_name = "example-resources"
+///   virtual_hub_name    = "example-hub-name"
+/// }
+///
+/// output "virtualHubRouteTableId" {
+///   value = data.azure_network_getvirtualhubroutetable.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5011,8 +5690,8 @@ Future<GetVirtualHubConnectionResult> getVirtualHubConnection(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetVirtualHubRouteTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5134,6 +5813,24 @@ Future<GetVirtualHubRouteTableResult> getVirtualHubRouteTable(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getvirtualnetwork" "example" {
+///   name                = "production"
+///   resource_group_name = "networking"
+/// }
+///
+/// output "virtualNetworkId" {
+///   value = data.azure_network_getvirtualnetwork.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5142,8 +5839,8 @@ Future<GetVirtualHubRouteTableResult> getVirtualHubRouteTable(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetVirtualNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5263,6 +5960,24 @@ Future<GetVirtualNetworkResult> getVirtualNetwork(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getvirtualnetworkgateway" "example" {
+///   name                = "production"
+///   resource_group_name = "networking"
+/// }
+///
+/// output "virtualNetworkGatewayId" {
+///   value = data.azure_network_getvirtualnetworkgateway.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5271,8 +5986,8 @@ Future<GetVirtualNetworkResult> getVirtualNetwork(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetVirtualNetworkGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5411,6 +6126,28 @@ Future<GetVirtualNetworkGatewayResult> getVirtualNetworkGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getvirtualnetwork" "example" {
+///   name                = "vnet01"
+///   resource_group_name = "networking"
+/// }
+/// data "azure_network_getvirtualnetworkpeering" "exampleGetVirtualNetworkPeering" {
+///   name               = "peer-vnet01-to-vnet02"
+///   virtual_network_id = data.azure_network_getvirtualnetwork.example.id
+/// }
+///
+/// output "id" {
+///   value = data.azure_network_getvirtualnetworkpeering.exampleGetVirtualNetworkPeering.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5420,8 +6157,8 @@ Future<GetVirtualNetworkGatewayResult> getVirtualNetworkGateway(
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetVirtualNetworkArgs;
 /// import com.pulumi.azure.network.inputs.GetVirtualNetworkPeeringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5578,10 +6315,52 @@ Future<GetVirtualNetworkPeeringResult> getVirtualNetworkPeering(
 /// 		ctx.Export("office365LocalBreakoutCategory", example.Office365LocalBreakoutCategory)
 /// 		ctx.Export("sku", example.Sku)
 /// 		ctx.Export("tags", example.Tags)
-/// 		ctx.Export("virtualHubs", example.VirtualHubs)
-/// 		ctx.Export("vpnSites", example.VpnSites)
+/// 		ctx.Export("virtualHubs", pulumi.Any(example.VirtualHubs))
+/// 		ctx.Export("vpnSites", pulumi.Any(example.VpnSites))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getvirtualwan" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_network_getvirtualwan.example.id
+/// }
+/// output "allowBranchToBranchTraffic" {
+///   value = data.azure_network_getvirtualwan.example.allow_branch_to_branch_traffic
+/// }
+/// output "disableVpnEncryption" {
+///   value = data.azure_network_getvirtualwan.example.disable_vpn_encryption
+/// }
+/// output "location" {
+///   value = data.azure_network_getvirtualwan.example.location
+/// }
+/// output "office365LocalBreakoutCategory" {
+///   value = data.azure_network_getvirtualwan.example.office365_local_breakout_category
+/// }
+/// output "sku" {
+///   value = data.azure_network_getvirtualwan.example.sku
+/// }
+/// output "tags" {
+///   value = data.azure_network_getvirtualwan.example.tags
+/// }
+/// output "virtualHubs" {
+///   value = data.azure_network_getvirtualwan.example.virtualHubs
+/// }
+/// output "vpnSites" {
+///   value = data.azure_network_getvirtualwan.example.vpnSites
 /// }
 /// ```
 /// ```java
@@ -5592,8 +6371,8 @@ Future<GetVirtualNetworkPeeringResult> getVirtualNetworkPeering(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetVirtualWanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5729,6 +6508,24 @@ Future<GetVirtualWanResult> getVirtualWan(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getvpngateway" "example" {
+///   name                = "existing-local-vpn_gateway"
+///   resource_group_name = "existing-vpn_gateway"
+/// }
+///
+/// output "azurermVpnGatewayId" {
+///   value = data.azure_network_getvpngateway.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5737,8 +6534,8 @@ Future<GetVirtualWanResult> getVirtualWan(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetVpnGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5858,6 +6655,24 @@ Future<GetVpnGatewayResult> getVpnGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getvpnserverconfiguration" "example" {
+///   name                = "existing-local-vpn-server-configuration"
+///   resource_group_name = "existing-resource-group"
+/// }
+///
+/// output "azurermVpnServerConfiguration" {
+///   value = data.azure_network_getvpnserverconfiguration.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5866,8 +6681,8 @@ Future<GetVpnGatewayResult> getVpnGateway(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetVpnServerConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

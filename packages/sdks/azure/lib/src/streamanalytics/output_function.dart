@@ -266,6 +266,63 @@ import 'output_function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageaccount"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "exampleappserviceplan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   kind                = "FunctionApp"
+///   reserved            = true
+///   sku = {
+///     tier = "Dynamic"
+///     size = "Y1"
+///   }
+/// }
+/// resource "azure_appservice_functionapp" "example" {
+///   name                       = "examplefunctionapp"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   app_service_plan_id        = azure_appservice_plan.example.id
+///   storage_account_name       = azure_storage_account.example.name
+///   storage_account_access_key = azure_storage_account.example.primary_access_key
+///   os_type                    = "linux"
+///   version                    = "~3"
+/// }
+/// resource "azure_streamanalytics_job" "example" {
+///   name                 = "examplestreamanalyticsjob"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resourcegroup.example.location
+///   streaming_units      = 3
+///   transformation_query = "    SELECT *\n    INTO [YourOutputAlias]\n    FROM [YourInputAlias]\n"
+/// }
+/// resource "azure_streamanalytics_outputfunction" "example" {
+///   name                      = "exampleoutput"
+///   resource_group_name       = azure_streamanalytics_job.example.resource_group_name
+///   stream_analytics_job_name = azure_streamanalytics_job.example.name
+///   function_app              = azure_appservice_functionapp.example.name
+///   function_name             = "examplefunctionname"
+///   api_key                   = "exampleapikey"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -285,8 +342,8 @@ import 'output_function_state.dart';
 /// import com.pulumi.azure.streamanalytics.JobArgs;
 /// import com.pulumi.azure.streamanalytics.OutputFunction;
 /// import com.pulumi.azure.streamanalytics.OutputFunctionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

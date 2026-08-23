@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_vmtiering_policy_archived_restore_point.dart';
 
 class PolicyVMTieringPolicy {
-  /// An `archived_restore_point` block as defined below.
+  /// An `archivedRestorePoint` block as defined below.
   final pulumi.Input<PolicyVMTieringPolicyArchivedRestorePoint> archivedRestorePoint;
 
   /// Creates a new [PolicyVMTieringPolicy].
-  /// [archivedRestorePoint] An `archived_restore_point` block as defined below.
+  /// [archivedRestorePoint] An `archivedRestorePoint` block as defined below.
   const PolicyVMTieringPolicy({
     required this.archivedRestorePoint,
   });
@@ -25,4 +25,3 @@ class PolicyVMTieringPolicy {
     );
   }
 }
-

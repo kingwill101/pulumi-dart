@@ -166,6 +166,41 @@ import 'api_subscription_key_parameter_names.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "My Company"
+///   publisher_email     = "company@exmaple.com"
+///   sku_name            = "Developer_1"
+/// }
+/// resource "azure_apimanagement_api" "example" {
+///   name                = "example-api"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   api_management_name = azure_apimanagement_service.example.name
+///   revision            = "1"
+///   display_name        = "Example API"
+///   path                = "example"
+///   protocols           = ["https"]
+///   import = {
+///     content_format = "swagger-link-json"
+///     content_value  = "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/refs/heads/main/internal/services/apimanagement/testdata/api_management_api_schema_swagger.json"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +214,8 @@ import 'api_subscription_key_parameter_names.dart';
 /// import com.pulumi.azure.apimanagement.Api;
 /// import com.pulumi.azure.apimanagement.ApiArgs;
 /// import com.pulumi.azure.apimanagement.inputs.ApiImportArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -285,7 +320,7 @@ class Api extends pulumi.CustomResource {
   late final pulumi.Output<String> displayName;
   /// A `import` block as documented below.
   ///
-  /// &gt; **Note:** The `display_name`, `description`, `contact`, and `license` fields can be imported by the `import` block, which might cause a drift if these fields are set along with the `import` block.
+  /// &gt; **Note:** The `displayName`, `description`, `contact`, and `license` fields can be imported by the `import` block, which might cause a drift if these fields are set along with the `import` block.
   late final pulumi.Output<ApiImport?> import;
   /// Is this the current API Revision?
   late final pulumi.Output<bool> isCurrent;
@@ -295,15 +330,15 @@ class Api extends pulumi.CustomResource {
   late final pulumi.Output<ApiLicense?> license;
   /// The name of the API Management API. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// An `oauth2_authorization` block as documented below.
+  /// An `oauth2Authorization` block as documented below.
   late final pulumi.Output<ApiOauth2Authorization?> oauth2Authorization;
-  /// An `openid_authentication` block as documented below.
+  /// An `openidAuthentication` block as documented below.
   late final pulumi.Output<ApiOpenidAuthentication?> openidAuthentication;
   /// The Path for this API Management API, which is a relative URL which uniquely identifies this API and all of its resource paths within the API Management Service.
   late final pulumi.Output<String> path;
   /// A list of protocols the operations in this API can be invoked. Possible values are `http`, `https`, `ws`, and `wss`.
   ///
-  /// &gt; **Note:** `display_name`, `path` and `protocols` are required when `source_api_id` is not set.
+  /// &gt; **Note:** `displayName`, `path` and `protocols` are required when `sourceApiId` is not set.
   late final pulumi.Output<List<String>> protocols;
   /// The Name of the Resource Group where the API Management API exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
@@ -313,11 +348,11 @@ class Api extends pulumi.CustomResource {
   late final pulumi.Output<String?> revisionDescription;
   /// Absolute URL of the backend service implementing this API.
   ///
-  /// &gt; **Note:** The `service_url` is required when `api_type` is specified as `websocket`.
+  /// &gt; **Note:** The `serviceUrl` is required when `apiType` is specified as `websocket`.
   late final pulumi.Output<String> serviceUrl;
   /// The API id of the source API, which could be in format `azurerm_api_management_api.example.id` or in format `azurerm_api_management_api.example.id;rev=1`
   late final pulumi.Output<String?> sourceApiId;
-  /// A `subscription_key_parameter_names` block as documented below.
+  /// A `subscriptionKeyParameterNames` block as documented below.
   late final pulumi.Output<ApiSubscriptionKeyParameterNames> subscriptionKeyParameterNames;
   /// Should this API require a subscription key? Defaults to `true`.
   late final pulumi.Output<bool?> subscriptionRequired;
@@ -329,7 +364,7 @@ class Api extends pulumi.CustomResource {
   late final pulumi.Output<String?> versionDescription;
   /// The ID of the Version Set which this API is associated with.
   ///
-  /// &gt; **Note:** When `version` is set, `version_set_id` must also be specified
+  /// &gt; **Note:** When `version` is set, `versionSetId` must also be specified
   late final pulumi.Output<String> versionSetId;
 
   /// Creates a new [Api].

@@ -7,6 +7,8 @@ import 'get_elastic_pool_skus.dart';
 class GetElasticPoolResult {
   /// The type of enclave being used by the elastic pool.
   final String enclaveType;
+  /// Specifies the number of high availability replicas for the elastic pool.
+  final int highAvailabilityReplicaCount;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   /// The license type to apply for this elastic pool.
@@ -34,6 +36,7 @@ class GetElasticPoolResult {
 
   /// Creates a new [GetElasticPoolResult].
   /// [enclaveType] The type of enclave being used by the elastic pool.
+  /// [highAvailabilityReplicaCount] Specifies the number of high availability replicas for the elastic pool.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [licenseType] The license type to apply for this elastic pool.
   /// [location] Specifies the supported Azure location where the resource exists.
@@ -49,6 +52,7 @@ class GetElasticPoolResult {
   /// [zoneRedundant] Whether or not this elastic pool is zone redundant.
   const GetElasticPoolResult({
     required this.enclaveType,
+    required this.highAvailabilityReplicaCount,
     required this.id,
     required this.licenseType,
     required this.location,
@@ -67,6 +71,7 @@ class GetElasticPoolResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enclaveType': enclaveType,
+      'highAvailabilityReplicaCount': highAvailabilityReplicaCount,
       'id': id,
       'licenseType': licenseType,
       'location': location,
@@ -86,6 +91,7 @@ class GetElasticPoolResult {
   factory GetElasticPoolResult.fromMap(Map<String, dynamic> map) {
     return GetElasticPoolResult(
       enclaveType: map['enclaveType'] as String,
+      highAvailabilityReplicaCount: map['highAvailabilityReplicaCount'] as int,
       id: map['id'] as String,
       licenseType: map['licenseType'] as String,
       location: map['location'] as String,
@@ -102,4 +108,3 @@ class GetElasticPoolResult {
     );
   }
 }
-

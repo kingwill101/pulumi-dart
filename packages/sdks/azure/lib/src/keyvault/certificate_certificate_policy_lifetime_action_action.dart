@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateCertificatePolicyLifetimeActionAction {
-  /// The Type of action to be performed when the lifetime trigger is triggerec. Possible values include `AutoRenew` and `EmailContacts`.
+  /// The Type of action to be performed when the lifetime trigger is triggered. Possible values include `AutoRenew` and `EmailContacts`.
   final pulumi.Input<String> actionType;
 
   /// Creates a new [CertificateCertificatePolicyLifetimeActionAction].
-  /// [actionType] The Type of action to be performed when the lifetime trigger is triggerec. Possible values include `AutoRenew` and `EmailContacts`.
+  /// [actionType] The Type of action to be performed when the lifetime trigger is triggered. Possible values include `AutoRenew` and `EmailContacts`.
   const CertificateCertificatePolicyLifetimeActionAction({
     required this.actionType,
   });
@@ -24,4 +24,3 @@ class CertificateCertificatePolicyLifetimeActionAction {
     );
   }
 }
-

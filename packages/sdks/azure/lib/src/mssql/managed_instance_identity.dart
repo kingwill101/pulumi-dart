@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedInstanceIdentity {
   /// Specifies a list of User Assigned Managed Identity IDs to be assigned to this SQL Managed Instance. Required when `type` includes `UserAssigned`.
   ///
-  /// &gt; **Note:** The assigned `principal_id` and `tenant_id` can be retrieved after the identity `type` has been set to `SystemAssigned` and SQL Managed Instance has been created.
+  /// &gt; **Note:** The assigned `principalId` and `tenantId` can be retrieved after the identity `type` has been set to `SystemAssigned` and SQL Managed Instance has been created.
   final pulumi.Input<List<String>>? identityIds;
   /// The Principal ID for the Service Principal associated with the Identity of this SQL Managed Instance.
   final pulumi.Input<String>? principalId;
@@ -44,4 +44,3 @@ class ManagedInstanceIdentity {
     );
   }
 }
-

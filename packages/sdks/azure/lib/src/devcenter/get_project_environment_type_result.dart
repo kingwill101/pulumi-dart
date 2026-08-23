@@ -20,7 +20,7 @@ class GetProjectEnvironmentTypeResult {
   final String name;
   /// A mapping of tags assigned to the Dev Center Project Environment Type.
   final Map<String, String> tags;
-  /// A `user_role_assignment` block as defined below.
+  /// A `userRoleAssignment` block as defined below.
   final List<GetProjectEnvironmentTypeUserRoleAssignment> userRoleAssignments;
 
   /// Creates a new [GetProjectEnvironmentTypeResult].
@@ -32,7 +32,7 @@ class GetProjectEnvironmentTypeResult {
   /// [location] The Azure Region where the Dev Center Project Environment Type exists.
   /// [name] Required.
   /// [tags] A mapping of tags assigned to the Dev Center Project Environment Type.
-  /// [userRoleAssignments] A `user_role_assignment` block as defined below.
+  /// [userRoleAssignments] A `userRoleAssignment` block as defined below.
   const GetProjectEnvironmentTypeResult({
     required this.creatorRoleAssignmentRoles,
     required this.deploymentTargetId,
@@ -73,4 +73,3 @@ class GetProjectEnvironmentTypeResult {
     );
   }
 }
-

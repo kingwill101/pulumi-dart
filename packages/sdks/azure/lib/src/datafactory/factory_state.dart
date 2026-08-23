@@ -10,11 +10,11 @@ import 'factory_vsts_configuration.dart';
 class FactoryState {
   /// Specifies the Azure Key Vault Key ID to be used as the Customer Managed Key (CMK) for double encryption. Required with user assigned identity.
   final pulumi.Input<String>? customerManagedKeyId;
-  /// Specifies the ID of the user assigned identity associated with the Customer Managed Key. Must be supplied at factory creation if `customer_managed_key_id` is set. Can be left empty once factory is created to use the system assigned identity. See the [Microsoft documentation](https://learn.microsoft.com/en-us/azure/data-factory/enable-customer-managed-key) for more information.
+  /// Specifies the ID of the user assigned identity associated with the Customer Managed Key. Must be supplied at factory creation if `customerManagedKeyId` is set. Can be left empty once factory is created to use the system assigned identity. See the [Microsoft documentation](https://learn.microsoft.com/en-us/azure/data-factory/enable-customer-managed-key) for more information.
   final pulumi.Input<String>? customerManagedKeyIdentityId;
-  /// A `github_configuration` block as defined below.
+  /// A `githubConfiguration` block as defined below.
   final pulumi.Input<FactoryGithubConfiguration>? githubConfiguration;
-  /// A list of `global_parameter` blocks as defined above.
+  /// A list of `globalParameter` blocks as defined above.
   final pulumi.Input<List<FactoryGlobalParameter>>? globalParameters;
   /// An `identity` block as defined below.
   final pulumi.Input<FactoryIdentity>? identity;
@@ -32,14 +32,14 @@ class FactoryState {
   final pulumi.Input<String>? resourceGroupName;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A `vsts_configuration` block as defined below.
+  /// A `vstsConfiguration` block as defined below.
   final pulumi.Input<FactoryVstsConfiguration>? vstsConfiguration;
 
   /// Creates a new [FactoryState].
   /// [customerManagedKeyId] Specifies the Azure Key Vault Key ID to be used as the Customer Managed Key (CMK) for double encryption. Required with user assigned identity.
-  /// [customerManagedKeyIdentityId] Specifies the ID of the user assigned identity associated with the Customer Managed Key. Must be supplied at factory creation if `customer_managed_key_id` is set. Can be left empty once factory is created to use the system assigned identity. See the [Microsoft documentation](https://learn.microsoft.com/en-us/azure/data-factory/enable-customer-managed-key) for more information.
-  /// [githubConfiguration] A `github_configuration` block as defined below.
-  /// [globalParameters] A list of `global_parameter` blocks as defined above.
+  /// [customerManagedKeyIdentityId] Specifies the ID of the user assigned identity associated with the Customer Managed Key. Must be supplied at factory creation if `customerManagedKeyId` is set. Can be left empty once factory is created to use the system assigned identity. See the [Microsoft documentation](https://learn.microsoft.com/en-us/azure/data-factory/enable-customer-managed-key) for more information.
+  /// [githubConfiguration] A `githubConfiguration` block as defined below.
+  /// [globalParameters] A list of `globalParameter` blocks as defined above.
   /// [identity] An `identity` block as defined below.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [managedVirtualNetworkEnabled] Is Managed Virtual Network enabled?
@@ -48,7 +48,7 @@ class FactoryState {
   /// [purviewId] Specifies the ID of the purview account resource associated with the Data Factory.
   /// [resourceGroupName] The name of the resource group in which to create the Data Factory. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  /// [vstsConfiguration] A `vsts_configuration` block as defined below.
+  /// [vstsConfiguration] A `vstsConfiguration` block as defined below.
   const FactoryState({
     this.customerManagedKeyId,
     this.customerManagedKeyIdentityId,
@@ -101,4 +101,3 @@ class FactoryState {
     );
   }
 }
-

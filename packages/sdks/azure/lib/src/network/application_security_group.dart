@@ -99,6 +99,28 @@ import 'application_security_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tf-test"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_applicationsecuritygroup" "example" {
+///   name                = "tf-appsecuritygroup"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tags = {
+///     "Hello" = "World"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +131,8 @@ import 'application_security_group_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.network.ApplicationSecurityGroup;
 /// import com.pulumi.azure.network.ApplicationSecurityGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

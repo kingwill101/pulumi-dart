@@ -10,7 +10,9 @@ class ManagedInstanceTransparentDataEncryptionState {
   ///
   /// &gt; **Note:** In order to use customer managed keys, the identity of the MSSQL Managed Instance must have the following permissions on the key vault: 'get', 'wrapKey' and 'unwrapKey'
   ///
-  /// &gt; **Note:** If `managed_instance_id` denotes a secondary instance deployed for disaster recovery purposes, then the `key_vault_key_id` should be the same key used for the primary instance's transparent data encryption. Both primary and secondary instances should be encrypted with same key material.
+  /// &gt; **Note:** When `autoRotationEnabled` is `true`, `keyVaultKeyId` can be either a versioned or versionless Key Vault Key ID. When using a versionless `keyVaultKeyId`, the principal running Terraform must have permission to read the latest key version from Key Vault. When `autoRotationEnabled` is `false`, `keyVaultKeyId` must be a versioned Key Vault Key ID.
+  ///
+  /// &gt; **Note:** If `managedInstanceId` denotes a secondary instance deployed for disaster recovery purposes, then the `keyVaultKeyId` should be the same key used for the primary instance's transparent data encryption. Both primary and secondary instances should be encrypted with same key material.
   final pulumi.Input<String>? keyVaultKeyId;
   final pulumi.Input<String>? managedHsmKeyId;
   /// Specifies the name of the MS SQL Managed Instance. Changing this forces a new resource to be created.
@@ -46,4 +48,3 @@ class ManagedInstanceTransparentDataEncryptionState {
     );
   }
 }
-

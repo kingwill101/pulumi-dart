@@ -202,6 +202,52 @@ import 'flexible_server_virtual_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "East US"
+/// }
+/// resource "azure_postgresql_flexibleserver" "example" {
+///   name                          = "example"
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   location                      = azure_core_resourcegroup.example.location
+///   version                       = "16"
+///   public_network_access_enabled = false
+///   administrator_login           = "psqladmin"
+///   administrator_password        = "H@Sh1CoR3!"
+///   zone                          = "1"
+///   storage_mb                    = 32768
+///   storage_tier                  = "P30"
+///   sku_name                      = "GP_Standard_D2ads_v5"
+/// }
+/// resource "azure_postgresql_flexibleserver" "example_replica" {
+///   name                          = "example-replica"
+///   resource_group_name           = azure_postgresql_flexibleserver.example.resource_group_name
+///   location                      = azure_postgresql_flexibleserver.example.location
+///   create_mode                   = "Replica"
+///   source_server_id              = azure_postgresql_flexibleserver.example.id
+///   version                       = "16"
+///   public_network_access_enabled = false
+///   zone                          = "1"
+///   storage_mb                    = 32768
+///   storage_tier                  = "P30"
+///   sku_name                      = "GP_Standard_D2ads_v5"
+/// }
+/// resource "azure_postgresql_flexibleservervirtualendpoint" "example" {
+///   name              = "example-endpoint-1"
+///   source_server_id  = azure_postgresql_flexibleserver.example.id
+///   replica_server_id = azure_postgresql_flexibleserver.example_replica.id
+///   type              = "ReadWrite"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +260,8 @@ import 'flexible_server_virtual_endpoint_state.dart';
 /// import com.pulumi.azure.postgresql.FlexibleServerArgs;
 /// import com.pulumi.azure.postgresql.FlexibleServerVirtualEndpoint;
 /// import com.pulumi.azure.postgresql.FlexibleServerVirtualEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -318,7 +364,7 @@ import 'flexible_server_virtual_endpoint_state.dart';
 /// ```
 ///
 ///
-/// &gt; **Note:** If creating multiple replicas, an error can occur if virtual endpoints are created before all replicas have been completed. To avoid this error, use a `depends_on` property on `azure.postgresql.FlexibleServerVirtualEndpoint` that references all Postgres Flexible Server Replicas.
+/// &gt; **Note:** If creating multiple replicas, an error can occur if virtual endpoints are created before all replicas have been completed. To avoid this error, use a `dependsOn` property on `azure.postgresql.FlexibleServerVirtualEndpoint` that references all Postgres Flexible Server Replicas.
 ///
 /// ## API Providers
 ///
@@ -338,7 +384,7 @@ class FlexibleServerVirtualEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The Resource ID of the *Replica* Postgres Flexible Server this should be associated with
   ///
-  /// &gt; **Note:** If a fail-over has occurred, you will be unable to update `replica_server_id`. You can remove the resource from state and reimport it back in with `source_server_id` and `replica_server_id` flipped and then update `replica_server_id`.
+  /// &gt; **Note:** If a fail-over has occurred, you will be unable to update `replicaServerId`. You can remove the resource from state and reimport it back in with `sourceServerId` and `replicaServerId` flipped and then update `replicaServerId`.
   late final pulumi.Output<String> replicaServerId;
   /// The Resource ID of the *Source* Postgres Flexible Server this should be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sourceServerId;

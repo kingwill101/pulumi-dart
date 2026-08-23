@@ -26,15 +26,15 @@ class ThreatIntelligenceIndicatorState {
   final pulumi.Input<String>? externalId;
   /// the External last updated time in UTC.
   final pulumi.Input<String>? externalLastUpdatedTimeUtc;
-  /// One or more `external_reference` blocks as defined below.
+  /// One or more `externalReference` blocks as defined below.
   final pulumi.Input<List<ThreatIntelligenceIndicatorExternalReference>>? externalReferences;
-  /// One or more `granular_marking` blocks as defined below.
+  /// One or more `granularMarking` blocks as defined below.
   final pulumi.Input<List<ThreatIntelligenceIndicatorGranularMarking>>? granularMarkings;
   /// The guid of this Sentinel Threat Intelligence Indicator.
   final pulumi.Input<String>? guid;
   /// A list of indicator types of this Threat Intelligence Indicator.
   final pulumi.Input<List<String>>? indicatorTypes;
-  /// One or more `kill_chain_phase` blocks as defined below.
+  /// One or more `killChainPhase` blocks as defined below.
   final pulumi.Input<List<ThreatIntelligenceIndicatorKillChainPhase>>? killChainPhases;
   /// The language of the Threat Intelligence Indicator.
   final pulumi.Input<String>? language;
@@ -42,9 +42,9 @@ class ThreatIntelligenceIndicatorState {
   final pulumi.Input<String>? lastUpdatedTimeUtc;
   /// Specifies a list of Threat Intelligence marking references.
   final pulumi.Input<List<String>>? objectMarkingRefs;
-  /// A `parsed_pattern` block as defined below.
+  /// A `parsedPattern` block as defined below.
   final pulumi.Input<List<ThreatIntelligenceIndicatorParsedPattern>>? parsedPatterns;
-  /// The pattern used by the Threat Intelligence Indicator. When `pattern_type` set to `file`, `pattern` must be specified with `&lt;HashName&gt;:&lt;Value&gt;` format, such as `MD5:78ecc5c05cd8b79af480df2f8fba0b9d`.
+  /// The pattern used by the Threat Intelligence Indicator. When `patternType` set to `file`, `pattern` must be specified with `&lt;HashName&gt;:&lt;Value&gt;` format, such as `MD5:78ecc5c05cd8b79af480df2f8fba0b9d`.
   final pulumi.Input<String>? pattern;
   /// The type of pattern used by the Threat Intelligence Indicator. Possible values are `domain-name`, `file`, `ipv4-addr`, `ipv6-addr` and `url`.
   final pulumi.Input<String>? patternType;
@@ -75,16 +75,16 @@ class ThreatIntelligenceIndicatorState {
   /// [extension] The extension config of the Threat Intelligence Indicator in JSON format.
   /// [externalId] The external ID of the Threat Intelligence Indicator.
   /// [externalLastUpdatedTimeUtc] the External last updated time in UTC.
-  /// [externalReferences] One or more `external_reference` blocks as defined below.
-  /// [granularMarkings] One or more `granular_marking` blocks as defined below.
+  /// [externalReferences] One or more `externalReference` blocks as defined below.
+  /// [granularMarkings] One or more `granularMarking` blocks as defined below.
   /// [guid] The guid of this Sentinel Threat Intelligence Indicator.
   /// [indicatorTypes] A list of indicator types of this Threat Intelligence Indicator.
-  /// [killChainPhases] One or more `kill_chain_phase` blocks as defined below.
+  /// [killChainPhases] One or more `killChainPhase` blocks as defined below.
   /// [language] The language of the Threat Intelligence Indicator.
   /// [lastUpdatedTimeUtc] The last updated time of the Threat Intelligence Indicator in UTC.
   /// [objectMarkingRefs] Specifies a list of Threat Intelligence marking references.
-  /// [parsedPatterns] A `parsed_pattern` block as defined below.
-  /// [pattern] The pattern used by the Threat Intelligence Indicator. When `pattern_type` set to `file`, `pattern` must be specified with `&lt;HashName&gt;:&lt;Value&gt;` format, such as `MD5:78ecc5c05cd8b79af480df2f8fba0b9d`.
+  /// [parsedPatterns] A `parsedPattern` block as defined below.
+  /// [pattern] The pattern used by the Threat Intelligence Indicator. When `patternType` set to `file`, `pattern` must be specified with `&lt;HashName&gt;:&lt;Value&gt;` format, such as `MD5:78ecc5c05cd8b79af480df2f8fba0b9d`.
   /// [patternType] The type of pattern used by the Threat Intelligence Indicator. Possible values are `domain-name`, `file`, `ipv4-addr`, `ipv6-addr` and `url`.
   /// [patternVersion] The version of a Threat Intelligence entity.
   /// [revoked] Whether the Threat Intelligence entity revoked.
@@ -191,4 +191,3 @@ class ThreatIntelligenceIndicatorState {
     );
   }
 }
-

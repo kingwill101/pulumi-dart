@@ -9,7 +9,7 @@ class AuthomationRuleActionIncident {
   final pulumi.Input<String>? classification;
   /// The comment why the incident is to be closed.
   ///
-  /// &gt; **Note:** The `classification_comment` is allowed to set only when `status` is `Closed`.
+  /// &gt; **Note:** The `classificationComment` is allowed to set only when `status` is `Closed`.
   final pulumi.Input<String>? classificationComment;
   /// Specifies a list of labels to add to the incident.
   final pulumi.Input<List<String>>? labels;
@@ -19,7 +19,7 @@ class AuthomationRuleActionIncident {
   final pulumi.Input<String>? ownerId;
   /// The severity to add to the incident. Possible values are `High`, `Informational`, `Low` and `Medium`.
   ///
-  /// &gt; **Note:** At least one of `status`, `labels`, `owner_id` and `severity` has to be set.
+  /// &gt; **Note:** At least one of `status`, `labels`, `ownerId` and `severity` has to be set.
   final pulumi.Input<String>? severity;
   /// The status to set to the incident. Possible values are: `Active`, `Closed`, `New`.
   final pulumi.Input<String>? status;
@@ -66,4 +66,3 @@ class AuthomationRuleActionIncident {
     );
   }
 }
-

@@ -278,6 +278,64 @@ import 'linked_service_azure_databricks_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "East US"
+/// }
+/// #Create a Linked Service using managed identity and new cluster config
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "TestDtaFactory92783401247"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// #Create a databricks instance
+/// resource "azure_databricks_workspace" "example" {
+///   name                = "databricks-test"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "standard"
+/// }
+/// resource "azure_datafactory_linkedserviceazuredatabricks" "msi_linked" {
+///   name             = "ADBLinkedServiceViaMSI"
+///   data_factory_id  = azure_datafactory_factory.example.id
+///   description      = "ADB Linked Service via MSI"
+///   adb_domain       ="https://${azure_databricks_workspace.example.workspace_url}"
+///   msi_workspace_id = azure_databricks_workspace.example.id
+///   new_cluster_config = {
+///     node_type             = "Standard_NC12"
+///     cluster_version       = "5.5.x-gpu-scala2.11"
+///     min_number_of_workers = 1
+///     max_number_of_workers = 5
+///     driver_node_type      = "Standard_NC12"
+///     log_destination       = "dbfs:/logs"
+///     custom_tags = {
+///       "custom_tag1" = "sct_value_1"
+///       "custom_tag2" = "sct_value_2"
+///     }
+///     spark_config = {
+///       "config1" = "value1"
+///       "config2" = "value2"
+///     }
+///     spark_environment_variables = {
+///       "envVar1" = "value1"
+///       "envVar2" = "value2"
+///     }
+///     init_scripts = ["init.sh", "init2.sh"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -294,8 +352,8 @@ import 'linked_service_azure_databricks_state.dart';
 /// import com.pulumi.azure.datafactory.LinkedServiceAzureDatabricks;
 /// import com.pulumi.azure.datafactory.LinkedServiceAzureDatabricksArgs;
 /// import com.pulumi.azure.datafactory.inputs.LinkedServiceAzureDatabricksNewClusterConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -581,6 +639,41 @@ import 'linked_service_azure_databricks_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "East US"
+/// }
+/// #Link to an existing cluster via access token
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "TestDtaFactory92783401247"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// #Create a databricks instance
+/// resource "azure_databricks_workspace" "example" {
+///   name                = "databricks-test"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "standard"
+/// }
+/// resource "azure_datafactory_linkedserviceazuredatabricks" "at_linked" {
+///   name                = "ADBLinkedServiceViaAccessToken"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   description         = "ADB Linked Service via Access Token"
+///   existing_cluster_id = "0308-201146-sly615"
+///   access_token        = "SomeDatabricksAccessToken"
+///   adb_domain          ="https://${azure_databricks_workspace.example.workspace_url}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -595,8 +688,8 @@ import 'linked_service_azure_databricks_state.dart';
 /// import com.pulumi.azure.databricks.WorkspaceArgs;
 /// import com.pulumi.azure.datafactory.LinkedServiceAzureDatabricks;
 /// import com.pulumi.azure.datafactory.LinkedServiceAzureDatabricksArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -697,20 +790,20 @@ class LinkedServiceAzureDatabricks extends pulumi.CustomResource {
   late final pulumi.Output<String> dataFactoryId;
   /// The description for the Data Factory Linked Service.
   late final pulumi.Output<String?> description;
-  /// The cluster_id of an existing cluster within the linked ADB instance.
+  /// The clusterId of an existing cluster within the linked ADB instance.
   late final pulumi.Output<String?> existingClusterId;
-  /// Leverages an instance pool within the linked ADB instance as one `instance_pool` block defined below.
+  /// Leverages an instance pool within the linked ADB instance as one `instancePool` block defined below.
   late final pulumi.Output<LinkedServiceAzureDatabricksInstancePool?> instancePool;
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   late final pulumi.Output<String?> integrationRuntimeName;
-  /// Authenticate to ADB via Azure Key Vault Linked Service as defined in the `key_vault_password` block below.
+  /// Authenticate to ADB via Azure Key Vault Linked Service as defined in the `keyVaultPassword` block below.
   late final pulumi.Output<LinkedServiceAzureDatabricksKeyVaultPassword?> keyVaultPassword;
   late final pulumi.Output<String> msiWorkSpaceResourceId;
   /// Authenticate to ADB via managed service identity.
   late final pulumi.Output<String> msiWorkspaceId;
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
-  /// Creates new clusters within the linked ADB instance as defined in the `new_cluster_config` block below.
+  /// Creates new clusters within the linked ADB instance as defined in the `newClusterConfig` block below.
   late final pulumi.Output<LinkedServiceAzureDatabricksNewClusterConfig?> newClusterConfig;
   /// A map of parameters to associate with the Data Factory Linked Service.
   late final pulumi.Output<Map<String, String>?> parameters;

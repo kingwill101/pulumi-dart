@@ -12,7 +12,7 @@ class ManagementGroupState {
   final pulumi.Input<String>? parentManagementGroupId;
   /// A list of Subscription GUIDs which should be assigned to the Management Group.
   ///
-  /// &gt; **Note:** To clear all Subscriptions from the Management Group set `subscription_ids` to an empty list
+  /// &gt; **Note:** To clear all Subscriptions from the Management Group set `subscriptionIds` to an empty list
   final pulumi.Input<List<String>>? subscriptionIds;
   /// The Management Group ID with the Tenant ID prefix.
   final pulumi.Input<String>? tenantScopedId;
@@ -51,4 +51,3 @@ class ManagementGroupState {
     );
   }
 }
-

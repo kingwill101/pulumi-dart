@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyVMInstantRestoreResourceGroup {
-  /// The prefix for the `instant_restore_resource_group` name.
+  /// The prefix for the `instantRestoreResourceGroup` name.
   final pulumi.Input<String> prefix;
-  /// The suffix for the `instant_restore_resource_group` name.
+  /// The suffix for the `instantRestoreResourceGroup` name.
   final pulumi.Input<String>? suffix;
 
   /// Creates a new [PolicyVMInstantRestoreResourceGroup].
-  /// [prefix] The prefix for the `instant_restore_resource_group` name.
-  /// [suffix] The suffix for the `instant_restore_resource_group` name.
+  /// [prefix] The prefix for the `instantRestoreResourceGroup` name.
+  /// [suffix] The suffix for the `instantRestoreResourceGroup` name.
   const PolicyVMInstantRestoreResourceGroup({
     required this.prefix,
     this.suffix,
@@ -30,4 +30,3 @@ class PolicyVMInstantRestoreResourceGroup {
     );
   }
 }
-

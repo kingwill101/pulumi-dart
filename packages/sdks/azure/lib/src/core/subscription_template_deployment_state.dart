@@ -18,7 +18,7 @@ class SubscriptionTemplateDeploymentState {
   final pulumi.Input<Map<String, String>>? tags;
   /// The contents of the ARM Template which should be deployed into this Subscription.
   final pulumi.Input<String>? templateContent;
-  /// The ID of the Template Spec Version to deploy into the Subscription. Cannot be specified with `template_content`.
+  /// The ID of the Template Spec Version to deploy into the Subscription. Cannot be specified with `templateContent`.
   final pulumi.Input<String>? templateSpecVersionId;
 
   /// Creates a new [SubscriptionTemplateDeploymentState].
@@ -29,7 +29,7 @@ class SubscriptionTemplateDeploymentState {
   /// [parametersContent] The contents of the ARM Template parameters file - containing a JSON list of parameters.
   /// [tags] A mapping of tags which should be assigned to the Subscription Template Deployment.
   /// [templateContent] The contents of the ARM Template which should be deployed into this Subscription.
-  /// [templateSpecVersionId] The ID of the Template Spec Version to deploy into the Subscription. Cannot be specified with `template_content`.
+  /// [templateSpecVersionId] The ID of the Template Spec Version to deploy into the Subscription. Cannot be specified with `templateContent`.
   const SubscriptionTemplateDeploymentState({
     this.debugLevel,
     this.location,
@@ -67,4 +67,3 @@ class SubscriptionTemplateDeploymentState {
     );
   }
 }
-

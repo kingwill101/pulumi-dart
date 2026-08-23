@@ -7,6 +7,77 @@ import 'custom_domain_state.dart';
 /// ## Example Usage
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_webpubsub_service" "example" {
+///   name                = "example-webpubsub"
+///   location            = testAzurermResourceGroup.location
+///   resource_group_name = testAzurermResourceGroup.name
+///   sku = [{
+///     "name"     = "Premium_P1"
+///     "capacity" = 1
+///   }]
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "examplekeyvault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name            = "premium"
+///   access_policies {
+///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
+///     object_id               = data.azure_core_getclientconfig.current.object_id
+///     certificate_permissions = ["Create", "Get", "List"]
+///     secret_permissions      = ["Get", "List"]
+///   }
+///   access_policies {
+///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
+///     object_id               = testAzurermWebPubsub.identity[0].principalId
+///     certificate_permissions = ["Create", "Get", "List"]
+///     secret_permissions      = ["Get", "List"]
+///   }
+/// }
+/// resource "azure_keyvault_certificate" "example" {
+///   name         = "imported-cert"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   certificate = {
+///     contents = filebase64("certificate-to-import.pfx")
+///     password = ""
+///   }
+/// }
+/// resource "azure_webpubsub_customcertificate" "test" {
+///   depends_on            = [exampleAzurermKeyVaultAccessPolicy]
+///   name                  = "example-cert"
+///   web_pubsub_id         = azure_webpubsub_service.example.id
+///   custom_certificate_id = azure_keyvault_certificate.example.id
+/// }
+/// resource "azure_webpubsub_customdomain" "test" {
+///   name                             = "example-domain"
+///   domain_name                      = "tftest.com"
+///   web_pubsub_id                    = testAzurermWebPubsub.id
+///   web_pubsub_custom_certificate_id = azure_webpubsub_customcertificate.test.id
+/// }
+/// ```
 /// ```yaml
 /// resources:
 ///   example:

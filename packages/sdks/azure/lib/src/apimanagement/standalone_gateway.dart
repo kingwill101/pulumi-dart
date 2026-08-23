@@ -232,6 +232,53 @@ import 'standalone_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-network"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+///   delegations {
+///     name = "apim-delegation"
+///     service_delegation = {
+///       name    = "Microsoft.Web/serverFarms"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
+///     }
+///   }
+/// }
+/// resource "azure_apimanagement_standalonegateway" "example" {
+///   name                 = "example-gateway-flexible"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resourcegroup.example.location
+///   virtual_network_type = "External"
+///   backend_subnet_id    = azure_network_subnet.example.id
+///   sku = {
+///     capacity = 1
+///     name     = "WorkspaceGatewayPremium"
+///   }
+///   tags = {
+///     "Hello" = "World"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -249,8 +296,8 @@ import 'standalone_gateway_state.dart';
 /// import com.pulumi.azure.apimanagement.StandaloneGateway;
 /// import com.pulumi.azure.apimanagement.StandaloneGatewayArgs;
 /// import com.pulumi.azure.apimanagement.inputs.StandaloneGatewaySkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

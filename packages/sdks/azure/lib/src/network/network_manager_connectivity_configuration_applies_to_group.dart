@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkManagerConnectivityConfigurationAppliesToGroup {
   /// Indicates whether to global mesh is supported for this group. Possible values are `true` and `false`.
   ///
-  /// &gt; **Note:** A group can be global only if the `group_connectivity` is `DirectlyConnected`.
+  /// &gt; **Note:** A group can be global only if the `groupConnectivity` is `DirectlyConnected`.
   final pulumi.Input<bool>? globalMeshEnabled;
   /// Specifies the group connectivity type. Possible values are `None` and `DirectlyConnected`.
   final pulumi.Input<String> groupConnectivity;
@@ -44,4 +44,3 @@ class NetworkManagerConnectivityConfigurationAppliesToGroup {
     );
   }
 }
-

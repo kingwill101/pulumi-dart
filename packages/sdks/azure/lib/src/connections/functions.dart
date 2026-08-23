@@ -77,6 +77,30 @@ import 'get_managed_api_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_connections_getapiconnection" "example" {
+///   name                = "example-connection"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "connectionId" {
+///   value = data.azure_connections_getapiconnection.example.id
+/// }
+/// output "connectionName" {
+///   value = data.azure_connections_getapiconnection.example.name
+/// }
+/// output "managedApiId" {
+///   value = data.azure_connections_getapiconnection.example.managed_api_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +109,8 @@ import 'get_managed_api_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.connections.ConnectionsFunctions;
 /// import com.pulumi.azure.connections.inputs.GetApiConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -210,6 +234,24 @@ Future<GetApiConnectionResult> getApiConnection(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_connections_getmanagedapi" "example" {
+///   name     = "servicebus"
+///   location = "West Europe"
+/// }
+///
+/// output "id" {
+///   value = data.azure_connections_getmanagedapi.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -218,8 +260,8 @@ Future<GetApiConnectionResult> getApiConnection(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.connections.ConnectionsFunctions;
 /// import com.pulumi.azure.connections.inputs.GetManagedApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

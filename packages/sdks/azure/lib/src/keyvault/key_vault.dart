@@ -7,7 +7,7 @@ import 'key_vault_state.dart';
 ///
 /// ## Disclaimers
 ///
-/// &gt; **Note:** It's possible to define Key Vault Access Policies both within the `azure.keyvault.KeyVault` resource via the `access_policy` block and by using the `azure.keyvault.AccessPolicy` resource. However it's not possible to use both methods to manage Access Policies within a KeyVault, since there'll be conflicts.
+/// &gt; **Note:** It's possible to define Key Vault Access Policies both within the `azure.keyvault.KeyVault` resource via the `accessPolicy` block and by using the `azure.keyvault.AccessPolicy` resource. However it's not possible to use both methods to manage Access Policies within a KeyVault, since there'll be conflicts.
 ///
 /// &gt; **Note:** It's possible to define Key Vault Certificate Contacts both within the `azure.keyvault.KeyVault` resource via the `contact` block and by using the `azure.keyvault.CertificateContacts` resource. However it's not possible to use both methods to manage Certificate Contacts within a KeyVault, since there'll be conflicts.
 ///
@@ -170,6 +170,40 @@ import 'key_vault_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                        = "examplekeyvault"
+///   location                    = azure_core_resourcegroup.example.location
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   enabled_for_disk_encryption = true
+///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
+///   soft_delete_retention_days  = 7
+///   purge_protection_enabled    = false
+///   sku_name                    = "standard"
+///   access_policies {
+///     tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///     object_id           = data.azure_core_getclientconfig.current.object_id
+///     key_permissions     = ["Get"]
+///     secret_permissions  = ["Get"]
+///     storage_permissions = ["Get"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +216,8 @@ import 'key_vault_state.dart';
 /// import com.pulumi.azure.keyvault.KeyVault;
 /// import com.pulumi.azure.keyvault.KeyVaultArgs;
 /// import com.pulumi.azure.keyvault.inputs.KeyVaultAccessPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,7 +303,7 @@ import 'key_vault_state.dart';
 class KeyVault extends pulumi.CustomResource {
   /// A list of up to 1024 objects describing access policies, as described below.
   ///
-  /// &gt; **Note:** Since `access_policy` can be configured both inline and via the separate `azure.keyvault.AccessPolicy` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
+  /// &gt; **Note:** Since `accessPolicy` can be configured both inline and via the separate `azure.keyvault.AccessPolicy` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
   late final pulumi.Output<List<Map<String, dynamic>>> accessPolicies;
   late final pulumi.Output<List<Map<String, dynamic>>> contacts;
   late final pulumi.Output<bool> enableRbacAuthorization;
@@ -283,13 +317,13 @@ class KeyVault extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// Specifies the name of the Key Vault. Changing this forces a new resource to be created. The name must be globally unique. If the vault is in a recoverable state then the vault will need to be purged before reusing the name.
   late final pulumi.Output<String> name;
-  /// A `network_acls` block as defined below.
+  /// A `networkAcls` block as defined below.
   late final pulumi.Output<KeyVaultNetworkAcls> networkAcls;
   /// Whether public network access is allowed for this Key Vault. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
   /// Is Purge Protection enabled for this Key Vault?
   ///
-  /// !&gt; **Note:** Once Purge Protection has been Enabled it's not possible to Disable it. Support for [disabling purge protection is being tracked in this Azure API issue](https://github.com/Azure/azure-rest-api-specs/issues/8075). Deleting the Key Vault with Purge Protection Enabled will schedule the Key Vault to be deleted (which will happen by Azure in the configured number of days, currently 90 days).
+  /// &gt; **Note:** Once Purge Protection has been Enabled it's not possible to Disable it. Support for [disabling purge protection is being tracked in this Azure API issue](https://github.com/Azure/azure-rest-api-specs/issues/8075). Deleting the Key Vault with Purge Protection Enabled will schedule the Key Vault to be deleted (which will happen by Azure in the configured number of days, currently 90 days).
   late final pulumi.Output<bool?> purgeProtectionEnabled;
   /// Boolean flag to specify whether Azure Key Vault uses Role Based Access Control (RBAC) for authorization of data actions.
   ///

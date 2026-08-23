@@ -146,6 +146,36 @@ import 'vpn_site_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualwan" "example" {
+///   name                = "example-vwan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_vpnsite" "example" {
+///   name                = "site1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   address_cidrs       = ["10.0.0.0/24"]
+///   links {
+///     name       = "link1"
+///     ip_address = "10.0.0.1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -159,8 +189,8 @@ import 'vpn_site_state.dart';
 /// import com.pulumi.azure.network.VpnSite;
 /// import com.pulumi.azure.network.VpnSiteArgs;
 /// import com.pulumi.azure.network.inputs.VpnSiteLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -245,7 +275,7 @@ import 'vpn_site_state.dart';
 class VpnSite extends pulumi.CustomResource {
   /// Specifies a list of IP address CIDRs that are located on your on-premises site. Traffic destined for these address spaces is routed to your local site.
   ///
-  /// &gt; **Note:** The `address_cidrs` has to be set when the `link.bgp` isn't specified.
+  /// &gt; **Note:** The `addressCidrs` has to be set when the `link.bgp` isn't specified.
   late final pulumi.Output<List<String>?> addressCidrs;
   /// The model of the VPN device.
   late final pulumi.Output<String?> deviceModel;
@@ -257,7 +287,7 @@ class VpnSite extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// The name which should be used for this VPN Site. Changing this forces a new VPN Site to be created.
   late final pulumi.Output<String> name;
-  /// An `o365_policy` block as defined below.
+  /// An `o365Policy` block as defined below.
   late final pulumi.Output<VpnSiteO365Policy> o365Policy;
   /// The name of the Resource Group where the VPN Site should exist. Changing this forces a new VPN Site to be created.
   late final pulumi.Output<String> resourceGroupName;

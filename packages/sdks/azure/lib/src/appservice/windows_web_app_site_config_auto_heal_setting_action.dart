@@ -6,14 +6,14 @@ import 'windows_web_app_site_config_auto_heal_setting_action_custom_action.dart'
 class WindowsWebAppSiteConfigAutoHealSettingAction {
   /// Predefined action to be taken to an Auto Heal trigger. Possible values include: `Recycle`, `LogEvent`, and `CustomAction`.
   final pulumi.Input<String> actionType;
-  /// A `custom_action` block as defined below.
+  /// A `customAction` block as defined below.
   final pulumi.Input<WindowsWebAppSiteConfigAutoHealSettingActionCustomAction>? customAction;
   /// The minimum amount of time in `hh:mm:ss` the Windows Web App must have been running before the defined action will be run in the event of a trigger.
   final pulumi.Input<String>? minimumProcessExecutionTime;
 
   /// Creates a new [WindowsWebAppSiteConfigAutoHealSettingAction].
   /// [actionType] Predefined action to be taken to an Auto Heal trigger. Possible values include: `Recycle`, `LogEvent`, and `CustomAction`.
-  /// [customAction] A `custom_action` block as defined below.
+  /// [customAction] A `customAction` block as defined below.
   /// [minimumProcessExecutionTime] The minimum amount of time in `hh:mm:ss` the Windows Web App must have been running before the defined action will be run in the event of a trigger.
   const WindowsWebAppSiteConfigAutoHealSettingAction({
     required this.actionType,
@@ -37,4 +37,3 @@ class WindowsWebAppSiteConfigAutoHealSettingAction {
     );
   }
 }
-

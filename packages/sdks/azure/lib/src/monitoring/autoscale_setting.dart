@@ -201,7 +201,7 @@ import 'autoscale_setting_state.dart';
 ///                     "time_window": "PT5M",
 ///                     "time_aggregation": "Average",
 ///                     "operator": "GreaterThan",
-///                     "threshold": 75,
+///                     "threshold": float(75),
 ///                     "metric_namespace": "microsoft.compute/virtualmachinescalesets",
 ///                     "dimensions": [{
 ///                         "name": "AppName",
@@ -225,7 +225,7 @@ import 'autoscale_setting_state.dart';
 ///                     "time_window": "PT5M",
 ///                     "time_aggregation": "Average",
 ///                     "operator": "LessThan",
-///                     "threshold": 25,
+///                     "threshold": float(25),
 ///                 },
 ///                 "scale_action": {
 ///                     "direction": "Decrease",
@@ -597,6 +597,131 @@ import 'autoscale_setting_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "autoscalingTest"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "acctvn"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "acctsub"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_compute_linuxvirtualmachinescaleset" "example" {
+///   name                = "exampleset"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   upgrade_mode        = "Manual"
+///   sku                 = "Standard_F2"
+///   instances           = 2
+///   admin_username      = "myadmin"
+///   admin_ssh_keys {
+///     username   = "myadmin"
+///     public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDCsTcryUl51Q2VSEHqDRNmceUFo55ZtcIwxl2QITbN1RREti5ml/VTytC0yeBOvnZA4x4CFpdw/lCDPk0yrH9Ei5vVkXmOrExdTlT3qI7YaAzj1tUVlBd4S6LX1F7y6VLActvdHuDDuXZXzCDd/97420jrDfWZqJMlUK/EmCE5ParCeHIRIvmBxcEnGfFIsw8xQZl0HphxWOtJil8qsUWSdMyCiJYYQpMoMliO99X40AUc4/AlsyPyT5ddbKk08YrZ+rKDVHF7o29rh4vi5MmHkVgVQHKiKybWlHq+b71gIAUQk9wrJxD+dqt4igrmDSpIjfjwnd+l5UIn5fJSO5DYV4YT/4hwK7OKmuo7OFHD0WyY5YnkYEMtFgzemnRBdE8ulcT60DQpVgRMXFWHvhyCWy0L6sgj1QWDZlLpvsIvNfHsyhKFMG1frLnMt/nP0+YCcfg+v1JYeCKjeoJxB8DWcRBsjzItY0CGmzP8UYZiYKl/2u+2TgFS5r7NWH11bxoUzjKdaa1NLw+ieA8GlBFfCbfWe6YVB9ggUte4VtYFMZGxOjS2bAiYtfgTKFJv+XqORAwExG6+G2eDxIDyo80/OA9IG7Xv/jwQr7D6KDjDuULFcN/iTxuttoKrHeYz1hf5ZQlBdllwJHYx6fK2g8kha6r2JIQKocvsAXiiONqSfw== hello@world.com"
+///   }
+///   network_interfaces {
+///     name    = "TestNetworkProfile"
+///     primary = true
+///     ip_configurations {
+///       name      = "TestIPConfiguration"
+///       primary   = true
+///       subnet_id = azure_network_subnet.example.id
+///     }
+///   }
+///   os_disk = {
+///     caching              = "ReadWrite"
+///     storage_account_type = "StandardSSD_LRS"
+///   }
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+/// }
+/// resource "azure_monitoring_autoscalesetting" "example" {
+///   name                = "myAutoscaleSetting"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   target_resource_id  = azure_compute_linuxvirtualmachinescaleset.example.id
+///   profiles {
+///     name = "defaultProfile"
+///     capacity = {
+///       default = 1
+///       minimum = 1
+///       maximum = 10
+///     }
+///     rules {
+///       metric_trigger = {
+///         metric_name        = "Percentage CPU"
+///         metric_resource_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///         time_grain         = "PT1M"
+///         statistic          = "Average"
+///         time_window        = "PT5M"
+///         time_aggregation   = "Average"
+///         operator           = "GreaterThan"
+///         threshold          = 75
+///         metric_namespace   = "microsoft.compute/virtualmachinescalesets"
+///         dimensions = [{
+///           "name"     = "AppName"
+///           "operator" = "Equals"
+///           "values"   = ["App1"]
+///         }]
+///       }
+///       scale_action = {
+///         direction = "Increase"
+///         type      = "ChangeCount"
+///         value     = "1"
+///         cooldown  = "PT1M"
+///       }
+///     }
+///     rules {
+///       metric_trigger = {
+///         metric_name        = "Percentage CPU"
+///         metric_resource_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///         time_grain         = "PT1M"
+///         statistic          = "Average"
+///         time_window        = "PT5M"
+///         time_aggregation   = "Average"
+///         operator           = "LessThan"
+///         threshold          = 25
+///       }
+///       scale_action = {
+///         direction = "Decrease"
+///         type      = "ChangeCount"
+///         value     = "1"
+///         cooldown  = "PT1M"
+///       }
+///     }
+///   }
+///   predictive = {
+///     scale_mode      = "Enabled"
+///     look_ahead_time = "PT5M"
+///   }
+///   notification = {
+///     email = {
+///       send_to_subscription_administrator    = true
+///       send_to_subscription_co_administrator = true
+///       custom_emails                         = ["admin@contoso.com"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -613,17 +738,22 @@ import 'autoscale_setting_state.dart';
 /// import com.pulumi.azure.compute.LinuxVirtualMachineScaleSetArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetAdminSshKeyArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetNetworkInterfaceArgs;
+/// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetOsDiskArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetSourceImageReferenceArgs;
 /// import com.pulumi.azure.monitoring.AutoscaleSetting;
 /// import com.pulumi.azure.monitoring.AutoscaleSettingArgs;
 /// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileArgs;
 /// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileCapacityArgs;
+/// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileRuleArgs;
+/// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileRuleMetricTriggerArgs;
+/// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileRuleMetricTriggerDimensionArgs;
+/// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileRuleScaleActionArgs;
 /// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingPredictiveArgs;
 /// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingNotificationArgs;
 /// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingNotificationEmailArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1069,7 +1199,7 @@ import 'autoscale_setting_state.dart';
 ///                     "time_window": "PT5M",
 ///                     "time_aggregation": "Average",
 ///                     "operator": "GreaterThan",
-///                     "threshold": 90,
+///                     "threshold": float(90),
 ///                 },
 ///                 "scale_action": {
 ///                     "direction": "Increase",
@@ -1087,7 +1217,7 @@ import 'autoscale_setting_state.dart';
 ///                     "time_window": "PT5M",
 ///                     "time_aggregation": "Average",
 ///                     "operator": "LessThan",
-///                     "threshold": 10,
+///                     "threshold": float(10),
 ///                 },
 ///                 "scale_action": {
 ///                     "direction": "Decrease",
@@ -1452,6 +1582,127 @@ import 'autoscale_setting_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "autoscalingTest"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "acctvn"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "acctsub"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_compute_linuxvirtualmachinescaleset" "example" {
+///   name                = "exampleset"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   upgrade_mode        = "Manual"
+///   sku                 = "Standard_F2"
+///   instances           = 2
+///   admin_username      = "myadmin"
+///   admin_ssh_keys {
+///     username   = "myadmin"
+///     public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDCsTcryUl51Q2VSEHqDRNmceUFo55ZtcIwxl2QITbN1RREti5ml/VTytC0yeBOvnZA4x4CFpdw/lCDPk0yrH9Ei5vVkXmOrExdTlT3qI7YaAzj1tUVlBd4S6LX1F7y6VLActvdHuDDuXZXzCDd/97420jrDfWZqJMlUK/EmCE5ParCeHIRIvmBxcEnGfFIsw8xQZl0HphxWOtJil8qsUWSdMyCiJYYQpMoMliO99X40AUc4/AlsyPyT5ddbKk08YrZ+rKDVHF7o29rh4vi5MmHkVgVQHKiKybWlHq+b71gIAUQk9wrJxD+dqt4igrmDSpIjfjwnd+l5UIn5fJSO5DYV4YT/4hwK7OKmuo7OFHD0WyY5YnkYEMtFgzemnRBdE8ulcT60DQpVgRMXFWHvhyCWy0L6sgj1QWDZlLpvsIvNfHsyhKFMG1frLnMt/nP0+YCcfg+v1JYeCKjeoJxB8DWcRBsjzItY0CGmzP8UYZiYKl/2u+2TgFS5r7NWH11bxoUzjKdaa1NLw+ieA8GlBFfCbfWe6YVB9ggUte4VtYFMZGxOjS2bAiYtfgTKFJv+XqORAwExG6+G2eDxIDyo80/OA9IG7Xv/jwQr7D6KDjDuULFcN/iTxuttoKrHeYz1hf5ZQlBdllwJHYx6fK2g8kha6r2JIQKocvsAXiiONqSfw== hello@world.com"
+///   }
+///   network_interfaces {
+///     name    = "TestNetworkProfile"
+///     primary = true
+///     ip_configurations {
+///       name      = "TestIPConfiguration"
+///       primary   = true
+///       subnet_id = azure_network_subnet.example.id
+///     }
+///   }
+///   os_disk = {
+///     caching              = "ReadWrite"
+///     storage_account_type = "StandardSSD_LRS"
+///   }
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+/// }
+/// resource "azure_monitoring_autoscalesetting" "example" {
+///   name                = "myAutoscaleSetting"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   target_resource_id  = azure_compute_linuxvirtualmachinescaleset.example.id
+///   profiles {
+///     name = "Weekends"
+///     capacity = {
+///       default = 1
+///       minimum = 1
+///       maximum = 10
+///     }
+///     rules {
+///       metric_trigger = {
+///         metric_name        = "Percentage CPU"
+///         metric_resource_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///         time_grain         = "PT1M"
+///         statistic          = "Average"
+///         time_window        = "PT5M"
+///         time_aggregation   = "Average"
+///         operator           = "GreaterThan"
+///         threshold          = 90
+///       }
+///       scale_action = {
+///         direction = "Increase"
+///         type      = "ChangeCount"
+///         value     = "2"
+///         cooldown  = "PT1M"
+///       }
+///     }
+///     rules {
+///       metric_trigger = {
+///         metric_name        = "Percentage CPU"
+///         metric_resource_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///         time_grain         = "PT1M"
+///         statistic          = "Average"
+///         time_window        = "PT5M"
+///         time_aggregation   = "Average"
+///         operator           = "LessThan"
+///         threshold          = 10
+///       }
+///       scale_action = {
+///         direction = "Decrease"
+///         type      = "ChangeCount"
+///         value     = "2"
+///         cooldown  = "PT1M"
+///       }
+///     }
+///     recurrence = {
+///       timezone = "Pacific Standard Time"
+///       days     = ["Saturday", "Sunday"]
+///       hours    = 12
+///       minutes  = 0
+///     }
+///   }
+///   notification = {
+///     email = {
+///       send_to_subscription_administrator    = true
+///       send_to_subscription_co_administrator = true
+///       custom_emails                         = ["admin@contoso.com"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1468,17 +1719,21 @@ import 'autoscale_setting_state.dart';
 /// import com.pulumi.azure.compute.LinuxVirtualMachineScaleSetArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetAdminSshKeyArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetNetworkInterfaceArgs;
+/// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetOsDiskArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetSourceImageReferenceArgs;
 /// import com.pulumi.azure.monitoring.AutoscaleSetting;
 /// import com.pulumi.azure.monitoring.AutoscaleSettingArgs;
 /// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileArgs;
 /// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileCapacityArgs;
+/// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileRuleArgs;
+/// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileRuleMetricTriggerArgs;
+/// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileRuleScaleActionArgs;
 /// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileRecurrenceArgs;
 /// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingNotificationArgs;
 /// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingNotificationEmailArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1918,7 +2173,7 @@ import 'autoscale_setting_state.dart';
 ///                     "time_window": "PT5M",
 ///                     "time_aggregation": "Average",
 ///                     "operator": "GreaterThan",
-///                     "threshold": 90,
+///                     "threshold": float(90),
 ///                 },
 ///                 "scale_action": {
 ///                     "direction": "Increase",
@@ -1936,7 +2191,7 @@ import 'autoscale_setting_state.dart';
 ///                     "time_window": "PT5M",
 ///                     "time_aggregation": "Average",
 ///                     "operator": "LessThan",
-///                     "threshold": 10,
+///                     "threshold": float(10),
 ///                 },
 ///                 "scale_action": {
 ///                     "direction": "Decrease",
@@ -2290,6 +2545,127 @@ import 'autoscale_setting_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "autoscalingTest"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "acctvn"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "acctsub"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_compute_linuxvirtualmachinescaleset" "example" {
+///   name                = "exampleset"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   upgrade_mode        = "Manual"
+///   sku                 = "Standard_F2"
+///   instances           = 2
+///   admin_username      = "myadmin"
+///   admin_ssh_keys {
+///     username   = "myadmin"
+///     public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDCsTcryUl51Q2VSEHqDRNmceUFo55ZtcIwxl2QITbN1RREti5ml/VTytC0yeBOvnZA4x4CFpdw/lCDPk0yrH9Ei5vVkXmOrExdTlT3qI7YaAzj1tUVlBd4S6LX1F7y6VLActvdHuDDuXZXzCDd/97420jrDfWZqJMlUK/EmCE5ParCeHIRIvmBxcEnGfFIsw8xQZl0HphxWOtJil8qsUWSdMyCiJYYQpMoMliO99X40AUc4/AlsyPyT5ddbKk08YrZ+rKDVHF7o29rh4vi5MmHkVgVQHKiKybWlHq+b71gIAUQk9wrJxD+dqt4igrmDSpIjfjwnd+l5UIn5fJSO5DYV4YT/4hwK7OKmuo7OFHD0WyY5YnkYEMtFgzemnRBdE8ulcT60DQpVgRMXFWHvhyCWy0L6sgj1QWDZlLpvsIvNfHsyhKFMG1frLnMt/nP0+YCcfg+v1JYeCKjeoJxB8DWcRBsjzItY0CGmzP8UYZiYKl/2u+2TgFS5r7NWH11bxoUzjKdaa1NLw+ieA8GlBFfCbfWe6YVB9ggUte4VtYFMZGxOjS2bAiYtfgTKFJv+XqORAwExG6+G2eDxIDyo80/OA9IG7Xv/jwQr7D6KDjDuULFcN/iTxuttoKrHeYz1hf5ZQlBdllwJHYx6fK2g8kha6r2JIQKocvsAXiiONqSfw== hello@world.com"
+///   }
+///   network_interfaces {
+///     name    = "TestNetworkProfile"
+///     primary = true
+///     ip_configurations {
+///       name      = "TestIPConfiguration"
+///       primary   = true
+///       subnet_id = azure_network_subnet.example.id
+///     }
+///   }
+///   os_disk = {
+///     caching              = "ReadWrite"
+///     storage_account_type = "StandardSSD_LRS"
+///   }
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+/// }
+/// resource "azure_monitoring_autoscalesetting" "example" {
+///   name                = "myAutoscaleSetting"
+///   enabled             = true
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   target_resource_id  = azure_compute_linuxvirtualmachinescaleset.example.id
+///   profiles {
+///     name = "forJuly"
+///     capacity = {
+///       default = 1
+///       minimum = 1
+///       maximum = 10
+///     }
+///     rules {
+///       metric_trigger = {
+///         metric_name        = "Percentage CPU"
+///         metric_resource_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///         time_grain         = "PT1M"
+///         statistic          = "Average"
+///         time_window        = "PT5M"
+///         time_aggregation   = "Average"
+///         operator           = "GreaterThan"
+///         threshold          = 90
+///       }
+///       scale_action = {
+///         direction = "Increase"
+///         type      = "ChangeCount"
+///         value     = "2"
+///         cooldown  = "PT1M"
+///       }
+///     }
+///     rules {
+///       metric_trigger = {
+///         metric_name        = "Percentage CPU"
+///         metric_resource_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///         time_grain         = "PT1M"
+///         statistic          = "Average"
+///         time_window        = "PT5M"
+///         time_aggregation   = "Average"
+///         operator           = "LessThan"
+///         threshold          = 10
+///       }
+///       scale_action = {
+///         direction = "Decrease"
+///         type      = "ChangeCount"
+///         value     = "2"
+///         cooldown  = "PT1M"
+///       }
+///     }
+///     fixed_date = {
+///       timezone = "Pacific Standard Time"
+///       start    = "2020-07-01T00:00:00Z"
+///       end      = "2020-07-31T23:59:59Z"
+///     }
+///   }
+///   notification = {
+///     email = {
+///       send_to_subscription_administrator    = true
+///       send_to_subscription_co_administrator = true
+///       custom_emails                         = ["admin@contoso.com"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2306,17 +2682,21 @@ import 'autoscale_setting_state.dart';
 /// import com.pulumi.azure.compute.LinuxVirtualMachineScaleSetArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetAdminSshKeyArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetNetworkInterfaceArgs;
+/// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetOsDiskArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetSourceImageReferenceArgs;
 /// import com.pulumi.azure.monitoring.AutoscaleSetting;
 /// import com.pulumi.azure.monitoring.AutoscaleSettingArgs;
 /// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileArgs;
 /// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileCapacityArgs;
+/// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileRuleArgs;
+/// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileRuleMetricTriggerArgs;
+/// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileRuleScaleActionArgs;
 /// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingProfileFixedDateArgs;
 /// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingNotificationArgs;
 /// import com.pulumi.azure.monitoring.inputs.AutoscaleSettingNotificationEmailArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

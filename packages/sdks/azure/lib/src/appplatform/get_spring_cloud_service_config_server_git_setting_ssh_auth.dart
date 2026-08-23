@@ -9,14 +9,14 @@ class GetSpringCloudServiceConfigServerGitSettingSshAuth {
   final pulumi.Input<String> hostKeyAlgorithm;
   /// The SSH private key to access the Git repository, needed when the URI starts with `git@` or `ssh://`.
   final pulumi.Input<String> privateKey;
-  /// Indicates whether the Config Server instance will fail to start if the host_key does not match.
+  /// Indicates whether the Config Server instance will fail to start if the hostKey does not match.
   final pulumi.Input<bool> strictHostKeyCheckingEnabled;
 
   /// Creates a new [GetSpringCloudServiceConfigServerGitSettingSshAuth].
   /// [hostKey] The host key of the Git repository server.
   /// [hostKeyAlgorithm] The host key algorithm.
   /// [privateKey] The SSH private key to access the Git repository, needed when the URI starts with `git@` or `ssh://`.
-  /// [strictHostKeyCheckingEnabled] Indicates whether the Config Server instance will fail to start if the host_key does not match.
+  /// [strictHostKeyCheckingEnabled] Indicates whether the Config Server instance will fail to start if the hostKey does not match.
   const GetSpringCloudServiceConfigServerGitSettingSshAuth({
     required this.hostKey,
     required this.hostKeyAlgorithm,
@@ -42,4 +42,3 @@ class GetSpringCloudServiceConfigServerGitSettingSshAuth {
     );
   }
 }
-

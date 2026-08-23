@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'frontdoor_args.dart';
 import 'frontdoor_state.dart';
 
-/// !&gt; **IMPORTANT** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
+/// &gt; **IMPORTANT** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
 ///
 /// Manages an Azure Front Door (classic) instance.
 ///
@@ -14,11 +14,11 @@ import 'frontdoor_state.dart';
 /// * Use Front Door to improve application performance with SSL offload and routing requests to the fastest available application backend.
 /// * Use Front Door for application layer security and DDoS protection for your application.
 ///
-/// !&gt; **Note:** The `custom_https_provisioning_enabled` field and the `custom_https_configuration` block have been removed from the `azure.frontdoor.Frontdoor` resource in the `v2.58.0` provider due to changes made by the service team. If you wish to enable the custom HTTPS configuration functionality within your `azure.frontdoor.Frontdoor` resource moving forward you will need to define a separate `azure.frontdoor.CustomHttpsConfiguration` block in your configuration file.
+/// &gt; **Note:** The `customHttpsProvisioningEnabled` field and the `customHttpsConfiguration` block have been removed from the `azure.frontdoor.Frontdoor` resource in the `v2.58.0` provider due to changes made by the service team. If you wish to enable the custom HTTPS configuration functionality within your `azure.frontdoor.Frontdoor` resource moving forward you will need to define a separate `azure.frontdoor.CustomHttpsConfiguration` block in your configuration file.
 ///
-/// !&gt; **Note:** With the release of the `v2.58.0` provider, if you run the `apply` command against an existing Front Door resource it **will not** apply the detected changes. Instead it will persist the `explicit_resource_order` mapping structure to the state file. Once this operation has completed the resource will resume functioning normally.This change in behavior in Terraform is due to an issue where the underlying service teams API is now returning the response JSON out of order from the way it was sent to the resource via Terraform causing unexpected discrepancies in the `plan` after the resource has been provisioned. If your pre-existing Front Door instance contains `custom_https_configuration` blocks there are additional steps that will need to be completed to successfully migrate your Front Door onto the `v2.58.0` provider which can be found in this guide.
+/// &gt; **Note:** With the release of the `v2.58.0` provider, if you run the `apply` command against an existing Front Door resource it **will not** apply the detected changes. Instead it will persist the `explicitResourceOrder` mapping structure to the state file. Once this operation has completed the resource will resume functioning normally.This change in behavior in Terraform is due to an issue where the underlying service teams API is now returning the response JSON out of order from the way it was sent to the resource via Terraform causing unexpected discrepancies in the `plan` after the resource has been provisioned. If your pre-existing Front Door instance contains `customHttpsConfiguration` blocks there are additional steps that will need to be completed to successfully migrate your Front Door onto the `v2.58.0` provider which can be found in this guide.
 ///
-/// !&gt; **Note:** The creation of new Azure Front Door (classic) resources is no longer supported following its deprecation on `April 1, 2025`. However, modifications to existing Azure Front Door (classic) resources will continue to be supported until the API reaches full retirement on `March 31, 2027`.
+/// &gt; **Note:** The creation of new Azure Front Door (classic) resources is no longer supported following its deprecation on `April 1, 2025`. However, modifications to existing Azure Front Door (classic) resources will continue to be supported until the API reaches full retirement on `March 31, 2027`.
 ///
 /// ## Example Usage
 ///
@@ -282,6 +282,55 @@ import 'frontdoor_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "FrontDoorExampleResourceGroup"
+///   location = "West Europe"
+/// }
+/// resource "azure_frontdoor_frontdoor" "example" {
+///   name                = "example-FrontDoor"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   routing_rules {
+///     name                = "exampleRoutingRule1"
+///     accepted_protocols  = ["Http", "Https"]
+///     patterns_to_matches = ["/*"]
+///     frontend_endpoints  = ["exampleFrontendEndpoint1"]
+///     forwarding_configuration = {
+///       forwarding_protocol = "MatchRequest"
+///       backend_pool_name   = "exampleBackendBing"
+///     }
+///   }
+///   backend_pool_load_balancings {
+///     name = "exampleLoadBalancingSettings1"
+///   }
+///   backend_pool_health_probes {
+///     name = "exampleHealthProbeSetting1"
+///   }
+///   backend_pools {
+///     name = "exampleBackendBing"
+///     backends {
+///       host_header = "www.bing.com"
+///       address     = "www.bing.com"
+///       http_port   = 80
+///       https_port  = 443
+///     }
+///     load_balancing_name = "exampleLoadBalancingSettings1"
+///     health_probe_name   = "exampleHealthProbeSetting1"
+///   }
+///   frontend_endpoints {
+///     name      = "exampleFrontendEndpoint1"
+///     host_name = "example-FrontDoor.azurefd.net"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -297,9 +346,10 @@ import 'frontdoor_state.dart';
 /// import com.pulumi.azure.frontdoor.inputs.FrontdoorBackendPoolLoadBalancingArgs;
 /// import com.pulumi.azure.frontdoor.inputs.FrontdoorBackendPoolHealthProbeArgs;
 /// import com.pulumi.azure.frontdoor.inputs.FrontdoorBackendPoolArgs;
+/// import com.pulumi.azure.frontdoor.inputs.FrontdoorBackendPoolBackendArgs;
 /// import com.pulumi.azure.frontdoor.inputs.FrontdoorFrontendEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -409,17 +459,17 @@ import 'frontdoor_state.dart';
 /// $ pulumi import azure:frontdoor/frontdoor:Frontdoor example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/frontDoors/frontdoor1
 /// ```
 class Frontdoor extends pulumi.CustomResource {
-  /// A `backend_pool_health_probe` block as defined below.
+  /// A `backendPoolHealthProbe` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> backendPoolHealthProbes;
   /// A map/dictionary of Backend Pool Health Probe Names (key) to the Backend Pool Health Probe ID (value)
   late final pulumi.Output<Map<String, String>> backendPoolHealthProbesMap;
   /// A map/dictionary of Backend Pool Load Balancing Setting Names (key) to the Backend Pool Load Balancing Setting ID (value)
   late final pulumi.Output<Map<String, String>> backendPoolLoadBalancingSettingsMap;
-  /// A `backend_pool_load_balancing` block as defined below.
+  /// A `backendPoolLoadBalancing` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> backendPoolLoadBalancings;
-  /// A `backend_pool_settings` block as defined below.
+  /// A `backendPoolSettings` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> backendPoolSettings;
-  /// A `backend_pool` block as defined below.
+  /// A `backendPool` block as defined below.
   ///
   /// &gt; Azure by default allows specifying up to 50 Backend Pools - but this quota can be increased via Microsoft Support.
   late final pulumi.Output<List<Map<String, dynamic>>> backendPools;
@@ -430,7 +480,7 @@ class Frontdoor extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> explicitResourceOrders;
   /// A friendly name for the Front Door service.
   late final pulumi.Output<String?> friendlyName;
-  /// A `frontend_endpoint` block as defined below.
+  /// A `frontendEndpoint` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> frontendEndpoints;
   /// A map/dictionary of Frontend Endpoint Names (key) to the Frontend Endpoint ID (value)
   late final pulumi.Output<Map<String, String>> frontendEndpointsMap;
@@ -442,7 +492,7 @@ class Frontdoor extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Specifies the name of the Resource Group in which the Front Door service should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `routing_rule` block as defined below.
+  /// A `routingRule` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> routingRules;
   /// A map/dictionary of Routing Rule Names (key) to the Routing Rule ID (value)
   late final pulumi.Output<Map<String, String>> routingRulesMap;

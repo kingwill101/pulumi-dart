@@ -67,6 +67,24 @@ import 'get_instance_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_digitaltwins_getinstance" "example" {
+///   name                = "existing-digital-twins"
+///   resource_group_name = "existing-resgroup"
+/// }
+///
+/// output "id" {
+///   value = data.azure_digitaltwins_getinstance.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +93,8 @@ import 'get_instance_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.digitaltwins.DigitaltwinsFunctions;
 /// import com.pulumi.azure.digitaltwins.inputs.GetInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

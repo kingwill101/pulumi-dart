@@ -9,11 +9,11 @@ import 'server_threat_detection_policy.dart';
 /// {@endtemplate}
 /// {@macro pulumi_postgresql_server_server_args_doc}
 class ServerArgs {
-  /// The Administrator login for the PostgreSQL Server. Required when `create_mode` is `Default`. Changing this forces a new resource to be created.
+  /// The Administrator login for the PostgreSQL Server. Required when `createMode` is `Default`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? administratorLogin;
-  /// The Password associated with the `administrator_login` for the PostgreSQL Server.
+  /// The Password associated with the `administratorLogin` for the PostgreSQL Server.
   final pulumi.Input<String>? administratorLoginPassword;
-  /// An integer value used to trigger an update for `administrator_login_password_wo`. This property should be incremented when updating `administrator_login_password_wo`.
+  /// An integer value used to trigger an update for `administratorLoginPasswordWo`. This property should be incremented when updating `administratorLoginPasswordWo`.
   final pulumi.Input<int>? administratorLoginPasswordWoVersion;
   /// Enable/Disable auto-growing of the storage. Storage auto-grow prevents your server from running out of storage and becoming read-only. If storage auto grow is enabled, the storage automatically grows without impacting the workload. Defaults to `true`.
   final pulumi.Input<bool>? autoGrowEnabled;
@@ -29,7 +29,7 @@ class ServerArgs {
   final pulumi.Input<ServerIdentity>? identity;
   /// Whether or not infrastructure is encrypted for this server. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** This property is currently still in development and not supported by Microsoft. If the `infrastructure_encryption_enabled` attribute is set to `true` the PostgreSQL instance will incur a substantial performance degradation due to a second encryption pass on top of the existing default encryption that is already provided by Azure Storage. It is strongly suggested to leave this value `false` as not doing so can lead to unclear error messages.
+  /// &gt; **Note:** This property is currently still in development and not supported by Microsoft. If the `infrastructureEncryptionEnabled` attribute is set to `true` the PostgreSQL instance will incur a substantial performance degradation due to a second encryption pass on top of the existing default encryption that is already provided by Azure Storage. It is strongly suggested to leave this value `false` as not doing so can lead to unclear error messages.
   final pulumi.Input<bool>? infrastructureEncryptionEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -39,15 +39,15 @@ class ServerArgs {
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
   /// The name of the resource group in which to create the PostgreSQL Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-  /// When `create_mode` is `PointInTimeRestore` the point in time to restore from `creation_source_server_id`. It should be provided in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) format, e.g. `2013-11-08T22:00:40Z`.
+  /// When `createMode` is `PointInTimeRestore` the point in time to restore from `creationSourceServerId`. It should be provided in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) format, e.g. `2013-11-08T22:00:40Z`.
   final pulumi.Input<String>? restorePointInTime;
   /// Specifies the SKU Name for this PostgreSQL Server. The name of the SKU, follows the `tier` + `family` + `cores` pattern (e.g. `B_Gen4_1`, `GP_Gen5_8`). For more information see the [product documentation](https://docs.microsoft.com/rest/api/postgresql/singleserver/servers/create#sku). Possible values are `B_Gen4_1`, `B_Gen4_2`, `B_Gen5_1`, `B_Gen5_2`, `GP_Gen4_2`, `GP_Gen4_4`, `GP_Gen4_8`, `GP_Gen4_16`, `GP_Gen4_32`, `GP_Gen5_2`, `GP_Gen5_4`, `GP_Gen5_8`, `GP_Gen5_16`, `GP_Gen5_32`, `GP_Gen5_64`, `MO_Gen5_2`, `MO_Gen5_4`, `MO_Gen5_8`, `MO_Gen5_16` and `MO_Gen5_32`.
   ///
-  /// &gt; **Note:** When replication is set up and `sku_name` is changed to a higher tier or more capacity for the primary, all replicas are scaled up to the same tier/capacity. This is an Azure requirement, for more information see the [replica scaling documentation](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas#scaling)
+  /// &gt; **Note:** When replication is set up and `skuName` is changed to a higher tier or more capacity for the primary, all replicas are scaled up to the same tier/capacity. This is an Azure requirement, for more information see the [replica scaling documentation](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas#scaling)
   final pulumi.Input<String> skuName;
   /// Specifies if SSL should be enforced on connections. Possible values are `true` and `false`.
   ///
-  /// &gt; **Note:** `ssl_minimal_tls_version_enforced` must be set to `TLSEnforcementDisabled` when `ssl_enforcement_enabled` is set to `false`.
+  /// &gt; **Note:** `sslMinimalTlsVersionEnforced` must be set to `TLSEnforcementDisabled` when `sslEnforcementEnabled` is set to `false`.
   final pulumi.Input<bool> sslEnforcementEnabled;
   /// The minimum TLS version to support on the sever. Possible values are `TLSEnforcementDisabled`, `TLS1_0`, `TLS1_1`, and `TLS1_2`. Defaults to `TLS1_2`.
   final pulumi.Input<String>? sslMinimalTlsVersionEnforced;
@@ -55,15 +55,15 @@ class ServerArgs {
   final pulumi.Input<int>? storageMb;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Threat detection policy configuration, known in the API as Server Security Alerts Policy. The `threat_detection_policy` block supports fields documented below.
+  /// Threat detection policy configuration, known in the API as Server Security Alerts Policy. The `threatDetectionPolicy` block supports fields documented below.
   final pulumi.Input<ServerThreatDetectionPolicy>? threatDetectionPolicy;
   /// Specifies the version of PostgreSQL to use. Valid values are `9.5`, `9.6`, `10`, `10.0`, `10.2` and `11`. Changing this forces a new resource to be created.
   final pulumi.Input<String> version;
 
   /// Creates a new [ServerArgs].
-  /// [administratorLogin] The Administrator login for the PostgreSQL Server. Required when `create_mode` is `Default`. Changing this forces a new resource to be created.
-  /// [administratorLoginPassword] The Password associated with the `administrator_login` for the PostgreSQL Server.
-  /// [administratorLoginPasswordWoVersion] An integer value used to trigger an update for `administrator_login_password_wo`. This property should be incremented when updating `administrator_login_password_wo`.
+  /// [administratorLogin] The Administrator login for the PostgreSQL Server. Required when `createMode` is `Default`. Changing this forces a new resource to be created.
+  /// [administratorLoginPassword] The Password associated with the `administratorLogin` for the PostgreSQL Server.
+  /// [administratorLoginPasswordWoVersion] An integer value used to trigger an update for `administratorLoginPasswordWo`. This property should be incremented when updating `administratorLoginPasswordWo`.
   /// [autoGrowEnabled] Enable/Disable auto-growing of the storage. Storage auto-grow prevents your server from running out of storage and becoming read-only. If storage auto grow is enabled, the storage automatically grows without impacting the workload. Defaults to `true`.
   /// [backupRetentionDays] Backup retention days for the server, supported values are between `7` and `35` days.
   /// [createMode] The creation mode. Can be used to restore or replicate existing servers. Possible values are `Default`, `Replica`, `GeoRestore`, and `PointInTimeRestore`. Defaults to `Default`.
@@ -75,13 +75,13 @@ class ServerArgs {
   /// [name] Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created.
   /// [publicNetworkAccessEnabled] Whether or not public network access is allowed for this server. Defaults to `true`.
   /// [resourceGroupName] The name of the resource group in which to create the PostgreSQL Server. Changing this forces a new resource to be created.
-  /// [restorePointInTime] When `create_mode` is `PointInTimeRestore` the point in time to restore from `creation_source_server_id`. It should be provided in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) format, e.g. `2013-11-08T22:00:40Z`.
+  /// [restorePointInTime] When `createMode` is `PointInTimeRestore` the point in time to restore from `creationSourceServerId`. It should be provided in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) format, e.g. `2013-11-08T22:00:40Z`.
   /// [skuName] Specifies the SKU Name for this PostgreSQL Server. The name of the SKU, follows the `tier` + `family` + `cores` pattern (e.g. `B_Gen4_1`, `GP_Gen5_8`). For more information see the [product documentation](https://docs.microsoft.com/rest/api/postgresql/singleserver/servers/create#sku). Possible values are `B_Gen4_1`, `B_Gen4_2`, `B_Gen5_1`, `B_Gen5_2`, `GP_Gen4_2`, `GP_Gen4_4`, `GP_Gen4_8`, `GP_Gen4_16`, `GP_Gen4_32`, `GP_Gen5_2`, `GP_Gen5_4`, `GP_Gen5_8`, `GP_Gen5_16`, `GP_Gen5_32`, `GP_Gen5_64`, `MO_Gen5_2`, `MO_Gen5_4`, `MO_Gen5_8`, `MO_Gen5_16` and `MO_Gen5_32`.
   /// [sslEnforcementEnabled] Specifies if SSL should be enforced on connections. Possible values are `true` and `false`.
   /// [sslMinimalTlsVersionEnforced] The minimum TLS version to support on the sever. Possible values are `TLSEnforcementDisabled`, `TLS1_0`, `TLS1_1`, and `TLS1_2`. Defaults to `TLS1_2`.
   /// [storageMb] Max storage allowed for a server. Possible values are between `5120` MB(5GB) and `1048576` MB(1TB) for the Basic SKU and between `5120` MB(5GB) and `16777216` MB(16TB) for General Purpose/Memory Optimized SKUs. For more information see the [product documentation](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage).
   /// [tags] A mapping of tags to assign to the resource.
-  /// [threatDetectionPolicy] Threat detection policy configuration, known in the API as Server Security Alerts Policy. The `threat_detection_policy` block supports fields documented below.
+  /// [threatDetectionPolicy] Threat detection policy configuration, known in the API as Server Security Alerts Policy. The `threatDetectionPolicy` block supports fields documented below.
   /// [version] Specifies the version of PostgreSQL to use. Valid values are `9.5`, `9.6`, `10`, `10.0`, `10.2` and `11`. Changing this forces a new resource to be created.
   const ServerArgs({
     this.administratorLogin,
@@ -162,4 +162,3 @@ class ServerArgs {
     );
   }
 }
-

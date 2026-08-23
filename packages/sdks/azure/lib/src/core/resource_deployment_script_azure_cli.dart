@@ -177,6 +177,44 @@ import 'resource_deployment_script_azure_cli_storage_account.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "example-uai"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_core_resourcedeploymentscriptazurecli" "example" {
+///   name                = "example-rdsac"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = "West Europe"
+///   version             = "2.40.0"
+///   retention_interval  = "P1D"
+///   command_line        = "'foo' 'bar'"
+///   cleanup_preference  = "OnSuccess"
+///   force_update_tag    = "1"
+///   timeout             = "PT30M"
+///   script_content      = "            echo \\\"{\\\\\\\"name\\\\\\\":{\\\\\\\"displayName\\\\\\\":\\\\\\\"$1 $2\\\\\\\"}}\\\" > $AZ_SCRIPTS_OUTPUT_PATH\n"
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -190,8 +228,8 @@ import 'resource_deployment_script_azure_cli_storage_account.dart';
 /// import com.pulumi.azure.core.ResourceDeploymentScriptAzureCli;
 /// import com.pulumi.azure.core.ResourceDeploymentScriptAzureCliArgs;
 /// import com.pulumi.azure.core.inputs.ResourceDeploymentScriptAzureCliIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -296,7 +334,7 @@ class ResourceDeploymentScriptAzureCli extends pulumi.CustomResource {
   late final pulumi.Output<String?> commandLine;
   /// A `container` block as defined below. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<ResourceDeploymentScriptAzureCliContainer?> container;
-  /// An `environment_variable` block as defined below. Changing this forces a new Resource Deployment Script to be created.
+  /// An `environmentVariable` block as defined below. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> environmentVariables;
   /// Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> forceUpdateTag;
@@ -316,7 +354,7 @@ class ResourceDeploymentScriptAzureCli extends pulumi.CustomResource {
   late final pulumi.Output<String> retentionInterval;
   /// Script body. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> scriptContent;
-  /// A `storage_account` block as defined below. Changing this forces a new Resource Deployment Script to be created.
+  /// A `storageAccount` block as defined below. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<ResourceDeploymentScriptAzureCliStorageAccount?> storageAccount;
   /// Supporting files for the external script. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<List<String>?> supportingScriptUris;

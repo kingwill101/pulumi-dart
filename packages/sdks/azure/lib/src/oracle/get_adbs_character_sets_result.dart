@@ -5,14 +5,14 @@ import 'get_adbs_character_sets_character_set.dart';
 
 /// Result data returned by getAdbsCharacterSets.
 class GetAdbsCharacterSetsResult {
-  /// A `character_sets` block as defined below.
+  /// A `characterSets` block as defined below.
   final List<GetAdbsCharacterSetsCharacterSet> characterSets;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
 
   /// Creates a new [GetAdbsCharacterSetsResult].
-  /// [characterSets] A `character_sets` block as defined below.
+  /// [characterSets] A `characterSets` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
   const GetAdbsCharacterSetsResult({
@@ -37,4 +37,3 @@ class GetAdbsCharacterSetsResult {
     );
   }
 }
-

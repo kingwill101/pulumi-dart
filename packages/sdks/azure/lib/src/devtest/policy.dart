@@ -152,6 +152,40 @@ import 'policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_devtest_lab" "example" {
+///   name                = "example-devtestlab"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tags = {
+///     "Sydney" = "Australia"
+///   }
+/// }
+/// resource "azure_devtest_policy" "example" {
+///   name                = "LabVmCount"
+///   policy_set_name     = "default"
+///   lab_name            = azure_devtest_lab.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   fact_data           = ""
+///   threshold           = "999"
+///   evaluator_type      = "MaxValuePolicy"
+///   tags = {
+///     "Acceptance" = "Test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +198,8 @@ import 'policy_state.dart';
 /// import com.pulumi.azure.devtest.LabArgs;
 /// import com.pulumi.azure.devtest.Policy;
 /// import com.pulumi.azure.devtest.PolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorFrontendEndpoint {
-  /// Specifies the host name of the `frontend_endpoint`. Must be a domain name. In order to use a name.azurefd.net domain, the name value must match the Front Door name.
+  /// Specifies the host name of the `frontendEndpoint`. Must be a domain name. In order to use a name.azurefd.net domain, the name value must match the Front Door name.
   final pulumi.Input<String> hostName;
   /// The ID of the FrontDoor.
   final pulumi.Input<String>? id;
-  /// Specifies the name of the `frontend_endpoint`.
+  /// Specifies the name of the `frontendEndpoint`.
   final pulumi.Input<String> name;
   /// Whether to allow session affinity on this host. Valid options are `true` or `false` Defaults to `false`.
   final pulumi.Input<bool>? sessionAffinityEnabled;
@@ -17,9 +17,9 @@ class FrontdoorFrontendEndpoint {
   final pulumi.Input<String>? webApplicationFirewallPolicyLinkId;
 
   /// Creates a new [FrontdoorFrontendEndpoint].
-  /// [hostName] Specifies the host name of the `frontend_endpoint`. Must be a domain name. In order to use a name.azurefd.net domain, the name value must match the Front Door name.
+  /// [hostName] Specifies the host name of the `frontendEndpoint`. Must be a domain name. In order to use a name.azurefd.net domain, the name value must match the Front Door name.
   /// [id] The ID of the FrontDoor.
-  /// [name] Specifies the name of the `frontend_endpoint`.
+  /// [name] Specifies the name of the `frontendEndpoint`.
   /// [sessionAffinityEnabled] Whether to allow session affinity on this host. Valid options are `true` or `false` Defaults to `false`.
   /// [sessionAffinityTtlSeconds] The TTL to use in seconds for session affinity, if applicable. Defaults to `0`.
   /// [webApplicationFirewallPolicyLinkId] Defines the Web Application Firewall policy `ID` for each host.
@@ -54,4 +54,3 @@ class FrontdoorFrontendEndpoint {
     );
   }
 }
-

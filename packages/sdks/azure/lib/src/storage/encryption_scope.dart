@@ -133,6 +133,35 @@ import 'encryption_scope_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplesa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_storage_encryptionscope" "example" {
+///   name               = "microsoftmanaged"
+///   storage_account_id = azure_storage_account.example.id
+///   source             = "Microsoft.Storage"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +175,8 @@ import 'encryption_scope_state.dart';
 /// import com.pulumi.azure.storage.inputs.AccountIdentityArgs;
 /// import com.pulumi.azure.storage.EncryptionScope;
 /// import com.pulumi.azure.storage.EncryptionScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -217,7 +246,7 @@ import 'encryption_scope_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Storage` - 2023-05-01
+/// * `Microsoft.Storage` - 2025-08-01
 ///
 /// ## Import
 ///

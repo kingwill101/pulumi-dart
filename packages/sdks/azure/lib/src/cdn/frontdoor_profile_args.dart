@@ -11,9 +11,9 @@ import 'frontdoor_profile_log_scrubbing_rule.dart';
 class FrontdoorProfileArgs {
   /// An `identity` block as defined below.
   final pulumi.Input<FrontdoorProfileIdentity>? identity;
-  /// One or more `log_scrubbing_rule` blocks as defined below.
+  /// One or more `logScrubbingRule` blocks as defined below.
   ///
-  /// &gt; **Note:** When no `log_scrubbing_rule` blocks are defined, log scrubbing will be automatically `disabled`. When one or more `log_scrubbing_rule` blocks are present, log scrubbing will be `enabled`.
+  /// &gt; **Note:** When no `logScrubbingRule` blocks are defined, log scrubbing will be automatically `disabled`. When one or more `logScrubbingRule` blocks are present, log scrubbing will be `enabled`.
   final pulumi.Input<List<FrontdoorProfileLogScrubbingRule>>? logScrubbingRules;
   /// Specifies the name of the Front Door Profile. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -28,7 +28,7 @@ class FrontdoorProfileArgs {
 
   /// Creates a new [FrontdoorProfileArgs].
   /// [identity] An `identity` block as defined below.
-  /// [logScrubbingRules] One or more `log_scrubbing_rule` blocks as defined below.
+  /// [logScrubbingRules] One or more `logScrubbingRule` blocks as defined below.
   /// [name] Specifies the name of the Front Door Profile. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where this Front Door Profile should exist. Changing this forces a new resource to be created.
   /// [responseTimeoutSeconds] Specifies the maximum response timeout in seconds. Possible values are between `16` and `240` seconds (inclusive). Defaults to `120` seconds.
@@ -68,4 +68,3 @@ class FrontdoorProfileArgs {
     );
   }
 }
-

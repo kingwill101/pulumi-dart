@@ -89,6 +89,25 @@ import 'factory_vsts_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +118,8 @@ import 'factory_vsts_configuration.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.datafactory.Factory;
 /// import com.pulumi.azure.datafactory.FactoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -160,11 +179,11 @@ import 'factory_vsts_configuration.dart';
 class Factory extends pulumi.CustomResource {
   /// Specifies the Azure Key Vault Key ID to be used as the Customer Managed Key (CMK) for double encryption. Required with user assigned identity.
   late final pulumi.Output<String> customerManagedKeyId;
-  /// Specifies the ID of the user assigned identity associated with the Customer Managed Key. Must be supplied at factory creation if `customer_managed_key_id` is set. Can be left empty once factory is created to use the system assigned identity. See the [Microsoft documentation](https://learn.microsoft.com/en-us/azure/data-factory/enable-customer-managed-key) for more information.
+  /// Specifies the ID of the user assigned identity associated with the Customer Managed Key. Must be supplied at factory creation if `customerManagedKeyId` is set. Can be left empty once factory is created to use the system assigned identity. See the [Microsoft documentation](https://learn.microsoft.com/en-us/azure/data-factory/enable-customer-managed-key) for more information.
   late final pulumi.Output<String> customerManagedKeyIdentityId;
-  /// A `github_configuration` block as defined below.
+  /// A `githubConfiguration` block as defined below.
   late final pulumi.Output<FactoryGithubConfiguration?> githubConfiguration;
-  /// A list of `global_parameter` blocks as defined above.
+  /// A list of `globalParameter` blocks as defined above.
   late final pulumi.Output<List<Map<String, dynamic>>?> globalParameters;
   /// An `identity` block as defined below.
   late final pulumi.Output<FactoryIdentity?> identity;
@@ -182,7 +201,7 @@ class Factory extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A `vsts_configuration` block as defined below.
+  /// A `vstsConfiguration` block as defined below.
   late final pulumi.Output<FactoryVstsConfiguration?> vstsConfiguration;
 
   /// Creates a new [Factory].

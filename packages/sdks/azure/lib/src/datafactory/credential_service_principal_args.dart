@@ -18,7 +18,7 @@ class CredentialServicePrincipalArgs {
   final pulumi.Input<String>? name;
   /// The Client ID of the Service Principal.
   final pulumi.Input<String> servicePrincipalId;
-  /// A `service_principal_key` block as defined below.
+  /// A `servicePrincipalKey` block as defined below.
   final pulumi.Input<CredentialServicePrincipalServicePrincipalKey>? servicePrincipalKey;
   /// The Tenant ID of the Service Principal.
   final pulumi.Input<String> tenantId;
@@ -29,7 +29,7 @@ class CredentialServicePrincipalArgs {
   /// [description] The description for the Data Factory Credential.
   /// [name] Specifies the name of the Credential. Changing this forces a new resource to be created.
   /// [servicePrincipalId] The Client ID of the Service Principal.
-  /// [servicePrincipalKey] A `service_principal_key` block as defined below.
+  /// [servicePrincipalKey] A `servicePrincipalKey` block as defined below.
   /// [tenantId] The Tenant ID of the Service Principal.
   const CredentialServicePrincipalArgs({
     this.annotations,
@@ -65,4 +65,3 @@ class CredentialServicePrincipalArgs {
     );
   }
 }
-

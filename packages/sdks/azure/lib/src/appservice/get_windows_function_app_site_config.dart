@@ -18,13 +18,13 @@ class GetWindowsFunctionAppSiteConfig {
   final pulumi.Input<String> appCommandLine;
   /// The number of workers this function app can scale out to.
   final pulumi.Input<int> appScaleLimit;
-  /// A `app_service_logs` block as defined above.
+  /// A `appServiceLogs` block as defined above.
   final pulumi.Input<List<GetWindowsFunctionAppSiteConfigAppServiceLog>> appServiceLogs;
   /// The Connection String for linking the Windows Function App to Application Insights.
   final pulumi.Input<String> applicationInsightsConnectionString;
   /// The Instrumentation Key for connecting the Windows Function App to Application Insights.
   final pulumi.Input<String> applicationInsightsKey;
-  /// A `application_stack` block as defined above.
+  /// A `applicationStack` block as defined above.
   final pulumi.Input<List<GetWindowsFunctionAppSiteConfigApplicationStack>> applicationStacks;
   /// A `cors` block as defined above.
   final pulumi.Input<List<GetWindowsFunctionAppSiteConfigCor>> cors;
@@ -42,14 +42,15 @@ class GetWindowsFunctionAppSiteConfig {
   final pulumi.Input<String> healthCheckPath;
   /// Is the HTTP2 protocol enabled?
   final pulumi.Input<bool> http2Enabled;
-  /// The Default action for traffic that does not match any `ip_restriction` rule.
+  /// The Default action for traffic that does not match any `ipRestriction` rule.
   final pulumi.Input<String> ipRestrictionDefaultAction;
-  /// One or more `ip_restriction` blocks as defined above.
+  /// One or more `ipRestriction` blocks as defined above.
   final pulumi.Input<List<GetWindowsFunctionAppSiteConfigIpRestriction>> ipRestrictions;
   /// The Site load balancing mode.
   final pulumi.Input<String> loadBalancingMode;
   /// The Managed pipeline mode.
   final pulumi.Input<String> managedPipelineMode;
+  final pulumi.Input<String> minimumTlsCipherSuite;
   /// The minimum version of TLS required for SSL requests.
   final pulumi.Input<String> minimumTlsVersion;
   /// The number of pre-warmed instances for this Windows Function App.
@@ -60,15 +61,15 @@ class GetWindowsFunctionAppSiteConfig {
   final pulumi.Input<String> remoteDebuggingVersion;
   /// Is Scale Monitoring of the Functions Runtime enabled?
   final pulumi.Input<bool> runtimeScaleMonitoringEnabled;
-  /// The Default action for traffic that does not match any `scm_ip_restriction` rule.
+  /// The Default action for traffic that does not match any `scmIpRestriction` rule.
   final pulumi.Input<String> scmIpRestrictionDefaultAction;
-  /// One or more `scm_ip_restriction` blocks as defined above.
+  /// One or more `scmIpRestriction` blocks as defined above.
   final pulumi.Input<List<GetWindowsFunctionAppSiteConfigScmIpRestriction>> scmIpRestrictions;
   /// The minimum version of TLS required for SSL requests to the SCM site.
   final pulumi.Input<String> scmMinimumTlsVersion;
   /// The SCM type.
   final pulumi.Input<String> scmType;
-  /// Is the `ip_restriction` configuration used for the SCM?.
+  /// Is the `ipRestriction` configuration used for the SCM?.
   final pulumi.Input<bool> scmUseMainIpRestriction;
   /// Is the Windows Function App using a 32-bit worker process?
   final pulumi.Input<bool> use32BitWorker;
@@ -87,10 +88,10 @@ class GetWindowsFunctionAppSiteConfig {
   /// [apiManagementApiId] The ID of the API Management API for this Windows Function App.
   /// [appCommandLine] The App command line to launch.
   /// [appScaleLimit] The number of workers this function app can scale out to.
-  /// [appServiceLogs] A `app_service_logs` block as defined above.
+  /// [appServiceLogs] A `appServiceLogs` block as defined above.
   /// [applicationInsightsConnectionString] The Connection String for linking the Windows Function App to Application Insights.
   /// [applicationInsightsKey] The Instrumentation Key for connecting the Windows Function App to Application Insights.
-  /// [applicationStacks] A `application_stack` block as defined above.
+  /// [applicationStacks] A `applicationStack` block as defined above.
   /// [cors] A `cors` block as defined above.
   /// [defaultDocuments] A list of Default Documents for the Windows Web App.
   /// [detailedErrorLoggingEnabled] Is detailed error logging enabled?
@@ -99,20 +100,21 @@ class GetWindowsFunctionAppSiteConfig {
   /// [healthCheckEvictionTimeInMin] The amount of time in minutes that a node can be unhealthy before being removed from the load balancer.
   /// [healthCheckPath] The path to be checked for this Windows Function App health.
   /// [http2Enabled] Is the HTTP2 protocol enabled?
-  /// [ipRestrictionDefaultAction] The Default action for traffic that does not match any `ip_restriction` rule.
-  /// [ipRestrictions] One or more `ip_restriction` blocks as defined above.
+  /// [ipRestrictionDefaultAction] The Default action for traffic that does not match any `ipRestriction` rule.
+  /// [ipRestrictions] One or more `ipRestriction` blocks as defined above.
   /// [loadBalancingMode] The Site load balancing mode.
   /// [managedPipelineMode] The Managed pipeline mode.
+  /// [minimumTlsCipherSuite] Required.
   /// [minimumTlsVersion] The minimum version of TLS required for SSL requests.
   /// [preWarmedInstanceCount] The number of pre-warmed instances for this Windows Function App.
   /// [remoteDebuggingEnabled] Is Remote Debugging enabled?
   /// [remoteDebuggingVersion] The Remote Debugging Version.
   /// [runtimeScaleMonitoringEnabled] Is Scale Monitoring of the Functions Runtime enabled?
-  /// [scmIpRestrictionDefaultAction] The Default action for traffic that does not match any `scm_ip_restriction` rule.
-  /// [scmIpRestrictions] One or more `scm_ip_restriction` blocks as defined above.
+  /// [scmIpRestrictionDefaultAction] The Default action for traffic that does not match any `scmIpRestriction` rule.
+  /// [scmIpRestrictions] One or more `scmIpRestriction` blocks as defined above.
   /// [scmMinimumTlsVersion] The minimum version of TLS required for SSL requests to the SCM site.
   /// [scmType] The SCM type.
-  /// [scmUseMainIpRestriction] Is the `ip_restriction` configuration used for the SCM?.
+  /// [scmUseMainIpRestriction] Is the `ipRestriction` configuration used for the SCM?.
   /// [use32BitWorker] Is the Windows Function App using a 32-bit worker process?
   /// [vnetRouteAllEnabled] Are all outbound traffic to NAT Gateways, Network Security Groups and User Defined Routes applied?
   /// [websocketsEnabled] Are Web Sockets enabled?
@@ -140,6 +142,7 @@ class GetWindowsFunctionAppSiteConfig {
     required this.ipRestrictions,
     required this.loadBalancingMode,
     required this.managedPipelineMode,
+    required this.minimumTlsCipherSuite,
     required this.minimumTlsVersion,
     required this.preWarmedInstanceCount,
     required this.remoteDebuggingEnabled,
@@ -180,6 +183,7 @@ class GetWindowsFunctionAppSiteConfig {
       'ipRestrictions': pulumi.Input.mapInputValue<List<GetWindowsFunctionAppSiteConfigIpRestriction>, List<Map<String, dynamic>>>(ipRestrictions, (value) => pulumi.Input.encodeList<GetWindowsFunctionAppSiteConfigIpRestriction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'loadBalancingMode': loadBalancingMode,
       'managedPipelineMode': managedPipelineMode,
+      'minimumTlsCipherSuite': minimumTlsCipherSuite,
       'minimumTlsVersion': minimumTlsVersion,
       'preWarmedInstanceCount': preWarmedInstanceCount,
       'remoteDebuggingEnabled': remoteDebuggingEnabled,
@@ -221,6 +225,7 @@ class GetWindowsFunctionAppSiteConfig {
       ipRestrictions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWindowsFunctionAppSiteConfigIpRestriction>(map['ipRestrictions']!, (value) => GetWindowsFunctionAppSiteConfigIpRestriction.fromMap((value as Map).cast<String, dynamic>()))),
       loadBalancingMode: pulumi.Input.fromValue(map['loadBalancingMode'] as String),
       managedPipelineMode: pulumi.Input.fromValue(map['managedPipelineMode'] as String),
+      minimumTlsCipherSuite: pulumi.Input.fromValue(map['minimumTlsCipherSuite'] as String),
       minimumTlsVersion: pulumi.Input.fromValue(map['minimumTlsVersion'] as String),
       preWarmedInstanceCount: pulumi.Input.fromValue(map['preWarmedInstanceCount'] as int),
       remoteDebuggingEnabled: pulumi.Input.fromValue(map['remoteDebuggingEnabled'] as bool),
@@ -239,4 +244,3 @@ class GetWindowsFunctionAppSiteConfig {
     );
   }
 }
-

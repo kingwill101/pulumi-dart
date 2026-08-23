@@ -5,14 +5,14 @@ import 'autoscale_setting_profile_rule_metric_trigger.dart';
 import 'autoscale_setting_profile_rule_scale_action.dart';
 
 class AutoscaleSettingProfileRule {
-  /// A `metric_trigger` block as defined below.
+  /// A `metricTrigger` block as defined below.
   final pulumi.Input<AutoscaleSettingProfileRuleMetricTrigger> metricTrigger;
-  /// A `scale_action` block as defined below.
+  /// A `scaleAction` block as defined below.
   final pulumi.Input<AutoscaleSettingProfileRuleScaleAction> scaleAction;
 
   /// Creates a new [AutoscaleSettingProfileRule].
-  /// [metricTrigger] A `metric_trigger` block as defined below.
-  /// [scaleAction] A `scale_action` block as defined below.
+  /// [metricTrigger] A `metricTrigger` block as defined below.
+  /// [scaleAction] A `scaleAction` block as defined below.
   const AutoscaleSettingProfileRule({
     required this.metricTrigger,
     required this.scaleAction,
@@ -32,4 +32,3 @@ class AutoscaleSettingProfileRule {
     );
   }
 }
-

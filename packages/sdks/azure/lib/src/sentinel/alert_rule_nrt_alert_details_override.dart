@@ -8,7 +8,7 @@ class AlertRuleNrtAlertDetailsOverride {
   final pulumi.Input<String>? descriptionFormat;
   /// The format containing columns name(s) to override the name of this Sentinel Alert Rule.
   final pulumi.Input<String>? displayNameFormat;
-  /// A list of `dynamic_property` blocks as defined below.
+  /// A list of `dynamicProperty` blocks as defined below.
   final pulumi.Input<List<AlertRuleNrtAlertDetailsOverrideDynamicProperty>>? dynamicProperties;
   /// The column name to take the alert severity from.
   final pulumi.Input<String>? severityColumnName;
@@ -18,7 +18,7 @@ class AlertRuleNrtAlertDetailsOverride {
   /// Creates a new [AlertRuleNrtAlertDetailsOverride].
   /// [descriptionFormat] The format containing columns name(s) to override the description of this Sentinel Alert Rule.
   /// [displayNameFormat] The format containing columns name(s) to override the name of this Sentinel Alert Rule.
-  /// [dynamicProperties] A list of `dynamic_property` blocks as defined below.
+  /// [dynamicProperties] A list of `dynamicProperty` blocks as defined below.
   /// [severityColumnName] The column name to take the alert severity from.
   /// [tacticsColumnName] The column name to take the alert tactics from.
   const AlertRuleNrtAlertDetailsOverride({
@@ -49,4 +49,3 @@ class AlertRuleNrtAlertDetailsOverride {
     );
   }
 }
-

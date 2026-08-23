@@ -107,6 +107,24 @@ import 'get_virtual_machine_scale_set_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getavailabilityset" "example" {
+///   name                = "tf-appsecuritygroup"
+///   resource_group_name = "my-resource-group"
+/// }
+///
+/// output "availabilitySetId" {
+///   value = data.azure_compute_getavailabilityset.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +133,8 @@ import 'get_virtual_machine_scale_set_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetAvailabilitySetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -236,6 +254,24 @@ Future<GetAvailabilitySetResult> getAvailabilitySet(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getbastionhost" "example" {
+///   name                = "existing-bastion"
+///   resource_group_name = "existing-resources"
+/// }
+///
+/// output "id" {
+///   value = data.azure_compute_getbastionhost.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -244,8 +280,8 @@ Future<GetAvailabilitySetResult> getAvailabilitySet(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetBastionHostArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -284,7 +320,7 @@ Future<GetAvailabilitySetResult> getAvailabilitySet(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Network` - 2024-01-01
+/// * `Microsoft.Network` - 2025-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_bastion_host_get_bastion_host_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBastionHostResult> getBastionHost(
@@ -365,6 +401,24 @@ Future<GetBastionHostResult> getBastionHost(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getconfidentialledger" "current" {
+///   name                = "example-ledger"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "ledgerEndpoint" {
+///   value = data.azure_compute_getconfidentialledger.current.ledger_endpoint
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -373,8 +427,8 @@ Future<GetBastionHostResult> getBastionHost(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetConfidentialLedgerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -498,6 +552,25 @@ Future<GetConfidentialLedgerResult> getConfidentialLedger(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getdedicatedhost" "example" {
+///   name                      = "example-host"
+///   dedicated_host_group_name = "example-host-group"
+///   resource_group_name       = "example-resources"
+/// }
+///
+/// output "dedicatedHostId" {
+///   value = data.azure_compute_getdedicatedhost.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -506,8 +579,8 @@ Future<GetConfidentialLedgerResult> getConfidentialLedger(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetDedicatedHostArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -629,6 +702,24 @@ Future<GetDedicatedHostResult> getDedicatedHost(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getdedicatedhostgroup" "example" {
+///   name                = "example-dedicated-host-group"
+///   resource_group_name = "example-rg"
+/// }
+///
+/// output "id" {
+///   value = data.azure_compute_getdedicatedhostgroup.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -637,8 +728,8 @@ Future<GetDedicatedHostResult> getDedicatedHost(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetDedicatedHostGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -758,6 +849,24 @@ Future<GetDedicatedHostGroupResult> getDedicatedHostGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getdiskaccess" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_compute_getdiskaccess.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -766,8 +875,8 @@ Future<GetDedicatedHostGroupResult> getDedicatedHostGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetDiskAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -887,6 +996,24 @@ Future<GetDiskAccessResult> getDiskAccess(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getdiskencryptionset" "existing" {
+///   name                = "example-des"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "id" {
+///   value = data.azure_compute_getdiskencryptionset.existing.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -895,8 +1022,8 @@ Future<GetDiskAccessResult> getDiskAccess(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetDiskEncryptionSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1016,6 +1143,24 @@ Future<GetDiskEncryptionSetResult> getDiskEncryptionSet(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getimage" "search" {
+///   name                = "search-api"
+///   resource_group_name = "packerimages"
+/// }
+///
+/// output "imageId" {
+///   value = data.azure_compute_getimage.search.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1024,8 +1169,8 @@ Future<GetDiskEncryptionSetResult> getDiskEncryptionSet(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1134,6 +1279,19 @@ Future<GetImageResult> getImage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getimages" "example" {
+///   resource_group_name = "example-resources"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1142,8 +1300,8 @@ Future<GetImageResult> getImage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetImagesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1258,6 +1416,24 @@ Future<GetImagesResult> getImages(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getmanageddisk" "existing" {
+///   name                = "example-datadisk"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "id" {
+///   value = data.azure_compute_getmanageddisk.existing.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1266,8 +1442,8 @@ Future<GetImagesResult> getImages(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetManagedDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1378,9 +1554,26 @@ Future<GetManagedDiskResult> getManagedDisk(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("firstDiskId", existingAzurermManagedDisk.Disk[0].Id)
+/// 		ctx.Export("firstDiskId", pulumi.Any(existingAzurermManagedDisk.Disk[0].Id))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getmanageddisks" "existing" {
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "firstDiskId" {
+///   value = existingAzurermManagedDisk.disk[0].id
 /// }
 /// ```
 /// ```java
@@ -1391,8 +1584,8 @@ Future<GetManagedDiskResult> getManagedDisk(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetManagedDisksArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1510,6 +1703,24 @@ Future<GetManagedDisksResult> getManagedDisks(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getorchestratedvirtualmachinescaleset" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_compute_getorchestratedvirtualmachinescaleset.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1518,8 +1729,8 @@ Future<GetManagedDisksResult> getManagedDisks(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetOrchestratedVirtualMachineScaleSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1647,6 +1858,26 @@ Future<GetOrchestratedVirtualMachineScaleSetResult> getOrchestratedVirtualMachin
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getplatformimage" "example" {
+///   location  = "West Europe"
+///   publisher = "Canonical"
+///   offer     = "0001-com-ubuntu-server-focal"
+///   sku       = "20_04-lts"
+/// }
+///
+/// output "id" {
+///   value = data.azure_compute_getplatformimage.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1655,8 +1886,8 @@ Future<GetOrchestratedVirtualMachineScaleSetResult> getOrchestratedVirtualMachin
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetPlatformImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1777,6 +2008,21 @@ Future<GetPlatformImageResult> getPlatformImage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getsharedimage" "example" {
+///   name                = "my-image"
+///   gallery_name        = "my-image-gallery"
+///   resource_group_name = "example-resources"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1785,8 +2031,8 @@ Future<GetPlatformImageResult> getPlatformImage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetSharedImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1898,6 +2144,20 @@ Future<GetSharedImageResult> getSharedImage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getsharedimagegallery" "example" {
+///   name                = "my-image-gallery"
+///   resource_group_name = "example-resources"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1906,8 +2166,8 @@ Future<GetSharedImageResult> getSharedImage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetSharedImageGalleryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2025,6 +2285,22 @@ Future<GetSharedImageGalleryResult> getSharedImageGallery(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getsharedimageversion" "example" {
+///   name                = "1.0.0"
+///   image_name          = "my-image"
+///   gallery_name        = "my-image-gallery"
+///   resource_group_name = "example-resources"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2033,8 +2309,8 @@ Future<GetSharedImageGalleryResult> getSharedImageGallery(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetSharedImageVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2152,6 +2428,21 @@ Future<GetSharedImageVersionResult> getSharedImageVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getsharedimageversions" "example" {
+///   image_name          = "my-image"
+///   gallery_name        = "my-image-gallery"
+///   resource_group_name = "example-resources"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2160,8 +2451,8 @@ Future<GetSharedImageVersionResult> getSharedImageVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetSharedImageVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2273,6 +2564,20 @@ Future<GetSharedImageVersionsResult> getSharedImageVersions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getsnapshot" "example" {
+///   name                = "my-snapshot"
+///   resource_group_name = "my-resource-group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2281,8 +2586,8 @@ Future<GetSharedImageVersionsResult> getSharedImageVersions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2399,6 +2704,24 @@ Future<GetSnapshotResult> getSnapshot(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getsshpublickey" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_compute_getsshpublickey.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2407,8 +2730,8 @@ Future<GetSnapshotResult> getSnapshot(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetSshPublicKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2528,6 +2851,24 @@ Future<GetSshPublicKeyResult> getSshPublicKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getvirtualmachine" "example" {
+///   name                = "production"
+///   resource_group_name = "networking"
+/// }
+///
+/// output "virtualMachineId" {
+///   value = data.azure_compute_getvirtualmachine.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2536,8 +2877,8 @@ Future<GetSshPublicKeyResult> getSshPublicKey(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetVirtualMachineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2657,6 +2998,24 @@ Future<GetVirtualMachineResult> getVirtualMachine(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getvirtualmachinescaleset" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_compute_getvirtualmachinescaleset.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2665,8 +3024,8 @@ Future<GetVirtualMachineResult> getVirtualMachine(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.compute.ComputeFunctions;
 /// import com.pulumi.azure.compute.inputs.GetVirtualMachineScaleSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

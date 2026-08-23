@@ -73,6 +73,25 @@ import 'get_service_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_databasemigration_getproject" "example" {
+///   name                = "example-dbms-project"
+///   resource_group_name = "example-rg"
+///   service_name        = "example-dbms"
+/// }
+///
+/// output "name" {
+///   value = data.azure_databasemigration_getproject.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +100,8 @@ import 'get_service_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.databasemigration.DatabasemigrationFunctions;
 /// import com.pulumi.azure.databasemigration.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -204,6 +223,24 @@ Future<GetProjectResult> getProject(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_databasemigration_getservice" "example" {
+///   name                = "example-dms"
+///   resource_group_name = "example-rg"
+/// }
+///
+/// output "azurermDmsId" {
+///   value = data.azure_databasemigration_getservice.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -212,8 +249,8 @@ Future<GetProjectResult> getProject(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.databasemigration.DatabasemigrationFunctions;
 /// import com.pulumi.azure.databasemigration.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

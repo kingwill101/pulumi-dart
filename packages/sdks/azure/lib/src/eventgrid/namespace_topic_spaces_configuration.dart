@@ -7,7 +7,7 @@ import 'namespace_topic_spaces_configuration_static_routing_enrichment.dart';
 class NamespaceTopicSpacesConfiguration {
   /// Specifies a list of alternative sources for the client authentication name from the client certificate. Possible values are `ClientCertificateDns`, `ClientCertificateEmail`, `ClientCertificateIp`, `ClientCertificateSubject` and `ClientCertificateUri`.
   final pulumi.Input<List<String>>? alternativeAuthenticationNameSources;
-  /// One or more `dynamic_routing_enrichment` blocks as defined below.
+  /// One or more `dynamicRoutingEnrichment` blocks as defined below.
   final pulumi.Input<List<NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment>>? dynamicRoutingEnrichments;
   /// Specifies the maximum number of client sessions per authentication name. Valid values can be between `1` and `100`.
   final pulumi.Input<int>? maximumClientSessionsPerAuthenticationName;
@@ -15,16 +15,16 @@ class NamespaceTopicSpacesConfiguration {
   final pulumi.Input<int>? maximumSessionExpiryInHours;
   /// Specifies the Event Grid topic resource ID to route messages to.
   final pulumi.Input<String>? routeTopicId;
-  /// One or more `static_routing_enrichment` blocks as defined below.
+  /// One or more `staticRoutingEnrichment` blocks as defined below.
   final pulumi.Input<List<NamespaceTopicSpacesConfigurationStaticRoutingEnrichment>>? staticRoutingEnrichments;
 
   /// Creates a new [NamespaceTopicSpacesConfiguration].
   /// [alternativeAuthenticationNameSources] Specifies a list of alternative sources for the client authentication name from the client certificate. Possible values are `ClientCertificateDns`, `ClientCertificateEmail`, `ClientCertificateIp`, `ClientCertificateSubject` and `ClientCertificateUri`.
-  /// [dynamicRoutingEnrichments] One or more `dynamic_routing_enrichment` blocks as defined below.
+  /// [dynamicRoutingEnrichments] One or more `dynamicRoutingEnrichment` blocks as defined below.
   /// [maximumClientSessionsPerAuthenticationName] Specifies the maximum number of client sessions per authentication name. Valid values can be between `1` and `100`.
   /// [maximumSessionExpiryInHours] Specifies the maximum session expiry interval allowed for all MQTT clients connecting to the Event Grid namespace. Valid values can be between `1` and `8`.
   /// [routeTopicId] Specifies the Event Grid topic resource ID to route messages to.
-  /// [staticRoutingEnrichments] One or more `static_routing_enrichment` blocks as defined below.
+  /// [staticRoutingEnrichments] One or more `staticRoutingEnrichment` blocks as defined below.
   const NamespaceTopicSpacesConfiguration({
     this.alternativeAuthenticationNameSources,
     this.dynamicRoutingEnrichments,
@@ -56,4 +56,3 @@ class NamespaceTopicSpacesConfiguration {
     );
   }
 }
-

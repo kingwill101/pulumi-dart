@@ -21,29 +21,29 @@ import 'cluster_worker_profile.dart';
 /// $ pulumi import azure:redhatopenshift/cluster:Cluster cluster1 /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/group1/providers/Microsoft.RedHatOpenShift/openShiftClusters/cluster1
 /// ```
 class Cluster extends pulumi.CustomResource {
-  /// An `api_server_profile` block as defined below. Changing this forces a new resource to be created.
+  /// An `apiServerProfile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ClusterApiServerProfile> apiServerProfile;
-  /// A `cluster_profile` block as defined below. Changing this forces a new resource to be created.
+  /// A `clusterProfile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ClusterClusterProfile> clusterProfile;
   /// The Red Hat OpenShift cluster console URL.
   late final pulumi.Output<String> consoleUrl;
-  /// An `ingress_profile` block as defined below. Changing this forces a new resource to be created.
+  /// An `ingressProfile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ClusterIngressProfile> ingressProfile;
   /// The location where the Azure Red Hat OpenShift Cluster should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// A `main_profile` block as defined below. Changing this forces a new resource to be created.
+  /// A `mainProfile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ClusterMainProfile> mainProfile;
   /// The name of the Azure Red Hat OpenShift Cluster to create. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A `network_profile` block as defined below. Changing this forces a new resource to be created.
+  /// A `networkProfile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ClusterNetworkProfile> networkProfile;
   /// Specifies the Resource Group where the Azure Red Hat OpenShift Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `service_principal` block as defined below.
+  /// A `servicePrincipal` block as defined below.
   late final pulumi.Output<ClusterServicePrincipal> servicePrincipal;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A `worker_profile` block as defined below. Changing this forces a new resource to be created.
+  /// A `workerProfile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ClusterWorkerProfile> workerProfile;
 
   /// Creates a new [Cluster].

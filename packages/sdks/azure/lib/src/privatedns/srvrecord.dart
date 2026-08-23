@@ -182,6 +182,45 @@ import 'srvrecord_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_privatedns_zone" "example" {
+///   name                = "contoso.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_privatedns_srvrecord" "example" {
+///   name                = "test"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   zone_name           = azure_privatedns_zone.example.name
+///   ttl                 = 300
+///   records {
+///     priority = 1
+///     weight   = 5
+///     port     = 8080
+///     target   = "target1.contoso.com"
+///   }
+///   records {
+///     priority = 10
+///     weight   = 10
+///     port     = 8080
+///     target   = "target2.contoso.com"
+///   }
+///   tags = {
+///     "Environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +234,8 @@ import 'srvrecord_state.dart';
 /// import com.pulumi.azure.privatedns.SRVRecord;
 /// import com.pulumi.azure.privatedns.SRVRecordArgs;
 /// import com.pulumi.azure.privatedns.inputs.SRVRecordRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

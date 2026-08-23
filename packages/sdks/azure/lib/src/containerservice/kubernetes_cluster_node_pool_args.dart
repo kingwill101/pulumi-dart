@@ -20,7 +20,7 @@ class KubernetesClusterNodePoolArgs {
   ///
   /// &gt; **Note:** An Eviction Policy can only be configured when `priority` is set to `Spot` and will default to `Delete` unless otherwise specified.
   final pulumi.Input<String>? evictionPolicy;
-  /// Should the nodes in this Node Pool have Federal Information Processing Standard enabled? Changing this property requires specifying `temporary_name_for_rotation`.
+  /// Should the nodes in this Node Pool have Federal Information Processing Standard enabled? Changing this property requires specifying `temporaryNameForRotation`.
   ///
   /// &gt; **Note:** FIPS support is in Public Preview - more information and details on how to opt into the Preview can be found in [this article](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview).
   final pulumi.Input<bool>? fipsEnabled;
@@ -28,24 +28,24 @@ class KubernetesClusterNodePoolArgs {
   final pulumi.Input<String>? gpuDriver;
   /// Specifies the GPU MIG instance profile for supported GPU VM SKU. The allowed values are `MIG1g`, `MIG2g`, `MIG3g`, `MIG4g` and `MIG7g`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? gpuInstance;
-  /// Should the nodes in this Node Pool have host encryption enabled? Changing this property requires specifying `temporary_name_for_rotation`.
+  /// Should the nodes in this Node Pool have host encryption enabled? Changing this property requires specifying `temporaryNameForRotation`.
   ///
   /// &gt; **NOTE:** Additional fields must be configured depending on the value of this field - see below.
   final pulumi.Input<bool>? hostEncryptionEnabled;
   /// The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from. Changing this forces a new resource to be created.
   final pulumi.Input<String>? hostGroupId;
-  /// A `kubelet_config` block as defined below. Changing this requires specifying `temporary_name_for_rotation`.
+  /// A `kubeletConfig` block as defined below. Changing this requires specifying `temporaryNameForRotation`.
   final pulumi.Input<KubernetesClusterNodePoolKubeletConfig>? kubeletConfig;
-  /// The type of disk used by kubelet. Possible values are `OS` and `Temporary`. Changing this property requires specifying `temporary_name_for_rotation`.
+  /// The type of disk used by kubelet. Possible values are `OS` and `Temporary`. Changing this property requires specifying `temporaryNameForRotation`.
   final pulumi.Input<String>? kubeletDiskType;
   /// The ID of the Kubernetes Cluster where this Node Pool should exist. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** The type of Default Node Pool for the Kubernetes Cluster must be `VirtualMachineScaleSets` to attach multiple node pools.
   final pulumi.Input<String> kubernetesClusterId;
-  /// A `linux_os_config` block as defined below. Changing this requires specifying `temporary_name_for_rotation`.
+  /// A `linuxOsConfig` block as defined below. Changing this requires specifying `temporaryNameForRotation`.
   final pulumi.Input<KubernetesClusterNodePoolLinuxOsConfig>? linuxOsConfig;
   final pulumi.Input<int>? maxCount;
-  /// The maximum number of pods that can run on each agent. Changing this property requires specifying `temporary_name_for_rotation`.
+  /// The maximum number of pods that can run on each agent. Changing this property requires specifying `temporaryNameForRotation`.
   final pulumi.Input<int>? maxPods;
   final pulumi.Input<int>? minCount;
   /// Should this Node Pool be used for System or User resources? Possible values are `System` and `User`. Defaults to `User`.
@@ -57,11 +57,11 @@ class KubernetesClusterNodePoolArgs {
   final pulumi.Input<int>? nodeCount;
   /// A map of Kubernetes labels which should be applied to nodes in this Node Pool.
   final pulumi.Input<Map<String, String>>? nodeLabels;
-  /// A `node_network_profile` block as documented below.
+  /// A `nodeNetworkProfile` block as documented below.
   final pulumi.Input<KubernetesClusterNodePoolNodeNetworkProfile>? nodeNetworkProfile;
-  /// Should each node have a Public IP Address? Changing this property requires specifying `temporary_name_for_rotation`.
+  /// Should each node have a Public IP Address? Changing this property requires specifying `temporaryNameForRotation`.
   final pulumi.Input<bool>? nodePublicIpEnabled;
-  /// Resource ID for the Public IP Addresses Prefix for the nodes in this Node Pool. `node_public_ip_enabled` should be `true`. Changing this forces a new resource to be created.
+  /// Resource ID for the Public IP Addresses Prefix for the nodes in this Node Pool. `nodePublicIpEnabled` should be `true`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? nodePublicIpPrefixId;
   /// A list of Kubernetes taints which should be applied to nodes in the agent pool (e.g `key=value:NoSchedule`).
   final pulumi.Input<List<String>>? nodeTaints;
@@ -69,27 +69,27 @@ class KubernetesClusterNodePoolArgs {
   ///
   /// &gt; **Note:** This version must be supported by the Kubernetes Cluster - as such the version of Kubernetes used on the Cluster/Control Plane may need to be upgraded first.
   final pulumi.Input<String>? orchestratorVersion;
-  /// The Agent Operating System disk size in GB. Changing this property requires specifying `temporary_name_for_rotation`.
+  /// The Agent Operating System disk size in GB. Changing this property requires specifying `temporaryNameForRotation`.
   final pulumi.Input<int>? osDiskSizeGb;
-  /// The type of disk which should be used for the Operating System. Possible values are `Ephemeral` and `Managed`. Defaults to `Managed`. Changing this property requires specifying `temporary_name_for_rotation`.
+  /// The type of disk which should be used for the Operating System. Possible values are `Ephemeral` and `Managed`. Defaults to `Managed`. Changing this property requires specifying `temporaryNameForRotation`.
   final pulumi.Input<String>? osDiskType;
-  /// Specifies the OS SKU used by the agent pool. Possible values are `AzureLinux`, `AzureLinux3`, `Ubuntu`, `Ubuntu2204`, `Windows2019` and `Windows2022`. If not specified, the default is `Ubuntu` when os_type=Linux or `Windows2019` if os_type=Windows (`Windows2022` Kubernetes ≥1.33). Changing between `AzureLinux` and `Ubuntu` does not replace the resource; any other change forces a new resource to be created.
+  /// Specifies the OS SKU used by the agent pool. Possible values are `AzureLinux`, `AzureLinux3`, `Ubuntu`, `Ubuntu2204`, `Ubuntu2404`, `Windows2019` and `Windows2022`. If not specified, the default is `Ubuntu` when os_type=Linux or `Windows2019` if os_type=Windows (`Windows2022` Kubernetes ≥1.33). Changing between `AzureLinux` and `Ubuntu` does not replace the resource; any other change forces a new resource to be created.
   ///
   /// &gt; **Note:** `Windows2019` is deprecated and not supported for Kubernetes version ≥1.33.
   final pulumi.Input<String>? osSku;
   /// The Operating System which should be used for this Node Pool. Changing this forces a new resource to be created. Possible values are `Linux` and `Windows`. Defaults to `Linux`.
   final pulumi.Input<String>? osType;
-  /// The ID of the Subnet where the pods in the Node Pool should exist. Changing this property requires specifying `temporary_name_for_rotation`.
+  /// The ID of the Subnet where the pods in the Node Pool should exist. Changing this property requires specifying `temporaryNameForRotation`.
   final pulumi.Input<String>? podSubnetId;
   /// The Priority for Virtual Machines within the Virtual Machine Scale Set that powers this Node Pool. Possible values are `Regular` and `Spot`. Defaults to `Regular`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? priority;
   /// The ID of the Proximity Placement Group where the Virtual Machine Scale Set that powers this Node Pool will be placed. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** When setting `priority` to Spot - you must configure an `eviction_policy`, `spot_max_price` and add the applicable `node_labels` and `node_taints` [as per the Azure Documentation](https://docs.microsoft.com/azure/aks/spot-node-pool).
+  /// &gt; **Note:** When setting `priority` to Spot - you must configure an `evictionPolicy`, `spotMaxPrice` and add the applicable `nodeLabels` and `nodeTaints` [as per the Azure Documentation](https://docs.microsoft.com/azure/aks/spot-node-pool).
   final pulumi.Input<String>? proximityPlacementGroupId;
   /// Specifies how the node pool should deal with scaled-down nodes. Allowed values are `Delete` and `Deallocate`. Defaults to `Delete`.
   final pulumi.Input<String>? scaleDownMode;
-  /// The ID of the Snapshot which should be used to create this Node Pool. Changing this property requires specifying `temporary_name_for_rotation`.
+  /// The ID of the Snapshot which should be used to create this Node Pool. Changing this property requires specifying `temporaryNameForRotation`.
   final pulumi.Input<String>? snapshotId;
   /// The maximum price you're willing to pay in USD per Virtual Machine. Valid values are `-1` (the current on-demand price for a Virtual Machine) or a positive value with up to five decimal places. Changing this forces a new resource to be created.
   ///
@@ -101,69 +101,71 @@ class KubernetesClusterNodePoolArgs {
   final pulumi.Input<Map<String, String>>? tags;
   /// Specifies the name of the temporary node pool used to cycle the node pool when one of the relevant properties are updated.
   final pulumi.Input<String>? temporaryNameForRotation;
-  /// Used to specify whether the UltraSSD is enabled in the Node Pool. Defaults to `false`. See [the documentation](https://docs.microsoft.com/azure/aks/use-ultra-disks) for more information. Changing this property requires specifying `temporary_name_for_rotation`.
+  /// Used to specify whether the UltraSSD is enabled in the Node Pool. Defaults to `false`. See [the documentation](https://docs.microsoft.com/azure/aks/use-ultra-disks) for more information. Changing this property requires specifying `temporaryNameForRotation`.
   final pulumi.Input<bool>? ultraSsdEnabled;
-  /// A `upgrade_settings` block as documented below.
+  /// A `upgradeSettings` block as documented below.
   final pulumi.Input<KubernetesClusterNodePoolUpgradeSettings>? upgradeSettings;
-  /// The SKU which should be used for the Virtual Machines used in this Node Pool. Changing this property requires specifying `temporary_name_for_rotation`.
+  /// The SKU which should be used for the Virtual Machines used in this Node Pool. Changing this property requires specifying `temporaryNameForRotation`.
   final pulumi.Input<String>? vmSize;
-  /// The ID of the Subnet where this Node Pool should exist. Changing this property requires specifying `temporary_name_for_rotation`.
+  /// The ID of the Subnet where this Node Pool should exist. Changing this property requires specifying `temporaryNameForRotation`.
   ///
   /// &gt; **NOTE:** A route table must be configured on this Subnet.
   final pulumi.Input<String>? vnetSubnetId;
-  /// A `windows_profile` block as documented below. Changing this forces a new resource to be created.
+  /// A `windowsProfile` block as documented below. Changing this forces a new resource to be created.
   final pulumi.Input<KubernetesClusterNodePoolWindowsProfile>? windowsProfile;
-  /// Used to specify the workload runtime. Allowed values are `OCIContainer` and `WasmWasi`.
+  /// Used to specify the workload runtime. Allowed values are `KataVmIsolation`, `OCIContainer` and `WasmWasi`.
+  ///
+  /// &gt; **Note:** `KataVmIsolation` requires `osSku` to be set to `AzureLinux` and the selected VM size must support nested virtualization.
   ///
   /// &gt; **Note:** WebAssembly System Interface node pools are in Public Preview - more information and details on how to opt into the preview can be found in [this article](https://docs.microsoft.com/azure/aks/use-wasi-node-pools)
   final pulumi.Input<String>? workloadRuntime;
-  /// Specifies a list of Availability Zones in which this Kubernetes Cluster Node Pool should be located. Changing this property requires specifying `temporary_name_for_rotation`.
+  /// Specifies a list of Availability Zones in which this Kubernetes Cluster Node Pool should be located. Changing this property requires specifying `temporaryNameForRotation`.
   final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [KubernetesClusterNodePoolArgs].
   /// [autoScalingEnabled] Whether to enable [auto-scaler](https://docs.microsoft.com/azure/aks/cluster-autoscaler).
   /// [capacityReservationGroupId] Specifies the ID of the Capacity Reservation Group where this Node Pool should exist. Changing this forces a new resource to be created.
   /// [evictionPolicy] The Eviction Policy which should be used for Virtual Machines within the Virtual Machine Scale Set powering this Node Pool. Possible values are `Deallocate` and `Delete`. Changing this forces a new resource to be created.
-  /// [fipsEnabled] Should the nodes in this Node Pool have Federal Information Processing Standard enabled? Changing this property requires specifying `temporary_name_for_rotation`.
+  /// [fipsEnabled] Should the nodes in this Node Pool have Federal Information Processing Standard enabled? Changing this property requires specifying `temporaryNameForRotation`.
   /// [gpuDriver] Specifies whether to install the GPU Driver for the nodes. Possible values are `Install` and `None`. Changing this forces a new resource to be created.
   /// [gpuInstance] Specifies the GPU MIG instance profile for supported GPU VM SKU. The allowed values are `MIG1g`, `MIG2g`, `MIG3g`, `MIG4g` and `MIG7g`. Changing this forces a new resource to be created.
-  /// [hostEncryptionEnabled] Should the nodes in this Node Pool have host encryption enabled? Changing this property requires specifying `temporary_name_for_rotation`.
+  /// [hostEncryptionEnabled] Should the nodes in this Node Pool have host encryption enabled? Changing this property requires specifying `temporaryNameForRotation`.
   /// [hostGroupId] The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from. Changing this forces a new resource to be created.
-  /// [kubeletConfig] A `kubelet_config` block as defined below. Changing this requires specifying `temporary_name_for_rotation`.
-  /// [kubeletDiskType] The type of disk used by kubelet. Possible values are `OS` and `Temporary`. Changing this property requires specifying `temporary_name_for_rotation`.
+  /// [kubeletConfig] A `kubeletConfig` block as defined below. Changing this requires specifying `temporaryNameForRotation`.
+  /// [kubeletDiskType] The type of disk used by kubelet. Possible values are `OS` and `Temporary`. Changing this property requires specifying `temporaryNameForRotation`.
   /// [kubernetesClusterId] The ID of the Kubernetes Cluster where this Node Pool should exist. Changing this forces a new resource to be created.
-  /// [linuxOsConfig] A `linux_os_config` block as defined below. Changing this requires specifying `temporary_name_for_rotation`.
+  /// [linuxOsConfig] A `linuxOsConfig` block as defined below. Changing this requires specifying `temporaryNameForRotation`.
   /// [maxCount] Optional.
-  /// [maxPods] The maximum number of pods that can run on each agent. Changing this property requires specifying `temporary_name_for_rotation`.
+  /// [maxPods] The maximum number of pods that can run on each agent. Changing this property requires specifying `temporaryNameForRotation`.
   /// [minCount] Optional.
   /// [mode] Should this Node Pool be used for System or User resources? Possible values are `System` and `User`. Defaults to `User`.
   /// [name] The name of the Node Pool which should be created within the Kubernetes Cluster. Changing this forces a new resource to be created.
   /// [nodeCount] Optional.
   /// [nodeLabels] A map of Kubernetes labels which should be applied to nodes in this Node Pool.
-  /// [nodeNetworkProfile] A `node_network_profile` block as documented below.
-  /// [nodePublicIpEnabled] Should each node have a Public IP Address? Changing this property requires specifying `temporary_name_for_rotation`.
-  /// [nodePublicIpPrefixId] Resource ID for the Public IP Addresses Prefix for the nodes in this Node Pool. `node_public_ip_enabled` should be `true`. Changing this forces a new resource to be created.
+  /// [nodeNetworkProfile] A `nodeNetworkProfile` block as documented below.
+  /// [nodePublicIpEnabled] Should each node have a Public IP Address? Changing this property requires specifying `temporaryNameForRotation`.
+  /// [nodePublicIpPrefixId] Resource ID for the Public IP Addresses Prefix for the nodes in this Node Pool. `nodePublicIpEnabled` should be `true`. Changing this forces a new resource to be created.
   /// [nodeTaints] A list of Kubernetes taints which should be applied to nodes in the agent pool (e.g `key=value:NoSchedule`).
   /// [orchestratorVersion] Version of Kubernetes used for the Agents. If not specified, the latest recommended version will be used at provisioning time (but won't auto-upgrade). AKS does not require an exact patch version to be specified, minor version aliases such as `1.22` are also supported. - The minor version's latest GA patch is automatically chosen in that case. More details can be found in [the documentation](https://docs.microsoft.com/en-us/azure/aks/supported-kubernetes-versions?tabs=azure-cli#alias-minor-version).
-  /// [osDiskSizeGb] The Agent Operating System disk size in GB. Changing this property requires specifying `temporary_name_for_rotation`.
-  /// [osDiskType] The type of disk which should be used for the Operating System. Possible values are `Ephemeral` and `Managed`. Defaults to `Managed`. Changing this property requires specifying `temporary_name_for_rotation`.
-  /// [osSku] Specifies the OS SKU used by the agent pool. Possible values are `AzureLinux`, `AzureLinux3`, `Ubuntu`, `Ubuntu2204`, `Windows2019` and `Windows2022`. If not specified, the default is `Ubuntu` when os_type=Linux or `Windows2019` if os_type=Windows (`Windows2022` Kubernetes ≥1.33). Changing between `AzureLinux` and `Ubuntu` does not replace the resource; any other change forces a new resource to be created.
+  /// [osDiskSizeGb] The Agent Operating System disk size in GB. Changing this property requires specifying `temporaryNameForRotation`.
+  /// [osDiskType] The type of disk which should be used for the Operating System. Possible values are `Ephemeral` and `Managed`. Defaults to `Managed`. Changing this property requires specifying `temporaryNameForRotation`.
+  /// [osSku] Specifies the OS SKU used by the agent pool. Possible values are `AzureLinux`, `AzureLinux3`, `Ubuntu`, `Ubuntu2204`, `Ubuntu2404`, `Windows2019` and `Windows2022`. If not specified, the default is `Ubuntu` when os_type=Linux or `Windows2019` if os_type=Windows (`Windows2022` Kubernetes ≥1.33). Changing between `AzureLinux` and `Ubuntu` does not replace the resource; any other change forces a new resource to be created.
   /// [osType] The Operating System which should be used for this Node Pool. Changing this forces a new resource to be created. Possible values are `Linux` and `Windows`. Defaults to `Linux`.
-  /// [podSubnetId] The ID of the Subnet where the pods in the Node Pool should exist. Changing this property requires specifying `temporary_name_for_rotation`.
+  /// [podSubnetId] The ID of the Subnet where the pods in the Node Pool should exist. Changing this property requires specifying `temporaryNameForRotation`.
   /// [priority] The Priority for Virtual Machines within the Virtual Machine Scale Set that powers this Node Pool. Possible values are `Regular` and `Spot`. Defaults to `Regular`. Changing this forces a new resource to be created.
   /// [proximityPlacementGroupId] The ID of the Proximity Placement Group where the Virtual Machine Scale Set that powers this Node Pool will be placed. Changing this forces a new resource to be created.
   /// [scaleDownMode] Specifies how the node pool should deal with scaled-down nodes. Allowed values are `Delete` and `Deallocate`. Defaults to `Delete`.
-  /// [snapshotId] The ID of the Snapshot which should be used to create this Node Pool. Changing this property requires specifying `temporary_name_for_rotation`.
+  /// [snapshotId] The ID of the Snapshot which should be used to create this Node Pool. Changing this property requires specifying `temporaryNameForRotation`.
   /// [spotMaxPrice] The maximum price you're willing to pay in USD per Virtual Machine. Valid values are `-1` (the current on-demand price for a Virtual Machine) or a positive value with up to five decimal places. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [temporaryNameForRotation] Specifies the name of the temporary node pool used to cycle the node pool when one of the relevant properties are updated.
-  /// [ultraSsdEnabled] Used to specify whether the UltraSSD is enabled in the Node Pool. Defaults to `false`. See [the documentation](https://docs.microsoft.com/azure/aks/use-ultra-disks) for more information. Changing this property requires specifying `temporary_name_for_rotation`.
-  /// [upgradeSettings] A `upgrade_settings` block as documented below.
-  /// [vmSize] The SKU which should be used for the Virtual Machines used in this Node Pool. Changing this property requires specifying `temporary_name_for_rotation`.
-  /// [vnetSubnetId] The ID of the Subnet where this Node Pool should exist. Changing this property requires specifying `temporary_name_for_rotation`.
-  /// [windowsProfile] A `windows_profile` block as documented below. Changing this forces a new resource to be created.
-  /// [workloadRuntime] Used to specify the workload runtime. Allowed values are `OCIContainer` and `WasmWasi`.
-  /// [zones] Specifies a list of Availability Zones in which this Kubernetes Cluster Node Pool should be located. Changing this property requires specifying `temporary_name_for_rotation`.
+  /// [ultraSsdEnabled] Used to specify whether the UltraSSD is enabled in the Node Pool. Defaults to `false`. See [the documentation](https://docs.microsoft.com/azure/aks/use-ultra-disks) for more information. Changing this property requires specifying `temporaryNameForRotation`.
+  /// [upgradeSettings] A `upgradeSettings` block as documented below.
+  /// [vmSize] The SKU which should be used for the Virtual Machines used in this Node Pool. Changing this property requires specifying `temporaryNameForRotation`.
+  /// [vnetSubnetId] The ID of the Subnet where this Node Pool should exist. Changing this property requires specifying `temporaryNameForRotation`.
+  /// [windowsProfile] A `windowsProfile` block as documented below. Changing this forces a new resource to be created.
+  /// [workloadRuntime] Used to specify the workload runtime. Allowed values are `KataVmIsolation`, `OCIContainer` and `WasmWasi`.
+  /// [zones] Specifies a list of Availability Zones in which this Kubernetes Cluster Node Pool should be located. Changing this property requires specifying `temporaryNameForRotation`.
   const KubernetesClusterNodePoolArgs({
     this.autoScalingEnabled,
     this.capacityReservationGroupId,
@@ -306,4 +308,3 @@ class KubernetesClusterNodePoolArgs {
     );
   }
 }
-

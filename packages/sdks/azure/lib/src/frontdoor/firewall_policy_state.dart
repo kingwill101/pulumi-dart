@@ -6,11 +6,11 @@ import 'firewall_policy_managed_rule.dart';
 
 /// Input properties used for looking up and filtering FirewallPolicy resources.
 class FirewallPolicyState {
-  /// If a `custom_rule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
+  /// If a `customRule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
   final pulumi.Input<String>? customBlockResponseBody;
-  /// If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
+  /// If a `customRule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
   final pulumi.Input<int>? customBlockResponseStatusCode;
-  /// One or more `custom_rule` blocks as defined below.
+  /// One or more `customRule` blocks as defined below.
   final pulumi.Input<List<FirewallPolicyCustomRule>>? customRules;
   /// Is the policy a enabled state or disabled state. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
@@ -18,7 +18,7 @@ class FirewallPolicyState {
   final pulumi.Input<List<String>>? frontendEndpointIds;
   /// The Azure Region where this Front Door Firewall Policy exists.
   final pulumi.Input<String>? location;
-  /// One or more `managed_rule` blocks as defined below.
+  /// One or more `managedRule` blocks as defined below.
   final pulumi.Input<List<FirewallPolicyManagedRule>>? managedRules;
   /// The firewall policy mode. Possible values are `Detection`, `Prevention`. Defaults to `Prevention`.
   final pulumi.Input<String>? mode;
@@ -32,13 +32,13 @@ class FirewallPolicyState {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [FirewallPolicyState].
-  /// [customBlockResponseBody] If a `custom_rule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
-  /// [customBlockResponseStatusCode] If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
-  /// [customRules] One or more `custom_rule` blocks as defined below.
+  /// [customBlockResponseBody] If a `customRule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
+  /// [customBlockResponseStatusCode] If a `customRule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
+  /// [customRules] One or more `customRule` blocks as defined below.
   /// [enabled] Is the policy a enabled state or disabled state. Defaults to `true`.
   /// [frontendEndpointIds] The Frontend Endpoints associated with this Front Door Web Application Firewall policy.
   /// [location] The Azure Region where this Front Door Firewall Policy exists.
-  /// [managedRules] One or more `managed_rule` blocks as defined below.
+  /// [managedRules] One or more `managedRule` blocks as defined below.
   /// [mode] The firewall policy mode. Possible values are `Detection`, `Prevention`. Defaults to `Prevention`.
   /// [name] The name of the policy. Changing this forces a new resource to be created.
   /// [redirectUrl] If action type is redirect, this field represents redirect URL for the client.
@@ -93,4 +93,3 @@ class FirewallPolicyState {
     );
   }
 }
-

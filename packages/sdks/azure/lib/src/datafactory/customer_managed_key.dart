@@ -362,10 +362,10 @@ import 'customer_managed_key_state.dart';
 /// 		_, err = keyvault.NewAccessPolicy(ctx, "datafactory", &keyvault.AccessPolicyArgs{
 /// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			TenantId: pulumi.String(exampleFactory.Identity.ApplyT(func(identity datafactory.FactoryIdentity) (*string, error) {
-/// 				return &identity.TenantId, nil
+/// 				return identity.TenantId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ObjectId: pulumi.String(exampleFactory.Identity.ApplyT(func(identity datafactory.FactoryIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Create"),
@@ -398,6 +398,65 @@ import 'customer_managed_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                     = "example-key-vault"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                 = "standard"
+///   purge_protection_enabled = true
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   name         = "examplekey"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["unwrapKey", "wrapKey"]
+/// }
+/// resource "azure_keyvault_accesspolicy" "current_client_policy" {
+///   key_vault_id       = azure_keyvault_keyvault.example.id
+///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///   object_id          = data.azure_core_getclientconfig.current.object_id
+///   key_permissions    = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "GetRotationPolicy"]
+///   secret_permissions = ["Delete", "Get", "Set"]
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example_data_factory"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   identity = {
+///     type         = "SystemAssigned"
+///     identity_ids = [exampleAzurermUserAssignedIdentity.id]
+///   }
+/// }
+/// resource "azure_keyvault_accesspolicy" "datafactory" {
+///   key_vault_id       = azure_keyvault_keyvault.example.id
+///   tenant_id          = azure_datafactory_factory.example.identity.tenant_id
+///   object_id          = azure_datafactory_factory.example.identity.principal_id
+///   key_permissions    = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "GetRotationPolicy", "WrapKey", "UnwrapKey"]
+///   secret_permissions = ["Delete", "Get", "Set"]
+/// }
+/// resource "azure_datafactory_customermanagedkey" "example" {
+///   data_factory_id         = azure_datafactory_factory.example.id
+///   customer_managed_key_id = azure_keyvault_key.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -418,8 +477,8 @@ import 'customer_managed_key_state.dart';
 /// import com.pulumi.azure.datafactory.inputs.FactoryIdentityArgs;
 /// import com.pulumi.azure.datafactory.CustomerManagedKey;
 /// import com.pulumi.azure.datafactory.CustomerManagedKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

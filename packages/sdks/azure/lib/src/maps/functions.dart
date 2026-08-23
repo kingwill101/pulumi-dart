@@ -67,6 +67,24 @@ import 'get_account_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_maps_getaccount" "example" {
+///   name                = "production"
+///   resource_group_name = "maps"
+/// }
+///
+/// output "mapsAccountId" {
+///   value = data.azure_maps_getaccount.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +93,8 @@ import 'get_account_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.maps.MapsFunctions;
 /// import com.pulumi.azure.maps.inputs.GetAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

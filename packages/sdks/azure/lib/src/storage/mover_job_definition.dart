@@ -298,6 +298,70 @@ import 'mover_job_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_mover" "example" {
+///   name                = "example-ssm"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_storage_moveragent" "example" {
+///   name                     = "example-agent"
+///   storage_mover_id         = azure_storage_mover.example.id
+///   arc_virtual_machine_id   ="${azure_core_resourcegroup.example.id}/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName"
+///   arc_virtual_machine_uuid = "3bb2c024-eba9-4d18-9e7a-1d772fcc5fe9"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                            = "examplesa"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resourcegroup.example.location
+///   account_tier                    = "Standard"
+///   account_replication_type        = "LRS"
+///   allow_nested_items_to_be_public = true
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "acccontainer"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "blob"
+/// }
+/// resource "azure_storage_movertargetendpoint" "example" {
+///   name                   = "example-smte"
+///   storage_mover_id       = azure_storage_mover.example.id
+///   storage_account_id     = azure_storage_account.example.id
+///   storage_container_name = azure_storage_container.example.name
+/// }
+/// resource "azure_storage_moversourceendpoint" "example" {
+///   name             = "example-smse"
+///   storage_mover_id = azure_storage_mover.example.id
+///   host             = "192.168.0.1"
+/// }
+/// resource "azure_storage_moverproject" "example" {
+///   name             = "example-sp"
+///   storage_mover_id = azure_storage_mover.example.id
+/// }
+/// resource "azure_storage_moverjobdefinition" "example" {
+///   name                     = "example-sjd"
+///   storage_mover_project_id = azure_storage_moverproject.example.id
+///   agent_name               = azure_storage_moveragent.example.name
+///   copy_mode                = "Additive"
+///   source_name              = azure_storage_moversourceendpoint.example.name
+///   source_sub_path          = "/"
+///   target_name              = azure_storage_movertargetendpoint.example.name
+///   target_sub_path          = "/"
+///   description              = "Example Job Definition Description"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -322,8 +386,8 @@ import 'mover_job_definition_state.dart';
 /// import com.pulumi.azure.storage.MoverProjectArgs;
 /// import com.pulumi.azure.storage.MoverJobDefinition;
 /// import com.pulumi.azure.storage.MoverJobDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -6,7 +6,7 @@ import 'postgresql_cluster_server.dart';
 
 /// Input properties used for looking up and filtering PostgresqlCluster resources.
 class PostgresqlClusterState {
-  /// The password of the administrator login. This is required when `source_resource_id` is not set.
+  /// The password of the administrator login. This is required when `sourceResourceId` is not set.
   final pulumi.Input<String>? administratorLoginPassword;
   /// The citus extension version on the Azure Cosmos DB for PostgreSQL Cluster. Possible values are `8.3`, `9.0`, `9.1`, `9.2`, `9.3`, `9.4`, `9.5`, `10.0`, `10.1`, `10.2`, `11.0`, `11.1`, `11.2`, `11.3` and `12.1`.
   final pulumi.Input<String>? citusVersion;
@@ -14,7 +14,7 @@ class PostgresqlClusterState {
   final pulumi.Input<bool>? coordinatorPublicIpAccessEnabled;
   /// The edition of the coordinator server. Possible values are `BurstableGeneralPurpose`, `BurstableMemoryOptimized`, `GeneralPurpose`, and `MemoryOptimized`. Defaults to `GeneralPurpose`.
   ///
-  /// &gt; **Note:** When using `BurstableGeneralPurpose`, the minimum supported value for `coordinator_vcore_count` is `2`. Setting `coordinator_vcore_count = 1` with this edition will result in an error from the Azure API. See [Azure Cosmos DB for PostgreSQL compute documentation](https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute) for more details.
+  /// &gt; **Note:** When using `BurstableGeneralPurpose`, the minimum supported value for `coordinatorVcoreCount` is `2`. Setting `coordinatorVcoreCount = 1` with this edition will result in an error from the Azure API. See [Azure Cosmos DB for PostgreSQL compute documentation](https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute) for more details.
   final pulumi.Input<String>? coordinatorServerEdition;
   /// The coordinator storage allowed for the Azure Cosmos DB for PostgreSQL Cluster. Possible values are `32768`, `65536`, `131072`, `262144`, `524288`, `1048576`, `2097152`, `4194304`, `8388608`, `16777216`, and `33554432`.
   ///
@@ -28,7 +28,7 @@ class PostgresqlClusterState {
   final pulumi.Input<bool>? haEnabled;
   /// The Azure Region where the Azure Cosmos DB for PostgreSQL Cluster should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-  /// A `maintenance_window` block as defined below.
+  /// A `maintenanceWindow` block as defined below.
   final pulumi.Input<PostgresqlClusterMaintenanceWindow>? maintenanceWindow;
   /// The name which should be used for this Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -62,7 +62,7 @@ class PostgresqlClusterState {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [PostgresqlClusterState].
-  /// [administratorLoginPassword] The password of the administrator login. This is required when `source_resource_id` is not set.
+  /// [administratorLoginPassword] The password of the administrator login. This is required when `sourceResourceId` is not set.
   /// [citusVersion] The citus extension version on the Azure Cosmos DB for PostgreSQL Cluster. Possible values are `8.3`, `9.0`, `9.1`, `9.2`, `9.3`, `9.4`, `9.5`, `10.0`, `10.1`, `10.2`, `11.0`, `11.1`, `11.2`, `11.3` and `12.1`.
   /// [coordinatorPublicIpAccessEnabled] Is public access enabled on coordinator? Defaults to `true`.
   /// [coordinatorServerEdition] The edition of the coordinator server. Possible values are `BurstableGeneralPurpose`, `BurstableMemoryOptimized`, `GeneralPurpose`, and `MemoryOptimized`. Defaults to `GeneralPurpose`.
@@ -71,7 +71,7 @@ class PostgresqlClusterState {
   /// [earliestRestoreTime] The earliest restore point time (ISO8601 format) for the Azure Cosmos DB for PostgreSQL Cluster.
   /// [haEnabled] Is high availability enabled for the Azure Cosmos DB for PostgreSQL cluster? Defaults to `false`.
   /// [location] The Azure Region where the Azure Cosmos DB for PostgreSQL Cluster should exist. Changing this forces a new resource to be created.
-  /// [maintenanceWindow] A `maintenance_window` block as defined below.
+  /// [maintenanceWindow] A `maintenanceWindow` block as defined below.
   /// [name] The name which should be used for this Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
   /// [nodeCount] The worker node count of the Azure Cosmos DB for PostgreSQL Cluster. Possible value is between `0` and `20` except `1`.
   /// [nodePublicIpAccessEnabled] Is public access enabled on worker nodes. Defaults to `false`.
@@ -175,4 +175,3 @@ class PostgresqlClusterState {
     );
   }
 }
-

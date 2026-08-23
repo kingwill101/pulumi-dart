@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'action_group_webhook_receiver_aad_auth.dart';
 
 class ActionGroupWebhookReceiver {
-  /// The `aad_auth` block as defined below.
+  /// The `aadAuth` block as defined below.
   ///
-  /// &gt; **Note:** Before adding a secure webhook receiver by setting `aad_auth`, please read [the configuration instruction of the AAD application](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#secure-webhook).
+  /// &gt; **Note:** Before adding a secure webhook receiver by setting `aadAuth`, please read [the configuration instruction of the AAD application](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#secure-webhook).
   final pulumi.Input<ActionGroupWebhookReceiverAadAuth>? aadAuth;
   /// The name of the webhook receiver. Names must be unique (case-insensitive) across all receivers within an action group.
   final pulumi.Input<String> name;
@@ -16,7 +16,7 @@ class ActionGroupWebhookReceiver {
   final pulumi.Input<bool>? useCommonAlertSchema;
 
   /// Creates a new [ActionGroupWebhookReceiver].
-  /// [aadAuth] The `aad_auth` block as defined below.
+  /// [aadAuth] The `aadAuth` block as defined below.
   /// [name] The name of the webhook receiver. Names must be unique (case-insensitive) across all receivers within an action group.
   /// [serviceUri] The URI where webhooks should be sent.
   /// [useCommonAlertSchema] Enables or disables the common alert schema.
@@ -45,4 +45,3 @@ class ActionGroupWebhookReceiver {
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'get_image_os_disk.dart';
 
 /// Result data returned by getImage.
 class GetImageResult {
-  /// a collection of `data_disk` blocks as defined below.
+  /// a collection of `dataDisk` blocks as defined below.
   final List<GetImageDataDisk> dataDisks;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -15,7 +15,7 @@ class GetImageResult {
   /// the name of the Image.
   final String? name;
   final String? nameRegex;
-  /// a `os_disk` block as defined below.
+  /// a `osDisk` block as defined below.
   final List<GetImageOsDisk> osDisks;
   final String resourceGroupName;
   final bool? sortDescending;
@@ -25,12 +25,12 @@ class GetImageResult {
   final bool zoneResilient;
 
   /// Creates a new [GetImageResult].
-  /// [dataDisks] a collection of `data_disk` blocks as defined below.
+  /// [dataDisks] a collection of `dataDisk` blocks as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] the Azure Location where this Image exists.
   /// [name] the name of the Image.
   /// [nameRegex] Optional.
-  /// [osDisks] a `os_disk` block as defined below.
+  /// [osDisks] a `osDisk` block as defined below.
   /// [resourceGroupName] Required.
   /// [sortDescending] Optional.
   /// [tags] a mapping of tags to assigned to the resource.
@@ -78,4 +78,3 @@ class GetImageResult {
     );
   }
 }
-

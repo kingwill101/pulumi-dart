@@ -7,7 +7,7 @@ import 'partner_configuration_partner_authorization.dart';
 class PartnerConfigurationState {
   /// Time used to validate the authorization expiration time for each authorized partner. Defaults to `7`.
   final pulumi.Input<int>? defaultMaximumExpirationTimeInDays;
-  /// One or more `partner_authorization` blocks as defined below.
+  /// One or more `partnerAuthorization` blocks as defined below.
   final pulumi.Input<List<PartnerConfigurationPartnerAuthorization>>? partnerAuthorizations;
   /// The name of the Resource Group where the Event Grid Partner Configuration should exist. Changing this forces a new Event Grid Partner Configuration to be created.
   final pulumi.Input<String>? resourceGroupName;
@@ -16,7 +16,7 @@ class PartnerConfigurationState {
 
   /// Creates a new [PartnerConfigurationState].
   /// [defaultMaximumExpirationTimeInDays] Time used to validate the authorization expiration time for each authorized partner. Defaults to `7`.
-  /// [partnerAuthorizations] One or more `partner_authorization` blocks as defined below.
+  /// [partnerAuthorizations] One or more `partnerAuthorization` blocks as defined below.
   /// [resourceGroupName] The name of the Resource Group where the Event Grid Partner Configuration should exist. Changing this forces a new Event Grid Partner Configuration to be created.
   /// [tags] A mapping of tags which should be assigned to the Event Grid Partner Configuration.
   const PartnerConfigurationState({
@@ -44,4 +44,3 @@ class PartnerConfigurationState {
     );
   }
 }
-

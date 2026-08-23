@@ -103,6 +103,28 @@ import 'nat_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "nat-gateway-example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_natgateway" "example" {
+///   name                    = "nat-gateway"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   sku_name                = "Standard"
+///   idle_timeout_in_minutes = 10
+///   zones                   = ["1"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +135,8 @@ import 'nat_gateway_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.network.NatGateway;
 /// import com.pulumi.azure.network.NatGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,7 +197,7 @@ import 'nat_gateway_state.dart';
 ///
 /// ## Import
 ///
-/// NAT Gateway can be imported using the `resource id`, e.g.
+/// A NAT Gateway can be imported using the `resource id`, e.g.
 ///
 /// ```sh
 /// $ pulumi import azure:network/natGateway:NatGateway test /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/natGateways/gateway1
@@ -191,13 +213,15 @@ class NatGateway extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// The resource GUID property of the NAT Gateway.
   late final pulumi.Output<String> resourceGuid;
-  /// The SKU which should be used. At this time the only supported value is `Standard`. Defaults to `Standard`.
+  /// The SKU which should be used. Possible values are `Standard` and `StandardV2`. Defaults to `Standard`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> skuName;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A list of Availability Zones in which this NAT Gateway should be located. Changing this forces a new NAT Gateway to be created.
+  /// A list of Availability Zones in which this NAT Gateway should be located. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Only one Availability Zone can be defined. For more information, please check out the [Azure documentation](https://learn.microsoft.com/en-us/azure/nat-gateway/nat-overview#availability-zones)
+  /// &gt; **Note:** For `Standard`, `zones` may be omitted for a no-zone deployment or set to a single Availability Zone. For more information, please see the [Azure documentation](https://learn.microsoft.com/azure/nat-gateway/nat-overview#availability-zones).
+  ///
+  /// &gt; **Note:** `zones` must be omitted when `skuName` is set to `StandardV2`. `StandardV2` NAT Gateways are zone-redundant by default and Azure automatically deploys across all available zones. For more information, please see the [Azure documentation](https://learn.microsoft.com/azure/nat-gateway/nat-overview#standardv2-nat-gateway).
   late final pulumi.Output<List<String>?> zones;
 
   /// Creates a new [NatGateway].

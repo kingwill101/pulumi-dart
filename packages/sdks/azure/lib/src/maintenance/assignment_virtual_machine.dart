@@ -42,7 +42,7 @@ import 'assignment_virtual_machine_state.dart';
 ///     name: "example-machine",
 ///     resourceGroupName: example.name,
 ///     location: example.location,
-///     size: "Standard_F2",
+///     size: "Standard_D4_v5",
 ///     adminUsername: "adminuser",
 ///     networkInterfaceIds: [exampleNetworkInterface.id],
 ///     adminSshKeys: [{
@@ -105,7 +105,7 @@ import 'assignment_virtual_machine_state.dart';
 ///     name="example-machine",
 ///     resource_group_name=example.name,
 ///     location=example.location,
-///     size="Standard_F2",
+///     size="Standard_D4_v5",
 ///     admin_username="adminuser",
 ///     network_interface_ids=[example_network_interface.id],
 ///     admin_ssh_keys=[{
@@ -190,7 +190,7 @@ import 'assignment_virtual_machine_state.dart';
 ///         Name = "example-machine",
 ///         ResourceGroupName = example.Name,
 ///         Location = example.Location,
-///         Size = "Standard_F2",
+///         Size = "Standard_D4_v5",
 ///         AdminUsername = "adminuser",
 ///         NetworkInterfaceIds = new[]
 ///         {
@@ -306,7 +306,7 @@ import 'assignment_virtual_machine_state.dart';
 /// 			Name:              pulumi.String("example-machine"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			Size:              pulumi.String("Standard_F2"),
+/// 			Size:              pulumi.String("Standard_D4_v5"),
 /// 			AdminUsername:     pulumi.String("adminuser"),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
 /// 				exampleNetworkInterface.ID(),
@@ -352,6 +352,78 @@ import 'assignment_virtual_machine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-network"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "internal"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "example" {
+///   name                = "example-nic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "internal"
+///     subnet_id                     = azure_network_subnet.example.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_linuxvirtualmachine" "example" {
+///   name                  = "example-machine"
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   location              = azure_core_resourcegroup.example.location
+///   size                  = "Standard_D4_v5"
+///   admin_username        = "adminuser"
+///   network_interface_ids = [azure_network_networkinterface.example.id]
+///   admin_ssh_keys {
+///     username   = "adminuser"
+///     public_key = file("~/.ssh/id_rsa.pub")
+///   }
+///   os_disk = {
+///     caching              = "ReadWrite"
+///     storage_account_type = "Standard_LRS"
+///   }
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+/// }
+/// resource "azure_maintenance_configuration" "example" {
+///   name                = "example-mc"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   scope               = "All"
+/// }
+/// resource "azure_maintenance_assignmentvirtualmachine" "example" {
+///   location                     = azure_core_resourcegroup.example.location
+///   maintenance_configuration_id = azure_maintenance_configuration.example.id
+///   virtual_machine_id           = azure_compute_linuxvirtualmachine.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -378,8 +450,8 @@ import 'assignment_virtual_machine_state.dart';
 /// import com.pulumi.azure.maintenance.ConfigurationArgs;
 /// import com.pulumi.azure.maintenance.AssignmentVirtualMachine;
 /// import com.pulumi.azure.maintenance.AssignmentVirtualMachineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -425,7 +497,7 @@ import 'assignment_virtual_machine_state.dart';
 ///             .name("example-machine")
 ///             .resourceGroupName(example.name())
 ///             .location(example.location())
-///             .size("Standard_F2")
+///             .size("Standard_D4_v5")
 ///             .adminUsername("adminuser")
 ///             .networkInterfaceIds(exampleNetworkInterface.id())
 ///             .adminSshKeys(LinuxVirtualMachineAdminSshKeyArgs.builder()
@@ -505,7 +577,7 @@ import 'assignment_virtual_machine_state.dart';
 ///       name: example-machine
 ///       resourceGroupName: ${example.name}
 ///       location: ${example.location}
-///       size: Standard_F2
+///       size: Standard_D4_v5
 ///       adminUsername: adminuser
 ///       networkInterfaceIds:
 ///         - ${exampleNetworkInterface.id}

@@ -223,6 +223,50 @@ import 'certificate_contacts_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "examplekeyvault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name            = "premium"
+/// }
+/// resource "azure_keyvault_accesspolicy" "example" {
+///   key_vault_id            = azure_keyvault_keyvault.example.id
+///   tenant_id               = data.azure_core_getclientconfig.current.tenant_id
+///   object_id               = data.azure_core_getclientconfig.current.object_id
+///   certificate_permissions = ["ManageContacts"]
+///   key_permissions         = ["Create"]
+///   secret_permissions      = ["Set"]
+/// }
+/// resource "azure_keyvault_certificatecontacts" "example" {
+///   depends_on   = [azure_keyvault_accesspolicy.example]
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   contacts {
+///     email = "example@example.com"
+///     name  = "example"
+///     phone = "01234567890"
+///   }
+///   contacts {
+///     email = "example2@example.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -240,8 +284,8 @@ import 'certificate_contacts_state.dart';
 /// import com.pulumi.azure.keyvault.CertificateContactsArgs;
 /// import com.pulumi.azure.keyvault.inputs.CertificateContactsContactArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

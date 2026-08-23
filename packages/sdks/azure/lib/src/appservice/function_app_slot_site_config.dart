@@ -24,7 +24,7 @@ class FunctionAppSlotSiteConfig {
   final pulumi.Input<String>? healthCheckPath;
   /// Specifies whether or not the HTTP2 protocol should be enabled. Defaults to `false`.
   final pulumi.Input<bool>? http2Enabled;
-  /// A list of `ip_restriction` objects representing IP restrictions as defined below.
+  /// A list of `ipRestriction` objects representing IP restrictions as defined below.
   final pulumi.Input<List<FunctionAppSlotSiteConfigIpRestriction>>? ipRestrictions;
   /// Java version hosted by the function app in Azure. Possible values are `1.8`, `11` & `17` (In-Preview).
   final pulumi.Input<String>? javaVersion;
@@ -36,21 +36,21 @@ class FunctionAppSlotSiteConfig {
   final pulumi.Input<int>? preWarmedInstanceCount;
   /// Should Runtime Scale Monitoring be enabled?. Only applicable to apps on the Premium plan. Defaults to `false`.
   final pulumi.Input<bool>? runtimeScaleMonitoringEnabled;
-  /// A list of `scm_ip_restriction` objects representing IP restrictions as defined below.
+  /// A list of `scmIpRestriction` objects representing IP restrictions as defined below.
   ///
-  /// &gt; **NOTE** User has to explicitly set `scm_ip_restriction` to empty slice (`[]`) to remove it.
+  /// &gt; **NOTE** User has to explicitly set `scmIpRestriction` to empty slice (`[]`) to remove it.
   final pulumi.Input<List<FunctionAppSlotSiteConfigScmIpRestriction>>? scmIpRestrictions;
   /// The type of Source Control used by this function App. Valid values include: `BitBucketGit`, `BitBucketHg`, `CodePlexGit`, `CodePlexHg`, `Dropbox`, `ExternalGit`, `ExternalHg`, `GitHub`, `LocalGit`, `None` (default), `OneDrive`, `Tfs`, `VSO`, and `VSTSRM`.
   ///
-  /// &gt; **NOTE:** This setting is incompatible with the `source_control` block which updates this value based on the setting provided.
+  /// &gt; **NOTE:** This setting is incompatible with the `sourceControl` block which updates this value based on the setting provided.
   final pulumi.Input<String>? scmType;
   /// IP security restrictions for scm to use main. Defaults to `false`.
   ///
-  /// &gt; **NOTE** Any `scm_ip_restriction` blocks configured are ignored by the service when `scm_use_main_ip_restriction` is set to `true`. Any scm restrictions will become active if this is subsequently set to `false` or removed.
+  /// &gt; **NOTE** Any `scmIpRestriction` blocks configured are ignored by the service when `scmUseMainIpRestriction` is set to `true`. Any scm restrictions will become active if this is subsequently set to `false` or removed.
   final pulumi.Input<bool>? scmUseMainIpRestriction;
   /// Should the Function App run in 32 bit mode, rather than 64 bit mode? Defaults to `true`.
   ///
-  /// &gt; **Note:** when using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
+  /// &gt; **Note:** when using an App Service Plan in the `Free` or `Shared` Tiers `use32BitWorkerProcess` must be set to `true`.
   final pulumi.Input<bool>? use32BitWorkerProcess;
   final pulumi.Input<bool>? vnetRouteAllEnabled;
   /// Should WebSockets be enabled?
@@ -66,13 +66,13 @@ class FunctionAppSlotSiteConfig {
   /// [ftpsState] State of FTP / FTPS service for this function app. Possible values include: `AllAllowed`, `FtpsOnly` and `Disabled`.
   /// [healthCheckPath] Path which will be checked for this function app health.
   /// [http2Enabled] Specifies whether or not the HTTP2 protocol should be enabled. Defaults to `false`.
-  /// [ipRestrictions] A list of `ip_restriction` objects representing IP restrictions as defined below.
+  /// [ipRestrictions] A list of `ipRestriction` objects representing IP restrictions as defined below.
   /// [javaVersion] Java version hosted by the function app in Azure. Possible values are `1.8`, `11` & `17` (In-Preview).
   /// [linuxFxVersion] Linux App Framework and version for the AppService, e.g. `DOCKER|(golang:latest)`.
   /// [minTlsVersion] The minimum supported TLS version for the function app. Possible values are `1.0`, `1.1`, and `1.2`. Defaults to `1.2` for new function apps.
   /// [preWarmedInstanceCount] The number of pre-warmed instances for this function app. Only affects apps on the Premium plan.
   /// [runtimeScaleMonitoringEnabled] Should Runtime Scale Monitoring be enabled?. Only applicable to apps on the Premium plan. Defaults to `false`.
-  /// [scmIpRestrictions] A list of `scm_ip_restriction` objects representing IP restrictions as defined below.
+  /// [scmIpRestrictions] A list of `scmIpRestriction` objects representing IP restrictions as defined below.
   /// [scmType] The type of Source Control used by this function App. Valid values include: `BitBucketGit`, `BitBucketHg`, `CodePlexGit`, `CodePlexHg`, `Dropbox`, `ExternalGit`, `ExternalHg`, `GitHub`, `LocalGit`, `None` (default), `OneDrive`, `Tfs`, `VSO`, and `VSTSRM`.
   /// [scmUseMainIpRestriction] IP security restrictions for scm to use main. Defaults to `false`.
   /// [use32BitWorkerProcess] Should the Function App run in 32 bit mode, rather than 64 bit mode? Defaults to `true`.
@@ -154,4 +154,3 @@ class FunctionAppSlotSiteConfig {
     );
   }
 }
-

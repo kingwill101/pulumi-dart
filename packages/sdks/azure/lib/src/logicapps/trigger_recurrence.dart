@@ -115,6 +115,31 @@ import 'trigger_recurrence_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "workflow-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_logicapps_workflow" "example" {
+///   name                = "workflow1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_logicapps_triggerrecurrence" "example" {
+///   name         = "run-every-day"
+///   logic_app_id = azure_logicapps_workflow.example.id
+///   frequency    = "Day"
+///   interval     = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +152,8 @@ import 'trigger_recurrence_state.dart';
 /// import com.pulumi.azure.logicapps.WorkflowArgs;
 /// import com.pulumi.azure.logicapps.TriggerRecurrence;
 /// import com.pulumi.azure.logicapps.TriggerRecurrenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

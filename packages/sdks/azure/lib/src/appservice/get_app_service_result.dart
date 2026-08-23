@@ -16,7 +16,7 @@ class GetAppServiceResult {
   final bool clientAffinityEnabled;
   /// Does the App Service require client certificates for incoming requests?
   final bool clientCertEnabled;
-  /// An `connection_string` block as defined below.
+  /// An `connectionString` block as defined below.
   final List<GetAppServiceConnectionString> connectionStrings;
   /// An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   final String customDomainVerificationId;
@@ -36,15 +36,15 @@ class GetAppServiceResult {
   final List<String> outboundIpAddressLists;
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`
   final String outboundIpAddresses;
-  /// A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12", "52.143.43.17"]` - not all of which are necessarily in use. Superset of `outbound_ip_address_list`.
+  /// A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12", "52.143.43.17"]` - not all of which are necessarily in use. Superset of `outboundIpAddressList`.
   final List<String> possibleOutboundIpAddressLists;
-  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   final String possibleOutboundIpAddresses;
   final String resourceGroupName;
-  /// A `site_config` block as defined below.
+  /// A `siteConfig` block as defined below.
   final List<GetAppServiceSiteConfig> siteConfigs;
   final List<GetAppServiceSiteCredential> siteCredentials;
-  /// A `source_control` block as defined below.
+  /// A `sourceControl` block as defined below.
   final List<GetAppServiceSourceControl> sourceControls;
   /// A mapping of tags to assign to the resource.
   final Map<String, String> tags;
@@ -54,7 +54,7 @@ class GetAppServiceResult {
   /// [appSettings] A key-value pair of App Settings for the App Service.
   /// [clientAffinityEnabled] Does the App Service send session affinity cookies, which route client requests in the same session to the same instance?
   /// [clientCertEnabled] Does the App Service require client certificates for incoming requests?
-  /// [connectionStrings] An `connection_string` block as defined below.
+  /// [connectionStrings] An `connectionString` block as defined below.
   /// [customDomainVerificationId] An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   /// [defaultSiteHostname] The Default Hostname associated with the App Service - such as `mysite.azurewebsites.net`
   /// [enabled] Is the App Service Enabled?
@@ -64,12 +64,12 @@ class GetAppServiceResult {
   /// [name] The name for this IP Restriction.
   /// [outboundIpAddressLists] A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12"]`
   /// [outboundIpAddresses] A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`
-  /// [possibleOutboundIpAddressLists] A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12", "52.143.43.17"]` - not all of which are necessarily in use. Superset of `outbound_ip_address_list`.
-  /// [possibleOutboundIpAddresses] A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// [possibleOutboundIpAddressLists] A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12", "52.143.43.17"]` - not all of which are necessarily in use. Superset of `outboundIpAddressList`.
+  /// [possibleOutboundIpAddresses] A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   /// [resourceGroupName] Required.
-  /// [siteConfigs] A `site_config` block as defined below.
+  /// [siteConfigs] A `siteConfig` block as defined below.
   /// [siteCredentials] Required.
-  /// [sourceControls] A `source_control` block as defined below.
+  /// [sourceControls] A `sourceControl` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   const GetAppServiceResult({
     required this.appServicePlanId,
@@ -147,4 +147,3 @@ class GetAppServiceResult {
     );
   }
 }
-

@@ -15,7 +15,7 @@ class StaticWebAppCustomDomainArgs {
   ///
   /// &gt; **Note:** Apex domains must use `dns-txt-token` validation.
   ///
-  /// &gt; **Note:** Validation using `dns-txt-token` is performed asynchronously and Terraform does not wait for the validation process to be successful before marking the resource as created successfully. Please ensure that the appropriate TXT record is created using the `validation_token` value for this to complete out of band.
+  /// &gt; **Note:** Validation using `dns-txt-token` is performed asynchronously and Terraform does not wait for the validation process to be successful before marking the resource as created successfully. Please ensure that the appropriate TXT record is created using the `validationToken` value for this to complete out of band.
   final pulumi.Input<String> validationType;
 
   /// Creates a new [StaticWebAppCustomDomainArgs].
@@ -44,4 +44,3 @@ class StaticWebAppCustomDomainArgs {
     );
   }
 }
-

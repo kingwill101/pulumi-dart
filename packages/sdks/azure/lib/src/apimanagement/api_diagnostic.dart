@@ -143,7 +143,7 @@ import 'api_diagnostic_state.dart';
 ///     api_management_name=example_service.name,
 ///     api_name=example_api.name,
 ///     api_management_logger_id=example_logger.id,
-///     sampling_percentage=5,
+///     sampling_percentage=float(5),
 ///     always_log_errors=True,
 ///     log_client_ip=True,
 ///     verbosity="verbose",
@@ -418,6 +418,83 @@ import 'api_diagnostic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "example-appinsights"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "My Company"
+///   publisher_email     = "company@mycompany.io"
+///   sku_name            = "Developer_1"
+/// }
+/// resource "azure_apimanagement_api" "example" {
+///   name                = "example-api"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   api_management_name = azure_apimanagement_service.example.name
+///   revision            = "1"
+///   display_name        = "Example API"
+///   path                = "example"
+///   protocols           = ["https"]
+///   import = {
+///     content_format = "swagger-link-json"
+///     content_value  = "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/refs/heads/main/internal/services/apimanagement/testdata/api_management_api_swagger.json"
+///   }
+/// }
+/// resource "azure_apimanagement_logger" "example" {
+///   name                = "example-apimlogger"
+///   api_management_name = azure_apimanagement_service.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_insights = {
+///     instrumentation_key = azure_appinsights_insights.example.instrumentation_key
+///   }
+/// }
+/// resource "azure_apimanagement_apidiagnostic" "example" {
+///   identifier                = "applicationinsights"
+///   resource_group_name       = azure_core_resourcegroup.example.name
+///   api_management_name       = azure_apimanagement_service.example.name
+///   api_name                  = azure_apimanagement_api.example.name
+///   api_management_logger_id  = azure_apimanagement_logger.example.id
+///   sampling_percentage       = 5
+///   always_log_errors         = true
+///   log_client_ip             = true
+///   verbosity                 = "verbose"
+///   http_correlation_protocol = "W3C"
+///   frontend_request = {
+///     body_bytes      = 32
+///     headers_to_logs = ["content-type", "accept", "origin"]
+///   }
+///   frontend_response = {
+///     body_bytes      = 32
+///     headers_to_logs = ["content-type", "content-length", "origin"]
+///   }
+///   backend_request = {
+///     body_bytes      = 32
+///     headers_to_logs = ["content-type", "accept", "origin"]
+///   }
+///   backend_response = {
+///     body_bytes      = 32
+///     headers_to_logs = ["content-type", "content-length", "origin"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -442,8 +519,8 @@ import 'api_diagnostic_state.dart';
 /// import com.pulumi.azure.apimanagement.inputs.ApiDiagnosticFrontendResponseArgs;
 /// import com.pulumi.azure.apimanagement.inputs.ApiDiagnosticBackendRequestArgs;
 /// import com.pulumi.azure.apimanagement.inputs.ApiDiagnosticBackendResponseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -656,13 +733,13 @@ class ApiDiagnostic extends pulumi.CustomResource {
   late final pulumi.Output<String> apiManagementName;
   /// The name of the API on which to configure the Diagnostics Logs. Changing this forces a new API Management Service API Diagnostics Logs to be created.
   late final pulumi.Output<String> apiName;
-  /// A `backend_request` block as defined below.
+  /// A `backendRequest` block as defined below.
   late final pulumi.Output<ApiDiagnosticBackendRequest> backendRequest;
-  /// A `backend_response` block as defined below.
+  /// A `backendResponse` block as defined below.
   late final pulumi.Output<ApiDiagnosticBackendResponse> backendResponse;
-  /// A `frontend_request` block as defined below.
+  /// A `frontendRequest` block as defined below.
   late final pulumi.Output<ApiDiagnosticFrontendRequest> frontendRequest;
-  /// A `frontend_response` block as defined below.
+  /// A `frontendResponse` block as defined below.
   late final pulumi.Output<ApiDiagnosticFrontendResponse> frontendResponse;
   /// The HTTP Correlation Protocol to use. Possible values are `None`, `Legacy` or `W3C`.
   late final pulumi.Output<String> httpCorrelationProtocol;

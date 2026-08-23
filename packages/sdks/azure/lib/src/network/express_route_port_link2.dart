@@ -19,7 +19,7 @@ class ExpressRoutePortLink2 {
   final pulumi.Input<String>? macsecCknKeyvaultSecretId;
   /// Should Secure Channel Identifier on the Express Route Port Link be enabled? Defaults to `false`.
   ///
-  /// &gt; **Note:** `macsec_ckn_keyvault_secret_id` and `macsec_cak_keyvault_secret_id` should be used together with `identity`, so that the Express Route Port instance have the right permission to access the Key Vault.
+  /// &gt; **Note:** `macsecCknKeyvaultSecretId` and `macsecCakKeyvaultSecretId` should be used together with `identity`, so that the Express Route Port instance have the right permission to access the Key Vault.
   final pulumi.Input<bool>? macsecSciEnabled;
   /// The ID that maps from the Express Route Port Link to the patch panel port.
   final pulumi.Input<String>? patchPanelId;
@@ -86,4 +86,3 @@ class ExpressRoutePortLink2 {
     );
   }
 }
-

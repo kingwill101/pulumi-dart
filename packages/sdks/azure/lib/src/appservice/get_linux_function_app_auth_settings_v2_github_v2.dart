@@ -36,4 +36,3 @@ class GetLinuxFunctionAppAuthSettingsV2GithubV2 {
     );
   }
 }
-

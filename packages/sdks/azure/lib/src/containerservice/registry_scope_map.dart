@@ -170,6 +170,39 @@ import 'registry_scope_map_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resource-group"
+///   location = "West Europe"
+/// }
+/// resource "azure_containerservice_registry" "example" {
+///   name                = "exampleregistry"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Basic"
+///   admin_enabled       = false
+///   georeplications {
+///     location = "East US"
+///   }
+///   georeplications {
+///     location = "West Europe"
+///   }
+/// }
+/// resource "azure_containerservice_registryscopemap" "example" {
+///   name                    = "example-scope-map"
+///   container_registry_name = azure_containerservice_registry.example.name
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   actions                 = ["repositories/repo1/content/read", "repositories/repo1/content/write"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +216,8 @@ import 'registry_scope_map_state.dart';
 /// import com.pulumi.azure.containerservice.inputs.RegistryGeoreplicationArgs;
 /// import com.pulumi.azure.containerservice.RegistryScopeMap;
 /// import com.pulumi.azure.containerservice.RegistryScopeMapArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -7,7 +7,7 @@ class PacketCaptureStorageLocation {
   final pulumi.Input<String>? filePath;
   /// The ID of the storage account where the packet capture sessions should be saved to.
   ///
-  /// &gt; **Note:** At least one of `file_path` or `storage_account_id` must be specified.
+  /// &gt; **Note:** At least one of `filePath` or `storageAccountId` must be specified.
   final pulumi.Input<String>? storageAccountId;
   /// The URI of the storage path where the packet capture sessions are saved to.
   final pulumi.Input<String>? storagePath;
@@ -38,4 +38,3 @@ class PacketCaptureStorageLocation {
     );
   }
 }
-

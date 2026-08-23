@@ -17,7 +17,7 @@ class GetAppTemplate {
   final pulumi.Input<int> cooldownPeriodInSeconds;
   final pulumi.Input<List<GetAppTemplateCustomScaleRule>>? customScaleRules;
   final pulumi.Input<List<GetAppTemplateHttpScaleRule>> httpScaleRules;
-  /// One or more `init_container` blocks as detailed below.
+  /// One or more `initContainer` blocks as detailed below.
   final pulumi.Input<List<GetAppTemplateInitContainer>> initContainers;
   /// The maximum number of replicas for this container.
   final pulumi.Input<int> maxReplicas;
@@ -25,7 +25,7 @@ class GetAppTemplate {
   final pulumi.Input<int> minReplicas;
   /// The interval in seconds used for polling KEDA.
   final pulumi.Input<int> pollingIntervalInSeconds;
-  /// The suffix string to which this `traffic_weight` applies.
+  /// The suffix string to which this `trafficWeight` applies.
   final pulumi.Input<String> revisionSuffix;
   final pulumi.Input<List<GetAppTemplateTcpScaleRule>> tcpScaleRules;
   /// The time in seconds after the container is sent the termination signal before the process if forcibly killed.
@@ -39,11 +39,11 @@ class GetAppTemplate {
   /// [cooldownPeriodInSeconds] The number of seconds to wait before scaling down the number of instances again.
   /// [customScaleRules] Optional.
   /// [httpScaleRules] Required.
-  /// [initContainers] One or more `init_container` blocks as detailed below.
+  /// [initContainers] One or more `initContainer` blocks as detailed below.
   /// [maxReplicas] The maximum number of replicas for this container.
   /// [minReplicas] The minimum number of replicas for this container.
   /// [pollingIntervalInSeconds] The interval in seconds used for polling KEDA.
-  /// [revisionSuffix] The suffix string to which this `traffic_weight` applies.
+  /// [revisionSuffix] The suffix string to which this `trafficWeight` applies.
   /// [tcpScaleRules] Required.
   /// [terminationGracePeriodSeconds] The time in seconds after the container is sent the termination signal before the process if forcibly killed.
   /// [volumes] A `volume` block as detailed below.
@@ -99,4 +99,3 @@ class GetAppTemplate {
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'environment_v3_inbound_network_dependency.dart';
 class EnvironmentV3State {
   /// Should new Private Endpoint Connections be allowed. Defaults to `true`.
   final pulumi.Input<bool>? allowNewPrivateEndpointConnections;
-  /// Zero or more `cluster_setting` blocks as defined below.
+  /// Zero or more `clusterSetting` blocks as defined below.
   final pulumi.Input<List<EnvironmentV3ClusterSetting>>? clusterSettings;
   /// This ASEv3 should use dedicated Hosts. Possible values are `2`. Changing this forces a new resource to be created.
   final pulumi.Input<int>? dedicatedHostCount;
@@ -16,7 +16,7 @@ class EnvironmentV3State {
   final pulumi.Input<String>? dnsSuffix;
   /// The external inbound IP addresses of the App Service Environment V3.
   final pulumi.Input<List<String>>? externalInboundIpAddresses;
-  /// An `inbound_network_dependencies` block as defined below.
+  /// An `inboundNetworkDependencies` block as defined below.
   final pulumi.Input<List<EnvironmentV3InboundNetworkDependency>>? inboundNetworkDependencies;
   /// The internal inbound IP addresses of the App Service Environment V3.
   final pulumi.Input<List<String>>? internalInboundIpAddresses;
@@ -34,7 +34,7 @@ class EnvironmentV3State {
   final pulumi.Input<String>? pricingTier;
   /// Whether to enable remote debug. Defaults to `false`.
   final pulumi.Input<bool>? remoteDebuggingEnabled;
-  /// The name of the Resource Group where the App Service Environment exists. Defaults to the Resource Group of the Subnet (specified by `subnet_id`). Changing this forces a new resource to be created.
+  /// The name of the Resource Group where the App Service Environment exists. Defaults to the Resource Group of the Subnet (specified by `subnetId`). Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
   /// The ID of the Subnet which the App Service Environment should be connected to. Changing this forces a new resource to be created.
   ///
@@ -44,22 +44,22 @@ class EnvironmentV3State {
   final pulumi.Input<String>? subnetId;
   /// A mapping of tags to assign to the resource.
   ///
-  /// &gt; **Note:** The underlying API does not currently support changing Tags on this resource. Making changes in the portal for tags will cause Terraform to detect a change that will force a recreation of the ASEV3 unless `ignore_changes` lifecycle meta-argument is used.
+  /// &gt; **Note:** The underlying API does not currently support changing Tags on this resource. Making changes in the portal for tags will cause Terraform to detect a change that will force a recreation of the ASEV3 unless `ignoreChanges` lifecycle meta-argument is used.
   final pulumi.Input<Map<String, String>>? tags;
   /// Outbound addresses of Windows based Apps in this App Service Environment V3.
   final pulumi.Input<List<String>>? windowsOutboundIpAddresses;
-  /// Set to `true` to deploy the ASEv3 with availability zones supported. Zonal ASEs can be deployed in some regions, you can refer to [Availability Zone support for App Service Environments](https://docs.microsoft.com/azure/app-service/environment/zone-redundancy). You can only set either `dedicated_host_count` or `zone_redundant` but not both. Changing this forces a new resource to be created.
+  /// Set to `true` to deploy the ASEv3 with availability zones supported. Zonal ASEs can be deployed in some regions, you can refer to [Availability Zone support for App Service Environments](https://docs.microsoft.com/azure/app-service/environment/zone-redundancy). You can only set either `dedicatedHostCount` or `zoneRedundant` but not both. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Setting this value will provision 2 Physical Hosts for your App Service Environment V3, this is done at additional cost, please be aware of the pricing commitment in the [General Availability Notes](https://techcommunity.microsoft.com/t5/apps-on-azure/announcing-app-service-environment-v3-ga/ba-p/2517990)
   final pulumi.Input<bool>? zoneRedundant;
 
   /// Creates a new [EnvironmentV3State].
   /// [allowNewPrivateEndpointConnections] Should new Private Endpoint Connections be allowed. Defaults to `true`.
-  /// [clusterSettings] Zero or more `cluster_setting` blocks as defined below.
+  /// [clusterSettings] Zero or more `clusterSetting` blocks as defined below.
   /// [dedicatedHostCount] This ASEv3 should use dedicated Hosts. Possible values are `2`. Changing this forces a new resource to be created.
   /// [dnsSuffix] the DNS suffix for this App Service Environment V3.
   /// [externalInboundIpAddresses] The external inbound IP addresses of the App Service Environment V3.
-  /// [inboundNetworkDependencies] An `inbound_network_dependencies` block as defined below.
+  /// [inboundNetworkDependencies] An `inboundNetworkDependencies` block as defined below.
   /// [internalInboundIpAddresses] The internal inbound IP addresses of the App Service Environment V3.
   /// [internalLoadBalancingMode] Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment. Possible values are `None` (for an External VIP Type), and `"Web, Publishing"` (for an Internal VIP Type). Defaults to `None`. Changing this forces a new resource to be created.
   /// [ipSslAddressCount] The number of IP SSL addresses reserved for the App Service Environment V3.
@@ -68,11 +68,11 @@ class EnvironmentV3State {
   /// [name] The name of the App Service Environment. Changing this forces a new resource to be created.
   /// [pricingTier] Pricing tier for the front end instances.
   /// [remoteDebuggingEnabled] Whether to enable remote debug. Defaults to `false`.
-  /// [resourceGroupName] The name of the Resource Group where the App Service Environment exists. Defaults to the Resource Group of the Subnet (specified by `subnet_id`). Changing this forces a new resource to be created.
+  /// [resourceGroupName] The name of the Resource Group where the App Service Environment exists. Defaults to the Resource Group of the Subnet (specified by `subnetId`). Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet which the App Service Environment should be connected to. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [windowsOutboundIpAddresses] Outbound addresses of Windows based Apps in this App Service Environment V3.
-  /// [zoneRedundant] Set to `true` to deploy the ASEv3 with availability zones supported. Zonal ASEs can be deployed in some regions, you can refer to [Availability Zone support for App Service Environments](https://docs.microsoft.com/azure/app-service/environment/zone-redundancy). You can only set either `dedicated_host_count` or `zone_redundant` but not both. Changing this forces a new resource to be created.
+  /// [zoneRedundant] Set to `true` to deploy the ASEv3 with availability zones supported. Zonal ASEs can be deployed in some regions, you can refer to [Availability Zone support for App Service Environments](https://docs.microsoft.com/azure/app-service/environment/zone-redundancy). You can only set either `dedicatedHostCount` or `zoneRedundant` but not both. Changing this forces a new resource to be created.
   const EnvironmentV3State({
     this.allowNewPrivateEndpointConnections,
     this.clusterSettings,
@@ -143,4 +143,3 @@ class EnvironmentV3State {
     );
   }
 }
-

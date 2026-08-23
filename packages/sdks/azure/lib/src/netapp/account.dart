@@ -183,6 +183,45 @@ import 'account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "anf-user-assigned-identity"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_netapp_account" "example" {
+///   name                = "netappaccount"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   active_directory = {
+///     username            = "aduser"
+///     password            = "aduserpwd"
+///     smb_server_name     = "SMBSERVER"
+///     dns_servers         = ["1.2.3.4"]
+///     domain              = "westcentralus.com"
+///     organizational_unit = "OU=FirstLevel"
+///   }
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -198,8 +237,8 @@ import 'account_state.dart';
 /// import com.pulumi.azure.netapp.AccountArgs;
 /// import com.pulumi.azure.netapp.inputs.AccountActiveDirectoryArgs;
 /// import com.pulumi.azure.netapp.inputs.AccountIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,7 +330,7 @@ import 'account_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 ///
 /// ## Import
 ///
@@ -303,7 +342,7 @@ import 'account_state.dart';
 ///
 /// &gt; **Note:** When importing a NetApp account, the `active_directory.password` and `active_directory.server_root_ca_certificate` values *cannot* be retrieved from the Azure API and will need to be redeclared within the resource.
 class Account extends pulumi.CustomResource {
-  /// A `active_directory` block as defined below.
+  /// A `activeDirectory` block as defined below.
   late final pulumi.Output<AccountActiveDirectory?> activeDirectory;
   /// The `identity` block where it is used when customer managed keys based encryption will be enabled as defined below.
   late final pulumi.Output<AccountIdentity?> identity;

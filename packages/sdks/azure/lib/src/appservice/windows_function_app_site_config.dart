@@ -10,7 +10,7 @@ import 'windows_function_app_site_config_scm_ip_restriction.dart';
 class WindowsFunctionAppSiteConfig {
   /// If this Windows Function App is Always On enabled. Defaults to `false`.
   ///
-  /// &gt; **Note:** when running in a Consumption or Premium Plan, `always_on` feature should be turned off. Please turn it off before upgrading the service plan from standard to premium.
+  /// &gt; **Note:** when running in a Consumption or Premium Plan, `alwaysOn` feature should be turned off. Please turn it off before upgrading the service plan from standard to premium.
   final pulumi.Input<bool>? alwaysOn;
   /// The URL of the API definition that describes this Windows Function App.
   final pulumi.Input<String>? apiDefinitionUrl;
@@ -20,13 +20,13 @@ class WindowsFunctionAppSiteConfig {
   final pulumi.Input<String>? appCommandLine;
   /// The number of workers this function app can scale out to. Only applicable to apps on the Consumption and Premium plan.
   final pulumi.Input<int>? appScaleLimit;
-  /// An `app_service_logs` block as defined above.
+  /// An `appServiceLogs` block as defined above.
   final pulumi.Input<WindowsFunctionAppSiteConfigAppServiceLogs>? appServiceLogs;
   /// The Connection String for linking the Windows Function App to Application Insights.
   final pulumi.Input<String>? applicationInsightsConnectionString;
   /// The Instrumentation Key for connecting the Windows Function App to Application Insights.
   final pulumi.Input<String>? applicationInsightsKey;
-  /// An `application_stack` block as defined above.
+  /// An `applicationStack` block as defined above.
   ///
   /// &gt; **Note:** If this is set, there must not be an application setting `FUNCTIONS_WORKER_RUNTIME`.
   final pulumi.Input<WindowsFunctionAppSiteConfigApplicationStack>? applicationStack;
@@ -40,20 +40,22 @@ class WindowsFunctionAppSiteConfig {
   final pulumi.Input<int>? elasticInstanceMinimum;
   /// State of FTP / FTPS service for this Windows Function App. Possible values include: `AllAllowed`, `FtpsOnly` and `Disabled`. Defaults to `Disabled`.
   final pulumi.Input<String>? ftpsState;
-  /// The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `health_check_path`.
+  /// The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `healthCheckPath`.
   final pulumi.Input<int>? healthCheckEvictionTimeInMin;
   /// The path to be checked for this Windows Function App health.
   final pulumi.Input<String>? healthCheckPath;
   /// Specifies if the HTTP2 protocol should be enabled. Defaults to `false`.
   final pulumi.Input<bool>? http2Enabled;
-  /// The Default action for traffic that does not match any `ip_restriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
+  /// The Default action for traffic that does not match any `ipRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
   final pulumi.Input<String>? ipRestrictionDefaultAction;
-  /// One or more `ip_restriction` blocks as defined above.
+  /// One or more `ipRestriction` blocks as defined above.
   final pulumi.Input<List<WindowsFunctionAppSiteConfigIpRestriction>>? ipRestrictions;
   /// The Site load balancing mode. Possible values include: `WeightedRoundRobin`, `LeastRequests`, `LeastResponseTime`, `WeightedTotalTraffic`, `RequestHash`, `PerSiteRoundRobin`. Defaults to `LeastRequests` if omitted.
   final pulumi.Input<String>? loadBalancingMode;
   /// Managed pipeline mode. Possible values include: `Integrated`, `Classic`. Defaults to `Integrated`.
   final pulumi.Input<String>? managedPipelineMode;
+  /// The configures the minimum cipher suite of TLS required for SSL requests. Possible values include: `TLS_AES_128_GCM_SHA256`,`TLS_AES_256_GCM_SHA384"`,`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256"`,`TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"`,`TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"`,`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"`,`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"`,`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"`,`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"`,`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384"`,`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"`, `TLS_RSA_WITH_AES_128_CBC_SHA"`,`TLS_RSA_WITH_AES_128_CBC_SHA256"`,`TLS_RSA_WITH_AES_128_GCM_SHA256"`,`TLS_RSA_WITH_AES_256_CBC_SHA"`,`TLS_RSA_WITH_AES_256_CBC_SHA256"`,`TLS_RSA_WITH_AES_256_GCM_SHA384"`.
+  final pulumi.Input<String>? minimumTlsCipherSuite;
   /// Configures the minimum version of TLS required for SSL requests. Possible values include: `1.0`, `1.1`, `1.2` and `1.3`. Defaults to `1.2`.
   final pulumi.Input<String>? minimumTlsVersion;
   /// The number of pre-warmed instances for this Windows Function App. Only affects apps on an Elastic Premium plan.
@@ -66,15 +68,15 @@ class WindowsFunctionAppSiteConfig {
   ///
   /// &gt; **Note:** Functions runtime scale monitoring can only be enabled for Elastic Premium Function Apps or Workflow Standard Logic Apps and requires a minimum prewarmed instance count of 1.
   final pulumi.Input<bool>? runtimeScaleMonitoringEnabled;
-  /// The Default action for traffic that does not match any `scm_ip_restriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
+  /// The Default action for traffic that does not match any `scmIpRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
   final pulumi.Input<String>? scmIpRestrictionDefaultAction;
-  /// One or more `scm_ip_restriction` blocks as defined above.
+  /// One or more `scmIpRestriction` blocks as defined above.
   final pulumi.Input<List<WindowsFunctionAppSiteConfigScmIpRestriction>>? scmIpRestrictions;
   /// Configures the minimum version of TLS required for SSL requests to the SCM site. Possible values include: `1.0`, `1.1`, `1.2` and `1.3`. Defaults to `1.2`.
   final pulumi.Input<String>? scmMinimumTlsVersion;
   /// The SCM Type in use by the Windows Function App.
   final pulumi.Input<String>? scmType;
-  /// Should the Windows Function App `ip_restriction` configuration be used for the SCM also.
+  /// Should the Windows Function App `ipRestriction` configuration be used for the SCM also.
   final pulumi.Input<bool>? scmUseMainIpRestriction;
   /// Should the Windows Function App use a 32-bit worker process. Defaults to `true`.
   final pulumi.Input<bool>? use32BitWorker;
@@ -93,32 +95,33 @@ class WindowsFunctionAppSiteConfig {
   /// [apiManagementApiId] The ID of the API Management API for this Windows Function App.
   /// [appCommandLine] The App command line to launch.
   /// [appScaleLimit] The number of workers this function app can scale out to. Only applicable to apps on the Consumption and Premium plan.
-  /// [appServiceLogs] An `app_service_logs` block as defined above.
+  /// [appServiceLogs] An `appServiceLogs` block as defined above.
   /// [applicationInsightsConnectionString] The Connection String for linking the Windows Function App to Application Insights.
   /// [applicationInsightsKey] The Instrumentation Key for connecting the Windows Function App to Application Insights.
-  /// [applicationStack] An `application_stack` block as defined above.
+  /// [applicationStack] An `applicationStack` block as defined above.
   /// [cors] A `cors` block as defined above.
   /// [defaultDocuments] Specifies a list of Default Documents for the Windows Function App.
   /// [detailedErrorLoggingEnabled] Is detailed error logging enabled
   /// [elasticInstanceMinimum] The number of minimum instances for this Windows Function App. Only affects apps on Elastic Premium plans.
   /// [ftpsState] State of FTP / FTPS service for this Windows Function App. Possible values include: `AllAllowed`, `FtpsOnly` and `Disabled`. Defaults to `Disabled`.
-  /// [healthCheckEvictionTimeInMin] The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `health_check_path`.
+  /// [healthCheckEvictionTimeInMin] The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `healthCheckPath`.
   /// [healthCheckPath] The path to be checked for this Windows Function App health.
   /// [http2Enabled] Specifies if the HTTP2 protocol should be enabled. Defaults to `false`.
-  /// [ipRestrictionDefaultAction] The Default action for traffic that does not match any `ip_restriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
-  /// [ipRestrictions] One or more `ip_restriction` blocks as defined above.
+  /// [ipRestrictionDefaultAction] The Default action for traffic that does not match any `ipRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
+  /// [ipRestrictions] One or more `ipRestriction` blocks as defined above.
   /// [loadBalancingMode] The Site load balancing mode. Possible values include: `WeightedRoundRobin`, `LeastRequests`, `LeastResponseTime`, `WeightedTotalTraffic`, `RequestHash`, `PerSiteRoundRobin`. Defaults to `LeastRequests` if omitted.
   /// [managedPipelineMode] Managed pipeline mode. Possible values include: `Integrated`, `Classic`. Defaults to `Integrated`.
+  /// [minimumTlsCipherSuite] The configures the minimum cipher suite of TLS required for SSL requests. Possible values include: `TLS_AES_128_GCM_SHA256`,`TLS_AES_256_GCM_SHA384"`,`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256"`,`TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"`,`TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"`,`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"`,`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"`,`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"`,`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"`,`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384"`,`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"`, `TLS_RSA_WITH_AES_128_CBC_SHA"`,`TLS_RSA_WITH_AES_128_CBC_SHA256"`,`TLS_RSA_WITH_AES_128_GCM_SHA256"`,`TLS_RSA_WITH_AES_256_CBC_SHA"`,`TLS_RSA_WITH_AES_256_CBC_SHA256"`,`TLS_RSA_WITH_AES_256_GCM_SHA384"`.
   /// [minimumTlsVersion] Configures the minimum version of TLS required for SSL requests. Possible values include: `1.0`, `1.1`, `1.2` and `1.3`. Defaults to `1.2`.
   /// [preWarmedInstanceCount] The number of pre-warmed instances for this Windows Function App. Only affects apps on an Elastic Premium plan.
   /// [remoteDebuggingEnabled] Should Remote Debugging be enabled. Defaults to `false`.
   /// [remoteDebuggingVersion] The Remote Debugging Version. Currently only `VS2022` is supported.
   /// [runtimeScaleMonitoringEnabled] Should Scale Monitoring of the Functions Runtime be enabled?
-  /// [scmIpRestrictionDefaultAction] The Default action for traffic that does not match any `scm_ip_restriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
-  /// [scmIpRestrictions] One or more `scm_ip_restriction` blocks as defined above.
+  /// [scmIpRestrictionDefaultAction] The Default action for traffic that does not match any `scmIpRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
+  /// [scmIpRestrictions] One or more `scmIpRestriction` blocks as defined above.
   /// [scmMinimumTlsVersion] Configures the minimum version of TLS required for SSL requests to the SCM site. Possible values include: `1.0`, `1.1`, `1.2` and `1.3`. Defaults to `1.2`.
   /// [scmType] The SCM Type in use by the Windows Function App.
-  /// [scmUseMainIpRestriction] Should the Windows Function App `ip_restriction` configuration be used for the SCM also.
+  /// [scmUseMainIpRestriction] Should the Windows Function App `ipRestriction` configuration be used for the SCM also.
   /// [use32BitWorker] Should the Windows Function App use a 32-bit worker process. Defaults to `true`.
   /// [vnetRouteAllEnabled] Should all outbound traffic to have NAT Gateways, Network Security Groups and User Defined Routes applied? Defaults to `false`.
   /// [websocketsEnabled] Should Web Sockets be enabled. Defaults to `false`.
@@ -146,6 +149,7 @@ class WindowsFunctionAppSiteConfig {
     this.ipRestrictions,
     this.loadBalancingMode,
     this.managedPipelineMode,
+    this.minimumTlsCipherSuite,
     this.minimumTlsVersion,
     this.preWarmedInstanceCount,
     this.remoteDebuggingEnabled,
@@ -186,6 +190,7 @@ class WindowsFunctionAppSiteConfig {
       'ipRestrictions': ?pulumi.Input.mapOptionalInputValue<List<WindowsFunctionAppSiteConfigIpRestriction>, List<Map<String, dynamic>>>(ipRestrictions, (value) => pulumi.Input.encodeList<WindowsFunctionAppSiteConfigIpRestriction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'loadBalancingMode': ?loadBalancingMode,
       'managedPipelineMode': ?managedPipelineMode,
+      'minimumTlsCipherSuite': ?minimumTlsCipherSuite,
       'minimumTlsVersion': ?minimumTlsVersion,
       'preWarmedInstanceCount': ?preWarmedInstanceCount,
       'remoteDebuggingEnabled': ?remoteDebuggingEnabled,
@@ -227,6 +232,7 @@ class WindowsFunctionAppSiteConfig {
       ipRestrictions: (() { final guardedValue = map['ipRestrictions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WindowsFunctionAppSiteConfigIpRestriction>(guardedValue, (value) => WindowsFunctionAppSiteConfigIpRestriction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       loadBalancingMode: (() { final guardedValue = map['loadBalancingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedPipelineMode: (() { final guardedValue = map['managedPipelineMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minimumTlsCipherSuite: (() { final guardedValue = map['minimumTlsCipherSuite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minimumTlsVersion: (() { final guardedValue = map['minimumTlsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       preWarmedInstanceCount: (() { final guardedValue = map['preWarmedInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       remoteDebuggingEnabled: (() { final guardedValue = map['remoteDebuggingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -245,4 +251,3 @@ class WindowsFunctionAppSiteConfig {
     );
   }
 }
-

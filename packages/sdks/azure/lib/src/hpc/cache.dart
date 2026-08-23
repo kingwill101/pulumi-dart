@@ -10,7 +10,7 @@ import 'cache_state.dart';
 
 /// Manages a HPC Cache.
 ///
-/// !&gt; **Note:** The `azure.hpc.Cache` resource has been deprecated because the service is retiring on 2025-09-30. This resource will be removed in v5.0 of the AzureRM Provider. See https://aka.ms/hpccacheretirement for more information.
+/// &gt; **Note:** The `azure.hpc.Cache` resource has been deprecated because the service is retiring on 2025-09-30. This resource will be removed in v5.0 of the AzureRM Provider. See https://aka.ms/hpccacheretirement for more information.
 ///
 /// &gt; **Note:** By request of the service team the provider no longer automatically registers the `Microsoft.StorageCache` Resource Provider for this resource. To register it you can run `az provider register --namespace 'Microsoft.StorageCache'`.
 ///
@@ -175,6 +175,40 @@ import 'cache_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "examplevn"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "examplesubnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+/// }
+/// resource "azure_hpc_cache" "example" {
+///   name                = "examplehpccache"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cache_size_in_gb    = 3072
+///   subnet_id           = azure_network_subnet.example.id
+///   sku_name            = "Standard_2G"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -189,8 +223,8 @@ import 'cache_state.dart';
 /// import com.pulumi.azure.network.SubnetArgs;
 /// import com.pulumi.azure.hpc.Cache;
 /// import com.pulumi.azure.hpc.CacheArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -292,15 +326,15 @@ class Cache extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** The `21623`, `43246` and `86491` sizes are restricted to read only resources.
   late final pulumi.Output<int> cacheSizeInGb;
-  /// A `default_access_policy` block as defined below.
+  /// A `defaultAccessPolicy` block as defined below.
   late final pulumi.Output<CacheDefaultAccessPolicy> defaultAccessPolicy;
-  /// A `directory_active_directory` block as defined below.
+  /// A `directoryActiveDirectory` block as defined below.
   late final pulumi.Output<CacheDirectoryActiveDirectory?> directoryActiveDirectory;
-  /// A `directory_flat_file` block as defined below.
+  /// A `directoryFlatFile` block as defined below.
   late final pulumi.Output<CacheDirectoryFlatFile?> directoryFlatFile;
-  /// A `directory_ldap` block as defined below.
+  /// A `directoryLdap` block as defined below.
   ///
-  /// &gt; **Note:** Only one of `directory_active_directory`, `directory_flat_file` and `directory_ldap` can be set.
+  /// &gt; **Note:** Only one of `directoryActiveDirectory`, `directoryFlatFile` and `directoryLdap` can be set.
   late final pulumi.Output<CacheDirectoryLdap?> directoryLdap;
   /// A `dns` block as defined below.
   late final pulumi.Output<CacheDns?> dns;

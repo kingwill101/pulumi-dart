@@ -9,7 +9,7 @@ class FrontdoorRuleActionsUrlRedirectAction {
   final pulumi.Input<String> destinationHostname;
   /// The path to use in the redirect. The value must be a string and include the leading `/`, leave blank to preserve the incoming path. Defaults to `""`.
   final pulumi.Input<String>? destinationPath;
-  /// The query string used in the redirect URL. The value must be in the &lt;key&gt;=&lt;value&gt; or &lt;key&gt;={`action_server_variable`} format and must not include the leading `?`, leave blank to preserve the incoming query string. Maximum allowed length for this field is `2048` characters. Defaults to `""`.
+  /// The query string used in the redirect URL. The value must be in the &lt;key&gt;=&lt;value&gt; or &lt;key&gt;={`actionServerVariable`} format and must not include the leading `?`, leave blank to preserve the incoming query string. Maximum allowed length for this field is `2048` characters. Defaults to `""`.
   final pulumi.Input<String>? queryString;
   /// The protocol the request will be redirected as. Possible values include `MatchRequest`, `Http` or `Https`. Defaults to `MatchRequest`.
   final pulumi.Input<String>? redirectProtocol;
@@ -20,7 +20,7 @@ class FrontdoorRuleActionsUrlRedirectAction {
   /// [destinationFragment] The fragment to use in the redirect. The value must be a string between `0` and `1024` characters in length, leave blank to preserve the incoming fragment. Defaults to `""`.
   /// [destinationHostname] The host name you want the request to be redirected to. The value must be a string between `0` and `2048` characters in length, leave blank to preserve the incoming host.
   /// [destinationPath] The path to use in the redirect. The value must be a string and include the leading `/`, leave blank to preserve the incoming path. Defaults to `""`.
-  /// [queryString] The query string used in the redirect URL. The value must be in the &lt;key&gt;=&lt;value&gt; or &lt;key&gt;={`action_server_variable`} format and must not include the leading `?`, leave blank to preserve the incoming query string. Maximum allowed length for this field is `2048` characters. Defaults to `""`.
+  /// [queryString] The query string used in the redirect URL. The value must be in the &lt;key&gt;=&lt;value&gt; or &lt;key&gt;={`actionServerVariable`} format and must not include the leading `?`, leave blank to preserve the incoming query string. Maximum allowed length for this field is `2048` characters. Defaults to `""`.
   /// [redirectProtocol] The protocol the request will be redirected as. Possible values include `MatchRequest`, `Http` or `Https`. Defaults to `MatchRequest`.
   /// [redirectType] The response type to return to the requestor. Possible values include `Moved`, `Found` , `TemporaryRedirect` or `PermanentRedirect`.
   const FrontdoorRuleActionsUrlRedirectAction({
@@ -54,4 +54,3 @@ class FrontdoorRuleActionsUrlRedirectAction {
     );
   }
 }
-

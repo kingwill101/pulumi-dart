@@ -1,5 +1,6 @@
 export 'appconfiguration/configuration_feature.dart';
 export 'appconfiguration/configuration_feature_args.dart';
+export 'appconfiguration/configuration_feature_custom_filter.dart';
 export 'appconfiguration/configuration_feature_state.dart';
 export 'appconfiguration/configuration_feature_targeting_filter.dart';
 export 'appconfiguration/configuration_feature_targeting_filter_group.dart';

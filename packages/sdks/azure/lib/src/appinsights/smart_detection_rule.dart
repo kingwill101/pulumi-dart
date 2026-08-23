@@ -114,6 +114,31 @@ import 'smart_detection_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tf-test"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "tf-test-appinsights"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_appinsights_smartdetectionrule" "example" {
+///   name                    = "Slow server response time"
+///   application_insights_id = azure_appinsights_insights.example.id
+///   enabled                 = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +151,8 @@ import 'smart_detection_rule_state.dart';
 /// import com.pulumi.azure.appinsights.InsightsArgs;
 /// import com.pulumi.azure.appinsights.SmartDetectionRule;
 /// import com.pulumi.azure.appinsights.SmartDetectionRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

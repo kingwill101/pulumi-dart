@@ -100,6 +100,28 @@ import 'account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_purview_account" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +133,8 @@ import 'account_state.dart';
 /// import com.pulumi.azure.purview.Account;
 /// import com.pulumi.azure.purview.AccountArgs;
 /// import com.pulumi.azure.purview.inputs.AccountIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -191,13 +213,13 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// Whether the Purview Account should create a managed Event Hub Namespace. Defaults to `true`.
   ///
-  /// &gt; **Note:** `managed_event_hub_enabled` must be `false` in order to use a Kafka Configuration with the Purview Account.
+  /// &gt; **Note:** `managedEventHubEnabled` must be `false` in order to use a Kafka Configuration with the Purview Account.
   late final pulumi.Output<bool?> managedEventHubEnabled;
   /// The name which should be used for the new Resource Group where Purview Account creates the managed resources. Changing this forces a new Purview Account to be created.
   ///
-  /// &gt; **Note:** `managed_resource_group_name` must be a new Resource Group.
+  /// &gt; **Note:** `managedResourceGroupName` must be a new Resource Group.
   late final pulumi.Output<String> managedResourceGroupName;
-  /// A `managed_resources` block as defined below.
+  /// A `managedResources` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> managedResources;
   /// The name which should be used for this Purview Account. Changing this forces a new Purview Account to be created.
   late final pulumi.Output<String> name;

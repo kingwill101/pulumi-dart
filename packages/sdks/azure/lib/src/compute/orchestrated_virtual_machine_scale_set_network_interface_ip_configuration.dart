@@ -10,19 +10,19 @@ class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
   final pulumi.Input<List<String>>? applicationSecurityGroupIds;
   /// A list of Backend Address Pools IDs from a Load Balancer which this Virtual Machine Scale Set should be connected to.
   ///
-  /// &gt; **Note:** When using this field you'll also need to configure a Rule for the Load Balancer, and use a depends_on between this resource and the Load Balancer Rule.
+  /// &gt; **Note:** When using this field you'll also need to configure a Rule for the Load Balancer, and use a dependsOn between this resource and the Load Balancer Rule.
   final pulumi.Input<List<String>>? loadBalancerBackendAddressPoolIds;
   /// The Name which should be used for this IP Configuration.
   final pulumi.Input<String> name;
   /// Is this the Primary IP Configuration for this Network Interface? Possible values are `true` and `false`. Defaults to `false`.
   ///
-  /// &gt; **Note:** One `ip_configuration` block must be marked as Primary for each Network Interface.
+  /// &gt; **Note:** One `ipConfiguration` block must be marked as Primary for each Network Interface.
   final pulumi.Input<bool>? primary;
-  /// A `public_ip_address` block as defined below.
+  /// A `publicIpAddress` block as defined below.
   final pulumi.Input<List<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress>>? publicIpAddresses;
   /// The ID of the Subnet which this IP Configuration should be connected to.
   ///
-  /// &gt; **Note:** `subnet_id` is required if version is set to `IPv4`.
+  /// &gt; **Note:** `subnetId` is required if `version` is set to `IPv4`.
   final pulumi.Input<String>? subnetId;
   /// The Internet Protocol Version which should be used for this IP Configuration. Possible values are `IPv4` and `IPv6`. Defaults to `IPv4`.
   final pulumi.Input<String>? version;
@@ -33,7 +33,7 @@ class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
   /// [loadBalancerBackendAddressPoolIds] A list of Backend Address Pools IDs from a Load Balancer which this Virtual Machine Scale Set should be connected to.
   /// [name] The Name which should be used for this IP Configuration.
   /// [primary] Is this the Primary IP Configuration for this Network Interface? Possible values are `true` and `false`. Defaults to `false`.
-  /// [publicIpAddresses] A `public_ip_address` block as defined below.
+  /// [publicIpAddresses] A `publicIpAddress` block as defined below.
   /// [subnetId] The ID of the Subnet which this IP Configuration should be connected to.
   /// [version] The Internet Protocol Version which should be used for this IP Configuration. Possible values are `IPv4` and `IPv6`. Defaults to `IPv4`.
   const OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration({
@@ -73,4 +73,3 @@ class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
     );
   }
 }
-

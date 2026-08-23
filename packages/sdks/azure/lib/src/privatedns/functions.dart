@@ -99,9 +99,27 @@ import 'get_zone_virtual_network_link_result.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("privateDnsAaaaRecordId", exampleAzurermPrivateDnsAaaaRecord.Id)
+/// 		ctx.Export("privateDnsAaaaRecordId", pulumi.Any(exampleAzurermPrivateDnsAaaaRecord.Id))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_privatedns_aaaarecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+/// output "privateDnsAaaaRecordId" {
+///   value = exampleAzurermPrivateDnsAaaaRecord.id
 /// }
 /// ```
 /// ```java
@@ -112,8 +130,8 @@ import 'get_zone_virtual_network_link_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatedns.AAAARecord;
 /// import com.pulumi.azure.privatedns.AAAARecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -240,6 +258,25 @@ Future<GetAAAARecordResult> getAAAARecord(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_privatedns_getarecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+///
+/// output "privateDnsARecordId" {
+///   value = data.azure_privatedns_getarecord.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -248,8 +285,8 @@ Future<GetAAAARecordResult> getAAAARecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatedns.PrivatednsFunctions;
 /// import com.pulumi.azure.privatedns.inputs.GetARecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -373,9 +410,27 @@ Future<GetARecordResult> getARecord(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("privateDnsCnameRecordId", exampleAzurermPrivateDnsCnameRecord.Id)
+/// 		ctx.Export("privateDnsCnameRecordId", pulumi.Any(exampleAzurermPrivateDnsCnameRecord.Id))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_privatedns_cnamerecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+/// output "privateDnsCnameRecordId" {
+///   value = exampleAzurermPrivateDnsCnameRecord.id
 /// }
 /// ```
 /// ```java
@@ -386,8 +441,8 @@ Future<GetARecordResult> getARecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatedns.CnameRecord;
 /// import com.pulumi.azure.privatedns.CnameRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -508,6 +563,24 @@ Future<GetCnameRecordResult> getCnameRecord(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_privatedns_getdnszone" "example" {
+///   name                = "contoso.internal"
+///   resource_group_name = "contoso-dns"
+/// }
+///
+/// output "privateDnsZoneId" {
+///   value = data.azure_privatedns_getdnszone.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -516,8 +589,8 @@ Future<GetCnameRecordResult> getCnameRecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatedns.PrivatednsFunctions;
 /// import com.pulumi.azure.privatedns.inputs.GetDnsZoneArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -631,9 +704,27 @@ Future<GetDnsZoneResult> getDnsZone(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("privateDnsMxRecordId", exampleAzurermPrivateDnsMxRecord.Id)
+/// 		ctx.Export("privateDnsMxRecordId", pulumi.Any(exampleAzurermPrivateDnsMxRecord.Id))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_privatedns_mxrecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+/// output "privateDnsMxRecordId" {
+///   value = exampleAzurermPrivateDnsMxRecord.id
 /// }
 /// ```
 /// ```java
@@ -644,8 +735,8 @@ Future<GetDnsZoneResult> getDnsZone(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatedns.MxRecord;
 /// import com.pulumi.azure.privatedns.MxRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -768,9 +859,27 @@ Future<GetMxRecordResult> getMxRecord(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("privateDnsPtrRecordId", exampleAzurermPrivateDnsPtrRecord.Id)
+/// 		ctx.Export("privateDnsPtrRecordId", pulumi.Any(exampleAzurermPrivateDnsPtrRecord.Id))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_privatedns_ptrrecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+/// output "privateDnsPtrRecordId" {
+///   value = exampleAzurermPrivateDnsPtrRecord.id
 /// }
 /// ```
 /// ```java
@@ -781,8 +890,8 @@ Future<GetMxRecordResult> getMxRecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatedns.PTRRecord;
 /// import com.pulumi.azure.privatedns.PTRRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -896,6 +1005,20 @@ Future<GetPtrRecordResult> getPtrRecord(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_privatedns_getresolver" "test" {
+///   name                = "example"
+///   resource_group_name = "example-resourcegroup-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -904,8 +1027,8 @@ Future<GetPtrRecordResult> getPtrRecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatedns.PrivatednsFunctions;
 /// import com.pulumi.azure.privatedns.inputs.GetResolverArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1015,6 +1138,20 @@ Future<GetResolverResult> getResolver(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_privatedns_getresolverdnsforwardingruleset" "example" {
+///   name                = "example-ruleset"
+///   resource_group_name = "example-ruleset-resourcegroup"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1023,8 +1160,8 @@ Future<GetResolverResult> getResolver(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatedns.PrivatednsFunctions;
 /// import com.pulumi.azure.privatedns.inputs.GetResolverDnsForwardingRulesetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1134,6 +1271,20 @@ Future<GetResolverDnsForwardingRulesetResult> getResolverDnsForwardingRuleset(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_privatedns_getresolverforwardingrule" "example" {
+///   name                      = "example-rule"
+///   dns_forwarding_ruleset_id = "example-forwarding-rulset-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1142,8 +1293,8 @@ Future<GetResolverDnsForwardingRulesetResult> getResolverDnsForwardingRuleset(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatedns.PrivatednsFunctions;
 /// import com.pulumi.azure.privatedns.inputs.GetResolverForwardingRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1253,6 +1404,20 @@ Future<GetResolverForwardingRuleResult> getResolverForwardingRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_privatedns_getresolverinboundendpoint" "example" {
+///   name                    = "example-drie"
+///   private_dns_resolver_id = "example-private-dns-resolver-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1261,8 +1426,8 @@ Future<GetResolverForwardingRuleResult> getResolverForwardingRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatedns.PrivatednsFunctions;
 /// import com.pulumi.azure.privatedns.inputs.GetResolverInboundEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1372,6 +1537,20 @@ Future<GetResolverInboundEndpointResult> getResolverInboundEndpoint(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_privatedns_getresolveroutboundendpoint" "example" {
+///   name                    = "example-endpoint"
+///   private_dns_resolver_id = "example-private-dns-resolver-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1380,8 +1559,8 @@ Future<GetResolverInboundEndpointResult> getResolverInboundEndpoint(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatedns.PrivatednsFunctions;
 /// import com.pulumi.azure.privatedns.inputs.GetResolverOutboundEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1491,6 +1670,20 @@ Future<GetResolverOutboundEndpointResult> getResolverOutboundEndpoint(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_privatedns_getresolvervirtualnetworklink" "example" {
+///   name                      = "example-link"
+///   dns_forwarding_ruleset_id = "example-dns-forwarding-ruleset-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1499,8 +1692,8 @@ Future<GetResolverOutboundEndpointResult> getResolverOutboundEndpoint(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatedns.PrivatednsFunctions;
 /// import com.pulumi.azure.privatedns.inputs.GetResolverVirtualNetworkLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1573,7 +1766,7 @@ Future<GetResolverVirtualNetworkLinkResult> getResolverVirtualNetworkLink(
 /// import pulumi
 /// import pulumi_azurerm as azurerm
 ///
-/// example = azurerm.index.PrivateDnsSoaRecord("example",
+/// example = azurerm.PrivateDnsSoaRecord("example",
 ///     zone_name=test-zone,
 ///     resource_group_name=test-rg)
 /// pulumi.export("privateDnsSoaRecordId", example_azurerm_private_dns_soa_record["id"])
@@ -1586,7 +1779,7 @@ Future<GetResolverVirtualNetworkLinkResult> getResolverVirtualNetworkLink(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var example = new Azurerm.Index.PrivateDnsSoaRecord("example", new()
+///     var example = new Azurerm.PrivateDnsSoaRecord("example", new()
 ///     {
 ///         ZoneName = "test-zone",
 ///         ResourceGroupName = "test-rg",
@@ -1615,9 +1808,18 @@ Future<GetResolverVirtualNetworkLinkResult> getResolverVirtualNetworkLink(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("privateDnsSoaRecordId", exampleAzurermPrivateDnsSoaRecord.Id)
+/// 		ctx.Export("privateDnsSoaRecordId", pulumi.Any(exampleAzurermPrivateDnsSoaRecord.Id))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// resource "azurerm_privatednssoarecord" "example" {
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+/// output "privateDnsSoaRecordId" {
+///   value = exampleAzurermPrivateDnsSoaRecord.id
 /// }
 /// ```
 /// ```java
@@ -1628,8 +1830,8 @@ Future<GetResolverVirtualNetworkLinkResult> getResolverVirtualNetworkLink(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurerm.PrivateDnsSoaRecord;
 /// import com.pulumi.azurerm.PrivateDnsSoaRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1750,9 +1952,27 @@ Future<GetSoaRecordResult> getSoaRecord(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("privateDnsSrvRecordId", exampleAzurermPrivateDnsSrvRecord.Id)
+/// 		ctx.Export("privateDnsSrvRecordId", pulumi.Any(exampleAzurermPrivateDnsSrvRecord.Id))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_privatedns_srvrecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+/// output "privateDnsSrvRecordId" {
+///   value = exampleAzurermPrivateDnsSrvRecord.id
 /// }
 /// ```
 /// ```java
@@ -1763,8 +1983,8 @@ Future<GetSoaRecordResult> getSoaRecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatedns.SRVRecord;
 /// import com.pulumi.azure.privatedns.SRVRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1887,9 +2107,27 @@ Future<GetSrvRecordResult> getSrvRecord(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("privateDnsTxtRecordId", exampleAzurermPrivateDnsTxtRecord.Id)
+/// 		ctx.Export("privateDnsTxtRecordId", pulumi.Any(exampleAzurermPrivateDnsTxtRecord.Id))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_privatedns_txtrecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+/// output "privateDnsTxtRecordId" {
+///   value = exampleAzurermPrivateDnsTxtRecord.id
 /// }
 /// ```
 /// ```java
@@ -1900,8 +2138,8 @@ Future<GetSrvRecordResult> getSrvRecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatedns.TxtRecord;
 /// import com.pulumi.azure.privatedns.TxtRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2026,6 +2264,25 @@ Future<GetTxtRecordResult> getTxtRecord(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_privatedns_getzonevirtualnetworklink" "example" {
+///   name                  = "test"
+///   resource_group_name   = "test-rg"
+///   private_dns_zone_name = "test-zone"
+/// }
+///
+/// output "privateDnsARecordId" {
+///   value = data.azure_privatedns_getzonevirtualnetworklink.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2034,8 +2291,8 @@ Future<GetTxtRecordResult> getTxtRecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatedns.PrivatednsFunctions;
 /// import com.pulumi.azure.privatedns.inputs.GetZoneVirtualNetworkLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -132,6 +132,36 @@ import 'definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_managedapplication_definition" "example" {
+///   name                = "examplemanagedapplicationdefinition"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   lock_level          = "ReadOnly"
+///   package_file_uri    = "https://github.com/Azure/azure-managedapp-samples/raw/master/Managed Application Sample Packages/201-managed-storage-account/managedstorage.zip"
+///   display_name        = "TestManagedApplicationDefinition"
+///   description         = "Test Managed Application Definition"
+///   authorizations {
+///     service_principal_id = data.azure_core_getclientconfig.current.object_id
+///     role_definition_id   = "a094b430-dad3-424d-ae58-13f72fd72591"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -144,8 +174,8 @@ import 'definition_state.dart';
 /// import com.pulumi.azure.managedapplication.Definition;
 /// import com.pulumi.azure.managedapplication.DefinitionArgs;
 /// import com.pulumi.azure.managedapplication.inputs.DefinitionAuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -249,7 +279,7 @@ class Definition extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
   ///
-  /// &gt; **Note:** If either `create_ui_definition` or `main_template` is set they both must be set.
+  /// &gt; **Note:** If either `createUiDefinition` or `mainTemplate` is set they both must be set.
   late final pulumi.Output<Map<String, String>?> tags;
 
   /// Creates a new [Definition].

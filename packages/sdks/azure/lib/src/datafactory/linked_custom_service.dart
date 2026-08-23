@@ -220,6 +220,51 @@ import 'linked_custom_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_kind             = "BlobStorage"
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_datafactory_linkedcustomservice" "example" {
+///   name                 = "example"
+///   data_factory_id      = azure_datafactory_factory.example.id
+///   type                 = "AzureBlobStorage"
+///   description          = "test description"
+///   type_properties_json ="{
+///   \"connectionString\":\"${azure_storage_account.example.primary_connection_string}\"
+/// }
+/// "
+///   parameters = {
+///     "foo" = "bar"
+///     "Env" = "Test"
+///   }
+///   annotations = ["test1", "test2", "test3"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -235,8 +280,8 @@ import 'linked_custom_service_state.dart';
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.datafactory.LinkedCustomService;
 /// import com.pulumi.azure.datafactory.LinkedCustomServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -358,7 +403,7 @@ class LinkedCustomService extends pulumi.CustomResource {
   late final pulumi.Output<String> dataFactoryId;
   /// The description for the Data Factory Linked Service.
   late final pulumi.Output<String?> description;
-  /// An `integration_runtime` block as defined below.
+  /// An `integrationRuntime` block as defined below.
   late final pulumi.Output<LinkedCustomServiceIntegrationRuntime?> integrationRuntime;
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;

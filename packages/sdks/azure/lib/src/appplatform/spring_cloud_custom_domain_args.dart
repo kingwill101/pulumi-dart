@@ -13,14 +13,14 @@ class SpringCloudCustomDomainArgs {
   final pulumi.Input<String>? name;
   /// Specifies the resource ID of the Spring Cloud Application. Changing this forces a new resource to be created.
   final pulumi.Input<String> springCloudAppId;
-  /// Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud Custom Domain. Required when `certificate_name` is specified. Changing this forces a new resource to be created.
+  /// Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud Custom Domain. Required when `certificateName` is specified. Changing this forces a new resource to be created.
   final pulumi.Input<String>? thumbprint;
 
   /// Creates a new [SpringCloudCustomDomainArgs].
   /// [certificateName] Specifies the name of the Spring Cloud Certificate that binds to the Spring Cloud Custom Domain. Required when `thumbprint` is specified
   /// [name] Specifies the name of the Spring Cloud Custom Domain. Changing this forces a new resource to be created.
   /// [springCloudAppId] Specifies the resource ID of the Spring Cloud Application. Changing this forces a new resource to be created.
-  /// [thumbprint] Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud Custom Domain. Required when `certificate_name` is specified. Changing this forces a new resource to be created.
+  /// [thumbprint] Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud Custom Domain. Required when `certificateName` is specified. Changing this forces a new resource to be created.
   const SpringCloudCustomDomainArgs({
     this.certificateName,
     this.name,
@@ -46,4 +46,3 @@ class SpringCloudCustomDomainArgs {
     );
   }
 }
-

@@ -7,7 +7,7 @@ class KafkaClusterRestProxy {
   final pulumi.Input<String> securityGroupId;
   /// The Azure Active Directory Security Group name. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The `security_group_name` property will be Required in version 3.0 of the AzureRM Provider.
+  /// &gt; **Note:** The `securityGroupName` property will be Required in version 3.0 of the AzureRM Provider.
   final pulumi.Input<String> securityGroupName;
 
   /// Creates a new [KafkaClusterRestProxy].
@@ -32,4 +32,3 @@ class KafkaClusterRestProxy {
     );
   }
 }
-

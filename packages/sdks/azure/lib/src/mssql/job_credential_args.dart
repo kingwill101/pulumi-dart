@@ -13,7 +13,7 @@ class JobCredentialArgs {
   final pulumi.Input<String>? name;
   /// The password to use for this Elastic Job credential.
   final pulumi.Input<String>? password;
-  /// An integer value used to trigger an update for `password_wo`. This property should be incremented when updating `password_wo`.
+  /// An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`.
   final pulumi.Input<int>? passwordWoVersion;
   /// The username to use for this Elastic Job credential.
   final pulumi.Input<String> username;
@@ -22,7 +22,7 @@ class JobCredentialArgs {
   /// [jobAgentId] The ID of the Elastic Job Agent. Changing this forces a new Elastic Job Credential to be created.
   /// [name] The name which should be used for this Elastic Job Credential. Changing this forces a new Elastic Job Credential to be created.
   /// [password] The password to use for this Elastic Job credential.
-  /// [passwordWoVersion] An integer value used to trigger an update for `password_wo`. This property should be incremented when updating `password_wo`.
+  /// [passwordWoVersion] An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`.
   /// [username] The username to use for this Elastic Job credential.
   const JobCredentialArgs({
     required this.jobAgentId,
@@ -52,4 +52,3 @@ class JobCredentialArgs {
     );
   }
 }
-

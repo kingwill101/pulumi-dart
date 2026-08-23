@@ -8,26 +8,26 @@ import 'volume_group_oracle_volume_export_policy_rule.dart';
 class VolumeGroupOracleVolume {
   /// The ID of the Capacity Pool. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> capacityPoolId;
-  /// A `data_protection_replication` block as defined below. Changing this forces a new Application Volume Group to be created and data will be lost.
+  /// A `dataProtectionReplication` block as defined below. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<VolumeGroupOracleVolumeDataProtectionReplication>? dataProtectionReplication;
-  /// A `data_protection_snapshot_policy` block as defined below.
+  /// A `dataProtectionSnapshotPolicy` block as defined below.
   final pulumi.Input<VolumeGroupOracleVolumeDataProtectionSnapshotPolicy>? dataProtectionSnapshotPolicy;
-  /// The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys. This is required with `key_vault_private_endpoint_id`. Changing this forces a new resource to be created.
+  /// The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys. This is required with `keyVaultPrivateEndpointId`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? encryptionKeySource;
-  /// One or more `export_policy_rule` blocks as defined below.
+  /// One or more `exportPolicyRule` blocks as defined below.
   final pulumi.Input<List<VolumeGroupOracleVolumeExportPolicyRule>> exportPolicyRules;
   /// The ID of the Application Volume Group.
   final pulumi.Input<String>? id;
-  /// The Private Endpoint ID for Key Vault, which is required when using customer-managed keys. This is required with `encryption_key_source`. Changing this forces a new resource to be created.
+  /// The Private Endpoint ID for Key Vault, which is required when using customer-managed keys. This is required with `encryptionKeySource`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? keyVaultPrivateEndpointId;
   final pulumi.Input<List<String>>? mountIpAddresses;
   /// The name which should be used for this volume. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> name;
   /// Indicates which network feature to use, Possible values are `Basic`, `Basic_Standard`, `Standard` and `Standard_Basic`. It defaults to `Basic` if not defined. This is a feature in public preview and for more information about it and how to register, please refer to [Configure network features for an Azure NetApp Files volume](https://docs.microsoft.com/en-us/azure/azure-netapp-files/configure-network-features). This is required if enabling customer managed keys encryption scenario.
   final pulumi.Input<String>? networkFeatures;
-  /// The target volume protocol expressed as a list. Protocol conversion between `NFSv3` and `NFSv4.1` and vice-versa is supported without recreating the volume group, however export policy rules must be updated accordingly to avoid configuration drift (e.g., when converting from `NFSv3` to `NFSv4.1`, set `nfsv3_enabled = false` and `nfsv41_enabled = true` in export policy rules). Supported values include `NFSv3` or `NFSv4.1`.
+  /// The target volume protocol expressed as a list. Protocol conversion between `NFSv3` and `NFSv4.1` and vice-versa is supported without recreating the volume group, however export policy rules must be updated accordingly to avoid configuration drift (e.g., when converting from `NFSv3` to `NFSv4.1`, set `nfsv3Enabled = false` and `nfsv41Enabled = true` in export policy rules). Supported values include `NFSv3` or `NFSv4.1`.
   ///
-  /// &gt; **Note:** When converting protocols between NFSv3 and NFSv4.1, ensure that export policy rules are updated accordingly to avoid configuration drift. Update the `nfsv3_enabled` and `nfsv41_enabled` flags to match the new protocol.
+  /// &gt; **Note:** When converting protocols between NFSv3 and NFSv4.1, ensure that export policy rules are updated accordingly to avoid configuration drift. Update the `nfsv3Enabled` and `nfsv41Enabled` flags to match the new protocol.
   final pulumi.Input<String> protocols;
   /// The ID of the proximity placement group (PPG). Changing this forces a new Application Volume Group to be created and data will be lost.
   ///
@@ -51,21 +51,21 @@ class VolumeGroupOracleVolume {
   final pulumi.Input<String> volumePath;
   /// Volume specification name. Possible values are `ora-data1`, `ora-data2`, `ora-data3`, `ora-data4`, `ora-data5`, `ora-data6`, `ora-data7`, `ora-data8`, `ora-log`, `ora-log-mirror`, `ora-binary` and `ora-backup`. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> volumeSpecName;
-  /// Specifies the Availability Zone in which the Volume should be located. Possible values are `1`, `2` and `3`, depending on the Azure region. Changing this forces a new resource to be created. This feature is currently in preview, for more information on how to enable it, please refer to [Manage availability zone volume placement for Azure NetApp Files](https://learn.microsoft.com/en-us/azure/azure-netapp-files/manage-availability-zone-volume-placement). Note that this cannot be used together with `proximity_placement_group_id`.
+  /// Specifies the Availability Zone in which the Volume should be located. Possible values are `1`, `2` and `3`, depending on the Azure region. Changing this forces a new resource to be created. This feature is currently in preview, for more information on how to enable it, please refer to [Manage availability zone volume placement for Azure NetApp Files](https://learn.microsoft.com/en-us/azure/azure-netapp-files/manage-availability-zone-volume-placement). Note that this cannot be used together with `proximityPlacementGroupId`.
   final pulumi.Input<String>? zone;
 
   /// Creates a new [VolumeGroupOracleVolume].
   /// [capacityPoolId] The ID of the Capacity Pool. Changing this forces a new Application Volume Group to be created and data will be lost.
-  /// [dataProtectionReplication] A `data_protection_replication` block as defined below. Changing this forces a new Application Volume Group to be created and data will be lost.
-  /// [dataProtectionSnapshotPolicy] A `data_protection_snapshot_policy` block as defined below.
-  /// [encryptionKeySource] The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys. This is required with `key_vault_private_endpoint_id`. Changing this forces a new resource to be created.
-  /// [exportPolicyRules] One or more `export_policy_rule` blocks as defined below.
+  /// [dataProtectionReplication] A `dataProtectionReplication` block as defined below. Changing this forces a new Application Volume Group to be created and data will be lost.
+  /// [dataProtectionSnapshotPolicy] A `dataProtectionSnapshotPolicy` block as defined below.
+  /// [encryptionKeySource] The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys. This is required with `keyVaultPrivateEndpointId`. Changing this forces a new resource to be created.
+  /// [exportPolicyRules] One or more `exportPolicyRule` blocks as defined below.
   /// [id] The ID of the Application Volume Group.
-  /// [keyVaultPrivateEndpointId] The Private Endpoint ID for Key Vault, which is required when using customer-managed keys. This is required with `encryption_key_source`. Changing this forces a new resource to be created.
+  /// [keyVaultPrivateEndpointId] The Private Endpoint ID for Key Vault, which is required when using customer-managed keys. This is required with `encryptionKeySource`. Changing this forces a new resource to be created.
   /// [mountIpAddresses] Optional.
   /// [name] The name which should be used for this volume. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [networkFeatures] Indicates which network feature to use, Possible values are `Basic`, `Basic_Standard`, `Standard` and `Standard_Basic`. It defaults to `Basic` if not defined. This is a feature in public preview and for more information about it and how to register, please refer to [Configure network features for an Azure NetApp Files volume](https://docs.microsoft.com/en-us/azure/azure-netapp-files/configure-network-features). This is required if enabling customer managed keys encryption scenario.
-  /// [protocols] The target volume protocol expressed as a list. Protocol conversion between `NFSv3` and `NFSv4.1` and vice-versa is supported without recreating the volume group, however export policy rules must be updated accordingly to avoid configuration drift (e.g., when converting from `NFSv3` to `NFSv4.1`, set `nfsv3_enabled = false` and `nfsv41_enabled = true` in export policy rules). Supported values include `NFSv3` or `NFSv4.1`.
+  /// [protocols] The target volume protocol expressed as a list. Protocol conversion between `NFSv3` and `NFSv4.1` and vice-versa is supported without recreating the volume group, however export policy rules must be updated accordingly to avoid configuration drift (e.g., when converting from `NFSv3` to `NFSv4.1`, set `nfsv3Enabled = false` and `nfsv41Enabled = true` in export policy rules). Supported values include `NFSv3` or `NFSv4.1`.
   /// [proximityPlacementGroupId] The ID of the proximity placement group (PPG). Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [securityStyle] Volume security style. Possible values are `ntfs` and `unix`. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [serviceLevel] Volume security style. Possible values are `Premium`, `Standard`, `Ultra` and `Flexible`. Changing this forces a new Application Volume Group to be created and data will be lost.
@@ -76,7 +76,7 @@ class VolumeGroupOracleVolume {
   /// [throughputInMibps] Throughput of this volume in Mibps.
   /// [volumePath] A unique file path for the volume. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [volumeSpecName] Volume specification name. Possible values are `ora-data1`, `ora-data2`, `ora-data3`, `ora-data4`, `ora-data5`, `ora-data6`, `ora-data7`, `ora-data8`, `ora-log`, `ora-log-mirror`, `ora-binary` and `ora-backup`. Changing this forces a new Application Volume Group to be created and data will be lost.
-  /// [zone] Specifies the Availability Zone in which the Volume should be located. Possible values are `1`, `2` and `3`, depending on the Azure region. Changing this forces a new resource to be created. This feature is currently in preview, for more information on how to enable it, please refer to [Manage availability zone volume placement for Azure NetApp Files](https://learn.microsoft.com/en-us/azure/azure-netapp-files/manage-availability-zone-volume-placement). Note that this cannot be used together with `proximity_placement_group_id`.
+  /// [zone] Specifies the Availability Zone in which the Volume should be located. Possible values are `1`, `2` and `3`, depending on the Azure region. Changing this forces a new resource to be created. This feature is currently in preview, for more information on how to enable it, please refer to [Manage availability zone volume placement for Azure NetApp Files](https://learn.microsoft.com/en-us/azure/azure-netapp-files/manage-availability-zone-volume-placement). Note that this cannot be used together with `proximityPlacementGroupId`.
   const VolumeGroupOracleVolume({
     required this.capacityPoolId,
     this.dataProtectionReplication,
@@ -156,4 +156,3 @@ class VolumeGroupOracleVolume {
     );
   }
 }
-

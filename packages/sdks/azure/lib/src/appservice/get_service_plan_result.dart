@@ -18,7 +18,7 @@ class GetServicePlanResult {
   final String osType;
   /// Is Per Site Scaling be enabled?
   final bool perSiteScalingEnabled;
-  /// Whether this is a reserved Service Plan Type. `true` if `os_type` is `Linux`, otherwise `false`.
+  /// Whether this is a reserved Service Plan Type. `true` if `osType` is `Linux`, otherwise `false`.
   final bool reserved;
   final String resourceGroupName;
   /// The SKU for the Service Plan.
@@ -39,7 +39,7 @@ class GetServicePlanResult {
   /// [name] Required.
   /// [osType] The O/S type for the App Services hosted in this plan.
   /// [perSiteScalingEnabled] Is Per Site Scaling be enabled?
-  /// [reserved] Whether this is a reserved Service Plan Type. `true` if `os_type` is `Linux`, otherwise `false`.
+  /// [reserved] Whether this is a reserved Service Plan Type. `true` if `osType` is `Linux`, otherwise `false`.
   /// [resourceGroupName] Required.
   /// [skuName] The SKU for the Service Plan.
   /// [tags] A mapping of tags assigned to the Service Plan.
@@ -100,4 +100,3 @@ class GetServicePlanResult {
     );
   }
 }
-

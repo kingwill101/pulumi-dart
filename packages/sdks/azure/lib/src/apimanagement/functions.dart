@@ -93,6 +93,26 @@ import 'get_workspace_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getapi" "example" {
+///   name                = "search-api"
+///   api_management_name = "search-api-management"
+///   resource_group_name = "search-service"
+///   revision            = "2"
+/// }
+///
+/// output "apiManagementApiId" {
+///   value = data.azure_apimanagement_getapi.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +121,8 @@ import 'get_workspace_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.apimanagement.ApimanagementFunctions;
 /// import com.pulumi.azure.apimanagement.inputs.GetApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -230,6 +250,25 @@ Future<GetApiResult> getApi(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getapiversionset" "example" {
+///   resource_group_name = "example-resources"
+///   api_management_name = "example-api"
+///   name                = "example-api-version-set"
+/// }
+///
+/// output "apiManagementApiVersionSetId" {
+///   value = data.azure_apimanagement_getapiversionset.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -238,8 +277,8 @@ Future<GetApiResult> getApi(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.apimanagement.ApimanagementFunctions;
 /// import com.pulumi.azure.apimanagement.inputs.GetApiVersionSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -373,6 +412,24 @@ Future<GetApiVersionSetResult> getApiVersionSet(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getservice" "example" {
+///   name                = "example-apim"
+///   resource_group_name = "example-rg"
+/// }
+/// data "azure_apimanagement_getgateway" "exampleGetGateway" {
+///   name              = "example-api-gateway"
+///   api_management_id = data.azure_apimanagement_getservice.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -382,8 +439,8 @@ Future<GetApiVersionSetResult> getApiVersionSet(
 /// import com.pulumi.azure.apimanagement.ApimanagementFunctions;
 /// import com.pulumi.azure.apimanagement.inputs.GetServiceArgs;
 /// import com.pulumi.azure.apimanagement.inputs.GetGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -553,6 +610,33 @@ Future<GetGatewayResult> getGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getservice" "example" {
+///   name                = "example-apim"
+///   resource_group_name = "example-resources"
+/// }
+/// data "azure_apimanagement_getgateway" "exampleGetGateway" {
+///   name              = "example-gateway"
+///   api_management_id = main.id
+/// }
+/// data "azure_apimanagement_getgatewayhostnameconfiguration" "exampleGetGatewayHostNameConfiguration" {
+///   name              = "example-host-configuration"
+///   api_management_id = data.azure_apimanagement_getservice.example.id
+///   gateway_name      = data.azure_apimanagement_getgateway.exampleGetGateway.name
+/// }
+///
+/// output "hostName" {
+///   value = data.azure_apimanagement_getgatewayhostnameconfiguration.exampleGetGatewayHostNameConfiguration.host_name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -563,8 +647,8 @@ Future<GetGatewayResult> getGateway(
 /// import com.pulumi.azure.apimanagement.inputs.GetServiceArgs;
 /// import com.pulumi.azure.apimanagement.inputs.GetGatewayArgs;
 /// import com.pulumi.azure.apimanagement.inputs.GetGatewayHostNameConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -712,6 +796,25 @@ Future<GetGatewayHostNameConfigurationResult> getGatewayHostNameConfiguration(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getgroup" "example" {
+///   name                = "my-group"
+///   api_management_name = "example-apim"
+///   resource_group_name = "search-service"
+/// }
+///
+/// output "groupType" {
+///   value = data.azure_apimanagement_getgroup.example.type
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -720,8 +823,8 @@ Future<GetGatewayHostNameConfigurationResult> getGatewayHostNameConfiguration(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.apimanagement.ApimanagementFunctions;
 /// import com.pulumi.azure.apimanagement.inputs.GetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -847,6 +950,25 @@ Future<GetGroupResult> getGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getproduct" "example" {
+///   product_id          = "my-product"
+///   api_management_name = "example-apim"
+///   resource_group_name = "search-service"
+/// }
+///
+/// output "productTerms" {
+///   value = data.azure_apimanagement_getproduct.example.terms
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -855,8 +977,8 @@ Future<GetGroupResult> getGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.apimanagement.ApimanagementFunctions;
 /// import com.pulumi.azure.apimanagement.inputs.GetProductArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -978,6 +1100,24 @@ Future<GetProductResult> getProduct(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getservice" "example" {
+///   name                = "search-api"
+///   resource_group_name = "search-service"
+/// }
+///
+/// output "apiManagementId" {
+///   value = data.azure_apimanagement_getservice.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -986,8 +1126,8 @@ Future<GetProductResult> getProduct(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.apimanagement.ApimanagementFunctions;
 /// import com.pulumi.azure.apimanagement.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1107,6 +1247,24 @@ Future<GetServiceResult> getService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getsubscription" "example" {
+///   api_management_id = "example-apim"
+///   subscription_id   = "example-subscription-id"
+/// }
+///
+/// output "id" {
+///   value = data.azure_apimanagement_getsubscription.example.subscription_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1115,8 +1273,8 @@ Future<GetServiceResult> getService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.apimanagement.ApimanagementFunctions;
 /// import com.pulumi.azure.apimanagement.inputs.GetSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1235,9 +1393,28 @@ Future<GetSubscriptionResult> getSubscription(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("notes", example.Notes)
+/// 		ctx.Export("notes", pulumi.Any(example.Notes))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getuser" "example" {
+///   user_id             = "my-user"
+///   api_management_name = "example-apim"
+///   resource_group_name = "search-service"
+/// }
+///
+/// output "notes" {
+///   value = data.azure_apimanagement_getuser.example.notes
 /// }
 /// ```
 /// ```java
@@ -1248,8 +1425,8 @@ Future<GetSubscriptionResult> getSubscription(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.apimanagement.ApimanagementFunctions;
 /// import com.pulumi.azure.apimanagement.inputs.GetUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1421,10 +1598,40 @@ Future<GetUserResult> getUser(
 /// 			ApiManagementId: exampleService.ID(),
 /// 		}, nil)
 /// 		ctx.Export("id", example.ApplyT(func(example apimanagement.GetWorkspaceResult) (*string, error) {
-/// 			return &example.Id, nil
+/// 			return example.Id, nil
 /// 		}).(pulumi.StringPtrOutput))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getworkspace" "example" {
+///   name              = "existing"
+///   api_management_id = azure_apimanagement_service.example.id
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apimanagement"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "pub1"
+///   publisher_email     = "pub1@email.com"
+///   sku_name            = "Premium_1"
+/// }
+/// output "id" {
+///   value = data.azure_apimanagement_getworkspace.example.id
 /// }
 /// ```
 /// ```java
@@ -1439,8 +1646,8 @@ Future<GetUserResult> getUser(
 /// import com.pulumi.azure.apimanagement.ServiceArgs;
 /// import com.pulumi.azure.apimanagement.ApimanagementFunctions;
 /// import com.pulumi.azure.apimanagement.inputs.GetWorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -67,6 +67,24 @@ import 'get_resource_bridge_appliance_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_arc_getresourcebridgeappliance" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_arc_getresourcebridgeappliance.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +93,8 @@ import 'get_resource_bridge_appliance_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.arc.ArcFunctions;
 /// import com.pulumi.azure.arc.inputs.GetResourceBridgeApplianceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

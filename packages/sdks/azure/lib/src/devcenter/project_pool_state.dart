@@ -16,7 +16,7 @@ class ProjectPoolState {
   final pulumi.Input<String>? location;
   /// A list of the regions of the managed Virtual Network. When specified, the Dev Center Project Pool will use a Microsoft managed network.
   ///
-  /// &gt; **Note:** Currently only one region can be specified for `managed_virtual_network_regions`.
+  /// &gt; **Note:** Currently only one region can be specified for `managedVirtualNetworkRegions`.
   final pulumi.Input<String>? managedVirtualNetworkRegions;
   /// Specifies the name of this Dev Center Project Pool. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -81,4 +81,3 @@ class ProjectPoolState {
     );
   }
 }
-

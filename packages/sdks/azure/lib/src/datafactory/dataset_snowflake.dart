@@ -142,6 +142,37 @@ import 'dataset_snowflake_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedservicesnowflake" "example" {
+///   name              = "example"
+///   data_factory_id   = azure_datafactory_factory.example.id
+///   connection_string = "jdbc:snowflake://account.region.snowflakecomputing.com/?user=user&db=db&warehouse=wh"
+/// }
+/// resource "azure_datafactory_datasetsnowflake" "example" {
+///   name                = "example"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   linked_service_name = azure_datafactory_linkedservicesnowflake.example.name
+///   schema_name         = "foo_schema"
+///   table_name          = "foo_table"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -156,8 +187,8 @@ import 'dataset_snowflake_state.dart';
 /// import com.pulumi.azure.datafactory.LinkedServiceSnowflakeArgs;
 /// import com.pulumi.azure.datafactory.DatasetSnowflake;
 /// import com.pulumi.azure.datafactory.DatasetSnowflakeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -254,7 +285,7 @@ class DatasetSnowflake extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A map of parameters to associate with the Data Factory Dataset Snowflake.
   late final pulumi.Output<Map<String, String>?> parameters;
-  /// A `schema_column` block as defined below.
+  /// A `schemaColumn` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
   /// The schema name of the Data Factory Dataset Snowflake.
   late final pulumi.Output<String?> schemaName;

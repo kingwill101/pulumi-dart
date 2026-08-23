@@ -24,7 +24,7 @@ class DefinitionState {
   final pulumi.Input<String>? policyRule;
   /// The policy type. Possible values are `BuiltIn`, `Custom`, `NotSpecified` and `Static`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? policyType;
-  /// A list of role definition id extracted from `policy_rule` required for remediation.
+  /// A list of role definition id extracted from `policyRule` required for remediation.
   final pulumi.Input<List<String>>? roleDefinitionIds;
 
   /// Creates a new [DefinitionState].
@@ -37,7 +37,7 @@ class DefinitionState {
   /// [parameters] Parameters for the policy definition. This field is a JSON string that allows you to parameterize your policy definition. Reducing the number of parameters forces a new resource to be created.
   /// [policyRule] The policy rule for the policy definition. This is a JSON string representing the rule that contains an if and a then block.
   /// [policyType] The policy type. Possible values are `BuiltIn`, `Custom`, `NotSpecified` and `Static`. Changing this forces a new resource to be created.
-  /// [roleDefinitionIds] A list of role definition id extracted from `policy_rule` required for remediation.
+  /// [roleDefinitionIds] A list of role definition id extracted from `policyRule` required for remediation.
   const DefinitionState({
     this.description,
     this.displayName,
@@ -81,4 +81,3 @@ class DefinitionState {
     );
   }
 }
-

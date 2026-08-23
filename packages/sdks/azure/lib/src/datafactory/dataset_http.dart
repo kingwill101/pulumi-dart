@@ -150,6 +150,39 @@ import 'dataset_http_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedserviceweb" "example" {
+///   name                = "example"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   authentication_type = "Anonymous"
+///   url                 = "https://www.bing.com"
+/// }
+/// resource "azure_datafactory_datasethttp" "example" {
+///   name                = "example"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   linked_service_name = azure_datafactory_linkedserviceweb.example.name
+///   relative_url        = "http://www.bing.com"
+///   request_body        = "foo=bar"
+///   request_method      = "POST"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +197,8 @@ import 'dataset_http_state.dart';
 /// import com.pulumi.azure.datafactory.LinkedServiceWebArgs;
 /// import com.pulumi.azure.datafactory.DatasetHttp;
 /// import com.pulumi.azure.datafactory.DatasetHttpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -274,7 +307,7 @@ class DatasetHttp extends pulumi.CustomResource {
   late final pulumi.Output<String?> requestBody;
   /// The HTTP method for the HTTP request. (e.g. GET, POST)
   late final pulumi.Output<String?> requestMethod;
-  /// A `schema_column` block as defined below.
+  /// A `schemaColumn` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
 
   /// Creates a new [DatasetHttp].

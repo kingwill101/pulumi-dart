@@ -9,15 +9,15 @@ import 'get_vpn_server_configuration_radius.dart';
 
 /// Result data returned by getVpnServerConfiguration.
 class GetVpnServerConfigurationResult {
-  /// A `azure_active_directory_authentication` block as defined below.
+  /// A `azureActiveDirectoryAuthentication` block as defined below.
   final List<GetVpnServerConfigurationAzureActiveDirectoryAuthentication> azureActiveDirectoryAuthentications;
-  /// One or more `client_revoked_certificate` blocks as defined below.
+  /// One or more `clientRevokedCertificate` blocks as defined below.
   final List<GetVpnServerConfigurationClientRevokedCertificate> clientRevokedCertificates;
-  /// One or more `client_root_certificate` blocks as defined below.
+  /// One or more `clientRootCertificate` blocks as defined below.
   final List<GetVpnServerConfigurationClientRootCertificate> clientRootCertificates;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// The `bgp_settings` block as defined below.
+  /// The `bgpSettings` block as defined below.
   final List<GetVpnServerConfigurationIpsecPolicy> ipsecPolicies;
   /// The Azure Region where the VPN Server Configuration exists.
   final String location;
@@ -34,11 +34,11 @@ class GetVpnServerConfigurationResult {
   final List<String> vpnProtocols;
 
   /// Creates a new [GetVpnServerConfigurationResult].
-  /// [azureActiveDirectoryAuthentications] A `azure_active_directory_authentication` block as defined below.
-  /// [clientRevokedCertificates] One or more `client_revoked_certificate` blocks as defined below.
-  /// [clientRootCertificates] One or more `client_root_certificate` blocks as defined below.
+  /// [azureActiveDirectoryAuthentications] A `azureActiveDirectoryAuthentication` block as defined below.
+  /// [clientRevokedCertificates] One or more `clientRevokedCertificate` blocks as defined below.
+  /// [clientRootCertificates] One or more `clientRootCertificate` blocks as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ipsecPolicies] The `bgp_settings` block as defined below.
+  /// [ipsecPolicies] The `bgpSettings` block as defined below.
   /// [location] The Azure Region where the VPN Server Configuration exists.
   /// [name] The name used to uniquely identify this certificate.
   /// [radii] A `radius` block as defined below.
@@ -95,4 +95,3 @@ class GetVpnServerConfigurationResult {
     );
   }
 }
-

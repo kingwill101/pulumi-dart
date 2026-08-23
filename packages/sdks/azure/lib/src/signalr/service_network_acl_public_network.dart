@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceNetworkAclPublicNetwork {
   /// The allowed request types for the public network. Possible values are `ClientConnection`, `ServerConnection`, `RESTAPI` and `Trace`.
   ///
-  /// &gt; **Note:** When `default_action` is `Allow`, `allowed_request_types`cannot be set.
+  /// &gt; **Note:** When `defaultAction` is `Allow`, `allowedRequestTypes`cannot be set.
   final pulumi.Input<List<String>>? allowedRequestTypes;
   /// The denied request types for the public network. Possible values are `ClientConnection`, `ServerConnection`, `RESTAPI` and `Trace`.
   ///
-  /// &gt; **Note:** When `default_action` is `Deny`, `denied_request_types`cannot be set.
+  /// &gt; **Note:** When `defaultAction` is `Deny`, `deniedRequestTypes`cannot be set.
   ///
-  /// &gt; **Note:** `allowed_request_types` - (Optional) and `denied_request_types` cannot be set together.
+  /// &gt; **Note:** `allowedRequestTypes` - (Optional) and `deniedRequestTypes` cannot be set together.
   final pulumi.Input<List<String>>? deniedRequestTypes;
 
   /// Creates a new [ServiceNetworkAclPublicNetwork].
@@ -36,4 +36,3 @@ class ServiceNetworkAclPublicNetwork {
     );
   }
 }
-

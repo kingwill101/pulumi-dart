@@ -75,6 +75,24 @@ import 'get_virtual_machine_configuration_assignment_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_policy_getpolicyassignment" "example" {
+///   name     = "existing"
+///   scope_id = exampleAzurermResourceGroup.id
+/// }
+///
+/// output "id" {
+///   value = data.azure_policy_getpolicyassignment.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +101,8 @@ import 'get_virtual_machine_configuration_assignment_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.policy.PolicyFunctions;
 /// import com.pulumi.azure.policy.inputs.GetPolicyAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,6 +218,23 @@ Future<GetPolicyAssignmentResult> getPolicyAssignment(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_policy_getpolicydefintion" "example" {
+///   display_name = "Allowed resource types"
+/// }
+///
+/// output "id" {
+///   value = data.azure_policy_getpolicydefintion.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -208,8 +243,8 @@ Future<GetPolicyAssignmentResult> getPolicyAssignment(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.policy.PolicyFunctions;
 /// import com.pulumi.azure.policy.inputs.GetPolicyDefintionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -315,6 +350,23 @@ Future<GetPolicyDefintionResult> getPolicyDefintion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_policy_getpolicydefintionbuiltin" "example" {
+///   display_name = "Allowed resource types"
+/// }
+///
+/// output "id" {
+///   value = data.azure_policy_getpolicydefintionbuiltin.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -323,8 +375,8 @@ Future<GetPolicyDefintionResult> getPolicyDefintion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.policy.PolicyFunctions;
 /// import com.pulumi.azure.policy.inputs.GetPolicyDefintionBuiltInArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -430,6 +482,23 @@ Future<GetPolicyDefintionBuiltInResult> getPolicyDefintionBuiltIn(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_policy_getpolicysetdefinition" "example" {
+///   display_name = "Policy Set Definition Example"
+/// }
+///
+/// output "id" {
+///   value = data.azure_policy_getpolicysetdefinition.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -438,8 +507,8 @@ Future<GetPolicyDefintionBuiltInResult> getPolicyDefintionBuiltIn(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.policy.PolicyFunctions;
 /// import com.pulumi.azure.policy.inputs.GetPolicySetDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -553,6 +622,25 @@ Future<GetPolicySetDefinitionResult> getPolicySetDefinition(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_policy_getvirtualmachineconfigurationassignment" "example" {
+///   name                 = "AzureWindowsBaseline"
+///   resource_group_name  = "example-RG"
+///   virtual_machine_name = "example-vm"
+/// }
+///
+/// output "complianceStatus" {
+///   value = data.azure_policy_getvirtualmachineconfigurationassignment.example.compliance_status
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -561,8 +649,8 @@ Future<GetPolicySetDefinitionResult> getPolicySetDefinition(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.policy.PolicyFunctions;
 /// import com.pulumi.azure.policy.inputs.GetVirtualMachineConfigurationAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

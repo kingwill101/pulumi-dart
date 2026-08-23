@@ -196,6 +196,49 @@ import 'backend_address_pool_address_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getvirtualnetwork" "example" {
+///   name                = "example-network"
+///   resource_group_name = "example-resources"
+/// }
+/// data "azure_lb_getlb" "exampleGetLB" {
+///   name                = "example-lb"
+///   resource_group_name = "example-resources"
+/// }
+/// data "azure_lb_getbackendaddresspool" "exampleGetBackendAddressPool" {
+///   name            = "first"
+///   loadbalancer_id = data.azure_lb_getlb.exampleGetLB.id
+/// }
+/// data "azure_lb_getbackendaddresspool" "backend-pool-cr" {
+///   name            = "globalLBBackendPool"
+///   loadbalancer_id = data.azure_lb_getlb.exampleGetLB.id
+/// }
+///
+/// resource "azure_lb_backendaddresspooladdress" "example" {
+///   name                    = "example"
+///   backend_address_pool_id = data.azure_lb_getbackendaddresspool.exampleGetBackendAddressPool.id
+///   virtual_network_id      = data.azure_network_getvirtualnetwork.example.id
+///   ip_address              = "10.0.0.1"
+/// }
+/// resource "azure_lb_backendaddresspooladdress" "example-1" {
+///   name                                = "address1"
+///   backend_address_pool_id             = data.azure_lb_getbackendaddresspool.backend-pool-cr.id
+///   backend_address_ip_configuration_id = backend-lb-R1.frontendIpConfiguration[0].id
+/// }
+/// resource "azure_lb_backendaddresspooladdress" "example-2" {
+///   name                                = "address2"
+///   backend_address_pool_id             = data.azure_lb_getbackendaddresspool.backend-pool-cr.id
+///   backend_address_ip_configuration_id = backend-lb-R2.frontendIpConfiguration[0].id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -209,8 +252,8 @@ import 'backend_address_pool_address_state.dart';
 /// import com.pulumi.azure.lb.inputs.GetBackendAddressPoolArgs;
 /// import com.pulumi.azure.lb.BackendAddressPoolAddress;
 /// import com.pulumi.azure.lb.BackendAddressPoolAddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -335,7 +378,7 @@ class BackendAddressPoolAddress extends pulumi.CustomResource {
   late final pulumi.Output<String?> backendAddressIpConfigurationId;
   /// The ID of the Backend Address Pool. Changing this forces a new Backend Address Pool Address to be created.
   late final pulumi.Output<String> backendAddressPoolId;
-  /// A list of `inbound_nat_rule_port_mapping` block as defined below.
+  /// A list of `inboundNatRulePortMapping` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> inboundNatRulePortMappings;
   /// The Static IP Address which should be allocated to this Backend Address Pool.
   late final pulumi.Output<String?> ipAddress;

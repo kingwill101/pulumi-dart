@@ -159,6 +159,41 @@ import 'alert_rule_anomaly_built_in_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_sentinel_getalertruleanomaly" "example" {
+///   log_analytics_workspace_id = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+///   display_name               = "Potential data staging"
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-law"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
+///   workspace_id                 = azure_operationalinsights_analyticsworkspace.example.id
+///   customer_managed_key_enabled = false
+/// }
+/// resource "azure_sentinel_alertruleanomalybuiltin" "example" {
+///   display_name               = "Potential data staging"
+///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+///   mode                       = "Production"
+///   enabled                    = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +210,8 @@ import 'alert_rule_anomaly_built_in_state.dart';
 /// import com.pulumi.azure.sentinel.inputs.GetAlertRuleAnomalyArgs;
 /// import com.pulumi.azure.sentinel.AlertRuleAnomalyBuiltIn;
 /// import com.pulumi.azure.sentinel.AlertRuleAnomalyBuiltInArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -276,7 +311,7 @@ class AlertRuleAnomalyBuiltIn extends pulumi.CustomResource {
   late final pulumi.Output<String> description;
   /// The Display Name of the built-in Anomaly Alert Rule.
   ///
-  /// &gt; **Note:** One of `name` or `display_name` block must be specified.
+  /// &gt; **Note:** One of `name` or `displayName` block must be specified.
   late final pulumi.Output<String> displayName;
   /// Should the Built-in Anomaly Alert Rule be enabled?
   late final pulumi.Output<bool> enabled;
@@ -286,23 +321,23 @@ class AlertRuleAnomalyBuiltIn extends pulumi.CustomResource {
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
   /// mode of the Built-in Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
   late final pulumi.Output<String> mode;
-  /// A list of `multi_select_observation` blocks as defined below.
+  /// A list of `multiSelectObservation` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> multiSelectObservations;
   /// The Name of the built-in Anomaly Alert Rule.
   late final pulumi.Output<String> name;
-  /// A list of `prioritized_exclude_observation` blocks as defined below.
+  /// A list of `prioritizedExcludeObservation` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> prioritizedExcludeObservations;
-  /// A `required_data_connector` block as defined below.
+  /// A `requiredDataConnector` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> requiredDataConnectors;
   /// The ID of the anomaly settings definition Id.
   late final pulumi.Output<String> settingsDefinitionId;
-  /// A list of `single_select_observation` blocks as defined below.
+  /// A list of `singleSelectObservation` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> singleSelectObservations;
   /// A list of categories of attacks by which to classify the rule.
   late final pulumi.Output<List<String>> tactics;
   /// A list of techniques of attacks by which to classify the rule.
   late final pulumi.Output<List<String>> techniques;
-  /// A list of `threshold_observation` blocks as defined below.
+  /// A list of `thresholdObservation` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> thresholdObservations;
 
   /// Creates a new [AlertRuleAnomalyBuiltIn].

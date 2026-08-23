@@ -8,7 +8,7 @@ import 'managed_instance_state.dart';
 ///
 /// &gt; **Note:** All arguments including the administrator login and password will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 ///
-/// &gt; **Note:** SQL Managed Instance needs permission to read Azure Active Directory when configuring the AAD administrator. [Read more about provisioning AAD administrators](https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure?view=azuresql#provision-azure-ad-admin-sql-managed-instance).
+/// &gt; **Note:** SQL Managed Instance needs permission to read Azure Active Directory when configuring the AAD administrator. [Read more about provisioning AAD administrators](https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-configure?view=azuresql#provision-azure-ad-admin-sql-managed-instance).
 ///
 /// ## Example Usage
 ///
@@ -851,6 +851,176 @@ import 'managed_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "database-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networksecuritygroup" "example" {
+///   name                = "mi-security-group"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_networksecurityrule" "allow_management_inbound" {
+///   name                        = "allow_management_inbound"
+///   priority                    = 106
+///   direction                   = "Inbound"
+///   access                      = "Allow"
+///   protocol                    = "Tcp"
+///   source_port_range           = "*"
+///   destination_port_ranges     = ["9000", "9003", "1438", "1440", "1452"]
+///   source_address_prefix       = "*"
+///   destination_address_prefix  = "*"
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   network_security_group_name = azure_network_networksecuritygroup.example.name
+/// }
+/// resource "azure_network_networksecurityrule" "allow_misubnet_inbound" {
+///   name                        = "allow_misubnet_inbound"
+///   priority                    = 200
+///   direction                   = "Inbound"
+///   access                      = "Allow"
+///   protocol                    = "*"
+///   source_port_range           = "*"
+///   destination_port_range      = "*"
+///   source_address_prefix       = "10.0.0.0/24"
+///   destination_address_prefix  = "*"
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   network_security_group_name = azure_network_networksecuritygroup.example.name
+/// }
+/// resource "azure_network_networksecurityrule" "allow_health_probe_inbound" {
+///   name                        = "allow_health_probe_inbound"
+///   priority                    = 300
+///   direction                   = "Inbound"
+///   access                      = "Allow"
+///   protocol                    = "*"
+///   source_port_range           = "*"
+///   destination_port_range      = "*"
+///   source_address_prefix       = "AzureLoadBalancer"
+///   destination_address_prefix  = "*"
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   network_security_group_name = azure_network_networksecuritygroup.example.name
+/// }
+/// resource "azure_network_networksecurityrule" "allow_tds_inbound" {
+///   name                        = "allow_tds_inbound"
+///   priority                    = 1000
+///   direction                   = "Inbound"
+///   access                      = "Allow"
+///   protocol                    = "Tcp"
+///   source_port_range           = "*"
+///   destination_port_range      = "1433"
+///   source_address_prefix       = "VirtualNetwork"
+///   destination_address_prefix  = "*"
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   network_security_group_name = azure_network_networksecuritygroup.example.name
+/// }
+/// resource "azure_network_networksecurityrule" "deny_all_inbound" {
+///   name                        = "deny_all_inbound"
+///   priority                    = 4096
+///   direction                   = "Inbound"
+///   access                      = "Deny"
+///   protocol                    = "*"
+///   source_port_range           = "*"
+///   destination_port_range      = "*"
+///   source_address_prefix       = "*"
+///   destination_address_prefix  = "*"
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   network_security_group_name = azure_network_networksecuritygroup.example.name
+/// }
+/// resource "azure_network_networksecurityrule" "allow_management_outbound" {
+///   name                        = "allow_management_outbound"
+///   priority                    = 102
+///   direction                   = "Outbound"
+///   access                      = "Allow"
+///   protocol                    = "Tcp"
+///   source_port_range           = "*"
+///   destination_port_ranges     = ["80", "443", "12000"]
+///   source_address_prefix       = "*"
+///   destination_address_prefix  = "*"
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   network_security_group_name = azure_network_networksecuritygroup.example.name
+/// }
+/// resource "azure_network_networksecurityrule" "allow_misubnet_outbound" {
+///   name                        = "allow_misubnet_outbound"
+///   priority                    = 200
+///   direction                   = "Outbound"
+///   access                      = "Allow"
+///   protocol                    = "*"
+///   source_port_range           = "*"
+///   destination_port_range      = "*"
+///   source_address_prefix       = "10.0.0.0/24"
+///   destination_address_prefix  = "*"
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   network_security_group_name = azure_network_networksecuritygroup.example.name
+/// }
+/// resource "azure_network_networksecurityrule" "deny_all_outbound" {
+///   name                        = "deny_all_outbound"
+///   priority                    = 4096
+///   direction                   = "Outbound"
+///   access                      = "Deny"
+///   protocol                    = "*"
+///   source_port_range           = "*"
+///   destination_port_range      = "*"
+///   source_address_prefix       = "*"
+///   destination_address_prefix  = "*"
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   network_security_group_name = azure_network_networksecuritygroup.example.name
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "vnet-mi"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "subnet-mi"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.0.0/24"]
+///   delegations {
+///     name = "managedinstancedelegation"
+///     service_delegation = {
+///       name    = "Microsoft.Sql/managedInstances"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action", "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action"]
+///     }
+///   }
+/// }
+/// resource "azure_network_subnetnetworksecuritygroupassociation" "example" {
+///   subnet_id                 = azure_network_subnet.example.id
+///   network_security_group_id = azure_network_networksecuritygroup.example.id
+/// }
+/// resource "azure_network_routetable" "example" {
+///   depends_on                    = [azure_network_subnet.example]
+///   name                          = "routetable-mi"
+///   location                      = azure_core_resourcegroup.example.location
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   bgp_route_propagation_enabled = true
+/// }
+/// resource "azure_network_subnetroutetableassociation" "example" {
+///   subnet_id      = azure_network_subnet.example.id
+///   route_table_id = azure_network_routetable.example.id
+/// }
+/// resource "azure_mssql_managedinstance" "example" {
+///   depends_on                   = [azure_network_subnetnetworksecuritygroupassociation.example, azure_network_subnetroutetableassociation.example]
+///   name                         = "managedsqlinstance"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   license_type                 = "BasePrice"
+///   sku_name                     = "GP_Gen5"
+///   storage_size_in_gb           = 32
+///   subnet_id                    = azure_network_subnet.example.id
+///   vcores                       = 4
+///   administrator_login          = "mradministrator"
+///   administrator_login_password = "thisIsDog11"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -878,8 +1048,8 @@ import 'managed_instance_state.dart';
 /// import com.pulumi.azure.mssql.ManagedInstance;
 /// import com.pulumi.azure.mssql.ManagedInstanceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1314,24 +1484,28 @@ import 'managed_instance_state.dart';
 class ManagedInstance extends pulumi.CustomResource {
   /// The administrator login name for the new SQL Managed Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> administratorLogin;
-  /// The password associated with the `administrator_login` user. Needs to comply with Azure's [Password Policy](https://msdn.microsoft.com/library/ms161959.aspx)
+  /// The password associated with the `administratorLogin` user. Needs to comply with Azure's [Password Policy](https://msdn.microsoft.com/library/ms161959.aspx)
   ///
-  /// &gt; **Note:** Unless `azure_active_directory_administrator.azuread_authentication_only_enabled` is set to `true`, `administrator_login` and `administrator_login_password` are required.
+  /// &gt; **Note:** Unless `azure_active_directory_administrator.azuread_authentication_only_enabled` is set to `true`, `administratorLogin` and `administratorLoginPassword` are required.
   late final pulumi.Output<String?> administratorLoginPassword;
-  /// An `azure_active_directory_administrator` block as defined below.
+  /// An `azureActiveDirectoryAdministrator` block as defined below.
   late final pulumi.Output<ManagedInstanceAzureActiveDirectoryAdministrator?> azureActiveDirectoryAdministrator;
   /// Specifies how the SQL Managed Instance will be collated. Defaults to `SQL_Latin1_General_CP1_CI_AS`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> collation;
   /// Specifies the internal format of the SQL Managed Instance databases specific to the SQL engine version. Possible values are `AlwaysUpToDate` and `SQLServer2022`. Defaults to `SQLServer2022`.
   ///
-  /// &gt; **Note:** Changing `database_format` from `AlwaysUpToDate` to `SQLServer2022` forces a new SQL Managed Instance to be created.
+  /// &gt; **Note:** Changing `databaseFormat` from `AlwaysUpToDate` to `SQLServer2022` forces a new SQL Managed Instance to be created.
   late final pulumi.Output<String?> databaseFormat;
   /// The Dns Zone where the SQL Managed Instance is located.
   late final pulumi.Output<String> dnsZone;
-  /// The ID of the SQL Managed Instance which will share the DNS zone. This is a prerequisite for creating an `azurerm_sql_managed_instance_failover_group`. Setting this after creation forces a new resource to be created.
+  /// The ID of the SQL Managed Instance which will share the DNS zone. This is a prerequisite for creating an `azurermSqlManagedInstanceFailoverGroup`. Setting this after creation forces a new resource to be created.
   late final pulumi.Output<String?> dnsZonePartnerId;
   /// The fully qualified domain name of the Azure Managed SQL Instance
   late final pulumi.Output<String> fqdn;
+  /// Specifies whether the SQL Managed Instance should use the Next-gen General Purpose service tier. Defaults to `false`.
+  ///
+  /// &gt; **Note:** The `generalPurposeV2Enabled` property can only be set to `true` when using a General Purpose (`GP_*`) SKU.
+  late final pulumi.Output<bool?> generalPurposeV2Enabled;
   /// Specifies the hybrid secondary usage for disaster recovery of the SQL Managed Instance. Possible values are `Active` and `Passive`. Defaults to `Active`.
   late final pulumi.Output<String?> hybridSecondaryUsage;
   /// An `identity` block as defined below.
@@ -1340,7 +1514,7 @@ class ManagedInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> licenseType;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// The name of the Public Maintenance Configuration window to apply to the SQL Managed Instance. Possible values are `SQL_Default` or an Azure Location in the format `SQL_{Location}_MI_{Size}`(for example `SQL_EastUS_MI_1`). Defaults to `SQL_Default`.
+  /// The name of the Public Maintenance Configuration window to apply to the SQL Managed Instance. Valid values include `SQL_Default` or an Azure Location in the format `SQL_{Location}_MI_{Size}`(for example `SQL_EastUS_MI_1`). Defaults to `SQL_Default`.
   late final pulumi.Output<String?> maintenanceConfigurationName;
   /// The Minimum TLS Version. Default value is `1.2` Valid values include `1.0`, `1.1`, `1.2`.
   ///
@@ -1360,6 +1534,10 @@ class ManagedInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> skuName;
   /// Specifies the storage account type used to store backups for this database. Possible values are `GRS`, `GZRS`, `LRS`, and `ZRS`. Defaults to `GRS`.
   late final pulumi.Output<String?> storageAccountType;
+  /// The storage IOPS for the SQL Managed Instance. Possible values are between `300` and `80000`. This can only be specified when `generalPurposeV2Enabled` is `true`.
+  ///
+  /// &gt; **Note:** The effective maximum value for `storageIops` depends on the selected `skuName` and `vcores`. Refer to [Azure SQL Managed Instance resource limits](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/resource-limits) for detailed information.
+  late final pulumi.Output<int> storageIops;
   /// Maximum storage space for the SQL Managed instance. This should be a multiple of 32 (GB).
   ///
   /// &gt; **Note:** The maximum storage size varies depending on the service tier and hardware generation. For General Purpose Next-gen instances, the maximum is 32,768 GB (32 TB), while Business Critical instances support up to 16,384 GB (16 TB). Refer to [Azure SQL Managed Instance resource limits](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/resource-limits) for detailed information.
@@ -1373,6 +1551,8 @@ class ManagedInstance extends pulumi.CustomResource {
   /// Number of cores that should be assigned to the SQL Managed Instance. Values can be `8`, `16`, or `24` for Gen4 SKUs, or `4`, `6`, `8`, `10`, `12`, `16`, `20`, `24`, `32`, `40`, `48`, `56`, `64`, `80`, `96` or `128` for Gen5 SKUs.
   late final pulumi.Output<int> vcores;
   /// Specifies whether the SQL Managed Instance is zone redundant. Defaults to `false`.
+  ///
+  /// &gt; **Note:** `zoneRedundantEnabled` cannot be specified when `generalPurposeV2Enabled` is `true` because zone redundancy is not available for the Next-gen General Purpose service tier.)
   late final pulumi.Output<bool?> zoneRedundantEnabled;
 
   /// Creates a new [ManagedInstance].
@@ -1397,6 +1577,7 @@ class ManagedInstance extends pulumi.CustomResource {
     dnsZone = registerOutput<String>('dnsZone');
     dnsZonePartnerId = registerOutput<String?>('dnsZonePartnerId');
     fqdn = registerOutput<String>('fqdn');
+    generalPurposeV2Enabled = registerOutput<bool?>('generalPurposeV2Enabled');
     hybridSecondaryUsage = registerOutput<String?>('hybridSecondaryUsage');
     identity = registerOutput<ManagedInstanceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedInstanceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     licenseType = registerOutput<String>('licenseType');
@@ -1410,6 +1591,7 @@ class ManagedInstance extends pulumi.CustomResource {
     servicePrincipalType = registerOutput<String?>('servicePrincipalType');
     skuName = registerOutput<String>('skuName');
     storageAccountType = registerOutput<String?>('storageAccountType');
+    storageIops = registerOutput<int>('storageIops');
     storageSizeInGb = registerOutput<int>('storageSizeInGb');
     subnetId = registerOutput<String>('subnetId');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1449,6 +1631,7 @@ class ManagedInstance extends pulumi.CustomResource {
     dnsZone = registerOutput<String>('dnsZone');
     dnsZonePartnerId = registerOutput<String?>('dnsZonePartnerId');
     fqdn = registerOutput<String>('fqdn');
+    generalPurposeV2Enabled = registerOutput<bool?>('generalPurposeV2Enabled');
     hybridSecondaryUsage = registerOutput<String?>('hybridSecondaryUsage');
     identity = registerOutput<ManagedInstanceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedInstanceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     licenseType = registerOutput<String>('licenseType');
@@ -1462,6 +1645,7 @@ class ManagedInstance extends pulumi.CustomResource {
     servicePrincipalType = registerOutput<String?>('servicePrincipalType');
     skuName = registerOutput<String>('skuName');
     storageAccountType = registerOutput<String?>('storageAccountType');
+    storageIops = registerOutput<int>('storageIops');
     storageSizeInGb = registerOutput<int>('storageSizeInGb');
     subnetId = registerOutput<String>('subnetId');
     tags = registerOutput<Map<String, String>?>('tags');

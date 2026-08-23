@@ -93,8 +93,8 @@ import 'sql_pool_workload_group_state.dart';
 ///     importance="normal",
 ///     max_resource_percent=100,
 ///     min_resource_percent=0,
-///     max_resource_percent_per_request=3,
-///     min_resource_percent_per_request=3,
+///     max_resource_percent_per_request=float(3),
+///     min_resource_percent_per_request=float(3),
 ///     query_execution_timeout_in_seconds=0)
 /// ```
 /// ```csharp
@@ -240,6 +240,59 @@ import 'sql_pool_workload_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "west europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_kind             = "BlobStorage"
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// resource "azure_synapse_workspace" "example" {
+///   name                                 = "example"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   location                             = azure_core_resourcegroup.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   sql_administrator_login              = "sqladminuser"
+///   sql_administrator_login_password     = "H@Sh1CoR3!"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_synapse_sqlpool" "example" {
+///   name                 = "example"
+///   synapse_workspace_id = azure_synapse_workspace.example.id
+///   sku_name             = "DW100c"
+///   create_mode          = "Default"
+/// }
+/// resource "azure_synapse_sqlpoolworkloadgroup" "example" {
+///   name                               = "example"
+///   sql_pool_id                        = azure_synapse_sqlpool.example.id
+///   importance                         = "normal"
+///   max_resource_percent               = 100
+///   min_resource_percent               = 0
+///   max_resource_percent_per_request   = 3
+///   min_resource_percent_per_request   = 3
+///   query_execution_timeout_in_seconds = 0
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -259,8 +312,8 @@ import 'sql_pool_workload_group_state.dart';
 /// import com.pulumi.azure.synapse.SqlPoolArgs;
 /// import com.pulumi.azure.synapse.SqlPoolWorkloadGroup;
 /// import com.pulumi.azure.synapse.SqlPoolWorkloadGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

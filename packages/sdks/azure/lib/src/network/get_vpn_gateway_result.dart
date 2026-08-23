@@ -6,11 +6,11 @@ import 'get_vpn_gateway_ip_configuration.dart';
 
 /// Result data returned by getVpnGateway.
 class GetVpnGatewayResult {
-  /// A `bgp_settings` block as defined below.
+  /// A `bgpSettings` block as defined below.
   final List<GetVpnGatewayBgpSetting> bgpSettings;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// An `ip_configuration` block as defined below.
+  /// An `ipConfiguration` block as defined below.
   final List<GetVpnGatewayIpConfiguration> ipConfigurations;
   /// The Azure location where the VPN Gateway exists.
   final String location;
@@ -24,9 +24,9 @@ class GetVpnGatewayResult {
   final String virtualHubId;
 
   /// Creates a new [GetVpnGatewayResult].
-  /// [bgpSettings] A `bgp_settings` block as defined below.
+  /// [bgpSettings] A `bgpSettings` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ipConfigurations] An `ip_configuration` block as defined below.
+  /// [ipConfigurations] An `ipConfiguration` block as defined below.
   /// [location] The Azure location where the VPN Gateway exists.
   /// [name] Required.
   /// [resourceGroupName] Required.
@@ -73,4 +73,3 @@ class GetVpnGatewayResult {
     );
   }
 }
-

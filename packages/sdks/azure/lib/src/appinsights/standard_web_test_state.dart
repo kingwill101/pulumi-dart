@@ -34,7 +34,7 @@ class StandardWebTestState {
   final pulumi.Input<Map<String, String>>? tags;
   /// Seconds until this WebTest will timeout and fail. Default is `30`.
   final pulumi.Input<int>? timeout;
-  /// A `validation_rules` block as defined below.
+  /// A `validationRules` block as defined below.
   final pulumi.Input<StandardWebTestValidationRules>? validationRules;
 
   /// Creates a new [StandardWebTestState].
@@ -51,7 +51,7 @@ class StandardWebTestState {
   /// [syntheticMonitorId] Unique ID of this WebTest. This is typically the same value as the Name field.
   /// [tags] A mapping of tags which should be assigned to the Application Insights Standard WebTest.
   /// [timeout] Seconds until this WebTest will timeout and fail. Default is `30`.
-  /// [validationRules] A `validation_rules` block as defined below.
+  /// [validationRules] A `validationRules` block as defined below.
   const StandardWebTestState({
     this.applicationInsightsId,
     this.description,
@@ -107,4 +107,3 @@ class StandardWebTestState {
     );
   }
 }
-

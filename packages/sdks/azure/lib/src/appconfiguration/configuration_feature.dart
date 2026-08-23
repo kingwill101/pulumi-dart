@@ -153,6 +153,40 @@ import 'configuration_feature_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appconfiguration_configurationstore" "appconf" {
+///   name                = "appConf1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_authorization_assignment" "appconf_dataowner" {
+///   scope                = azure_appconfiguration_configurationstore.appconf.id
+///   role_definition_name = "App Configuration Data Owner"
+///   principal_id         = data.azure_core_getclientconfig.current.object_id
+/// }
+/// resource "azure_appconfiguration_configurationfeature" "test" {
+///   configuration_store_id = azure_appconfiguration_configurationstore.appconf.id
+///   description            = "test description"
+///   name                   = "test-ackey"
+///   label                  = "test-ackeylabel"
+///   enabled                = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +202,8 @@ import 'configuration_feature_state.dart';
 /// import com.pulumi.azure.authorization.AssignmentArgs;
 /// import com.pulumi.azure.appconfiguration.ConfigurationFeature;
 /// import com.pulumi.azure.appconfiguration.ConfigurationFeatureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -263,6 +297,8 @@ import 'configuration_feature_state.dart';
 class ConfigurationFeature extends pulumi.CustomResource {
   /// Specifies the id of the App Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> configurationStoreId;
+  /// A `customFilter` block as defined below.
+  late final pulumi.Output<List<Map<String, dynamic>>?> customFilters;
   /// The description of the App Configuration Feature.
   late final pulumi.Output<String?> description;
   /// The status of the App Configuration Feature. By default, this is set to false.
@@ -280,9 +316,9 @@ class ConfigurationFeature extends pulumi.CustomResource {
   late final pulumi.Output<double?> percentageFilterValue;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A `targeting_filter` block as defined below.
+  /// A `targetingFilter` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> targetingFilters;
-  /// A `timewindow_filter` block as defined below.
+  /// A `timewindowFilter` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> timewindowFilters;
 
   /// Creates a new [ConfigurationFeature].
@@ -300,6 +336,7 @@ class ConfigurationFeature extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     configurationStoreId = registerOutput<String>('configurationStoreId');
+    customFilters = registerOutput<List<Map<String, dynamic>>?>('customFilters');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     etag = registerOutput<String>('etag');
@@ -337,6 +374,7 @@ class ConfigurationFeature extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     configurationStoreId = registerOutput<String>('configurationStoreId');
+    customFilters = registerOutput<List<Map<String, dynamic>>?>('customFilters');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     etag = registerOutput<String>('etag');

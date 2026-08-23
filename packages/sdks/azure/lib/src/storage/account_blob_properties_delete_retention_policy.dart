@@ -7,7 +7,7 @@ class AccountBlobPropertiesDeleteRetentionPolicy {
   final pulumi.Input<int>? days;
   /// Indicates whether permanent deletion of the soft deleted blob versions and snapshots is allowed. Defaults to `false`.
   ///
-  /// &gt; **Note:** `permanent_delete_enabled` cannot be set to true if a `restore_policy` block is defined.
+  /// &gt; **Note:** `permanentDeleteEnabled` cannot be set to true if a `restorePolicy` block is defined.
   final pulumi.Input<bool>? permanentDeleteEnabled;
 
   /// Creates a new [AccountBlobPropertiesDeleteRetentionPolicy].
@@ -32,4 +32,3 @@ class AccountBlobPropertiesDeleteRetentionPolicy {
     );
   }
 }
-

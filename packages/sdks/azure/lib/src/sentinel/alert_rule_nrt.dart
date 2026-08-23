@@ -150,6 +150,36 @@ import 'alert_rule_nrt_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-workspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "pergb2018"
+/// }
+/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
+///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// resource "azure_sentinel_alertrulenrt" "example" {
+///   name                       = "example"
+///   log_analytics_workspace_id = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+///   display_name               = "example"
+///   severity                   = "High"
+///   query                      = "AzureActivity |\n  where OperationName == \\\"Create or Update Virtual Machine\\\" or OperationName ==\\\"Create Deployment\\\" |\n  where ActivityStatus == \\\"Succeeded\\\" |\n  make-series dcount(ResourceId) default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +194,8 @@ import 'alert_rule_nrt_state.dart';
 /// import com.pulumi.azure.sentinel.LogAnalyticsWorkspaceOnboardingArgs;
 /// import com.pulumi.azure.sentinel.AlertRuleNrt;
 /// import com.pulumi.azure.sentinel.AlertRuleNrtArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,7 +290,7 @@ import 'alert_rule_nrt_state.dart';
 /// $ pulumi import azure:sentinel/alertRuleNrt:AlertRuleNrt example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.OperationalInsights/workspaces/workspace1/providers/Microsoft.SecurityInsights/alertRules/rule1
 /// ```
 class AlertRuleNrt extends pulumi.CustomResource {
-  /// An `alert_details_override` block as defined below.
+  /// An `alertDetailsOverride` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> alertDetailsOverrides;
   /// The GUID of the alert rule template which is used for this Sentinel NRT Alert Rule. Changing this forces a new Sentinel NRT Alert Rule to be created.
   late final pulumi.Output<String?> alertRuleTemplateGuid;
@@ -274,9 +304,9 @@ class AlertRuleNrt extends pulumi.CustomResource {
   late final pulumi.Output<String> displayName;
   /// Should the Sentinel NRT Alert Rule be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-  /// A list of `entity_mapping` blocks as defined below.
+  /// A list of `entityMapping` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> entityMappings;
-  /// A `event_grouping` block as defined below.
+  /// A `eventGrouping` block as defined below.
   late final pulumi.Output<AlertRuleNrtEventGrouping> eventGrouping;
   /// A `incident` block as defined below.
   late final pulumi.Output<AlertRuleNrtIncident> incident;
@@ -286,13 +316,13 @@ class AlertRuleNrt extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The query of this Sentinel NRT Alert Rule.
   late final pulumi.Output<String> query;
-  /// A list of `sentinel_entity_mapping` blocks as defined below.
+  /// A list of `sentinelEntityMapping` blocks as defined below.
   ///
-  /// &gt; **Note:** `entity_mapping` and `sentinel_entity_mapping` together can't exceed 5.
+  /// &gt; **Note:** `entityMapping` and `sentinelEntityMapping` together can't exceed 5.
   late final pulumi.Output<List<Map<String, dynamic>>?> sentinelEntityMappings;
   /// The alert severity of this Sentinel NRT Alert Rule. Possible values are `High`, `Medium`, `Low` and `Informational`.
   late final pulumi.Output<String> severity;
-  /// If `suppression_enabled` is `true`, this is ISO 8601 timespan duration, which specifies the amount of time the query should stop running after alert is generated. Defaults to `PT5H`.
+  /// If `suppressionEnabled` is `true`, this is ISO 8601 timespan duration, which specifies the amount of time the query should stop running after alert is generated. Defaults to `PT5H`.
   late final pulumi.Output<String?> suppressionDuration;
   /// Should the Sentinel NRT Alert Rulea stop running query after alert is generated? Defaults to `false`.
   late final pulumi.Output<bool?> suppressionEnabled;

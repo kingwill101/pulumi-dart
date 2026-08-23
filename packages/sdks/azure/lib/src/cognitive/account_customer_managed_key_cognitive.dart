@@ -4,7 +4,7 @@ import 'account_customer_managed_key_state.dart';
 
 /// Manages a Customer Managed Key for a Cognitive Services Account.
 ///
-/// &gt; **Note:** It's possible to define a Customer Managed Key both within the `azure.cognitive.Account` resource via the `customer_managed_key` block and by using the `azure.cognitive.AccountCustomerManagedKey` resource. However it's not possible to use both methods to manage a Customer Managed Key for a Cognitive Account, since there'll be conflicts.
+/// &gt; **Note:** It's possible to define a Customer Managed Key both within the `azure.cognitive.Account` resource via the `customerManagedKey` block and by using the `azure.cognitive.AccountCustomerManagedKey` resource. However it's not possible to use both methods to manage a Customer Managed Key for a Cognitive Account, since there'll be conflicts.
 ///
 /// ## Example Usage
 ///
@@ -449,10 +449,10 @@ import 'account_customer_managed_key_state.dart';
 /// 			AccessPolicies: keyvault.KeyVaultAccessPolicyArray{
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: exampleAccount.Identity.ApplyT(func(identity cognitive.AccountIdentity) (*string, error) {
-/// 						return &identity.TenantId, nil
+/// 						return identity.TenantId, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 					ObjectId: exampleAccount.Identity.ApplyT(func(identity cognitive.AccountIdentity) (*string, error) {
-/// 						return &identity.PrincipalId, nil
+/// 						return identity.PrincipalId, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 					KeyPermissions: pulumi.StringArray{
 /// 						pulumi.String("Get"),
@@ -551,6 +551,78 @@ import 'account_customer_managed_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West US"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   name                = "example-identity"
+/// }
+/// resource "azure_cognitive_account" "example" {
+///   name                  = "example-account"
+///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   kind                  = "Face"
+///   sku_name              = "E0"
+///   custom_subdomain_name = "example-account"
+///   identity = {
+///     type         = "SystemAssigned, UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                     = "example-vault"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                 = "standard"
+///   purge_protection_enabled = true
+///   access_policies {
+///     tenant_id          = azure_cognitive_account.example.identity.tenant_id
+///     object_id          = azure_cognitive_account.example.identity.principal_id
+///     key_permissions    = ["Get", "Create", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify"]
+///     secret_permissions = ["Get"]
+///   }
+///   access_policies {
+///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     key_permissions    = ["Get", "Create", "Delete", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify", "GetRotationPolicy"]
+///     secret_permissions = ["Get"]
+///   }
+///   access_policies {
+///     tenant_id          = azure_authorization_userassignedidentity.example.tenant_id
+///     object_id          = azure_authorization_userassignedidentity.example.principal_id
+///     key_permissions    = ["Get", "Create", "Delete", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify"]
+///     secret_permissions = ["Get"]
+///   }
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   name         = "example-key"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_cognitive_accountcustomermanagedkey" "example" {
+///   cognitive_account_id = azure_cognitive_account.example.id
+///   key_vault_key_id     = azure_keyvault_key.example.id
+///   identity_client_id   = azure_authorization_userassignedidentity.example.client_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -572,8 +644,8 @@ import 'account_customer_managed_key_state.dart';
 /// import com.pulumi.azure.keyvault.KeyArgs;
 /// import com.pulumi.azure.cognitive.AccountCustomerManagedKey;
 /// import com.pulumi.azure.cognitive.AccountCustomerManagedKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -829,7 +901,7 @@ import 'account_customer_managed_key_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.CognitiveServices` - 2025-06-01
+/// * `Microsoft.CognitiveServices` - 2026-03-01
 ///
 /// ## Import
 ///

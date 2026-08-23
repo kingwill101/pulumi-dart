@@ -163,6 +163,41 @@ import 'scale_set_standby_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_compute_orchestratedvirtualmachinescaleset" "example" {
+///   name                        = "example-ovmss"
+///   location                    = azure_core_resourcegroup.example.location
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   platform_fault_domain_count = 1
+///   zones                       = ["1"]
+/// }
+/// resource "azure_compute_scalesetstandbypool" "example" {
+///   name                                  = "example-spsvmp"
+///   resource_group_name                   = azure_core_resourcegroup.example.name
+///   location                              = "West Europe"
+///   attached_virtual_machine_scale_set_id = azure_compute_orchestratedvirtualmachinescaleset.example.id
+///   virtual_machine_state                 = "Running"
+///   elasticity_profile = {
+///     max_ready_capacity = 10
+///     min_ready_capacity = 5
+///   }
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -176,8 +211,8 @@ import 'scale_set_standby_pool_state.dart';
 /// import com.pulumi.azure.compute.ScaleSetStandbyPool;
 /// import com.pulumi.azure.compute.ScaleSetStandbyPoolArgs;
 /// import com.pulumi.azure.compute.inputs.ScaleSetStandbyPoolElasticityProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,7 +304,7 @@ import 'scale_set_standby_pool_state.dart';
 class ScaleSetStandbyPool extends pulumi.CustomResource {
   /// Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to.
   late final pulumi.Output<String> attachedVirtualMachineScaleSetId;
-  /// An `elasticity_profile` block as defined below.
+  /// An `elasticityProfile` block as defined below.
   late final pulumi.Output<ScaleSetStandbyPoolElasticityProfile> elasticityProfile;
   /// Specifies the Azure Region where the Standby Pool should exist. Changing this forces a new Standby Pool to be created.
   late final pulumi.Output<String> location;

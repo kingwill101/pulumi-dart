@@ -11,19 +11,19 @@ import 'next_generation_firewall_virtual_hub_strata_cloud_manager_network_profil
 /// {@endtemplate}
 /// {@macro pulumi_paloalto_next_generation_firewall_virtual_hub_strata_cloud_manager_next_generation_firewall_virtual_hub_strata_cloud_manager_args_doc}
 class NextGenerationFirewallVirtualHubStrataCloudManagerArgs {
-  /// One or more `destination_nat` blocks as defined below.
+  /// One or more `destinationNat` blocks as defined below.
   final pulumi.Input<List<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>>? destinationNats;
-  /// A `dns_settings` block as defined below.
+  /// A `dnsSettings` block as defined below.
   final pulumi.Input<NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings>? dnsSettings;
   /// A `identity` block as defined below.
   final pulumi.Input<NextGenerationFirewallVirtualHubStrataCloudManagerIdentity>? identity;
   /// The Azure Region where the Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
   final pulumi.Input<String>? location;
-  /// The ID of the marketplace offer. Defaults to `pan_swfw_cloud_ngfw`. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
+  /// The ID of the marketplace offer. Defaults to `panSwfwCloudNgfw`. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
   final pulumi.Input<String>? marketplaceOfferId;
   /// The name which should be used for this Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
   final pulumi.Input<String>? name;
-  /// A `network_profile` block as defined below.
+  /// A `networkProfile` block as defined below.
   final pulumi.Input<NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile> networkProfile;
   /// The ID of the billing plan. Defaults to `panw-cngfw-payg`.
   final pulumi.Input<String>? planId;
@@ -35,13 +35,13 @@ class NextGenerationFirewallVirtualHubStrataCloudManagerArgs {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [NextGenerationFirewallVirtualHubStrataCloudManagerArgs].
-  /// [destinationNats] One or more `destination_nat` blocks as defined below.
-  /// [dnsSettings] A `dns_settings` block as defined below.
+  /// [destinationNats] One or more `destinationNat` blocks as defined below.
+  /// [dnsSettings] A `dnsSettings` block as defined below.
   /// [identity] A `identity` block as defined below.
   /// [location] The Azure Region where the Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
-  /// [marketplaceOfferId] The ID of the marketplace offer. Defaults to `pan_swfw_cloud_ngfw`. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
+  /// [marketplaceOfferId] The ID of the marketplace offer. Defaults to `panSwfwCloudNgfw`. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
   /// [name] The name which should be used for this Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
-  /// [networkProfile] A `network_profile` block as defined below.
+  /// [networkProfile] A `networkProfile` block as defined below.
   /// [planId] The ID of the billing plan. Defaults to `panw-cngfw-payg`.
   /// [resourceGroupName] The name of the Resource Group where the Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
   /// [strataCloudManagerTenantName] Strata Cloud Manager name which is intended to manage the policy for this firewall.
@@ -92,4 +92,3 @@ class NextGenerationFirewallVirtualHubStrataCloudManagerArgs {
     );
   }
 }
-

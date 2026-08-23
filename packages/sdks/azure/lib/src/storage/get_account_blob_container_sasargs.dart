@@ -10,7 +10,7 @@ import 'get_account_blob_container_saspermissions.dart';
 class GetAccountBlobContainerSASArgs {
   /// The `Cache-Control` response header that is sent when this SAS token is used.
   final pulumi.Input<String>? cacheControl;
-  /// The connection string for the storage account to which this SAS applies. Typically directly from the `primary_connection_string` attribute of an `azure.storage.Account` resource.
+  /// The connection string for the storage account to which this SAS applies. Typically directly from the `primaryConnectionString` attribute of an `azure.storage.Account` resource.
   final pulumi.Input<String> connectionString;
   /// Name of the container.
   final pulumi.Input<String> containerName;
@@ -30,14 +30,14 @@ class GetAccountBlobContainerSASArgs {
   final pulumi.Input<bool>? httpsOnly;
   /// Single IPv4 address or range (connected with a dash) of IPv4 addresses.
   final pulumi.Input<String>? ipAddress;
-  /// A `permissions` block as defined below.
-  final pulumi.Input<GetAccountBlobContainerSASPermissions> permissions;
+  /// Should Permissions permissions be enabled for this SAS?
+  final pulumi.Input<GetAccountBlobContainerSASPermissions>? permissions;
   /// The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
   final pulumi.Input<String> start;
 
   /// Creates a new [GetAccountBlobContainerSASArgs].
   /// [cacheControl] The `Cache-Control` response header that is sent when this SAS token is used.
-  /// [connectionString] The connection string for the storage account to which this SAS applies. Typically directly from the `primary_connection_string` attribute of an `azure.storage.Account` resource.
+  /// [connectionString] The connection string for the storage account to which this SAS applies. Typically directly from the `primaryConnectionString` attribute of an `azure.storage.Account` resource.
   /// [containerName] Name of the container.
   /// [contentDisposition] The `Content-Disposition` response header that is sent when this SAS token is used.
   /// [contentEncoding] The `Content-Encoding` response header that is sent when this SAS token is used.
@@ -46,7 +46,7 @@ class GetAccountBlobContainerSASArgs {
   /// [expiry] The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
   /// [httpsOnly] Only permit `https` access. If `false`, both `http` and `https` are permitted. Defaults to `true`.
   /// [ipAddress] Single IPv4 address or range (connected with a dash) of IPv4 addresses.
-  /// [permissions] A `permissions` block as defined below.
+  /// [permissions] Should Permissions permissions be enabled for this SAS?
   /// [start] The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
   const GetAccountBlobContainerSASArgs({
     this.cacheControl,
@@ -59,7 +59,7 @@ class GetAccountBlobContainerSASArgs {
     required this.expiry,
     this.httpsOnly,
     this.ipAddress,
-    required this.permissions,
+    this.permissions,
     required this.start,
   });
 
@@ -75,7 +75,7 @@ class GetAccountBlobContainerSASArgs {
       'expiry': expiry,
       'httpsOnly': ?httpsOnly,
       'ipAddress': ?ipAddress,
-      'permissions': pulumi.Input.mapInputValue<GetAccountBlobContainerSASPermissions, Map<String, dynamic>>(permissions, (value) => value.toMap()),
+      'permissions': ?pulumi.Input.mapOptionalInputValue<GetAccountBlobContainerSASPermissions, Map<String, dynamic>>(permissions, (value) => value.toMap()),
       'start': start,
     };
   }
@@ -92,9 +92,8 @@ class GetAccountBlobContainerSASArgs {
       expiry: pulumi.Input.fromValue(map['expiry'] as String),
       httpsOnly: (() { final guardedValue = map['httpsOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      permissions: pulumi.Input.fromValue(GetAccountBlobContainerSASPermissions.fromMap((map['permissions']! as Map).cast<String, dynamic>())),
+      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetAccountBlobContainerSASPermissions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       start: pulumi.Input.fromValue(map['start'] as String),
     );
   }
 }
-

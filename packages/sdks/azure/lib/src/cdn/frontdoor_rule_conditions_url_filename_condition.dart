@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FrontdoorRuleConditionsUrlFilenameCondition {
   /// A list of one or more string or integer values(e.g. "1") representing the value of the request file name to match. If multiple values are specified, they're evaluated using `OR` logic.
   ///
-  /// &gt; **Note:** The `match_values` field is only optional if the `operator` is set to `Any`.
+  /// &gt; **Note:** The `matchValues` field is only optional if the `operator` is set to `Any`.
   final pulumi.Input<List<String>>? matchValues;
   /// If `true` operator becomes the opposite of its value. Possible values `true` or `false`. Defaults to `false`. Details can be found in the `Condition Operator List` below.
   final pulumi.Input<bool>? negateCondition;
@@ -44,4 +44,3 @@ class FrontdoorRuleConditionsUrlFilenameCondition {
     );
   }
 }
-

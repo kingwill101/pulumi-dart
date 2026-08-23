@@ -151,6 +151,39 @@ import 'table_entity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "azureexample"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "azureexamplestorage1"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_table" "example" {
+///   name                 = "myexampletable"
+///   storage_account_name = azure_storage_account.example.name
+/// }
+/// resource "azure_storage_tableentity" "example" {
+///   storage_table_id = azure_storage_table.example.id
+///   partition_key    = "examplepartition"
+///   row_key          = "examplerow"
+///   entity = {
+///     "example" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -165,8 +198,8 @@ import 'table_entity_state.dart';
 /// import com.pulumi.azure.storage.TableArgs;
 /// import com.pulumi.azure.storage.TableEntity;
 /// import com.pulumi.azure.storage.TableEntityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

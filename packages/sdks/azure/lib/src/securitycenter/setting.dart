@@ -65,6 +65,20 @@ import 'setting_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_securitycenter_setting" "example" {
+///   setting_name = "MCAS"
+///   enabled      = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'setting_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.securitycenter.Setting;
 /// import com.pulumi.azure.securitycenter.SettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

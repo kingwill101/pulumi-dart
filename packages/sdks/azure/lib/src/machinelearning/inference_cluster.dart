@@ -418,6 +418,96 @@ import 'inference_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "west europe"
+///   tags = {
+///     "stage" = "example"
+///   }
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "example-ai"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                     = "example-kv"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                 = "standard"
+///   purge_protection_enabled = true
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplesa"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_machinelearning_workspace" "example" {
+///   name                    = "example-mlw"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   application_insights_id = azure_appinsights_insights.example.id
+///   key_vault_id            = azure_keyvault_keyvault.example.id
+///   storage_account_id      = azure_storage_account.example.id
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.1.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.1.0.0/24"]
+/// }
+/// resource "azure_containerservice_kubernetescluster" "example" {
+///   name                       = "example-aks"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   dns_prefix_private_cluster = "prefix"
+///   default_node_pool = {
+///     name           = "default"
+///     node_count     = 3
+///     vm_size        = "Standard_D3_v2"
+///     vnet_subnet_id = azure_network_subnet.example.id
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_machinelearning_inferencecluster" "example" {
+///   name                          = "example"
+///   location                      = azure_core_resourcegroup.example.location
+///   cluster_purpose               = "FastProd"
+///   kubernetes_cluster_id         = azure_containerservice_kubernetescluster.example.id
+///   description                   = "This is an example cluster used with Terraform"
+///   machine_learning_workspace_id = azure_machinelearning_workspace.example.id
+///   tags = {
+///     "stage" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -446,8 +536,8 @@ import 'inference_cluster_state.dart';
 /// import com.pulumi.azure.containerservice.inputs.KubernetesClusterIdentityArgs;
 /// import com.pulumi.azure.machinelearning.InferenceCluster;
 /// import com.pulumi.azure.machinelearning.InferenceClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -652,7 +742,7 @@ import 'inference_cluster_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.ContainerService` - 2025-07-01
+/// * `Microsoft.ContainerService` - 2025-10-01
 ///
 /// * `Microsoft.MachineLearningServices` - 2025-06-01
 ///
@@ -666,7 +756,7 @@ import 'inference_cluster_state.dart';
 class InferenceCluster extends pulumi.CustomResource {
   /// The purpose of the Inference Cluster. Options are `DevTest`, `DenseProd` and `FastProd`. If used for Development or Testing, use `DevTest` here. Default purpose is `FastProd`, which is recommended for production workloads. Changing this forces a new Machine Learning Inference Cluster to be created.
   ///
-  /// &gt; **Note:** When creating or attaching a cluster, if the cluster will be used for production (`cluster_purpose = "FastProd"`), then it must contain at least 12 virtual CPUs. The number of virtual CPUs can be calculated by multiplying the number of nodes in the cluster by the number of cores provided by the VM size selected. For example, if you use a VM size of "Standard_D3_v2", which has 4 virtual cores, then you should select 3 or greater as the number of nodes.
+  /// &gt; **Note:** When creating or attaching a cluster, if the cluster will be used for production (`clusterPurpose = "FastProd"`), then it must contain at least 12 virtual CPUs. The number of virtual CPUs can be calculated by multiplying the number of nodes in the cluster by the number of cores provided by the VM size selected. For example, if you use a VM size of "Standard_D3_v2", which has 4 virtual cores, then you should select 3 or greater as the number of nodes.
   late final pulumi.Output<String?> clusterPurpose;
   /// The description of the Machine Learning Inference Cluster. Changing this forces a new Machine Learning Inference Cluster to be created.
   late final pulumi.Output<String?> description;

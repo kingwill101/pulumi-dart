@@ -14,7 +14,7 @@ class ManagedHardwareSecurityModuleArgs {
   final pulumi.Input<String>? location;
   /// Specifies the name of the Key Vault Managed Hardware Security Module. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// A `network_acls` block as defined below.
+  /// A `networkAcls` block as defined below.
   final pulumi.Input<ManagedHardwareSecurityModuleNetworkAcls>? networkAcls;
   /// Whether traffic from public networks is permitted. Defaults to `true`.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
@@ -24,7 +24,7 @@ class ManagedHardwareSecurityModuleArgs {
   final pulumi.Input<String> resourceGroupName;
   /// A list of KeyVault certificates resource IDs (minimum of three and up to a maximum of 10) to activate this Managed HSM. More information see [activate-your-managed-hsm](https://learn.microsoft.com/azure/key-vault/managed-hsm/quick-create-cli#activate-your-managed-hsm)
   final pulumi.Input<List<String>>? securityDomainKeyVaultCertificateIds;
-  /// Specifies the minimum number of shares required to decrypt the security domain for recovery. This is required when `security_domain_key_vault_certificate_ids` is specified. Valid values are between 2 and 10.
+  /// Specifies the minimum number of shares required to decrypt the security domain for recovery. This is required when `securityDomainKeyVaultCertificateIds` is specified. Valid values are between 2 and 10.
   final pulumi.Input<int>? securityDomainQuorum;
   /// The Name of the SKU used for this Key Vault Managed Hardware Security Module. Possible value is `Standard_B1`. Changing this forces a new resource to be created.
   final pulumi.Input<String> skuName;
@@ -39,12 +39,12 @@ class ManagedHardwareSecurityModuleArgs {
   /// [adminObjectIds] Specifies a list of administrators object IDs for the key vault Managed Hardware Security Module. Changing this forces a new resource to be created.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Key Vault Managed Hardware Security Module. Changing this forces a new resource to be created.
-  /// [networkAcls] A `network_acls` block as defined below.
+  /// [networkAcls] A `networkAcls` block as defined below.
   /// [publicNetworkAccessEnabled] Whether traffic from public networks is permitted. Defaults to `true`.
   /// [purgeProtectionEnabled] Is Purge Protection enabled for this Key Vault Managed Hardware Security Module? Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the Key Vault Managed Hardware Security Module. Changing this forces a new resource to be created.
   /// [securityDomainKeyVaultCertificateIds] A list of KeyVault certificates resource IDs (minimum of three and up to a maximum of 10) to activate this Managed HSM. More information see [activate-your-managed-hsm](https://learn.microsoft.com/azure/key-vault/managed-hsm/quick-create-cli#activate-your-managed-hsm)
-  /// [securityDomainQuorum] Specifies the minimum number of shares required to decrypt the security domain for recovery. This is required when `security_domain_key_vault_certificate_ids` is specified. Valid values are between 2 and 10.
+  /// [securityDomainQuorum] Specifies the minimum number of shares required to decrypt the security domain for recovery. This is required when `securityDomainKeyVaultCertificateIds` is specified. Valid values are between 2 and 10.
   /// [skuName] The Name of the SKU used for this Key Vault Managed Hardware Security Module. Possible value is `Standard_B1`. Changing this forces a new resource to be created.
   /// [softDeleteRetentionDays] The number of days that items should be retained for once soft-deleted. This value can be between `7` and `90` days. Defaults to `90`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
@@ -101,4 +101,3 @@ class ManagedHardwareSecurityModuleArgs {
     );
   }
 }
-

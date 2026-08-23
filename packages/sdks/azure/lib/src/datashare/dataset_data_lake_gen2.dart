@@ -14,11 +14,11 @@ import 'dataset_data_lake_gen2_state.dart';
 class DatasetDataLakeGen2 extends pulumi.CustomResource {
   /// The name of the Data Share Dataset.
   late final pulumi.Output<String> displayName;
-  /// The path of the file in the data lake file system to be shared with the receiver. Conflicts with `folder_path` Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
+  /// The path of the file in the data lake file system to be shared with the receiver. Conflicts with `folderPath` Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
   late final pulumi.Output<String?> filePath;
   /// The name of the data lake file system to be shared with the receiver. Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
   late final pulumi.Output<String> fileSystemName;
-  /// The folder path in the data lake file system to be shared with the receiver. Conflicts with `file_path` Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
+  /// The folder path in the data lake file system to be shared with the receiver. Conflicts with `filePath` Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
   late final pulumi.Output<String?> folderPath;
   /// The name which should be used for this Data Share Data Lake Gen2 Dataset. Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
   late final pulumi.Output<String> name;

@@ -71,6 +71,24 @@ import 'get_workspace_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_desktopvirtualization_getapplicationgroup" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_desktopvirtualization_getapplicationgroup.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +97,8 @@ import 'get_workspace_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.desktopvirtualization.DesktopvirtualizationFunctions;
 /// import com.pulumi.azure.desktopvirtualization.inputs.GetApplicationGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -119,7 +137,7 @@ import 'get_workspace_result.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.DesktopVirtualization` - 2024-04-03
+/// * `Microsoft.DesktopVirtualization` - 2025-10-10
 /// [args] Arguments passed to this invoke. {@macro pulumi_desktopvirtualization_get_application_group_get_application_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApplicationGroupResult> getApplicationGroup(
@@ -193,6 +211,20 @@ Future<GetApplicationGroupResult> getApplicationGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_desktopvirtualization_gethostpool" "example" {
+///   name                = "example-pool"
+///   resource_group_name = "example-resources"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -201,8 +233,8 @@ Future<GetApplicationGroupResult> getApplicationGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.desktopvirtualization.DesktopvirtualizationFunctions;
 /// import com.pulumi.azure.desktopvirtualization.inputs.GetHostPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -238,7 +270,7 @@ Future<GetApplicationGroupResult> getApplicationGroup(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.DesktopVirtualization` - 2024-04-03
+/// * `Microsoft.DesktopVirtualization` - 2025-10-10
 /// [args] Arguments passed to this invoke. {@macro pulumi_desktopvirtualization_get_host_pool_get_host_pool_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetHostPoolResult> getHostPool(
@@ -319,6 +351,24 @@ Future<GetHostPoolResult> getHostPool(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_desktopvirtualization_getworkspace" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_desktopvirtualization_getworkspace.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -327,8 +377,8 @@ Future<GetHostPoolResult> getHostPool(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.desktopvirtualization.DesktopvirtualizationFunctions;
 /// import com.pulumi.azure.desktopvirtualization.inputs.GetWorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -367,7 +417,7 @@ Future<GetHostPoolResult> getHostPool(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.DesktopVirtualization` - 2024-04-03
+/// * `Microsoft.DesktopVirtualization` - 2025-10-10
 /// [args] Arguments passed to this invoke. {@macro pulumi_desktopvirtualization_get_workspace_get_workspace_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceResult> getWorkspace(

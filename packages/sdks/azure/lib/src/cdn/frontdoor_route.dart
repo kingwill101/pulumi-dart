@@ -5,6 +5,8 @@ import 'frontdoor_route_state.dart';
 
 /// Manages a Front Door (standard/premium) Route.
 ///
+/// &gt; **Note:** The `azure.cdn.FrontdoorRoute` resource must **explicitly** reference its associated `azure.cdn.FrontdoorOrigin` resource(s). This can be achieved either by using a `dependsOn` meta-argument that points to the `azure.cdn.FrontdoorOrigin` resource(s), or by specifying the `azure.cdn.FrontdoorOrigin` IDs via the `cdnFrontdoorOriginIds` field.
+///
 /// ## Example Usage
 ///
 ///
@@ -498,7 +500,8 @@ import 'frontdoor_route_state.dart';
 /// 					exampleZone.Name,
 /// 				},
 /// 			}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// 				return invoke.Result, nil
+/// 				val := invoke.Result
+/// 				return &val, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Tls: &cdn.FrontdoorCustomDomainTlsArgs{
 /// 				CertificateType:   pulumi.String("ManagedCertificate"),
@@ -519,7 +522,8 @@ import 'frontdoor_route_state.dart';
 /// 					exampleZone.Name,
 /// 				},
 /// 			}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// 				return invoke.Result, nil
+/// 				val := invoke.Result
+/// 				return &val, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Tls: &cdn.FrontdoorCustomDomainTlsArgs{
 /// 				CertificateType:   pulumi.String("ManagedCertificate"),
@@ -593,6 +597,109 @@ import 'frontdoor_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-cdn-frontdoor"
+///   location = "West Europe"
+/// }
+/// resource "azure_dns_zone" "example" {
+///   name                = "example.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_cdn_frontdoorprofile" "example" {
+///   name                = "example-profile"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Standard_AzureFrontDoor"
+/// }
+/// resource "azure_cdn_frontdoororigingroup" "example" {
+///   name                     = "example-originGroup"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   load_balancing = {
+///     additional_latency_in_milliseconds = 0
+///     sample_size                        = 16
+///     successful_samples_required        = 3
+///   }
+/// }
+/// resource "azure_cdn_frontdoororigin" "example" {
+///   name                           = "example-origin"
+///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoororigingroup.example.id
+///   enabled                        = true
+///   certificate_name_check_enabled = false
+///   host_name                      = "contoso.com"
+///   http_port                      = 80
+///   https_port                     = 443
+///   origin_host_header             = "www.contoso.com"
+///   priority                       = 1
+///   weight                         = 1
+/// }
+/// resource "azure_cdn_frontdoorendpoint" "example" {
+///   name                     = "example-endpoint"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+/// }
+/// resource "azure_cdn_frontdoorruleset" "example" {
+///   name                     = "ExampleRuleSet"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+/// }
+/// resource "azure_cdn_frontdoorcustomdomain" "contoso" {
+///   name                     = "contoso-custom-domain"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   dns_zone_id              = azure_dns_zone.example.id
+///   host_name                = join(".", ["contoso", azure_dns_zone.example.name])
+///   tls = {
+///     certificate_type    = "ManagedCertificate"
+///     minimum_tls_version = "TLS12"
+///   }
+/// }
+/// resource "azure_cdn_frontdoorcustomdomain" "fabrikam" {
+///   name                     = "fabrikam-custom-domain"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   dns_zone_id              = azure_dns_zone.example.id
+///   host_name                = join(".", ["fabrikam", azure_dns_zone.example.name])
+///   tls = {
+///     certificate_type    = "ManagedCertificate"
+///     minimum_tls_version = "TLS12"
+///   }
+/// }
+/// resource "azure_cdn_frontdoorroute" "example" {
+///   name                            = "example-route"
+///   cdn_frontdoor_endpoint_id       = azure_cdn_frontdoorendpoint.example.id
+///   cdn_frontdoor_origin_group_id   = azure_cdn_frontdoororigingroup.example.id
+///   cdn_frontdoor_origin_ids        = [azure_cdn_frontdoororigin.example.id]
+///   cdn_frontdoor_rule_set_ids      = [azure_cdn_frontdoorruleset.example.id]
+///   enabled                         = true
+///   forwarding_protocol             = "HttpsOnly"
+///   https_redirect_enabled          = true
+///   patterns_to_matches             = ["/*"]
+///   supported_protocols             = ["Http", "Https"]
+///   cdn_frontdoor_custom_domain_ids = [azure_cdn_frontdoorcustomdomain.contoso.id, azure_cdn_frontdoorcustomdomain.fabrikam.id]
+///   link_to_default_domain          = false
+///   cache = {
+///     query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
+///     query_strings                 = ["account", "settings"]
+///     compression_enabled           = true
+///     content_types_to_compresses   = ["text/html", "text/javascript", "text/xml"]
+///   }
+/// }
+/// resource "azure_cdn_frontdoorcustomdomainassociation" "contoso" {
+///   cdn_frontdoor_custom_domain_id = azure_cdn_frontdoorcustomdomain.contoso.id
+///   cdn_frontdoor_route_ids        = [azure_cdn_frontdoorroute.example.id]
+/// }
+/// resource "azure_cdn_frontdoorcustomdomainassociation" "fabrikam" {
+///   cdn_frontdoor_custom_domain_id = azure_cdn_frontdoorcustomdomain.fabrikam.id
+///   cdn_frontdoor_route_ids        = [azure_cdn_frontdoorroute.example.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -624,8 +731,8 @@ import 'frontdoor_route_state.dart';
 /// import com.pulumi.azure.cdn.inputs.FrontdoorRouteCacheArgs;
 /// import com.pulumi.azure.cdn.FrontdoorCustomDomainAssociation;
 /// import com.pulumi.azure.cdn.FrontdoorCustomDomainAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -921,8 +1028,10 @@ class FrontdoorRoute extends pulumi.CustomResource {
   late final pulumi.Output<String> cdnFrontdoorEndpointId;
   /// The resource ID of the Front Door Origin Group where this Front Door Route should be created.
   late final pulumi.Output<String> cdnFrontdoorOriginGroupId;
-  /// One or more Front Door Origin resource IDs that this Front Door Route will link to.
-  late final pulumi.Output<List<String>> cdnFrontdoorOriginIds;
+  /// One or more Front Door Origin resource IDs for this Front Door Route.
+  ///
+  /// &gt; **Note:** The `cdnFrontdoorOriginIds` field is not transmitted to the Azure API; it is used exclusively by Terraform to determine correct resource provisioning and destruction order. If this field is omitted, a `dependsOn` meta-argument referencing the corresponding `azure.cdn.FrontdoorOrigin` resource(s) is required. When importing an existing `azure.cdn.FrontdoorRoute resource`, you must manually add either the `cdnFrontdoorOriginIds` field or the `dependsOn` meta-argument to the configuration post-import.
+  late final pulumi.Output<List<String>?> cdnFrontdoorOriginIds;
   /// A directory path on the Front Door Origin that can be used to retrieve content (e.g. `contoso.cloudapp.net/originpath`).
   late final pulumi.Output<String?> cdnFrontdoorOriginPath;
   /// A list of the Front Door Rule Set IDs which should be assigned to this Front Door Route.
@@ -933,7 +1042,7 @@ class FrontdoorRoute extends pulumi.CustomResource {
   late final pulumi.Output<String?> forwardingProtocol;
   /// Automatically redirect HTTP traffic to HTTPS traffic? Possible values are `true` or `false`. Defaults to `true`.
   ///
-  /// &gt; **Note:** The `https_redirect_enabled` rule is the first rule that will be executed.
+  /// &gt; **Note:** The `httpsRedirectEnabled` rule is the first rule that will be executed.
   late final pulumi.Output<bool?> httpsRedirectEnabled;
   /// Should this Front Door Route be linked to the default endpoint? Possible values include `true` or `false`. Defaults to `true`.
   late final pulumi.Output<bool?> linkToDefaultDomain;
@@ -943,7 +1052,7 @@ class FrontdoorRoute extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> patternsToMatches;
   /// One or more Protocols supported by this Front Door Route. Possible values are `Http` or `Https`.
   ///
-  /// &gt; **Note:** If `https_redirect_enabled` is set to `true` the `supported_protocols` field must contain both `Http` and `Https` values.
+  /// &gt; **Note:** If `httpsRedirectEnabled` is set to `true` the `supportedProtocols` field must contain both `Http` and `Https` values.
   late final pulumi.Output<List<String>> supportedProtocols;
 
   /// Creates a new [FrontdoorRoute].
@@ -964,7 +1073,7 @@ class FrontdoorRoute extends pulumi.CustomResource {
     cdnFrontdoorCustomDomainIds = registerOutput<List<String>?>('cdnFrontdoorCustomDomainIds');
     cdnFrontdoorEndpointId = registerOutput<String>('cdnFrontdoorEndpointId');
     cdnFrontdoorOriginGroupId = registerOutput<String>('cdnFrontdoorOriginGroupId');
-    cdnFrontdoorOriginIds = registerOutput<List<String>>('cdnFrontdoorOriginIds');
+    cdnFrontdoorOriginIds = registerOutput<List<String>?>('cdnFrontdoorOriginIds');
     cdnFrontdoorOriginPath = registerOutput<String?>('cdnFrontdoorOriginPath');
     cdnFrontdoorRuleSetIds = registerOutput<List<String>?>('cdnFrontdoorRuleSetIds');
     enabled = registerOutput<bool?>('enabled');
@@ -1003,7 +1112,7 @@ class FrontdoorRoute extends pulumi.CustomResource {
     cdnFrontdoorCustomDomainIds = registerOutput<List<String>?>('cdnFrontdoorCustomDomainIds');
     cdnFrontdoorEndpointId = registerOutput<String>('cdnFrontdoorEndpointId');
     cdnFrontdoorOriginGroupId = registerOutput<String>('cdnFrontdoorOriginGroupId');
-    cdnFrontdoorOriginIds = registerOutput<List<String>>('cdnFrontdoorOriginIds');
+    cdnFrontdoorOriginIds = registerOutput<List<String>?>('cdnFrontdoorOriginIds');
     cdnFrontdoorOriginPath = registerOutput<String?>('cdnFrontdoorOriginPath');
     cdnFrontdoorRuleSetIds = registerOutput<List<String>?>('cdnFrontdoorRuleSetIds');
     enabled = registerOutput<bool?>('enabled');

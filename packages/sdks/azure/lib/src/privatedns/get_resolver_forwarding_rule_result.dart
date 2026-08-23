@@ -15,7 +15,7 @@ class GetResolverForwardingRuleResult {
   /// The metadata attached to the Private DNS Resolver Forwarding Rule.
   final Map<String, String> metadata;
   final String name;
-  /// A list of `target_dns_servers` block as defined below.
+  /// A list of `targetDnsServers` block as defined below.
   final List<GetResolverForwardingRuleTargetDnsServer> targetDnsServers;
 
   /// Creates a new [GetResolverForwardingRuleResult].
@@ -25,7 +25,7 @@ class GetResolverForwardingRuleResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [metadata] The metadata attached to the Private DNS Resolver Forwarding Rule.
   /// [name] Required.
-  /// [targetDnsServers] A list of `target_dns_servers` block as defined below.
+  /// [targetDnsServers] A list of `targetDnsServers` block as defined below.
   const GetResolverForwardingRuleResult({
     required this.dnsForwardingRulesetId,
     required this.domainName,
@@ -60,4 +60,3 @@ class GetResolverForwardingRuleResult {
     );
   }
 }
-

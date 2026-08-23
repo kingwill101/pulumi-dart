@@ -123,6 +123,33 @@ import 'hyper_vreplication_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "East US"
+/// }
+/// resource "azure_recoveryservices_vault" "vault" {
+///   name                = "example-recovery-vault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_siterecovery_hypervreplicationpolicy" "policy" {
+///   name                                               = "policy"
+///   recovery_vault_id                                  = azure_recoveryservices_vault.vault.id
+///   recovery_point_retention_in_hours                  = 2
+///   application_consistent_snapshot_frequency_in_hours = 1
+///   replication_interval_in_seconds                    = 300
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -135,8 +162,8 @@ import 'hyper_vreplication_policy_state.dart';
 /// import com.pulumi.azure.recoveryservices.VaultArgs;
 /// import com.pulumi.azure.siterecovery.HyperVReplicationPolicy;
 /// import com.pulumi.azure.siterecovery.HyperVReplicationPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

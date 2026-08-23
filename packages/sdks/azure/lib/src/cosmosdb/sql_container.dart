@@ -229,6 +229,49 @@ import 'sql_container_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cosmosdb_getaccount" "example" {
+///   name                = "tfex-cosmosdb-account"
+///   resource_group_name = "tfex-cosmosdb-account-rg"
+/// }
+///
+/// resource "azure_cosmosdb_sqldatabase" "example" {
+///   name                = "example-acsd"
+///   resource_group_name = data.azure_cosmosdb_getaccount.example.resource_group_name
+///   account_name        = data.azure_cosmosdb_getaccount.example.name
+/// }
+/// resource "azure_cosmosdb_sqlcontainer" "example" {
+///   name                  = "example-container"
+///   resource_group_name   = data.azure_cosmosdb_getaccount.example.resource_group_name
+///   account_name          = data.azure_cosmosdb_getaccount.example.name
+///   database_name         = azure_cosmosdb_sqldatabase.example.name
+///   partition_key_paths   = ["/definition/id"]
+///   partition_key_version = 1
+///   throughput            = 400
+///   indexing_policy = {
+///     indexing_mode = "consistent"
+///     included_paths = [{
+///       "path" = "/*"
+///       }, {
+///       "path" = "/included/?"
+///     }]
+///     excluded_paths = [{
+///       "path" = "/excluded/?"
+///     }]
+///   }
+///   unique_keys {
+///     paths = ["/definition/idlong", "/definition/idshort"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -242,9 +285,11 @@ import 'sql_container_state.dart';
 /// import com.pulumi.azure.cosmosdb.SqlContainer;
 /// import com.pulumi.azure.cosmosdb.SqlContainerArgs;
 /// import com.pulumi.azure.cosmosdb.inputs.SqlContainerIndexingPolicyArgs;
+/// import com.pulumi.azure.cosmosdb.inputs.SqlContainerIndexingPolicyIncludedPathArgs;
+/// import com.pulumi.azure.cosmosdb.inputs.SqlContainerIndexingPolicyExcludedPathArgs;
 /// import com.pulumi.azure.cosmosdb.inputs.SqlContainerUniqueKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -359,17 +404,17 @@ class SqlContainer extends pulumi.CustomResource {
   late final pulumi.Output<String> accountName;
   /// The default time to live of Analytical Storage for this SQL container. If present and the value is set to `-1`, it is equal to infinity, and items don’t expire by default. If present and the value is set to some number `n` – items will expire `n` seconds after their last modified time.
   late final pulumi.Output<int?> analyticalStorageTtl;
-  /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
+  /// An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   late final pulumi.Output<SqlContainerAutoscaleSettings?> autoscaleSettings;
-  /// A `conflict_resolution_policy` blocks as defined below. Changing this forces a new resource to be created.
+  /// A `conflictResolutionPolicy` blocks as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<SqlContainerConflictResolutionPolicy> conflictResolutionPolicy;
   /// The name of the Cosmos DB SQL Database to create the container within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> databaseName;
   /// The default time to live of SQL container. If missing, items are not expired automatically. If present and the value is set to `-1`, it is equal to infinity, and items don’t expire by default. If present and the value is set to some number `n` – items will expire `n` seconds after their last modified time.
   late final pulumi.Output<int?> defaultTtl;
-  /// An `indexing_policy` block as defined below.
+  /// An `indexingPolicy` block as defined below.
   late final pulumi.Output<SqlContainerIndexingPolicy> indexingPolicy;
   /// Specifies the name of the Cosmos DB SQL Container. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
@@ -379,13 +424,13 @@ class SqlContainer extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> partitionKeyPaths;
   /// Define a partition key version. Possible values are `1`and `2`. This should be set to `2` in order to use large partition keys.
   ///
-  /// &gt; **Note:** If `partition_key_version` is not specified when creating a new resource, you can update `partition_key_version` to `1`, updating to `2` forces a new resource to be created.
+  /// &gt; **Note:** If `partitionKeyVersion` is not specified when creating a new resource, you can update `partitionKeyVersion` to `1`, updating to `2` forces a new resource to be created.
   late final pulumi.Output<int?> partitionKeyVersion;
   /// The name of the resource group in which the Cosmos DB SQL Container is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// The throughput of SQL container (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon container creation otherwise it cannot be updated without a manual resource destroy-apply.
   late final pulumi.Output<int> throughput;
-  /// One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `uniqueKey` blocks as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> uniqueKeys;
 
   /// Creates a new [SqlContainer].

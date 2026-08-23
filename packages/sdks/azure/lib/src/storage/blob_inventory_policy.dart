@@ -198,6 +198,46 @@ import 'blob_inventory_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestoracc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   blob_properties = {
+///     versioning_enabled = true
+///   }
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "examplecontainer"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_storage_blobinventorypolicy" "example" {
+///   storage_account_id = azure_storage_account.example.id
+///   rules {
+///     name                   = "rule1"
+///     storage_container_name = azure_storage_container.example.name
+///     format                 = "Csv"
+///     schedule               = "Daily"
+///     scope                  = "Container"
+///     schema_fields          = ["Name", "Last-Modified"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +254,8 @@ import 'blob_inventory_policy_state.dart';
 /// import com.pulumi.azure.storage.BlobInventoryPolicy;
 /// import com.pulumi.azure.storage.BlobInventoryPolicyArgs;
 /// import com.pulumi.azure.storage.inputs.BlobInventoryPolicyRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -313,7 +353,7 @@ import 'blob_inventory_policy_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Storage` - 2023-05-01
+/// * `Microsoft.Storage` - 2025-08-01
 ///
 /// ## Import
 ///

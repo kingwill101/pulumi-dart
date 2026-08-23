@@ -6,7 +6,7 @@ import 'kubernetes_cluster_node_pool_linux_os_config_sysctl_config.dart';
 class KubernetesClusterNodePoolLinuxOsConfig {
   /// Specifies the size of swap file on each node in MB.
   final pulumi.Input<int>? swapFileSizeMb;
-  /// A `sysctl_config` block as defined below.
+  /// A `sysctlConfig` block as defined below.
   final pulumi.Input<KubernetesClusterNodePoolLinuxOsConfigSysctlConfig>? sysctlConfig;
   /// Specifies the Transparent Huge Page configuration. Possible values are `always`, `madvise` and `never`.
   final pulumi.Input<String>? transparentHugePage;
@@ -16,7 +16,7 @@ class KubernetesClusterNodePoolLinuxOsConfig {
 
   /// Creates a new [KubernetesClusterNodePoolLinuxOsConfig].
   /// [swapFileSizeMb] Specifies the size of swap file on each node in MB.
-  /// [sysctlConfig] A `sysctl_config` block as defined below.
+  /// [sysctlConfig] A `sysctlConfig` block as defined below.
   /// [transparentHugePage] Specifies the Transparent Huge Page configuration. Possible values are `always`, `madvise` and `never`.
   /// [transparentHugePageDefrag] specifies the defrag configuration for Transparent Huge Page. Possible values are `always`, `defer`, `defer+madvise`, `madvise` and `never`.
   /// [transparentHugePageEnabled] Optional.
@@ -48,4 +48,3 @@ class KubernetesClusterNodePoolLinuxOsConfig {
     );
   }
 }
-

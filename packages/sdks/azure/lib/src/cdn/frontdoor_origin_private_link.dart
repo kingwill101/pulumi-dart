@@ -7,20 +7,20 @@ class FrontdoorOriginPrivateLink {
   final pulumi.Input<String> location;
   /// The ID of the Azure Resource to connect to via the Private Link.
   ///
-  /// &gt; **Note:** the `private_link_target_id` property must specify the Resource ID of the Private Link Service when using Load Balancer as an Origin.
+  /// &gt; **Note:** the `privateLinkTargetId` property must specify the Resource ID of the Private Link Service when using Load Balancer as an Origin.
   final pulumi.Input<String> privateLinkTargetId;
-  /// Specifies the request message that will be submitted to the `private_link_target_id` when requesting the private link endpoint connection. Values must be between `1` and `140` characters in length. Defaults to `Access request for CDN FrontDoor Private Link Origin`.
+  /// Specifies the request message that will be submitted to the `privateLinkTargetId` when requesting the private link endpoint connection. Values must be between `1` and `140` characters in length. Defaults to `Access request for CDN FrontDoor Private Link Origin`.
   final pulumi.Input<String>? requestMessage;
-  /// Specifies the type of target for this Private Link Endpoint. Possible values are `blob`, `blob_secondary`, `Gateway`, `managedEnvironments`, `sites`, `web` and `web_secondary`.
+  /// Specifies the type of target for this Private Link Endpoint. Possible values are `blob`, `blobSecondary`, `Gateway`, `managedEnvironments`, `sites`, `web` and `webSecondary`.
   ///
-  /// &gt; **Note:** `target_type` cannot be specified when using a Load Balancer as an Origin.
+  /// &gt; **Note:** `targetType` cannot be specified when using a Load Balancer as an Origin.
   final pulumi.Input<String>? targetType;
 
   /// Creates a new [FrontdoorOriginPrivateLink].
   /// [location] Specifies the location where the Private Link resource should exist. Changing this forces a new resource to be created.
   /// [privateLinkTargetId] The ID of the Azure Resource to connect to via the Private Link.
-  /// [requestMessage] Specifies the request message that will be submitted to the `private_link_target_id` when requesting the private link endpoint connection. Values must be between `1` and `140` characters in length. Defaults to `Access request for CDN FrontDoor Private Link Origin`.
-  /// [targetType] Specifies the type of target for this Private Link Endpoint. Possible values are `blob`, `blob_secondary`, `Gateway`, `managedEnvironments`, `sites`, `web` and `web_secondary`.
+  /// [requestMessage] Specifies the request message that will be submitted to the `privateLinkTargetId` when requesting the private link endpoint connection. Values must be between `1` and `140` characters in length. Defaults to `Access request for CDN FrontDoor Private Link Origin`.
+  /// [targetType] Specifies the type of target for this Private Link Endpoint. Possible values are `blob`, `blobSecondary`, `Gateway`, `managedEnvironments`, `sites`, `web` and `webSecondary`.
   const FrontdoorOriginPrivateLink({
     required this.location,
     required this.privateLinkTargetId,
@@ -46,4 +46,3 @@ class FrontdoorOriginPrivateLink {
     );
   }
 }
-

@@ -287,6 +287,70 @@ import 'workspace_network_outbound_rule_private_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "workspace-example-ai"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "workspaceexamplekeyvault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name            = "premium"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "workspacestorageaccount"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+/// }
+/// resource "azure_machinelearning_workspace" "example" {
+///   name                    = "example-workspace"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   application_insights_id = azure_appinsights_insights.example.id
+///   key_vault_id            = azure_keyvault_keyvault.example.id
+///   storage_account_id      = azure_storage_account.example.id
+///   managed_network = {
+///     isolation_mode = "AllowOnlyApprovedOutbound"
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_storage_account" "example2" {
+///   name                     = "example-sa"
+///   location                 = test.location
+///   resource_group_name      = test.name
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_machinelearning_workspacenetworkoutboundruleprivateendpoint" "example" {
+///   name                = "example-outboundrule"
+///   workspace_id        = azure_machinelearning_workspace.example.id
+///   service_resource_id = azure_storage_account.example2.id
+///   sub_resource_target = "blob"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -308,8 +372,8 @@ import 'workspace_network_outbound_rule_private_endpoint_state.dart';
 /// import com.pulumi.azure.machinelearning.inputs.WorkspaceIdentityArgs;
 /// import com.pulumi.azure.machinelearning.WorkspaceNetworkOutboundRulePrivateEndpoint;
 /// import com.pulumi.azure.machinelearning.WorkspaceNetworkOutboundRulePrivateEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

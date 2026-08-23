@@ -17,7 +17,7 @@ class AlertRuleAnomalyBuiltInState {
   final pulumi.Input<String>? description;
   /// The Display Name of the built-in Anomaly Alert Rule.
   ///
-  /// &gt; **Note:** One of `name` or `display_name` block must be specified.
+  /// &gt; **Note:** One of `name` or `displayName` block must be specified.
   final pulumi.Input<String>? displayName;
   /// Should the Built-in Anomaly Alert Rule be enabled?
   final pulumi.Input<bool>? enabled;
@@ -27,23 +27,23 @@ class AlertRuleAnomalyBuiltInState {
   final pulumi.Input<String>? logAnalyticsWorkspaceId;
   /// mode of the Built-in Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
   final pulumi.Input<String>? mode;
-  /// A list of `multi_select_observation` blocks as defined below.
+  /// A list of `multiSelectObservation` blocks as defined below.
   final pulumi.Input<List<AlertRuleAnomalyBuiltInMultiSelectObservation>>? multiSelectObservations;
   /// The Name of the built-in Anomaly Alert Rule.
   final pulumi.Input<String>? name;
-  /// A list of `prioritized_exclude_observation` blocks as defined below.
+  /// A list of `prioritizedExcludeObservation` blocks as defined below.
   final pulumi.Input<List<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation>>? prioritizedExcludeObservations;
-  /// A `required_data_connector` block as defined below.
+  /// A `requiredDataConnector` block as defined below.
   final pulumi.Input<List<AlertRuleAnomalyBuiltInRequiredDataConnector>>? requiredDataConnectors;
   /// The ID of the anomaly settings definition Id.
   final pulumi.Input<String>? settingsDefinitionId;
-  /// A list of `single_select_observation` blocks as defined below.
+  /// A list of `singleSelectObservation` blocks as defined below.
   final pulumi.Input<List<AlertRuleAnomalyBuiltInSingleSelectObservation>>? singleSelectObservations;
   /// A list of categories of attacks by which to classify the rule.
   final pulumi.Input<List<String>>? tactics;
   /// A list of techniques of attacks by which to classify the rule.
   final pulumi.Input<List<String>>? techniques;
-  /// A list of `threshold_observation` blocks as defined below.
+  /// A list of `thresholdObservation` blocks as defined below.
   final pulumi.Input<List<AlertRuleAnomalyBuiltInThresholdObservation>>? thresholdObservations;
 
   /// Creates a new [AlertRuleAnomalyBuiltInState].
@@ -55,15 +55,15 @@ class AlertRuleAnomalyBuiltInState {
   /// [frequency] The frequency the Anomaly Alert Rule will be run.
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace. Changing this forces a new Built-in Anomaly Alert Rule to be created.
   /// [mode] mode of the Built-in Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
-  /// [multiSelectObservations] A list of `multi_select_observation` blocks as defined below.
+  /// [multiSelectObservations] A list of `multiSelectObservation` blocks as defined below.
   /// [name] The Name of the built-in Anomaly Alert Rule.
-  /// [prioritizedExcludeObservations] A list of `prioritized_exclude_observation` blocks as defined below.
-  /// [requiredDataConnectors] A `required_data_connector` block as defined below.
+  /// [prioritizedExcludeObservations] A list of `prioritizedExcludeObservation` blocks as defined below.
+  /// [requiredDataConnectors] A `requiredDataConnector` block as defined below.
   /// [settingsDefinitionId] The ID of the anomaly settings definition Id.
-  /// [singleSelectObservations] A list of `single_select_observation` blocks as defined below.
+  /// [singleSelectObservations] A list of `singleSelectObservation` blocks as defined below.
   /// [tactics] A list of categories of attacks by which to classify the rule.
   /// [techniques] A list of techniques of attacks by which to classify the rule.
-  /// [thresholdObservations] A list of `threshold_observation` blocks as defined below.
+  /// [thresholdObservations] A list of `thresholdObservation` blocks as defined below.
   const AlertRuleAnomalyBuiltInState({
     this.anomalySettingsVersion,
     this.anomalyVersion,
@@ -128,4 +128,3 @@ class AlertRuleAnomalyBuiltInState {
     );
   }
 }
-

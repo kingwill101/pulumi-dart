@@ -199,6 +199,47 @@ import 'project_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+/// }
+/// resource "azure_databasemigration_service" "example" {
+///   name                = "example-dbms"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   subnet_id           = azure_network_subnet.example.id
+///   sku_name            = "Standard_1vCores"
+/// }
+/// resource "azure_databasemigration_project" "example" {
+///   name                = "example-dbms-project"
+///   service_name        = azure_databasemigration_service.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   source_platform     = "SQL"
+///   target_platform     = "SQLDB"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -215,8 +256,8 @@ import 'project_state.dart';
 /// import com.pulumi.azure.databasemigration.ServiceArgs;
 /// import com.pulumi.azure.databasemigration.Project;
 /// import com.pulumi.azure.databasemigration.ProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

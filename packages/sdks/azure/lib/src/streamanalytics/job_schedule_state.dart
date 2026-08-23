@@ -8,9 +8,9 @@ class JobScheduleState {
   final pulumi.Input<String>? lastOutputTime;
   /// The starting mode of the Stream Analytics Job. Possible values are `JobStartTime`, `CustomTime` and `LastOutputEventTime`.
   ///
-  /// &gt; **Note:** Setting `start_mode` to `LastOutputEventTime` is only possible if the job had been previously started and produced output.
+  /// &gt; **Note:** Setting `startMode` to `LastOutputEventTime` is only possible if the job had been previously started and produced output.
   final pulumi.Input<String>? startMode;
-  /// The time in ISO8601 format at which the Stream Analytics Job should be started e.g. `2022-04-01T00:00:00Z`. This property can only be specified if `start_mode` is set to `CustomTime`
+  /// The time in ISO8601 format at which the Stream Analytics Job should be started e.g. `2022-04-01T00:00:00Z`. This property can only be specified if `startMode` is set to `CustomTime`
   final pulumi.Input<String>? startTime;
   /// The ID of the Stream Analytics Job that should be scheduled or started. Changing this forces a new resource to be created.
   final pulumi.Input<String>? streamAnalyticsJobId;
@@ -18,7 +18,7 @@ class JobScheduleState {
   /// Creates a new [JobScheduleState].
   /// [lastOutputTime] The time at which the Stream Analytics job last produced an output.
   /// [startMode] The starting mode of the Stream Analytics Job. Possible values are `JobStartTime`, `CustomTime` and `LastOutputEventTime`.
-  /// [startTime] The time in ISO8601 format at which the Stream Analytics Job should be started e.g. `2022-04-01T00:00:00Z`. This property can only be specified if `start_mode` is set to `CustomTime`
+  /// [startTime] The time in ISO8601 format at which the Stream Analytics Job should be started e.g. `2022-04-01T00:00:00Z`. This property can only be specified if `startMode` is set to `CustomTime`
   /// [streamAnalyticsJobId] The ID of the Stream Analytics Job that should be scheduled or started. Changing this forces a new resource to be created.
   const JobScheduleState({
     this.lastOutputTime,
@@ -45,4 +45,3 @@ class JobScheduleState {
     );
   }
 }
-

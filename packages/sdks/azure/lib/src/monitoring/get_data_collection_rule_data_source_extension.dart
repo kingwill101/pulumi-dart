@@ -7,7 +7,7 @@ class GetDataCollectionRuleDataSourceExtension {
   final pulumi.Input<String> extensionJson;
   /// The name of the VM extension.
   final pulumi.Input<String> extensionName;
-  /// Specifies a list of data sources this extension needs data from. An item should be a name of a supported data source which produces only one stream. Supported data sources type: `performance_counter`, `windows_event_log`,and `syslog`.
+  /// Specifies a list of data sources this extension needs data from. An item should be a name of a supported data source which produces only one stream. Supported data sources type: `performanceCounter`, `windowsEventLog`,and `syslog`.
   final pulumi.Input<List<String>> inputDataSources;
   /// Specifies the name of the Data Collection Rule.
   final pulumi.Input<String> name;
@@ -17,7 +17,7 @@ class GetDataCollectionRuleDataSourceExtension {
   /// Creates a new [GetDataCollectionRuleDataSourceExtension].
   /// [extensionJson] A JSON String which specifies the extension setting.
   /// [extensionName] The name of the VM extension.
-  /// [inputDataSources] Specifies a list of data sources this extension needs data from. An item should be a name of a supported data source which produces only one stream. Supported data sources type: `performance_counter`, `windows_event_log`,and `syslog`.
+  /// [inputDataSources] Specifies a list of data sources this extension needs data from. An item should be a name of a supported data source which produces only one stream. Supported data sources type: `performanceCounter`, `windowsEventLog`,and `syslog`.
   /// [name] Specifies the name of the Data Collection Rule.
   /// [streams] Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
   const GetDataCollectionRuleDataSourceExtension({
@@ -48,4 +48,3 @@ class GetDataCollectionRuleDataSourceExtension {
     );
   }
 }
-

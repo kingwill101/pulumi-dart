@@ -14,7 +14,7 @@ class IntegrationRuntimeSelfHostedArgs {
   final pulumi.Input<String>? description;
   /// The name which should be used for this Data Factory. Changing this forces a new Data Factory Self-hosted Integration Runtime to be created.
   final pulumi.Input<String>? name;
-  /// A `rbac_authorization` block as defined below. Changing this forces a new resource to be created.
+  /// A `rbacAuthorization` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<IntegrationRuntimeSelfHostedRbacAuthorization>>? rbacAuthorizations;
   /// Specifies whether enable interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
   final pulumi.Input<bool>? selfContainedInteractiveAuthoringEnabled;
@@ -23,7 +23,7 @@ class IntegrationRuntimeSelfHostedArgs {
   /// [dataFactoryId] The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   /// [description] Integration runtime description.
   /// [name] The name which should be used for this Data Factory. Changing this forces a new Data Factory Self-hosted Integration Runtime to be created.
-  /// [rbacAuthorizations] A `rbac_authorization` block as defined below. Changing this forces a new resource to be created.
+  /// [rbacAuthorizations] A `rbacAuthorization` block as defined below. Changing this forces a new resource to be created.
   /// [selfContainedInteractiveAuthoringEnabled] Specifies whether enable interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
   const IntegrationRuntimeSelfHostedArgs({
     required this.dataFactoryId,
@@ -53,4 +53,3 @@ class IntegrationRuntimeSelfHostedArgs {
     );
   }
 }
-

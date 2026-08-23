@@ -6,7 +6,7 @@ import 'get_db_servers_db_server.dart';
 /// Result data returned by getDbServers.
 class GetDbServersResult {
   final String cloudExadataInfrastructureName;
-  /// A `db_servers` block as defined below.
+  /// A `dbServers` block as defined below.
   final List<GetDbServersDbServer> dbServers;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -14,7 +14,7 @@ class GetDbServersResult {
 
   /// Creates a new [GetDbServersResult].
   /// [cloudExadataInfrastructureName] Required.
-  /// [dbServers] A `db_servers` block as defined below.
+  /// [dbServers] A `dbServers` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [resourceGroupName] Required.
   const GetDbServersResult({
@@ -42,4 +42,3 @@ class GetDbServersResult {
     );
   }
 }
-

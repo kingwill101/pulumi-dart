@@ -420,6 +420,89 @@ import 'next_generation_firewall_virtual_network_panorama_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resource-group"
+///   location = "westeurope"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "example-public-ip"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+///   sku                 = "Standard"
+/// }
+/// resource "azure_network_networksecuritygroup" "example" {
+///   name                = "example-nsg"
+///   location            = test.location
+///   resource_group_name = test.name
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// resource "azure_network_subnet" "trust" {
+///   name                 = "example-trust-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+///   delegations {
+///     name = "trusted"
+///     service_delegation = {
+///       name    = "PaloAltoNetworks.Cloudngfw/firewalls"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+///     }
+///   }
+/// }
+/// resource "azure_network_subnetnetworksecuritygroupassociation" "trust" {
+///   subnet_id                 = azure_network_subnet.trust.id
+///   network_security_group_id = azure_network_networksecuritygroup.example.id
+/// }
+/// resource "azure_network_subnet" "untrust" {
+///   name                 = "example-untrust-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+///   delegations {
+///     name = "untrusted"
+///     service_delegation = {
+///       name    = "PaloAltoNetworks.Cloudngfw/firewalls"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+///     }
+///   }
+/// }
+/// resource "azure_network_subnetnetworksecuritygroupassociation" "untrust" {
+///   subnet_id                 = azure_network_subnet.untrust.id
+///   network_security_group_id = azure_network_networksecuritygroup.example.id
+/// }
+/// resource "azure_paloalto_nextgenerationfirewallvirtualnetworkpanorama" "example" {
+///   name                   = "example-ngfwvh"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resourcegroup.example.location
+///   panorama_base64_config = "e2RnbmFtZTogY25nZnctYXotZXhhbXBsZSwgdHBsbmFtZTogY25nZnctZXhhbXBsZS10ZW1wbGF0ZS1zdGFjaywgZXhhbXBsZS1wYW5vcmFtYS1zZXJ2ZXI6IDE5Mi4xNjguMC4xLCB2bS1hdXRoLWtleTogMDAwMDAwMDAwMDAwMDAwLCBleHBpcnk6IDIwMjQvMDcvMzF9Cg=="
+///   network_profile = {
+///     public_ip_address_ids = [azure_network_publicip.example.id]
+///     vnet_configuration = {
+///       virtual_network_id  = azure_network_virtualnetwork.example.id
+///       trusted_subnet_id   = azure_network_subnet.trust.id
+///       untrusted_subnet_id = azure_network_subnet.untrust.id
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -444,8 +527,8 @@ import 'next_generation_firewall_virtual_network_panorama_state.dart';
 /// import com.pulumi.azure.paloalto.NextGenerationFirewallVirtualNetworkPanoramaArgs;
 /// import com.pulumi.azure.paloalto.inputs.NextGenerationFirewallVirtualNetworkPanoramaNetworkProfileArgs;
 /// import com.pulumi.azure.paloalto.inputs.NextGenerationFirewallVirtualNetworkPanoramaNetworkProfileVnetConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -637,7 +720,7 @@ import 'next_generation_firewall_virtual_network_panorama_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `PaloAltoNetworks.Cloudngfw` - 2025-05-23
+/// * `PaloAltoNetworks.Cloudngfw` - 2025-10-08
 ///
 /// ## Import
 ///
@@ -647,17 +730,17 @@ import 'next_generation_firewall_virtual_network_panorama_state.dart';
 /// $ pulumi import azure:paloalto/nextGenerationFirewallVirtualNetworkPanorama:NextGenerationFirewallVirtualNetworkPanorama example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/PaloAltoNetworks.Cloudngfw/firewalls/myVNetPanoramaFW
 /// ```
 class NextGenerationFirewallVirtualNetworkPanorama extends pulumi.CustomResource {
-  /// One or more `destination_nat` blocks as defined below.
+  /// One or more `destinationNat` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> destinationNats;
-  /// A `dns_settings` block as defined below.
+  /// A `dnsSettings` block as defined below.
   late final pulumi.Output<NextGenerationFirewallVirtualNetworkPanoramaDnsSettings?> dnsSettings;
   /// The Azure Region where the Palo Alto Next Generation Firewall Virtual Network Panorama should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Network Panorama to be created.
   late final pulumi.Output<String> location;
-  /// The marketplace offer ID. Defaults to `pan_swfw_cloud_ngfw`. Changing this forces a new resource to be created.
+  /// The marketplace offer ID. Defaults to `panSwfwCloudNgfw`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> marketplaceOfferId;
   /// The name which should be used for this Palo Alto Next Generation Firewall Virtual Network Panorama. Changing this forces a new Palo Alto Next Generation Firewall Virtual Network Panorama to be created.
   late final pulumi.Output<String> name;
-  /// A `network_profile` block as defined below.
+  /// A `networkProfile` block as defined below.
   late final pulumi.Output<NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile> networkProfile;
   /// The base64 encoded configuration registration string as defined by your Panorama Server for your Cloud Device Group.
   late final pulumi.Output<String> panoramaBase64Config;
@@ -665,7 +748,7 @@ class NextGenerationFirewallVirtualNetworkPanorama extends pulumi.CustomResource
   late final pulumi.Output<List<Map<String, dynamic>>> panoramas;
   /// The billing plan ID as published by Liftr.PAN. Defaults to `panw-cloud-ngfw-payg`.
   ///
-  /// &gt; **Note:** The former `plan_id` `panw-cloud-ngfw-payg` is defined as stop sell, but has been set as the default to not break any existing resources that were originally provisioned with it. Users need to explicitly set `plan_id` to `panw-cngfw-payg` when creating new resources.
+  /// &gt; **Note:** The former `planId` `panw-cloud-ngfw-payg` is defined as stop sell, but has been set as the default to not break any existing resources that were originally provisioned with it. Users need to explicitly set `planId` to `panw-cngfw-payg` when creating new resources.
   late final pulumi.Output<String?> planId;
   /// The name of the Resource Group where the Palo Alto Next Generation Firewall Virtual Network Panorama should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Network Panorama to be created.
   late final pulumi.Output<String> resourceGroupName;

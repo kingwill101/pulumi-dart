@@ -144,6 +144,39 @@ import 'sql_function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cosmosdb_getaccount" "example" {
+///   name                = "tfex-cosmosdb-account"
+///   resource_group_name = "tfex-cosmosdb-account-rg"
+/// }
+///
+/// resource "azure_cosmosdb_sqldatabase" "example" {
+///   name                = "tfex-cosmos-db"
+///   resource_group_name = data.azure_cosmosdb_getaccount.example.resource_group_name
+///   account_name        = data.azure_cosmosdb_getaccount.example.name
+///   throughput          = 400
+/// }
+/// resource "azure_cosmosdb_sqlcontainer" "example" {
+///   name                = "example-container"
+///   resource_group_name = data.azure_cosmosdb_getaccount.example.resource_group_name
+///   account_name        = data.azure_cosmosdb_getaccount.example.name
+///   database_name       = azure_cosmosdb_sqldatabase.example.name
+///   partition_key_path  = "/id"
+/// }
+/// resource "azure_cosmosdb_sqlfunction" "example" {
+///   name         = "test-function"
+///   container_id = azure_cosmosdb_sqlcontainer.example.id
+///   body         = "function trigger(){}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -158,8 +191,8 @@ import 'sql_function_state.dart';
 /// import com.pulumi.azure.cosmosdb.SqlContainerArgs;
 /// import com.pulumi.azure.cosmosdb.SqlFunction;
 /// import com.pulumi.azure.cosmosdb.SqlFunctionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,6 +268,13 @@ import 'sql_function_state.dart';
 ///         resourceGroupName: tfex-cosmosdb-account-rg
 /// ```
 ///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.DocumentDB` - 2024-08-15
 ///
 /// ## Import
 ///

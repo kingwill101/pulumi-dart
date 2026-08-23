@@ -243,6 +243,59 @@ import 'role_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   account_kind             = "StorageV2"
+///   is_hns_enabled           = "true"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// resource "azure_synapse_workspace" "example" {
+///   name                                 = "example"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   location                             = azure_core_resourcegroup.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   sql_administrator_login              = "sqladminuser"
+///   sql_administrator_login_password     = "H@Sh1CoR3!"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_synapse_firewallrule" "example" {
+///   name                 = "AllowAll"
+///   synapse_workspace_id = azure_synapse_workspace.example.id
+///   start_ip_address     = "0.0.0.0"
+///   end_ip_address       = "255.255.255.255"
+/// }
+/// resource "azure_synapse_roleassignment" "example" {
+///   depends_on           = [azure_synapse_firewallrule.example]
+///   synapse_workspace_id = azure_synapse_workspace.example.id
+///   role_name            = "Synapse SQL Administrator"
+///   principal_id         = data.azure_core_getclientconfig.current.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -264,8 +317,8 @@ import 'role_assignment_state.dart';
 /// import com.pulumi.azure.synapse.RoleAssignment;
 /// import com.pulumi.azure.synapse.RoleAssignmentArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -405,7 +458,7 @@ class RoleAssignment extends pulumi.CustomResource {
   late final pulumi.Output<String> principalId;
   /// The Type of the Principal. One of `User`, `Group` or `ServicePrincipal`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **NOTE:** While `principal_type` is optional, it's still recommended to set this value, as some Synapse use-cases may not work correctly if this is not specified. Service Principals for example can't run SQL statements using `Entra ID` authentication if `principal_type` is not set to `ServicePrincipal`.
+  /// &gt; **NOTE:** While `principalType` is optional, it's still recommended to set this value, as some Synapse use-cases may not work correctly if this is not specified. Service Principals for example can't run SQL statements using `Entra ID` authentication if `principalType` is not set to `ServicePrincipal`.
   late final pulumi.Output<String?> principalType;
   /// The Role Name of the Synapse Built-In Role. Possible values are `Apache Spark Administrator`, `Synapse Administrator`, `Synapse Artifact Publisher`, `Synapse Artifact User`, `Synapse Compute Operator`, `Synapse Contributor`, `Synapse Credential User`, `Synapse Linked Data Manager`, `Synapse Monitoring Operator`, `Synapse SQL Administrator` and `Synapse User`. Changing this forces a new resource to be created.
   ///
@@ -415,7 +468,7 @@ class RoleAssignment extends pulumi.CustomResource {
   late final pulumi.Output<String> roleName;
   /// The Synapse Spark Pool which the Synapse Role Assignment applies to. Changing this forces a new resource to be created.
   ///
-  /// &gt; **NOTE:** A Synapse firewall rule including local IP is needed to allow access. Only one of `synapse_workspace_id`, `synapse_spark_pool_id` must be set.
+  /// &gt; **NOTE:** A Synapse firewall rule including local IP is needed to allow access. Only one of `synapseWorkspaceId`, `synapseSparkPoolId` must be set.
   late final pulumi.Output<String?> synapseSparkPoolId;
   /// The Synapse Workspace which the Synapse Role Assignment applies to. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> synapseWorkspaceId;

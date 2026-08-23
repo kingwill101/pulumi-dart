@@ -78,6 +78,7 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 ///             key: "value",
 ///             key2: "value2",
 ///         },
+///         emailSubject: "Email Header",
 ///     },
 ///     identity: {
 ///         type: "UserAssigned",
@@ -155,6 +156,7 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 ///             "key": "value",
 ///             "key2": "value2",
 ///         },
+///         "email_subject": "Email Header",
 ///     },
 ///     identity={
 ///         "type": "UserAssigned",
@@ -267,6 +269,7 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 ///                 { "key", "value" },
 ///                 { "key2", "value2" },
 ///             },
+///             EmailSubject = "Email Header",
 ///         },
 ///         Identity = new Azure.Monitoring.Inputs.ScheduledQueryRulesAlertV2IdentityArgs
 ///         {
@@ -390,6 +393,7 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 /// 					"key":  pulumi.String("value"),
 /// 					"key2": pulumi.String("value2"),
 /// 				},
+/// 				EmailSubject: pulumi.String("Email Header"),
 /// 			},
 /// 			Identity: &monitoring.ScheduledQueryRulesAlertV2IdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
@@ -411,6 +415,91 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "example-ai"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_monitoring_actiongroup" "example" {
+///   name                = "example-mag"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   short_name          = "test mag"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "example-uai"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_authorization_assignment" "example" {
+///   scope                = azure_appinsights_insights.example.id
+///   role_definition_name = "Reader"
+///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+/// }
+/// resource "azure_monitoring_scheduledqueryrulesalertv2" "example" {
+///   depends_on           = [azure_authorization_assignment.example]
+///   name                 = "example-msqrv2"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resourcegroup.example.location
+///   evaluation_frequency = "PT10M"
+///   window_duration      = "PT10M"
+///   scopes               = azure_appinsights_insights.example.id
+///   severity             = 4
+///   criterias {
+///     query                   = "requests\n  | summarize CountByCountry=count() by client_CountryOrRegion\n"
+///     time_aggregation_method = "Maximum"
+///     threshold               = 17.5
+///     operator                = "LessThan"
+///     resource_id_column      = "client_CountryOrRegion"
+///     metric_measure_column   = "CountByCountry"
+///     dimensions {
+///       name     = "client_CountryOrRegion"
+///       operator = "Exclude"
+///       values   = ["123"]
+///     }
+///     failing_periods = {
+///       minimum_failing_periods_to_trigger_alert = 1
+///       number_of_evaluation_periods             = 1
+///     }
+///   }
+///   auto_mitigation_enabled          = true
+///   workspace_alerts_storage_enabled = false
+///   description                      = "example sqr"
+///   display_name                     = "example-sqr"
+///   enabled                          = true
+///   query_time_range_override        = "PT1H"
+///   skip_query_validation            = true
+///   action = {
+///     action_groups = [azure_monitoring_actiongroup.example.id]
+///     custom_properties = {
+///       "key"  = "value"
+///       "key2" = "value2"
+///     }
+///     email_subject = "Email Header"
+///   }
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+///   tags = {
+///     "key"  = "value"
+///     "key2" = "value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -430,12 +519,13 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 /// import com.pulumi.azure.monitoring.ScheduledQueryRulesAlertV2;
 /// import com.pulumi.azure.monitoring.ScheduledQueryRulesAlertV2Args;
 /// import com.pulumi.azure.monitoring.inputs.ScheduledQueryRulesAlertV2CriteriaArgs;
+/// import com.pulumi.azure.monitoring.inputs.ScheduledQueryRulesAlertV2CriteriaDimensionArgs;
 /// import com.pulumi.azure.monitoring.inputs.ScheduledQueryRulesAlertV2CriteriaFailingPeriodsArgs;
 /// import com.pulumi.azure.monitoring.inputs.ScheduledQueryRulesAlertV2ActionArgs;
 /// import com.pulumi.azure.monitoring.inputs.ScheduledQueryRulesAlertV2IdentityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -518,6 +608,7 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 ///                     Map.entry("key", "value"),
 ///                     Map.entry("key2", "value2")
 ///                 ))
+///                 .emailSubject("Email Header")
 ///                 .build())
 ///             .identity(ScheduledQueryRulesAlertV2IdentityArgs.builder()
 ///                 .type("UserAssigned")
@@ -611,6 +702,7 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 ///         customProperties:
 ///           key: value
 ///           key2: value2
+///         emailSubject: Email Header
 ///       identity:
 ///         type: UserAssigned
 ///         identityIds:
@@ -655,9 +747,9 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enabled;
   /// How often the scheduled query rule is evaluated, represented in ISO 8601 duration format. Possible values are `PT1M`, `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D`.
   ///
-  /// &gt; **Note:** `evaluation_frequency` cannot be greater than the query look back which is `window_duration`*`number_of_evaluation_periods`.
+  /// &gt; **Note:** `evaluationFrequency` cannot be greater than the query look back which is `windowDuration`*`numberOfEvaluationPeriods`.
   ///
-  /// &gt; **Note:** `evaluation_frequency` cannot be greater than the `mute_actions_after_alert_duration`.
+  /// &gt; **Note:** `evaluationFrequency` cannot be greater than the `muteActionsAfterAlertDuration`.
   late final pulumi.Output<String> evaluationFrequency;
   /// An `identity` block as defined below.
   late final pulumi.Output<ScheduledQueryRulesAlertV2Identity?> identity;
@@ -669,13 +761,13 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// Mute actions for the chosen period of time in ISO 8601 duration format after the alert is fired. Possible values are `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D` and `P2D`.
   ///
-  /// &gt; **Note:** `auto_mitigation_enabled` and `mute_actions_after_alert_duration` are mutually exclusive and cannot both be set.
+  /// &gt; **Note:** `autoMitigationEnabled` and `muteActionsAfterAlertDuration` are mutually exclusive and cannot both be set.
   late final pulumi.Output<String?> muteActionsAfterAlertDuration;
   /// Specifies the name which should be used for this Monitor Scheduled Query Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// Set this if the alert evaluation period is different from the query time range. If not specified, the value is `window_duration`*`number_of_evaluation_periods`. Possible values are `PT5M`, `PT10M`, `PT15M`, `PT20M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D` and `P2D`.
+  /// Set this if the alert evaluation period is different from the query time range. If not specified, the value is `windowDuration`*`numberOfEvaluationPeriods`. Possible values are `PT5M`, `PT10M`, `PT15M`, `PT20M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D` and `P2D`.
   ///
-  /// &gt; **Note:** `query_time_range_override` cannot be less than the query look back which is `window_duration`*`number_of_evaluation_periods`.
+  /// &gt; **Note:** `queryTimeRangeOverride` cannot be less than the query look back which is `windowDuration`*`numberOfEvaluationPeriods`.
   late final pulumi.Output<String?> queryTimeRangeOverride;
   /// Specifies the name of the Resource Group where the Monitor Scheduled Query Rule should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
@@ -689,7 +781,7 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is `Microsoft.Compute/virtualMachines`, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria.
   late final pulumi.Output<List<String>?> targetResourceTypes;
-  /// Specifies the period of time in ISO 8601 duration format on which the Scheduled Query Rule will be executed (bin size). If `evaluation_frequency` is `PT1M`, possible values are `PT1M`, `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, and `PT6H`. Otherwise, possible values are `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D`, and `P2D`.
+  /// Specifies the period of time in ISO 8601 duration format on which the Scheduled Query Rule will be executed (bin size). If `evaluationFrequency` is `PT1M`, possible values are `PT1M`, `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, and `PT6H`. Otherwise, possible values are `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D`, and `P2D`.
   late final pulumi.Output<String> windowDuration;
   /// Specifies the flag which indicates whether this scheduled query rule check if storage is configured. Value should be `true` or `false`. The default is `false`.
   late final pulumi.Output<bool?> workspaceAlertsStorageEnabled;

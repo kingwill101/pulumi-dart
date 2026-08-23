@@ -7,13 +7,13 @@ class EndpointPrivateDnsZoneGroup {
   final pulumi.Input<String>? id;
   /// Specifies the Name of the Private DNS Zone Group.
   final pulumi.Input<String> name;
-  /// Specifies the list of Private DNS Zones to include within the `private_dns_zone_group`.
+  /// Specifies the list of Private DNS Zones to include within the `privateDnsZoneGroup`.
   final pulumi.Input<List<String>> privateDnsZoneIds;
 
   /// Creates a new [EndpointPrivateDnsZoneGroup].
   /// [id] The ID of the Private DNS Zone Config.
   /// [name] Specifies the Name of the Private DNS Zone Group.
-  /// [privateDnsZoneIds] Specifies the list of Private DNS Zones to include within the `private_dns_zone_group`.
+  /// [privateDnsZoneIds] Specifies the list of Private DNS Zones to include within the `privateDnsZoneGroup`.
   const EndpointPrivateDnsZoneGroup({
     this.id,
     required this.name,
@@ -36,4 +36,3 @@ class EndpointPrivateDnsZoneGroup {
     );
   }
 }
-

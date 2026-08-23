@@ -24,6 +24,8 @@ import 'channels_registration_state.dart';
 ///     resourceGroupName: example.name,
 ///     sku: "F0",
 ///     microsoftAppId: current.then(current => current.clientId),
+///     microsoftAppType: "SingleTenant",
+///     microsoftAppTenantId: current.then(current => current.tenantId),
 /// });
 /// ```
 /// ```python
@@ -39,7 +41,9 @@ import 'channels_registration_state.dart';
 ///     location="global",
 ///     resource_group_name=example.name,
 ///     sku="F0",
-///     microsoft_app_id=current.client_id)
+///     microsoft_app_id=current.client_id,
+///     microsoft_app_type="SingleTenant",
+///     microsoft_app_tenant_id=current.tenant_id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -64,6 +68,8 @@ import 'channels_registration_state.dart';
 ///         ResourceGroupName = example.Name,
 ///         Sku = "F0",
 ///         MicrosoftAppId = current.Apply(getClientConfigResult => getClientConfigResult.ClientId),
+///         MicrosoftAppType = "SingleTenant",
+///         MicrosoftAppTenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///     });
 ///
 /// });
@@ -91,17 +97,45 @@ import 'channels_registration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bot.NewChannelsRegistration(ctx, "example", &bot.ChannelsRegistrationArgs{
-/// 			Name:              pulumi.String("example"),
-/// 			Location:          pulumi.String("global"),
-/// 			ResourceGroupName: example.Name,
-/// 			Sku:               pulumi.String("F0"),
-/// 			MicrosoftAppId:    pulumi.String(current.ClientId),
+/// 			Name:                 pulumi.String("example"),
+/// 			Location:             pulumi.String("global"),
+/// 			ResourceGroupName:    example.Name,
+/// 			Sku:                  pulumi.String("F0"),
+/// 			MicrosoftAppId:       pulumi.String(current.ClientId),
+/// 			MicrosoftAppType:     pulumi.String("SingleTenant"),
+/// 			MicrosoftAppTenantId: pulumi.String(current.TenantId),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_bot_channelsregistration" "example" {
+///   name                    = "example"
+///   location                = "global"
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   sku                     = "F0"
+///   microsoft_app_id        = data.azure_core_getclientconfig.current.client_id
+///   microsoft_app_type      = "SingleTenant"
+///   microsoft_app_tenant_id = data.azure_core_getclientconfig.current.tenant_id
 /// }
 /// ```
 /// ```java
@@ -115,8 +149,8 @@ import 'channels_registration_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.bot.ChannelsRegistration;
 /// import com.pulumi.azure.bot.ChannelsRegistrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -141,6 +175,8 @@ import 'channels_registration_state.dart';
 ///             .resourceGroupName(example.name())
 ///             .sku("F0")
 ///             .microsoftAppId(current.clientId())
+///             .microsoftAppType("SingleTenant")
+///             .microsoftAppTenantId(current.tenantId())
 ///             .build());
 ///
 ///     }
@@ -162,6 +198,8 @@ import 'channels_registration_state.dart';
 ///       resourceGroupName: ${example.name}
 ///       sku: F0
 ///       microsoftAppId: ${current.clientId}
+///       microsoftAppType: SingleTenant
+///       microsoftAppTenantId: ${current.tenantId}
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -180,7 +218,7 @@ import 'channels_registration_state.dart';
 class ChannelsRegistration extends pulumi.CustomResource {
   /// The CMK Key Vault Key URL to encrypt the Bot Channels Registration with the Customer Managed Encryption Key.
   ///
-  /// &gt; **Note:** It has to add the Key Vault Access Policy for the `Bot Service CMEK Prod` Service Principal and the `soft_delete_enabled` and the `purge_protection_enabled` is enabled on the `azure.keyvault.KeyVault` resource while using `cmk_key_vault_url`.
+  /// &gt; **Note:** It has to add the Key Vault Access Policy for the `Bot Service CMEK Prod` Service Principal and the `softDeleteEnabled` and the `purgeProtectionEnabled` is enabled on the `azure.keyvault.KeyVault` resource while using `cmkKeyVaultUrl`.
   ///
   /// &gt; **Note:** It has to turn off the CMK feature before revoking Key Vault Access Policy. For more information, please refer to [Revoke access to customer-managed keys](https://docs.microsoft.com/azure/bot-service/bot-service-encryption?view=azure-bot-service-4.0&WT.mc_id=Portal-Microsoft_Azure_BotService#revoke-access-to-customer-managed-keys).
   late final pulumi.Output<String?> cmkKeyVaultUrl;
@@ -202,6 +240,14 @@ class ChannelsRegistration extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// The Microsoft Application ID for the Bot Channels Registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> microsoftAppId;
+  /// The Microsoft Application Tenant ID for the Bot Channels Registration. Changing this forces a new resource to be created.
+  late final pulumi.Output<String?> microsoftAppTenantId;
+  /// The Microsoft Application Type for the Bot Channels Registration. Possible values are `MultiTenant`, `SingleTenant` and `UserAssignedMSI`. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** Creation of `azure.bot.ChannelsRegistration` resources using the `MultiTenant` type is no longer supported by Azure, existing resources can continue using this type.
+  late final pulumi.Output<String> microsoftAppType;
+  /// The ID of Microsoft Application User Assigned Identity for the Bot Channels Registration. Changing this forces a new resource to be created.
+  late final pulumi.Output<String?> microsoftAppUserAssignedIdentityId;
   /// Specifies the name of the Bot Channels Registration. Changing this forces a new resource to be created. Must be globally unique.
   late final pulumi.Output<String> name;
   /// Is the Bot Channels Registration in an isolated network?
@@ -239,6 +285,9 @@ class ChannelsRegistration extends pulumi.CustomResource {
     iconUrl = registerOutput<String?>('iconUrl');
     location = registerOutput<String>('location');
     microsoftAppId = registerOutput<String>('microsoftAppId');
+    microsoftAppTenantId = registerOutput<String?>('microsoftAppTenantId');
+    microsoftAppType = registerOutput<String>('microsoftAppType');
+    microsoftAppUserAssignedIdentityId = registerOutput<String?>('microsoftAppUserAssignedIdentityId');
     this.name = registerOutput<String>('name');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -280,6 +329,9 @@ class ChannelsRegistration extends pulumi.CustomResource {
     iconUrl = registerOutput<String?>('iconUrl');
     location = registerOutput<String>('location');
     microsoftAppId = registerOutput<String>('microsoftAppId');
+    microsoftAppTenantId = registerOutput<String?>('microsoftAppTenantId');
+    microsoftAppType = registerOutput<String>('microsoftAppType');
+    microsoftAppUserAssignedIdentityId = registerOutput<String?>('microsoftAppUserAssignedIdentityId');
     this.name = registerOutput<String>('name');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');

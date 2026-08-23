@@ -10,14 +10,14 @@ class GetLocationResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
-  /// A `zone_mappings` block as defined below.
+  /// A `zoneMappings` block as defined below.
   final List<GetLocationZoneMapping> zoneMappings;
 
   /// Creates a new [GetLocationResult].
   /// [displayName] The display name of the location.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
-  /// [zoneMappings] A `zone_mappings` block as defined below.
+  /// [zoneMappings] A `zoneMappings` block as defined below.
   const GetLocationResult({
     required this.displayName,
     required this.id,
@@ -43,4 +43,3 @@ class GetLocationResult {
     );
   }
 }
-

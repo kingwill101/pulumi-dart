@@ -125,6 +125,33 @@ import 'exascale_database_storage_vault_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_oracle_exascaledatabasestoragevault" "example" {
+///   name                              = "example-exascale-db-storage-vault"
+///   resource_group_name               = azure_core_resourcegroup.example.name
+///   location                          = azure_core_resourcegroup.example.location
+///   zones                             = ["1"]
+///   display_name                      = "example-exascale-db-storage-vault"
+///   description                       = "description"
+///   additional_flash_cache_percentage = 100
+///   high_capacity_database_storage = {
+///     total_size_in_gb = 300
+///   }
+///   time_zone = "UTC"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -136,8 +163,8 @@ import 'exascale_database_storage_vault_state.dart';
 /// import com.pulumi.azure.oracle.ExascaleDatabaseStorageVault;
 /// import com.pulumi.azure.oracle.ExascaleDatabaseStorageVaultArgs;
 /// import com.pulumi.azure.oracle.inputs.ExascaleDatabaseStorageVaultHighCapacityDatabaseStorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -217,7 +244,7 @@ class ExascaleDatabaseStorageVault extends pulumi.CustomResource {
   late final pulumi.Output<String> description;
   /// The user-friendly name for the Exadata Database Storage Vault resource. The name does not need to be unique. Changing this forces a new Exadata Database Storage Vault to be created.
   late final pulumi.Output<String> displayName;
-  /// A `high_capacity_database_storage` block as defined below. Changing this forces a new Exadata Database Storage Vault to be created.
+  /// A `highCapacityDatabaseStorage` block as defined below. Changing this forces a new Exadata Database Storage Vault to be created.
   late final pulumi.Output<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage> highCapacityDatabaseStorage;
   /// The Azure Region where the Exadata Database Storage Vault should exist. Changing this forces a new Exadata Database Storage Vault to be created.
   late final pulumi.Output<String> location;

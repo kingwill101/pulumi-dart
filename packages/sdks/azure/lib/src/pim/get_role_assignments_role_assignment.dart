@@ -13,7 +13,7 @@ class GetRoleAssignmentsRoleAssignment {
   final pulumi.Input<String> description;
   /// The principal ID to filter the list of Role Assignments against.
   final pulumi.Input<String> principalId;
-  /// The type of the `principal_id`.
+  /// The type of the `principalId`.
   final pulumi.Input<String> principalType;
   /// The ID of the Role Assignment.
   final pulumi.Input<String> roleAssignmentId;
@@ -30,7 +30,7 @@ class GetRoleAssignmentsRoleAssignment {
   /// [delegatedManagedIdentityResourceId] The ID of the delegated managed identity resource.
   /// [description] The description for this Role Assignment.
   /// [principalId] The principal ID to filter the list of Role Assignments against.
-  /// [principalType] The type of the `principal_id`.
+  /// [principalType] The type of the `principalId`.
   /// [roleAssignmentId] The ID of the Role Assignment.
   /// [roleAssignmentName] The name of the Role Assignment.
   /// [roleAssignmentScope] The scope of the Role Assignment.
@@ -78,4 +78,3 @@ class GetRoleAssignmentsRoleAssignment {
     );
   }
 }
-

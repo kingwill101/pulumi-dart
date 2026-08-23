@@ -279,6 +279,69 @@ import 'traffic_manager_nested_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "example-publicip"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+///   domain_name_label   = "example-pip"
+/// }
+/// resource "azure_network_trafficmanagerprofile" "parent" {
+///   name                   = "parent-profile"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   traffic_routing_method = "Weighted"
+///   dns_config = {
+///     relative_name = "parent-profile"
+///     ttl           = 100
+///   }
+///   monitor_config = {
+///     protocol                     = "HTTP"
+///     port                         = 80
+///     path                         = "/"
+///     interval_in_seconds          = 30
+///     timeout_in_seconds           = 9
+///     tolerated_number_of_failures = 3
+///   }
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// resource "azure_network_trafficmanagerprofile" "nested" {
+///   name                   = "nested-profile"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   traffic_routing_method = "Priority"
+///   dns_config = {
+///     relative_name = "nested-profile"
+///     ttl           = 30
+///   }
+///   monitor_config = {
+///     protocol = "HTTP"
+///     port     = 443
+///     path     = "/"
+///   }
+/// }
+/// resource "azure_network_trafficmanagernestedendpoint" "example" {
+///   name                    = "example-endpoint"
+///   target_resource_id      = azure_network_trafficmanagerprofile.nested.id
+///   priority                = 1
+///   profile_id              = azure_network_trafficmanagerprofile.parent.id
+///   minimum_child_endpoints = 9
+///   weight                  = 5
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -295,8 +358,8 @@ import 'traffic_manager_nested_endpoint_state.dart';
 /// import com.pulumi.azure.network.inputs.TrafficManagerProfileMonitorConfigArgs;
 /// import com.pulumi.azure.network.TrafficManagerNestedEndpoint;
 /// import com.pulumi.azure.network.TrafficManagerNestedEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -442,7 +505,7 @@ import 'traffic_manager_nested_endpoint_state.dart';
 /// $ pulumi import azure:network/trafficManagerNestedEndpoint:TrafficManagerNestedEndpoint example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.Network/trafficManagerProfiles/example-profile/NestedEndpoints/example-endpoint
 /// ```
 class TrafficManagerNestedEndpoint extends pulumi.CustomResource {
-  /// One or more `custom_header` blocks as defined below.
+  /// One or more `customHeader` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> customHeaders;
   /// Is the endpoint enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
@@ -452,7 +515,7 @@ class TrafficManagerNestedEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> geoMappings;
   /// This argument specifies the minimum number of endpoints that must be ‘online’ in the child profile in order for the parent profile to direct traffic to any of the endpoints in that child profile. This value must be larger than `0`.
   ///
-  /// &gt; **Note:** If `min_child_endpoints` is less than either `minimum_required_child_endpoints_ipv4` or `minimum_required_child_endpoints_ipv6`, then it won't have any effect.
+  /// &gt; **Note:** If `minChildEndpoints` is less than either `minimumRequiredChildEndpointsIpv4` or `minimumRequiredChildEndpointsIpv6`, then it won't have any effect.
   late final pulumi.Output<int> minimumChildEndpoints;
   /// This argument specifies the minimum number of IPv4 (DNS record type A) endpoints that must be ‘online’ in the child profile in order for the parent profile to direct traffic to any of the endpoints in that child profile. This argument only applies to Endpoints of type `nestedEndpoints` and
   late final pulumi.Output<int?> minimumRequiredChildEndpointsIpv4;

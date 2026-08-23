@@ -153,6 +153,41 @@ import 'connection_service_principal_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "example" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "resourceGroup-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "account-example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_automation_connectionserviceprincipal" "example" {
+///   name                    = "connection-example"
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   automation_account_name = azure_automation_account.example.name
+///   application_id          = "00000000-0000-0000-0000-000000000000"
+///   tenant_id               = data.azure_core_getclientconfig.example.tenant_id
+///   subscription_id         = data.azure_core_getclientconfig.example.subscription_id
+///   certificate_thumbprint  = file("automation_certificate_test.thumb")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +203,8 @@ import 'connection_service_principal_state.dart';
 /// import com.pulumi.azure.automation.ConnectionServicePrincipalArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

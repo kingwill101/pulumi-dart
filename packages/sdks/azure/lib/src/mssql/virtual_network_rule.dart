@@ -198,6 +198,46 @@ import 'virtual_network_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-sql-server-vnet-rule"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.7.29.0/29"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.7.29.0/29"]
+///   service_endpoints    = ["Microsoft.Sql"]
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "uniqueazuresqlserver"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "4dm1n157r470r"
+///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
+/// }
+/// resource "azure_mssql_virtualnetworkrule" "example" {
+///   name      = "sql-vnet-rule"
+///   server_id = azure_mssql_server.example.id
+///   subnet_id = azure_network_subnet.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +254,8 @@ import 'virtual_network_rule_state.dart';
 /// import com.pulumi.azure.mssql.ServerArgs;
 /// import com.pulumi.azure.mssql.VirtualNetworkRule;
 /// import com.pulumi.azure.mssql.VirtualNetworkRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -329,7 +369,7 @@ import 'virtual_network_rule_state.dart';
 class VirtualNetworkRule extends pulumi.CustomResource {
   /// Create the virtual network rule before the subnet has the virtual network service endpoint enabled. Defaults to `false`.
   ///
-  /// &gt; **Note:** If `ignore_missing_vnet_service_endpoint` is false, and the target subnet does not contain the `Microsoft.SQL` endpoint in the `service_endpoints` array, the deployment will fail when it tries to create the SQL virtual network rule.
+  /// &gt; **Note:** If `ignoreMissingVnetServiceEndpoint` is false, and the target subnet does not contain the `Microsoft.SQL` endpoint in the `serviceEndpoints` array, the deployment will fail when it tries to create the SQL virtual network rule.
   late final pulumi.Output<bool?> ignoreMissingVnetServiceEndpoint;
   /// The name of the SQL virtual network rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;

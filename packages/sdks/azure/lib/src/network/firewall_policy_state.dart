@@ -19,7 +19,7 @@ class FirewallPolicyState {
   final pulumi.Input<List<String>>? childPolicies;
   /// A `dns` block as defined below.
   final pulumi.Input<FirewallPolicyDns>? dns;
-  /// A `explicit_proxy` block as defined below.
+  /// A `explicitProxy` block as defined below.
   final pulumi.Input<FirewallPolicyExplicitProxy>? explicitProxy;
   /// A list of references to Azure Firewalls that this Firewall Policy is associated with.
   final pulumi.Input<List<String>>? firewalls;
@@ -27,7 +27,7 @@ class FirewallPolicyState {
   final pulumi.Input<FirewallPolicyIdentity>? identity;
   /// An `insights` block as defined below.
   final pulumi.Input<FirewallPolicyInsights>? insights;
-  /// A `intrusion_detection` block as defined below.
+  /// A `intrusionDetection` block as defined below.
   final pulumi.Input<FirewallPolicyIntrusionDetection>? intrusionDetection;
   /// The Azure Region where the Firewall Policy should exist. Changing this forces a new Firewall Policy to be created.
   final pulumi.Input<String>? location;
@@ -45,11 +45,11 @@ class FirewallPolicyState {
   final pulumi.Input<bool>? sqlRedirectAllowed;
   /// A mapping of tags which should be assigned to the Firewall Policy.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A `threat_intelligence_allowlist` block as defined below.
+  /// A `threatIntelligenceAllowlist` block as defined below.
   final pulumi.Input<FirewallPolicyThreatIntelligenceAllowlist>? threatIntelligenceAllowlist;
   /// The operation mode for Threat Intelligence. Possible values are `Alert`, `Deny` and `Off`. Defaults to `Alert`.
   final pulumi.Input<String>? threatIntelligenceMode;
-  /// A `tls_certificate` block as defined below.
+  /// A `tlsCertificate` block as defined below.
   final pulumi.Input<FirewallPolicyTlsCertificate>? tlsCertificate;
 
   /// Creates a new [FirewallPolicyState].
@@ -57,11 +57,11 @@ class FirewallPolicyState {
   /// [basePolicyId] The ID of the base Firewall Policy.
   /// [childPolicies] A list of reference to child Firewall Policies of this Firewall Policy.
   /// [dns] A `dns` block as defined below.
-  /// [explicitProxy] A `explicit_proxy` block as defined below.
+  /// [explicitProxy] A `explicitProxy` block as defined below.
   /// [firewalls] A list of references to Azure Firewalls that this Firewall Policy is associated with.
   /// [identity] An `identity` block as defined below.
   /// [insights] An `insights` block as defined below.
-  /// [intrusionDetection] A `intrusion_detection` block as defined below.
+  /// [intrusionDetection] A `intrusionDetection` block as defined below.
   /// [location] The Azure Region where the Firewall Policy should exist. Changing this forces a new Firewall Policy to be created.
   /// [name] The name which should be used for this Firewall Policy. Changing this forces a new Firewall Policy to be created.
   /// [privateIpRanges] A list of private IP ranges to which traffic will not be SNAT.
@@ -70,9 +70,9 @@ class FirewallPolicyState {
   /// [sku] The SKU Tier of the Firewall Policy. Possible values are `Standard`, `Premium` and `Basic`. Defaults to `Standard`. Changing this forces a new Firewall Policy to be created.
   /// [sqlRedirectAllowed] Whether SQL Redirect traffic filtering is allowed. Enabling this flag requires no rule using ports between `11000`-`11999`.
   /// [tags] A mapping of tags which should be assigned to the Firewall Policy.
-  /// [threatIntelligenceAllowlist] A `threat_intelligence_allowlist` block as defined below.
+  /// [threatIntelligenceAllowlist] A `threatIntelligenceAllowlist` block as defined below.
   /// [threatIntelligenceMode] The operation mode for Threat Intelligence. Possible values are `Alert`, `Deny` and `Off`. Defaults to `Alert`.
-  /// [tlsCertificate] A `tls_certificate` block as defined below.
+  /// [tlsCertificate] A `tlsCertificate` block as defined below.
   const FirewallPolicyState({
     this.autoLearnPrivateRangesEnabled,
     this.basePolicyId,
@@ -146,4 +146,3 @@ class FirewallPolicyState {
     );
   }
 }
-

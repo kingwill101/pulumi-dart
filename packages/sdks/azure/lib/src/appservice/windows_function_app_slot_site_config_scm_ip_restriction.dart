@@ -12,15 +12,15 @@ class WindowsFunctionAppSlotSiteConfigScmIpRestriction {
   final pulumi.Input<WindowsFunctionAppSlotSiteConfigScmIpRestrictionHeaders>? headers;
   /// The CIDR notation of the IP or IP Range to match. For example: `10.0.0.0/24` or `192.168.10.1/32`
   final pulumi.Input<String>? ipAddress;
-  /// The name which should be used for this `ip_restriction`.
+  /// The name which should be used for this `ipRestriction`.
   final pulumi.Input<String>? name;
-  /// The priority value of this `ip_restriction`. Defaults to `65000`.
+  /// The priority value of this `ipRestriction`. Defaults to `65000`.
   final pulumi.Input<int>? priority;
   /// The Service Tag used for this IP Restriction.
   final pulumi.Input<String>? serviceTag;
   /// The Virtual Network Subnet ID used for this IP Restriction.
   ///
-  /// &gt; **Note:** Exactly one of `ip_address`, `service_tag` or `virtual_network_subnet_id` must be specified.
+  /// &gt; **Note:** Exactly one of `ipAddress`, `serviceTag` or `virtualNetworkSubnetId` must be specified.
   final pulumi.Input<String>? virtualNetworkSubnetId;
 
   /// Creates a new [WindowsFunctionAppSlotSiteConfigScmIpRestriction].
@@ -28,8 +28,8 @@ class WindowsFunctionAppSlotSiteConfigScmIpRestriction {
   /// [description] The Description of this IP Restriction.
   /// [headers] a `headers` block as detailed below.
   /// [ipAddress] The CIDR notation of the IP or IP Range to match. For example: `10.0.0.0/24` or `192.168.10.1/32`
-  /// [name] The name which should be used for this `ip_restriction`.
-  /// [priority] The priority value of this `ip_restriction`. Defaults to `65000`.
+  /// [name] The name which should be used for this `ipRestriction`.
+  /// [priority] The priority value of this `ipRestriction`. Defaults to `65000`.
   /// [serviceTag] The Service Tag used for this IP Restriction.
   /// [virtualNetworkSubnetId] The Virtual Network Subnet ID used for this IP Restriction.
   const WindowsFunctionAppSlotSiteConfigScmIpRestriction({
@@ -69,4 +69,3 @@ class WindowsFunctionAppSlotSiteConfigScmIpRestriction {
     );
   }
 }
-

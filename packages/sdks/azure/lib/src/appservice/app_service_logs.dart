@@ -5,20 +5,20 @@ import 'app_service_logs_application_logs.dart';
 import 'app_service_logs_http_logs.dart';
 
 class AppServiceLogs {
-  /// An `application_logs` block as defined below.
+  /// An `applicationLogs` block as defined below.
   final pulumi.Input<AppServiceLogsApplicationLogs>? applicationLogs;
   /// Should `Detailed error messages` be enabled on this App Service? Defaults to `false`.
   final pulumi.Input<bool>? detailedErrorMessagesEnabled;
   /// Should `Failed request tracing` be enabled on this App Service? Defaults to `false`.
   final pulumi.Input<bool>? failedRequestTracingEnabled;
-  /// An `http_logs` block as defined below.
+  /// An `httpLogs` block as defined below.
   final pulumi.Input<AppServiceLogsHttpLogs>? httpLogs;
 
   /// Creates a new [AppServiceLogs].
-  /// [applicationLogs] An `application_logs` block as defined below.
+  /// [applicationLogs] An `applicationLogs` block as defined below.
   /// [detailedErrorMessagesEnabled] Should `Detailed error messages` be enabled on this App Service? Defaults to `false`.
   /// [failedRequestTracingEnabled] Should `Failed request tracing` be enabled on this App Service? Defaults to `false`.
-  /// [httpLogs] An `http_logs` block as defined below.
+  /// [httpLogs] An `httpLogs` block as defined below.
   const AppServiceLogs({
     this.applicationLogs,
     this.detailedErrorMessagesEnabled,
@@ -44,4 +44,3 @@ class AppServiceLogs {
     );
   }
 }
-

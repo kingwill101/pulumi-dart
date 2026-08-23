@@ -7,7 +7,7 @@ import 'get_autonomous_database_clone_from_database_long_term_backup_schedule.da
 class GetAutonomousDatabaseCloneFromDatabaseResult {
   /// The current amount of storage in use for user and system data, in terabytes (TB).
   final double actualUsedDataStorageSizeInTb;
-  /// The amount of storage currently allocated for the database tables and billed for, rounded up. When auto-scaling is not enabled, this value is equal to the `data_storage_size_in_tb` value. You can compare this value to the `actual_used_data_storage_size_in_tb` value to determine if a manual shrink operation is appropriate for your allocated storage.
+  /// The amount of storage currently allocated for the database tables and billed for, rounded up. When auto-scaling is not enabled, this value is equal to the `dataStorageSizeInTb` value. You can compare this value to the `actualUsedDataStorageSizeInTb` value to determine if a manual shrink operation is appropriate for your allocated storage.
   final double allocatedStorageSizeInTb;
   /// A list of IP addresses on the access control list.
   final List<String> allowedIpAddresses;
@@ -59,7 +59,7 @@ class GetAutonomousDatabaseCloneFromDatabaseResult {
   final bool localDataGuardEnabled;
   /// The Azure Region where the autonomous database cloned from database exists.
   final String location;
-  /// A `long_term_backup_schedule` block as defined below.
+  /// A `longTermBackupSchedule` block as defined below.
   final List<GetAutonomousDatabaseCloneFromDatabaseLongTermBackupSchedule> longTermBackupSchedules;
   /// The amount of memory in gigabytes per ECPU or OCPU.
   final int memoryPerOracleComputeUnitInGb;
@@ -141,7 +141,7 @@ class GetAutonomousDatabaseCloneFromDatabaseResult {
 
   /// Creates a new [GetAutonomousDatabaseCloneFromDatabaseResult].
   /// [actualUsedDataStorageSizeInTb] The current amount of storage in use for user and system data, in terabytes (TB).
-  /// [allocatedStorageSizeInTb] The amount of storage currently allocated for the database tables and billed for, rounded up. When auto-scaling is not enabled, this value is equal to the `data_storage_size_in_tb` value. You can compare this value to the `actual_used_data_storage_size_in_tb` value to determine if a manual shrink operation is appropriate for your allocated storage.
+  /// [allocatedStorageSizeInTb] The amount of storage currently allocated for the database tables and billed for, rounded up. When auto-scaling is not enabled, this value is equal to the `dataStorageSizeInTb` value. You can compare this value to the `actualUsedDataStorageSizeInTb` value to determine if a manual shrink operation is appropriate for your allocated storage.
   /// [allowedIpAddresses] A list of IP addresses on the access control list.
   /// [autoScalingEnabled] Indicates if auto scaling is enabled for the Autonomous Database CPU core count.
   /// [autoScalingForStorageEnabled] Indicates if auto scaling is enabled for the Autonomous Database storage.
@@ -167,7 +167,7 @@ class GetAutonomousDatabaseCloneFromDatabaseResult {
   /// [localAdgAutoFailoverMaxDataLossLimitInSeconds] Parameter that allows users to select an acceptable maximum data loss limit in seconds, up to which Automatic Failover will be triggered when necessary for a Local Autonomous Data Guard
   /// [localDataGuardEnabled] Indicates whether the Autonomous Database has local (in-region) Data Guard enabled. Not applicable to cross-region Autonomous Data Guard associations, or to Autonomous Databases using dedicated Exadata infrastructure or Exadata Cloud@Customer infrastructure.
   /// [location] The Azure Region where the autonomous database cloned from database exists.
-  /// [longTermBackupSchedules] A `long_term_backup_schedule` block as defined below.
+  /// [longTermBackupSchedules] A `longTermBackupSchedule` block as defined below.
   /// [memoryPerOracleComputeUnitInGb] The amount of memory in gigabytes per ECPU or OCPU.
   /// [mtlsConnectionRequired] Specifies if the Autonomous Database requires mTLS connections.
   /// [name] Required.
@@ -425,4 +425,3 @@ class GetAutonomousDatabaseCloneFromDatabaseResult {
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'share_file_state.dart';
 
 /// Manages a File within an Azure Storage File Share.
 ///
-/// &gt; **Note:** When using Azure Active Directory Authentication (i.e. setting the provider property `storage_use_azuread = true`), the principal running Terraform must have the *Storage File Data Privileged Contributor* IAM role assigned. The *Storage File Data SMB Share Contributor* does not have sufficient permissions to create files. Refer to [official documentation](https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-file-service-operations) for more details.
+/// &gt; **Note:** When using Azure Active Directory Authentication (i.e. setting the provider property `storageUseAzuread = true`), the principal running Terraform must have the *Storage File Data Privileged Contributor* IAM role assigned. The *Storage File Data SMB Share Contributor* does not have sufficient permissions to create files. Refer to [official documentation](https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-file-service-operations) for more details.
 ///
 /// ## Example Usage
 ///
@@ -144,6 +144,37 @@ import 'share_file_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "azureteststorage"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_share" "example" {
+///   name               = "sharename"
+///   storage_account_id = azure_storage_account.example.id
+///   quota              = 50
+/// }
+/// resource "azure_storage_sharefile" "example" {
+///   name              = "my-awesome-content.zip"
+///   storage_share_url = azure_storage_share.example.url
+///   source            = "some-local-file.zip"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -158,8 +189,8 @@ import 'share_file_state.dart';
 /// import com.pulumi.azure.storage.ShareArgs;
 /// import com.pulumi.azure.storage.ShareFile;
 /// import com.pulumi.azure.storage.ShareFileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

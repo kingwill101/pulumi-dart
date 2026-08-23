@@ -6,24 +6,24 @@ import 'get_configuration_protected_file.dart';
 
 /// Result data returned by getConfiguration.
 class GetConfigurationResult {
-  /// A `config_file` block as defined below.
+  /// A `configFile` block as defined below.
   final List<GetConfigurationConfigFile> configFiles;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String nginxDeploymentId;
   /// The package data for this configuration.
   final String packageData;
-  /// A `protected_file` block as defined below.
+  /// A `protectedFile` block as defined below.
   final List<GetConfigurationProtectedFile> protectedFiles;
   /// The root file path of this Nginx Configuration.
   final String rootFile;
 
   /// Creates a new [GetConfigurationResult].
-  /// [configFiles] A `config_file` block as defined below.
+  /// [configFiles] A `configFile` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [nginxDeploymentId] Required.
   /// [packageData] The package data for this configuration.
-  /// [protectedFiles] A `protected_file` block as defined below.
+  /// [protectedFiles] A `protectedFile` block as defined below.
   /// [rootFile] The root file path of this Nginx Configuration.
   const GetConfigurationResult({
     required this.configFiles,
@@ -56,4 +56,3 @@ class GetConfigurationResult {
     );
   }
 }
-

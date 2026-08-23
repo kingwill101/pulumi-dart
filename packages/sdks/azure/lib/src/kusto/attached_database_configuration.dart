@@ -51,11 +51,13 @@ import 'attached_database_configuration_state.dart';
 ///     resourceGroupName: example.name,
 ///     location: example.location,
 ///     clusterName: followerCluster.name,
-///     clusterResourceId: followedCluster.id,
+///     clusterId: followedCluster.id,
 ///     databaseName: exampleDatabase.name,
 ///     sharing: {
 ///         externalTablesToExcludes: ["ExternalTable2"],
 ///         externalTablesToIncludes: ["ExternalTable1"],
+///         functionsToExcludes: ["Function2"],
+///         functionsToIncludes: ["Function1"],
 ///         materializedViewsToExcludes: ["MaterializedViewTable2"],
 ///         materializedViewsToIncludes: ["MaterializedViewTable1"],
 ///         tablesToExcludes: ["Table2"],
@@ -101,11 +103,13 @@ import 'attached_database_configuration_state.dart';
 ///     resource_group_name=example.name,
 ///     location=example.location,
 ///     cluster_name=follower_cluster.name,
-///     cluster_resource_id=followed_cluster.id,
+///     cluster_id=followed_cluster.id,
 ///     database_name=example_database.name,
 ///     sharing={
 ///         "external_tables_to_excludes": ["ExternalTable2"],
 ///         "external_tables_to_includes": ["ExternalTable1"],
+///         "functions_to_excludes": ["Function2"],
+///         "functions_to_includes": ["Function1"],
 ///         "materialized_views_to_excludes": ["MaterializedViewTable2"],
 ///         "materialized_views_to_includes": ["MaterializedViewTable1"],
 ///         "tables_to_excludes": ["Table2"],
@@ -172,7 +176,7 @@ import 'attached_database_configuration_state.dart';
 ///         ResourceGroupName = example.Name,
 ///         Location = example.Location,
 ///         ClusterName = followerCluster.Name,
-///         ClusterResourceId = followedCluster.Id,
+///         ClusterId = followedCluster.Id,
 ///         DatabaseName = exampleDatabase.Name,
 ///         Sharing = new Azure.Kusto.Inputs.AttachedDatabaseConfigurationSharingArgs
 ///         {
@@ -183,6 +187,14 @@ import 'attached_database_configuration_state.dart';
 ///             ExternalTablesToIncludes = new[]
 ///             {
 ///                 "ExternalTable1",
+///             },
+///             FunctionsToExcludes = new[]
+///             {
+///                 "Function2",
+///             },
+///             FunctionsToIncludes = new[]
+///             {
+///                 "Function1",
 ///             },
 ///             MaterializedViewsToExcludes = new[]
 ///             {
@@ -270,7 +282,7 @@ import 'attached_database_configuration_state.dart';
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
 /// 			ClusterName:       followerCluster.Name,
-/// 			ClusterResourceId: followedCluster.ID(),
+/// 			ClusterId:         followedCluster.ID(),
 /// 			DatabaseName:      exampleDatabase.Name,
 /// 			Sharing: &kusto.AttachedDatabaseConfigurationSharingArgs{
 /// 				ExternalTablesToExcludes: pulumi.StringArray{
@@ -278,6 +290,12 @@ import 'attached_database_configuration_state.dart';
 /// 				},
 /// 				ExternalTablesToIncludes: pulumi.StringArray{
 /// 					pulumi.String("ExternalTable1"),
+/// 				},
+/// 				FunctionsToExcludes: pulumi.StringArray{
+/// 					pulumi.String("Function2"),
+/// 				},
+/// 				FunctionsToIncludes: pulumi.StringArray{
+/// 					pulumi.String("Function1"),
 /// 				},
 /// 				MaterializedViewsToExcludes: pulumi.StringArray{
 /// 					pulumi.String("MaterializedViewTable2"),
@@ -300,6 +318,68 @@ import 'attached_database_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "my-kusto-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_kusto_cluster" "follower_cluster" {
+///   name                = "cluster1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Dev(No SLA)_Standard_D11_v2"
+///     capacity = 1
+///   }
+/// }
+/// resource "azure_kusto_cluster" "followed_cluster" {
+///   name                = "cluster2"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Dev(No SLA)_Standard_D11_v2"
+///     capacity = 1
+///   }
+/// }
+/// resource "azure_kusto_database" "followed_database" {
+///   name                = "my-followed-database"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cluster_name        = azure_kusto_cluster.follower_cluster.name
+/// }
+/// resource "azure_kusto_database" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cluster_name        = azure_kusto_cluster.follower_cluster.name
+/// }
+/// resource "azure_kusto_attacheddatabaseconfiguration" "example" {
+///   name                = "configuration1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cluster_name        = azure_kusto_cluster.follower_cluster.name
+///   cluster_id          = azure_kusto_cluster.followed_cluster.id
+///   database_name       = azure_kusto_database.example.name
+///   sharing = {
+///     external_tables_to_excludes    = ["ExternalTable2"]
+///     external_tables_to_includes    = ["ExternalTable1"]
+///     functions_to_excludes          = ["Function2"]
+///     functions_to_includes          = ["Function1"]
+///     materialized_views_to_excludes = ["MaterializedViewTable2"]
+///     materialized_views_to_includes = ["MaterializedViewTable1"]
+///     tables_to_excludes             = ["Table2"]
+///     tables_to_includes             = ["Table1"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -316,8 +396,8 @@ import 'attached_database_configuration_state.dart';
 /// import com.pulumi.azure.kusto.AttachedDatabaseConfiguration;
 /// import com.pulumi.azure.kusto.AttachedDatabaseConfigurationArgs;
 /// import com.pulumi.azure.kusto.inputs.AttachedDatabaseConfigurationSharingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -373,11 +453,13 @@ import 'attached_database_configuration_state.dart';
 ///             .resourceGroupName(example.name())
 ///             .location(example.location())
 ///             .clusterName(followerCluster.name())
-///             .clusterResourceId(followedCluster.id())
+///             .clusterId(followedCluster.id())
 ///             .databaseName(exampleDatabase.name())
 ///             .sharing(AttachedDatabaseConfigurationSharingArgs.builder()
 ///                 .externalTablesToExcludes("ExternalTable2")
 ///                 .externalTablesToIncludes("ExternalTable1")
+///                 .functionsToExcludes("Function2")
+///                 .functionsToIncludes("Function1")
 ///                 .materializedViewsToExcludes("MaterializedViewTable2")
 ///                 .materializedViewsToIncludes("MaterializedViewTable1")
 ///                 .tablesToExcludes("Table2")
@@ -439,13 +521,17 @@ import 'attached_database_configuration_state.dart';
 ///       resourceGroupName: ${example.name}
 ///       location: ${example.location}
 ///       clusterName: ${followerCluster.name}
-///       clusterResourceId: ${followedCluster.id}
+///       clusterId: ${followedCluster.id}
 ///       databaseName: ${exampleDatabase.name}
 ///       sharing:
 ///         externalTablesToExcludes:
 ///           - ExternalTable2
 ///         externalTablesToIncludes:
 ///           - ExternalTable1
+///         functionsToExcludes:
+///           - Function2
+///         functionsToIncludes:
+///           - Function1
 ///         materializedViewsToExcludes:
 ///           - MaterializedViewTable2
 ///         materializedViewsToIncludes:
@@ -472,7 +558,7 @@ import 'attached_database_configuration_state.dart';
 /// $ pulumi import azure:kusto/attachedDatabaseConfiguration:AttachedDatabaseConfiguration example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Kusto/clusters/cluster1/attachedDatabaseConfigurations/configuration1
 /// ```
 class AttachedDatabaseConfiguration extends pulumi.CustomResource {
-  /// The list of databases from the `cluster_resource_id` which are currently attached to the cluster.
+  /// The list of databases from the `clusterResourceId` which are currently attached to the cluster.
   late final pulumi.Output<List<String>> attachedDatabaseNames;
   /// The resource id of the cluster where the databases you would like to attach reside.
   late final pulumi.Output<String> clusterId;
@@ -481,6 +567,12 @@ class AttachedDatabaseConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> clusterResourceId;
   /// The name of the database which you would like to attach, use * if you want to follow all current and future databases. Changing this forces a new resource to be created.
   late final pulumi.Output<String> databaseName;
+  /// The database name to use for the attached database instead of using the original database name. Relevant only when attaching to a specific database.
+  late final pulumi.Output<String?> databaseNameOverride;
+  /// Adds a prefix to the attached databases name. When following an entire cluster, that prefix would be added to all of the databases original names from leader cluster.
+  ///
+  /// &gt; **Note:** Exactly one of  `databaseNameOverride` and `databaseNamePrefix` can be specified.
+  late final pulumi.Output<String?> databaseNamePrefix;
   /// The default principals modification kind. Valid values are: `None` (default), `Replace` and `Union`. Defaults to `None`.
   late final pulumi.Output<String?> defaultPrincipalModificationKind;
   /// Specifies the location of the Kusto Cluster for which the configuration will be created. Changing this forces a new resource to be created.
@@ -511,6 +603,8 @@ class AttachedDatabaseConfiguration extends pulumi.CustomResource {
     clusterName = registerOutput<String>('clusterName');
     clusterResourceId = registerOutput<String>('clusterResourceId');
     databaseName = registerOutput<String>('databaseName');
+    databaseNameOverride = registerOutput<String?>('databaseNameOverride');
+    databaseNamePrefix = registerOutput<String?>('databaseNamePrefix');
     defaultPrincipalModificationKind = registerOutput<String?>('defaultPrincipalModificationKind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -546,6 +640,8 @@ class AttachedDatabaseConfiguration extends pulumi.CustomResource {
     clusterName = registerOutput<String>('clusterName');
     clusterResourceId = registerOutput<String>('clusterResourceId');
     databaseName = registerOutput<String>('databaseName');
+    databaseNameOverride = registerOutput<String?>('databaseNameOverride');
+    databaseNamePrefix = registerOutput<String?>('databaseNamePrefix');
     defaultPrincipalModificationKind = registerOutput<String?>('defaultPrincipalModificationKind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

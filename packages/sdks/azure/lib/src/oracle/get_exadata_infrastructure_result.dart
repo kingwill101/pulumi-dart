@@ -19,7 +19,7 @@ class GetExadataInfrastructureResult {
   final String computeModel;
   /// The total number of CPU cores allocated.
   final int cpuCount;
-  /// A `customer_contacts` block as defined below.
+  /// A `customerContacts` block as defined below.
   final List<String> customerContacts;
   /// The data storage size in terabytes of the DATA disk group.
   final double dataStorageSizeInTbs;
@@ -29,11 +29,11 @@ class GetExadataInfrastructureResult {
   final int dbNodeStorageSizeInGbs;
   /// The software version of the database servers (dom0) in the Cloud Exadata Infrastructure.
   final String dbServerVersion;
-  /// A `defined_file_system_configuration` block as defined below.
+  /// A `definedFileSystemConfiguration` block as defined below.
   final List<GetExadataInfrastructureDefinedFileSystemConfiguration> definedFileSystemConfigurations;
   /// The user-friendly name for the Cloud Exadata Infrastructure resource. The name does not need to be unique.
   final String displayName;
-  /// A `estimated_patching_time` block as defined below.
+  /// A `estimatedPatchingTime` block as defined below.
   final List<GetExadataInfrastructureEstimatedPatchingTime> estimatedPatchingTimes;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -45,7 +45,7 @@ class GetExadataInfrastructureResult {
   final String lifecycleState;
   /// The Azure Region where the Cloud Exadata Infrastructure exists.
   final String location;
-  /// A `maintenance_window` block as defined below.
+  /// A `maintenanceWindow` block as defined below.
   final List<GetExadataInfrastructureMaintenanceWindow> maintenanceWindows;
   /// The total number of CPU cores available.
   final int maxCpuCount;
@@ -93,20 +93,20 @@ class GetExadataInfrastructureResult {
   /// [computeCount] The number of compute servers for the Cloud Exadata Infrastructure.
   /// [computeModel] The compute model of the Exadata Infrastructure.
   /// [cpuCount] The total number of CPU cores allocated.
-  /// [customerContacts] A `customer_contacts` block as defined below.
+  /// [customerContacts] A `customerContacts` block as defined below.
   /// [dataStorageSizeInTbs] The data storage size in terabytes of the DATA disk group.
   /// [databaseServerType] The database server model type of the cloud Exadata infrastructure resource.
   /// [dbNodeStorageSizeInGbs] The local node storage allocated in GBs.
   /// [dbServerVersion] The software version of the database servers (dom0) in the Cloud Exadata Infrastructure.
-  /// [definedFileSystemConfigurations] A `defined_file_system_configuration` block as defined below.
+  /// [definedFileSystemConfigurations] A `definedFileSystemConfiguration` block as defined below.
   /// [displayName] The user-friendly name for the Cloud Exadata Infrastructure resource. The name does not need to be unique.
-  /// [estimatedPatchingTimes] A `estimated_patching_time` block as defined below.
+  /// [estimatedPatchingTimes] A `estimatedPatchingTime` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [lastMaintenanceRunId] The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the last maintenance run.
   /// [lifecycleDetails] Additional information about the current lifecycle state.
   /// [lifecycleState] Cloud Exadata Infrastructure lifecycle state.
   /// [location] The Azure Region where the Cloud Exadata Infrastructure exists.
-  /// [maintenanceWindows] A `maintenance_window` block as defined below.
+  /// [maintenanceWindows] A `maintenanceWindow` block as defined below.
   /// [maxCpuCount] The total number of CPU cores available.
   /// [maxDataStorageInTbs] The total available DATA disk group size.
   /// [maxDbNodeStorageSizeInGbs] The total local node storage available in GBs.
@@ -260,4 +260,3 @@ class GetExadataInfrastructureResult {
     );
   }
 }
-

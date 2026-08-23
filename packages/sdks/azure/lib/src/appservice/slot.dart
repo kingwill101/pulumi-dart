@@ -8,9 +8,9 @@ import 'slot_state.dart';
 
 /// Manages an App Service Slot (within an App Service).
 ///
-/// !&gt; **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.LinuxWebAppSlot` and `azure.appservice.WindowsWebAppSlot` resources instead.
+/// &gt; **NOTE:** This resource has been deprecated and will be removed in version 6.0 of the provider. Please use `azure.appservice.LinuxWebAppSlot` and `azure.appservice.WindowsWebAppSlot` resources instead.
 ///
-/// &gt; **Note:** When using Slots - the `app_settings`, `connection_string` and `site_config` blocks on the `azure.appservice.AppService` resource will be overwritten when promoting a Slot using the `azure.appservice.ActiveSlot` resource.
+/// &gt; **Note:** When using Slots - the `appSettings`, `connectionString` and `siteConfig` blocks on the `azure.appservice.AppService` resource will be overwritten when promoting a Slot using the `azure.appservice.ActiveSlot` resource.
 ///
 /// ## Example Usage
 ///
@@ -82,7 +82,7 @@ import 'slot_state.dart';
 /// import pulumi_azure as azure
 /// import pulumi_random as random
 ///
-/// server = random.index.Id("server",
+/// server = random.Id("server",
 ///     keepers={
 ///         aziId: 1,
 ///     },
@@ -141,7 +141,7 @@ import 'slot_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var server = new Random.Index.Id("server", new()
+///     var server = new Random.Id("server", new()
 ///     {
 ///         Keepers =
 ///         {
@@ -310,6 +310,73 @@ import 'slot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_id" "server" {
+///   keepers = {
+///     "aziId" = 1
+///   }
+///   byte_length = 8
+/// }
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "some-resource-group"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "some-app-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     tier = "Standard"
+///     size = "S1"
+///   }
+/// }
+/// resource "azure_appservice_appservice" "example" {
+///   name                = random_id.server.hex
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   app_service_plan_id = azure_appservice_plan.example.id
+///   site_config = {
+///     dotnet_framework_version = "v4.0"
+///   }
+///   app_settings = {
+///     "SOME_KEY" = "some-value"
+///   }
+///   connection_strings {
+///     name  = "Database"
+///     type  = "SQLServer"
+///     value = "Server=some-server.mydomain.com;Integrated Security=SSPI"
+///   }
+/// }
+/// resource "azure_appservice_slot" "example" {
+///   name                = random_id.server.hex
+///   app_service_name    = azure_appservice_appservice.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   app_service_plan_id = azure_appservice_plan.example.id
+///   site_config = {
+///     dotnet_framework_version = "v4.0"
+///   }
+///   app_settings = {
+///     "SOME_KEY" = "some-value"
+///   }
+///   connection_strings {
+///     name  = "Database"
+///     type  = "SQLServer"
+///     value = "Server=some-server.mydomain.com;Integrated Security=SSPI"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -331,8 +398,8 @@ import 'slot_state.dart';
 /// import com.pulumi.azure.appservice.SlotArgs;
 /// import com.pulumi.azure.appservice.inputs.SlotSiteConfigArgs;
 /// import com.pulumi.azure.appservice.inputs.SlotConnectionStringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -516,7 +583,7 @@ import 'slot_state.dart';
 /// import pulumi_azure as azure
 /// import pulumi_random as random
 ///
-/// server = random.index.Id("server",
+/// server = random.Id("server",
 ///     keepers={
 ///         aziId: 1,
 ///     },
@@ -563,7 +630,7 @@ import 'slot_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var server = new Random.Index.Id("server", new()
+///     var server = new Random.Id("server", new()
 ///     {
 ///         Keepers =
 ///         {
@@ -694,6 +761,61 @@ import 'slot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_id" "server" {
+///   keepers = {
+///     "aziId" = 1
+///   }
+///   byte_length = 8
+/// }
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "some-resource-group"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "some-app-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     tier = "Standard"
+///     size = "S1"
+///   }
+/// }
+/// resource "azure_appservice_appservice" "example" {
+///   name                = random_id.server.hex
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   app_service_plan_id = azure_appservice_plan.example.id
+///   site_config = {
+///     java_version           = "1.8"
+///     java_container         = "JETTY"
+///     java_container_version = "9.3"
+///   }
+/// }
+/// resource "azure_appservice_slot" "example" {
+///   name                = random_id.server.hex
+///   app_service_name    = azure_appservice_appservice.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   app_service_plan_id = azure_appservice_plan.example.id
+///   site_config = {
+///     java_version           = "1.8"
+///     java_container         = "JETTY"
+///     java_container_version = "9.3"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -713,8 +835,8 @@ import 'slot_state.dart';
 /// import com.pulumi.azure.appservice.Slot;
 /// import com.pulumi.azure.appservice.SlotArgs;
 /// import com.pulumi.azure.appservice.inputs.SlotSiteConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -839,11 +961,11 @@ class Slot extends pulumi.CustomResource {
   late final pulumi.Output<String> appServicePlanId;
   /// A key-value pair of App Settings.
   late final pulumi.Output<Map<String, String>> appSettings;
-  /// A `auth_settings` block as defined below.
+  /// A `authSettings` block as defined below.
   late final pulumi.Output<SlotAuthSettings> authSettings;
   /// Should the App Service Slot send session affinity cookies, which route client requests in the same session to the same instance?
   late final pulumi.Output<bool> clientAffinityEnabled;
-  /// An `connection_string` block as defined below.
+  /// An `connectionString` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
   /// The Default Hostname associated with the App Service Slot - such as `mysite.azurewebsites.net`
   late final pulumi.Output<String> defaultSiteHostname;
@@ -863,11 +985,11 @@ class Slot extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The name of the resource group in which to create the App Service Slot component. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `site_config` object as defined below.
+  /// A `siteConfig` object as defined below.
   late final pulumi.Output<SlotSiteConfig> siteConfig;
-  /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service slot.
+  /// A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service slot.
   late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
-  /// One or more `storage_account` blocks as defined below.
+  /// One or more `storageAccount` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> storageAccounts;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;

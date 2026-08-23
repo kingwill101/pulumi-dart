@@ -20,7 +20,7 @@ class GetPolicyDefintionResult {
   final String policyRule;
   /// The Type of the Policy. Possible values are `BuiltIn`, `Custom` and `NotSpecified`.
   final String policyType;
-  /// A list of role definition id extracted from `policy_rule` required for remediation.
+  /// A list of role definition id extracted from `policyRule` required for remediation.
   final List<String> roleDefinitionIds;
   /// The Type of Policy.
   final String type;
@@ -36,7 +36,7 @@ class GetPolicyDefintionResult {
   /// [parameters] Any Parameters defined in the Policy.
   /// [policyRule] The Rule as defined (in JSON) in the Policy.
   /// [policyType] The Type of the Policy. Possible values are `BuiltIn`, `Custom` and `NotSpecified`.
-  /// [roleDefinitionIds] A list of role definition id extracted from `policy_rule` required for remediation.
+  /// [roleDefinitionIds] A list of role definition id extracted from `policyRule` required for remediation.
   /// [type] The Type of Policy.
   const GetPolicyDefintionResult({
     required this.description,
@@ -87,4 +87,3 @@ class GetPolicyDefintionResult {
     );
   }
 }
-

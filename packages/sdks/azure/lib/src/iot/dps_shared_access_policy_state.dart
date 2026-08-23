@@ -6,11 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DpsSharedAccessPolicyState {
   /// Adds `EnrollmentRead` permission to this Shared Access Account. It allows read access to enrollment data.
   ///
-  /// &gt; **Note:** When `enrollment_read` is set to `true`, `registration_read` must also be set to true. This is a limitation of the Azure REST API
+  /// &gt; **Note:** When `enrollmentRead` is set to `true`, `registrationRead` must also be set to true. This is a limitation of the Azure REST API
   final pulumi.Input<bool>? enrollmentRead;
   /// Adds `EnrollmentWrite` permission to this Shared Access Account. It allows write access to enrollment data.
   ///
-  /// &gt; **Note:** When `registration_write` is set to `true`, `enrollment_read`, `registration_read`, and `registration_write` must also be set to true. This is a requirement of the Azure API.
+  /// &gt; **Note:** When `registrationWrite` is set to `true`, `enrollmentRead`, `registrationRead`, and `registrationWrite` must also be set to true. This is a requirement of the Azure API.
   final pulumi.Input<bool>? enrollmentWrite;
   /// The name of the IoT Hub Device Provisioning service to which this Shared Access Policy belongs. Changing this forces a new resource to be created.
   final pulumi.Input<String>? iothubDpsName;
@@ -24,7 +24,7 @@ class DpsSharedAccessPolicyState {
   final pulumi.Input<bool>? registrationRead;
   /// Adds `RegistrationStatusWrite` permission to this Shared Access Account. It allows write access to device registrations.
   ///
-  /// &gt; **Note:** When `registration_write` is set to `true`, `registration_read` must also be set to true. This is a requirement of the Azure API.
+  /// &gt; **Note:** When `registrationWrite` is set to `true`, `registrationRead` must also be set to true. This is a requirement of the Azure API.
   final pulumi.Input<bool>? registrationWrite;
   /// The name of the resource group under which the IotHub Shared Access Policy resource has to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
@@ -34,7 +34,7 @@ class DpsSharedAccessPolicyState {
   final pulumi.Input<String>? secondaryKey;
   /// Adds `ServiceConfig` permission to this Shared Access Account. It allows configuration of the Device Provisioning Service.
   ///
-  /// &gt; **Note:** At least one of `registration_read`, `registration_write`, `service_config`, `enrollment_read`, `enrollment_write` permissions must be set to `true`.
+  /// &gt; **Note:** At least one of `registrationRead`, `registrationWrite`, `serviceConfig`, `enrollmentRead`, `enrollmentWrite` permissions must be set to `true`.
   final pulumi.Input<bool>? serviceConfig;
 
   /// Creates a new [DpsSharedAccessPolicyState].
@@ -99,4 +99,3 @@ class DpsSharedAccessPolicyState {
     );
   }
 }
-

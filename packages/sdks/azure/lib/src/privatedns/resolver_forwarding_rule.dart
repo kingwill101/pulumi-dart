@@ -334,6 +334,73 @@ import 'resolver_forwarding_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "west europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "outbounddns"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.0.64/28"]
+///   delegations {
+///     name = "Microsoft.Network.dnsResolvers"
+///     service_delegation = {
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+///       name    = "Microsoft.Network/dnsResolvers"
+///     }
+///   }
+/// }
+/// resource "azure_privatedns_resolver" "example" {
+///   name                = "example-resolver"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_network_id  = azure_network_virtualnetwork.example.id
+/// }
+/// resource "azure_privatedns_resolveroutboundendpoint" "example" {
+///   name                    = "example-endpoint"
+///   private_dns_resolver_id = azure_privatedns_resolver.example.id
+///   location                = azure_privatedns_resolver.example.location
+///   subnet_id               = azure_network_subnet.example.id
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// resource "azure_privatedns_resolverdnsforwardingruleset" "example" {
+///   name                                       = "example-drdfr"
+///   resource_group_name                        = azure_core_resourcegroup.example.name
+///   location                                   = azure_core_resourcegroup.example.location
+///   private_dns_resolver_outbound_endpoint_ids = [azure_privatedns_resolveroutboundendpoint.example.id]
+/// }
+/// resource "azure_privatedns_resolverforwardingrule" "example" {
+///   name                      = "example-rule"
+///   dns_forwarding_ruleset_id = azure_privatedns_resolverdnsforwardingruleset.example.id
+///   domain_name               = "onprem.local."
+///   enabled                   = true
+///   target_dns_servers {
+///     ip_address = "10.10.0.1"
+///     port       = 53
+///   }
+///   metadata = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -357,8 +424,8 @@ import 'resolver_forwarding_rule_state.dart';
 /// import com.pulumi.azure.privatedns.ResolverForwardingRule;
 /// import com.pulumi.azure.privatedns.ResolverForwardingRuleArgs;
 /// import com.pulumi.azure.privatedns.inputs.ResolverForwardingRuleTargetDnsServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -532,7 +599,7 @@ class ResolverForwardingRule extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> metadata;
   /// Specifies the name which should be used for this Private DNS Resolver Forwarding Rule. Changing this forces a new Private DNS Resolver Forwarding Rule to be created.
   late final pulumi.Output<String> name;
-  /// Can be specified multiple times to define multiple target DNS servers. Each `target_dns_servers` block as defined below.
+  /// Can be specified multiple times to define multiple target DNS servers. Each `targetDnsServers` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> targetDnsServers;
 
   /// Creates a new [ResolverForwardingRule].

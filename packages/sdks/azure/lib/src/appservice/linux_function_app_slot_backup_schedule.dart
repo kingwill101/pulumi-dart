@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxFunctionAppSlotBackupSchedule {
-  /// How often the backup should be executed (e.g. for weekly backup, this should be set to `7` and `frequency_unit` should be set to `Day`).
+  /// How often the backup should be executed (e.g. for weekly backup, this should be set to `7` and `frequencyUnit` should be set to `Day`).
   ///
   /// &gt; **Note:** Not all intervals are supported on all Linux Function App SKUs. Please refer to the official documentation for appropriate values.
   final pulumi.Input<int> frequencyInterval;
@@ -19,7 +19,7 @@ class LinuxFunctionAppSlotBackupSchedule {
   final pulumi.Input<String>? startTime;
 
   /// Creates a new [LinuxFunctionAppSlotBackupSchedule].
-  /// [frequencyInterval] How often the backup should be executed (e.g. for weekly backup, this should be set to `7` and `frequency_unit` should be set to `Day`).
+  /// [frequencyInterval] How often the backup should be executed (e.g. for weekly backup, this should be set to `7` and `frequencyUnit` should be set to `Day`).
   /// [frequencyUnit] The unit of time for how often the backup should take place. Possible values include: `Day` and `Hour`.
   /// [keepAtLeastOneBackup] Should the service keep at least one backup, regardless of age of backup. Defaults to `false`.
   /// [lastExecutionTime] The time the backup was last attempted.
@@ -56,4 +56,3 @@ class LinuxFunctionAppSlotBackupSchedule {
     );
   }
 }
-

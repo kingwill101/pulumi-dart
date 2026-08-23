@@ -10,9 +10,9 @@ class MetricAlertDynamicCriteria {
   final pulumi.Input<String> alertSensitivity;
   /// One or more `dimension` blocks as defined below.
   final pulumi.Input<List<MetricAlertDynamicCriteriaDimension>>? dimensions;
-  /// The number of violations to trigger an alert. Should be smaller or equal to `evaluation_total_count`. Defaults to `4`.
+  /// The number of violations to trigger an alert. Should be smaller or equal to `evaluationTotalCount`. Defaults to `4`.
   final pulumi.Input<int>? evaluationFailureCount;
-  /// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (`window_size`) and the selected number of aggregated points. Defaults to `4`.
+  /// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (`windowSize`) and the selected number of aggregated points. Defaults to `4`.
   final pulumi.Input<int>? evaluationTotalCount;
   /// The [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) date from which to start learning the metric historical data and calculate the dynamic thresholds.
   final pulumi.Input<String>? ignoreDataBefore;
@@ -29,8 +29,8 @@ class MetricAlertDynamicCriteria {
   /// [aggregation] The statistic that runs over the metric values. Possible values are `Average`, `Count`, `Minimum`, `Maximum` and `Total`.
   /// [alertSensitivity] The extent of deviation required to trigger an alert. Possible values are `Low`, `Medium` and `High`.
   /// [dimensions] One or more `dimension` blocks as defined below.
-  /// [evaluationFailureCount] The number of violations to trigger an alert. Should be smaller or equal to `evaluation_total_count`. Defaults to `4`.
-  /// [evaluationTotalCount] The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (`window_size`) and the selected number of aggregated points. Defaults to `4`.
+  /// [evaluationFailureCount] The number of violations to trigger an alert. Should be smaller or equal to `evaluationTotalCount`. Defaults to `4`.
+  /// [evaluationTotalCount] The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (`windowSize`) and the selected number of aggregated points. Defaults to `4`.
   /// [ignoreDataBefore] The [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) date from which to start learning the metric historical data and calculate the dynamic thresholds.
   /// [metricName] One of the metric names to be monitored.
   /// [metricNamespace] One of the metric namespaces to be monitored.
@@ -79,4 +79,3 @@ class MetricAlertDynamicCriteria {
     );
   }
 }
-

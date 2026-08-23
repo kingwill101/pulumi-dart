@@ -24,7 +24,7 @@ import 'target_state.dart';
 ///     dnsPrefix: "acctestaksexample",
 ///     defaultNodePool: {
 ///         name: "example-value",
-///         nodeCount: "example-value",
+///         nodeCount: Number("example-value"),
 ///         vmSize: "example-value",
 ///         upgradeSettings: {
 ///             maxSurge: "example-value",
@@ -54,7 +54,7 @@ import 'target_state.dart';
 ///     dns_prefix="acctestaksexample",
 ///     default_node_pool={
 ///         "name": "example-value",
-///         "node_count": "example-value",
+///         "node_count": int("example-value"),
 ///         "vm_size": "example-value",
 ///         "upgrade_settings": {
 ///             "max_surge": "example-value",
@@ -164,6 +164,42 @@ import 'target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_containerservice_kubernetescluster" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   dns_prefix          = "acctestaksexample"
+///   default_node_pool = {
+///     name       = "example-value"
+///     node_count = "example-value"
+///     vm_size    = "example-value"
+///     upgrade_settings = {
+///       max_surge = "example-value"
+///     }
+///   }
+///   identity = {
+///     type = "example-value"
+///   }
+/// }
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_chaosstudio_target" "example" {
+///   location           = azure_core_resourcegroup.example.location
+///   target_resource_id = azure_containerservice_kubernetescluster.example.id
+///   target_type        = "example-value"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +215,8 @@ import 'target_state.dart';
 /// import com.pulumi.azure.containerservice.inputs.KubernetesClusterIdentityArgs;
 /// import com.pulumi.azure.chaosstudio.Target;
 /// import com.pulumi.azure.chaosstudio.TargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

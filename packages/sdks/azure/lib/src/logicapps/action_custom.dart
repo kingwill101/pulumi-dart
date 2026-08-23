@@ -166,6 +166,30 @@ import 'action_custom_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "workflow-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_logicapps_workflow" "example" {
+///   name                = "workflow1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_logicapps_actioncustom" "example" {
+///   name         = "example-action"
+///   logic_app_id = azure_logicapps_workflow.example.id
+///   body         = "{\n    \\\"description\\\": \\\"A variable to configure the auto expiration age in days. Configured in negative number. Default is -30 (30 days old).\\\",\n    \\\"inputs\\\": {\n        \\\"variables\\\": [\n            {\n                \\\"name\\\": \\\"ExpirationAgeInDays\\\",\n                \\\"type\\\": \\\"Integer\\\",\n                \\\"value\\\": -30\n            }\n        ]\n    },\n    \\\"runAfter\\\": {},\n    \\\"type\\\": \\\"InitializeVariable\\\"\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +202,8 @@ import 'action_custom_state.dart';
 /// import com.pulumi.azure.logicapps.WorkflowArgs;
 /// import com.pulumi.azure.logicapps.ActionCustom;
 /// import com.pulumi.azure.logicapps.ActionCustomArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

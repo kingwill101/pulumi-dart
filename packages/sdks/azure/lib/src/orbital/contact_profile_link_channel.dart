@@ -10,7 +10,7 @@ class ContactProfileLinkChannel {
   final pulumi.Input<double> centerFrequencyMhz;
   /// Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx. Only valid for downlink directions. If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.
   final pulumi.Input<String>? demodulationConfiguration;
-  /// Customer End point to store/retrieve data during a contact. An `end_point` block as defined below.
+  /// Customer End point to store/retrieve data during a contact. An `endPoint` block as defined below.
   final pulumi.Input<List<ContactProfileLinkChannelEndPoint>> endPoints;
   /// Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
   final pulumi.Input<String>? modulationConfiguration;
@@ -21,7 +21,7 @@ class ContactProfileLinkChannel {
   /// [bandwidthMhz] Bandwidth in MHz.
   /// [centerFrequencyMhz] Center frequency in MHz.
   /// [demodulationConfiguration] Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx. Only valid for downlink directions. If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.
-  /// [endPoints] Customer End point to store/retrieve data during a contact. An `end_point` block as defined below.
+  /// [endPoints] Customer End point to store/retrieve data during a contact. An `endPoint` block as defined below.
   /// [modulationConfiguration] Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
   /// [name] Name of the channel.
   const ContactProfileLinkChannel({
@@ -55,4 +55,3 @@ class ContactProfileLinkChannel {
     );
   }
 }
-

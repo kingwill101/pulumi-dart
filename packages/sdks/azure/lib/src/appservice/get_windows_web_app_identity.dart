@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppIdentity {
-  /// A `identity_ids` block as defined below.
+  /// A `identityIds` block as defined below.
   final pulumi.Input<List<String>> identityIds;
   /// The Principal ID Managed Service Identity.
   final pulumi.Input<String> principalId;
@@ -13,7 +13,7 @@ class GetWindowsWebAppIdentity {
   final pulumi.Input<String> type;
 
   /// Creates a new [GetWindowsWebAppIdentity].
-  /// [identityIds] A `identity_ids` block as defined below.
+  /// [identityIds] A `identityIds` block as defined below.
   /// [principalId] The Principal ID Managed Service Identity.
   /// [tenantId] The Tenant ID of the Managed Service Identity.
   /// [type] The Azure Storage Type.
@@ -42,4 +42,3 @@ class GetWindowsWebAppIdentity {
     );
   }
 }
-

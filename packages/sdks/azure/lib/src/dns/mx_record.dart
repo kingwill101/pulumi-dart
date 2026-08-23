@@ -168,6 +168,41 @@ import 'mx_record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dns_zone" "example" {
+///   name                = "mydomain.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_dns_mxrecord" "example" {
+///   name                = "test"
+///   zone_name           = azure_dns_zone.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ttl                 = 300
+///   records {
+///     preference = 10
+///     exchange   = "mail1.contoso.com"
+///   }
+///   records {
+///     preference = 20
+///     exchange   = "mail2.contoso.com"
+///   }
+///   tags = {
+///     "Environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +216,8 @@ import 'mx_record_state.dart';
 /// import com.pulumi.azure.dns.MxRecord;
 /// import com.pulumi.azure.dns.MxRecordArgs;
 /// import com.pulumi.azure.dns.inputs.MxRecordRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

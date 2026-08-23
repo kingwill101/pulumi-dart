@@ -222,6 +222,56 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example-virtualdesktop"
+///   location = "West Europe"
+/// }
+/// resource "azure_desktopvirtualization_hostpool" "pooledbreadthfirst" {
+///   name                = "pooledbreadthfirst"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   type                = "Pooled"
+///   load_balancer_type  = "BreadthFirst"
+/// }
+/// resource "azure_desktopvirtualization_hostpool" "personalautomatic" {
+///   name                             = "personalautomatic"
+///   location                         = azure_core_resourcegroup.example.location
+///   resource_group_name              = azure_core_resourcegroup.example.name
+///   type                             = "Personal"
+///   personal_desktop_assignment_type = "Automatic"
+///   load_balancer_type               = "BreadthFirst"
+/// }
+/// resource "azure_desktopvirtualization_applicationgroup" "remoteapp" {
+///   name                = "acctag"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   type                = "RemoteApp"
+///   host_pool_id        = azure_desktopvirtualization_hostpool.pooledbreadthfirst.id
+///   friendly_name       = "TestAppGroup"
+///   description         = "Acceptance Test: An application group"
+/// }
+/// resource "azure_desktopvirtualization_application" "chrome" {
+///   name                         = "googlechrome"
+///   application_group_id         = azure_desktopvirtualization_applicationgroup.remoteapp.id
+///   friendly_name                = "Google Chrome"
+///   description                  = "Chromium based web browser"
+///   path                         = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+///   command_line_argument_policy = "DoNotAllow"
+///   command_line_arguments       = "--incognito"
+///   show_in_portal               = false
+///   icon_path                    = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+///   icon_index                   = 0
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -236,8 +286,8 @@ import 'application_state.dart';
 /// import com.pulumi.azure.desktopvirtualization.ApplicationGroupArgs;
 /// import com.pulumi.azure.desktopvirtualization.Application;
 /// import com.pulumi.azure.desktopvirtualization.ApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -352,7 +402,7 @@ import 'application_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.DesktopVirtualization` - 2024-04-03
+/// * `Microsoft.DesktopVirtualization` - 2025-10-10
 ///
 /// ## Import
 ///

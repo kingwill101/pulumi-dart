@@ -237,6 +237,57 @@ import 'express_route_circuit_peering_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "exprtTest"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_expressroutecircuit" "example" {
+///   name                  = "expressRoute1"
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   location              = azure_core_resourcegroup.example.location
+///   service_provider_name = "Equinix"
+///   peering_location      = "Silicon Valley"
+///   bandwidth_in_mbps     = 50
+///   sku = {
+///     tier   = "Standard"
+///     family = "MeteredData"
+///   }
+///   allow_classic_operations = false
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// resource "azure_network_expressroutecircuitpeering" "example" {
+///   peering_type                  = "MicrosoftPeering"
+///   express_route_circuit_name    = azure_network_expressroutecircuit.example.name
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   peer_asn                      = 100
+///   primary_peer_address_prefix   = "123.0.0.0/30"
+///   secondary_peer_address_prefix = "123.0.0.4/30"
+///   ipv4_enabled                  = true
+///   vlan_id                       = 300
+///   microsoft_peering_config = {
+///     advertised_public_prefixes = ["123.1.0.0/24"]
+///   }
+///   ipv6 = {
+///     primary_peer_address_prefix   = "2002:db01::/126"
+///     secondary_peer_address_prefix = "2003:db01::/126"
+///     enabled                       = true
+///     microsoft_peering = {
+///       advertised_public_prefixes = ["2002:db01::/126"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -253,8 +304,8 @@ import 'express_route_circuit_peering_state.dart';
 /// import com.pulumi.azure.network.inputs.ExpressRouteCircuitPeeringMicrosoftPeeringConfigArgs;
 /// import com.pulumi.azure.network.inputs.ExpressRouteCircuitPeeringIpv6Args;
 /// import com.pulumi.azure.network.inputs.ExpressRouteCircuitPeeringIpv6MicrosoftPeeringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -553,6 +604,51 @@ import 'express_route_circuit_peering_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "exprtTest"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_expressroutecircuit" "example" {
+///   name                  = "expressRoute1"
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   location              = azure_core_resourcegroup.example.location
+///   service_provider_name = "Equinix"
+///   peering_location      = "Silicon Valley"
+///   bandwidth_in_mbps     = 50
+///   sku = {
+///     tier   = "Standard"
+///     family = "MeteredData"
+///   }
+///   allow_classic_operations = false
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// resource "azure_network_expressroutecircuitpeering" "example" {
+///   peering_type                  = "AzurePrivatePeering"
+///   express_route_circuit_name    = azure_network_expressroutecircuit.example.name
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   peer_asn                      = 100
+///   primary_peer_address_prefix   = "123.0.0.0/30"
+///   secondary_peer_address_prefix = "123.0.0.4/30"
+///   ipv4_enabled                  = true
+///   vlan_id                       = 300
+///   ipv6 = {
+///     primary_peer_address_prefix   = "2002:db01::/126"
+///     secondary_peer_address_prefix = "2003:db01::/126"
+///     enabled                       = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -567,8 +663,8 @@ import 'express_route_circuit_peering_state.dart';
 /// import com.pulumi.azure.network.ExpressRouteCircuitPeering;
 /// import com.pulumi.azure.network.ExpressRouteCircuitPeeringArgs;
 /// import com.pulumi.azure.network.inputs.ExpressRouteCircuitPeeringIpv6Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -685,7 +781,7 @@ class ExpressRouteCircuitPeering extends pulumi.CustomResource {
   late final pulumi.Output<bool?> ipv4Enabled;
   /// A `ipv6` block as defined below.
   late final pulumi.Output<ExpressRouteCircuitPeeringIpv6?> ipv6;
-  /// A `microsoft_peering_config` block as defined below. Required when `peering_type` is set to `MicrosoftPeering` and config for IPv4.
+  /// A `microsoftPeeringConfig` block as defined below. Required when `peeringType` is set to `MicrosoftPeering` and config for IPv4.
   late final pulumi.Output<ExpressRouteCircuitPeeringMicrosoftPeeringConfig?> microsoftPeeringConfig;
   /// The Either a 16-bit or a 32-bit ASN. Can either be public or private.
   late final pulumi.Output<int> peerAsn;
@@ -699,9 +795,9 @@ class ExpressRouteCircuitPeering extends pulumi.CustomResource {
   late final pulumi.Output<String?> primaryPeerAddressPrefix;
   /// The name of the resource group in which to create the Express Route Circuit Peering. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// The ID of the Route Filter. Only available when `peering_type` is set to `MicrosoftPeering`.
+  /// The ID of the Route Filter. Only available when `peeringType` is set to `MicrosoftPeering`.
   ///
-  /// &gt; **Note:** `ipv6` can be specified when `peering_type` is `MicrosoftPeering` or `AzurePrivatePeering`
+  /// &gt; **Note:** `ipv6` can be specified when `peeringType` is `MicrosoftPeering` or `AzurePrivatePeering`
   late final pulumi.Output<String?> routeFilterId;
   /// The Secondary Port used by Azure for this Peering.
   late final pulumi.Output<String> secondaryAzurePort;

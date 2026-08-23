@@ -156,6 +156,41 @@ import 'hci_virtual_hard_disk_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_stack_hcistoragepath" "example" {
+///   name                = "example-sp"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   custom_location_id  = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ExtendedLocation/customLocations/cl1"
+///   path                = "C:\\ClusterStorage\\UserStorage_2\\sp-example"
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "azure_stack_hcivirtualharddisk" "example" {
+///   name                = "example-vhd"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   custom_location_id  = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ExtendedLocation/customLocations/cl1"
+///   disk_size_in_gb     = 2
+///   storage_path_id     = azure_stack_hcistoragepath.example.id
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +203,8 @@ import 'hci_virtual_hard_disk_state.dart';
 /// import com.pulumi.azure.stack.HciStoragePathArgs;
 /// import com.pulumi.azure.stack.HciVirtualHardDisk;
 /// import com.pulumi.azure.stack.HciVirtualHardDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,7 +315,7 @@ class HciVirtualHardDisk extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// The ID of the Azure Stack HCI Storage Path used for this Virtual Hard Disk. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   ///
-  /// &gt; **Note:** If `storage_path_id` is not specified, the Virtual Hard Disk will be placed in a high availability Storage Path. If you experience a diff you may need to add this to `ignore_changes`.
+  /// &gt; **Note:** If `storagePathId` is not specified, the Virtual Hard Disk will be placed in a high availability Storage Path. If you experience a diff you may need to add this to `ignoreChanges`.
   late final pulumi.Output<String?> storagePathId;
   /// A mapping of tags which should be assigned to the Azure Stack HCI Virtual Hard Disk.
   late final pulumi.Output<Map<String, String>?> tags;

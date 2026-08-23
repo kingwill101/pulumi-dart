@@ -85,6 +85,24 @@ import 'get_recommendations_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_advisor_getrecommendations" "example" {
+///   filter_by_categories      = ["security", "cost"]
+///   filter_by_resource_groups = ["example-resgroups"]
+/// }
+///
+/// output "recommendations" {
+///   value = data.azure_advisor_getrecommendations.example.recommendations
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +111,8 @@ import 'get_recommendations_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.advisor.AdvisorFunctions;
 /// import com.pulumi.azure.advisor.inputs.GetRecommendationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

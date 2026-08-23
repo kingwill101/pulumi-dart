@@ -77,6 +77,24 @@ import 'get_topic_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_eventgrid_getdomain" "example" {
+///   name                = "my-eventgrid-domain"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "eventgridDomainMappingTopic" {
+///   value = data.azure_eventgrid_getdomain.example.input_mapping_fields[0].topic
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +103,8 @@ import 'get_topic_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.eventgrid.EventgridFunctions;
 /// import com.pulumi.azure.eventgrid.inputs.GetDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -199,6 +217,20 @@ Future<GetDomainResult> getDomain(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_eventgrid_getdomaintopic" "example" {
+///   name                = "my-eventgrid-domain-topic"
+///   resource_group_name = "example-resources"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +239,8 @@ Future<GetDomainResult> getDomain(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.eventgrid.EventgridFunctions;
 /// import com.pulumi.azure.eventgrid.inputs.GetDomainTopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -325,6 +357,24 @@ Future<GetDomainTopicResult> getDomainTopic(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_eventgrid_getpartnernamespace" "example" {
+///   name                = "my-eventgrid-partner-namespace"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "eventgridPartnerNamespaceEndpoint" {
+///   value = data.azure_eventgrid_getpartnernamespace.example.endpoint
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -333,8 +383,8 @@ Future<GetDomainTopicResult> getDomainTopic(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.eventgrid.EventgridFunctions;
 /// import com.pulumi.azure.eventgrid.inputs.GetPartnerNamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -454,6 +504,24 @@ Future<GetPartnerNamespaceResult> getPartnerNamespace(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_eventgrid_getpartnerregistration" "example" {
+///   name                = "my-eventgrid-partner-registration"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "eventgridPartnerRegistrationId" {
+///   value = data.azure_eventgrid_getpartnerregistration.example.partner_registration_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -462,8 +530,8 @@ Future<GetPartnerNamespaceResult> getPartnerNamespace(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.eventgrid.EventgridFunctions;
 /// import com.pulumi.azure.eventgrid.inputs.GetPartnerRegistrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -576,6 +644,20 @@ Future<GetPartnerRegistrationResult> getPartnerRegistration(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_eventgrid_getsystemtopic" "example" {
+///   name                = "eventgrid-system-topic"
+///   resource_group_name = "example-resources"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -584,8 +666,8 @@ Future<GetPartnerRegistrationResult> getPartnerRegistration(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.eventgrid.EventgridFunctions;
 /// import com.pulumi.azure.eventgrid.inputs.GetSystemTopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -695,6 +777,20 @@ Future<GetSystemTopicResult> getSystemTopic(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_eventgrid_gettopic" "example" {
+///   name                = "my-eventgrid-topic"
+///   resource_group_name = "example-resources"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -703,8 +799,8 @@ Future<GetSystemTopicResult> getSystemTopic(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.eventgrid.EventgridFunctions;
 /// import com.pulumi.azure.eventgrid.inputs.GetTopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

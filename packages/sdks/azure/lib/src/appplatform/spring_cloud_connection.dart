@@ -6,7 +6,7 @@ import 'spring_cloud_connection_state.dart';
 
 /// Manages a service connector for spring cloud app.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudConnection` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudConnection` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -320,6 +320,74 @@ import 'spring_cloud_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_cosmosdb_account" "example" {
+///   name                = "example-cosmosdb-account"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   offer_type          = "Standard"
+///   kind                = "GlobalDocumentDB"
+///   consistency_policy = {
+///     consistency_level       = "BoundedStaleness"
+///     max_interval_in_seconds = 10
+///     max_staleness_prefix    = 200
+///   }
+///   geo_locations {
+///     location          = azure_core_resourcegroup.example.location
+///     failover_priority = 0
+///   }
+/// }
+/// resource "azure_cosmosdb_sqldatabase" "example" {
+///   name                = "cosmos-sql-db"
+///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
+///   account_name        = azure_cosmosdb_account.example.name
+///   throughput          = 400
+/// }
+/// resource "azure_cosmosdb_sqlcontainer" "example" {
+///   name                = "example-container"
+///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
+///   account_name        = azure_cosmosdb_account.example.name
+///   database_name       = azure_cosmosdb_sqldatabase.example.name
+///   partition_key_path  = "/definition"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "examplespringcloud"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_appplatform_springcloudapp" "example" {
+///   name                = "examplespringcloudapp"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   service_name        = azure_appplatform_springcloudservice.example.name
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_appplatform_springcloudjavadeployment" "example" {
+///   name                = "exampledeployment"
+///   spring_cloud_app_id = azure_appplatform_springcloudapp.example.id
+/// }
+/// resource "azure_appplatform_springcloudconnection" "example" {
+///   name               = "example-serviceconnector"
+///   spring_cloud_id    = azure_appplatform_springcloudjavadeployment.example.id
+///   target_resource_id = azure_cosmosdb_sqldatabase.example.id
+///   authentication = {
+///     type = "systemAssignedIdentity"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -346,8 +414,8 @@ import 'spring_cloud_connection_state.dart';
 /// import com.pulumi.azure.appplatform.SpringCloudConnection;
 /// import com.pulumi.azure.appplatform.SpringCloudConnectionArgs;
 /// import com.pulumi.azure.appplatform.inputs.SpringCloudConnectionAuthenticationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

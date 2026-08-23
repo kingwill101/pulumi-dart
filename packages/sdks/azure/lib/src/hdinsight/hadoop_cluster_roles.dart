@@ -7,20 +7,20 @@ import 'hadoop_cluster_roles_worker_node.dart';
 import 'hadoop_cluster_roles_zookeeper_node.dart';
 
 class HadoopClusterRoles {
-  /// A `edge_node` block as defined below.
+  /// A `edgeNode` block as defined below.
   final pulumi.Input<HadoopClusterRolesEdgeNode>? edgeNode;
-  /// A `head_node` block as defined above.
+  /// A `headNode` block as defined above.
   final pulumi.Input<HadoopClusterRolesHeadNode> headNode;
-  /// A `worker_node` block as defined below.
+  /// A `workerNode` block as defined below.
   final pulumi.Input<HadoopClusterRolesWorkerNode> workerNode;
-  /// A `zookeeper_node` block as defined below.
+  /// A `zookeeperNode` block as defined below.
   final pulumi.Input<HadoopClusterRolesZookeeperNode> zookeeperNode;
 
   /// Creates a new [HadoopClusterRoles].
-  /// [edgeNode] A `edge_node` block as defined below.
-  /// [headNode] A `head_node` block as defined above.
-  /// [workerNode] A `worker_node` block as defined below.
-  /// [zookeeperNode] A `zookeeper_node` block as defined below.
+  /// [edgeNode] A `edgeNode` block as defined below.
+  /// [headNode] A `headNode` block as defined above.
+  /// [workerNode] A `workerNode` block as defined below.
+  /// [zookeeperNode] A `zookeeperNode` block as defined below.
   const HadoopClusterRoles({
     this.edgeNode,
     required this.headNode,
@@ -46,4 +46,3 @@ class HadoopClusterRoles {
     );
   }
 }
-

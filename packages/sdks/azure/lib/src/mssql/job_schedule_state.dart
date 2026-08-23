@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobScheduleState {
   /// Should the Elastic Job Schedule be enabled? Defaults to `false`.
   ///
-  /// &gt; **Note:** When `type` is set to `Once` and `enabled` is set to `true`, it's recommended to add `enabled` to `ignore_changes`. This is because Azure will set `enabled` to `false` once the job has executed.
+  /// &gt; **Note:** When `type` is set to `Once` and `enabled` is set to `true`, it's recommended to add `enabled` to `ignoreChanges`. This is because Azure will set `enabled` to `false` once the job has executed.
   final pulumi.Input<bool>? enabled;
   /// The end time of the schedule. Must be in RFC3339 format.
   final pulumi.Input<String>? endTime;
@@ -57,4 +57,3 @@ class JobScheduleState {
     );
   }
 }
-

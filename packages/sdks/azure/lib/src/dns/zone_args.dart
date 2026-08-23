@@ -12,7 +12,7 @@ class ZoneArgs {
   final pulumi.Input<String>? name;
   /// Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-  /// A `soa_record` block as defined below.
+  /// A `soaRecord` block as defined below.
   final pulumi.Input<ZoneSoaRecord>? soaRecord;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
@@ -20,7 +20,7 @@ class ZoneArgs {
   /// Creates a new [ZoneArgs].
   /// [name] The name of the DNS Zone. Must be a valid domain name. Changing this forces a new resource to be created.
   /// [resourceGroupName] Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
-  /// [soaRecord] A `soa_record` block as defined below.
+  /// [soaRecord] A `soaRecord` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   const ZoneArgs({
     this.name,
@@ -47,4 +47,3 @@ class ZoneArgs {
     );
   }
 }
-

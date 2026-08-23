@@ -128,6 +128,33 @@ import 'data_source_windows_event_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-law"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_loganalytics_datasourcewindowsevent" "example" {
+///   name                = "example-lad-wpc"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   workspace_name      = azure_operationalinsights_analyticsworkspace.example.name
+///   event_log_name      = "Application"
+///   event_types         = ["Error"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +167,8 @@ import 'data_source_windows_event_state.dart';
 /// import com.pulumi.azure.operationalinsights.AnalyticsWorkspaceArgs;
 /// import com.pulumi.azure.loganalytics.DataSourceWindowsEvent;
 /// import com.pulumi.azure.loganalytics.DataSourceWindowsEventArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

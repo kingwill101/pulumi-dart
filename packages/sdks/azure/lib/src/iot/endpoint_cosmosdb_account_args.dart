@@ -17,7 +17,7 @@ class EndpointCosmosdbAccountArgs {
   final pulumi.Input<String> endpointUri;
   /// The ID of the User Managed Identity used to authenticate against the Cosmos DB Account endpoint.
   ///
-  /// &gt; **Note:** `identity_id` can only be specified when `authentication_type` is `identityBased`. It must be one of the `identity_ids` of the Iot Hub. If not specified when `authentication_type` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
+  /// &gt; **Note:** `identityId` can only be specified when `authenticationType` is `identityBased`. It must be one of the `identityIds` of the Iot Hub. If not specified when `authenticationType` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
   final pulumi.Input<String>? identityId;
   /// The ID of the IoT Hub to create the endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String> iothubId;
@@ -29,17 +29,17 @@ class EndpointCosmosdbAccountArgs {
   final pulumi.Input<String>? partitionKeyTemplate;
   /// The primary key of the Cosmos DB Account.
   ///
-  /// &gt; **Note:** `primary_key` must and can only be specified when `authentication_type` is `keyBased`.
+  /// &gt; **Note:** `primaryKey` must and can only be specified when `authenticationType` is `keyBased`.
   final pulumi.Input<String>? primaryKey;
   /// The name of the resource group under which the Cosmos DB Account has been created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The secondary key of the Cosmos DB Account.
   ///
-  /// &gt; **Note:** `secondary_key` must and can only be specified when `authentication_type` is `keyBased`.
+  /// &gt; **Note:** `secondaryKey` must and can only be specified when `authenticationType` is `keyBased`.
   final pulumi.Input<String>? secondaryKey;
   /// The subscription ID for the endpoint.
   ///
-  /// &gt; **Note:** When `subscription_id` isn't specified it will be set to the subscription ID of the IoT Hub resource.
+  /// &gt; **Note:** When `subscriptionId` isn't specified it will be set to the subscription ID of the IoT Hub resource.
   final pulumi.Input<String>? subscriptionId;
 
   /// Creates a new [EndpointCosmosdbAccountArgs].
@@ -108,4 +108,3 @@ class EndpointCosmosdbAccountArgs {
     );
   }
 }
-

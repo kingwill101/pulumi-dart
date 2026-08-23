@@ -89,6 +89,27 @@ import 'sql_database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cosmosdb_getaccount" "example" {
+///   name                = "tfex-cosmosdb-account"
+///   resource_group_name = "tfex-cosmosdb-account-rg"
+/// }
+///
+/// resource "azure_cosmosdb_sqldatabase" "example" {
+///   name                = "tfex-cosmos-sql-db"
+///   resource_group_name = data.azure_cosmosdb_getaccount.example.resource_group_name
+///   account_name        = data.azure_cosmosdb_getaccount.example.name
+///   throughput          = 400
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +120,8 @@ import 'sql_database_state.dart';
 /// import com.pulumi.azure.cosmosdb.inputs.GetAccountArgs;
 /// import com.pulumi.azure.cosmosdb.SqlDatabase;
 /// import com.pulumi.azure.cosmosdb.SqlDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -147,6 +168,13 @@ import 'sql_database_state.dart';
 /// ```
 ///
 ///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.DocumentDB` - 2024-08-15
+///
 /// ## Import
 ///
 /// Cosmos SQL Database can be imported using the `resource id`, e.g.
@@ -157,7 +185,7 @@ import 'sql_database_state.dart';
 class SqlDatabase extends pulumi.CustomResource {
   /// The name of the Cosmos DB SQL Database to create the table within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-  /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
+  /// An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   late final pulumi.Output<SqlDatabaseAutoscaleSettings?> autoscaleSettings;

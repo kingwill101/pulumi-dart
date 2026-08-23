@@ -260,7 +260,7 @@ import 'virtual_machine_manager_virtual_machine_instance_state.dart';
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 			CustomLocationId:  exampleVirtualMachineManagerServer.CustomLocationId,
 /// 			SystemCenterVirtualMachineManagerServerInventoryItemId: pulumi.String(example.ApplyT(func(example systemcenter.GetVirtualMachineManagerInventoryItemsResult) (*string, error) {
-/// 				return &example.InventoryItems[0].Id, nil
+/// 				return example.InventoryItems[0].Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -276,7 +276,7 @@ import 'virtual_machine_manager_virtual_machine_instance_state.dart';
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 			CustomLocationId:  exampleVirtualMachineManagerServer.CustomLocationId,
 /// 			SystemCenterVirtualMachineManagerServerInventoryItemId: pulumi.String(example2.ApplyT(func(example2 systemcenter.GetVirtualMachineManagerInventoryItemsResult) (*string, error) {
-/// 				return &example2.InventoryItems[0].Id, nil
+/// 				return example2.InventoryItems[0].Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -305,6 +305,74 @@ import 'virtual_machine_manager_virtual_machine_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_systemcenter_getvirtualmachinemanagerinventoryitems" "example" {
+///   inventory_type                                  = "Cloud"
+///   system_center_virtual_machine_manager_server_id = azure_systemcenter_virtualmachinemanagerserver.example.id
+/// }
+/// data "azure_systemcenter_getvirtualmachinemanagerinventoryitems" "example2" {
+///   inventory_type                                  = "VirtualMachineTemplate"
+///   system_center_virtual_machine_manager_server_id = azure_systemcenter_virtualmachinemanagerserver.example.id
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_arcmachine_arcmachine" "example" {
+///   name                = "example-arcmachine"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   kind                = "SCVMM"
+/// }
+/// resource "azure_systemcenter_virtualmachinemanagerserver" "example" {
+///   name                = "example-scvmmms"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   custom_location_id  = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/resGroup1/providers/Microsoft.ExtendedLocation/customLocations/customLocation1"
+///   fqdn                = "example.labtest"
+///   username            = "testUser"
+///   password            = "H@Sh1CoR3!"
+/// }
+/// resource "azure_systemcenter_virtualmachinemanagercloud" "example" {
+///   name                                                           = "example-scvmmc"
+///   location                                                       = azure_core_resourcegroup.example.location
+///   resource_group_name                                            = azure_core_resourcegroup.example.name
+///   custom_location_id                                             = azure_systemcenter_virtualmachinemanagerserver.example.custom_location_id
+///   system_center_virtual_machine_manager_server_inventory_item_id = data.azure_systemcenter_getvirtualmachinemanagerinventoryitems.example.inventory_items[0].id
+/// }
+/// resource "azure_systemcenter_virtualmachinemanagervirtualmachinetemplate" "example" {
+///   name                                                           = "example-scvmmvmt"
+///   location                                                       = azure_core_resourcegroup.example.location
+///   resource_group_name                                            = azure_core_resourcegroup.example.name
+///   custom_location_id                                             = azure_systemcenter_virtualmachinemanagerserver.example.custom_location_id
+///   system_center_virtual_machine_manager_server_inventory_item_id = data.azure_systemcenter_getvirtualmachinemanagerinventoryitems.example2.inventory_items[0].id
+/// }
+/// resource "azure_systemcenter_virtualmachinemanagervirtualmachineinstance" "example" {
+///   scoped_resource_id = azure_arcmachine_arcmachine.example.id
+///   custom_location_id = azure_systemcenter_virtualmachinemanagerserver.example.custom_location_id
+///   infrastructure = {
+///     system_center_virtual_machine_manager_cloud_id                  = azure_systemcenter_virtualmachinemanagercloud.example.id
+///     system_center_virtual_machine_manager_template_id               = azure_systemcenter_virtualmachinemanagervirtualmachinetemplate.example.id
+///     system_center_virtual_machine_manager_virtual_machine_server_id = azure_systemcenter_virtualmachinemanagerserver.example.id
+///   }
+///   operating_system = {
+///     computer_name = "testComputer"
+///   }
+///   hardware = {
+///     cpu_count    = 1
+///     memory_in_mb = 1024
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -328,8 +396,8 @@ import 'virtual_machine_manager_virtual_machine_instance_state.dart';
 /// import com.pulumi.azure.systemcenter.inputs.VirtualMachineManagerVirtualMachineInstanceInfrastructureArgs;
 /// import com.pulumi.azure.systemcenter.inputs.VirtualMachineManagerVirtualMachineInstanceOperatingSystemArgs;
 /// import com.pulumi.azure.systemcenter.inputs.VirtualMachineManagerVirtualMachineInstanceHardwareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -508,17 +576,17 @@ class VirtualMachineManagerVirtualMachineInstance extends pulumi.CustomResource 
   late final pulumi.Output<VirtualMachineManagerVirtualMachineInstanceHardware?> hardware;
   /// An `infrastructure` block as defined below.
   late final pulumi.Output<VirtualMachineManagerVirtualMachineInstanceInfrastructure> infrastructure;
-  /// A `network_interface` block as defined below.
+  /// A `networkInterface` block as defined below.
   ///
-  /// &gt; **Note:** This resource will be restarted while updating `network_interface`.
+  /// &gt; **Note:** This resource will be restarted while updating `networkInterface`.
   late final pulumi.Output<List<Map<String, dynamic>>?> networkInterfaces;
-  /// An `operating_system` block as defined below. Changing this forces a new resource to be created.
+  /// An `operatingSystem` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<VirtualMachineManagerVirtualMachineInstanceOperatingSystem?> operatingSystem;
   /// The ID of the Hybrid Compute Machine where this System Center Virtual Machine Manager Virtual Machine Instance is stored. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scopedResourceId;
-  /// A `storage_disk` block as defined below.
+  /// A `storageDisk` block as defined below.
   ///
-  /// &gt; **Note:** This resource will be restarted while updating `storage_disk`.
+  /// &gt; **Note:** This resource will be restarted while updating `storageDisk`.
   late final pulumi.Output<List<Map<String, dynamic>>?> storageDisks;
   /// A list of IDs of System Center Virtual Machine Manager Availability Set.
   late final pulumi.Output<List<String>?> systemCenterVirtualMachineManagerAvailabilitySetIds;

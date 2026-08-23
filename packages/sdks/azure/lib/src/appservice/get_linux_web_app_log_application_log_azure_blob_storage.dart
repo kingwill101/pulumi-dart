@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLinuxWebAppLogApplicationLogAzureBlobStorage {
-  /// The level at which to log. Possible values include `Error`, `Warning`, `Information`, `Verbose` and `Off`. **NOTE:** this field is not available for `http_logs`
+  /// The level at which to log. Possible values include `Error`, `Warning`, `Information`, `Verbose` and `Off`. **NOTE:** this field is not available for `httpLogs`
   final pulumi.Input<String> level;
   /// The retention period in days.
   final pulumi.Input<int> retentionInDays;
@@ -11,7 +11,7 @@ class GetLinuxWebAppLogApplicationLogAzureBlobStorage {
   final pulumi.Input<String> sasUrl;
 
   /// Creates a new [GetLinuxWebAppLogApplicationLogAzureBlobStorage].
-  /// [level] The level at which to log. Possible values include `Error`, `Warning`, `Information`, `Verbose` and `Off`. **NOTE:** this field is not available for `http_logs`
+  /// [level] The level at which to log. Possible values include `Error`, `Warning`, `Information`, `Verbose` and `Off`. **NOTE:** this field is not available for `httpLogs`
   /// [retentionInDays] The retention period in days.
   /// [sasUrl] The SAS url to an Azure blob container.
   const GetLinuxWebAppLogApplicationLogAzureBlobStorage({
@@ -36,4 +36,3 @@ class GetLinuxWebAppLogApplicationLogAzureBlobStorage {
     );
   }
 }
-

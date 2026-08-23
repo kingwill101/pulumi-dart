@@ -262,6 +262,64 @@ import 'datastore_datalake_gen2_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "workspace-example-ai"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "workspaceexamplekeyvault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name            = "premium"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "workspacestorageaccount"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+/// }
+/// resource "azure_machinelearning_workspace" "example" {
+///   name                    = "example-workspace"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   application_insights_id = azure_appinsights_insights.example.id
+///   key_vault_id            = azure_keyvault_keyvault.example.id
+///   storage_account_id      = azure_storage_account.example.id
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "example-container"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_machinelearning_datastoredatalakegen2" "example" {
+///   name                 = "example-datastore"
+///   workspace_id         = azure_machinelearning_workspace.example.id
+///   storage_container_id = azure_storage_container.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -284,8 +342,8 @@ import 'datastore_datalake_gen2_state.dart';
 /// import com.pulumi.azure.storage.ContainerArgs;
 /// import com.pulumi.azure.machinelearning.DatastoreDatalakeGen2;
 /// import com.pulumi.azure.machinelearning.DatastoreDatalakeGen2Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -7,7 +7,7 @@ import 'get_factory_vsts_configuration.dart';
 
 /// Result data returned by getFactory.
 class GetFactoryResult {
-  /// A `github_configuration` block as defined below.
+  /// A `githubConfiguration` block as defined below.
   final List<GetFactoryGithubConfiguration> githubConfigurations;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -19,18 +19,18 @@ class GetFactoryResult {
   final String resourceGroupName;
   /// A mapping of tags assigned to the Azure Data Factory.
   final Map<String, String> tags;
-  /// A `vsts_configuration` block as defined below.
+  /// A `vstsConfiguration` block as defined below.
   final List<GetFactoryVstsConfiguration> vstsConfigurations;
 
   /// Creates a new [GetFactoryResult].
-  /// [githubConfigurations] A `github_configuration` block as defined below.
+  /// [githubConfigurations] A `githubConfiguration` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] An `identity` block as defined below.
   /// [location] The Azure Region where the Azure Data Factory exists.
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Azure Data Factory.
-  /// [vstsConfigurations] A `vsts_configuration` block as defined below.
+  /// [vstsConfigurations] A `vstsConfiguration` block as defined below.
   const GetFactoryResult({
     required this.githubConfigurations,
     required this.id,
@@ -68,4 +68,3 @@ class GetFactoryResult {
     );
   }
 }
-

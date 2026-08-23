@@ -17,11 +17,11 @@ class NetworkSecurityRuleArgs {
   final pulumi.Input<List<String>>? destinationAddressPrefixes;
   /// A List of destination Application Security Group IDs
   ///
-  /// &gt; **Note:** One of `destination_address_prefix`, `destination_address_prefixes` or `destination_application_security_group_ids` must be specified.
+  /// &gt; **Note:** One of `destinationAddressPrefix`, `destinationAddressPrefixes` or `destinationApplicationSecurityGroupIds` must be specified.
   final pulumi.Input<String>? destinationApplicationSecurityGroupIds;
-  /// Destination Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `destination_port_ranges` is not specified.
+  /// Destination Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `destinationPortRanges` is not specified.
   final pulumi.Input<String>? destinationPortRange;
-  /// List of destination ports or port ranges. This is required if `destination_port_range` is not specified.
+  /// List of destination ports or port ranges. This is required if `destinationPortRange` is not specified.
   final pulumi.Input<List<String>>? destinationPortRanges;
   /// The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are `Inbound` and `Outbound`.
   final pulumi.Input<String> direction;
@@ -41,11 +41,11 @@ class NetworkSecurityRuleArgs {
   final pulumi.Input<List<String>>? sourceAddressPrefixes;
   /// A List of source Application Security Group IDs
   ///
-  /// &gt; **Note:** One of `source_address_prefix`, `source_address_prefixes` or `source_application_security_group_ids` must be specified.
+  /// &gt; **Note:** One of `sourceAddressPrefix`, `sourceAddressPrefixes` or `sourceApplicationSecurityGroupIds` must be specified.
   final pulumi.Input<String>? sourceApplicationSecurityGroupIds;
-  /// Source Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `source_port_ranges` is not specified.
+  /// Source Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `sourcePortRanges` is not specified.
   final pulumi.Input<String>? sourcePortRange;
-  /// List of source ports or port ranges. This is required if `source_port_range` is not specified.
+  /// List of source ports or port ranges. This is required if `sourcePortRange` is not specified.
   final pulumi.Input<List<String>>? sourcePortRanges;
 
   /// Creates a new [NetworkSecurityRuleArgs].
@@ -54,8 +54,8 @@ class NetworkSecurityRuleArgs {
   /// [destinationAddressPrefix] CIDR or destination IP range or * to match any IP. Tags such as `VirtualNetwork`, `AzureLoadBalancer` and `Internet` can also be used. Besides, it also supports all available Service Tags like ‘Sql.WestEurope‘, ‘Storage.EastUS‘, etc. You can list the available service tags with the CLI: ```shell az network list-service-tags --location westcentralus```. For further information please see [Azure CLI - az network list-service-tags](https://docs.microsoft.com/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags).
   /// [destinationAddressPrefixes] List of destination address prefixes. Tags may not be used.
   /// [destinationApplicationSecurityGroupIds] A List of destination Application Security Group IDs
-  /// [destinationPortRange] Destination Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `destination_port_ranges` is not specified.
-  /// [destinationPortRanges] List of destination ports or port ranges. This is required if `destination_port_range` is not specified.
+  /// [destinationPortRange] Destination Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `destinationPortRanges` is not specified.
+  /// [destinationPortRanges] List of destination ports or port ranges. This is required if `destinationPortRange` is not specified.
   /// [direction] The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are `Inbound` and `Outbound`.
   /// [name] The name of the security rule. This needs to be unique across all Rules in the Network Security Group. Changing this forces a new resource to be created.
   /// [networkSecurityGroupName] The name of the Network Security Group that we want to attach the rule to. Changing this forces a new resource to be created.
@@ -65,8 +65,8 @@ class NetworkSecurityRuleArgs {
   /// [sourceAddressPrefix] CIDR or source IP range or * to match any IP. Tags such as `VirtualNetwork`, `AzureLoadBalancer` and `Internet` can also be used.
   /// [sourceAddressPrefixes] List of source address prefixes. Tags may not be used.
   /// [sourceApplicationSecurityGroupIds] A List of source Application Security Group IDs
-  /// [sourcePortRange] Source Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `source_port_ranges` is not specified.
-  /// [sourcePortRanges] List of source ports or port ranges. This is required if `source_port_range` is not specified.
+  /// [sourcePortRange] Source Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `sourcePortRanges` is not specified.
+  /// [sourcePortRanges] List of source ports or port ranges. This is required if `sourcePortRange` is not specified.
   const NetworkSecurityRuleArgs({
     required this.access,
     this.description,
@@ -134,4 +134,3 @@ class NetworkSecurityRuleArgs {
     );
   }
 }
-

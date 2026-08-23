@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCollectionRuleDataFlow {
   /// The built-in transform to transform stream data.
   final pulumi.Input<String> builtInTransform;
-  /// Specifies a list of destination names. A `azure_monitor_metrics` data source only allows for stream of kind `Microsoft-InsightsMetrics`.
+  /// Specifies a list of destination names. A `azureMonitorMetrics` data source only allows for stream of kind `Microsoft-InsightsMetrics`.
   final pulumi.Input<List<String>> destinations;
   /// The output stream of the transform. Only required if the data flow changes data to a different stream.
   final pulumi.Input<String> outputStream;
@@ -16,7 +16,7 @@ class GetDataCollectionRuleDataFlow {
 
   /// Creates a new [GetDataCollectionRuleDataFlow].
   /// [builtInTransform] The built-in transform to transform stream data.
-  /// [destinations] Specifies a list of destination names. A `azure_monitor_metrics` data source only allows for stream of kind `Microsoft-InsightsMetrics`.
+  /// [destinations] Specifies a list of destination names. A `azureMonitorMetrics` data source only allows for stream of kind `Microsoft-InsightsMetrics`.
   /// [outputStream] The output stream of the transform. Only required if the data flow changes data to a different stream.
   /// [streams] Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
   /// [transformKql] The KQL query to transform stream data.
@@ -48,4 +48,3 @@ class GetDataCollectionRuleDataFlow {
     );
   }
 }
-

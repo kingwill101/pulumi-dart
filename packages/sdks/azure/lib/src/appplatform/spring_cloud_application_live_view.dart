@@ -6,7 +6,7 @@ import 'spring_cloud_application_live_view_state.dart';
 ///
 /// Manages a Spring Cloud Application Live View.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApplicationLiveView` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApplicationLiveView` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -114,6 +114,30 @@ import 'spring_cloud_application_live_view_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "E0"
+/// }
+/// resource "azure_appplatform_springcloudapplicationliveview" "example" {
+///   name                    = "default"
+///   spring_cloud_service_id = azure_appplatform_springcloudservice.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +150,8 @@ import 'spring_cloud_application_live_view_state.dart';
 /// import com.pulumi.azure.appplatform.SpringCloudServiceArgs;
 /// import com.pulumi.azure.appplatform.SpringCloudApplicationLiveView;
 /// import com.pulumi.azure.appplatform.SpringCloudApplicationLiveViewArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

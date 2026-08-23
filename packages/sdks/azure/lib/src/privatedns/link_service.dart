@@ -311,7 +311,7 @@ import 'link_service_state.dart';
 /// 			},
 /// 			LoadBalancerFrontendIpConfigurationIds: pulumi.StringArray{
 /// 				pulumi.String(exampleLoadBalancer.FrontendIpConfigurations.ApplyT(func(frontendIpConfigurations []lb.LoadBalancerFrontendIpConfiguration) (*string, error) {
-/// 					return &frontendIpConfigurations[0].Id, nil
+/// 					return frontendIpConfigurations[0].Id, nil
 /// 				}).(pulumi.StringPtrOutput)),
 /// 			},
 /// 			NatIpConfigurations: privatedns.LinkServiceNatIpConfigurationArray{
@@ -338,6 +338,72 @@ import 'link_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-network"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   address_spaces      = ["10.5.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                                          = "example-subnet"
+///   resource_group_name                           = azure_core_resourcegroup.example.name
+///   virtual_network_name                          = azure_network_virtualnetwork.example.name
+///   address_prefixes                              = ["10.5.1.0/24"]
+///   enforce_private_link_service_network_policies = true
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "example-api"
+///   sku                 = "Standard"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+/// }
+/// resource "azure_lb_loadbalancer" "example" {
+///   name                = "example-lb"
+///   sku                 = "Standard"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   frontend_ip_configurations {
+///     name                 = azure_network_publicip.example.name
+///     public_ip_address_id = azure_network_publicip.example.id
+///   }
+/// }
+/// resource "azure_privatedns_linkservice" "example" {
+///   name                                        = "example-privatelink"
+///   resource_group_name                         = azure_core_resourcegroup.example.name
+///   location                                    = azure_core_resourcegroup.example.location
+///   auto_approval_subscription_ids              = ["00000000-0000-0000-0000-000000000000"]
+///   visibility_subscription_ids                 = ["00000000-0000-0000-0000-000000000000"]
+///   load_balancer_frontend_ip_configuration_ids = [azure_lb_loadbalancer.example.frontend_ip_configurations[0].id]
+///   nat_ip_configurations {
+///     name                       = "primary"
+///     private_ip_address         = "10.5.1.17"
+///     private_ip_address_version = "IPv4"
+///     subnet_id                  = azure_network_subnet.example.id
+///     primary                    = true
+///   }
+///   nat_ip_configurations {
+///     name                       = "secondary"
+///     private_ip_address         = "10.5.1.18"
+///     private_ip_address_version = "IPv4"
+///     subnet_id                  = azure_network_subnet.example.id
+///     primary                    = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -358,8 +424,8 @@ import 'link_service_state.dart';
 /// import com.pulumi.azure.privatedns.LinkService;
 /// import com.pulumi.azure.privatedns.LinkServiceArgs;
 /// import com.pulumi.azure.privatedns.inputs.LinkServiceNatIpConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -531,8 +597,7 @@ class LinkService extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> autoApprovalSubscriptionIds;
   /// The destination IP address of the Private Link Service.
   late final pulumi.Output<String?> destinationIpAddress;
-  /// Should the Private Link Service support the Proxy Protocol?
-  late final pulumi.Output<bool?> enableProxyProtocol;
+  late final pulumi.Output<bool> enableProxyProtocol;
   /// List of FQDNs allowed for the Private Link Service.
   late final pulumi.Output<List<String>?> fqdns;
   /// A list of Frontend IP Configuration IDs from a Standard Load Balancer, where traffic from the Private Link Service should be routed. You can use Load Balancer Rules to direct this traffic to appropriate backend pools where your applications are running. Changing this forces a new resource to be created.
@@ -541,8 +606,10 @@ class LinkService extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// Specifies the name of this Private Link Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// One or more (up to 8) `nat_ip_configuration` block as defined below.
+  /// One or more (up to 8) `natIpConfiguration` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> natIpConfigurations;
+  /// Should the Private Link Service support the Proxy Protocol? Defaults to `false`.
+  late final pulumi.Output<bool> proxyProtocolEnabled;
   /// The name of the Resource Group where the Private Link Service should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
@@ -569,12 +636,13 @@ class LinkService extends pulumi.CustomResource {
     alias = registerOutput<String>('alias');
     autoApprovalSubscriptionIds = registerOutput<List<String>?>('autoApprovalSubscriptionIds');
     destinationIpAddress = registerOutput<String?>('destinationIpAddress');
-    enableProxyProtocol = registerOutput<bool?>('enableProxyProtocol');
+    enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
     fqdns = registerOutput<List<String>?>('fqdns');
     loadBalancerFrontendIpConfigurationIds = registerOutput<List<String>?>('loadBalancerFrontendIpConfigurationIds');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     natIpConfigurations = registerOutput<List<Map<String, dynamic>>>('natIpConfigurations');
+    proxyProtocolEnabled = registerOutput<bool>('proxyProtocolEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
     visibilitySubscriptionIds = registerOutput<List<String>?>('visibilitySubscriptionIds');
@@ -606,12 +674,13 @@ class LinkService extends pulumi.CustomResource {
     alias = registerOutput<String>('alias');
     autoApprovalSubscriptionIds = registerOutput<List<String>?>('autoApprovalSubscriptionIds');
     destinationIpAddress = registerOutput<String?>('destinationIpAddress');
-    enableProxyProtocol = registerOutput<bool?>('enableProxyProtocol');
+    enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
     fqdns = registerOutput<List<String>?>('fqdns');
     loadBalancerFrontendIpConfigurationIds = registerOutput<List<String>?>('loadBalancerFrontendIpConfigurationIds');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     natIpConfigurations = registerOutput<List<Map<String, dynamic>>>('natIpConfigurations');
+    proxyProtocolEnabled = registerOutput<bool>('proxyProtocolEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
     visibilitySubscriptionIds = registerOutput<List<String>?>('visibilitySubscriptionIds');

@@ -16,7 +16,7 @@ class GetPrivateCloudResult {
   final bool internetConnectionEnabled;
   /// The Azure Region where the Azure VMware Solution Private Cloud exists.
   final String location;
-  /// A `management_cluster` block as defined below.
+  /// A `managementCluster` block as defined below.
   final List<GetPrivateCloudManagementCluster> managementClusters;
   /// The network used to access VMware vCenter Server and NSX Manager.
   final String managementSubnetCidr;
@@ -47,7 +47,7 @@ class GetPrivateCloudResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [internetConnectionEnabled] Is the Azure VMware Solution Private Cloud connected to the internet?
   /// [location] The Azure Region where the Azure VMware Solution Private Cloud exists.
-  /// [managementClusters] A `management_cluster` block as defined below.
+  /// [managementClusters] A `managementCluster` block as defined below.
   /// [managementSubnetCidr] The network used to access VMware vCenter Server and NSX Manager.
   /// [name] Required.
   /// [networkSubnetCidr] The subnet CIDR of the Azure VMware Solution Private Cloud.
@@ -127,4 +127,3 @@ class GetPrivateCloudResult {
     );
   }
 }
-

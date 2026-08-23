@@ -7,11 +7,11 @@ import 'scheduled_query_rules_alert_v2_criteria_failing_periods.dart';
 class ScheduledQueryRulesAlertV2Criteria {
   /// A `dimension` block as defined below.
   final pulumi.Input<List<ScheduledQueryRulesAlertV2CriteriaDimension>>? dimensions;
-  /// A `failing_periods` block as defined below.
+  /// A `failingPeriods` block as defined below.
   final pulumi.Input<ScheduledQueryRulesAlertV2CriteriaFailingPeriods>? failingPeriods;
   /// Specifies the column containing the metric measure number.
   ///
-  /// &gt; **Note:** `metric_measure_column` is required if `time_aggregation_method` is `Average`, `Maximum`, `Minimum`, or `Total`. And `metric_measure_column` can not be specified if `time_aggregation_method` is `Count`.
+  /// &gt; **Note:** `metricMeasureColumn` is required if `timeAggregationMethod` is `Average`, `Maximum`, `Minimum`, or `Total`. And `metricMeasureColumn` can not be specified if `timeAggregationMethod` is `Count`.
   final pulumi.Input<String>? metricMeasureColumn;
   /// Specifies the criteria operator. Possible values are `Equal`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan`,and `LessThanOrEqual`.
   final pulumi.Input<String> operator;
@@ -26,7 +26,7 @@ class ScheduledQueryRulesAlertV2Criteria {
 
   /// Creates a new [ScheduledQueryRulesAlertV2Criteria].
   /// [dimensions] A `dimension` block as defined below.
-  /// [failingPeriods] A `failing_periods` block as defined below.
+  /// [failingPeriods] A `failingPeriods` block as defined below.
   /// [metricMeasureColumn] Specifies the column containing the metric measure number.
   /// [operator] Specifies the criteria operator. Possible values are `Equal`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan`,and `LessThanOrEqual`.
   /// [query] The query to run on logs. The results returned by this query are used to populate the alert.
@@ -70,4 +70,3 @@ class ScheduledQueryRulesAlertV2Criteria {
     );
   }
 }
-

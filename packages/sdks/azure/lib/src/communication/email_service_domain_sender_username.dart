@@ -130,6 +130,34 @@ import 'email_service_domain_sender_username_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_communication_emailservice" "example" {
+///   name                = "example-emailcommunicationservice"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   data_location       = "United States"
+/// }
+/// resource "azure_communication_emailservicedomain" "example" {
+///   name              = "AzureManagedDomain"
+///   email_service_id  = azure_communication_emailservice.example.id
+///   domain_management = "AzureManaged"
+/// }
+/// resource "azure_communication_emailservicedomainsenderusername" "example" {
+///   name                    = "example-su"
+///   email_service_domain_id = azure_communication_emailservicedomain.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -144,8 +172,8 @@ import 'email_service_domain_sender_username_state.dart';
 /// import com.pulumi.azure.communication.EmailServiceDomainArgs;
 /// import com.pulumi.azure.communication.EmailServiceDomainSenderUsername;
 /// import com.pulumi.azure.communication.EmailServiceDomainSenderUsernameArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -6,7 +6,7 @@ import 'get_spring_cloud_service_result.dart';
 
 /// Use this data source to access information about an existing Spring Cloud Application.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApp` data source is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApp` data source is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -75,6 +75,25 @@ import 'get_spring_cloud_service_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appplatform_getspringcloudapp" "example" {
+///   name                = exampleAzurermSpringCloudApp.name
+///   resource_group_name = exampleAzurermSpringCloudApp.resourceGroupName
+///   service_name        = exampleAzurermSpringCloudApp.serviceName
+/// }
+///
+/// output "springCloudAppId" {
+///   value = data.azure_appplatform_getspringcloudapp.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +102,8 @@ import 'get_spring_cloud_service_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appplatform.AppplatformFunctions;
 /// import com.pulumi.azure.appplatform.inputs.GetSpringCloudAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -135,7 +154,7 @@ Future<GetSpringCloudAppResult> getSpringCloudApp(
 
 /// Use this data source to access information about an existing Spring Cloud Service.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudService` data source is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudService` data source is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -200,6 +219,24 @@ Future<GetSpringCloudAppResult> getSpringCloudApp(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appplatform_getspringcloudservice" "example" {
+///   name                = exampleAzurermSpringCloudService.name
+///   resource_group_name = exampleAzurermSpringCloudService.resourceGroupName
+/// }
+///
+/// output "springCloudServiceId" {
+///   value = data.azure_appplatform_getspringcloudservice.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -208,8 +245,8 @@ Future<GetSpringCloudAppResult> getSpringCloudApp(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appplatform.AppplatformFunctions;
 /// import com.pulumi.azure.appplatform.inputs.GetSpringCloudServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

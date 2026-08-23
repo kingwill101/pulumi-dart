@@ -17,7 +17,7 @@ class FirewallNatRuleCollectionRule {
   final pulumi.Input<List<String>>? sourceAddresses;
   /// A list of source IP Group IDs for the rule.
   ///
-  /// &gt; **Note:** At least one of `source_addresses` and `source_ip_groups` must be specified for a rule.
+  /// &gt; **Note:** At least one of `sourceAddresses` and `sourceIpGroups` must be specified for a rule.
   final pulumi.Input<List<String>>? sourceIpGroups;
   /// The address of the service behind the Firewall.
   final pulumi.Input<String> translatedAddress;
@@ -74,4 +74,3 @@ class FirewallNatRuleCollectionRule {
     );
   }
 }
-

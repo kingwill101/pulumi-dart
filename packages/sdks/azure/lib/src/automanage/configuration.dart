@@ -336,6 +336,77 @@ import 'configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-automanage"
+///   location = "West Europe"
+/// }
+/// resource "azure_automanage_configuration" "example" {
+///   name                = "example-acmp"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   antimalware = {
+///     exclusions = {
+///       extensions = "exe;dll"
+///       paths      = "C:\\Windows\\Temp;D:\\Temp"
+///       processes  = "svchost.exe;notepad.exe"
+///     }
+///     real_time_protection_enabled   = true
+///     scheduled_scan_enabled         = true
+///     scheduled_scan_type            = "Quick"
+///     scheduled_scan_day             = 1
+///     scheduled_scan_time_in_minutes = 1339
+///   }
+///   azure_security_baseline = {
+///     assignment_type = "ApplyAndAutoCorrect"
+///   }
+///   automation_account_enabled = true
+///   backup = {
+///     policy_name                        = "acctest-backup-policy-%d"
+///     time_zone                          = "UTC"
+///     instant_rp_retention_range_in_days = 2
+///     schedule_policy = {
+///       schedule_run_frequency = "Daily"
+///       schedule_run_days      = ["Monday", "Tuesday"]
+///       schedule_run_times     = ["12:00"]
+///       schedule_policy_type   = "SimpleSchedulePolicy"
+///     }
+///     retention_policy = {
+///       retention_policy_type = "LongTermRetentionPolicy"
+///       daily_schedule = {
+///         retention_times = ["12:00"]
+///         retention_duration = {
+///           count         = 7
+///           duration_type = "Days"
+///         }
+///       }
+///       weekly_schedule = {
+///         retention_times = ["14:00"]
+///         retention_duration = {
+///           count         = 4
+///           duration_type = "Weeks"
+///         }
+///       }
+///     }
+///   }
+///   boot_diagnostics_enabled    = true
+///   defender_for_cloud_enabled  = true
+///   guest_configuration_enabled = true
+///   log_analytics_enabled       = true
+///   status_change_alert_enabled = true
+///   tags = {
+///     "env" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -356,8 +427,8 @@ import 'configuration_state.dart';
 /// import com.pulumi.azure.automanage.inputs.ConfigurationBackupRetentionPolicyDailyScheduleRetentionDurationArgs;
 /// import com.pulumi.azure.automanage.inputs.ConfigurationBackupRetentionPolicyWeeklyScheduleArgs;
 /// import com.pulumi.azure.automanage.inputs.ConfigurationBackupRetentionPolicyWeeklyScheduleRetentionDurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -517,7 +588,7 @@ class Configuration extends pulumi.CustomResource {
   late final pulumi.Output<ConfigurationAntimalware?> antimalware;
   /// Whether the automation account is enabled. Defaults to `false`.
   late final pulumi.Output<bool?> automationAccountEnabled;
-  /// A `azure_security_baseline` block as defined below.
+  /// A `azureSecurityBaseline` block as defined below.
   late final pulumi.Output<ConfigurationAzureSecurityBaseline?> azureSecurityBaseline;
   /// A `backup` block as defined below.
   late final pulumi.Output<ConfigurationBackup?> backup;

@@ -7,7 +7,7 @@ class KubernetesClusterWindowsProfileGmsa {
   final pulumi.Input<String> dnsServer;
   /// Specifies the root domain name for Windows gMSA. Set this to an empty string if you have configured the DNS server in the VNet which was used to create the managed cluster.
   ///
-  /// &gt; **Note:** The properties `dns_server` and `root_domain` must both either be set or unset, i.e. empty.
+  /// &gt; **Note:** The properties `dnsServer` and `rootDomain` must both either be set or unset, i.e. empty.
   final pulumi.Input<String> rootDomain;
 
   /// Creates a new [KubernetesClusterWindowsProfileGmsa].
@@ -32,4 +32,3 @@ class KubernetesClusterWindowsProfileGmsa {
     );
   }
 }
-

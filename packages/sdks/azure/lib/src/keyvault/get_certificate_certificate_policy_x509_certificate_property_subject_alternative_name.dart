@@ -36,4 +36,3 @@ class GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeNa
     );
   }
 }
-

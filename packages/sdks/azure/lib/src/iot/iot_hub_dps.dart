@@ -108,6 +108,30 @@ import 'iot_hub_dps_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_iot_iothubdps" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   allocation_policy   = "Hashed"
+///   sku = {
+///     name     = "S1"
+///     capacity = "1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +143,8 @@ import 'iot_hub_dps_state.dart';
 /// import com.pulumi.azure.iot.IotHubDps;
 /// import com.pulumi.azure.iot.IotHubDpsArgs;
 /// import com.pulumi.azure.iot.inputs.IotHubDpsSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -195,9 +219,9 @@ class IotHubDps extends pulumi.CustomResource {
   late final pulumi.Output<String> deviceProvisioningHostName;
   /// The unique identifier of the IoT Device Provisioning Service.
   late final pulumi.Output<String> idScope;
-  /// An `ip_filter_rule` block as defined below.
+  /// An `ipFilterRule` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipFilterRules;
-  /// A `linked_hub` block as defined below.
+  /// A `linkedHub` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> linkedHubs;
   /// Specifies the supported Azure location where the resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;

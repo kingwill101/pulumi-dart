@@ -105,6 +105,29 @@ import 'provider_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_attestation_provider" "example" {
+///   name                            = "exampleprovider"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resourcegroup.example.location
+///   policy_signing_certificate_data = file("./example/cert.pem")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +140,8 @@ import 'provider_state.dart';
 /// import com.pulumi.azure.attestation.ProviderArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -195,7 +218,7 @@ class Provider extends pulumi.CustomResource {
   late final pulumi.Output<String?> openEnclavePolicyBase64;
   /// A valid X.509 certificate (Section 4 of [RFC4648](https://tools.ietf.org/html/rfc4648)). Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** If the `policy_signing_certificate_data` argument contains more than one valid X.509 certificate only the first certificate will be used.
+  /// &gt; **Note:** If the `policySigningCertificateData` argument contains more than one valid X.509 certificate only the first certificate will be used.
   late final pulumi.Output<String?> policySigningCertificateData;
   /// The name of the Resource Group where the attestation provider should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;

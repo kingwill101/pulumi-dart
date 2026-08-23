@@ -5,9 +5,9 @@ import 'next_generation_firewall_virtual_network_panorama_destination_nat_backen
 import 'next_generation_firewall_virtual_network_panorama_destination_nat_frontend_config.dart';
 
 class NextGenerationFirewallVirtualNetworkPanoramaDestinationNat {
-  /// A `backend_config` block as defined above.
+  /// A `backendConfig` block as defined above.
   final pulumi.Input<NextGenerationFirewallVirtualNetworkPanoramaDestinationNatBackendConfig>? backendConfig;
-  /// A `frontend_config` block as defined below.
+  /// A `frontendConfig` block as defined below.
   final pulumi.Input<NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig>? frontendConfig;
   /// The name which should be used for this Destination NAT.
   final pulumi.Input<String> name;
@@ -15,8 +15,8 @@ class NextGenerationFirewallVirtualNetworkPanoramaDestinationNat {
   final pulumi.Input<String> protocol;
 
   /// Creates a new [NextGenerationFirewallVirtualNetworkPanoramaDestinationNat].
-  /// [backendConfig] A `backend_config` block as defined above.
-  /// [frontendConfig] A `frontend_config` block as defined below.
+  /// [backendConfig] A `backendConfig` block as defined above.
+  /// [frontendConfig] A `frontendConfig` block as defined below.
   /// [name] The name which should be used for this Destination NAT.
   /// [protocol] The Protocol for this Destination NAT configuration. Possible values include `TCP` and `UDP`.
   const NextGenerationFirewallVirtualNetworkPanoramaDestinationNat({
@@ -44,4 +44,3 @@ class NextGenerationFirewallVirtualNetworkPanoramaDestinationNat {
     );
   }
 }
-

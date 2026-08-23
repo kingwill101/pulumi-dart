@@ -23,14 +23,14 @@ class ClusterState {
   final pulumi.Input<bool>? doubleEncryptionEnabled;
   /// An `identity` block as defined below.
   final pulumi.Input<ClusterIdentity>? identity;
-  /// A `language_extension` block as defined below.
+  /// A `languageExtension` block as defined below.
   final pulumi.Input<List<ClusterLanguageExtension>>? languageExtension;
   final pulumi.Input<List<ClusterLanguageExtension>>? languageExtensions;
   /// The location where the Kusto Cluster should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
   /// The name of the Kusto Cluster to create. Only lowercase Alphanumeric characters allowed, starting with a letter. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// An `optimized_auto_scale` block as defined below.
+  /// An `optimizedAutoScale` block as defined below.
   final pulumi.Input<ClusterOptimizedAutoScale>? optimizedAutoScale;
   /// Whether to restrict outbound network access. Defaults to `false`.
   final pulumi.Input<bool>? outboundNetworkAccessRestricted;
@@ -48,9 +48,9 @@ class ClusterState {
   final pulumi.Input<bool>? streamingIngestionEnabled;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Specifies a list of tenant IDs that are trusted by the cluster. Default setting trusts all other tenants. Use `trusted_external_tenants = ["*"]` to explicitly allow all other tenants, `trusted_external_tenants = ["MyTenantOnly"]` for only your tenant or `trusted_external_tenants = ["&lt;tenantId1&gt;", "&lt;tenantIdx&gt;"]` to allow specific other tenants.
+  /// Specifies a list of tenant IDs that are trusted by the cluster. Default setting trusts all other tenants. Use `trustedExternalTenants = ["*"]` to explicitly allow all other tenants, `trustedExternalTenants = ["MyTenantOnly"]` for only your tenant or `trustedExternalTenants = ["&lt;tenantId1&gt;", "&lt;tenantIdx&gt;"]` to allow specific other tenants.
   ///
-  /// &gt; **Note:** In v3.0 of `azurerm` a new or updated Kusto Cluster will only allow your own tenant by default. Explicit configuration of this setting will change from `trusted_external_tenants = ["MyTenantOnly"]` to `trusted_external_tenants = []`.
+  /// &gt; **Note:** In v3.0 of `azurerm` a new or updated Kusto Cluster will only allow your own tenant by default. Explicit configuration of this setting will change from `trustedExternalTenants = ["MyTenantOnly"]` to `trustedExternalTenants = []`.
   final pulumi.Input<List<String>>? trustedExternalTenants;
   /// The FQDN of the Azure Kusto Cluster.
   final pulumi.Input<String>? uri;
@@ -66,11 +66,11 @@ class ClusterState {
   /// [diskEncryptionEnabled] Specifies if the cluster's disks are encrypted. Defaults to `false`.
   /// [doubleEncryptionEnabled] Is the cluster's double encryption enabled? Changing this forces a new resource to be created.
   /// [identity] An `identity` block as defined below.
-  /// [languageExtension] A `language_extension` block as defined below.
+  /// [languageExtension] A `languageExtension` block as defined below.
   /// [languageExtensions] Optional.
   /// [location] The location where the Kusto Cluster should be created. Changing this forces a new resource to be created.
   /// [name] The name of the Kusto Cluster to create. Only lowercase Alphanumeric characters allowed, starting with a letter. Changing this forces a new resource to be created.
-  /// [optimizedAutoScale] An `optimized_auto_scale` block as defined below.
+  /// [optimizedAutoScale] An `optimizedAutoScale` block as defined below.
   /// [outboundNetworkAccessRestricted] Whether to restrict outbound network access. Defaults to `false`.
   /// [publicIpType] Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6). Defaults to `IPv4`.
   /// [publicNetworkAccessEnabled] Is the public network access enabled? Defaults to `true`.
@@ -79,7 +79,7 @@ class ClusterState {
   /// [sku] A `sku` block as defined below.
   /// [streamingIngestionEnabled] Specifies if the streaming ingest is enabled. Defaults to `false`.
   /// [tags] A mapping of tags to assign to the resource.
-  /// [trustedExternalTenants] Specifies a list of tenant IDs that are trusted by the cluster. Default setting trusts all other tenants. Use `trusted_external_tenants = ["*"]` to explicitly allow all other tenants, `trusted_external_tenants = ["MyTenantOnly"]` for only your tenant or `trusted_external_tenants = ["&lt;tenantId1&gt;", "&lt;tenantIdx&gt;"]` to allow specific other tenants.
+  /// [trustedExternalTenants] Specifies a list of tenant IDs that are trusted by the cluster. Default setting trusts all other tenants. Use `trustedExternalTenants = ["*"]` to explicitly allow all other tenants, `trustedExternalTenants = ["MyTenantOnly"]` for only your tenant or `trustedExternalTenants = ["&lt;tenantId1&gt;", "&lt;tenantIdx&gt;"]` to allow specific other tenants.
   /// [uri] The FQDN of the Azure Kusto Cluster.
   /// [virtualNetworkConfiguration] Optional.
   /// [zones] Specifies a list of Availability Zones in which this Kusto Cluster should be located. Changing this forces a new Kusto Cluster to be created.
@@ -168,4 +168,3 @@ class ClusterState {
     );
   }
 }
-

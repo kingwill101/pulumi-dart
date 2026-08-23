@@ -5,7 +5,7 @@ import 'protection_container_mapping_automatic_update.dart';
 
 /// Input properties used for looking up and filtering ProtectionContainerMapping resources.
 class ProtectionContainerMappingState {
-  /// a `automatic_update` block defined as below.
+  /// a `automaticUpdate` block defined as below.
   final pulumi.Input<ProtectionContainerMappingAutomaticUpdate>? automaticUpdate;
   /// The name of the protection container mapping. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -23,7 +23,7 @@ class ProtectionContainerMappingState {
   final pulumi.Input<String>? resourceGroupName;
 
   /// Creates a new [ProtectionContainerMappingState].
-  /// [automaticUpdate] a `automatic_update` block defined as below.
+  /// [automaticUpdate] a `automaticUpdate` block defined as below.
   /// [name] The name of the protection container mapping. Changing this forces a new resource to be created.
   /// [recoveryFabricName] Name of fabric that should contains the protection container to map. Changing this forces a new resource to be created.
   /// [recoveryReplicationPolicyId] Id of the policy to use for this mapping. Changing this forces a new resource to be created.
@@ -68,4 +68,3 @@ class ProtectionContainerMappingState {
     );
   }
 }
-

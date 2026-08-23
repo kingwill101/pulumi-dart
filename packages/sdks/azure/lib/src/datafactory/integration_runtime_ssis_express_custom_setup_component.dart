@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'integration_runtime_ssis_express_custom_setup_component_key_vault_license.dart';
 
 class IntegrationRuntimeSsisExpressCustomSetupComponent {
-  /// A `key_vault_secret_reference` block as defined below.
+  /// A `keyVaultSecretReference` block as defined below.
   final pulumi.Input<IntegrationRuntimeSsisExpressCustomSetupComponentKeyVaultLicense>? keyVaultLicense;
   /// The license used for the Component.
   final pulumi.Input<String>? license;
@@ -12,7 +12,7 @@ class IntegrationRuntimeSsisExpressCustomSetupComponent {
   final pulumi.Input<String> name;
 
   /// Creates a new [IntegrationRuntimeSsisExpressCustomSetupComponent].
-  /// [keyVaultLicense] A `key_vault_secret_reference` block as defined below.
+  /// [keyVaultLicense] A `keyVaultSecretReference` block as defined below.
   /// [license] The license used for the Component.
   /// [name] The Component Name installed for the Azure-SSIS Integration Runtime.
   const IntegrationRuntimeSsisExpressCustomSetupComponent({
@@ -37,4 +37,3 @@ class IntegrationRuntimeSsisExpressCustomSetupComponent {
     );
   }
 }
-

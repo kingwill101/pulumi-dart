@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pool_start_task_user_identity_auto_user.dart';
 
 class PoolStartTaskUserIdentity {
-  /// A `auto_user` block that describes the user identity under which the start task runs as defined below.
+  /// A `autoUser` block that describes the user identity under which the start task runs as defined below.
   ///
-  /// &gt; **Note:** `user_name` and `auto_user` blocks cannot be used both at the same time, but you need to define one or the other.
+  /// &gt; **Note:** `userName` and `autoUser` blocks cannot be used both at the same time, but you need to define one or the other.
   final pulumi.Input<PoolStartTaskUserIdentityAutoUser>? autoUser;
   /// The username to be used by the Batch pool start task.
   final pulumi.Input<String>? userName;
 
   /// Creates a new [PoolStartTaskUserIdentity].
-  /// [autoUser] A `auto_user` block that describes the user identity under which the start task runs as defined below.
+  /// [autoUser] A `autoUser` block that describes the user identity under which the start task runs as defined below.
   /// [userName] The username to be used by the Batch pool start task.
   const PoolStartTaskUserIdentity({
     this.autoUser,
@@ -33,4 +33,3 @@ class PoolStartTaskUserIdentity {
     );
   }
 }
-

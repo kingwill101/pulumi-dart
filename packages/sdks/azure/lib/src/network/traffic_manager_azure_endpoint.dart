@@ -213,6 +213,54 @@ import 'traffic_manager_azure_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "example-public-ip"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+///   domain_name_label   = "example-public-ip"
+/// }
+/// resource "azure_network_trafficmanagerprofile" "example" {
+///   name                   = "example-profile"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   traffic_routing_method = "Weighted"
+///   dns_config = {
+///     relative_name = "example-profile"
+///     ttl           = 100
+///   }
+///   monitor_config = {
+///     protocol                     = "HTTP"
+///     port                         = 80
+///     path                         = "/"
+///     interval_in_seconds          = 30
+///     timeout_in_seconds           = 9
+///     tolerated_number_of_failures = 3
+///   }
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// resource "azure_network_trafficmanagerazureendpoint" "example" {
+///   name                 = "example-endpoint"
+///   profile_id           = azure_network_trafficmanagerprofile.example.id
+///   always_serve_enabled = true
+///   weight               = 100
+///   target_resource_id   = azure_network_publicip.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -229,8 +277,8 @@ import 'traffic_manager_azure_endpoint_state.dart';
 /// import com.pulumi.azure.network.inputs.TrafficManagerProfileMonitorConfigArgs;
 /// import com.pulumi.azure.network.TrafficManagerAzureEndpoint;
 /// import com.pulumi.azure.network.TrafficManagerAzureEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -349,7 +397,7 @@ import 'traffic_manager_azure_endpoint_state.dart';
 class TrafficManagerAzureEndpoint extends pulumi.CustomResource {
   /// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method. Defaults to `false`.
   late final pulumi.Output<bool?> alwaysServeEnabled;
-  /// One or more `custom_header` blocks as defined below.
+  /// One or more `customHeader` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> customHeaders;
   /// Is the endpoint enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;

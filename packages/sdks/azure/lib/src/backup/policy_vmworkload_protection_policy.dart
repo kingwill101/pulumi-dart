@@ -13,25 +13,25 @@ class PolicyVMWorkloadProtectionPolicy {
   final pulumi.Input<PolicyVMWorkloadProtectionPolicyBackup> backup;
   /// The type of the VM Workload Backup Policy. Possible values are `Differential`, `Full`, `Incremental` and `Log`.
   final pulumi.Input<String> policyType;
-  /// A `retention_daily` block as defined below.
+  /// A `retentionDaily` block as defined below.
   final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionDaily>? retentionDaily;
-  /// A `retention_monthly` block as defined below.
+  /// A `retentionMonthly` block as defined below.
   final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionMonthly>? retentionMonthly;
-  /// A `retention_weekly` block as defined below.
+  /// A `retentionWeekly` block as defined below.
   final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionWeekly>? retentionWeekly;
-  /// A `retention_yearly` block as defined below.
+  /// A `retentionYearly` block as defined below.
   final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionYearly>? retentionYearly;
-  /// A `simple_retention` block as defined below.
+  /// A `simpleRetention` block as defined below.
   final pulumi.Input<PolicyVMWorkloadProtectionPolicySimpleRetention>? simpleRetention;
 
   /// Creates a new [PolicyVMWorkloadProtectionPolicy].
   /// [backup] A `backup` block as defined below.
   /// [policyType] The type of the VM Workload Backup Policy. Possible values are `Differential`, `Full`, `Incremental` and `Log`.
-  /// [retentionDaily] A `retention_daily` block as defined below.
-  /// [retentionMonthly] A `retention_monthly` block as defined below.
-  /// [retentionWeekly] A `retention_weekly` block as defined below.
-  /// [retentionYearly] A `retention_yearly` block as defined below.
-  /// [simpleRetention] A `simple_retention` block as defined below.
+  /// [retentionDaily] A `retentionDaily` block as defined below.
+  /// [retentionMonthly] A `retentionMonthly` block as defined below.
+  /// [retentionWeekly] A `retentionWeekly` block as defined below.
+  /// [retentionYearly] A `retentionYearly` block as defined below.
+  /// [simpleRetention] A `simpleRetention` block as defined below.
   const PolicyVMWorkloadProtectionPolicy({
     required this.backup,
     required this.policyType,
@@ -66,4 +66,3 @@ class PolicyVMWorkloadProtectionPolicy {
     );
   }
 }
-

@@ -351,6 +351,78 @@ import 'assessment_status.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-network"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "internal" {
+///   name                 = "internal"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_compute_linuxvirtualmachinescaleset" "example" {
+///   name                = "example-vmss"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Standard_F2"
+///   instances           = 1
+///   admin_username      = "adminuser"
+///   admin_ssh_keys {
+///     username   = "adminuser"
+///     public_key = file("~/.ssh/id_rsa.pub")
+///   }
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+///   os_disk = {
+///     storage_account_type = "Standard_LRS"
+///     caching              = "ReadWrite"
+///   }
+///   network_interfaces {
+///     name    = "example"
+///     primary = true
+///     ip_configurations {
+///       name      = "internal"
+///       primary   = true
+///       subnet_id = azure_network_subnet.internal.id
+///     }
+///   }
+/// }
+/// resource "azure_securitycenter_assessmentpolicy" "example" {
+///   display_name = "Test Display Name"
+///   severity     = "Medium"
+///   description  = "Test Description"
+/// }
+/// resource "azure_securitycenter_assessment" "example" {
+///   assessment_policy_id = azure_securitycenter_assessmentpolicy.example.id
+///   target_resource_id   = azure_compute_linuxvirtualmachinescaleset.example.id
+///   status = {
+///     code = "Healthy"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -369,6 +441,7 @@ import 'assessment_status.dart';
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetSourceImageReferenceArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetOsDiskArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetNetworkInterfaceArgs;
+/// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
 /// import com.pulumi.azure.securitycenter.AssessmentPolicy;
@@ -376,8 +449,8 @@ import 'assessment_status.dart';
 /// import com.pulumi.azure.securitycenter.Assessment;
 /// import com.pulumi.azure.securitycenter.AssessmentArgs;
 /// import com.pulumi.azure.securitycenter.inputs.AssessmentStatusArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

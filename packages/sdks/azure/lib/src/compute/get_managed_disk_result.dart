@@ -16,7 +16,7 @@ class GetManagedDiskResult {
   final int diskMbpsReadWrite;
   /// The size of the Managed Disk in gigabytes.
   final int diskSizeGb;
-  /// A `encryption_settings` block as defined below.
+  /// A `encryptionSettings` block as defined below.
   final List<GetManagedDiskEncryptionSetting> encryptionSettings;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -34,7 +34,7 @@ class GetManagedDiskResult {
   final String sourceResourceId;
   /// The Source URI for this Managed Disk.
   final String sourceUri;
-  /// The ID of the Storage Account where the `source_uri` is located.
+  /// The ID of the Storage Account where the `sourceUri` is located.
   final String storageAccountId;
   /// The storage account type for the Managed Disk.
   final String storageAccountType;
@@ -50,7 +50,7 @@ class GetManagedDiskResult {
   /// [diskIopsReadWrite] The number of IOPS allowed for this disk, where one operation can transfer between 4k and 256k bytes.
   /// [diskMbpsReadWrite] The bandwidth allowed for this disk.
   /// [diskSizeGb] The size of the Managed Disk in gigabytes.
-  /// [encryptionSettings] A `encryption_settings` block as defined below.
+  /// [encryptionSettings] A `encryptionSettings` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [imageReferenceId] The ID of the source image used for creating this Managed Disk.
   /// [location] The Azure location of the Managed Disk.
@@ -60,7 +60,7 @@ class GetManagedDiskResult {
   /// [resourceGroupName] Required.
   /// [sourceResourceId] The ID of an existing Managed Disk which this Disk was created from.
   /// [sourceUri] The Source URI for this Managed Disk.
-  /// [storageAccountId] The ID of the Storage Account where the `source_uri` is located.
+  /// [storageAccountId] The ID of the Storage Account where the `sourceUri` is located.
   /// [storageAccountType] The storage account type for the Managed Disk.
   /// [tags] A mapping of tags assigned to the resource.
   /// [zones] A list of Availability Zones where the Managed Disk exists.
@@ -137,4 +137,3 @@ class GetManagedDiskResult {
     );
   }
 }
-

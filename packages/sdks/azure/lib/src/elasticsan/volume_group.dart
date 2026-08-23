@@ -576,6 +576,99 @@ import 'volume_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_elasticsan_elasticsan" "example" {
+///   name                = "examplees-es"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   base_size_in_tib    = 1
+///   sku = {
+///     name = "Premium_LRS"
+///   }
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "example-uai"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+///   service_endpoints    = ["Microsoft.Storage.Global"]
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                        = "examplekv"
+///   location                    = azure_core_resourcegroup.example.location
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   enabled_for_disk_encryption = true
+///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
+///   soft_delete_retention_days  = 7
+///   purge_protection_enabled    = true
+///   sku_name                    = "standard"
+/// }
+/// resource "azure_keyvault_accesspolicy" "userAssignedIdentity" {
+///   key_vault_id       = azure_keyvault_keyvault.example.id
+///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///   object_id          = azure_authorization_userassignedidentity.example.principal_id
+///   key_permissions    = ["Get", "UnwrapKey", "WrapKey"]
+///   secret_permissions = ["Get"]
+/// }
+/// resource "azure_keyvault_accesspolicy" "client" {
+///   key_vault_id       = azure_keyvault_keyvault.example.id
+///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///   object_id          = data.azure_core_getclientconfig.current.object_id
+///   key_permissions    = ["Get", "Create", "Delete", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify", "GetRotationPolicy"]
+///   secret_permissions = ["Get"]
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_accesspolicy.userAssignedIdentity, azure_keyvault_accesspolicy.client]
+///   name         = "example-kvk"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_elasticsan_volumegroup" "example" {
+///   name            = "example-esvg"
+///   elastic_san_id  = azure_elasticsan_elasticsan.example.id
+///   encryption_type = "EncryptionAtRestWithCustomerManagedKey"
+///   encryption = {
+///     key_vault_key_id          = azure_keyvault_key.example.versionless_id
+///     user_assigned_identity_id = azure_authorization_userassignedidentity.example.id
+///   }
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+///   network_rules {
+///     subnet_id = azure_network_subnet.example.id
+///     action    = "Allow"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -606,8 +699,8 @@ import 'volume_group_state.dart';
 /// import com.pulumi.azure.elasticsan.inputs.VolumeGroupIdentityArgs;
 /// import com.pulumi.azure.elasticsan.inputs.VolumeGroupNetworkRuleArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -894,7 +987,7 @@ class VolumeGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> elasticSanId;
   /// An `encryption` block as defined below.
   ///
-  /// &gt; **Note:** The `encryption` block can only be set when `encryption_type` is set to `EncryptionAtRestWithCustomerManagedKey`.
+  /// &gt; **Note:** The `encryption` block can only be set when `encryptionType` is set to `EncryptionAtRestWithCustomerManagedKey`.
   late final pulumi.Output<VolumeGroupEncryption?> encryption;
   /// Specifies the type of the key used to encrypt the data of the disk. Possible values are `EncryptionAtRestWithCustomerManagedKey` and `EncryptionAtRestWithPlatformKey`. Defaults to `EncryptionAtRestWithPlatformKey`.
   late final pulumi.Output<String?> encryptionType;
@@ -902,7 +995,7 @@ class VolumeGroup extends pulumi.CustomResource {
   late final pulumi.Output<VolumeGroupIdentity?> identity;
   /// Specifies the name of this Elastic SAN Volume Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// One or more `network_rule` blocks as defined below.
+  /// One or more `networkRule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> networkRules;
   /// Specifies the type of the storage target. The only possible value is `Iscsi`. Defaults to `Iscsi`.
   late final pulumi.Output<String?> protocolType;

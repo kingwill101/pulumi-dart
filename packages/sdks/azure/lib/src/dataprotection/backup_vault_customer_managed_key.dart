@@ -4,7 +4,7 @@ import 'backup_vault_customer_managed_key_state.dart';
 
 /// Manages a Backup Vault Customer Managed Key.
 ///
-/// !&gt; **Note:** It is not possible to remove the Customer Managed Key from the Backup Vault once it's been added. To remove the Customer Managed Key, the parent Data Protection Backup Vault must be deleted and recreated.
+/// &gt; **Note:** It is not possible to remove the Customer Managed Key from the Backup Vault once it's been added. To remove the Customer Managed Key, the parent Data Protection Backup Vault must be deleted and recreated.
 ///
 /// ## Example Usage
 ///
@@ -359,10 +359,10 @@ import 'backup_vault_customer_managed_key_state.dart';
 /// 				},
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 						return &identity.TenantId, nil
+/// 						return identity.TenantId, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 					ObjectId: exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 						return &identity.PrincipalId, nil
+/// 						return identity.PrincipalId, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 					KeyPermissions: pulumi.StringArray{
 /// 						pulumi.String("Create"),
@@ -414,6 +414,66 @@ import 'backup_vault_customer_managed_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dataprotection_backupvault" "example" {
+///   name                = "example-backup-vault"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   datastore_type      = "VaultStore"
+///   redundancy          = "LocallyRedundant"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                        = "example-key-vault"
+///   location                    = azure_core_resourcegroup.example.location
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   enabled_for_disk_encryption = true
+///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
+///   soft_delete_retention_days  = 7
+///   purge_protection_enabled    = true
+///   sku_name                    = "standard"
+///   access_policies {
+///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     key_permissions    = ["Create", "Decrypt", "Encrypt", "Delete", "Get", "List", "Purge", "UnwrapKey", "WrapKey", "Verify", "GetRotationPolicy"]
+///     secret_permissions = ["Set"]
+///   }
+///   access_policies {
+///     tenant_id          = azure_dataprotection_backupvault.example.identity.tenant_id
+///     object_id          = azure_dataprotection_backupvault.example.identity.principal_id
+///     key_permissions    = ["Create", "Decrypt", "Encrypt", "Delete", "Get", "List", "Purge", "UnwrapKey", "WrapKey", "Verify", "GetRotationPolicy"]
+///     secret_permissions = ["Set"]
+///   }
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   name         = "example-key"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_dataprotection_backupvaultcustomermanagedkey" "example" {
+///   data_protection_backup_vault_id = azure_dataprotection_backupvault.example.id
+///   key_vault_key_id                = azure_keyvault_key.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -433,8 +493,8 @@ import 'backup_vault_customer_managed_key_state.dart';
 /// import com.pulumi.azure.keyvault.KeyArgs;
 /// import com.pulumi.azure.dataprotection.BackupVaultCustomerManagedKey;
 /// import com.pulumi.azure.dataprotection.BackupVaultCustomerManagedKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -629,7 +689,7 @@ import 'backup_vault_customer_managed_key_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.DataProtection` - 2024-04-01
+/// * `Microsoft.DataProtection` - 2025-07-01
 ///
 /// ## Import
 ///

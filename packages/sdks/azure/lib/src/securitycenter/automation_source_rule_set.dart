@@ -6,7 +6,7 @@ import 'automation_source_rule_set_rule.dart';
 class AutomationSourceRuleSet {
   /// One or more `rule` blocks as defined below.
   ///
-  /// &gt; **Note:** This automation will trigger when all of the `rule`s in this `rule_set` are evaluated as 'true'. This is equivalent to a logical 'AND'.
+  /// &gt; **Note:** This automation will trigger when all of the `rule`s in this `ruleSet` are evaluated as 'true'. This is equivalent to a logical 'AND'.
   final pulumi.Input<List<AutomationSourceRuleSetRule>> rules;
 
   /// Creates a new [AutomationSourceRuleSet].
@@ -27,4 +27,3 @@ class AutomationSourceRuleSet {
     );
   }
 }
-

@@ -51,7 +51,6 @@ import 'certificate_state.dart';
 ///     sku: "publicpreview_Monthly_gmz7xq9ge3py",
 ///     location: example.location,
 ///     managedResourceGroup: "example",
-///     diagnoseSupportEnabled: true,
 ///     frontendPublic: {
 ///         ipAddresses: [examplePublicIp.id],
 ///     },
@@ -143,7 +142,6 @@ import 'certificate_state.dart';
 ///     sku="publicpreview_Monthly_gmz7xq9ge3py",
 ///     location=example.location,
 ///     managed_resource_group="example",
-///     diagnose_support_enabled=True,
 ///     frontend_public={
 ///         "ip_addresses": [example_public_ip.id],
 ///     },
@@ -261,7 +259,6 @@ import 'certificate_state.dart';
 ///         Sku = "publicpreview_Monthly_gmz7xq9ge3py",
 ///         Location = example.Location,
 ///         ManagedResourceGroup = "example",
-///         DiagnoseSupportEnabled = true,
 ///         FrontendPublic = new Azure.Nginx.Inputs.DeploymentFrontendPublicArgs
 ///         {
 ///             IpAddresses = new[]
@@ -405,12 +402,11 @@ import 'certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleDeployment, err := nginx.NewDeployment(ctx, "example", &nginx.DeploymentArgs{
-/// 			Name:                   pulumi.String("example-nginx"),
-/// 			ResourceGroupName:      example.Name,
-/// 			Sku:                    pulumi.String("publicpreview_Monthly_gmz7xq9ge3py"),
-/// 			Location:               example.Location,
-/// 			ManagedResourceGroup:   pulumi.String("example"),
-/// 			DiagnoseSupportEnabled: pulumi.Bool(true),
+/// 			Name:                 pulumi.String("example-nginx"),
+/// 			ResourceGroupName:    example.Name,
+/// 			Sku:                  pulumi.String("publicpreview_Monthly_gmz7xq9ge3py"),
+/// 			Location:             example.Location,
+/// 			ManagedResourceGroup: pulumi.String("example"),
 /// 			FrontendPublic: &nginx.DeploymentFrontendPublicArgs{
 /// 				IpAddresses: pulumi.StringArray{
 /// 					examplePublicIp.ID(),
@@ -490,6 +486,95 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   allocation_method   = "Static"
+///   sku                 = "Standard"
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+///   delegations {
+///     name = "delegation"
+///     service_delegation = {
+///       name    = "NGINX.NGINXPLUS/nginxDeployments"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+///     }
+///   }
+/// }
+/// resource "azure_nginx_deployment" "example" {
+///   name                   = "example-nginx"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   sku                    = "publicpreview_Monthly_gmz7xq9ge3py"
+///   location               = azure_core_resourcegroup.example.location
+///   managed_resource_group = "example"
+///   frontend_public = {
+///     ip_addresses = [azure_network_publicip.example.id]
+///   }
+///   network_interfaces {
+///     subnet_id = azure_network_subnet.example.id
+///   }
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "examplekeyvault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name            = "premium"
+///   access_policies {
+///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
+///     object_id               = data.azure_core_getclientconfig.current.object_id
+///     certificate_permissions = ["Create", "Delete", "DeleteIssuers", "Get", "GetIssuers", "Import", "List", "ListIssuers", "ManageContacts", "ManageIssuers", "SetIssuers", "Update"]
+///   }
+/// }
+/// resource "azure_keyvault_certificate" "example" {
+///   name         = "imported-cert"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   certificate = {
+///     contents = filebase64("certificate-to-import.pfx")
+///     password = ""
+///   }
+/// }
+/// resource "azure_nginx_certificate" "example" {
+///   name                     = "examplecert"
+///   nginx_deployment_id      = azure_nginx_deployment.example.id
+///   key_virtual_path         = "/src/cert/soservermekey.key"
+///   certificate_virtual_path = "/src/cert/server.cert"
+///   key_vault_secret_id      = azure_keyvault_certificate.example.secret_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -517,8 +602,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.azure.keyvault.inputs.CertificateCertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -571,7 +656,6 @@ import 'certificate_state.dart';
 ///             .sku("publicpreview_Monthly_gmz7xq9ge3py")
 ///             .location(example.location())
 ///             .managedResourceGroup("example")
-///             .diagnoseSupportEnabled(true)
 ///             .frontendPublic(DeploymentFrontendPublicArgs.builder()
 ///                 .ipAddresses(examplePublicIp.id())
 ///                 .build())
@@ -680,7 +764,6 @@ import 'certificate_state.dart';
 ///       sku: publicpreview_Monthly_gmz7xq9ge3py
 ///       location: ${example.location}
 ///       managedResourceGroup: example
-///       diagnoseSupportEnabled: true
 ///       frontendPublic:
 ///         ipAddresses:
 ///           - ${examplePublicIp.id}

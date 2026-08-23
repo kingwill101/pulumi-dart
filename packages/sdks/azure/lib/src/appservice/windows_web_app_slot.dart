@@ -156,6 +156,39 @@ import 'windows_web_app_slot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   name                = "example-plan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   os_type             = "Windows"
+///   sku_name            = "P1v2"
+/// }
+/// resource "azure_appservice_windowswebapp" "example" {
+///   name                = "example-windows-web-app"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_appservice_serviceplan.example.location
+///   service_plan_id     = azure_appservice_serviceplan.example.id
+///   site_config         = {}
+/// }
+/// resource "azure_appservice_windowswebappslot" "example" {
+///   name           = "example-slot"
+///   app_service_id = azure_appservice_windowswebapp.example.id
+///   site_config    = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -172,8 +205,8 @@ import 'windows_web_app_slot_state.dart';
 /// import com.pulumi.azure.appservice.WindowsWebAppSlot;
 /// import com.pulumi.azure.appservice.WindowsWebAppSlotArgs;
 /// import com.pulumi.azure.appservice.inputs.WindowsWebAppSlotSiteConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -271,9 +304,9 @@ class WindowsWebAppSlot extends pulumi.CustomResource {
   late final pulumi.Output<String> appServiceId;
   /// A map of key-value pairs of App Settings.
   late final pulumi.Output<Map<String, String>?> appSettings;
-  /// An `auth_settings` block as defined below.
+  /// An `authSettings` block as defined below.
   late final pulumi.Output<WindowsWebAppSlotAuthSettings?> authSettings;
-  /// An `auth_settings_v2` block as defined below.
+  /// An `authSettingsV2` block as defined below.
   late final pulumi.Output<WindowsWebAppSlotAuthSettingsV2?> authSettingsV2;
   /// A `backup` block as defined below.
   late final pulumi.Output<WindowsWebAppSlotBackup?> backup;
@@ -282,10 +315,12 @@ class WindowsWebAppSlot extends pulumi.CustomResource {
   /// Should Client Certificates be enabled?
   late final pulumi.Output<bool?> clientCertificateEnabled;
   /// Paths to exclude when using client certificates, separated by ;
+  ///
+  /// &gt; **Note:** TLS 1.3 and HTTP 2.0 don't support TLS renegotiation. These protocols will not work if your app is configured with client certificate settings that use TLS renegotiation. Either set `clientCertificateEnabled` to `false`, or set `clientCertificateMode` to `Optional` or `Required` and remove all `clientCertificateExclusionPaths`.
   late final pulumi.Output<String?> clientCertificateExclusionPaths;
-  /// The Client Certificate mode. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. This property has no effect when `client_certificate_enabled` is `false`. Defaults to `Required`.
+  /// The Client Certificate mode. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. This property has no effect when `clientCertificateEnabled` is `false`. Defaults to `Required`.
   late final pulumi.Output<String?> clientCertificateMode;
-  /// One or more `connection_string` blocks as defined below.
+  /// One or more `connectionString` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> connectionStrings;
   /// The identifier used by App Service to perform domain ownership verification via DNS TXT record.
   late final pulumi.Output<String> customDomainVerificationId;
@@ -317,21 +352,21 @@ class WindowsWebAppSlot extends pulumi.CustomResource {
   late final pulumi.Output<String> outboundIpAddresses;
   /// A list of possible outbound ip address.
   late final pulumi.Output<List<String>> possibleOutboundIpAddressLists;
-  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   late final pulumi.Output<String> possibleOutboundIpAddresses;
   /// Should public network access be enabled for the Web App. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
   /// The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Windows Web App will be used.
   ///
-  /// &gt; **Note:** `service_plan_id` should only be specified if it differs from the Service Plan of the associated Windows Web App.
+  /// &gt; **Note:** `servicePlanId` should only be specified if it differs from the Service Plan of the associated Windows Web App.
   late final pulumi.Output<String?> servicePlanId;
-  /// A `site_config` block as defined below.
+  /// A `siteConfig` block as defined below.
   late final pulumi.Output<WindowsWebAppSlotSiteConfig> siteConfig;
-  /// A `site_credential` block as defined below.
+  /// A `siteCredential` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
-  /// One or more `storage_account` blocks as defined below.
+  /// One or more `storageAccount` blocks as defined below.
   ///
-  /// &gt; **Note:** Using this value requires `WEBSITE_RUN_FROM_PACKAGE=1` to be set on the App in `app_settings`. Refer to the [Azure docs](https://docs.microsoft.com/en-us/azure/app-service/deploy-run-package) for further details.
+  /// &gt; **Note:** Using this value requires `WEBSITE_RUN_FROM_PACKAGE=1` to be set on the App in `appSettings`. Refer to the [Azure docs](https://docs.microsoft.com/en-us/azure/app-service/deploy-run-package) for further details.
   late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
   /// A mapping of tags which should be assigned to the Windows Web App Slot.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -339,17 +374,17 @@ class WindowsWebAppSlot extends pulumi.CustomResource {
   late final pulumi.Output<bool?> virtualNetworkBackupRestoreEnabled;
   /// Whether traffic for the image pull should be routed over the virtual network.
   ///
-  /// &gt; **Note:** `virtual_network_image_pull_enabled` must be set to `true` when running in an App Service Environment.
+  /// &gt; **Note:** `virtualNetworkImagePullEnabled` must be set to `true` when running in an App Service Environment.
   late final pulumi.Output<bool> virtualNetworkImagePullEnabled;
   /// The subnet id which will be used by this Web App Slot for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   ///
-  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource app_service_virtual_network_swift_connection and in-line within this resource using the `virtual_network_subnet_id` property. You cannot use both methods simultaneously. If the virtual network is set via the resource `app_service_virtual_network_swift_connection` then `ignore_changes` should be used in the web app slot configuration.
+  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource appServiceVirtualNetworkSwiftConnection and in-line within this resource using the `virtualNetworkSubnetId` property. You cannot use both methods simultaneously. If the virtual network is set via the resource `appServiceVirtualNetworkSwiftConnection` then `ignoreChanges` should be used in the web app slot configuration.
   ///
-  /// &gt; **Note:** Assigning the `virtual_network_subnet_id` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
+  /// &gt; **Note:** Assigning the `virtualNetworkSubnetId` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
   late final pulumi.Output<String?> virtualNetworkSubnetId;
   /// Should the default WebDeploy Basic Authentication publishing credentials enabled. Defaults to `true`.
   ///
-  /// &gt; **Note:** Setting this value to true will disable the ability to use `zip_deploy_file` which currently relies on the default publishing profile.
+  /// &gt; **Note:** Setting this value to true will disable the ability to use `zipDeployFile` which currently relies on the default publishing profile.
   late final pulumi.Output<bool?> webdeployPublishBasicAuthenticationEnabled;
   /// The local path and filename of the Zip packaged application to deploy to this Windows Web App.
   late final pulumi.Output<String> zipDeployFile;

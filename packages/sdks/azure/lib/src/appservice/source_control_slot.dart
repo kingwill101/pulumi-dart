@@ -175,6 +175,44 @@ import 'source_control_slot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   name                = "example-plan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   os_type             = "Linux"
+///   sku_name            = "P1v2"
+/// }
+/// resource "azure_appservice_linuxwebapp" "example" {
+///   name                = "example-web-app"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_appservice_serviceplan.example.location
+///   service_plan_id     = azure_appservice_serviceplan.example.id
+///   site_config         = {}
+/// }
+/// resource "azure_appservice_linuxwebappslot" "example" {
+///   name           = "example-slot"
+///   app_service_id = azure_appservice_linuxwebapp.example.id
+///   site_config    = {}
+/// }
+/// resource "azure_appservice_sourcecontrolslot" "example" {
+///   slot_id  = azure_appservice_linuxwebappslot.example.id
+///   repo_url = "https://github.com/Azure-Samples/python-docs-hello-world"
+///   branch   = "master"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +231,8 @@ import 'source_control_slot_state.dart';
 /// import com.pulumi.azure.appservice.inputs.LinuxWebAppSlotSiteConfigArgs;
 /// import com.pulumi.azure.appservice.SourceControlSlot;
 /// import com.pulumi.azure.appservice.SourceControlSlotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -303,7 +341,7 @@ import 'source_control_slot_state.dart';
 class SourceControlSlot extends pulumi.CustomResource {
   /// The URL for the repository. Changing this forces a new resource to be created.
   late final pulumi.Output<String> branch;
-  /// A `github_action_configuration` block as detailed below. Changing this forces a new resource to be created.
+  /// A `githubActionConfiguration` block as detailed below. Changing this forces a new resource to be created.
   late final pulumi.Output<SourceControlSlotGithubActionConfiguration?> githubActionConfiguration;
   /// The branch name to use for deployments. Changing this forces a new resource to be created.
   late final pulumi.Output<String> repoUrl;

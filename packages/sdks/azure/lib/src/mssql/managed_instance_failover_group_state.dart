@@ -14,9 +14,9 @@ class ManagedInstanceFailoverGroupState {
   final pulumi.Input<String>? name;
   /// The ID of the Azure SQL Managed Instance which will be replicated to. Changing this forces a new resource to be created.
   final pulumi.Input<String>? partnerManagedInstanceId;
-  /// A `partner_region` block as defined below.
+  /// A `partnerRegion` block as defined below.
   final pulumi.Input<List<ManagedInstanceFailoverGroupPartnerRegion>>? partnerRegions;
-  /// A `read_write_endpoint_failover_policy` block as defined below.
+  /// A `readWriteEndpointFailoverPolicy` block as defined below.
   final pulumi.Input<ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy>? readWriteEndpointFailoverPolicy;
   /// Failover policy for the read-only endpoint. Defaults to `true`.
   final pulumi.Input<bool>? readonlyEndpointFailoverPolicyEnabled;
@@ -30,8 +30,8 @@ class ManagedInstanceFailoverGroupState {
   /// [managedInstanceId] The ID of the Azure SQL Managed Instance which will be replicated using a Managed Instance Failover Group. Changing this forces a new resource to be created.
   /// [name] The name which should be used for this Managed Instance Failover Group. Changing this forces a new resource to be created.
   /// [partnerManagedInstanceId] The ID of the Azure SQL Managed Instance which will be replicated to. Changing this forces a new resource to be created.
-  /// [partnerRegions] A `partner_region` block as defined below.
-  /// [readWriteEndpointFailoverPolicy] A `read_write_endpoint_failover_policy` block as defined below.
+  /// [partnerRegions] A `partnerRegion` block as defined below.
+  /// [readWriteEndpointFailoverPolicy] A `readWriteEndpointFailoverPolicy` block as defined below.
   /// [readonlyEndpointFailoverPolicyEnabled] Failover policy for the read-only endpoint. Defaults to `true`.
   /// [role] The partner replication role of the Managed Instance Failover Group.
   /// [secondaryType] The type of the secondary Managed Instance. Possible values are `Geo`, `Standby`. Defaults to `Geo`.
@@ -75,4 +75,3 @@ class ManagedInstanceFailoverGroupState {
     );
   }
 }
-

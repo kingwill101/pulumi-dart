@@ -14,13 +14,13 @@ class GetVirtualMachineScaleSetNetworkInterface {
   final pulumi.Input<bool> enableAcceleratedNetworking;
   /// Whether IP forwarding is enabled on this NIC.
   final pulumi.Input<bool> enableIpForwarding;
-  /// An `ip_configuration` block as defined below.
+  /// An `ipConfiguration` block as defined below.
   final pulumi.Input<List<GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration>> ipConfigurations;
   /// The name of this Virtual Machine Scale Set.
   final pulumi.Input<String> name;
   /// The identifier for the network security group.
   final pulumi.Input<String> networkSecurityGroupId;
-  /// If this ip_configuration is the primary one.
+  /// If this ipConfiguration is the primary one.
   final pulumi.Input<bool> primary;
 
   /// Creates a new [GetVirtualMachineScaleSetNetworkInterface].
@@ -29,10 +29,10 @@ class GetVirtualMachineScaleSetNetworkInterface {
   /// [dnsServers] An array of the DNS servers in use.
   /// [enableAcceleratedNetworking] Whether accelerated networking is enabled.
   /// [enableIpForwarding] Whether IP forwarding is enabled on this NIC.
-  /// [ipConfigurations] An `ip_configuration` block as defined below.
+  /// [ipConfigurations] An `ipConfiguration` block as defined below.
   /// [name] The name of this Virtual Machine Scale Set.
   /// [networkSecurityGroupId] The identifier for the network security group.
-  /// [primary] If this ip_configuration is the primary one.
+  /// [primary] If this ipConfiguration is the primary one.
   const GetVirtualMachineScaleSetNetworkInterface({
     required this.auxiliaryMode,
     required this.auxiliarySku,
@@ -73,4 +73,3 @@ class GetVirtualMachineScaleSetNetworkInterface {
     );
   }
 }
-

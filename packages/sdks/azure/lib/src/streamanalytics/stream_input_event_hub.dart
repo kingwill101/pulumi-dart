@@ -31,8 +31,7 @@ import 'stream_input_event_hub_state.dart';
 /// });
 /// const exampleEventHub = new azure.eventhub.EventHub("example", {
 ///     name: "example-eventhub",
-///     namespaceName: exampleEventHubNamespace.name,
-///     resourceGroupName: exampleResourceGroup.name,
+///     namespaceId: exampleEventHubNamespace.id,
 ///     partitionCount: 2,
 ///     messageRetention: 1,
 /// });
@@ -74,8 +73,7 @@ import 'stream_input_event_hub_state.dart';
 ///     capacity=1)
 /// example_event_hub = azure.eventhub.EventHub("example",
 ///     name="example-eventhub",
-///     namespace_name=example_event_hub_namespace.name,
-///     resource_group_name=example_resource_group.name,
+///     namespace_id=example_event_hub_namespace.id,
 ///     partition_count=2,
 ///     message_retention=1)
 /// example_consumer_group = azure.eventhub.ConsumerGroup("example",
@@ -129,8 +127,7 @@ import 'stream_input_event_hub_state.dart';
 ///     var exampleEventHub = new Azure.EventHub.EventHub("example", new()
 ///     {
 ///         Name = "example-eventhub",
-///         NamespaceName = exampleEventHubNamespace.Name,
-///         ResourceGroupName = exampleResourceGroup.Name,
+///         NamespaceId = exampleEventHubNamespace.Id,
 ///         PartitionCount = 2,
 ///         MessageRetention = 1,
 ///     });
@@ -196,11 +193,10 @@ import 'stream_input_event_hub_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
-/// 			Name:              pulumi.String("example-eventhub"),
-/// 			NamespaceName:     exampleEventHubNamespace.Name,
-/// 			ResourceGroupName: exampleResourceGroup.Name,
-/// 			PartitionCount:    pulumi.Int(2),
-/// 			MessageRetention:  pulumi.Int(1),
+/// 			Name:             pulumi.String("example-eventhub"),
+/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			PartitionCount:   pulumi.Int(2),
+/// 			MessageRetention: pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -217,10 +213,10 @@ import 'stream_input_event_hub_state.dart';
 /// 		_, err = streamanalytics.NewStreamInputEventHub(ctx, "example", &streamanalytics.StreamInputEventHubArgs{
 /// 			Name: pulumi.String("eventhub-stream-input"),
 /// 			StreamAnalyticsJobName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return &example.Name, nil
+/// 				return example.Name, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return &example.ResourceGroupName, nil
+/// 				return example.ResourceGroupName, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			EventhubConsumerGroupName: exampleConsumerGroup.Name,
 /// 			EventhubName:              exampleEventHub.Name,
@@ -237,6 +233,58 @@ import 'stream_input_event_hub_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_streamanalytics_getjob" "example" {
+///   name                = "example-job"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "example" {
+///   name                = "example-namespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+///   capacity            = 1
+/// }
+/// resource "azure_eventhub_eventhub" "example" {
+///   name              = "example-eventhub"
+///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   partition_count   = 2
+///   message_retention = 1
+/// }
+/// resource "azure_eventhub_consumergroup" "example" {
+///   name                = "example-consumergroup"
+///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
+///   eventhub_name       = azure_eventhub_eventhub.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_streamanalytics_streaminputeventhub" "example" {
+///   name                         = "eventhub-stream-input"
+///   stream_analytics_job_name    = data.azure_streamanalytics_getjob.example.name
+///   resource_group_name          = data.azure_streamanalytics_getjob.example.resource_group_name
+///   eventhub_consumer_group_name = azure_eventhub_consumergroup.example.name
+///   eventhub_name                = azure_eventhub_eventhub.example.name
+///   servicebus_namespace         = azure_eventhub_eventhubnamespace.example.name
+///   shared_access_policy_key     = azure_eventhub_eventhubnamespace.example.default_primary_key
+///   shared_access_policy_name    = "RootManageSharedAccessKey"
+///   serialization = {
+///     type     = "Json"
+///     encoding = "UTF8"
+///   }
 /// }
 /// ```
 /// ```java
@@ -258,8 +306,8 @@ import 'stream_input_event_hub_state.dart';
 /// import com.pulumi.azure.streamanalytics.StreamInputEventHub;
 /// import com.pulumi.azure.streamanalytics.StreamInputEventHubArgs;
 /// import com.pulumi.azure.streamanalytics.inputs.StreamInputEventHubSerializationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,8 +339,7 @@ import 'stream_input_event_hub_state.dart';
 ///
 ///         var exampleEventHub = new EventHub("exampleEventHub", EventHubArgs.builder()
 ///             .name("example-eventhub")
-///             .namespaceName(exampleEventHubNamespace.name())
-///             .resourceGroupName(exampleResourceGroup.name())
+///             .namespaceId(exampleEventHubNamespace.id())
 ///             .partitionCount(2)
 ///             .messageRetention(1)
 ///             .build());
@@ -344,8 +391,7 @@ import 'stream_input_event_hub_state.dart';
 ///     name: example
 ///     properties:
 ///       name: example-eventhub
-///       namespaceName: ${exampleEventHubNamespace.name}
-///       resourceGroupName: ${exampleResourceGroup.name}
+///       namespaceId: ${exampleEventHubNamespace.id}
 ///       partitionCount: 2
 ///       messageRetention: 1
 ///   exampleConsumerGroup:

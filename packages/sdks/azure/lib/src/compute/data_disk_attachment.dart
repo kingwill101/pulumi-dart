@@ -6,7 +6,7 @@ import 'data_disk_attachment_state.dart';
 ///
 /// &gt; **NOTE:** Data Disks can be attached either directly on the `azure.compute.VirtualMachine` resource, or using the `azure.compute.DataDiskAttachment` resource - but the two cannot be used together. If both are used against the same Virtual Machine, spurious changes will occur.
 ///
-/// &gt; **Please Note:** only Managed Disks are supported via this separate resource, Unmanaged Disks can be attached using the `storage_data_disk` block in the `azure.compute.VirtualMachine` resource.
+/// &gt; **Please Note:** only Managed Disks are supported via this separate resource, Unmanaged Disks can be attached using the `storageDataDisk` block in the `azure.compute.VirtualMachine` resource.
 ///
 /// ## Example Usage
 ///
@@ -49,7 +49,7 @@ import 'data_disk_attachment_state.dart';
 ///     location: example.location,
 ///     resourceGroupName: example.name,
 ///     networkInterfaceIds: [mainNetworkInterface.id],
-///     vmSize: "Standard_F2",
+///     vmSize: "Standard_D4_v5",
 ///     storageImageReference: {
 ///         publisher: "Canonical",
 ///         offer: "0001-com-ubuntu-server-jammy",
@@ -122,7 +122,7 @@ import 'data_disk_attachment_state.dart';
 ///     location=example.location,
 ///     resource_group_name=example.name,
 ///     network_interface_ids=[main_network_interface.id],
-///     vm_size="Standard_F2",
+///     vm_size="Standard_D4_v5",
 ///     storage_image_reference={
 ///         "publisher": "Canonical",
 ///         "offer": "0001-com-ubuntu-server-jammy",
@@ -221,7 +221,7 @@ import 'data_disk_attachment_state.dart';
 ///         {
 ///             mainNetworkInterface.Id,
 ///         },
-///         VmSize = "Standard_F2",
+///         VmSize = "Standard_D4_v5",
 ///         StorageImageReference = new Azure.Compute.Inputs.VirtualMachineStorageImageReferenceArgs
 ///         {
 ///             Publisher = "Canonical",
@@ -340,7 +340,7 @@ import 'data_disk_attachment_state.dart';
 /// 			NetworkInterfaceIds: pulumi.StringArray{
 /// 				mainNetworkInterface.ID(),
 /// 			},
-/// 			VmSize: pulumi.String("Standard_F2"),
+/// 			VmSize: pulumi.String("Standard_D4_v5"),
 /// 			StorageImageReference: &compute.VirtualMachineStorageImageReferenceArgs{
 /// 				Publisher: pulumi.String("Canonical"),
 /// 				Offer:     pulumi.String("0001-com-ubuntu-server-jammy"),
@@ -389,6 +389,90 @@ import 'data_disk_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     ="${var.prefix}-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "main" {
+///   name                ="${var.prefix}-network"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "internal" {
+///   name                 = "internal"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.main.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "main" {
+///   name                ="${var.prefix}-nic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "internal"
+///     subnet_id                     = azure_network_subnet.internal.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_virtualmachine" "example" {
+///   name                  = local.vmName
+///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   network_interface_ids = [azure_network_networkinterface.main.id]
+///   vm_size               = "Standard_D4_v5"
+///   storage_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+///   storage_os_disk = {
+///     name              = "myosdisk1"
+///     caching           = "ReadWrite"
+///     create_option     = "FromImage"
+///     managed_disk_type = "Standard_LRS"
+///   }
+///   os_profile = {
+///     computer_name  = local.vmName
+///     admin_username = "testadmin"
+///     admin_password = "Password1234!"
+///   }
+///   os_profile_linux_config = {
+///     disable_password_authentication = false
+///   }
+/// }
+/// resource "azure_compute_manageddisk" "example" {
+///   name                 ="${local.vmName}-disk1"
+///   location             = azure_core_resourcegroup.example.location
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   storage_account_type = "Standard_LRS"
+///   create_option        = "Empty"
+///   disk_size_gb         = 10
+/// }
+/// resource "azure_compute_datadiskattachment" "example" {
+///   managed_disk_id    = azure_compute_manageddisk.example.id
+///   virtual_machine_id = azure_compute_virtualmachine.example.id
+///   lun                = "10"
+///   caching            = "ReadWrite"
+/// }
+/// variable "prefix" {
+///   type    = string
+///   default = "example"
+/// }
+/// locals {
+///   vmName ="${var.prefix}-vm"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -414,8 +498,8 @@ import 'data_disk_attachment_state.dart';
 /// import com.pulumi.azure.compute.ManagedDiskArgs;
 /// import com.pulumi.azure.compute.DataDiskAttachment;
 /// import com.pulumi.azure.compute.DataDiskAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -466,7 +550,7 @@ import 'data_disk_attachment_state.dart';
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
 ///             .networkInterfaceIds(mainNetworkInterface.id())
-///             .vmSize("Standard_F2")
+///             .vmSize("Standard_D4_v5")
 ///             .storageImageReference(VirtualMachineStorageImageReferenceArgs.builder()
 ///                 .publisher("Canonical")
 ///                 .offer("0001-com-ubuntu-server-jammy")
@@ -555,7 +639,7 @@ import 'data_disk_attachment_state.dart';
 ///       resourceGroupName: ${example.name}
 ///       networkInterfaceIds:
 ///         - ${mainNetworkInterface.id}
-///       vmSize: Standard_F2
+///       vmSize: Standard_D4_v5
 ///       storageImageReference:
 ///         publisher: Canonical
 ///         offer: 0001-com-ubuntu-server-jammy

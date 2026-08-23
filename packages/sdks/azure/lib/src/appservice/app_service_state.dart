@@ -17,7 +17,7 @@ class AppServiceState {
   final pulumi.Input<String>? appServicePlanId;
   /// A key-value pair of App Settings.
   final pulumi.Input<Map<String, String>>? appSettings;
-  /// A `auth_settings` block as defined below.
+  /// A `authSettings` block as defined below.
   final pulumi.Input<AppServiceAuthSettings>? authSettings;
   /// A `backup` block as defined below.
   final pulumi.Input<AppServiceBackup>? backup;
@@ -25,9 +25,9 @@ class AppServiceState {
   final pulumi.Input<bool>? clientAffinityEnabled;
   /// Does the App Service require client certificates for incoming requests? Defaults to `false`.
   final pulumi.Input<bool>? clientCertEnabled;
-  /// Mode of client certificates for this App Service. Possible values are `Required`, `Optional` and `OptionalInteractiveUser`. If this parameter is set, `client_cert_enabled` must be set to `true`, otherwise this parameter is ignored.
+  /// Mode of client certificates for this App Service. Possible values are `Required`, `Optional` and `OptionalInteractiveUser`. If this parameter is set, `clientCertEnabled` must be set to `true`, otherwise this parameter is ignored.
   final pulumi.Input<String>? clientCertMode;
-  /// One or more `connection_string` blocks as defined below.
+  /// One or more `connectionString` blocks as defined below.
   final pulumi.Input<List<AppServiceConnectionString>>? connectionStrings;
   /// An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   final pulumi.Input<String>? customDomainVerificationId;
@@ -51,19 +51,19 @@ class AppServiceState {
   final pulumi.Input<List<String>>? outboundIpAddressLists;
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`
   final pulumi.Input<String>? outboundIpAddresses;
-  /// A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12", "52.143.43.17"]` - not all of which are necessarily in use. Superset of `outbound_ip_address_list`.
+  /// A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12", "52.143.43.17"]` - not all of which are necessarily in use. Superset of `outboundIpAddressList`.
   final pulumi.Input<List<String>>? possibleOutboundIpAddressLists;
-  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   final pulumi.Input<String>? possibleOutboundIpAddresses;
   /// The name of the resource group in which to create the App Service. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-  /// A `site_config` block as defined below.
+  /// A `siteConfig` block as defined below.
   final pulumi.Input<AppServiceSiteConfig>? siteConfig;
-  /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service.
+  /// A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service.
   final pulumi.Input<List<AppServiceSiteCredential>>? siteCredentials;
-  /// A `source_control` block as defined below.
+  /// A `sourceControl` block as defined below.
   final pulumi.Input<AppServiceSourceControl>? sourceControl;
-  /// One or more `storage_account` blocks as defined below.
+  /// One or more `storageAccount` blocks as defined below.
   final pulumi.Input<List<AppServiceStorageAccount>>? storageAccounts;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
@@ -71,12 +71,12 @@ class AppServiceState {
   /// Creates a new [AppServiceState].
   /// [appServicePlanId] The ID of the App Service Plan within which to create this App Service.
   /// [appSettings] A key-value pair of App Settings.
-  /// [authSettings] A `auth_settings` block as defined below.
+  /// [authSettings] A `authSettings` block as defined below.
   /// [backup] A `backup` block as defined below.
   /// [clientAffinityEnabled] Should the App Service send session affinity cookies, which route client requests in the same session to the same instance?
   /// [clientCertEnabled] Does the App Service require client certificates for incoming requests? Defaults to `false`.
-  /// [clientCertMode] Mode of client certificates for this App Service. Possible values are `Required`, `Optional` and `OptionalInteractiveUser`. If this parameter is set, `client_cert_enabled` must be set to `true`, otherwise this parameter is ignored.
-  /// [connectionStrings] One or more `connection_string` blocks as defined below.
+  /// [clientCertMode] Mode of client certificates for this App Service. Possible values are `Required`, `Optional` and `OptionalInteractiveUser`. If this parameter is set, `clientCertEnabled` must be set to `true`, otherwise this parameter is ignored.
+  /// [connectionStrings] One or more `connectionString` blocks as defined below.
   /// [customDomainVerificationId] An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   /// [defaultSiteHostname] The Default Hostname associated with the App Service - such as `mysite.azurewebsites.net`
   /// [enabled] Is the App Service Enabled? Defaults to `true`.
@@ -88,13 +88,13 @@ class AppServiceState {
   /// [name] Specifies the name of the App Service. Changing this forces a new resource to be created.
   /// [outboundIpAddressLists] A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12"]`
   /// [outboundIpAddresses] A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`
-  /// [possibleOutboundIpAddressLists] A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12", "52.143.43.17"]` - not all of which are necessarily in use. Superset of `outbound_ip_address_list`.
-  /// [possibleOutboundIpAddresses] A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// [possibleOutboundIpAddressLists] A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12", "52.143.43.17"]` - not all of which are necessarily in use. Superset of `outboundIpAddressList`.
+  /// [possibleOutboundIpAddresses] A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   /// [resourceGroupName] The name of the resource group in which to create the App Service. Changing this forces a new resource to be created.
-  /// [siteConfig] A `site_config` block as defined below.
-  /// [siteCredentials] A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service.
-  /// [sourceControl] A `source_control` block as defined below.
-  /// [storageAccounts] One or more `storage_account` blocks as defined below.
+  /// [siteConfig] A `siteConfig` block as defined below.
+  /// [siteCredentials] A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service.
+  /// [sourceControl] A `sourceControl` block as defined below.
+  /// [storageAccounts] One or more `storageAccount` blocks as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   const AppServiceState({
     this.appServicePlanId,
@@ -190,4 +190,3 @@ class AppServiceState {
     );
   }
 }
-

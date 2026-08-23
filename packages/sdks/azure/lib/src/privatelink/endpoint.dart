@@ -343,7 +343,7 @@ import 'endpoint_state.dart';
 /// 			},
 /// 			LoadBalancerFrontendIpConfigurationIds: pulumi.StringArray{
 /// 				pulumi.String(exampleLoadBalancer.FrontendIpConfigurations.ApplyT(func(frontendIpConfigurations []lb.LoadBalancerFrontendIpConfiguration) (*string, error) {
-/// 					return &frontendIpConfigurations[0].Id, nil
+/// 					return frontendIpConfigurations[0].Id, nil
 /// 				}).(pulumi.StringPtrOutput)),
 /// 			},
 /// 		})
@@ -366,6 +366,79 @@ import 'endpoint_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-network"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "service" {
+///   name                                          = "service"
+///   resource_group_name                           = azure_core_resourcegroup.example.name
+///   virtual_network_name                          = azure_network_virtualnetwork.example.name
+///   address_prefixes                              = ["10.0.1.0/24"]
+///   enforce_private_link_service_network_policies = true
+/// }
+/// resource "azure_network_subnet" "endpoint" {
+///   name                                           = "endpoint"
+///   resource_group_name                            = azure_core_resourcegroup.example.name
+///   virtual_network_name                           = azure_network_virtualnetwork.example.name
+///   address_prefixes                               = ["10.0.2.0/24"]
+///   enforce_private_link_endpoint_network_policies = true
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "example-pip"
+///   sku                 = "Standard"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+/// }
+/// resource "azure_lb_loadbalancer" "example" {
+///   name                = "example-lb"
+///   sku                 = "Standard"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   frontend_ip_configurations {
+///     name                 = azure_network_publicip.example.name
+///     public_ip_address_id = azure_network_publicip.example.id
+///   }
+/// }
+/// resource "azure_privatedns_linkservice" "example" {
+///   name                = "example-privatelink"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   nat_ip_configurations {
+///     name      = azure_network_publicip.example.name
+///     primary   = true
+///     subnet_id = azure_network_subnet.service.id
+///   }
+///   load_balancer_frontend_ip_configuration_ids = [azure_lb_loadbalancer.example.frontend_ip_configurations[0].id]
+/// }
+/// resource "azure_privatelink_endpoint" "example" {
+///   name                = "example-endpoint"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   subnet_id           = azure_network_subnet.endpoint.id
+///   private_service_connection = {
+///     name                           = "example-privateserviceconnection"
+///     private_connection_resource_id = azure_privatedns_linkservice.example.id
+///     is_manual_connection           = false
+///   }
 /// }
 /// ```
 /// ```java
@@ -391,8 +464,8 @@ import 'endpoint_state.dart';
 /// import com.pulumi.azure.privatelink.Endpoint;
 /// import com.pulumi.azure.privatelink.EndpointArgs;
 /// import com.pulumi.azure.privatelink.inputs.EndpointPrivateServiceConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -709,6 +782,41 @@ import 'endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getresourcegroup" "example" {
+///   name = "example-resources"
+/// }
+/// data "azure_network_getvirtualnetwork" "vnet" {
+///   name                = "example-network"
+///   resource_group_name = data.azure_core_getresourcegroup.example.name
+/// }
+/// data "azure_network_getsubnet" "subnet" {
+///   name                 = "default"
+///   virtual_network_name = data.azure_network_getvirtualnetwork.vnet.name
+///   resource_group_name  = data.azure_core_getresourcegroup.example.name
+/// }
+///
+/// resource "azure_privatelink_endpoint" "example" {
+///   name                = "example-endpoint"
+///   location            = data.azure_core_getresourcegroup.example.location
+///   resource_group_name = data.azure_core_getresourcegroup.example.name
+///   subnet_id           = data.azure_network_getsubnet.subnet.id
+///   private_service_connection = {
+///     name                              = "example-privateserviceconnection"
+///     private_connection_resource_alias = "example-privatelinkservice.d20286c8-4ea5-11eb-9584-8f53157226c6.centralus.azure.privatelinkservice"
+///     is_manual_connection              = true
+///     request_message                   = "PL"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -723,8 +831,8 @@ import 'endpoint_state.dart';
 /// import com.pulumi.azure.privatelink.Endpoint;
 /// import com.pulumi.azure.privatelink.EndpointArgs;
 /// import com.pulumi.azure.privatelink.inputs.EndpointPrivateServiceConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1091,6 +1199,65 @@ import 'endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "exampleaccount"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "virtnetname"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "subnetname"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_privatelink_endpoint" "example" {
+///   name                = "example-endpoint"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   subnet_id           = azure_network_subnet.example.id
+///   private_service_connection = {
+///     name                           = "example-privateserviceconnection"
+///     private_connection_resource_id = azure_storage_account.example.id
+///     subresource_names              = ["blob"]
+///     is_manual_connection           = false
+///   }
+///   private_dns_zone_group = {
+///     name                 = "example-dns-zone-group"
+///     private_dns_zone_ids = [azure_privatedns_zone.example.id]
+///   }
+/// }
+/// resource "azure_privatedns_zone" "example" {
+///   name                = "privatelink.blob.core.windows.net"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_privatedns_zonevirtualnetworklink" "example" {
+///   name                  = "example-link"
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   private_dns_zone_name = azure_privatedns_zone.example.name
+///   virtual_network_id    = azure_network_virtualnetwork.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1113,8 +1280,8 @@ import 'endpoint_state.dart';
 /// import com.pulumi.azure.privatelink.inputs.EndpointPrivateDnsZoneGroupArgs;
 /// import com.pulumi.azure.privatedns.ZoneVirtualNetworkLink;
 /// import com.pulumi.azure.privatedns.ZoneVirtualNetworkLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1280,23 +1447,23 @@ import 'endpoint_state.dart';
 /// $ pulumi import azure:privatelink/endpoint:Endpoint example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/privateEndpoints/endpoint1
 /// ```
 class Endpoint extends pulumi.CustomResource {
-  /// A `custom_dns_configs` block as defined below.
+  /// A `customDnsConfigs` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> customDnsConfigs;
   /// The custom name of the network interface attached to the private endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> customNetworkInterfaceName;
-  /// One or more `ip_configuration` blocks as defined below. This allows a static IP address to be set for this Private Endpoint, otherwise an address is dynamically allocated from the Subnet.
+  /// One or more `ipConfiguration` blocks as defined below. This allows a static IP address to be set for this Private Endpoint, otherwise an address is dynamically allocated from the Subnet.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A `network_interface` block as defined below.
+  /// A `networkInterface` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
-  /// A `private_dns_zone_configs` block as defined below.
+  /// A `privateDnsZoneConfigs` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> privateDnsZoneConfigs;
-  /// A `private_dns_zone_group` block as defined below.
+  /// A `privateDnsZoneGroup` block as defined below.
   late final pulumi.Output<EndpointPrivateDnsZoneGroup?> privateDnsZoneGroup;
-  /// A `private_service_connection` block as defined below.
+  /// A `privateServiceConnection` block as defined below.
   late final pulumi.Output<EndpointPrivateServiceConnection> privateServiceConnection;
   /// Specifies the Name of the Resource Group within which the Private Endpoint should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;

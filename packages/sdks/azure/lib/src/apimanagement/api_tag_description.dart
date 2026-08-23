@@ -208,6 +208,51 @@ import 'api_tag_description_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "My Company"
+///   publisher_email     = "company@terraform.io"
+///   sku_name            = "Developer_1"
+/// }
+/// resource "azure_apimanagement_api" "example" {
+///   name                = "example-api"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   api_management_name = azure_apimanagement_service.example.name
+///   revision            = "1"
+///   display_name        = "Example API"
+///   path                = "example"
+///   protocols           = ["https"]
+///   import = {
+///     content_format = "swagger-link-json"
+///     content_value  = "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/refs/heads/main/internal/services/apimanagement/testdata/api_management_api_swagger.json"
+///   }
+/// }
+/// resource "azure_apimanagement_tag" "example" {
+///   api_management_id = azure_apimanagement_service.example.id
+///   name              = "example-Tag"
+/// }
+/// resource "azure_apimanagement_apitagdescription" "example" {
+///   api_tag_id                = azure_apimanagement_tag.example.id
+///   description               = "This is an example description"
+///   external_docs_url         = "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs"
+///   external_docs_description = "This is an example external docs description"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -225,8 +270,8 @@ import 'api_tag_description_state.dart';
 /// import com.pulumi.azure.apimanagement.TagArgs;
 /// import com.pulumi.azure.apimanagement.ApiTagDescription;
 /// import com.pulumi.azure.apimanagement.ApiTagDescriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

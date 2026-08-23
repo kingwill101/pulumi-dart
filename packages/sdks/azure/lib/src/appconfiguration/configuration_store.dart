@@ -94,6 +94,25 @@ import 'configuration_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appconfiguration_configurationstore" "appconf" {
+///   name                = "appConf1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +123,8 @@ import 'configuration_store_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.appconfiguration.ConfigurationStore;
 /// import com.pulumi.azure.appconfiguration.ConfigurationStoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -649,6 +668,85 @@ import 'configuration_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "example-identity"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                       = "exampleKVt123"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   soft_delete_retention_days = 7
+///   purge_protection_enabled   = true
+/// }
+/// resource "azure_keyvault_accesspolicy" "server" {
+///   key_vault_id       = azure_keyvault_keyvault.example.id
+///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///   object_id          = azure_authorization_userassignedidentity.example.principal_id
+///   key_permissions    = ["Get", "UnwrapKey", "WrapKey"]
+///   secret_permissions = ["Get"]
+/// }
+/// resource "azure_keyvault_accesspolicy" "client" {
+///   key_vault_id       = azure_keyvault_keyvault.example.id
+///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///   object_id          = data.azure_core_getclientconfig.current.object_id
+///   key_permissions    = ["Get", "Create", "Delete", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify", "GetRotationPolicy"]
+///   secret_permissions = ["Get"]
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_accesspolicy.client, azure_keyvault_accesspolicy.server]
+///   name         = "exampleKVkey"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_appconfiguration_configurationstore" "example" {
+///   depends_on                 = [azure_keyvault_accesspolicy.client, azure_keyvault_accesspolicy.server]
+///   name                       = "appConf2"
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resourcegroup.example.location
+///   sku                        = "standard"
+///   local_auth_enabled         = true
+///   public_network_access      = "Enabled"
+///   purge_protection_enabled   = false
+///   soft_delete_retention_days = 1
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+///   encryption = {
+///     key_vault_key_identifier = azure_keyvault_key.example.id
+///     identity_client_id       = azure_authorization_userassignedidentity.example.client_id
+///   }
+///   replicas {
+///     name     = "replica1"
+///     location = "West US"
+///   }
+///   tags = {
+///     "environment" = "development"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -672,8 +770,8 @@ import 'configuration_store_state.dart';
 /// import com.pulumi.azure.appconfiguration.inputs.ConfigurationStoreEncryptionArgs;
 /// import com.pulumi.azure.appconfiguration.inputs.ConfigurationStoreReplicaArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -924,7 +1022,7 @@ class ConfigurationStore extends pulumi.CustomResource {
   late final pulumi.Output<String?> dataPlaneProxyAuthenticationMode;
   /// Whether data plane proxy private link delegation is enabled. Defaults to `false`.
   ///
-  /// &gt; **Note:** `data_plane_proxy_private_link_delegation_enabled` cannot be set to `true` when `data_plane_proxy_authentication_mode` is set to `Local`.
+  /// &gt; **Note:** `dataPlaneProxyPrivateLinkDelegationEnabled` cannot be set to `true` when `dataPlaneProxyAuthenticationMode` is set to `Local`.
   late final pulumi.Output<bool?> dataPlaneProxyPrivateLinkDelegationEnabled;
   /// An `encryption` block as defined below.
   late final pulumi.Output<ConfigurationStoreEncryption?> encryption;
@@ -938,25 +1036,25 @@ class ConfigurationStore extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// Specifies the name of the App Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A `primary_read_key` block as defined below containing the primary read access key.
+  /// A `primaryReadKey` block as defined below containing the primary read access key.
   late final pulumi.Output<List<Map<String, dynamic>>> primaryReadKeys;
-  /// A `primary_write_key` block as defined below containing the primary write access key.
+  /// A `primaryWriteKey` block as defined below containing the primary write access key.
   late final pulumi.Output<List<Map<String, dynamic>>> primaryWriteKeys;
   /// The Public Network Access setting of the App Configuration. Possible values are `Enabled` and `Disabled`.
   ///
-  /// &gt; **Note:** If `public_network_access` is not specified, the App Configuration will be created as  `Automatic`. However, once a different value is defined, can not be set again as automatic.
+  /// &gt; **Note:** If `publicNetworkAccess` is not specified, the App Configuration will be created as  `Automatic`. However, once a different value is defined, can not be set again as automatic.
   late final pulumi.Output<String?> publicNetworkAccess;
   /// Whether Purge Protection is enabled. This field only works for `standard` sku. Defaults to `false`.
   ///
-  /// !&gt; **Note:** Once Purge Protection has been enabled it's not possible to disable it. Deleting the App Configuration with Purge Protection enabled will schedule the App Configuration to be deleted (which will happen by Azure in the configured number of days).
+  /// &gt; **Note:** Once Purge Protection has been enabled it's not possible to disable it. Deleting the App Configuration with Purge Protection enabled will schedule the App Configuration to be deleted (which will happen by Azure in the configured number of days).
   late final pulumi.Output<bool?> purgeProtectionEnabled;
   /// One or more `replica` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> replicas;
   /// The name of the resource group in which to create the App Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `secondary_read_key` block as defined below containing the secondary read access key.
+  /// A `secondaryReadKey` block as defined below containing the secondary read access key.
   late final pulumi.Output<List<Map<String, dynamic>>> secondaryReadKeys;
-  /// A `secondary_write_key` block as defined below containing the secondary write access key.
+  /// A `secondaryWriteKey` block as defined below containing the secondary write access key.
   late final pulumi.Output<List<Map<String, dynamic>>> secondaryWriteKeys;
   /// The SKU name of the App Configuration. Possible values are `free`, `developer`, `standard` and `premium`. Defaults to `free`.
   ///

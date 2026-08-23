@@ -15,7 +15,7 @@ class ConfigurationStoreState {
   final pulumi.Input<String>? dataPlaneProxyAuthenticationMode;
   /// Whether data plane proxy private link delegation is enabled. Defaults to `false`.
   ///
-  /// &gt; **Note:** `data_plane_proxy_private_link_delegation_enabled` cannot be set to `true` when `data_plane_proxy_authentication_mode` is set to `Local`.
+  /// &gt; **Note:** `dataPlaneProxyPrivateLinkDelegationEnabled` cannot be set to `true` when `dataPlaneProxyAuthenticationMode` is set to `Local`.
   final pulumi.Input<bool>? dataPlaneProxyPrivateLinkDelegationEnabled;
   /// An `encryption` block as defined below.
   final pulumi.Input<ConfigurationStoreEncryption>? encryption;
@@ -29,25 +29,25 @@ class ConfigurationStoreState {
   final pulumi.Input<String>? location;
   /// Specifies the name of the App Configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// A `primary_read_key` block as defined below containing the primary read access key.
+  /// A `primaryReadKey` block as defined below containing the primary read access key.
   final pulumi.Input<List<ConfigurationStorePrimaryReadKey>>? primaryReadKeys;
-  /// A `primary_write_key` block as defined below containing the primary write access key.
+  /// A `primaryWriteKey` block as defined below containing the primary write access key.
   final pulumi.Input<List<ConfigurationStorePrimaryWriteKey>>? primaryWriteKeys;
   /// The Public Network Access setting of the App Configuration. Possible values are `Enabled` and `Disabled`.
   ///
-  /// &gt; **Note:** If `public_network_access` is not specified, the App Configuration will be created as  `Automatic`. However, once a different value is defined, can not be set again as automatic.
+  /// &gt; **Note:** If `publicNetworkAccess` is not specified, the App Configuration will be created as  `Automatic`. However, once a different value is defined, can not be set again as automatic.
   final pulumi.Input<String>? publicNetworkAccess;
   /// Whether Purge Protection is enabled. This field only works for `standard` sku. Defaults to `false`.
   ///
-  /// !&gt; **Note:** Once Purge Protection has been enabled it's not possible to disable it. Deleting the App Configuration with Purge Protection enabled will schedule the App Configuration to be deleted (which will happen by Azure in the configured number of days).
+  /// &gt; **Note:** Once Purge Protection has been enabled it's not possible to disable it. Deleting the App Configuration with Purge Protection enabled will schedule the App Configuration to be deleted (which will happen by Azure in the configured number of days).
   final pulumi.Input<bool>? purgeProtectionEnabled;
   /// One or more `replica` blocks as defined below.
   final pulumi.Input<List<ConfigurationStoreReplica>>? replicas;
   /// The name of the resource group in which to create the App Configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-  /// A `secondary_read_key` block as defined below containing the secondary read access key.
+  /// A `secondaryReadKey` block as defined below containing the secondary read access key.
   final pulumi.Input<List<ConfigurationStoreSecondaryReadKey>>? secondaryReadKeys;
-  /// A `secondary_write_key` block as defined below containing the secondary write access key.
+  /// A `secondaryWriteKey` block as defined below containing the secondary write access key.
   final pulumi.Input<List<ConfigurationStoreSecondaryWriteKey>>? secondaryWriteKeys;
   /// The SKU name of the App Configuration. Possible values are `free`, `developer`, `standard` and `premium`. Defaults to `free`.
   ///
@@ -69,14 +69,14 @@ class ConfigurationStoreState {
   /// [localAuthEnabled] Whether local authentication methods is enabled. Defaults to `true`.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the App Configuration. Changing this forces a new resource to be created.
-  /// [primaryReadKeys] A `primary_read_key` block as defined below containing the primary read access key.
-  /// [primaryWriteKeys] A `primary_write_key` block as defined below containing the primary write access key.
+  /// [primaryReadKeys] A `primaryReadKey` block as defined below containing the primary read access key.
+  /// [primaryWriteKeys] A `primaryWriteKey` block as defined below containing the primary write access key.
   /// [publicNetworkAccess] The Public Network Access setting of the App Configuration. Possible values are `Enabled` and `Disabled`.
   /// [purgeProtectionEnabled] Whether Purge Protection is enabled. This field only works for `standard` sku. Defaults to `false`.
   /// [replicas] One or more `replica` blocks as defined below.
   /// [resourceGroupName] The name of the resource group in which to create the App Configuration. Changing this forces a new resource to be created.
-  /// [secondaryReadKeys] A `secondary_read_key` block as defined below containing the secondary read access key.
-  /// [secondaryWriteKeys] A `secondary_write_key` block as defined below containing the secondary write access key.
+  /// [secondaryReadKeys] A `secondaryReadKey` block as defined below containing the secondary read access key.
+  /// [secondaryWriteKeys] A `secondaryWriteKey` block as defined below containing the secondary write access key.
   /// [sku] The SKU name of the App Configuration. Possible values are `free`, `developer`, `standard` and `premium`. Defaults to `free`.
   /// [softDeleteRetentionDays] The number of days that items should be retained for once soft-deleted. This field only works for `standard` sku. This value can be between `1` and `7` days. Defaults to `7`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
@@ -150,4 +150,3 @@ class ConfigurationStoreState {
     );
   }
 }
-

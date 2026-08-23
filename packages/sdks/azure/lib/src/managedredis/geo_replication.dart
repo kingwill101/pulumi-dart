@@ -4,7 +4,7 @@ import 'geo_replication_state.dart';
 
 /// Manages Managed Redis Geo-Replication by linking and unlinking databases in a geo-replication group.
 ///
-/// &gt; **Note:** This resource manages the geo-replication group membership for Managed Redis databases. All databases to be linked must have `geo_replication_group_name` provided with the same value. Linking will [discard cache data and cause temporary outage](https://learn.microsoft.com/azure/redis/how-to-active-geo-replication#add-an-existing-instance-to-an-active-geo-replication-group).
+/// &gt; **Note:** This resource manages the geo-replication group membership for Managed Redis databases. All databases to be linked must have `geoReplicationGroupName` provided with the same value. Linking will [discard cache data and cause temporary outage](https://learn.microsoft.com/azure/redis/how-to-active-geo-replication#add-an-existing-instance-to-an-active-geo-replication-group).
 ///
 /// ## Example Usage
 ///
@@ -171,6 +171,42 @@ import 'geo_replication_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-managedredis"
+///   location = "West Europe"
+/// }
+/// resource "azure_managedredis_managedredis" "amr1" {
+///   name                = "example-managedredis-amr1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = "West Europe"
+///   sku_name            = "Balanced_B3"
+///   default_database = {
+///     geo_replication_group_name = "example-geo-group"
+///   }
+/// }
+/// resource "azure_managedredis_managedredis" "amr2" {
+///   name                = "example-managedredis-amr2"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = "Central US"
+///   sku_name            = "Balanced_B3"
+///   default_database = {
+///     geo_replication_group_name = "example-geo-group"
+///   }
+/// }
+/// resource "azure_managedredis_georeplication" "example" {
+///   managed_redis_id         = azure_managedredis_managedredis.amr1.id
+///   linked_managed_redis_ids = [azure_managedredis_managedredis.amr2.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -184,8 +220,8 @@ import 'geo_replication_state.dart';
 /// import com.pulumi.azure.managedredis.inputs.ManagedRedisDefaultDatabaseArgs;
 /// import com.pulumi.azure.managedredis.GeoReplication;
 /// import com.pulumi.azure.managedredis.GeoReplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,7 +316,7 @@ import 'geo_replication_state.dart';
 /// $ pulumi import azure:managedredis/geoReplication:GeoReplication example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Cache/redisEnterprise/cluster1
 /// ```
 class GeoReplication extends pulumi.CustomResource {
-  /// A set of other Managed Redis IDs to link together in the geo-replication group. The ID of this Managed Redis is always included by default and does not need to be provided here. Can contain up to 4 Managed Redis IDs, making up a group of 5 in total. All Managed Redis must have the same `geo_replication_group_name` configured. Once linked, the geo-replication state of all Managed Redis will be updated.
+  /// A set of other Managed Redis IDs to link together in the geo-replication group. The ID of this Managed Redis is always included by default and does not need to be provided here. Can contain up to 4 Managed Redis IDs, making up a group of 5 in total. All Managed Redis must have the same `geoReplicationGroupName` configured. Once linked, the geo-replication state of all Managed Redis will be updated.
   late final pulumi.Output<List<String>> linkedManagedRedisIds;
   /// The ID of the Managed Redis through which geo-replication group will be managed. Linking is reciprocal, if A is linked to B, both A and B will have the same linking state. There is no need to have duplicate `azure.managedredis.GeoReplication` resources for each. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managedRedisId;

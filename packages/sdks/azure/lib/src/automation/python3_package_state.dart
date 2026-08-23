@@ -67,4 +67,3 @@ class Python3PackageState {
     );
   }
 }
-

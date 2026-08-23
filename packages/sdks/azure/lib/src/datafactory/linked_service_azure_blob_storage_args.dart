@@ -16,11 +16,11 @@ class LinkedServiceAzureBlobStorageArgs {
   final pulumi.Input<Map<String, String>>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service.
   final pulumi.Input<List<String>>? annotations;
-  /// The connection string. Conflicts with `connection_string_insecure`, `sas_uri` and `service_endpoint`.
+  /// The connection string. Conflicts with `connectionStringInsecure`, `sasUri` and `serviceEndpoint`.
   final pulumi.Input<String>? connectionString;
-  /// The connection string sent insecurely. Conflicts with `connection_string`, `sas_uri` and `service_endpoint`.
+  /// The connection string sent insecurely. Conflicts with `connectionString`, `sasUri` and `serviceEndpoint`.
   ///
-  /// &gt; **Note:** `connection_string` uses the Azure [SecureString](https://learn.microsoft.com/en-us/dotnet/api/microsoft.azure.management.datafactory.models.securestring) to encrypt the contents within the REST payload sent to Azure whilst the `connection_string_insecure` is sent as a regular string. Both properties are still sent using SSL/HTTPS. At this time the portal will not decrypt Secure Strings so the `connection_string` property in the portal will show as `******` whilst `connection_string_insecure` will be viewable in the portal.
+  /// &gt; **Note:** `connectionString` uses the Azure [SecureString](https://learn.microsoft.com/en-us/dotnet/api/microsoft.azure.management.datafactory.models.securestring) to encrypt the contents within the REST payload sent to Azure whilst the `connectionStringInsecure` is sent as a regular string. Both properties are still sent using SSL/HTTPS. At this time the portal will not decrypt Secure Strings so the `connectionString` property in the portal will show as `******` whilst `connectionStringInsecure` will be viewable in the portal.
   final pulumi.Input<String>? connectionStringInsecure;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
@@ -33,9 +33,9 @@ class LinkedServiceAzureBlobStorageArgs {
   final pulumi.Input<String>? name;
   /// A map of parameters to associate with the Data Factory Linked Service.
   final pulumi.Input<Map<String, String>>? parameters;
-  /// A `sas_token_linked_key_vault_key` block as defined below. Use this argument to store SAS Token in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. A `sas_uri` is required.
+  /// A `sasTokenLinkedKeyVaultKey` block as defined below. Use this argument to store SAS Token in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. A `sasUri` is required.
   final pulumi.Input<LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey>? sasTokenLinkedKeyVaultKey;
-  /// The SAS URI. Conflicts with `connection_string_insecure`, `connection_string` and `service_endpoint`.
+  /// The SAS URI. Conflicts with `connectionStringInsecure`, `connectionString` and `serviceEndpoint`.
   final pulumi.Input<String>? sasUri;
   final pulumi.Input<String>? serviceEndpoint;
   final pulumi.Input<String>? servicePrincipalId;
@@ -48,16 +48,16 @@ class LinkedServiceAzureBlobStorageArgs {
   /// Creates a new [LinkedServiceAzureBlobStorageArgs].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Linked Service.
   /// [annotations] List of tags that can be used for describing the Data Factory Linked Service.
-  /// [connectionString] The connection string. Conflicts with `connection_string_insecure`, `sas_uri` and `service_endpoint`.
-  /// [connectionStringInsecure] The connection string sent insecurely. Conflicts with `connection_string`, `sas_uri` and `service_endpoint`.
+  /// [connectionString] The connection string. Conflicts with `connectionStringInsecure`, `sasUri` and `serviceEndpoint`.
+  /// [connectionStringInsecure] The connection string sent insecurely. Conflicts with `connectionString`, `sasUri` and `serviceEndpoint`.
   /// [dataFactoryId] The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   /// [description] The description for the Data Factory Linked Service.
   /// [integrationRuntimeName] The integration runtime reference to associate with the Data Factory Linked Service.
   /// [keyVaultSasToken] Optional.
   /// [name] Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
-  /// [sasTokenLinkedKeyVaultKey] A `sas_token_linked_key_vault_key` block as defined below. Use this argument to store SAS Token in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. A `sas_uri` is required.
-  /// [sasUri] The SAS URI. Conflicts with `connection_string_insecure`, `connection_string` and `service_endpoint`.
+  /// [sasTokenLinkedKeyVaultKey] A `sasTokenLinkedKeyVaultKey` block as defined below. Use this argument to store SAS Token in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. A `sasUri` is required.
+  /// [sasUri] The SAS URI. Conflicts with `connectionStringInsecure`, `connectionString` and `serviceEndpoint`.
   /// [serviceEndpoint] Optional.
   /// [servicePrincipalId] Optional.
   /// [servicePrincipalKey] Optional.
@@ -135,4 +135,3 @@ class LinkedServiceAzureBlobStorageArgs {
     );
   }
 }
-

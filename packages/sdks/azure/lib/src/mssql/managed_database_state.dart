@@ -6,13 +6,13 @@ import 'managed_database_point_in_time_restore.dart';
 
 /// Input properties used for looking up and filtering ManagedDatabase resources.
 class ManagedDatabaseState {
-  /// A `long_term_retention_policy` block as defined below.
+  /// A `longTermRetentionPolicy` block as defined below.
   final pulumi.Input<ManagedDatabaseLongTermRetentionPolicy>? longTermRetentionPolicy;
   /// The ID of the Azure SQL Managed Instance on which to create this Managed Database. Changing this forces a new resource to be created.
   final pulumi.Input<String>? managedInstanceId;
   /// The name of the Managed Database to create. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// A `point_in_time_restore` block as defined below. Changing this forces a new resource to be created.
+  /// A `pointInTimeRestore` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ManagedDatabasePointInTimeRestore>? pointInTimeRestore;
   /// The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
   final pulumi.Input<int>? shortTermRetentionDays;
@@ -20,10 +20,10 @@ class ManagedDatabaseState {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ManagedDatabaseState].
-  /// [longTermRetentionPolicy] A `long_term_retention_policy` block as defined below.
+  /// [longTermRetentionPolicy] A `longTermRetentionPolicy` block as defined below.
   /// [managedInstanceId] The ID of the Azure SQL Managed Instance on which to create this Managed Database. Changing this forces a new resource to be created.
   /// [name] The name of the Managed Database to create. Changing this forces a new resource to be created.
-  /// [pointInTimeRestore] A `point_in_time_restore` block as defined below. Changing this forces a new resource to be created.
+  /// [pointInTimeRestore] A `pointInTimeRestore` block as defined below. Changing this forces a new resource to be created.
   /// [shortTermRetentionDays] The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
   /// [tags] A mapping of tags to assign to the resource.
   const ManagedDatabaseState({
@@ -57,4 +57,3 @@ class ManagedDatabaseState {
     );
   }
 }
-

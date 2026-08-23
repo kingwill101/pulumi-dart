@@ -12,7 +12,7 @@ class GetReplicationRecoveryPlanResult {
   final String id;
   /// Name of the Action.
   final String name;
-  /// `recovery_group` block defined as below.
+  /// `recoveryGroup` block defined as below.
   final List<GetReplicationRecoveryPlanRecoveryGroup> recoveryGroups;
   final String recoveryVaultId;
   /// The ID of source fabric to be recovered from.
@@ -25,7 +25,7 @@ class GetReplicationRecoveryPlanResult {
   /// [failoverDeploymentModel] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Name of the Action.
-  /// [recoveryGroups] `recovery_group` block defined as below.
+  /// [recoveryGroups] `recoveryGroup` block defined as below.
   /// [recoveryVaultId] Required.
   /// [sourceRecoveryFabricId] The ID of source fabric to be recovered from.
   /// [targetRecoveryFabricId] The ID of target fabric to recover.
@@ -66,4 +66,3 @@ class GetReplicationRecoveryPlanResult {
     );
   }
 }
-

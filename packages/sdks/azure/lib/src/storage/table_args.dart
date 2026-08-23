@@ -12,24 +12,31 @@ class TableArgs {
   final pulumi.Input<List<TableAcl>>? acls;
   /// The name of the storage table. Only Alphanumeric characters allowed, starting with a letter. Must be unique within the storage account the table is located. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+  /// Specifies the ID of the storage account in which to create the storage table. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? storageAccountId;
   /// Specifies the storage account in which to create the storage table. Changing this forces a new resource to be created.
-  final pulumi.Input<String> storageAccountName;
+  ///
+  /// &gt; **Note:** This property is deprecated in favour of `storageAccountId` and will be removed in version 5.0 of the AzureRM Provider.
+  final pulumi.Input<String>? storageAccountName;
 
   /// Creates a new [TableArgs].
   /// [acls] One or more `acl` blocks as defined below.
   /// [name] The name of the storage table. Only Alphanumeric characters allowed, starting with a letter. Must be unique within the storage account the table is located. Changing this forces a new resource to be created.
+  /// [storageAccountId] Specifies the ID of the storage account in which to create the storage table. Changing this forces a new resource to be created.
   /// [storageAccountName] Specifies the storage account in which to create the storage table. Changing this forces a new resource to be created.
   const TableArgs({
     this.acls,
     this.name,
-    required this.storageAccountName,
+    this.storageAccountId,
+    this.storageAccountName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'acls': ?pulumi.Input.mapOptionalInputValue<List<TableAcl>, List<Map<String, dynamic>>>(acls, (value) => pulumi.Input.encodeList<TableAcl, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
-      'storageAccountName': storageAccountName,
+      'storageAccountId': ?storageAccountId,
+      'storageAccountName': ?storageAccountName,
     };
   }
 
@@ -37,8 +44,8 @@ class TableArgs {
     return TableArgs(
       acls: (() { final guardedValue = map['acls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TableAcl>(guardedValue, (value) => TableAcl.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageAccountName: pulumi.Input.fromValue(map['storageAccountName'] as String),
+      storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

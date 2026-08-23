@@ -5,13 +5,13 @@ import 'endpoint_state.dart';
 
 /// A CDN (classic) Endpoint is the entity within a CDN Profile containing configuration information regarding caching behaviours and origins. The CDN Endpoint is exposed using the URL format `&lt;endpointname&gt;.azureedge.net`.
 ///
-/// !&gt; **Note:** Azure rolled out a breaking change on Friday 9th April 2021 which may cause issues with the CDN/FrontDoor resources. More information is available in this GitHub issue - unfortunately this may necessitate a breaking change to the CDN (classic) and FrontDoor (classic) resources, more information will be posted in the GitHub issue as the necessary changes are identified.
+/// &gt; **Note:** Azure rolled out a breaking change on Friday 9th April 2021 which may cause issues with the CDN/FrontDoor resources. More information is available in this GitHub issue - unfortunately this may necessitate a breaking change to the CDN (classic) and FrontDoor (classic) resources, more information will be posted in the GitHub issue as the necessary changes are identified.
 ///
-/// !&gt; **Note:** Support for the CDN (classic) `sku` `Standard_Akamai` was deprecated from Azure on `October 31, 2023` and is no longer available.
+/// &gt; **Note:** Support for the CDN (classic) `sku` `Standard_Akamai` was deprecated from Azure on `October 31, 2023` and is no longer available.
 ///
-/// !&gt; **Note:** Support for the CDN (classic) `sku` `Standard_Verizon` and `Premium_Verizon` was deprecated from Azure on `January 15, 2025` and is no longer available.
+/// &gt; **Note:** Support for the CDN (classic) `sku` `Standard_Verizon` and `Premium_Verizon` was deprecated from Azure on `January 15, 2025` and is no longer available.
 ///
-/// !&gt; **Note:** Support for the CDN (classic) `sku` `Standard_Microsoft` and `Standard_ChinaCdn` will be deprecated from Azure on `October 1, 2025` and will no longer be available, however modifications to existing CDN (classic) resources will continue to be supported until the API reaches full retirement on `September 30, 2027`.
+/// &gt; **Note:** Support for the CDN (classic) `sku` `Standard_Microsoft` and `Standard_ChinaCdn` will be deprecated from Azure on `October 1, 2025` and will no longer be available, however modifications to existing CDN (classic) resources will continue to be supported until the API reaches full retirement on `September 30, 2027`.
 ///
 /// ## Example Usage
 ///
@@ -149,6 +149,36 @@ import 'endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_cdn_profile" "example" {
+///   name                = "example-cdn"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard_Microsoft"
+/// }
+/// resource "azure_cdn_endpoint" "example" {
+///   name                = "example"
+///   profile_name        = azure_cdn_profile.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   origins {
+///     name      = "example"
+///     host_name = "www.contoso.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -162,8 +192,8 @@ import 'endpoint_state.dart';
 /// import com.pulumi.azure.cdn.Endpoint;
 /// import com.pulumi.azure.cdn.EndpointArgs;
 /// import com.pulumi.azure.cdn.inputs.EndpointOriginArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -240,13 +270,13 @@ import 'endpoint_state.dart';
 class Endpoint extends pulumi.CustomResource {
   /// An array of strings that indicates a content types on which compression will be applied. The value for the elements should be MIME types.
   late final pulumi.Output<List<String>?> contentTypesToCompresses;
-  /// Rules for the rules engine. An endpoint can contain up until 4 of those rules that consist of conditions and actions. A `delivery_rule` blocks as defined below.
+  /// Rules for the rules engine. An endpoint can contain up until 4 of those rules that consist of conditions and actions. A `deliveryRule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> deliveryRules;
   /// The Fully Qualified Domain Name of the CDN Endpoint.
   late final pulumi.Output<String> fqdn;
-  /// A set of Geo Filters for this CDN Endpoint. Each `geo_filter` block supports fields documented below.
+  /// A set of Geo Filters for this CDN Endpoint. Each `geoFilter` block supports fields documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> geoFilters;
-  /// Actions that are valid for all resources regardless of any conditions. A `global_delivery_rule` block as defined below.
+  /// Actions that are valid for all resources regardless of any conditions. A `globalDeliveryRule` block as defined below.
   late final pulumi.Output<EndpointGlobalDeliveryRule?> globalDeliveryRule;
   /// Indicates whether compression is to be enabled.
   late final pulumi.Output<bool?> isCompressionEnabled;
@@ -266,9 +296,9 @@ class Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<String?> originPath;
   /// The set of origins of the CDN endpoint. When multiple origins exist, the first origin will be used as primary and rest will be used as failover options. Each `origin` block supports fields documented below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> origins;
-  /// the path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the `origin_path`.
+  /// the path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the `originPath`.
   ///
-  /// &gt; **Note:** `global_delivery_rule` and `delivery_rule` are currently only available for `Microsoft_Standard` CDN profiles.
+  /// &gt; **Note:** `globalDeliveryRule` and `deliveryRule` are currently only available for `Microsoft_Standard` CDN profiles.
   late final pulumi.Output<String?> probePath;
   /// The CDN Profile to which to attach the CDN Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> profileName;

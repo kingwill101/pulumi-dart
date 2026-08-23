@@ -48,7 +48,7 @@ import 'packet_capture_storage_location.dart';
 ///     location: example.location,
 ///     resourceGroupName: example.name,
 ///     networkInterfaceIds: [exampleNetworkInterface.id],
-///     vmSize: "Standard_F2",
+///     vmSize: "Standard_D4_v5",
 ///     storageImageReference: {
 ///         publisher: "Canonical",
 ///         offer: "0001-com-ubuntu-server-jammy",
@@ -131,7 +131,7 @@ import 'packet_capture_storage_location.dart';
 ///     location=example.location,
 ///     resource_group_name=example.name,
 ///     network_interface_ids=[example_network_interface.id],
-///     vm_size="Standard_F2",
+///     vm_size="Standard_D4_v5",
 ///     storage_image_reference={
 ///         "publisher": "Canonical",
 ///         "offer": "0001-com-ubuntu-server-jammy",
@@ -242,7 +242,7 @@ import 'packet_capture_storage_location.dart';
 ///         {
 ///             exampleNetworkInterface.Id,
 ///         },
-///         VmSize = "Standard_F2",
+///         VmSize = "Standard_D4_v5",
 ///         StorageImageReference = new Azure.Compute.Inputs.VirtualMachineStorageImageReferenceArgs
 ///         {
 ///             Publisher = "Canonical",
@@ -379,7 +379,7 @@ import 'packet_capture_storage_location.dart';
 /// 			NetworkInterfaceIds: pulumi.StringArray{
 /// 				exampleNetworkInterface.ID(),
 /// 			},
-/// 			VmSize: pulumi.String("Standard_F2"),
+/// 			VmSize: pulumi.String("Standard_D4_v5"),
 /// 			StorageImageReference: &compute.VirtualMachineStorageImageReferenceArgs{
 /// 				Publisher: pulumi.String("Canonical"),
 /// 				Offer:     pulumi.String("0001-com-ubuntu-server-jammy"),
@@ -442,6 +442,98 @@ import 'packet_capture_storage_location.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkwatcher" "example" {
+///   name                = "example-nw"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-network"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "internal"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "example" {
+///   name                = "example-nic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "testconfiguration1"
+///     subnet_id                     = azure_network_subnet.example.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_virtualmachine" "example" {
+///   name                  = "example-vm"
+///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   network_interface_ids = [azure_network_networkinterface.example.id]
+///   vm_size               = "Standard_D4_v5"
+///   storage_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+///   storage_os_disk = {
+///     name              = "osdisk"
+///     caching           = "ReadWrite"
+///     create_option     = "FromImage"
+///     managed_disk_type = "Standard_LRS"
+///   }
+///   os_profile = {
+///     computer_name  = "pctest-vm"
+///     admin_username = "testadmin"
+///     admin_password = "Password1234!"
+///   }
+///   os_profile_linux_config = {
+///     disable_password_authentication = false
+///   }
+/// }
+/// resource "azure_compute_extension" "example" {
+///   name                       = "network-watcher"
+///   virtual_machine_id         = azure_compute_virtualmachine.example.id
+///   publisher                  = "Microsoft.Azure.NetworkWatcher"
+///   type                       = "NetworkWatcherAgentLinux"
+///   type_handler_version       = "1.4"
+///   auto_upgrade_minor_version = true
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplesa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_compute_packetcapture" "example" {
+///   depends_on         = [azure_compute_extension.example]
+///   name               = "example-pc"
+///   network_watcher_id = azure_network_networkwatcher.example.id
+///   virtual_machine_id = azure_compute_virtualmachine.example.id
+///   storage_location = {
+///     storage_account_id = azure_storage_account.example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -473,8 +565,8 @@ import 'packet_capture_storage_location.dart';
 /// import com.pulumi.azure.compute.PacketCaptureArgs;
 /// import com.pulumi.azure.compute.inputs.PacketCaptureStorageLocationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -527,7 +619,7 @@ import 'packet_capture_storage_location.dart';
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
 ///             .networkInterfaceIds(exampleNetworkInterface.id())
-///             .vmSize("Standard_F2")
+///             .vmSize("Standard_D4_v5")
 ///             .storageImageReference(VirtualMachineStorageImageReferenceArgs.builder()
 ///                 .publisher("Canonical")
 ///                 .offer("0001-com-ubuntu-server-jammy")
@@ -633,7 +725,7 @@ import 'packet_capture_storage_location.dart';
 ///       resourceGroupName: ${example.name}
 ///       networkInterfaceIds:
 ///         - ${exampleNetworkInterface.id}
-///       vmSize: Standard_F2
+///       vmSize: Standard_D4_v5
 ///       storageImageReference:
 ///         publisher: Canonical
 ///         offer: 0001-com-ubuntu-server-jammy
@@ -713,7 +805,7 @@ class PacketCapture extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The resource ID of the Network Watcher. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkWatcherId;
-  /// A `storage_location` block as defined below. Changing this forces a new resource to be created.
+  /// A `storageLocation` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<PacketCaptureStorageLocation> storageLocation;
   /// The resource ID of the target Virtual Machine to capture packets from. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineId;

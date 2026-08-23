@@ -47,8 +47,7 @@ import 'event_grid_data_connection_state.dart';
 /// });
 /// const exampleEventHub = new azure.eventhub.EventHub("example", {
 ///     name: "eventhub-example",
-///     namespaceName: exampleEventHubNamespace.name,
-///     resourceGroupName: example.name,
+///     namespaceId: exampleEventHubNamespace.id,
 ///     partitionCount: 1,
 ///     messageRetention: 1,
 /// });
@@ -123,8 +122,7 @@ import 'event_grid_data_connection_state.dart';
 ///     sku="Standard")
 /// example_event_hub = azure.eventhub.EventHub("example",
 ///     name="eventhub-example",
-///     namespace_name=example_event_hub_namespace.name,
-///     resource_group_name=example.name,
+///     namespace_id=example_event_hub_namespace.id,
 ///     partition_count=1,
 ///     message_retention=1)
 /// example_consumer_group = azure.eventhub.ConsumerGroup("example",
@@ -215,8 +213,7 @@ import 'event_grid_data_connection_state.dart';
 ///     var exampleEventHub = new Azure.EventHub.EventHub("example", new()
 ///     {
 ///         Name = "eventhub-example",
-///         NamespaceName = exampleEventHubNamespace.Name,
-///         ResourceGroupName = example.Name,
+///         NamespaceId = exampleEventHubNamespace.Id,
 ///         PartitionCount = 1,
 ///         MessageRetention = 1,
 ///     });
@@ -334,11 +331,10 @@ import 'event_grid_data_connection_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
-/// 			Name:              pulumi.String("eventhub-example"),
-/// 			NamespaceName:     exampleEventHubNamespace.Name,
-/// 			ResourceGroupName: example.Name,
-/// 			PartitionCount:    pulumi.Int(1),
-/// 			MessageRetention:  pulumi.Int(1),
+/// 			Name:             pulumi.String("eventhub-example"),
+/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			PartitionCount:   pulumi.Int(1),
+/// 			MessageRetention: pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -391,6 +387,87 @@ import 'event_grid_data_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_kusto_cluster" "example" {
+///   name                = "examplekustocluster"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Standard_D13_v2"
+///     capacity = 2
+///   }
+/// }
+/// resource "azure_kusto_database" "example" {
+///   name                = "example-kusto-database"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cluster_name        = azure_kusto_cluster.example.name
+///   hot_cache_period    = "P7D"
+///   soft_delete_period  = "P31D"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "storageaccountname"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "example" {
+///   name                = "eventhubnamespace-example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_eventhub_eventhub" "example" {
+///   name              = "eventhub-example"
+///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   partition_count   = 1
+///   message_retention = 1
+/// }
+/// resource "azure_eventhub_consumergroup" "example" {
+///   name                = "consumergroup-example"
+///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
+///   eventhub_name       = azure_eventhub_eventhub.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_eventgrid_eventsubscription" "example" {
+///   name                  = "eventgrid-example"
+///   scope                 = azure_storage_account.example.id
+///   eventhub_endpoint_id  = azure_eventhub_eventhub.example.id
+///   event_delivery_schema = "EventGridSchema"
+///   included_event_types  = ["Microsoft.Storage.BlobCreated", "Microsoft.Storage.BlobRenamed"]
+///   retry_policy = {
+///     event_time_to_live    = 144
+///     max_delivery_attempts = 10
+///   }
+/// }
+/// resource "azure_kusto_eventgriddataconnection" "example" {
+///   depends_on                   = [azure_eventgrid_eventsubscription.example]
+///   name                         = "my-kusto-eventgrid-data-connection"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   cluster_name                 = azure_kusto_cluster.example.name
+///   database_name                = azure_kusto_database.example.name
+///   storage_account_id           = azure_storage_account.example.id
+///   eventhub_id                  = azure_eventhub_eventhub.example.id
+///   eventhub_consumer_group_name = azure_eventhub_consumergroup.example.name
+///   table_name                   = "my-table"
+///   mapping_rule_name            = "my-table-mapping"
+///   data_format                  = "JSON"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -418,8 +495,8 @@ import 'event_grid_data_connection_state.dart';
 /// import com.pulumi.azure.kusto.EventGridDataConnection;
 /// import com.pulumi.azure.kusto.EventGridDataConnectionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -472,8 +549,7 @@ import 'event_grid_data_connection_state.dart';
 ///
 ///         var exampleEventHub = new EventHub("exampleEventHub", EventHubArgs.builder()
 ///             .name("eventhub-example")
-///             .namespaceName(exampleEventHubNamespace.name())
-///             .resourceGroupName(example.name())
+///             .namespaceId(exampleEventHubNamespace.id())
 ///             .partitionCount(1)
 ///             .messageRetention(1)
 ///             .build());
@@ -567,8 +643,7 @@ import 'event_grid_data_connection_state.dart';
 ///     name: example
 ///     properties:
 ///       name: eventhub-example
-///       namespaceName: ${exampleEventHubNamespace.name}
-///       resourceGroupName: ${example.name}
+///       namespaceId: ${exampleEventHubNamespace.id}
 ///       partitionCount: 1
 ///       messageRetention: 1
 ///   exampleConsumerGroup:

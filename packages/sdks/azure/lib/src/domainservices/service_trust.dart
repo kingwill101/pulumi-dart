@@ -105,6 +105,28 @@ import 'service_trust_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_domainservices_getservice" "example" {
+///   name                = "example-ds"
+///   resource_group_name = "example-rg"
+/// }
+///
+/// resource "azure_domainservices_servicetrust" "example" {
+///   name                   = "example-trust"
+///   domain_service_id      = data.azure_domainservices_getservice.example.id
+///   trusted_domain_fqdn    = "example.com"
+///   trusted_domain_dns_ips = ["10.1.0.3", "10.1.0.4"]
+///   password               = "Password123"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +137,8 @@ import 'service_trust_state.dart';
 /// import com.pulumi.azure.domainservices.inputs.GetServiceArgs;
 /// import com.pulumi.azure.domainservices.ServiceTrust;
 /// import com.pulumi.azure.domainservices.ServiceTrustArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

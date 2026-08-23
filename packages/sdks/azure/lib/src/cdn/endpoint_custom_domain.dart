@@ -6,11 +6,11 @@ import 'endpoint_custom_domain_user_managed_https.dart';
 
 /// Manages a Custom Domain for a CDN (classic) Endpoint.
 ///
-/// !&gt; **Note:** Support for the CDN (classic) `sku` `Standard_Akamai` was deprecated from Azure on `October 31, 2023` and is no longer available.
+/// &gt; **Note:** Support for the CDN (classic) `sku` `Standard_Akamai` was deprecated from Azure on `October 31, 2023` and is no longer available.
 ///
-/// !&gt; **Note:** Support for the CDN (classic) `sku` values `Standard_Verizon` and `Premium_Verizon` were deprecated from Azure on `January 15, 2025` and are no longer available.
+/// &gt; **Note:** Support for the CDN (classic) `sku` values `Standard_Verizon` and `Premium_Verizon` were deprecated from Azure on `January 15, 2025` and are no longer available.
 ///
-/// !&gt; **Note:** Support for the CDN (classic) `sku` values `Standard_Microsoft` and `Standard_ChinaCdn` will be deprecated from Azure on `October 1, 2025` and will no longer be available, however, modifications to existing CDN (classic) resources will continue to be supported until the API reaches full retirement on `September 30, 2027`.
+/// &gt; **Note:** Support for the CDN (classic) `sku` values `Standard_Microsoft` and `Standard_ChinaCdn` will be deprecated from Azure on `October 1, 2025` and will no longer be available, however, modifications to existing CDN (classic) resources will continue to be supported until the API reaches full retirement on `September 30, 2027`.
 ///
 /// ## Example Usage
 ///
@@ -266,6 +266,60 @@ import 'endpoint_custom_domain_user_managed_https.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_dns_getzone" "example" {
+///   name                = "example-domain.com"
+///   resource_group_name = "domain-rg"
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "west europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+/// }
+/// resource "azure_cdn_profile" "example" {
+///   name                = "example-profile"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard_Microsoft"
+/// }
+/// resource "azure_cdn_endpoint" "example" {
+///   name                = "example-endpoint"
+///   profile_name        = azure_cdn_profile.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   origins {
+///     name      = "example"
+///     host_name = azure_storage_account.example.primary_blob_host
+///   }
+/// }
+/// resource "azure_dns_cnamerecord" "example" {
+///   name                = "example"
+///   zone_name           = data.azure_dns_getzone.example.name
+///   resource_group_name = data.azure_dns_getzone.example.resource_group_name
+///   ttl                 = 3600
+///   target_resource_id  = azure_cdn_endpoint.example.id
+/// }
+/// resource "azure_cdn_endpointcustomdomain" "example" {
+///   name            = "example-domain"
+///   cdn_endpoint_id = azure_cdn_endpoint.example.id
+///   host_name       ="${azure_dns_cnamerecord.example.name}.${data.azure_dns_getzone.example.name}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -287,8 +341,8 @@ import 'endpoint_custom_domain_user_managed_https.dart';
 /// import com.pulumi.azure.dns.CNameRecordArgs;
 /// import com.pulumi.azure.cdn.EndpointCustomDomain;
 /// import com.pulumi.azure.cdn.EndpointCustomDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -425,15 +479,15 @@ import 'endpoint_custom_domain_user_managed_https.dart';
 class EndpointCustomDomain extends pulumi.CustomResource {
   /// The ID of the CDN Endpoint. Changing this forces a new CDN Endpoint Custom Domain to be created.
   late final pulumi.Output<String> cdnEndpointId;
-  /// A `cdn_managed_https` block as defined below.
+  /// A `cdnManagedHttps` block as defined below.
   late final pulumi.Output<EndpointCustomDomainCdnManagedHttps?> cdnManagedHttps;
   /// The host name of the custom domain. Changing this forces a new CDN Endpoint Custom Domain to be created.
   late final pulumi.Output<String> hostName;
   /// The name which should be used for this CDN Endpoint Custom Domain. Changing this forces a new CDN Endpoint Custom Domain to be created.
   late final pulumi.Output<String> name;
-  /// A `user_managed_https` block as defined below.
+  /// A `userManagedHttps` block as defined below.
   ///
-  /// &gt; **Note:** Only one of `cdn_managed_https` and `user_managed_https` can be specified.
+  /// &gt; **Note:** Only one of `cdnManagedHttps` and `userManagedHttps` can be specified.
   late final pulumi.Output<EndpointCustomDomainUserManagedHttps?> userManagedHttps;
 
   /// Creates a new [EndpointCustomDomain].

@@ -30,7 +30,7 @@ class CassandraDatacenterState {
   final pulumi.Input<List<String>>? seedNodeIpAddresses;
   /// Determines the selected sku. Defaults to `Standard_E16s_v5`.
   ///
-  /// &gt; **Note:** In v4.0 of the provider the `sku_name` will have a default value of `Standard_E16s_v5`.
+  /// &gt; **Note:** In v4.0 of the provider the `skuName` will have a default value of `Standard_E16s_v5`.
   final pulumi.Input<String>? skuName;
 
   /// Creates a new [CassandraDatacenterState].
@@ -99,4 +99,3 @@ class CassandraDatacenterState {
     );
   }
 }
-

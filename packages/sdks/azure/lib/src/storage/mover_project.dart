@@ -110,6 +110,30 @@ import 'mover_project_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_mover" "example" {
+///   name                = "example-ssm"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_storage_moverproject" "example" {
+///   name             = "example-sp"
+///   storage_mover_id = azure_storage_mover.example.id
+///   description      = "Example Project Description"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +146,8 @@ import 'mover_project_state.dart';
 /// import com.pulumi.azure.storage.MoverArgs;
 /// import com.pulumi.azure.storage.MoverProject;
 /// import com.pulumi.azure.storage.MoverProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

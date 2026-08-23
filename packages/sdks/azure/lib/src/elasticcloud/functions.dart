@@ -71,6 +71,27 @@ import 'get_elasticsearch_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_elasticcloud_getelasticsearch" "example" {
+///   name                = "my-elastic-search"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "elasticsearchEndpoint" {
+///   value = data.azure_elasticcloud_getelasticsearch.example.elasticsearch_service_url
+/// }
+/// output "kibanaEndpoint" {
+///   value = data.azure_elasticcloud_getelasticsearch.example.kibana_service_url
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +100,8 @@ import 'get_elasticsearch_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.elasticcloud.ElasticcloudFunctions;
 /// import com.pulumi.azure.elasticcloud.inputs.GetElasticsearchArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

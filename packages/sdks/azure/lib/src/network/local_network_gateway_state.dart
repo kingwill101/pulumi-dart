@@ -7,13 +7,13 @@ import 'local_network_gateway_bgp_settings.dart';
 class LocalNetworkGatewayState {
   /// The list of string CIDRs representing the address spaces the gateway exposes.
   final pulumi.Input<List<String>>? addressSpaces;
-  /// A `bgp_settings` block as defined below containing the Local Network Gateway's BGP speaker settings.
+  /// A `bgpSettings` block as defined below containing the Local Network Gateway's BGP speaker settings.
   final pulumi.Input<LocalNetworkGatewayBgpSettings>? bgpSettings;
   /// The gateway IP address to connect with.
   final pulumi.Input<String>? gatewayAddress;
   /// The gateway FQDN to connect with.
   ///
-  /// &gt; **Note:** Either `gateway_address` or `gateway_fqdn` should be specified.
+  /// &gt; **Note:** Either `gatewayAddress` or `gatewayFqdn` should be specified.
   final pulumi.Input<String>? gatewayFqdn;
   /// The location/region where the local network gateway is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -26,7 +26,7 @@ class LocalNetworkGatewayState {
 
   /// Creates a new [LocalNetworkGatewayState].
   /// [addressSpaces] The list of string CIDRs representing the address spaces the gateway exposes.
-  /// [bgpSettings] A `bgp_settings` block as defined below containing the Local Network Gateway's BGP speaker settings.
+  /// [bgpSettings] A `bgpSettings` block as defined below containing the Local Network Gateway's BGP speaker settings.
   /// [gatewayAddress] The gateway IP address to connect with.
   /// [gatewayFqdn] The gateway FQDN to connect with.
   /// [location] The location/region where the local network gateway is created. Changing this forces a new resource to be created.
@@ -70,4 +70,3 @@ class LocalNetworkGatewayState {
     );
   }
 }
-

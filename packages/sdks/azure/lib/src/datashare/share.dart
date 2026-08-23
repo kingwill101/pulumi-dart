@@ -166,6 +166,43 @@ import 'share_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datashare_account" "example" {
+///   name                = "example-dsa"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "azure_datashare_share" "example" {
+///   name        = "example_dss"
+///   account_id  = azure_datashare_account.example.id
+///   kind        = "CopyBased"
+///   description = "example desc"
+///   terms       = "example terms"
+///   snapshot_schedule = {
+///     name       = "example-ss"
+///     recurrence = "Day"
+///     start_time = "2020-04-17T04:47:52.9614956Z"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -180,8 +217,8 @@ import 'share_state.dart';
 /// import com.pulumi.azure.datashare.Share;
 /// import com.pulumi.azure.datashare.ShareArgs;
 /// import com.pulumi.azure.datashare.inputs.ShareSnapshotScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -281,7 +318,7 @@ class Share extends pulumi.CustomResource {
   late final pulumi.Output<String> kind;
   /// The name which should be used for this Data Share. Changing this forces a new Data Share to be created.
   late final pulumi.Output<String> name;
-  /// A `snapshot_schedule` block as defined below.
+  /// A `snapshotSchedule` block as defined below.
   late final pulumi.Output<ShareSnapshotSchedule?> snapshotSchedule;
   /// The terms of the Data Share.
   late final pulumi.Output<String?> terms;

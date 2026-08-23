@@ -156,7 +156,7 @@ import 'role_management_policy_state.dart';
 /// 		_, err = pim.NewRoleManagementPolicy(ctx, "example", &pim.RoleManagementPolicyArgs{
 /// 			Scope: example.ID(),
 /// 			RoleDefinitionId: pulumi.String(mgContributor.ApplyT(func(mgContributor authorization.GetRoleDefinitionResult) (*string, error) {
-/// 				return &mgContributor.Id, nil
+/// 				return mgContributor.Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			EligibleAssignmentRules: &pim.RoleManagementPolicyEligibleAssignmentRulesArgs{
 /// 				ExpirationRequired: pulumi.Bool(false),
@@ -187,6 +187,47 @@ import 'role_management_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_authorization_getroledefinition" "mgContributor" {
+///   name  = "Contributor"
+///   scope = azure_management_group.example.id
+/// }
+///
+/// resource "azure_management_group" "example" {
+///   name = "example-group"
+/// }
+/// resource "azure_pim_rolemanagementpolicy" "example" {
+///   scope              = azure_management_group.example.id
+///   role_definition_id = data.azure_authorization_getroledefinition.mgContributor.id
+///   eligible_assignment_rules = {
+///     expiration_required = false
+///   }
+///   active_assignment_rules = {
+///     expire_after = "P90D"
+///   }
+///   activation_rules = {
+///     maximum_duration = "PT1H"
+///     require_approval = true
+///   }
+///   notification_rules = {
+///     active_assignments = {
+///       admin_notifications = {
+///         notification_level    = "Critical"
+///         default_recipients    = false
+///         additional_recipients = ["someone@example.com"]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -205,8 +246,8 @@ import 'role_management_policy_state.dart';
 /// import com.pulumi.azure.pim.inputs.RoleManagementPolicyNotificationRulesArgs;
 /// import com.pulumi.azure.pim.inputs.RoleManagementPolicyNotificationRulesActiveAssignmentsArgs;
 /// import com.pulumi.azure.pim.inputs.RoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotificationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -305,17 +346,17 @@ import 'role_management_policy_state.dart';
 /// $ pulumi import azure:pim/roleManagementPolicy:RoleManagementPolicy example "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleDefinitions/00000000-0000-0000-0000-000000000000|<scope>"
 /// ```
 class RoleManagementPolicy extends pulumi.CustomResource {
-  /// An `activation_rules` block as defined below.
+  /// An `activationRules` block as defined below.
   late final pulumi.Output<RoleManagementPolicyActivationRules> activationRules;
-  /// An `active_assignment_rules` block as defined below.
+  /// An `activeAssignmentRules` block as defined below.
   late final pulumi.Output<RoleManagementPolicyActiveAssignmentRules> activeAssignmentRules;
   /// (String) The description of this policy.
   late final pulumi.Output<String> description;
-  /// An `eligible_assignment_rules` block as defined below.
+  /// An `eligibleAssignmentRules` block as defined below.
   late final pulumi.Output<RoleManagementPolicyEligibleAssignmentRules> eligibleAssignmentRules;
   /// (String) The name of this policy, which is typically a UUID and may change over time.
   late final pulumi.Output<String> name;
-  /// A `notification_rules` block as defined below.
+  /// A `notificationRules` block as defined below.
   late final pulumi.Output<RoleManagementPolicyNotificationRules> notificationRules;
   /// The scoped Role Definition ID of the role for which this policy will apply. Changing this forces a new resource to be created.
   late final pulumi.Output<String> roleDefinitionId;

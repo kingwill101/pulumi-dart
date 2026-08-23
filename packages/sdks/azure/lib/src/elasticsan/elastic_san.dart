@@ -108,6 +108,30 @@ import 'elastic_san_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_elasticsan_elasticsan" "example" {
+///   name                 = "example"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resourcegroup.example.location
+///   base_size_in_tib     = 1
+///   extended_size_in_tib = 2
+///   sku = {
+///     name = "example-value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +143,8 @@ import 'elastic_san_state.dart';
 /// import com.pulumi.azure.elasticsan.ElasticSan;
 /// import com.pulumi.azure.elasticsan.ElasticSanArgs;
 /// import com.pulumi.azure.elasticsan.inputs.ElasticSanSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,11 +213,11 @@ import 'elastic_san_state.dart';
 class ElasticSan extends pulumi.CustomResource {
   /// Specifies the base size of the Elastic SAN resource in TiB. Possible values are between `1` and `100`.
   ///
-  /// &gt; **Note:** When updating `base_size_in_tib`, the new value should be greater than the existing one.
+  /// &gt; **Note:** When updating `baseSizeInTib`, the new value should be greater than the existing one.
   late final pulumi.Output<int> baseSizeInTib;
   /// Specifies the extended size of the Elastic SAN resource in TiB. Possible values are between `1` and `100`.
   ///
-  /// &gt; **Note:** `extended_size_in_tib` cannot be removed and when updating, the new value should be greater than the existing one.
+  /// &gt; **Note:** `extendedSizeInTib` cannot be removed and when updating, the new value should be greater than the existing one.
   late final pulumi.Output<int?> extendedSizeInTib;
   /// The Azure Region where the Elastic SAN resource should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;

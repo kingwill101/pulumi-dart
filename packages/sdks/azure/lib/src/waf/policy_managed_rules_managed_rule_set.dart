@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_managed_rules_managed_rule_set_rule_group_override.dart';
 
 class PolicyManagedRulesManagedRuleSet {
-  /// One or more `rule_group_override` block defined below.
+  /// One or more `ruleGroupOverride` block defined below.
   final pulumi.Input<List<PolicyManagedRulesManagedRuleSetRuleGroupOverride>>? ruleGroupOverrides;
   /// The rule set type. Possible values: `Microsoft_BotManagerRuleSet`, `Microsoft_DefaultRuleSet` and `OWASP`. Defaults to `OWASP`.
   final pulumi.Input<String>? type;
@@ -12,7 +12,7 @@ class PolicyManagedRulesManagedRuleSet {
   final pulumi.Input<String> version;
 
   /// Creates a new [PolicyManagedRulesManagedRuleSet].
-  /// [ruleGroupOverrides] One or more `rule_group_override` block defined below.
+  /// [ruleGroupOverrides] One or more `ruleGroupOverride` block defined below.
   /// [type] The rule set type. Possible values: `Microsoft_BotManagerRuleSet`, `Microsoft_DefaultRuleSet` and `OWASP`. Defaults to `OWASP`.
   /// [version] The rule set version. Possible values: `0.1`, `1.0`, `1.1`, `2.1`, `2.2`, `2.2.9`, `3.0`, `3.1` and `3.2`.
   const PolicyManagedRulesManagedRuleSet({
@@ -37,4 +37,3 @@ class PolicyManagedRulesManagedRuleSet {
     );
   }
 }
-

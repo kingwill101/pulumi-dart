@@ -6,7 +6,7 @@ import 'get_pool_start_task_container_registry.dart';
 class GetPoolStartTaskContainer {
   /// The image to use to create the container in which the task will run.
   final pulumi.Input<String> imageName;
-  /// The same reference as `container_registries` block defined as follows.
+  /// The same reference as `containerRegistries` block defined as follows.
   final pulumi.Input<List<GetPoolStartTaskContainerRegistry>> registries;
   /// Additional options to the container create command.
   final pulumi.Input<String> runOptions;
@@ -15,7 +15,7 @@ class GetPoolStartTaskContainer {
 
   /// Creates a new [GetPoolStartTaskContainer].
   /// [imageName] The image to use to create the container in which the task will run.
-  /// [registries] The same reference as `container_registries` block defined as follows.
+  /// [registries] The same reference as `containerRegistries` block defined as follows.
   /// [runOptions] Additional options to the container create command.
   /// [workingDirectory] A flag to indicate where the container task working directory is.
   const GetPoolStartTaskContainer({
@@ -43,4 +43,3 @@ class GetPoolStartTaskContainer {
     );
   }
 }
-

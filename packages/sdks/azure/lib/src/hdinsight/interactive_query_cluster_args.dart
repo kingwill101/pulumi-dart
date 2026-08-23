@@ -22,11 +22,11 @@ import 'interactive_query_cluster_storage_account_gen2.dart';
 class InteractiveQueryClusterArgs {
   /// Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String> clusterVersion;
-  /// A `component_version` block as defined below.
+  /// A `componentVersion` block as defined below.
   final pulumi.Input<InteractiveQueryClusterComponentVersion> componentVersion;
-  /// A `compute_isolation` block as defined below.
+  /// A `computeIsolation` block as defined below.
   final pulumi.Input<InteractiveQueryClusterComputeIsolation>? computeIsolation;
-  /// A `disk_encryption` block as defined below.
+  /// A `diskEncryption` block as defined below.
   final pulumi.Input<List<InteractiveQueryClusterDiskEncryption>>? diskEncryptions;
   /// Whether encryption in transit is enabled for this Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? encryptionInTransitEnabled;
@@ -44,17 +44,17 @@ class InteractiveQueryClusterArgs {
   final pulumi.Input<String>? name;
   /// A `network` block as defined below.
   final pulumi.Input<InteractiveQueryClusterNetwork>? network;
-  /// A `private_link_configuration` block as defined below.
+  /// A `privateLinkConfiguration` block as defined below.
   final pulumi.Input<InteractiveQueryClusterPrivateLinkConfiguration>? privateLinkConfiguration;
   /// Specifies the name of the Resource Group in which this HDInsight Interactive Query Cluster should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `roles` block as defined below.
   final pulumi.Input<InteractiveQueryClusterRoles> roles;
-  /// A `security_profile` block as defined below. Changing this forces a new resource to be created.
+  /// A `securityProfile` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<InteractiveQueryClusterSecurityProfile>? securityProfile;
-  /// A `storage_account_gen2` block as defined below.
+  /// A `storageAccountGen2` block as defined below.
   final pulumi.Input<InteractiveQueryClusterStorageAccountGen2>? storageAccountGen2;
-  /// One or more `storage_account` block as defined below.
+  /// One or more `storageAccount` block as defined below.
   final pulumi.Input<List<InteractiveQueryClusterStorageAccount>>? storageAccounts;
   /// A map of Tags which should be assigned to this HDInsight Interactive Query Cluster.
   final pulumi.Input<Map<String, String>>? tags;
@@ -67,9 +67,9 @@ class InteractiveQueryClusterArgs {
 
   /// Creates a new [InteractiveQueryClusterArgs].
   /// [clusterVersion] Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
-  /// [componentVersion] A `component_version` block as defined below.
-  /// [computeIsolation] A `compute_isolation` block as defined below.
-  /// [diskEncryptions] A `disk_encryption` block as defined below.
+  /// [componentVersion] A `componentVersion` block as defined below.
+  /// [computeIsolation] A `computeIsolation` block as defined below.
+  /// [diskEncryptions] A `diskEncryption` block as defined below.
   /// [encryptionInTransitEnabled] Whether encryption in transit is enabled for this Cluster. Changing this forces a new resource to be created.
   /// [extension] An `extension` block as defined below.
   /// [gateway] A `gateway` block as defined below.
@@ -78,12 +78,12 @@ class InteractiveQueryClusterArgs {
   /// [monitor] A `monitor` block as defined below.
   /// [name] Specifies the name for this HDInsight Interactive Query Cluster. Changing this forces a new resource to be created.
   /// [network] A `network` block as defined below.
-  /// [privateLinkConfiguration] A `private_link_configuration` block as defined below.
+  /// [privateLinkConfiguration] A `privateLinkConfiguration` block as defined below.
   /// [resourceGroupName] Specifies the name of the Resource Group in which this HDInsight Interactive Query Cluster should exist. Changing this forces a new resource to be created.
   /// [roles] A `roles` block as defined below.
-  /// [securityProfile] A `security_profile` block as defined below. Changing this forces a new resource to be created.
-  /// [storageAccountGen2] A `storage_account_gen2` block as defined below.
-  /// [storageAccounts] One or more `storage_account` block as defined below.
+  /// [securityProfile] A `securityProfile` block as defined below. Changing this forces a new resource to be created.
+  /// [storageAccountGen2] A `storageAccountGen2` block as defined below.
+  /// [storageAccounts] One or more `storageAccount` block as defined below.
   /// [tags] A map of Tags which should be assigned to this HDInsight Interactive Query Cluster.
   /// [tier] Specifies the Tier which should be used for this HDInsight Interactive Query Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
   /// [tlsMinVersion] The minimal supported TLS version. Possible values are 1.0, 1.1 or 1.2. Changing this forces a new resource to be created.
@@ -163,4 +163,3 @@ class InteractiveQueryClusterArgs {
     );
   }
 }
-

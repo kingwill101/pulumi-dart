@@ -22,7 +22,7 @@ class GetEnvironmentResult {
   final String name;
   /// The IP range, in CIDR notation, that is reserved for environment infrastructure IP addresses.
   final String platformReservedCidr;
-  /// The IP address from the IP range defined by `platform_reserved_cidr` that is reserved for the internal DNS server.
+  /// The IP address from the IP range defined by `platformReservedCidr` that is reserved for the internal DNS server.
   final String platformReservedDnsIpAddress;
   /// The public network access setting for this Container App Environment.
   final String publicNetworkAccess;
@@ -43,7 +43,7 @@ class GetEnvironmentResult {
   /// [logAnalyticsWorkspaceName] The name of the Log Analytics Workspace this Container Apps Managed Environment is linked to.
   /// [name] Required.
   /// [platformReservedCidr] The IP range, in CIDR notation, that is reserved for environment infrastructure IP addresses.
-  /// [platformReservedDnsIpAddress] The IP address from the IP range defined by `platform_reserved_cidr` that is reserved for the internal DNS server.
+  /// [platformReservedDnsIpAddress] The IP address from the IP range defined by `platformReservedCidr` that is reserved for the internal DNS server.
   /// [publicNetworkAccess] The public network access setting for this Container App Environment.
   /// [resourceGroupName] Required.
   /// [staticIpAddress] The Static IP address of the Environment.
@@ -106,4 +106,3 @@ class GetEnvironmentResult {
     );
   }
 }
-

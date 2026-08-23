@@ -382,7 +382,7 @@ import 'cosmosdb_data_connection_state.dart';
 /// 			Scope:              exampleResourceGroup.ID(),
 /// 			RoleDefinitionName: pulumi.String(builtin.Name),
 /// 			PrincipalId: pulumi.String(exampleCluster.Identity.ApplyT(func(identity kusto.ClusterIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -437,10 +437,10 @@ import 'cosmosdb_data_connection_state.dart';
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 			AccountName:       exampleAccount.Name,
 /// 			RoleDefinitionId: pulumi.String(example.ApplyT(func(example cosmosdb.GetSqlRoleDefinitionResult) (*string, error) {
-/// 				return &example.Id, nil
+/// 				return example.Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			PrincipalId: pulumi.String(exampleCluster.Identity.ApplyT(func(identity kusto.ClusterIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Scope: exampleAccount.ID(),
 /// 		})
@@ -490,6 +490,105 @@ import 'cosmosdb_data_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+/// data "azure_authorization_getroledefinition" "builtin" {
+///   role_definition_id = "fbdf93bf-df7d-467e-a4d2-9458aa1360c8"
+/// }
+/// data "azure_cosmosdb_getsqlroledefinition" "example" {
+///   role_definition_id  = "00000000-0000-0000-0000-000000000001"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   account_name        = azure_cosmosdb_account.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "exampleRG"
+///   location = "West Europe"
+/// }
+/// resource "azure_authorization_assignment" "example" {
+///   scope                = azure_core_resourcegroup.example.id
+///   role_definition_name = data.azure_authorization_getroledefinition.builtin.name
+///   principal_id         = azure_kusto_cluster.example.identity.principal_id
+/// }
+/// resource "azure_cosmosdb_account" "example" {
+///   name                = "example-ca"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   offer_type          = "Standard"
+///   kind                = "GlobalDocumentDB"
+///   consistency_policy = {
+///     consistency_level       = "Session"
+///     max_interval_in_seconds = 5
+///     max_staleness_prefix    = 100
+///   }
+///   geo_locations {
+///     location          = azure_core_resourcegroup.example.location
+///     failover_priority = 0
+///   }
+/// }
+/// resource "azure_cosmosdb_sqldatabase" "example" {
+///   name                = "examplecosmosdbsqldb"
+///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
+///   account_name        = azure_cosmosdb_account.example.name
+/// }
+/// resource "azure_cosmosdb_sqlcontainer" "example" {
+///   name                = "examplecosmosdbsqlcon"
+///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
+///   account_name        = azure_cosmosdb_account.example.name
+///   database_name       = azure_cosmosdb_sqldatabase.example.name
+///   partition_key_path  = "/part"
+///   throughput          = 400
+/// }
+/// resource "azure_cosmosdb_sqlroleassignment" "example" {
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   account_name        = azure_cosmosdb_account.example.name
+///   role_definition_id  = data.azure_cosmosdb_getsqlroledefinition.example.id
+///   principal_id        = azure_kusto_cluster.example.identity.principal_id
+///   scope               = azure_cosmosdb_account.example.id
+/// }
+/// resource "azure_kusto_cluster" "example" {
+///   name                = "examplekc"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Dev(No SLA)_Standard_D11_v2"
+///     capacity = 1
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_kusto_database" "example" {
+///   name                = "examplekd"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cluster_name        = azure_kusto_cluster.example.name
+/// }
+/// resource "azure_kusto_script" "example" {
+///   name           = "create-table-script"
+///   database_id    = azure_kusto_database.example.id
+///   script_content = ".create table TestTable(Id:string, Name:string, _ts:long, _timestamp:datetime)\n.create table TestTable ingestion json mapping \\\"TestMapping\\\"\n'['\n'    {\\\"column\\\":\\\"Id\\\",\\\"path\\\":\\\"$.id\\\"},'\n'    {\\\"column\\\":\\\"Name\\\",\\\"path\\\":\\\"$.name\\\"},'\n'    {\\\"column\\\":\\\"_ts\\\",\\\"path\\\":\\\"$._ts\\\"},'\n'    {\\\"column\\\":\\\"_timestamp\\\",\\\"path\\\":\\\"$._ts\\\", \\\"transform\\\":\\\"DateTimeFromUnixSeconds\\\"}'\n']'\n.alter table TestTable policy ingestionbatching \\\"{'MaximumBatchingTimeSpan': '0:0:10', 'MaximumNumberOfItems': 10000}\\\"\n"
+/// }
+/// resource "azure_kusto_cosmosdbdataconnection" "example" {
+///   name                  = "examplekcdcd"
+///   location              = azure_core_resourcegroup.example.location
+///   cosmosdb_container_id = azure_cosmosdb_sqlcontainer.example.id
+///   kusto_database_id     = azure_kusto_database.example.id
+///   managed_identity_id   = azure_kusto_cluster.example.id
+///   table_name            = "TestTable"
+///   mapping_rule_name     = "TestMapping"
+///   retrieval_start_date  = "2023-06-26T12:00:00.6554616Z"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -525,8 +624,8 @@ import 'cosmosdb_data_connection_state.dart';
 /// import com.pulumi.azure.kusto.ScriptArgs;
 /// import com.pulumi.azure.kusto.CosmosdbDataConnection;
 /// import com.pulumi.azure.kusto.CosmosdbDataConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

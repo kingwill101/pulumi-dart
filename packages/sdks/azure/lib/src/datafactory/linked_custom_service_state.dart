@@ -13,7 +13,7 @@ class LinkedCustomServiceState {
   final pulumi.Input<String>? dataFactoryId;
   /// The description for the Data Factory Linked Service.
   final pulumi.Input<String>? description;
-  /// An `integration_runtime` block as defined below.
+  /// An `integrationRuntime` block as defined below.
   final pulumi.Input<LinkedCustomServiceIntegrationRuntime>? integrationRuntime;
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
@@ -30,7 +30,7 @@ class LinkedCustomServiceState {
   /// [annotations] List of tags that can be used for describing the Data Factory Linked Service.
   /// [dataFactoryId] The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   /// [description] The description for the Data Factory Linked Service.
-  /// [integrationRuntime] An `integration_runtime` block as defined below.
+  /// [integrationRuntime] An `integrationRuntime` block as defined below.
   /// [name] Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
   /// [type] The type of data stores that will be connected to Data Factory. For full list of supported data stores, please refer to [Azure Data Factory connector](https://docs.microsoft.com/azure/data-factory/connector-overview). Please refer to Microsoft.DataFactory factories/linkedservices for the type values syntax. Changing this forces a new resource to be created.
@@ -75,4 +75,3 @@ class LinkedCustomServiceState {
     );
   }
 }
-

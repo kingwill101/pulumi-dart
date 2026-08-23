@@ -4,28 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountSASPermissions {
   /// Should Add permissions be enabled for this SAS?
-  final pulumi.Input<bool> add;
+  final pulumi.Input<bool>? add;
   /// Should Create permissions be enabled for this SAS?
-  final pulumi.Input<bool> create;
+  final pulumi.Input<bool>? create;
   /// Should Delete permissions be enabled for this SAS?
-  final pulumi.Input<bool> delete;
+  final pulumi.Input<bool>? delete;
   /// Should Filter by Index Tags permissions be enabled for this SAS?
-  ///
-  /// Refer to the [SAS creation reference from Azure](https://docs.microsoft.com/rest/api/storageservices/constructing-an-account-sas)
-  /// for additional details on the fields above.
-  final pulumi.Input<bool> filter;
+  final pulumi.Input<bool>? filter;
   /// Should List permissions be enabled for this SAS?
-  final pulumi.Input<bool> list;
+  final pulumi.Input<bool>? list;
   /// Should Process permissions be enabled for this SAS?
-  final pulumi.Input<bool> process;
+  final pulumi.Input<bool>? process;
   /// Should Read permissions be enabled for this SAS?
-  final pulumi.Input<bool> read;
+  final pulumi.Input<bool>? read;
   /// Should Get / Set Index Tags permissions be enabled for this SAS?
-  final pulumi.Input<bool> tag;
+  final pulumi.Input<bool>? tag;
   /// Should Update permissions be enabled for this SAS?
-  final pulumi.Input<bool> update;
+  final pulumi.Input<bool>? update;
   /// Should Write permissions be enabled for this SAS?
-  final pulumi.Input<bool> write;
+  ///
+  /// &gt; **Note:** Refer to the [SAS creation reference from Azure](https://docs.microsoft.com/rest/api/storageservices/constructing-an-account-sas) for additional details on the fields above.
+  final pulumi.Input<bool>? write;
 
   /// Creates a new [GetAccountSASPermissions].
   /// [add] Should Add permissions be enabled for this SAS?
@@ -39,46 +38,45 @@ class GetAccountSASPermissions {
   /// [update] Should Update permissions be enabled for this SAS?
   /// [write] Should Write permissions be enabled for this SAS?
   const GetAccountSASPermissions({
-    required this.add,
-    required this.create,
-    required this.delete,
-    required this.filter,
-    required this.list,
-    required this.process,
-    required this.read,
-    required this.tag,
-    required this.update,
-    required this.write,
+    this.add,
+    this.create,
+    this.delete,
+    this.filter,
+    this.list,
+    this.process,
+    this.read,
+    this.tag,
+    this.update,
+    this.write,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'add': add,
-      'create': create,
-      'delete': delete,
-      'filter': filter,
-      'list': list,
-      'process': process,
-      'read': read,
-      'tag': tag,
-      'update': update,
-      'write': write,
+      'add': ?add,
+      'create': ?create,
+      'delete': ?delete,
+      'filter': ?filter,
+      'list': ?list,
+      'process': ?process,
+      'read': ?read,
+      'tag': ?tag,
+      'update': ?update,
+      'write': ?write,
     };
   }
 
   factory GetAccountSASPermissions.fromMap(Map<String, dynamic> map) {
     return GetAccountSASPermissions(
-      add: pulumi.Input.fromValue(map['add'] as bool),
-      create: pulumi.Input.fromValue(map['create'] as bool),
-      delete: pulumi.Input.fromValue(map['delete'] as bool),
-      filter: pulumi.Input.fromValue(map['filter'] as bool),
-      list: pulumi.Input.fromValue(map['list'] as bool),
-      process: pulumi.Input.fromValue(map['process'] as bool),
-      read: pulumi.Input.fromValue(map['read'] as bool),
-      tag: pulumi.Input.fromValue(map['tag'] as bool),
-      update: pulumi.Input.fromValue(map['update'] as bool),
-      write: pulumi.Input.fromValue(map['write'] as bool),
+      add: (() { final guardedValue = map['add']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      create: (() { final guardedValue = map['create']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      delete: (() { final guardedValue = map['delete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      list: (() { final guardedValue = map['list']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      process: (() { final guardedValue = map['process']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      read: (() { final guardedValue = map['read']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      update: (() { final guardedValue = map['update']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      write: (() { final guardedValue = map['write']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
-

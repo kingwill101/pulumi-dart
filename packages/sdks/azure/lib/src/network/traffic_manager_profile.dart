@@ -50,7 +50,7 @@ import 'traffic_manager_profile_state.dart';
 /// import pulumi_azure as azure
 /// import pulumi_random as random
 ///
-/// server = random.index.Id("server",
+/// server = random.Id("server",
 ///     keepers={
 ///         aziId: 1,
 ///     },
@@ -87,7 +87,7 @@ import 'traffic_manager_profile_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var server = new Random.Index.Id("server", new()
+///     var server = new Random.Id("server", new()
 ///     {
 ///         Keepers =
 ///         {
@@ -184,6 +184,49 @@ import 'traffic_manager_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_id" "server" {
+///   keepers = {
+///     "aziId" = 1
+///   }
+///   byte_length = 8
+/// }
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "trafficmanagerProfile"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_trafficmanagerprofile" "example" {
+///   name                   = random_id.server.hex
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   traffic_routing_method = "Weighted"
+///   dns_config = {
+///     relative_name = random_id.server.hex
+///     ttl           = 100
+///   }
+///   monitor_config = {
+///     protocol                     = "HTTP"
+///     port                         = 80
+///     path                         = "/"
+///     interval_in_seconds          = 30
+///     timeout_in_seconds           = 9
+///     tolerated_number_of_failures = 3
+///   }
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -198,8 +241,8 @@ import 'traffic_manager_profile_state.dart';
 /// import com.pulumi.azure.network.TrafficManagerProfileArgs;
 /// import com.pulumi.azure.network.inputs.TrafficManagerProfileDnsConfigArgs;
 /// import com.pulumi.azure.network.inputs.TrafficManagerProfileMonitorConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -293,15 +336,15 @@ import 'traffic_manager_profile_state.dart';
 /// $ pulumi import azure:network/trafficManagerProfile:TrafficManagerProfile exampleProfile /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/trafficManagerProfiles/mytrafficmanagerprofile1
 /// ```
 class TrafficManagerProfile extends pulumi.CustomResource {
-  /// This block specifies the DNS configuration of the Profile. One `dns_config` block as defined below.
+  /// This block specifies the DNS configuration of the Profile. One `dnsConfig` block as defined below.
   late final pulumi.Output<TrafficManagerProfileDnsConfig> dnsConfig;
   /// The FQDN of the created Profile.
   late final pulumi.Output<String> fqdn;
   /// The amount of endpoints to return for DNS queries to this Profile. Possible values range from `1` to `8`.
   ///
-  /// &gt; **Note:** `max_return` must be set when the `traffic_routing_method` is `MultiValue`.
+  /// &gt; **Note:** `maxReturn` must be set when the `trafficRoutingMethod` is `MultiValue`.
   late final pulumi.Output<int?> maxReturn;
-  /// This block specifies the Endpoint monitoring configuration for the Profile. One `monitor_config` block as defined below.
+  /// This block specifies the Endpoint monitoring configuration for the Profile. One `monitorConfig` block as defined below.
   late final pulumi.Output<TrafficManagerProfileMonitorConfig> monitorConfig;
   /// The name of the Traffic Manager profile. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;

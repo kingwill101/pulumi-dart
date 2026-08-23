@@ -34,4 +34,3 @@ class GetDatasetDataLakeGen2Args {
     );
   }
 }
-

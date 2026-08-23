@@ -26,7 +26,7 @@ import 'cluster_trusted_access_role_binding_state.dart';
 ///     resourceGroupName: exampleResourceGroup.name,
 ///     tenantId: exampleAzurermClientConfig.tenantId,
 ///     skuName: "example-value",
-///     softDeleteRetentionDays: "example-value",
+///     softDeleteRetentionDays: Number("example-value"),
 /// });
 /// const exampleAccessPolicy = new azure.keyvault.AccessPolicy("example", {
 ///     keyVaultId: exampleKeyVault.id,
@@ -41,7 +41,7 @@ import 'cluster_trusted_access_role_binding_state.dart';
 ///     dnsPrefix: "acctestaksexample",
 ///     defaultNodePool: {
 ///         name: "example-value",
-///         nodeCount: "example-value",
+///         nodeCount: Number("example-value"),
 ///         vmSize: "example-value",
 ///         upgradeSettings: {
 ///             maxSurge: "example-value",
@@ -95,7 +95,7 @@ import 'cluster_trusted_access_role_binding_state.dart';
 ///     resource_group_name=example_resource_group.name,
 ///     tenant_id=example_azurerm_client_config["tenantId"],
 ///     sku_name="example-value",
-///     soft_delete_retention_days="example-value")
+///     soft_delete_retention_days=int("example-value"))
 /// example_access_policy = azure.keyvault.AccessPolicy("example",
 ///     key_vault_id=example_key_vault.id,
 ///     tenant_id=example_azurerm_client_config["tenantId"],
@@ -108,7 +108,7 @@ import 'cluster_trusted_access_role_binding_state.dart';
 ///     dns_prefix="acctestaksexample",
 ///     default_node_pool={
 ///         "name": "example-value",
-///         "node_count": "example-value",
+///         "node_count": int("example-value"),
 ///         "vm_size": "example-value",
 ///         "upgrade_settings": {
 ///             "max_surge": "example-value",
@@ -348,6 +348,84 @@ import 'cluster_trusted_access_role_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "test" {
+/// }
+///
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "example-value"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                       = "example"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   tenant_id                  = exampleAzurermClientConfig.tenantId
+///   sku_name                   = "example-value"
+///   soft_delete_retention_days = "example-value"
+/// }
+/// resource "azure_keyvault_accesspolicy" "example" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = exampleAzurermClientConfig.tenantId
+///   object_id       = exampleAzurermClientConfig.objectId
+///   key_permissions = "example-value"
+/// }
+/// resource "azure_containerservice_kubernetescluster" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   dns_prefix          = "acctestaksexample"
+///   default_node_pool = {
+///     name       = "example-value"
+///     node_count = "example-value"
+///     vm_size    = "example-value"
+///     upgrade_settings = {
+///       max_surge = "example-value"
+///     }
+///   }
+///   identity = {
+///     type = "example-value"
+///   }
+/// }
+/// resource "azure_machinelearning_workspace" "example" {
+///   name                    = "example"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   key_vault_id            = azure_keyvault_keyvault.example.id
+///   storage_account_id      = azure_storage_account.example.id
+///   application_insights_id = azure_appinsights_insights.example.id
+///   identity = {
+///     type = "example-value"
+///   }
+/// }
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   account_tier             = "example-value"
+///   account_replication_type = "example-value"
+/// }
+/// resource "azure_containerservice_clustertrustedaccessrolebinding" "example" {
+///   kubernetes_cluster_id = azure_containerservice_kubernetescluster.example.id
+///   name                  = "example"
+///   roles                 = "example-value"
+///   source_resource_id    = azure_machinelearning_workspace.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -375,8 +453,8 @@ import 'cluster_trusted_access_role_binding_state.dart';
 /// import com.pulumi.azure.machinelearning.inputs.WorkspaceIdentityArgs;
 /// import com.pulumi.azure.containerservice.ClusterTrustedAccessRoleBinding;
 /// import com.pulumi.azure.containerservice.ClusterTrustedAccessRoleBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -557,7 +635,7 @@ import 'cluster_trusted_access_role_binding_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.ContainerService` - 2025-07-01
+/// * `Microsoft.ContainerService` - 2025-10-01
 ///
 /// ## Import
 ///

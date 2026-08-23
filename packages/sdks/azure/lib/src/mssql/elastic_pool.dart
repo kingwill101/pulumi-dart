@@ -64,7 +64,7 @@ import 'elastic_pool_state.dart';
 ///     location=example.location,
 ///     server_name=example_server.name,
 ///     license_type="LicenseIncluded",
-///     max_size_gb=756,
+///     max_size_gb=float(756),
 ///     sku={
 ///         "name": "BasicPool",
 ///         "tier": "Basic",
@@ -73,7 +73,7 @@ import 'elastic_pool_state.dart';
 ///     },
 ///     per_database_settings={
 ///         "min_capacity": 0.25,
-///         "max_capacity": 4,
+///         "max_capacity": float(4),
 ///     })
 /// ```
 /// ```csharp
@@ -178,6 +178,46 @@ import 'elastic_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "my-resource-group"
+///   location = "West Europe"
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "my-sql-server"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "4dm1n157r470r"
+///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
+/// }
+/// resource "azure_mssql_elasticpool" "example" {
+///   name                = "test-epool"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   server_name         = azure_mssql_server.example.name
+///   license_type        = "LicenseIncluded"
+///   max_size_gb         = 756
+///   sku = {
+///     name     = "BasicPool"
+///     tier     = "Basic"
+///     family   = "Gen4"
+///     capacity = 4
+///   }
+///   per_database_settings = {
+///     min_capacity = 0.25
+///     max_capacity = 4
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -192,8 +232,8 @@ import 'elastic_pool_state.dart';
 /// import com.pulumi.azure.mssql.ElasticPoolArgs;
 /// import com.pulumi.azure.mssql.inputs.ElasticPoolSkuArgs;
 /// import com.pulumi.azure.mssql.inputs.ElasticPoolPerDatabaseSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -294,29 +334,33 @@ import 'elastic_pool_state.dart';
 /// $ pulumi import azure:mssql/elasticPool:ElasticPool example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Sql/servers/myserver/elasticPools/myelasticpoolname
 /// ```
 class ElasticPool extends pulumi.CustomResource {
-  /// Specifies the type of enclave to be used by the elastic pool. When `enclave_type` is not specified (e.g., the default) enclaves are not enabled on the elastic pool. Once enabled (e.g., by specifying `Default` or `VBS`) removing the `enclave_type` field from the configuration file will force the creation of a new resource. Possible values are `Default` or `VBS`.
+  /// Specifies the type of enclave to be used by the elastic pool. When `enclaveType` is not specified (e.g., the default) enclaves are not enabled on the elastic pool. Once enabled (e.g., by specifying `Default` or `VBS`) removing the `enclaveType` field from the configuration file will force the creation of a new resource. Possible values are `Default` or `VBS`.
   ///
-  /// &gt; **Note:** All databases that are added to the elastic pool must have the same `enclave_type` as the elastic pool.
+  /// &gt; **Note:** All databases that are added to the elastic pool must have the same `enclaveType` as the elastic pool.
   ///
-  /// &gt; **Note:** `enclave_type` is not supported for DC-series SKUs.
+  /// &gt; **Note:** `enclaveType` is not supported for DC-series SKUs.
   ///
-  /// &gt; **Note:** The default value for `enclave_type` field is unset not `Default`.
+  /// &gt; **Note:** The default value for `enclaveType` field is unset not `Default`.
   late final pulumi.Output<String> enclaveType;
+  /// Specifies the number of high availability replicas for the elastic pool. Defaults to `1`. Possible values are between `0` and `4`.
+  ///
+  /// &gt; **Note:** The `highAvailabilityReplicaCount` property is only supported for `Hyperscale` tier elastic pools.
+  late final pulumi.Output<int> highAvailabilityReplicaCount;
   /// Specifies the license type applied to this database. Possible values are `LicenseIncluded` and `BasePrice`.
   late final pulumi.Output<String> licenseType;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// The name of the Public Maintenance Configuration window to apply to the elastic pool. Valid values include `SQL_Default`, `SQL_EastUS_DB_1`, `SQL_EastUS2_DB_1`, `SQL_SoutheastAsia_DB_1`, `SQL_AustraliaEast_DB_1`, `SQL_NorthEurope_DB_1`, `SQL_SouthCentralUS_DB_1`, `SQL_WestUS2_DB_1`, `SQL_UKSouth_DB_1`, `SQL_WestEurope_DB_1`, `SQL_EastUS_DB_2`, `SQL_EastUS2_DB_2`, `SQL_WestUS2_DB_2`, `SQL_SoutheastAsia_DB_2`, `SQL_AustraliaEast_DB_2`, `SQL_NorthEurope_DB_2`, `SQL_SouthCentralUS_DB_2`, `SQL_UKSouth_DB_2`, `SQL_WestEurope_DB_2`, `SQL_AustraliaSoutheast_DB_1`, `SQL_BrazilSouth_DB_1`, `SQL_CanadaCentral_DB_1`, `SQL_CanadaEast_DB_1`, `SQL_CentralUS_DB_1`, `SQL_EastAsia_DB_1`, `SQL_FranceCentral_DB_1`, `SQL_GermanyWestCentral_DB_1`, `SQL_CentralIndia_DB_1`, `SQL_SouthIndia_DB_1`, `SQL_JapanEast_DB_1`, `SQL_JapanWest_DB_1`, `SQL_NorthCentralUS_DB_1`, `SQL_UKWest_DB_1`, `SQL_WestUS_DB_1`, `SQL_AustraliaSoutheast_DB_2`, `SQL_BrazilSouth_DB_2`, `SQL_CanadaCentral_DB_2`, `SQL_CanadaEast_DB_2`, `SQL_CentralUS_DB_2`, `SQL_EastAsia_DB_2`, `SQL_FranceCentral_DB_2`, `SQL_GermanyWestCentral_DB_2`, `SQL_CentralIndia_DB_2`, `SQL_SouthIndia_DB_2`, `SQL_JapanEast_DB_2`, `SQL_JapanWest_DB_2`, `SQL_NorthCentralUS_DB_2`, `SQL_UKWest_DB_2`, `SQL_WestUS_DB_2`, `SQL_WestCentralUS_DB_1`, `SQL_FranceSouth_DB_1`, `SQL_WestCentralUS_DB_2`, `SQL_FranceSouth_DB_2`, `SQL_SwitzerlandNorth_DB_1`, `SQL_SwitzerlandNorth_DB_2`, `SQL_BrazilSoutheast_DB_1`, `SQL_UAENorth_DB_1`, `SQL_BrazilSoutheast_DB_2`, `SQL_UAENorth_DB_2`, `SQL_SouthAfricaNorth_DB_1`, `SQL_SouthAfricaNorth_DB_2`, `SQL_WestUS3_DB_1`, `SQL_WestUS3_DB_2`, `SQL_SwedenCentral_DB_1`, `SQL_SwedenCentral_DB_2`. Defaults to `SQL_Default`.
   late final pulumi.Output<String?> maintenanceConfigurationName;
-  /// The max data size of the elastic pool in bytes. Conflicts with `max_size_gb`.
+  /// The max data size of the elastic pool in bytes. Conflicts with `maxSizeGb`.
   ///
-  /// &gt; **Note:** One of either `max_size_gb` or `max_size_bytes` must be specified.
+  /// &gt; **Note:** One of either `maxSizeGb` or `maxSizeBytes` must be specified.
   late final pulumi.Output<int> maxSizeBytes;
-  /// The max data size of the elastic pool in gigabytes. Conflicts with `max_size_bytes`.
+  /// The max data size of the elastic pool in gigabytes. Conflicts with `maxSizeBytes`.
   late final pulumi.Output<double> maxSizeGb;
   /// The name of the elastic pool. This needs to be globally unique. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A `per_database_settings` block as defined below.
+  /// A `perDatabaseSettings` block as defined below.
   late final pulumi.Output<ElasticPoolPerDatabaseSettings> perDatabaseSettings;
   /// The name of the resource group in which to create the elastic pool. This must be the same as the resource group of the underlying SQL server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
@@ -344,6 +388,7 @@ class ElasticPool extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     enclaveType = registerOutput<String>('enclaveType');
+    highAvailabilityReplicaCount = registerOutput<int>('highAvailabilityReplicaCount');
     licenseType = registerOutput<String>('licenseType');
     location = registerOutput<String>('location');
     maintenanceConfigurationName = registerOutput<String?>('maintenanceConfigurationName');
@@ -382,6 +427,7 @@ class ElasticPool extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     enclaveType = registerOutput<String>('enclaveType');
+    highAvailabilityReplicaCount = registerOutput<int>('highAvailabilityReplicaCount');
     licenseType = registerOutput<String>('licenseType');
     location = registerOutput<String>('location');
     maintenanceConfigurationName = registerOutput<String?>('maintenanceConfigurationName');

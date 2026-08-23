@@ -234,6 +234,57 @@ import 'job_schedule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resource-group"
+///   location = "East US"
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "example-server"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "4dm1n157r470r"
+///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
+/// }
+/// resource "azure_mssql_database" "example" {
+///   name      = "example-db"
+///   server_id = azure_mssql_server.example.id
+///   collation = "SQL_Latin1_General_CP1_CI_AS"
+///   sku_name  = "S1"
+/// }
+/// resource "azure_mssql_jobagent" "example" {
+///   name        = "example-job-agent"
+///   location    = azure_core_resourcegroup.example.location
+///   database_id = azure_mssql_database.example.id
+/// }
+/// resource "azure_mssql_jobcredential" "example" {
+///   name         = "example-job-credential"
+///   job_agent_id = azure_mssql_jobagent.example.id
+///   username     = "my-username"
+///   password     = "MyP4ssw0rd!!!"
+/// }
+/// resource "azure_mssql_job" "example" {
+///   name         = "example-job"
+///   job_agent_id = azure_mssql_jobagent.example.id
+/// }
+/// resource "azure_mssql_jobschedule" "example" {
+///   job_id     = azure_mssql_job.example.id
+///   type       = "Recurring"
+///   enabled    = true
+///   end_time   = "2025-12-01T00:00:00Z"
+///   interval   = "PT5M"
+///   start_time = "2025-01-01T00:00:00Z"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -254,8 +305,8 @@ import 'job_schedule_state.dart';
 /// import com.pulumi.azure.mssql.JobArgs;
 /// import com.pulumi.azure.mssql.JobSchedule;
 /// import com.pulumi.azure.mssql.JobScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -394,7 +445,7 @@ import 'job_schedule_state.dart';
 class JobSchedule extends pulumi.CustomResource {
   /// Should the Elastic Job Schedule be enabled? Defaults to `false`.
   ///
-  /// &gt; **Note:** When `type` is set to `Once` and `enabled` is set to `true`, it's recommended to add `enabled` to `ignore_changes`. This is because Azure will set `enabled` to `false` once the job has executed.
+  /// &gt; **Note:** When `type` is set to `Once` and `enabled` is set to `true`, it's recommended to add `enabled` to `ignoreChanges`. This is because Azure will set `enabled` to `false` once the job has executed.
   late final pulumi.Output<bool> enabled;
   /// The end time of the schedule. Must be in RFC3339 format.
   late final pulumi.Output<String> endTime;

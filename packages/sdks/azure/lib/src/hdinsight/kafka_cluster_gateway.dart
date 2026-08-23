@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KafkaClusterGateway {
   /// The password used for the Ambari Portal.
   ///
-  /// &gt; **Note:** This password must be different from the one used for the `head_node`, `worker_node` and `zookeeper_node` roles.
+  /// &gt; **Note:** This password must be different from the one used for the `headNode`, `workerNode` and `zookeeperNode` roles.
   final pulumi.Input<String> password;
   /// The username used for the Ambari Portal. Changing this forces a new resource to be created.
   final pulumi.Input<String> username;
@@ -32,4 +32,3 @@ class KafkaClusterGateway {
     );
   }
 }
-

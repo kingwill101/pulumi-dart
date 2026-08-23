@@ -221,7 +221,7 @@ import 'linux_virtual_machine_state.dart';
 /// 			SshKey:              pulumi.String(invokeFile.Result),
 /// 			LabVirtualNetworkId: exampleVirtualNetwork.ID(),
 /// 			LabSubnetName: pulumi.String(exampleVirtualNetwork.Subnet.ApplyT(func(subnet devtest.VirtualNetworkSubnet) (*string, error) {
-/// 				return &subnet.Name, nil
+/// 				return subnet.Name, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			StorageType: pulumi.String("Premium"),
 /// 			Notes:       pulumi.String("Some notes about this Virtual Machine."),
@@ -237,6 +237,59 @@ import 'linux_virtual_machine_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_devtest_lab" "example" {
+///   name                = "example-devtestlab"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tags = {
+///     "Sydney" = "Australia"
+///   }
+/// }
+/// resource "azure_devtest_virtualnetwork" "example" {
+///   name                = "example-network"
+///   lab_name            = azure_devtest_lab.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   subnet = {
+///     use_public_ip_address           = "Allow"
+///     use_in_virtual_machine_creation = "Allow"
+///   }
+/// }
+/// resource "azure_devtest_linuxvirtualmachine" "example" {
+///   name                   = "example-vm03"
+///   lab_name               = azure_devtest_lab.example.name
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resourcegroup.example.location
+///   size                   = "Standard_DS2"
+///   username               = "exampleuser99"
+///   ssh_key                = file("~/.ssh/id_rsa.pub")
+///   lab_virtual_network_id = azure_devtest_virtualnetwork.example.id
+///   lab_subnet_name        = azure_devtest_virtualnetwork.example.subnet.name
+///   storage_type           = "Premium"
+///   notes                  = "Some notes about this Virtual Machine."
+///   gallery_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
 /// }
 /// ```
 /// ```java
@@ -257,8 +310,8 @@ import 'linux_virtual_machine_state.dart';
 /// import com.pulumi.azure.devtest.inputs.LinuxVirtualMachineGalleryImageReferenceArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -392,11 +445,11 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
   late final pulumi.Output<bool?> disallowPublicIpAddress;
   /// The FQDN of the Virtual Machine.
   late final pulumi.Output<String> fqdn;
-  /// A `gallery_image_reference` block as defined below.
+  /// A `galleryImageReference` block as defined below.
   late final pulumi.Output<LinuxVirtualMachineGalleryImageReference> galleryImageReference;
-  /// One or more `inbound_nat_rule` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `inboundNatRule` blocks as defined below. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** If any `inbound_nat_rule` blocks are specified then `disallow_public_ip_address` must be set to `true`.
+  /// &gt; **Note:** If any `inboundNatRule` blocks are specified then `disallowPublicIpAddress` must be set to `true`.
   late final pulumi.Output<List<Map<String, dynamic>>?> inboundNatRules;
   /// Specifies the name of the Dev Test Lab in which the Virtual Machine should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> labName;
@@ -408,7 +461,7 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// Specifies the name of the Dev Test Machine. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The validation requirements for the Name change based on the `os_type` used in this Virtual Machine. For a Linux VM the name must be between 1-62 characters, and for a Windows VM the name must be between 1-15 characters. It must begin and end with a letter or number, and cannot be all numbers.
+  /// &gt; **Note:** The validation requirements for the Name change based on the `osType` used in this Virtual Machine. For a Linux VM the name must be between 1-62 characters, and for a Windows VM the name must be between 1-15 characters. It must begin and end with a letter or number, and cannot be all numbers.
   late final pulumi.Output<String> name;
   /// Any notes about the Virtual Machine.
   late final pulumi.Output<String?> notes;
@@ -416,11 +469,11 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
   late final pulumi.Output<String?> password;
   /// The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// The Machine Size to use for this Virtual Machine, such as `Standard_F2`. Changing this forces a new resource to be created.
+  /// The Machine Size to use for this Virtual Machine, such as `Standard_D4_v5`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> size;
   /// The SSH Key associated with the `username` used to login to this Virtual Machine. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** One or either `password` or `ssh_key` must be specified.
+  /// &gt; **Note:** One or either `password` or `sshKey` must be specified.
   late final pulumi.Output<String?> sshKey;
   /// The type of Storage to use on this Virtual Machine. Possible values are `Standard` and `Premium`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageType;

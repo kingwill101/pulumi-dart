@@ -24,6 +24,8 @@ class GetClusterNodePoolResult {
   final String name;
   /// The current number of Nodes in the Node Pool.
   final int nodeCount;
+  /// The current node image version running on this Node Pool.
+  final String nodeImageVersion;
   /// A map of Kubernetes Labels applied to each Node in this Node Pool.
   final Map<String, String> nodeLabels;
   /// Do nodes in this Node Pool have a Public IP Address?
@@ -49,7 +51,7 @@ class GetClusterNodePoolResult {
   final double spotMaxPrice;
   /// A mapping of tags assigned to the Kubernetes Cluster Node Pool.
   final Map<String, String> tags;
-  /// A `upgrade_settings` block as documented below.
+  /// A `upgradeSettings` block as documented below.
   final List<GetClusterNodePoolUpgradeSetting> upgradeSettings;
   /// The size of the Virtual Machines used in the Virtual Machine Scale Set backing this Node Pool.
   final String vmSize;
@@ -70,6 +72,7 @@ class GetClusterNodePoolResult {
   /// [mode] The Mode for this Node Pool, specifying how these Nodes should be used (for either System or User resources).
   /// [name] Required.
   /// [nodeCount] The current number of Nodes in the Node Pool.
+  /// [nodeImageVersion] The current node image version running on this Node Pool.
   /// [nodeLabels] A map of Kubernetes Labels applied to each Node in this Node Pool.
   /// [nodePublicIpEnabled] Do nodes in this Node Pool have a Public IP Address?
   /// [nodePublicIpPrefixId] Resource ID for the Public IP Addresses Prefix for the nodes in this Agent Pool.
@@ -83,7 +86,7 @@ class GetClusterNodePoolResult {
   /// [resourceGroupName] Required.
   /// [spotMaxPrice] The maximum price being paid for Virtual Machines in this Scale Set. `-1` means the current on-demand price for a Virtual Machine.
   /// [tags] A mapping of tags assigned to the Kubernetes Cluster Node Pool.
-  /// [upgradeSettings] A `upgrade_settings` block as documented below.
+  /// [upgradeSettings] A `upgradeSettings` block as documented below.
   /// [vmSize] The size of the Virtual Machines used in the Virtual Machine Scale Set backing this Node Pool.
   /// [vnetSubnetId] The ID of the Subnet in which this Node Pool exists.
   /// [zones] A list of the Availability Zones where the Nodes in this Node Pool exist.
@@ -99,6 +102,7 @@ class GetClusterNodePoolResult {
     required this.mode,
     required this.name,
     required this.nodeCount,
+    required this.nodeImageVersion,
     required this.nodeLabels,
     required this.nodePublicIpEnabled,
     required this.nodePublicIpPrefixId,
@@ -131,6 +135,7 @@ class GetClusterNodePoolResult {
       'mode': mode,
       'name': name,
       'nodeCount': nodeCount,
+      'nodeImageVersion': nodeImageVersion,
       'nodeLabels': nodeLabels,
       'nodePublicIpEnabled': nodePublicIpEnabled,
       'nodePublicIpPrefixId': nodePublicIpPrefixId,
@@ -164,6 +169,7 @@ class GetClusterNodePoolResult {
       mode: map['mode'] as String,
       name: map['name'] as String,
       nodeCount: map['nodeCount'] as int,
+      nodeImageVersion: map['nodeImageVersion'] as String,
       nodeLabels: (map['nodeLabels'] as Map).cast<String, String>(),
       nodePublicIpEnabled: map['nodePublicIpEnabled'] as bool,
       nodePublicIpPrefixId: map['nodePublicIpPrefixId'] as String,
@@ -184,4 +190,3 @@ class GetClusterNodePoolResult {
     );
   }
 }
-

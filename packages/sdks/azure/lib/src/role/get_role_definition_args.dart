@@ -15,7 +15,7 @@ class GetRoleDefinitionArgs {
   final pulumi.Input<String>? roleDefinitionId;
   /// Specifies the Scope at which the Custom Role Definition exists.
   ///
-  /// &gt; **Note:** One of `name` or `role_definition_id` must be specified.
+  /// &gt; **Note:** One of `name` or `roleDefinitionId` must be specified.
   final pulumi.Input<String>? scope;
 
   /// Creates a new [GetRoleDefinitionArgs].
@@ -44,4 +44,3 @@ class GetRoleDefinitionArgs {
     );
   }
 }
-

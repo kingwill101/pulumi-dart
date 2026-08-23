@@ -7,7 +7,7 @@ import 'get_local_network_gateway_bgp_setting.dart';
 class GetLocalNetworkGatewayResult {
   /// The list of string CIDRs representing the address spaces the gateway exposes.
   final List<String> addressSpaces;
-  /// A `bgp_settings` block as defined below containing the Local Network Gateway's BGP speaker settings.
+  /// A `bgpSettings` block as defined below containing the Local Network Gateway's BGP speaker settings.
   final List<GetLocalNetworkGatewayBgpSetting> bgpSettings;
   /// The gateway IP address the Local Network Gateway uses.
   final String gatewayAddress;
@@ -24,7 +24,7 @@ class GetLocalNetworkGatewayResult {
 
   /// Creates a new [GetLocalNetworkGatewayResult].
   /// [addressSpaces] The list of string CIDRs representing the address spaces the gateway exposes.
-  /// [bgpSettings] A `bgp_settings` block as defined below containing the Local Network Gateway's BGP speaker settings.
+  /// [bgpSettings] A `bgpSettings` block as defined below containing the Local Network Gateway's BGP speaker settings.
   /// [gatewayAddress] The gateway IP address the Local Network Gateway uses.
   /// [gatewayFqdn] The gateway FQDN the Local Network Gateway uses.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -72,4 +72,3 @@ class GetLocalNetworkGatewayResult {
     );
   }
 }
-

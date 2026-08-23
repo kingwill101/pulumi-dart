@@ -71,6 +71,24 @@ import 'get_trigger_schedules_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_datafactory_getfactory" "example" {
+///   name                = "existing-adf"
+///   resource_group_name = "existing-rg"
+/// }
+///
+/// output "id" {
+///   value = data.azure_datafactory_getfactory.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +97,8 @@ import 'get_trigger_schedules_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.datafactory.DatafactoryFunctions;
 /// import com.pulumi.azure.datafactory.inputs.GetFactoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,6 +218,24 @@ Future<GetFactoryResult> getFactory(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_datafactory_gettriggerschedule" "example" {
+///   name            = "example_trigger"
+///   data_factory_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.DataFactory/factories/datafactory1"
+/// }
+///
+/// output "id" {
+///   value = data.azure_datafactory_gettriggerschedule.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -208,8 +244,8 @@ Future<GetFactoryResult> getFactory(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.datafactory.DatafactoryFunctions;
 /// import com.pulumi.azure.datafactory.inputs.GetTriggerScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -317,6 +353,23 @@ Future<GetTriggerScheduleResult> getTriggerSchedule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_datafactory_gettriggerschedules" "example" {
+///   data_factory_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.DataFactory/factories/datafactory1"
+/// }
+///
+/// output "items" {
+///   value = data.azure_datafactory_gettriggerschedules.example.items
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -325,8 +378,8 @@ Future<GetTriggerScheduleResult> getTriggerSchedule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.datafactory.DatafactoryFunctions;
 /// import com.pulumi.azure.datafactory.inputs.GetTriggerSchedulesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

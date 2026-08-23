@@ -175,6 +175,44 @@ import 'assignment_dedicated_host_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_compute_dedicatedhostgroup" "example" {
+///   name                        = "example-host-group"
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   location                    = azure_core_resourcegroup.example.location
+///   platform_fault_domain_count = 2
+/// }
+/// resource "azure_compute_dedicatedhost" "example" {
+///   name                    = "example-host"
+///   location                = azure_core_resourcegroup.example.location
+///   dedicated_host_group_id = azure_compute_dedicatedhostgroup.example.id
+///   sku_name                = "DSv3-Type3"
+///   platform_fault_domain   = 1
+/// }
+/// resource "azure_maintenance_configuration" "example" {
+///   name                = "example-mc"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   scope               = "Host"
+/// }
+/// resource "azure_maintenance_assignmentdedicatedhost" "example" {
+///   location                     = azure_core_resourcegroup.example.location
+///   maintenance_configuration_id = azure_maintenance_configuration.example.id
+///   dedicated_host_id            = azure_compute_dedicatedhost.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -191,8 +229,8 @@ import 'assignment_dedicated_host_state.dart';
 /// import com.pulumi.azure.maintenance.ConfigurationArgs;
 /// import com.pulumi.azure.maintenance.AssignmentDedicatedHost;
 /// import com.pulumi.azure.maintenance.AssignmentDedicatedHostArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

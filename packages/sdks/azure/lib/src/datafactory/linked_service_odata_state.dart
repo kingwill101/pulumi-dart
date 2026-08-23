@@ -9,7 +9,7 @@ class LinkedServiceOdataState {
   final pulumi.Input<Map<String, String>>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service OData.
   final pulumi.Input<List<String>>? annotations;
-  /// A `basic_authentication` block as defined below.
+  /// A `basicAuthentication` block as defined below.
   final pulumi.Input<LinkedServiceOdataBasicAuthentication>? basicAuthentication;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String>? dataFactoryId;
@@ -27,7 +27,7 @@ class LinkedServiceOdataState {
   /// Creates a new [LinkedServiceOdataState].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Linked Service OData.
   /// [annotations] List of tags that can be used for describing the Data Factory Linked Service OData.
-  /// [basicAuthentication] A `basic_authentication` block as defined below.
+  /// [basicAuthentication] A `basicAuthentication` block as defined below.
   /// [dataFactoryId] The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   /// [description] The description for the Data Factory Linked Service OData.
   /// [integrationRuntimeName] The integration runtime reference to associate with the Data Factory Linked Service OData.
@@ -74,4 +74,3 @@ class LinkedServiceOdataState {
     );
   }
 }
-

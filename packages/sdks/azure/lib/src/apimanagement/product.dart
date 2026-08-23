@@ -138,6 +138,37 @@ import 'product_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "My Company"
+///   publisher_email     = "company@exmaple.com"
+///   sku_name            = "Developer_1"
+/// }
+/// resource "azure_apimanagement_product" "example" {
+///   product_id            = "test-product"
+///   api_management_name   = azure_apimanagement_service.example.name
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   display_name          = "Test Product"
+///   subscription_required = true
+///   approval_required     = true
+///   published             = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +181,8 @@ import 'product_state.dart';
 /// import com.pulumi.azure.apimanagement.ServiceArgs;
 /// import com.pulumi.azure.apimanagement.Product;
 /// import com.pulumi.azure.apimanagement.ProductArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -240,7 +271,7 @@ class Product extends pulumi.CustomResource {
   late final pulumi.Output<String> apiManagementName;
   /// Do subscribers need to be approved prior to being able to use the Product?
   ///
-  /// &gt; **Note:** `approval_required` can only be set when `subscription_required` is set to `true`.
+  /// &gt; **Note:** `approvalRequired` can only be set when `subscriptionRequired` is set to `true`.
   late final pulumi.Output<bool?> approvalRequired;
   /// A description of this Product, which may include HTML formatting tags.
   late final pulumi.Output<String?> description;
@@ -256,7 +287,7 @@ class Product extends pulumi.CustomResource {
   late final pulumi.Output<bool?> subscriptionRequired;
   /// The number of subscriptions a user can have to this Product at the same time.
   ///
-  /// &gt; **Note:** `subscriptions_limit` can only be set when `subscription_required` is set to `true`.
+  /// &gt; **Note:** `subscriptionsLimit` can only be set when `subscriptionRequired` is set to `true`.
   late final pulumi.Output<int?> subscriptionsLimit;
   /// The Terms and Conditions for this Product, which must be accepted by Developers before they can begin the Subscription process.
   late final pulumi.Output<String?> terms;

@@ -22,65 +22,65 @@ import 'frontdoor_rule_conditions_url_filename_condition.dart';
 import 'frontdoor_rule_conditions_url_path_condition.dart';
 
 class FrontdoorRuleConditions {
-  /// A `client_port_condition` block as defined below.
+  /// A `clientPortCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsClientPortCondition>>? clientPortConditions;
-  /// A `cookies_condition` block as defined below.
+  /// A `cookiesCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsCookiesCondition>>? cookiesConditions;
-  /// A `host_name_condition` block as defined below.
+  /// A `hostNameCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsHostNameCondition>>? hostNameConditions;
-  /// A `http_version_condition` block as defined below.
+  /// A `httpVersionCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsHttpVersionCondition>>? httpVersionConditions;
-  /// A `is_device_condition` block as defined below.
+  /// A `isDeviceCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsIsDeviceCondition>>? isDeviceConditions;
-  /// A `post_args_condition` block as defined below.
+  /// A `postArgsCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsPostArgsCondition>>? postArgsConditions;
-  /// A `query_string_condition` block as defined below.
+  /// A `queryStringCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsQueryStringCondition>>? queryStringConditions;
-  /// A `remote_address_condition` block as defined below.
+  /// A `remoteAddressCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsRemoteAddressCondition>>? remoteAddressConditions;
-  /// A `request_body_condition` block as defined below.
+  /// A `requestBodyCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsRequestBodyCondition>>? requestBodyConditions;
-  /// A `request_header_condition` block as defined below.
+  /// A `requestHeaderCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsRequestHeaderCondition>>? requestHeaderConditions;
-  /// A `request_method_condition` block as defined below.
+  /// A `requestMethodCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsRequestMethodCondition>>? requestMethodConditions;
-  /// A `request_scheme_condition` block as defined below.
+  /// A `requestSchemeCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsRequestSchemeCondition>>? requestSchemeConditions;
-  /// A `request_uri_condition` block as defined below.
+  /// A `requestUriCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsRequestUriCondition>>? requestUriConditions;
-  /// A `server_port_condition` block as defined below.
+  /// A `serverPortCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsServerPortCondition>>? serverPortConditions;
-  /// A `socket_address_condition` block as defined below.
+  /// A `socketAddressCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsSocketAddressCondition>>? socketAddressConditions;
-  /// A `ssl_protocol_condition` block as defined below.
+  /// A `sslProtocolCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsSslProtocolCondition>>? sslProtocolConditions;
-  /// A `url_file_extension_condition` block as defined below.
+  /// A `urlFileExtensionCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsUrlFileExtensionCondition>>? urlFileExtensionConditions;
-  /// A `url_filename_condition` block as defined below.
+  /// A `urlFilenameCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsUrlFilenameCondition>>? urlFilenameConditions;
-  /// A `url_path_condition` block as defined below.
+  /// A `urlPathCondition` block as defined below.
   final pulumi.Input<List<FrontdoorRuleConditionsUrlPathCondition>>? urlPathConditions;
 
   /// Creates a new [FrontdoorRuleConditions].
-  /// [clientPortConditions] A `client_port_condition` block as defined below.
-  /// [cookiesConditions] A `cookies_condition` block as defined below.
-  /// [hostNameConditions] A `host_name_condition` block as defined below.
-  /// [httpVersionConditions] A `http_version_condition` block as defined below.
-  /// [isDeviceConditions] A `is_device_condition` block as defined below.
-  /// [postArgsConditions] A `post_args_condition` block as defined below.
-  /// [queryStringConditions] A `query_string_condition` block as defined below.
-  /// [remoteAddressConditions] A `remote_address_condition` block as defined below.
-  /// [requestBodyConditions] A `request_body_condition` block as defined below.
-  /// [requestHeaderConditions] A `request_header_condition` block as defined below.
-  /// [requestMethodConditions] A `request_method_condition` block as defined below.
-  /// [requestSchemeConditions] A `request_scheme_condition` block as defined below.
-  /// [requestUriConditions] A `request_uri_condition` block as defined below.
-  /// [serverPortConditions] A `server_port_condition` block as defined below.
-  /// [socketAddressConditions] A `socket_address_condition` block as defined below.
-  /// [sslProtocolConditions] A `ssl_protocol_condition` block as defined below.
-  /// [urlFileExtensionConditions] A `url_file_extension_condition` block as defined below.
-  /// [urlFilenameConditions] A `url_filename_condition` block as defined below.
-  /// [urlPathConditions] A `url_path_condition` block as defined below.
+  /// [clientPortConditions] A `clientPortCondition` block as defined below.
+  /// [cookiesConditions] A `cookiesCondition` block as defined below.
+  /// [hostNameConditions] A `hostNameCondition` block as defined below.
+  /// [httpVersionConditions] A `httpVersionCondition` block as defined below.
+  /// [isDeviceConditions] A `isDeviceCondition` block as defined below.
+  /// [postArgsConditions] A `postArgsCondition` block as defined below.
+  /// [queryStringConditions] A `queryStringCondition` block as defined below.
+  /// [remoteAddressConditions] A `remoteAddressCondition` block as defined below.
+  /// [requestBodyConditions] A `requestBodyCondition` block as defined below.
+  /// [requestHeaderConditions] A `requestHeaderCondition` block as defined below.
+  /// [requestMethodConditions] A `requestMethodCondition` block as defined below.
+  /// [requestSchemeConditions] A `requestSchemeCondition` block as defined below.
+  /// [requestUriConditions] A `requestUriCondition` block as defined below.
+  /// [serverPortConditions] A `serverPortCondition` block as defined below.
+  /// [socketAddressConditions] A `socketAddressCondition` block as defined below.
+  /// [sslProtocolConditions] A `sslProtocolCondition` block as defined below.
+  /// [urlFileExtensionConditions] A `urlFileExtensionCondition` block as defined below.
+  /// [urlFilenameConditions] A `urlFilenameCondition` block as defined below.
+  /// [urlPathConditions] A `urlPathCondition` block as defined below.
   const FrontdoorRuleConditions({
     this.clientPortConditions,
     this.cookiesConditions,
@@ -151,4 +151,3 @@ class FrontdoorRuleConditions {
     );
   }
 }
-

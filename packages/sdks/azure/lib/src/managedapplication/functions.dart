@@ -67,6 +67,24 @@ import 'get_definition_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_managedapplication_getdefinition" "example" {
+///   name                = "examplemanagedappdef"
+///   resource_group_name = "exampleresources"
+/// }
+///
+/// output "id" {
+///   value = data.azure_managedapplication_getdefinition.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +93,8 @@ import 'get_definition_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.managedapplication.ManagedapplicationFunctions;
 /// import com.pulumi.azure.managedapplication.inputs.GetDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

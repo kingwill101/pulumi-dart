@@ -26,7 +26,7 @@ class GetAppServiceSiteConfig {
   final pulumi.Input<String> healthCheckPath;
   /// Is HTTP2 Enabled on this App Service?
   final pulumi.Input<bool> http2Enabled;
-  /// One or more `ip_restriction` blocks as defined above.
+  /// One or more `ipRestriction` blocks as defined above.
   final pulumi.Input<List<GetAppServiceSiteConfigIpRestriction>> ipRestrictions;
   /// The Java Container in use.
   final pulumi.Input<String> javaContainer;
@@ -52,7 +52,7 @@ class GetAppServiceSiteConfig {
   final pulumi.Input<bool> remoteDebuggingEnabled;
   /// Which version of Visual Studio is the Remote Debugger compatible with?
   final pulumi.Input<String> remoteDebuggingVersion;
-  /// One or more `scm_ip_restriction` blocks as defined above.
+  /// One or more `scmIpRestriction` blocks as defined above.
   final pulumi.Input<List<GetAppServiceSiteConfigScmIpRestriction>> scmIpRestrictions;
   /// The type of Source Control enabled for this App Service.
   final pulumi.Input<String> scmType;
@@ -78,7 +78,7 @@ class GetAppServiceSiteConfig {
   /// [ftpsState] State of FTP / FTPS service for this AppService.
   /// [healthCheckPath] The health check path to be pinged by App Service.
   /// [http2Enabled] Is HTTP2 Enabled on this App Service?
-  /// [ipRestrictions] One or more `ip_restriction` blocks as defined above.
+  /// [ipRestrictions] One or more `ipRestriction` blocks as defined above.
   /// [javaContainer] The Java Container in use.
   /// [javaContainerVersion] The version of the Java Container in use.
   /// [javaVersion] The version of Java in use.
@@ -91,7 +91,7 @@ class GetAppServiceSiteConfig {
   /// [pythonVersion] The version of Python used in this App Service.
   /// [remoteDebuggingEnabled] Is Remote Debugging Enabled in this App Service?
   /// [remoteDebuggingVersion] Which version of Visual Studio is the Remote Debugger compatible with?
-  /// [scmIpRestrictions] One or more `scm_ip_restriction` blocks as defined above.
+  /// [scmIpRestrictions] One or more `scmIpRestriction` blocks as defined above.
   /// [scmType] The type of Source Control enabled for this App Service.
   /// [scmUseMainIpRestriction] IP security restrictions for scm to use main.
   /// [use32BitWorkerProcess] Does the App Service run in 32 bit mode, rather than 64 bit mode?
@@ -201,4 +201,3 @@ class GetAppServiceSiteConfig {
     );
   }
 }
-

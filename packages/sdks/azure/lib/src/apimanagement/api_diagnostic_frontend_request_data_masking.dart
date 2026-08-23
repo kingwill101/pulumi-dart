@@ -7,12 +7,12 @@ import 'api_diagnostic_frontend_request_data_masking_query_param.dart';
 class ApiDiagnosticFrontendRequestDataMasking {
   /// A `headers` block as defined below.
   final pulumi.Input<List<ApiDiagnosticFrontendRequestDataMaskingHeader>>? headers;
-  /// A `query_params` block as defined below.
+  /// A `queryParams` block as defined below.
   final pulumi.Input<List<ApiDiagnosticFrontendRequestDataMaskingQueryParam>>? queryParams;
 
   /// Creates a new [ApiDiagnosticFrontendRequestDataMasking].
   /// [headers] A `headers` block as defined below.
-  /// [queryParams] A `query_params` block as defined below.
+  /// [queryParams] A `queryParams` block as defined below.
   const ApiDiagnosticFrontendRequestDataMasking({
     this.headers,
     this.queryParams,
@@ -32,4 +32,3 @@ class ApiDiagnosticFrontendRequestDataMasking {
     );
   }
 }
-

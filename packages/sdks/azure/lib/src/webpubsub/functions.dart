@@ -108,6 +108,31 @@ import 'get_service_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_webpubsub_getprivatelinkresource" "test" {
+///   web_pubsub_id = azure_webpubsub_service.test.id
+/// }
+///
+/// resource "azure_core_resourcegroup" "test" {
+///   name     = "terraform-webpubsub"
+///   location = "east us"
+/// }
+/// resource "azure_webpubsub_service" "test" {
+///   name                = "tfex-webpubsub"
+///   location            = azure_core_resourcegroup.test.location
+///   resource_group_name = azure_core_resourcegroup.test.name
+///   sku                 = "Standard_S1"
+///   capacity            = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -120,8 +145,8 @@ import 'get_service_result.dart';
 /// import com.pulumi.azure.webpubsub.ServiceArgs;
 /// import com.pulumi.azure.webpubsub.WebpubsubFunctions;
 /// import com.pulumi.azure.webpubsub.inputs.GetPrivateLinkResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -258,6 +283,20 @@ Future<GetPrivateLinkResourceResult> getPrivateLinkResource(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_webpubsub_getservice" "example" {
+///   name                = "test-webpubsub"
+///   resource_group_name = "wps-resource-group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -266,8 +305,8 @@ Future<GetPrivateLinkResourceResult> getPrivateLinkResource(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.webpubsub.WebpubsubFunctions;
 /// import com.pulumi.azure.webpubsub.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

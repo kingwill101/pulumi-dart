@@ -14,6 +14,10 @@ class LinkedServiceMysqlState {
   final pulumi.Input<String>? dataFactoryId;
   /// The description for the Data Factory Linked Service MySQL.
   final pulumi.Input<String>? description;
+  /// The version of the MySQL driver. Possible values are `V1` and `V2`. Defaults to `V1`.
+  ///
+  /// &gt; **Note:** New linked services must set `driverVersion` to `V2`.
+  final pulumi.Input<String>? driverVersion;
   /// The integration runtime reference to associate with the Data Factory Linked Service MySQL.
   final pulumi.Input<String>? integrationRuntimeName;
   /// Specifies the name of the Data Factory Linked Service MySQL. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
@@ -27,6 +31,7 @@ class LinkedServiceMysqlState {
   /// [connectionString] The connection string in which to authenticate with MySQL.
   /// [dataFactoryId] The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   /// [description] The description for the Data Factory Linked Service MySQL.
+  /// [driverVersion] The version of the MySQL driver. Possible values are `V1` and `V2`. Defaults to `V1`.
   /// [integrationRuntimeName] The integration runtime reference to associate with the Data Factory Linked Service MySQL.
   /// [name] Specifies the name of the Data Factory Linked Service MySQL. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service MySQL.
@@ -36,6 +41,7 @@ class LinkedServiceMysqlState {
     this.connectionString,
     this.dataFactoryId,
     this.description,
+    this.driverVersion,
     this.integrationRuntimeName,
     this.name,
     this.parameters,
@@ -48,6 +54,7 @@ class LinkedServiceMysqlState {
       'connectionString': ?connectionString,
       'dataFactoryId': ?dataFactoryId,
       'description': ?description,
+      'driverVersion': ?driverVersion,
       'integrationRuntimeName': ?integrationRuntimeName,
       'name': ?name,
       'parameters': ?parameters,
@@ -61,10 +68,10 @@ class LinkedServiceMysqlState {
       connectionString: (() { final guardedValue = map['connectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataFactoryId: (() { final guardedValue = map['dataFactoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      driverVersion: (() { final guardedValue = map['driverVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       integrationRuntimeName: (() { final guardedValue = map['integrationRuntimeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
-

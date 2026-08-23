@@ -5,7 +5,7 @@ import 'scale_set_os_profile_windows_config_additional_unattend_config.dart';
 import 'scale_set_os_profile_windows_config_winrm.dart';
 
 class ScaleSetOsProfileWindowsConfig {
-  /// An `additional_unattend_config` block as documented below.
+  /// An `additionalUnattendConfig` block as documented below.
   final pulumi.Input<List<ScaleSetOsProfileWindowsConfigAdditionalUnattendConfig>>? additionalUnattendConfigs;
   /// Indicates whether virtual machines in the scale set are enabled for automatic updates.
   final pulumi.Input<bool>? enableAutomaticUpgrades;
@@ -15,7 +15,7 @@ class ScaleSetOsProfileWindowsConfig {
   final pulumi.Input<List<ScaleSetOsProfileWindowsConfigWinrm>>? winrms;
 
   /// Creates a new [ScaleSetOsProfileWindowsConfig].
-  /// [additionalUnattendConfigs] An `additional_unattend_config` block as documented below.
+  /// [additionalUnattendConfigs] An `additionalUnattendConfig` block as documented below.
   /// [enableAutomaticUpgrades] Indicates whether virtual machines in the scale set are enabled for automatic updates.
   /// [provisionVmAgent] Indicates whether virtual machine agent should be provisioned on the virtual machines in the scale set.
   /// [winrms] A collection of `winrm` blocks as documented below.
@@ -44,4 +44,3 @@ class ScaleSetOsProfileWindowsConfig {
     );
   }
 }
-

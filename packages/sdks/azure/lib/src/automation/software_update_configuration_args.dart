@@ -23,9 +23,9 @@ class SoftwareUpdateConfigurationArgs {
   final pulumi.Input<String>? name;
   /// Specifies a list of names of non-Azure machines for the software update configuration.
   final pulumi.Input<List<String>>? nonAzureComputerNames;
-  /// A `post_task` blocks as defined below.
+  /// A `postTask` blocks as defined below.
   final pulumi.Input<SoftwareUpdateConfigurationPostTask>? postTask;
-  /// A `pre_task` blocks as defined below.
+  /// A `preTask` blocks as defined below.
   final pulumi.Input<SoftwareUpdateConfigurationPreTask>? preTask;
   /// A `schedule` blocks as defined below.
   final pulumi.Input<SoftwareUpdateConfigurationSchedule> schedule;
@@ -44,8 +44,8 @@ class SoftwareUpdateConfigurationArgs {
   /// [linux] A `linux` block as defined below.
   /// [name] The name which should be used for this Automation. Changing this forces a new Automation to be created.
   /// [nonAzureComputerNames] Specifies a list of names of non-Azure machines for the software update configuration.
-  /// [postTask] A `post_task` blocks as defined below.
-  /// [preTask] A `pre_task` blocks as defined below.
+  /// [postTask] A `postTask` blocks as defined below.
+  /// [preTask] A `preTask` blocks as defined below.
   /// [schedule] A `schedule` blocks as defined below.
   /// [target] A `target` blocks as defined below.
   /// [virtualMachineIds] Specifies a list of Azure Resource IDs of azure virtual machines.
@@ -96,4 +96,3 @@ class SoftwareUpdateConfigurationArgs {
     );
   }
 }
-

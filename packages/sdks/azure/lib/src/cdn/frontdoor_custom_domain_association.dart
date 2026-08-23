@@ -4,6 +4,8 @@ import 'frontdoor_custom_domain_association_state.dart';
 
 /// Manages the association between a Front Door (standard/premium) Custom Domain and one or more Front Door (standard/premium) Routes.
 ///
+/// &gt; **Note:** Domain ownership validation for Azure Front Door custom domains is performed asynchronously by the service (typically transitioning through states like `Submitting` and `Pending` before becoming `Approved`). For details on the required `_dnsauth` TXT record and the possible validation states, see the Azure Front Door documentation on [domain validation](https://learn.microsoft.com/azure/frontdoor/domain#domain-validation).
+///
 /// ## Example Usage
 ///
 ///
@@ -415,7 +417,8 @@ import 'frontdoor_custom_domain_association_state.dart';
 /// 					exampleZone.Name,
 /// 				},
 /// 			}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// 				return invoke.Result, nil
+/// 				val := invoke.Result
+/// 				return &val, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Tls: &cdn.FrontdoorCustomDomainTlsArgs{
 /// 				CertificateType:   pulumi.String("ManagedCertificate"),
@@ -466,6 +469,97 @@ import 'frontdoor_custom_domain_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-cdn-frontdoor"
+///   location = "West Europe"
+/// }
+/// resource "azure_dns_zone" "example" {
+///   name                = "domain.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_cdn_frontdoorprofile" "example" {
+///   name                = "example-profile"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Standard_AzureFrontDoor"
+/// }
+/// resource "azure_cdn_frontdoororigingroup" "example" {
+///   name                                                      = "example-origin-group"
+///   cdn_frontdoor_profile_id                                  = azure_cdn_frontdoorprofile.example.id
+///   session_affinity_enabled                                  = true
+///   restore_traffic_time_to_healed_or_new_endpoint_in_minutes = 10
+///   health_probe = {
+///     interval_in_seconds = 240
+///     path                = "/healthProbe"
+///     protocol            = "Https"
+///     request_type        = "HEAD"
+///   }
+///   load_balancing = {
+///     additional_latency_in_milliseconds = 0
+///     sample_size                        = 16
+///     successful_samples_required        = 3
+///   }
+/// }
+/// resource "azure_cdn_frontdoororigin" "example" {
+///   name                           = "example-origin"
+///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoororigingroup.example.id
+///   enabled                        = true
+///   certificate_name_check_enabled = false
+///   host_name                      = "contoso.com"
+///   http_port                      = 80
+///   https_port                     = 443
+///   origin_host_header             = "www.contoso.com"
+///   priority                       = 1
+///   weight                         = 1
+/// }
+/// resource "azure_cdn_frontdoorendpoint" "example" {
+///   name                     = "example-endpoint"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+/// }
+/// resource "azure_cdn_frontdoorruleset" "example" {
+///   name                     = "ExampleRuleSet"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+/// }
+/// resource "azure_cdn_frontdoorroute" "example" {
+///   name                            = "example-route"
+///   cdn_frontdoor_endpoint_id       = azure_cdn_frontdoorendpoint.example.id
+///   cdn_frontdoor_origin_group_id   = azure_cdn_frontdoororigingroup.example.id
+///   cdn_frontdoor_origin_ids        = [azure_cdn_frontdoororigin.example.id]
+///   cdn_frontdoor_rule_set_ids      = [azure_cdn_frontdoorruleset.example.id]
+///   enabled                         = true
+///   forwarding_protocol             = "HttpsOnly"
+///   https_redirect_enabled          = true
+///   patterns_to_matches             = ["/*"]
+///   supported_protocols             = ["Http", "Https"]
+///   cdn_frontdoor_custom_domain_ids = [azure_cdn_frontdoorcustomdomain.example.id]
+///   link_to_default_domain          = false
+/// }
+/// resource "azure_cdn_frontdoorcustomdomain" "example" {
+///   name                     = "example-customDomain"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   dns_zone_id              = azure_dns_zone.example.id
+///   host_name                = join(".", ["contoso", azure_dns_zone.example.name])
+///   tls = {
+///     certificate_type    = "ManagedCertificate"
+///     minimum_tls_version = "TLS12"
+///   }
+/// }
+/// resource "azure_cdn_frontdoorcustomdomainassociation" "example" {
+///   cdn_frontdoor_custom_domain_id = azure_cdn_frontdoorcustomdomain.example.id
+///   cdn_frontdoor_route_ids        = [azure_cdn_frontdoorroute.example.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -497,8 +591,8 @@ import 'frontdoor_custom_domain_association_state.dart';
 /// import com.pulumi.azure.cdn.FrontdoorRouteArgs;
 /// import com.pulumi.azure.cdn.FrontdoorCustomDomainAssociation;
 /// import com.pulumi.azure.cdn.FrontdoorCustomDomainAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -721,6 +815,13 @@ import 'frontdoor_custom_domain_association_state.dart';
 ///         - ${exampleFrontdoorRoute.id}
 /// ```
 ///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.Cdn` - 2025-04-15
 ///
 /// ## Import
 ///

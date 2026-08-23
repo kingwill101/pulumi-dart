@@ -29,24 +29,24 @@ class AlertRuleAnomalyDuplicateState {
   final pulumi.Input<String>? logAnalyticsWorkspaceId;
   /// mode of the Duplicated Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
   final pulumi.Input<String>? mode;
-  /// A list of `multi_select_observation` blocks as defined below.
+  /// A list of `multiSelectObservation` blocks as defined below.
   final pulumi.Input<List<AlertRuleAnomalyDuplicateMultiSelectObservation>>? multiSelectObservations;
   final pulumi.Input<String>? name;
-  /// A list of `prioritized_exclude_observation` blocks as defined below.
+  /// A list of `prioritizedExcludeObservation` blocks as defined below.
   final pulumi.Input<List<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>>? prioritizedExcludeObservations;
-  /// A `required_data_connector` block as defined below.
+  /// A `requiredDataConnector` block as defined below.
   final pulumi.Input<List<AlertRuleAnomalyDuplicateRequiredDataConnector>>? requiredDataConnectors;
   /// The ID of the anomaly settings definition Id.
   final pulumi.Input<String>? settingsDefinitionId;
-  /// A list of `single_select_observation` blocks as defined below.
+  /// A list of `singleSelectObservation` blocks as defined below.
   final pulumi.Input<List<AlertRuleAnomalyDuplicateSingleSelectObservation>>? singleSelectObservations;
   /// A list of categories of attacks by which to classify the rule.
   final pulumi.Input<List<String>>? tactics;
   /// A list of techniques of attacks by which to classify the rule.
   final pulumi.Input<List<String>>? techniques;
-  /// A list of `threshold_observation` blocks as defined below.
+  /// A list of `thresholdObservation` blocks as defined below.
   ///
-  /// &gt; **Note:** un-specified `multi_select_observation`, `single_select_observation`, `prioritized_exclude_observation` and `threshold_observation` will be inherited from the built-in Anomaly Alert Rule.
+  /// &gt; **Note:** un-specified `multiSelectObservation`, `singleSelectObservation`, `prioritizedExcludeObservation` and `thresholdObservation` will be inherited from the built-in Anomaly Alert Rule.
   final pulumi.Input<List<AlertRuleAnomalyDuplicateThresholdObservation>>? thresholdObservations;
 
   /// Creates a new [AlertRuleAnomalyDuplicateState].
@@ -60,15 +60,15 @@ class AlertRuleAnomalyDuplicateState {
   /// [isDefaultSettings] Whether the current settings of the Anomaly Alert Rule equals default settings.
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace. Changing this forces a new Duplicated Anomaly Alert Rule to be created.
   /// [mode] mode of the Duplicated Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
-  /// [multiSelectObservations] A list of `multi_select_observation` blocks as defined below.
+  /// [multiSelectObservations] A list of `multiSelectObservation` blocks as defined below.
   /// [name] Optional.
-  /// [prioritizedExcludeObservations] A list of `prioritized_exclude_observation` blocks as defined below.
-  /// [requiredDataConnectors] A `required_data_connector` block as defined below.
+  /// [prioritizedExcludeObservations] A list of `prioritizedExcludeObservation` blocks as defined below.
+  /// [requiredDataConnectors] A `requiredDataConnector` block as defined below.
   /// [settingsDefinitionId] The ID of the anomaly settings definition Id.
-  /// [singleSelectObservations] A list of `single_select_observation` blocks as defined below.
+  /// [singleSelectObservations] A list of `singleSelectObservation` blocks as defined below.
   /// [tactics] A list of categories of attacks by which to classify the rule.
   /// [techniques] A list of techniques of attacks by which to classify the rule.
-  /// [thresholdObservations] A list of `threshold_observation` blocks as defined below.
+  /// [thresholdObservations] A list of `thresholdObservation` blocks as defined below.
   const AlertRuleAnomalyDuplicateState({
     this.anomalySettingsVersion,
     this.anomalyVersion,
@@ -139,4 +139,3 @@ class AlertRuleAnomalyDuplicateState {
     );
   }
 }
-

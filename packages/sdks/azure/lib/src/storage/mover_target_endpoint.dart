@@ -178,6 +178,45 @@ import 'mover_target_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                            = "examplestr"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resourcegroup.example.location
+///   account_tier                    = "Standard"
+///   account_replication_type        = "LRS"
+///   allow_nested_items_to_be_public = true
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "example-sc"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "blob"
+/// }
+/// resource "azure_storage_mover" "example" {
+///   name                = "example-ssm"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = "West Europe"
+/// }
+/// resource "azure_storage_movertargetendpoint" "example" {
+///   name                   = "example-se"
+///   storage_mover_id       = azure_storage_mover.example.id
+///   storage_account_id     = azure_storage_account.example.id
+///   storage_container_name = azure_storage_container.example.name
+///   description            = "Example Storage Container Endpoint Description"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -194,8 +233,8 @@ import 'mover_target_endpoint_state.dart';
 /// import com.pulumi.azure.storage.MoverArgs;
 /// import com.pulumi.azure.storage.MoverTargetEndpoint;
 /// import com.pulumi.azure.storage.MoverTargetEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

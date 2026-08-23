@@ -17,7 +17,7 @@ class ScaleSetIdentity {
   ///     sku: {
   ///         name: vmSku,
   ///         tier: "Standard",
-  ///         capacity: instanceCount,
+  ///         capacity: Number(instanceCount),
   ///     },
   ///     identity: {
   ///         type: "SystemAssigned",
@@ -43,7 +43,7 @@ class ScaleSetIdentity {
   ///     sku={
   ///         "name": vm_sku,
   ///         "tier": "Standard",
-  ///         "capacity": instance_count,
+  ///         "capacity": int(instance_count),
   ///     },
   ///     identity={
   ///         "type": "SystemAssigned",
@@ -135,10 +135,43 @@ class ScaleSetIdentity {
   /// 			return err
   /// 		}
   /// 		ctx.Export("principalId", example.Identity.ApplyT(func(identity compute.ScaleSetIdentity) (*string, error) {
-  /// 			return &identity.PrincipalId, nil
+  /// 			return identity.PrincipalId, nil
   /// 		}).(pulumi.StringPtrOutput))
   /// 		return nil
   /// 	})
+  /// }
+  /// ```
+  /// ```hcl
+  /// pulumi {
+  ///   required_providers {
+  ///     azure = {
+  ///       source = "pulumi/azure"
+  ///     }
+  ///   }
+  /// }
+  ///
+  /// resource "azure_compute_scaleset" "example" {
+  ///   name                = "vm-scaleset"
+  ///   resource_group_name = exampleAzurermResourceGroup.name
+  ///   location            = exampleAzurermResourceGroup.location
+  ///   sku = {
+  ///     name     = vmSku
+  ///     tier     = "Standard"
+  ///     capacity = instanceCount
+  ///   }
+  ///   identity = {
+  ///     type = "SystemAssigned"
+  ///   }
+  ///   extensions {
+  ///     name                 = "MSILinuxExtension"
+  ///     publisher            = "Microsoft.ManagedIdentity"
+  ///     type                 = "ManagedIdentityExtensionForLinux"
+  ///     type_handler_version = "1.0"
+  ///     settings             = "{\"port\": 50342}"
+  ///   }
+  /// }
+  /// output "principalId" {
+  ///   value = azure_compute_scaleset.example.identity.principal_id
   /// }
   /// ```
   /// ```java
@@ -152,8 +185,8 @@ class ScaleSetIdentity {
   /// import com.pulumi.azure.compute.inputs.ScaleSetSkuArgs;
   /// import com.pulumi.azure.compute.inputs.ScaleSetIdentityArgs;
   /// import com.pulumi.azure.compute.inputs.ScaleSetExtensionArgs;
-  /// import java.util.List;
   /// import java.util.ArrayList;
+  /// import java.util.Arrays;
   /// import java.util.Map;
   /// import java.io.File;
   /// import java.nio.file.Files;
@@ -249,4 +282,3 @@ class ScaleSetIdentity {
     );
   }
 }
-

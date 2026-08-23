@@ -131,6 +131,35 @@ import 'virtual_machine_wsfc_domain_credential.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getvirtualmachine" "example" {
+///   name                = "example-vm"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// resource "azure_mssql_virtualmachine" "example" {
+///   virtual_machine_id               = data.azure_compute_getvirtualmachine.example.id
+///   sql_license_type                 = "PAYG"
+///   r_services_enabled               = true
+///   sql_connectivity_port            = 1433
+///   sql_connectivity_type            = "PRIVATE"
+///   sql_connectivity_update_password = "Password1234!"
+///   sql_connectivity_update_username = "sqllogin"
+///   auto_patching = {
+///     day_of_week                            = "Sunday"
+///     maintenance_window_duration_in_minutes = 60
+///     maintenance_window_starting_hour       = 2
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +171,8 @@ import 'virtual_machine_wsfc_domain_credential.dart';
 /// import com.pulumi.azure.mssql.VirtualMachine;
 /// import com.pulumi.azure.mssql.VirtualMachineArgs;
 /// import com.pulumi.azure.mssql.inputs.VirtualMachineAutoPatchingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -224,11 +253,11 @@ import 'virtual_machine_wsfc_domain_credential.dart';
 class VirtualMachine extends pulumi.CustomResource {
   /// An `assessment` block as defined below.
   late final pulumi.Output<VirtualMachineAssessment?> assessment;
-  /// An `auto_backup` block as defined below. This block can be added to an existing resource, but removing this block forces a new resource to be created.
+  /// An `autoBackup` block as defined below. This block can be added to an existing resource, but removing this block forces a new resource to be created.
   late final pulumi.Output<VirtualMachineAutoBackup?> autoBackup;
-  /// An `auto_patching` block as defined below.
+  /// An `autoPatching` block as defined below.
   late final pulumi.Output<VirtualMachineAutoPatching?> autoPatching;
-  /// An `key_vault_credential` block as defined below.
+  /// An `keyVaultCredential` block as defined below.
   late final pulumi.Output<VirtualMachineKeyVaultCredential?> keyVaultCredential;
   /// Should R Services be enabled?
   late final pulumi.Output<bool?> rServicesEnabled;
@@ -240,19 +269,19 @@ class VirtualMachine extends pulumi.CustomResource {
   late final pulumi.Output<String?> sqlConnectivityUpdatePassword;
   /// The SQL Server sysadmin login to create.
   late final pulumi.Output<String?> sqlConnectivityUpdateUsername;
-  /// A `sql_instance` block as defined below.
+  /// A `sqlInstance` block as defined below.
   late final pulumi.Output<VirtualMachineSqlInstance?> sqlInstance;
   /// The SQL Server license type. Possible values are `AHUB` (Azure Hybrid Benefit), `DR` (Disaster Recovery), and `PAYG` (Pay-As-You-Go). Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sqlLicenseType;
   /// The ID of the SQL Virtual Machine Group that the SQL Virtual Machine belongs to.
   late final pulumi.Output<String?> sqlVirtualMachineGroupId;
-  /// An `storage_configuration` block as defined below.
+  /// An `storageConfiguration` block as defined below.
   late final pulumi.Output<VirtualMachineStorageConfiguration?> storageConfiguration;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   /// The ID of the Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineId;
-  /// A `wsfc_domain_credential` block as defined below
+  /// A `wsfcDomainCredential` block as defined below
   late final pulumi.Output<VirtualMachineWsfcDomainCredential?> wsfcDomainCredential;
 
   /// Creates a new [VirtualMachine].

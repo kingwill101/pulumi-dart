@@ -16,9 +16,9 @@ class LinuxWebAppSlotSiteConfig {
   final pulumi.Input<String>? apiManagementApiId;
   /// The App command line to launch.
   final pulumi.Input<String>? appCommandLine;
-  /// A `application_stack` block as defined above.
+  /// A `applicationStack` block as defined above.
   final pulumi.Input<LinuxWebAppSlotSiteConfigApplicationStack>? applicationStack;
-  /// A `auto_heal_setting` block as defined above. Required with `auto_heal`.
+  /// A `autoHealSetting` block as defined above. Required with `autoHeal`.
   final pulumi.Input<LinuxWebAppSlotSiteConfigAutoHealSetting>? autoHealSetting;
   /// The Linux Web App Slot Name to automatically swap to when deployment to that slot is successfully completed.
   ///
@@ -37,15 +37,15 @@ class LinuxWebAppSlotSiteConfig {
   ///
   /// &gt; **Note:** Azure defaults this value to `AllAllowed`, however, in the interests of security Terraform will default this to `Disabled` to ensure the user makes a conscious choice to enable it.
   final pulumi.Input<String>? ftpsState;
-  /// The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `health_check_path`.
+  /// The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `healthCheckPath`.
   final pulumi.Input<int>? healthCheckEvictionTimeInMin;
   /// The path to the Health Check.
   final pulumi.Input<String>? healthCheckPath;
   /// Should the HTTP2 be enabled?
   final pulumi.Input<bool>? http2Enabled;
-  /// The Default action for traffic that does not match any `ip_restriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
+  /// The Default action for traffic that does not match any `ipRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
   final pulumi.Input<String>? ipRestrictionDefaultAction;
-  /// One or more `ip_restriction` blocks as defined above.
+  /// One or more `ipRestriction` blocks as defined above.
   final pulumi.Input<List<LinuxWebAppSlotSiteConfigIpRestriction>>? ipRestrictions;
   final pulumi.Input<String>? linuxFxVersion;
   /// The Site load balancing. Possible values include: `WeightedRoundRobin`, `LeastRequests`, `LeastResponseTime`, `WeightedTotalTraffic`, `RequestHash`, `PerSiteRoundRobin`. Defaults to `LeastRequests` if omitted.
@@ -54,20 +54,22 @@ class LinuxWebAppSlotSiteConfig {
   final pulumi.Input<bool>? localMysqlEnabled;
   /// Managed pipeline mode. Possible values include: `Integrated`, `Classic`. Defaults to `Integrated`.
   final pulumi.Input<String>? managedPipelineMode;
+  /// The configures the minimum cipher suite of TLS required for SSL requests. Possible values include: `TLS_AES_128_GCM_SHA256`,`TLS_AES_256_GCM_SHA384"`,`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256"`,`TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"`,`TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"`,`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"`,`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"`,`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"`,`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"`,`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384"`,`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"`, `TLS_RSA_WITH_AES_128_CBC_SHA"`,`TLS_RSA_WITH_AES_128_CBC_SHA256"`,`TLS_RSA_WITH_AES_128_GCM_SHA256"`,`TLS_RSA_WITH_AES_256_CBC_SHA"`,`TLS_RSA_WITH_AES_256_CBC_SHA256"`,`TLS_RSA_WITH_AES_256_GCM_SHA384"`.
+  final pulumi.Input<String>? minimumTlsCipherSuite;
   /// The configures the minimum version of TLS required for SSL requests. Possible values are `1.0`, `1.1`, `1.2` and `1.3`. Defaults to `1.2`.
   final pulumi.Input<String>? minimumTlsVersion;
   /// Should Remote Debugging be enabled? Defaults to `false`.
   final pulumi.Input<bool>? remoteDebuggingEnabled;
   /// The Remote Debugging Version. Currently only `VS2022` is supported.
   final pulumi.Input<String>? remoteDebuggingVersion;
-  /// The Default action for traffic that does not match any `scm_ip_restriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
+  /// The Default action for traffic that does not match any `scmIpRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
   final pulumi.Input<String>? scmIpRestrictionDefaultAction;
-  /// One or more `scm_ip_restriction` blocks as defined above.
+  /// One or more `scmIpRestriction` blocks as defined above.
   final pulumi.Input<List<LinuxWebAppSlotSiteConfigScmIpRestriction>>? scmIpRestrictions;
   /// The configures the minimum version of TLS required for SSL requests to the SCM site Possible values are `1.0`, `1.1`, `1.2` and `1.3`. Defaults to `1.2`.
   final pulumi.Input<String>? scmMinimumTlsVersion;
   final pulumi.Input<String>? scmType;
-  /// Should the Linux Web App `ip_restriction` configuration be used for the SCM also.
+  /// Should the Linux Web App `ipRestriction` configuration be used for the SCM also.
   final pulumi.Input<bool>? scmUseMainIpRestriction;
   /// Should the Linux Web App use a 32-bit worker? Defaults to `true`.
   final pulumi.Input<bool>? use32BitWorker;
@@ -83,8 +85,8 @@ class LinuxWebAppSlotSiteConfig {
   /// [apiDefinitionUrl] The URL to the API Definition for this Linux Web App Slot.
   /// [apiManagementApiId] The API Management API ID this Linux Web App Slot is associated with.
   /// [appCommandLine] The App command line to launch.
-  /// [applicationStack] A `application_stack` block as defined above.
-  /// [autoHealSetting] A `auto_heal_setting` block as defined above. Required with `auto_heal`.
+  /// [applicationStack] A `applicationStack` block as defined above.
+  /// [autoHealSetting] A `autoHealSetting` block as defined above. Required with `autoHeal`.
   /// [autoSwapSlotName] The Linux Web App Slot Name to automatically swap to when deployment to that slot is successfully completed.
   /// [containerRegistryManagedIdentityClientId] The Client ID of the Managed Service Identity to use for connections to the Azure Container Registry.
   /// [containerRegistryUseManagedIdentity] Should connections for Azure Container Registry use Managed Identity.
@@ -92,23 +94,24 @@ class LinuxWebAppSlotSiteConfig {
   /// [defaultDocuments] Specifies a list of Default Documents for the Linux Web App.
   /// [detailedErrorLoggingEnabled] Optional.
   /// [ftpsState] The State of FTP / FTPS service. Possible values include `AllAllowed`, `FtpsOnly`, and `Disabled`. Defaults to `Disabled`.
-  /// [healthCheckEvictionTimeInMin] The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `health_check_path`.
+  /// [healthCheckEvictionTimeInMin] The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `healthCheckPath`.
   /// [healthCheckPath] The path to the Health Check.
   /// [http2Enabled] Should the HTTP2 be enabled?
-  /// [ipRestrictionDefaultAction] The Default action for traffic that does not match any `ip_restriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
-  /// [ipRestrictions] One or more `ip_restriction` blocks as defined above.
+  /// [ipRestrictionDefaultAction] The Default action for traffic that does not match any `ipRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
+  /// [ipRestrictions] One or more `ipRestriction` blocks as defined above.
   /// [linuxFxVersion] Optional.
   /// [loadBalancingMode] The Site load balancing. Possible values include: `WeightedRoundRobin`, `LeastRequests`, `LeastResponseTime`, `WeightedTotalTraffic`, `RequestHash`, `PerSiteRoundRobin`. Defaults to `LeastRequests` if omitted.
   /// [localMysqlEnabled] Use Local MySQL. Defaults to `false`.
   /// [managedPipelineMode] Managed pipeline mode. Possible values include: `Integrated`, `Classic`. Defaults to `Integrated`.
+  /// [minimumTlsCipherSuite] The configures the minimum cipher suite of TLS required for SSL requests. Possible values include: `TLS_AES_128_GCM_SHA256`,`TLS_AES_256_GCM_SHA384"`,`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256"`,`TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"`,`TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"`,`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"`,`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"`,`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"`,`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"`,`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384"`,`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"`, `TLS_RSA_WITH_AES_128_CBC_SHA"`,`TLS_RSA_WITH_AES_128_CBC_SHA256"`,`TLS_RSA_WITH_AES_128_GCM_SHA256"`,`TLS_RSA_WITH_AES_256_CBC_SHA"`,`TLS_RSA_WITH_AES_256_CBC_SHA256"`,`TLS_RSA_WITH_AES_256_GCM_SHA384"`.
   /// [minimumTlsVersion] The configures the minimum version of TLS required for SSL requests. Possible values are `1.0`, `1.1`, `1.2` and `1.3`. Defaults to `1.2`.
   /// [remoteDebuggingEnabled] Should Remote Debugging be enabled? Defaults to `false`.
   /// [remoteDebuggingVersion] The Remote Debugging Version. Currently only `VS2022` is supported.
-  /// [scmIpRestrictionDefaultAction] The Default action for traffic that does not match any `scm_ip_restriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
-  /// [scmIpRestrictions] One or more `scm_ip_restriction` blocks as defined above.
+  /// [scmIpRestrictionDefaultAction] The Default action for traffic that does not match any `scmIpRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
+  /// [scmIpRestrictions] One or more `scmIpRestriction` blocks as defined above.
   /// [scmMinimumTlsVersion] The configures the minimum version of TLS required for SSL requests to the SCM site Possible values are `1.0`, `1.1`, `1.2` and `1.3`. Defaults to `1.2`.
   /// [scmType] Optional.
-  /// [scmUseMainIpRestriction] Should the Linux Web App `ip_restriction` configuration be used for the SCM also.
+  /// [scmUseMainIpRestriction] Should the Linux Web App `ipRestriction` configuration be used for the SCM also.
   /// [use32BitWorker] Should the Linux Web App use a 32-bit worker? Defaults to `true`.
   /// [vnetRouteAllEnabled] Should all outbound traffic have NAT Gateways, Network Security Groups and User Defined Routes applied? Defaults to `false`.
   /// [websocketsEnabled] Should Web Sockets be enabled? Defaults to `false`.
@@ -136,6 +139,7 @@ class LinuxWebAppSlotSiteConfig {
     this.loadBalancingMode,
     this.localMysqlEnabled,
     this.managedPipelineMode,
+    this.minimumTlsCipherSuite,
     this.minimumTlsVersion,
     this.remoteDebuggingEnabled,
     this.remoteDebuggingVersion,
@@ -174,6 +178,7 @@ class LinuxWebAppSlotSiteConfig {
       'loadBalancingMode': ?loadBalancingMode,
       'localMysqlEnabled': ?localMysqlEnabled,
       'managedPipelineMode': ?managedPipelineMode,
+      'minimumTlsCipherSuite': ?minimumTlsCipherSuite,
       'minimumTlsVersion': ?minimumTlsVersion,
       'remoteDebuggingEnabled': ?remoteDebuggingEnabled,
       'remoteDebuggingVersion': ?remoteDebuggingVersion,
@@ -213,6 +218,7 @@ class LinuxWebAppSlotSiteConfig {
       loadBalancingMode: (() { final guardedValue = map['loadBalancingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       localMysqlEnabled: (() { final guardedValue = map['localMysqlEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       managedPipelineMode: (() { final guardedValue = map['managedPipelineMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minimumTlsCipherSuite: (() { final guardedValue = map['minimumTlsCipherSuite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minimumTlsVersion: (() { final guardedValue = map['minimumTlsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       remoteDebuggingEnabled: (() { final guardedValue = map['remoteDebuggingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       remoteDebuggingVersion: (() { final guardedValue = map['remoteDebuggingVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -228,4 +234,3 @@ class LinuxWebAppSlotSiteConfig {
     );
   }
 }
-

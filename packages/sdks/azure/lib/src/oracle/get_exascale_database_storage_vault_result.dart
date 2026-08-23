@@ -11,7 +11,7 @@ class GetExascaleDatabaseStorageVaultResult {
   final String description;
   /// The user-friendly name for the Exadata Database Storage Vault.
   final String displayName;
-  /// A `high_capacity_database_storage` block as defined below.
+  /// A `highCapacityDatabaseStorage` block as defined below.
   final List<GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage> highCapacityDatabaseStorages;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -38,7 +38,7 @@ class GetExascaleDatabaseStorageVaultResult {
   /// [additionalFlashCachePercentage] The size of additional Flash Cache in percentage of High Capacity database storage.
   /// [description] Exadata Database Storage Vault description.
   /// [displayName] The user-friendly name for the Exadata Database Storage Vault.
-  /// [highCapacityDatabaseStorages] A `high_capacity_database_storage` block as defined below.
+  /// [highCapacityDatabaseStorages] A `highCapacityDatabaseStorage` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [lifecycleDetails] Additional information about the current lifecycle state.
   /// [lifecycleState] Exadata Database Storage Vault lifecycle state enum.
@@ -108,4 +108,3 @@ class GetExascaleDatabaseStorageVaultResult {
     );
   }
 }
-

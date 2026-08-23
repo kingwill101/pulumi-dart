@@ -86,4 +86,3 @@ class LinuxFunctionAppAuthSettingsV2Login {
     );
   }
 }
-

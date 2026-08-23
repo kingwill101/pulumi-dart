@@ -13,7 +13,7 @@ class GetWindowsFunctionAppSiteConfigScmIpRestriction {
   final pulumi.Input<String> ipAddress;
   /// The name of this Windows Function App.
   final pulumi.Input<String> name;
-  /// The priority value of this `ip_restriction`.
+  /// The priority value of this `ipRestriction`.
   final pulumi.Input<int> priority;
   /// The Service Tag used for this IP Restriction.
   final pulumi.Input<String> serviceTag;
@@ -26,7 +26,7 @@ class GetWindowsFunctionAppSiteConfigScmIpRestriction {
   /// [headers] Required.
   /// [ipAddress] The CIDR notation of the IP or IP Range to match.
   /// [name] The name of this Windows Function App.
-  /// [priority] The priority value of this `ip_restriction`.
+  /// [priority] The priority value of this `ipRestriction`.
   /// [serviceTag] The Service Tag used for this IP Restriction.
   /// [virtualNetworkSubnetId] The subnet id which the Windows Function App is vNet Integrated with.
   const GetWindowsFunctionAppSiteConfigScmIpRestriction({
@@ -66,4 +66,3 @@ class GetWindowsFunctionAppSiteConfigScmIpRestriction {
     );
   }
 }
-

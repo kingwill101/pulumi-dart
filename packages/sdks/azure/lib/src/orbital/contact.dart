@@ -108,8 +108,8 @@ import 'contact_state.dart';
 ///     location="westeurope",
 ///     norad_id="12345",
 ///     links=[{
-///         "bandwidth_mhz": 100,
-///         "center_frequency_mhz": 101,
+///         "bandwidth_mhz": float(100),
+///         "center_frequency_mhz": float(101),
 ///         "direction": "Uplink",
 ///         "polarization": "LHCP",
 ///         "name": "examplename",
@@ -153,8 +153,8 @@ import 'contact_state.dart';
 ///     links=[{
 ///         "channels": [{
 ///             "name": "channelname",
-///             "bandwidth_mhz": 100,
-///             "center_frequency_mhz": 101,
+///             "bandwidth_mhz": float(100),
+///             "center_frequency_mhz": float(101),
 ///             "end_points": [{
 ///                 "end_point_name": "AQUA_command",
 ///                 "ip_address": "10.0.1.0",
@@ -437,6 +437,89 @@ import 'contact_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_orbital_spacecraft" "example" {
+///   name                = "example-spacecraft"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = "westeurope"
+///   norad_id            = "12345"
+///   links {
+///     bandwidth_mhz        = 100
+///     center_frequency_mhz = 101
+///     direction            = "Uplink"
+///     polarization         = "LHCP"
+///     name                 = "examplename"
+///   }
+///   two_line_elements = ["1 23455U 94089A   97320.90946019  .00000140  00000-0  10191-3 0  2621", "2 23455  99.0090 272.6745 0008546 223.1686 136.8816 14.11711747148495"]
+///   title_line        = "AQUA"
+///   tags = {
+///     "aks-managed-cluster-name" = "9a57225d-a405-4d40-aa46-f13d2342abef"
+///   }
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+///   delegations {
+///     name = "orbitalgateway"
+///     service_delegation = {
+///       name    = "Microsoft.Orbital/orbitalGateways"
+///       actions = ["Microsoft.Network/publicIPAddresses/join/action", "Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/read", "Microsoft.Network/publicIPAddresses/read"]
+///     }
+///   }
+/// }
+/// resource "azure_orbital_contactprofile" "example" {
+///   name                              = "example-contactprofile"
+///   resource_group_name               = azure_core_resourcegroup.example.name
+///   location                          = azure_core_resourcegroup.example.location
+///   minimum_variable_contact_duration = "PT1M"
+///   auto_tracking                     = "disabled"
+///   links {
+///     channels {
+///       name                 = "channelname"
+///       bandwidth_mhz        = 100
+///       center_frequency_mhz = 101
+///       end_points {
+///         end_point_name = "AQUA_command"
+///         ip_address     = "10.0.1.0"
+///         port           = "49153"
+///         protocol       = "TCP"
+///       }
+///     }
+///     direction    = "Uplink"
+///     name         = "RHCP_UL"
+///     polarization = "RHCP"
+///   }
+///   network_configuration_subnet_id = azure_network_subnet.example.id
+/// }
+/// resource "azure_orbital_contact" "example" {
+///   name                   = "example-contact"
+///   spacecraft_id          = azure_orbital_spacecraft.example.id
+///   reservation_start_time = "2020-07-16T20:35:00.00Z"
+///   reservation_end_time   = "2020-07-16T20:55:00.00Z"
+///   ground_station_name    = "WESTUS2_0"
+///   contact_profile_id     = azure_orbital_contactprofile.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -457,10 +540,12 @@ import 'contact_state.dart';
 /// import com.pulumi.azure.orbital.ContactProfile;
 /// import com.pulumi.azure.orbital.ContactProfileArgs;
 /// import com.pulumi.azure.orbital.inputs.ContactProfileLinkArgs;
+/// import com.pulumi.azure.orbital.inputs.ContactProfileLinkChannelArgs;
+/// import com.pulumi.azure.orbital.inputs.ContactProfileLinkChannelEndPointArgs;
 /// import com.pulumi.azure.orbital.Contact;
 /// import com.pulumi.azure.orbital.ContactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

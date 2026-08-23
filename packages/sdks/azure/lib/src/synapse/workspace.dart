@@ -189,6 +189,47 @@ import 'workspace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   account_kind             = "StorageV2"
+///   is_hns_enabled           = "true"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// resource "azure_synapse_workspace" "example" {
+///   name                                 = "example"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   location                             = azure_core_resourcegroup.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   sql_administrator_login              = "sqladminuser"
+///   sql_administrator_login_password     = "H@Sh1CoR3!"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "Env" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -204,8 +245,8 @@ import 'workspace_state.dart';
 /// import com.pulumi.azure.synapse.Workspace;
 /// import com.pulumi.azure.synapse.WorkspaceArgs;
 /// import com.pulumi.azure.synapse.inputs.WorkspaceIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -733,10 +774,10 @@ import 'workspace_state.dart';
 /// 		workspacePolicy, err := keyvault.NewAccessPolicy(ctx, "workspace_policy", &keyvault.AccessPolicyArgs{
 /// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			TenantId: pulumi.String(exampleWorkspace.Identity.ApplyT(func(identity synapse.WorkspaceIdentity) (*string, error) {
-/// 				return &identity.TenantId, nil
+/// 				return identity.TenantId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ObjectId: pulumi.String(exampleWorkspace.Identity.ApplyT(func(identity synapse.WorkspaceIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Get"),
@@ -773,6 +814,96 @@ import 'workspace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   account_kind             = "StorageV2"
+///   is_hns_enabled           = "true"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                     = "example"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                 = "standard"
+///   purge_protection_enabled = true
+/// }
+/// resource "azure_keyvault_accesspolicy" "deployer" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
+///   object_id       = data.azure_core_getclientconfig.current.object_id
+///   key_permissions = ["Create", "Get", "Delete", "Purge", "GetRotationPolicy"]
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_accesspolicy.deployer]
+///   name         = "workspaceencryptionkey"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["unwrapKey", "wrapKey"]
+/// }
+/// resource "azure_synapse_workspace" "example" {
+///   name                                 = "example"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   location                             = azure_core_resourcegroup.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   sql_administrator_login              = "sqladminuser"
+///   sql_administrator_login_password     = "H@Sh1CoR3!"
+///   customer_managed_key = {
+///     key_versionless_id = azure_keyvault_key.example.versionless_id
+///     key_name           = "enckey"
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "Env" = "production"
+///   }
+/// }
+/// resource "azure_keyvault_accesspolicy" "workspace_policy" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = azure_synapse_workspace.example.identity.tenant_id
+///   object_id       = azure_synapse_workspace.example.identity.principal_id
+///   key_permissions = ["Get", "WrapKey", "UnwrapKey"]
+/// }
+/// resource "azure_synapse_workspacekey" "example" {
+///   depends_on                          = [azure_keyvault_accesspolicy.workspace_policy]
+///   customer_managed_key_versionless_id = azure_keyvault_key.example.versionless_id
+///   synapse_workspace_id                = azure_synapse_workspace.example.id
+///   active                              = true
+///   customer_managed_key_name           = "enckey"
+/// }
+/// resource "azure_synapse_workspaceaadadmin" "example" {
+///   depends_on           = [azure_synapse_workspacekey.example]
+///   synapse_workspace_id = azure_synapse_workspace.example.id
+///   login                = "AzureAD Admin"
+///   object_id            = "00000000-0000-0000-0000-000000000000"
+///   tenant_id            = "00000000-0000-0000-0000-000000000000"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -801,8 +932,8 @@ import 'workspace_state.dart';
 /// import com.pulumi.azure.synapse.WorkspaceAadAdmin;
 /// import com.pulumi.azure.synapse.WorkspaceAadAdminArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1043,7 +1174,7 @@ import 'workspace_state.dart';
 /// $ pulumi import azure:synapse/workspace:Workspace example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Synapse/workspaces/workspace1
 /// ```
 class Workspace extends pulumi.CustomResource {
-  /// An `azure_devops_repo` block as defined below.
+  /// An `azureDevopsRepo` block as defined below.
   late final pulumi.Output<WorkspaceAzureDevopsRepo?> azureDevopsRepo;
   /// Is Azure Active Directory Authentication the only way to authenticate with resources inside this synapse Workspace. Defaults to `false`.
   late final pulumi.Output<bool?> azureadAuthenticationOnly;
@@ -1051,11 +1182,11 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String?> computeSubnetId;
   /// A map of Connectivity endpoints for this Synapse Workspace. Possible key values are `dev`, `sql`, `sqlOnDemand`, and `web`.
   late final pulumi.Output<Map<String, String>> connectivityEndpoints;
-  /// A `customer_managed_key` block as defined below.
+  /// A `customerManagedKey` block as defined below.
   late final pulumi.Output<WorkspaceCustomerManagedKey?> customerManagedKey;
-  /// Is data exfiltration protection enabled in this workspace? If set to `true`, `managed_virtual_network_enabled` must also be set to `true`. Changing this forces a new resource to be created.
+  /// Is data exfiltration protection enabled in this workspace? If set to `true`, `managedVirtualNetworkEnabled` must also be set to `true`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> dataExfiltrationProtectionEnabled;
-  /// A `github_repo` block as defined below.
+  /// A `githubRepo` block as defined below.
   late final pulumi.Output<WorkspaceGithubRepo?> githubRepo;
   /// An `identity` block as defined below.
   late final pulumi.Output<WorkspaceIdentity?> identity;
@@ -1075,9 +1206,9 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String?> purviewId;
   /// Specifies the name of the Resource Group where the synapse Workspace should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// Specifies The login name of the SQL administrator. Changing this forces a new resource to be created. If this is not provided `customer_managed_key` must be provided.
+  /// Specifies The login name of the SQL administrator. Changing this forces a new resource to be created. If this is not provided `customerManagedKey` must be provided.
   late final pulumi.Output<String?> sqlAdministratorLogin;
-  /// The Password associated with the `sql_administrator_login` for the SQL administrator. If this is not provided `customer_managed_key` must be provided.
+  /// The Password associated with the `sqlAdministratorLogin` for the SQL administrator. If this is not provided `customerManagedKey` must be provided.
   late final pulumi.Output<String?> sqlAdministratorLoginPassword;
   /// Are pipelines (running as workspace's system assigned identity) allowed to access SQL pools?
   late final pulumi.Output<bool?> sqlIdentityControlEnabled;

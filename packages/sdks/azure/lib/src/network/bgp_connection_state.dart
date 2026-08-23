@@ -12,7 +12,7 @@ class BgpConnectionState {
   final pulumi.Input<String>? peerIp;
   /// The ID of the Virtual Hub within which this Bgp connection should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? virtualHubId;
-  /// The ID of virtual network connection.
+  /// The ID of virtual network connection. Changing this forces a new resource to be created.
   final pulumi.Input<String>? virtualNetworkConnectionId;
 
   /// Creates a new [BgpConnectionState].
@@ -20,7 +20,7 @@ class BgpConnectionState {
   /// [peerAsn] The peer autonomous system number for the Virtual Hub Bgp Connection. Changing this forces a new resource to be created.
   /// [peerIp] The peer IP address for the Virtual Hub Bgp Connection. Changing this forces a new resource to be created.
   /// [virtualHubId] The ID of the Virtual Hub within which this Bgp connection should be created. Changing this forces a new resource to be created.
-  /// [virtualNetworkConnectionId] The ID of virtual network connection.
+  /// [virtualNetworkConnectionId] The ID of virtual network connection. Changing this forces a new resource to be created.
   const BgpConnectionState({
     this.name,
     this.peerAsn,
@@ -49,4 +49,3 @@ class BgpConnectionState {
     );
   }
 }
-

@@ -10,7 +10,7 @@ import 'run_command_source.dart';
 
 /// Input properties used for looking up and filtering RunCommand resources.
 class RunCommandState {
-  /// An `error_blob_managed_identity` block as defined below. User-assigned managed Identity that has access to errorBlobUri storage blob.
+  /// An `errorBlobManagedIdentity` block as defined below. User-assigned managed Identity that has access to errorBlobUri storage blob.
   final pulumi.Input<RunCommandErrorBlobManagedIdentity>? errorBlobManagedIdentity;
   /// Specifies the Azure storage blob where script error stream will be uploaded.
   final pulumi.Input<String>? errorBlobUri;
@@ -19,13 +19,13 @@ class RunCommandState {
   final pulumi.Input<String>? location;
   /// Specifies the name of this Virtual Machine Run Command. Changing this forces a new Virtual Machine Run Command to be created.
   final pulumi.Input<String>? name;
-  /// An `output_blob_managed_identity` block as defined below. User-assigned managed Identity that has access to outputBlobUri storage blob.
+  /// An `outputBlobManagedIdentity` block as defined below. User-assigned managed Identity that has access to outputBlobUri storage blob.
   final pulumi.Input<RunCommandOutputBlobManagedIdentity>? outputBlobManagedIdentity;
   /// Specifies the Azure storage blob where script output stream will be uploaded. It can be basic blob URI with SAS token.
   final pulumi.Input<String>? outputBlobUri;
   /// A list of `parameter` blocks as defined below. The parameters used by the script.
   final pulumi.Input<List<RunCommandParameter>>? parameters;
-  /// A list of `protected_parameter` blocks as defined below. The protected parameters used by the script.
+  /// A list of `protectedParameter` blocks as defined below. The protected parameters used by the script.
   final pulumi.Input<List<RunCommandProtectedParameter>>? protectedParameters;
   /// Specifies the user account password on the VM when executing the Virtual Machine Run Command.
   final pulumi.Input<String>? runAsPassword;
@@ -39,15 +39,15 @@ class RunCommandState {
   final pulumi.Input<String>? virtualMachineId;
 
   /// Creates a new [RunCommandState].
-  /// [errorBlobManagedIdentity] An `error_blob_managed_identity` block as defined below. User-assigned managed Identity that has access to errorBlobUri storage blob.
+  /// [errorBlobManagedIdentity] An `errorBlobManagedIdentity` block as defined below. User-assigned managed Identity that has access to errorBlobUri storage blob.
   /// [errorBlobUri] Specifies the Azure storage blob where script error stream will be uploaded.
   /// [instanceViews] Optional.
   /// [location] The Azure Region where the Virtual Machine Run Command should exist. Changing this forces a new Virtual Machine Run Command to be created.
   /// [name] Specifies the name of this Virtual Machine Run Command. Changing this forces a new Virtual Machine Run Command to be created.
-  /// [outputBlobManagedIdentity] An `output_blob_managed_identity` block as defined below. User-assigned managed Identity that has access to outputBlobUri storage blob.
+  /// [outputBlobManagedIdentity] An `outputBlobManagedIdentity` block as defined below. User-assigned managed Identity that has access to outputBlobUri storage blob.
   /// [outputBlobUri] Specifies the Azure storage blob where script output stream will be uploaded. It can be basic blob URI with SAS token.
   /// [parameters] A list of `parameter` blocks as defined below. The parameters used by the script.
-  /// [protectedParameters] A list of `protected_parameter` blocks as defined below. The protected parameters used by the script.
+  /// [protectedParameters] A list of `protectedParameter` blocks as defined below. The protected parameters used by the script.
   /// [runAsPassword] Specifies the user account password on the VM when executing the Virtual Machine Run Command.
   /// [runAsUser] Specifies the user account on the VM when executing the Virtual Machine Run Command.
   /// [source] A `source` block as defined below. The source of the run command script.
@@ -108,4 +108,3 @@ class RunCommandState {
     );
   }
 }
-

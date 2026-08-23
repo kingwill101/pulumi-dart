@@ -5,9 +5,9 @@ import 'next_generation_firewall_virtual_network_strata_cloud_manager_destinatio
 import 'next_generation_firewall_virtual_network_strata_cloud_manager_destination_nat_frontend_config.dart';
 
 class NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNat {
-  /// One or more `backend_config` block as defined below.
+  /// One or more `backendConfig` block as defined below.
   final pulumi.Input<NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNatBackendConfig>? backendConfig;
-  /// One or more `frontend_config` block as defined below.
+  /// One or more `frontendConfig` block as defined below.
   final pulumi.Input<NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNatFrontendConfig>? frontendConfig;
   /// The name which should be used for this NAT.
   final pulumi.Input<String> name;
@@ -15,8 +15,8 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNat {
   final pulumi.Input<String> protocol;
 
   /// Creates a new [NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNat].
-  /// [backendConfig] One or more `backend_config` block as defined below.
-  /// [frontendConfig] One or more `frontend_config` block as defined below.
+  /// [backendConfig] One or more `backendConfig` block as defined below.
+  /// [frontendConfig] One or more `frontendConfig` block as defined below.
   /// [name] The name which should be used for this NAT.
   /// [protocol] The protocol used for this Destination NAT. Possible values include `TCP` and `UDP`.
   const NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNat({
@@ -44,4 +44,3 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNat {
     );
   }
 }
-

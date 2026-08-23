@@ -6,9 +6,9 @@ import 'ledger_certificate_based_security_principal.dart';
 
 /// Input properties used for looking up and filtering Ledger resources.
 class LedgerState {
-  /// A list of `azuread_based_service_principal` blocks as defined below.
+  /// A list of `azureadBasedServicePrincipal` blocks as defined below.
   final pulumi.Input<List<LedgerAzureadBasedServicePrincipal>>? azureadBasedServicePrincipals;
-  /// A list of `certificate_based_security_principal` blocks as defined below.
+  /// A list of `certificateBasedSecurityPrincipal` blocks as defined below.
   final pulumi.Input<List<LedgerCertificateBasedSecurityPrincipal>>? certificateBasedSecurityPrincipals;
   /// The Identity Service Endpoint for this Confidential Ledger.
   final pulumi.Input<String>? identityServiceEndpoint;
@@ -26,8 +26,8 @@ class LedgerState {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [LedgerState].
-  /// [azureadBasedServicePrincipals] A list of `azuread_based_service_principal` blocks as defined below.
-  /// [certificateBasedSecurityPrincipals] A list of `certificate_based_security_principal` blocks as defined below.
+  /// [azureadBasedServicePrincipals] A list of `azureadBasedServicePrincipal` blocks as defined below.
+  /// [certificateBasedSecurityPrincipals] A list of `certificateBasedSecurityPrincipal` blocks as defined below.
   /// [identityServiceEndpoint] The Identity Service Endpoint for this Confidential Ledger.
   /// [ledgerEndpoint] The Endpoint for this Confidential Ledger.
   /// [ledgerType] Specifies the type of Confidential Ledger. Possible values are `Private` and `Public`. Changing this forces a new resource to be created.
@@ -75,4 +75,3 @@ class LedgerState {
     );
   }
 }
-

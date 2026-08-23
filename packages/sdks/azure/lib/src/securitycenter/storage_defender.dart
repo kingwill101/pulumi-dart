@@ -108,6 +108,30 @@ import 'storage_defender_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "westus2"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "exampleacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_securitycenter_storagedefender" "example" {
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -120,8 +144,8 @@ import 'storage_defender_state.dart';
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.securitycenter.StorageDefender;
 /// import com.pulumi.azure.securitycenter.StorageDefenderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -198,7 +222,7 @@ class StorageDefender extends pulumi.CustomResource {
   late final pulumi.Output<bool?> malwareScanningOnUploadEnabled;
   /// Whether the settings defined for this storage account should override the settings defined for the subscription. Defaults to `false`.
   late final pulumi.Output<bool?> overrideSubscriptionSettingsEnabled;
-  /// The Event Grid Topic where every scan result will be sent to. When you set an Event Grid custom topic, you must set `override_subscription_settings_enabled` to `true` to override the subscription-level settings.
+  /// The Event Grid Topic where every scan result will be sent to. When you set an Event Grid custom topic, you must set `overrideSubscriptionSettingsEnabled` to `true` to override the subscription-level settings.
   late final pulumi.Output<String?> scanResultsEventGridTopicId;
   /// Whether Sensitive Data Discovery should be enabled. Defaults to `false`.
   late final pulumi.Output<bool?> sensitiveDataDiscoveryEnabled;

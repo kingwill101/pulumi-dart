@@ -7,20 +7,20 @@ import 'account_queue_properties_logging.dart';
 import 'account_queue_properties_minute_metrics.dart';
 
 class AccountQueueProperties {
-  /// A `cors_rule` block as defined above.
+  /// A `corsRule` block as defined above.
   final pulumi.Input<List<AccountQueuePropertiesCorsRule>>? corsRules;
-  /// A `hour_metrics` block as defined below.
+  /// A `hourMetrics` block as defined below.
   final pulumi.Input<AccountQueuePropertiesHourMetrics>? hourMetrics;
   /// A `logging` block as defined below.
   final pulumi.Input<AccountQueuePropertiesLogging>? logging;
-  /// A `minute_metrics` block as defined below.
+  /// A `minuteMetrics` block as defined below.
   final pulumi.Input<AccountQueuePropertiesMinuteMetrics>? minuteMetrics;
 
   /// Creates a new [AccountQueueProperties].
-  /// [corsRules] A `cors_rule` block as defined above.
-  /// [hourMetrics] A `hour_metrics` block as defined below.
+  /// [corsRules] A `corsRule` block as defined above.
+  /// [hourMetrics] A `hourMetrics` block as defined below.
   /// [logging] A `logging` block as defined below.
-  /// [minuteMetrics] A `minute_metrics` block as defined below.
+  /// [minuteMetrics] A `minuteMetrics` block as defined below.
   const AccountQueueProperties({
     this.corsRules,
     this.hourMetrics,
@@ -46,4 +46,3 @@ class AccountQueueProperties {
     );
   }
 }
-

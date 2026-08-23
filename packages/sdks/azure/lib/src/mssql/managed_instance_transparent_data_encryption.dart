@@ -265,6 +265,57 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "EastUs"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "acctest-vnet1-mssql"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = test.location
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "subnet1-mssql"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.0.0/24"]
+///   delegations {
+///     name = "managedinstancedelegation"
+///     service_delegation = {
+///       name    = "Microsoft.Sql/managedInstances"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action", "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action"]
+///     }
+///   }
+/// }
+/// resource "azure_mssql_managedinstance" "example" {
+///   name                         = "mssqlinstance"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   license_type                 = "BasePrice"
+///   sku_name                     = "GP_Gen5"
+///   storage_size_in_gb           = 32
+///   subnet_id                    = azure_network_subnet.example.id
+///   vcores                       = 4
+///   administrator_login          = "missadministrator"
+///   administrator_login_password = "NCC-1701-D"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_mssql_managedinstancetransparentdataencryption" "example" {
+///   managed_instance_id = azure_mssql_managedinstance.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -284,8 +335,8 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 /// import com.pulumi.azure.mssql.inputs.ManagedInstanceIdentityArgs;
 /// import com.pulumi.azure.mssql.ManagedInstanceTransparentDataEncryption;
 /// import com.pulumi.azure.mssql.ManagedInstanceTransparentDataEncryptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -849,10 +900,10 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 /// 				},
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: exampleManagedInstance.Identity.ApplyT(func(identity mssql.ManagedInstanceIdentity) (*string, error) {
-/// 						return &identity.TenantId, nil
+/// 						return identity.TenantId, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 					ObjectId: exampleManagedInstance.Identity.ApplyT(func(identity mssql.ManagedInstanceIdentity) (*string, error) {
-/// 						return &identity.PrincipalId, nil
+/// 						return identity.PrincipalId, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 					KeyPermissions: pulumi.StringArray{
 /// 						pulumi.String("Get"),
@@ -891,6 +942,90 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "EastUs"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "acctest-vnet1-mssql"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = test.location
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "subnet1-mssql"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.0.0/24"]
+///   delegations {
+///     name = "managedinstancedelegation"
+///     service_delegation = {
+///       name    = "Microsoft.Sql/managedInstances"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action", "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action"]
+///     }
+///   }
+/// }
+/// resource "azure_mssql_managedinstance" "example" {
+///   name                         = "mssqlinstance"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   license_type                 = "BasePrice"
+///   sku_name                     = "GP_Gen5"
+///   storage_size_in_gb           = 32
+///   subnet_id                    = azure_network_subnet.example.id
+///   vcores                       = 4
+///   administrator_login          = "missadministrator"
+///   administrator_login_password = "NCC-1701-D"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// # Create a key vault with policies for the deployer to create a key & SQL Managed Instance to wrap/unwrap/get key
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                        = "example"
+///   location                    = azure_core_resourcegroup.example.location
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   enabled_for_disk_encryption = true
+///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
+///   soft_delete_retention_days  = 7
+///   purge_protection_enabled    = false
+///   sku_name                    = "standard"
+///   access_policies {
+///     tenant_id       = data.azure_core_getclientconfig.current.tenant_id
+///     object_id       = data.azure_core_getclientconfig.current.object_id
+///     key_permissions = ["Get", "List", "Create", "Delete", "Update", "Recover", "Purge", "GetRotationPolicy"]
+///   }
+///   access_policies {
+///     tenant_id       = azure_mssql_managedinstance.example.identity.tenant_id
+///     object_id       = azure_mssql_managedinstance.example.identity.principal_id
+///     key_permissions = ["Get", "WrapKey", "UnwrapKey"]
+///   }
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_keyvault.example]
+///   name         = "byok"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["unwrapKey", "wrapKey"]
+/// }
+/// resource "azure_mssql_managedinstancetransparentdataencryption" "example" {
+///   managed_instance_id = azure_mssql_managedinstance.example.id
+///   key_vault_key_id    = azure_keyvault_key.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -917,8 +1052,8 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 /// import com.pulumi.azure.mssql.ManagedInstanceTransparentDataEncryption;
 /// import com.pulumi.azure.mssql.ManagedInstanceTransparentDataEncryptionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1162,7 +1297,9 @@ class ManagedInstanceTransparentDataEncryption extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** In order to use customer managed keys, the identity of the MSSQL Managed Instance must have the following permissions on the key vault: 'get', 'wrapKey' and 'unwrapKey'
   ///
-  /// &gt; **Note:** If `managed_instance_id` denotes a secondary instance deployed for disaster recovery purposes, then the `key_vault_key_id` should be the same key used for the primary instance's transparent data encryption. Both primary and secondary instances should be encrypted with same key material.
+  /// &gt; **Note:** When `autoRotationEnabled` is `true`, `keyVaultKeyId` can be either a versioned or versionless Key Vault Key ID. When using a versionless `keyVaultKeyId`, the principal running Terraform must have permission to read the latest key version from Key Vault. When `autoRotationEnabled` is `false`, `keyVaultKeyId` must be a versioned Key Vault Key ID.
+  ///
+  /// &gt; **Note:** If `managedInstanceId` denotes a secondary instance deployed for disaster recovery purposes, then the `keyVaultKeyId` should be the same key used for the primary instance's transparent data encryption. Both primary and secondary instances should be encrypted with same key material.
   late final pulumi.Output<String?> keyVaultKeyId;
   late final pulumi.Output<String?> managedHsmKeyId;
   /// Specifies the name of the MS SQL Managed Instance. Changing this forces a new resource to be created.

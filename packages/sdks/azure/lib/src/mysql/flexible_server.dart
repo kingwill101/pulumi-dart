@@ -291,6 +291,62 @@ import 'flexible_server_storage.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vn"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-sn"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+///   service_endpoints    = ["Microsoft.Storage"]
+///   delegations {
+///     name = "fs"
+///     service_delegation = {
+///       name    = "Microsoft.DBforMySQL/flexibleServers"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+///     }
+///   }
+/// }
+/// resource "azure_privatedns_zone" "example" {
+///   name                = "example.mysql.database.azure.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_privatedns_zonevirtualnetworklink" "example" {
+///   name                  = "exampleVnetZone.com"
+///   private_dns_zone_name = azure_privatedns_zone.example.name
+///   virtual_network_id    = azure_network_virtualnetwork.example.id
+///   resource_group_name   = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_mysql_flexibleserver" "example" {
+///   depends_on             = [azure_privatedns_zonevirtualnetworklink.example]
+///   name                   = "example-fs"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resourcegroup.example.location
+///   administrator_login    = "psqladmin"
+///   administrator_password = "H@Sh1CoR3!"
+///   backup_retention_days  = 7
+///   delegated_subnet_id    = azure_network_subnet.example.id
+///   private_dns_zone_id    = azure_privatedns_zone.example.id
+///   sku_name               = "GP_Standard_D2ds_v4"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -312,8 +368,8 @@ import 'flexible_server_storage.dart';
 /// import com.pulumi.azure.mysql.FlexibleServer;
 /// import com.pulumi.azure.mysql.FlexibleServerArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -462,27 +518,27 @@ import 'flexible_server_storage.dart';
 /// $ pulumi import azure:mysql/flexibleServer:FlexibleServer example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.DBforMySQL/flexibleServers/flexibleServer1
 /// ```
 class FlexibleServer extends pulumi.CustomResource {
-  /// The Administrator login for the MySQL Flexible Server. Required when `create_mode` is `Default`. Changing this forces a new MySQL Flexible Server to be created.
+  /// The Administrator login for the MySQL Flexible Server. Required when `createMode` is `Default`. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String> administratorLogin;
-  /// The Password associated with the `administrator_login` for the MySQL Flexible Server.
+  /// The Password associated with the `administratorLogin` for the MySQL Flexible Server.
   late final pulumi.Output<String?> administratorPassword;
-  /// An integer value used to trigger an update for `administrator_password_wo`. This property should be incremented when updating `administrator_password_wo`.
+  /// An integer value used to trigger an update for `administratorPasswordWo`. This property should be incremented when updating `administratorPasswordWo`.
   ///
-  /// &gt; **Note:** Either `administrator_password` or `administrator_password_wo` is required when `create_mode` is `Default`.
+  /// &gt; **Note:** Either `administratorPassword` or `administratorPasswordWo` is required when `createMode` is `Default`.
   late final pulumi.Output<int?> administratorPasswordWoVersion;
   /// The backup retention days for the MySQL Flexible Server. Possible values are between `1` and `35` days. Defaults to `7`.
   late final pulumi.Output<int?> backupRetentionDays;
   /// The creation mode which can be used to restore or replicate existing servers. Possible values are `Default`, `PointInTimeRestore`, `GeoRestore`, and `Replica`. Changing this forces a new MySQL Flexible Server to be created.
   ///
-  /// &gt; **Note:** Creating a `GeoRestore` server requires the source server with `geo_redundant_backup_enabled` enabled.
+  /// &gt; **Note:** Creating a `GeoRestore` server requires the source server with `geoRedundantBackupEnabled` enabled.
   ///
   /// &gt; **Note:** When a server is first created it may not be immediately available for `geo restore` or `replica`. It may take a few minutes to several hours for the necessary metadata to be populated. Please see the [Geo Restore](https://learn.microsoft.com/azure/mysql/single-server/how-to-restore-server-portal#geo-restore) and the [Replica](https://learn.microsoft.com/azure/mysql/flexible-server/concepts-read-replicas#create-a-replica) for more information.
   ///
-  /// &gt; **Note:** When importing a MySQL Flexible Server, `create_mode` is not returned by the api so you will see a diff if `create_mode` is specified in your config. To prevent recreation, use the `ignore_changes` lifecycle meta-argument.
+  /// &gt; **Note:** When importing a MySQL Flexible Server, `createMode` is not returned by the api so you will see a diff if `createMode` is specified in your config. To prevent recreation, use the `ignoreChanges` lifecycle meta-argument.
   late final pulumi.Output<String?> createMode;
-  /// A `customer_managed_key` block as defined below.
+  /// A `customerManagedKey` block as defined below.
   ///
-  /// &gt; **Note:** `identity` is required when `customer_managed_key` is specified.
+  /// &gt; **Note:** `identity` is required when `customerManagedKey` is specified.
   late final pulumi.Output<FlexibleServerCustomerManagedKey?> customerManagedKey;
   /// The ID of the virtual network subnet to create the MySQL Flexible Server. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String?> delegatedSubnetId;
@@ -490,40 +546,40 @@ class FlexibleServer extends pulumi.CustomResource {
   late final pulumi.Output<String> fqdn;
   /// Should geo redundant backup enabled? Defaults to `false`. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<bool?> geoRedundantBackupEnabled;
-  /// A `high_availability` block as defined below.
+  /// A `highAvailability` block as defined below.
   late final pulumi.Output<FlexibleServerHighAvailability?> highAvailability;
   /// An `identity` block as defined below.
   late final pulumi.Output<FlexibleServerIdentity?> identity;
   /// The Azure Region where the MySQL Flexible Server should exist. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String> location;
-  /// A `maintenance_window` block as defined below.
+  /// A `maintenanceWindow` block as defined below.
   late final pulumi.Output<FlexibleServerMaintenanceWindow?> maintenanceWindow;
   /// The name which should be used for this MySQL Flexible Server. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String> name;
-  /// The point in time to restore from `creation_source_server_id` when `create_mode` is `PointInTimeRestore`. Changing this forces a new MySQL Flexible Server to be created.
+  /// The point in time to restore from `creationSourceServerId` when `createMode` is `PointInTimeRestore`. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String?> pointInTimeRestoreTimeInUtc;
   /// The ID of the private DNS zone to create the MySQL Flexible Server. Changing this forces a new MySQL Flexible Server to be created.
   ///
-  /// &gt; **Note:** The `private_dns_zone_id` is required when setting a `delegated_subnet_id`. The `azure.privatedns.Zone` should end with suffix `.mysql.database.azure.com`.
+  /// &gt; **Note:** The `privateDnsZoneId` is required when setting a `delegatedSubnetId`. The `azure.privatedns.Zone` should end with suffix `.mysql.database.azure.com`.
   late final pulumi.Output<String?> privateDnsZoneId;
   /// Whether approved public traffic is allowed through the firewall to this server. Possible values are `Enabled` and `Disabled`.
   ///
-  /// &gt; **Note:** `public_network_access` is automatically set to `Disabled` if the server is created with VNet Integration (i.e. values are provided for `delegated_subnet_id` and `private_dns_zone_id`").
+  /// &gt; **Note:** `publicNetworkAccess` is automatically set to `Disabled` if the server is created with VNet Integration (i.e. values are provided for `delegatedSubnetId` and `privateDnsZoneId`").
   late final pulumi.Output<String> publicNetworkAccess;
   late final pulumi.Output<bool> publicNetworkAccessEnabled;
   /// The maximum number of replicas that a primary MySQL Flexible Server can have.
   late final pulumi.Output<int> replicaCapacity;
   /// The replication role. Possible value is `None`.
   ///
-  /// &gt; **Note:** The `replication_role` cannot be set while creating and only can be updated from `Replica` to `None`.
+  /// &gt; **Note:** The `replicationRole` cannot be set while creating and only can be updated from `Replica` to `None`.
   late final pulumi.Output<String> replicationRole;
   /// The name of the Resource Group where the MySQL Flexible Server should exist. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// The SKU Name for the MySQL Flexible Server.
   ///
-  /// &gt; **Note:** `sku_name` should start with SKU tier `B (Burstable)`, `GP (General Purpose)`, `MO (Memory Optimized)` like `B_Standard_B1ms`.
+  /// &gt; **Note:** `skuName` should start with SKU tier `B (Burstable)`, `GP (General Purpose)`, `MO (Memory Optimized)` like `B_Standard_B1ms`.
   late final pulumi.Output<String> skuName;
-  /// The resource ID of the source MySQL Flexible Server to be restored. Required when `create_mode` is `PointInTimeRestore`, `GeoRestore`, and `Replica`. Changing this forces a new MySQL Flexible Server to be created.
+  /// The resource ID of the source MySQL Flexible Server to be restored. Required when `createMode` is `PointInTimeRestore`, `GeoRestore`, and `Replica`. Changing this forces a new MySQL Flexible Server to be created.
   ///
   /// &gt; **Note:** The replica server is always created in the same resource group and subscription as the source server.
   late final pulumi.Output<String?> sourceServerId;
@@ -535,7 +591,7 @@ class FlexibleServer extends pulumi.CustomResource {
   late final pulumi.Output<String> version;
   /// Specifies the Availability Zone in which this MySQL Flexible Server should be located. Possible values are `1`, `2` and `3`.
   ///
-  /// &gt; **Note:** Azure will automatically assign an Availability Zone if one is not specified. If the MySQL Flexible Server fails-over to the Standby Availability Zone, the `zone` will be updated to reflect the current Primary Availability Zone. You can use Terraform's `ignore_changes` functionality to ignore changes to the `zone` and `high_availability[0].standby_availability_zone` fields should you wish for Terraform to not migrate the MySQL Flexible Server back to it's primary Availability Zone after a fail-over.
+  /// &gt; **Note:** Azure will automatically assign an Availability Zone if one is not specified. If the MySQL Flexible Server fails-over to the Standby Availability Zone, the `zone` will be updated to reflect the current Primary Availability Zone. You can use Terraform's `ignoreChanges` functionality to ignore changes to the `zone` and `high_availability[0].standby_availability_zone` fields should you wish for Terraform to not migrate the MySQL Flexible Server back to it's primary Availability Zone after a fail-over.
   ///
   /// &gt; **Note:** The Availability Zones available depend on the Azure Region that the MySQL Flexible Server is being deployed into - see [the Azure Availability Zones documentation](https://azure.microsoft.com/global-infrastructure/geographies/#geographies) for more information on which Availability Zones are available in each Azure Region.
   late final pulumi.Output<String> zone;

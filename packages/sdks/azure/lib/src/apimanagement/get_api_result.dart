@@ -27,7 +27,7 @@ class GetApiResult {
   final String serviceUrl;
   /// Should this API expose a SOAP frontend, rather than a HTTP frontend?
   final bool soapPassThrough;
-  /// A `subscription_key_parameter_names` block as documented below.
+  /// A `subscriptionKeyParameterNames` block as documented below.
   final List<GetApiSubscriptionKeyParameterName> subscriptionKeyParameterNames;
   /// Should this API require a subscription key?
   final bool subscriptionRequired;
@@ -50,7 +50,7 @@ class GetApiResult {
   /// [revision] Required.
   /// [serviceUrl] Absolute URL of the backend service implementing this API.
   /// [soapPassThrough] Should this API expose a SOAP frontend, rather than a HTTP frontend?
-  /// [subscriptionKeyParameterNames] A `subscription_key_parameter_names` block as documented below.
+  /// [subscriptionKeyParameterNames] A `subscriptionKeyParameterNames` block as documented below.
   /// [subscriptionRequired] Should this API require a subscription key?
   /// [version] The Version number of this API, if this API is versioned.
   /// [versionSetId] The ID of the Version Set which this API is associated with.
@@ -118,4 +118,3 @@ class GetApiResult {
     );
   }
 }
-

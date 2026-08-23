@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworkGatewayConnectionCustomBgpAddresses {
-  /// single IP address that is part of the `azure.network.VirtualNetworkGateway` ip_configuration (first one)
+  /// single IP address that is part of the `azure.network.VirtualNetworkGateway` ipConfiguration (first one)
   final pulumi.Input<String> primary;
-  /// single IP address that is part of the `azure.network.VirtualNetworkGateway` ip_configuration (second one)
+  /// single IP address that is part of the `azure.network.VirtualNetworkGateway` ipConfiguration (second one)
   final pulumi.Input<String>? secondary;
 
   /// Creates a new [VirtualNetworkGatewayConnectionCustomBgpAddresses].
-  /// [primary] single IP address that is part of the `azure.network.VirtualNetworkGateway` ip_configuration (first one)
-  /// [secondary] single IP address that is part of the `azure.network.VirtualNetworkGateway` ip_configuration (second one)
+  /// [primary] single IP address that is part of the `azure.network.VirtualNetworkGateway` ipConfiguration (first one)
+  /// [secondary] single IP address that is part of the `azure.network.VirtualNetworkGateway` ipConfiguration (second one)
   const VirtualNetworkGatewayConnectionCustomBgpAddresses({
     required this.primary,
     this.secondary,
@@ -30,4 +30,3 @@ class VirtualNetworkGatewayConnectionCustomBgpAddresses {
     );
   }
 }
-

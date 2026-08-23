@@ -10,6 +10,8 @@ import 'get_environment_type_args.dart';
 import 'get_environment_type_result.dart';
 import 'get_gallery_args.dart';
 import 'get_gallery_result.dart';
+import 'get_managed_dev_ops_pool_args.dart';
+import 'get_managed_dev_ops_pool_result.dart';
 import 'get_network_connection_args.dart';
 import 'get_network_connection_result.dart';
 import 'get_project_args.dart';
@@ -85,6 +87,24 @@ import 'get_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_devcenter_get" "example" {
+///   name                = "example"
+///   resource_group_name = "example-resource-group"
+/// }
+///
+/// output "id" {
+///   value = data.azure_devcenter_get.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +113,8 @@ import 'get_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.devcenter.DevcenterFunctions;
 /// import com.pulumi.azure.devcenter.inputs.GetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,6 +234,24 @@ Future<GetResult> get(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_devcenter_getattachednetwork" "example" {
+///   name          = exampleAzurermDevCenterAttachedNetwork.name
+///   dev_center_id = exampleAzurermDevCenterAttachedNetwork.devCenterId
+/// }
+///
+/// output "id" {
+///   value = data.azure_devcenter_getattachednetwork.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -222,8 +260,8 @@ Future<GetResult> get(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.devcenter.DevcenterFunctions;
 /// import com.pulumi.azure.devcenter.inputs.GetAttachedNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -343,6 +381,24 @@ Future<GetAttachedNetworkResult> getAttachedNetwork(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_devcenter_getcatalog" "example" {
+///   name          = exampleAzurermDevCenterCatalog.name
+///   dev_center_id = exampleAzurermDevCenterCatalog.devCenterId
+/// }
+///
+/// output "id" {
+///   value = data.azure_devcenter_getcatalog.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -351,8 +407,8 @@ Future<GetAttachedNetworkResult> getAttachedNetwork(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.devcenter.DevcenterFunctions;
 /// import com.pulumi.azure.devcenter.inputs.GetCatalogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -472,6 +528,24 @@ Future<GetCatalogResult> getCatalog(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_devcenter_getdevboxdefinition" "example" {
+///   name          = exampleAzurermDevCenterDevBoxDefinition.name
+///   dev_center_id = exampleAzurermDevCenterDevBoxDefinition.devCenterId
+/// }
+///
+/// output "id" {
+///   value = data.azure_devcenter_getdevboxdefinition.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -480,8 +554,8 @@ Future<GetCatalogResult> getCatalog(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.devcenter.DevcenterFunctions;
 /// import com.pulumi.azure.devcenter.inputs.GetDevBoxDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -601,6 +675,24 @@ Future<GetDevBoxDefinitionResult> getDevBoxDefinition(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_devcenter_getenvironmenttype" "example" {
+///   name          = exampleAzurermDevCenterEnvironmentType.name
+///   dev_center_id = exampleAzurermDevCenterEnvironmentType.devCenterId
+/// }
+///
+/// output "id" {
+///   value = data.azure_devcenter_getenvironmenttype.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -609,8 +701,8 @@ Future<GetDevBoxDefinitionResult> getDevBoxDefinition(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.devcenter.DevcenterFunctions;
 /// import com.pulumi.azure.devcenter.inputs.GetEnvironmentTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -730,6 +822,24 @@ Future<GetEnvironmentTypeResult> getEnvironmentType(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_devcenter_getgallery" "example" {
+///   name          = exampleAzurermDevCenterGallery.name
+///   dev_center_id = exampleAzurermDevCenterGallery.devCenterId
+/// }
+///
+/// output "id" {
+///   value = data.azure_devcenter_getgallery.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -738,8 +848,8 @@ Future<GetEnvironmentTypeResult> getEnvironmentType(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.devcenter.DevcenterFunctions;
 /// import com.pulumi.azure.devcenter.inputs.GetGalleryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -792,6 +902,153 @@ Future<GetGalleryResult> getGallery(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGalleryResult.fromMap(result);
+}
+
+/// Use this data source to access information about an existing Managed DevOps Pool.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure from "@pulumi/azure";
+///
+/// const example = azure.devcenter.getManagedDevOpsPool({
+///     name: "example-mdp",
+///     resourceGroupName: "example-rg",
+/// });
+/// export const id = example.then(example => example.id);
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_azure as azure
+///
+/// example = azure.devcenter.get_managed_dev_ops_pool(name="example-mdp",
+///     resource_group_name="example-rg")
+/// pulumi.export("id", example.id)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Azure = Pulumi.Azure;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Azure.DevCenter.GetManagedDevOpsPool.Invoke(new()
+///     {
+///         Name = "example-mdp",
+///         ResourceGroupName = "example-rg",
+///     });
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["id"] = example.Apply(getManagedDevOpsPoolResult => getManagedDevOpsPoolResult.Id),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/devcenter"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := devcenter.LookupManagedDevOpsPool(ctx, &devcenter.LookupManagedDevOpsPoolArgs{
+/// 			Name:              "example-mdp",
+/// 			ResourceGroupName: "example-rg",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ctx.Export("id", example.Id)
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_devcenter_getmanageddevopspool" "example" {
+///   name                = "example-mdp"
+///   resource_group_name = "example-rg"
+/// }
+///
+/// output "id" {
+///   value = data.azure_devcenter_getmanageddevopspool.example.id
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azure.devcenter.DevcenterFunctions;
+/// import com.pulumi.azure.devcenter.inputs.GetManagedDevOpsPoolArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = DevcenterFunctions.getManagedDevOpsPool(GetManagedDevOpsPoolArgs.builder()
+///             .name("example-mdp")
+///             .resourceGroupName("example-rg")
+///             .build());
+///
+///         ctx.export("id", example.id());
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: azure:devcenter:getManagedDevOpsPool
+///       arguments:
+///         name: example-mdp
+///         resourceGroupName: example-rg
+/// outputs:
+///   id: ${example.id}
+/// ```
+///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This data source uses the following Azure API Providers:
+///
+/// * `Microsoft.DevOpsInfrastructure` - 2025-09-20
+/// [args] Arguments passed to this invoke. {@macro pulumi_devcenter_get_managed_dev_ops_pool_get_managed_dev_ops_pool_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetManagedDevOpsPoolResult> getManagedDevOpsPool(
+  GetManagedDevOpsPoolArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure:devcenter/getManagedDevOpsPool:getManagedDevOpsPool',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetManagedDevOpsPoolResult.fromMap(result);
 }
 
 /// Use this data source to access information about an existing Dev Center Network Connection.
@@ -859,6 +1116,24 @@ Future<GetGalleryResult> getGallery(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_devcenter_getnetworkconnection" "example" {
+///   name                = "example"
+///   resource_group_name = "example-resource-group"
+/// }
+///
+/// output "id" {
+///   value = data.azure_devcenter_getnetworkconnection.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -867,8 +1142,8 @@ Future<GetGalleryResult> getGallery(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.devcenter.DevcenterFunctions;
 /// import com.pulumi.azure.devcenter.inputs.GetNetworkConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -988,6 +1263,24 @@ Future<GetNetworkConnectionResult> getNetworkConnection(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_devcenter_getproject" "example" {
+///   name                = "example"
+///   resource_group_name = "example-resource-group"
+/// }
+///
+/// output "id" {
+///   value = data.azure_devcenter_getproject.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -996,8 +1289,8 @@ Future<GetNetworkConnectionResult> getNetworkConnection(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.devcenter.DevcenterFunctions;
 /// import com.pulumi.azure.devcenter.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1117,6 +1410,24 @@ Future<GetProjectResult> getProject(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_devcenter_getprojectenvironmenttype" "example" {
+///   name                  = exampleAzurermDevCenterProjectEnvironmentType.name
+///   dev_center_project_id = exampleAzurermDevCenterProjectEnvironmentType.devCenterProjectId
+/// }
+///
+/// output "id" {
+///   value = data.azure_devcenter_getprojectenvironmenttype.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1125,8 +1436,8 @@ Future<GetProjectResult> getProject(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.devcenter.DevcenterFunctions;
 /// import com.pulumi.azure.devcenter.inputs.GetProjectEnvironmentTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1246,6 +1557,24 @@ Future<GetProjectEnvironmentTypeResult> getProjectEnvironmentType(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_devcenter_getprojectpool" "example" {
+///   name                  = exampleAzurermDevCenterProjectPool.name
+///   dev_center_project_id = exampleAzurermDevCenterProjectPool.devCenterProjectId
+/// }
+///
+/// output "id" {
+///   value = data.azure_devcenter_getprojectpool.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1254,8 +1583,8 @@ Future<GetProjectEnvironmentTypeResult> getProjectEnvironmentType(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.devcenter.DevcenterFunctions;
 /// import com.pulumi.azure.devcenter.inputs.GetProjectPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

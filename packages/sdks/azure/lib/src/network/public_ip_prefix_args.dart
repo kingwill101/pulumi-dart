@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublicIpPrefixArgs {
   /// The Custom IP Prefix ID associated with the Public IP Prefix. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** When `ip_version` is set to `IPv6`, `custom_ip_prefix_id` must reference a regional (child) range rather than a global (parent) range. For more details on creating a Public IP Prefix from a custom IP prefix, see [here](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/manage-custom-ip-address-prefix#create-a-public-ip-prefix-from-a-custom-ip-prefix).
+  /// &gt; **Note:** When `ipVersion` is set to `IPv6`, `customIpPrefixId` must reference a regional (child) range rather than a global (parent) range. For more details on creating a Public IP Prefix from a custom IP prefix, see [here](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/manage-custom-ip-address-prefix#create-a-public-ip-prefix-from-a-custom-ip-prefix).
   final pulumi.Input<String>? customIpPrefixId;
   /// The IP Version to use, `IPv6` or `IPv4`. Changing this forces a new resource to be created. Default is `IPv4`.
   final pulumi.Input<String>? ipVersion;
@@ -23,11 +23,11 @@ class PublicIpPrefixArgs {
   final pulumi.Input<int>? prefixLength;
   /// The name of the resource group in which to create the Public IP Prefix. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-  /// The SKU of the Public IP Prefix. Accepted values are `Standard`. Defaults to `Standard`. Changing this forces a new resource to be created.
-  ///
-  /// &gt; **Note:** Public IP Prefix can only be created with Standard SKUs at this time.
+  /// The SKU of the Public IP Prefix. Possible values are `Standard` and `StandardV2`. Defaults to `Standard`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? sku;
-  /// The SKU Tier that should be used for the Public IP. Possible values are `Regional` and `Global`. Defaults to `Regional`. Changing this forces a new resource to be created.
+  /// The SKU Tier that should be used for the Public IP Prefix. Possible values are `Regional` and `Global`. Defaults to `Regional`. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** When `skuTier` is set to `Global`, `sku` must be set to `Standard`.
   final pulumi.Input<String>? skuTier;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
@@ -43,8 +43,8 @@ class PublicIpPrefixArgs {
   /// [name] Specifies the name of the Public IP Prefix resource . Changing this forces a new resource to be created.
   /// [prefixLength] Specifies the number of bits of the prefix. The value can be set between 0 (4,294,967,296 addresses) and 31 (2 addresses). Defaults to `28`(16 addresses). Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the Public IP Prefix. Changing this forces a new resource to be created.
-  /// [sku] The SKU of the Public IP Prefix. Accepted values are `Standard`. Defaults to `Standard`. Changing this forces a new resource to be created.
-  /// [skuTier] The SKU Tier that should be used for the Public IP. Possible values are `Regional` and `Global`. Defaults to `Regional`. Changing this forces a new resource to be created.
+  /// [sku] The SKU of the Public IP Prefix. Possible values are `Standard` and `StandardV2`. Defaults to `Standard`. Changing this forces a new resource to be created.
+  /// [skuTier] The SKU Tier that should be used for the Public IP Prefix. Possible values are `Regional` and `Global`. Defaults to `Regional`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zones] Specifies a list of Availability Zones in which this Public IP Prefix should be located. Changing this forces a new Public IP Prefix to be created.
   const PublicIpPrefixArgs({
@@ -90,4 +90,3 @@ class PublicIpPrefixArgs {
     );
   }
 }
-

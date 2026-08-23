@@ -5,7 +5,7 @@ import 'point_to_point_vpn_gateway_connection_configuration.dart';
 
 /// Input properties used for looking up and filtering PointToPointVpnGateway resources.
 class PointToPointVpnGatewayState {
-  /// A `connection_configuration` block as defined below.
+  /// A `connectionConfiguration` block as defined below.
   final pulumi.Input<List<PointToPointVpnGatewayConnectionConfiguration>>? connectionConfigurations;
   /// A list of IP Addresses of DNS Servers for the Point-to-Site VPN Gateway.
   final pulumi.Input<List<String>>? dnsServers;
@@ -27,7 +27,7 @@ class PointToPointVpnGatewayState {
   final pulumi.Input<String>? vpnServerConfigurationId;
 
   /// Creates a new [PointToPointVpnGatewayState].
-  /// [connectionConfigurations] A `connection_configuration` block as defined below.
+  /// [connectionConfigurations] A `connectionConfiguration` block as defined below.
   /// [dnsServers] A list of IP Addresses of DNS Servers for the Point-to-Site VPN Gateway.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Point-to-Site VPN Gateway. Changing this forces a new resource to be created.
@@ -80,4 +80,3 @@ class PointToPointVpnGatewayState {
     );
   }
 }
-

@@ -29,7 +29,7 @@ class SingleNodeVirtualInstanceArgs {
   final pulumi.Input<String> sapFqdn;
   /// The SAP Product type for the SAP Single Node Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
   final pulumi.Input<String> sapProduct;
-  /// A `single_server_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// A `singleServerConfiguration` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<SingleNodeVirtualInstanceSingleServerConfiguration> singleServerConfiguration;
   /// A mapping of tags which should be assigned to the SAP Single Node Virtual Instance.
   final pulumi.Input<Map<String, String>>? tags;
@@ -45,7 +45,7 @@ class SingleNodeVirtualInstanceArgs {
   /// [resourceGroupName] The name of the Resource Group where the SAP Single Node Virtual Instance should exist. Changing this forces a new resource to be created.
   /// [sapFqdn] The fully qualified domain name for the SAP system. Changing this forces a new resource to be created.
   /// [sapProduct] The SAP Product type for the SAP Single Node Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
-  /// [singleServerConfiguration] A `single_server_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// [singleServerConfiguration] A `singleServerConfiguration` block as defined below. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the SAP Single Node Virtual Instance.
   const SingleNodeVirtualInstanceArgs({
     required this.appLocation,
@@ -96,4 +96,3 @@ class SingleNodeVirtualInstanceArgs {
     );
   }
 }
-

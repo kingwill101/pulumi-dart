@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppFlexConsumptionStickySettings {
-  /// A list of `app_setting` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
+  /// A list of `appSetting` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
   final pulumi.Input<List<String>>? appSettingNames;
-  /// A list of `connection_string` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
+  /// A list of `connectionString` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
   final pulumi.Input<List<String>>? connectionStringNames;
 
   /// Creates a new [AppFlexConsumptionStickySettings].
-  /// [appSettingNames] A list of `app_setting` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
-  /// [connectionStringNames] A list of `connection_string` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
+  /// [appSettingNames] A list of `appSetting` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
+  /// [connectionStringNames] A list of `connectionString` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
   const AppFlexConsumptionStickySettings({
     this.appSettingNames,
     this.connectionStringNames,
@@ -30,4 +30,3 @@ class AppFlexConsumptionStickySettings {
     );
   }
 }
-

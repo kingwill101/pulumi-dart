@@ -21,19 +21,19 @@ import 'get_pool_window.dart';
 class GetPoolResult {
   /// The Azure Storage Account name.
   final String accountName;
-  /// A `auto_scale` block that describes the scale settings when using auto scale.
+  /// A `autoScale` block that describes the scale settings when using auto scale.
   final List<GetPoolAutoScale> autoScales;
   final List<GetPoolCertificate> certificates;
   /// The container configuration used in the pool's VMs.
   final List<GetPoolContainerConfiguration> containerConfigurations;
-  /// A `data_disks` block describes the data disk settings.
+  /// A `dataDisks` block describes the data disk settings.
   final List<GetPoolDataDisk> dataDisks;
-  /// A `disk_encryption` block describes the disk encryption configuration applied on compute nodes in the pool.
+  /// A `diskEncryption` block describes the disk encryption configuration applied on compute nodes in the pool.
   final List<GetPoolDiskEncryption> diskEncryptions;
   final String displayName;
   /// An `extensions` block describes the extension settings
   final List<GetPoolExtension> extensions;
-  /// A `fixed_scale` block that describes the scale settings when using fixed scale.
+  /// A `fixedScale` block that describes the scale settings when using fixed scale.
   final List<GetPoolFixedScale> fixedScales;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -51,18 +51,18 @@ class GetPoolResult {
   final List<GetPoolNetworkConfiguration> networkConfigurations;
   /// The SKU of the node agents in the Batch pool.
   final String nodeAgentSkuId;
-  /// A `node_placement` block that describes the placement policy for allocating nodes in the pool.
+  /// A `nodePlacement` block that describes the placement policy for allocating nodes in the pool.
   final List<GetPoolNodePlacement> nodePlacements;
   /// Specifies the ephemeral disk placement for operating system disk for all VMs in the pool.
   final String osDiskPlacement;
   final String resourceGroupName;
-  /// A `start_task` block that describes the start task settings for the Batch pool.
+  /// A `startTask` block that describes the start task settings for the Batch pool.
   final List<GetPoolStartTask> startTasks;
   /// The reference of the storage image used by the nodes in the Batch pool.
   final List<GetPoolStorageImageReference> storageImageReferences;
-  /// A `task_scheduling_policy` block that describes how tasks are distributed across compute nodes in a pool.
+  /// A `taskSchedulingPolicy` block that describes how tasks are distributed across compute nodes in a pool.
   final List<GetPoolTaskSchedulingPolicy> taskSchedulingPolicies;
-  /// A `user_accounts` block that describes the list of user accounts to be created on each node in the pool.
+  /// A `userAccounts` block that describes the list of user accounts to be created on each node in the pool.
   final List<GetPoolUserAccount> userAccounts;
   /// The size of the VM created in the Batch pool.
   final String vmSize;
@@ -71,14 +71,14 @@ class GetPoolResult {
 
   /// Creates a new [GetPoolResult].
   /// [accountName] The Azure Storage Account name.
-  /// [autoScales] A `auto_scale` block that describes the scale settings when using auto scale.
+  /// [autoScales] A `autoScale` block that describes the scale settings when using auto scale.
   /// [certificates] Required.
   /// [containerConfigurations] The container configuration used in the pool's VMs.
-  /// [dataDisks] A `data_disks` block describes the data disk settings.
-  /// [diskEncryptions] A `disk_encryption` block describes the disk encryption configuration applied on compute nodes in the pool.
+  /// [dataDisks] A `dataDisks` block describes the data disk settings.
+  /// [diskEncryptions] A `diskEncryption` block describes the disk encryption configuration applied on compute nodes in the pool.
   /// [displayName] Required.
   /// [extensions] An `extensions` block describes the extension settings
-  /// [fixedScales] A `fixed_scale` block that describes the scale settings when using fixed scale.
+  /// [fixedScales] A `fixedScale` block that describes the scale settings when using fixed scale.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [interNodeCommunication] Whether the pool permits direct communication between nodes. This imposes restrictions on which nodes can be assigned to the pool. Enabling this value can reduce the chance of the requested number of nodes to be allocated in the pool.
   /// [licenseType] The type of on-premises license to be used when deploying the operating system.
@@ -88,13 +88,13 @@ class GetPoolResult {
   /// [name] The name of the user account.
   /// [networkConfigurations] Required.
   /// [nodeAgentSkuId] The SKU of the node agents in the Batch pool.
-  /// [nodePlacements] A `node_placement` block that describes the placement policy for allocating nodes in the pool.
+  /// [nodePlacements] A `nodePlacement` block that describes the placement policy for allocating nodes in the pool.
   /// [osDiskPlacement] Specifies the ephemeral disk placement for operating system disk for all VMs in the pool.
   /// [resourceGroupName] Required.
-  /// [startTasks] A `start_task` block that describes the start task settings for the Batch pool.
+  /// [startTasks] A `startTask` block that describes the start task settings for the Batch pool.
   /// [storageImageReferences] The reference of the storage image used by the nodes in the Batch pool.
-  /// [taskSchedulingPolicies] A `task_scheduling_policy` block that describes how tasks are distributed across compute nodes in a pool.
-  /// [userAccounts] A `user_accounts` block that describes the list of user accounts to be created on each node in the pool.
+  /// [taskSchedulingPolicies] A `taskSchedulingPolicy` block that describes how tasks are distributed across compute nodes in a pool.
+  /// [userAccounts] A `userAccounts` block that describes the list of user accounts to be created on each node in the pool.
   /// [vmSize] The size of the VM created in the Batch pool.
   /// [windows] A `windows` block that describes the Windows configuration in the pool.
   const GetPoolResult({
@@ -191,4 +191,3 @@ class GetPoolResult {
     );
   }
 }
-

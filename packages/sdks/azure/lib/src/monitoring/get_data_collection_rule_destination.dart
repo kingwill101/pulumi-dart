@@ -11,32 +11,32 @@ import 'get_data_collection_rule_destination_storage_blob_direct.dart';
 import 'get_data_collection_rule_destination_storage_table_direct.dart';
 
 class GetDataCollectionRuleDestination {
-  /// A `azure_monitor_metrics` block as defined above.
+  /// A `azureMonitorMetrics` block as defined above.
   final pulumi.Input<List<GetDataCollectionRuleDestinationAzureMonitorMetric>> azureMonitorMetrics;
-  /// One or more `event_hub` blocks as defined below.
+  /// One or more `eventHub` blocks as defined below.
   final pulumi.Input<GetDataCollectionRuleDestinationEventHub>? eventHub;
-  /// One or more `event_hub_direct` blocks as defined below.
+  /// One or more `eventHubDirect` blocks as defined below.
   final pulumi.Input<GetDataCollectionRuleDestinationEventHubDirect>? eventHubDirect;
-  /// One or more `log_analytics` blocks as defined below.
+  /// One or more `logAnalytics` blocks as defined below.
   final pulumi.Input<List<GetDataCollectionRuleDestinationLogAnalytic>> logAnalytics;
-  /// One or more `monitor_account` blocks as defined below.
+  /// One or more `monitorAccount` blocks as defined below.
   final pulumi.Input<List<GetDataCollectionRuleDestinationMonitorAccount>> monitorAccounts;
-  /// One or more `storage_blob_direct` blocks as defined below.
+  /// One or more `storageBlobDirect` blocks as defined below.
   final pulumi.Input<List<GetDataCollectionRuleDestinationStorageBlobDirect>> storageBlobDirects;
-  /// One or more `storage_blob` blocks as defined below.
+  /// One or more `storageBlob` blocks as defined below.
   final pulumi.Input<List<GetDataCollectionRuleDestinationStorageBlob>> storageBlobs;
-  /// One or more `storage_table_direct` blocks as defined below.
+  /// One or more `storageTableDirect` blocks as defined below.
   final pulumi.Input<List<GetDataCollectionRuleDestinationStorageTableDirect>> storageTableDirects;
 
   /// Creates a new [GetDataCollectionRuleDestination].
-  /// [azureMonitorMetrics] A `azure_monitor_metrics` block as defined above.
-  /// [eventHub] One or more `event_hub` blocks as defined below.
-  /// [eventHubDirect] One or more `event_hub_direct` blocks as defined below.
-  /// [logAnalytics] One or more `log_analytics` blocks as defined below.
-  /// [monitorAccounts] One or more `monitor_account` blocks as defined below.
-  /// [storageBlobDirects] One or more `storage_blob_direct` blocks as defined below.
-  /// [storageBlobs] One or more `storage_blob` blocks as defined below.
-  /// [storageTableDirects] One or more `storage_table_direct` blocks as defined below.
+  /// [azureMonitorMetrics] A `azureMonitorMetrics` block as defined above.
+  /// [eventHub] One or more `eventHub` blocks as defined below.
+  /// [eventHubDirect] One or more `eventHubDirect` blocks as defined below.
+  /// [logAnalytics] One or more `logAnalytics` blocks as defined below.
+  /// [monitorAccounts] One or more `monitorAccount` blocks as defined below.
+  /// [storageBlobDirects] One or more `storageBlobDirect` blocks as defined below.
+  /// [storageBlobs] One or more `storageBlob` blocks as defined below.
+  /// [storageTableDirects] One or more `storageTableDirect` blocks as defined below.
   const GetDataCollectionRuleDestination({
     required this.azureMonitorMetrics,
     this.eventHub,
@@ -74,4 +74,3 @@ class GetDataCollectionRuleDestination {
     );
   }
 }
-

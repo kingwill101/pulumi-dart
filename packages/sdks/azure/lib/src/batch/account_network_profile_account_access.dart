@@ -6,12 +6,12 @@ import 'account_network_profile_account_access_ip_rule.dart';
 class AccountNetworkProfileAccountAccess {
   /// Specifies the default action for the account access. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
   final pulumi.Input<String>? defaultAction;
-  /// One or more `ip_rule` blocks as defined below.
+  /// One or more `ipRule` blocks as defined below.
   final pulumi.Input<List<AccountNetworkProfileAccountAccessIpRule>>? ipRules;
 
   /// Creates a new [AccountNetworkProfileAccountAccess].
   /// [defaultAction] Specifies the default action for the account access. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
-  /// [ipRules] One or more `ip_rule` blocks as defined below.
+  /// [ipRules] One or more `ipRule` blocks as defined below.
   const AccountNetworkProfileAccountAccess({
     this.defaultAction,
     this.ipRules,
@@ -31,4 +31,3 @@ class AccountNetworkProfileAccountAccess {
     );
   }
 }
-

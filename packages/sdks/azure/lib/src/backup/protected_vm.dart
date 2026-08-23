@@ -181,7 +181,7 @@ import 'protected_vmstate.dart';
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 			RecoveryVaultName: exampleVault.Name,
 /// 			SourceVmId: pulumi.String(example.ApplyT(func(example compute.GetVirtualMachineResult) (*string, error) {
-/// 				return &example.Id, nil
+/// 				return example.Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			BackupPolicyId: examplePolicyVM.ID(),
 /// 		})
@@ -190,6 +190,49 @@ import 'protected_vmstate.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getvirtualmachine" "example" {
+///   name                = "example-vm"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tfex-recovery_vault"
+///   location = "West Europe"
+/// }
+/// resource "azure_recoveryservices_vault" "example" {
+///   name                = "tfex-recovery-vault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_backup_policyvm" "example" {
+///   name                = "tfex-recovery-vault-policy"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   recovery_vault_name = azure_recoveryservices_vault.example.name
+///   backup = {
+///     frequency = "Daily"
+///     time      = "23:00"
+///   }
+///   retention_daily = {
+///     count = 10
+///   }
+/// }
+/// resource "azure_backup_protectedvm" "vm1" {
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   recovery_vault_name = azure_recoveryservices_vault.example.name
+///   source_vm_id        = data.azure_compute_getvirtualmachine.example.id
+///   backup_policy_id    = azure_backup_policyvm.example.id
 /// }
 /// ```
 /// ```java
@@ -210,8 +253,8 @@ import 'protected_vmstate.dart';
 /// import com.pulumi.azure.compute.inputs.GetVirtualMachineArgs;
 /// import com.pulumi.azure.backup.ProtectedVM;
 /// import com.pulumi.azure.backup.ProtectedVMArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -313,7 +356,7 @@ import 'protected_vmstate.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.RecoveryServices` - 2024-01-01
+/// * `Microsoft.RecoveryServices` - 2025-08-01
 ///
 /// ## Import
 ///
@@ -325,9 +368,9 @@ import 'protected_vmstate.dart';
 class ProtectedVM extends pulumi.CustomResource {
   /// Specifies the ID of the backup policy to use.
   ///
-  /// &gt; **Note:** `backup_policy_id` is required during initial creation of this resource.
+  /// &gt; **Note:** `backupPolicyId` is required during initial creation of this resource.
   ///
-  /// &gt; **Note:** When `protection_state` is set to `BackupsSuspended` or `ProtectionStopped`, the Azure API may not return `backup_policy_id`. To avoid a perpetual diff, use Terraform's ignore_changes argument.
+  /// &gt; **Note:** When `protectionState` is set to `BackupsSuspended` or `ProtectionStopped`, the Azure API may not return `backupPolicyId`. To avoid a perpetual diff, use Terraform's ignoreChanges argument.
   late final pulumi.Output<String?> backupPolicyId;
   /// A list of Disks' Logical Unit Numbers (LUN) to be excluded for VM Protection.
   late final pulumi.Output<List<int>?> excludeDiskLuns;
@@ -335,7 +378,7 @@ class ProtectedVM extends pulumi.CustomResource {
   late final pulumi.Output<List<int>?> includeDiskLuns;
   /// Specifies Protection state of the backup. Possible values are `Protected`, `BackupsSuspended`, and `ProtectionStopped`.
   ///
-  /// &gt; **Note:** `protection_state` cannot be set to `BackupsSuspended` unless the `azure.recoveryservices.Vault` has `immutability` set to `Unlocked` or `Locked`.
+  /// &gt; **Note:** `protectionState` cannot be set to `BackupsSuspended` unless the `azure.recoveryservices.Vault` has `immutability` set to `Unlocked` or `Locked`.
   late final pulumi.Output<String> protectionState;
   /// Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultName;
@@ -343,7 +386,7 @@ class ProtectedVM extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// Specifies the ID of the virtual machine to back up. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** After creation, the `source_vm_id` property can be removed without forcing a new resource to be created; however, setting it to a different ID will create a new resource. This allows the source virtual machine to be deleted without having to remove the backup.
+  /// &gt; **Note:** After creation, the `sourceVmId` property can be removed without forcing a new resource to be created; however, setting it to a different ID will create a new resource. This allows the source virtual machine to be deleted without having to remove the backup.
   late final pulumi.Output<String> sourceVmId;
 
   /// Creates a new [ProtectedVM].

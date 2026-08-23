@@ -8,13 +8,13 @@ class GetApplicationGatewayRewriteRuleSet {
   final pulumi.Input<String> id;
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
-  /// One or more `rewrite_rule` blocks as defined below.
+  /// One or more `rewriteRule` blocks as defined below.
   final pulumi.Input<List<GetApplicationGatewayRewriteRuleSetRewriteRule>> rewriteRules;
 
   /// Creates a new [GetApplicationGatewayRewriteRuleSet].
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The name of this Application Gateway.
-  /// [rewriteRules] One or more `rewrite_rule` blocks as defined below.
+  /// [rewriteRules] One or more `rewriteRule` blocks as defined below.
   const GetApplicationGatewayRewriteRuleSet({
     required this.id,
     required this.name,
@@ -37,4 +37,3 @@ class GetApplicationGatewayRewriteRuleSet {
     );
   }
 }
-

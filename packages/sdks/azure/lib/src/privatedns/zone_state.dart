@@ -19,7 +19,7 @@ class ZoneState {
   final pulumi.Input<int>? numberOfRecordSets;
   /// Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-  /// An `soa_record` block as defined below. Changing this forces a new resource to be created.
+  /// An `soaRecord` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ZoneSoaRecord>? soaRecord;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
@@ -31,7 +31,7 @@ class ZoneState {
   /// [name] The name of the Private DNS Zone. Must be a valid domain name. Changing this forces a new resource to be created.
   /// [numberOfRecordSets] The current number of record sets in this Private DNS zone.
   /// [resourceGroupName] Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
-  /// [soaRecord] An `soa_record` block as defined below. Changing this forces a new resource to be created.
+  /// [soaRecord] An `soaRecord` block as defined below. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   const ZoneState({
     this.maxNumberOfRecordSets,
@@ -70,4 +70,3 @@ class ZoneState {
     );
   }
 }
-

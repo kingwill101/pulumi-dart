@@ -11,6 +11,7 @@ import 'frontdoor_security_policy_state.dart';
 /// ```typescript
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as azure from "@pulumi/azure";
+/// import * as std from "@pulumi/std";
 ///
 /// const example = new azure.core.ResourceGroup("example", {
 ///     name: "example-cdn-frontdoor",
@@ -57,7 +58,13 @@ import 'frontdoor_security_policy_state.dart';
 ///     name: "example-customDomain",
 ///     cdnFrontdoorProfileId: exampleFrontdoorProfile.id,
 ///     dnsZoneId: exampleZone.id,
-///     hostName: "contoso.fabrikam.com",
+///     hostName: std.joinOutput({
+///         separator: ".",
+///         input: [
+///             "contoso",
+///             exampleZone.name,
+///         ],
+///     }).apply(invoke => invoke.result),
 ///     tls: {
 ///         certificateType: "ManagedCertificate",
 ///         minimumTlsVersion: "TLS12",
@@ -82,6 +89,7 @@ import 'frontdoor_security_policy_state.dart';
 /// ```python
 /// import pulumi
 /// import pulumi_azure as azure
+/// import pulumi_std as std
 ///
 /// example = azure.core.ResourceGroup("example",
 ///     name="example-cdn-frontdoor",
@@ -124,7 +132,11 @@ import 'frontdoor_security_policy_state.dart';
 ///     name="example-customDomain",
 ///     cdn_frontdoor_profile_id=example_frontdoor_profile.id,
 ///     dns_zone_id=example_zone.id,
-///     host_name="contoso.fabrikam.com",
+///     host_name=std.join_output(separator=".",
+///         input=[
+///             "contoso",
+///             example_zone.name,
+///         ]).apply(lambda invoke: invoke.result),
 ///     tls={
 ///         "certificate_type": "ManagedCertificate",
 ///         "minimum_tls_version": "TLS12",
@@ -149,6 +161,7 @@ import 'frontdoor_security_policy_state.dart';
 /// using System.Linq;
 /// using Pulumi;
 /// using Azure = Pulumi.Azure;
+/// using Std = Pulumi.Std;
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
@@ -215,7 +228,15 @@ import 'frontdoor_security_policy_state.dart';
 ///         Name = "example-customDomain",
 ///         CdnFrontdoorProfileId = exampleFrontdoorProfile.Id,
 ///         DnsZoneId = exampleZone.Id,
-///         HostName = "contoso.fabrikam.com",
+///         HostName = Std.Join.Invoke(new()
+///         {
+///             Separator = ".",
+///             Input = new[]
+///             {
+///                 "contoso",
+///                 exampleZone.Name,
+///             },
+///         }).Apply(invoke => invoke.Result),
 ///         Tls = new Azure.Cdn.Inputs.FrontdoorCustomDomainTlsArgs
 ///         {
 ///             CertificateType = "ManagedCertificate",
@@ -256,6 +277,7 @@ import 'frontdoor_security_policy_state.dart';
 /// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/cdn"
 /// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/core"
 /// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/dns"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -322,7 +344,16 @@ import 'frontdoor_security_policy_state.dart';
 /// 			Name:                  pulumi.String("example-customDomain"),
 /// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
 /// 			DnsZoneId:             exampleZone.ID(),
-/// 			HostName:              pulumi.String("contoso.fabrikam.com"),
+/// 			HostName: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+/// 				Separator: pulumi.String("."),
+/// 				Input: pulumi.StringArray{
+/// 					pulumi.String("contoso"),
+/// 					exampleZone.Name,
+/// 				},
+/// 			}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
+/// 				val := invoke.Result
+/// 				return &val, nil
+/// 			}).(pulumi.StringPtrOutput)),
 /// 			Tls: &cdn.FrontdoorCustomDomainTlsArgs{
 /// 				CertificateType:   pulumi.String("ManagedCertificate"),
 /// 				MinimumTlsVersion: pulumi.String("TLS12"),
@@ -355,6 +386,82 @@ import 'frontdoor_security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-cdn-frontdoor"
+///   location = "West Europe"
+/// }
+/// resource "azure_cdn_frontdoorprofile" "example" {
+///   name                = "example-profile"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Standard_AzureFrontDoor"
+/// }
+/// resource "azure_cdn_frontdoorfirewallpolicy" "example" {
+///   name                              = "exampleWAF"
+///   resource_group_name               = azure_core_resourcegroup.example.name
+///   sku_name                          = azure_cdn_frontdoorprofile.example.sku_name
+///   enabled                           = true
+///   mode                              = "Prevention"
+///   redirect_url                      = "https://www.contoso.com"
+///   custom_block_response_status_code = 403
+///   custom_block_response_body        = "PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg=="
+///   custom_rules {
+///     name                           = "Rule1"
+///     enabled                        = true
+///     priority                       = 1
+///     rate_limit_duration_in_minutes = 1
+///     rate_limit_threshold           = 10
+///     type                           = "MatchRule"
+///     action                         = "Block"
+///     match_conditions {
+///       match_variable     = "RemoteAddr"
+///       operator           = "IPMatch"
+///       negation_condition = false
+///       match_values       = ["192.168.1.0/24", "10.0.1.0/24"]
+///     }
+///   }
+/// }
+/// resource "azure_dns_zone" "example" {
+///   name                = "sub-domain.domain.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_cdn_frontdoorcustomdomain" "example" {
+///   name                     = "example-customDomain"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   dns_zone_id              = azure_dns_zone.example.id
+///   host_name                = join(".", ["contoso", azure_dns_zone.example.name])
+///   tls = {
+///     certificate_type    = "ManagedCertificate"
+///     minimum_tls_version = "TLS12"
+///   }
+/// }
+/// resource "azure_cdn_frontdoorsecuritypolicy" "example" {
+///   name                     = "Example-Security-Policy"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   security_policies = {
+///     firewall = {
+///       cdn_frontdoor_firewall_policy_id = azure_cdn_frontdoorfirewallpolicy.example.id
+///       association = {
+///         domains = [{
+///           "cdnFrontdoorDomainId" = azure_cdn_frontdoorcustomdomain.example.id
+///         }]
+///         patterns_to_match = "/*"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -368,18 +475,22 @@ import 'frontdoor_security_policy_state.dart';
 /// import com.pulumi.azure.cdn.FrontdoorFirewallPolicy;
 /// import com.pulumi.azure.cdn.FrontdoorFirewallPolicyArgs;
 /// import com.pulumi.azure.cdn.inputs.FrontdoorFirewallPolicyCustomRuleArgs;
+/// import com.pulumi.azure.cdn.inputs.FrontdoorFirewallPolicyCustomRuleMatchConditionArgs;
 /// import com.pulumi.azure.dns.Zone;
 /// import com.pulumi.azure.dns.ZoneArgs;
 /// import com.pulumi.azure.cdn.FrontdoorCustomDomain;
 /// import com.pulumi.azure.cdn.FrontdoorCustomDomainArgs;
 /// import com.pulumi.azure.cdn.inputs.FrontdoorCustomDomainTlsArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.JoinArgs;
 /// import com.pulumi.azure.cdn.FrontdoorSecurityPolicy;
 /// import com.pulumi.azure.cdn.FrontdoorSecurityPolicyArgs;
 /// import com.pulumi.azure.cdn.inputs.FrontdoorSecurityPolicySecurityPoliciesArgs;
 /// import com.pulumi.azure.cdn.inputs.FrontdoorSecurityPolicySecurityPoliciesFirewallArgs;
 /// import com.pulumi.azure.cdn.inputs.FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.cdn.inputs.FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomainArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -439,7 +550,12 @@ import 'frontdoor_security_policy_state.dart';
 ///             .name("example-customDomain")
 ///             .cdnFrontdoorProfileId(exampleFrontdoorProfile.id())
 ///             .dnsZoneId(exampleZone.id())
-///             .hostName("contoso.fabrikam.com")
+///             .hostName(StdFunctions.join(JoinArgs.builder()
+///                 .separator(".")
+///                 .input(
+///                     "contoso",
+///                     exampleZone.name())
+///                 .build()).applyValue(_invoke -> _invoke.result()))
 ///             .tls(FrontdoorCustomDomainTlsArgs.builder()
 ///                 .certificateType("ManagedCertificate")
 ///                 .minimumTlsVersion("TLS12")
@@ -519,7 +635,15 @@ import 'frontdoor_security_policy_state.dart';
 ///       name: example-customDomain
 ///       cdnFrontdoorProfileId: ${exampleFrontdoorProfile.id}
 ///       dnsZoneId: ${exampleZone.id}
-///       hostName: contoso.fabrikam.com
+///       hostName:
+///         fn::invoke:
+///           function: std:join
+///           arguments:
+///             separator: .
+///             input:
+///               - contoso
+///               - ${exampleZone.name}
+///           return: result
 ///       tls:
 ///         certificateType: ManagedCertificate
 ///         minimumTlsVersion: TLS12
@@ -548,17 +672,17 @@ import 'frontdoor_security_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Front Door Security Policies can be imported using the `resource id`, e.g.
+/// A Front Door Security Policy can be imported using the `resource id`, e.g.
 ///
 /// ```sh
 /// $ pulumi import azure:cdn/frontdoorSecurityPolicy:FrontdoorSecurityPolicy example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1/providers/Microsoft.Cdn/profiles/profile1/securityPolicies/policy1
 /// ```
 class FrontdoorSecurityPolicy extends pulumi.CustomResource {
-  /// The Front Door Profile Resource Id that is linked to this Front Door Security Policy. Changing this forces a new Front Door Security Policy to be created.
+  /// The Front Door Profile Resource Id that is linked to this Front Door Security Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cdnFrontdoorProfileId;
-  /// The name which should be used for this Front Door Security Policy. Possible values must not be an empty string. Changing this forces a new Front Door Security Policy to be created.
+  /// The name which should be used for this Front Door Security Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// An `security_policies` block as defined below.
+  /// A `securityPolicies` block as defined below.
   late final pulumi.Output<FrontdoorSecurityPolicySecurityPolicies> securityPolicies;
 
   /// Creates a new [FrontdoorSecurityPolicy].

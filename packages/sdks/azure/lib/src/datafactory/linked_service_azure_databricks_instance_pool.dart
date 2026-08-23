@@ -7,7 +7,7 @@ class LinkedServiceAzureDatabricksInstancePool {
   final pulumi.Input<String> clusterVersion;
   /// Identifier of the instance pool within the linked ADB instance.
   final pulumi.Input<String> instancePoolId;
-  /// The max number of worker nodes. Set this value if you want to enable autoscaling between the `min_number_of_workers` and this value. Omit this value to use a fixed number of workers defined in the `min_number_of_workers` property.
+  /// The max number of worker nodes. Set this value if you want to enable autoscaling between the `minNumberOfWorkers` and this value. Omit this value to use a fixed number of workers defined in the `minNumberOfWorkers` property.
   final pulumi.Input<int>? maxNumberOfWorkers;
   /// The minimum number of worker nodes. Defaults to `1`.
   final pulumi.Input<int>? minNumberOfWorkers;
@@ -15,7 +15,7 @@ class LinkedServiceAzureDatabricksInstancePool {
   /// Creates a new [LinkedServiceAzureDatabricksInstancePool].
   /// [clusterVersion] Spark version of a the cluster.
   /// [instancePoolId] Identifier of the instance pool within the linked ADB instance.
-  /// [maxNumberOfWorkers] The max number of worker nodes. Set this value if you want to enable autoscaling between the `min_number_of_workers` and this value. Omit this value to use a fixed number of workers defined in the `min_number_of_workers` property.
+  /// [maxNumberOfWorkers] The max number of worker nodes. Set this value if you want to enable autoscaling between the `minNumberOfWorkers` and this value. Omit this value to use a fixed number of workers defined in the `minNumberOfWorkers` property.
   /// [minNumberOfWorkers] The minimum number of worker nodes. Defaults to `1`.
   const LinkedServiceAzureDatabricksInstancePool({
     required this.clusterVersion,
@@ -42,4 +42,3 @@ class LinkedServiceAzureDatabricksInstancePool {
     );
   }
 }
-

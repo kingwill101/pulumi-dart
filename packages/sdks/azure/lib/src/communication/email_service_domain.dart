@@ -110,6 +110,30 @@ import 'email_service_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_communication_emailservice" "example" {
+///   name                = "example-emailcommunicationservice"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   data_location       = "United States"
+/// }
+/// resource "azure_communication_emailservicedomain" "example" {
+///   name              = "AzureManagedDomain"
+///   email_service_id  = azure_communication_emailservice.example.id
+///   domain_management = "AzureManaged"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +146,8 @@ import 'email_service_domain_state.dart';
 /// import com.pulumi.azure.communication.EmailServiceArgs;
 /// import com.pulumi.azure.communication.EmailServiceDomain;
 /// import com.pulumi.azure.communication.EmailServiceDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -202,13 +226,13 @@ class EmailServiceDomain extends pulumi.CustomResource {
   late final pulumi.Output<String> fromSenderDomain;
   /// P1 sender domain that is present on the email envelope [RFC 5321].
   late final pulumi.Output<String> mailFromSenderDomain;
-  /// The name of the Email Communication Service resource. If `domain_management` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
+  /// The name of the Email Communication Service resource. If `domainManagement` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
   late final pulumi.Output<String> name;
   /// A mapping of tags which should be assigned to the Email Communication Service.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Describes user engagement tracking is enabled or disabled. Defaults to `false`.
   late final pulumi.Output<bool?> userEngagementTrackingEnabled;
-  /// (Optional) An `verification_records` block as defined below.
+  /// (Optional) An `verificationRecords` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> verificationRecords;
 
   /// Creates a new [EmailServiceDomain].

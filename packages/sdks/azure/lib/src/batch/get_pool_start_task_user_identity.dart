@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_pool_start_task_user_identity_auto_user.dart';
 
 class GetPoolStartTaskUserIdentity {
-  /// A `auto_user` block that describes the user identity under which the start task runs.
+  /// A `autoUser` block that describes the user identity under which the start task runs.
   final pulumi.Input<List<GetPoolStartTaskUserIdentityAutoUser>> autoUsers;
   /// The user to use for authentication against the CIFS file system.
   final pulumi.Input<String> userName;
 
   /// Creates a new [GetPoolStartTaskUserIdentity].
-  /// [autoUsers] A `auto_user` block that describes the user identity under which the start task runs.
+  /// [autoUsers] A `autoUser` block that describes the user identity under which the start task runs.
   /// [userName] The user to use for authentication against the CIFS file system.
   const GetPoolStartTaskUserIdentity({
     required this.autoUsers,
@@ -31,4 +31,3 @@ class GetPoolStartTaskUserIdentity {
     );
   }
 }
-

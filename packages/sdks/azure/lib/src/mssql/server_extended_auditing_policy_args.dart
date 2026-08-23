@@ -11,7 +11,7 @@ class ServerExtendedAuditingPolicyArgs {
   final pulumi.Input<List<String>>? auditActionsAndGroups;
   /// Whether to enable the extended auditing policy. Possible values are `true` and `false`. Defaults to `true`.
   ///
-  /// &gt; **Note:** If `enabled` is `true`, `storage_endpoint` or `log_monitoring_enabled` are required.
+  /// &gt; **Note:** If `enabled` is `true`, `storageEndpoint` or `logMonitoringEnabled` are required.
   final pulumi.Input<bool>? enabled;
   /// Enable audit events to Azure Monitor? To enable server audit events to Azure Monitor, please enable its main database audit events to Azure Monitor. Defaults to `true`.
   final pulumi.Input<bool>? logMonitoringEnabled;
@@ -23,7 +23,7 @@ class ServerExtendedAuditingPolicyArgs {
   final pulumi.Input<String> serverId;
   /// The access key to use for the auditing storage account.
   final pulumi.Input<String>? storageAccountAccessKey;
-  /// Is `storage_account_access_key` value the storage's secondary key?
+  /// Is `storageAccountAccessKey` value the storage's secondary key?
   final pulumi.Input<bool>? storageAccountAccessKeyIsSecondary;
   /// The ID of the Subscription containing the Storage Account.
   final pulumi.Input<String>? storageAccountSubscriptionId;
@@ -38,7 +38,7 @@ class ServerExtendedAuditingPolicyArgs {
   /// [retentionInDays] The number of days to retain logs for in the storage account. Defaults to `0`.
   /// [serverId] The ID of the SQL Server to set the extended auditing policy. Changing this forces a new resource to be created.
   /// [storageAccountAccessKey] The access key to use for the auditing storage account.
-  /// [storageAccountAccessKeyIsSecondary] Is `storage_account_access_key` value the storage's secondary key?
+  /// [storageAccountAccessKeyIsSecondary] Is `storageAccountAccessKey` value the storage's secondary key?
   /// [storageAccountSubscriptionId] The ID of the Subscription containing the Storage Account.
   /// [storageEndpoint] The blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all extended auditing logs.
   const ServerExtendedAuditingPolicyArgs({
@@ -84,4 +84,3 @@ class ServerExtendedAuditingPolicyArgs {
     );
   }
 }
-

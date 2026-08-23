@@ -67,6 +67,24 @@ import 'get_account_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_trustedsigning_getaccount" "example" {
+///   name                = "example-account"
+///   resource_group_name = "example-resource-group"
+/// }
+///
+/// output "trustedSigningAccountId" {
+///   value = data.azure_trustedsigning_getaccount.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +93,8 @@ import 'get_account_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.trustedsigning.TrustedsigningFunctions;
 /// import com.pulumi.azure.trustedsigning.inputs.GetAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

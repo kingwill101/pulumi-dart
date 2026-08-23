@@ -25,47 +25,47 @@ import 'linux_virtual_machine_scale_set_termination_notification.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_linux_virtual_machine_scale_set_linux_virtual_machine_scale_set_args_doc}
 class LinuxVirtualMachineScaleSetArgs {
-  /// An `additional_capabilities` block as defined below.
+  /// An `additionalCapabilities` block as defined below.
   final pulumi.Input<LinuxVirtualMachineScaleSetAdditionalCapabilities>? additionalCapabilities;
   /// The Password which should be used for the local-administrator on this Virtual Machine. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** When an `admin_password` is specified `disable_password_authentication` must be set to `false`.
+  /// &gt; **Note:** When an `adminPassword` is specified `disablePasswordAuthentication` must be set to `false`.
   ///
-  /// &gt; **Note:** One of either `admin_password` or `admin_ssh_key` must be specified.
+  /// &gt; **Note:** One of either `adminPassword` or `adminSshKey` must be specified.
   final pulumi.Input<String>? adminPassword;
-  /// One or more `admin_ssh_key` blocks as defined below.
+  /// One or more `adminSshKey` blocks as defined below.
   ///
-  /// &gt; **Note:** One of either `admin_password` or `admin_ssh_key` must be specified.
+  /// &gt; **Note:** One of either `adminPassword` or `adminSshKey` must be specified.
   final pulumi.Input<List<LinuxVirtualMachineScaleSetAdminSshKey>>? adminSshKeys;
   /// The username of the local administrator on each Virtual Machine Scale Set instance. Changing this forces a new resource to be created.
   final pulumi.Input<String> adminUsername;
-  /// An `automatic_instance_repair` block as defined below. To enable the automatic instance repair, this Virtual Machine Scale Set must have a valid `health_probe_id` or an [Application Health Extension](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension).
+  /// An `automaticInstanceRepair` block as defined below. To enable the automatic instance repair, this Virtual Machine Scale Set must have a valid `healthProbeId` or an [Application Health Extension](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension).
   ///
   /// &gt; **Note:** For more information about Automatic Instance Repair, please refer to the [product documentation](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
   final pulumi.Input<LinuxVirtualMachineScaleSetAutomaticInstanceRepair>? automaticInstanceRepair;
-  /// An `automatic_os_upgrade_policy` block as defined below. This can only be specified when `upgrade_mode` is set to either `Automatic` or `Rolling`.
+  /// An `automaticOsUpgradePolicy` block as defined below. This can only be specified when `upgradeMode` is set to either `Automatic` or `Rolling`.
   final pulumi.Input<LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy>? automaticOsUpgradePolicy;
-  /// A `boot_diagnostics` block as defined below.
+  /// A `bootDiagnostics` block as defined below.
   final pulumi.Input<LinuxVirtualMachineScaleSetBootDiagnostics>? bootDiagnostics;
   /// Specifies the ID of the Capacity Reservation Group which the Virtual Machine Scale Set should be allocated to. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `capacity_reservation_group_id` cannot be used with `proximity_placement_group_id`
+  /// &gt; **Note:** `capacityReservationGroupId` cannot be used with `proximityPlacementGroupId`
   ///
-  /// &gt; **Note:** `single_placement_group` must be set to `false` when `capacity_reservation_group_id` is specified.
+  /// &gt; **Note:** `singlePlacementGroup` must be set to `false` when `capacityReservationGroupId` is specified.
   final pulumi.Input<String>? capacityReservationGroupId;
-  /// The prefix which should be used for the name of the Virtual Machines in this Scale Set. If unspecified this defaults to the value for the `name` field. If the value of the `name` field is not a valid `computer_name_prefix`, then you must specify `computer_name_prefix`. Changing this forces a new resource to be created.
+  /// The prefix which should be used for the name of the Virtual Machines in this Scale Set. If unspecified this defaults to the value for the `name` field. If the value of the `name` field is not a valid `computerNamePrefix`, then you must specify `computerNamePrefix`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? computerNamePrefix;
   /// The Base64-Encoded Custom Data which should be used for this Virtual Machine Scale Set.
   ///
   /// &gt; **Note:** When Custom Data has been configured, it's not possible to remove it without tainting the Virtual Machine Scale Set, due to a limitation of the Azure API.
   final pulumi.Input<String>? customData;
-  /// One or more `data_disk` blocks as defined below.
+  /// One or more `dataDisk` blocks as defined below.
   final pulumi.Input<List<LinuxVirtualMachineScaleSetDataDisk>>? dataDisks;
   /// Should Password Authentication be disabled on this Virtual Machine Scale Set? Defaults to `true`.
   ///
   /// &gt; **Note:** In general we'd recommend using SSH Keys for authentication rather than Passwords - but there's tradeoff's to each - please [see this thread for more information](https://security.stackexchange.com/questions/69407/why-is-using-an-ssh-key-more-secure-than-using-passwords).
   ///
-  /// &gt; **Note:** When a `admin_password` is specified `disable_password_authentication` must be set to `false`.
+  /// &gt; **Note:** When a `adminPassword` is specified `disablePasswordAuthentication` must be set to `false`.
   final pulumi.Input<bool>? disablePasswordAuthentication;
   /// Should Virtual Machine Extensions be run on Overprovisioned Virtual Machines in the Scale Set? Defaults to `false`.
   final pulumi.Input<bool>? doNotRunExtensionsOnOverprovisionedMachines;
@@ -79,15 +79,15 @@ class LinuxVirtualMachineScaleSetArgs {
   final pulumi.Input<String>? evictionPolicy;
   /// Should extension operations be allowed on the Virtual Machine Scale Set? Possible values are `true` or `false`. Defaults to `true`. Changing this forces a new Linux Virtual Machine Scale Set to be created.
   ///
-  /// &gt; **Note:** `extension_operations_enabled` may only be set to `false` if there are no extensions defined in the `extension` field.
+  /// &gt; **Note:** `extensionOperationsEnabled` may only be set to `false` if there are no extensions defined in the `extension` field.
   final pulumi.Input<bool>? extensionOperationsEnabled;
   /// One or more `extension` blocks as defined below
   final pulumi.Input<List<LinuxVirtualMachineScaleSetExtension>>? extensions;
   /// Specifies the duration allocated for all extensions to start. The time duration should be between `15` minutes and `120` minutes (inclusive) and should be specified in ISO 8601 format. Defaults to `PT1H30M`.
   final pulumi.Input<String>? extensionsTimeBudget;
-  /// One or more `gallery_application` blocks as defined below.
+  /// One or more `galleryApplication` blocks as defined below.
   final pulumi.Input<List<LinuxVirtualMachineScaleSetGalleryApplication>>? galleryApplications;
-  /// The ID of a Load Balancer Probe which should be used to determine the health of an instance. This is Required and can only be specified when `upgrade_mode` is set to `Automatic` or `Rolling`.
+  /// The ID of a Load Balancer Probe which should be used to determine the health of an instance. This is Required and can only be specified when `upgradeMode` is set to `Automatic` or `Rolling`.
   final pulumi.Input<String>? healthProbeId;
   /// Specifies the ID of the dedicated host group that the virtual machine scale set resides in. Changing this forces a new resource to be created.
   final pulumi.Input<String>? hostGroupId;
@@ -99,15 +99,15 @@ class LinuxVirtualMachineScaleSetArgs {
   final pulumi.Input<int>? instances;
   /// The Azure location where the Linux Virtual Machine Scale Set should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-  /// The maximum price you're willing to pay for each Virtual Machine in this Scale Set, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machines in the Scale Set will be evicted using the `eviction_policy`. Defaults to `-1`, which means that each Virtual Machine in this Scale Set should not be evicted for price reasons.
+  /// The maximum price you're willing to pay for each Virtual Machine in this Scale Set, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machines in the Scale Set will be evicted using the `evictionPolicy`. Defaults to `-1`, which means that each Virtual Machine in this Scale Set should not be evicted for price reasons.
   ///
   /// &gt; **Note:** This can only be configured when `priority` is set to `Spot`.
   final pulumi.Input<double>? maxBidPrice;
   /// The name of the Linux Virtual Machine Scale Set. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// One or more `network_interface` blocks as defined below.
+  /// One or more `networkInterface` blocks as defined below.
   final pulumi.Input<List<LinuxVirtualMachineScaleSetNetworkInterface>> networkInterfaces;
-  /// An `os_disk` block as defined below.
+  /// An `osDisk` block as defined below.
   final pulumi.Input<LinuxVirtualMachineScaleSetOsDisk> osDisk;
   /// Should Azure over-provision Virtual Machines in this Scale Set? This means that multiple Virtual Machines will be provisioned and Azure will keep the instances which become available first - which improves provisioning success rates and improves deployment time. You're not billed for these over-provisioned VM's and they don't count towards the Subscription Quota. Defaults to `true`.
   final pulumi.Input<bool>? overprovision;
@@ -119,7 +119,7 @@ class LinuxVirtualMachineScaleSetArgs {
   final pulumi.Input<int>? platformFaultDomainCount;
   /// The Priority of this Virtual Machine Scale Set. Possible values are `Regular` and `Spot`. Defaults to `Regular`. Changing this value forces a new resource.
   ///
-  /// &gt; **Note:** When `priority` is set to `Spot` an `eviction_policy` must be specified.
+  /// &gt; **Note:** When `priority` is set to `Spot` an `evictionPolicy` must be specified.
   final pulumi.Input<String>? priority;
   /// Should the Azure VM Agent be provisioned on each Virtual Machine in the Scale Set? Defaults to `true`. Changing this value forces a new resource to be created.
   final pulumi.Input<bool>? provisionVmAgent;
@@ -127,17 +127,17 @@ class LinuxVirtualMachineScaleSetArgs {
   final pulumi.Input<String>? proximityPlacementGroupId;
   /// Should resilient VM creation be enabled? When enabled, the service will attempt to create VMs in alternative fault domains or zones if the primary location fails during creation. Defaults to `false`.
   ///
-  /// &gt; **Note:** `resilient_vm_creation_enabled` is currently not supported in the `austriaeast`, `belgiumcentral`, `centraluseuap`, `chilecentral`, `indonesiacentral`, `israelnorthwest`, `malaysiawest`, `mexicocentral`, `newzealandnorth`, `southcentralus2`, `southindia`, `southeastus3`, `southwestus`, `eastasia`, `eastus`, `southcentralus`, `southeastasia`, and `westeurope` regions.
+  /// &gt; **Note:** `resilientVmCreationEnabled` is currently not supported in the `austriaeast`, `belgiumcentral`, `centraluseuap`, `chilecentral`, `indonesiacentral`, `israelnorthwest`, `malaysiawest`, `mexicocentral`, `newzealandnorth`, `southcentralus2`, `southindia`, `southeastus3`, `southwestus`, `eastasia`, `eastus`, `southcentralus`, `southeastasia`, and `westeurope` regions.
   final pulumi.Input<bool>? resilientVmCreationEnabled;
   /// Should resilient VM deletion be enabled? When enabled, the service will use a more resilient deletion process that attempts to gracefully handle failures during VM termination. Defaults to `false`.
   ///
-  /// &gt; **Note:** `resilient_vm_deletion_enabled` is currently not supported in the `austriaeast`, `belgiumcentral`, `centraluseuap`, `chilecentral`, `indonesiacentral`, `israelnorthwest`, `malaysiawest`, `mexicocentral`, `newzealandnorth`, `southcentralus2`, `southindia`, `southeastus3`, `southwestus`, `eastasia`, `eastus`, `southcentralus`, `southeastasia`, and `westeurope` regions.
+  /// &gt; **Note:** `resilientVmDeletionEnabled` is currently not supported in the `austriaeast`, `belgiumcentral`, `centraluseuap`, `chilecentral`, `indonesiacentral`, `israelnorthwest`, `malaysiawest`, `mexicocentral`, `newzealandnorth`, `southcentralus2`, `southindia`, `southeastus3`, `southwestus`, `eastasia`, `eastus`, `southcentralus`, `southeastasia`, and `westeurope` regions.
   final pulumi.Input<bool>? resilientVmDeletionEnabled;
   /// The name of the Resource Group in which the Linux Virtual Machine Scale Set should be exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-  /// A `rolling_upgrade_policy` block as defined below. This is Required and can only be specified when `upgrade_mode` is set to `Automatic` or `Rolling`. Changing this forces a new resource to be created.
+  /// A `rollingUpgradePolicy` block as defined below. This is Required and can only be specified when `upgradeMode` is set to `Automatic` or `Rolling`. Changing this forces a new resource to be created.
   final pulumi.Input<LinuxVirtualMachineScaleSetRollingUpgradePolicy>? rollingUpgradePolicy;
-  /// A `scale_in` block as defined below.
+  /// A `scaleIn` block as defined below.
   final pulumi.Input<LinuxVirtualMachineScaleSetScaleIn>? scaleIn;
   /// One or more `secret` blocks as defined below.
   final pulumi.Input<List<LinuxVirtualMachineScaleSetSecret>>? secrets;
@@ -145,21 +145,21 @@ class LinuxVirtualMachineScaleSetArgs {
   final pulumi.Input<bool>? secureBootEnabled;
   /// Should this Virtual Machine Scale Set be limited to a Single Placement Group, which means the number of instances will be capped at 100 Virtual Machines. Defaults to `true`.
   final pulumi.Input<bool>? singlePlacementGroup;
-  /// The Virtual Machine SKU for the Scale Set, such as `Standard_F2`.
+  /// The Virtual Machine SKU for the Scale Set, such as `Standard_D4_v5`.
   final pulumi.Input<String> sku;
   /// The ID of an Image which each Virtual Machine in this Scale Set should be based on. Possible Image ID types include `Image ID`, `Shared Image ID`, `Shared Image Version ID`, `Community Gallery Image ID`, `Community Gallery Image Version ID`, `Shared Gallery Image ID` and `Shared Gallery Image Version ID`.
   ///
-  /// &gt; **Note:** One of either `source_image_id` or `source_image_reference` must be set.
+  /// &gt; **Note:** One of either `sourceImageId` or `sourceImageReference` must be set.
   final pulumi.Input<String>? sourceImageId;
-  /// A `source_image_reference` block as defined below.
+  /// A `sourceImageReference` block as defined below.
   ///
-  /// &gt; **Note:** One of either `source_image_id` or `source_image_reference` must be set.
+  /// &gt; **Note:** One of either `sourceImageId` or `sourceImageReference` must be set.
   final pulumi.Input<LinuxVirtualMachineScaleSetSourceImageReference>? sourceImageReference;
-  /// A `spot_restore` block as defined below.
+  /// A `spotRestore` block as defined below.
   final pulumi.Input<LinuxVirtualMachineScaleSetSpotRestore>? spotRestore;
   /// A mapping of tags which should be assigned to this Virtual Machine Scale Set.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A `termination_notification` block as defined below.
+  /// A `terminationNotification` block as defined below.
   final pulumi.Input<LinuxVirtualMachineScaleSetTerminationNotification>? terminationNotification;
   /// Specifies how Upgrades (e.g. changing the Image/SKU) should be performed to Virtual Machine Instances. Possible values are `Automatic`, `Manual` and `Rolling`. Defaults to `Manual`. Changing this forces a new resource to be created.
   ///
@@ -179,17 +179,17 @@ class LinuxVirtualMachineScaleSetArgs {
   final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [LinuxVirtualMachineScaleSetArgs].
-  /// [additionalCapabilities] An `additional_capabilities` block as defined below.
+  /// [additionalCapabilities] An `additionalCapabilities` block as defined below.
   /// [adminPassword] The Password which should be used for the local-administrator on this Virtual Machine. Changing this forces a new resource to be created.
-  /// [adminSshKeys] One or more `admin_ssh_key` blocks as defined below.
+  /// [adminSshKeys] One or more `adminSshKey` blocks as defined below.
   /// [adminUsername] The username of the local administrator on each Virtual Machine Scale Set instance. Changing this forces a new resource to be created.
-  /// [automaticInstanceRepair] An `automatic_instance_repair` block as defined below. To enable the automatic instance repair, this Virtual Machine Scale Set must have a valid `health_probe_id` or an [Application Health Extension](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension).
-  /// [automaticOsUpgradePolicy] An `automatic_os_upgrade_policy` block as defined below. This can only be specified when `upgrade_mode` is set to either `Automatic` or `Rolling`.
-  /// [bootDiagnostics] A `boot_diagnostics` block as defined below.
+  /// [automaticInstanceRepair] An `automaticInstanceRepair` block as defined below. To enable the automatic instance repair, this Virtual Machine Scale Set must have a valid `healthProbeId` or an [Application Health Extension](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension).
+  /// [automaticOsUpgradePolicy] An `automaticOsUpgradePolicy` block as defined below. This can only be specified when `upgradeMode` is set to either `Automatic` or `Rolling`.
+  /// [bootDiagnostics] A `bootDiagnostics` block as defined below.
   /// [capacityReservationGroupId] Specifies the ID of the Capacity Reservation Group which the Virtual Machine Scale Set should be allocated to. Changing this forces a new resource to be created.
-  /// [computerNamePrefix] The prefix which should be used for the name of the Virtual Machines in this Scale Set. If unspecified this defaults to the value for the `name` field. If the value of the `name` field is not a valid `computer_name_prefix`, then you must specify `computer_name_prefix`. Changing this forces a new resource to be created.
+  /// [computerNamePrefix] The prefix which should be used for the name of the Virtual Machines in this Scale Set. If unspecified this defaults to the value for the `name` field. If the value of the `name` field is not a valid `computerNamePrefix`, then you must specify `computerNamePrefix`. Changing this forces a new resource to be created.
   /// [customData] The Base64-Encoded Custom Data which should be used for this Virtual Machine Scale Set.
-  /// [dataDisks] One or more `data_disk` blocks as defined below.
+  /// [dataDisks] One or more `dataDisk` blocks as defined below.
   /// [disablePasswordAuthentication] Should Password Authentication be disabled on this Virtual Machine Scale Set? Defaults to `true`.
   /// [doNotRunExtensionsOnOverprovisionedMachines] Should Virtual Machine Extensions be run on Overprovisioned Virtual Machines in the Scale Set? Defaults to `false`.
   /// [edgeZone] Specifies the Edge Zone within the Azure Region where this Linux Virtual Machine Scale Set should exist. Changing this forces a new Linux Virtual Machine Scale Set to be created.
@@ -198,16 +198,16 @@ class LinuxVirtualMachineScaleSetArgs {
   /// [extensionOperationsEnabled] Should extension operations be allowed on the Virtual Machine Scale Set? Possible values are `true` or `false`. Defaults to `true`. Changing this forces a new Linux Virtual Machine Scale Set to be created.
   /// [extensions] One or more `extension` blocks as defined below
   /// [extensionsTimeBudget] Specifies the duration allocated for all extensions to start. The time duration should be between `15` minutes and `120` minutes (inclusive) and should be specified in ISO 8601 format. Defaults to `PT1H30M`.
-  /// [galleryApplications] One or more `gallery_application` blocks as defined below.
-  /// [healthProbeId] The ID of a Load Balancer Probe which should be used to determine the health of an instance. This is Required and can only be specified when `upgrade_mode` is set to `Automatic` or `Rolling`.
+  /// [galleryApplications] One or more `galleryApplication` blocks as defined below.
+  /// [healthProbeId] The ID of a Load Balancer Probe which should be used to determine the health of an instance. This is Required and can only be specified when `upgradeMode` is set to `Automatic` or `Rolling`.
   /// [hostGroupId] Specifies the ID of the dedicated host group that the virtual machine scale set resides in. Changing this forces a new resource to be created.
   /// [identity] An `identity` block as defined below.
   /// [instances] The number of Virtual Machines in the Scale Set. Defaults to `0`.
   /// [location] The Azure location where the Linux Virtual Machine Scale Set should exist. Changing this forces a new resource to be created.
-  /// [maxBidPrice] The maximum price you're willing to pay for each Virtual Machine in this Scale Set, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machines in the Scale Set will be evicted using the `eviction_policy`. Defaults to `-1`, which means that each Virtual Machine in this Scale Set should not be evicted for price reasons.
+  /// [maxBidPrice] The maximum price you're willing to pay for each Virtual Machine in this Scale Set, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machines in the Scale Set will be evicted using the `evictionPolicy`. Defaults to `-1`, which means that each Virtual Machine in this Scale Set should not be evicted for price reasons.
   /// [name] The name of the Linux Virtual Machine Scale Set. Changing this forces a new resource to be created.
-  /// [networkInterfaces] One or more `network_interface` blocks as defined below.
-  /// [osDisk] An `os_disk` block as defined below.
+  /// [networkInterfaces] One or more `networkInterface` blocks as defined below.
+  /// [osDisk] An `osDisk` block as defined below.
   /// [overprovision] Should Azure over-provision Virtual Machines in this Scale Set? This means that multiple Virtual Machines will be provisioned and Azure will keep the instances which become available first - which improves provisioning success rates and improves deployment time. You're not billed for these over-provisioned VM's and they don't count towards the Subscription Quota. Defaults to `true`.
   /// [plan] A `plan` block as defined below. Changing this forces a new resource to be created.
   /// [platformFaultDomainCount] Specifies the number of fault domains that are used by this Linux Virtual Machine Scale Set. Changing this forces a new resource to be created.
@@ -217,17 +217,17 @@ class LinuxVirtualMachineScaleSetArgs {
   /// [resilientVmCreationEnabled] Should resilient VM creation be enabled? When enabled, the service will attempt to create VMs in alternative fault domains or zones if the primary location fails during creation. Defaults to `false`.
   /// [resilientVmDeletionEnabled] Should resilient VM deletion be enabled? When enabled, the service will use a more resilient deletion process that attempts to gracefully handle failures during VM termination. Defaults to `false`.
   /// [resourceGroupName] The name of the Resource Group in which the Linux Virtual Machine Scale Set should be exist. Changing this forces a new resource to be created.
-  /// [rollingUpgradePolicy] A `rolling_upgrade_policy` block as defined below. This is Required and can only be specified when `upgrade_mode` is set to `Automatic` or `Rolling`. Changing this forces a new resource to be created.
-  /// [scaleIn] A `scale_in` block as defined below.
+  /// [rollingUpgradePolicy] A `rollingUpgradePolicy` block as defined below. This is Required and can only be specified when `upgradeMode` is set to `Automatic` or `Rolling`. Changing this forces a new resource to be created.
+  /// [scaleIn] A `scaleIn` block as defined below.
   /// [secrets] One or more `secret` blocks as defined below.
   /// [secureBootEnabled] Specifies whether secure boot should be enabled on the virtual machine. Changing this forces a new resource to be created.
   /// [singlePlacementGroup] Should this Virtual Machine Scale Set be limited to a Single Placement Group, which means the number of instances will be capped at 100 Virtual Machines. Defaults to `true`.
-  /// [sku] The Virtual Machine SKU for the Scale Set, such as `Standard_F2`.
+  /// [sku] The Virtual Machine SKU for the Scale Set, such as `Standard_D4_v5`.
   /// [sourceImageId] The ID of an Image which each Virtual Machine in this Scale Set should be based on. Possible Image ID types include `Image ID`, `Shared Image ID`, `Shared Image Version ID`, `Community Gallery Image ID`, `Community Gallery Image Version ID`, `Shared Gallery Image ID` and `Shared Gallery Image Version ID`.
-  /// [sourceImageReference] A `source_image_reference` block as defined below.
-  /// [spotRestore] A `spot_restore` block as defined below.
+  /// [sourceImageReference] A `sourceImageReference` block as defined below.
+  /// [spotRestore] A `spotRestore` block as defined below.
   /// [tags] A mapping of tags which should be assigned to this Virtual Machine Scale Set.
-  /// [terminationNotification] A `termination_notification` block as defined below.
+  /// [terminationNotification] A `terminationNotification` block as defined below.
   /// [upgradeMode] Specifies how Upgrades (e.g. changing the Image/SKU) should be performed to Virtual Machine Instances. Possible values are `Automatic`, `Manual` and `Rolling`. Defaults to `Manual`. Changing this forces a new resource to be created.
   /// [userData] The Base64-Encoded User Data which should be used for this Virtual Machine Scale Set.
   /// [vtpmEnabled] Specifies whether vTPM should be enabled on the virtual machine. Changing this forces a new resource to be created.
@@ -408,4 +408,3 @@ class LinuxVirtualMachineScaleSetArgs {
     );
   }
 }
-

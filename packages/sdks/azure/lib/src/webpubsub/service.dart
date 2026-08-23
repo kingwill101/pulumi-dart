@@ -134,6 +134,36 @@ import 'service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "terraform-webpubsub"
+///   location = "east us"
+/// }
+/// resource "azure_webpubsub_service" "example" {
+///   name                          = "tfex-webpubsub"
+///   location                      = azure_core_resourcegroup.example.location
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   sku                           = "Standard_S1"
+///   capacity                      = 1
+///   public_network_access_enabled = false
+///   live_trace = {
+///     enabled                   = true
+///     messaging_logs_enabled    = true
+///     connectivity_logs_enabled = false
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +176,8 @@ import 'service_state.dart';
 /// import com.pulumi.azure.webpubsub.ServiceArgs;
 /// import com.pulumi.azure.webpubsub.inputs.ServiceLiveTraceArgs;
 /// import com.pulumi.azure.webpubsub.inputs.ServiceIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -237,7 +267,7 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> hostname;
   /// An `identity` block as defined below.
   late final pulumi.Output<ServiceIdentity?> identity;
-  /// A `live_trace` block as defined below.
+  /// A `liveTrace` block as defined below.
   late final pulumi.Output<ServiceLiveTrace?> liveTrace;
   /// Whether to enable local auth? Defaults to `true`.
   late final pulumi.Output<bool?> localAuthEnabled;

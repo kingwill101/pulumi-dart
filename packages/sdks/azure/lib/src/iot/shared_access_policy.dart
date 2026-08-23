@@ -135,6 +135,36 @@ import 'shared_access_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_iot_iothub" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku = {
+///     name     = "S1"
+///     capacity = "1"
+///   }
+/// }
+/// resource "azure_iot_sharedaccesspolicy" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   iothub_name         = azure_iot_iothub.example.name
+///   registry_read       = true
+///   registry_write      = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -148,8 +178,8 @@ import 'shared_access_policy_state.dart';
 /// import com.pulumi.azure.iot.inputs.IoTHubSkuArgs;
 /// import com.pulumi.azure.iot.SharedAccessPolicy;
 /// import com.pulumi.azure.iot.SharedAccessPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -226,7 +256,7 @@ import 'shared_access_policy_state.dart';
 class SharedAccessPolicy extends pulumi.CustomResource {
   /// Adds `DeviceConnect` permission to this Shared Access Account. It allows sending and receiving on the device-side endpoints.
   ///
-  /// &gt; **Note:** At least one of `registry_read`, `registry_write`, `service_connect`, `device_connect` permissions must be set to `true`.
+  /// &gt; **Note:** At least one of `registryRead`, `registryWrite`, `serviceConnect`, `deviceConnect` permissions must be set to `true`.
   late final pulumi.Output<bool?> deviceConnect;
   /// The name of the IoTHub to which this Shared Access Policy belongs. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubName;
@@ -240,7 +270,7 @@ class SharedAccessPolicy extends pulumi.CustomResource {
   late final pulumi.Output<bool?> registryRead;
   /// Adds `RegistryWrite` permission to this Shared Access Account. It allows write access to the identity registry.
   ///
-  /// &gt; **Note:** When `registry_write` is set to `true`, `registry_read` must also be set to true. This is a limitation of the Azure REST API
+  /// &gt; **Note:** When `registryWrite` is set to `true`, `registryRead` must also be set to true. This is a limitation of the Azure REST API
   late final pulumi.Output<bool?> registryWrite;
   /// The name of the resource group under which the IotHub Shared Access Policy resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;

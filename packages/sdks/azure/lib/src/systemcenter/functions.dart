@@ -60,6 +60,20 @@ import 'get_virtual_machine_manager_inventory_items_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_systemcenter_getvirtualmachinemanagerinventoryitems" "example" {
+///   inventory_type                                  = "Cloud"
+///   system_center_virtual_machine_manager_server_id = exampleAzurermSystemCenterVirtualMachineManagerServer.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +82,8 @@ import 'get_virtual_machine_manager_inventory_items_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.systemcenter.SystemcenterFunctions;
 /// import com.pulumi.azure.systemcenter.inputs.GetVirtualMachineManagerInventoryItemsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

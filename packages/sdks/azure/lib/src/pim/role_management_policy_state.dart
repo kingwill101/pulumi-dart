@@ -8,17 +8,17 @@ import 'role_management_policy_notification_rules.dart';
 
 /// Input properties used for looking up and filtering RoleManagementPolicy resources.
 class RoleManagementPolicyState {
-  /// An `activation_rules` block as defined below.
+  /// An `activationRules` block as defined below.
   final pulumi.Input<RoleManagementPolicyActivationRules>? activationRules;
-  /// An `active_assignment_rules` block as defined below.
+  /// An `activeAssignmentRules` block as defined below.
   final pulumi.Input<RoleManagementPolicyActiveAssignmentRules>? activeAssignmentRules;
   /// (String) The description of this policy.
   final pulumi.Input<String>? description;
-  /// An `eligible_assignment_rules` block as defined below.
+  /// An `eligibleAssignmentRules` block as defined below.
   final pulumi.Input<RoleManagementPolicyEligibleAssignmentRules>? eligibleAssignmentRules;
   /// (String) The name of this policy, which is typically a UUID and may change over time.
   final pulumi.Input<String>? name;
-  /// A `notification_rules` block as defined below.
+  /// A `notificationRules` block as defined below.
   final pulumi.Input<RoleManagementPolicyNotificationRules>? notificationRules;
   /// The scoped Role Definition ID of the role for which this policy will apply. Changing this forces a new resource to be created.
   final pulumi.Input<String>? roleDefinitionId;
@@ -26,12 +26,12 @@ class RoleManagementPolicyState {
   final pulumi.Input<String>? scope;
 
   /// Creates a new [RoleManagementPolicyState].
-  /// [activationRules] An `activation_rules` block as defined below.
-  /// [activeAssignmentRules] An `active_assignment_rules` block as defined below.
+  /// [activationRules] An `activationRules` block as defined below.
+  /// [activeAssignmentRules] An `activeAssignmentRules` block as defined below.
   /// [description] (String) The description of this policy.
-  /// [eligibleAssignmentRules] An `eligible_assignment_rules` block as defined below.
+  /// [eligibleAssignmentRules] An `eligibleAssignmentRules` block as defined below.
   /// [name] (String) The name of this policy, which is typically a UUID and may change over time.
-  /// [notificationRules] A `notification_rules` block as defined below.
+  /// [notificationRules] A `notificationRules` block as defined below.
   /// [roleDefinitionId] The scoped Role Definition ID of the role for which this policy will apply. Changing this forces a new resource to be created.
   /// [scope] The scope to which this Role Management Policy will apply. Can refer to a management group, a subscription, a resource group or a resource. Changing this forces a new resource to be created.
   const RoleManagementPolicyState({
@@ -71,4 +71,3 @@ class RoleManagementPolicyState {
     );
   }
 }
-

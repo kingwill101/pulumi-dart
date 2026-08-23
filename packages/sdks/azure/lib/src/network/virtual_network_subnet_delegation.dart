@@ -6,12 +6,12 @@ import 'virtual_network_subnet_delegation_service_delegation.dart';
 class VirtualNetworkSubnetDelegation {
   /// A name for this delegation.
   final pulumi.Input<String> name;
-  /// A `service_delegation` block as defined below.
+  /// A `serviceDelegation` block as defined below.
   final pulumi.Input<VirtualNetworkSubnetDelegationServiceDelegation> serviceDelegation;
 
   /// Creates a new [VirtualNetworkSubnetDelegation].
   /// [name] A name for this delegation.
-  /// [serviceDelegation] A `service_delegation` block as defined below.
+  /// [serviceDelegation] A `serviceDelegation` block as defined below.
   const VirtualNetworkSubnetDelegation({
     required this.name,
     required this.serviceDelegation,
@@ -31,4 +31,3 @@ class VirtualNetworkSubnetDelegation {
     );
   }
 }
-

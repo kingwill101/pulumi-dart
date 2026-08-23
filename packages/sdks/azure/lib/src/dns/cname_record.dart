@@ -116,6 +116,31 @@ import 'cname_record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dns_zone" "example" {
+///   name                = "mydomain.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_dns_cnamerecord" "example" {
+///   name                = "test"
+///   zone_name           = azure_dns_zone.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ttl                 = 300
+///   record              = "contoso.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +153,8 @@ import 'cname_record_state.dart';
 /// import com.pulumi.azure.dns.ZoneArgs;
 /// import com.pulumi.azure.dns.CNameRecord;
 /// import com.pulumi.azure.dns.CNameRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -330,6 +355,38 @@ import 'cname_record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dns_zone" "example" {
+///   name                = "mydomain.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_dns_cnamerecord" "target" {
+///   name                = "target"
+///   zone_name           = azure_dns_zone.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ttl                 = 300
+///   record              = "contoso.com"
+/// }
+/// resource "azure_dns_cnamerecord" "example" {
+///   name                = "test"
+///   zone_name           = azure_dns_zone.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ttl                 = 300
+///   target_resource_id  = azure_dns_cnamerecord.target.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -342,8 +399,8 @@ import 'cname_record_state.dart';
 /// import com.pulumi.azure.dns.ZoneArgs;
 /// import com.pulumi.azure.dns.CNameRecord;
 /// import com.pulumi.azure.dns.CNameRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -442,7 +499,7 @@ class CNameRecord extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
   ///
-  /// &gt; **Note:** either `record` OR `target_resource_id` must be specified, but not both.
+  /// &gt; **Note:** either `record` OR `targetResourceId` must be specified, but not both.
   late final pulumi.Output<Map<String, String>?> tags;
   /// The Azure resource id of the target object. Conflicts with `record`.
   late final pulumi.Output<String?> targetResourceId;

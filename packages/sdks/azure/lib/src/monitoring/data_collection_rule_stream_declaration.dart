@@ -6,12 +6,12 @@ import 'data_collection_rule_stream_declaration_column.dart';
 class DataCollectionRuleStreamDeclaration {
   /// One or more `column` blocks as defined above.
   final pulumi.Input<List<DataCollectionRuleStreamDeclarationColumn>> columns;
-  /// The name of the custom stream. This name should be unique across all `stream_declaration` blocks and must begin with a prefix of `Custom-`.
+  /// The name of the custom stream. This name should be unique across all `streamDeclaration` blocks and must begin with a prefix of `Custom-`.
   final pulumi.Input<String> streamName;
 
   /// Creates a new [DataCollectionRuleStreamDeclaration].
   /// [columns] One or more `column` blocks as defined above.
-  /// [streamName] The name of the custom stream. This name should be unique across all `stream_declaration` blocks and must begin with a prefix of `Custom-`.
+  /// [streamName] The name of the custom stream. This name should be unique across all `streamDeclaration` blocks and must begin with a prefix of `Custom-`.
   const DataCollectionRuleStreamDeclaration({
     required this.columns,
     required this.streamName,
@@ -31,4 +31,3 @@ class DataCollectionRuleStreamDeclaration {
     );
   }
 }
-

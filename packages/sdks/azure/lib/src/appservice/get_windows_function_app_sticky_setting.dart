@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsFunctionAppStickySetting {
-  /// A list of `app_setting` names that the Windows Function App will not swap between Slots when a swap operation is triggered.
+  /// A list of `appSetting` names that the Windows Function App will not swap between Slots when a swap operation is triggered.
   final pulumi.Input<List<String>> appSettingNames;
-  /// A list of `connection_string` names that the Windows Function App will not swap between Slots when a swap operation is triggered.
+  /// A list of `connectionString` names that the Windows Function App will not swap between Slots when a swap operation is triggered.
   final pulumi.Input<List<String>> connectionStringNames;
 
   /// Creates a new [GetWindowsFunctionAppStickySetting].
-  /// [appSettingNames] A list of `app_setting` names that the Windows Function App will not swap between Slots when a swap operation is triggered.
-  /// [connectionStringNames] A list of `connection_string` names that the Windows Function App will not swap between Slots when a swap operation is triggered.
+  /// [appSettingNames] A list of `appSetting` names that the Windows Function App will not swap between Slots when a swap operation is triggered.
+  /// [connectionStringNames] A list of `connectionString` names that the Windows Function App will not swap between Slots when a swap operation is triggered.
   const GetWindowsFunctionAppStickySetting({
     required this.appSettingNames,
     required this.connectionStringNames,
@@ -30,4 +30,3 @@ class GetWindowsFunctionAppStickySetting {
     );
   }
 }
-

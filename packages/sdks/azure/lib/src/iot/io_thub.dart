@@ -50,8 +50,7 @@ import 'io_thub_state.dart';
 /// });
 /// const exampleEventHub = new azure.eventhub.EventHub("example", {
 ///     name: "example-eventhub",
-///     resourceGroupName: example.name,
-///     namespaceName: exampleEventHubNamespace.name,
+///     namespaceId: exampleEventHubNamespace.id,
 ///     partitionCount: 2,
 ///     messageRetention: 1,
 /// });
@@ -150,8 +149,7 @@ import 'io_thub_state.dart';
 ///     sku="Basic")
 /// example_event_hub = azure.eventhub.EventHub("example",
 ///     name="example-eventhub",
-///     resource_group_name=example.name,
-///     namespace_name=example_event_hub_namespace.name,
+///     namespace_id=example_event_hub_namespace.id,
 ///     partition_count=2,
 ///     message_retention=1)
 /// example_authorization_rule = azure.eventhub.AuthorizationRule("example",
@@ -264,8 +262,7 @@ import 'io_thub_state.dart';
 ///     var exampleEventHub = new Azure.EventHub.EventHub("example", new()
 ///     {
 ///         Name = "example-eventhub",
-///         ResourceGroupName = example.Name,
-///         NamespaceName = exampleEventHubNamespace.Name,
+///         NamespaceId = exampleEventHubNamespace.Id,
 ///         PartitionCount = 2,
 ///         MessageRetention = 1,
 ///     });
@@ -418,11 +415,10 @@ import 'io_thub_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
-/// 			Name:              pulumi.String("example-eventhub"),
-/// 			ResourceGroupName: example.Name,
-/// 			NamespaceName:     exampleEventHubNamespace.Name,
-/// 			PartitionCount:    pulumi.Int(2),
-/// 			MessageRetention:  pulumi.Int(1),
+/// 			Name:             pulumi.String("example-eventhub"),
+/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			PartitionCount:   pulumi.Int(2),
+/// 			MessageRetention: pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -515,6 +511,107 @@ import 'io_thub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorage"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "examplecontainer"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "example" {
+///   name                = "example-namespace"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Basic"
+/// }
+/// resource "azure_eventhub_eventhub" "example" {
+///   name              = "example-eventhub"
+///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   partition_count   = 2
+///   message_retention = 1
+/// }
+/// resource "azure_eventhub_authorizationrule" "example" {
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
+///   eventhub_name       = azure_eventhub_eventhub.example.name
+///   name                = "acctest"
+///   send                = true
+/// }
+/// resource "azure_iot_iothub" "example" {
+///   name                         = "Example-IoTHub"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   local_authentication_enabled = false
+///   sku = {
+///     name     = "S1"
+///     capacity = "1"
+///   }
+///   endpoints {
+///     type                       = "AzureIotHub.StorageContainer"
+///     connection_string          = azure_storage_account.example.primary_blob_connection_string
+///     name                       = "export"
+///     batch_frequency_in_seconds = 60
+///     max_chunk_size_in_bytes    = 10485760
+///     container_name             = azure_storage_container.example.name
+///     encoding                   = "Avro"
+///     file_name_format           = "{iothub}/{partition}_{YYYY}_{MM}_{DD}_{HH}_{mm}"
+///   }
+///   endpoints {
+///     type              = "AzureIotHub.EventHub"
+///     connection_string = azure_eventhub_authorizationrule.example.primary_connection_string
+///     name              = "export2"
+///   }
+///   routes {
+///     name           = "export"
+///     source         = "DeviceMessages"
+///     condition      = "true"
+///     endpoint_names = ["export"]
+///     enabled        = true
+///   }
+///   routes {
+///     name           = "export2"
+///     source         = "DeviceMessages"
+///     condition      = "true"
+///     endpoint_names = ["export2"]
+///     enabled        = true
+///   }
+///   enrichments {
+///     key            = "tenant"
+///     value          = "$twin.tags.Tenant"
+///     endpoint_names = ["export", "export2"]
+///   }
+///   cloud_to_device = {
+///     max_delivery_count = 30
+///     default_ttl        = "PT1H"
+///     feedbacks = [{
+///       "timeToLive"       = "PT1H10M"
+///       "maxDeliveryCount" = 15
+///       "lockDuration"     = "PT30S"
+///     }]
+///   }
+///   tags = {
+///     "purpose" = "testing"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -540,8 +637,9 @@ import 'io_thub_state.dart';
 /// import com.pulumi.azure.iot.inputs.IoTHubRouteArgs;
 /// import com.pulumi.azure.iot.inputs.IoTHubEnrichmentArgs;
 /// import com.pulumi.azure.iot.inputs.IoTHubCloudToDeviceArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.iot.inputs.IoTHubCloudToDeviceFeedbackArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -581,8 +679,7 @@ import 'io_thub_state.dart';
 ///
 ///         var exampleEventHub = new EventHub("exampleEventHub", EventHubArgs.builder()
 ///             .name("example-eventhub")
-///             .resourceGroupName(example.name())
-///             .namespaceName(exampleEventHubNamespace.name())
+///             .namespaceId(exampleEventHubNamespace.id())
 ///             .partitionCount(2)
 ///             .messageRetention(1)
 ///             .build());
@@ -693,8 +790,7 @@ import 'io_thub_state.dart';
 ///     name: example
 ///     properties:
 ///       name: example-eventhub
-///       resourceGroupName: ${example.name}
-///       namespaceName: ${exampleEventHubNamespace.name}
+///       namespaceId: ${exampleEventHubNamespace.id}
 ///       partitionCount: 2
 ///       messageRetention: 1
 ///   exampleAuthorizationRule:
@@ -786,11 +882,11 @@ class IoTHub extends pulumi.CustomResource {
   late final pulumi.Output<int?> eventHubPartitionCount;
   /// The event hub retention to use in days. Must be between `1` and `7`. Defaults to `1`.
   late final pulumi.Output<int?> eventHubRetentionInDays;
-  /// A `fallback_route` block as defined below. If the fallback route is enabled, messages that don't match any of the supplied routes are automatically sent to this route. Defaults to messages/events.
+  /// A `fallbackRoute` block as defined below. If the fallback route is enabled, messages that don't match any of the supplied routes are automatically sent to this route. Defaults to messages/events.
   ///
-  /// &gt; **Note:** If `fallback_route` isn't explicitly specified, the fallback route wouldn't be enabled by default.
+  /// &gt; **Note:** If `fallbackRoute` isn't explicitly specified, the fallback route wouldn't be enabled by default.
   late final pulumi.Output<IoTHubFallbackRoute> fallbackRoute;
-  /// A `file_upload` block as defined below.
+  /// A `fileUpload` block as defined below.
   late final pulumi.Output<IoTHubFileUpload?> fileUpload;
   /// The hostname of the IotHub Resource.
   late final pulumi.Output<String> hostname;
@@ -803,13 +899,13 @@ class IoTHub extends pulumi.CustomResource {
   late final pulumi.Output<String?> minTlsVersion;
   /// Specifies the name of the IotHub resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A `network_rule_set` block as defined below.
+  /// A `networkRuleSet` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> networkRuleSets;
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
   /// The name of the resource group under which the IotHub resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   late final pulumi.Output<List<Map<String, dynamic>>> routes;
-  /// One or more `shared_access_policy` blocks as defined below.
+  /// One or more `sharedAccessPolicy` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> sharedAccessPolicies;
   /// A `sku` block as defined below.
   late final pulumi.Output<IoTHubSku> sku;

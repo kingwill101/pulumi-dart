@@ -341,6 +341,67 @@ import 'assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+/// data "azure_core_getsubscription" "example" {
+/// }
+/// data "azure_blueprint_getdefinition" "exampleGetDefinition" {
+///   name     = "exampleBlueprint"
+///   scope_id = data.azure_core_getsubscription.example.id
+/// }
+/// data "azure_blueprint_getpublishedversion" "exampleGetPublishedVersion" {
+///   scope_id       = data.azure_blueprint_getdefinition.exampleGetDefinition.scope_id
+///   blueprint_name = data.azure_blueprint_getdefinition.exampleGetDefinition.name
+///   version        = "v1.0.0"
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "exampleRG-bp"
+///   location = "West Europe"
+///   tags = {
+///     "Environment" = "example"
+///   }
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   name                = "bp-user-example"
+/// }
+/// resource "azure_authorization_assignment" "operator" {
+///   scope                = data.azure_core_getsubscription.example.id
+///   role_definition_name = "Blueprint Operator"
+///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+/// }
+/// resource "azure_authorization_assignment" "owner" {
+///   scope                = data.azure_core_getsubscription.example.id
+///   role_definition_name = "Owner"
+///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+/// }
+/// resource "azure_blueprint_assignment" "example" {
+///   depends_on              = [azure_authorization_assignment.operator, azure_authorization_assignment.owner]
+///   name                    = "testAccBPAssignment"
+///   target_subscription_id  = data.azure_core_getsubscription.example.id
+///   version_id              = data.azure_blueprint_getpublishedversion.exampleGetPublishedVersion.id
+///   location                = azure_core_resourcegroup.example.location
+///   lock_mode               = "AllResourcesDoNotDelete"
+///   lock_exclude_principals = [data.azure_core_getclientconfig.current.object_id]
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+///   resource_groups  = "    {\n      \\\"ResourceGroup\\\": {\n        \\\"name\\\": \\\"exampleRG-bp\\\"\n      }\n    }\n"
+///   parameter_values = "    {\n      \\\"allowedlocationsforresourcegroups_listOfAllowedLocations\\\": {\n        \\\"value\\\": [\\\"westus\\\", \\\"westus2\\\", \\\"eastus\\\", \\\"centralus\\\", \\\"centraluseuap\\\", \\\"southcentralus\\\", \\\"northcentralus\\\", \\\"westcentralus\\\", \\\"eastus2\\\", \\\"eastus2euap\\\", \\\"brazilsouth\\\", \\\"brazilus\\\", \\\"northeurope\\\", \\\"westeurope\\\", \\\"eastasia\\\", \\\"southeastasia\\\", \\\"japanwest\\\", \\\"japaneast\\\", \\\"koreacentral\\\", \\\"koreasouth\\\", \\\"indiasouth\\\", \\\"indiawest\\\", \\\"indiacentral\\\", \\\"australiaeast\\\", \\\"australiasoutheast\\\", \\\"canadacentral\\\", \\\"canadaeast\\\", \\\"uknorth\\\", \\\"uksouth2\\\", \\\"uksouth\\\", \\\"ukwest\\\", \\\"francecentral\\\", \\\"francesouth\\\", \\\"australiacentral\\\", \\\"australiacentral2\\\", \\\"uaecentral\\\", \\\"uaenorth\\\", \\\"southafricanorth\\\", \\\"southafricawest\\\", \\\"switzerlandnorth\\\", \\\"switzerlandwest\\\", \\\"germanynorth\\\", \\\"germanywestcentral\\\", \\\"norwayeast\\\", \\\"norwaywest\\\"]\n      }\n    }\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -358,8 +419,8 @@ import 'assignment_state.dart';
 /// import com.pulumi.azure.authorization.UserAssignedIdentityArgs;
 /// import com.pulumi.azure.blueprint.inputs.AssignmentIdentityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

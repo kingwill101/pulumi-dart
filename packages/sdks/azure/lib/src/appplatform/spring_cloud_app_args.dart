@@ -13,19 +13,19 @@ import 'spring_cloud_app_persistent_disk.dart';
 class SpringCloudAppArgs {
   /// A JSON object that contains the addon configurations of the Spring Cloud Service.
   final pulumi.Input<String>? addonJson;
-  /// A `custom_persistent_disk` block as defined below.
+  /// A `customPersistentDisk` block as defined below.
   final pulumi.Input<List<SpringCloudAppCustomPersistentDisk>>? customPersistentDisks;
   /// Is only HTTPS allowed? Defaults to `false`.
   final pulumi.Input<bool>? httpsOnly;
   /// An `identity` block as defined below.
   final pulumi.Input<SpringCloudAppIdentity>? identity;
-  /// An `ingress_settings` block as defined below.
+  /// An `ingressSettings` block as defined below.
   final pulumi.Input<SpringCloudAppIngressSettings>? ingressSettings;
   /// Does the Spring Cloud Application have public endpoint? Defaults to `false`.
   final pulumi.Input<bool>? isPublic;
   /// Specifies the name of the Spring Cloud Application. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// An `persistent_disk` block as defined below.
+  /// An `persistentDisk` block as defined below.
   final pulumi.Input<SpringCloudAppPersistentDisk>? persistentDisk;
   /// Should the App in vnet injection instance exposes endpoint which could be accessed from Internet?
   final pulumi.Input<bool>? publicEndpointEnabled;
@@ -38,13 +38,13 @@ class SpringCloudAppArgs {
 
   /// Creates a new [SpringCloudAppArgs].
   /// [addonJson] A JSON object that contains the addon configurations of the Spring Cloud Service.
-  /// [customPersistentDisks] A `custom_persistent_disk` block as defined below.
+  /// [customPersistentDisks] A `customPersistentDisk` block as defined below.
   /// [httpsOnly] Is only HTTPS allowed? Defaults to `false`.
   /// [identity] An `identity` block as defined below.
-  /// [ingressSettings] An `ingress_settings` block as defined below.
+  /// [ingressSettings] An `ingressSettings` block as defined below.
   /// [isPublic] Does the Spring Cloud Application have public endpoint? Defaults to `false`.
   /// [name] Specifies the name of the Spring Cloud Application. Changing this forces a new resource to be created.
-  /// [persistentDisk] An `persistent_disk` block as defined below.
+  /// [persistentDisk] An `persistentDisk` block as defined below.
   /// [publicEndpointEnabled] Should the App in vnet injection instance exposes endpoint which could be accessed from Internet?
   /// [resourceGroupName] Specifies the name of the resource group in which to create the Spring Cloud Application. Changing this forces a new resource to be created.
   /// [serviceName] Specifies the name of the Spring Cloud Service resource. Changing this forces a new resource to be created.
@@ -98,4 +98,3 @@ class SpringCloudAppArgs {
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_role_management_policy_activation_rule_approval_stage.dart';
 
 class GetRoleManagementPolicyActivationRule {
-  /// An `approval_stage` block as defined below.
+  /// An `approvalStage` block as defined below.
   final pulumi.Input<List<GetRoleManagementPolicyActivationRuleApprovalStage>> approvalStages;
   /// (String) The maximum length of time an activated role can be valid, in an ISO8601 Duration format.
   final pulumi.Input<String> maximumDuration;
@@ -20,7 +20,7 @@ class GetRoleManagementPolicyActivationRule {
   final pulumi.Input<String> requiredConditionalAccessAuthenticationContext;
 
   /// Creates a new [GetRoleManagementPolicyActivationRule].
-  /// [approvalStages] An `approval_stage` block as defined below.
+  /// [approvalStages] An `approvalStage` block as defined below.
   /// [maximumDuration] (String) The maximum length of time an activated role can be valid, in an ISO8601 Duration format.
   /// [requireApproval] (Boolean) Is approval required for activation.
   /// [requireJustification] (Boolean) Is a justification required to create new assignments.
@@ -61,4 +61,3 @@ class GetRoleManagementPolicyActivationRule {
     );
   }
 }
-

@@ -115,6 +115,30 @@ import 'account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_cognitive_account" "example" {
+///   name                = "example-account"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   kind                = "Face"
+///   sku_name            = "S0"
+///   tags = {
+///     "Acceptance" = "Test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -125,8 +149,8 @@ import 'account_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.cognitive.Account;
 /// import com.pulumi.azure.cognitive.AccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,7 +205,7 @@ import 'account_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.CognitiveServices` - 2025-06-01
+/// * `Microsoft.CognitiveServices` - 2026-03-01
 ///
 /// * `Microsoft.Network` - 2025-01-01
 ///
@@ -197,13 +221,13 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String?> customQuestionAnsweringSearchServiceId;
   /// If `kind` is `TextAnalytics` this specifies the key of the Search service.
   ///
-  /// &gt; **Note:** `custom_question_answering_search_service_id` and `custom_question_answering_search_service_key` are used for [Custom Question Answering, the renamed version of QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/custom-question-answering), while `qna_runtime_endpoint` is used for [the old version of QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview)
+  /// &gt; **Note:** `customQuestionAnsweringSearchServiceId` and `customQuestionAnsweringSearchServiceKey` are used for [Custom Question Answering, the renamed version of QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/custom-question-answering), while `qnaRuntimeEndpoint` is used for [the old version of QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview)
   late final pulumi.Output<String?> customQuestionAnsweringSearchServiceKey;
-  /// The subdomain name used for Entra ID token-based authentication. This attribute is required when `network_acls` is specified. This attribute is also required when using the OpenAI service with libraries which assume the Azure OpenAI endpoint is a subdomain on `https://openai.azure.com/`, eg. `https://&lt;custom_subdomain_name&gt;.openai.azure.com/`. This can be specified during creation or added later, but once set changing this forces a new resource to be created.
+  /// The subdomain name used for Entra ID token-based authentication. This attribute is required when `networkAcls` is specified. This attribute is also required when using the OpenAI service with libraries which assume the Azure OpenAI endpoint is a subdomain on `https://openai.azure.com/`, eg. `https://&lt;custom_subdomain_name&gt;.openai.azure.com/`. This can be specified during creation or added later, but once set changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** If you do not specify a `custom_subdomain_name` then you will not be able to attach a Private Endpoint to the resource. Moreover, functionality that requires Entra ID authentication, including Agent service, will not be accessible.
+  /// &gt; **Note:** If you do not specify a `customSubdomainName` then you will not be able to attach a Private Endpoint to the resource. Moreover, functionality that requires Entra ID authentication, including Agent service, will not be accessible.
   late final pulumi.Output<String?> customSubdomainName;
-  /// A `customer_managed_key` block as documented below.
+  /// A `customerManagedKey` block as documented below.
   late final pulumi.Output<AccountCustomerManagedKey?> customerManagedKey;
   /// Whether to enable the dynamic throttling for this Cognitive Service Account. This attribute cannot be set when the `kind` is `OpenAI` or `AIServices`.
   late final pulumi.Output<bool?> dynamicThrottlingEnabled;
@@ -235,15 +259,15 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String?> metricsAdvisorWebsiteName;
   /// Specifies the name of the Cognitive Service Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A `network_acls` block as defined below. When this property is specified, `custom_subdomain_name` is also required to be set.
+  /// A `networkAcls` block as defined below. When this property is specified, `customSubdomainName` is also required to be set.
   late final pulumi.Output<AccountNetworkAcls?> networkAcls;
-  /// A `network_injection` block as defined below. Only applicable if the `kind` is set to `AIServices`.
+  /// A `networkInjection` block as defined below. Only applicable if the `kind` is set to `AIServices`.
   late final pulumi.Output<AccountNetworkInjection?> networkInjection;
   /// Whether outbound network access is restricted for the Cognitive Account. Defaults to `false`.
   late final pulumi.Output<bool?> outboundNetworkAccessRestricted;
   /// A primary access key which can be used to connect to the Cognitive Service Account.
   late final pulumi.Output<String> primaryAccessKey;
-  /// Whether project management is enabled. Can only be set to `true` when `kind` is set to `AIServices`. Once enabled, disabling `project_management_enabled` forces a new resource to be created unless `kind` is set to `OpenAI`. Defaults to `false`.
+  /// Whether project management is enabled. Can only be set to `true` when `kind` is set to `AIServices`. Once enabled, disabling `projectManagementEnabled` forces a new resource to be created unless `kind` is set to `OpenAI`. Defaults to `false`.
   late final pulumi.Output<bool?> projectManagementEnabled;
   /// Whether public network access is allowed for the Cognitive Account. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;

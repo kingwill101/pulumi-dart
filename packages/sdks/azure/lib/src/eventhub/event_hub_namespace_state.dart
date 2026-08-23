@@ -38,7 +38,7 @@ class EventHubNamespaceState {
   final pulumi.Input<String>? minimumTlsVersion;
   /// Specifies the name of the EventHub Namespace resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// A `network_rulesets` block as defined below.
+  /// A `networkRulesets` block as defined below.
   final pulumi.Input<EventHubNamespaceNetworkRulesets>? networkRulesets;
   /// Is public network access enabled for the EventHub Namespace? Defaults to `true`.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
@@ -65,7 +65,7 @@ class EventHubNamespaceState {
   /// [maximumThroughputUnits] Specifies the maximum number of throughput units when Auto Inflate is Enabled. Valid values range from `1` - `40`.
   /// [minimumTlsVersion] The minimum supported TLS version for this EventHub Namespace. Valid values are: `1.0`, `1.1` and `1.2`. Defaults to `1.2`.
   /// [name] Specifies the name of the EventHub Namespace resource. Changing this forces a new resource to be created.
-  /// [networkRulesets] A `network_rulesets` block as defined below.
+  /// [networkRulesets] A `networkRulesets` block as defined below.
   /// [publicNetworkAccessEnabled] Is public network access enabled for the EventHub Namespace? Defaults to `true`.
   /// [resourceGroupName] The name of the resource group in which to create the namespace. Changing this forces a new resource to be created.
   /// [sku] Defines which tier to use. Valid options are `Basic`, `Standard`, and `Premium`. Please note that setting this field to `Premium` will force the creation of a new resource.
@@ -143,4 +143,3 @@ class EventHubNamespaceState {
     );
   }
 }
-

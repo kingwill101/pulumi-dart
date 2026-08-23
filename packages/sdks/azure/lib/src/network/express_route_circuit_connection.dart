@@ -100,7 +100,7 @@ import 'express_route_circuit_connection_state.dart';
 ///     location=example.location,
 ///     resource_group_name=example.name,
 ///     express_route_port_id=example_express_route_port.id,
-///     bandwidth_in_gbps=5,
+///     bandwidth_in_gbps=float(5),
 ///     sku={
 ///         "tier": "Standard",
 ///         "family": "MeteredData",
@@ -117,7 +117,7 @@ import 'express_route_circuit_connection_state.dart';
 ///     location=example.location,
 ///     resource_group_name=example.name,
 ///     express_route_port_id=example2.id,
-///     bandwidth_in_gbps=5,
+///     bandwidth_in_gbps=float(5),
 ///     sku={
 ///         "tier": "Standard",
 ///         "family": "MeteredData",
@@ -352,6 +352,85 @@ import 'express_route_circuit_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_expressrouteport" "example" {
+///   name                = "example-erport"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   peering_location    = "Equinix-Seattle-SE2"
+///   bandwidth_in_gbps   = 10
+///   encapsulation       = "Dot1Q"
+/// }
+/// resource "azure_network_expressroutecircuit" "example" {
+///   name                  = "example-ercircuit"
+///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   express_route_port_id = azure_network_expressrouteport.example.id
+///   bandwidth_in_gbps     = 5
+///   sku = {
+///     tier   = "Standard"
+///     family = "MeteredData"
+///   }
+/// }
+/// resource "azure_network_expressrouteport" "example2" {
+///   name                = "example-erport2"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   peering_location    = "Allied-Toronto-King-West"
+///   bandwidth_in_gbps   = 10
+///   encapsulation       = "Dot1Q"
+/// }
+/// resource "azure_network_expressroutecircuit" "example2" {
+///   name                  = "example-ercircuit2"
+///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   express_route_port_id = azure_network_expressrouteport.example2.id
+///   bandwidth_in_gbps     = 5
+///   sku = {
+///     tier   = "Standard"
+///     family = "MeteredData"
+///   }
+/// }
+/// resource "azure_network_expressroutecircuitpeering" "example" {
+///   peering_type                  = "AzurePrivatePeering"
+///   express_route_circuit_name    = azure_network_expressroutecircuit.example.name
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   shared_key                    = "ItsASecret"
+///   peer_asn                      = 100
+///   primary_peer_address_prefix   = "192.168.1.0/30"
+///   secondary_peer_address_prefix = "192.168.1.0/30"
+///   vlan_id                       = 100
+/// }
+/// resource "azure_network_expressroutecircuitpeering" "example2" {
+///   peering_type                  = "AzurePrivatePeering"
+///   express_route_circuit_name    = azure_network_expressroutecircuit.example2.name
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   shared_key                    = "ItsASecret"
+///   peer_asn                      = 100
+///   primary_peer_address_prefix   = "192.168.1.0/30"
+///   secondary_peer_address_prefix = "192.168.1.0/30"
+///   vlan_id                       = 100
+/// }
+/// resource "azure_network_expressroutecircuitconnection" "example" {
+///   name                = "example-ercircuitconnection"
+///   peering_id          = azure_network_expressroutecircuitpeering.example.id
+///   peer_peering_id     = azure_network_expressroutecircuitpeering.example2.id
+///   address_prefix_ipv4 = "192.169.9.0/29"
+///   authorization_key   = "846a1918-b7a2-4917-b43c-8c4cdaee006a"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -369,8 +448,8 @@ import 'express_route_circuit_connection_state.dart';
 /// import com.pulumi.azure.network.ExpressRouteCircuitPeeringArgs;
 /// import com.pulumi.azure.network.ExpressRouteCircuitConnection;
 /// import com.pulumi.azure.network.ExpressRouteCircuitConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -567,7 +646,7 @@ class ExpressRouteCircuitConnection extends pulumi.CustomResource {
   late final pulumi.Output<String> addressPrefixIpv4;
   /// The IPv6 address space from which to allocate customer addresses for global reach.
   ///
-  /// &gt; **Note:** `address_prefix_ipv6` cannot be set when ExpressRoute Circuit Connection with ExpressRoute Circuit based on ExpressRoute Port.
+  /// &gt; **Note:** `addressPrefixIpv6` cannot be set when ExpressRoute Circuit Connection with ExpressRoute Circuit based on ExpressRoute Port.
   late final pulumi.Output<String?> addressPrefixIpv6;
   /// The authorization key which is associated with the Express Route Circuit Connection.
   late final pulumi.Output<String?> authorizationKey;

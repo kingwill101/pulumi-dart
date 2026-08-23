@@ -142,6 +142,36 @@ import 'server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "analysis-services-server-test"
+///   location = "West Europe"
+/// }
+/// resource "azure_analysisservices_server" "server" {
+///   name                     = "analysisservicesserver"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   sku                      = "S0"
+///   admin_users              = ["myuser@domain.tld"]
+///   power_bi_service_enabled = true
+///   ipv4_firewall_rules {
+///     name        = "myRule1"
+///     range_start = "210.117.252.0"
+///     range_end   = "210.117.252.255"
+///   }
+///   tags = {
+///     "abc" = 123
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -153,8 +183,8 @@ import 'server_state.dart';
 /// import com.pulumi.azure.analysisservices.Server;
 /// import com.pulumi.azure.analysisservices.ServerArgs;
 /// import com.pulumi.azure.analysisservices.inputs.ServerIpv4FirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -236,13 +266,15 @@ class Server extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> adminUsers;
   /// URI and SAS token for a blob container to store backups.
   late final pulumi.Output<String?> backupBlobContainerUri;
-  /// One or more `ipv4_firewall_rule` block(s) as defined below.
+  /// One or more `ipv4FirewallRule` block(s) as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipv4FirewallRules;
   /// The Azure location where the Analysis Services Server exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// The name of the Analysis Services Server. Only lowercase Alphanumeric characters allowed, starting with a letter. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// Indicates if the Power BI service is allowed to access or not.
+  ///
+  /// &gt; **Note:** `powerBiServiceEnabled` is required when `ipv4FirewallRule` is defined.
   late final pulumi.Output<bool?> powerBiServiceEnabled;
   /// Controls how the read-write server is used in the query pool. If this value is set to `All` then read-write servers are also used for queries. Otherwise with `ReadOnly` these servers do not participate in query operations. Defaults to `All`.
   late final pulumi.Output<String?> querypoolConnectionMode;

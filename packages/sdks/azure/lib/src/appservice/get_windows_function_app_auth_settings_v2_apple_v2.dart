@@ -36,4 +36,3 @@ class GetWindowsFunctionAppAuthSettingsV2AppleV2 {
     );
   }
 }
-

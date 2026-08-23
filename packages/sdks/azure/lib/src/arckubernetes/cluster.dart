@@ -134,6 +134,35 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_arckubernetes_cluster" "example" {
+///   name                         = "example-akcc"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = "West Europe"
+///   agent_public_key_certificate = filebase64("testdata/public.cer")
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "ENV" = "Test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +176,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.azure.arckubernetes.inputs.ClusterIdentityArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

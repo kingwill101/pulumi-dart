@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayUrlPathMapPathRule {
   /// The ID of the associated Backend Address Pool.
   final pulumi.Input<String>? backendAddressPoolId;
-  /// The Name of the Backend Address Pool to use for this Path Rule. Cannot be set if `redirect_configuration_name` is set.
+  /// The Name of the Backend Address Pool to use for this Path Rule. Cannot be set if `redirectConfigurationName` is set.
   final pulumi.Input<String>? backendAddressPoolName;
   /// The ID of the associated Backend HTTP Settings Configuration.
   final pulumi.Input<String>? backendHttpSettingsId;
-  /// The Name of the Backend HTTP Settings Collection to use for this Path Rule. Cannot be set if `redirect_configuration_name` is set.
+  /// The Name of the Backend HTTP Settings Collection to use for this Path Rule. Cannot be set if `redirectConfigurationName` is set.
   final pulumi.Input<String>? backendHttpSettingsName;
   /// The ID of the Web Application Firewall Policy which should be used as an HTTP Listener.
   final pulumi.Input<String>? firewallPolicyId;
@@ -21,7 +21,7 @@ class ApplicationGatewayUrlPathMapPathRule {
   final pulumi.Input<List<String>> paths;
   /// The ID of the associated Redirect Configuration.
   final pulumi.Input<String>? redirectConfigurationId;
-  /// The Name of a Redirect Configuration to use for this Path Rule. Cannot be set if `backend_address_pool_name` or `backend_http_settings_name` is set.
+  /// The Name of a Redirect Configuration to use for this Path Rule. Cannot be set if `backendAddressPoolName` or `backendHttpSettingsName` is set.
   final pulumi.Input<String>? redirectConfigurationName;
   /// The ID of the associated Rewrite Rule Set.
   final pulumi.Input<String>? rewriteRuleSetId;
@@ -30,15 +30,15 @@ class ApplicationGatewayUrlPathMapPathRule {
 
   /// Creates a new [ApplicationGatewayUrlPathMapPathRule].
   /// [backendAddressPoolId] The ID of the associated Backend Address Pool.
-  /// [backendAddressPoolName] The Name of the Backend Address Pool to use for this Path Rule. Cannot be set if `redirect_configuration_name` is set.
+  /// [backendAddressPoolName] The Name of the Backend Address Pool to use for this Path Rule. Cannot be set if `redirectConfigurationName` is set.
   /// [backendHttpSettingsId] The ID of the associated Backend HTTP Settings Configuration.
-  /// [backendHttpSettingsName] The Name of the Backend HTTP Settings Collection to use for this Path Rule. Cannot be set if `redirect_configuration_name` is set.
+  /// [backendHttpSettingsName] The Name of the Backend HTTP Settings Collection to use for this Path Rule. Cannot be set if `redirectConfigurationName` is set.
   /// [firewallPolicyId] The ID of the Web Application Firewall Policy which should be used as an HTTP Listener.
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The Name of the Path Rule.
   /// [paths] A list of Paths used in this Path Rule.
   /// [redirectConfigurationId] The ID of the associated Redirect Configuration.
-  /// [redirectConfigurationName] The Name of a Redirect Configuration to use for this Path Rule. Cannot be set if `backend_address_pool_name` or `backend_http_settings_name` is set.
+  /// [redirectConfigurationName] The Name of a Redirect Configuration to use for this Path Rule. Cannot be set if `backendAddressPoolName` or `backendHttpSettingsName` is set.
   /// [rewriteRuleSetId] The ID of the associated Rewrite Rule Set.
   /// [rewriteRuleSetName] The Name of the Rewrite Rule Set which should be used for this URL Path Map. Only valid for v2 SKUs.
   const ApplicationGatewayUrlPathMapPathRule({
@@ -90,4 +90,3 @@ class ApplicationGatewayUrlPathMapPathRule {
     );
   }
 }
-

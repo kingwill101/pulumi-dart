@@ -93,6 +93,8 @@ export 'compute/get_orchestrated_virtual_machine_scale_set_network_interface_ip_
 export 'compute/get_orchestrated_virtual_machine_scale_set_network_interface_ip_configuration_public_ip_address.dart';
 export 'compute/get_orchestrated_virtual_machine_scale_set_network_interface_ip_configuration_public_ip_address_ip_tag.dart';
 export 'compute/get_orchestrated_virtual_machine_scale_set_result.dart';
+export 'compute/get_orchestrated_virtual_machine_scale_set_sku_profile.dart';
+export 'compute/get_orchestrated_virtual_machine_scale_set_sku_profile_virtual_machine_size.dart';
 export 'compute/get_platform_image_args.dart';
 export 'compute/get_platform_image_result.dart';
 export 'compute/get_shared_image_args.dart';
@@ -215,6 +217,7 @@ export 'compute/orchestrated_virtual_machine_scale_set_plan.dart';
 export 'compute/orchestrated_virtual_machine_scale_set_priority_mix.dart';
 export 'compute/orchestrated_virtual_machine_scale_set_rolling_upgrade_policy.dart';
 export 'compute/orchestrated_virtual_machine_scale_set_sku_profile.dart';
+export 'compute/orchestrated_virtual_machine_scale_set_sku_profile_virtual_machine_size.dart';
 export 'compute/orchestrated_virtual_machine_scale_set_source_image_reference.dart';
 export 'compute/orchestrated_virtual_machine_scale_set_state.dart';
 export 'compute/orchestrated_virtual_machine_scale_set_termination_notification.dart';

@@ -218,6 +218,53 @@ import 'caa_record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dns_zone" "example" {
+///   name                = "mydomain.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_dns_caarecord" "example" {
+///   name                = "test"
+///   zone_name           = azure_dns_zone.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ttl                 = 300
+///   records {
+///     flags = 0
+///     tag   = "issue"
+///     value = "example.com"
+///   }
+///   records {
+///     flags = 0
+///     tag   = "issue"
+///     value = "example.net"
+///   }
+///   records {
+///     flags = 0
+///     tag   = "issuewild"
+///     value = ";"
+///   }
+///   records {
+///     flags = 0
+///     tag   = "iodef"
+///     value = "mailto:user@nonexisting.tld"
+///   }
+///   tags = {
+///     "Environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -231,8 +278,8 @@ import 'caa_record_state.dart';
 /// import com.pulumi.azure.dns.CaaRecord;
 /// import com.pulumi.azure.dns.CaaRecordArgs;
 /// import com.pulumi.azure.dns.inputs.CaaRecordRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

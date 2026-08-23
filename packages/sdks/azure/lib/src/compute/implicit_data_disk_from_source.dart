@@ -4,7 +4,7 @@ import 'implicit_data_disk_from_source_state.dart';
 
 /// Manages an implicit Data Disk of a Virtual Machine.
 ///
-/// &gt; **Note:** The Implicit Data Disk will be deleted instantly after this resource is destroyed. If you want to detach this disk only, you may set `detach_implicit_data_disk_on_deletion` field to `true` within the `virtual_machine` block in the provider `features` block.
+/// &gt; **Note:** The Implicit Data Disk will be deleted instantly after this resource is destroyed. If you want to detach this disk only, you may set `detachImplicitDataDiskOnDeletion` field to `true` within the `virtualMachine` block in the provider `features` block.
 ///
 /// ## Example Usage
 ///
@@ -47,7 +47,7 @@ import 'implicit_data_disk_from_source_state.dart';
 ///     location: example.location,
 ///     resourceGroupName: example.name,
 ///     networkInterfaceIds: [mainNetworkInterface.id],
-///     vmSize: "Standard_F2",
+///     vmSize: "Standard_D4_v5",
 ///     storageImageReference: {
 ///         publisher: "Canonical",
 ///         offer: "0001-com-ubuntu-server-jammy",
@@ -130,7 +130,7 @@ import 'implicit_data_disk_from_source_state.dart';
 ///     location=example.location,
 ///     resource_group_name=example.name,
 ///     network_interface_ids=[main_network_interface.id],
-///     vm_size="Standard_F2",
+///     vm_size="Standard_D4_v5",
 ///     storage_image_reference={
 ///         "publisher": "Canonical",
 ///         "offer": "0001-com-ubuntu-server-jammy",
@@ -238,7 +238,7 @@ import 'implicit_data_disk_from_source_state.dart';
 ///         {
 ///             mainNetworkInterface.Id,
 ///         },
-///         VmSize = "Standard_F2",
+///         VmSize = "Standard_D4_v5",
 ///         StorageImageReference = new Azure.Compute.Inputs.VirtualMachineStorageImageReferenceArgs
 ///         {
 ///             Publisher = "Canonical",
@@ -369,7 +369,7 @@ import 'implicit_data_disk_from_source_state.dart';
 /// 			NetworkInterfaceIds: pulumi.StringArray{
 /// 				mainNetworkInterface.ID(),
 /// 			},
-/// 			VmSize: pulumi.String("Standard_F2"),
+/// 			VmSize: pulumi.String("Standard_D4_v5"),
 /// 			StorageImageReference: &compute.VirtualMachineStorageImageReferenceArgs{
 /// 				Publisher: pulumi.String("Canonical"),
 /// 				Offer:     pulumi.String("0001-com-ubuntu-server-jammy"),
@@ -431,6 +431,100 @@ import 'implicit_data_disk_from_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     ="${var.prefix}-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "main" {
+///   name                ="${var.prefix}-network"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "internal" {
+///   name                 = "internal"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.main.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "main" {
+///   name                ="${var.prefix}-nic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "internal"
+///     subnet_id                     = azure_network_subnet.internal.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_virtualmachine" "example" {
+///   name                  = local.vmName
+///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   network_interface_ids = [azure_network_networkinterface.main.id]
+///   vm_size               = "Standard_D4_v5"
+///   storage_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+///   storage_os_disk = {
+///     name              = "myosdisk1"
+///     caching           = "ReadWrite"
+///     create_option     = "FromImage"
+///     managed_disk_type = "Standard_LRS"
+///   }
+///   os_profile = {
+///     computer_name  = local.vmName
+///     admin_username = "testadmin"
+///     admin_password = "Password1234!"
+///   }
+///   os_profile_linux_config = {
+///     disable_password_authentication = false
+///   }
+/// }
+/// resource "azure_compute_manageddisk" "example" {
+///   name                 ="${local.vmName}-disk1"
+///   location             = azure_core_resourcegroup.example.location
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   storage_account_type = "Standard_LRS"
+///   create_option        = "Empty"
+///   disk_size_gb         = 10
+/// }
+/// resource "azure_compute_snapshot" "example" {
+///   name                ="${local.vmName}-snapshot1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   create_option       = "Copy"
+///   source_uri          = azure_compute_manageddisk.example.id
+/// }
+/// resource "azure_compute_implicitdatadiskfromsource" "example" {
+///   name               ="${local.vmName}-implicitdisk1"
+///   virtual_machine_id = testAzurermVirtualMachine.id
+///   lun                = "0"
+///   caching            = "None"
+///   create_option      = "Copy"
+///   disk_size_gb       = 20
+///   source_resource_id = test.id
+/// }
+/// variable "prefix" {
+///   type    = string
+///   default = "example"
+/// }
+/// locals {
+///   vmName ="${var.prefix}-vm"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -458,8 +552,8 @@ import 'implicit_data_disk_from_source_state.dart';
 /// import com.pulumi.azure.compute.SnapshotArgs;
 /// import com.pulumi.azure.compute.ImplicitDataDiskFromSource;
 /// import com.pulumi.azure.compute.ImplicitDataDiskFromSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -510,7 +604,7 @@ import 'implicit_data_disk_from_source_state.dart';
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
 ///             .networkInterfaceIds(mainNetworkInterface.id())
-///             .vmSize("Standard_F2")
+///             .vmSize("Standard_D4_v5")
 ///             .storageImageReference(VirtualMachineStorageImageReferenceArgs.builder()
 ///                 .publisher("Canonical")
 ///                 .offer("0001-com-ubuntu-server-jammy")
@@ -610,7 +704,7 @@ import 'implicit_data_disk_from_source_state.dart';
 ///       resourceGroupName: ${example.name}
 ///       networkInterfaceIds:
 ///         - ${mainNetworkInterface.id}
-///       vmSize: Standard_F2
+///       vmSize: Standard_D4_v5
 ///       storageImageReference:
 ///         publisher: Canonical
 ///         offer: 0001-com-ubuntu-server-jammy
@@ -685,7 +779,7 @@ class ImplicitDataDiskFromSource extends pulumi.CustomResource {
   late final pulumi.Output<String> createOption;
   /// Specifies the size of the Data Disk in gigabytes.
   ///
-  /// &gt; **Note:** Updating `disk_size_gb` to shrink the disk size is not supported on Azure and forces a new Data Disk to be created.
+  /// &gt; **Note:** Updating `diskSizeGb` to shrink the disk size is not supported on Azure and forces a new Data Disk to be created.
   ///
   /// &gt; **Note:** In certain conditions the Data Disk size can be updated without shutting down the Virtual Machine, however only a subset of Virtual Machine SKUs/Disk combinations support this. More information can be found [for Linux Virtual Machines](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/expand-disks?tabs=azure-cli%2Cubuntu#expand-without-downtime) and [Windows Virtual Machines](https://learn.microsoft.com/azure/virtual-machines/windows/expand-os-disk#expand-without-downtime) respectively.
   ///

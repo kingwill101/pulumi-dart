@@ -5,14 +5,14 @@ import 'snapshot_encryption_settings_disk_encryption_key.dart';
 import 'snapshot_encryption_settings_key_encryption_key.dart';
 
 class SnapshotEncryptionSettings {
-  /// A `disk_encryption_key` block as defined below.
+  /// A `diskEncryptionKey` block as defined below.
   final pulumi.Input<SnapshotEncryptionSettingsDiskEncryptionKey> diskEncryptionKey;
-  /// A `key_encryption_key` block as defined below.
+  /// A `keyEncryptionKey` block as defined below.
   final pulumi.Input<SnapshotEncryptionSettingsKeyEncryptionKey>? keyEncryptionKey;
 
   /// Creates a new [SnapshotEncryptionSettings].
-  /// [diskEncryptionKey] A `disk_encryption_key` block as defined below.
-  /// [keyEncryptionKey] A `key_encryption_key` block as defined below.
+  /// [diskEncryptionKey] A `diskEncryptionKey` block as defined below.
+  /// [keyEncryptionKey] A `keyEncryptionKey` block as defined below.
   const SnapshotEncryptionSettings({
     required this.diskEncryptionKey,
     this.keyEncryptionKey,
@@ -32,4 +32,3 @@ class SnapshotEncryptionSettings {
     );
   }
 }
-

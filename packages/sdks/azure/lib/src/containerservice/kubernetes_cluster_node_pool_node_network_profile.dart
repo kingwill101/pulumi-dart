@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kubernetes_cluster_node_pool_node_network_profile_allowed_host_port.dart';
 
 class KubernetesClusterNodePoolNodeNetworkProfile {
-  /// One or more `allowed_host_ports` blocks as defined below.
+  /// One or more `allowedHostPorts` blocks as defined below.
   final pulumi.Input<List<KubernetesClusterNodePoolNodeNetworkProfileAllowedHostPort>>? allowedHostPorts;
   /// A list of Application Security Group IDs which should be associated with this Node Pool.
   final pulumi.Input<List<String>>? applicationSecurityGroupIds;
@@ -14,7 +14,7 @@ class KubernetesClusterNodePoolNodeNetworkProfile {
   final pulumi.Input<Map<String, String>>? nodePublicIpTags;
 
   /// Creates a new [KubernetesClusterNodePoolNodeNetworkProfile].
-  /// [allowedHostPorts] One or more `allowed_host_ports` blocks as defined below.
+  /// [allowedHostPorts] One or more `allowedHostPorts` blocks as defined below.
   /// [applicationSecurityGroupIds] A list of Application Security Group IDs which should be associated with this Node Pool.
   /// [nodePublicIpTags] Specifies a mapping of tags to the instance-level public IPs. Changing this forces a new resource to be created.
   const KubernetesClusterNodePoolNodeNetworkProfile({
@@ -39,4 +39,3 @@ class KubernetesClusterNodePoolNodeNetworkProfile {
     );
   }
 }
-

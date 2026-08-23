@@ -8,19 +8,19 @@ import 'get_volume_group_sap_hana_volume_export_policy_rule.dart';
 class GetVolumeGroupSapHanaVolume {
   /// The ID of the Capacity Pool.
   final pulumi.Input<String> capacityPoolId;
-  /// A `data_protection_replication` block as defined below.
+  /// A `dataProtectionReplication` block as defined below.
   final pulumi.Input<List<GetVolumeGroupSapHanaVolumeDataProtectionReplication>> dataProtectionReplications;
-  /// A `data_protection_snapshot_policy` block as defined below.
+  /// A `dataProtectionSnapshotPolicy` block as defined below.
   final pulumi.Input<List<GetVolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy>> dataProtectionSnapshotPolicies;
   /// The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys.
   final pulumi.Input<String> encryptionKeySource;
-  /// A `export_policy_rule` block as defined below.
+  /// A `exportPolicyRule` block as defined below.
   final pulumi.Input<List<GetVolumeGroupSapHanaVolumeExportPolicyRule>> exportPolicyRules;
   /// Volume ID.
   final pulumi.Input<String> id;
   /// The Private Endpoint ID for Key Vault, which is required when using customer-managed keys.
   final pulumi.Input<String> keyVaultPrivateEndpointId;
-  /// A `mount_ip_addresses` block as defined below.
+  /// A `mountIpAddresses` block as defined below.
   final pulumi.Input<List<String>> mountIpAddresses;
   /// The name of this Application Volume Group for SAP HANA application.
   final pulumi.Input<String> name;
@@ -53,13 +53,13 @@ class GetVolumeGroupSapHanaVolume {
 
   /// Creates a new [GetVolumeGroupSapHanaVolume].
   /// [capacityPoolId] The ID of the Capacity Pool.
-  /// [dataProtectionReplications] A `data_protection_replication` block as defined below.
-  /// [dataProtectionSnapshotPolicies] A `data_protection_snapshot_policy` block as defined below.
+  /// [dataProtectionReplications] A `dataProtectionReplication` block as defined below.
+  /// [dataProtectionSnapshotPolicies] A `dataProtectionSnapshotPolicy` block as defined below.
   /// [encryptionKeySource] The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys.
-  /// [exportPolicyRules] A `export_policy_rule` block as defined below.
+  /// [exportPolicyRules] A `exportPolicyRule` block as defined below.
   /// [id] Volume ID.
   /// [keyVaultPrivateEndpointId] The Private Endpoint ID for Key Vault, which is required when using customer-managed keys.
-  /// [mountIpAddresses] A `mount_ip_addresses` block as defined below.
+  /// [mountIpAddresses] A `mountIpAddresses` block as defined below.
   /// [name] The name of this Application Volume Group for SAP HANA application.
   /// [networkFeatures] Network features of the volume.
   /// [protocols] A `protocols` block as defined below.
@@ -153,4 +153,3 @@ class GetVolumeGroupSapHanaVolume {
     );
   }
 }
-

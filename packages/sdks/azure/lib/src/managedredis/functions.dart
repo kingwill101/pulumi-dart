@@ -77,6 +77,30 @@ import 'get_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_managedredis_get" "example" {
+///   name                = "example-managed-redis"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "managedRedisHostname" {
+///   value = data.azure_managedredis_get.example.hostname
+/// }
+/// output "managedRedisPrimaryAccessKey" {
+///   value = data.azure_managedredis_get.example.default_databases[0].primary_access_key
+/// }
+/// output "managedRedisSecondaryAccessKey" {
+///   value = data.azure_managedredis_get.example.default_databases[0].secondary_access_key
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +109,8 @@ import 'get_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.managedredis.ManagedredisFunctions;
 /// import com.pulumi.azure.managedredis.inputs.GetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,6 +238,25 @@ Future<GetResult> get(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_managedredis_getaccesspolicyassignment" "example" {
+///   object_id           = "00000000-0000-0000-0000-000000000000"
+///   managed_redis_name  = "example-managedredis"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "objectId" {
+///   value = data.azure_managedredis_getaccesspolicyassignment.example.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -222,8 +265,8 @@ Future<GetResult> get(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.managedredis.ManagedredisFunctions;
 /// import com.pulumi.azure.managedredis.inputs.GetAccessPolicyAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -81,6 +81,24 @@ import 'get_topic_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_servicebus_getnamespace" "example" {
+///   name                = "examplenamespace"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "location" {
+///   value = data.azure_servicebus_getnamespace.example.location
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +107,8 @@ import 'get_topic_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.servicebus.ServicebusFunctions;
 /// import com.pulumi.azure.servicebus.inputs.GetNamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -210,6 +228,24 @@ Future<GetNamespaceResult> getNamespace(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_servicebus_getnamespaceauthorizationrule" "example" {
+///   name         = "examplerule"
+///   namespace_id = "examplenamespace"
+/// }
+///
+/// output "ruleId" {
+///   value = data.azure_servicebus_getnamespaceauthorizationrule.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -218,8 +254,8 @@ Future<GetNamespaceResult> getNamespace(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.servicebus.ServicebusFunctions;
 /// import com.pulumi.azure.servicebus.inputs.GetNamespaceAuthorizationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -339,6 +375,24 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_servicebus_getnamespacedisasterrecoveryconfig" "example" {
+///   name         = "existing"
+///   namespace_id = "example-namespace-id"
+/// }
+///
+/// output "id" {
+///   value = data.azure_servicebus_getnamespacedisasterrecoveryconfig.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -347,8 +401,8 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.servicebus.ServicebusFunctions;
 /// import com.pulumi.azure.servicebus.inputs.GetNamespaceDisasterRecoveryConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -468,6 +522,24 @@ Future<GetNamespaceDisasterRecoveryConfigResult> getNamespaceDisasterRecoveryCon
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_servicebus_getqueue" "example" {
+///   name         = "existing"
+///   namespace_id = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_servicebus_getqueue.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -476,8 +548,8 @@ Future<GetNamespaceDisasterRecoveryConfigResult> getNamespaceDisasterRecoveryCon
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.servicebus.ServicebusFunctions;
 /// import com.pulumi.azure.servicebus.inputs.GetQueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -605,6 +677,26 @@ Future<GetQueueResult> getQueue(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_servicebus_getqueueauthorizationrule" "example" {
+///   name                = "example-tfex_name"
+///   resource_group_name = "example-resources"
+///   queue_name          = "example-servicebus_queue"
+///   namespace_name      = "example-namespace"
+/// }
+///
+/// output "id" {
+///   value = data.azure_servicebus_getqueueauthorizationrule.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -613,8 +705,8 @@ Future<GetQueueResult> getQueue(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.servicebus.ServicebusFunctions;
 /// import com.pulumi.azure.servicebus.inputs.GetQueueAuthorizationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -733,9 +825,27 @@ Future<GetQueueAuthorizationRuleResult> getQueueAuthorizationRule(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("servicebusSubscription", exampleAzurermServicebusNamespace)
+/// 		ctx.Export("servicebusSubscription", pulumi.Any(exampleAzurermServicebusNamespace))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_servicebus_getsubscription" "example" {
+///   name     = "examplesubscription"
+///   topic_id = "exampletopic"
+/// }
+///
+/// output "servicebusSubscription" {
+///   value = exampleAzurermServicebusNamespace
 /// }
 /// ```
 /// ```java
@@ -746,8 +856,8 @@ Future<GetQueueAuthorizationRuleResult> getQueueAuthorizationRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.servicebus.ServicebusFunctions;
 /// import com.pulumi.azure.servicebus.inputs.GetSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -867,6 +977,24 @@ Future<GetSubscriptionResult> getSubscription(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_servicebus_gettopic" "example" {
+///   name         = "existing"
+///   namespace_id = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_servicebus_gettopic.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -875,8 +1003,8 @@ Future<GetSubscriptionResult> getSubscription(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.servicebus.ServicebusFunctions;
 /// import com.pulumi.azure.servicebus.inputs.GetTopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -999,9 +1127,29 @@ Future<GetTopicResult> getTopic(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("servicebusAuthorizationRuleId", exampleAzuremServicebusTopicAuthorizationRule.Id)
+/// 		ctx.Export("servicebusAuthorizationRuleId", pulumi.Any(exampleAzuremServicebusTopicAuthorizationRule.Id))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_servicebus_gettopicauthorizationrule" "example" {
+///   name                = "example-tfex_name"
+///   resource_group_name = "example-resources"
+///   namespace_name      = "example-namespace"
+///   topic_name          = "example-servicebus_topic"
+/// }
+///
+/// output "servicebusAuthorizationRuleId" {
+///   value = exampleAzuremServicebusTopicAuthorizationRule.id
 /// }
 /// ```
 /// ```java
@@ -1012,8 +1160,8 @@ Future<GetTopicResult> getTopic(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.servicebus.ServicebusFunctions;
 /// import com.pulumi.azure.servicebus.inputs.GetTopicAuthorizationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

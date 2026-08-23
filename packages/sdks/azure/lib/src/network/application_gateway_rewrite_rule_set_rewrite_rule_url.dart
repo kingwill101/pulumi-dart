@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayRewriteRuleSetRewriteRuleUrl {
-  /// The components used to rewrite the URL. Possible values are `path_only` and `query_string_only` to limit the rewrite to the URL Path or URL Query String only.
+  /// The components used to rewrite the URL. Possible values are `pathOnly` and `queryStringOnly` to limit the rewrite to the URL Path or URL Query String only.
   ///
-  /// &gt; **Note:** One or both of `path` and `query_string` must be specified. If one of these is not specified, it means the value will be empty. If you only want to rewrite `path` or `query_string`, use `components`.
+  /// &gt; **Note:** One or both of `path` and `queryString` must be specified. If one of these is not specified, it means the value will be empty. If you only want to rewrite `path` or `queryString`, use `components`.
   final pulumi.Input<String>? components;
   /// The URL path to rewrite.
   final pulumi.Input<String>? path;
@@ -15,7 +15,7 @@ class ApplicationGatewayRewriteRuleSetRewriteRuleUrl {
   final pulumi.Input<bool>? reroute;
 
   /// Creates a new [ApplicationGatewayRewriteRuleSetRewriteRuleUrl].
-  /// [components] The components used to rewrite the URL. Possible values are `path_only` and `query_string_only` to limit the rewrite to the URL Path or URL Query String only.
+  /// [components] The components used to rewrite the URL. Possible values are `pathOnly` and `queryStringOnly` to limit the rewrite to the URL Path or URL Query String only.
   /// [path] The URL path to rewrite.
   /// [queryString] The query string to rewrite.
   /// [reroute] Whether the URL path map should be reevaluated after this rewrite has been applied. [More info on rewrite configuration](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-url#rewrite-configuration)
@@ -44,4 +44,3 @@ class ApplicationGatewayRewriteRuleSetRewriteRuleUrl {
     );
   }
 }
-

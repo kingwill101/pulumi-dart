@@ -7,14 +7,14 @@ import 'three_tier_virtual_instance_three_tier_configuration_central_server_conf
 class ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfiguration {
   /// An `image` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfigurationImage> image;
-  /// An `os_profile` block as defined below. Changing this forces a new resource to be created.
+  /// An `osProfile` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfigurationOsProfile> osProfile;
   /// The size of the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualMachineSize;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfiguration].
   /// [image] An `image` block as defined below. Changing this forces a new resource to be created.
-  /// [osProfile] An `os_profile` block as defined below. Changing this forces a new resource to be created.
+  /// [osProfile] An `osProfile` block as defined below. Changing this forces a new resource to be created.
   /// [virtualMachineSize] The size of the Virtual Machine. Changing this forces a new resource to be created.
   const ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfiguration({
     required this.image,
@@ -38,4 +38,3 @@ class ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVi
     );
   }
 }
-

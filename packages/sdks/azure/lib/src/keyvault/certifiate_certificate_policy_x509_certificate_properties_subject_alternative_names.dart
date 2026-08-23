@@ -36,4 +36,3 @@ class CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeName
     );
   }
 }
-

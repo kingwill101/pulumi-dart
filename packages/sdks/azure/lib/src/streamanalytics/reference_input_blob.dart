@@ -182,10 +182,10 @@ import 'reference_input_blob_state.dart';
 /// 		_, err = streamanalytics.NewReferenceInputBlob(ctx, "test", &streamanalytics.ReferenceInputBlobArgs{
 /// 			Name: pulumi.String("blob-reference-input"),
 /// 			StreamAnalyticsJobName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return &example.Name, nil
+/// 				return example.Name, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return &example.ResourceGroupName, nil
+/// 				return example.ResourceGroupName, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			StorageAccountName:   exampleAccount.Name,
 /// 			StorageAccountKey:    exampleAccount.PrimaryAccessKey,
@@ -205,6 +205,52 @@ import 'reference_input_blob_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_streamanalytics_getjob" "example" {
+///   name                = "example-job"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestoracc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "example"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_streamanalytics_referenceinputblob" "test" {
+///   name                      = "blob-reference-input"
+///   stream_analytics_job_name = data.azure_streamanalytics_getjob.example.name
+///   resource_group_name       = data.azure_streamanalytics_getjob.example.resource_group_name
+///   storage_account_name      = azure_storage_account.example.name
+///   storage_account_key       = azure_storage_account.example.primary_access_key
+///   storage_container_name    = azure_storage_container.example.name
+///   path_pattern              = "some-random-pattern"
+///   date_format               = "yyyy/MM/dd"
+///   time_format               = "HH"
+///   serialization = {
+///     type     = "Json"
+///     encoding = "UTF8"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -222,8 +268,8 @@ import 'reference_input_blob_state.dart';
 /// import com.pulumi.azure.streamanalytics.ReferenceInputBlob;
 /// import com.pulumi.azure.streamanalytics.ReferenceInputBlobArgs;
 /// import com.pulumi.azure.streamanalytics.inputs.ReferenceInputBlobSerializationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -344,7 +390,7 @@ import 'reference_input_blob_state.dart';
 class ReferenceInputBlob extends pulumi.CustomResource {
   /// The authentication mode for the Stream Analytics Reference Input. Possible values are `Msi` and `ConnectionString`. Defaults to `ConnectionString`.
   late final pulumi.Output<String?> authenticationMode;
-  /// The date format. Wherever `{date}` appears in `path_pattern`, the value of this property is used as the date format instead.
+  /// The date format. Wherever `{date}` appears in `pathPattern`, the value of this property is used as the date format instead.
   late final pulumi.Output<String> dateFormat;
   /// The name of the Reference Input Blob. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
@@ -354,7 +400,7 @@ class ReferenceInputBlob extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// A `serialization` block as defined below.
   late final pulumi.Output<ReferenceInputBlobSerialization> serialization;
-  /// The Access Key which should be used to connect to this Storage Account. Required if `authentication_mode` is `ConnectionString`.
+  /// The Access Key which should be used to connect to this Storage Account. Required if `authenticationMode` is `ConnectionString`.
   late final pulumi.Output<String?> storageAccountKey;
   /// The name of the Storage Account that has the blob container with reference data.
   late final pulumi.Output<String> storageAccountName;
@@ -362,7 +408,7 @@ class ReferenceInputBlob extends pulumi.CustomResource {
   late final pulumi.Output<String> storageContainerName;
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobName;
-  /// The time format. Wherever `{time}` appears in `path_pattern`, the value of this property is used as the time format instead.
+  /// The time format. Wherever `{time}` appears in `pathPattern`, the value of this property is used as the time format instead.
   late final pulumi.Output<String> timeFormat;
 
   /// Creates a new [ReferenceInputBlob].

@@ -281,6 +281,66 @@ import 'gallery_application_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_compute_sharedimagegallery" "example" {
+///   name                = "examplegallery"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_compute_galleryapplication" "example" {
+///   name              = "example-app"
+///   gallery_id        = azure_compute_sharedimagegallery.example.id
+///   location          = azure_core_resourcegroup.example.location
+///   supported_os_type = "Linux"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorage"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "example-container"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "blob"
+/// }
+/// resource "azure_storage_blob" "example" {
+///   name                   = "scripts"
+///   storage_account_name   = azure_storage_account.example.name
+///   storage_container_name = azure_storage_container.example.name
+///   type                   = "Block"
+///   source_content         = "[scripts file content]"
+/// }
+/// resource "azure_compute_galleryapplicationversion" "example" {
+///   name                   = "0.0.1"
+///   gallery_application_id = azure_compute_galleryapplication.example.id
+///   location               = azure_compute_galleryapplication.example.location
+///   manage_action = {
+///     install = "[install command]"
+///     remove  = "[remove command]"
+///   }
+///   source = {
+///     media_link = azure_storage_blob.example.id
+///   }
+///   target_regions {
+///     name                   = azure_compute_galleryapplication.example.location
+///     regional_replica_count = 1
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -304,8 +364,8 @@ import 'gallery_application_version_state.dart';
 /// import com.pulumi.azure.compute.inputs.GalleryApplicationVersionManageActionArgs;
 /// import com.pulumi.azure.compute.inputs.GalleryApplicationVersionSourceArgs;
 /// import com.pulumi.azure.compute.inputs.GalleryApplicationVersionTargetRegionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -469,7 +529,7 @@ class GalleryApplicationVersion extends pulumi.CustomResource {
   late final pulumi.Output<String> galleryApplicationId;
   /// The Azure Region where the Gallery Application Version exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// A `manage_action` block as defined below.
+  /// A `manageAction` block as defined below.
   late final pulumi.Output<GalleryApplicationVersionManageAction> manageAction;
   /// The version name of the Gallery Application Version, such as `1.0.0`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
@@ -479,7 +539,7 @@ class GalleryApplicationVersion extends pulumi.CustomResource {
   late final pulumi.Output<GalleryApplicationVersionSource> source;
   /// A mapping of tags to assign to the Gallery Application Version.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// One or more `target_region` blocks as defined below.
+  /// One or more `targetRegion` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> targetRegions;
 
   /// Creates a new [GalleryApplicationVersion].

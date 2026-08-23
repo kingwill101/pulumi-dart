@@ -208,6 +208,51 @@ import 'tag_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "East US"
+/// }
+/// resource "azure_newrelic_monitor" "example" {
+///   name                = "example-nrm"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   plan = {
+///     effective_date = "2023-06-06T00:00:00Z"
+///   }
+///   user = {
+///     email        = "user@example.com"
+///     first_name   = "Example"
+///     last_name    = "User"
+///     phone_number = "+12313803556"
+///   }
+/// }
+/// resource "azure_newrelic_tagrule" "example" {
+///   monitor_id                         = azure_newrelic_monitor.example.id
+///   azure_active_directory_log_enabled = true
+///   activity_log_enabled               = true
+///   metric_enabled                     = true
+///   subscription_log_enabled           = true
+///   log_tag_filters {
+///     name   = "key"
+///     action = "Include"
+///     value  = "value"
+///   }
+///   metric_tag_filters {
+///     name   = "key"
+///     action = "Exclude"
+///     value  = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +269,8 @@ import 'tag_rule_state.dart';
 /// import com.pulumi.azure.newrelic.TagRuleArgs;
 /// import com.pulumi.azure.newrelic.inputs.TagRuleLogTagFilterArgs;
 /// import com.pulumi.azure.newrelic.inputs.TagRuleMetricTagFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -338,11 +383,11 @@ class TagRule extends pulumi.CustomResource {
   late final pulumi.Output<bool?> activityLogEnabled;
   /// Whether Azure Active Directory logs should be sent for the Monitor resource. Defaults to `false`.
   late final pulumi.Output<bool?> azureActiveDirectoryLogEnabled;
-  /// A `log_tag_filter` block as defined below.
+  /// A `logTagFilter` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> logTagFilters;
   /// Whether metrics should be sent for the Monitor resource. Defaults to `false`.
   late final pulumi.Output<bool?> metricEnabled;
-  /// A `metric_tag_filter` block as defined below.
+  /// A `metricTagFilter` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> metricTagFilters;
   /// Specifies the ID of the New Relic Monitor this Tag Rule should be created within. Changing this forces a new Azure Native New Relic Tag Rule to be created.
   late final pulumi.Output<String> monitorId;

@@ -13,7 +13,7 @@ class ServicePlanArgs {
   final pulumi.Input<String>? appServiceEnvironmentId;
   /// The Azure Region where the Service Plan should exist. Changing this forces a new Service Plan to be created.
   final pulumi.Input<String>? location;
-  /// The maximum number of workers to use in an Elastic SKU Plan or Premium Plan that have `premium_plan_auto_scale_enabled` set to `true`. Cannot be set unless using an Elastic or Premium SKU.
+  /// The maximum number of workers to use in an Elastic SKU Plan or Premium Plan that have `premiumPlanAutoScaleEnabled` set to `true`. Cannot be set unless using an Elastic or Premium SKU.
   final pulumi.Input<int>? maximumElasticWorkerCount;
   /// The name which should be used for this Service Plan. Changing this forces a new Service Plan to be created.
   final pulumi.Input<String>? name;
@@ -30,6 +30,8 @@ class ServicePlanArgs {
   /// &gt; **Note:** Isolated SKUs (`I1`, `I2`, `I3`, `I1v2`, `I1mv2`, `I2v2`, `I2mv2`, `I3v2`, `I3mv2`) can only be used with App Service Environments
   ///
   /// &gt; **Note:** Elastic and Consumption SKUs (`Y1`, `FC1`, `EP1`, `EP2`, and `EP3`) are for use with Function Apps.
+  ///
+  /// &gt; **Note:** Hosting Azure Functions on Linux using the Consumption plan will be retired after September 30, 2028. It is recommended to use the Flex Consumption plan for Linux Function Apps. See [here](https://learn.microsoft.com/en-us/azure/azure-functions/consumption-plan) for more information.
   final pulumi.Input<String> skuName;
   /// A mapping of tags which should be assigned to the AppService.
   final pulumi.Input<Map<String, String>>? tags;
@@ -37,15 +39,15 @@ class ServicePlanArgs {
   final pulumi.Input<int>? workerCount;
   /// Should the Service Plan balance across Availability Zones in the region.
   ///
-  /// &gt; **Note:** If this setting is set to `true` and the `worker_count` value is specified, it should be set to a multiple of the number of availability zones in the region. Please see the Azure documentation for the number of Availability Zones in your region.
+  /// &gt; **Note:** If this setting is set to `true` and the `workerCount` value is specified, it should be set to a multiple of the number of availability zones in the region. Please see the Azure documentation for the number of Availability Zones in your region.
   ///
-  /// &gt; **Note:** `zone_balancing_enabled` can only be set to `true` on Consumption, Premium, Isolated, or Workflow SKUs. It can be disabled. To enable it, the `worker_count` must be greater than `1`, and the Service Plan must support more than one availability zone. In all other cases, changing this forces a new resource to be created. For more information, please see the [Availability Zone Support](https://learn.microsoft.com/en-us/azure/reliability/reliability-app-service?tabs=azurecli&pivots=free-shared-basic#availability-zone-support).
+  /// &gt; **Note:** `zoneBalancingEnabled` can only be set to `true` on Consumption, Premium, Isolated, or Workflow SKUs. It can be disabled. To enable it, the `workerCount` must be greater than `1`, and the Service Plan must support more than one availability zone. In all other cases, changing this forces a new resource to be created. For more information, please see the [Availability Zone Support](https://learn.microsoft.com/en-us/azure/reliability/reliability-app-service?tabs=azurecli&pivots=free-shared-basic#availability-zone-support).
   final pulumi.Input<bool>? zoneBalancingEnabled;
 
   /// Creates a new [ServicePlanArgs].
   /// [appServiceEnvironmentId] The ID of the App Service Environment to create this Service Plan in.
   /// [location] The Azure Region where the Service Plan should exist. Changing this forces a new Service Plan to be created.
-  /// [maximumElasticWorkerCount] The maximum number of workers to use in an Elastic SKU Plan or Premium Plan that have `premium_plan_auto_scale_enabled` set to `true`. Cannot be set unless using an Elastic or Premium SKU.
+  /// [maximumElasticWorkerCount] The maximum number of workers to use in an Elastic SKU Plan or Premium Plan that have `premiumPlanAutoScaleEnabled` set to `true`. Cannot be set unless using an Elastic or Premium SKU.
   /// [name] The name which should be used for this Service Plan. Changing this forces a new Service Plan to be created.
   /// [osType] The O/S type for the App Services to be hosted in this plan. Possible values include `Windows`, `Linux`, and `WindowsContainer`. Changing this forces a new resource to be created.
   /// [perSiteScalingEnabled] Should Per Site Scaling be enabled. Defaults to `false`.
@@ -104,4 +106,3 @@ class ServicePlanArgs {
     );
   }
 }
-

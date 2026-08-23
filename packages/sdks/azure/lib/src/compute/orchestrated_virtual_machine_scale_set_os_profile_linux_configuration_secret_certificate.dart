@@ -4,8 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertificate {
   /// The Secret URL of a Key Vault Certificate.
-  ///
-  /// &gt; **Note:** This can be sourced from the `secret_id` field within the `azure.keyvault.Certificate` Resource.
   final pulumi.Input<String> url;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertificate].
@@ -26,4 +24,3 @@ class OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertifi
     );
   }
 }
-

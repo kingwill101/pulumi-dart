@@ -25,11 +25,11 @@ class SecretState {
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Specifies the value of the Key Vault Secret. Changing this will create a new version of the Key Vault Secret.
   ///
-  /// &gt; **Note:** One of `value` or `value_wo` must be specified.
+  /// &gt; **Note:** One of `value` or `valueWo` must be specified.
   final pulumi.Input<String>? valueWo;
-  /// An integer value used to trigger an update for `value_wo`. This property should be incremented when updating `value_wo`.
+  /// An integer value used to trigger an update for `valueWo`. This property should be incremented when updating `valueWo`.
   ///
-  /// &gt; **Note:** Key Vault strips newlines. To preserve newlines in multi-line secrets try replacing them with `\n` or by base 64 encoding them with `replace(file("my_secret_file"), "/\n/", "\n")` or `base64encode(file("my_secret_file"))`, respectively.
+  /// &gt; **Note:** Key Vault strips newlines. To preserve newlines in multi-line secrets try replacing them with `\n` or by base 64 encoding them with `replace(file("mySecretFile"), "/\n/", "\n")` or `base64encode(file("mySecretFile"))`, respectively.
   final pulumi.Input<int>? valueWoVersion;
   /// The current version of the Key Vault Secret.
   final pulumi.Input<String>? version;
@@ -47,7 +47,7 @@ class SecretState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [value] Specifies the value of the Key Vault Secret. Changing this will create a new version of the Key Vault Secret.
   /// [valueWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [valueWoVersion] An integer value used to trigger an update for `value_wo`. This property should be incremented when updating `value_wo`.
+  /// [valueWoVersion] An integer value used to trigger an update for `valueWo`. This property should be incremented when updating `valueWo`.
   /// [version] The current version of the Key Vault Secret.
   /// [versionlessId] The Base ID of the Key Vault Secret.
   const SecretState({
@@ -102,4 +102,3 @@ class SecretState {
     );
   }
 }
-

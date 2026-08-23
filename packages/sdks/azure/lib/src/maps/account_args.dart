@@ -12,7 +12,7 @@ import 'account_identity.dart';
 class AccountArgs {
   /// A `cors` block as defined below
   final pulumi.Input<AccountCors>? cors;
-  /// One or more `data_store` blocks as defined below.
+  /// One or more `dataStore` blocks as defined below.
   final pulumi.Input<List<AccountDataStore>>? dataStores;
   /// An `identity` block as defined below.
   final pulumi.Input<AccountIdentity>? identity;
@@ -33,7 +33,7 @@ class AccountArgs {
 
   /// Creates a new [AccountArgs].
   /// [cors] A `cors` block as defined below
-  /// [dataStores] One or more `data_store` blocks as defined below.
+  /// [dataStores] One or more `dataStore` blocks as defined below.
   /// [identity] An `identity` block as defined below.
   /// [localAuthenticationEnabled] Is local authentication enabled for this Azure Maps Account? When `false`, all authentication to the Azure Maps data-plane REST API is disabled, except Azure AD authentication. Defaults to `true`.
   /// [location] The Location in which the Azure Maps Account should be provisioned. Changing this forces a new resource to be created.
@@ -81,4 +81,3 @@ class AccountArgs {
     );
   }
 }
-

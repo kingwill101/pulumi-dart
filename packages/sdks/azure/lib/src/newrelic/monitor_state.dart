@@ -11,7 +11,7 @@ class MonitorState {
   final pulumi.Input<String>? accountCreationSource;
   /// Specifies the account id. Changing this forces a new Azure Native New Relic Monitor to be created.
   ///
-  /// &gt; **Note:** The value of `account_id` must come from an Azure Native New Relic Monitor instance of another different subscription.
+  /// &gt; **Note:** The value of `accountId` must come from an Azure Native New Relic Monitor instance of another different subscription.
   final pulumi.Input<String>? accountId;
   /// An `identity` block as defined below. Changing this forces a new Azure Native New Relic Monitor to be created.
   final pulumi.Input<MonitorIdentity>? identity;
@@ -25,7 +25,7 @@ class MonitorState {
   final pulumi.Input<String>? orgCreationSource;
   /// Specifies the organization id. Changing this forces a new Azure Native New Relic Monitor to be created.
   ///
-  /// &gt; **Note:** The value of `organization_id` must come from an Azure Native New Relic Monitor instance of another different subscription.
+  /// &gt; **Note:** The value of `organizationId` must come from an Azure Native New Relic Monitor instance of another different subscription.
   final pulumi.Input<String>? organizationId;
   /// A `plan` block as defined below. Changing this forces a new Azure Native New Relic Monitor to be created.
   final pulumi.Input<MonitorPlan>? plan;
@@ -98,4 +98,3 @@ class MonitorState {
     );
   }
 }
-

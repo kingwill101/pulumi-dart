@@ -2,13 +2,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_policy_args.dart';
 import 'firewall_policy_state.dart';
 
-/// !&gt; **Note:** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
+/// &gt; **Note:** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
 ///
 /// Manages an Azure Front Door (classic) Web Application Firewall Policy instance.
 ///
-/// !&gt; **Note:** Azure rolled out a breaking change on Friday 9th April 2021 which may cause issues with the CDN/FrontDoor resources. More information is available in this GitHub issue - unfortunately this may necessitate a breaking change to the CDN and Front Door resources, more information will be posted in the GitHub issue as the necessary changes are identified.
+/// &gt; **Note:** Azure rolled out a breaking change on Friday 9th April 2021 which may cause issues with the CDN/FrontDoor resources. More information is available in this GitHub issue - unfortunately this may necessitate a breaking change to the CDN and Front Door resources, more information will be posted in the GitHub issue as the necessary changes are identified.
 ///
-/// !&gt; **Note:** The creation of new Azure Front Door (classic) resources is no longer supported following its deprecation on `April 1, 2025`. However, modifications to existing Azure Front Door (classic) resources will continue to be supported until the API reaches full retirement on `March 31, 2027`.
+/// &gt; **Note:** The creation of new Azure Front Door (classic) resources is no longer supported following its deprecation on `April 1, 2025`. However, modifications to existing Azure Front Door (classic) resources will continue to be supported until the API reaches full retirement on `March 31, 2027`.
 ///
 /// ## Example Usage
 ///
@@ -528,6 +528,105 @@ import 'firewall_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_frontdoor_firewallpolicy" "example" {
+///   name                              = "examplefdwafpolicy"
+///   resource_group_name               = azure_core_resourcegroup.example.name
+///   enabled                           = true
+///   mode                              = "Prevention"
+///   redirect_url                      = "https://www.contoso.com"
+///   custom_block_response_status_code = 403
+///   custom_block_response_body        = "PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg=="
+///   custom_rules {
+///     name                           = "Rule1"
+///     enabled                        = true
+///     priority                       = 1
+///     rate_limit_duration_in_minutes = 1
+///     rate_limit_threshold           = 10
+///     type                           = "MatchRule"
+///     action                         = "Block"
+///     match_conditions {
+///       match_variable     = "RemoteAddr"
+///       operator           = "IPMatch"
+///       negation_condition = false
+///       match_values       = ["192.168.1.0/24", "10.0.0.0/24"]
+///     }
+///   }
+///   custom_rules {
+///     name                           = "Rule2"
+///     enabled                        = true
+///     priority                       = 2
+///     rate_limit_duration_in_minutes = 1
+///     rate_limit_threshold           = 10
+///     type                           = "MatchRule"
+///     action                         = "Block"
+///     match_conditions {
+///       match_variable     = "RemoteAddr"
+///       operator           = "IPMatch"
+///       negation_condition = false
+///       match_values       = ["192.168.1.0/24"]
+///     }
+///     match_conditions {
+///       match_variable     = "RequestHeader"
+///       selector           = "UserAgent"
+///       operator           = "Contains"
+///       negation_condition = false
+///       match_values       = ["windows"]
+///       transforms         = ["Lowercase", "Trim"]
+///     }
+///   }
+///   managed_rules {
+///     type    = "DefaultRuleSet"
+///     version = "1.0"
+///     exclusions {
+///       match_variable = "QueryStringArgNames"
+///       operator       = "Equals"
+///       selector       = "not_suspicious"
+///     }
+///     overrides {
+///       rule_group_name = "PHP"
+///       rules {
+///         rule_id = "933100"
+///         enabled = false
+///         action  = "Block"
+///       }
+///     }
+///     overrides {
+///       rule_group_name = "SQLI"
+///       exclusions {
+///         match_variable = "QueryStringArgNames"
+///         operator       = "Equals"
+///         selector       = "really_not_suspicious"
+///       }
+///       rules {
+///         rule_id = "942200"
+///         action  = "Block"
+///         exclusions {
+///           match_variable = "QueryStringArgNames"
+///           operator       = "Equals"
+///           selector       = "innocent"
+///         }
+///       }
+///     }
+///   }
+///   managed_rules {
+///     type    = "Microsoft_BotManagerRuleSet"
+///     version = "1.0"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -539,9 +638,15 @@ import 'firewall_policy_state.dart';
 /// import com.pulumi.azure.frontdoor.FirewallPolicy;
 /// import com.pulumi.azure.frontdoor.FirewallPolicyArgs;
 /// import com.pulumi.azure.frontdoor.inputs.FirewallPolicyCustomRuleArgs;
+/// import com.pulumi.azure.frontdoor.inputs.FirewallPolicyCustomRuleMatchConditionArgs;
 /// import com.pulumi.azure.frontdoor.inputs.FirewallPolicyManagedRuleArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.frontdoor.inputs.FirewallPolicyManagedRuleExclusionArgs;
+/// import com.pulumi.azure.frontdoor.inputs.FirewallPolicyManagedRuleOverrideArgs;
+/// import com.pulumi.azure.frontdoor.inputs.FirewallPolicyManagedRuleOverrideRuleArgs;
+/// import com.pulumi.azure.frontdoor.inputs.FirewallPolicyManagedRuleOverrideExclusionArgs;
+/// import com.pulumi.azure.frontdoor.inputs.FirewallPolicyManagedRuleOverrideRuleExclusionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -748,11 +853,11 @@ import 'firewall_policy_state.dart';
 /// $ pulumi import azure:frontdoor/firewallPolicy:FirewallPolicy example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies/examplefdwafpolicy
 /// ```
 class FirewallPolicy extends pulumi.CustomResource {
-  /// If a `custom_rule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
+  /// If a `customRule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
   late final pulumi.Output<String?> customBlockResponseBody;
-  /// If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
+  /// If a `customRule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
   late final pulumi.Output<int?> customBlockResponseStatusCode;
-  /// One or more `custom_rule` blocks as defined below.
+  /// One or more `customRule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> customRules;
   /// Is the policy a enabled state or disabled state. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
@@ -760,7 +865,7 @@ class FirewallPolicy extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> frontendEndpointIds;
   /// The Azure Region where this Front Door Firewall Policy exists.
   late final pulumi.Output<String> location;
-  /// One or more `managed_rule` blocks as defined below.
+  /// One or more `managedRule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> managedRules;
   /// The firewall policy mode. Possible values are `Detection`, `Prevention`. Defaults to `Prevention`.
   late final pulumi.Output<String?> mode;

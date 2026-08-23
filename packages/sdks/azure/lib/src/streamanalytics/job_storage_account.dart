@@ -4,7 +4,7 @@ import 'job_storage_account_state.dart';
 
 /// Manages a Stream Analytics Job Storage Account. Use this resource for managing the Job Storage Account using `Msi` authentication with a `SystemAssigned` identity.
 ///
-/// &gt; **Note:** The Job Storage Account for a Stream Analytics Job can be managed on the `azure.streamanalytics.Job` resource with the `job_storage_account` block, or with this resource. We do not recommend managing the Job Storage Account through both means as this can lead to conflicts.
+/// &gt; **Note:** The Job Storage Account for a Stream Analytics Job can be managed on the `azure.streamanalytics.Job` resource with the `jobStorageAccount` block, or with this resource. We do not recommend managing the Job Storage Account through both means as this can lead to conflicts.
 ///
 /// ## Example Usage
 ///
@@ -216,6 +216,52 @@ import 'job_storage_account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_streamanalytics_job" "example" {
+///   name                                     = "example-job"
+///   resource_group_name                      = azure_core_resourcegroup.example.name
+///   location                                 = azure_core_resourcegroup.example.location
+///   compatibility_level                      = "1.2"
+///   data_locale                              = "en-GB"
+///   events_late_arrival_max_delay_in_seconds = 60
+///   events_out_of_order_max_delay_in_seconds = 50
+///   events_out_of_order_policy               = "Adjust"
+///   output_error_policy                      = "Drop"
+///   streaming_units                          = 3
+///   sku_name                                 = "StandardV2"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "environment" = "Example"
+///   }
+///   transformation_query = "    SELECT *\n    INTO [YourOutputAlias]\n    FROM [YourInputAlias]\n"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "exampleaccount"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_streamanalytics_jobstorageaccount" "example" {
+///   stream_analytics_job_id = azure_streamanalytics_job.example.id
+///   storage_account_name    = azure_storage_account.example.name
+///   authentication_mode     = "Msi"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -231,8 +277,8 @@ import 'job_storage_account_state.dart';
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.streamanalytics.JobStorageAccount;
 /// import com.pulumi.azure.streamanalytics.JobStorageAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -9,7 +9,7 @@ class FrontdoorFirewallPolicyManagedRuleOverrideExclusion {
   final pulumi.Input<String> matchVariable;
   /// Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. Possible values are: `Equals`, `Contains`, `StartsWith`, `EndsWith`, or `EqualsAny`.
   final pulumi.Input<String> operator;
-  /// Selector for the value in the `match_variable` attribute this exclusion applies to.
+  /// Selector for the value in the `matchVariable` attribute this exclusion applies to.
   ///
   /// &gt; **Note:** `selector` must be set to `*` if `operator` is set to `EqualsAny`.
   final pulumi.Input<String> selector;
@@ -17,7 +17,7 @@ class FrontdoorFirewallPolicyManagedRuleOverrideExclusion {
   /// Creates a new [FrontdoorFirewallPolicyManagedRuleOverrideExclusion].
   /// [matchVariable] The variable type to be excluded. Possible values are `QueryStringArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`, `RequestBodyJsonArgNames`
   /// [operator] Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. Possible values are: `Equals`, `Contains`, `StartsWith`, `EndsWith`, or `EqualsAny`.
-  /// [selector] Selector for the value in the `match_variable` attribute this exclusion applies to.
+  /// [selector] Selector for the value in the `matchVariable` attribute this exclusion applies to.
   const FrontdoorFirewallPolicyManagedRuleOverrideExclusion({
     required this.matchVariable,
     required this.operator,
@@ -40,4 +40,3 @@ class FrontdoorFirewallPolicyManagedRuleOverrideExclusion {
     );
   }
 }
-

@@ -21,9 +21,9 @@ class OutputEventHubState {
   final pulumi.Input<OutputEventHubSerialization>? serialization;
   /// The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc.
   final pulumi.Input<String>? servicebusNamespace;
-  /// The shared access policy key for the specified shared access policy. Required when `authentication_mode` is set to `ConnectionString`.
+  /// The shared access policy key for the specified shared access policy. Required when `authenticationMode` is set to `ConnectionString`.
   final pulumi.Input<String>? sharedAccessPolicyKey;
-  /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required when `authentication_mode` is set to `ConnectionString`.
+  /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required when `authenticationMode` is set to `ConnectionString`.
   final pulumi.Input<String>? sharedAccessPolicyName;
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String>? streamAnalyticsJobName;
@@ -37,8 +37,8 @@ class OutputEventHubState {
   /// [resourceGroupName] The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   /// [serialization] A `serialization` block as defined below.
   /// [servicebusNamespace] The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc.
-  /// [sharedAccessPolicyKey] The shared access policy key for the specified shared access policy. Required when `authentication_mode` is set to `ConnectionString`.
-  /// [sharedAccessPolicyName] The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required when `authentication_mode` is set to `ConnectionString`.
+  /// [sharedAccessPolicyKey] The shared access policy key for the specified shared access policy. Required when `authenticationMode` is set to `ConnectionString`.
+  /// [sharedAccessPolicyName] The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required when `authenticationMode` is set to `ConnectionString`.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   const OutputEventHubState({
     this.authenticationMode,
@@ -86,4 +86,3 @@ class OutputEventHubState {
     );
   }
 }
-

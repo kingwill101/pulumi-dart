@@ -13,7 +13,7 @@ class VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration {
   final pulumi.Input<List<String>> sqlVirtualMachineIds;
   /// The ID of the Subnet to create the listener. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `sql_virtual_machine_ids` should match with the SQL Virtual Machines specified in `replica`.
+  /// &gt; **Note:** `sqlVirtualMachineIds` should match with the SQL Virtual Machines specified in `replica`.
   final pulumi.Input<String> subnetId;
 
   /// Creates a new [VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration].
@@ -50,4 +50,3 @@ class VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration {
     );
   }
 }
-

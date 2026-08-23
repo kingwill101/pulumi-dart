@@ -148,6 +148,38 @@ import 'account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "testbatch"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "teststorage"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_batch_account" "example" {
+///   name                                = "testbatchaccount"
+///   resource_group_name                 = azure_core_resourcegroup.example.name
+///   location                            = azure_core_resourcegroup.example.location
+///   pool_allocation_mode                = "BatchService"
+///   storage_account_id                  = azure_storage_account.example.id
+///   storage_account_authentication_mode = "StorageKeys"
+///   tags = {
+///     "env" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -156,8 +188,8 @@ import 'account_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.core.ResourceGroup;
 /// import com.pulumi.azure.core.ResourceGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -249,13 +281,13 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<AccountEncryption?> encryption;
   /// An `identity` block as defined below.
   late final pulumi.Output<AccountIdentity?> identity;
-  /// A `key_vault_reference` block, as defined below, that describes the Azure KeyVault reference to use when deploying the Azure Batch account using the `UserSubscription` pool allocation mode.
+  /// A `keyVaultReference` block, as defined below, that describes the Azure KeyVault reference to use when deploying the Azure Batch account using the `UserSubscription` pool allocation mode.
   late final pulumi.Output<AccountKeyVaultReference?> keyVaultReference;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// Specifies the name of the Batch account. Only lowercase Alphanumeric characters allowed. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A `network_profile` block as defined below.
+  /// A `networkProfile` block as defined below.
   late final pulumi.Output<AccountNetworkProfile?> networkProfile;
   /// Specifies the mode to use for pool allocation. Possible values are `BatchService` or `UserSubscription`. Defaults to `BatchService`.
   late final pulumi.Output<String?> poolAllocationMode;
@@ -263,7 +295,7 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String> primaryAccessKey;
   /// Whether public network access is allowed for this server. Defaults to `true`.
   ///
-  /// &gt; **NOTE:** When using `UserSubscription` mode, an Azure KeyVault reference has to be specified. See `key_vault_reference` below.
+  /// &gt; **NOTE:** When using `UserSubscription` mode, an Azure KeyVault reference has to be specified. See `keyVaultReference` below.
   ///
   /// &gt; **NOTE:** When using `UserSubscription` mode, the `Microsoft Azure Batch` service principal has to have `Contributor` role on your subscription scope, as documented [here](https://docs.microsoft.com/azure/batch/batch-account-create-portal#additional-configuration-for-user-subscription-mode).
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
@@ -279,7 +311,7 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String?> storageAccountAuthenticationMode;
   /// Specifies the storage account to use for the Batch account. If not specified, Azure Batch will manage the storage.
   ///
-  /// &gt; **NOTE:** When using `storage_account_id`, the `storage_account_authentication_mode` must be specified as well.
+  /// &gt; **NOTE:** When using `storageAccountId`, the `storageAccountAuthenticationMode` must be specified as well.
   late final pulumi.Output<String?> storageAccountId;
   /// Specifies the user assigned identity for the storage account.
   late final pulumi.Output<String?> storageAccountNodeIdentity;

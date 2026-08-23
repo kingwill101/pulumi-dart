@@ -127,6 +127,33 @@ import 'discovery_virtual_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-sapvis"
+///   location = "West Europe"
+/// }
+/// resource "azure_workloadssap_discoveryvirtualinstance" "example" {
+///   name                              = "X01"
+///   resource_group_name               = azure_core_resourcegroup.example.name
+///   location                          = azure_core_resourcegroup.example.location
+///   environment                       = "NonProd"
+///   sap_product                       = "S4HANA"
+///   central_server_virtual_machine_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/exampleRG/providers/Microsoft.Compute/virtualMachines/csvm1"
+///   managed_storage_account_name      = "managedsa"
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/exampleRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai1"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +165,8 @@ import 'discovery_virtual_instance_state.dart';
 /// import com.pulumi.azure.workloadssap.DiscoveryVirtualInstance;
 /// import com.pulumi.azure.workloadssap.DiscoveryVirtualInstanceArgs;
 /// import com.pulumi.azure.workloadssap.inputs.DiscoveryVirtualInstanceIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

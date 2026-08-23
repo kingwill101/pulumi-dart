@@ -18,7 +18,7 @@ class CustomDatasetArgs {
   final pulumi.Input<String>? description;
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   final pulumi.Input<String>? folder;
-  /// A `linked_service` block as defined below.
+  /// A `linkedService` block as defined below.
   final pulumi.Input<CustomDatasetLinkedService> linkedService;
   /// Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
@@ -38,7 +38,7 @@ class CustomDatasetArgs {
   /// [dataFactoryId] The Data Factory ID in which to associate the Dataset with. Changing this forces a new resource.
   /// [description] The description for the Data Factory Dataset.
   /// [folder] The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
-  /// [linkedService] A `linked_service` block as defined below.
+  /// [linkedService] A `linkedService` block as defined below.
   /// [name] Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Dataset.
   /// [schemaJson] A JSON object that contains the schema of the Data Factory Dataset.
@@ -90,4 +90,3 @@ class CustomDatasetArgs {
     );
   }
 }
-

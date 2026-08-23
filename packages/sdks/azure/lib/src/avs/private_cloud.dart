@@ -122,6 +122,33 @@ import 'private_cloud_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_avs_privatecloud" "example" {
+///   name                = "example-vmware-private-cloud"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku_name            = "av36"
+///   management_cluster = {
+///     size = 3
+///   }
+///   network_subnet_cidr         = "192.168.48.0/22"
+///   internet_connection_enabled = false
+///   nsxt_password               = "QazWsx13$Edc"
+///   vcenter_password            = "WsxEdc23$Rfv"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -133,8 +160,8 @@ import 'private_cloud_state.dart';
 /// import com.pulumi.azure.avs.PrivateCloud;
 /// import com.pulumi.azure.avs.PrivateCloudArgs;
 /// import com.pulumi.azure.avs.inputs.PrivateCloudManagementClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -212,12 +239,12 @@ class PrivateCloud extends pulumi.CustomResource {
   /// The endpoint for the VMware HCX Cloud Manager.
   late final pulumi.Output<String> hcxCloudManagerEndpoint;
   /// Is the Azure VMware Solution Private Cloud connected to the internet? This field can not be updated with `management_cluster[0].size` together.
-  /// &gt; **Note:** `internet_connection_enabled` and `management_cluster[0].size` cannot be updated at the same time.
+  /// &gt; **Note:** `internetConnectionEnabled` and `management_cluster[0].size` cannot be updated at the same time.
   late final pulumi.Output<bool?> internetConnectionEnabled;
   /// The Azure Region where the Azure VMware Solution Private Cloud should exist. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   late final pulumi.Output<String> location;
-  /// A `management_cluster` block as defined below.
-  /// &gt; **Note:** `internet_connection_enabled` and `management_cluster[0].size` cannot be updated at the same time.
+  /// A `managementCluster` block as defined below.
+  /// &gt; **Note:** `internetConnectionEnabled` and `management_cluster[0].size` cannot be updated at the same time.
   late final pulumi.Output<PrivateCloudManagementCluster> managementCluster;
   /// The network used to access VMware vCenter Server and NSX Manager.
   late final pulumi.Output<String> managementSubnetCidr;

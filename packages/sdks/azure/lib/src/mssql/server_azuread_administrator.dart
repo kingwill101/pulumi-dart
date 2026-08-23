@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerAzureadAdministrator {
-  /// Specifies whether only AD Users and administrators (e.g. `azuread_administrator[0].login_username`) can be used to login, or also local database users (e.g. `administrator_login`). When `true`, the `administrator_login` and `administrator_login_password` properties can be omitted.
+  /// Specifies whether only AD Users and administrators (e.g. `azuread_administrator[0].login_username`) can be used to login, or also local database users (e.g. `administratorLogin`). When `true`, the `administratorLogin` and `administratorLoginPassword` properties can be omitted.
   final pulumi.Input<bool>? azureadAuthenticationOnly;
   /// The login username of the Azure AD Administrator of this SQL Server.
   final pulumi.Input<String> loginUsername;
@@ -13,7 +13,7 @@ class ServerAzureadAdministrator {
   final pulumi.Input<String>? tenantId;
 
   /// Creates a new [ServerAzureadAdministrator].
-  /// [azureadAuthenticationOnly] Specifies whether only AD Users and administrators (e.g. `azuread_administrator[0].login_username`) can be used to login, or also local database users (e.g. `administrator_login`). When `true`, the `administrator_login` and `administrator_login_password` properties can be omitted.
+  /// [azureadAuthenticationOnly] Specifies whether only AD Users and administrators (e.g. `azuread_administrator[0].login_username`) can be used to login, or also local database users (e.g. `administratorLogin`). When `true`, the `administratorLogin` and `administratorLoginPassword` properties can be omitted.
   /// [loginUsername] The login username of the Azure AD Administrator of this SQL Server.
   /// [objectId] The object id of the Azure AD Administrator of this SQL Server.
   /// [tenantId] The tenant id of the Azure AD Administrator of this SQL Server.
@@ -42,4 +42,3 @@ class ServerAzureadAdministrator {
     );
   }
 }
-

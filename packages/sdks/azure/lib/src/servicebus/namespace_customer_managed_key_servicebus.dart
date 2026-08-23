@@ -4,9 +4,9 @@ import 'namespace_customer_managed_key_state.dart';
 
 /// Manages a Service Bus Namespace Customer Managed Key.
 ///
-/// !&gt; **Note:** It is not possible to remove the Customer Managed Key from the Service Bus Namespace once it's been added. To remove the Customer Managed Key, the parent Service Bus Namespace must be deleted and recreated.
+/// &gt; **Note:** It is not possible to remove the Customer Managed Key from the Service Bus Namespace once it's been added. To remove the Customer Managed Key, the parent Service Bus Namespace must be deleted and recreated.
 ///
-/// &gt; **Note:** This resource should only be used to create a Customer Managed Key for Service Bus Namespaces with System Assigned identities. The `customer_managed_key` block in `azure.servicebus.Namespace` should be used to create a Customer Managed Key for a Service Bus Namespace with a User Assigned identity.
+/// &gt; **Note:** This resource should only be used to create a Customer Managed Key for Service Bus Namespaces with System Assigned identities. The `customerManagedKey` block in `azure.servicebus.Namespace` should be used to create a Customer Managed Key for a Service Bus Namespace with a User Assigned identity.
 ///
 /// ## Example Usage
 ///
@@ -365,10 +365,10 @@ import 'namespace_customer_managed_key_state.dart';
 /// 				},
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: exampleNamespace.Identity.ApplyT(func(identity servicebus.NamespaceIdentity) (*string, error) {
-/// 						return &identity.TenantId, nil
+/// 						return identity.TenantId, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 					ObjectId: exampleNamespace.Identity.ApplyT(func(identity servicebus.NamespaceIdentity) (*string, error) {
-/// 						return &identity.PrincipalId, nil
+/// 						return identity.PrincipalId, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 					KeyPermissions: pulumi.StringArray{
 /// 						pulumi.String("Create"),
@@ -420,6 +420,67 @@ import 'namespace_customer_managed_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resource-group"
+///   location = "West Europe"
+/// }
+/// resource "azure_servicebus_namespace" "example" {
+///   name                         = "example-servicebus-namespace"
+///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   sku                          = "Premium"
+///   premium_messaging_partitions = 1
+///   capacity                     = 1
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                        = "example-key-vault"
+///   location                    = azure_core_resourcegroup.example.location
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   enabled_for_disk_encryption = true
+///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
+///   soft_delete_retention_days  = 7
+///   purge_protection_enabled    = true
+///   sku_name                    = "standard"
+///   access_policies {
+///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     key_permissions    = ["Create", "Decrypt", "Encrypt", "Delete", "Get", "List", "Purge", "UnwrapKey", "WrapKey", "Verify", "GetRotationPolicy"]
+///     secret_permissions = ["Set"]
+///   }
+///   access_policies {
+///     tenant_id          = azure_servicebus_namespace.example.identity.tenant_id
+///     object_id          = azure_servicebus_namespace.example.identity.principal_id
+///     key_permissions    = ["Create", "Decrypt", "Encrypt", "Delete", "Get", "List", "Purge", "UnwrapKey", "WrapKey", "Verify", "GetRotationPolicy"]
+///     secret_permissions = ["Set"]
+///   }
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   name         = "example-key-vault-key"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_servicebus_namespacecustomermanagedkey" "example" {
+///   namespace_id     = azure_servicebus_namespace.example.id
+///   key_vault_key_id = azure_keyvault_key.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -439,8 +500,8 @@ import 'namespace_customer_managed_key_state.dart';
 /// import com.pulumi.azure.keyvault.KeyArgs;
 /// import com.pulumi.azure.servicebus.NamespaceCustomerManagedKey;
 /// import com.pulumi.azure.servicebus.NamespaceCustomerManagedKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

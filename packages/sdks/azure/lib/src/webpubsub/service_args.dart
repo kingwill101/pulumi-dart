@@ -17,7 +17,7 @@ class ServiceArgs {
   final pulumi.Input<int>? capacity;
   /// An `identity` block as defined below.
   final pulumi.Input<ServiceIdentity>? identity;
-  /// A `live_trace` block as defined below.
+  /// A `liveTrace` block as defined below.
   final pulumi.Input<ServiceLiveTrace>? liveTrace;
   /// Whether to enable local auth? Defaults to `true`.
   final pulumi.Input<bool>? localAuthEnabled;
@@ -40,7 +40,7 @@ class ServiceArgs {
   /// [aadAuthEnabled] Whether to enable AAD auth? Defaults to `true`.
   /// [capacity] Specifies the number of units associated with this Web PubSub resource. Valid values are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `20`, `30`, `40`, `50`, `60`, `70`, `80`, `90`, `100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900` and `1000`.
   /// [identity] An `identity` block as defined below.
-  /// [liveTrace] A `live_trace` block as defined below.
+  /// [liveTrace] A `liveTrace` block as defined below.
   /// [localAuthEnabled] Whether to enable local auth? Defaults to `true`.
   /// [location] Specifies the supported Azure location where the Web PubSub service exists. Changing this forces a new resource to be created.
   /// [name] The name of the Web PubSub service. Changing this forces a new resource to be created.
@@ -98,4 +98,3 @@ class ServiceArgs {
     );
   }
 }
-

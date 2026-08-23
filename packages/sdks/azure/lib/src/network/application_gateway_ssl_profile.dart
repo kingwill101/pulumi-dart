@@ -8,21 +8,23 @@ class ApplicationGatewaySslProfile {
   final pulumi.Input<String>? id;
   /// The name of the SSL Profile that is unique within this Application Gateway.
   final pulumi.Input<String> name;
-  /// a `ssl_policy` block as defined below.
+  /// a `sslPolicy` block as defined below.
   final pulumi.Input<ApplicationGatewaySslProfileSslPolicy>? sslPolicy;
   /// The name of the Trusted Client Certificate that will be used to authenticate requests from clients.
   final pulumi.Input<List<String>>? trustedClientCertificateNames;
-  /// Should client certificate issuer DN be verified? Defaults to `false`.
   final pulumi.Input<bool>? verifyClientCertIssuerDn;
+  /// Should client certificate issuer DN be verified? Defaults to `false`.
+  final pulumi.Input<bool>? verifyClientCertificateIssuerDn;
   /// Specify the method to check client certificate revocation status. Possible value is `OCSP`.
   final pulumi.Input<String>? verifyClientCertificateRevocation;
 
   /// Creates a new [ApplicationGatewaySslProfile].
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The name of the SSL Profile that is unique within this Application Gateway.
-  /// [sslPolicy] a `ssl_policy` block as defined below.
+  /// [sslPolicy] a `sslPolicy` block as defined below.
   /// [trustedClientCertificateNames] The name of the Trusted Client Certificate that will be used to authenticate requests from clients.
-  /// [verifyClientCertIssuerDn] Should client certificate issuer DN be verified? Defaults to `false`.
+  /// [verifyClientCertIssuerDn] Optional.
+  /// [verifyClientCertificateIssuerDn] Should client certificate issuer DN be verified? Defaults to `false`.
   /// [verifyClientCertificateRevocation] Specify the method to check client certificate revocation status. Possible value is `OCSP`.
   const ApplicationGatewaySslProfile({
     this.id,
@@ -30,6 +32,7 @@ class ApplicationGatewaySslProfile {
     this.sslPolicy,
     this.trustedClientCertificateNames,
     this.verifyClientCertIssuerDn,
+    this.verifyClientCertificateIssuerDn,
     this.verifyClientCertificateRevocation,
   });
 
@@ -40,6 +43,7 @@ class ApplicationGatewaySslProfile {
       'sslPolicy': ?pulumi.Input.mapOptionalInputValue<ApplicationGatewaySslProfileSslPolicy, Map<String, dynamic>>(sslPolicy, (value) => value.toMap()),
       'trustedClientCertificateNames': ?trustedClientCertificateNames,
       'verifyClientCertIssuerDn': ?verifyClientCertIssuerDn,
+      'verifyClientCertificateIssuerDn': ?verifyClientCertificateIssuerDn,
       'verifyClientCertificateRevocation': ?verifyClientCertificateRevocation,
     };
   }
@@ -51,8 +55,8 @@ class ApplicationGatewaySslProfile {
       sslPolicy: (() { final guardedValue = map['sslPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationGatewaySslProfileSslPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       trustedClientCertificateNames: (() { final guardedValue = map['trustedClientCertificateNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       verifyClientCertIssuerDn: (() { final guardedValue = map['verifyClientCertIssuerDn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      verifyClientCertificateIssuerDn: (() { final guardedValue = map['verifyClientCertificateIssuerDn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       verifyClientCertificateRevocation: (() { final guardedValue = map['verifyClientCertificateRevocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

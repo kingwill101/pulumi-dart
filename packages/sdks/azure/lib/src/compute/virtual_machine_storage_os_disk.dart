@@ -9,9 +9,9 @@ class VirtualMachineStorageOsDisk {
   final pulumi.Input<String> createOption;
   /// Specifies the size of the OS Disk in gigabytes.
   final pulumi.Input<int>? diskSizeGb;
-  /// Specifies the Image URI in the format `publisherName:offer:skus:version`. This field can also specify the [VHD URI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) of a custom VM image to clone. When cloning a Custom (Unmanaged) Disk Image the `os_type` field must be set.
+  /// Specifies the Image URI in the format `publisherName:offer:skus:version`. This field can also specify the [VHD URI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) of a custom VM image to clone. When cloning a Custom (Unmanaged) Disk Image the `osType` field must be set.
   final pulumi.Input<String>? imageUri;
-  /// Specifies the ID of an existing Managed Disk which should be attached as the OS Disk of this Virtual Machine. If this is set then the `create_option` must be set to `Attach`. Changing this forces a new resource to be created.
+  /// Specifies the ID of an existing Managed Disk which should be attached as the OS Disk of this Virtual Machine. If this is set then the `createOption` must be set to `Attach`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? managedDiskId;
   /// Specifies the type of Managed Disk which should be created. Possible values are `Standard_LRS`, `StandardSSD_LRS` or `Premium_LRS`.
   ///
@@ -32,8 +32,8 @@ class VirtualMachineStorageOsDisk {
   /// [caching] Specifies the caching requirements for the OS Disk. Possible values include `None`, `ReadOnly` and `ReadWrite`.
   /// [createOption] Specifies how the OS Disk should be created. Possible values are `Attach` (managed disks only) and `FromImage`.
   /// [diskSizeGb] Specifies the size of the OS Disk in gigabytes.
-  /// [imageUri] Specifies the Image URI in the format `publisherName:offer:skus:version`. This field can also specify the [VHD URI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) of a custom VM image to clone. When cloning a Custom (Unmanaged) Disk Image the `os_type` field must be set.
-  /// [managedDiskId] Specifies the ID of an existing Managed Disk which should be attached as the OS Disk of this Virtual Machine. If this is set then the `create_option` must be set to `Attach`. Changing this forces a new resource to be created.
+  /// [imageUri] Specifies the Image URI in the format `publisherName:offer:skus:version`. This field can also specify the [VHD URI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) of a custom VM image to clone. When cloning a Custom (Unmanaged) Disk Image the `osType` field must be set.
+  /// [managedDiskId] Specifies the ID of an existing Managed Disk which should be attached as the OS Disk of this Virtual Machine. If this is set then the `createOption` must be set to `Attach`. Changing this forces a new resource to be created.
   /// [managedDiskType] Specifies the type of Managed Disk which should be created. Possible values are `Standard_LRS`, `StandardSSD_LRS` or `Premium_LRS`.
   /// [name] Specifies the name of the OS Disk.
   /// [osType] Specifies the Operating System on the OS Disk. Possible values are `Linux` and `Windows`.
@@ -82,4 +82,3 @@ class VirtualMachineStorageOsDisk {
     );
   }
 }
-

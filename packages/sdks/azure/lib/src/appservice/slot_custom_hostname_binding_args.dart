@@ -17,7 +17,7 @@ class SlotCustomHostnameBindingArgs {
   final pulumi.Input<String>? sslState;
   /// The SSL certificate thumbprint. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `thumbprint` must be specified when `ssl_state` is set.
+  /// &gt; **Note:** `thumbprint` must be specified when `sslState` is set.
   final pulumi.Input<String>? thumbprint;
 
   /// Creates a new [SlotCustomHostnameBindingArgs].
@@ -50,4 +50,3 @@ class SlotCustomHostnameBindingArgs {
     );
   }
 }
-

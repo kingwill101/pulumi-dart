@@ -7,21 +7,21 @@ import 'three_tier_virtual_instance_three_tier_configuration_database_server_con
 class ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfiguration {
   /// The database type for the Database Server. Possible values are `DB2` and `HANA`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? databaseType;
-  /// One or more `disk_volume_configuration` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `diskVolumeConfiguration` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfiguration>>? diskVolumeConfigurations;
   /// The number of instances for the Database Server. Possible values are at least `1`. Changing this forces a new resource to be created.
   final pulumi.Input<int> instanceCount;
   /// The resource ID of the Subnet for the Database Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
-  /// A `virtual_machine_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// A `virtualMachineConfiguration` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfiguration> virtualMachineConfiguration;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfiguration].
   /// [databaseType] The database type for the Database Server. Possible values are `DB2` and `HANA`. Changing this forces a new resource to be created.
-  /// [diskVolumeConfigurations] One or more `disk_volume_configuration` blocks as defined below. Changing this forces a new resource to be created.
+  /// [diskVolumeConfigurations] One or more `diskVolumeConfiguration` blocks as defined below. Changing this forces a new resource to be created.
   /// [instanceCount] The number of instances for the Database Server. Possible values are at least `1`. Changing this forces a new resource to be created.
   /// [subnetId] The resource ID of the Subnet for the Database Server. Changing this forces a new resource to be created.
-  /// [virtualMachineConfiguration] A `virtual_machine_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// [virtualMachineConfiguration] A `virtualMachineConfiguration` block as defined below. Changing this forces a new resource to be created.
   const ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfiguration({
     this.databaseType,
     this.diskVolumeConfigurations,
@@ -50,4 +50,3 @@ class ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfiguration 
     );
   }
 }
-

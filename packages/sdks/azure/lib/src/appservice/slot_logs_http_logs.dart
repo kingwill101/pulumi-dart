@@ -5,14 +5,14 @@ import 'slot_logs_http_logs_azure_blob_storage.dart';
 import 'slot_logs_http_logs_file_system.dart';
 
 class SlotLogsHttpLogs {
-  /// An `azure_blob_storage` block as defined below.
+  /// An `azureBlobStorage` block as defined below.
   final pulumi.Input<SlotLogsHttpLogsAzureBlobStorage>? azureBlobStorage;
-  /// A `file_system` block as defined below.
+  /// A `fileSystem` block as defined below.
   final pulumi.Input<SlotLogsHttpLogsFileSystem>? fileSystem;
 
   /// Creates a new [SlotLogsHttpLogs].
-  /// [azureBlobStorage] An `azure_blob_storage` block as defined below.
-  /// [fileSystem] A `file_system` block as defined below.
+  /// [azureBlobStorage] An `azureBlobStorage` block as defined below.
+  /// [fileSystem] A `fileSystem` block as defined below.
   const SlotLogsHttpLogs({
     this.azureBlobStorage,
     this.fileSystem,
@@ -32,4 +32,3 @@ class SlotLogsHttpLogs {
     );
   }
 }
-

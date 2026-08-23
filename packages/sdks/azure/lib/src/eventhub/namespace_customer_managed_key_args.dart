@@ -15,9 +15,9 @@ class NamespaceCustomerManagedKeyArgs {
   final pulumi.Input<List<String>> keyVaultKeyIds;
   /// The ID of a User Managed Identity that will be used to access Key Vaults that contain the encryption keys.
   ///
-  /// &gt; **Note:** If using `user_assigned_identity_id`, ensure the User Assigned Identity is also assigned to the parent Event Hub.
+  /// &gt; **Note:** If using `userAssignedIdentityId`, ensure the User Assigned Identity is also assigned to the parent Event Hub.
   ///
-  /// &gt; **Note:** If using `user_assigned_identity_id`, make sure to assign the identity the appropriate permissions to access the Key Vault key. Failure to grant `Get, UnwrapKey, and WrapKey` will cause this resource to fail to apply.
+  /// &gt; **Note:** If using `userAssignedIdentityId`, make sure to assign the identity the appropriate permissions to access the Key Vault key. Failure to grant `Get, UnwrapKey, and WrapKey` will cause this resource to fail to apply.
   final pulumi.Input<String>? userAssignedIdentityId;
 
   /// Creates a new [NamespaceCustomerManagedKeyArgs].
@@ -50,4 +50,3 @@ class NamespaceCustomerManagedKeyArgs {
     );
   }
 }
-

@@ -6,11 +6,13 @@ import 'orchestrated_virtual_machine_scale_set_network_interface_ip_configuratio
 class OrchestratedVirtualMachineScaleSetNetworkInterface {
   /// Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). This feature offers competitive performance in Connections Per Second (CPS) optimization, along with improvements to handling large amounts of simultaneous connections. Possible values are `AcceleratedConnections` and `Floating`.
   ///
-  /// &gt; **Note:** `auxiliary_mode` is in **Preview** and requires that the prerequisites are enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
+  /// &gt; **Note:** `auxiliaryMode` is in **Preview** and requires that the prerequisites are enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
   final pulumi.Input<String>? auxiliaryMode;
-  /// Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are `A1`, `A2`, `A4` and `A8`.
+  /// Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are `A1`, `A2`, `A4`, and `A8`.
   ///
-  /// &gt; **Note:** `auxiliary_sku` is in **Preview** and requires that the prerequisites are enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
+  /// &gt; **Note:** `auxiliarySku` is in **Preview** and requires that the prerequisites are enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
+  ///
+  /// &gt; **Note:** `auxiliaryMode` and `auxiliarySku` must be specified together, and both fields require `networkApiVersion` later than `2020-11-01`.
   final pulumi.Input<String>? auxiliarySku;
   /// A list of IP Addresses of DNS Servers which should be assigned to the Network Interface.
   final pulumi.Input<List<String>>? dnsServers;
@@ -18,7 +20,7 @@ class OrchestratedVirtualMachineScaleSetNetworkInterface {
   final pulumi.Input<bool>? enableAcceleratedNetworking;
   /// Does this Network Interface support IP Forwarding? Possible values are `true` and `false`. Defaults to `false`.
   final pulumi.Input<bool>? enableIpForwarding;
-  /// One or more `ip_configuration` blocks as defined above.
+  /// One or more `ipConfiguration` blocks as defined above.
   final pulumi.Input<List<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration>> ipConfigurations;
   /// The Name which should be used for this Network Interface. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
@@ -26,16 +28,16 @@ class OrchestratedVirtualMachineScaleSetNetworkInterface {
   final pulumi.Input<String>? networkSecurityGroupId;
   /// Is this the Primary IP Configuration? Possible values are `true` and `false`. Defaults to `false`.
   ///
-  /// &gt; **Note:** If multiple `network_interface` blocks are specified, one must be set to `primary`.
+  /// &gt; **Note:** If multiple `networkInterface` blocks are specified, one must be set to `primary`.
   final pulumi.Input<bool>? primary;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetNetworkInterface].
   /// [auxiliaryMode] Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). This feature offers competitive performance in Connections Per Second (CPS) optimization, along with improvements to handling large amounts of simultaneous connections. Possible values are `AcceleratedConnections` and `Floating`.
-  /// [auxiliarySku] Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are `A1`, `A2`, `A4` and `A8`.
+  /// [auxiliarySku] Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are `A1`, `A2`, `A4`, and `A8`.
   /// [dnsServers] A list of IP Addresses of DNS Servers which should be assigned to the Network Interface.
   /// [enableAcceleratedNetworking] Does this Network Interface support Accelerated Networking? Possible values are `true` and `false`. Defaults to `false`.
   /// [enableIpForwarding] Does this Network Interface support IP Forwarding? Possible values are `true` and `false`. Defaults to `false`.
-  /// [ipConfigurations] One or more `ip_configuration` blocks as defined above.
+  /// [ipConfigurations] One or more `ipConfiguration` blocks as defined above.
   /// [name] The Name which should be used for this Network Interface. Changing this forces a new resource to be created.
   /// [networkSecurityGroupId] The ID of a Network Security Group which should be assigned to this Network Interface.
   /// [primary] Is this the Primary IP Configuration? Possible values are `true` and `false`. Defaults to `false`.
@@ -79,4 +81,3 @@ class OrchestratedVirtualMachineScaleSetNetworkInterface {
     );
   }
 }
-

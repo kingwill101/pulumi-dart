@@ -15,7 +15,7 @@ import 'account_virtual_network_rule.dart';
 /// Input properties used for looking up and filtering Account resources.
 class AccountState {
   final pulumi.Input<bool>? accessKeyMetadataWritesEnabled;
-  /// An `analytical_storage` block as defined below.
+  /// An `analyticalStorage` block as defined below.
   final pulumi.Input<AccountAnalyticalStorage>? analyticalStorage;
   final pulumi.Input<bool>? analyticalStorageEnabled;
   final pulumi.Input<bool>? automaticFailoverEnabled;
@@ -28,7 +28,7 @@ class AccountState {
   final pulumi.Input<AccountCorsRule>? corsRule;
   /// The creation mode for the CosmosDB Account. Possible values are `Default` and `Restore`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `create_mode` can only be defined when the `backup.type` is set to `Continuous`.
+  /// &gt; **Note:** `createMode` can only be defined when the `backup.type` is set to `Continuous`.
   final pulumi.Input<String>? createMode;
   /// The default identity for accessing Key Vault. Possible values are `FirstPartyIdentity`, `SystemAssignedIdentity` or `UserAssignedIdentity`. Defaults to `FirstPartyIdentity`.
   final pulumi.Input<String>? defaultIdentityType;
@@ -42,6 +42,7 @@ class AccountState {
   final pulumi.Input<String>? keyVaultKeyId;
   final pulumi.Input<String>? kind;
   final pulumi.Input<bool>? localAuthenticationDisabled;
+  final pulumi.Input<bool>? localAuthenticationEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? managedHsmKeyId;
@@ -96,7 +97,7 @@ class AccountState {
 
   /// Creates a new [AccountState].
   /// [accessKeyMetadataWritesEnabled] Optional.
-  /// [analyticalStorage] An `analytical_storage` block as defined below.
+  /// [analyticalStorage] An `analyticalStorage` block as defined below.
   /// [analyticalStorageEnabled] Optional.
   /// [automaticFailoverEnabled] Optional.
   /// [backup] Optional.
@@ -116,6 +117,7 @@ class AccountState {
   /// [keyVaultKeyId] Optional.
   /// [kind] Optional.
   /// [localAuthenticationDisabled] Optional.
+  /// [localAuthenticationEnabled] Optional.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [managedHsmKeyId] Optional.
   /// [minimalTlsVersion] Specifies the minimal TLS version for the CosmosDB account. Possible values are: `Tls`, `Tls11`, and `Tls12`. Defaults to `Tls12`.
@@ -167,6 +169,7 @@ class AccountState {
     this.keyVaultKeyId,
     this.kind,
     this.localAuthenticationDisabled,
+    this.localAuthenticationEnabled,
     this.location,
     this.managedHsmKeyId,
     this.minimalTlsVersion,
@@ -221,6 +224,7 @@ class AccountState {
       'keyVaultKeyId': ?keyVaultKeyId,
       'kind': ?kind,
       'localAuthenticationDisabled': ?localAuthenticationDisabled,
+      'localAuthenticationEnabled': ?localAuthenticationEnabled,
       'location': ?location,
       'managedHsmKeyId': ?managedHsmKeyId,
       'minimalTlsVersion': ?minimalTlsVersion,
@@ -276,6 +280,7 @@ class AccountState {
       keyVaultKeyId: (() { final guardedValue = map['keyVaultKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       localAuthenticationDisabled: (() { final guardedValue = map['localAuthenticationDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      localAuthenticationEnabled: (() { final guardedValue = map['localAuthenticationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedHsmKeyId: (() { final guardedValue = map['managedHsmKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minimalTlsVersion: (() { final guardedValue = map['minimalTlsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -308,4 +313,3 @@ class AccountState {
     );
   }
 }
-

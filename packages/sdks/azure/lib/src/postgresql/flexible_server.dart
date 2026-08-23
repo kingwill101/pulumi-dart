@@ -319,6 +319,67 @@ import 'flexible_server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vn"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-sn"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+///   service_endpoints    = ["Microsoft.Storage"]
+///   delegations {
+///     name = "fs"
+///     service_delegation = {
+///       name    = "Microsoft.DBforPostgreSQL/flexibleServers"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+///     }
+///   }
+/// }
+/// resource "azure_privatedns_zone" "example" {
+///   name                = "example.postgres.database.azure.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_privatedns_zonevirtualnetworklink" "example" {
+///   depends_on            = [azure_network_subnet.example]
+///   name                  = "exampleVnetZone.com"
+///   private_dns_zone_name = azure_privatedns_zone.example.name
+///   virtual_network_id    = azure_network_virtualnetwork.example.id
+///   resource_group_name   = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_postgresql_flexibleserver" "example" {
+///   depends_on                    = [azure_privatedns_zonevirtualnetworklink.example]
+///   name                          = "example-psqlflexibleserver"
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   location                      = azure_core_resourcegroup.example.location
+///   version                       = "12"
+///   delegated_subnet_id           = azure_network_subnet.example.id
+///   private_dns_zone_id           = azure_privatedns_zone.example.id
+///   public_network_access_enabled = false
+///   administrator_login           = "psqladmin"
+///   administrator_password        = "H@Sh1CoR3!"
+///   zone                          = "1"
+///   storage_mb                    = 32768
+///   storage_tier                  = "P4"
+///   sku_name                      = "B_Standard_B1ms"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -340,8 +401,8 @@ import 'flexible_server_state.dart';
 /// import com.pulumi.azure.postgresql.FlexibleServer;
 /// import com.pulumi.azure.postgresql.FlexibleServerArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -488,9 +549,9 @@ import 'flexible_server_state.dart';
 /// ```
 ///
 ///
-/// ## `storage_tier` defaults based on `storage_mb`
+/// ## `storageTier` defaults based on `storageMb`
 ///
-/// | `storage_mb` | GiB   | TiB | Default | Supported `storage_tier`'s           | Provisioned `IOPS`  |
+/// | `storageMb` | GiB   | TiB | Default | Supported `storageTier`'s           | Provisioned `IOPS`  |
 /// |:------------:|:-----:|:---:|:-------:|:------------------------------------:|:-------------------:|
 /// | 32768        | 32    |  -  | P4      | P4, P6, P10, P15, P20, P30, P40, P50 | 120                 |
 /// | 65536        | 64    |  -  | P6      | P6, P10, P15, P20, P30, P40, P50     | 240                 |
@@ -524,15 +585,15 @@ import 'flexible_server_state.dart';
 /// $ pulumi import azure:postgresql/flexibleServer:FlexibleServer example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.DBforPostgreSQL/flexibleServers/server1
 /// ```
 class FlexibleServer extends pulumi.CustomResource {
-  /// The Administrator login for the PostgreSQL Flexible Server. Required when `create_mode` is `Default` and `authentication.password_auth_enabled` is `true`.
+  /// The Administrator login for the PostgreSQL Flexible Server. Required when `createMode` is `Default` and `authentication.password_auth_enabled` is `true`.
   ///
-  /// &gt; **Note:** Once `administrator_login` is specified, changing this forces a new PostgreSQL Flexible Server to be created.
+  /// &gt; **Note:** Once `administratorLogin` is specified, changing this forces a new PostgreSQL Flexible Server to be created.
   ///
-  /// &gt; **Note:** To create with `administrator_login` specified or update with it first specified , `authentication.password_auth_enabled` must be set to `true`.
+  /// &gt; **Note:** To create with `administratorLogin` specified or update with it first specified , `authentication.password_auth_enabled` must be set to `true`.
   late final pulumi.Output<String> administratorLogin;
-  /// The Password associated with the `administrator_login` for the PostgreSQL Flexible Server.
+  /// The Password associated with the `administratorLogin` for the PostgreSQL Flexible Server.
   late final pulumi.Output<String?> administratorPassword;
-  /// An integer value used to trigger an update for `administrator_password_wo`. This property should be incremented when updating `administrator_password_wo`.
+  /// An integer value used to trigger an update for `administratorPasswordWo`. This property should be incremented when updating `administratorPasswordWo`.
   late final pulumi.Output<int?> administratorPasswordWoVersion;
   /// An `authentication` block as defined below.
   late final pulumi.Output<FlexibleServerAuthentication> authentication;
@@ -544,7 +605,7 @@ class FlexibleServer extends pulumi.CustomResource {
   late final pulumi.Output<FlexibleServerCluster?> cluster;
   /// The creation mode which can be used to restore or replicate existing servers. Possible values are `Default`, `GeoRestore`, `PointInTimeRestore`, `Replica`, `ReviveDropped` and `Update`.
   late final pulumi.Output<String?> createMode;
-  /// A `customer_managed_key` block as defined below. Changing this forces a new resource to be created.
+  /// A `customerManagedKey` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<FlexibleServerCustomerManagedKey?> customerManagedKey;
   /// The ID of the virtual network subnet to create the PostgreSQL Flexible Server. The provided subnet should not have any other resource deployed in it and this subnet will be delegated to the PostgreSQL Flexible Server, if not already delegated. Changing this forces a new PostgreSQL Flexible Server to be created.
   late final pulumi.Output<String?> delegatedSubnetId;
@@ -552,61 +613,63 @@ class FlexibleServer extends pulumi.CustomResource {
   late final pulumi.Output<String> fqdn;
   /// Is Geo-Redundant backup enabled on the PostgreSQL Flexible Server. Defaults to `false`. Changing this forces a new PostgreSQL Flexible Server to be created.
   late final pulumi.Output<bool?> geoRedundantBackupEnabled;
-  /// A `high_availability` block as defined below.
+  /// A `highAvailability` block as defined below.
   late final pulumi.Output<FlexibleServerHighAvailability?> highAvailability;
   /// An `identity` block as defined below.
   late final pulumi.Output<FlexibleServerIdentity?> identity;
   /// The Azure Region where the PostgreSQL Flexible Server should exist. Changing this forces a new PostgreSQL Flexible Server to be created.
   late final pulumi.Output<String> location;
-  /// A `maintenance_window` block as defined below.
+  /// A `maintenanceWindow` block as defined below.
   late final pulumi.Output<FlexibleServerMaintenanceWindow?> maintenanceWindow;
   /// The name which should be used for this PostgreSQL Flexible Server. Changing this forces a new PostgreSQL Flexible Server to be created.
   ///
   /// &gt; **Note:** This must be unique across the entire Azure service, not just within the resource group.
   late final pulumi.Output<String> name;
-  /// The point in time to restore from `source_server_id` when `create_mode` is `GeoRestore`, `PointInTimeRestore`. Changing this forces a new PostgreSQL Flexible Server to be created.
+  /// The point in time to restore from `sourceServerId` when `createMode` is `GeoRestore`, `PointInTimeRestore`. Changing this forces a new PostgreSQL Flexible Server to be created.
   late final pulumi.Output<String?> pointInTimeRestoreTimeInUtc;
   /// The ID of the private DNS zone to create the PostgreSQL Flexible Server.
   ///
-  /// &gt; **Note:** There will be a breaking change from upstream service at 15th July 2021, the `private_dns_zone_id` will be required when setting a `delegated_subnet_id`. For existing flexible servers who don't want to be recreated, you need to provide the `private_dns_zone_id` to the service team to manually migrate to the specified private DNS zone. The `azure.privatedns.Zone` should end with suffix `.postgres.database.azure.com`.
+  /// &gt; **Note:** There will be a breaking change from upstream service at 15th July 2021, the `privateDnsZoneId` will be required when setting a `delegatedSubnetId`. For existing flexible servers who don't want to be recreated, you need to provide the `privateDnsZoneId` to the service team to manually migrate to the specified private DNS zone. The `azure.privatedns.Zone` should end with suffix `.postgres.database.azure.com`.
   late final pulumi.Output<String> privateDnsZoneId;
   /// Specifies whether this PostgreSQL Flexible Server is publicly accessible. Defaults to `true`.
   ///
-  /// &gt; **Note:** `public_network_access_enabled` must be set to `false` when `delegated_subnet_id` and `private_dns_zone_id` have a value.
+  /// &gt; **Note:** `publicNetworkAccessEnabled` must be set to `false` when `delegatedSubnetId` and `privateDnsZoneId` have a value.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
   /// The replication role for the PostgreSQL Flexible Server. Possible value is `None`.
   ///
-  /// &gt; **Note:** The `replication_role` cannot be set while creating and only can be updated to `None` for replica server.
+  /// &gt; **Note:** The `replicationRole` cannot be set while creating and only can be updated to `None` for replica server.
   late final pulumi.Output<String?> replicationRole;
   /// The name of the Resource Group where the PostgreSQL Flexible Server should exist. Changing this forces a new PostgreSQL Flexible Server to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// The SKU Name for the PostgreSQL Flexible Server. The name of the SKU, follows the `tier` + `name` pattern (e.g. `B_Standard_B1ms`, `GP_Standard_D2s_v3`, `MO_Standard_E4s_v3`).
   late final pulumi.Output<String> skuName;
-  /// The resource ID of the source PostgreSQL Flexible Server to be restored. Required when `create_mode` is `GeoRestore`, `PointInTimeRestore` or `Replica`. Changing this forces a new PostgreSQL Flexible Server to be created.
+  /// The resource ID of the source PostgreSQL Flexible Server to be restored. Required when `createMode` is `GeoRestore`, `PointInTimeRestore` or `Replica`. Changing this forces a new PostgreSQL Flexible Server to be created.
   late final pulumi.Output<String?> sourceServerId;
   /// The max storage allowed for the PostgreSQL Flexible Server. Possible values are `32768`, `65536`, `131072`, `262144`, `524288`, `1048576`, `2097152`, `4193280`, `4194304`, `8388608`, `16777216` and `33553408`.
   ///
-  /// &gt; **Note:** If the `storage_mb` field is undefined on the initial deployment of the PostgreSQL Flexible Server resource it will default to `32768`. If the `storage_mb` field has been defined and then removed, the `storage_mb` field will retain the previously defined value.
+  /// &gt; **Note:** If the `storageMb` field is undefined on the initial deployment of the PostgreSQL Flexible Server resource it will default to `32768`. If the `storageMb` field has been defined and then removed, the `storageMb` field will retain the previously defined value.
   ///
-  /// &gt; **Note:** The `storage_mb` can only be scaled up, for example, you can scale the `storage_mb` from `32768` to `65536`, but not from `65536` to `32768`. Scaling down `storage_mb` forces a new PostgreSQL Flexible Server to be created.
+  /// &gt; **Note:** The `storageMb` can only be scaled up, for example, you can scale the `storageMb` from `32768` to `65536`, but not from `65536` to `32768`. Scaling down `storageMb` forces a new PostgreSQL Flexible Server to be created.
   late final pulumi.Output<int> storageMb;
-  /// The name of storage performance tier for IOPS of the PostgreSQL Flexible Server. Possible values are `P4`, `P6`, `P10`, `P15`,`P20`, `P30`,`P40`, `P50`,`P60`, `P70` or `P80`. Default value is dependent on the `storage_mb` value. Please see the `storage_tier` defaults based on `storage_mb` table below.
+  /// The name of storage performance tier for IOPS of the PostgreSQL Flexible Server. Possible values are `P4`, `P6`, `P10`, `P15`,`P20`, `P30`,`P40`, `P50`,`P60`, `P70` or `P80`. Default value is dependent on the `storageMb` value. Please see the `storageTier` defaults based on `storageMb` table below.
   ///
-  /// &gt; **Note:** The `storage_tier` can be scaled once every 12 hours, this restriction is in place to ensure stability and performance after any changes to your PostgreSQL Flexible Server's configuration.
+  /// &gt; **Note:** The `storageTier` can be scaled once every 12 hours, this restriction is in place to ensure stability and performance after any changes to your PostgreSQL Flexible Server's configuration.
   late final pulumi.Output<String> storageTier;
   /// A mapping of tags which should be assigned to the PostgreSQL Flexible Server.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The version of PostgreSQL Flexible Server to use. Possible values are `11`,`12`, `13`, `14`, `15`, `16`, `17`, and `18`. Required when `create_mode` is `Default`.
+  /// The version of PostgreSQL Flexible Server to use. Possible values are `11`,`12`, `13`, `14`, `15`, `16`, `17`, and `18`. Required when `createMode` is `Default`.
   ///
   /// &gt; **Note:** Downgrading `version` isn't supported and will force a new PostgreSQL Flexible Server to be created.
   ///
   /// &gt; **Note:** In-place version updates are irreversible and may cause downtime for the PostgreSQL Flexible Server, determined by the size of the instance.
   ///
   /// &gt; **Note:** Major version upgrades are not supported when `cluster` is specified.
+  ///
+  /// &gt; **Note:** Versions 11, 12, 13 are in Extended Support. Upgrade to a supported version before August 1, 2026 to avoid Extended Support billing. see [Eligible PostgreSQL versions](https://learn.microsoft.com/en-us/azure/postgresql/configure-maintain/extended-support#eligible-postgresql-versions)
   late final pulumi.Output<String> version;
   /// Specifies the Availability Zone in which the PostgreSQL Flexible Server should be located.
   ///
-  /// &gt; **Note:** Azure will automatically assign an Availability Zone if one is not specified. If the PostgreSQL Flexible Server fails-over to the Standby Availability Zone, the `zone` will be updated to reflect the current Primary Availability Zone. You can use Terraform's `ignore_changes` functionality to ignore changes to the `zone` and `high_availability[0].standby_availability_zone` fields should you wish for Terraform to not migrate the PostgreSQL Flexible Server back to it's primary Availability Zone after a fail-over.
+  /// &gt; **Note:** Azure will automatically assign an Availability Zone if one is not specified. If the PostgreSQL Flexible Server fails-over to the Standby Availability Zone, the `zone` will be updated to reflect the current Primary Availability Zone. You can use Terraform's `ignoreChanges` functionality to ignore changes to the `zone` and `high_availability[0].standby_availability_zone` fields should you wish for Terraform to not migrate the PostgreSQL Flexible Server back to it's primary Availability Zone after a fail-over.
   ///
   /// &gt; **Note:** The Availability Zones available depend on the Azure Region that the PostgreSQL Flexible Server is being deployed into - see [the Azure Availability Zones documentation](https://azure.microsoft.com/global-infrastructure/geographies/#geographies) for more information on which Availability Zones are available in each Azure Region.
   late final pulumi.Output<String?> zone;

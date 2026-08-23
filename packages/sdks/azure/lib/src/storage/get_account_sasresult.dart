@@ -12,7 +12,7 @@ class GetAccountSASResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? ipAddresses;
-  final GetAccountSASPermissions permissions;
+  final GetAccountSASPermissions? permissions;
   final GetAccountSASResourceTypes resourceTypes;
   /// The computed Account Shared Access Signature (SAS).
   final String sas;
@@ -26,7 +26,7 @@ class GetAccountSASResult {
   /// [httpsOnly] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ipAddresses] Optional.
-  /// [permissions] Required.
+  /// [permissions] Optional.
   /// [resourceTypes] Required.
   /// [sas] The computed Account Shared Access Signature (SAS).
   /// [services] Required.
@@ -38,7 +38,7 @@ class GetAccountSASResult {
     this.httpsOnly,
     required this.id,
     this.ipAddresses,
-    required this.permissions,
+    this.permissions,
     required this.resourceTypes,
     required this.sas,
     required this.services,
@@ -53,7 +53,7 @@ class GetAccountSASResult {
       'httpsOnly': ?httpsOnly,
       'id': id,
       'ipAddresses': ?ipAddresses,
-      'permissions': permissions.toMap(),
+      'permissions': ?permissions?.toMap(),
       'resourceTypes': resourceTypes.toMap(),
       'sas': sas,
       'services': services.toMap(),
@@ -69,7 +69,7 @@ class GetAccountSASResult {
       httpsOnly: (() { final guardedValue = map['httpsOnly']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ipAddresses: (() { final guardedValue = map['ipAddresses']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      permissions: GetAccountSASPermissions.fromMap((map['permissions']! as Map).cast<String, dynamic>()),
+      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return GetAccountSASPermissions.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       resourceTypes: GetAccountSASResourceTypes.fromMap((map['resourceTypes']! as Map).cast<String, dynamic>()),
       sas: map['sas'] as String,
       services: GetAccountSASServices.fromMap((map['services']! as Map).cast<String, dynamic>()),
@@ -78,4 +78,3 @@ class GetAccountSASResult {
     );
   }
 }
-

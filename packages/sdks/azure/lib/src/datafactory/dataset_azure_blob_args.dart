@@ -34,7 +34,7 @@ class DatasetAzureBlobArgs {
   final pulumi.Input<Map<String, String>>? parameters;
   /// The path of the Azure Blob.
   final pulumi.Input<String>? path;
-  /// A `schema_column` block as defined below.
+  /// A `schemaColumn` block as defined below.
   final pulumi.Input<List<DatasetAzureBlobSchemaColumn>>? schemaColumns;
 
   /// Creates a new [DatasetAzureBlobArgs].
@@ -50,7 +50,7 @@ class DatasetAzureBlobArgs {
   /// [name] Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Dataset.
   /// [path] The path of the Azure Blob.
-  /// [schemaColumns] A `schema_column` block as defined below.
+  /// [schemaColumns] A `schemaColumn` block as defined below.
   const DatasetAzureBlobArgs({
     this.additionalProperties,
     this.annotations,
@@ -103,4 +103,3 @@ class DatasetAzureBlobArgs {
     );
   }
 }
-

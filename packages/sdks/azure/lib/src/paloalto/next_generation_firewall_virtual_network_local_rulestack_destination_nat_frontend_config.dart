@@ -7,7 +7,7 @@ class NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNatFrontendCo
   final pulumi.Input<int> port;
   /// The ID of the Public IP Address on which to receive traffic.
   ///
-  /// &gt; **Note:** This must be an Azure Public IP address ID also specified in the `public_ip_address_ids` list.
+  /// &gt; **Note:** This must be an Azure Public IP address ID also specified in the `publicIpAddressIds` list.
   final pulumi.Input<String> publicIpAddressId;
 
   /// Creates a new [NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNatFrontendConfig].
@@ -32,4 +32,3 @@ class NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNatFrontendCo
     );
   }
 }
-

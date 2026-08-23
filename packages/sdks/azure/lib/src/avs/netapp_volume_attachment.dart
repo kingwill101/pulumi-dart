@@ -616,7 +616,7 @@ import 'netapp_volume_attachment_state.dart';
 /// 			Type:                    pulumi.String("ExpressRoute"),
 /// 			VirtualNetworkGatewayId: testVirtualNetworkGateway.ID(),
 /// 			ExpressRouteCircuitId: pulumi.String(testPrivateCloud.Circuits.ApplyT(func(circuits []avs.PrivateCloudCircuit) (*string, error) {
-/// 				return &circuits[0].ExpressRouteId, nil
+/// 				return circuits[0].ExpressRouteId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			AuthorizationKey: testExpressRouteAuthorization.ExpressRouteAuthorizationKey,
 /// 		})
@@ -635,6 +635,133 @@ import 'netapp_volume_attachment_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "test" {
+///   name                = "example-public-ip"
+///   location            = testAzurermResourceGroup.location
+///   resource_group_name = testAzurermResourceGroup.name
+///   allocation_method   = "Static"
+///   sku                 = "Standard"
+/// }
+/// resource "azure_network_virtualnetwork" "test" {
+///   name                = "example-VirtualNetwork"
+///   location            = testAzurermResourceGroup.location
+///   resource_group_name = testAzurermResourceGroup.name
+///   address_spaces      = ["10.88.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "netappSubnet" {
+///   name                 = "example-Subnet"
+///   resource_group_name  = testAzurermResourceGroup.name
+///   virtual_network_name = azure_network_virtualnetwork.test.name
+///   address_prefixes     = ["10.88.2.0/24"]
+///   delegations {
+///     name = "testdelegation"
+///     service_delegation = {
+///       name    = "Microsoft.Netapp/volumes"
+///       actions = ["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"]
+///     }
+///   }
+/// }
+/// resource "azure_network_subnet" "gatewaySubnet" {
+///   name                 = "GatewaySubnet"
+///   resource_group_name  = testAzurermResourceGroup.name
+///   virtual_network_name = azure_network_virtualnetwork.test.name
+///   address_prefixes     = ["10.88.1.0/24"]
+/// }
+/// resource "azure_network_virtualnetworkgateway" "test" {
+///   name                = "example-vnet-gateway"
+///   location            = testAzurermResourceGroup.location
+///   resource_group_name = testAzurermResourceGroup.name
+///   type                = "ExpressRoute"
+///   sku                 = "Standard"
+///   ip_configurations {
+///     name                 = "vnetGatewayConfig"
+///     public_ip_address_id = azure_network_publicip.test.id
+///     subnet_id            = azure_network_subnet.gatewaySubnet.id
+///   }
+/// }
+/// resource "azure_netapp_account" "test" {
+///   name                = "example-NetAppAccount"
+///   location            = testAzurermResourceGroup.location
+///   resource_group_name = testAzurermResourceGroup.name
+/// }
+/// resource "azure_netapp_pool" "test" {
+///   name                = "example-NetAppPool"
+///   location            = testAzurermResourceGroup.location
+///   resource_group_name = testAzurermResourceGroup.name
+///   account_name        = azure_netapp_account.test.name
+///   service_level       = "Standard"
+///   size_in_tb          = 4
+/// }
+/// resource "azure_netapp_volume" "test" {
+///   name                            = "example-NetAppVolume"
+///   location                        = testAzurermResourceGroup.location
+///   resource_group_name             = testAzurermResourceGroup.name
+///   account_name                    = azure_netapp_account.test.name
+///   pool_name                       = azure_netapp_pool.test.name
+///   volume_path                     = "my-unique-file-path-%d"
+///   service_level                   = "Standard"
+///   subnet_id                       = azure_network_subnet.netappSubnet.id
+///   protocols                       = ["NFSv3"]
+///   storage_quota_in_gb             = 100
+///   azure_vmware_data_store_enabled = true
+///   export_policy_rules {
+///     rule_index          = 1
+///     allowed_clients     = ["0.0.0.0/0"]
+///     protocols_enabled   = "NFSv3"
+///     unix_read_only      = false
+///     unix_read_write     = true
+///     root_access_enabled = true
+///   }
+/// }
+/// resource "azure_avs_privatecloud" "test" {
+///   name                = "example-PC"
+///   resource_group_name = testAzurermResourceGroup.name
+///   location            = testAzurermResourceGroup.location
+///   sku_name            = "av36"
+///   management_cluster = {
+///     size = 3
+///   }
+///   network_subnet_cidr = "192.168.48.0/22"
+/// }
+/// resource "azure_avs_cluster" "test" {
+///   name               = "example-vm-cluster"
+///   vmware_cloud_id    = azure_avs_privatecloud.test.id
+///   cluster_node_count = 3
+///   sku_name           = "av36"
+/// }
+/// resource "azure_avs_expressrouteauthorization" "test" {
+///   name             = "example-VmwareAuthorization"
+///   private_cloud_id = azure_avs_privatecloud.test.id
+/// }
+/// resource "azure_network_virtualnetworkgatewayconnection" "test" {
+///   name                       = "example-vnetgwconn"
+///   location                   = testAzurermResourceGroup.location
+///   resource_group_name        = testAzurermResourceGroup.name
+///   type                       = "ExpressRoute"
+///   virtual_network_gateway_id = azure_network_virtualnetworkgateway.test.id
+///   express_route_circuit_id   = azure_avs_privatecloud.test.circuits[0].express_route_id
+///   authorization_key          = azure_avs_expressrouteauthorization.test.express_route_authorization_key
+/// }
+/// resource "azure_avs_netappvolumeattachment" "test" {
+///   depends_on        = [azure_network_virtualnetworkgatewayconnection.test]
+///   name              = "example-vmwareattachment"
+///   netapp_volume_id  = azure_netapp_volume.test.id
+///   vmware_cluster_id = azure_avs_cluster.test.id
 /// }
 /// ```
 /// ```java
@@ -675,8 +802,8 @@ import 'netapp_volume_attachment_state.dart';
 /// import com.pulumi.azure.avs.NetappVolumeAttachment;
 /// import com.pulumi.azure.avs.NetappVolumeAttachmentArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

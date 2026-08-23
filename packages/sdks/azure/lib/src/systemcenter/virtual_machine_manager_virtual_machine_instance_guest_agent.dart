@@ -287,7 +287,7 @@ import 'virtual_machine_manager_virtual_machine_instance_guest_agent_state.dart'
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 			CustomLocationId:  exampleVirtualMachineManagerServer.CustomLocationId,
 /// 			SystemCenterVirtualMachineManagerServerInventoryItemId: pulumi.String(example.ApplyT(func(example systemcenter.GetVirtualMachineManagerInventoryItemsResult) (*string, error) {
-/// 				return &example.InventoryItems[0].Id, nil
+/// 				return example.InventoryItems[0].Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -303,7 +303,7 @@ import 'virtual_machine_manager_virtual_machine_instance_guest_agent_state.dart'
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 			CustomLocationId:  exampleVirtualMachineManagerServer.CustomLocationId,
 /// 			SystemCenterVirtualMachineManagerServerInventoryItemId: pulumi.String(example2.ApplyT(func(example2 systemcenter.GetVirtualMachineManagerInventoryItemsResult) (*string, error) {
-/// 				return &example2.InventoryItems[0].Id, nil
+/// 				return example2.InventoryItems[0].Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -339,6 +339,80 @@ import 'virtual_machine_manager_virtual_machine_instance_guest_agent_state.dart'
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_systemcenter_getvirtualmachinemanagerinventoryitems" "example" {
+///   inventory_type                                  = "Cloud"
+///   system_center_virtual_machine_manager_server_id = azure_systemcenter_virtualmachinemanagerserver.example.id
+/// }
+/// data "azure_systemcenter_getvirtualmachinemanagerinventoryitems" "example2" {
+///   inventory_type                                  = "VirtualMachineTemplate"
+///   system_center_virtual_machine_manager_server_id = azure_systemcenter_virtualmachinemanagerserver.example.id
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_arcmachine_arcmachine" "example" {
+///   name                = "example-arcmachine"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   kind                = "SCVMM"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_systemcenter_virtualmachinemanagerserver" "example" {
+///   name                = "example-scvmmms"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   custom_location_id  = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/resGroup1/providers/Microsoft.ExtendedLocation/customLocations/customLocation1"
+///   fqdn                = "example.labtest"
+///   username            = "testUser"
+///   password            = "H@Sh1CoR3!"
+/// }
+/// resource "azure_systemcenter_virtualmachinemanagercloud" "example" {
+///   name                                                           = "example-scvmmc"
+///   location                                                       = azure_core_resourcegroup.example.location
+///   resource_group_name                                            = azure_core_resourcegroup.example.name
+///   custom_location_id                                             = azure_systemcenter_virtualmachinemanagerserver.example.custom_location_id
+///   system_center_virtual_machine_manager_server_inventory_item_id = data.azure_systemcenter_getvirtualmachinemanagerinventoryitems.example.inventory_items[0].id
+/// }
+/// resource "azure_systemcenter_virtualmachinemanagervirtualmachinetemplate" "example" {
+///   name                                                           = "example-scvmmvmt"
+///   location                                                       = azure_core_resourcegroup.example.location
+///   resource_group_name                                            = azure_core_resourcegroup.example.name
+///   custom_location_id                                             = azure_systemcenter_virtualmachinemanagerserver.example.custom_location_id
+///   system_center_virtual_machine_manager_server_inventory_item_id = data.azure_systemcenter_getvirtualmachinemanagerinventoryitems.example2.inventory_items[0].id
+/// }
+/// resource "azure_systemcenter_virtualmachinemanagervirtualmachineinstance" "example" {
+///   scoped_resource_id = azure_arcmachine_arcmachine.example.id
+///   custom_location_id = azure_systemcenter_virtualmachinemanagerserver.example.custom_location_id
+///   infrastructure = {
+///     checkpoint_type                                                 = "Standard"
+///     system_center_virtual_machine_manager_cloud_id                  = azure_systemcenter_virtualmachinemanagercloud.example.id
+///     system_center_virtual_machine_manager_template_id               = azure_systemcenter_virtualmachinemanagervirtualmachinetemplate.example.id
+///     system_center_virtual_machine_manager_virtual_machine_server_id = azure_systemcenter_virtualmachinemanagerserver.example.id
+///   }
+///   operating_system = {
+///     admin_password = "AdminPassword123!"
+///   }
+/// }
+/// resource "azure_systemcenter_virtualmachinemanagervirtualmachineinstanceguestagent" "example" {
+///   depends_on         = [azure_systemcenter_virtualmachinemanagervirtualmachineinstance.example]
+///   scoped_resource_id = azure_arcmachine_arcmachine.example.id
+///   username           = "Administrator"
+///   password           = "AdminPassword123!"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -365,8 +439,8 @@ import 'virtual_machine_manager_virtual_machine_instance_guest_agent_state.dart'
 /// import com.pulumi.azure.systemcenter.VirtualMachineManagerVirtualMachineInstanceGuestAgent;
 /// import com.pulumi.azure.systemcenter.VirtualMachineManagerVirtualMachineInstanceGuestAgentArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

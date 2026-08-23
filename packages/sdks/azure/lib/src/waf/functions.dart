@@ -67,6 +67,24 @@ import 'get_firewall_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_waf_getfirewallpolicy" "example" {
+///   resource_group_name = "existing"
+///   name                = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_waf_getfirewallpolicy.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +93,8 @@ import 'get_firewall_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.waf.WafFunctions;
 /// import com.pulumi.azure.waf.inputs.GetFirewallPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

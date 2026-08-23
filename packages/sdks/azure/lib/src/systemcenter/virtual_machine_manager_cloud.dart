@@ -142,7 +142,7 @@ import 'virtual_machine_manager_cloud_state.dart';
 /// 			Location:          exampleResourceGroup.Location,
 /// 			CustomLocationId:  exampleVirtualMachineManagerServer.CustomLocationId,
 /// 			SystemCenterVirtualMachineManagerServerInventoryItemId: pulumi.String(example.ApplyT(func(example systemcenter.GetVirtualMachineManagerInventoryItemsResult) (*string, error) {
-/// 				return &example.InventoryItems[0].Id, nil
+/// 				return example.InventoryItems[0].Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -150,6 +150,41 @@ import 'virtual_machine_manager_cloud_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_systemcenter_getvirtualmachinemanagerinventoryitems" "example" {
+///   inventory_type                                  = "Cloud"
+///   system_center_virtual_machine_manager_server_id = azure_systemcenter_virtualmachinemanagerserver.example.id
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_systemcenter_virtualmachinemanagerserver" "example" {
+///   name                = "example-scvmmms"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   custom_location_id  = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/resGroup1/providers/Microsoft.ExtendedLocation/customLocations/customLocation1"
+///   fqdn                = "example.labtest"
+///   username            = "testUser"
+///   password            = "H@Sh1CoR3!"
+/// }
+/// resource "azure_systemcenter_virtualmachinemanagercloud" "example" {
+///   name                                                           = "example-scvmmcloud"
+///   resource_group_name                                            = azure_core_resourcegroup.example.name
+///   location                                                       = azure_core_resourcegroup.example.location
+///   custom_location_id                                             = azure_systemcenter_virtualmachinemanagerserver.example.custom_location_id
+///   system_center_virtual_machine_manager_server_inventory_item_id = data.azure_systemcenter_getvirtualmachinemanagerinventoryitems.example.inventory_items[0].id
 /// }
 /// ```
 /// ```java
@@ -166,8 +201,8 @@ import 'virtual_machine_manager_cloud_state.dart';
 /// import com.pulumi.azure.systemcenter.inputs.GetVirtualMachineManagerInventoryItemsArgs;
 /// import com.pulumi.azure.systemcenter.VirtualMachineManagerCloud;
 /// import com.pulumi.azure.systemcenter.VirtualMachineManagerCloudArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

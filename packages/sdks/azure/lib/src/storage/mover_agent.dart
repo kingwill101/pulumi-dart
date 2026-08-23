@@ -118,6 +118,31 @@ import 'mover_agent_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "East US"
+/// }
+/// resource "azure_storage_mover" "example" {
+///   name                = "example-ssm"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_storage_moveragent" "example" {
+///   name                     = "example-sa"
+///   storage_mover_id         = azure_storage_mover.example.id
+///   arc_virtual_machine_id   ="${azure_core_resourcegroup.example.id}/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName"
+///   arc_virtual_machine_uuid = "3bb2c024-eba9-4d18-9e7a-1d772fcc5fe9"
+///   description              = "Example Agent Description"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +155,8 @@ import 'mover_agent_state.dart';
 /// import com.pulumi.azure.storage.MoverArgs;
 /// import com.pulumi.azure.storage.MoverAgent;
 /// import com.pulumi.azure.storage.MoverAgentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

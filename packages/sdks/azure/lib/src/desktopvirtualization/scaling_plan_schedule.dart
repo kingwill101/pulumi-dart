@@ -17,7 +17,7 @@ class ScalingPlanSchedule {
   final pulumi.Input<String> peakStartTime;
   /// This is the value in percentage of used host pool capacity that will be considered to evaluate whether to turn on/off virtual machines during the ramp-down and off-peak hours. For example, if capacity threshold is specified as 60% and your total host pool capacity is 100 sessions, autoscale will turn on additional session hosts once the host pool exceeds a load of 60 sessions.
   final pulumi.Input<int> rampDownCapacityThresholdPercent;
-  /// Whether users will be forced to log-off session hosts once the `ramp_down_wait_time_minutes` value has been exceeded during the Ramp-Down period. Possible values are `true` and `false`.
+  /// Whether users will be forced to log-off session hosts once the `rampDownWaitTimeMinutes` value has been exceeded during the Ramp-Down period. Possible values are `true` and `false`.
   final pulumi.Input<bool> rampDownForceLogoffUsers;
   /// The load Balancing Algorithm to use during the Ramp-Down period. Possible values are `DepthFirst` and `BreadthFirst`.
   final pulumi.Input<String> rampDownLoadBalancingAlgorithm;
@@ -48,7 +48,7 @@ class ScalingPlanSchedule {
   /// [peakLoadBalancingAlgorithm] The load Balancing Algorithm to use during Peak Hours. Possible values are `DepthFirst` and `BreadthFirst`.
   /// [peakStartTime] The time at which Peak scaling will begin. This is also the end-time for the Ramp-Up period. The time must be specified in "HH:MM" format.
   /// [rampDownCapacityThresholdPercent] This is the value in percentage of used host pool capacity that will be considered to evaluate whether to turn on/off virtual machines during the ramp-down and off-peak hours. For example, if capacity threshold is specified as 60% and your total host pool capacity is 100 sessions, autoscale will turn on additional session hosts once the host pool exceeds a load of 60 sessions.
-  /// [rampDownForceLogoffUsers] Whether users will be forced to log-off session hosts once the `ramp_down_wait_time_minutes` value has been exceeded during the Ramp-Down period. Possible values are `true` and `false`.
+  /// [rampDownForceLogoffUsers] Whether users will be forced to log-off session hosts once the `rampDownWaitTimeMinutes` value has been exceeded during the Ramp-Down period. Possible values are `true` and `false`.
   /// [rampDownLoadBalancingAlgorithm] The load Balancing Algorithm to use during the Ramp-Down period. Possible values are `DepthFirst` and `BreadthFirst`.
   /// [rampDownMinimumHostsPercent] The minimum percentage of session host virtual machines that you would like to get to for ramp-down and off-peak hours. For example, if Minimum percentage of hosts is specified as 10% and total number of session hosts in your host pool is 10, autoscale will ensure a minimum of 1 session host is available to take user connections.
   /// [rampDownNotificationMessage] The notification message to send to users during Ramp-Down period when they are required to log-off.
@@ -126,4 +126,3 @@ class ScalingPlanSchedule {
     );
   }
 }
-

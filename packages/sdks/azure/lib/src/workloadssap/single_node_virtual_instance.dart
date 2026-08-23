@@ -21,7 +21,7 @@ import 'single_node_virtual_instance_state.dart';
 ///     algorithm: "RSA",
 ///     rsaBits: 4096,
 /// });
-/// const example = tls.index.PublicKey({
+/// const example = tls.PublicKey({
 ///     privateKeyPem: examplePrivateKey.privateKeyPem,
 /// });
 /// const exampleResourceGroup = new azure.core.ResourceGroup("example", {
@@ -75,7 +75,7 @@ import 'single_node_virtual_instance_state.dart';
 ///             image: {
 ///                 offer: "RHEL-SAP-HA",
 ///                 publisher: "RedHat",
-///                 sku: "82sapha-gen2",
+///                 sku: "86sapha-gen2",
 ///                 version: "latest",
 ///             },
 ///             osProfile: {
@@ -147,10 +147,10 @@ import 'single_node_virtual_instance_state.dart';
 /// import pulumi_tls as tls
 ///
 /// current = azure.core.get_subscription()
-/// example_private_key = tls.index.PrivateKey("example",
+/// example_private_key = tls.PrivateKey("example",
 ///     algorithm=RSA,
 ///     rsa_bits=4096)
-/// example = tls.index.public_key(private_key_pem=example_private_key["privateKeyPem"])
+/// example = tls.public_key(private_key_pem=example_private_key["privateKeyPem"])
 /// example_resource_group = azure.core.ResourceGroup("example",
 ///     name="example-resources",
 ///     location="West Europe")
@@ -195,7 +195,7 @@ import 'single_node_virtual_instance_state.dart';
 ///             "image": {
 ///                 "offer": "RHEL-SAP-HA",
 ///                 "publisher": "RedHat",
-///                 "sku": "82sapha-gen2",
+///                 "sku": "86sapha-gen2",
 ///                 "version": "latest",
 ///             },
 ///             "os_profile": {
@@ -270,13 +270,13 @@ import 'single_node_virtual_instance_state.dart';
 /// {
 ///     var current = Azure.Core.GetSubscription.Invoke();
 ///
-///     var examplePrivateKey = new Tls.Index.PrivateKey("example", new()
+///     var examplePrivateKey = new Tls.PrivateKey("example", new()
 ///     {
 ///         Algorithm = "RSA",
 ///         RsaBits = 4096,
 ///     });
 ///
-///     var example = Tls.Index.PublicKey.Invoke(new()
+///     var example = Tls.PublicKey.Invoke(new()
 ///     {
 ///         PrivateKeyPem = examplePrivateKey.PrivateKeyPem,
 ///     });
@@ -358,7 +358,7 @@ import 'single_node_virtual_instance_state.dart';
 ///                 {
 ///                     Offer = "RHEL-SAP-HA",
 ///                     Publisher = "RedHat",
-///                     Sku = "82sapha-gen2",
+///                     Sku = "86sapha-gen2",
 ///                     Version = "latest",
 ///                 },
 ///                 OsProfile = new Azure.WorkloadsSAP.Inputs.SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfileArgs
@@ -557,7 +557,7 @@ import 'single_node_virtual_instance_state.dart';
 /// 					Image: &workloadssap.SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImageArgs{
 /// 						Offer:     pulumi.String("RHEL-SAP-HA"),
 /// 						Publisher: pulumi.String("RedHat"),
-/// 						Sku:       pulumi.String("82sapha-gen2"),
+/// 						Sku:       pulumi.String("86sapha-gen2"),
 /// 						Version:   pulumi.String("latest"),
 /// 					},
 /// 					OsProfile: &workloadssap.SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfileArgs{
@@ -637,6 +637,133 @@ import 'single_node_virtual_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+/// data "tls_publickey" "example" {
+///   private_key_pem = tls_privatekey.example.privateKeyPem
+/// }
+///
+/// resource "tls_privatekey" "example" {
+///   algorithm = "RSA"
+///   rsa_bits  = 4096
+/// }
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "example-uai"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_authorization_assignment" "example" {
+///   scope                = data.azure_core_getsubscription.current.id
+///   role_definition_name = "Azure Center for SAP solutions service role"
+///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_core_resourcegroup" "app" {
+///   depends_on = [azure_network_subnet.example]
+///   name       = "example-sapapp"
+///   location   = "West Europe"
+/// }
+/// resource "azure_workloadssap_singlenodevirtualinstance" "example" {
+///   depends_on                  = [azure_authorization_assignment.example]
+///   name                        = "X05"
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   location                    = azure_core_resourcegroup.example.location
+///   environment                 = "NonProd"
+///   sap_product                 = "S4HANA"
+///   managed_resource_group_name = "managedTestRG"
+///   app_location                = azure_core_resourcegroup.app.location
+///   sap_fqdn                    = "sap.bpaas.com"
+///   single_server_configuration = {
+///     app_resource_group_name = azure_core_resourcegroup.app.name
+///     subnet_id               = azure_network_subnet.example.id
+///     database_type           = "HANA"
+///     secondary_ip_enabled    = true
+///     virtual_machine_configuration = {
+///       virtual_machine_size = "Standard_E32ds_v4"
+///       image = {
+///         offer     = "RHEL-SAP-HA"
+///         publisher = "RedHat"
+///         sku       = "86sapha-gen2"
+///         version   = "latest"
+///       }
+///       os_profile = {
+///         admin_username  = "testAdmin"
+///         ssh_private_key = tls_privatekey.example.privateKeyPem
+///         ssh_public_key  = data.tls_publickey.example.public_key_openssh
+///       }
+///     }
+///     disk_volume_configurations = [{
+///       "volumeName"    = "hana/data"
+///       "numberOfDisks" = 3
+///       "sizeInGb"      = 128
+///       "skuName"       = "Premium_LRS"
+///       }, {
+///       "volumeName"    = "hana/log"
+///       "numberOfDisks" = 3
+///       "sizeInGb"      = 128
+///       "skuName"       = "Premium_LRS"
+///       }, {
+///       "volumeName"    = "hana/shared"
+///       "numberOfDisks" = 1
+///       "sizeInGb"      = 256
+///       "skuName"       = "Premium_LRS"
+///       }, {
+///       "volumeName"    = "usr/sap"
+///       "numberOfDisks" = 1
+///       "sizeInGb"      = 128
+///       "skuName"       = "Premium_LRS"
+///       }, {
+///       "volumeName"    = "backup"
+///       "numberOfDisks" = 2
+///       "sizeInGb"      = 256
+///       "skuName"       = "StandardSSD_LRS"
+///       }, {
+///       "volumeName"    = "os"
+///       "numberOfDisks" = 1
+///       "sizeInGb"      = 64
+///       "skuName"       = "StandardSSD_LRS"
+///     }]
+///     virtual_machine_resource_names = {
+///       host_name               = "apphostName0"
+///       os_disk_name            = "app0osdisk"
+///       virtual_machine_name    = "appvm0"
+///       network_interface_names = ["appnic0"]
+///       data_disks = [{
+///         "volumeName" = "default"
+///         "names"      = ["app0disk0"]
+///       }]
+///     }
+///   }
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -664,11 +791,13 @@ import 'single_node_virtual_instance_state.dart';
 /// import com.pulumi.azure.workloadssap.inputs.SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationArgs;
 /// import com.pulumi.azure.workloadssap.inputs.SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImageArgs;
 /// import com.pulumi.azure.workloadssap.inputs.SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfileArgs;
+/// import com.pulumi.azure.workloadssap.inputs.SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfigurationArgs;
 /// import com.pulumi.azure.workloadssap.inputs.SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesArgs;
+/// import com.pulumi.azure.workloadssap.inputs.SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesDataDiskArgs;
 /// import com.pulumi.azure.workloadssap.inputs.SingleNodeVirtualInstanceIdentityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -747,7 +876,7 @@ import 'single_node_virtual_instance_state.dart';
 ///                     .image(SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImageArgs.builder()
 ///                         .offer("RHEL-SAP-HA")
 ///                         .publisher("RedHat")
-///                         .sku("82sapha-gen2")
+///                         .sku("86sapha-gen2")
 ///                         .version("latest")
 ///                         .build())
 ///                     .osProfile(SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfileArgs.builder()
@@ -891,7 +1020,7 @@ import 'single_node_virtual_instance_state.dart';
 ///           image:
 ///             offer: RHEL-SAP-HA
 ///             publisher: RedHat
-///             sku: 82sapha-gen2
+///             sku: 86sapha-gen2
 ///             version: latest
 ///           osProfile:
 ///             adminUsername: testAdmin
@@ -987,7 +1116,7 @@ class SingleNodeVirtualInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> sapFqdn;
   /// The SAP Product type for the SAP Single Node Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sapProduct;
-  /// A `single_server_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// A `singleServerConfiguration` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<SingleNodeVirtualInstanceSingleServerConfiguration> singleServerConfiguration;
   /// A mapping of tags which should be assigned to the SAP Single Node Virtual Instance.
   late final pulumi.Output<Map<String, String>?> tags;

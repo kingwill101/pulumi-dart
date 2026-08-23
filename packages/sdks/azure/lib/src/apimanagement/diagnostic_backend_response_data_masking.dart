@@ -7,12 +7,12 @@ import 'diagnostic_backend_response_data_masking_query_param.dart';
 class DiagnosticBackendResponseDataMasking {
   /// A `headers` block as defined below.
   final pulumi.Input<List<DiagnosticBackendResponseDataMaskingHeader>>? headers;
-  /// A `query_params` block as defined below.
+  /// A `queryParams` block as defined below.
   final pulumi.Input<List<DiagnosticBackendResponseDataMaskingQueryParam>>? queryParams;
 
   /// Creates a new [DiagnosticBackendResponseDataMasking].
   /// [headers] A `headers` block as defined below.
-  /// [queryParams] A `query_params` block as defined below.
+  /// [queryParams] A `queryParams` block as defined below.
   const DiagnosticBackendResponseDataMasking({
     this.headers,
     this.queryParams,
@@ -32,4 +32,3 @@ class DiagnosticBackendResponseDataMasking {
     );
   }
 }
-

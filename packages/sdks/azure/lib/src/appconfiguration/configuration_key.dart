@@ -162,6 +162,40 @@ import 'configuration_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appconfiguration_configurationstore" "appconf" {
+///   name                = "appConf1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_authorization_assignment" "appconf_dataowner" {
+///   scope                = azure_appconfiguration_configurationstore.appconf.id
+///   role_definition_name = "App Configuration Data Owner"
+///   principal_id         = data.azure_core_getclientconfig.current.object_id
+/// }
+/// resource "azure_appconfiguration_configurationkey" "test" {
+///   depends_on             = [azure_authorization_assignment.appconf_dataowner]
+///   configuration_store_id = azure_appconfiguration_configurationstore.appconf.id
+///   key                    = "appConfKey1"
+///   label                  = "somelabel"
+///   value                  = "a test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +212,8 @@ import 'configuration_key_state.dart';
 /// import com.pulumi.azure.appconfiguration.ConfigurationKey;
 /// import com.pulumi.azure.appconfiguration.ConfigurationKeyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -548,6 +582,60 @@ import 'configuration_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appconfiguration_configurationstore" "appconf" {
+///   name                = "appConf1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_keyvault_keyvault" "kv" {
+///   name                       = "kv"
+///   location                   = testAzurermResourceGroup.location
+///   resource_group_name        = testAzurermResourceGroup.name
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
+///   soft_delete_retention_days = 7
+///   access_policies {
+///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     key_permissions    = ["Create", "Get"]
+///     secret_permissions = ["Set", "Get", "Delete", "Purge", "Recover"]
+///   }
+/// }
+/// resource "azure_keyvault_secret" "kvs" {
+///   name         = "kvs"
+///   value        = "szechuan"
+///   key_vault_id = azure_keyvault_keyvault.kv.id
+/// }
+/// resource "azure_authorization_assignment" "appconf_dataowner" {
+///   scope                = azure_appconfiguration_configurationstore.appconf.id
+///   role_definition_name = "App Configuration Data Owner"
+///   principal_id         = data.azure_core_getclientconfig.current.object_id
+/// }
+/// resource "azure_appconfiguration_configurationkey" "test" {
+///   depends_on             = [azure_authorization_assignment.appconf_dataowner]
+///   configuration_store_id = testAzurermAppConfiguration.id
+///   key                    = "key1"
+///   type                   = "vault"
+///   label                  = "label1"
+///   vault_key_reference    = azure_keyvault_secret.kvs.versionless_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -569,8 +657,8 @@ import 'configuration_key_state.dart';
 /// import com.pulumi.azure.appconfiguration.ConfigurationKey;
 /// import com.pulumi.azure.appconfiguration.ConfigurationKeyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -740,13 +828,13 @@ class ConfigurationKey extends pulumi.CustomResource {
   late final pulumi.Output<String?> type;
   /// The value of the App Configuration Key. This should only be set when type is set to `kv`.
   ///
-  /// &gt; **Note:** `value` and `vault_key_reference` are mutually exclusive.
+  /// &gt; **Note:** `value` and `vaultKeyReference` are mutually exclusive.
   late final pulumi.Output<String?> value;
   /// The ID of the vault secret this App Configuration Key refers to. This should only be set when `type` is set to `vault`.
   ///
-  /// &gt; **Note:** `vault_key_reference` and `value` are mutually exclusive.
+  /// &gt; **Note:** `vaultKeyReference` and `value` are mutually exclusive.
   ///
-  /// &gt; **Note:** When setting the `vault_key_reference` using the `id` will pin the value to specific version of the secret, to reference latest secret value use `versionless_id`
+  /// &gt; **Note:** When setting the `vaultKeyReference` using the `id` will pin the value to specific version of the secret, to reference latest secret value use `versionlessId`
   late final pulumi.Output<String?> vaultKeyReference;
 
   /// Creates a new [ConfigurationKey].

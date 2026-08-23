@@ -8,23 +8,23 @@ class WorkspaceCertificateState {
   final pulumi.Input<String>? apiManagementWorkspaceId;
   /// Specifies the base64-encoded string containing the certificate in PKCS#12 (.pfx) format.
   ///
-  /// &gt; **Note:** This is required when `password` is specified. Exactly one of `certificate_data_base64` or `key_vault_secret_id` must be specified.
+  /// &gt; **Note:** This is required when `password` is specified. Exactly one of `certificateDataBase64` or `keyVaultSecretId` must be specified.
   final pulumi.Input<String>? certificateDataBase64;
   /// The expiration date of the API Management Workspace Certificate.
   final pulumi.Input<String>? expiration;
   /// Specifies the ID of the key vault secret.
   ///
-  /// &gt; **Note:** This is required when `user_assigned_identity_client_id` is specified. Exactly one of `certificate_data_base64` or `key_vault_secret_id` must be specified.
+  /// &gt; **Note:** This is required when `userAssignedIdentityClientId` is specified. Exactly one of `certificateDataBase64` or `keyVaultSecretId` must be specified.
   final pulumi.Input<String>? keyVaultSecretId;
   /// Specifies the name of the API Management Workspace Certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// Specifies the password used to access the `certificate_data_base64`.
+  /// Specifies the password used to access the `certificateDataBase64`.
   final pulumi.Input<String>? password;
   /// The subject name of the API Management Workspace Certificate.
   final pulumi.Input<String>? subject;
   /// The thumbprint of the API Management Workspace Certificate.
   final pulumi.Input<String>? thumbprint;
-  /// Specifies the client ID of user-assigned identity to be used for accessing the `key_vault_secret_id`.
+  /// Specifies the client ID of user-assigned identity to be used for accessing the `keyVaultSecretId`.
   final pulumi.Input<String>? userAssignedIdentityClientId;
 
   /// Creates a new [WorkspaceCertificateState].
@@ -33,10 +33,10 @@ class WorkspaceCertificateState {
   /// [expiration] The expiration date of the API Management Workspace Certificate.
   /// [keyVaultSecretId] Specifies the ID of the key vault secret.
   /// [name] Specifies the name of the API Management Workspace Certificate. Changing this forces a new resource to be created.
-  /// [password] Specifies the password used to access the `certificate_data_base64`.
+  /// [password] Specifies the password used to access the `certificateDataBase64`.
   /// [subject] The subject name of the API Management Workspace Certificate.
   /// [thumbprint] The thumbprint of the API Management Workspace Certificate.
-  /// [userAssignedIdentityClientId] Specifies the client ID of user-assigned identity to be used for accessing the `key_vault_secret_id`.
+  /// [userAssignedIdentityClientId] Specifies the client ID of user-assigned identity to be used for accessing the `keyVaultSecretId`.
   const WorkspaceCertificateState({
     this.apiManagementWorkspaceId,
     this.certificateDataBase64,
@@ -77,4 +77,3 @@ class WorkspaceCertificateState {
     );
   }
 }
-

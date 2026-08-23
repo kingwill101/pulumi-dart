@@ -111,6 +111,30 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_certificate" "example" {
+///   name                = "example-cert"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   pfx_blob            = filebase64("certificate.pfx")
+///   password            = "password123!"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +147,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.azure.appservice.CertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -178,6 +202,13 @@ import 'certificate_state.dart';
 /// ```
 ///
 ///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.Web` - 2023-12-01
+///
 /// ## Import
 ///
 /// App Service Certificates can be imported using the `resource id`, e.g.
@@ -203,7 +234,7 @@ class Certificate extends pulumi.CustomResource {
   late final pulumi.Output<String?> keyVaultId;
   /// The ID of the Key Vault secret. Changing this forces a new resource to be created.
   ///
-  /// &gt; **NOTE:** Exactly one of `key_vault_secret_id` or `pfx_blob` must be specified.
+  /// &gt; **NOTE:** Exactly one of `keyVaultSecretId` or `pfxBlob` must be specified.
   late final pulumi.Output<String?> keyVaultSecretId;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
@@ -213,7 +244,7 @@ class Certificate extends pulumi.CustomResource {
   late final pulumi.Output<String?> password;
   /// The base64-encoded contents of the certificate. Changing this forces a new resource to be created.
   ///
-  /// &gt; **NOTE:** Exactly one of `key_vault_secret_id` or `pfx_blob` must be specified.
+  /// &gt; **NOTE:** Exactly one of `keyVaultSecretId` or `pfxBlob` must be specified.
   late final pulumi.Output<String?> pfxBlob;
   /// The name of the resource group in which to create the certificate. Changing this forces a new resource to be created.
   ///

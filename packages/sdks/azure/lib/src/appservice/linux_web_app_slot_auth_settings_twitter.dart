@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxWebAppSlotAuthSettingsTwitter {
   /// The OAuth 1.0a consumer key of the Twitter application used for sign-in.
   final pulumi.Input<String> consumerKey;
-  /// The OAuth 1.0a consumer secret of the Twitter application used for sign-in. Cannot be specified with `consumer_secret_setting_name`.
+  /// The OAuth 1.0a consumer secret of the Twitter application used for sign-in. Cannot be specified with `consumerSecretSettingName`.
   final pulumi.Input<String>? consumerSecret;
-  /// The app setting name that contains the OAuth 1.0a consumer secret of the Twitter application used for sign-in. Cannot be specified with `consumer_secret`.
+  /// The app setting name that contains the OAuth 1.0a consumer secret of the Twitter application used for sign-in. Cannot be specified with `consumerSecret`.
   final pulumi.Input<String>? consumerSecretSettingName;
 
   /// Creates a new [LinuxWebAppSlotAuthSettingsTwitter].
   /// [consumerKey] The OAuth 1.0a consumer key of the Twitter application used for sign-in.
-  /// [consumerSecret] The OAuth 1.0a consumer secret of the Twitter application used for sign-in. Cannot be specified with `consumer_secret_setting_name`.
-  /// [consumerSecretSettingName] The app setting name that contains the OAuth 1.0a consumer secret of the Twitter application used for sign-in. Cannot be specified with `consumer_secret`.
+  /// [consumerSecret] The OAuth 1.0a consumer secret of the Twitter application used for sign-in. Cannot be specified with `consumerSecretSettingName`.
+  /// [consumerSecretSettingName] The app setting name that contains the OAuth 1.0a consumer secret of the Twitter application used for sign-in. Cannot be specified with `consumerSecret`.
   const LinuxWebAppSlotAuthSettingsTwitter({
     required this.consumerKey,
     this.consumerSecret,
@@ -36,4 +36,3 @@ class LinuxWebAppSlotAuthSettingsTwitter {
     );
   }
 }
-

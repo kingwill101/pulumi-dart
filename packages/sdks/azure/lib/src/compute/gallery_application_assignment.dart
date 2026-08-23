@@ -4,7 +4,7 @@ import 'gallery_application_assignment_state.dart';
 
 /// Manages a Virtual Machine Gallery Application Assignment.
 ///
-/// &gt; **Note:** Gallery Application Assignments can be defined either directly on `azure.compute.LinuxVirtualMachine` and `azure.compute.WindowsVirtualMachine` resources, or using the `azure.compute.GalleryApplicationAssignment` resource - but the two approaches cannot be used together. If both are used with the same Virtual Machine, spurious changes will occur. It's recommended to use `ignore_changes` for the `gallery_application` block on the associated virtual machine resources, to avoid a persistent diff when using this resource.
+/// &gt; **Note:** Gallery Application Assignments can be defined either directly on `azure.compute.LinuxVirtualMachine` and `azure.compute.WindowsVirtualMachine` resources, or using the `azure.compute.GalleryApplicationAssignment` resource - but the two approaches cannot be used together. If both are used with the same Virtual Machine, spurious changes will occur. It's recommended to use `ignoreChanges` for the `galleryApplication` block on the associated virtual machine resources, to avoid a persistent diff when using this resource.
 /// ## Example Usage
 ///
 ///
@@ -319,6 +319,75 @@ import 'gallery_application_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getvirtualmachine" "example" {
+///   name                = "example-vm"
+///   resource_group_name = "example-resources-vm"
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_compute_sharedimagegallery" "example" {
+///   name                = "examplegallery"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_compute_galleryapplication" "example" {
+///   name              = "example-app"
+///   gallery_id        = azure_compute_sharedimagegallery.example.id
+///   location          = azure_core_resourcegroup.example.location
+///   supported_os_type = "Linux"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorage"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "example-container"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "blob"
+/// }
+/// resource "azure_storage_blob" "example" {
+///   name                   = "scripts"
+///   storage_account_name   = azure_storage_account.example.name
+///   storage_container_name = azure_storage_container.example.name
+///   type                   = "Block"
+///   source_content         = "[scripts file content]"
+/// }
+/// resource "azure_compute_galleryapplicationversion" "example" {
+///   name                   = "0.0.1"
+///   gallery_application_id = azure_compute_galleryapplication.example.id
+///   location               = azure_compute_galleryapplication.example.location
+///   manage_action = {
+///     install = "[install command]"
+///     remove  = "[remove command]"
+///   }
+///   source = {
+///     media_link = azure_storage_blob.example.id
+///   }
+///   target_regions {
+///     name                   = azure_compute_galleryapplication.example.location
+///     regional_replica_count = 1
+///   }
+/// }
+/// resource "azure_compute_galleryapplicationassignment" "example" {
+///   gallery_application_version_id = azure_compute_galleryapplicationversion.example.id
+///   virtual_machine_id             = data.azure_compute_getvirtualmachine.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -346,8 +415,8 @@ import 'gallery_application_assignment_state.dart';
 /// import com.pulumi.azure.compute.inputs.GalleryApplicationVersionTargetRegionArgs;
 /// import com.pulumi.azure.compute.GalleryApplicationAssignment;
 /// import com.pulumi.azure.compute.GalleryApplicationAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

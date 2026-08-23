@@ -70,6 +70,21 @@ import 'get_replication_recovery_plan_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_siterecovery_getfabric" "fabric" {
+///   name                = "primary-fabric"
+///   recovery_vault_name = "tfex-recovery_vault"
+///   resource_group_name = "tfex-resource_group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +93,8 @@ import 'get_replication_recovery_plan_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.siterecovery.SiterecoveryFunctions;
 /// import com.pulumi.azure.siterecovery.inputs.GetFabricArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -199,6 +214,22 @@ Future<GetFabricResult> getFabric(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_siterecovery_getprotectioncontainer" "container" {
+///   name                 = "primary-container"
+///   recovery_vault_name  = "tfex-recovery_vault"
+///   resource_group_name  = "tfex-resource_group"
+///   recovery_fabric_name = "primary-fabric"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +238,8 @@ Future<GetFabricResult> getFabric(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.siterecovery.SiterecoveryFunctions;
 /// import com.pulumi.azure.siterecovery.inputs.GetProtectionContainerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -326,6 +357,21 @@ Future<GetProtectionContainerResult> getProtectionContainer(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_siterecovery_getreplicationpolicy" "policy" {
+///   name                = "replication-policy"
+///   recovery_vault_name = "tfex-recovery_vault"
+///   resource_group_name = "tfex-resource_group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -334,8 +380,8 @@ Future<GetProtectionContainerResult> getProtectionContainer(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.siterecovery.SiterecoveryFunctions;
 /// import com.pulumi.azure.siterecovery.inputs.GetReplicationPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -467,6 +513,24 @@ Future<GetReplicationPolicyResult> getReplicationPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_recoveryservices_getvault" "vault" {
+///   name                = "tfex-recovery_vault"
+///   resource_group_name = "tfex-resource_group"
+/// }
+/// data "azure_siterecovery_getreplicationrecoveryplan" "example" {
+///   name              = "example-recovery-plan"
+///   recovery_vault_id = data.azure_recoveryservices_getvault.vault.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -477,8 +541,8 @@ Future<GetReplicationPolicyResult> getReplicationPolicy(
 /// import com.pulumi.azure.recoveryservices.inputs.GetVaultArgs;
 /// import com.pulumi.azure.siterecovery.SiterecoveryFunctions;
 /// import com.pulumi.azure.siterecovery.inputs.GetReplicationRecoveryPlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

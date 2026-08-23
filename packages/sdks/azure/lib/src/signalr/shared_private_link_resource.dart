@@ -225,6 +225,53 @@ import 'shared_private_link_resource_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "terraform-signalr"
+///   location = "east us"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                       = "examplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   soft_delete_retention_days = 7
+///   access_policies {
+///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
+///     object_id               = data.azure_core_getclientconfig.current.object_id
+///     certificate_permissions = ["ManageContacts"]
+///     key_permissions         = ["Create"]
+///     secret_permissions      = ["Set"]
+///   }
+/// }
+/// resource "azure_signalr_service" "test" {
+///   name                = "tfex-signalr"
+///   location            = testAzurermResourceGroup.location
+///   resource_group_name = testAzurermResourceGroup.name
+///   sku = {
+///     name     = "Standard_S1"
+///     capacity = 1
+///   }
+/// }
+/// resource "azure_signalr_sharedprivatelinkresource" "example" {
+///   name               = "tfex-signalr-splr"
+///   signalr_service_id = exampleAzurermSignalrService.id
+///   sub_resource_name  = "vault"
+///   target_resource_id = azure_keyvault_keyvault.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -242,8 +289,8 @@ import 'shared_private_link_resource_state.dart';
 /// import com.pulumi.azure.signalr.inputs.ServiceSkuArgs;
 /// import com.pulumi.azure.signalr.SharedPrivateLinkResource;
 /// import com.pulumi.azure.signalr.SharedPrivateLinkResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -376,7 +423,7 @@ class SharedPrivateLinkResource extends pulumi.CustomResource {
   late final pulumi.Output<String> subResourceName;
   /// The ID of the Shared Private Link Enabled Remote Resource which this Signalr Private Endpoint should be connected to. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The `sub_resource_name` should match with the type of the `target_resource_id` that's being specified.
+  /// &gt; **Note:** The `subResourceName` should match with the type of the `targetResourceId` that's being specified.
   late final pulumi.Output<String> targetResourceId;
 
   /// Creates a new [SharedPrivateLinkResource].

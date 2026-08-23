@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_policy_insights_log_analytics_workspace.dart';
 
 class FirewallPolicyInsights {
-  /// The ID of the default Log Analytics Workspace that the Firewalls associated with this Firewall Policy will send their logs to, when there is no location matches in the `log_analytics_workspace`.
+  /// The ID of the default Log Analytics Workspace that the Firewalls associated with this Firewall Policy will send their logs to, when there is no location matches in the `logAnalyticsWorkspace`.
   final pulumi.Input<String> defaultLogAnalyticsWorkspaceId;
   /// Whether the insights functionality is enabled for this Firewall Policy.
   final pulumi.Input<bool> enabled;
-  /// A list of `log_analytics_workspace` block as defined below.
+  /// A list of `logAnalyticsWorkspace` block as defined below.
   final pulumi.Input<List<FirewallPolicyInsightsLogAnalyticsWorkspace>>? logAnalyticsWorkspaces;
   /// The log retention period in days.
   final pulumi.Input<int>? retentionInDays;
 
   /// Creates a new [FirewallPolicyInsights].
-  /// [defaultLogAnalyticsWorkspaceId] The ID of the default Log Analytics Workspace that the Firewalls associated with this Firewall Policy will send their logs to, when there is no location matches in the `log_analytics_workspace`.
+  /// [defaultLogAnalyticsWorkspaceId] The ID of the default Log Analytics Workspace that the Firewalls associated with this Firewall Policy will send their logs to, when there is no location matches in the `logAnalyticsWorkspace`.
   /// [enabled] Whether the insights functionality is enabled for this Firewall Policy.
-  /// [logAnalyticsWorkspaces] A list of `log_analytics_workspace` block as defined below.
+  /// [logAnalyticsWorkspaces] A list of `logAnalyticsWorkspace` block as defined below.
   /// [retentionInDays] The log retention period in days.
   const FirewallPolicyInsights({
     required this.defaultLogAnalyticsWorkspaceId,
@@ -43,4 +43,3 @@ class FirewallPolicyInsights {
     );
   }
 }
-

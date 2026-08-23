@@ -5,13 +5,13 @@ import 'fleet_update_run_managed_cluster_update_node_image_selection.dart';
 import 'fleet_update_run_managed_cluster_update_upgrade.dart';
 
 class FleetUpdateRunManagedClusterUpdate {
-  /// A `node_image_selection` block as defined below.
+  /// A `nodeImageSelection` block as defined below.
   final pulumi.Input<FleetUpdateRunManagedClusterUpdateNodeImageSelection>? nodeImageSelection;
   /// A `upgrade` block as defined below.
   final pulumi.Input<FleetUpdateRunManagedClusterUpdateUpgrade> upgrade;
 
   /// Creates a new [FleetUpdateRunManagedClusterUpdate].
-  /// [nodeImageSelection] A `node_image_selection` block as defined below.
+  /// [nodeImageSelection] A `nodeImageSelection` block as defined below.
   /// [upgrade] A `upgrade` block as defined below.
   const FleetUpdateRunManagedClusterUpdate({
     this.nodeImageSelection,
@@ -32,4 +32,3 @@ class FleetUpdateRunManagedClusterUpdate {
     );
   }
 }
-

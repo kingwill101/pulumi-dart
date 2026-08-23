@@ -299,6 +299,65 @@ import 'service_network_acl_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_signalr_service" "example" {
+///   name                = "example-signalr"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Standard_S1"
+///     capacity = 1
+///   }
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   address_spaces      = ["10.5.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                                           = "example-subnet"
+///   resource_group_name                            = azure_core_resourcegroup.example.name
+///   virtual_network_name                           = azure_network_virtualnetwork.example.name
+///   address_prefixes                               = ["10.5.2.0/24"]
+///   enforce_private_link_endpoint_network_policies = true
+/// }
+/// resource "azure_privatelink_endpoint" "example" {
+///   name                = "example-privateendpoint"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   subnet_id           = azure_network_subnet.example.id
+///   private_service_connection = {
+///     name                           = "psc-sig-test"
+///     is_manual_connection           = false
+///     private_connection_resource_id = azure_signalr_service.example.id
+///     subresource_names              = ["signalr"]
+///   }
+/// }
+/// resource "azure_signalr_servicenetworkacl" "example" {
+///   signalr_service_id = azure_signalr_service.example.id
+///   default_action     = "Deny"
+///   public_network = {
+///     allowed_request_types = ["ClientConnection"]
+///   }
+///   private_endpoints {
+///     id                    = azure_privatelink_endpoint.example.id
+///     allowed_request_types = ["ServerConnection"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -321,8 +380,8 @@ import 'service_network_acl_state.dart';
 /// import com.pulumi.azure.signalr.ServiceNetworkAclArgs;
 /// import com.pulumi.azure.signalr.inputs.ServiceNetworkAclPublicNetworkArgs;
 /// import com.pulumi.azure.signalr.inputs.ServiceNetworkAclPrivateEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -475,9 +534,9 @@ import 'service_network_acl_state.dart';
 class ServiceNetworkAcl extends pulumi.CustomResource {
   /// The default action to control the network access when no other rule matches. Possible values are `Allow` and `Deny`.
   late final pulumi.Output<String> defaultAction;
-  /// A `private_endpoint` block as defined below.
+  /// A `privateEndpoint` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> privateEndpoints;
-  /// A `public_network` block as defined below.
+  /// A `publicNetwork` block as defined below.
   late final pulumi.Output<ServiceNetworkAclPublicNetwork> publicNetwork;
   /// The ID of the SignalR service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> signalrServiceId;

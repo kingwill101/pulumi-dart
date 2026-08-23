@@ -115,6 +115,31 @@ import 'hyper_vsite_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "eastus"
+/// }
+/// resource "azure_recoveryservices_vault" "example" {
+///   name                = "example-vault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+///   soft_delete_enabled = false
+/// }
+/// resource "azure_siterecovery_hypervsite" "example" {
+///   name              = "example-site"
+///   recovery_vault_id = azure_recoveryservices_vault.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +152,8 @@ import 'hyper_vsite_state.dart';
 /// import com.pulumi.azure.recoveryservices.VaultArgs;
 /// import com.pulumi.azure.siterecovery.HyperVSite;
 /// import com.pulumi.azure.siterecovery.HyperVSiteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

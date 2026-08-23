@@ -164,10 +164,10 @@ import 'output_table_state.dart';
 /// 		_, err = streamanalytics.NewOutputTable(ctx, "example", &streamanalytics.OutputTableArgs{
 /// 			Name: pulumi.String("output-to-storage-table"),
 /// 			StreamAnalyticsJobName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return &example.Name, nil
+/// 				return example.Name, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return &example.ResourceGroupName, nil
+/// 				return example.ResourceGroupName, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			StorageAccountName: exampleAccount.Name,
 /// 			StorageAccountKey:  exampleAccount.PrimaryAccessKey,
@@ -181,6 +181,47 @@ import 'output_table_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_streamanalytics_getjob" "example" {
+///   name                = "example-job"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplesa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_table" "example" {
+///   name                 = "exampletable"
+///   storage_account_name = azure_storage_account.example.name
+/// }
+/// resource "azure_streamanalytics_outputtable" "example" {
+///   name                      = "output-to-storage-table"
+///   stream_analytics_job_name = data.azure_streamanalytics_getjob.example.name
+///   resource_group_name       = data.azure_streamanalytics_getjob.example.resource_group_name
+///   storage_account_name      = azure_storage_account.example.name
+///   storage_account_key       = azure_storage_account.example.primary_access_key
+///   table                     = azure_storage_table.example.name
+///   partition_key             = "foo"
+///   row_key                   = "bar"
+///   batch_size                = 100
 /// }
 /// ```
 /// ```java
@@ -199,8 +240,8 @@ import 'output_table_state.dart';
 /// import com.pulumi.azure.storage.TableArgs;
 /// import com.pulumi.azure.streamanalytics.OutputTable;
 /// import com.pulumi.azure.streamanalytics.OutputTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

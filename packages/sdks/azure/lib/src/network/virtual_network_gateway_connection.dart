@@ -55,7 +55,7 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 ///     type: "Vpn",
 ///     vpnType: "RouteBased",
 ///     activeActive: false,
-///     enableBgp: false,
+///     bgpEnabled: false,
 ///     sku: "Basic",
 ///     ipConfigurations: [{
 ///         publicIpAddressId: examplePublicIp.id,
@@ -108,7 +108,7 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 ///     type="Vpn",
 ///     vpn_type="RouteBased",
 ///     active_active=False,
-///     enable_bgp=False,
+///     bgp_enabled=False,
 ///     sku="Basic",
 ///     ip_configurations=[{
 ///         "public_ip_address_id": example_public_ip.id,
@@ -188,7 +188,7 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 ///         Type = "Vpn",
 ///         VpnType = "RouteBased",
 ///         ActiveActive = false,
-///         EnableBgp = false,
+///         BgpEnabled = false,
 ///         Sku = "Basic",
 ///         IpConfigurations = new[]
 ///         {
@@ -282,7 +282,7 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 /// 			Type:              pulumi.String("Vpn"),
 /// 			VpnType:           pulumi.String("RouteBased"),
 /// 			ActiveActive:      pulumi.Bool(false),
-/// 			EnableBgp:         pulumi.Bool(false),
+/// 			BgpEnabled:        pulumi.Bool(false),
 /// 			Sku:               pulumi.String("Basic"),
 /// 			IpConfigurations: network.VirtualNetworkGatewayIpConfigurationArray{
 /// 				&network.VirtualNetworkGatewayIpConfigurationArgs{
@@ -311,6 +311,69 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "test"
+///   location = "West US"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "test"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "GatewaySubnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+/// }
+/// resource "azure_network_localnetworkgateway" "onpremise" {
+///   name                = "onpremise"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   gateway_address     = "168.62.225.23"
+///   address_spaces      = ["10.1.1.0/24"]
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "test"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Dynamic"
+/// }
+/// resource "azure_network_virtualnetworkgateway" "example" {
+///   name                = "test"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   type                = "Vpn"
+///   vpn_type            = "RouteBased"
+///   active_active       = false
+///   bgp_enabled         = false
+///   sku                 = "Basic"
+///   ip_configurations {
+///     public_ip_address_id          = azure_network_publicip.example.id
+///     private_ip_address_allocation = "Dynamic"
+///     subnet_id                     = azure_network_subnet.example.id
+///   }
+/// }
+/// resource "azure_network_virtualnetworkgatewayconnection" "onpremise" {
+///   name                       = "onpremise"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   type                       = "IPsec"
+///   virtual_network_gateway_id = azure_network_virtualnetworkgateway.example.id
+///   local_network_gateway_id   = azure_network_localnetworkgateway.onpremise.id
+///   shared_key                 = "4-v3ry-53cr37-1p53c-5h4r3d-k3y"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -332,8 +395,8 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 /// import com.pulumi.azure.network.inputs.VirtualNetworkGatewayIpConfigurationArgs;
 /// import com.pulumi.azure.network.VirtualNetworkGatewayConnection;
 /// import com.pulumi.azure.network.VirtualNetworkGatewayConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -386,7 +449,7 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 ///             .type("Vpn")
 ///             .vpnType("RouteBased")
 ///             .activeActive(false)
-///             .enableBgp(false)
+///             .bgpEnabled(false)
 ///             .sku("Basic")
 ///             .ipConfigurations(VirtualNetworkGatewayIpConfigurationArgs.builder()
 ///                 .publicIpAddressId(examplePublicIp.id())
@@ -460,7 +523,7 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 ///       type: Vpn
 ///       vpnType: RouteBased
 ///       activeActive: false
-///       enableBgp: false
+///       bgpEnabled: false
 ///       sku: Basic
 ///       ipConfigurations:
 ///         - publicIpAddressId: ${examplePublicIp.id}
@@ -953,6 +1016,104 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "us" {
+///   name     = "us"
+///   location = "East US"
+/// }
+/// resource "azure_network_virtualnetwork" "us" {
+///   name                = "us"
+///   location            = azure_core_resourcegroup.us.location
+///   resource_group_name = azure_core_resourcegroup.us.name
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "us_gateway" {
+///   name                 = "GatewaySubnet"
+///   resource_group_name  = azure_core_resourcegroup.us.name
+///   virtual_network_name = azure_network_virtualnetwork.us.name
+///   address_prefixes     = ["10.0.1.0/24"]
+/// }
+/// resource "azure_network_publicip" "us" {
+///   name                = "us"
+///   location            = azure_core_resourcegroup.us.location
+///   resource_group_name = azure_core_resourcegroup.us.name
+///   allocation_method   = "Dynamic"
+/// }
+/// resource "azure_network_virtualnetworkgateway" "us" {
+///   name                = "us-gateway"
+///   location            = azure_core_resourcegroup.us.location
+///   resource_group_name = azure_core_resourcegroup.us.name
+///   type                = "Vpn"
+///   vpn_type            = "RouteBased"
+///   sku                 = "Basic"
+///   ip_configurations {
+///     public_ip_address_id          = azure_network_publicip.us.id
+///     private_ip_address_allocation = "Dynamic"
+///     subnet_id                     = azure_network_subnet.us_gateway.id
+///   }
+/// }
+/// resource "azure_core_resourcegroup" "europe" {
+///   name     = "europe"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "europe" {
+///   name                = "europe"
+///   location            = azure_core_resourcegroup.europe.location
+///   resource_group_name = azure_core_resourcegroup.europe.name
+///   address_spaces      = ["10.1.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "europe_gateway" {
+///   name                 = "GatewaySubnet"
+///   resource_group_name  = azure_core_resourcegroup.europe.name
+///   virtual_network_name = azure_network_virtualnetwork.europe.name
+///   address_prefixes     = ["10.1.1.0/24"]
+/// }
+/// resource "azure_network_publicip" "europe" {
+///   name                = "europe"
+///   location            = azure_core_resourcegroup.europe.location
+///   resource_group_name = azure_core_resourcegroup.europe.name
+///   allocation_method   = "Dynamic"
+/// }
+/// resource "azure_network_virtualnetworkgateway" "europe" {
+///   name                = "europe-gateway"
+///   location            = azure_core_resourcegroup.europe.location
+///   resource_group_name = azure_core_resourcegroup.europe.name
+///   type                = "Vpn"
+///   vpn_type            = "RouteBased"
+///   sku                 = "Basic"
+///   ip_configurations {
+///     public_ip_address_id          = azure_network_publicip.europe.id
+///     private_ip_address_allocation = "Dynamic"
+///     subnet_id                     = azure_network_subnet.europe_gateway.id
+///   }
+/// }
+/// resource "azure_network_virtualnetworkgatewayconnection" "us_to_europe" {
+///   name                            = "us-to-europe"
+///   location                        = azure_core_resourcegroup.us.location
+///   resource_group_name             = azure_core_resourcegroup.us.name
+///   type                            = "Vnet2Vnet"
+///   virtual_network_gateway_id      = azure_network_virtualnetworkgateway.us.id
+///   peer_virtual_network_gateway_id = azure_network_virtualnetworkgateway.europe.id
+///   shared_key                      = "4-v3ry-53cr37-1p53c-5h4r3d-k3y"
+/// }
+/// resource "azure_network_virtualnetworkgatewayconnection" "europe_to_us" {
+///   name                            = "europe-to-us"
+///   location                        = azure_core_resourcegroup.europe.location
+///   resource_group_name             = azure_core_resourcegroup.europe.name
+///   type                            = "Vnet2Vnet"
+///   virtual_network_gateway_id      = azure_network_virtualnetworkgateway.europe.id
+///   peer_virtual_network_gateway_id = azure_network_virtualnetworkgateway.us.id
+///   shared_key                      = "4-v3ry-53cr37-1p53c-5h4r3d-k3y"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -972,8 +1133,8 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 /// import com.pulumi.azure.network.inputs.VirtualNetworkGatewayIpConfigurationArgs;
 /// import com.pulumi.azure.network.VirtualNetworkGatewayConnection;
 /// import com.pulumi.azure.network.VirtualNetworkGatewayConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1222,12 +1383,14 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
   /// The authorization key associated with the Express Route Circuit. This field is required only if the type is an ExpressRoute connection.
   late final pulumi.Output<String?> authorizationKey;
+  /// If `true`, BGP (Border Gateway Protocol) is enabled for this connection. Defaults to `false`.
+  late final pulumi.Output<bool> bgpEnabled;
   /// Connection mode to use. Possible values are `Default`, `InitiatorOnly` and `ResponderOnly`. Defaults to `Default`. Changing this value will force a resource to be created.
   late final pulumi.Output<String?> connectionMode;
   /// The IKE protocol version to use. Possible values are `IKEv1` and `IKEv2`, values are `IKEv1` and `IKEv2`. Defaults to `IKEv2`. Changing this forces a new resource to be created.
   /// &gt; **Note:** Only valid for `IPSec` connections on virtual network gateways with SKU `VpnGw1`, `VpnGw2`, `VpnGw3`, `VpnGw1AZ`, `VpnGw2AZ` or `VpnGw3AZ`.
   late final pulumi.Output<String> connectionProtocol;
-  /// A `custom_bgp_addresses` block which is documented below.
+  /// A `customBgpAddresses` block which is documented below.
   /// The block can only be used on `IPSec` / `activeactive` connections,
   /// For details about see [the relevant section in the Azure documentation](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-aws-bgp).
   late final pulumi.Output<VirtualNetworkGatewayConnectionCustomBgpAddresses?> customBgpAddresses;
@@ -1235,7 +1398,6 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
   late final pulumi.Output<int?> dpdTimeoutSeconds;
   /// A list of the egress NAT Rule Ids.
   late final pulumi.Output<List<String>?> egressNatRuleIds;
-  /// If `true`, BGP (Border Gateway Protocol) is enabled for this connection. Defaults to `false`.
   late final pulumi.Output<bool> enableBgp;
   /// The ID of the Express Route Circuit when creating an ExpressRoute connection (i.e. when `type` is `ExpressRoute`). The Express Route Circuit can be in the same or in a different subscription. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> expressRouteCircuitId;
@@ -1243,7 +1405,7 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
   late final pulumi.Output<bool> expressRouteGatewayBypass;
   /// A list of the ingress NAT Rule Ids.
   late final pulumi.Output<List<String>?> ingressNatRuleIds;
-  /// A `ipsec_policy` block which is documented below.
+  /// A `ipsecPolicy` block which is documented below.
   /// Only a single policy can be defined for a connection. For details on
   /// custom policies refer to [the relevant section in the Azure documentation](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell).
   late final pulumi.Output<VirtualNetworkGatewayConnectionIpsecPolicy?> ipsecPolicy;
@@ -1257,7 +1419,7 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The ID of the peer virtual network gateway when creating a VNet-to-VNet connection (i.e. when `type` is `Vnet2Vnet`). The peer Virtual Network Gateway can be in the same or in a different subscription. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> peerVirtualNetworkGatewayId;
-  /// Bypass the Express Route gateway when accessing private-links. When enabled `express_route_gateway_bypass` must be set to `true`. Defaults to `false`.
+  /// Bypass the Express Route gateway when accessing private-links. When enabled `expressRouteGatewayBypass` must be set to `true`. Defaults to `false`.
   late final pulumi.Output<bool?> privateLinkFastPathEnabled;
   /// The name of the resource group in which to create the connection Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
@@ -1267,13 +1429,13 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
   late final pulumi.Output<String> sharedKey;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// One or more `traffic_selector_policy` blocks which are documented below.
-  /// A `traffic_selector_policy` allows to specify a traffic selector policy proposal to be used in a virtual network gateway connection.
+  /// One or more `trafficSelectorPolicy` blocks which are documented below.
+  /// A `trafficSelectorPolicy` allows to specify a traffic selector policy proposal to be used in a virtual network gateway connection.
   /// For details about traffic selectors refer to [the relevant section in the Azure documentation](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps).
   late final pulumi.Output<VirtualNetworkGatewayConnectionTrafficSelectorPolicy?> trafficSelectorPolicy;
   /// The type of connection. Valid options are `IPsec` (Site-to-Site), `ExpressRoute` (ExpressRoute), and `Vnet2Vnet` (VNet-to-VNet). Each connection type requires different mandatory arguments (refer to the examples above). Changing this forces a new resource to be created.
   late final pulumi.Output<String> type;
-  /// If `true`, policy-based traffic selectors are enabled for this connection. Enabling policy-based traffic selectors requires an `ipsec_policy` block. Defaults to `false`.
+  /// If `true`, policy-based traffic selectors are enabled for this connection. Enabling policy-based traffic selectors requires an `ipsecPolicy` block. Defaults to `false`.
   late final pulumi.Output<bool> usePolicyBasedTrafficSelectors;
   /// The ID of the Virtual Network Gateway in which the connection will be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualNetworkGatewayId;
@@ -1293,6 +1455,7 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authorizationKey = registerOutput<String?>('authorizationKey');
+    bgpEnabled = registerOutput<bool>('bgpEnabled');
     connectionMode = registerOutput<String?>('connectionMode');
     connectionProtocol = registerOutput<String>('connectionProtocol');
     customBgpAddresses = registerOutput<VirtualNetworkGatewayConnectionCustomBgpAddresses?>('customBgpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionCustomBgpAddresses.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1343,6 +1506,7 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authorizationKey = registerOutput<String?>('authorizationKey');
+    bgpEnabled = registerOutput<bool>('bgpEnabled');
     connectionMode = registerOutput<String?>('connectionMode');
     connectionProtocol = registerOutput<String>('connectionProtocol');
     customBgpAddresses = registerOutput<VirtualNetworkGatewayConnectionCustomBgpAddresses?>('customBgpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionCustomBgpAddresses.fromMap((guardedValue as Map).cast<String, dynamic>()); });

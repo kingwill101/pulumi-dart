@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'enhanced_validation.dart';
 import 'features.dart';
 
 /// Configuration values for the azure package.
@@ -97,7 +98,7 @@ class AzureConfig {
 
   bool get disableCorrelationRequestIdIsSecret => _isSecret('disableCorrelationRequestId');
 
-  /// This will disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+  /// This will disable the Terraform Partner ID which is used if a custom `partnerId` isn't specified.
   bool? get disableTerraformPartnerId {
     final raw = _raw('disableTerraformPartnerId');
     return (raw).toBool();
@@ -105,7 +106,14 @@ class AzureConfig {
 
   bool get disableTerraformPartnerIdIsSecret => _isSecret('disableTerraformPartnerId');
 
-  /// The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public. Not used and should not be specified when `metadata_host` is specified.
+  EnhancedValidation? get enhancedValidation {
+    final raw = _raw('enhancedValidation');
+    return (() { final guardedValue = raw; if (guardedValue == null) return null; return EnhancedValidation.fromMap((jsonDecode(guardedValue) as Map).cast<String, dynamic>()); })();
+  }
+
+  bool get enhancedValidationIsSecret => _isSecret('enhancedValidation');
+
+  /// The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public. Not used and should not be specified when `metadataHost` is specified.
   String? get environment {
     final raw = _raw('environment');
     return raw;
@@ -199,7 +207,7 @@ class AzureConfig {
 
   bool get resourceProviderRegistrationsIsSecret => _isSecret('resourceProviderRegistrations');
 
-  /// A list of Resource Providers to explicitly register for the subscription, in addition to those specified by the `resource_provider_registrations` property.
+  /// A list of Resource Providers to explicitly register for the subscription, in addition to those specified by the `resourceProviderRegistrations` property.
   List<String>? get resourceProvidersToRegisters {
     final raw = _raw('resourceProvidersToRegisters');
     return (() { final guardedValue = raw; if (guardedValue == null) return null; return (jsonDecode(guardedValue) as List).cast<String>(); })();
@@ -274,4 +282,3 @@ class AzureConfig {
 }
 
 const config = AzureConfig();
-

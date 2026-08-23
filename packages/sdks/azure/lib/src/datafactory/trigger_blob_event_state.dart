@@ -15,7 +15,7 @@ class TriggerBlobEventState {
   final pulumi.Input<String>? blobPathBeginsWith;
   /// The pattern that blob path ends with for trigger to fire.
   ///
-  /// &gt; **Note:** At least one of `blob_path_begins_with` and `blob_path_ends_with` must be set.
+  /// &gt; **Note:** At least one of `blobPathBeginsWith` and `blobPathEndsWith` must be set.
   final pulumi.Input<String>? blobPathEndsWith;
   /// The ID of Data Factory in which to associate the Trigger with. Changing this forces a new resource.
   final pulumi.Input<String>? dataFactoryId;
@@ -94,4 +94,3 @@ class TriggerBlobEventState {
     );
   }
 }
-

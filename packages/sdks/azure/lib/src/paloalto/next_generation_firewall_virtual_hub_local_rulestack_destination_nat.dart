@@ -5,9 +5,9 @@ import 'next_generation_firewall_virtual_hub_local_rulestack_destination_nat_bac
 import 'next_generation_firewall_virtual_hub_local_rulestack_destination_nat_frontend_config.dart';
 
 class NextGenerationFirewallVirtualHubLocalRulestackDestinationNat {
-  /// A `backend_config` block as defined above.
+  /// A `backendConfig` block as defined above.
   final pulumi.Input<NextGenerationFirewallVirtualHubLocalRulestackDestinationNatBackendConfig>? backendConfig;
-  /// A `frontend_config` block as defined below.
+  /// A `frontendConfig` block as defined below.
   final pulumi.Input<NextGenerationFirewallVirtualHubLocalRulestackDestinationNatFrontendConfig>? frontendConfig;
   /// The name which should be used for this NAT.
   final pulumi.Input<String> name;
@@ -15,8 +15,8 @@ class NextGenerationFirewallVirtualHubLocalRulestackDestinationNat {
   final pulumi.Input<String> protocol;
 
   /// Creates a new [NextGenerationFirewallVirtualHubLocalRulestackDestinationNat].
-  /// [backendConfig] A `backend_config` block as defined above.
-  /// [frontendConfig] A `frontend_config` block as defined below.
+  /// [backendConfig] A `backendConfig` block as defined above.
+  /// [frontendConfig] A `frontendConfig` block as defined below.
   /// [name] The name which should be used for this NAT.
   /// [protocol] The protocol used for this Destination NAT. Possible values include `TCP` and `UDP`.
   const NextGenerationFirewallVirtualHubLocalRulestackDestinationNat({
@@ -44,4 +44,3 @@ class NextGenerationFirewallVirtualHubLocalRulestackDestinationNat {
     );
   }
 }
-

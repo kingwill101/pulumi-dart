@@ -244,6 +244,53 @@ import 'snapshot_policy_weekly_schedule.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "resource-group-01"
+///   location = "East US"
+/// }
+/// resource "azure_netapp_account" "example" {
+///   name                = "netappaccount-01"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_netapp_snapshotpolicy" "example" {
+///   name                = "snapshotpolicy-01"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   account_name        = azure_netapp_account.example.name
+///   enabled             = true
+///   hourly_schedule = {
+///     snapshots_to_keep = 4
+///     minute            = 15
+///   }
+///   daily_schedule = {
+///     snapshots_to_keep = 2
+///     hour              = 20
+///     minute            = 15
+///   }
+///   weekly_schedule = {
+///     snapshots_to_keep = 1
+///     days_of_weeks     = ["Monday", "Friday"]
+///     hour              = 23
+///     minute            = 0
+///   }
+///   monthly_schedule = {
+///     snapshots_to_keep = 1
+///     days_of_months    = [1, 15, 20, 30]
+///     hour              = 5
+///     minute            = 45
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -260,8 +307,8 @@ import 'snapshot_policy_weekly_schedule.dart';
 /// import com.pulumi.azure.netapp.inputs.SnapshotPolicyDailyScheduleArgs;
 /// import com.pulumi.azure.netapp.inputs.SnapshotPolicyWeeklyScheduleArgs;
 /// import com.pulumi.azure.netapp.inputs.SnapshotPolicyMonthlyScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -376,7 +423,7 @@ import 'snapshot_policy_weekly_schedule.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 ///
 /// ## Import
 ///
@@ -388,15 +435,15 @@ import 'snapshot_policy_weekly_schedule.dart';
 class SnapshotPolicy extends pulumi.CustomResource {
   /// The name of the NetApp Account in which the NetApp Snapshot Policy should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-  /// Sets a daily snapshot schedule. A `daily_schedule` block as defined below.
+  /// Sets a daily snapshot schedule. A `dailySchedule` block as defined below.
   late final pulumi.Output<SnapshotPolicyDailySchedule?> dailySchedule;
   /// Defines that the NetApp Snapshot Policy is enabled or not.
   late final pulumi.Output<bool> enabled;
-  /// Sets an hourly snapshot schedule. A `hourly_schedule` block as defined below.
+  /// Sets an hourly snapshot schedule. A `hourlySchedule` block as defined below.
   late final pulumi.Output<SnapshotPolicyHourlySchedule?> hourlySchedule;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// Sets a monthly snapshot schedule. A `monthly_schedule` block as defined below.
+  /// Sets a monthly snapshot schedule. A `monthlySchedule` block as defined below.
   late final pulumi.Output<SnapshotPolicyMonthlySchedule?> monthlySchedule;
   /// The name of the NetApp Snapshot Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
@@ -404,7 +451,7 @@ class SnapshotPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Sets a weekly snapshot schedule. A `weekly_schedule` block as defined below.
+  /// Sets a weekly snapshot schedule. A `weeklySchedule` block as defined below.
   late final pulumi.Output<SnapshotPolicyWeeklySchedule?> weeklySchedule;
 
   /// Creates a new [SnapshotPolicy].

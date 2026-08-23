@@ -134,6 +134,37 @@ import 'subscription_policy_exemption_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "example" {
+/// }
+/// data "azure_policy_getpolicysetdefinition" "exampleGetPolicySetDefinition" {
+///   display_name = "Audit machines with insecure password security settings"
+/// }
+///
+/// resource "azure_core_subscriptionpolicyassignment" "example" {
+///   name                 = "exampleAssignment"
+///   subscription_id      = data.azure_core_getsubscription.example.id
+///   policy_definition_id = data.azure_policy_getpolicysetdefinition.exampleGetPolicySetDefinition.id
+///   location             = "westus"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_core_subscriptionpolicyexemption" "example" {
+///   name                 = "exampleExemption"
+///   subscription_id      = data.azure_core_getsubscription.example.id
+///   policy_assignment_id = azure_core_subscriptionpolicyassignment.example.id
+///   exemption_category   = "Mitigated"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -149,8 +180,8 @@ import 'subscription_policy_exemption_state.dart';
 /// import com.pulumi.azure.core.inputs.SubscriptionPolicyAssignmentIdentityArgs;
 /// import com.pulumi.azure.core.SubscriptionPolicyExemption;
 /// import com.pulumi.azure.core.SubscriptionPolicyExemptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

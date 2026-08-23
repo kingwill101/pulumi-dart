@@ -134,6 +134,37 @@ import 'product_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getservice" "example" {
+///   name                = "example-api"
+///   resource_group_name = "example-resources"
+/// }
+/// data "azure_apimanagement_getproduct" "exampleGetProduct" {
+///   product_id          = "my-product"
+///   api_management_name = data.azure_apimanagement_getservice.example.name
+///   resource_group_name = data.azure_apimanagement_getservice.example.resource_group_name
+/// }
+/// data "azure_apimanagement_getgroup" "exampleGetGroup" {
+///   name                = "my-group"
+///   api_management_name = data.azure_apimanagement_getservice.example.name
+///   resource_group_name = data.azure_apimanagement_getservice.example.resource_group_name
+/// }
+///
+/// resource "azure_apimanagement_productgroup" "example" {
+///   product_id          = data.azure_apimanagement_getproduct.exampleGetProduct.product_id
+///   group_name          = data.azure_apimanagement_getgroup.exampleGetGroup.name
+///   api_management_name = data.azure_apimanagement_getservice.example.name
+///   resource_group_name = data.azure_apimanagement_getservice.example.resource_group_name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +177,8 @@ import 'product_group_state.dart';
 /// import com.pulumi.azure.apimanagement.inputs.GetGroupArgs;
 /// import com.pulumi.azure.apimanagement.ProductGroup;
 /// import com.pulumi.azure.apimanagement.ProductGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

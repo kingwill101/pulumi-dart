@@ -4,7 +4,7 @@ import 'static_web_app_custom_domain_state.dart';
 
 /// Manages a Static Web App Custom Domain.
 ///
-/// !&gt; **Note:** DNS validation polling is only done for CNAME records, terraform will not validate TXT validation records are complete.
+/// &gt; **Note:** DNS validation polling is only done for CNAME records, terraform will not validate TXT validation records are complete.
 ///
 /// ## Example Usage
 ///
@@ -162,6 +162,37 @@ import 'static_web_app_custom_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_staticwebapp" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_dns_cnamerecord" "example" {
+///   name                = "my-domain"
+///   zone_name           = "contoso.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ttl                 = 300
+///   record              = azure_appservice_staticwebapp.example.default_host_name
+/// }
+/// resource "azure_appservice_staticwebappcustomdomain" "example" {
+///   static_web_app_id = azure_appservice_staticwebapp.example.id
+///   domain_name       ="${azure_dns_cnamerecord.example.name}.${azure_dns_cnamerecord.example.zone_name}"
+///   validation_type   = "cname-delegation"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -176,8 +207,8 @@ import 'static_web_app_custom_domain_state.dart';
 /// import com.pulumi.azure.dns.CNameRecordArgs;
 /// import com.pulumi.azure.appservice.StaticWebAppCustomDomain;
 /// import com.pulumi.azure.appservice.StaticWebAppCustomDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -407,6 +438,39 @@ import 'static_web_app_custom_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_staticwebapp" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_appservice_staticwebappcustomdomain" "example" {
+///   static_web_app_id = azure_appservice_staticwebapp.example.id
+///   domain_name       = "my-domain.contoso.com"
+///   validation_type   = "dns-txt-token"
+/// }
+/// resource "azure_dns_txtrecord" "example" {
+///   name                = "_dnsauth.my-domain"
+///   zone_name           = "contoso.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ttl                 = 300
+///   records {
+///     value = azure_appservice_staticwebappcustomdomain.example.validation_token
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -422,8 +486,8 @@ import 'static_web_app_custom_domain_state.dart';
 /// import com.pulumi.azure.dns.TxtRecord;
 /// import com.pulumi.azure.dns.TxtRecordArgs;
 /// import com.pulumi.azure.dns.inputs.TxtRecordRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -524,7 +588,7 @@ class StaticWebAppCustomDomain extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Apex domains must use `dns-txt-token` validation.
   ///
-  /// &gt; **Note:** Validation using `dns-txt-token` is performed asynchronously and Terraform does not wait for the validation process to be successful before marking the resource as created successfully. Please ensure that the appropriate TXT record is created using the `validation_token` value for this to complete out of band.
+  /// &gt; **Note:** Validation using `dns-txt-token` is performed asynchronously and Terraform does not wait for the validation process to be successful before marking the resource as created successfully. Please ensure that the appropriate TXT record is created using the `validationToken` value for this to complete out of band.
   late final pulumi.Output<String> validationType;
 
   /// Creates a new [StaticWebAppCustomDomain].

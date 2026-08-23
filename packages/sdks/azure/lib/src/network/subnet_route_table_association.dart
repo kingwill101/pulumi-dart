@@ -202,6 +202,47 @@ import 'subnet_route_table_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-network"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "frontend"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_routetable" "example" {
+///   name                = "example-routetable"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   routes {
+///     name                   = "example"
+///     address_prefix         = "10.100.0.0/14"
+///     next_hop_type          = "VirtualAppliance"
+///     next_hop_in_ip_address = "10.10.1.1"
+///   }
+/// }
+/// resource "azure_network_subnetroutetableassociation" "example" {
+///   subnet_id      = azure_network_subnet.example.id
+///   route_table_id = azure_network_routetable.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -219,8 +260,8 @@ import 'subnet_route_table_association_state.dart';
 /// import com.pulumi.azure.network.inputs.RouteTableRouteArgs;
 /// import com.pulumi.azure.network.SubnetRouteTableAssociation;
 /// import com.pulumi.azure.network.SubnetRouteTableAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -334,7 +375,7 @@ import 'subnet_route_table_association_state.dart';
 class SubnetRouteTableAssociation extends pulumi.CustomResource {
   /// The ID of the Route Table which should be associated with the Subnet. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Use this resource only when the subnet is managed as a standalone `azure.network.Subnet`. If the subnet is declared inline inside `azure.network.VirtualNetwork`, set `route_table_id` in the inline `subnet` block and do not create this association for the same subnet.
+  /// &gt; **Note:** Use this resource only when the subnet is managed as a standalone `azure.network.Subnet`. If the subnet is declared inline inside `azure.network.VirtualNetwork`, set `routeTableId` in the inline `subnet` block and do not create this association for the same subnet.
   late final pulumi.Output<String> routeTableId;
   /// The ID of the Subnet. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subnetId;

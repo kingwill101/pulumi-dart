@@ -12,6 +12,8 @@ class GetKubernetesClusterNetworkProfile {
   final pulumi.Input<String> networkPlugin;
   /// Network policy to be used with Azure CNI. e.g. `calico` or `azure`
   final pulumi.Input<String> networkPolicy;
+  /// The outbound (egress) routing method which is used for cluster egress traffic.
+  final pulumi.Input<String> outboundType;
   /// The CIDR used for pod IP addresses.
   final pulumi.Input<String> podCidr;
   /// Network range used by the Kubernetes service.
@@ -23,6 +25,7 @@ class GetKubernetesClusterNetworkProfile {
   /// [loadBalancerSku] Required.
   /// [networkPlugin] Network plugin used such as `azure` or `kubenet`.
   /// [networkPolicy] Network policy to be used with Azure CNI. e.g. `calico` or `azure`
+  /// [outboundType] The outbound (egress) routing method which is used for cluster egress traffic.
   /// [podCidr] The CIDR used for pod IP addresses.
   /// [serviceCidr] Network range used by the Kubernetes service.
   const GetKubernetesClusterNetworkProfile({
@@ -31,6 +34,7 @@ class GetKubernetesClusterNetworkProfile {
     required this.loadBalancerSku,
     required this.networkPlugin,
     required this.networkPolicy,
+    required this.outboundType,
     required this.podCidr,
     required this.serviceCidr,
   });
@@ -42,6 +46,7 @@ class GetKubernetesClusterNetworkProfile {
       'loadBalancerSku': loadBalancerSku,
       'networkPlugin': networkPlugin,
       'networkPolicy': networkPolicy,
+      'outboundType': outboundType,
       'podCidr': podCidr,
       'serviceCidr': serviceCidr,
     };
@@ -54,9 +59,9 @@ class GetKubernetesClusterNetworkProfile {
       loadBalancerSku: pulumi.Input.fromValue(map['loadBalancerSku'] as String),
       networkPlugin: pulumi.Input.fromValue(map['networkPlugin'] as String),
       networkPolicy: pulumi.Input.fromValue(map['networkPolicy'] as String),
+      outboundType: pulumi.Input.fromValue(map['outboundType'] as String),
       podCidr: pulumi.Input.fromValue(map['podCidr'] as String),
       serviceCidr: pulumi.Input.fromValue(map['serviceCidr'] as String),
     );
   }
 }
-

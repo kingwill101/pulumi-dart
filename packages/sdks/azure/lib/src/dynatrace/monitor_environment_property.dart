@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'monitor_environment_property_environment_info.dart';
 
 class MonitorEnvironmentProperty {
-  /// Information about the Dynatrace environment. An `environment_info` block as defined below.
+  /// Information about the Dynatrace environment. An `environmentInfo` block as defined below.
   final pulumi.Input<List<MonitorEnvironmentPropertyEnvironmentInfo>> environmentInfos;
 
   /// Creates a new [MonitorEnvironmentProperty].
-  /// [environmentInfos] Information about the Dynatrace environment. An `environment_info` block as defined below.
+  /// [environmentInfos] Information about the Dynatrace environment. An `environmentInfo` block as defined below.
   const MonitorEnvironmentProperty({
     required this.environmentInfos,
   });
@@ -25,4 +25,3 @@ class MonitorEnvironmentProperty {
     );
   }
 }
-

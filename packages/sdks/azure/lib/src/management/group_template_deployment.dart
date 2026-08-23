@@ -248,6 +248,27 @@ import 'group_template_deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_management_getgroup" "example" {
+///   name = "00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// resource "azure_management_grouptemplatedeployment" "example" {
+///   name                = "example"
+///   location            = "West Europe"
+///   management_group_id = data.azure_management_getgroup.example.id
+///   template_content    = "{\n  \\\"$schema\\\": \\\"https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#\\\",\n  \\\"contentVersion\\\": \\\"1.0.0.0\\\",\n  \\\"parameters\\\": {\n    \\\"policyAssignmentName\\\": {\n      \\\"type\\\": \\\"string\\\",\n      \\\"defaultValue\\\": \\\"[guid(parameters('policyDefinitionID'), resourceGroup().name)]\\\",\n      \\\"metadata\\\": {\n        \\\"description\\\": \\\"Specifies the name of the policy assignment, can be used defined or an idempotent name as the defaultValue provides.\\\"\n      }\n    },\n    \\\"policyDefinitionID\\\": {\n      \\\"type\\\": \\\"string\\\",\n      \\\"metadata\\\": {\n        \\\"description\\\": \\\"Specifies the ID of the policy definition or policy set definition being assigned.\\\"\n      }\n    }\n  },\n  \\\"resources\\\": [\n    {\n      \\\"type\\\": \\\"Microsoft.Authorization/policyAssignments\\\",\n      \\\"name\\\": \\\"[parameters('policyAssignmentName')]\\\",\n      \\\"apiVersion\\\": \\\"2019-09-01\\\",\n      \\\"properties\\\": {\n        \\\"scope\\\": \\\"[subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)]\\\",\n        \\\"policyDefinitionId\\\": \\\"[parameters('policyDefinitionID')]\\\"\n      }\n    }\n  ]\n}\n"
+///   parameters_content  = "{\n  \\\"$schema\\\": \\\"https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#\\\",\n  \\\"contentVersion\\\": \\\"1.0.0.0\\\",\n  \\\"parameters\\\": {\n    \\\"policyDefinitionID\\\": {\n      \\\"value\\\": \\\"/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a\\\"\n    }\n  }\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -258,8 +279,8 @@ import 'group_template_deployment_state.dart';
 /// import com.pulumi.azure.management.inputs.GetGroupArgs;
 /// import com.pulumi.azure.management.GroupTemplateDeployment;
 /// import com.pulumi.azure.management.GroupTemplateDeploymentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -494,6 +515,30 @@ import 'group_template_deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_management_getgroup" "example" {
+///   name = "00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// resource "azure_management_grouptemplatedeployment" "example" {
+///   name                = "example"
+///   location            = "West Europe"
+///   management_group_id = data.azure_management_getgroup.example.id
+///   template_content    = file("templates/example-deploy-template.json")
+///   parameters_content  = file("templates/example-deploy-params.json")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -506,8 +551,8 @@ import 'group_template_deployment_state.dart';
 /// import com.pulumi.azure.management.GroupTemplateDeploymentArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -670,6 +715,31 @@ import 'group_template_deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_management_getgroup" "example" {
+///   name = "00000000-0000-0000-0000-000000000000"
+/// }
+/// data "azure_core_gettemplatespecversion" "exampleGetTemplateSpecVersion" {
+///   name                = "exampleTemplateForManagementGroup"
+///   resource_group_name = "exampleResourceGroup"
+///   version             = "v1.0.9"
+/// }
+///
+/// resource "azure_management_grouptemplatedeployment" "example" {
+///   name                     = "example"
+///   location                 = "West Europe"
+///   management_group_id      = data.azure_management_getgroup.example.id
+///   template_spec_version_id = data.azure_core_gettemplatespecversion.exampleGetTemplateSpecVersion.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -682,8 +752,8 @@ import 'group_template_deployment_state.dart';
 /// import com.pulumi.azure.core.inputs.GetTemplateSpecVersionArgs;
 /// import com.pulumi.azure.management.GroupTemplateDeployment;
 /// import com.pulumi.azure.management.GroupTemplateDeploymentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -763,9 +833,9 @@ class GroupTemplateDeployment extends pulumi.CustomResource {
   late final pulumi.Output<String> parametersContent;
   /// A mapping of tags which should be assigned to the Template.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `template_spec_version_id`.
+  /// The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `templateSpecVersionId`.
   late final pulumi.Output<String> templateContent;
-  /// The ID of the Template Spec Version to deploy. Cannot be specified with `template_content`.
+  /// The ID of the Template Spec Version to deploy. Cannot be specified with `templateContent`.
   late final pulumi.Output<String?> templateSpecVersionId;
 
   /// Creates a new [GroupTemplateDeployment].

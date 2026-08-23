@@ -23,7 +23,6 @@ import 'vault_state.dart';
 ///     location: example.location,
 ///     resourceGroupName: example.name,
 ///     sku: "Standard",
-///     softDeleteEnabled: true,
 /// });
 /// ```
 /// ```python
@@ -37,8 +36,7 @@ import 'vault_state.dart';
 ///     name="example-recovery-vault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
-///     sku="Standard",
-///     soft_delete_enabled=True)
+///     sku="Standard")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -60,7 +58,6 @@ import 'vault_state.dart';
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
 ///         Sku = "Standard",
-///         SoftDeleteEnabled = true,
 ///     });
 ///
 /// });
@@ -88,13 +85,32 @@ import 'vault_state.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			Sku:               pulumi.String("Standard"),
-/// 			SoftDeleteEnabled: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tfex-recovery_vault"
+///   location = "West Europe"
+/// }
+/// resource "azure_recoveryservices_vault" "vault" {
+///   name                = "example-recovery-vault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
 /// }
 /// ```
 /// ```java
@@ -107,8 +123,8 @@ import 'vault_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.recoveryservices.Vault;
 /// import com.pulumi.azure.recoveryservices.VaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -130,7 +146,6 @@ import 'vault_state.dart';
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
 ///             .sku("Standard")
-///             .softDeleteEnabled(true)
 ///             .build());
 ///
 ///     }
@@ -150,7 +165,6 @@ import 'vault_state.dart';
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
 ///       sku: Standard
-///       softDeleteEnabled: true
 /// ```
 ///
 ///
@@ -159,7 +173,7 @@ import 'vault_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.RecoveryServices` - 2024-04-01, 2024-01-01
+/// * `Microsoft.RecoveryServices` - 2025-08-01, 2024-04-01
 ///
 /// ## Import
 ///
@@ -171,13 +185,13 @@ import 'vault_state.dart';
 class Vault extends pulumi.CustomResource {
   /// Whether to enable the Classic experience for VMware replication. If set to `false` VMware machines will be protected using the new stateless ASR replication appliance. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> classicVmwareReplicationEnabled;
-  /// Is cross region restore enabled for this Vault? Only can be `true`, when `storage_mode_type` is `GeoRedundant`. Defaults to `false`.
+  /// Is cross region restore enabled for this Vault? Only can be `true`, when `storageModeType` is `GeoRedundant`. Defaults to `false`.
   ///
-  /// &gt; **Note:** Once `cross_region_restore_enabled` is set to `true`, changing it back to `false` forces a new Recovery Service Vault to be created.
+  /// &gt; **Note:** Once `crossRegionRestoreEnabled` is set to `true`, changing it back to `false` forces a new Recovery Service Vault to be created.
   late final pulumi.Output<bool?> crossRegionRestoreEnabled;
   /// An `encryption` block as defined below. Required with `identity`.
   ///
-  /// !&gt; **Note:** Once Encryption with your own key has been Enabled it's not possible to Disable it.
+  /// &gt; **Note:** Once Encryption with your own key has been Enabled it's not possible to Disable it.
   late final pulumi.Output<VaultEncryption?> encryption;
   /// An `identity` block as defined below.
   late final pulumi.Output<VaultIdentity?> identity;
@@ -197,7 +211,6 @@ class Vault extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// Sets the vault's SKU. Possible values include: `Standard`, `RS0`.
   late final pulumi.Output<String> sku;
-  /// Is soft delete enable for this Vault? Defaults to `true`.
   late final pulumi.Output<bool?> softDeleteEnabled;
   /// The storage type of the Recovery Services Vault. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Defaults to `GeoRedundant`.
   late final pulumi.Output<String?> storageModeType;

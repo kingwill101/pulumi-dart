@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultIdentity {
   /// A list of User Assigned Managed Identity IDs to be assigned to this App Configuration.
   ///
-  /// &gt; **Note:** `identity_ids` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
+  /// &gt; **Note:** `identityIds` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
   final pulumi.Input<List<String>>? identityIds;
   /// The Principal ID associated with this Managed Service Identity.
   final pulumi.Input<String>? principalId;
@@ -44,4 +44,3 @@ class VaultIdentity {
     );
   }
 }
-

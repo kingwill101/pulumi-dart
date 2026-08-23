@@ -136,6 +136,35 @@ import 'integration_account_partner_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_logicapps_integrationaccount" "example" {
+///   name                = "example-ia"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Standard"
+/// }
+/// resource "azure_logicapps_integrationaccountpartner" "example" {
+///   name                     = "example-iap"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   integration_account_name = azure_logicapps_integrationaccount.example.name
+///   business_identities {
+///     qualifier = "ZZ"
+///     value     = "AA"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -149,8 +178,8 @@ import 'integration_account_partner_state.dart';
 /// import com.pulumi.azure.logicapps.IntegrationAccountPartner;
 /// import com.pulumi.azure.logicapps.IntegrationAccountPartnerArgs;
 /// import com.pulumi.azure.logicapps.inputs.IntegrationAccountPartnerBusinessIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -230,7 +259,7 @@ import 'integration_account_partner_state.dart';
 /// $ pulumi import azure:logicapps/integrationAccountPartner:IntegrationAccountPartner example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Logic/integrationAccounts/account1/partners/partner1
 /// ```
 class IntegrationAccountPartner extends pulumi.CustomResource {
-  /// A `business_identity` block as documented below.
+  /// A `businessIdentity` block as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> businessIdentities;
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Partner to be created.
   late final pulumi.Output<String> integrationAccountName;

@@ -11,7 +11,7 @@ class ConnectedRegistryState {
   final pulumi.Input<List<String>>? clientTokenIds;
   /// The ID of the Container Registry that this Connected Registry will reside in. Changing this forces a new Container Connected Registry to be created.
   ///
-  /// &gt; **Note:** If `parent_registry_id` is not specified, the Connected Registry will be connected to the Container Registry identified by `container_registry_id`.
+  /// &gt; **Note:** If `parentRegistryId` is not specified, the Connected Registry will be connected to the Container Registry identified by `containerRegistryId`.
   final pulumi.Input<String>? containerRegistryId;
   /// The verbosity of the logs. Possible values are `None`, `Debug`, `Information`, `Warning` and `Error`. Defaults to `None`.
   final pulumi.Input<String>? logLevel;
@@ -94,4 +94,3 @@ class ConnectedRegistryState {
     );
   }
 }
-

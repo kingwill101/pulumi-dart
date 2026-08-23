@@ -6,20 +6,20 @@ import 'security_device_group_range_rule.dart';
 
 /// Input properties used for looking up and filtering SecurityDeviceGroup resources.
 class SecurityDeviceGroupState {
-  /// an `allow_rule` blocks as defined below.
+  /// an `allowRule` blocks as defined below.
   final pulumi.Input<SecurityDeviceGroupAllowRule>? allowRule;
   /// The ID of the IoT Hub which to link the Security Device Group to. Changing this forces a new resource to be created.
   final pulumi.Input<String>? iothubId;
   /// Specifies the name of the Device Security Group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// One or more `range_rule` blocks as defined below.
+  /// One or more `rangeRule` blocks as defined below.
   final pulumi.Input<List<SecurityDeviceGroupRangeRule>>? rangeRules;
 
   /// Creates a new [SecurityDeviceGroupState].
-  /// [allowRule] an `allow_rule` blocks as defined below.
+  /// [allowRule] an `allowRule` blocks as defined below.
   /// [iothubId] The ID of the IoT Hub which to link the Security Device Group to. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Device Security Group. Changing this forces a new resource to be created.
-  /// [rangeRules] One or more `range_rule` blocks as defined below.
+  /// [rangeRules] One or more `rangeRule` blocks as defined below.
   const SecurityDeviceGroupState({
     this.allowRule,
     this.iothubId,
@@ -45,4 +45,3 @@ class SecurityDeviceGroupState {
     );
   }
 }
-

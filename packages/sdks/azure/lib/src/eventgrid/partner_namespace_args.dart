@@ -8,7 +8,7 @@ import 'partner_namespace_inbound_ip_rule.dart';
 /// {@endtemplate}
 /// {@macro pulumi_eventgrid_partner_namespace_partner_namespace_args_doc}
 class PartnerNamespaceArgs {
-  /// One or more `inbound_ip_rule` blocks as defined below.
+  /// One or more `inboundIpRule` blocks as defined below.
   final pulumi.Input<List<PartnerNamespaceInboundIpRule>>? inboundIpRules;
   /// Whether local authentication methods are enabled for the Event Grid Partner Namespace. Defaults to `true`.
   final pulumi.Input<bool>? localAuthenticationEnabled;
@@ -28,7 +28,7 @@ class PartnerNamespaceArgs {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [PartnerNamespaceArgs].
-  /// [inboundIpRules] One or more `inbound_ip_rule` blocks as defined below.
+  /// [inboundIpRules] One or more `inboundIpRule` blocks as defined below.
   /// [localAuthenticationEnabled] Whether local authentication methods are enabled for the Event Grid Partner Namespace. Defaults to `true`.
   /// [location] Specifies the Azure Region where the Event Grid Partner Namespace exists. Changing this forces a new resource to be created.
   /// [name] The name which should be used for this Event Grid Partner Namespace. Changing this forces a new Event Grid Partner Namespace to be created.
@@ -77,4 +77,3 @@ class PartnerNamespaceArgs {
     );
   }
 }
-

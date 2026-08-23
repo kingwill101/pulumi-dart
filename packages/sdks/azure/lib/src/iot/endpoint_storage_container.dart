@@ -210,6 +210,52 @@ import 'endpoint_storage_container_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "acctestcont"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_iot_iothub" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku = {
+///     name     = "S1"
+///     capacity = "1"
+///   }
+/// }
+/// resource "azure_iot_endpointstoragecontainer" "example" {
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   iothub_id                  = azure_iot_iothub.example.id
+///   name                       = "acctest"
+///   container_name             = "acctestcont"
+///   connection_string          = azure_storage_account.example.primary_blob_connection_string
+///   file_name_format           = "{iothub}/{partition}_{YYYY}_{MM}_{DD}_{HH}_{mm}"
+///   batch_frequency_in_seconds = 60
+///   max_chunk_size_in_bytes    = 10485760
+///   encoding                   = "JSON"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -227,8 +273,8 @@ import 'endpoint_storage_container_state.dart';
 /// import com.pulumi.azure.iot.inputs.IoTHubSkuArgs;
 /// import com.pulumi.azure.iot.EndpointStorageContainer;
 /// import com.pulumi.azure.iot.EndpointStorageContainerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,19 +391,19 @@ class EndpointStorageContainer extends pulumi.CustomResource {
   late final pulumi.Output<String?> authenticationType;
   /// Time interval at which blobs are written to storage. Value should be between 60 and 720 seconds. Default value is 300 seconds.
   late final pulumi.Output<int?> batchFrequencyInSeconds;
-  /// The connection string for the endpoint. This attribute can only be specified and is mandatory when `authentication_type` is `keyBased`.
+  /// The connection string for the endpoint. This attribute can only be specified and is mandatory when `authenticationType` is `keyBased`.
   late final pulumi.Output<String?> connectionString;
   /// The name of storage container in the storage account.
   late final pulumi.Output<String> containerName;
   /// Encoding that is used to serialize messages to blobs. Supported values are `Avro`, `AvroDeflate` and `JSON`. Default value is `Avro`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> encoding;
-  /// URI of the Storage Container endpoint. This corresponds to the `primary_blob_endpoint` of the parent storage account. This attribute can only be specified and is mandatory when `authentication_type` is `identityBased`.
+  /// URI of the Storage Container endpoint. This corresponds to the `primaryBlobEndpoint` of the parent storage account. This attribute can only be specified and is mandatory when `authenticationType` is `identityBased`.
   late final pulumi.Output<String?> endpointUri;
   /// File name format for the blob. All parameters are mandatory but can be reordered. Defaults to `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`.
   late final pulumi.Output<String?> fileNameFormat;
   /// ID of the User Managed Identity used to authenticate against the storage endpoint.
   ///
-  /// &gt; **Note:** `identity_id` can only be specified when `authentication_type` is `identityBased`. It must be one of the `identity_ids` of the Iot Hub. If not specified when `authentication_type` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
+  /// &gt; **Note:** `identityId` can only be specified when `authenticationType` is `identityBased`. It must be one of the `identityIds` of the Iot Hub. If not specified when `authenticationType` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
   late final pulumi.Output<String?> identityId;
   /// The IoTHub ID for the endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubId;
@@ -369,7 +415,7 @@ class EndpointStorageContainer extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// The subscription ID for the endpoint.
   ///
-  /// &gt; **Note:** When `subscription_id` isn't specified it will be set to the subscription ID of the IoT Hub resource.
+  /// &gt; **Note:** When `subscriptionId` isn't specified it will be set to the subscription ID of the IoT Hub resource.
   late final pulumi.Output<String> subscriptionId;
 
   /// Creates a new [EndpointStorageContainer].

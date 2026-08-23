@@ -13,15 +13,15 @@ import 'integration_runtime_ssis_vnet_integration.dart';
 
 /// Input properties used for looking up and filtering IntegrationRuntimeSsis resources.
 class IntegrationRuntimeSsisState {
-  /// A `catalog_info` block as defined below.
+  /// A `catalogInfo` block as defined below.
   final pulumi.Input<IntegrationRuntimeSsisCatalogInfo>? catalogInfo;
-  /// One `copy_compute_scale` block as defined below.
+  /// One `copyComputeScale` block as defined below.
   final pulumi.Input<IntegrationRuntimeSsisCopyComputeScale>? copyComputeScale;
   /// The name of a Data Factory Credential that the SSIS integration will use to access data sources. For example, `azure.datafactory.CredentialUserManagedIdentity`
   ///
-  /// &gt; **Note:** If `credential_name` is omitted, the integration runtime will use the Data Factory assigned identity.
+  /// &gt; **Note:** If `credentialName` is omitted, the integration runtime will use the Data Factory assigned identity.
   final pulumi.Input<String>? credentialName;
-  /// A `custom_setup_script` block as defined below.
+  /// A `customSetupScript` block as defined below.
   final pulumi.Input<IntegrationRuntimeSsisCustomSetupScript>? customSetupScript;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String>? dataFactoryId;
@@ -29,9 +29,9 @@ class IntegrationRuntimeSsisState {
   final pulumi.Input<String>? description;
   /// The Azure-SSIS Integration Runtime edition. Valid values are `Standard` and `Enterprise`. Defaults to `Standard`.
   final pulumi.Input<String>? edition;
-  /// An `express_custom_setup` block as defined below.
+  /// An `expressCustomSetup` block as defined below.
   final pulumi.Input<IntegrationRuntimeSsisExpressCustomSetup>? expressCustomSetup;
-  /// A `express_vnet_integration` block as defined below.
+  /// A `expressVnetIntegration` block as defined below.
   final pulumi.Input<IntegrationRuntimeSsisExpressVnetIntegration>? expressVnetIntegration;
   /// The type of the license that is used. Valid values are `LicenseIncluded` and `BasePrice`. Defaults to `LicenseIncluded`.
   final pulumi.Input<String>? licenseType;
@@ -45,35 +45,35 @@ class IntegrationRuntimeSsisState {
   final pulumi.Input<String>? nodeSize;
   /// Number of nodes for the Azure-SSIS Integration Runtime. Max is `10`. Defaults to `1`.
   final pulumi.Input<int>? numberOfNodes;
-  /// One or more `package_store` block as defined below.
+  /// One or more `packageStore` block as defined below.
   final pulumi.Input<List<IntegrationRuntimeSsisPackageStore>>? packageStores;
-  /// One `pipeline_external_compute_scale` block as defined below.
+  /// One `pipelineExternalComputeScale` block as defined below.
   final pulumi.Input<IntegrationRuntimeSsisPipelineExternalComputeScale>? pipelineExternalComputeScale;
   /// A `proxy` block as defined below.
   final pulumi.Input<IntegrationRuntimeSsisProxy>? proxy;
-  /// A `vnet_integration` block as defined below.
+  /// A `vnetIntegration` block as defined below.
   final pulumi.Input<IntegrationRuntimeSsisVnetIntegration>? vnetIntegration;
 
   /// Creates a new [IntegrationRuntimeSsisState].
-  /// [catalogInfo] A `catalog_info` block as defined below.
-  /// [copyComputeScale] One `copy_compute_scale` block as defined below.
+  /// [catalogInfo] A `catalogInfo` block as defined below.
+  /// [copyComputeScale] One `copyComputeScale` block as defined below.
   /// [credentialName] The name of a Data Factory Credential that the SSIS integration will use to access data sources. For example, `azure.datafactory.CredentialUserManagedIdentity`
-  /// [customSetupScript] A `custom_setup_script` block as defined below.
+  /// [customSetupScript] A `customSetupScript` block as defined below.
   /// [dataFactoryId] The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   /// [description] Integration runtime description.
   /// [edition] The Azure-SSIS Integration Runtime edition. Valid values are `Standard` and `Enterprise`. Defaults to `Standard`.
-  /// [expressCustomSetup] An `express_custom_setup` block as defined below.
-  /// [expressVnetIntegration] A `express_vnet_integration` block as defined below.
+  /// [expressCustomSetup] An `expressCustomSetup` block as defined below.
+  /// [expressVnetIntegration] A `expressVnetIntegration` block as defined below.
   /// [licenseType] The type of the license that is used. Valid values are `LicenseIncluded` and `BasePrice`. Defaults to `LicenseIncluded`.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [maxParallelExecutionsPerNode] Defines the maximum parallel executions per node. Defaults to `1`. Max is `1`.
   /// [name] Specifies the name of the Azure-SSIS Integration Runtime. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [nodeSize] The size of the nodes on which the Azure-SSIS Integration Runtime runs. Valid values are: `Standard_D2_v3`, `Standard_D4_v3`, `Standard_D8_v3`, `Standard_D16_v3`, `Standard_D32_v3`, `Standard_D64_v3`, `Standard_E2_v3`, `Standard_E4_v3`, `Standard_E8_v3`, `Standard_E16_v3`, `Standard_E32_v3`, `Standard_E64_v3`, `Standard_D1_v2`, `Standard_D2_v2`, `Standard_D3_v2`, `Standard_D4_v2`, `Standard_A4_v2` and `Standard_A8_v2`
   /// [numberOfNodes] Number of nodes for the Azure-SSIS Integration Runtime. Max is `10`. Defaults to `1`.
-  /// [packageStores] One or more `package_store` block as defined below.
-  /// [pipelineExternalComputeScale] One `pipeline_external_compute_scale` block as defined below.
+  /// [packageStores] One or more `packageStore` block as defined below.
+  /// [pipelineExternalComputeScale] One `pipelineExternalComputeScale` block as defined below.
   /// [proxy] A `proxy` block as defined below.
-  /// [vnetIntegration] A `vnet_integration` block as defined below.
+  /// [vnetIntegration] A `vnetIntegration` block as defined below.
   const IntegrationRuntimeSsisState({
     this.catalogInfo,
     this.copyComputeScale,
@@ -144,4 +144,3 @@ class IntegrationRuntimeSsisState {
     );
   }
 }
-

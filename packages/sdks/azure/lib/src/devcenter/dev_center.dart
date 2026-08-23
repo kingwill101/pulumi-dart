@@ -112,6 +112,30 @@ import 'dev_center_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_devcenter_devcenter" "example" {
+///   location            = azure_core_resourcegroup.example.location
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -124,8 +148,8 @@ import 'dev_center_state.dart';
 /// import com.pulumi.azure.authorization.UserAssignedIdentityArgs;
 /// import com.pulumi.azure.devcenter.DevCenter;
 /// import com.pulumi.azure.devcenter.DevCenterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,13 +213,13 @@ import 'dev_center_state.dart';
 /// The `identity` block supports the following arguments:
 ///
 /// * `type` - (Required) Specifies the type of Managed Identity that should be assigned to this Dev Center. Possible values are `SystemAssigned`, `SystemAssigned, UserAssigned` and `UserAssigned`.
-/// * `identity_ids` - (Optional) A list of the User Assigned Identity IDs that should be assigned to this Dev Center.
+/// * `identityIds` - (Optional) A list of the User Assigned Identity IDs that should be assigned to this Dev Center.
 ///
 ///
 /// In addition to the arguments defined above, the `identity` block exports the following attributes:
 ///
-/// * `principal_id` - The Principal ID for the System-Assigned Managed Identity assigned to this Dev Center.
-/// * `tenant_id` - The Tenant ID for the System-Assigned Managed Identity assigned to this Dev Center.
+/// * `principalId` - The Principal ID for the System-Assigned Managed Identity assigned to this Dev Center.
+/// * `tenantId` - The Tenant ID for the System-Assigned Managed Identity assigned to this Dev Center.
 ///
 /// ## API Providers
 ///

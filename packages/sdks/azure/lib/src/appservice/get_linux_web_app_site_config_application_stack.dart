@@ -7,7 +7,7 @@ class GetLinuxWebAppSiteConfigApplicationStack {
   final pulumi.Input<String> dockerImageName;
   /// The User Name to use for authentication against the registry to pull the image.
   final pulumi.Input<String> dockerRegistryPassword;
-  /// The URL of the container registry where the `docker_image_name` is located.
+  /// The URL of the container registry where the `dockerImageName` is located.
   final pulumi.Input<String> dockerRegistryUrl;
   /// The User Name to use for authentication against the registry to pull the image.
   final pulumi.Input<String> dockerRegistryUsername;
@@ -16,7 +16,7 @@ class GetLinuxWebAppSiteConfigApplicationStack {
   final pulumi.Input<String> goVersion;
   /// The Java server type.
   final pulumi.Input<String> javaServer;
-  /// The Version of the `java_server` in use.
+  /// The Version of the `javaServer` in use.
   final pulumi.Input<String> javaServerVersion;
   /// The Version of Java in use.
   final pulumi.Input<String> javaVersion;
@@ -32,12 +32,12 @@ class GetLinuxWebAppSiteConfigApplicationStack {
   /// Creates a new [GetLinuxWebAppSiteConfigApplicationStack].
   /// [dockerImageName] The docker image, including tag, used by this Linux Web App.
   /// [dockerRegistryPassword] The User Name to use for authentication against the registry to pull the image.
-  /// [dockerRegistryUrl] The URL of the container registry where the `docker_image_name` is located.
+  /// [dockerRegistryUrl] The URL of the container registry where the `dockerImageName` is located.
   /// [dockerRegistryUsername] The User Name to use for authentication against the registry to pull the image.
   /// [dotnetVersion] The version of .NET in use.
   /// [goVersion] Required.
   /// [javaServer] The Java server type.
-  /// [javaServerVersion] The Version of the `java_server` in use.
+  /// [javaServerVersion] The Version of the `javaServer` in use.
   /// [javaVersion] The Version of Java in use.
   /// [nodeVersion] The version of Node in use.
   /// [phpVersion] The version of PHP in use.
@@ -95,4 +95,3 @@ class GetLinuxWebAppSiteConfigApplicationStack {
     );
   }
 }
-

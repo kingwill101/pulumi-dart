@@ -67,6 +67,24 @@ import 'get_workspace_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_machinelearning_getworkspace" "existing" {
+///   name                = "example-workspace"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "id" {
+///   value = data.azure_machinelearning_getworkspace.existing.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +93,8 @@ import 'get_workspace_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.machinelearning.MachinelearningFunctions;
 /// import com.pulumi.azure.machinelearning.inputs.GetWorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

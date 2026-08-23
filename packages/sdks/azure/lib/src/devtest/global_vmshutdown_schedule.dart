@@ -331,6 +331,75 @@ import 'global_vmshutdown_schedule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "sample-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "sample-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "sample-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "example" {
+///   name                = "sample-nic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "testconfiguration1"
+///     subnet_id                     = azure_network_subnet.example.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_linuxvirtualmachine" "example" {
+///   name                  = "SampleVM"
+///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   network_interface_ids = [azure_network_networkinterface.example.id]
+///   size                  = "Standard_B2s"
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+///   os_disk = {
+///     name                 = "myosdisk-example"
+///     caching              = "ReadWrite"
+///     storage_account_type = "Standard_LRS"
+///   }
+///   admin_username                  = "testadmin"
+///   admin_password                  = "Password1234!"
+///   disable_password_authentication = false
+/// }
+/// resource "azure_devtest_globalvmshutdownschedule" "example" {
+///   virtual_machine_id    = azure_compute_linuxvirtualmachine.example.id
+///   location              = azure_core_resourcegroup.example.location
+///   enabled               = true
+///   daily_recurrence_time = "1100"
+///   timezone              = "Pacific Standard Time"
+///   notification_settings = {
+///     enabled         = true
+///     time_in_minutes = "60"
+///     webhook_url     = "https://sample-webhook-url.example.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -353,8 +422,8 @@ import 'global_vmshutdown_schedule_state.dart';
 /// import com.pulumi.azure.devtest.GlobalVMShutdownSchedule;
 /// import com.pulumi.azure.devtest.GlobalVMShutdownScheduleArgs;
 /// import com.pulumi.azure.devtest.inputs.GlobalVMShutdownScheduleNotificationSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -531,7 +600,7 @@ class GlobalVMShutdownSchedule extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enabled;
   /// The location where the schedule is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// The notification setting of a schedule. A `notification_settings` block as defined below.
+  /// The notification setting of a schedule. A `notificationSettings` block as defined below.
   late final pulumi.Output<GlobalVMShutdownScheduleNotificationSettings> notificationSettings;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;

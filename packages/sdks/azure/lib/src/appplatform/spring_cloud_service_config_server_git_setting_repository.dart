@@ -5,7 +5,7 @@ import 'spring_cloud_service_config_server_git_setting_repository_http_basic_aut
 import 'spring_cloud_service_config_server_git_setting_repository_ssh_auth.dart';
 
 class SpringCloudServiceConfigServerGitSettingRepository {
-  /// A `http_basic_auth` block as defined below.
+  /// A `httpBasicAuth` block as defined below.
   final pulumi.Input<SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuth>? httpBasicAuth;
   /// The default label of the Git repository, should be the branch name, tag name, or commit-id of the repository.
   final pulumi.Input<String>? label;
@@ -15,18 +15,18 @@ class SpringCloudServiceConfigServerGitSettingRepository {
   final pulumi.Input<List<String>>? patterns;
   /// An array of strings used to search subdirectories of the Git repository.
   final pulumi.Input<List<String>>? searchPaths;
-  /// A `ssh_auth` block as defined below.
+  /// A `sshAuth` block as defined below.
   final pulumi.Input<SpringCloudServiceConfigServerGitSettingRepositorySshAuth>? sshAuth;
   /// The URI of the Git repository that's used as the Config Server back end should be started with `http://`, `https://`, `git@`, or `ssh://`.
   final pulumi.Input<String> uri;
 
   /// Creates a new [SpringCloudServiceConfigServerGitSettingRepository].
-  /// [httpBasicAuth] A `http_basic_auth` block as defined below.
+  /// [httpBasicAuth] A `httpBasicAuth` block as defined below.
   /// [label] The default label of the Git repository, should be the branch name, tag name, or commit-id of the repository.
   /// [name] A name to identify on the Git repository, required only if repos exists.
   /// [patterns] An array of strings used to match an application name. For each pattern, use the `{application}/{profile}` format with wildcards.
   /// [searchPaths] An array of strings used to search subdirectories of the Git repository.
-  /// [sshAuth] A `ssh_auth` block as defined below.
+  /// [sshAuth] A `sshAuth` block as defined below.
   /// [uri] The URI of the Git repository that's used as the Config Server back end should be started with `http://`, `https://`, `git@`, or `ssh://`.
   const SpringCloudServiceConfigServerGitSettingRepository({
     this.httpBasicAuth,
@@ -62,4 +62,3 @@ class SpringCloudServiceConfigServerGitSettingRepository {
     );
   }
 }
-

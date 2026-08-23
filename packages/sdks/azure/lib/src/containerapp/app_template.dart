@@ -10,17 +10,17 @@ import 'app_template_tcp_scale_rule.dart';
 import 'app_template_volume.dart';
 
 class AppTemplate {
-  /// One or more `azure_queue_scale_rule` blocks as defined below.
+  /// One or more `azureQueueScaleRule` blocks as defined below.
   final pulumi.Input<List<AppTemplateAzureQueueScaleRule>>? azureQueueScaleRules;
   /// One or more `container` blocks as detailed below.
   final pulumi.Input<List<AppTemplateContainer>> containers;
   /// The number of seconds to wait before scaling down the number of instances again. Defaults to `300`.
   final pulumi.Input<int>? cooldownPeriodInSeconds;
-  /// One or more `custom_scale_rule` blocks as defined below.
+  /// One or more `customScaleRule` blocks as defined below.
   final pulumi.Input<List<AppTemplateCustomScaleRule>>? customScaleRules;
-  /// One or more `http_scale_rule` blocks as defined below.
+  /// One or more `httpScaleRule` blocks as defined below.
   final pulumi.Input<List<AppTemplateHttpScaleRule>>? httpScaleRules;
-  /// The definition of an init container that is part of the group as documented in the `init_container` block below.
+  /// The definition of an init container that is part of the group as documented in the `initContainer` block below.
   final pulumi.Input<List<AppTemplateInitContainer>>? initContainers;
   /// The maximum number of replicas for this container.
   final pulumi.Input<int>? maxReplicas;
@@ -30,7 +30,7 @@ class AppTemplate {
   final pulumi.Input<int>? pollingIntervalInSeconds;
   /// The suffix for the revision. This value must be unique for the lifetime of the Resource. If omitted the service will use a hash function to create one.
   final pulumi.Input<String>? revisionSuffix;
-  /// One or more `tcp_scale_rule` blocks as defined below.
+  /// One or more `tcpScaleRule` blocks as defined below.
   final pulumi.Input<List<AppTemplateTcpScaleRule>>? tcpScaleRules;
   /// The time in seconds after the container is sent the termination signal before the process if forcibly killed.
   final pulumi.Input<int>? terminationGracePeriodSeconds;
@@ -38,17 +38,17 @@ class AppTemplate {
   final pulumi.Input<List<AppTemplateVolume>>? volumes;
 
   /// Creates a new [AppTemplate].
-  /// [azureQueueScaleRules] One or more `azure_queue_scale_rule` blocks as defined below.
+  /// [azureQueueScaleRules] One or more `azureQueueScaleRule` blocks as defined below.
   /// [containers] One or more `container` blocks as detailed below.
   /// [cooldownPeriodInSeconds] The number of seconds to wait before scaling down the number of instances again. Defaults to `300`.
-  /// [customScaleRules] One or more `custom_scale_rule` blocks as defined below.
-  /// [httpScaleRules] One or more `http_scale_rule` blocks as defined below.
-  /// [initContainers] The definition of an init container that is part of the group as documented in the `init_container` block below.
+  /// [customScaleRules] One or more `customScaleRule` blocks as defined below.
+  /// [httpScaleRules] One or more `httpScaleRule` blocks as defined below.
+  /// [initContainers] The definition of an init container that is part of the group as documented in the `initContainer` block below.
   /// [maxReplicas] The maximum number of replicas for this container.
   /// [minReplicas] The minimum number of replicas for this container.
   /// [pollingIntervalInSeconds] The interval in seconds used for polling KEDA. Defaults to `30`.
   /// [revisionSuffix] The suffix for the revision. This value must be unique for the lifetime of the Resource. If omitted the service will use a hash function to create one.
-  /// [tcpScaleRules] One or more `tcp_scale_rule` blocks as defined below.
+  /// [tcpScaleRules] One or more `tcpScaleRule` blocks as defined below.
   /// [terminationGracePeriodSeconds] The time in seconds after the container is sent the termination signal before the process if forcibly killed.
   /// [volumes] A `volume` block as detailed below.
   const AppTemplate({
@@ -103,4 +103,3 @@ class AppTemplate {
     );
   }
 }
-

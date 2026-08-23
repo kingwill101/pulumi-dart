@@ -11,23 +11,23 @@ class GetVirtualHubConnectionRouting {
   final pulumi.Input<String> inboundRouteMapId;
   /// The ID of the Route Map associated with this Routing Configuration for outbound advertised routes.
   final pulumi.Input<String> outboundRouteMapId;
-  /// A `propagated_route_table` block as defined below.
+  /// A `propagatedRouteTable` block as defined below.
   final pulumi.Input<List<GetVirtualHubConnectionRoutingPropagatedRouteTable>> propagatedRouteTables;
   /// The static VNet local route override criteria that is used to determine whether NVA in spoke VNet is bypassed for traffic with destination in spoke VNet.
   final pulumi.Input<String> staticVnetLocalRouteOverrideCriteria;
   /// Whether the static routes should be propagated to the Virtual Hub or not.
   final pulumi.Input<bool> staticVnetPropagateStaticRoutesEnabled;
-  /// A `static_vnet_route` block as defined below.
+  /// A `staticVnetRoute` block as defined below.
   final pulumi.Input<List<GetVirtualHubConnectionRoutingStaticVnetRoute>> staticVnetRoutes;
 
   /// Creates a new [GetVirtualHubConnectionRouting].
   /// [associatedRouteTableId] The ID of the route table associated with this Virtual Hub connection.
   /// [inboundRouteMapId] The ID of the Route Map associated with this Routing Configuration for inbound learned routes.
   /// [outboundRouteMapId] The ID of the Route Map associated with this Routing Configuration for outbound advertised routes.
-  /// [propagatedRouteTables] A `propagated_route_table` block as defined below.
+  /// [propagatedRouteTables] A `propagatedRouteTable` block as defined below.
   /// [staticVnetLocalRouteOverrideCriteria] The static VNet local route override criteria that is used to determine whether NVA in spoke VNet is bypassed for traffic with destination in spoke VNet.
   /// [staticVnetPropagateStaticRoutesEnabled] Whether the static routes should be propagated to the Virtual Hub or not.
-  /// [staticVnetRoutes] A `static_vnet_route` block as defined below.
+  /// [staticVnetRoutes] A `staticVnetRoute` block as defined below.
   const GetVirtualHubConnectionRouting({
     required this.associatedRouteTableId,
     required this.inboundRouteMapId,
@@ -62,4 +62,3 @@ class GetVirtualHubConnectionRouting {
     );
   }
 }
-

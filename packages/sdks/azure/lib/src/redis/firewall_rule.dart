@@ -49,7 +49,7 @@ import 'firewall_rule_state.dart';
 /// import pulumi_azure as azure
 /// import pulumi_random as random
 ///
-/// server = random.index.Id("server",
+/// server = random.Id("server",
 ///     keepers={
 ///         aziId: 1,
 ///     },
@@ -86,7 +86,7 @@ import 'firewall_rule_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var server = new Random.Index.Id("server", new()
+///     var server = new Random.Id("server", new()
 ///     {
 ///         Keepers =
 ///         {
@@ -188,6 +188,50 @@ import 'firewall_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_id" "server" {
+///   keepers = {
+///     "aziId" = 1
+///   }
+///   byte_length = 8
+/// }
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "redis-resourcegroup"
+///   location = "West Europe"
+/// }
+/// resource "azure_redis_cache" "example" {
+///   name                ="redis${random_id.server.hex}"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   capacity            = 1
+///   family              = "P"
+///   sku_name            = "Premium"
+///   enable_non_ssl_port = false
+///   redis_configuration = {
+///     maxmemory_reserved = 2
+///     maxmemory_delta    = 2
+///     maxmemory_policy   = "allkeys-lru"
+///   }
+/// }
+/// resource "azure_redis_firewallrule" "example" {
+///   name                = "someIPrange"
+///   redis_cache_name    = azure_redis_cache.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   start_ip            = "1.2.3.4"
+///   end_ip              = "2.3.4.5"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -203,8 +247,8 @@ import 'firewall_rule_state.dart';
 /// import com.pulumi.azure.redis.inputs.CacheRedisConfigurationArgs;
 /// import com.pulumi.azure.redis.FirewallRule;
 /// import com.pulumi.azure.redis.FirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

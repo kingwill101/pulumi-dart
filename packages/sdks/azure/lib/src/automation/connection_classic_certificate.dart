@@ -134,6 +134,37 @@ import 'connection_classic_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "example" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "resourceGroup-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "account-example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_automation_connectionclassiccertificate" "example" {
+///   name                    = "connection-example"
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   automation_account_name = azure_automation_account.example.name
+///   certificate_asset_name  = "cert1"
+///   subscription_name       = "subs1"
+///   subscription_id         = data.azure_core_getclientconfig.example.subscription_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +178,8 @@ import 'connection_classic_certificate_state.dart';
 /// import com.pulumi.azure.automation.AccountArgs;
 /// import com.pulumi.azure.automation.ConnectionClassicCertificate;
 /// import com.pulumi.azure.automation.ConnectionClassicCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -217,6 +217,49 @@ import 'lication_load_balancer_subnet_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "westeurope"
+/// }
+/// resource "azure_appconfiguration_licationloadbalancer" "example" {
+///   name                = "example-alb"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+///   delegations {
+///     name = "delegation"
+///     service_delegation = {
+///       name    = "Microsoft.ServiceNetworking/trafficControllers"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+///     }
+///   }
+/// }
+/// resource "azure_appconfiguration_licationloadbalancersubnetassociation" "example" {
+///   name                         = "example"
+///   application_load_balancer_id = azure_appconfiguration_licationloadbalancer.example.id
+///   subnet_id                    = azure_network_subnet.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -235,8 +278,8 @@ import 'lication_load_balancer_subnet_association_state.dart';
 /// import com.pulumi.azure.network.inputs.SubnetDelegationServiceDelegationArgs;
 /// import com.pulumi.azure.appconfiguration.LicationLoadBalancerSubnetAssociation;
 /// import com.pulumi.azure.appconfiguration.LicationLoadBalancerSubnetAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

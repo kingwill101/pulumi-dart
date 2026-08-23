@@ -150,6 +150,39 @@ import 'channel_line_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_bot_channelsregistration" "example" {
+///   name                = "example-bcr"
+///   location            = "global"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "F0"
+///   microsoft_app_id    = data.azure_core_getclientconfig.current.client_id
+/// }
+/// resource "azure_bot_channelline" "example" {
+///   bot_name            = azure_bot_channelsregistration.example.name
+///   location            = azure_bot_channelsregistration.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   line_channels {
+///     access_token = "asdfdsdfTYUIOIoj1231hkjhk"
+///     secret       = "aagfdgfd123567"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +197,8 @@ import 'channel_line_state.dart';
 /// import com.pulumi.azure.bot.ChannelLine;
 /// import com.pulumi.azure.bot.ChannelLineArgs;
 /// import com.pulumi.azure.bot.inputs.ChannelLineLineChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -249,7 +282,7 @@ import 'channel_line_state.dart';
 class ChannelLine extends pulumi.CustomResource {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
-  /// One or more `line_channel` blocks as defined below.
+  /// One or more `lineChannel` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> lineChannels;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;

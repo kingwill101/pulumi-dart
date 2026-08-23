@@ -6,26 +6,26 @@ import 'virtual_machine_storage_configuration_log_settings.dart';
 import 'virtual_machine_storage_configuration_temp_db_settings.dart';
 
 class VirtualMachineStorageConfiguration {
-  /// A `storage_settings` block as defined below.
+  /// A `storageSettings` block as defined below.
   final pulumi.Input<VirtualMachineStorageConfigurationDataSettings>? dataSettings;
   /// The type of disk configuration to apply to the SQL Server. Valid values include `NEW`, `EXTEND`, or `ADD`.
   final pulumi.Input<String> diskType;
-  /// A `storage_settings` block as defined below.
+  /// A `storageSettings` block as defined below.
   final pulumi.Input<VirtualMachineStorageConfigurationLogSettings>? logSettings;
   /// The type of storage workload. Valid values include `GENERAL`, `OLTP`, or `DW`.
   final pulumi.Input<String> storageWorkloadType;
   /// Specifies whether to set system databases (except tempDb) location to newly created data storage. Possible values are `true` and `false`. Defaults to `false`.
   final pulumi.Input<bool>? systemDbOnDataDiskEnabled;
-  /// An `temp_db_settings` block as defined below.
+  /// An `tempDbSettings` block as defined below.
   final pulumi.Input<VirtualMachineStorageConfigurationTempDbSettings>? tempDbSettings;
 
   /// Creates a new [VirtualMachineStorageConfiguration].
-  /// [dataSettings] A `storage_settings` block as defined below.
+  /// [dataSettings] A `storageSettings` block as defined below.
   /// [diskType] The type of disk configuration to apply to the SQL Server. Valid values include `NEW`, `EXTEND`, or `ADD`.
-  /// [logSettings] A `storage_settings` block as defined below.
+  /// [logSettings] A `storageSettings` block as defined below.
   /// [storageWorkloadType] The type of storage workload. Valid values include `GENERAL`, `OLTP`, or `DW`.
   /// [systemDbOnDataDiskEnabled] Specifies whether to set system databases (except tempDb) location to newly created data storage. Possible values are `true` and `false`. Defaults to `false`.
-  /// [tempDbSettings] An `temp_db_settings` block as defined below.
+  /// [tempDbSettings] An `tempDbSettings` block as defined below.
   const VirtualMachineStorageConfiguration({
     this.dataSettings,
     required this.diskType,
@@ -57,4 +57,3 @@ class VirtualMachineStorageConfiguration {
     );
   }
 }
-

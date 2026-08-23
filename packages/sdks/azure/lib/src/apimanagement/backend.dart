@@ -135,6 +135,35 @@ import 'backend_tls.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "My Company"
+///   publisher_email     = "company@exmaple.com"
+///   sku_name            = "Developer_1"
+/// }
+/// resource "azure_apimanagement_backend" "example" {
+///   name                = "example-backend"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   api_management_name = azure_apimanagement_service.example.name
+///   protocol            = "http"
+///   url                 = "https://backend.com/api"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +176,8 @@ import 'backend_tls.dart';
 /// import com.pulumi.azure.apimanagement.ServiceArgs;
 /// import com.pulumi.azure.apimanagement.Backend;
 /// import com.pulumi.azure.apimanagement.BackendArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,7 +260,7 @@ import 'backend_tls.dart';
 class Backend extends pulumi.CustomResource {
   /// The Name of the API Management Service where this backend should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-  /// A `circuit_breaker_rule` block as documented below.
+  /// A `circuitBreakerRule` block as documented below.
   late final pulumi.Output<BackendCircuitBreakerRule?> circuitBreakerRule;
   /// A `credentials` block as documented below.
   late final pulumi.Output<BackendCredentials?> credentials;
@@ -247,7 +276,7 @@ class Backend extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// The management URI of the backend host in an external system. This URI can be the ARM Resource ID of Logic Apps, Function Apps or API Apps, or the management endpoint of a Service Fabric cluster.
   late final pulumi.Output<String?> resourceId;
-  /// A `service_fabric_cluster` block as documented below.
+  /// A `serviceFabricCluster` block as documented below.
   late final pulumi.Output<BackendServiceFabricCluster?> serviceFabricCluster;
   /// The title of the backend.
   late final pulumi.Output<String?> title;

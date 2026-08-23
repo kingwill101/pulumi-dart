@@ -209,6 +209,49 @@ import 'bastion_host_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "examplevnet"
+///   address_spaces      = ["192.168.1.0/24"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "AzureBastionSubnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["192.168.1.224/27"]
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "examplepip"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+///   sku                 = "Standard"
+/// }
+/// resource "azure_compute_bastionhost" "example" {
+///   name                = "examplebastion"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configuration = {
+///     name                 = "configuration"
+///     subnet_id            = azure_network_subnet.example.id
+///     public_ip_address_id = azure_network_publicip.example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -226,8 +269,8 @@ import 'bastion_host_state.dart';
 /// import com.pulumi.azure.compute.BastionHost;
 /// import com.pulumi.azure.compute.BastionHostArgs;
 /// import com.pulumi.azure.compute.inputs.BastionHostIpConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -333,7 +376,7 @@ import 'bastion_host_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Network` - 2024-01-01
+/// * `Microsoft.Network` - 2025-01-01
 ///
 /// ## Import
 ///
@@ -349,35 +392,37 @@ class BastionHost extends pulumi.CustomResource {
   late final pulumi.Output<String> dnsName;
   /// Is File Copy feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `file_copy_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `fileCopyEnabled` is only supported when `sku` is `Standard` or `Premium`.
   late final pulumi.Output<bool?> fileCopyEnabled;
-  /// A `ip_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// A `ipConfiguration` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<BastionHostIpConfiguration?> ipConfiguration;
   /// Is IP Connect feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `ip_connect_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `ipConnectEnabled` is only supported when `sku` is `Standard` or `Premium`.
   late final pulumi.Output<bool?> ipConnectEnabled;
   /// Is Kerberos authentication feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `kerberos_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `kerberosEnabled` is only supported when `sku` is `Standard` or `Premium`.
   late final pulumi.Output<bool?> kerberosEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. Review [Azure Bastion Host FAQ](https://docs.microsoft.com/azure/bastion/bastion-faq) for supported locations.
   late final pulumi.Output<String> location;
   /// Specifies the name of the Bastion Host. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+  /// Whether Private-Only deployment is enabled for the Bastion Host.
+  late final pulumi.Output<bool> privateOnlyEnabled;
   /// The name of the resource group in which to create the Bastion Host. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// The number of scale units with which to provision the Bastion Host. Possible values are between `2` and `50`. Defaults to `2`.
   ///
-  /// &gt; **Note:** `scale_units` only can be changed when `sku` is `Standard` or `Premium`. `scale_units` is always `2` when `sku` is `Basic`.
+  /// &gt; **Note:** `scaleUnits` only can be changed when `sku` is `Standard` or `Premium`. `scaleUnits` is always `2` when `sku` is `Basic`.
   late final pulumi.Output<int?> scaleUnits;
   /// Is Session Recording feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `session_recording_enabled` is only supported when `sku` is `Premium`.
+  /// &gt; **Note:** `sessionRecordingEnabled` is only supported when `sku` is `Premium`.
   late final pulumi.Output<bool?> sessionRecordingEnabled;
   /// Is Shareable Link feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `shareable_link_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `shareableLinkEnabled` is only supported when `sku` is `Standard` or `Premium`.
   late final pulumi.Output<bool?> shareableLinkEnabled;
   /// The SKU of the Bastion Host. Accepted values are `Developer`, `Basic`, `Standard` and `Premium`. Defaults to `Basic`.
   ///
@@ -387,7 +432,7 @@ class BastionHost extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// Is Tunneling feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `tunneling_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `tunnelingEnabled` is only supported when `sku` is `Standard` or `Premium`.
   late final pulumi.Output<bool?> tunnelingEnabled;
   /// The ID of the Virtual Network for the Developer Bastion Host. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> virtualNetworkId;
@@ -416,6 +461,7 @@ class BastionHost extends pulumi.CustomResource {
     kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
+    privateOnlyEnabled = registerOutput<bool>('privateOnlyEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scaleUnits = registerOutput<int?>('scaleUnits');
     sessionRecordingEnabled = registerOutput<bool?>('sessionRecordingEnabled');
@@ -458,6 +504,7 @@ class BastionHost extends pulumi.CustomResource {
     kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
+    privateOnlyEnabled = registerOutput<bool>('privateOnlyEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scaleUnits = registerOutput<int?>('scaleUnits');
     sessionRecordingEnabled = registerOutput<bool?>('sessionRecordingEnabled');

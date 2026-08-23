@@ -10,7 +10,7 @@ class GetPublicIPsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? namePrefix;
-  /// A List of `public_ips` blocks as defined below filtered by the criteria above.
+  /// A List of `publicIps` blocks as defined below filtered by the criteria above.
   final List<GetPublicIPsPublicIp> publicIps;
   final String resourceGroupName;
 
@@ -19,7 +19,7 @@ class GetPublicIPsResult {
   /// [attachmentStatus] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [namePrefix] Optional.
-  /// [publicIps] A List of `public_ips` blocks as defined below filtered by the criteria above.
+  /// [publicIps] A List of `publicIps` blocks as defined below filtered by the criteria above.
   /// [resourceGroupName] Required.
   const GetPublicIPsResult({
     this.allocationType,
@@ -52,4 +52,3 @@ class GetPublicIPsResult {
     );
   }
 }
-

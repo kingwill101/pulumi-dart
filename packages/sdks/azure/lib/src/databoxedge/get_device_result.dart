@@ -5,7 +5,7 @@ import 'get_device_device_property.dart';
 
 /// Result data returned by getDevice.
 class GetDeviceResult {
-  /// A `device_properties` block as defined below.
+  /// A `deviceProperties` block as defined below.
   final List<GetDeviceDeviceProperty> deviceProperties;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -13,18 +13,18 @@ class GetDeviceResult {
   final String location;
   final String name;
   final String resourceGroupName;
-  /// The `sku_name` is comprised of two segments separated by a hyphen (e.g. `TEA_1Node_UPS_Heater-Standard`). The first segment of the `sku_name` defines the `name` of the SKU. The second segment defines the `tier` of the `sku_name`. For more information see the product documentation.
+  /// The `skuName` is comprised of two segments separated by a hyphen (e.g. `TEA_1Node_UPS_Heater-Standard`). The first segment of the `skuName` defines the `name` of the SKU. The second segment defines the `tier` of the `skuName`. For more information see the product documentation.
   final String skuName;
   /// A mapping of tags which should be assigned to the Databox Edge Device.
   final Map<String, String> tags;
 
   /// Creates a new [GetDeviceResult].
-  /// [deviceProperties] A `device_properties` block as defined below.
+  /// [deviceProperties] A `deviceProperties` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] The Azure Region where the Databox Edge Device should exist.
   /// [name] Required.
   /// [resourceGroupName] Required.
-  /// [skuName] The `sku_name` is comprised of two segments separated by a hyphen (e.g. `TEA_1Node_UPS_Heater-Standard`). The first segment of the `sku_name` defines the `name` of the SKU. The second segment defines the `tier` of the `sku_name`. For more information see the product documentation.
+  /// [skuName] The `skuName` is comprised of two segments separated by a hyphen (e.g. `TEA_1Node_UPS_Heater-Standard`). The first segment of the `skuName` defines the `name` of the SKU. The second segment defines the `tier` of the `skuName`. For more information see the product documentation.
   /// [tags] A mapping of tags which should be assigned to the Databox Edge Device.
   const GetDeviceResult({
     required this.deviceProperties,
@@ -60,4 +60,3 @@ class GetDeviceResult {
     );
   }
 }
-

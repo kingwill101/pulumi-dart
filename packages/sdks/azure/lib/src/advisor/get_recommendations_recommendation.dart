@@ -7,6 +7,8 @@ class GetRecommendationsRecommendation {
   final pulumi.Input<String> category;
   /// The description of the issue or the opportunity identified by the recommendation.
   final pulumi.Input<String> description;
+  /// The name of the Advisor Recommendation.
+  final pulumi.Input<String> id;
   /// The business impact of the recommendation.
   final pulumi.Input<String> impact;
   /// The name of the Advisor Recommendation.
@@ -25,6 +27,7 @@ class GetRecommendationsRecommendation {
   /// Creates a new [GetRecommendationsRecommendation].
   /// [category] The category of the recommendation.
   /// [description] The description of the issue or the opportunity identified by the recommendation.
+  /// [id] The name of the Advisor Recommendation.
   /// [impact] The business impact of the recommendation.
   /// [recommendationName] The name of the Advisor Recommendation.
   /// [recommendationTypeId] The recommendation type id of the Advisor Recommendation.
@@ -35,6 +38,7 @@ class GetRecommendationsRecommendation {
   const GetRecommendationsRecommendation({
     required this.category,
     required this.description,
+    required this.id,
     required this.impact,
     required this.recommendationName,
     required this.recommendationTypeId,
@@ -48,6 +52,7 @@ class GetRecommendationsRecommendation {
     return <String, dynamic>{
       'category': category,
       'description': description,
+      'id': id,
       'impact': impact,
       'recommendationName': recommendationName,
       'recommendationTypeId': recommendationTypeId,
@@ -62,6 +67,7 @@ class GetRecommendationsRecommendation {
     return GetRecommendationsRecommendation(
       category: pulumi.Input.fromValue(map['category'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
       impact: pulumi.Input.fromValue(map['impact'] as String),
       recommendationName: pulumi.Input.fromValue(map['recommendationName'] as String),
       recommendationTypeId: pulumi.Input.fromValue(map['recommendationTypeId'] as String),
@@ -72,4 +78,3 @@ class GetRecommendationsRecommendation {
     );
   }
 }
-

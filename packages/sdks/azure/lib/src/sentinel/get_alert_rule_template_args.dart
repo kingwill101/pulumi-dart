@@ -7,19 +7,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_sentinel_get_alert_rule_template_get_alert_rule_template_args_doc}
 class GetAlertRuleTemplateArgs {
-  /// The display name of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
+  /// The display name of this Sentinel Alert Rule Template. Either `displayName` or `name` have to be specified.
   ///
-  /// &gt; **Note:** As `display_name` is not unique, errors may occur when there are multiple Sentinel Alert Rule Template with same `display_name`.
+  /// &gt; **Note:** As `displayName` is not unique, errors may occur when there are multiple Sentinel Alert Rule Template with same `displayName`.
   final pulumi.Input<String>? displayName;
   /// The ID of the Log Analytics Workspace.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
-  /// The name of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
+  /// The name of this Sentinel Alert Rule Template. Either `displayName` or `name` have to be specified.
   final pulumi.Input<String>? name;
 
   /// Creates a new [GetAlertRuleTemplateArgs].
-  /// [displayName] The display name of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
+  /// [displayName] The display name of this Sentinel Alert Rule Template. Either `displayName` or `name` have to be specified.
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace.
-  /// [name] The name of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
+  /// [name] The name of this Sentinel Alert Rule Template. Either `displayName` or `name` have to be specified.
   const GetAlertRuleTemplateArgs({
     this.displayName,
     required this.logAnalyticsWorkspaceId,
@@ -42,4 +42,3 @@ class GetAlertRuleTemplateArgs {
     );
   }
 }
-

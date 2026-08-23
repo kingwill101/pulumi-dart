@@ -8,9 +8,9 @@ import 'spark_pool_spark_config.dart';
 
 /// Input properties used for looking up and filtering SparkPool resources.
 class SparkPoolState {
-  /// An `auto_pause` block as defined below.
+  /// An `autoPause` block as defined below.
   final pulumi.Input<SparkPoolAutoPause>? autoPause;
-  /// An `auto_scale` block as defined below. Exactly one of `node_count` or `auto_scale` must be specified.
+  /// An `autoScale` block as defined below. Exactly one of `nodeCount` or `autoScale` must be specified.
   final pulumi.Input<SparkPoolAutoScale>? autoScale;
   /// The cache size in the Spark Pool.
   final pulumi.Input<int>? cacheSize;
@@ -22,7 +22,7 @@ class SparkPoolState {
   final pulumi.Input<int>? minExecutors;
   /// The name which should be used for this Synapse Spark Pool. Changing this forces a new Synapse Spark Pool to be created.
   final pulumi.Input<String>? name;
-  /// The number of nodes in the Spark Pool. Exactly one of `node_count` or `auto_scale` must be specified.
+  /// The number of nodes in the Spark Pool. Exactly one of `nodeCount` or `autoScale` must be specified.
   final pulumi.Input<int>? nodeCount;
   /// The level of node in the Spark Pool. Possible values are `Small`, `Medium`, `Large`, `None`, `XLarge`, `XXLarge` and `XXXLarge`.
   final pulumi.Input<String>? nodeSize;
@@ -39,8 +39,8 @@ class SparkPoolState {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [SparkPoolState].
-  /// [autoPause] An `auto_pause` block as defined below.
-  /// [autoScale] An `auto_scale` block as defined below. Exactly one of `node_count` or `auto_scale` must be specified.
+  /// [autoPause] An `autoPause` block as defined below.
+  /// [autoScale] An `autoScale` block as defined below. Exactly one of `nodeCount` or `autoScale` must be specified.
   /// [cacheSize] The cache size in the Spark Pool.
   /// [computeIsolationEnabled] Indicates whether compute isolation is enabled or not. Defaults to `false`.
   /// [dynamicExecutorAllocationEnabled] Optional.
@@ -48,7 +48,7 @@ class SparkPoolState {
   /// [maxExecutors] Optional.
   /// [minExecutors] Optional.
   /// [name] The name which should be used for this Synapse Spark Pool. Changing this forces a new Synapse Spark Pool to be created.
-  /// [nodeCount] The number of nodes in the Spark Pool. Exactly one of `node_count` or `auto_scale` must be specified.
+  /// [nodeCount] The number of nodes in the Spark Pool. Exactly one of `nodeCount` or `autoScale` must be specified.
   /// [nodeSize] The level of node in the Spark Pool. Possible values are `Small`, `Medium`, `Large`, `None`, `XLarge`, `XXLarge` and `XXXLarge`.
   /// [nodeSizeFamily] The kind of nodes that the Spark Pool provides. Possible values are `HardwareAcceleratedFPGA`, `HardwareAcceleratedGPU`, `MemoryOptimized`, and `None`.
   /// [sessionLevelPackagesEnabled] Optional.
@@ -128,4 +128,3 @@ class SparkPoolState {
     );
   }
 }
-

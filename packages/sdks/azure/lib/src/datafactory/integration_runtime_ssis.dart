@@ -122,6 +122,31 @@ import 'integration_runtime_ssis_vnet_integration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_integrationruntimessis" "example" {
+///   name            = "example"
+///   data_factory_id = azure_datafactory_factory.example.id
+///   location        = azure_core_resourcegroup.example.location
+///   node_size       = "Standard_D8_v3"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,8 +159,8 @@ import 'integration_runtime_ssis_vnet_integration.dart';
 /// import com.pulumi.azure.datafactory.FactoryArgs;
 /// import com.pulumi.azure.datafactory.IntegrationRuntimeSsis;
 /// import com.pulumi.azure.datafactory.IntegrationRuntimeSsisArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,15 +233,15 @@ import 'integration_runtime_ssis_vnet_integration.dart';
 /// $ pulumi import azure:datafactory/integrationRuntimeSsis:IntegrationRuntimeSsis example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.DataFactory/factories/example/integrationRuntimes/example
 /// ```
 class IntegrationRuntimeSsis extends pulumi.CustomResource {
-  /// A `catalog_info` block as defined below.
+  /// A `catalogInfo` block as defined below.
   late final pulumi.Output<IntegrationRuntimeSsisCatalogInfo?> catalogInfo;
-  /// One `copy_compute_scale` block as defined below.
+  /// One `copyComputeScale` block as defined below.
   late final pulumi.Output<IntegrationRuntimeSsisCopyComputeScale?> copyComputeScale;
   /// The name of a Data Factory Credential that the SSIS integration will use to access data sources. For example, `azure.datafactory.CredentialUserManagedIdentity`
   ///
-  /// &gt; **Note:** If `credential_name` is omitted, the integration runtime will use the Data Factory assigned identity.
+  /// &gt; **Note:** If `credentialName` is omitted, the integration runtime will use the Data Factory assigned identity.
   late final pulumi.Output<String?> credentialName;
-  /// A `custom_setup_script` block as defined below.
+  /// A `customSetupScript` block as defined below.
   late final pulumi.Output<IntegrationRuntimeSsisCustomSetupScript?> customSetupScript;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
@@ -224,9 +249,9 @@ class IntegrationRuntimeSsis extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The Azure-SSIS Integration Runtime edition. Valid values are `Standard` and `Enterprise`. Defaults to `Standard`.
   late final pulumi.Output<String?> edition;
-  /// An `express_custom_setup` block as defined below.
+  /// An `expressCustomSetup` block as defined below.
   late final pulumi.Output<IntegrationRuntimeSsisExpressCustomSetup?> expressCustomSetup;
-  /// A `express_vnet_integration` block as defined below.
+  /// A `expressVnetIntegration` block as defined below.
   late final pulumi.Output<IntegrationRuntimeSsisExpressVnetIntegration?> expressVnetIntegration;
   /// The type of the license that is used. Valid values are `LicenseIncluded` and `BasePrice`. Defaults to `LicenseIncluded`.
   late final pulumi.Output<String?> licenseType;
@@ -240,13 +265,13 @@ class IntegrationRuntimeSsis extends pulumi.CustomResource {
   late final pulumi.Output<String> nodeSize;
   /// Number of nodes for the Azure-SSIS Integration Runtime. Max is `10`. Defaults to `1`.
   late final pulumi.Output<int?> numberOfNodes;
-  /// One or more `package_store` block as defined below.
+  /// One or more `packageStore` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> packageStores;
-  /// One `pipeline_external_compute_scale` block as defined below.
+  /// One `pipelineExternalComputeScale` block as defined below.
   late final pulumi.Output<IntegrationRuntimeSsisPipelineExternalComputeScale?> pipelineExternalComputeScale;
   /// A `proxy` block as defined below.
   late final pulumi.Output<IntegrationRuntimeSsisProxy?> proxy;
-  /// A `vnet_integration` block as defined below.
+  /// A `vnetIntegration` block as defined below.
   late final pulumi.Output<IntegrationRuntimeSsisVnetIntegration?> vnetIntegration;
 
   /// Creates a new [IntegrationRuntimeSsis].

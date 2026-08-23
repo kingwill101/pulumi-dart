@@ -166,6 +166,43 @@ import 'managed_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_servicefabric_managedcluster" "example" {
+///   name                = "example"
+///   resource_group_name = "example"
+///   location            = "West Europe"
+///   http_gateway_port   = 4567
+///   lb_rules {
+///     backend_port       = 38080
+///     frontend_port      = 80
+///     probe_protocol     = "http"
+///     probe_request_path = "/test"
+///     protocol           = "tcp"
+///   }
+///   client_connection_port = 12345
+///   node_types {
+///     data_disk_size_gb      = 130
+///     name                   = "test1"
+///     primary                = true
+///     application_port_range = "30000-49000"
+///     ephemeral_port_range   = "10000-20000"
+///     vm_size                = "Standard_DS1_v2"
+///     vm_image_publisher     = "MicrosoftWindowsServer"
+///     vm_image_sku           = "2019-Datacenter-with-Containers"
+///     vm_image_offer         = "WindowsServer"
+///     vm_image_version       = "latest"
+///     vm_instance_count      = 5
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -176,8 +213,8 @@ import 'managed_cluster_state.dart';
 /// import com.pulumi.azure.servicefabric.ManagedClusterArgs;
 /// import com.pulumi.azure.servicefabric.inputs.ManagedClusterLbRuleArgs;
 /// import com.pulumi.azure.servicefabric.inputs.ManagedClusterNodeTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -272,7 +309,7 @@ class ManagedCluster extends pulumi.CustomResource {
   late final pulumi.Output<bool?> backupServiceEnabled;
   /// Port to use when connecting to the cluster.
   late final pulumi.Output<int> clientConnectionPort;
-  /// One or more `custom_fabric_setting` blocks as defined below.
+  /// One or more `customFabricSetting` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> customFabricSettings;
   /// Hostname for the cluster. If unset the cluster's name will be used..
   late final pulumi.Output<String> dnsName;
@@ -280,13 +317,13 @@ class ManagedCluster extends pulumi.CustomResource {
   late final pulumi.Output<bool?> dnsServiceEnabled;
   /// Port that should be used by the Service Fabric Explorer to visualize applications and cluster status.
   late final pulumi.Output<int> httpGatewayPort;
-  /// One or more `lb_rule` blocks as defined below.
+  /// One or more `lbRule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> lbRules;
   /// The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created.
   late final pulumi.Output<String> location;
   /// The name which should be used for this Resource Group. Changing this forces a new Resource Group to be created.
   late final pulumi.Output<String> name;
-  /// One or more `node_type` blocks as defined below.
+  /// One or more `nodeType` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> nodeTypes;
   /// Administrator password for the VMs that will be created as part of this cluster.
   late final pulumi.Output<String?> password;

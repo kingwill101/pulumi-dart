@@ -95,6 +95,27 @@ import 'backup_vault_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dataprotection_backupvault" "example" {
+///   name                = "example-backup-vault"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   datastore_type      = "VaultStore"
+///   redundancy          = "LocallyRedundant"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +126,8 @@ import 'backup_vault_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.dataprotection.BackupVault;
 /// import com.pulumi.azure.dataprotection.BackupVaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -158,7 +179,7 @@ import 'backup_vault_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.DataProtection` - 2024-04-01
+/// * `Microsoft.DataProtection` - 2025-07-01
 ///
 /// ## Import
 ///
@@ -170,7 +191,7 @@ import 'backup_vault_state.dart';
 class BackupVault extends pulumi.CustomResource {
   /// Whether to enable cross-region restore for the Backup Vault.
   ///
-  /// &gt; **Note:** The `cross_region_restore_enabled` can only be specified when `redundancy` is specified for `GeoRedundant`. Once `cross_region_restore_enabled` is enabled, it cannot be disabled.
+  /// &gt; **Note:** The `crossRegionRestoreEnabled` can only be specified when `redundancy` is specified for `GeoRedundant`. Once `crossRegionRestoreEnabled` is enabled, it cannot be disabled.
   late final pulumi.Output<bool?> crossRegionRestoreEnabled;
   /// Specifies the type of the data store. Possible values are `ArchiveStore`, `OperationalStore`, `SnapshotStore` and `VaultStore`. Changing this forces a new resource to be created.
   ///
@@ -190,11 +211,11 @@ class BackupVault extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// The soft delete retention duration for this Backup Vault. Possible values are between `14` and `180`. Defaults to `14`.
   ///
-  /// &gt; **Note:** The `retention_duration_in_days` is the number of days for which deleted data is retained before being permanently deleted. Retention period till 14 days are free of cost, however, retention beyond 14 days may incur additional charges. The `retention_duration_in_days` is required when the `soft_delete` is set to `On`.
+  /// &gt; **Note:** The `retentionDurationInDays` is the number of days for which deleted data is retained before being permanently deleted. Retention period till 14 days are free of cost, however, retention beyond 14 days may incur additional charges. The `retentionDurationInDays` is required when the `softDelete` is set to `On`.
   late final pulumi.Output<double?> retentionDurationInDays;
   /// The state of soft delete for this Backup Vault. Possible values are `AlwaysOn`, `Off`, and `On`. Defaults to `On`.
   ///
-  /// &gt; **Note:** Once the `soft_delete` is set to `AlwaysOn`, the setting cannot be changed.
+  /// &gt; **Note:** Once the `softDelete` is set to `AlwaysOn`, the setting cannot be changed.
   late final pulumi.Output<String?> softDelete;
   /// A mapping of tags which should be assigned to the Backup Vault.
   late final pulumi.Output<Map<String, String>?> tags;

@@ -21,7 +21,7 @@ class GetAppTemplateInitContainer {
   final pulumi.Input<String> memory;
   /// The name of the Container App.
   final pulumi.Input<String> name;
-  /// A `volume_mounts` block as detailed below.
+  /// A `volumeMounts` block as detailed below.
   final pulumi.Input<List<GetAppTemplateInitContainerVolumeMount>> volumeMounts;
 
   /// Creates a new [GetAppTemplateInitContainer].
@@ -33,7 +33,7 @@ class GetAppTemplateInitContainer {
   /// [image] The image to use to create the container.
   /// [memory] The amount of memory allocated to the container.
   /// [name] The name of the Container App.
-  /// [volumeMounts] A `volume_mounts` block as detailed below.
+  /// [volumeMounts] A `volumeMounts` block as detailed below.
   const GetAppTemplateInitContainer({
     required this.args,
     required this.commands,
@@ -74,4 +74,3 @@ class GetAppTemplateInitContainer {
     );
   }
 }
-

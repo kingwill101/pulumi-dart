@@ -170,6 +170,42 @@ import 'application_network_rule_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resource"
+///   location = "West Europe"
+/// }
+/// resource "azure_iotcentral_application" "example" {
+///   name                = "example-iotcentral-app"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sub_domain          = "example-iotcentral-app-subdomain"
+///   display_name        = "example-iotcentral-app-display-name"
+///   sku                 = "ST1"
+///   tags = {
+///     "Foo" = "Bar"
+///   }
+/// }
+/// resource "azure_iotcentral_applicationnetworkruleset" "example" {
+///   iotcentral_application_id = azure_iotcentral_application.example.id
+///   ip_rules {
+///     name    = "rule1"
+///     ip_mask = "10.0.1.0/24"
+///   }
+///   ip_rules {
+///     name    = "rule2"
+///     ip_mask = "10.1.1.0/24"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +219,8 @@ import 'application_network_rule_set_state.dart';
 /// import com.pulumi.azure.iotcentral.ApplicationNetworkRuleSet;
 /// import com.pulumi.azure.iotcentral.ApplicationNetworkRuleSetArgs;
 /// import com.pulumi.azure.iotcentral.inputs.ApplicationNetworkRuleSetIpRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,7 +316,7 @@ class ApplicationNetworkRuleSet extends pulumi.CustomResource {
   late final pulumi.Output<String?> defaultAction;
   /// The ID of the IoT Central Application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iotcentralApplicationId;
-  /// One or more `ip_rule` blocks as defined below.
+  /// One or more `ipRule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipRules;
 
   /// Creates a new [ApplicationNetworkRuleSet].

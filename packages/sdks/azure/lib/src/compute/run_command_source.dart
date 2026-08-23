@@ -7,14 +7,14 @@ class RunCommandSource {
   final pulumi.Input<String>? commandId;
   final pulumi.Input<String>? script;
   final pulumi.Input<String>? scriptUri;
-  /// A `script_uri_managed_identity` block as defined above.
+  /// A `scriptUriManagedIdentity` block as defined above.
   final pulumi.Input<RunCommandSourceScriptUriManagedIdentity>? scriptUriManagedIdentity;
 
   /// Creates a new [RunCommandSource].
   /// [commandId] Optional.
   /// [script] Optional.
   /// [scriptUri] Optional.
-  /// [scriptUriManagedIdentity] A `script_uri_managed_identity` block as defined above.
+  /// [scriptUriManagedIdentity] A `scriptUriManagedIdentity` block as defined above.
   const RunCommandSource({
     this.commandId,
     this.script,
@@ -40,4 +40,3 @@ class RunCommandSource {
     );
   }
 }
-

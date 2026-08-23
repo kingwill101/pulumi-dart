@@ -318,6 +318,65 @@ import 'credential_service_principal_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "westeurope"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                       = "example"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
+///   soft_delete_retention_days = 7
+///   access_policies {
+///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     key_permissions    = ["Create", "Get"]
+///     secret_permissions = ["Set", "Get", "Delete", "Purge", "Recover"]
+///   }
+/// }
+/// resource "azure_keyvault_secret" "example" {
+///   name         = "example"
+///   value        = "example-secret"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+/// }
+/// resource "azure_datafactory_linkedservicekeyvault" "example" {
+///   name            = "example"
+///   data_factory_id = azure_datafactory_factory.example.id
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+/// }
+/// resource "azure_datafactory_credentialserviceprincipal" "example" {
+///   name                 = "example"
+///   description          = "example description"
+///   data_factory_id      = azure_datafactory_factory.example.id
+///   tenant_id            = data.azure_core_getclientconfig.current.tenant_id
+///   service_principal_id = data.azure_core_getclientconfig.current.client_id
+///   service_principal_key = {
+///     linked_service_name = azure_datafactory_linkedservicekeyvault.example.name
+///     secret_name         = azure_keyvault_secret.example.name
+///     secret_version      = azure_keyvault_secret.example.version
+///   }
+///   annotations = ["1", "2"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -339,8 +398,8 @@ import 'credential_service_principal_state.dart';
 /// import com.pulumi.azure.datafactory.CredentialServicePrincipal;
 /// import com.pulumi.azure.datafactory.CredentialServicePrincipalArgs;
 /// import com.pulumi.azure.datafactory.inputs.CredentialServicePrincipalServicePrincipalKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -517,7 +576,7 @@ class CredentialServicePrincipal extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The Client ID of the Service Principal.
   late final pulumi.Output<String> servicePrincipalId;
-  /// A `service_principal_key` block as defined below.
+  /// A `servicePrincipalKey` block as defined below.
   late final pulumi.Output<CredentialServicePrincipalServicePrincipalKey?> servicePrincipalKey;
   /// The Tenant ID of the Service Principal.
   late final pulumi.Output<String> tenantId;

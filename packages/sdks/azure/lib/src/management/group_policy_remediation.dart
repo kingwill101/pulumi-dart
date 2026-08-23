@@ -154,6 +154,38 @@ import 'group_policy_remediation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_policy_getpolicydefintion" "example" {
+///   display_name = "Allowed locations"
+/// }
+///
+/// resource "azure_management_group" "example" {
+///   display_name = "Example Management Group"
+/// }
+/// resource "azure_management_grouppolicyassignment" "example" {
+///   name                 = "exampleAssignment"
+///   management_group_id  = azure_management_group.example.id
+///   policy_definition_id = data.azure_policy_getpolicydefintion.example.id
+///   parameters = jsonencode({
+///     "listOfAllowedLocations" = {
+///       "value" = ["East US"]
+///     }
+///   })
+/// }
+/// resource "azure_management_grouppolicyremediation" "example" {
+///   name                 = "example"
+///   management_group_id  = azure_management_group.example.id
+///   policy_assignment_id = azure_management_grouppolicyassignment.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +201,8 @@ import 'group_policy_remediation_state.dart';
 /// import com.pulumi.azure.management.GroupPolicyRemediation;
 /// import com.pulumi.azure.management.GroupPolicyRemediationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

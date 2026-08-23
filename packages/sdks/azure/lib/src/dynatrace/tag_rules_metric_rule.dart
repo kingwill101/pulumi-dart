@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tag_rules_metric_rule_filtering_tag.dart';
 
 class TagRulesMetricRule {
-  /// Filtering tag for the metric rule. A `filtering_tag` block as defined below.
+  /// Filtering tag for the metric rule. A `filteringTag` block as defined below.
   final pulumi.Input<List<TagRulesMetricRuleFilteringTag>>? filteringTags;
   /// If sending metrics is enabled. The default value is `false`.
   final pulumi.Input<bool>? sendingMetricsEnabled;
 
   /// Creates a new [TagRulesMetricRule].
-  /// [filteringTags] Filtering tag for the metric rule. A `filtering_tag` block as defined below.
+  /// [filteringTags] Filtering tag for the metric rule. A `filteringTag` block as defined below.
   /// [sendingMetricsEnabled] If sending metrics is enabled. The default value is `false`.
   const TagRulesMetricRule({
     this.filteringTags,
@@ -31,4 +31,3 @@ class TagRulesMetricRule {
     );
   }
 }
-

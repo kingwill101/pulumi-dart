@@ -163,6 +163,44 @@ import 'cache_access_policy_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "test" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "East US"
+/// }
+/// resource "azure_redis_cache" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   capacity            = 1
+///   family              = "P"
+///   sku_name            = "Premium"
+///   enable_non_ssl_port = false
+///   redis_configuration = {
+///     maxmemory_reserved = 2
+///     maxmemory_delta    = 2
+///     maxmemory_policy   = "allkeys-lru"
+///   }
+/// }
+/// resource "azure_redis_cacheaccesspolicyassignment" "example" {
+///   name               = "example"
+///   redis_cache_id     = azure_redis_cache.example.id
+///   access_policy_name = "Data Contributor"
+///   object_id          = data.azure_core_getclientconfig.test.object_id
+///   object_id_alias    = "ServicePrincipal"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +215,8 @@ import 'cache_access_policy_assignment_state.dart';
 /// import com.pulumi.azure.redis.inputs.CacheRedisConfigurationArgs;
 /// import com.pulumi.azure.redis.CacheAccessPolicyAssignment;
 /// import com.pulumi.azure.redis.CacheAccessPolicyAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

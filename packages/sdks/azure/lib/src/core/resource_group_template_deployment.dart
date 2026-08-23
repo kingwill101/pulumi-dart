@@ -4,7 +4,7 @@ import 'resource_group_template_deployment_state.dart';
 
 /// Manages a Resource Group Template Deployment.
 ///
-/// &gt; **Note:** This resource will automatically attempt to delete resources deployed by the ARM Template when it is deleted. This behavior can be disabled in the provider `features` block by setting the `delete_nested_items_during_deletion` field to `false` within the `template_deployment` block.
+/// &gt; **Note:** This resource will automatically attempt to delete resources deployed by the ARM Template when it is deleted. This behavior can be disabled in the provider `features` block by setting the `deleteNestedItemsDuringDeletion` field to `false` within the `templateDeployment` block.
 ///
 /// ## Example Usage
 ///
@@ -256,10 +256,41 @@ import 'resource_group_template_deployment_state.dart';
 /// ctx.Export("armExampleOutput", std.JsondecodeOutput(ctx, std.JsondecodeOutputArgs{
 /// Input: example.OutputContent,
 /// }, nil).ApplyT(func(invoke std.JsondecodeResult) (*interface{}, error) {
-/// return invoke.Result.ExampleOutput.Value, nil
+/// val := invoke.Result.ExampleOutput.Value
+/// return &val, nil
 /// }).(pulumi.Interface{}PtrOutput))
 /// return nil
 /// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegrouptemplatedeployment" "example" {
+///   name                = "example-deploy"
+///   resource_group_name = "example-group"
+///   deployment_mode     = "Incremental"
+///   parameters_content = jsonencode({
+///     "vnetName" = {
+///       "value" = local.vnetName
+///     }
+///   })
+///   template_content = "{\n    \\\"$schema\\\": \\\"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\\\",\n    \\\"contentVersion\\\": \\\"1.0.0.0\\\",\n    \\\"parameters\\\": {\n        \\\"vnetName\\\": {\n            \\\"type\\\": \\\"string\\\",\n            \\\"metadata\\\": {\n                \\\"description\\\": \\\"Name of the VNET\\\"\n            }\n        }\n    },\n    \\\"variables\\\": {},\n    \\\"resources\\\": [\n        {\n            \\\"type\\\": \\\"Microsoft.Network/virtualNetworks\\\",\n            \\\"apiVersion\\\": \\\"2020-05-01\\\",\n            \\\"name\\\": \\\"[parameters('vnetName')]\\\",\n            \\\"location\\\": \\\"[resourceGroup().location]\\\",\n            \\\"properties\\\": {\n                \\\"addressSpace\\\": {\n                    \\\"addressPrefixes\\\": [\n                        \\\"10.0.0.0/16\\\"\n                    ]\n                }\n            }\n        }\n    ],\n    \\\"outputs\\\": {\n      \\\"exampleOutput\\\": {\n        \\\"type\\\": \\\"string\\\",\n        \\\"value\\\": \\\"someoutput\\\"\n      }\n    }\n}\n"
+/// }
+/// locals {
+///   vnetName = "example-vnet"
+/// }
+/// output "armExampleOutput" {
+///   value = jsondecode(azure_core_resourcegrouptemplatedeployment.example.output_content).example_output.value
 /// }
 /// ```
 /// ```java
@@ -273,8 +304,8 @@ import 'resource_group_template_deployment_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JsondecodeArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -487,6 +518,28 @@ import 'resource_group_template_deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_gettemplatespecversion" "example" {
+///   name                = "myTemplateForResourceGroup"
+///   resource_group_name = "myResourceGroup"
+///   version             = "v3.4.0"
+/// }
+///
+/// resource "azure_core_resourcegrouptemplatedeployment" "example" {
+///   name                     = "example-deploy"
+///   resource_group_name      = "example-group"
+///   deployment_mode          = "Incremental"
+///   template_spec_version_id = data.azure_core_gettemplatespecversion.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -497,8 +550,8 @@ import 'resource_group_template_deployment_state.dart';
 /// import com.pulumi.azure.core.inputs.GetTemplateSpecVersionArgs;
 /// import com.pulumi.azure.core.ResourceGroupTemplateDeployment;
 /// import com.pulumi.azure.core.ResourceGroupTemplateDeploymentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -559,7 +612,7 @@ class ResourceGroupTemplateDeployment extends pulumi.CustomResource {
   late final pulumi.Output<String?> debugLevel;
   /// The Deployment Mode for this Resource Group Template Deployment. Possible values are `Complete` (where resources in the Resource Group not specified in the ARM Template will be destroyed) and `Incremental` (where resources are additive only).
   ///
-  /// &gt; **Note:** If `deployment_mode` is set to `Complete` then resources within this Resource Group which are not defined in the ARM Template will be deleted.
+  /// &gt; **Note:** If `deploymentMode` is set to `Complete` then resources within this Resource Group which are not defined in the ARM Template will be deleted.
   late final pulumi.Output<String> deploymentMode;
   /// The name which should be used for this Resource Group Template Deployment. Changing this forces a new Resource Group Template Deployment to be created.
   late final pulumi.Output<String> name;
@@ -573,9 +626,9 @@ class ResourceGroupTemplateDeployment extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Resource Group Template Deployment.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `template_spec_version_id`.
+  /// The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `templateSpecVersionId`.
   late final pulumi.Output<String> templateContent;
-  /// The ID of the Template Spec Version to deploy. Cannot be specified with `template_content`.
+  /// The ID of the Template Spec Version to deploy. Cannot be specified with `templateContent`.
   late final pulumi.Output<String?> templateSpecVersionId;
 
   /// Creates a new [ResourceGroupTemplateDeployment].

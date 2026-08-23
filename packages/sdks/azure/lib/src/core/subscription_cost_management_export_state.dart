@@ -8,9 +8,9 @@ import 'subscription_cost_management_export_export_data_storage_location.dart';
 class SubscriptionCostManagementExportState {
   /// Is the cost management export active? Default is `true`.
   final pulumi.Input<bool>? active;
-  /// A `export_data_options` block as defined below.
+  /// A `exportDataOptions` block as defined below.
   final pulumi.Input<SubscriptionCostManagementExportExportDataOptions>? exportDataOptions;
-  /// A `export_data_storage_location` block as defined below.
+  /// A `exportDataStorageLocation` block as defined below.
   final pulumi.Input<SubscriptionCostManagementExportExportDataStorageLocation>? exportDataStorageLocation;
   /// Format for export. Valid values are `Csv` only. Default is `Csv`.
   final pulumi.Input<String>? fileFormat;
@@ -27,8 +27,8 @@ class SubscriptionCostManagementExportState {
 
   /// Creates a new [SubscriptionCostManagementExportState].
   /// [active] Is the cost management export active? Default is `true`.
-  /// [exportDataOptions] A `export_data_options` block as defined below.
-  /// [exportDataStorageLocation] A `export_data_storage_location` block as defined below.
+  /// [exportDataOptions] A `exportDataOptions` block as defined below.
+  /// [exportDataStorageLocation] A `exportDataStorageLocation` block as defined below.
   /// [fileFormat] Format for export. Valid values are `Csv` only. Default is `Csv`.
   /// [name] Specifies the name of the Cost Management Export. Changing this forces a new resource to be created.
   /// [recurrencePeriodEndDate] The date the export will stop capturing information.
@@ -75,4 +75,3 @@ class SubscriptionCostManagementExportState {
     );
   }
 }
-

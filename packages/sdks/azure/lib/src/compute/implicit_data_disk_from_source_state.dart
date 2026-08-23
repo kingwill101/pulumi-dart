@@ -10,7 +10,7 @@ class ImplicitDataDiskFromSourceState {
   final pulumi.Input<String>? createOption;
   /// Specifies the size of the Data Disk in gigabytes.
   ///
-  /// &gt; **Note:** Updating `disk_size_gb` to shrink the disk size is not supported on Azure and forces a new Data Disk to be created.
+  /// &gt; **Note:** Updating `diskSizeGb` to shrink the disk size is not supported on Azure and forces a new Data Disk to be created.
   ///
   /// &gt; **Note:** In certain conditions the Data Disk size can be updated without shutting down the Virtual Machine, however only a subset of Virtual Machine SKUs/Disk combinations support this. More information can be found [for Linux Virtual Machines](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/expand-disks?tabs=azure-cli%2Cubuntu#expand-without-downtime) and [Windows Virtual Machines](https://learn.microsoft.com/azure/virtual-machines/windows/expand-os-disk#expand-without-downtime) respectively.
   ///
@@ -75,4 +75,3 @@ class ImplicitDataDiskFromSourceState {
     );
   }
 }
-

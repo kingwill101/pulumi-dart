@@ -6,12 +6,12 @@ import 'alert_rule_scheduled_entity_mapping_field_mapping.dart';
 class AlertRuleScheduledEntityMapping {
   /// The type of the entity. Possible values are `Account`, `AzureResource`, `CloudApplication`, `DNS`, `File`, `FileHash`, `Host`, `IP`, `Mailbox`, `MailCluster`, `MailMessage`, `Malware`, `Process`, `RegistryKey`, `RegistryValue`, `SecurityGroup`, `SubmissionMail`, `URL`.
   final pulumi.Input<String> entityType;
-  /// A list of `field_mapping` blocks as defined below.
+  /// A list of `fieldMapping` blocks as defined below.
   final pulumi.Input<List<AlertRuleScheduledEntityMappingFieldMapping>> fieldMappings;
 
   /// Creates a new [AlertRuleScheduledEntityMapping].
   /// [entityType] The type of the entity. Possible values are `Account`, `AzureResource`, `CloudApplication`, `DNS`, `File`, `FileHash`, `Host`, `IP`, `Mailbox`, `MailCluster`, `MailMessage`, `Malware`, `Process`, `RegistryKey`, `RegistryValue`, `SecurityGroup`, `SubmissionMail`, `URL`.
-  /// [fieldMappings] A list of `field_mapping` blocks as defined below.
+  /// [fieldMappings] A list of `fieldMapping` blocks as defined below.
   const AlertRuleScheduledEntityMapping({
     required this.entityType,
     required this.fieldMappings,
@@ -31,4 +31,3 @@ class AlertRuleScheduledEntityMapping {
     );
   }
 }
-

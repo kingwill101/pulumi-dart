@@ -6,7 +6,7 @@ import 'registry_credential_set_identity.dart';
 
 /// Input properties used for looking up and filtering RegistryCredentialSet resources.
 class RegistryCredentialSetState {
-  /// A `authentication_credentials` block as defined below.
+  /// A `authenticationCredentials` block as defined below.
   final pulumi.Input<RegistryCredentialSetAuthenticationCredentials>? authenticationCredentials;
   /// The ID of the Container Registry. Changing this forces a new Container Registry Credential Set to be created.
   final pulumi.Input<String>? containerRegistryId;
@@ -18,7 +18,7 @@ class RegistryCredentialSetState {
   final pulumi.Input<String>? name;
 
   /// Creates a new [RegistryCredentialSetState].
-  /// [authenticationCredentials] A `authentication_credentials` block as defined below.
+  /// [authenticationCredentials] A `authenticationCredentials` block as defined below.
   /// [containerRegistryId] The ID of the Container Registry. Changing this forces a new Container Registry Credential Set to be created.
   /// [identity] An `identity` block as defined below.
   /// [loginServer] The login server for the Credential Set. Changing this forces a new Container Registry Credential Set to be created.
@@ -51,4 +51,3 @@ class RegistryCredentialSetState {
     );
   }
 }
-

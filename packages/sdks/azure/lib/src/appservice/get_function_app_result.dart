@@ -15,7 +15,7 @@ class GetFunctionAppResult {
   final Map<String, String> appSettings;
   /// The mode of the Function App's client certificates requirement for incoming requests.
   final String clientCertMode;
-  /// An `connection_string` block as defined below.
+  /// An `connectionString` block as defined below.
   final List<GetFunctionAppConnectionString> connectionStrings;
   /// An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   final String customDomainVerificationId;
@@ -34,13 +34,13 @@ class GetFunctionAppResult {
   final String osType;
   /// A comma separated list of outbound IP addresses.
   final String outboundIpAddresses;
-  /// A comma separated list of outbound IP addresses, not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// A comma separated list of outbound IP addresses, not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   final String possibleOutboundIpAddresses;
   final String resourceGroupName;
   final List<GetFunctionAppSiteConfig> siteConfigs;
-  /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service.
+  /// A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service.
   final List<GetFunctionAppSiteCredential> siteCredentials;
-  /// A `source_control` block as defined below.
+  /// A `sourceControl` block as defined below.
   final List<GetFunctionAppSourceControl> sourceControls;
   final Map<String, String>? tags;
 
@@ -48,7 +48,7 @@ class GetFunctionAppResult {
   /// [appServicePlanId] The ID of the App Service Plan within which to create this Function App.
   /// [appSettings] A key-value pair of App Settings.
   /// [clientCertMode] The mode of the Function App's client certificates requirement for incoming requests.
-  /// [connectionStrings] An `connection_string` block as defined below.
+  /// [connectionStrings] An `connectionString` block as defined below.
   /// [customDomainVerificationId] An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   /// [defaultHostname] The default hostname associated with the Function App.
   /// [enabled] Is the Function App enabled?
@@ -58,11 +58,11 @@ class GetFunctionAppResult {
   /// [name] The name for this IP Restriction.
   /// [osType] A string indicating the Operating System type for this function app.
   /// [outboundIpAddresses] A comma separated list of outbound IP addresses.
-  /// [possibleOutboundIpAddresses] A comma separated list of outbound IP addresses, not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// [possibleOutboundIpAddresses] A comma separated list of outbound IP addresses, not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   /// [resourceGroupName] Required.
   /// [siteConfigs] Required.
-  /// [siteCredentials] A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service.
-  /// [sourceControls] A `source_control` block as defined below.
+  /// [siteCredentials] A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service.
+  /// [sourceControls] A `sourceControl` block as defined below.
   /// [tags] Optional.
   const GetFunctionAppResult({
     required this.appServicePlanId,
@@ -134,4 +134,3 @@ class GetFunctionAppResult {
     );
   }
 }
-

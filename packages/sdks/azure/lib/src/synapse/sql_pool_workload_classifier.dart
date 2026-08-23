@@ -103,8 +103,8 @@ import 'sql_pool_workload_classifier_state.dart';
 ///     importance="normal",
 ///     max_resource_percent=100,
 ///     min_resource_percent=0,
-///     max_resource_percent_per_request=3,
-///     min_resource_percent_per_request=3,
+///     max_resource_percent_per_request=float(3),
+///     min_resource_percent_per_request=float(3),
 ///     query_execution_timeout_in_seconds=0)
 /// example_sql_pool_workload_classifier = azure.synapse.SqlPoolWorkloadClassifier("example",
 ///     name="example",
@@ -284,6 +284,69 @@ import 'sql_pool_workload_classifier_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_kind             = "BlobStorage"
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// resource "azure_synapse_workspace" "example" {
+///   name                                 = "example"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   location                             = azure_core_resourcegroup.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   sql_administrator_login              = "sqladminuser"
+///   sql_administrator_login_password     = "H@Sh1CoR3!"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_synapse_sqlpool" "example" {
+///   name                 = "example"
+///   synapse_workspace_id = azure_synapse_workspace.example.id
+///   sku_name             = "DW100c"
+///   create_mode          = "Default"
+/// }
+/// resource "azure_synapse_sqlpoolworkloadgroup" "example" {
+///   name                               = "example"
+///   sql_pool_id                        = azure_synapse_sqlpool.example.id
+///   importance                         = "normal"
+///   max_resource_percent               = 100
+///   min_resource_percent               = 0
+///   max_resource_percent_per_request   = 3
+///   min_resource_percent_per_request   = 3
+///   query_execution_timeout_in_seconds = 0
+/// }
+/// resource "azure_synapse_sqlpoolworkloadclassifier" "example" {
+///   name              = "example"
+///   workload_group_id = azure_synapse_sqlpoolworkloadgroup.example.id
+///   context           = "example_context"
+///   end_time          = "14:00"
+///   importance        = "high"
+///   label             = "example_label"
+///   member_name       = "dbo"
+///   start_time        = "12:00"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -305,8 +368,8 @@ import 'sql_pool_workload_classifier_state.dart';
 /// import com.pulumi.azure.synapse.SqlPoolWorkloadGroupArgs;
 /// import com.pulumi.azure.synapse.SqlPoolWorkloadClassifier;
 /// import com.pulumi.azure.synapse.SqlPoolWorkloadClassifierArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -463,7 +526,7 @@ class SqlPoolWorkloadClassifier extends pulumi.CustomResource {
   late final pulumi.Output<String?> context;
   /// The workload classifier end time for classification. It's of the `HH:MM` format in UTC time zone.
   late final pulumi.Output<String?> endTime;
-  /// The workload classifier importance. The allowed values are `low`, `below_normal`, `normal`, `above_normal` and `high`.
+  /// The workload classifier importance. The allowed values are `low`, `belowNormal`, `normal`, `aboveNormal` and `high`.
   late final pulumi.Output<String?> importance;
   /// Specifies the label value that a request can be classified against.
   late final pulumi.Output<String?> label;

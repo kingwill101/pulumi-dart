@@ -13,21 +13,21 @@ import 'metric_alert_dynamic_criteria.dart';
 class MetricAlertArgs {
   /// One or more `action` blocks as defined below.
   final pulumi.Input<List<MetricAlertAction>>? actions;
-  /// A `application_insights_web_test_location_availability_criteria` block as defined below.
+  /// A `applicationInsightsWebTestLocationAvailabilityCriteria` block as defined below.
   ///
-  /// &gt; **Note:** One of either `criteria`, `dynamic_criteria` or `application_insights_web_test_location_availability_criteria` must be specified.
+  /// &gt; **Note:** One of either `criteria`, `dynamicCriteria` or `applicationInsightsWebTestLocationAvailabilityCriteria` must be specified.
   final pulumi.Input<MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria>? applicationInsightsWebTestLocationAvailabilityCriteria;
   /// Should the alerts in this Metric Alert be auto resolved? Defaults to `true`.
   final pulumi.Input<bool>? autoMitigate;
   /// One or more (static) `criteria` blocks as defined below.
   ///
-  /// &gt; **Note:** One of either `criteria`, `dynamic_criteria` or `application_insights_web_test_location_availability_criteria` must be specified.
+  /// &gt; **Note:** One of either `criteria`, `dynamicCriteria` or `applicationInsightsWebTestLocationAvailabilityCriteria` must be specified.
   final pulumi.Input<List<MetricAlertCriteria>>? criterias;
   /// The description of this Metric Alert.
   final pulumi.Input<String>? description;
-  /// A `dynamic_criteria` block as defined below.
+  /// A `dynamicCriteria` block as defined below.
   ///
-  /// &gt; **Note:** One of either `criteria`, `dynamic_criteria` or `application_insights_web_test_location_availability_criteria` must be specified.
+  /// &gt; **Note:** One of either `criteria`, `dynamicCriteria` or `applicationInsightsWebTestLocationAvailabilityCriteria` must be specified.
   final pulumi.Input<MetricAlertDynamicCriteria>? dynamicCriteria;
   /// Should this Metric Alert be enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
@@ -56,11 +56,11 @@ class MetricAlertArgs {
 
   /// Creates a new [MetricAlertArgs].
   /// [actions] One or more `action` blocks as defined below.
-  /// [applicationInsightsWebTestLocationAvailabilityCriteria] A `application_insights_web_test_location_availability_criteria` block as defined below.
+  /// [applicationInsightsWebTestLocationAvailabilityCriteria] A `applicationInsightsWebTestLocationAvailabilityCriteria` block as defined below.
   /// [autoMitigate] Should the alerts in this Metric Alert be auto resolved? Defaults to `true`.
   /// [criterias] One or more (static) `criteria` blocks as defined below.
   /// [description] The description of this Metric Alert.
-  /// [dynamicCriteria] A `dynamic_criteria` block as defined below.
+  /// [dynamicCriteria] A `dynamicCriteria` block as defined below.
   /// [enabled] Should this Metric Alert be enabled? Defaults to `true`.
   /// [frequency] The evaluation frequency of this Metric Alert, represented in ISO 8601 duration format. Possible values are `PT1M`, `PT5M`, `PT15M`, `PT30M` and `PT1H`. Defaults to `PT1M`.
   /// [name] The name of the Metric Alert. Changing this forces a new resource to be created.
@@ -132,4 +132,3 @@ class MetricAlertArgs {
     );
   }
 }
-

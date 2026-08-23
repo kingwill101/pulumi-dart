@@ -120,6 +120,32 @@ import 'cluster_virtual_network_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_kusto_cluster" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Standard_D13_v2"
+///     capacity = 2
+///   }
+///   tags = {
+///     "Environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,8 +157,8 @@ import 'cluster_virtual_network_configuration.dart';
 /// import com.pulumi.azure.kusto.Cluster;
 /// import com.pulumi.azure.kusto.ClusterArgs;
 /// import com.pulumi.azure.kusto.inputs.ClusterSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,14 +240,14 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<bool?> doubleEncryptionEnabled;
   /// An `identity` block as defined below.
   late final pulumi.Output<ClusterIdentity?> identity;
-  /// A `language_extension` block as defined below.
+  /// A `languageExtension` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> languageExtension;
   late final pulumi.Output<List<Map<String, dynamic>>> languageExtensions;
   /// The location where the Kusto Cluster should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// The name of the Kusto Cluster to create. Only lowercase Alphanumeric characters allowed, starting with a letter. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// An `optimized_auto_scale` block as defined below.
+  /// An `optimizedAutoScale` block as defined below.
   late final pulumi.Output<ClusterOptimizedAutoScale?> optimizedAutoScale;
   /// Whether to restrict outbound network access. Defaults to `false`.
   late final pulumi.Output<bool?> outboundNetworkAccessRestricted;
@@ -239,9 +265,9 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<bool?> streamingIngestionEnabled;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Specifies a list of tenant IDs that are trusted by the cluster. Default setting trusts all other tenants. Use `trusted_external_tenants = ["*"]` to explicitly allow all other tenants, `trusted_external_tenants = ["MyTenantOnly"]` for only your tenant or `trusted_external_tenants = ["&lt;tenantId1&gt;", "&lt;tenantIdx&gt;"]` to allow specific other tenants.
+  /// Specifies a list of tenant IDs that are trusted by the cluster. Default setting trusts all other tenants. Use `trustedExternalTenants = ["*"]` to explicitly allow all other tenants, `trustedExternalTenants = ["MyTenantOnly"]` for only your tenant or `trustedExternalTenants = ["&lt;tenantId1&gt;", "&lt;tenantIdx&gt;"]` to allow specific other tenants.
   ///
-  /// &gt; **Note:** In v3.0 of `azurerm` a new or updated Kusto Cluster will only allow your own tenant by default. Explicit configuration of this setting will change from `trusted_external_tenants = ["MyTenantOnly"]` to `trusted_external_tenants = []`.
+  /// &gt; **Note:** In v3.0 of `azurerm` a new or updated Kusto Cluster will only allow your own tenant by default. Explicit configuration of this setting will change from `trustedExternalTenants = ["MyTenantOnly"]` to `trustedExternalTenants = []`.
   late final pulumi.Output<List<String>> trustedExternalTenants;
   /// The FQDN of the Azure Kusto Cluster.
   late final pulumi.Output<String> uri;

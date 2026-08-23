@@ -5,9 +5,9 @@ import 'get_agent_extensions_allow_list.dart';
 import 'get_agent_extensions_block_list.dart';
 
 class GetAgent {
-  /// A `extensions_allow_list` block as defined below.
+  /// A `extensionsAllowList` block as defined below.
   final pulumi.Input<List<GetAgentExtensionsAllowList>> extensionsAllowLists;
-  /// A `extensions_block_list` block as defined below.
+  /// A `extensionsBlockList` block as defined below.
   final pulumi.Input<List<GetAgentExtensionsBlockList>> extensionsBlockLists;
   /// Specifies whether the extension service is enabled or disabled.
   final pulumi.Input<bool> extensionsEnabled;
@@ -21,8 +21,8 @@ class GetAgent {
   final pulumi.Input<String> proxyUrl;
 
   /// Creates a new [GetAgent].
-  /// [extensionsAllowLists] A `extensions_allow_list` block as defined below.
-  /// [extensionsBlockLists] A `extensions_block_list` block as defined below.
+  /// [extensionsAllowLists] A `extensionsAllowList` block as defined below.
+  /// [extensionsBlockLists] A `extensionsBlockList` block as defined below.
   /// [extensionsEnabled] Specifies whether the extension service is enabled or disabled.
   /// [guestConfigurationEnabled] Specified whether the guest configuration service is enabled or disabled.
   /// [incomingConnectionsPorts] Specifies the list of ports that the agent will be able to listen on.
@@ -62,4 +62,3 @@ class GetAgent {
     );
   }
 }
-

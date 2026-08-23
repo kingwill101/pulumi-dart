@@ -67,6 +67,24 @@ import 'get_directory_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_aadb2c_getdirectory" "example" {
+///   resource_group_name = "example-rg"
+///   domain_name         = "exampleb2ctenant.onmicrosoft.com"
+/// }
+///
+/// output "tenantId" {
+///   value = data.azure_aadb2c_getdirectory.example.tenant_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +93,8 @@ import 'get_directory_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.aadb2c.Aadb2cFunctions;
 /// import com.pulumi.azure.aadb2c.inputs.GetDirectoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

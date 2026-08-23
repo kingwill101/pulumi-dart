@@ -7,13 +7,13 @@ import 'automation_rule_action_playbook.dart';
 
 /// Input properties used for looking up and filtering AutomationRule resources.
 class AutomationRuleState {
-  /// One or more `action_incident_task` blocks as defined below.
+  /// One or more `actionIncidentTask` blocks as defined below.
   final pulumi.Input<List<AutomationRuleActionIncidentTask>>? actionIncidentTasks;
-  /// One or more `action_incident` blocks as defined below.
+  /// One or more `actionIncident` blocks as defined below.
   final pulumi.Input<List<AutomationRuleActionIncident>>? actionIncidents;
-  /// One or more `action_playbook` blocks as defined below.
+  /// One or more `actionPlaybook` blocks as defined below.
   ///
-  /// &gt; **Note:** Either one `action_incident` block or `action_playbook` block has to be specified.
+  /// &gt; **Note:** Either one `actionIncident` block or `actionPlaybook` block has to be specified.
   final pulumi.Input<List<AutomationRuleActionPlaybook>>? actionPlaybooks;
   /// A JSON array of one or more condition JSON objects as is defined [here](https://learn.microsoft.com/en-us/rest/api/securityinsights/preview/automation-rules/create-or-update?tabs=HTTP#automationruletriggeringlogic).
   final pulumi.Input<String>? conditionJson;
@@ -35,9 +35,9 @@ class AutomationRuleState {
   final pulumi.Input<String>? triggersWhen;
 
   /// Creates a new [AutomationRuleState].
-  /// [actionIncidentTasks] One or more `action_incident_task` blocks as defined below.
-  /// [actionIncidents] One or more `action_incident` blocks as defined below.
-  /// [actionPlaybooks] One or more `action_playbook` blocks as defined below.
+  /// [actionIncidentTasks] One or more `actionIncidentTask` blocks as defined below.
+  /// [actionIncidents] One or more `actionIncident` blocks as defined below.
+  /// [actionPlaybooks] One or more `actionPlaybook` blocks as defined below.
   /// [conditionJson] A JSON array of one or more condition JSON objects as is defined [here](https://learn.microsoft.com/en-us/rest/api/securityinsights/preview/automation-rules/create-or-update?tabs=HTTP#automationruletriggeringlogic).
   /// [displayName] The display name which should be used for this Sentinel Automation Rule.
   /// [enabled] Whether this Sentinel Automation Rule is enabled? Defaults to `true`.
@@ -96,4 +96,3 @@ class AutomationRuleState {
     );
   }
 }
-

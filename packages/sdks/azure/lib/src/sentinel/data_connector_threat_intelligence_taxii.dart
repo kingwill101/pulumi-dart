@@ -136,6 +136,36 @@ import 'data_connector_threat_intelligence_taxii_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-workspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
+///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// resource "azure_sentinel_dataconnectorthreatintelligencetaxii" "example" {
+///   name                       = "example"
+///   log_analytics_workspace_id = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+///   display_name               = "example"
+///   api_root_url               = "https://foo/taxii2/api2/"
+///   collection_id              = "someid"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +180,8 @@ import 'data_connector_threat_intelligence_taxii_state.dart';
 /// import com.pulumi.azure.sentinel.LogAnalyticsWorkspaceOnboardingArgs;
 /// import com.pulumi.azure.sentinel.DataConnectorThreatIntelligenceTaxii;
 /// import com.pulumi.azure.sentinel.DataConnectorThreatIntelligenceTaxiiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -227,7 +257,7 @@ import 'data_connector_threat_intelligence_taxii_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.OperationalInsights` - 2022-10-01
+/// * `Microsoft.OperationalInsights` - 2023-09-01
 ///
 /// ## Import
 ///

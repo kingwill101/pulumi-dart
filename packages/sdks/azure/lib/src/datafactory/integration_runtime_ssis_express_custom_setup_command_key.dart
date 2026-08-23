@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'integration_runtime_ssis_express_custom_setup_command_key_key_vault_password.dart';
 
 class IntegrationRuntimeSsisExpressCustomSetupCommandKey {
-  /// A `key_vault_secret_reference` block as defined below.
+  /// A `keyVaultSecretReference` block as defined below.
   final pulumi.Input<IntegrationRuntimeSsisExpressCustomSetupCommandKeyKeyVaultPassword>? keyVaultPassword;
   /// The password for the target device.
   final pulumi.Input<String>? password;
@@ -14,7 +14,7 @@ class IntegrationRuntimeSsisExpressCustomSetupCommandKey {
   final pulumi.Input<String> userName;
 
   /// Creates a new [IntegrationRuntimeSsisExpressCustomSetupCommandKey].
-  /// [keyVaultPassword] A `key_vault_secret_reference` block as defined below.
+  /// [keyVaultPassword] A `keyVaultSecretReference` block as defined below.
   /// [password] The password for the target device.
   /// [targetName] The target computer or domain name.
   /// [userName] The username for the target device.
@@ -43,4 +43,3 @@ class IntegrationRuntimeSsisExpressCustomSetupCommandKey {
     );
   }
 }
-

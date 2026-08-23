@@ -296,6 +296,70 @@ import 'spark_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   account_kind             = "StorageV2"
+///   is_hns_enabled           = "true"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// resource "azure_synapse_workspace" "example" {
+///   name                                 = "example"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   location                             = azure_core_resourcegroup.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   sql_administrator_login              = "sqladminuser"
+///   sql_administrator_login_password     = "H@Sh1CoR3!"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_synapse_sparkpool" "example" {
+///   name                 = "example"
+///   synapse_workspace_id = azure_synapse_workspace.example.id
+///   node_size_family     = "MemoryOptimized"
+///   node_size            = "Small"
+///   cache_size           = 100
+///   auto_scale = {
+///     max_node_count = 50
+///     min_node_count = 3
+///   }
+///   auto_pause = {
+///     delay_in_minutes = 15
+///   }
+///   library_requirement = {
+///     content  = "appnope==0.1.0\nbeautifulsoup4==4.6.3\n"
+///     filename = "requirements.txt"
+///   }
+///   spark_config = {
+///     content  = "spark.shuffle.spill                true\n"
+///     filename = "config.txt"
+///   }
+///   spark_version = 3.5
+///   tags = {
+///     "ENV" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -317,8 +381,8 @@ import 'spark_pool_state.dart';
 /// import com.pulumi.azure.synapse.inputs.SparkPoolAutoPauseArgs;
 /// import com.pulumi.azure.synapse.inputs.SparkPoolLibraryRequirementArgs;
 /// import com.pulumi.azure.synapse.inputs.SparkPoolSparkConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -468,9 +532,9 @@ import 'spark_pool_state.dart';
 /// $ pulumi import azure:synapse/sparkPool:SparkPool example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Synapse/workspaces/workspace1/bigDataPools/sparkPool1
 /// ```
 class SparkPool extends pulumi.CustomResource {
-  /// An `auto_pause` block as defined below.
+  /// An `autoPause` block as defined below.
   late final pulumi.Output<SparkPoolAutoPause?> autoPause;
-  /// An `auto_scale` block as defined below. Exactly one of `node_count` or `auto_scale` must be specified.
+  /// An `autoScale` block as defined below. Exactly one of `nodeCount` or `autoScale` must be specified.
   late final pulumi.Output<SparkPoolAutoScale?> autoScale;
   /// The cache size in the Spark Pool.
   late final pulumi.Output<int?> cacheSize;
@@ -482,7 +546,7 @@ class SparkPool extends pulumi.CustomResource {
   late final pulumi.Output<int?> minExecutors;
   /// The name which should be used for this Synapse Spark Pool. Changing this forces a new Synapse Spark Pool to be created.
   late final pulumi.Output<String> name;
-  /// The number of nodes in the Spark Pool. Exactly one of `node_count` or `auto_scale` must be specified.
+  /// The number of nodes in the Spark Pool. Exactly one of `nodeCount` or `autoScale` must be specified.
   late final pulumi.Output<int> nodeCount;
   /// The level of node in the Spark Pool. Possible values are `Small`, `Medium`, `Large`, `None`, `XLarge`, `XXLarge` and `XXXLarge`.
   late final pulumi.Output<String> nodeSize;

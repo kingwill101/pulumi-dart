@@ -321,6 +321,71 @@ import 'resolver_virtual_network_link_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "west europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "outbounddns"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.0.64/28"]
+///   delegations {
+///     name = "Microsoft.Network.dnsResolvers"
+///     service_delegation = {
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+///       name    = "Microsoft.Network/dnsResolvers"
+///     }
+///   }
+/// }
+/// resource "azure_privatedns_resolver" "example" {
+///   name                = "example-resolver"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_network_id  = azure_network_virtualnetwork.example.id
+/// }
+/// resource "azure_privatedns_resolveroutboundendpoint" "example" {
+///   name                    = "example-endpoint"
+///   private_dns_resolver_id = azure_privatedns_resolver.example.id
+///   location                = azure_privatedns_resolver.example.location
+///   subnet_id               = azure_network_subnet.example.id
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// resource "azure_privatedns_resolverdnsforwardingruleset" "example" {
+///   name                                       = "example-ruleset"
+///   resource_group_name                        = azure_core_resourcegroup.example.name
+///   location                                   = azure_core_resourcegroup.example.location
+///   private_dns_resolver_outbound_endpoint_ids = [azure_privatedns_resolveroutboundendpoint.example.id]
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// resource "azure_privatedns_resolvervirtualnetworklink" "example" {
+///   name                      = "example-link"
+///   dns_forwarding_ruleset_id = azure_privatedns_resolverdnsforwardingruleset.example.id
+///   virtual_network_id        = azure_network_virtualnetwork.example.id
+///   metadata = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -343,8 +408,8 @@ import 'resolver_virtual_network_link_state.dart';
 /// import com.pulumi.azure.privatedns.ResolverDnsForwardingRulesetArgs;
 /// import com.pulumi.azure.privatedns.ResolverVirtualNetworkLink;
 /// import com.pulumi.azure.privatedns.ResolverVirtualNetworkLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -88,7 +88,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 ///     name: "example-machine",
 ///     resourceGroupName: example.name,
 ///     location: example.location,
-///     size: "Standard_F2",
+///     size: "Standard_D4_v5",
 ///     adminUsername: "adminuser",
 ///     networkInterfaceIds: [exampleNetworkInterface.id],
 ///     osDisk: {
@@ -100,7 +100,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 ///     name: "example",
 ///     resourceGroupName: example.name,
 ///     location: example.location,
-///     sku: "Standard_F2",
+///     sku: "Standard_D4_v5",
 ///     instances: 1,
 ///     adminUsername: "adminuser",
 ///     adminPassword: "P@ssword1234!",
@@ -217,7 +217,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 ///     name="example-machine",
 ///     resource_group_name=example.name,
 ///     location=example.location,
-///     size="Standard_F2",
+///     size="Standard_D4_v5",
 ///     admin_username="adminuser",
 ///     network_interface_ids=[example_network_interface.id],
 ///     os_disk={
@@ -228,7 +228,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 ///     name="example",
 ///     resource_group_name=example.name,
 ///     location=example.location,
-///     sku="Standard_F2",
+///     sku="Standard_D4_v5",
 ///     instances=1,
 ///     admin_username="adminuser",
 ///     admin_password="P@ssword1234!",
@@ -392,7 +392,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 ///         Name = "example-machine",
 ///         ResourceGroupName = example.Name,
 ///         Location = example.Location,
-///         Size = "Standard_F2",
+///         Size = "Standard_D4_v5",
 ///         AdminUsername = "adminuser",
 ///         NetworkInterfaceIds = new[]
 ///         {
@@ -410,7 +410,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 ///         Name = "example",
 ///         ResourceGroupName = example.Name,
 ///         Location = example.Location,
-///         Sku = "Standard_F2",
+///         Sku = "Standard_D4_v5",
 ///         Instances = 1,
 ///         AdminUsername = "adminuser",
 ///         AdminPassword = "P@ssword1234!",
@@ -608,7 +608,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 /// 			Name:              pulumi.String("example-machine"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			Size:              pulumi.String("Standard_F2"),
+/// 			Size:              pulumi.String("Standard_D4_v5"),
 /// 			AdminUsername:     pulumi.String("adminuser"),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
 /// 				exampleNetworkInterface.ID(),
@@ -625,7 +625,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 /// 			Name:                          pulumi.String("example"),
 /// 			ResourceGroupName:             example.Name,
 /// 			Location:                      example.Location,
-/// 			Sku:                           pulumi.String("Standard_F2"),
+/// 			Sku:                           pulumi.String("Standard_D4_v5"),
 /// 			Instances:                     pulumi.Int(1),
 /// 			AdminUsername:                 pulumi.String("adminuser"),
 /// 			AdminPassword:                 pulumi.String("P@ssword1234!"),
@@ -686,6 +686,149 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-network"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "internal"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+/// }
+/// resource "azure_lb_loadbalancer" "example" {
+///   name                = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   frontend_ip_configurations {
+///     name                 = "internal"
+///     public_ip_address_id = azure_network_publicip.example.id
+///   }
+/// }
+/// resource "azure_lb_backendaddresspool" "example" {
+///   name            = "example"
+///   loadbalancer_id = azure_lb_loadbalancer.example.id
+/// }
+/// resource "azure_lb_probe" "example" {
+///   name            = "example"
+///   loadbalancer_id = azure_lb_loadbalancer.example.id
+///   port            = 22
+///   protocol        = "Tcp"
+/// }
+/// resource "azure_lb_rule" "example" {
+///   name                           = "example"
+///   loadbalancer_id                = azure_lb_loadbalancer.example.id
+///   probe_id                       = azure_lb_probe.example.id
+///   frontend_ip_configuration_name = "internal"
+///   protocol                       = "Tcp"
+///   frontend_port                  = 22
+///   backend_port                   = 22
+/// }
+/// resource "azure_maintenance_configuration" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   scope               = "OSImage"
+///   visibility          = "Custom"
+///   window = {
+///     start_date_time      = "2021-12-31 00:00"
+///     expiration_date_time = "9999-12-31 00:00"
+///     duration             = "06:00"
+///     time_zone            = "Pacific Standard Time"
+///     recur_every          = "1Days"
+///   }
+/// }
+/// resource "azure_network_networkinterface" "example" {
+///   name                = "sample-nic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "testconfiguration1"
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_linuxvirtualmachine" "example" {
+///   name                  = "example-machine"
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   location              = azure_core_resourcegroup.example.location
+///   size                  = "Standard_D4_v5"
+///   admin_username        = "adminuser"
+///   network_interface_ids = [azure_network_networkinterface.example.id]
+///   os_disk = {
+///     caching              = "ReadWrite"
+///     storage_account_type = "Standard_LRS"
+///   }
+/// }
+/// resource "azure_compute_linuxvirtualmachinescaleset" "example" {
+///   depends_on                      = [azure_lb_rule.example]
+///   name                            = "example"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resourcegroup.example.location
+///   sku                             = "Standard_D4_v5"
+///   instances                       = 1
+///   admin_username                  = "adminuser"
+///   admin_password                  = "P@ssword1234!"
+///   upgrade_mode                    = "Automatic"
+///   health_probe_id                 = azure_lb_probe.example.id
+///   disable_password_authentication = false
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+///   os_disk = {
+///     storage_account_type = "Standard_LRS"
+///     caching              = "ReadWrite"
+///   }
+///   network_interfaces {
+///     name    = "example"
+///     primary = true
+///     ip_configurations {
+///       name                                   = "internal"
+///       primary                                = true
+///       subnet_id                              = azure_network_subnet.example.id
+///       load_balancer_backend_address_pool_ids = [azure_lb_backendaddresspool.example.id]
+///     }
+///   }
+///   automatic_os_upgrade_policy = {
+///     disable_automatic_rollback  = true
+///     enable_automatic_os_upgrade = true
+///   }
+///   rolling_upgrade_policy = {
+///     max_batch_instance_percent              = 20
+///     max_unhealthy_instance_percent          = 20
+///     max_unhealthy_upgraded_instance_percent = 20
+///     pause_time_between_batches              = "PT0S"
+///   }
+/// }
+/// resource "azure_maintenance_assignmentvirtualmachinescaleset" "example" {
+///   location                     = azure_core_resourcegroup.example.location
+///   maintenance_configuration_id = azure_maintenance_configuration.example.id
+///   virtual_machine_scale_set_id = azure_compute_linuxvirtualmachine.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -723,13 +866,14 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetSourceImageReferenceArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetOsDiskArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetNetworkInterfaceArgs;
+/// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetRollingUpgradePolicyArgs;
 /// import com.pulumi.azure.maintenance.AssignmentVirtualMachineScaleSet;
 /// import com.pulumi.azure.maintenance.AssignmentVirtualMachineScaleSetArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -828,7 +972,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 ///             .name("example-machine")
 ///             .resourceGroupName(example.name())
 ///             .location(example.location())
-///             .size("Standard_F2")
+///             .size("Standard_D4_v5")
 ///             .adminUsername("adminuser")
 ///             .networkInterfaceIds(exampleNetworkInterface.id())
 ///             .osDisk(LinuxVirtualMachineOsDiskArgs.builder()
@@ -841,7 +985,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 ///             .name("example")
 ///             .resourceGroupName(example.name())
 ///             .location(example.location())
-///             .sku("Standard_F2")
+///             .sku("Standard_D4_v5")
 ///             .instances(1)
 ///             .adminUsername("adminuser")
 ///             .adminPassword("P@ssword1234!")
@@ -991,7 +1135,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 ///       name: example-machine
 ///       resourceGroupName: ${example.name}
 ///       location: ${example.location}
-///       size: Standard_F2
+///       size: Standard_D4_v5
 ///       adminUsername: adminuser
 ///       networkInterfaceIds:
 ///         - ${exampleNetworkInterface.id}
@@ -1005,7 +1149,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 ///       name: example
 ///       resourceGroupName: ${example.name}
 ///       location: ${example.location}
-///       sku: Standard_F2
+///       sku: Standard_D4_v5
 ///       instances: 1
 ///       adminUsername: adminuser
 ///       adminPassword: P@ssword1234!

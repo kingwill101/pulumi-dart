@@ -18,11 +18,11 @@ class VpnGatewayConnectionArgs {
   final pulumi.Input<String> remoteVpnSiteId;
   /// A `routing` block as defined below. If this is not specified, there will be a default route table created implicitly.
   final pulumi.Input<VpnGatewayConnectionRouting>? routing;
-  /// One or more `traffic_selector_policy` blocks as defined below.
+  /// One or more `trafficSelectorPolicy` blocks as defined below.
   final pulumi.Input<List<VpnGatewayConnectionTrafficSelectorPolicy>>? trafficSelectorPolicies;
   /// The ID of the VPN Gateway that this VPN Gateway Connection belongs to. Changing this forces a new VPN Gateway Connection to be created.
   final pulumi.Input<String> vpnGatewayId;
-  /// One or more `vpn_link` blocks as defined below.
+  /// One or more `vpnLink` blocks as defined below.
   final pulumi.Input<List<VpnGatewayConnectionVpnLink>> vpnLinks;
 
   /// Creates a new [VpnGatewayConnectionArgs].
@@ -30,9 +30,9 @@ class VpnGatewayConnectionArgs {
   /// [name] The name which should be used for this VPN Gateway Connection. Changing this forces a new VPN Gateway Connection to be created.
   /// [remoteVpnSiteId] The ID of the remote VPN Site, which will connect to the VPN Gateway. Changing this forces a new VPN Gateway Connection to be created.
   /// [routing] A `routing` block as defined below. If this is not specified, there will be a default route table created implicitly.
-  /// [trafficSelectorPolicies] One or more `traffic_selector_policy` blocks as defined below.
+  /// [trafficSelectorPolicies] One or more `trafficSelectorPolicy` blocks as defined below.
   /// [vpnGatewayId] The ID of the VPN Gateway that this VPN Gateway Connection belongs to. Changing this forces a new VPN Gateway Connection to be created.
-  /// [vpnLinks] One or more `vpn_link` blocks as defined below.
+  /// [vpnLinks] One or more `vpnLink` blocks as defined below.
   const VpnGatewayConnectionArgs({
     this.internetSecurityEnabled,
     this.name,
@@ -67,4 +67,3 @@ class VpnGatewayConnectionArgs {
     );
   }
 }
-

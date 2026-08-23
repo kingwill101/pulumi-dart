@@ -7,8 +7,9 @@ import 'get_frontdoor_custom_domain_tl.dart';
 class GetFrontdoorCustomDomainResult {
   /// The ID of the Front Door Profile which the Front Door Custom Domain is bound to.
   final String cdnFrontdoorProfileId;
+  /// The ID of the Azure DNS Zone which should be used for this Front Door Custom Domain.
   final String dnsZoneId;
-  /// The date time that the token expires.
+  /// The date and time that the token expires.
   final String expirationDate;
   /// The host name of the domain.
   final String hostName;
@@ -24,8 +25,8 @@ class GetFrontdoorCustomDomainResult {
 
   /// Creates a new [GetFrontdoorCustomDomainResult].
   /// [cdnFrontdoorProfileId] The ID of the Front Door Profile which the Front Door Custom Domain is bound to.
-  /// [dnsZoneId] Required.
-  /// [expirationDate] The date time that the token expires.
+  /// [dnsZoneId] The ID of the Azure DNS Zone which should be used for this Front Door Custom Domain.
+  /// [expirationDate] The date and time that the token expires.
   /// [hostName] The host name of the domain.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
@@ -76,4 +77,3 @@ class GetFrontdoorCustomDomainResult {
     );
   }
 }
-

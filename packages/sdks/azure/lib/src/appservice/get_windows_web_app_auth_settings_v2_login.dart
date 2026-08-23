@@ -84,4 +84,3 @@ class GetWindowsWebAppAuthSettingsV2Login {
     );
   }
 }
-

@@ -11,7 +11,7 @@ class ProductArgs {
   final pulumi.Input<String> apiManagementName;
   /// Do subscribers need to be approved prior to being able to use the Product?
   ///
-  /// &gt; **Note:** `approval_required` can only be set when `subscription_required` is set to `true`.
+  /// &gt; **Note:** `approvalRequired` can only be set when `subscriptionRequired` is set to `true`.
   final pulumi.Input<bool>? approvalRequired;
   /// A description of this Product, which may include HTML formatting tags.
   final pulumi.Input<String>? description;
@@ -27,7 +27,7 @@ class ProductArgs {
   final pulumi.Input<bool>? subscriptionRequired;
   /// The number of subscriptions a user can have to this Product at the same time.
   ///
-  /// &gt; **Note:** `subscriptions_limit` can only be set when `subscription_required` is set to `true`.
+  /// &gt; **Note:** `subscriptionsLimit` can only be set when `subscriptionRequired` is set to `true`.
   final pulumi.Input<int>? subscriptionsLimit;
   /// The Terms and Conditions for this Product, which must be accepted by Developers before they can begin the Subscription process.
   final pulumi.Input<String>? terms;
@@ -86,4 +86,3 @@ class ProductArgs {
     );
   }
 }
-

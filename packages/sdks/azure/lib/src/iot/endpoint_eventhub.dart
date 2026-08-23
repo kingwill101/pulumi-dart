@@ -25,8 +25,7 @@ import 'endpoint_eventhub_state.dart';
 /// });
 /// const exampleEventHub = new azure.eventhub.EventHub("example", {
 ///     name: "exampleEventHub",
-///     namespaceName: exampleEventHubNamespace.name,
-///     resourceGroupName: example.name,
+///     namespaceId: exampleEventHubNamespace.id,
 ///     partitionCount: 2,
 ///     messageRetention: 1,
 /// });
@@ -72,8 +71,7 @@ import 'endpoint_eventhub_state.dart';
 ///     sku="Basic")
 /// example_event_hub = azure.eventhub.EventHub("example",
 ///     name="exampleEventHub",
-///     namespace_name=example_event_hub_namespace.name,
-///     resource_group_name=example.name,
+///     namespace_id=example_event_hub_namespace.id,
 ///     partition_count=2,
 ///     message_retention=1)
 /// example_authorization_rule = azure.eventhub.AuthorizationRule("example",
@@ -126,8 +124,7 @@ import 'endpoint_eventhub_state.dart';
 ///     var exampleEventHub = new Azure.EventHub.EventHub("example", new()
 ///     {
 ///         Name = "exampleEventHub",
-///         NamespaceName = exampleEventHubNamespace.Name,
-///         ResourceGroupName = example.Name,
+///         NamespaceId = exampleEventHubNamespace.Id,
 ///         PartitionCount = 2,
 ///         MessageRetention = 1,
 ///     });
@@ -198,11 +195,10 @@ import 'endpoint_eventhub_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
-/// 			Name:              pulumi.String("exampleEventHub"),
-/// 			NamespaceName:     exampleEventHubNamespace.Name,
-/// 			ResourceGroupName: example.Name,
-/// 			PartitionCount:    pulumi.Int(2),
-/// 			MessageRetention:  pulumi.Int(1),
+/// 			Name:             pulumi.String("exampleEventHub"),
+/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			PartitionCount:   pulumi.Int(2),
+/// 			MessageRetention: pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -247,6 +243,59 @@ import 'endpoint_eventhub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "example" {
+///   name                = "exampleEventHubNamespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Basic"
+/// }
+/// resource "azure_eventhub_eventhub" "example" {
+///   name              = "exampleEventHub"
+///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   partition_count   = 2
+///   message_retention = 1
+/// }
+/// resource "azure_eventhub_authorizationrule" "example" {
+///   name                = "exampleRule"
+///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
+///   eventhub_name       = azure_eventhub_eventhub.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   listen              = false
+///   send                = true
+///   manage              = false
+/// }
+/// resource "azure_iot_iothub" "example" {
+///   name                = "exampleIothub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku = {
+///     name     = "B1"
+///     capacity = "1"
+///   }
+///   tags = {
+///     "purpose" = "example"
+///   }
+/// }
+/// resource "azure_iot_endpointeventhub" "example" {
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   iothub_id           = azure_iot_iothub.example.id
+///   name                = "example"
+///   connection_string   = azure_eventhub_authorizationrule.example.primary_connection_string
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -266,8 +315,8 @@ import 'endpoint_eventhub_state.dart';
 /// import com.pulumi.azure.iot.inputs.IoTHubSkuArgs;
 /// import com.pulumi.azure.iot.EndpointEventhub;
 /// import com.pulumi.azure.iot.EndpointEventhubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -293,8 +342,7 @@ import 'endpoint_eventhub_state.dart';
 ///
 ///         var exampleEventHub = new EventHub("exampleEventHub", EventHubArgs.builder()
 ///             .name("exampleEventHub")
-///             .namespaceName(exampleEventHubNamespace.name())
-///             .resourceGroupName(example.name())
+///             .namespaceId(exampleEventHubNamespace.id())
 ///             .partitionCount(2)
 ///             .messageRetention(1)
 ///             .build());
@@ -350,8 +398,7 @@ import 'endpoint_eventhub_state.dart';
 ///     name: example
 ///     properties:
 ///       name: exampleEventHub
-///       namespaceName: ${exampleEventHubNamespace.name}
-///       resourceGroupName: ${example.name}
+///       namespaceId: ${exampleEventHubNamespace.id}
 ///       partitionCount: 2
 ///       messageRetention: 1
 ///   exampleAuthorizationRule:
@@ -398,15 +445,15 @@ import 'endpoint_eventhub_state.dart';
 class EndpointEventhub extends pulumi.CustomResource {
   /// Type used to authenticate against the Event Hub endpoint. Possible values are `keyBased` and `identityBased`. Defaults to `keyBased`.
   late final pulumi.Output<String?> authenticationType;
-  /// The connection string for the endpoint. This attribute can only be specified and is mandatory when `authentication_type` is `keyBased`.
+  /// The connection string for the endpoint. This attribute can only be specified and is mandatory when `authenticationType` is `keyBased`.
   late final pulumi.Output<String?> connectionString;
-  /// URI of the Event Hubs Namespace endpoint. This attribute can only be specified and is mandatory when `authentication_type` is `identityBased`.
+  /// URI of the Event Hubs Namespace endpoint. This attribute can only be specified and is mandatory when `authenticationType` is `identityBased`.
   late final pulumi.Output<String?> endpointUri;
-  /// Name of the Event Hub. This attribute can only be specified and is mandatory when `authentication_type` is `identityBased`.
+  /// Name of the Event Hub. This attribute can only be specified and is mandatory when `authenticationType` is `identityBased`.
   late final pulumi.Output<String?> entityPath;
   /// ID of the User Managed Identity used to authenticate against the Event Hub endpoint.
   ///
-  /// &gt; **Note:** `identity_id` can only be specified when `authentication_type` is `identityBased`. It must be one of the `identity_ids` of the Iot Hub. If not specified when `authentication_type` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
+  /// &gt; **Note:** `identityId` can only be specified when `authenticationType` is `identityBased`. It must be one of the `identityIds` of the Iot Hub. If not specified when `authenticationType` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
   late final pulumi.Output<String?> identityId;
   /// The IoTHub ID for the endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubId;
@@ -416,7 +463,7 @@ class EndpointEventhub extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// The subscription ID for the endpoint.
   ///
-  /// &gt; **Note:** When `subscription_id` isn't specified it will be set to the subscription ID of the IoT Hub resource.
+  /// &gt; **Note:** When `subscriptionId` isn't specified it will be set to the subscription ID of the IoT Hub resource.
   late final pulumi.Output<String> subscriptionId;
 
   /// Creates a new [EndpointEventhub].

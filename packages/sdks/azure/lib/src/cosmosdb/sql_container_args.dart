@@ -15,17 +15,17 @@ class SqlContainerArgs {
   final pulumi.Input<String> accountName;
   /// The default time to live of Analytical Storage for this SQL container. If present and the value is set to `-1`, it is equal to infinity, and items don’t expire by default. If present and the value is set to some number `n` – items will expire `n` seconds after their last modified time.
   final pulumi.Input<int>? analyticalStorageTtl;
-  /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
+  /// An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   final pulumi.Input<SqlContainerAutoscaleSettings>? autoscaleSettings;
-  /// A `conflict_resolution_policy` blocks as defined below. Changing this forces a new resource to be created.
+  /// A `conflictResolutionPolicy` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<SqlContainerConflictResolutionPolicy>? conflictResolutionPolicy;
   /// The name of the Cosmos DB SQL Database to create the container within. Changing this forces a new resource to be created.
   final pulumi.Input<String> databaseName;
   /// The default time to live of SQL container. If missing, items are not expired automatically. If present and the value is set to `-1`, it is equal to infinity, and items don’t expire by default. If present and the value is set to some number `n` – items will expire `n` seconds after their last modified time.
   final pulumi.Input<int>? defaultTtl;
-  /// An `indexing_policy` block as defined below.
+  /// An `indexingPolicy` block as defined below.
   final pulumi.Input<SqlContainerIndexingPolicy>? indexingPolicy;
   /// Specifies the name of the Cosmos DB SQL Container. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -35,30 +35,30 @@ class SqlContainerArgs {
   final pulumi.Input<List<String>> partitionKeyPaths;
   /// Define a partition key version. Possible values are `1`and `2`. This should be set to `2` in order to use large partition keys.
   ///
-  /// &gt; **Note:** If `partition_key_version` is not specified when creating a new resource, you can update `partition_key_version` to `1`, updating to `2` forces a new resource to be created.
+  /// &gt; **Note:** If `partitionKeyVersion` is not specified when creating a new resource, you can update `partitionKeyVersion` to `1`, updating to `2` forces a new resource to be created.
   final pulumi.Input<int>? partitionKeyVersion;
   /// The name of the resource group in which the Cosmos DB SQL Container is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The throughput of SQL container (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon container creation otherwise it cannot be updated without a manual resource destroy-apply.
   final pulumi.Input<int>? throughput;
-  /// One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `uniqueKey` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<SqlContainerUniqueKey>>? uniqueKeys;
 
   /// Creates a new [SqlContainerArgs].
   /// [accountName] The name of the Cosmos DB Account to create the container within. Changing this forces a new resource to be created.
   /// [analyticalStorageTtl] The default time to live of Analytical Storage for this SQL container. If present and the value is set to `-1`, it is equal to infinity, and items don’t expire by default. If present and the value is set to some number `n` – items will expire `n` seconds after their last modified time.
-  /// [autoscaleSettings] An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
-  /// [conflictResolutionPolicy] A `conflict_resolution_policy` blocks as defined below. Changing this forces a new resource to be created.
+  /// [autoscaleSettings] An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
+  /// [conflictResolutionPolicy] A `conflictResolutionPolicy` blocks as defined below. Changing this forces a new resource to be created.
   /// [databaseName] The name of the Cosmos DB SQL Database to create the container within. Changing this forces a new resource to be created.
   /// [defaultTtl] The default time to live of SQL container. If missing, items are not expired automatically. If present and the value is set to `-1`, it is equal to infinity, and items don’t expire by default. If present and the value is set to some number `n` – items will expire `n` seconds after their last modified time.
-  /// [indexingPolicy] An `indexing_policy` block as defined below.
+  /// [indexingPolicy] An `indexingPolicy` block as defined below.
   /// [name] Specifies the name of the Cosmos DB SQL Container. Changing this forces a new resource to be created.
   /// [partitionKeyKind] Define a partition key kind. Possible values are `Hash` and `MultiHash`. Defaults to `Hash`. Changing this forces a new resource to be created.
   /// [partitionKeyPaths] A list of partition key paths. Changing this forces a new resource to be created.
   /// [partitionKeyVersion] Define a partition key version. Possible values are `1`and `2`. This should be set to `2` in order to use large partition keys.
   /// [resourceGroupName] The name of the resource group in which the Cosmos DB SQL Container is created. Changing this forces a new resource to be created.
   /// [throughput] The throughput of SQL container (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon container creation otherwise it cannot be updated without a manual resource destroy-apply.
-  /// [uniqueKeys] One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
+  /// [uniqueKeys] One or more `uniqueKey` blocks as defined below. Changing this forces a new resource to be created.
   const SqlContainerArgs({
     required this.accountName,
     this.analyticalStorageTtl,
@@ -114,4 +114,3 @@ class SqlContainerArgs {
     );
   }
 }
-

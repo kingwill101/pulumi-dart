@@ -7,14 +7,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_core_get_subscriptions_get_subscriptions_args_doc}
 class GetSubscriptionsArgs {
-  /// A case-insensitive value which must be contained within the `display_name` field, used to filter the results
+  /// A case-insensitive value which must be contained within the `displayName` field, used to filter the results
   final pulumi.Input<String>? displayNameContains;
-  /// A case-insensitive prefix which can be used to filter on the `display_name` field
+  /// A case-insensitive prefix which can be used to filter on the `displayName` field
   final pulumi.Input<String>? displayNamePrefix;
 
   /// Creates a new [GetSubscriptionsArgs].
-  /// [displayNameContains] A case-insensitive value which must be contained within the `display_name` field, used to filter the results
-  /// [displayNamePrefix] A case-insensitive prefix which can be used to filter on the `display_name` field
+  /// [displayNameContains] A case-insensitive value which must be contained within the `displayName` field, used to filter the results
+  /// [displayNamePrefix] A case-insensitive prefix which can be used to filter on the `displayName` field
   const GetSubscriptionsArgs({
     this.displayNameContains,
     this.displayNamePrefix,
@@ -34,4 +34,3 @@ class GetSubscriptionsArgs {
     );
   }
 }
-

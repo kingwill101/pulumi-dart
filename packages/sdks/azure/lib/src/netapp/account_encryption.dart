@@ -382,6 +382,71 @@ import 'account_encryption_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "anf-user-assigned-identity"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                            = "anfcmkakv"
+///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   enabled_for_disk_encryption     = true
+///   enabled_for_deployment          = true
+///   enabled_for_template_deployment = true
+///   purge_protection_enabled        = true
+///   tenant_id                       = "00000000-0000-0000-0000-000000000000"
+///   sku_name                        = "standard"
+///   access_policies {
+///     tenant_id       = "00000000-0000-0000-0000-000000000000"
+///     object_id       = data.azure_core_getclientconfig.current.object_id
+///     key_permissions = ["Get", "Create", "Delete", "WrapKey", "UnwrapKey", "GetRotationPolicy", "SetRotationPolicy"]
+///   }
+///   access_policies {
+///     tenant_id       = "00000000-0000-0000-0000-000000000000"
+///     object_id       = azure_authorization_userassignedidentity.example.principal_id
+///     key_permissions = ["Get", "Encrypt", "Decrypt"]
+///   }
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   name         = "anfencryptionkey"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_netapp_account" "example" {
+///   name                = "netappaccount"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+/// }
+/// resource "azure_netapp_accountencryption" "example" {
+///   netapp_account_id         = azure_netapp_account.example.id
+///   user_assigned_identity_id = azure_authorization_userassignedidentity.example.id
+///   encryption_key            = azure_keyvault_key.example.versionless_id
+///   federated_client_id       = azure_authorization_userassignedidentity.example.client_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -403,8 +468,8 @@ import 'account_encryption_state.dart';
 /// import com.pulumi.azure.netapp.inputs.AccountIdentityArgs;
 /// import com.pulumi.azure.netapp.AccountEncryption;
 /// import com.pulumi.azure.netapp.AccountEncryptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -653,6 +718,23 @@ import 'account_encryption_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_netapp_accountencryption" "cross_tenant" {
+///   netapp_account_id                  = example.id
+///   user_assigned_identity_id          = exampleAzurermUserAssignedIdentity.id
+///   encryption_key                     = "https://keyvault-in-other-tenant.vault.azure.net/keys/encryption-key"
+///   federated_client_id                = "12345678-1234-1234-1234-123456789012"
+///   cross_tenant_key_vault_resource_id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/remote-rg/providers/Microsoft.KeyVault/vaults/keyvault-in-other-tenant"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -661,8 +743,8 @@ import 'account_encryption_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.netapp.AccountEncryption;
 /// import com.pulumi.azure.netapp.AccountEncryptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -704,7 +786,7 @@ import 'account_encryption_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 ///
 /// ## Import
 ///
@@ -714,7 +796,7 @@ import 'account_encryption_state.dart';
 /// $ pulumi import azure:netapp/accountEncryption:AccountEncryption example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.NetApp/netAppAccounts/account1
 /// ```
 class AccountEncryption extends pulumi.CustomResource {
-  /// The full resource ID of the cross-tenant key vault. This is recommended when using `federated_client_id` for cross-tenant scenarios to ensure proper validation by Azure APIs.
+  /// The full resource ID of the cross-tenant key vault. This is recommended when using `federatedClientId` for cross-tenant scenarios to ensure proper validation by Azure APIs.
   late final pulumi.Output<String?> crossTenantKeyVaultResourceId;
   /// Specify the versionless ID of the encryption key.
   late final pulumi.Output<String> encryptionKey;
@@ -722,9 +804,9 @@ class AccountEncryption extends pulumi.CustomResource {
   late final pulumi.Output<String?> federatedClientId;
   /// The ID of the NetApp account where volume under it will have customer managed keys-based encryption enabled.
   late final pulumi.Output<String> netappAccountId;
-  /// The ID of the System Assigned Manged Identity. Conflicts with `user_assigned_identity_id`.
+  /// The ID of the System Assigned Manged Identity. Conflicts with `userAssignedIdentityId`.
   late final pulumi.Output<String?> systemAssignedIdentityPrincipalId;
-  /// The ID of the User Assigned Managed Identity. Conflicts with `system_assigned_identity_principal_id`.
+  /// The ID of the User Assigned Managed Identity. Conflicts with `systemAssignedIdentityPrincipalId`.
   late final pulumi.Output<String?> userAssignedIdentityId;
 
   /// Creates a new [AccountEncryption].

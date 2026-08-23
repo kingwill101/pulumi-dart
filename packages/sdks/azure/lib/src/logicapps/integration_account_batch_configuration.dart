@@ -132,6 +132,35 @@ import 'integration_account_batch_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_logicapps_integrationaccount" "example" {
+///   name                = "example-ia"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Standard"
+/// }
+/// resource "azure_logicapps_integrationaccountbatchconfiguration" "example" {
+///   name                     = "exampleiabc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   integration_account_name = azure_logicapps_integrationaccount.example.name
+///   batch_group_name         = "TestBatchGroup"
+///   release_criteria = {
+///     message_count = 80
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -145,8 +174,8 @@ import 'integration_account_batch_configuration_state.dart';
 /// import com.pulumi.azure.logicapps.IntegrationAccountBatchConfiguration;
 /// import com.pulumi.azure.logicapps.IntegrationAccountBatchConfigurationArgs;
 /// import com.pulumi.azure.logicapps.inputs.IntegrationAccountBatchConfigurationReleaseCriteriaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,7 +263,7 @@ class IntegrationAccountBatchConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> metadata;
   /// The name which should be used for this Logic App Integration Account Batch Configuration. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A `release_criteria` block as documented below, which is used to select the criteria to meet before processing each batch.
+  /// A `releaseCriteria` block as documented below, which is used to select the criteria to meet before processing each batch.
   late final pulumi.Output<IntegrationAccountBatchConfigurationReleaseCriteria> releaseCriteria;
   /// The name of the Resource Group where the Logic App Integration Account Batch Configuration should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;

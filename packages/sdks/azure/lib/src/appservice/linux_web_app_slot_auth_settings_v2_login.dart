@@ -86,4 +86,3 @@ class LinuxWebAppSlotAuthSettingsV2Login {
     );
   }
 }
-

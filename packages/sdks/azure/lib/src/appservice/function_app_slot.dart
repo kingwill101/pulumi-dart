@@ -7,7 +7,7 @@ import 'function_app_slot_state.dart';
 
 /// Manages a Function App deployment Slot.
 ///
-/// !&gt; **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.LinuxFunctionAppSlot` and `azure.appservice.WindowsFunctionAppSlot` resources instead.
+/// &gt; **NOTE:** This resource has been deprecated and will be removed in version 6.0 of the provider. Please use `azure.appservice.LinuxFunctionAppSlot` and `azure.appservice.WindowsFunctionAppSlot` resources instead.
 ///
 /// ## Example Usage
 ///
@@ -219,6 +219,53 @@ import 'function_app_slot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "azure-functions-test-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "functionsapptestsa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "azure-functions-test-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     tier = "Standard"
+///     size = "S1"
+///   }
+/// }
+/// resource "azure_appservice_functionapp" "example" {
+///   name                       = "test-azure-functions"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   app_service_plan_id        = azure_appservice_plan.example.id
+///   storage_account_name       = azure_storage_account.example.name
+///   storage_account_access_key = azure_storage_account.example.primary_access_key
+/// }
+/// resource "azure_appservice_functionappslot" "example" {
+///   name                       = "test-azure-functions_slot"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   app_service_plan_id        = azure_appservice_plan.example.id
+///   function_app_name          = azure_appservice_functionapp.example.name
+///   storage_account_name       = azure_storage_account.example.name
+///   storage_account_access_key = azure_storage_account.example.primary_access_key
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -236,8 +283,8 @@ import 'function_app_slot_state.dart';
 /// import com.pulumi.azure.appservice.FunctionAppArgs;
 /// import com.pulumi.azure.appservice.FunctionAppSlot;
 /// import com.pulumi.azure.appservice.FunctionAppSlotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -358,13 +405,13 @@ class FunctionAppSlot extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** When integrating a `CI/CD pipeline` and expecting to run from a deployed package in `Azure` you must seed your `app settings` as part of the application code for function app to be successfully deployed. `Important Default key pairs`: (`"WEBSITE_RUN_FROM_PACKAGE" = ""`, `"FUNCTIONS_WORKER_RUNTIME" = "node"` (or python, etc), `"WEBSITE_NODE_DEFAULT_VERSION" = "10.14.1"`, `"APPINSIGHTS_INSTRUMENTATIONKEY" = ""`).
   ///
-  /// &gt; **NOTE:** The values for `AzureWebJobsStorage` and `FUNCTIONS_EXTENSION_VERSION` will be filled by other input arguments and shouldn't be configured separately. `AzureWebJobsStorage` is filled based on `storage_account_name` and `storage_account_access_key`. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`.
+  /// &gt; **NOTE:** The values for `AzureWebJobsStorage` and `FUNCTIONS_EXTENSION_VERSION` will be filled by other input arguments and shouldn't be configured separately. `AzureWebJobsStorage` is filled based on `storageAccountName` and `storageAccountAccessKey`. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`.
   ///
-  /// &gt; **Note:**  When using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
+  /// &gt; **Note:**  When using an App Service Plan in the `Free` or `Shared` Tiers `use32BitWorkerProcess` must be set to `true`.
   late final pulumi.Output<Map<String, String>> appSettings;
-  /// An `auth_settings` block as defined below.
+  /// An `authSettings` block as defined below.
   late final pulumi.Output<FunctionAppSlotAuthSettings> authSettings;
-  /// A `connection_string` block as defined below.
+  /// A `connectionString` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
   /// The amount of memory in gigabyte-seconds that your application is allowed to consume per day. Setting this value only affects function apps under the consumption plan.
   late final pulumi.Output<int?> dailyMemoryTimeQuota;
@@ -392,13 +439,13 @@ class FunctionAppSlot extends pulumi.CustomResource {
   late final pulumi.Output<String?> osType;
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`
   late final pulumi.Output<String> outboundIpAddresses;
-  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   late final pulumi.Output<String> possibleOutboundIpAddresses;
   /// The name of the resource group in which to create the Function App Slot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `site_config` object as defined below.
+  /// A `siteConfig` object as defined below.
   late final pulumi.Output<FunctionAppSlotSiteConfig> siteConfig;
-  /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this Function App Slot.
+  /// A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this Function App Slot.
   late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
   /// The access key which will be used to access the backend storage account for the Function App.
   late final pulumi.Output<String> storageAccountAccessKey;

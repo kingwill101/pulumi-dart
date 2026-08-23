@@ -72,6 +72,23 @@ import 'role_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "example" {
+/// }
+///
+/// resource "azure_marketplace_roleassignment" "example" {
+///   role_definition_name = "Marketplace Admin"
+///   principal_id         = data.azure_core_getclientconfig.example.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +98,8 @@ import 'role_assignment_state.dart';
 /// import com.pulumi.azure.core.CoreFunctions;
 /// import com.pulumi.azure.marketplace.RoleAssignment;
 /// import com.pulumi.azure.marketplace.RoleAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -203,6 +220,26 @@ import 'role_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "example" {
+/// }
+/// data "azure_authorization_getroledefinition" "exampleGetRoleDefinition" {
+///   name = "Log Analytics Reader"
+/// }
+///
+/// resource "azure_marketplace_roleassignment" "example" {
+///   role_definition_id = data.azure_authorization_getroledefinition.exampleGetRoleDefinition.id
+///   principal_id       = data.azure_core_getclientconfig.example.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +251,8 @@ import 'role_assignment_state.dart';
 /// import com.pulumi.azure.authorization.inputs.GetRoleDefinitionArgs;
 /// import com.pulumi.azure.marketplace.RoleAssignment;
 /// import com.pulumi.azure.marketplace.RoleAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -299,17 +336,17 @@ class RoleAssignment extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** The Principal ID is also known as the Object ID (i.e. not the "Application ID" for applications). To assign Azure roles, the Principal must have `Microsoft.Authorization/roleAssignments/write` permissions. See [documentation](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) for more information.
   late final pulumi.Output<String> principalId;
-  /// The type of the `principal_id`, e.g. User, Group, Service Principal, Application, etc.
+  /// The type of the `principalId`, e.g. User, Group, Service Principal, Application, etc.
   late final pulumi.Output<String> principalType;
-  /// The Scoped-ID of the Role Definition. Changing this forces a new resource to be created. Conflicts with `role_definition_name`.
+  /// The Scoped-ID of the Role Definition. Changing this forces a new resource to be created. Conflicts with `roleDefinitionName`.
   late final pulumi.Output<String?> roleDefinitionId;
-  /// The name of a built-in Role. Changing this forces a new resource to be created. Conflicts with `role_definition_id`.
+  /// The name of a built-in Role. Changing this forces a new resource to be created. Conflicts with `roleDefinitionId`.
   ///
   /// &gt; **Note:** To assign `Marketplace Admin` role, the calling Principal must first be assigned Privileged Role Administrator (like `Owner` role) or Global Administrator. See [documentation](https://learn.microsoft.com/en-us/marketplace/create-manage-private-azure-marketplace-new#prerequisites) for more information.
   late final pulumi.Output<String?> roleDefinitionName;
-  /// If the `principal_id` is a newly provisioned `Service Principal` set this value to `true` to skip the `Azure Active Directory` check which may fail due to replication lag. This argument is only valid if the `principal_id` is a `Service Principal` identity. Defaults to `false`. Changing this forces a new resource to be created.
+  /// If the `principalId` is a newly provisioned `Service Principal` set this value to `true` to skip the `Azure Active Directory` check which may fail due to replication lag. This argument is only valid if the `principalId` is a `Service Principal` identity. Defaults to `false`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** This field takes effect only when `principal_id` is a `Service Principal` identity.
+  /// &gt; **Note:** This field takes effect only when `principalId` is a `Service Principal` identity.
   late final pulumi.Output<bool?> skipServicePrincipalAadCheck;
 
   /// Creates a new [RoleAssignment].

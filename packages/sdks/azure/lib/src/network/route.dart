@@ -122,6 +122,32 @@ import 'route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_routetable" "example" {
+///   name                = "acceptanceTestRouteTable1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_route" "example" {
+///   name                = "acceptanceTestRoute1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   route_table_name    = azure_network_routetable.example.name
+///   address_prefix      = "10.1.0.0/16"
+///   next_hop_type       = "VnetLocal"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,8 +160,8 @@ import 'route_state.dart';
 /// import com.pulumi.azure.network.RouteTableArgs;
 /// import com.pulumi.azure.network.Route;
 /// import com.pulumi.azure.network.RouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -9,9 +9,9 @@ import 'vnp_gateway_nat_rule_internal_mapping.dart';
 /// {@endtemplate}
 /// {@macro pulumi_network_vnp_gateway_nat_rule_vnp_gateway_nat_rule_args_doc}
 class VnpGatewayNatRuleArgs {
-  /// One of more `external_mapping` blocks as defined below.
+  /// One of more `externalMapping` blocks as defined below.
   final pulumi.Input<List<VnpGatewayNatRuleExternalMapping>>? externalMappings;
-  /// One of more `internal_mapping` blocks as defined below.
+  /// One of more `internalMapping` blocks as defined below.
   final pulumi.Input<List<VnpGatewayNatRuleInternalMapping>>? internalMappings;
   /// The ID of the IP Configuration this VPN Gateway NAT Rule applies to. Possible values are `Instance0` and `Instance1`.
   final pulumi.Input<String>? ipConfigurationId;
@@ -25,8 +25,8 @@ class VnpGatewayNatRuleArgs {
   final pulumi.Input<String> vpnGatewayId;
 
   /// Creates a new [VnpGatewayNatRuleArgs].
-  /// [externalMappings] One of more `external_mapping` blocks as defined below.
-  /// [internalMappings] One of more `internal_mapping` blocks as defined below.
+  /// [externalMappings] One of more `externalMapping` blocks as defined below.
+  /// [internalMappings] One of more `internalMapping` blocks as defined below.
   /// [ipConfigurationId] The ID of the IP Configuration this VPN Gateway NAT Rule applies to. Possible values are `Instance0` and `Instance1`.
   /// [mode] The source NAT direction of the VPN NAT. Possible values are `EgressSnat` and `IngressSnat`. Defaults to `EgressSnat`. Changing this forces a new resource to be created.
   /// [name] The name which should be used for this VPN Gateway NAT Rule. Changing this forces a new resource to be created.
@@ -66,4 +66,3 @@ class VnpGatewayNatRuleArgs {
     );
   }
 }
-

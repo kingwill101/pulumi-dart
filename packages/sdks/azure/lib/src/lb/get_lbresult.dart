@@ -5,7 +5,7 @@ import 'get_lbfrontend_ip_configuration.dart';
 
 /// Result data returned by getLB.
 class GetLBResult {
-  /// A `frontend_ip_configuration` block as documented below.
+  /// A `frontendIpConfiguration` block as documented below.
   final List<GetLBFrontendIpConfiguration> frontendIpConfigurations;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -15,7 +15,7 @@ class GetLBResult {
   final String name;
   /// Private IP Address to assign to the Load Balancer.
   final String privateIpAddress;
-  /// The list of private IP address assigned to the load balancer in `frontend_ip_configuration` blocks, if any.
+  /// The list of private IP address assigned to the load balancer in `frontendIpConfiguration` blocks, if any.
   final List<String> privateIpAddresses;
   final String resourceGroupName;
   /// The SKU of the Load Balancer.
@@ -24,12 +24,12 @@ class GetLBResult {
   final Map<String, String> tags;
 
   /// Creates a new [GetLBResult].
-  /// [frontendIpConfigurations] A `frontend_ip_configuration` block as documented below.
+  /// [frontendIpConfigurations] A `frontendIpConfiguration` block as documented below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] The Azure location where the Load Balancer exists.
   /// [name] The name of the Frontend IP Configuration.
   /// [privateIpAddress] Private IP Address to assign to the Load Balancer.
-  /// [privateIpAddresses] The list of private IP address assigned to the load balancer in `frontend_ip_configuration` blocks, if any.
+  /// [privateIpAddresses] The list of private IP address assigned to the load balancer in `frontendIpConfiguration` blocks, if any.
   /// [resourceGroupName] Required.
   /// [sku] The SKU of the Load Balancer.
   /// [tags] A mapping of tags assigned to the resource.
@@ -73,4 +73,3 @@ class GetLBResult {
     );
   }
 }
-

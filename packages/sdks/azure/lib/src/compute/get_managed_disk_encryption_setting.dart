@@ -5,16 +5,16 @@ import 'get_managed_disk_encryption_setting_disk_encryption_key.dart';
 import 'get_managed_disk_encryption_setting_key_encryption_key.dart';
 
 class GetManagedDiskEncryptionSetting {
-  /// A `disk_encryption_key` block as defined above.
+  /// A `diskEncryptionKey` block as defined above.
   final pulumi.Input<List<GetManagedDiskEncryptionSettingDiskEncryptionKey>> diskEncryptionKeys;
   final pulumi.Input<bool> enabled;
-  /// A `key_encryption_key` block as defined below.
+  /// A `keyEncryptionKey` block as defined below.
   final pulumi.Input<List<GetManagedDiskEncryptionSettingKeyEncryptionKey>> keyEncryptionKeys;
 
   /// Creates a new [GetManagedDiskEncryptionSetting].
-  /// [diskEncryptionKeys] A `disk_encryption_key` block as defined above.
+  /// [diskEncryptionKeys] A `diskEncryptionKey` block as defined above.
   /// [enabled] Required.
-  /// [keyEncryptionKeys] A `key_encryption_key` block as defined below.
+  /// [keyEncryptionKeys] A `keyEncryptionKey` block as defined below.
   const GetManagedDiskEncryptionSetting({
     required this.diskEncryptionKeys,
     required this.enabled,
@@ -37,4 +37,3 @@ class GetManagedDiskEncryptionSetting {
     );
   }
 }
-

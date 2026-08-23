@@ -17,7 +17,7 @@ class TriggerHttpRequestArgs {
   final pulumi.Input<String>? name;
   /// Specifies the Relative Path used for this Request.
   ///
-  /// &gt; **NOTE:** When `relative_path` is set a `method` must also be set.
+  /// &gt; **NOTE:** When `relativePath` is set a `method` must also be set.
   final pulumi.Input<String>? relativePath;
   /// A JSON Blob defining the Schema of the incoming request. This needs to be valid JSON.
   final pulumi.Input<String> schema;
@@ -56,4 +56,3 @@ class TriggerHttpRequestArgs {
     );
   }
 }
-

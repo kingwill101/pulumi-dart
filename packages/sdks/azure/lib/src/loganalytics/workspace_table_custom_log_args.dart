@@ -24,7 +24,7 @@ class WorkspaceTableCustomLogArgs {
   final pulumi.Input<String>? plan;
   /// The table's retention in days. Possible values range between `4` and `730`.
   ///
-  /// &gt; **Note:** `retention_in_days` cannot be set when `plan` is set to `Basic` because the retention is fixed.
+  /// &gt; **Note:** `retentionInDays` cannot be set when `plan` is set to `Basic` because the retention is fixed.
   final pulumi.Input<int>? retentionInDays;
   /// The table's total retention in days. Possible values range between `4` and `730`; or `1095`, `1460`, `1826`, `2191`, `2556`, `2922`, `3288`, `3653`, `4018`, or `4383`.
   final pulumi.Input<int>? totalRetentionInDays;
@@ -77,4 +77,3 @@ class WorkspaceTableCustomLogArgs {
     );
   }
 }
-

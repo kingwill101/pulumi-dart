@@ -8,7 +8,7 @@ import 'logger_eventhub.dart';
 class LoggerState {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiManagementName;
-  /// An `application_insights` block as documented below. Changing this forces a new resource to be created.
+  /// An `applicationInsights` block as documented below. Changing this forces a new resource to be created.
   final pulumi.Input<LoggerApplicationInsights>? applicationInsights;
   /// Specifies whether records should be buffered in the Logger prior to publishing. Defaults to `true`.
   final pulumi.Input<bool>? buffered;
@@ -25,7 +25,7 @@ class LoggerState {
 
   /// Creates a new [LoggerState].
   /// [apiManagementName] The name of the API Management Service. Changing this forces a new resource to be created.
-  /// [applicationInsights] An `application_insights` block as documented below. Changing this forces a new resource to be created.
+  /// [applicationInsights] An `applicationInsights` block as documented below. Changing this forces a new resource to be created.
   /// [buffered] Specifies whether records should be buffered in the Logger prior to publishing. Defaults to `true`.
   /// [description] A description of this Logger.
   /// [eventhub] An `eventhub` block as documented below. Changing this forces a new resource to be created.
@@ -69,4 +69,3 @@ class LoggerState {
     );
   }
 }
-

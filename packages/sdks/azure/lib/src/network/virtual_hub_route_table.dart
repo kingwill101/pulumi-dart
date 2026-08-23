@@ -320,6 +320,70 @@ import 'virtual_hub_route_table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.5.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_networksecuritygroup" "example" {
+///   name                = "example-nsg"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "examplesubnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.5.1.0/24"]
+/// }
+/// resource "azure_network_subnetnetworksecuritygroupassociation" "example" {
+///   subnet_id                 = azure_network_subnet.example.id
+///   network_security_group_id = azure_network_networksecuritygroup.example.id
+/// }
+/// resource "azure_network_virtualwan" "example" {
+///   name                = "example-vwan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_virtualhub" "example" {
+///   name                = "example-vhub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   address_prefix      = "10.0.2.0/24"
+/// }
+/// resource "azure_network_virtualhubconnection" "example" {
+///   name                      = "example-vhubconn"
+///   virtual_hub_id            = azure_network_virtualhub.example.id
+///   remote_virtual_network_id = azure_network_virtualnetwork.example.id
+/// }
+/// resource "azure_network_virtualhubroutetable" "example" {
+///   name           = "example-vhubroutetable"
+///   virtual_hub_id = azure_network_virtualhub.example.id
+///   labels         = ["label1"]
+///   routes {
+///     name              = "example-route"
+///     destinations_type = "CIDR"
+///     destinations      = ["10.0.0.0/16"]
+///     next_hop_type     = "ResourceId"
+///     next_hop          = azure_network_virtualhubconnection.example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -345,8 +409,8 @@ import 'virtual_hub_route_table_state.dart';
 /// import com.pulumi.azure.network.VirtualHubRouteTable;
 /// import com.pulumi.azure.network.VirtualHubRouteTableArgs;
 /// import com.pulumi.azure.network.inputs.VirtualHubRouteTableRouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

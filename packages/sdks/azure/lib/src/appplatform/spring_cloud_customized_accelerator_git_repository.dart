@@ -5,7 +5,7 @@ import 'spring_cloud_customized_accelerator_git_repository_basic_auth.dart';
 import 'spring_cloud_customized_accelerator_git_repository_ssh_auth.dart';
 
 class SpringCloudCustomizedAcceleratorGitRepository {
-  /// A `basic_auth` block as defined below. Conflicts with `git_repository[0].ssh_auth`. Changing this forces a new Spring Cloud Customized Accelerator to be created.
+  /// A `basicAuth` block as defined below. Conflicts with `git_repository[0].ssh_auth`. Changing this forces a new Spring Cloud Customized Accelerator to be created.
   final pulumi.Input<SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth>? basicAuth;
   /// Specifies the Git repository branch to be used.
   final pulumi.Input<String>? branch;
@@ -17,22 +17,22 @@ class SpringCloudCustomizedAcceleratorGitRepository {
   final pulumi.Input<String>? gitTag;
   /// Specifies the interval for checking for updates to Git or image repository. It should be greater than 10.
   final pulumi.Input<int>? intervalInSeconds;
-  /// Specifies the path under the git repository to be treated as the root directory of the accelerator or the fragment (depending on `accelerator_type`).
+  /// Specifies the path under the git repository to be treated as the root directory of the accelerator or the fragment (depending on `acceleratorType`).
   final pulumi.Input<String>? path;
-  /// A `ssh_auth` block as defined below. Conflicts with `git_repository[0].basic_auth`. Changing this forces a new Spring Cloud Customized Accelerator to be created.
+  /// A `sshAuth` block as defined below. Conflicts with `git_repository[0].basic_auth`. Changing this forces a new Spring Cloud Customized Accelerator to be created.
   final pulumi.Input<SpringCloudCustomizedAcceleratorGitRepositorySshAuth>? sshAuth;
   /// Specifies Git repository URL for the accelerator.
   final pulumi.Input<String> url;
 
   /// Creates a new [SpringCloudCustomizedAcceleratorGitRepository].
-  /// [basicAuth] A `basic_auth` block as defined below. Conflicts with `git_repository[0].ssh_auth`. Changing this forces a new Spring Cloud Customized Accelerator to be created.
+  /// [basicAuth] A `basicAuth` block as defined below. Conflicts with `git_repository[0].ssh_auth`. Changing this forces a new Spring Cloud Customized Accelerator to be created.
   /// [branch] Specifies the Git repository branch to be used.
   /// [caCertificateId] Specifies the ID of the CA Spring Cloud Certificate for https URL of Git repository.
   /// [commit] Specifies the Git repository commit to be used.
   /// [gitTag] Specifies the Git repository tag to be used.
   /// [intervalInSeconds] Specifies the interval for checking for updates to Git or image repository. It should be greater than 10.
-  /// [path] Specifies the path under the git repository to be treated as the root directory of the accelerator or the fragment (depending on `accelerator_type`).
-  /// [sshAuth] A `ssh_auth` block as defined below. Conflicts with `git_repository[0].basic_auth`. Changing this forces a new Spring Cloud Customized Accelerator to be created.
+  /// [path] Specifies the path under the git repository to be treated as the root directory of the accelerator or the fragment (depending on `acceleratorType`).
+  /// [sshAuth] A `sshAuth` block as defined below. Conflicts with `git_repository[0].basic_auth`. Changing this forces a new Spring Cloud Customized Accelerator to be created.
   /// [url] Specifies Git repository URL for the accelerator.
   const SpringCloudCustomizedAcceleratorGitRepository({
     this.basicAuth,
@@ -74,4 +74,3 @@ class SpringCloudCustomizedAcceleratorGitRepository {
     );
   }
 }
-

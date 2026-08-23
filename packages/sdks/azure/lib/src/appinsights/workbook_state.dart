@@ -25,7 +25,7 @@ class WorkbookState {
   final pulumi.Input<String>? sourceId;
   /// Specifies the Resource Manager ID of the Storage Container when bring your own storage is used. Changing this forces a new Workbook to be created.
   ///
-  /// &gt; **Note:** This is the Resource Manager ID of the Storage Container, rather than the regular ID - and can be accessed on the `azure.storage.Container` Data Source/Resource as `resource_manager_id`.
+  /// &gt; **Note:** This is the Resource Manager ID of the Storage Container, rather than the regular ID - and can be accessed on the `azure.storage.Container` Data Source/Resource as `resourceManagerId`.
   final pulumi.Input<String>? storageContainerId;
   /// A mapping of tags which should be assigned to the Workbook.
   final pulumi.Input<Map<String, String>>? tags;
@@ -88,4 +88,3 @@ class WorkbookState {
     );
   }
 }
-

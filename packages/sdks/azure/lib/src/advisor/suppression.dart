@@ -86,6 +86,27 @@ import 'suppression_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+/// data "azure_advisor_getrecommendations" "example" {
+/// }
+///
+/// resource "azure_advisor_suppression" "example" {
+///   name              = "HardcodedSuppressionName"
+///   recommendation_id = test.recommendations[0].recommendationName
+///   resource_id       ="/subscriptions/${data.azure_core_getclientconfig.current.subscription_id}"
+///   ttl               = "01:00:00:00"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +118,8 @@ import 'suppression_state.dart';
 /// import com.pulumi.azure.advisor.inputs.GetRecommendationsArgs;
 /// import com.pulumi.azure.advisor.Suppression;
 /// import com.pulumi.azure.advisor.SuppressionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

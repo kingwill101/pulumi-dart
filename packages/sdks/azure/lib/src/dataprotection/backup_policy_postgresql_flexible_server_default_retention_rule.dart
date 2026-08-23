@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_policy_postgresql_flexible_server_default_retention_rule_life_cycle.dart';
 
 class BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule {
-  /// A `life_cycle` block as defined below. Changing this forces a new resource to be created.
+  /// A `lifeCycle` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycle>> lifeCycles;
 
   /// Creates a new [BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule].
-  /// [lifeCycles] A `life_cycle` block as defined below. Changing this forces a new resource to be created.
+  /// [lifeCycles] A `lifeCycle` block as defined below. Changing this forces a new resource to be created.
   const BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule({
     required this.lifeCycles,
   });
@@ -25,4 +25,3 @@ class BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule {
     );
   }
 }
-

@@ -71,6 +71,24 @@ import 'get_workflow_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_logicapps_getintegrationaccount" "example" {
+///   name                = "example-account"
+///   resource_group_name = "example-resource-group"
+/// }
+///
+/// output "id" {
+///   value = data.azure_logicapps_getintegrationaccount.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +97,8 @@ import 'get_workflow_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.logicapps.LogicappsFunctions;
 /// import com.pulumi.azure.logicapps.inputs.GetIntegrationAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,6 +218,24 @@ Future<GetIntegrationAccountResult> getIntegrationAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_logicapps_getstandard" "example" {
+///   name                = "example-logic-app"
+///   resource_group_name = "example-rg"
+/// }
+///
+/// output "id" {
+///   value = data.azure_logicapps_getstandard.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -208,8 +244,8 @@ Future<GetIntegrationAccountResult> getIntegrationAccount(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.logicapps.LogicappsFunctions;
 /// import com.pulumi.azure.logicapps.inputs.GetStandardArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -329,6 +365,24 @@ Future<GetStandardResult> getStandard(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_logicapps_getworkflow" "example" {
+///   name                = "workflow1"
+///   resource_group_name = "my-resource-group"
+/// }
+///
+/// output "accessEndpoint" {
+///   value = data.azure_logicapps_getworkflow.example.access_endpoint
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -337,8 +391,8 @@ Future<GetStandardResult> getStandard(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.logicapps.LogicappsFunctions;
 /// import com.pulumi.azure.logicapps.inputs.GetWorkflowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -13,17 +13,17 @@ import 'virtual_network_subnet.dart';
 class VirtualNetworkArgs {
   /// The address space that is used the virtual network. You can supply more than one address space.
   ///
-  /// &gt; **Note:** Exactly one of `address_space` or `ip_address_pool` must be specified.
+  /// &gt; **Note:** Exactly one of `addressSpace` or `ipAddressPool` must be specified.
   final pulumi.Input<List<String>>? addressSpaces;
   /// The BGP community attribute in format `&lt;as-number&gt;:&lt;community-value&gt;`.
   ///
   /// &gt; **NOTE** The `as-number` segment is the Microsoft ASN, which is always `12076` for now.
   final pulumi.Input<String>? bgpCommunity;
-  /// A `ddos_protection_plan` block as documented below.
+  /// A `ddosProtectionPlan` block as documented below.
   final pulumi.Input<VirtualNetworkDdosProtectionPlan>? ddosProtectionPlan;
   /// List of IP addresses of DNS servers
   ///
-  /// &gt; **NOTE** Since `dns_servers` can be configured both inline and via the separate `azure.network.VirtualNetworkDnsServers` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
+  /// &gt; **NOTE** Since `dnsServers` can be configured both inline and via the separate `azure.network.VirtualNetworkDnsServers` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
   final pulumi.Input<List<String>>? dnsServers;
   /// Specifies the Edge Zone within the Azure Region where this Virtual Network should exist. Changing this forces a new Virtual Network to be created.
   final pulumi.Input<String>? edgeZone;
@@ -31,9 +31,9 @@ class VirtualNetworkArgs {
   final pulumi.Input<VirtualNetworkEncryption>? encryption;
   /// The flow timeout in minutes for the Virtual Network, which is used to enable connection tracking for intra-VM flows. Possible values are between `4` and `30` minutes.
   final pulumi.Input<int>? flowTimeoutInMinutes;
-  /// One or more `ip_address_pool` blocks as defined below. Only one association of each IP type(IPv4 or IPv6) is allowed.
+  /// One or more `ipAddressPool` blocks as defined below. Only one association of each IP type(IPv4 or IPv6) is allowed.
   ///
-  /// &gt; **Note:** Exactly one of `address_space` or `ip_address_pool` must be specified.
+  /// &gt; **Note:** Exactly one of `addressSpace` or `ipAddressPool` must be specified.
   final pulumi.Input<List<VirtualNetworkIpAddressPool>>? ipAddressPools;
   /// The location/region where the virtual network is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -53,12 +53,12 @@ class VirtualNetworkArgs {
   /// Creates a new [VirtualNetworkArgs].
   /// [addressSpaces] The address space that is used the virtual network. You can supply more than one address space.
   /// [bgpCommunity] The BGP community attribute in format `&lt;as-number&gt;:&lt;community-value&gt;`.
-  /// [ddosProtectionPlan] A `ddos_protection_plan` block as documented below.
+  /// [ddosProtectionPlan] A `ddosProtectionPlan` block as documented below.
   /// [dnsServers] List of IP addresses of DNS servers
   /// [edgeZone] Specifies the Edge Zone within the Azure Region where this Virtual Network should exist. Changing this forces a new Virtual Network to be created.
   /// [encryption] A `encryption` block as defined below.
   /// [flowTimeoutInMinutes] The flow timeout in minutes for the Virtual Network, which is used to enable connection tracking for intra-VM flows. Possible values are between `4` and `30` minutes.
-  /// [ipAddressPools] One or more `ip_address_pool` blocks as defined below. Only one association of each IP type(IPv4 or IPv6) is allowed.
+  /// [ipAddressPools] One or more `ipAddressPool` blocks as defined below. Only one association of each IP type(IPv4 or IPv6) is allowed.
   /// [location] The location/region where the virtual network is created. Changing this forces a new resource to be created.
   /// [name] The name of the virtual network. Changing this forces a new resource to be created.
   /// [privateEndpointVnetPolicies] The Private Endpoint VNet Policies for the Virtual Network. Possible values are `Disabled` and `Basic`. Defaults to `Disabled`.
@@ -120,4 +120,3 @@ class VirtualNetworkArgs {
     );
   }
 }
-

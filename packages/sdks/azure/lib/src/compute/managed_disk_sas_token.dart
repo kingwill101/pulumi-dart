@@ -128,6 +128,33 @@ import 'managed_disk_sas_token_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "test" {
+///   name     = "testrg"
+///   location = "West Europe"
+/// }
+/// resource "azure_compute_manageddisk" "test" {
+///   name                 = "tst-disk-export"
+///   location             = azure_core_resourcegroup.test.location
+///   resource_group_name  = azure_core_resourcegroup.test.name
+///   storage_account_type = "Standard_LRS"
+///   create_option        = "Empty"
+///   disk_size_gb         = "1"
+/// }
+/// resource "azure_compute_manageddisksastoken" "test" {
+///   managed_disk_id     = azure_compute_manageddisk.test.id
+///   duration_in_seconds = 300
+///   access_level        = "Read"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +167,8 @@ import 'managed_disk_sas_token_state.dart';
 /// import com.pulumi.azure.compute.ManagedDiskArgs;
 /// import com.pulumi.azure.compute.ManagedDiskSasToken;
 /// import com.pulumi.azure.compute.ManagedDiskSasTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

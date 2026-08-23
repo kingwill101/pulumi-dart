@@ -6,7 +6,7 @@ import 'get_key_vault_network_acl.dart';
 
 /// Result data returned by getKeyVault.
 class GetKeyVaultResult {
-  /// One or more `access_policy` blocks as defined below.
+  /// One or more `accessPolicy` blocks as defined below.
   final List<GetKeyVaultAccessPolicy> accessPolicies;
   /// Is Role Based Access Control (RBAC) for authorization of data actions enabled on this Key Vault?
   final bool enableRbacAuthorization;
@@ -38,7 +38,7 @@ class GetKeyVaultResult {
   final String vaultUri;
 
   /// Creates a new [GetKeyVaultResult].
-  /// [accessPolicies] One or more `access_policy` blocks as defined below.
+  /// [accessPolicies] One or more `accessPolicy` blocks as defined below.
   /// [enableRbacAuthorization] Is Role Based Access Control (RBAC) for authorization of data actions enabled on this Key Vault?
   /// [enabledForDeployment] Can Azure Virtual Machines retrieve certificates stored as secrets from the Key Vault?
   /// [enabledForDiskEncryption] Can Azure Disk Encryption retrieve secrets from the Key Vault?
@@ -119,4 +119,3 @@ class GetKeyVaultResult {
     );
   }
 }
-

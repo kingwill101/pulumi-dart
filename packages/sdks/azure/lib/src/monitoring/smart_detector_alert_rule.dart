@@ -175,6 +175,42 @@ import 'smart_detector_alert_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "example-appinsights"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_monitoring_actiongroup" "example" {
+///   name                = "example-action-group"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   short_name          = "example"
+/// }
+/// resource "azure_monitoring_smartdetectoralertrule" "example" {
+///   name                = "example-smart-detector-alert-rule"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   severity            = "Sev0"
+///   scope_resource_ids  = [azure_appinsights_insights.example.id]
+///   frequency           = "PT1M"
+///   detector_type       = "FailureAnomaliesDetector"
+///   action_group = {
+///     ids = [azure_monitoring_actiongroup.example.id]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -190,8 +226,8 @@ import 'smart_detector_alert_rule_state.dart';
 /// import com.pulumi.azure.monitoring.SmartDetectorAlertRule;
 /// import com.pulumi.azure.monitoring.SmartDetectorAlertRuleArgs;
 /// import com.pulumi.azure.monitoring.inputs.SmartDetectorAlertRuleActionGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -290,7 +326,7 @@ import 'smart_detector_alert_rule_state.dart';
 /// $ pulumi import azure:monitoring/smartDetectorAlertRule:SmartDetectorAlertRule example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AlertsManagement/smartDetectorAlertRules/rule1
 /// ```
 class SmartDetectorAlertRule extends pulumi.CustomResource {
-  /// An `action_group` block as defined below.
+  /// An `actionGroup` block as defined below.
   late final pulumi.Output<SmartDetectorAlertRuleActionGroup> actionGroup;
   /// Specifies a description for the Smart Detector Alert Rule.
   late final pulumi.Output<String?> description;

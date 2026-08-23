@@ -6,7 +6,7 @@ import 'hci_deployment_setting_scale_unit_host_network_intent_qos_policy_overrid
 import 'hci_deployment_setting_scale_unit_host_network_intent_virtual_switch_configuration_override.dart';
 
 class HciDeploymentSettingScaleUnitHostNetworkIntent {
-  /// A `adapter_property_override` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// A `adapterPropertyOverride` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride>? adapterPropertyOverride;
   /// Whether to override adapter properties. Possible values are `true` and `false`. defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<bool>? adapterPropertyOverrideEnabled;
@@ -14,26 +14,26 @@ class HciDeploymentSettingScaleUnitHostNetworkIntent {
   final pulumi.Input<List<String>> adapters;
   /// Specifies the name of the intent. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String> name;
-  /// A `qos_policy_override` block as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// A `qosPolicyOverride` block as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride>? qosPolicyOverride;
   /// Whether to override QoS policy. Possible values are `true` and `false`. defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<bool>? qosPolicyOverrideEnabled;
   /// Specifies a list of network traffic types. Possible values are `Compute`, `Storage`, `Management`. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<List<String>> trafficTypes;
-  /// A `virtual_switch_configuration_override` block as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// A `virtualSwitchConfigurationOverride` block as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<HciDeploymentSettingScaleUnitHostNetworkIntentVirtualSwitchConfigurationOverride>? virtualSwitchConfigurationOverride;
   /// Whether to override virtual switch configuration. Possible values are `true` and `false`. defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<bool>? virtualSwitchConfigurationOverrideEnabled;
 
   /// Creates a new [HciDeploymentSettingScaleUnitHostNetworkIntent].
-  /// [adapterPropertyOverride] A `adapter_property_override` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// [adapterPropertyOverride] A `adapterPropertyOverride` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [adapterPropertyOverrideEnabled] Whether to override adapter properties. Possible values are `true` and `false`. defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [adapters] Specifies a list of ID of network interfaces used for the network intent. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [name] Specifies the name of the intent. Changing this forces a new Stack HCI Deployment Setting to be created.
-  /// [qosPolicyOverride] A `qos_policy_override` block as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// [qosPolicyOverride] A `qosPolicyOverride` block as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [qosPolicyOverrideEnabled] Whether to override QoS policy. Possible values are `true` and `false`. defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [trafficTypes] Specifies a list of network traffic types. Possible values are `Compute`, `Storage`, `Management`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  /// [virtualSwitchConfigurationOverride] A `virtual_switch_configuration_override` block as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// [virtualSwitchConfigurationOverride] A `virtualSwitchConfigurationOverride` block as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [virtualSwitchConfigurationOverrideEnabled] Whether to override virtual switch configuration. Possible values are `true` and `false`. defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
   const HciDeploymentSettingScaleUnitHostNetworkIntent({
     this.adapterPropertyOverride,
@@ -75,4 +75,3 @@ class HciDeploymentSettingScaleUnitHostNetworkIntent {
     );
   }
 }
-

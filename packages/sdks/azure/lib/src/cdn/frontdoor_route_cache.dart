@@ -11,7 +11,7 @@ class FrontdoorRouteCache {
   final pulumi.Input<List<String>>? contentTypesToCompresses;
   /// Defines how the Front Door Route will cache requests that include query strings. Possible values include `IgnoreQueryString`, `IgnoreSpecifiedQueryStrings`, `IncludeSpecifiedQueryStrings` or `UseQueryString`. Defaults to `IgnoreQueryString`.
   ///
-  /// &gt; **Note:** The value of the `query_string_caching_behavior` determines if the `query_strings` field will be used as an include list or an ignore list.
+  /// &gt; **Note:** The value of the `queryStringCachingBehavior` determines if the `queryStrings` field will be used as an include list or an ignore list.
   final pulumi.Input<String>? queryStringCachingBehavior;
   /// Query strings to include or ignore.
   final pulumi.Input<List<String>>? queryStrings;
@@ -46,4 +46,3 @@ class FrontdoorRouteCache {
     );
   }
 }
-

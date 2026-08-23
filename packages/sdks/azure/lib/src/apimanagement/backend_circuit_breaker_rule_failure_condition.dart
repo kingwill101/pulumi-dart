@@ -14,9 +14,9 @@ class BackendCircuitBreakerRuleFailureCondition {
   ///
   /// &gt; **Note:** Exactly one of `percentage` or `count` must be specified.
   final pulumi.Input<int>? percentage;
-  /// One or more `status_code_range` blocks as defined below.
+  /// One or more `statusCodeRange` blocks as defined below.
   ///
-  /// &gt; **Note:** At least one of `status_code_range`, and `error_reasons` must be set.
+  /// &gt; **Note:** At least one of `statusCodeRange`, and `errorReasons` must be set.
   final pulumi.Input<List<BackendCircuitBreakerRuleFailureConditionStatusCodeRange>>? statusCodeRanges;
 
   /// Creates a new [BackendCircuitBreakerRuleFailureCondition].
@@ -24,7 +24,7 @@ class BackendCircuitBreakerRuleFailureCondition {
   /// [errorReasons] Specifies a list of error reasons to consider as failures.
   /// [intervalDuration] Specifies the time window over which failures are counted, in ISO 8601 format.
   /// [percentage] Specifies the percentage of failures within the specified interval that will trigger the circuit breaker. Possible values are between `1` and `100`.
-  /// [statusCodeRanges] One or more `status_code_range` blocks as defined below.
+  /// [statusCodeRanges] One or more `statusCodeRange` blocks as defined below.
   const BackendCircuitBreakerRuleFailureCondition({
     this.count,
     this.errorReasons,
@@ -53,4 +53,3 @@ class BackendCircuitBreakerRuleFailureCondition {
     );
   }
 }
-

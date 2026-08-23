@@ -10,7 +10,7 @@ import 'mongo_cluster_restore.dart';
 /// {@endtemplate}
 /// {@macro pulumi_cosmosdb_mongo_cluster_mongo_cluster_args_doc}
 class MongoClusterArgs {
-  /// The Password associated with the `administrator_username` for the MongoDB Cluster.
+  /// The Password associated with the `administratorUsername` for the MongoDB Cluster.
   final pulumi.Input<String>? administratorPassword;
   /// The administrator username of the MongoDB Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String>? administratorUsername;
@@ -20,11 +20,11 @@ class MongoClusterArgs {
   final pulumi.Input<String>? computeTier;
   /// The creation mode for the MongoDB Cluster. Possible values are `Default`, `GeoReplica` and `PointInTimeRestore`. Defaults to `Default`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? createMode;
-  /// A `customer_managed_key` block as defined below. Changing this forces a new resource to be created.
+  /// A `customerManagedKey` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<MongoClusterCustomerManagedKey>? customerManagedKey;
   /// Is the Data API for the MongoDB Cluster enabled? Defaults to `false`.
   ///
-  /// &gt; **Note:** `data_api_mode_enabled` can only be set when `create_mode` is `Default`. Once enabled, it can only be disabled by recreating the resource.
+  /// &gt; **Note:** `dataApiModeEnabled` can only be set when `createMode` is `Default`. Once enabled, it can only be disabled by recreating the resource.
   final pulumi.Input<bool>? dataApiModeEnabled;
   /// The high availability mode for the MongoDB Cluster. Possibles values are `Disabled` and `ZoneRedundantPreferred`.
   final pulumi.Input<String>? highAvailabilityMode;
@@ -42,9 +42,9 @@ class MongoClusterArgs {
   final pulumi.Input<String>? publicNetworkAccess;
   /// The name of the resource group in which to create the MongoDB Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-  /// A `restore` block as defined below. Required when `create_mode` is set to `PointInTimeRestore`. Changing this forces a new resource to be created.
+  /// A `restore` block as defined below. Required when `createMode` is set to `PointInTimeRestore`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** When `PointInTimeRestore` is enabled, service API will also assign a value to `source_server_id`. The user has to explicitly set this property in the Terraform configuration or handle it using `ignore_changes`.
+  /// &gt; **Note:** When `PointInTimeRestore` is enabled, service API will also assign a value to `sourceServerId`. The user has to explicitly set this property in the Terraform configuration or handle it using `ignoreChanges`.
   final pulumi.Input<MongoClusterRestore>? restore;
   /// The Number of shards to provision on the MongoDB Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<int>? shardCount;
@@ -59,15 +59,17 @@ class MongoClusterArgs {
   /// A mapping of tags to assign to the MongoDB Cluster.
   final pulumi.Input<Map<String, String>>? tags;
   /// The version for the MongoDB Cluster. Possibles values are `5.0`, `6.0`, `7.0` and `8.0`.
+  ///
+  /// &gt; **Note:** `version` is required when `createMode` is `Default`.
   final pulumi.Input<String>? version;
 
   /// Creates a new [MongoClusterArgs].
-  /// [administratorPassword] The Password associated with the `administrator_username` for the MongoDB Cluster.
+  /// [administratorPassword] The Password associated with the `administratorUsername` for the MongoDB Cluster.
   /// [administratorUsername] The administrator username of the MongoDB Cluster. Changing this forces a new resource to be created.
   /// [authenticationMethods] A list of allowed authentication modes for the MongoDB Cluster. Possible values are `NativeAuth` and `MicrosoftEntraID`.
   /// [computeTier] The compute tier to assign to the MongoDB Cluster. Possible values are `Free`, `M10`, `M20`, `M25`, `M30`, `M40`, `M50`, `M60`, `M80`, and `M200`.
   /// [createMode] The creation mode for the MongoDB Cluster. Possible values are `Default`, `GeoReplica` and `PointInTimeRestore`. Defaults to `Default`. Changing this forces a new resource to be created.
-  /// [customerManagedKey] A `customer_managed_key` block as defined below. Changing this forces a new resource to be created.
+  /// [customerManagedKey] A `customerManagedKey` block as defined below. Changing this forces a new resource to be created.
   /// [dataApiModeEnabled] Is the Data API for the MongoDB Cluster enabled? Defaults to `false`.
   /// [highAvailabilityMode] The high availability mode for the MongoDB Cluster. Possibles values are `Disabled` and `ZoneRedundantPreferred`.
   /// [identity] An `identity` block as detailed below.
@@ -76,7 +78,7 @@ class MongoClusterArgs {
   /// [previewFeatures] The preview features that can be enabled on the MongoDB Cluster. Changing this forces a new resource to be created.
   /// [publicNetworkAccess] The Public Network Access setting for the MongoDB Cluster. Possibles values are `Disabled` and `Enabled`. Defaults to `Enabled`.
   /// [resourceGroupName] The name of the resource group in which to create the MongoDB Cluster. Changing this forces a new resource to be created.
-  /// [restore] A `restore` block as defined below. Required when `create_mode` is set to `PointInTimeRestore`. Changing this forces a new resource to be created.
+  /// [restore] A `restore` block as defined below. Required when `createMode` is set to `PointInTimeRestore`. Changing this forces a new resource to be created.
   /// [shardCount] The Number of shards to provision on the MongoDB Cluster. Changing this forces a new resource to be created.
   /// [sourceLocation] The location of the source MongoDB Cluster. Changing this forces a new resource to be created.
   /// [sourceServerId] The ID of the replication source MongoDB Cluster. Changing this forces a new resource to be created.
@@ -163,4 +165,3 @@ class MongoClusterArgs {
     );
   }
 }
-

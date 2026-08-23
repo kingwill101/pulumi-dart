@@ -174,6 +174,42 @@ import 'event_subscription_webhook_endpoint.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "exampleasa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   tags = {
+///     "environment" = "staging"
+///   }
+/// }
+/// resource "azure_storage_queue" "example" {
+///   name                 = "example-astq"
+///   storage_account_name = azure_storage_account.example.name
+/// }
+/// resource "azure_eventgrid_eventsubscription" "example" {
+///   name  = "example-aees"
+///   scope = azure_core_resourcegroup.example.id
+///   storage_queue_endpoint = {
+///     storage_account_id = azure_storage_account.example.id
+///     queue_name         = azure_storage_queue.example.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -189,8 +225,8 @@ import 'event_subscription_webhook_endpoint.dart';
 /// import com.pulumi.azure.eventgrid.EventSubscription;
 /// import com.pulumi.azure.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azure.eventgrid.inputs.EventSubscriptionStorageQueueEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -284,19 +320,19 @@ import 'event_subscription_webhook_endpoint.dart';
 /// $ pulumi import azure:eventhub/eventSubscription:EventSubscription eventSubscription1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.EventGrid/topics/topic1/providers/Microsoft.EventGrid/eventSubscriptions/eventSubscription1
 /// ```
 class EventSubscription extends pulumi.CustomResource {
-  /// A `advanced_filter` block as defined below.
+  /// A `advancedFilter` block as defined below.
   late final pulumi.Output<EventSubscriptionAdvancedFilter?> advancedFilter;
   /// Specifies whether advanced filters should be evaluated against an array of values instead of expecting a singular value. Defaults to `false`.
   late final pulumi.Output<bool?> advancedFilteringOnArraysEnabled;
-  /// An `azure_function_endpoint` block as defined below.
+  /// An `azureFunctionEndpoint` block as defined below.
   late final pulumi.Output<EventSubscriptionAzureFunctionEndpoint?> azureFunctionEndpoint;
-  /// A `dead_letter_identity` block as defined below.
+  /// A `deadLetterIdentity` block as defined below.
   ///
-  /// &gt; **Note:** `storage_blob_dead_letter_destination` must be specified when a `dead_letter_identity` is specified
+  /// &gt; **Note:** `storageBlobDeadLetterDestination` must be specified when a `deadLetterIdentity` is specified
   late final pulumi.Output<EventSubscriptionDeadLetterIdentity?> deadLetterIdentity;
-  /// A `delivery_identity` block as defined below.
+  /// A `deliveryIdentity` block as defined below.
   late final pulumi.Output<EventSubscriptionDeliveryIdentity?> deliveryIdentity;
-  /// One or more `delivery_property` blocks as defined below.
+  /// One or more `deliveryProperty` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> deliveryProperties;
   /// Specifies the event delivery schema for the event subscription. Possible values include: `EventGridSchema`, `CloudEventSchemaV1_0`, `CustomInputSchema`. Defaults to `EventGridSchema`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> eventDeliverySchema;
@@ -312,7 +348,7 @@ class EventSubscription extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> labels;
   /// Specifies the name of the EventGrid Event Subscription resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A `retry_policy` block as defined below.
+  /// A `retryPolicy` block as defined below.
   late final pulumi.Output<EventSubscriptionRetryPolicy> retryPolicy;
   /// Specifies the scope at which the EventGrid Event Subscription should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scope;
@@ -320,15 +356,15 @@ class EventSubscription extends pulumi.CustomResource {
   late final pulumi.Output<String?> serviceBusQueueEndpointId;
   /// Specifies the id where the Service Bus Topic is located.
   late final pulumi.Output<String?> serviceBusTopicEndpointId;
-  /// A `storage_blob_dead_letter_destination` block as defined below.
+  /// A `storageBlobDeadLetterDestination` block as defined below.
   late final pulumi.Output<EventSubscriptionStorageBlobDeadLetterDestination?> storageBlobDeadLetterDestination;
-  /// A `storage_queue_endpoint` block as defined below.
+  /// A `storageQueueEndpoint` block as defined below.
   late final pulumi.Output<EventSubscriptionStorageQueueEndpoint?> storageQueueEndpoint;
-  /// A `subject_filter` block as defined below.
+  /// A `subjectFilter` block as defined below.
   late final pulumi.Output<EventSubscriptionSubjectFilter?> subjectFilter;
-  /// A `webhook_endpoint` block as defined below.
+  /// A `webhookEndpoint` block as defined below.
   ///
-  /// &gt; **Note:** One of `eventhub_endpoint_id`, `hybrid_connection_endpoint_id`, `service_bus_queue_endpoint_id`, `service_bus_topic_endpoint_id`, `storage_queue_endpoint`, `webhook_endpoint` or `azure_function_endpoint` must be specified.
+  /// &gt; **Note:** One of `eventhubEndpointId`, `hybridConnectionEndpointId`, `serviceBusQueueEndpointId`, `serviceBusTopicEndpointId`, `storageQueueEndpoint`, `webhookEndpoint` or `azureFunctionEndpoint` must be specified.
   late final pulumi.Output<EventSubscriptionWebhookEndpoint?> webhookEndpoint;
 
   /// Creates a new [EventSubscription].

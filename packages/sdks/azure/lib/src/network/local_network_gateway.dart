@@ -100,6 +100,27 @@ import 'local_network_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "localNetworkGWTest"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_localnetworkgateway" "home" {
+///   name                = "backHome"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   gateway_address     = "12.13.14.15"
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +131,8 @@ import 'local_network_gateway_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.network.LocalNetworkGateway;
 /// import com.pulumi.azure.network.LocalNetworkGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,13 +196,13 @@ import 'local_network_gateway_state.dart';
 class LocalNetworkGateway extends pulumi.CustomResource {
   /// The list of string CIDRs representing the address spaces the gateway exposes.
   late final pulumi.Output<List<String>?> addressSpaces;
-  /// A `bgp_settings` block as defined below containing the Local Network Gateway's BGP speaker settings.
+  /// A `bgpSettings` block as defined below containing the Local Network Gateway's BGP speaker settings.
   late final pulumi.Output<LocalNetworkGatewayBgpSettings?> bgpSettings;
   /// The gateway IP address to connect with.
   late final pulumi.Output<String?> gatewayAddress;
   /// The gateway FQDN to connect with.
   ///
-  /// &gt; **Note:** Either `gateway_address` or `gateway_fqdn` should be specified.
+  /// &gt; **Note:** Either `gatewayAddress` or `gatewayFqdn` should be specified.
   late final pulumi.Output<String?> gatewayFqdn;
   /// The location/region where the local network gateway is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;

@@ -7,6 +7,10 @@ import 'channel_direct_line_site.dart';
 class ChannelDirectLineState {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String>? botName;
+  /// The first key for Directline App Service Extension.
+  final pulumi.Input<String>? extensionKey1;
+  /// The second key for Directline App Service Extension.
+  final pulumi.Input<String>? extensionKey2;
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
   /// The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
@@ -16,11 +20,15 @@ class ChannelDirectLineState {
 
   /// Creates a new [ChannelDirectLineState].
   /// [botName] The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
+  /// [extensionKey1] The first key for Directline App Service Extension.
+  /// [extensionKey2] The second key for Directline App Service Extension.
   /// [location] The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
   /// [sites] A site represents a client application that you want to connect to your bot. One or more `site` blocks as defined below.
   const ChannelDirectLineState({
     this.botName,
+    this.extensionKey1,
+    this.extensionKey2,
     this.location,
     this.resourceGroupName,
     this.sites,
@@ -29,6 +37,8 @@ class ChannelDirectLineState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'botName': ?botName,
+      'extensionKey1': ?extensionKey1,
+      'extensionKey2': ?extensionKey2,
       'location': ?location,
       'resourceGroupName': ?resourceGroupName,
       'sites': ?pulumi.Input.mapOptionalInputValue<List<ChannelDirectLineSite>, List<Map<String, dynamic>>>(sites, (value) => pulumi.Input.encodeList<ChannelDirectLineSite, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -38,10 +48,11 @@ class ChannelDirectLineState {
   factory ChannelDirectLineState.fromMap(Map<String, dynamic> map) {
     return ChannelDirectLineState(
       botName: (() { final guardedValue = map['botName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      extensionKey1: (() { final guardedValue = map['extensionKey1']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      extensionKey2: (() { final guardedValue = map['extensionKey2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sites: (() { final guardedValue = map['sites']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelDirectLineSite>(guardedValue, (value) => ChannelDirectLineSite.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

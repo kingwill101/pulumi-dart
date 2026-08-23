@@ -212,6 +212,50 @@ import 'monitor_tag_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-datadog"
+///   location = "West US 2"
+/// }
+/// resource "azure_datadog_monitor" "example" {
+///   name                = "example-monitor"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   datadog_organization = {
+///     api_key         = "XXXX"
+///     application_key = "XXXX"
+///   }
+///   user = {
+///     name  = "Example"
+///     email = "abc@xyz.com"
+///   }
+///   sku_name = "Linked"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_datadog_monitortagrule" "example" {
+///   datadog_monitor_id = azure_datadog_monitor.example.id
+///   logs {
+///     subscription_log_enabled = true
+///   }
+///   metrics {
+///     filters {
+///       name   = "Test"
+///       value  = "Logs"
+///       action = "Include"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -229,8 +273,9 @@ import 'monitor_tag_rule_state.dart';
 /// import com.pulumi.azure.datadog.MonitorTagRuleArgs;
 /// import com.pulumi.azure.datadog.inputs.MonitorTagRuleLogArgs;
 /// import com.pulumi.azure.datadog.inputs.MonitorTagRuleMetricArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.datadog.inputs.MonitorTagRuleMetricFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

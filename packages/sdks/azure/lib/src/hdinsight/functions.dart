@@ -71,6 +71,27 @@ import 'get_cluster_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_hdinsight_getcluster" "example" {
+///   name                = "example"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "httpsEndpoint" {
+///   value = data.azure_hdinsight_getcluster.example.https_endpoint
+/// }
+/// output "clusterId" {
+///   value = data.azure_hdinsight_getcluster.example.cluster_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +100,8 @@ import 'get_cluster_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.hdinsight.HdinsightFunctions;
 /// import com.pulumi.azure.hdinsight.inputs.GetClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

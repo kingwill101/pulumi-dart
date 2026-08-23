@@ -8,7 +8,7 @@ import 'vpn_site_o365_policy.dart';
 class VpnSiteState {
   /// Specifies a list of IP address CIDRs that are located on your on-premises site. Traffic destined for these address spaces is routed to your local site.
   ///
-  /// &gt; **Note:** The `address_cidrs` has to be set when the `link.bgp` isn't specified.
+  /// &gt; **Note:** The `addressCidrs` has to be set when the `link.bgp` isn't specified.
   final pulumi.Input<List<String>>? addressCidrs;
   /// The model of the VPN device.
   final pulumi.Input<String>? deviceModel;
@@ -20,7 +20,7 @@ class VpnSiteState {
   final pulumi.Input<String>? location;
   /// The name which should be used for this VPN Site. Changing this forces a new VPN Site to be created.
   final pulumi.Input<String>? name;
-  /// An `o365_policy` block as defined below.
+  /// An `o365Policy` block as defined below.
   final pulumi.Input<VpnSiteO365Policy>? o365Policy;
   /// The name of the Resource Group where the VPN Site should exist. Changing this forces a new VPN Site to be created.
   final pulumi.Input<String>? resourceGroupName;
@@ -36,7 +36,7 @@ class VpnSiteState {
   /// [links] One or more `link` blocks as defined below.
   /// [location] The Azure Region where the VPN Site should exist. Changing this forces a new VPN Site to be created.
   /// [name] The name which should be used for this VPN Site. Changing this forces a new VPN Site to be created.
-  /// [o365Policy] An `o365_policy` block as defined below.
+  /// [o365Policy] An `o365Policy` block as defined below.
   /// [resourceGroupName] The name of the Resource Group where the VPN Site should exist. Changing this forces a new VPN Site to be created.
   /// [tags] A mapping of tags which should be assigned to the VPN Site.
   /// [virtualWanId] The ID of the Virtual Wan where this VPN site resides in. Changing this forces a new VPN Site to be created.
@@ -83,4 +83,3 @@ class VpnSiteState {
     );
   }
 }
-

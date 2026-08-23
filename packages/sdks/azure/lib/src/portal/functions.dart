@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azurerm_portal_dashboard_args.dart';
 import 'azurerm_portal_dashboard_result.dart';
 
-/// Use this data source to access information about an existing shared dashboard in the Azure Portal. This is the data source of the `azurerm_dashboard` resource.
+/// Use this data source to access information about an existing shared dashboard in the Azure Portal. This is the data source of the `azurermDashboard` resource.
 ///
 /// ## Example Usage
 ///
@@ -62,9 +62,27 @@ import 'azurerm_portal_dashboard_result.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("id", exampleAzurermDashboard.Id)
+/// 		ctx.Export("id", pulumi.Any(exampleAzurermDashboard.Id))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_portal_azurerm_portal_dashboard" "example" {
+///   name                = "existing-dashboard"
+///   resource_group_name = "dashboard-rg"
+/// }
+///
+/// output "id" {
+///   value = exampleAzurermDashboard.id
 /// }
 /// ```
 /// ```java
@@ -75,8 +93,8 @@ import 'azurerm_portal_dashboard_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.portal.PortalFunctions;
 /// import com.pulumi.azure.portal.inputs.Azurerm_portal_dashboardArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

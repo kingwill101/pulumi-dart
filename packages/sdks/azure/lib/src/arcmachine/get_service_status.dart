@@ -5,14 +5,14 @@ import 'get_service_status_extension_service.dart';
 import 'get_service_status_guest_configuration_service.dart';
 
 class GetServiceStatus {
-  /// A `extension_service` block as defined above.
+  /// A `extensionService` block as defined above.
   final pulumi.Input<List<GetServiceStatusExtensionService>> extensionServices;
-  /// A `guest_configuration_service` block as defined above.
+  /// A `guestConfigurationService` block as defined above.
   final pulumi.Input<List<GetServiceStatusGuestConfigurationService>> guestConfigurationServices;
 
   /// Creates a new [GetServiceStatus].
-  /// [extensionServices] A `extension_service` block as defined above.
-  /// [guestConfigurationServices] A `guest_configuration_service` block as defined above.
+  /// [extensionServices] A `extensionService` block as defined above.
+  /// [guestConfigurationServices] A `guestConfigurationService` block as defined above.
   const GetServiceStatus({
     required this.extensionServices,
     required this.guestConfigurationServices,
@@ -32,4 +32,3 @@ class GetServiceStatus {
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'namespace_customer_managed_key_state.dart';
 
 /// Manages a Customer Managed Key for a EventHub Namespace.
 ///
-/// !&gt; **Note:** In 2.x versions of the Azure Provider during deletion this resource will **delete and recreate the parent EventHub Namespace which may involve data loss** as it's not possible to remove the Customer Managed Key from the EventHub Namespace once it's been added. Version 3.0 of the Azure Provider will change this so that the Delete operation is a noop, requiring the parent EventHub Namespace is deleted/recreated to remove the Customer Managed Key.
+/// &gt; **Note:** In 2.x versions of the Azure Provider during deletion this resource will **delete and recreate the parent EventHub Namespace which may involve data loss** as it's not possible to remove the Customer Managed Key from the EventHub Namespace once it's been added. Version 3.0 of the Azure Provider will change this so that the Delete operation is a noop, requiring the parent EventHub Namespace is deleted/recreated to remove the Customer Managed Key.
 ///
 /// ## Example Usage
 ///
@@ -335,10 +335,10 @@ import 'namespace_customer_managed_key_state.dart';
 /// 		exampleAccessPolicy, err := keyvault.NewAccessPolicy(ctx, "example", &keyvault.AccessPolicyArgs{
 /// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			TenantId: pulumi.String(exampleEventHubNamespace.Identity.ApplyT(func(identity eventhub.EventHubNamespaceIdentity) (*string, error) {
-/// 				return &identity.TenantId, nil
+/// 				return identity.TenantId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ObjectId: pulumi.String(exampleEventHubNamespace.Identity.ApplyT(func(identity eventhub.EventHubNamespaceIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Get"),
@@ -399,6 +399,71 @@ import 'namespace_customer_managed_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_eventhub_cluster" "example" {
+///   name                = "example-cluster"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku_name            = "Dedicated_1"
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "example" {
+///   name                 = "example-namespace"
+///   location             = azure_core_resourcegroup.example.location
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   sku                  = "Standard"
+///   dedicated_cluster_id = azure_eventhub_cluster.example.id
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                     = "examplekv"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                 = "standard"
+///   purge_protection_enabled = true
+/// }
+/// resource "azure_keyvault_accesspolicy" "example" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = azure_eventhub_eventhubnamespace.example.identity.tenant_id
+///   object_id       = azure_eventhub_eventhubnamespace.example.identity.principal_id
+///   key_permissions = ["Get", "UnwrapKey", "WrapKey"]
+/// }
+/// resource "azure_keyvault_accesspolicy" "example2" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
+///   object_id       = data.azure_core_getclientconfig.current.object_id
+///   key_permissions = ["Create", "Delete", "Get", "List", "Purge", "Recover", "GetRotationPolicy"]
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_accesspolicy.example, azure_keyvault_accesspolicy.example2]
+///   name         = "examplekvkey"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_eventhub_namespacecustomermanagedkey" "example" {
+///   eventhub_namespace_id = azure_eventhub_eventhubnamespace.example.id
+///   key_vault_key_ids     = [azure_keyvault_key.example.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -422,8 +487,8 @@ import 'namespace_customer_managed_key_state.dart';
 /// import com.pulumi.azure.eventhub.NamespaceCustomerManagedKey;
 /// import com.pulumi.azure.eventhub.NamespaceCustomerManagedKeyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1040,6 +1105,78 @@ import 'namespace_customer_managed_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_eventhub_cluster" "example" {
+///   name                = "example-cluster"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku_name            = "Dedicated_1"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   location            = azure_core_resourcegroup.example.location
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "example" {
+///   name                 = "example-namespace"
+///   location             = azure_core_resourcegroup.example.location
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   sku                  = "Standard"
+///   dedicated_cluster_id = azure_eventhub_cluster.example.id
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                     = "examplekv"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                 = "standard"
+///   purge_protection_enabled = true
+/// }
+/// resource "azure_keyvault_accesspolicy" "example" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = test.tenantId
+///   object_id       = test.principalId
+///   key_permissions = ["Get", "UnwrapKey", "WrapKey"]
+/// }
+/// resource "azure_keyvault_accesspolicy" "example2" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
+///   object_id       = data.azure_core_getclientconfig.current.object_id
+///   key_permissions = ["Create", "Delete", "Get", "List", "Purge", "Recover", "GetRotationPolicy"]
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_accesspolicy.example, azure_keyvault_accesspolicy.example2]
+///   name         = "examplekvkey"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_eventhub_namespacecustomermanagedkey" "example" {
+///   eventhub_namespace_id     = azure_eventhub_eventhubnamespace.example.id
+///   key_vault_key_ids         = [azure_keyvault_key.example.id]
+///   user_assigned_identity_id = azure_authorization_userassignedidentity.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1065,8 +1202,8 @@ import 'namespace_customer_managed_key_state.dart';
 /// import com.pulumi.azure.eventhub.NamespaceCustomerManagedKey;
 /// import com.pulumi.azure.eventhub.NamespaceCustomerManagedKeyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1298,9 +1435,9 @@ class NamespaceCustomerManagedKeyEventhub extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> keyVaultKeyIds;
   /// The ID of a User Managed Identity that will be used to access Key Vaults that contain the encryption keys.
   ///
-  /// &gt; **Note:** If using `user_assigned_identity_id`, ensure the User Assigned Identity is also assigned to the parent Event Hub.
+  /// &gt; **Note:** If using `userAssignedIdentityId`, ensure the User Assigned Identity is also assigned to the parent Event Hub.
   ///
-  /// &gt; **Note:** If using `user_assigned_identity_id`, make sure to assign the identity the appropriate permissions to access the Key Vault key. Failure to grant `Get, UnwrapKey, and WrapKey` will cause this resource to fail to apply.
+  /// &gt; **Note:** If using `userAssignedIdentityId`, make sure to assign the identity the appropriate permissions to access the Key Vault key. Failure to grant `Get, UnwrapKey, and WrapKey` will cause this resource to fail to apply.
   late final pulumi.Output<String?> userAssignedIdentityId;
 
   /// Creates a new [NamespaceCustomerManagedKeyEventhub].

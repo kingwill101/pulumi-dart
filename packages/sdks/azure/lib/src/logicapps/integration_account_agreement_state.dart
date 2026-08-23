@@ -10,11 +10,11 @@ class IntegrationAccountAgreementState {
   final pulumi.Input<String>? agreementType;
   /// The content of the Logic App Integration Account Agreement.
   final pulumi.Input<String>? content;
-  /// A `guest_identity` block as documented below.
+  /// A `guestIdentity` block as documented below.
   final pulumi.Input<IntegrationAccountAgreementGuestIdentity>? guestIdentity;
   /// The name of the guest Logic App Integration Account Partner.
   final pulumi.Input<String>? guestPartnerName;
-  /// A `host_identity` block as documented below.
+  /// A `hostIdentity` block as documented below.
   final pulumi.Input<IntegrationAccountAgreementHostIdentity>? hostIdentity;
   /// The name of the host Logic App Integration Account Partner.
   final pulumi.Input<String>? hostPartnerName;
@@ -30,9 +30,9 @@ class IntegrationAccountAgreementState {
   /// Creates a new [IntegrationAccountAgreementState].
   /// [agreementType] The type of the Logic App Integration Account Agreement. Possible values are `AS2`, `X12` and `Edifact`.
   /// [content] The content of the Logic App Integration Account Agreement.
-  /// [guestIdentity] A `guest_identity` block as documented below.
+  /// [guestIdentity] A `guestIdentity` block as documented below.
   /// [guestPartnerName] The name of the guest Logic App Integration Account Partner.
-  /// [hostIdentity] A `host_identity` block as documented below.
+  /// [hostIdentity] A `hostIdentity` block as documented below.
   /// [hostPartnerName] The name of the host Logic App Integration Account Partner.
   /// [integrationAccountName] The name of the Logic App Integration Account. Changing this forces a new resource to be created.
   /// [metadata] The metadata of the Logic App Integration Account Agreement.
@@ -81,4 +81,3 @@ class IntegrationAccountAgreementState {
     );
   }
 }
-

@@ -9,26 +9,26 @@ import 'endpoint_global_delivery_rule_url_redirect_action.dart';
 import 'endpoint_global_delivery_rule_url_rewrite_action.dart';
 
 class EndpointGlobalDeliveryRule {
-  /// A `cache_expiration_action` block as defined above.
+  /// A `cacheExpirationAction` block as defined above.
   final pulumi.Input<EndpointGlobalDeliveryRuleCacheExpirationAction>? cacheExpirationAction;
-  /// A `cache_key_query_string_action` block as defined above.
+  /// A `cacheKeyQueryStringAction` block as defined above.
   final pulumi.Input<EndpointGlobalDeliveryRuleCacheKeyQueryStringAction>? cacheKeyQueryStringAction;
-  /// A `modify_request_header_action` block as defined below.
+  /// A `modifyRequestHeaderAction` block as defined below.
   final pulumi.Input<List<EndpointGlobalDeliveryRuleModifyRequestHeaderAction>>? modifyRequestHeaderActions;
-  /// A `modify_response_header_action` block as defined below.
+  /// A `modifyResponseHeaderAction` block as defined below.
   final pulumi.Input<List<EndpointGlobalDeliveryRuleModifyResponseHeaderAction>>? modifyResponseHeaderActions;
-  /// A `url_redirect_action` block as defined below.
+  /// A `urlRedirectAction` block as defined below.
   final pulumi.Input<EndpointGlobalDeliveryRuleUrlRedirectAction>? urlRedirectAction;
-  /// A `url_rewrite_action` block as defined below.
+  /// A `urlRewriteAction` block as defined below.
   final pulumi.Input<EndpointGlobalDeliveryRuleUrlRewriteAction>? urlRewriteAction;
 
   /// Creates a new [EndpointGlobalDeliveryRule].
-  /// [cacheExpirationAction] A `cache_expiration_action` block as defined above.
-  /// [cacheKeyQueryStringAction] A `cache_key_query_string_action` block as defined above.
-  /// [modifyRequestHeaderActions] A `modify_request_header_action` block as defined below.
-  /// [modifyResponseHeaderActions] A `modify_response_header_action` block as defined below.
-  /// [urlRedirectAction] A `url_redirect_action` block as defined below.
-  /// [urlRewriteAction] A `url_rewrite_action` block as defined below.
+  /// [cacheExpirationAction] A `cacheExpirationAction` block as defined above.
+  /// [cacheKeyQueryStringAction] A `cacheKeyQueryStringAction` block as defined above.
+  /// [modifyRequestHeaderActions] A `modifyRequestHeaderAction` block as defined below.
+  /// [modifyResponseHeaderActions] A `modifyResponseHeaderAction` block as defined below.
+  /// [urlRedirectAction] A `urlRedirectAction` block as defined below.
+  /// [urlRewriteAction] A `urlRewriteAction` block as defined below.
   const EndpointGlobalDeliveryRule({
     this.cacheExpirationAction,
     this.cacheKeyQueryStringAction,
@@ -60,4 +60,3 @@ class EndpointGlobalDeliveryRule {
     );
   }
 }
-

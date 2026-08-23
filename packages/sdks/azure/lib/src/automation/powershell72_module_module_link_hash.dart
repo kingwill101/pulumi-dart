@@ -30,4 +30,3 @@ class Powershell72ModuleModuleLinkHash {
     );
   }
 }
-

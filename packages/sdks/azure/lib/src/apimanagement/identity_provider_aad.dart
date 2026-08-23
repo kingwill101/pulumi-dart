@@ -135,6 +135,35 @@ import 'identity_provider_aad_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "My Company"
+///   publisher_email     = "company@mycompany.io"
+///   sku_name            = "Developer_1"
+/// }
+/// resource "azure_apimanagement_identityprovideraad" "example" {
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   api_management_name = azure_apimanagement_service.example.name
+///   client_id           = "00000000-0000-0000-0000-000000000000"
+///   client_secret       = "00000000000000000000000000000000"
+///   allowed_tenants     = ["00000000-0000-0000-0000-000000000000"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +176,8 @@ import 'identity_provider_aad_state.dart';
 /// import com.pulumi.azure.apimanagement.ServiceArgs;
 /// import com.pulumi.azure.apimanagement.IdentityProviderAad;
 /// import com.pulumi.azure.apimanagement.IdentityProviderAadArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

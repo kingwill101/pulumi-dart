@@ -14,7 +14,7 @@ class VolumeGroupArgs {
   final pulumi.Input<String> elasticSanId;
   /// An `encryption` block as defined below.
   ///
-  /// &gt; **Note:** The `encryption` block can only be set when `encryption_type` is set to `EncryptionAtRestWithCustomerManagedKey`.
+  /// &gt; **Note:** The `encryption` block can only be set when `encryptionType` is set to `EncryptionAtRestWithCustomerManagedKey`.
   final pulumi.Input<VolumeGroupEncryption>? encryption;
   /// Specifies the type of the key used to encrypt the data of the disk. Possible values are `EncryptionAtRestWithCustomerManagedKey` and `EncryptionAtRestWithPlatformKey`. Defaults to `EncryptionAtRestWithPlatformKey`.
   final pulumi.Input<String>? encryptionType;
@@ -22,7 +22,7 @@ class VolumeGroupArgs {
   final pulumi.Input<VolumeGroupIdentity>? identity;
   /// Specifies the name of this Elastic SAN Volume Group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// One or more `network_rule` blocks as defined below.
+  /// One or more `networkRule` blocks as defined below.
   final pulumi.Input<List<VolumeGroupNetworkRule>>? networkRules;
   /// Specifies the type of the storage target. The only possible value is `Iscsi`. Defaults to `Iscsi`.
   final pulumi.Input<String>? protocolType;
@@ -33,7 +33,7 @@ class VolumeGroupArgs {
   /// [encryptionType] Specifies the type of the key used to encrypt the data of the disk. Possible values are `EncryptionAtRestWithCustomerManagedKey` and `EncryptionAtRestWithPlatformKey`. Defaults to `EncryptionAtRestWithPlatformKey`.
   /// [identity] An `identity` block as defined below. Specifies the Managed Identity which should be assigned to this Elastic SAN Volume Group.
   /// [name] Specifies the name of this Elastic SAN Volume Group. Changing this forces a new resource to be created.
-  /// [networkRules] One or more `network_rule` blocks as defined below.
+  /// [networkRules] One or more `networkRule` blocks as defined below.
   /// [protocolType] Specifies the type of the storage target. The only possible value is `Iscsi`. Defaults to `Iscsi`.
   const VolumeGroupArgs({
     required this.elasticSanId,
@@ -69,4 +69,3 @@ class VolumeGroupArgs {
     );
   }
 }
-

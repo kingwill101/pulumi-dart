@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobTargetGroupJobTarget {
   /// The name of the MS SQL Database.
   ///
-  /// &gt; **Note:** This cannot be set in combination with `elastic_pool_name`.
+  /// &gt; **Note:** This cannot be set in combination with `elasticPoolName`.
   final pulumi.Input<String>? databaseName;
   /// The name of the MS SQL Elastic Pool.
   ///
-  /// &gt; **Note:** This cannot be set in combination with `database_name`.
+  /// &gt; **Note:** This cannot be set in combination with `databaseName`.
   final pulumi.Input<String>? elasticPoolName;
   /// The ID of the job credential to use during execution of jobs.
   ///
-  /// &gt; **Note:** This is required when `membership_type` is `Include`, unless `database_name` is set or the target resource is configured to use a managed identity for authentication.
+  /// &gt; **Note:** This is required when `membershipType` is `Include`, unless `databaseName` is set or the target resource is configured to use a managed identity for authentication.
   final pulumi.Input<String>? jobCredentialId;
   /// The membership type for this job target. Possible values are `Include` and `Exclude`. Defaults to `Include`.
   final pulumi.Input<String>? membershipType;
   /// The name of the MS SQL Server.
   final pulumi.Input<String> serverName;
-  /// The job target type. This value is computed based on `server_name`, `database_name`, and `elastic_pool_name`.
+  /// The job target type. This value is computed based on `serverName`, `databaseName`, and `elasticPoolName`.
   final pulumi.Input<String>? type;
 
   /// Creates a new [JobTargetGroupJobTarget].
@@ -28,7 +28,7 @@ class JobTargetGroupJobTarget {
   /// [jobCredentialId] The ID of the job credential to use during execution of jobs.
   /// [membershipType] The membership type for this job target. Possible values are `Include` and `Exclude`. Defaults to `Include`.
   /// [serverName] The name of the MS SQL Server.
-  /// [type] The job target type. This value is computed based on `server_name`, `database_name`, and `elastic_pool_name`.
+  /// [type] The job target type. This value is computed based on `serverName`, `databaseName`, and `elasticPoolName`.
   const JobTargetGroupJobTarget({
     this.databaseName,
     this.elasticPoolName,
@@ -60,4 +60,3 @@ class JobTargetGroupJobTarget {
     );
   }
 }
-

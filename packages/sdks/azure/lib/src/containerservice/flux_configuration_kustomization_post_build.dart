@@ -6,12 +6,12 @@ import 'flux_configuration_kustomization_post_build_substitute_from.dart';
 class FluxConfigurationKustomizationPostBuild {
   /// Specifies the key/value pairs holding the variables to be substituted in this Kustomization.
   final pulumi.Input<Map<String, String>>? substitute;
-  /// A `substitute_from` block as defined below.
+  /// A `substituteFrom` block as defined below.
   final pulumi.Input<List<FluxConfigurationKustomizationPostBuildSubstituteFrom>>? substituteFroms;
 
   /// Creates a new [FluxConfigurationKustomizationPostBuild].
   /// [substitute] Specifies the key/value pairs holding the variables to be substituted in this Kustomization.
-  /// [substituteFroms] A `substitute_from` block as defined below.
+  /// [substituteFroms] A `substituteFrom` block as defined below.
   const FluxConfigurationKustomizationPostBuild({
     this.substitute,
     this.substituteFroms,
@@ -31,4 +31,3 @@ class FluxConfigurationKustomizationPostBuild {
     );
   }
 }
-

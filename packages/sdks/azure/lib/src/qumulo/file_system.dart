@@ -226,6 +226,52 @@ import 'file_system_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+///   delegations {
+///     name = "delegation"
+///     service_delegation = {
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+///       name    = "Qumulo.Storage/fileSystems"
+///     }
+///   }
+/// }
+/// resource "azure_qumulo_filesystem" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   admin_password      = ")^X#ZX#JRyIY}t9"
+///   availability_zone   = "1"
+///   delegated_subnet_id = azure_network_subnet.example.id
+///   storage_sku         = "Standard"
+///   email               = "test@test.com"
+///   tags = {
+///     "environment" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -242,8 +288,8 @@ import 'file_system_state.dart';
 /// import com.pulumi.azure.network.inputs.SubnetDelegationServiceDelegationArgs;
 /// import com.pulumi.azure.qumulo.FileSystem;
 /// import com.pulumi.azure.qumulo.FileSystemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

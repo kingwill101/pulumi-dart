@@ -238,7 +238,7 @@ import 'output_cosmosdb_state.dart';
 /// 		_, err = streamanalytics.NewOutputCosmosdb(ctx, "example", &streamanalytics.OutputCosmosdbArgs{
 /// 			Name: pulumi.String("output-to-cosmosdb"),
 /// 			StreamAnalyticsJobId: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return &example.Id, nil
+/// 				return example.Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			CosmosdbAccountKey:    exampleAccount.PrimaryKey,
 /// 			CosmosdbSqlDatabaseId: exampleSqlDatabase.ID(),
@@ -250,6 +250,62 @@ import 'output_cosmosdb_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_streamanalytics_getjob" "example" {
+///   name                = "example-job"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_cosmosdb_account" "example" {
+///   name                = "exampledb"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   offer_type          = "Standard"
+///   kind                = "GlobalDocumentDB"
+///   consistency_policy = {
+///     consistency_level       = "BoundedStaleness"
+///     max_interval_in_seconds = 10
+///     max_staleness_prefix    = 200
+///   }
+///   geo_locations {
+///     location          = azure_core_resourcegroup.example.location
+///     failover_priority = 0
+///   }
+/// }
+/// resource "azure_cosmosdb_sqldatabase" "example" {
+///   name                = "cosmos-sql-db"
+///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
+///   account_name        = azure_cosmosdb_account.example.name
+///   throughput          = 400
+/// }
+/// resource "azure_cosmosdb_sqlcontainer" "example" {
+///   name                = "examplecontainer"
+///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
+///   account_name        = azure_cosmosdb_account.example.name
+///   database_name       = azure_cosmosdb_sqldatabase.example.name
+///   partition_key_path  = "foo"
+/// }
+/// resource "azure_streamanalytics_outputcosmosdb" "example" {
+///   name                     = "output-to-cosmosdb"
+///   stream_analytics_job_id  = data.azure_streamanalytics_getjob.example.id
+///   cosmosdb_account_key     = azure_cosmosdb_account.example.primary_key
+///   cosmosdb_sql_database_id = azure_cosmosdb_sqldatabase.example.id
+///   container_name           = azure_cosmosdb_sqlcontainer.example.name
+///   document_id              = "exampledocumentid"
 /// }
 /// ```
 /// ```java
@@ -272,8 +328,8 @@ import 'output_cosmosdb_state.dart';
 /// import com.pulumi.azure.cosmosdb.SqlContainerArgs;
 /// import com.pulumi.azure.streamanalytics.OutputCosmosdb;
 /// import com.pulumi.azure.streamanalytics.OutputCosmosdbArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -427,7 +483,7 @@ class OutputCosmosdb extends pulumi.CustomResource {
   late final pulumi.Output<String?> documentId;
   /// The name of the Stream Analytics Output. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// The name of the field in output events used to specify the key for partitioning output across collections. If `container_name` contains `{partition}` token, this property is required to be specified.
+  /// The name of the field in output events used to specify the key for partitioning output across collections. If `containerName` contains `{partition}` token, this property is required to be specified.
   late final pulumi.Output<String?> partitionKey;
   /// The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobId;

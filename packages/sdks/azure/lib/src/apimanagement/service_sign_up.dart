@@ -6,12 +6,12 @@ import 'service_sign_up_terms_of_service.dart';
 class ServiceSignUp {
   /// Can users sign up on the development portal?
   final pulumi.Input<bool> enabled;
-  /// A `terms_of_service` block as defined below.
+  /// A `termsOfService` block as defined below.
   final pulumi.Input<ServiceSignUpTermsOfService> termsOfService;
 
   /// Creates a new [ServiceSignUp].
   /// [enabled] Can users sign up on the development portal?
-  /// [termsOfService] A `terms_of_service` block as defined below.
+  /// [termsOfService] A `termsOfService` block as defined below.
   const ServiceSignUp({
     required this.enabled,
     required this.termsOfService,
@@ -31,4 +31,3 @@ class ServiceSignUp {
     );
   }
 }
-

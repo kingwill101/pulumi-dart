@@ -7,7 +7,7 @@ class ScaleSetExtension {
   final pulumi.Input<bool>? autoUpgradeMinorVersion;
   /// Specifies the name of the extension.
   final pulumi.Input<String> name;
-  /// The protected_settings passed to the extension, like settings, these are specified as a JSON object in a string.
+  /// The protectedSettings passed to the extension, like settings, these are specified as a JSON object in a string.
   final pulumi.Input<String>? protectedSettings;
   /// Specifies a dependency array of extensions required to be executed before, the array stores the name of each extension.
   final pulumi.Input<List<String>>? provisionAfterExtensions;
@@ -23,7 +23,7 @@ class ScaleSetExtension {
   /// Creates a new [ScaleSetExtension].
   /// [autoUpgradeMinorVersion] Specifies whether or not to use the latest minor version available.
   /// [name] Specifies the name of the extension.
-  /// [protectedSettings] The protected_settings passed to the extension, like settings, these are specified as a JSON object in a string.
+  /// [protectedSettings] The protectedSettings passed to the extension, like settings, these are specified as a JSON object in a string.
   /// [provisionAfterExtensions] Specifies a dependency array of extensions required to be executed before, the array stores the name of each extension.
   /// [publisher] The publisher of the extension, available publishers can be found by using the Azure CLI.
   /// [settings] The settings passed to the extension, these are specified as a JSON object in a string.
@@ -66,4 +66,3 @@ class ScaleSetExtension {
     );
   }
 }
-

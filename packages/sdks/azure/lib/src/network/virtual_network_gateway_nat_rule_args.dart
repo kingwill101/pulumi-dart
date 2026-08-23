@@ -9,9 +9,9 @@ import 'virtual_network_gateway_nat_rule_internal_mapping.dart';
 /// {@endtemplate}
 /// {@macro pulumi_network_virtual_network_gateway_nat_rule_virtual_network_gateway_nat_rule_args_doc}
 class VirtualNetworkGatewayNatRuleArgs {
-  /// One or more `external_mapping` blocks as documented below.
+  /// One or more `externalMapping` blocks as documented below.
   final pulumi.Input<List<VirtualNetworkGatewayNatRuleExternalMapping>> externalMappings;
-  /// One or more `internal_mapping` blocks as documented below.
+  /// One or more `internalMapping` blocks as documented below.
   final pulumi.Input<List<VirtualNetworkGatewayNatRuleInternalMapping>> internalMappings;
   /// The ID of the IP Configuration this Virtual Network Gateway Nat Rule applies to.
   final pulumi.Input<String>? ipConfigurationId;
@@ -27,8 +27,8 @@ class VirtualNetworkGatewayNatRuleArgs {
   final pulumi.Input<String> virtualNetworkGatewayId;
 
   /// Creates a new [VirtualNetworkGatewayNatRuleArgs].
-  /// [externalMappings] One or more `external_mapping` blocks as documented below.
-  /// [internalMappings] One or more `internal_mapping` blocks as documented below.
+  /// [externalMappings] One or more `externalMapping` blocks as documented below.
+  /// [internalMappings] One or more `internalMapping` blocks as documented below.
   /// [ipConfigurationId] The ID of the IP Configuration this Virtual Network Gateway Nat Rule applies to.
   /// [mode] The source Nat direction of the Virtual Network Gateway Nat. Possible values are `EgressSnat` and `IngressSnat`. Defaults to `EgressSnat`. Changing this forces a new resource to be created.
   /// [name] The name which should be used for this Virtual Network Gateway Nat Rule. Changing this forces a new resource to be created.
@@ -72,4 +72,3 @@ class VirtualNetworkGatewayNatRuleArgs {
     );
   }
 }
-

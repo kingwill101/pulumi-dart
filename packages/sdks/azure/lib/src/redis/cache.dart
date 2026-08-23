@@ -120,6 +120,32 @@ import 'cache_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// # NOTE: the Name used for Redis needs to be globally unique
+/// resource "azure_redis_cache" "example" {
+///   name                 = "example-cache"
+///   location             = azure_core_resourcegroup.example.location
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   capacity             = 2
+///   family               = "C"
+///   sku_name             = "Standard"
+///   non_ssl_port_enabled = false
+///   minimum_tls_version  = "1.2"
+///   redis_configuration  = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,8 +157,8 @@ import 'cache_state.dart';
 /// import com.pulumi.azure.redis.Cache;
 /// import com.pulumi.azure.redis.CacheArgs;
 /// import com.pulumi.azure.redis.inputs.CacheRedisConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -210,7 +236,7 @@ import 'cache_state.dart';
 /// $ pulumi import azure:redis/cache:Cache cache1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Cache/redis/cache1
 /// ```
 class Cache extends pulumi.CustomResource {
-  /// Whether access key authentication is enabled? Defaults to `true`. `active_directory_authentication_enabled` must be set to `true` to disable access key authentication.
+  /// Whether access key authentication is enabled? Defaults to `true`. `activeDirectoryAuthenticationEnabled` must be set to `true` to disable access key authentication.
   late final pulumi.Output<bool?> accessKeysAuthenticationEnabled;
   /// The size of the Redis cache to deploy. Valid values for a SKU `family` of C (Basic/Standard) are `0, 1, 2, 3, 4, 5, 6`, and for P (Premium) `family` are `1, 2, 3, 4, 5`.
   late final pulumi.Output<int> capacity;
@@ -230,7 +256,7 @@ class Cache extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Enable the non-SSL port (6379) - disabled by default.
   late final pulumi.Output<bool?> nonSslPortEnabled;
-  /// A list of `patch_schedule` blocks as defined below.
+  /// A list of `patchSchedule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> patchSchedules;
   /// The non-SSL Port of the Redis Instance
   late final pulumi.Output<int> port;
@@ -238,11 +264,11 @@ class Cache extends pulumi.CustomResource {
   late final pulumi.Output<String> primaryAccessKey;
   /// The primary connection string of the Redis Instance.
   late final pulumi.Output<String> primaryConnectionString;
-  /// The Static IP Address to assign to the Redis Cache when hosted inside the Virtual Network. This argument implies the use of `subnet_id`. Changing this forces a new resource to be created.
+  /// The Static IP Address to assign to the Redis Cache when hosted inside the Virtual Network. This argument implies the use of `subnetId`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> privateStaticIpAddress;
   /// Whether or not public network access is allowed for this Redis Cache. `true` means this resource could be accessed by both public and private endpoint. `false` means only private endpoint access is allowed. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-  /// A `redis_configuration` block as defined below - with some limitations by SKU - defaults/details are shown below.
+  /// A `redisConfiguration` block as defined below - with some limitations by SKU - defaults/details are shown below.
   late final pulumi.Output<CacheRedisConfiguration> redisConfiguration;
   /// Redis version. Only major version needed. Possible values are `4` and `6`. Defaults to `6`.
   late final pulumi.Output<String?> redisVersion;
@@ -250,7 +276,7 @@ class Cache extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Configuring the number of replicas per master is only available when using the Premium SKU and cannot be used in conjunction with shards.
   late final pulumi.Output<int> replicasPerMaster;
-  /// Amount of replicas to create per primary for this Redis Cache. If both `replicas_per_primary` and `replicas_per_master` are set, they need to be equal.
+  /// Amount of replicas to create per primary for this Redis Cache. If both `replicasPerPrimary` and `replicasPerMaster` are set, they need to be equal.
   late final pulumi.Output<int> replicasPerPrimary;
   /// The name of the resource group in which to create the Redis instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;

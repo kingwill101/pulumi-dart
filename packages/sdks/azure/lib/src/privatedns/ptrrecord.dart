@@ -119,6 +119,31 @@ import 'ptrrecord_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_privatedns_zone" "example" {
+///   name                = "2.0.192.in-addr.arpa"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_privatedns_ptrrecord" "example" {
+///   name                = "15"
+///   zone_name           = azure_privatedns_zone.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ttl                 = 300
+///   records             = ["test.example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,8 +156,8 @@ import 'ptrrecord_state.dart';
 /// import com.pulumi.azure.privatedns.ZoneArgs;
 /// import com.pulumi.azure.privatedns.PTRRecord;
 /// import com.pulumi.azure.privatedns.PTRRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

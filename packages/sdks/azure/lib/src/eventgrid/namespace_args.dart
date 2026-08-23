@@ -14,7 +14,7 @@ class NamespaceArgs {
   final pulumi.Input<int>? capacity;
   /// An `identity` block as defined below.
   final pulumi.Input<NamespaceIdentity>? identity;
-  /// One or more `inbound_ip_rule` blocks as defined below.
+  /// One or more `inboundIpRule` blocks as defined below.
   final pulumi.Input<List<NamespaceInboundIpRule>>? inboundIpRules;
   /// Specifies the supported Azure location where the resource should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -28,20 +28,20 @@ class NamespaceArgs {
   final pulumi.Input<String>? sku;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A `topic_spaces_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// A `topicSpacesConfiguration` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<NamespaceTopicSpacesConfiguration>>? topicSpacesConfigurations;
 
   /// Creates a new [NamespaceArgs].
   /// [capacity] Specifies the Capacity / Throughput Units for an Eventgrid Namespace. Valid values can be between `1` and `40`.
   /// [identity] An `identity` block as defined below.
-  /// [inboundIpRules] One or more `inbound_ip_rule` blocks as defined below.
+  /// [inboundIpRules] One or more `inboundIpRule` blocks as defined below.
   /// [location] Specifies the supported Azure location where the resource should exist. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Event Grid Namespace resource. Changing this forces a new resource to be created.
   /// [publicNetworkAccess] Whether or not public network access is allowed for this server. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
   /// [resourceGroupName] The name of the resource group in which the Event Grid Namespace should exist. Changing this forces a new resource to be created.
   /// [sku] Defines which tier to use. The only possible value is `Standard`. Defaults to `Standard`.
   /// [tags] A mapping of tags to assign to the resource.
-  /// [topicSpacesConfigurations] A `topic_spaces_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// [topicSpacesConfigurations] A `topicSpacesConfiguration` block as defined below. Changing this forces a new resource to be created.
   const NamespaceArgs({
     this.capacity,
     this.identity,
@@ -85,4 +85,3 @@ class NamespaceArgs {
     );
   }
 }
-

@@ -17,9 +17,9 @@ class LinkedServiceAzureFunctionState {
   final pulumi.Input<String>? description;
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   final pulumi.Input<String>? integrationRuntimeName;
-  /// The system key of the Azure Function. Exactly one of either `key` or `key_vault_key` is required
+  /// The system key of the Azure Function. Exactly one of either `key` or `keyVaultKey` is required
   final pulumi.Input<String>? key;
-  /// A `key_vault_key` block as defined below. Use this Argument to store the system key of the Azure Function in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `key` or `key_vault_key` is required.
+  /// A `keyVaultKey` block as defined below. Use this Argument to store the system key of the Azure Function in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `key` or `keyVaultKey` is required.
   final pulumi.Input<LinkedServiceAzureFunctionKeyVaultKey>? keyVaultKey;
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
@@ -34,8 +34,8 @@ class LinkedServiceAzureFunctionState {
   /// [dataFactoryId] The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   /// [description] The description for the Data Factory Linked Service.
   /// [integrationRuntimeName] The integration runtime reference to associate with the Data Factory Linked Service.
-  /// [key] The system key of the Azure Function. Exactly one of either `key` or `key_vault_key` is required
-  /// [keyVaultKey] A `key_vault_key` block as defined below. Use this Argument to store the system key of the Azure Function in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `key` or `key_vault_key` is required.
+  /// [key] The system key of the Azure Function. Exactly one of either `key` or `keyVaultKey` is required
+  /// [keyVaultKey] A `keyVaultKey` block as defined below. Use this Argument to store the system key of the Azure Function in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `key` or `keyVaultKey` is required.
   /// [name] Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
   /// [url] The url of the Azure Function.
@@ -82,4 +82,3 @@ class LinkedServiceAzureFunctionState {
     );
   }
 }
-

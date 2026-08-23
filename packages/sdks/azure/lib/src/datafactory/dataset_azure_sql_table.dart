@@ -134,6 +134,35 @@ import 'dataset_azure_sql_table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedserviceazuresqldatabase" "example" {
+///   name              = "example"
+///   data_factory_id   = azure_datafactory_factory.example.id
+///   connection_string = "Integrated Security=False;Data Source=test;Initial Catalog=test;Initial Catalog=test;User ID=test;Password=test"
+/// }
+/// resource "azure_datafactory_datasetazuresqltable" "example" {
+///   name              = "example"
+///   data_factory_id   = azure_datafactory_factory.example.id
+///   linked_service_id = azure_datafactory_linkedserviceazuresqldatabase.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -148,8 +177,8 @@ import 'dataset_azure_sql_table_state.dart';
 /// import com.pulumi.azure.datafactory.LinkedServiceAzureSqlDatabaseArgs;
 /// import com.pulumi.azure.datafactory.DatasetAzureSqlTable;
 /// import com.pulumi.azure.datafactory.DatasetAzureSqlTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -244,7 +273,7 @@ class DatasetAzureSqlTable extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> parameters;
   /// The schema name of the table in the Azure SQL Database.
   late final pulumi.Output<String?> schema;
-  /// A `schema_column` block as defined below.
+  /// A `schemaColumn` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
   /// The table name of the table in the Azure SQL Database.
   late final pulumi.Output<String?> table;

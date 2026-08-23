@@ -349,6 +349,78 @@ import 'pool_storage_image_reference.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "testaccbatch"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "testaccsa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_batch_account" "example" {
+///   name                                = "testaccbatch"
+///   resource_group_name                 = azure_core_resourcegroup.example.name
+///   location                            = azure_core_resourcegroup.example.location
+///   pool_allocation_mode                = "BatchService"
+///   storage_account_id                  = azure_storage_account.example.id
+///   storage_account_authentication_mode = "StorageKeys"
+///   tags = {
+///     "env" = "test"
+///   }
+/// }
+/// resource "azure_batch_pool" "example" {
+///   name                = "testaccpool"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   account_name        = azure_batch_account.example.name
+///   display_name        = "Test Acc Pool Auto"
+///   vm_size             = "STANDARD_A1_V2"
+///   node_agent_sku_id   = "batch.node.ubuntu 20.04"
+///   auto_scale = {
+///     evaluation_interval = "PT15M"
+///     formula             = "      startingNumberOfVMs = 1;\n      maxNumberofVMs = 25;\n      pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);\n      pendingTaskSamples = pendingTaskSamplePercent < 70 ? startingNumberOfVMs : avg($PendingTasks.GetSample(180 *   TimeInterval_Second));\n      $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);\n"
+///   }
+///   storage_image_reference = {
+///     publisher = "microsoft-azure-batch"
+///     offer     = "ubuntu-server-container"
+///     sku       = "20-04-lts"
+///     version   = "latest"
+///   }
+///   container_configuration = {
+///     type = "DockerCompatible"
+///     container_registries = [{
+///       "registryServer" = "docker.io"
+///       "userName"       = "login"
+///       "password"       = "apassword"
+///     }]
+///   }
+///   start_task = {
+///     command_line       = "echo 'Hello World from $env'"
+///     task_retry_maximum = 1
+///     wait_for_success   = true
+///     common_environment_properties = {
+///       "env" = "TEST"
+///     }
+///     user_identity = {
+///       auto_user = {
+///         elevation_level = "NonAdmin"
+///         scope           = "Task"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -362,11 +434,12 @@ import 'pool_storage_image_reference.dart';
 /// import com.pulumi.azure.batch.inputs.PoolAutoScaleArgs;
 /// import com.pulumi.azure.batch.inputs.PoolStorageImageReferenceArgs;
 /// import com.pulumi.azure.batch.inputs.PoolContainerConfigurationArgs;
+/// import com.pulumi.azure.batch.inputs.PoolContainerConfigurationContainerRegistryArgs;
 /// import com.pulumi.azure.batch.inputs.PoolStartTaskArgs;
 /// import com.pulumi.azure.batch.inputs.PoolStartTaskUserIdentityArgs;
 /// import com.pulumi.azure.batch.inputs.PoolStartTaskUserIdentityAutoUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -536,22 +609,22 @@ import 'pool_storage_image_reference.dart';
 class Pool extends pulumi.CustomResource {
   /// Specifies the name of the Batch account in which the pool will be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-  /// A `auto_scale` block that describes the scale settings when using auto scale as defined below.
+  /// A `autoScale` block that describes the scale settings when using auto scale as defined below.
   ///
-  /// &gt; **Note:** `fixed_scale` and `auto_scale` blocks cannot be used both at the same time.
+  /// &gt; **Note:** `fixedScale` and `autoScale` blocks cannot be used both at the same time.
   late final pulumi.Output<PoolAutoScale?> autoScale;
   late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
-  /// The container configuration used in the pool's VMs. One `container_configuration` block as defined below.
+  /// The container configuration used in the pool's VMs. One `containerConfiguration` block as defined below.
   late final pulumi.Output<PoolContainerConfiguration?> containerConfiguration;
-  /// A `data_disks` block describes the data disk settings as defined below.
+  /// A `dataDisks` block describes the data disk settings as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
-  /// A `disk_encryption` block, as defined below, describes the disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image Gallery Image.
+  /// A `diskEncryption` block, as defined below, describes the disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image Gallery Image.
   late final pulumi.Output<List<Map<String, dynamic>>?> diskEncryptions;
   /// Specifies the display name of the Batch pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> displayName;
   /// An `extensions` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> extensions;
-  /// A `fixed_scale` block that describes the scale settings when using fixed scale as defined below.
+  /// A `fixedScale` block that describes the scale settings when using fixed scale as defined below.
   late final pulumi.Output<PoolFixedScale?> fixedScale;
   /// An `identity` block as defined below.
   late final pulumi.Output<PoolIdentity?> identity;
@@ -567,29 +640,29 @@ class Pool extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> mounts;
   /// Specifies the name of the Batch pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A `network_configuration` block that describes the network configurations for the Batch pool as defined below. Changing this forces a new resource to be created.
+  /// A `networkConfiguration` block that describes the network configurations for the Batch pool as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<PoolNetworkConfiguration?> networkConfiguration;
   /// Specifies the SKU of the node agents that will be created in the Batch pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> nodeAgentSkuId;
-  /// A `node_placement` block that describes the placement policy for allocating nodes in the pool as defined below.
+  /// A `nodePlacement` block that describes the placement policy for allocating nodes in the pool as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> nodePlacements;
   /// Specifies the ephemeral disk placement for operating system disk for all VMs in the pool. This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements&gt; and Linux VMs at &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements&gt;. The only possible value is `CacheDisk`.
   late final pulumi.Output<String?> osDiskPlacement;
   /// The name of the resource group in which to create the Batch pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `security_profile` block that describes the security settings for the Batch pool as defined below. Changing this forces a new resource to be created.
+  /// A `securityProfile` block that describes the security settings for the Batch pool as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<PoolSecurityProfile?> securityProfile;
-  /// A `start_task` block that describes the start task settings for the Batch pool as defined below.
+  /// A `startTask` block that describes the start task settings for the Batch pool as defined below.
   late final pulumi.Output<PoolStartTask?> startTask;
   /// Whether to stop if there is a pending resize operation on this pool.
   late final pulumi.Output<bool?> stopPendingResizeOperation;
-  /// A `storage_image_reference` block for the virtual machines that will compose the Batch pool as defined below. Changing this forces a new resource to be created.
+  /// A `storageImageReference` block for the virtual machines that will compose the Batch pool as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<PoolStorageImageReference> storageImageReference;
   /// The desired node communication mode for the pool. Possible values are `Classic`, `Default` and `Simplified`.
   late final pulumi.Output<String?> targetNodeCommunicationMode;
-  /// A `task_scheduling_policy` block that describes how tasks are distributed across compute nodes in a pool as defined below. If not specified, the default is spread as defined below.
+  /// A `taskSchedulingPolicy` block that describes how tasks are distributed across compute nodes in a pool as defined below. If not specified, the default is spread as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> taskSchedulingPolicies;
-  /// A `user_accounts` block that describes the list of user accounts to be created on each node in the pool as defined below.
+  /// A `userAccounts` block that describes the list of user accounts to be created on each node in the pool as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> userAccounts;
   /// Specifies the size of the VM created in the Batch pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> vmSize;

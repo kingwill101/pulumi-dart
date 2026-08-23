@@ -4,7 +4,7 @@ import 'group_subscription_association_state.dart';
 
 /// Manages a Management Group Subscription Association.
 ///
-/// !&gt; **Note:** When using this resource, configuring `subscription_ids` on the `azure.management.Group` resource is not supported.
+/// &gt; **Note:** When using this resource, configuring `subscriptionIds` on the `azure.management.Group` resource is not supported.
 ///
 /// ## Example Usage
 ///
@@ -94,6 +94,27 @@ import 'group_subscription_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_management_getgroup" "example" {
+///   name = "exampleManagementGroup"
+/// }
+/// data "azure_core_getsubscription" "exampleGetSubscription" {
+///   subscription_id = "12345678-1234-1234-1234-123456789012"
+/// }
+///
+/// resource "azure_management_groupsubscriptionassociation" "example" {
+///   management_group_id = data.azure_management_getgroup.example.id
+///   subscription_id     = data.azure_core_getsubscription.exampleGetSubscription.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +127,8 @@ import 'group_subscription_association_state.dart';
 /// import com.pulumi.azure.core.inputs.GetSubscriptionArgs;
 /// import com.pulumi.azure.management.GroupSubscriptionAssociation;
 /// import com.pulumi.azure.management.GroupSubscriptionAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

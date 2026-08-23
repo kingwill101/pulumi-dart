@@ -9,19 +9,19 @@ import 'server_identity.dart';
 /// {@endtemplate}
 /// {@macro pulumi_mssql_server_server_args_doc}
 class ServerArgs {
-  /// The administrator login name for the new server. Required unless `azuread_authentication_only` in the `azuread_administrator` block is `true`. When omitted, Azure will generate a default username which cannot be subsequently changed. Changing this forces a new resource to be created.
+  /// The administrator login name for the new server. Required unless `azureadAuthenticationOnly` in the `azureadAdministrator` block is `true`. When omitted, Azure will generate a default username which cannot be subsequently changed. Changing this forces a new resource to be created.
   final pulumi.Input<String>? administratorLogin;
-  /// The password associated with the `administrator_login` user. Needs to comply with Azure's [Password Policy](https://msdn.microsoft.com/library/ms161959.aspx).
+  /// The password associated with the `administratorLogin` user. Needs to comply with Azure's [Password Policy](https://msdn.microsoft.com/library/ms161959.aspx).
   final pulumi.Input<String>? administratorLoginPassword;
-  /// An integer value used to trigger an update for `administrator_login_password_wo`. This property should be incremented when updating `administrator_login_password_wo`.
+  /// An integer value used to trigger an update for `administratorLoginPasswordWo`. This property should be incremented when updating `administratorLoginPasswordWo`.
   final pulumi.Input<int>? administratorLoginPasswordWoVersion;
-  /// An `azuread_administrator` block as defined below.
+  /// An `azureadAdministrator` block as defined below.
   final pulumi.Input<ServerAzureadAdministrator>? azureadAdministrator;
   /// The connection policy the server will use. Possible values are `Default`, `Proxy`, and `Redirect`. Defaults to `Default`.
   final pulumi.Input<String>? connectionPolicy;
   /// Whether to enable the Express Vulnerability Assessment Configuration. Defaults to `false`.
   ///
-  /// &gt; **Note:** If you have enabled the Classic SQL Vulnerability Assessment configuration using the `azure.mssql.ServerVulnerabilityAssessment` resource, you must first delete it before enabling `express_vulnerability_assessment_enabled`. If you wish to revert back to using the Classic SQL Vulnerability Assessment configuration you must first disable this setting.
+  /// &gt; **Note:** If you have enabled the Classic SQL Vulnerability Assessment configuration using the `azure.mssql.ServerVulnerabilityAssessment` resource, you must first delete it before enabling `expressVulnerabilityAssessmentEnabled`. If you wish to revert back to using the Classic SQL Vulnerability Assessment configuration you must first disable this setting.
   final pulumi.Input<bool>? expressVulnerabilityAssessmentEnabled;
   /// An `identity` block as defined below.
   final pulumi.Input<ServerIdentity>? identity;
@@ -29,7 +29,7 @@ class ServerArgs {
   final pulumi.Input<String>? location;
   /// The Minimum TLS Version for all SQL Database and SQL Data Warehouse databases associated with the server. Valid values are: `1.0`, `1.1` , `1.2` and `Disabled`. Defaults to `1.2`.
   ///
-  /// &gt; **Note:** The `minimum_tls_version` is set to `Disabled` means all TLS versions are allowed. After you enforce a version of `minimum_tls_version`, it's not possible to revert to `Disabled`.
+  /// &gt; **Note:** The `minimumTlsVersion` is set to `Disabled` means all TLS versions are allowed. After you enforce a version of `minimumTlsVersion`, it's not possible to revert to `Disabled`.
   ///
   /// &gt; **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
   final pulumi.Input<String>? minimumTlsVersion;
@@ -37,7 +37,7 @@ class ServerArgs {
   final pulumi.Input<String>? name;
   /// Whether outbound network traffic is restricted for this server. Defaults to `false`.
   final pulumi.Input<bool>? outboundNetworkRestrictionEnabled;
-  /// Specifies the primary user managed identity id. Required if `type` within the `identity` block is set to either `SystemAssigned, UserAssigned` or `UserAssigned` and should be set at same time as setting `identity_ids`.
+  /// Specifies the primary user managed identity id. Required if `type` within the `identity` block is set to either `SystemAssigned, UserAssigned` or `UserAssigned` and should be set at same time as setting `identityIds`.
   final pulumi.Input<String>? primaryUserAssignedIdentityId;
   /// Whether public network access is allowed for this server. Defaults to `true`.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
@@ -57,10 +57,10 @@ class ServerArgs {
   final pulumi.Input<String> version;
 
   /// Creates a new [ServerArgs].
-  /// [administratorLogin] The administrator login name for the new server. Required unless `azuread_authentication_only` in the `azuread_administrator` block is `true`. When omitted, Azure will generate a default username which cannot be subsequently changed. Changing this forces a new resource to be created.
-  /// [administratorLoginPassword] The password associated with the `administrator_login` user. Needs to comply with Azure's [Password Policy](https://msdn.microsoft.com/library/ms161959.aspx).
-  /// [administratorLoginPasswordWoVersion] An integer value used to trigger an update for `administrator_login_password_wo`. This property should be incremented when updating `administrator_login_password_wo`.
-  /// [azureadAdministrator] An `azuread_administrator` block as defined below.
+  /// [administratorLogin] The administrator login name for the new server. Required unless `azureadAuthenticationOnly` in the `azureadAdministrator` block is `true`. When omitted, Azure will generate a default username which cannot be subsequently changed. Changing this forces a new resource to be created.
+  /// [administratorLoginPassword] The password associated with the `administratorLogin` user. Needs to comply with Azure's [Password Policy](https://msdn.microsoft.com/library/ms161959.aspx).
+  /// [administratorLoginPasswordWoVersion] An integer value used to trigger an update for `administratorLoginPasswordWo`. This property should be incremented when updating `administratorLoginPasswordWo`.
+  /// [azureadAdministrator] An `azureadAdministrator` block as defined below.
   /// [connectionPolicy] The connection policy the server will use. Possible values are `Default`, `Proxy`, and `Redirect`. Defaults to `Default`.
   /// [expressVulnerabilityAssessmentEnabled] Whether to enable the Express Vulnerability Assessment Configuration. Defaults to `false`.
   /// [identity] An `identity` block as defined below.
@@ -68,7 +68,7 @@ class ServerArgs {
   /// [minimumTlsVersion] The Minimum TLS Version for all SQL Database and SQL Data Warehouse databases associated with the server. Valid values are: `1.0`, `1.1` , `1.2` and `Disabled`. Defaults to `1.2`.
   /// [name] The name of the Microsoft SQL Server. This needs to be globally unique within Azure. Changing this forces a new resource to be created.
   /// [outboundNetworkRestrictionEnabled] Whether outbound network traffic is restricted for this server. Defaults to `false`.
-  /// [primaryUserAssignedIdentityId] Specifies the primary user managed identity id. Required if `type` within the `identity` block is set to either `SystemAssigned, UserAssigned` or `UserAssigned` and should be set at same time as setting `identity_ids`.
+  /// [primaryUserAssignedIdentityId] Specifies the primary user managed identity id. Required if `type` within the `identity` block is set to either `SystemAssigned, UserAssigned` or `UserAssigned` and should be set at same time as setting `identityIds`.
   /// [publicNetworkAccessEnabled] Whether public network access is allowed for this server. Defaults to `true`.
   /// [resourceGroupName] The name of the resource group in which to create the Microsoft SQL Server. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
@@ -138,4 +138,3 @@ class ServerArgs {
     );
   }
 }
-

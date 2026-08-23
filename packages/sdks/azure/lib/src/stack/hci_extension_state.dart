@@ -22,7 +22,7 @@ class HciExtensionState {
   final pulumi.Input<String>? type;
   /// Specifies the version of the script handler.
   ///
-  /// &gt; **Note:** `type_handler_version` cannot be set when `automatic_upgrade_enabled` is set to `true`.
+  /// &gt; **Note:** `typeHandlerVersion` cannot be set when `automaticUpgradeEnabled` is set to `true`.
   final pulumi.Input<String>? typeHandlerVersion;
 
   /// Creates a new [HciExtensionState].
@@ -75,4 +75,3 @@ class HciExtensionState {
     );
   }
 }
-

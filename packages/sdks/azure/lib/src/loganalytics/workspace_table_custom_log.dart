@@ -27,7 +27,7 @@ import 'workspace_table_custom_log_state.dart';
 ///     workspaceId: exampleAnalyticsWorkspace.id,
 ///     columns: [{
 ///         name: "TimeGenerated",
-///         type: "datetime",
+///         type: "dateTime",
 ///     }],
 /// });
 /// ```
@@ -49,7 +49,7 @@ import 'workspace_table_custom_log_state.dart';
 ///     workspace_id=example_analytics_workspace.id,
 ///     columns=[{
 ///         "name": "TimeGenerated",
-///         "type": "datetime",
+///         "type": "dateTime",
 ///     }])
 /// ```
 /// ```csharp
@@ -84,7 +84,7 @@ import 'workspace_table_custom_log_state.dart';
 ///             new Azure.LogAnalytics.Inputs.WorkspaceTableCustomLogColumnArgs
 ///             {
 ///                 Name = "TimeGenerated",
-///                 Type = "datetime",
+///                 Type = "dateTime",
 ///             },
 ///         },
 ///     });
@@ -126,7 +126,7 @@ import 'workspace_table_custom_log_state.dart';
 /// 			Columns: loganalytics.WorkspaceTableCustomLogColumnArray{
 /// 				&loganalytics.WorkspaceTableCustomLogColumnArgs{
 /// 					Name: pulumi.String("TimeGenerated"),
-/// 					Type: pulumi.String("datetime"),
+/// 					Type: pulumi.String("dateTime"),
 /// 				},
 /// 			},
 /// 		})
@@ -135,6 +135,35 @@ import 'workspace_table_custom_log_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+///   retention_in_days   = 30
+/// }
+/// resource "azure_loganalytics_workspacetablecustomlog" "example" {
+///   name         = "example_CL"
+///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+///   columns {
+///     name = "TimeGenerated"
+///     type = "dateTime"
+///   }
 /// }
 /// ```
 /// ```java
@@ -150,8 +179,8 @@ import 'workspace_table_custom_log_state.dart';
 /// import com.pulumi.azure.loganalytics.WorkspaceTableCustomLog;
 /// import com.pulumi.azure.loganalytics.WorkspaceTableCustomLogArgs;
 /// import com.pulumi.azure.loganalytics.inputs.WorkspaceTableCustomLogColumnArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,7 +210,7 @@ import 'workspace_table_custom_log_state.dart';
 ///             .workspaceId(exampleAnalyticsWorkspace.id())
 ///             .columns(WorkspaceTableCustomLogColumnArgs.builder()
 ///                 .name("TimeGenerated")
-///                 .type("datetime")
+///                 .type("dateTime")
 ///                 .build())
 ///             .build());
 ///
@@ -212,7 +241,7 @@ import 'workspace_table_custom_log_state.dart';
 ///       workspaceId: ${exampleAnalyticsWorkspace.id}
 ///       columns:
 ///         - name: TimeGenerated
-///           type: datetime
+///           type: dateTime
 /// ```
 ///
 ///
@@ -247,11 +276,11 @@ class WorkspaceTableCustomLog extends pulumi.CustomResource {
   late final pulumi.Output<String?> plan;
   /// The table's retention in days. Possible values range between `4` and `730`.
   ///
-  /// &gt; **Note:** `retention_in_days` cannot be set when `plan` is set to `Basic` because the retention is fixed.
+  /// &gt; **Note:** `retentionInDays` cannot be set when `plan` is set to `Basic` because the retention is fixed.
   late final pulumi.Output<int?> retentionInDays;
   /// A list of solutions associated with the table.
   late final pulumi.Output<List<String>> solutions;
-  /// One or more `standard_column` blocks as defined below.
+  /// One or more `standardColumn` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> standardColumns;
   /// The table's total retention in days. Possible values range between `4` and `730`; or `1095`, `1460`, `1826`, `2191`, `2556`, `2922`, `3288`, `3653`, `4018`, or `4383`.
   late final pulumi.Output<int?> totalRetentionInDays;

@@ -366,10 +366,10 @@ import 'disk_encryption_set_state.dart';
 /// 		_, err = keyvault.NewAccessPolicy(ctx, "example-disk", &keyvault.AccessPolicyArgs{
 /// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			TenantId: pulumi.String(exampleDiskEncryptionSet.Identity.ApplyT(func(identity compute.DiskEncryptionSetIdentity) (*string, error) {
-/// 				return &identity.TenantId, nil
+/// 				return identity.TenantId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ObjectId: pulumi.String(exampleDiskEncryptionSet.Identity.ApplyT(func(identity compute.DiskEncryptionSetIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Create"),
@@ -390,7 +390,7 @@ import 'disk_encryption_set_state.dart';
 /// 			Scope:              exampleKeyVault.ID(),
 /// 			RoleDefinitionName: pulumi.String("Key Vault Crypto Service Encryption User"),
 /// 			PrincipalId: pulumi.String(exampleDiskEncryptionSet.Identity.ApplyT(func(identity compute.DiskEncryptionSetIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -398,6 +398,66 @@ import 'disk_encryption_set_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                        = "des-example-keyvault"
+///   location                    = azure_core_resourcegroup.example.location
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                    = "premium"
+///   enabled_for_disk_encryption = true
+///   purge_protection_enabled    = true
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_accesspolicy.example-user]
+///   name         = "des-example-key"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_compute_diskencryptionset" "example" {
+///   name                = "des"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   key_vault_key_id    = azure_keyvault_key.example.id
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_keyvault_accesspolicy" "example-disk" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = azure_compute_diskencryptionset.example.identity.tenant_id
+///   object_id       = azure_compute_diskencryptionset.example.identity.principal_id
+///   key_permissions = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "List", "Decrypt", "Sign"]
+/// }
+/// resource "azure_keyvault_accesspolicy" "example-user" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
+///   object_id       = data.azure_core_getclientconfig.current.object_id
+///   key_permissions = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "List", "Decrypt", "Sign", "GetRotationPolicy"]
+/// }
+/// resource "azure_authorization_assignment" "example-disk" {
+///   scope                = azure_keyvault_keyvault.example.id
+///   role_definition_name = "Key Vault Crypto Service Encryption User"
+///   principal_id         = azure_compute_diskencryptionset.example.identity.principal_id
 /// }
 /// ```
 /// ```java
@@ -421,8 +481,8 @@ import 'disk_encryption_set_state.dart';
 /// import com.pulumi.azure.authorization.Assignment;
 /// import com.pulumi.azure.authorization.AssignmentArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -977,10 +1037,10 @@ import 'disk_encryption_set_state.dart';
 /// 		_, err = keyvault.NewAccessPolicy(ctx, "example-disk", &keyvault.AccessPolicyArgs{
 /// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			TenantId: pulumi.String(exampleDiskEncryptionSet.Identity.ApplyT(func(identity compute.DiskEncryptionSetIdentity) (*string, error) {
-/// 				return &identity.TenantId, nil
+/// 				return identity.TenantId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ObjectId: pulumi.String(exampleDiskEncryptionSet.Identity.ApplyT(func(identity compute.DiskEncryptionSetIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Create"),
@@ -1001,7 +1061,7 @@ import 'disk_encryption_set_state.dart';
 /// 			Scope:              exampleKeyVault.ID(),
 /// 			RoleDefinitionName: pulumi.String("Key Vault Crypto Service Encryption User"),
 /// 			PrincipalId: pulumi.String(exampleDiskEncryptionSet.Identity.ApplyT(func(identity compute.DiskEncryptionSetIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -1009,6 +1069,67 @@ import 'disk_encryption_set_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                        = "des-example-keyvault"
+///   location                    = azure_core_resourcegroup.example.location
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                    = "premium"
+///   enabled_for_disk_encryption = true
+///   purge_protection_enabled    = true
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_accesspolicy.example-user]
+///   name         = "des-example-key"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_compute_diskencryptionset" "example" {
+///   name                      = "des"
+///   resource_group_name       = azure_core_resourcegroup.example.name
+///   location                  = azure_core_resourcegroup.example.location
+///   key_vault_key_id          = azure_keyvault_key.example.versionless_id
+///   auto_key_rotation_enabled = true
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_keyvault_accesspolicy" "example-disk" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = azure_compute_diskencryptionset.example.identity.tenant_id
+///   object_id       = azure_compute_diskencryptionset.example.identity.principal_id
+///   key_permissions = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "List", "Decrypt", "Sign"]
+/// }
+/// resource "azure_keyvault_accesspolicy" "example-user" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
+///   object_id       = data.azure_core_getclientconfig.current.object_id
+///   key_permissions = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "List", "Decrypt", "Sign", "GetRotationPolicy"]
+/// }
+/// resource "azure_authorization_assignment" "example-disk" {
+///   scope                = azure_keyvault_keyvault.example.id
+///   role_definition_name = "Key Vault Crypto Service Encryption User"
+///   principal_id         = azure_compute_diskencryptionset.example.identity.principal_id
 /// }
 /// ```
 /// ```java
@@ -1032,8 +1153,8 @@ import 'disk_encryption_set_state.dart';
 /// import com.pulumi.azure.authorization.Assignment;
 /// import com.pulumi.azure.authorization.AssignmentArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1243,9 +1364,9 @@ import 'disk_encryption_set_state.dart';
 class DiskEncryptionSet extends pulumi.CustomResource {
   /// Boolean flag to specify whether Azure Disk Encryption Set automatically rotates the encryption Key to latest version or not. Possible values are `true` or `false`. Defaults to `false`.
   ///
-  /// &gt; **Note:** When `auto_key_rotation_enabled` is set to `true` the `key_vault_key_id` or `managed_hsm_key_id` must use the `versionless_id`.
+  /// &gt; **Note:** When `autoKeyRotationEnabled` is set to `true` the `keyVaultKeyId` or `managedHsmKeyId` must use the `versionlessId`.
   ///
-  /// &gt; **Note:** To validate which Key Vault Key version is currently being used by the service it is recommended that you use the `azure.compute.DiskEncryptionSet` data source or run a `terraform refresh` command and check the value of the exported `key_vault_key_url` or `managed_hsm_key_id` field.
+  /// &gt; **Note:** To validate which Key Vault Key version is currently being used by the service it is recommended that you use the `azure.compute.DiskEncryptionSet` data source or run a `terraform refresh` command and check the value of the exported `keyVaultKeyUrl` or `managedHsmKeyId` field.
   ///
   /// &gt; **Note:** It may take between 10 to 20 minutes for the service to update the Key Vault Key URL once the keys have been rotated.
   late final pulumi.Output<bool?> autoKeyRotationEnabled;
@@ -1255,19 +1376,19 @@ class DiskEncryptionSet extends pulumi.CustomResource {
   late final pulumi.Output<String?> federatedClientId;
   /// An `identity` block as defined below.
   late final pulumi.Output<DiskEncryptionSetIdentity> identity;
-  /// Specifies the URL to a Key Vault Key (either from a Key Vault Key, or the Key URL for the Key Vault Secret). Exactly one of `managed_hsm_key_id`, `key_vault_key_id` must be specified.
+  /// Specifies the URL to a Key Vault Key (either from a Key Vault Key, or the Key URL for the Key Vault Secret). Exactly one of `managedHsmKeyId`, `keyVaultKeyId` must be specified.
   ///
   /// &gt; **Note:** Access to the KeyVault must be granted for this Disk Encryption Set, if you want to further use this Disk Encryption Set in a Managed Disk or Virtual Machine, or Virtual Machine Scale Set. For instructions, please refer to the doc of [Server side encryption of Azure managed disks](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption).
   ///
-  /// &gt; **Note:** A KeyVault or Managed HSM using enable_rbac_authorization requires to use `azure.authorization.Assignment` to assign the role `Key Vault Crypto Service Encryption User` to this Disk Encryption Set.
+  /// &gt; **Note:** A KeyVault or Managed HSM using enableRbacAuthorization requires to use `azure.authorization.Assignment` to assign the role `Key Vault Crypto Service Encryption User` to this Disk Encryption Set.
   /// In this case, `azure.keyvault.AccessPolicy` is not needed.
-  late final pulumi.Output<String?> keyVaultKeyId;
+  late final pulumi.Output<String> keyVaultKeyId;
   /// The URL for the Key Vault Key or Key Vault Secret that is currently being used by the service.
   late final pulumi.Output<String> keyVaultKeyUrl;
   /// Specifies the Azure Region where the Disk Encryption Set exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// Key ID of a key in a managed HSM. Exactly one of `managed_hsm_key_id`, `key_vault_key_id` must be specified.
-  late final pulumi.Output<String?> managedHsmKeyId;
+  /// Key ID of a key in a managed HSM. Exactly one of `managedHsmKeyId`, `keyVaultKeyId` must be specified.
+  late final pulumi.Output<String> managedHsmKeyId;
   /// The name of the Disk Encryption Set. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// Specifies the name of the Resource Group where the Disk Encryption Set should exist. Changing this forces a new resource to be created.
@@ -1293,10 +1414,10 @@ class DiskEncryptionSet extends pulumi.CustomResource {
     encryptionType = registerOutput<String?>('encryptionType');
     federatedClientId = registerOutput<String?>('federatedClientId');
     identity = registerOutput<DiskEncryptionSetIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskEncryptionSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     keyVaultKeyUrl = registerOutput<String>('keyVaultKeyUrl');
     location = registerOutput<String>('location');
-    managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
+    managedHsmKeyId = registerOutput<String>('managedHsmKeyId');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1329,10 +1450,10 @@ class DiskEncryptionSet extends pulumi.CustomResource {
     encryptionType = registerOutput<String?>('encryptionType');
     federatedClientId = registerOutput<String?>('federatedClientId');
     identity = registerOutput<DiskEncryptionSetIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskEncryptionSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     keyVaultKeyUrl = registerOutput<String>('keyVaultKeyUrl');
     location = registerOutput<String>('location');
-    managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
+    managedHsmKeyId = registerOutput<String>('managedHsmKeyId');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');

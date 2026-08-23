@@ -86,4 +86,3 @@ class WindowsFunctionAppSlotAuthSettingsV2Login {
     );
   }
 }
-

@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsFunctionAppAuthSettingsFacebook {
   /// The App ID of the Facebook app used for login.
   final pulumi.Input<String> appId;
-  /// The App Secret of the Facebook app used for Facebook login. Cannot be specified with `app_secret_setting_name`.
+  /// The App Secret of the Facebook app used for Facebook login. Cannot be specified with `appSecretSettingName`.
   final pulumi.Input<String>? appSecret;
-  /// The app setting name that contains the `app_secret` value used for Facebook login. Cannot be specified with `app_secret`.
+  /// The app setting name that contains the `appSecret` value used for Facebook login. Cannot be specified with `appSecret`.
   final pulumi.Input<String>? appSecretSettingName;
   /// Specifies a list of OAuth 2.0 scopes to be requested as part of Facebook login authentication.
   final pulumi.Input<List<String>>? oauthScopes;
 
   /// Creates a new [WindowsFunctionAppAuthSettingsFacebook].
   /// [appId] The App ID of the Facebook app used for login.
-  /// [appSecret] The App Secret of the Facebook app used for Facebook login. Cannot be specified with `app_secret_setting_name`.
-  /// [appSecretSettingName] The app setting name that contains the `app_secret` value used for Facebook login. Cannot be specified with `app_secret`.
+  /// [appSecret] The App Secret of the Facebook app used for Facebook login. Cannot be specified with `appSecretSettingName`.
+  /// [appSecretSettingName] The app setting name that contains the `appSecret` value used for Facebook login. Cannot be specified with `appSecret`.
   /// [oauthScopes] Specifies a list of OAuth 2.0 scopes to be requested as part of Facebook login authentication.
   const WindowsFunctionAppAuthSettingsFacebook({
     required this.appId,
@@ -42,4 +42,3 @@ class WindowsFunctionAppAuthSettingsFacebook {
     );
   }
 }
-

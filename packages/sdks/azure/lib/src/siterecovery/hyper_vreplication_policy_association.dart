@@ -167,6 +167,42 @@ import 'hyper_vreplication_policy_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "East US"
+/// }
+/// resource "azure_recoveryservices_vault" "example" {
+///   name                = "example-recovery-vault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_siterecovery_hypervsite" "example" {
+///   recovery_vault_id = azure_recoveryservices_vault.example.id
+///   name              = "example-site"
+/// }
+/// resource "azure_siterecovery_hypervreplicationpolicy" "example" {
+///   name                                               = "policy"
+///   recovery_vault_id                                  = azure_recoveryservices_vault.example.id
+///   recovery_point_retention_in_hours                  = 2
+///   application_consistent_snapshot_frequency_in_hours = 1
+///   replication_interval_in_seconds                    = 300
+/// }
+/// resource "azure_siterecovery_hypervreplicationpolicyassociation" "example" {
+///   name           = "example-association"
+///   hyperv_site_id = azure_siterecovery_hypervsite.example.id
+///   policy_id      = azure_siterecovery_hypervreplicationpolicy.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +219,8 @@ import 'hyper_vreplication_policy_association_state.dart';
 /// import com.pulumi.azure.siterecovery.HyperVReplicationPolicyArgs;
 /// import com.pulumi.azure.siterecovery.HyperVReplicationPolicyAssociation;
 /// import com.pulumi.azure.siterecovery.HyperVReplicationPolicyAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

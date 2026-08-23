@@ -18,7 +18,7 @@ class GetDatasetBlobStorageResult {
   final String id;
   /// The name of the storage account to be shared with the receiver.
   final String name;
-  /// A `storage_account` block as defined below.
+  /// A `storageAccount` block as defined below.
   final List<GetDatasetBlobStorageStorageAccount> storageAccounts;
 
   /// Creates a new [GetDatasetBlobStorageResult].
@@ -29,7 +29,7 @@ class GetDatasetBlobStorageResult {
   /// [folderPath] The folder path of the file in the storage container to be shared with the receiver.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] The name of the storage account to be shared with the receiver.
-  /// [storageAccounts] A `storage_account` block as defined below.
+  /// [storageAccounts] A `storageAccount` block as defined below.
   const GetDatasetBlobStorageResult({
     required this.containerName,
     required this.dataShareId,
@@ -67,4 +67,3 @@ class GetDatasetBlobStorageResult {
     );
   }
 }
-

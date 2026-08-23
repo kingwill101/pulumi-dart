@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_machinelearning_datastore_fileshare_datastore_fileshare_args_doc}
 class DatastoreFileshareArgs {
-  /// The access key of the Storage Account. Conflicts with `shared_access_signature`.
+  /// The access key of the Storage Account. Conflicts with `sharedAccessSignature`.
   final pulumi.Input<String>? accountKey;
   /// Text used to describe the asset. Changing this forces a new Machine Learning DataStore to be created.
   final pulumi.Input<String>? description;
@@ -15,7 +15,7 @@ class DatastoreFileshareArgs {
   final pulumi.Input<String>? name;
   /// Specifies which identity to use when retrieving data from the specified source. Defaults to `None`. Possible values are `None`, `WorkspaceSystemAssignedIdentity` and `WorkspaceUserAssignedIdentity`.
   final pulumi.Input<String>? serviceDataIdentity;
-  /// The Shared Access Signature of the Storage Account. Conflicts with `account_key`.
+  /// The Shared Access Signature of the Storage Account. Conflicts with `accountKey`.
   final pulumi.Input<String>? sharedAccessSignature;
   /// The ID of the Storage Account File Share. Changing this forces a new Machine Learning DataStore to be created.
   final pulumi.Input<String> storageFileshareId;
@@ -25,11 +25,11 @@ class DatastoreFileshareArgs {
   final pulumi.Input<String> workspaceId;
 
   /// Creates a new [DatastoreFileshareArgs].
-  /// [accountKey] The access key of the Storage Account. Conflicts with `shared_access_signature`.
+  /// [accountKey] The access key of the Storage Account. Conflicts with `sharedAccessSignature`.
   /// [description] Text used to describe the asset. Changing this forces a new Machine Learning DataStore to be created.
   /// [name] The name of the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
   /// [serviceDataIdentity] Specifies which identity to use when retrieving data from the specified source. Defaults to `None`. Possible values are `None`, `WorkspaceSystemAssignedIdentity` and `WorkspaceUserAssignedIdentity`.
-  /// [sharedAccessSignature] The Shared Access Signature of the Storage Account. Conflicts with `account_key`.
+  /// [sharedAccessSignature] The Shared Access Signature of the Storage Account. Conflicts with `accountKey`.
   /// [storageFileshareId] The ID of the Storage Account File Share. Changing this forces a new Machine Learning DataStore to be created.
   /// [tags] A mapping of tags which should be assigned to the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
   /// [workspaceId] The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning DataStore to be created.
@@ -70,4 +70,3 @@ class DatastoreFileshareArgs {
     );
   }
 }
-

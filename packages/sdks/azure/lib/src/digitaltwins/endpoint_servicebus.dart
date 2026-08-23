@@ -195,6 +195,48 @@ import 'endpoint_servicebus_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example_resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_digitaltwins_instance" "example" {
+///   name                = "example-DT"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_servicebus_namespace" "example" {
+///   name                = "exampleservicebusnamespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_servicebus_topic" "example" {
+///   name         = "exampleservicebustopic"
+///   namespace_id = azure_servicebus_namespace.example.id
+/// }
+/// resource "azure_servicebus_topicauthorizationrule" "example" {
+///   name     = "example-rule"
+///   topic_id = azure_servicebus_topic.example.id
+///   listen   = false
+///   send     = true
+///   manage   = false
+/// }
+/// resource "azure_digitaltwins_endpointservicebus" "example" {
+///   name                                   = "example-EndpointSB"
+///   digital_twins_id                       = azure_digitaltwins_instance.example.id
+///   servicebus_primary_connection_string   = azure_servicebus_topicauthorizationrule.example.primary_connection_string
+///   servicebus_secondary_connection_string = azure_servicebus_topicauthorizationrule.example.secondary_connection_string
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -213,8 +255,8 @@ import 'endpoint_servicebus_state.dart';
 /// import com.pulumi.azure.servicebus.TopicAuthorizationRuleArgs;
 /// import com.pulumi.azure.digitaltwins.EndpointServicebus;
 /// import com.pulumi.azure.digitaltwins.EndpointServicebusArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

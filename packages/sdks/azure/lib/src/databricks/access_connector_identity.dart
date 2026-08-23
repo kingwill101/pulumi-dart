@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessConnectorIdentity {
   /// Specifies a list of User Assigned Managed Identity IDs to be assigned to the Databricks Access Connector. Only one User Assigned Managed Identity ID is supported per Databricks Access Connector resource.
   ///
-  /// &gt; **Note:** `identity_ids` are required when `type` is set to `UserAssigned`.
+  /// &gt; **Note:** `identityIds` are required when `type` is set to `UserAssigned`.
   final pulumi.Input<List<String>>? identityIds;
   /// The Principal ID of the System Assigned Managed Service Identity that is configured on this Access Connector.
   final pulumi.Input<String>? principalId;
@@ -44,4 +44,3 @@ class AccessConnectorIdentity {
     );
   }
 }
-

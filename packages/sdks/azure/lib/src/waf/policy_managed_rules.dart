@@ -7,12 +7,12 @@ import 'policy_managed_rules_managed_rule_set.dart';
 class PolicyManagedRules {
   /// One or more `exclusion` block defined below.
   final pulumi.Input<List<PolicyManagedRulesExclusion>>? exclusions;
-  /// One or more `managed_rule_set` block defined below.
+  /// One or more `managedRuleSet` block defined below.
   final pulumi.Input<List<PolicyManagedRulesManagedRuleSet>> managedRuleSets;
 
   /// Creates a new [PolicyManagedRules].
   /// [exclusions] One or more `exclusion` block defined below.
-  /// [managedRuleSets] One or more `managed_rule_set` block defined below.
+  /// [managedRuleSets] One or more `managedRuleSet` block defined below.
   const PolicyManagedRules({
     this.exclusions,
     required this.managedRuleSets,
@@ -32,4 +32,3 @@ class PolicyManagedRules {
     );
   }
 }
-

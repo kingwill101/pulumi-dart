@@ -11,7 +11,7 @@ import 'policy_vmworkload_settings.dart';
 class PolicyVMWorkloadArgs {
   /// The name of the VM Workload Backup Policy. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// One or more `protection_policy` blocks as defined below.
+  /// One or more `protectionPolicy` blocks as defined below.
   final pulumi.Input<List<PolicyVMWorkloadProtectionPolicy>> protectionPolicies;
   /// The name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
   final pulumi.Input<String> recoveryVaultName;
@@ -24,7 +24,7 @@ class PolicyVMWorkloadArgs {
 
   /// Creates a new [PolicyVMWorkloadArgs].
   /// [name] The name of the VM Workload Backup Policy. Changing this forces a new resource to be created.
-  /// [protectionPolicies] One or more `protection_policy` blocks as defined below.
+  /// [protectionPolicies] One or more `protectionPolicy` blocks as defined below.
   /// [recoveryVaultName] The name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the VM Workload Backup Policy. Changing this forces a new resource to be created.
   /// [settings] A `settings` block as defined below.
@@ -60,4 +60,3 @@ class PolicyVMWorkloadArgs {
     );
   }
 }
-

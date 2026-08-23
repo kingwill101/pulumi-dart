@@ -224,7 +224,7 @@ import 'backup_instance_disk_state.dart';
 /// 			Scope:              example.ID(),
 /// 			RoleDefinitionName: pulumi.String("Disk Snapshot Contributor"),
 /// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -234,7 +234,7 @@ import 'backup_instance_disk_state.dart';
 /// 			Scope:              exampleManagedDisk.ID(),
 /// 			RoleDefinitionName: pulumi.String("Disk Backup Reader"),
 /// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -266,6 +266,62 @@ import 'backup_instance_disk_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_compute_manageddisk" "example" {
+///   name                 = "example-disk"
+///   location             = azure_core_resourcegroup.example.location
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   storage_account_type = "Standard_LRS"
+///   create_option        = "Empty"
+///   disk_size_gb         = "1"
+/// }
+/// resource "azure_dataprotection_backupvault" "example" {
+///   name                = "example-backup-vault"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   datastore_type      = "VaultStore"
+///   redundancy          = "LocallyRedundant"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_authorization_assignment" "example1" {
+///   scope                = azure_core_resourcegroup.example.id
+///   role_definition_name = "Disk Snapshot Contributor"
+///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+/// }
+/// resource "azure_authorization_assignment" "example2" {
+///   scope                = azure_compute_manageddisk.example.id
+///   role_definition_name = "Disk Backup Reader"
+///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+/// }
+/// resource "azure_dataprotection_backuppolicydisk" "example" {
+///   name                            = "example-backup-policy"
+///   vault_id                        = azure_dataprotection_backupvault.example.id
+///   backup_repeating_time_intervals = ["R/2021-05-19T06:33:16+00:00/PT4H"]
+///   default_retention_duration      = "P7D"
+/// }
+/// resource "azure_dataprotection_backupinstancedisk" "example" {
+///   name                         = "example-backup-instance"
+///   location                     = azure_dataprotection_backupvault.example.location
+///   vault_id                     = azure_dataprotection_backupvault.example.id
+///   disk_id                      = azure_compute_manageddisk.example.id
+///   snapshot_resource_group_name = azure_core_resourcegroup.example.name
+///   backup_policy_id             = azure_dataprotection_backuppolicydisk.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -285,8 +341,8 @@ import 'backup_instance_disk_state.dart';
 /// import com.pulumi.azure.dataprotection.BackupPolicyDiskArgs;
 /// import com.pulumi.azure.dataprotection.BackupInstanceDisk;
 /// import com.pulumi.azure.dataprotection.BackupInstanceDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -421,7 +477,7 @@ import 'backup_instance_disk_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.DataProtection` - 2024-04-01
+/// * `Microsoft.DataProtection` - 2025-07-01
 ///
 /// ## Import
 ///

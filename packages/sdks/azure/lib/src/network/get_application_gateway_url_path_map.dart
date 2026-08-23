@@ -23,7 +23,7 @@ class GetApplicationGatewayUrlPathMap {
   final pulumi.Input<String> id;
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
-  /// One or more `path_rule` blocks as defined above.
+  /// One or more `pathRule` blocks as defined above.
   final pulumi.Input<List<GetApplicationGatewayUrlPathMapPathRule>> pathRules;
 
   /// Creates a new [GetApplicationGatewayUrlPathMap].
@@ -37,7 +37,7 @@ class GetApplicationGatewayUrlPathMap {
   /// [defaultRewriteRuleSetName] The Name of the Default Rewrite Rule Set which is used for this URL Path Map.
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The name of this Application Gateway.
-  /// [pathRules] One or more `path_rule` blocks as defined above.
+  /// [pathRules] One or more `pathRule` blocks as defined above.
   const GetApplicationGatewayUrlPathMap({
     required this.defaultBackendAddressPoolId,
     required this.defaultBackendAddressPoolName,
@@ -84,4 +84,3 @@ class GetApplicationGatewayUrlPathMap {
     );
   }
 }
-

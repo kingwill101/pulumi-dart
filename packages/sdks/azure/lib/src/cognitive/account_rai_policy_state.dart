@@ -9,7 +9,7 @@ class AccountRaiPolicyState {
   final pulumi.Input<String>? basePolicyName;
   /// The ID of the Cognitive Service Account to which this RAI Policy should be associated. Changing this forces a new resource to be created.
   final pulumi.Input<String>? cognitiveAccountId;
-  /// A `content_filter` block as defined below.
+  /// A `contentFilter` block as defined below.
   final pulumi.Input<List<AccountRaiPolicyContentFilter>>? contentFilters;
   /// The mode of the RAI Policy. Possible values are `Default`, `Deferred`, `Blocking` or `Asynchronous_filter`.
   final pulumi.Input<String>? mode;
@@ -21,7 +21,7 @@ class AccountRaiPolicyState {
   /// Creates a new [AccountRaiPolicyState].
   /// [basePolicyName] The name of the base policy to use for this RAI Policy. Changing this forces a new resource to be created.
   /// [cognitiveAccountId] The ID of the Cognitive Service Account to which this RAI Policy should be associated. Changing this forces a new resource to be created.
-  /// [contentFilters] A `content_filter` block as defined below.
+  /// [contentFilters] A `contentFilter` block as defined below.
   /// [mode] The mode of the RAI Policy. Possible values are `Default`, `Deferred`, `Blocking` or `Asynchronous_filter`.
   /// [name] The name of the Cognitive Service Account RAI Policy. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
@@ -56,4 +56,3 @@ class AccountRaiPolicyState {
     );
   }
 }
-

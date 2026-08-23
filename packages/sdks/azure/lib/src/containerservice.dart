@@ -1,3 +1,6 @@
+export 'containerservice/cluster_deployment_safeguard.dart';
+export 'containerservice/cluster_deployment_safeguard_args.dart';
+export 'containerservice/cluster_deployment_safeguard_state.dart';
 export 'containerservice/cluster_trusted_access_role_binding.dart';
 export 'containerservice/cluster_trusted_access_role_binding_args.dart';
 export 'containerservice/cluster_trusted_access_role_binding_state.dart';
@@ -46,6 +49,7 @@ export 'containerservice/get_kubernetes_cluster_agent_pool_profile.dart';
 export 'containerservice/get_kubernetes_cluster_agent_pool_profile_upgrade_setting.dart';
 export 'containerservice/get_kubernetes_cluster_args.dart';
 export 'containerservice/get_kubernetes_cluster_azure_active_directory_role_based_access_control.dart';
+export 'containerservice/get_kubernetes_cluster_bootstrap_profile.dart';
 export 'containerservice/get_kubernetes_cluster_identity.dart';
 export 'containerservice/get_kubernetes_cluster_ingress_application_gateway.dart';
 export 'containerservice/get_kubernetes_cluster_ingress_application_gateway_ingress_application_gateway_identity.dart';

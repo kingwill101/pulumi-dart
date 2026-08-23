@@ -218,6 +218,50 @@ import 'api_operation_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "My Company"
+///   publisher_email     = "company@terraform.io"
+///   sku_name            = "Developer_1"
+/// }
+/// resource "azure_apimanagement_api" "example" {
+///   name                = "example-api"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   api_management_name = azure_apimanagement_service.example.name
+///   revision            = "1"
+/// }
+/// resource "azure_apimanagement_apioperation" "example" {
+///   operation_id        = "acctest-operation"
+///   api_name            = azure_apimanagement_api.example.name
+///   api_management_name = azure_apimanagement_service.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   display_name        = "DELETE Resource"
+///   method              = "DELETE"
+///   url_template        = "/resource"
+/// }
+/// resource "azure_apimanagement_apioperationpolicy" "example" {
+///   api_name            = azure_apimanagement_apioperation.example.api_name
+///   api_management_name = azure_apimanagement_apioperation.example.api_management_name
+///   resource_group_name = azure_apimanagement_apioperation.example.resource_group_name
+///   operation_id        = azure_apimanagement_apioperation.example.operation_id
+///   xml_content         = "<policies>\n  <inbound>\n    <find-and-replace from=\\\"xyz\\\" to=\\\"abc\\\" />\n  </inbound>\n</policies>\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -234,8 +278,8 @@ import 'api_operation_policy_state.dart';
 /// import com.pulumi.azure.apimanagement.ApiOperationArgs;
 /// import com.pulumi.azure.apimanagement.ApiOperationPolicy;
 /// import com.pulumi.azure.apimanagement.ApiOperationPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

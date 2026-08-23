@@ -9,6 +9,8 @@ class ObjectReplicationState {
   final pulumi.Input<String>? destinationObjectReplicationId;
   /// The ID of the destination storage account. Changing this forces a new Storage Object Replication to be created.
   final pulumi.Input<String>? destinationStorageAccountId;
+  /// Whether metrics are enabled for this object replication. Defaults to `false`.
+  final pulumi.Input<bool>? metricsEnabled;
   /// One or more `rules` blocks as defined below.
   final pulumi.Input<List<ObjectReplicationRule>>? rules;
   /// The ID of the Object Replication in the source storage account.
@@ -19,12 +21,14 @@ class ObjectReplicationState {
   /// Creates a new [ObjectReplicationState].
   /// [destinationObjectReplicationId] The ID of the Object Replication in the destination storage account.
   /// [destinationStorageAccountId] The ID of the destination storage account. Changing this forces a new Storage Object Replication to be created.
+  /// [metricsEnabled] Whether metrics are enabled for this object replication. Defaults to `false`.
   /// [rules] One or more `rules` blocks as defined below.
   /// [sourceObjectReplicationId] The ID of the Object Replication in the source storage account.
   /// [sourceStorageAccountId] The ID of the source storage account. Changing this forces a new Storage Object Replication to be created.
   const ObjectReplicationState({
     this.destinationObjectReplicationId,
     this.destinationStorageAccountId,
+    this.metricsEnabled,
     this.rules,
     this.sourceObjectReplicationId,
     this.sourceStorageAccountId,
@@ -34,6 +38,7 @@ class ObjectReplicationState {
     return <String, dynamic>{
       'destinationObjectReplicationId': ?destinationObjectReplicationId,
       'destinationStorageAccountId': ?destinationStorageAccountId,
+      'metricsEnabled': ?metricsEnabled,
       'rules': ?pulumi.Input.mapOptionalInputValue<List<ObjectReplicationRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ObjectReplicationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sourceObjectReplicationId': ?sourceObjectReplicationId,
       'sourceStorageAccountId': ?sourceStorageAccountId,
@@ -44,10 +49,10 @@ class ObjectReplicationState {
     return ObjectReplicationState(
       destinationObjectReplicationId: (() { final guardedValue = map['destinationObjectReplicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationStorageAccountId: (() { final guardedValue = map['destinationStorageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metricsEnabled: (() { final guardedValue = map['metricsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ObjectReplicationRule>(guardedValue, (value) => ObjectReplicationRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       sourceObjectReplicationId: (() { final guardedValue = map['sourceObjectReplicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceStorageAccountId: (() { final guardedValue = map['sourceStorageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

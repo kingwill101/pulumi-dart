@@ -146,6 +146,36 @@ import 'fleet_update_strategy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "westeurope"
+/// }
+/// resource "azure_containerservice_kubernetesfleetmanager" "example" {
+///   location            = azure_core_resourcegroup.example.location
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_containerservice_fleetupdatestrategy" "example" {
+///   name                        = "example"
+///   kubernetes_fleet_manager_id = azure_containerservice_kubernetesfleetmanager.example.id
+///   stages {
+///     name = "example-stage-1"
+///     groups {
+///       name = "example-group-1"
+///     }
+///     after_stage_wait_in_seconds = 21
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -159,8 +189,9 @@ import 'fleet_update_strategy_state.dart';
 /// import com.pulumi.azure.containerservice.FleetUpdateStrategy;
 /// import com.pulumi.azure.containerservice.FleetUpdateStrategyArgs;
 /// import com.pulumi.azure.containerservice.inputs.FleetUpdateStrategyStageArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.containerservice.inputs.FleetUpdateStrategyStageGroupArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,7 +262,7 @@ import 'fleet_update_strategy_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.ContainerService` - 2024-04-01
+/// * `Microsoft.ContainerService` - 2025-03-01
 ///
 /// ## Import
 ///

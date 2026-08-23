@@ -65,6 +65,21 @@ import 'assessment_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_securitycenter_assessmentpolicy" "example" {
+///   display_name = "Test Display Name"
+///   severity     = "Medium"
+///   description  = "Test Description"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'assessment_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.securitycenter.AssessmentPolicy;
 /// import com.pulumi.azure.securitycenter.AssessmentPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

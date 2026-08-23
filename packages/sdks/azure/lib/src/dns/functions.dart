@@ -93,6 +93,25 @@ import 'get_zone_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_dns_getaaaarecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+///
+/// output "dnsAaaaRecordId" {
+///   value = data.azure_dns_getaaaarecord.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +120,8 @@ import 'get_zone_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.dns.DnsFunctions;
 /// import com.pulumi.azure.dns.inputs.GetAAAARecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -230,6 +249,25 @@ Future<GetAAAARecordResult> getAAAARecord(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_dns_getarecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+///
+/// output "dnsARecordId" {
+///   value = data.azure_dns_getarecord.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -238,8 +276,8 @@ Future<GetAAAARecordResult> getAAAARecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.dns.DnsFunctions;
 /// import com.pulumi.azure.dns.inputs.GetARecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -367,6 +405,25 @@ Future<GetARecordResult> getARecord(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_dns_getcaarecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+///
+/// output "dnsCaaRecordId" {
+///   value = data.azure_dns_getcaarecord.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -375,8 +432,8 @@ Future<GetARecordResult> getARecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.dns.DnsFunctions;
 /// import com.pulumi.azure.dns.inputs.GetCAARecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -504,6 +561,25 @@ Future<GetCAARecordResult> getCAARecord(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_dns_getcnamerecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+///
+/// output "dnsCnameRecordId" {
+///   value = data.azure_dns_getcnamerecord.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -512,8 +588,8 @@ Future<GetCAARecordResult> getCAARecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.dns.DnsFunctions;
 /// import com.pulumi.azure.dns.inputs.GetCnameRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -641,6 +717,25 @@ Future<GetCnameRecordResult> getCnameRecord(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_dns_getmxrecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+///
+/// output "dnsMxRecordId" {
+///   value = data.azure_dns_getmxrecord.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -649,8 +744,8 @@ Future<GetCnameRecordResult> getCnameRecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.dns.DnsFunctions;
 /// import com.pulumi.azure.dns.inputs.GetMxRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -778,6 +873,25 @@ Future<GetMxRecordResult> getMxRecord(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_dns_getnsrecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+///
+/// output "dnsNsRecordId" {
+///   value = data.azure_dns_getnsrecord.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -786,8 +900,8 @@ Future<GetMxRecordResult> getMxRecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.dns.DnsFunctions;
 /// import com.pulumi.azure.dns.inputs.GetNsRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -915,6 +1029,25 @@ Future<GetNsRecordResult> getNsRecord(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_dns_getptrrecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+///
+/// output "dnsPtrRecordId" {
+///   value = data.azure_dns_getptrrecord.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -923,8 +1056,8 @@ Future<GetNsRecordResult> getNsRecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.dns.DnsFunctions;
 /// import com.pulumi.azure.dns.inputs.GetPtrRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1048,6 +1181,24 @@ Future<GetPtrRecordResult> getPtrRecord(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_dns_getsoarecord" "example" {
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+///
+/// output "dnsSoaRecordId" {
+///   value = data.azure_dns_getsoarecord.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1056,8 +1207,8 @@ Future<GetPtrRecordResult> getPtrRecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.dns.DnsFunctions;
 /// import com.pulumi.azure.dns.inputs.GetSoaRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1183,6 +1334,25 @@ Future<GetSoaRecordResult> getSoaRecord(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_dns_getsrvrecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+///
+/// output "dnsSrvRecordId" {
+///   value = data.azure_dns_getsrvrecord.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1191,8 +1361,8 @@ Future<GetSoaRecordResult> getSoaRecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.dns.DnsFunctions;
 /// import com.pulumi.azure.dns.inputs.GetSrvRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1320,6 +1490,25 @@ Future<GetSrvRecordResult> getSrvRecord(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_dns_gettxtrecord" "example" {
+///   name                = "test"
+///   zone_name           = "test-zone"
+///   resource_group_name = "test-rg"
+/// }
+///
+/// output "dnsTxtRecordId" {
+///   value = data.azure_dns_gettxtrecord.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1328,8 +1517,8 @@ Future<GetSrvRecordResult> getSrvRecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.dns.DnsFunctions;
 /// import com.pulumi.azure.dns.inputs.GetTxtRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1451,6 +1640,24 @@ Future<GetTxtRecordResult> getTxtRecord(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_dns_getzone" "example" {
+///   name                = "search-eventhubns"
+///   resource_group_name = "search-service"
+/// }
+///
+/// output "dnsZoneId" {
+///   value = data.azure_dns_getzone.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1459,8 +1666,8 @@ Future<GetTxtRecordResult> getTxtRecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.dns.DnsFunctions;
 /// import com.pulumi.azure.dns.inputs.GetZoneArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

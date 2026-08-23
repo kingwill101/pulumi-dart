@@ -433,6 +433,94 @@ import 'data_collection_rule_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "virtualnetwork"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "example" {
+///   name                = "nic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "internal"
+///     subnet_id                     = azure_network_subnet.example.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_linuxvirtualmachine" "example" {
+///   name                            = "machine"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resourcegroup.example.location
+///   size                            = "Standard_B1ls"
+///   admin_username                  = "adminuser"
+///   network_interface_ids           = [azure_network_networkinterface.example.id]
+///   admin_password                  = "example-Password@7890"
+///   disable_password_authentication = false
+///   os_disk = {
+///     caching              = "ReadWrite"
+///     storage_account_type = "Standard_LRS"
+///   }
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+/// }
+/// resource "azure_monitoring_datacollectionrule" "example" {
+///   name                = "example-dcr"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   destinations = {
+///     azure_monitor_metrics = {
+///       name = "example-destination-metrics"
+///     }
+///   }
+///   data_flows {
+///     streams      = ["Microsoft-InsightsMetrics"]
+///     destinations = ["example-destination-metrics"]
+///   }
+/// }
+/// resource "azure_monitoring_datacollectionendpoint" "example" {
+///   name                = "example-dce"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// # associate to a Data Collection Rule
+/// resource "azure_monitoring_datacollectionruleassociation" "example1" {
+///   name                    = "example1-dcra"
+///   target_resource_id      = azure_compute_linuxvirtualmachine.example.id
+///   data_collection_rule_id = azure_monitoring_datacollectionrule.example.id
+///   description             = "example"
+/// }
+/// # associate to a Data Collection Endpoint
+/// resource "azure_monitoring_datacollectionruleassociation" "example2" {
+///   target_resource_id          = azure_compute_linuxvirtualmachine.example.id
+///   data_collection_endpoint_id = azure_monitoring_datacollectionendpoint.example.id
+///   description                 = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -461,8 +549,8 @@ import 'data_collection_rule_association_state.dart';
 /// import com.pulumi.azure.monitoring.DataCollectionEndpointArgs;
 /// import com.pulumi.azure.monitoring.DataCollectionRuleAssociation;
 /// import com.pulumi.azure.monitoring.DataCollectionRuleAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -680,13 +768,13 @@ class DataCollectionRuleAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String?> dataCollectionEndpointId;
   /// The ID of the Data Collection Rule which will be associated to the target resource.
   ///
-  /// &gt; **Note:** Exactly one of `data_collection_endpoint_id` and `data_collection_rule_id` blocks must be specified.
+  /// &gt; **Note:** Exactly one of `dataCollectionEndpointId` and `dataCollectionRuleId` blocks must be specified.
   late final pulumi.Output<String?> dataCollectionRuleId;
   /// The description of the Data Collection Rule Association.
   late final pulumi.Output<String?> description;
   /// The name which should be used for this Data Collection Rule Association. Changing this forces a new Data Collection Rule Association to be created. Defaults to `configurationAccessEndpoint`.
   ///
-  /// &gt; **Note:** `name` is required when `data_collection_rule_id` is specified. And when `data_collection_endpoint_id` is specified, the `name` is populated with `configurationAccessEndpoint`.
+  /// &gt; **Note:** `name` is required when `dataCollectionRuleId` is specified. And when `dataCollectionEndpointId` is specified, the `name` is populated with `configurationAccessEndpoint`.
   late final pulumi.Output<String> name;
   /// The ID of the Azure Resource which to associate to a Data Collection Rule or a Data Collection Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetResourceId;

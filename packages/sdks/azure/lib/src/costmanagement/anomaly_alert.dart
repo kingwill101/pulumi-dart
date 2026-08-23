@@ -80,6 +80,23 @@ import 'anomaly_alert_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_costmanagement_anomalyalert" "example" {
+///   name            = "alertname"
+///   display_name    = "Alert DisplayName"
+///   subscription_id = "/subscriptions/00000000-0000-0000-0000-000000000000"
+///   email_subject   = "My Test Anomaly Alert"
+///   email_addresses = ["example@test.net"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +105,8 @@ import 'anomaly_alert_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.costmanagement.AnomalyAlert;
 /// import com.pulumi.azure.costmanagement.AnomalyAlertArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -145,9 +162,9 @@ class AnomalyAlert extends pulumi.CustomResource {
   late final pulumi.Output<String> displayName;
   /// Specifies a list of email addresses which the Anomaly Alerts are send to.
   late final pulumi.Output<List<String>> emailAddresses;
-  /// The email subject of the Cost Anomaly Alerts. Maximum length of the subject is 70.
+  /// The email subject of the Cost Anomaly Alerts. Maximum length of the subject is 50.
   late final pulumi.Output<String> emailSubject;
-  /// The message of the Cost Anomaly Alert. Maximum length of the message is 250.
+  /// The message of the Cost Anomaly Alert. Maximum length of the message is 100.
   late final pulumi.Output<String?> message;
   /// The name which should be used for this Cost Anomaly Alert. Changing this forces a new resource to be created. The name can contain only lowercase letters, numbers and hyphens.
   late final pulumi.Output<String> name;

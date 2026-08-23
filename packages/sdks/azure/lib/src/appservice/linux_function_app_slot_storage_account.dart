@@ -54,4 +54,3 @@ class LinuxFunctionAppSlotStorageAccount {
     );
   }
 }
-

@@ -64,6 +64,21 @@ import 'get_circuit_peering_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_expressroute_getcircuitpeering" "example" {
+///   peering_type               = "example-peering"
+///   express_route_circuit_name = "example-expressroute"
+///   resource_group_name        = "example-resources"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +87,8 @@ import 'get_circuit_peering_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.expressroute.ExpressrouteFunctions;
 /// import com.pulumi.azure.expressroute.inputs.GetCircuitPeeringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

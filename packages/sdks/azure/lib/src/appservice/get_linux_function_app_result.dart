@@ -14,9 +14,9 @@ import 'get_linux_function_app_sticky_setting.dart';
 class GetLinuxFunctionAppResult {
   /// A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
   final Map<String, String> appSettings;
-  /// A `auth_settings` block as defined below.
+  /// A `authSettings` block as defined below.
   final List<GetLinuxFunctionAppAuthSetting> authSettings;
-  /// A `auth_settings_v2` block as defined below.
+  /// A `authSettingsV2` block as defined below.
   final List<GetLinuxFunctionAppAuthSettingsV2> authSettingsV2s;
   /// The current availability state. Possible values are `Normal`, `Limited`, and `DisasterRecoveryMode`.
   final String availability;
@@ -30,7 +30,7 @@ class GetLinuxFunctionAppResult {
   final String clientCertificateExclusionPaths;
   /// The mode of the Function App's client certificates requirement for incoming requests.
   final String clientCertificateMode;
-  /// A `connection_string` blocks as defined below.
+  /// A `connectionString` blocks as defined below.
   final List<GetLinuxFunctionAppConnectionString> connectionStrings;
   /// Are the settings for linking the Function App to storage suppressed?
   final bool contentShareForceDisabled;
@@ -64,20 +64,20 @@ class GetLinuxFunctionAppResult {
   final List<String> outboundIpAddressLists;
   /// A comma separated list of outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12`.
   final String outboundIpAddresses;
-  /// A list of possible outbound IP addresses, not all of which are necessarily in use. This is a superset of `outbound_ip_address_list`. For example `["52.23.25.3", "52.143.43.12"]`.
+  /// A list of possible outbound IP addresses, not all of which are necessarily in use. This is a superset of `outboundIpAddressList`. For example `["52.23.25.3", "52.143.43.12"]`.
   final List<String> possibleOutboundIpAddressLists;
-  /// A comma separated list of possible outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12,52.143.43.17`. This is a superset of `outbound_ip_addresses`.
+  /// A comma separated list of possible outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12,52.143.43.17`. This is a superset of `outboundIpAddresses`.
   final String possibleOutboundIpAddresses;
   /// Is Public Network Access enabled for this Linux Function App.
   final bool publicNetworkAccessEnabled;
   final String resourceGroupName;
   /// The ID of the App Service Plan within which this Function App has been created.
   final String servicePlanId;
-  /// A `site_config` block as defined below.
+  /// A `siteConfig` block as defined below.
   final List<GetLinuxFunctionAppSiteConfig> siteConfigs;
-  /// A `site_credential` block as defined below.
+  /// A `siteCredential` block as defined below.
   final List<GetLinuxFunctionAppSiteCredential> siteCredentials;
-  /// A `sticky_settings` block as defined below.
+  /// A `stickySettings` block as defined below.
   final List<GetLinuxFunctionAppStickySetting> stickySettings;
   /// The access key used to access the backend storage account for the Function App.
   final String storageAccountAccessKey;
@@ -100,15 +100,15 @@ class GetLinuxFunctionAppResult {
 
   /// Creates a new [GetLinuxFunctionAppResult].
   /// [appSettings] A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
-  /// [authSettings] A `auth_settings` block as defined below.
-  /// [authSettingsV2s] A `auth_settings_v2` block as defined below.
+  /// [authSettings] A `authSettings` block as defined below.
+  /// [authSettingsV2s] A `authSettingsV2` block as defined below.
   /// [availability] The current availability state. Possible values are `Normal`, `Limited`, and `DisasterRecoveryMode`.
   /// [backups] A `backup` block as defined below.
   /// [builtinLoggingEnabled] Is built in logging enabled?
   /// [clientCertificateEnabled] Are Client Certificates enabled?
   /// [clientCertificateExclusionPaths] Paths to exclude when using client certificates, separated by ;
   /// [clientCertificateMode] The mode of the Function App's client certificates requirement for incoming requests.
-  /// [connectionStrings] A `connection_string` blocks as defined below.
+  /// [connectionStrings] A `connectionString` blocks as defined below.
   /// [contentShareForceDisabled] Are the settings for linking the Function App to storage suppressed?
   /// [customDomainVerificationId] The identifier used by App Service to perform domain ownership verification via DNS TXT record.
   /// [dailyMemoryTimeQuota] The amount of memory in gigabyte-seconds that your application is allowed to consume per day.
@@ -125,14 +125,14 @@ class GetLinuxFunctionAppResult {
   /// [name] The Site Credentials Username used for publishing.
   /// [outboundIpAddressLists] A list of outbound IP addresses. For example `["52.23.25.3", "52.143.43.12"]`
   /// [outboundIpAddresses] A comma separated list of outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12`.
-  /// [possibleOutboundIpAddressLists] A list of possible outbound IP addresses, not all of which are necessarily in use. This is a superset of `outbound_ip_address_list`. For example `["52.23.25.3", "52.143.43.12"]`.
-  /// [possibleOutboundIpAddresses] A comma separated list of possible outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12,52.143.43.17`. This is a superset of `outbound_ip_addresses`.
+  /// [possibleOutboundIpAddressLists] A list of possible outbound IP addresses, not all of which are necessarily in use. This is a superset of `outboundIpAddressList`. For example `["52.23.25.3", "52.143.43.12"]`.
+  /// [possibleOutboundIpAddresses] A comma separated list of possible outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12,52.143.43.17`. This is a superset of `outboundIpAddresses`.
   /// [publicNetworkAccessEnabled] Is Public Network Access enabled for this Linux Function App.
   /// [resourceGroupName] Required.
   /// [servicePlanId] The ID of the App Service Plan within which this Function App has been created.
-  /// [siteConfigs] A `site_config` block as defined below.
-  /// [siteCredentials] A `site_credential` block as defined below.
-  /// [stickySettings] A `sticky_settings` block as defined below.
+  /// [siteConfigs] A `siteConfig` block as defined below.
+  /// [siteCredentials] A `siteCredential` block as defined below.
+  /// [stickySettings] A `stickySettings` block as defined below.
   /// [storageAccountAccessKey] The access key used to access the backend storage account for the Function App.
   /// [storageAccountName] The backend storage account name used by this Function App.
   /// [storageKeyVaultSecretId] The Key Vault Secret ID, including version, that contains the Connection String to connect to the storage account for this Function App.
@@ -284,4 +284,3 @@ class GetLinuxFunctionAppResult {
     );
   }
 }
-

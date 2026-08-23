@@ -6,7 +6,7 @@ import 'managed_database_state.dart';
 
 /// Manages an Azure SQL Azure Managed Database for a SQL Managed Instance.
 ///
-/// !&gt; **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `prevent_destroy` lifecycle argument in your configuration file for this resource. For more information on the `prevent_destroy` lifecycle argument please see the terraform documentation.
+/// &gt; **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `preventDestroy` lifecycle argument in your configuration file for this resource. For more information on the `preventDestroy` lifecycle argument please see the terraform documentation.
 ///
 /// ## Example Usage
 ///
@@ -205,6 +205,48 @@ import 'managed_database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_mssql_managedinstance" "example" {
+///   name                         = "managedsqlinstance"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   license_type                 = "BasePrice"
+///   sku_name                     = "GP_Gen5"
+///   storage_size_in_gb           = 32
+///   subnet_id                    = azure_network_subnet.example.id
+///   vcores                       = 4
+///   administrator_login          = "msadministrator"
+///   administrator_login_password = "thisIsDog11"
+/// }
+/// resource "azure_mssql_manageddatabase" "example" {
+///   name                = "example"
+///   managed_instance_id = azure_mssql_managedinstance.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -221,8 +263,8 @@ import 'managed_database_state.dart';
 /// import com.pulumi.azure.mssql.ManagedInstanceArgs;
 /// import com.pulumi.azure.mssql.ManagedDatabase;
 /// import com.pulumi.azure.mssql.ManagedDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -337,13 +379,13 @@ import 'managed_database_state.dart';
 /// $ pulumi import azure:mssql/managedDatabase:ManagedDatabase example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Sql/managedInstances/myserver/databases/mydatabase
 /// ```
 class ManagedDatabase extends pulumi.CustomResource {
-  /// A `long_term_retention_policy` block as defined below.
+  /// A `longTermRetentionPolicy` block as defined below.
   late final pulumi.Output<ManagedDatabaseLongTermRetentionPolicy> longTermRetentionPolicy;
   /// The ID of the Azure SQL Managed Instance on which to create this Managed Database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managedInstanceId;
   /// The name of the Managed Database to create. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A `point_in_time_restore` block as defined below. Changing this forces a new resource to be created.
+  /// A `pointInTimeRestore` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ManagedDatabasePointInTimeRestore?> pointInTimeRestore;
   /// The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
   late final pulumi.Output<int?> shortTermRetentionDays;

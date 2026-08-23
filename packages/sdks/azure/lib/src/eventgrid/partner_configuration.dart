@@ -121,6 +121,32 @@ import 'partner_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_eventgrid_partnerconfiguration" "example" {
+///   resource_group_name                     = azure_core_resourcegroup.example.name
+///   default_maximum_expiration_time_in_days = 14
+///   partner_authorizations {
+///     partner_registration_id              = "804a11ca-ce9b-4158-8e94-3c8dc7a072ec"
+///     partner_name                         = "Auth0"
+///     authorization_expiration_time_in_utc = "2025-02-05T00:00:00Z"
+///   }
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -132,8 +158,8 @@ import 'partner_configuration_state.dart';
 /// import com.pulumi.azure.eventgrid.PartnerConfiguration;
 /// import com.pulumi.azure.eventgrid.PartnerConfigurationArgs;
 /// import com.pulumi.azure.eventgrid.inputs.PartnerConfigurationPartnerAuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -203,7 +229,7 @@ import 'partner_configuration_state.dart';
 class PartnerConfiguration extends pulumi.CustomResource {
   /// Time used to validate the authorization expiration time for each authorized partner. Defaults to `7`.
   late final pulumi.Output<int?> defaultMaximumExpirationTimeInDays;
-  /// One or more `partner_authorization` blocks as defined below.
+  /// One or more `partnerAuthorization` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> partnerAuthorizations;
   /// The name of the Resource Group where the Event Grid Partner Configuration should exist. Changing this forces a new Event Grid Partner Configuration to be created.
   late final pulumi.Output<String> resourceGroupName;

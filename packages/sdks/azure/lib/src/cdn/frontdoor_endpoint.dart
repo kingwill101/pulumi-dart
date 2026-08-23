@@ -119,6 +119,32 @@ import 'frontdoor_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-cdn-frontdoor"
+///   location = "West Europe"
+/// }
+/// resource "azure_cdn_frontdoorprofile" "example" {
+///   name                = "example-profile"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Standard_AzureFrontDoor"
+/// }
+/// resource "azure_cdn_frontdoorendpoint" "example" {
+///   name                     = "example-endpoint"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   tags = {
+///     "ENV" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,8 +157,8 @@ import 'frontdoor_endpoint_state.dart';
 /// import com.pulumi.azure.cdn.FrontdoorProfileArgs;
 /// import com.pulumi.azure.cdn.FrontdoorEndpoint;
 /// import com.pulumi.azure.cdn.FrontdoorEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

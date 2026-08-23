@@ -106,7 +106,7 @@ import 'scheduled_query_rules_log_state.dart';
 ///         "metric_name": "UsedCapacity",
 ///         "aggregation": "Average",
 ///         "operator": "LessThan",
-///         "threshold": 10,
+///         "threshold": float(10),
 ///     }],
 ///     actions=[{
 ///         "action_group_id": example_action_group.id,
@@ -336,6 +336,75 @@ import 'scheduled_query_rules_log_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "monitoring-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "loganalytics"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+///   retention_in_days   = 30
+/// }
+/// resource "azure_monitoring_actiongroup" "example" {
+///   name                = "example-actiongroup"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   short_name          = "exampleact"
+///   webhook_receivers {
+///     name        = "callmyapi"
+///     service_uri = "http://example.com/alert"
+///   }
+/// }
+/// # Example: Creates alert using the new Scheduled Query Rules metric
+/// resource "azure_monitoring_metricalert" "example" {
+///   name                = "example-metricalert"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   scopes              = [azure_operationalinsights_analyticsworkspace.example.id]
+///   description         = "Action will be triggered when Average_% Idle Time metric is less than 10."
+///   frequency           = "PT1M"
+///   window_size         = "PT5M"
+///   criterias {
+///     metric_namespace = "Microsoft.OperationalInsights/workspaces"
+///     metric_name      = "UsedCapacity"
+///     aggregation      = "Average"
+///     operator         = "LessThan"
+///     threshold        = 10
+///   }
+///   actions {
+///     action_group_id = azure_monitoring_actiongroup.example.id
+///   }
+/// }
+/// # Example: LogToMetric Action for the named Computer
+/// resource "azure_monitoring_scheduledqueryruleslog" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   criteria = {
+///     metric_name = "Average_% Idle Time"
+///     dimensions = [{
+///       "name"     = "Computer"
+///       "operator" = "Include"
+///       "values"   = ["targetVM"]
+///     }]
+///   }
+///   data_source_id = azure_operationalinsights_analyticsworkspace.example.id
+///   description    = "Scheduled query rule LogToMetric example"
+///   enabled        = true
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -356,8 +425,9 @@ import 'scheduled_query_rules_log_state.dart';
 /// import com.pulumi.azure.monitoring.ScheduledQueryRulesLog;
 /// import com.pulumi.azure.monitoring.ScheduledQueryRulesLogArgs;
 /// import com.pulumi.azure.monitoring.inputs.ScheduledQueryRulesLogCriteriaArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.monitoring.inputs.ScheduledQueryRulesLogCriteriaDimensionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -24,11 +24,11 @@ class ResourcePolicyAssignmentState {
   final pulumi.Input<String>? metadata;
   /// The name which should be used for this Policy Assignment. Changing this forces a new Resource Policy Assignment to be created. Cannot exceed 64 characters in length.
   final pulumi.Input<String>? name;
-  /// One or more `non_compliance_message` blocks as defined below.
+  /// One or more `nonComplianceMessage` blocks as defined below.
   final pulumi.Input<List<ResourcePolicyAssignmentNonComplianceMessage>>? nonComplianceMessages;
   /// Specifies a list of Resource Scopes (for example a Subscription, or a Resource Group) within this Management Group which are excluded from this Policy.
   final pulumi.Input<List<String>>? notScopes;
-  /// One or more `overrides` blocks as defined below. More detail about `overrides` and `resource_selectors` see [policy assignment structure](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure)
+  /// One or more `overrides` blocks as defined below. More detail about `overrides` and `resourceSelectors` see [policy assignment structure](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure)
   final pulumi.Input<List<ResourcePolicyAssignmentOverride>>? overrides;
   /// A JSON mapping of any Parameters for this Policy.
   final pulumi.Input<String>? parameters;
@@ -38,7 +38,7 @@ class ResourcePolicyAssignmentState {
   ///
   /// &gt; **Note:** To create a Policy Assignment at a Management Group use the `azure.management.GroupPolicyAssignment` resource, for a Resource Group use the `azure.core.ResourceGroupPolicyAssignment` and for a Subscription use the `azure.core.SubscriptionPolicyAssignment` resource.
   final pulumi.Input<String>? resourceId;
-  /// One or more `resource_selectors` blocks as defined below to filter polices by resource properties.
+  /// One or more `resourceSelectors` blocks as defined below to filter polices by resource properties.
   final pulumi.Input<List<ResourcePolicyAssignmentResourceSelector>>? resourceSelectors;
 
   /// Creates a new [ResourcePolicyAssignmentState].
@@ -49,13 +49,13 @@ class ResourcePolicyAssignmentState {
   /// [location] The Azure Region where the Policy Assignment should exist. Changing this forces a new Policy Assignment to be created.
   /// [metadata] A JSON mapping of any Metadata for this Policy.
   /// [name] The name which should be used for this Policy Assignment. Changing this forces a new Resource Policy Assignment to be created. Cannot exceed 64 characters in length.
-  /// [nonComplianceMessages] One or more `non_compliance_message` blocks as defined below.
+  /// [nonComplianceMessages] One or more `nonComplianceMessage` blocks as defined below.
   /// [notScopes] Specifies a list of Resource Scopes (for example a Subscription, or a Resource Group) within this Management Group which are excluded from this Policy.
-  /// [overrides] One or more `overrides` blocks as defined below. More detail about `overrides` and `resource_selectors` see [policy assignment structure](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure)
+  /// [overrides] One or more `overrides` blocks as defined below. More detail about `overrides` and `resourceSelectors` see [policy assignment structure](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure)
   /// [parameters] A JSON mapping of any Parameters for this Policy.
   /// [policyDefinitionId] The ID of the Policy Definition or Policy Definition Set. Changing this forces a new Policy Assignment to be created.
   /// [resourceId] The ID of the Resource (or Resource Scope) where this should be applied. Changing this forces a new Resource Policy Assignment to be created.
-  /// [resourceSelectors] One or more `resource_selectors` blocks as defined below to filter polices by resource properties.
+  /// [resourceSelectors] One or more `resourceSelectors` blocks as defined below to filter polices by resource properties.
   const ResourcePolicyAssignmentState({
     this.description,
     this.displayName,
@@ -111,4 +111,3 @@ class ResourcePolicyAssignmentState {
     );
   }
 }
-

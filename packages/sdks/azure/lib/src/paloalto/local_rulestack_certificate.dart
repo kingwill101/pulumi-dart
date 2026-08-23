@@ -110,6 +110,30 @@ import 'local_rulestack_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_paloalto_localrulestack" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_paloalto_localrulestackcertificate" "example" {
+///   name         = "example"
+///   rulestack_id = azure_paloalto_localrulestack.example.id
+///   self_signed  = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +146,8 @@ import 'local_rulestack_certificate_state.dart';
 /// import com.pulumi.azure.paloalto.LocalRulestackArgs;
 /// import com.pulumi.azure.paloalto.LocalRulestackCertificate;
 /// import com.pulumi.azure.paloalto.LocalRulestackCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -184,7 +208,7 @@ import 'local_rulestack_certificate_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `PaloAltoNetworks.Cloudngfw` - 2022-08-29
+/// * `PaloAltoNetworks.Cloudngfw` - 2025-10-08
 ///
 /// ## Import
 ///
@@ -198,7 +222,7 @@ class LocalRulestackCertificate extends pulumi.CustomResource {
   late final pulumi.Output<String?> auditComment;
   /// The description for the Certificate.
   late final pulumi.Output<String?> description;
-  /// The `versionles_id` of the Key Vault Certificate to use. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
+  /// The `versionlesId` of the Key Vault Certificate to use. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   late final pulumi.Output<String?> keyVaultCertificateId;
   /// The name which should be used for this Palo Alto Networks Rulestack Certificate.
   late final pulumi.Output<String> name;
@@ -206,7 +230,7 @@ class LocalRulestackCertificate extends pulumi.CustomResource {
   late final pulumi.Output<String> rulestackId;
   /// Should a Self Signed Certificate be used. Defaults to `false`. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   ///
-  /// &gt; **Note:** One and only one of `self_signed` or `key_vault_certificate_id` must be specified.
+  /// &gt; **Note:** One and only one of `selfSigned` or `keyVaultCertificateId` must be specified.
   late final pulumi.Output<bool?> selfSigned;
 
   /// Creates a new [LocalRulestackCertificate].

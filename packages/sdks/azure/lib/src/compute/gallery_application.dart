@@ -114,6 +114,31 @@ import 'gallery_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_compute_sharedimagegallery" "example" {
+///   name                = "examplegallery"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_compute_galleryapplication" "example" {
+///   name              = "example-app"
+///   gallery_id        = azure_compute_sharedimagegallery.example.id
+///   location          = azure_core_resourcegroup.example.location
+///   supported_os_type = "Linux"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +151,8 @@ import 'gallery_application_state.dart';
 /// import com.pulumi.azure.compute.SharedImageGalleryArgs;
 /// import com.pulumi.azure.compute.GalleryApplication;
 /// import com.pulumi.azure.compute.GalleryApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

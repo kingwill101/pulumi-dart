@@ -8,7 +8,7 @@ class GetApplicationGatewaySslProfile {
   final pulumi.Input<String> id;
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
-  /// a `ssl_policy` block as defined below.
+  /// a `sslPolicy` block as defined below.
   final pulumi.Input<List<GetApplicationGatewaySslProfileSslPolicy>> sslPolicies;
   /// The name of the Trusted Client Certificate that will be used to authenticate requests from clients.
   final pulumi.Input<List<String>> trustedClientCertificateNames;
@@ -19,7 +19,7 @@ class GetApplicationGatewaySslProfile {
   /// Creates a new [GetApplicationGatewaySslProfile].
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The name of this Application Gateway.
-  /// [sslPolicies] a `ssl_policy` block as defined below.
+  /// [sslPolicies] a `sslPolicy` block as defined below.
   /// [trustedClientCertificateNames] The name of the Trusted Client Certificate that will be used to authenticate requests from clients.
   /// [verifyClientCertificateIssuerDn] Required.
   /// [verifyClientCertificateRevocation] The method used to check client certificate revocation status.
@@ -54,4 +54,3 @@ class GetApplicationGatewaySslProfile {
     );
   }
 }
-

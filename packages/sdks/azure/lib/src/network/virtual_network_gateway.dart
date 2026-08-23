@@ -45,7 +45,7 @@ import 'virtual_network_gateway_vpn_client_configuration.dart';
 ///     type: "Vpn",
 ///     vpnType: "RouteBased",
 ///     activeActive: false,
-///     enableBgp: false,
+///     bgpEnabled: false,
 ///     sku: "Basic",
 ///     ipConfigurations: [{
 ///         name: "vnetGatewayConfig",
@@ -115,7 +115,7 @@ import 'virtual_network_gateway_vpn_client_configuration.dart';
 ///     type="Vpn",
 ///     vpn_type="RouteBased",
 ///     active_active=False,
-///     enable_bgp=False,
+///     bgp_enabled=False,
 ///     sku="Basic",
 ///     ip_configurations=[{
 ///         "name": "vnetGatewayConfig",
@@ -207,7 +207,7 @@ import 'virtual_network_gateway_vpn_client_configuration.dart';
 ///         Type = "Vpn",
 ///         VpnType = "RouteBased",
 ///         ActiveActive = false,
-///         EnableBgp = false,
+///         BgpEnabled = false,
 ///         Sku = "Basic",
 ///         IpConfigurations = new[]
 ///         {
@@ -322,7 +322,7 @@ import 'virtual_network_gateway_vpn_client_configuration.dart';
 /// 			Type:              pulumi.String("Vpn"),
 /// 			VpnType:           pulumi.String("RouteBased"),
 /// 			ActiveActive:      pulumi.Bool(false),
-/// 			EnableBgp:         pulumi.Bool(false),
+/// 			BgpEnabled:        pulumi.Bool(false),
 /// 			Sku:               pulumi.String("Basic"),
 /// 			IpConfigurations: network.VirtualNetworkGatewayIpConfigurationArray{
 /// 				&network.VirtualNetworkGatewayIpConfigurationArgs{
@@ -377,6 +377,65 @@ import 'virtual_network_gateway_vpn_client_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "test"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "test"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "GatewaySubnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "test"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Dynamic"
+/// }
+/// resource "azure_network_virtualnetworkgateway" "example" {
+///   name                = "test"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   type                = "Vpn"
+///   vpn_type            = "RouteBased"
+///   active_active       = false
+///   bgp_enabled         = false
+///   sku                 = "Basic"
+///   ip_configurations {
+///     name                          = "vnetGatewayConfig"
+///     public_ip_address_id          = azure_network_publicip.example.id
+///     private_ip_address_allocation = "Dynamic"
+///     subnet_id                     = azure_network_subnet.example.id
+///   }
+///   vpn_client_configuration = {
+///     address_spaces = ["10.2.0.0/24"]
+///     root_certificates = [{
+///       "name"           = "DigiCert-Federated-ID-Root-CA"
+///       "publicCertData" = "MIIDuzCCAqOgAwIBAgIQCHTZWCM+IlfFIRXIvyKSrjANBgkqhkiG9w0BAQsFADBn\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3\nd3cuZGlnaWNlcnQuY29tMSYwJAYDVQQDEx1EaWdpQ2VydCBGZWRlcmF0ZWQgSUQg\nUm9vdCBDQTAeFw0xMzAxMTUxMjAwMDBaFw0zMzAxMTUxMjAwMDBaMGcxCzAJBgNV\nBAYTAlVTMRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdp\nY2VydC5jb20xJjAkBgNVBAMTHURpZ2lDZXJ0IEZlZGVyYXRlZCBJRCBSb290IENB\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvAEB4pcCqnNNOWE6Ur5j\nQPUH+1y1F9KdHTRSza6k5iDlXq1kGS1qAkuKtw9JsiNRrjltmFnzMZRBbX8Tlfl8\nzAhBmb6dDduDGED01kBsTkgywYPxXVTKec0WxYEEF0oMn4wSYNl0lt2eJAKHXjNf\nGTwiibdP8CUR2ghSM2sUTI8Nt1Omfc4SMHhGhYD64uJMbX98THQ/4LMGuYegou+d\nGTiahfHtjn7AboSEknwAMJHCh5RlYZZ6B1O4QbKJ+34Q0eKgnI3X6Vc9u0zf6DH8\nDk+4zQDYRRTqTnVO3VT8jzqDlCRuNtq6YvryOWN74/dq8LQhUnXHvFyrsdMaE1X2\nDwIDAQABo2MwYTAPBgNVHRMBAf8EBTADAQH/MA4GA1UdDwEB/wQEAwIBhjAdBgNV\nHQ4EFgQUGRdkFnbGt1EWjKwbUne+5OaZvRYwHwYDVR0jBBgwFoAUGRdkFnbGt1EW\njKwbUne+5OaZvRYwDQYJKoZIhvcNAQELBQADggEBAHcqsHkrjpESqfuVTRiptJfP\n9JbdtWqRTmOf6uJi2c8YVqI6XlKXsD8C1dUUaaHKLUJzvKiazibVuBwMIT84AyqR\nQELn3e0BtgEymEygMU569b01ZPxoFSnNXc7qDZBDef8WfqAV/sxkTi8L9BkmFYfL\nuGLOhRJOFprPdoDIUBB+tmCl3oDcBy3vnUeOEioz8zAkprcb3GHwHAK+vHmmfgcn\nWsfMLH4JCLa/tRYL+Rw/N3ybCkDp00s0WUZ+AoDywSl0Q/ZEnNY0MsFiw6LyIdbq\nM/s/1JRtO3bDSzD9TazRVzn2oBqzSa8VgIo5C1nOnoAKJTlsClJKvIhnRlaLQqk=\n"
+///     }]
+///     revoked_certificates = [{
+///       "name"       = "Verizon-Global-Root-CA"
+///       "thumbprint" = "912198EEF23DCAC40939312FEE97DD560BAE49B1"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -395,8 +454,10 @@ import 'virtual_network_gateway_vpn_client_configuration.dart';
 /// import com.pulumi.azure.network.VirtualNetworkGatewayArgs;
 /// import com.pulumi.azure.network.inputs.VirtualNetworkGatewayIpConfigurationArgs;
 /// import com.pulumi.azure.network.inputs.VirtualNetworkGatewayVpnClientConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.network.inputs.VirtualNetworkGatewayVpnClientConfigurationRootCertificateArgs;
+/// import com.pulumi.azure.network.inputs.VirtualNetworkGatewayVpnClientConfigurationRevokedCertificateArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -441,7 +502,7 @@ import 'virtual_network_gateway_vpn_client_configuration.dart';
 ///             .type("Vpn")
 ///             .vpnType("RouteBased")
 ///             .activeActive(false)
-///             .enableBgp(false)
+///             .bgpEnabled(false)
 ///             .sku("Basic")
 ///             .ipConfigurations(VirtualNetworkGatewayIpConfigurationArgs.builder()
 ///                 .name("vnetGatewayConfig")
@@ -529,7 +590,7 @@ import 'virtual_network_gateway_vpn_client_configuration.dart';
 ///       type: Vpn
 ///       vpnType: RouteBased
 ///       activeActive: false
-///       enableBgp: false
+///       bgpEnabled: false
 ///       sku: Basic
 ///       ipConfigurations:
 ///         - name: vnetGatewayConfig
@@ -585,11 +646,13 @@ import 'virtual_network_gateway_vpn_client_configuration.dart';
 class VirtualNetworkGateway extends pulumi.CustomResource {
   /// If `true`, an active-active Virtual Network Gateway will be created. An active-active gateway requires a `HighPerformance` or an `UltraPerformance` SKU. If `false`, an active-standby gateway will be created. Defaults to `false`.
   late final pulumi.Output<bool> activeActive;
+  /// If `true`, BGP (Border Gateway Protocol) will be enabled for this Virtual Network Gateway. Defaults to `false`.
+  late final pulumi.Output<bool> bgpEnabled;
   /// Is BGP Route Translation for NAT enabled? Defaults to `false`.
   late final pulumi.Output<bool?> bgpRouteTranslationForNatEnabled;
-  /// A `bgp_settings` block which is documented below. In this block the BGP specific settings can be defined.
+  /// A `bgpSettings` block which is documented below. In this block the BGP specific settings can be defined.
   late final pulumi.Output<VirtualNetworkGatewayBgpSettings> bgpSettings;
-  /// A `custom_route` block as defined below. Specifies a custom routes address space for a virtual network gateway and a VpnClient.
+  /// A `customRoute` block as defined below. Specifies a custom routes address space for a virtual network gateway and a VpnClient.
   late final pulumi.Output<VirtualNetworkGatewayCustomRoute?> customRoute;
   /// The ID of the local network gateway through which outbound Internet traffic from the virtual network in which the gateway is created will be routed (*forced tunnelling*). Refer to the [Azure documentation on forced tunnelling](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). If not specified, forced tunnelling is disabled.
   late final pulumi.Output<String?> defaultLocalNetworkGatewayId;
@@ -597,21 +660,32 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
   late final pulumi.Output<bool?> dnsForwardingEnabled;
   /// Specifies the Edge Zone within the Azure Region where this Virtual Network Gateway should exist. Changing this forces a new Virtual Network Gateway to be created.
   late final pulumi.Output<String?> edgeZone;
-  /// If `true`, BGP (Border Gateway Protocol) will be enabled for this Virtual Network Gateway. Defaults to `false`.
   late final pulumi.Output<bool> enableBgp;
   /// The Generation of the Virtual Network gateway. Possible values include `Generation1`, `Generation2` or `None`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The available values depend on the `type` and `sku` arguments - where `Generation2` is only value for a `sku` larger than `VpnGw2` or `VpnGw2AZ`.
   late final pulumi.Output<String> generation;
-  /// One or more (up to 3) `ip_configuration` blocks documented below. Changing this forces a new resource to be created. An active-standby gateway requires exactly one `ip_configuration` block, an active-active gateway requires exactly two `ip_configuration` blocks whereas an active-active zone redundant gateway with P2S configuration requires exactly three `ip_configuration` blocks.
+  /// One or more (up to 3) `ipConfiguration` blocks documented below. Changing this forces a new resource to be created. An active-standby gateway requires exactly one `ipConfiguration` block, an active-active gateway requires exactly two `ipConfiguration` blocks whereas an active-active zone redundant gateway with P2S configuration requires exactly three `ipConfiguration` blocks.
   late final pulumi.Output<List<Map<String, dynamic>>> ipConfigurations;
   /// Is IP Sec Replay Protection enabled? Defaults to `true`.
   late final pulumi.Output<bool?> ipSecReplayProtectionEnabled;
   /// The location/region where the Virtual Network Gateway is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+  /// The maximum scale unit for the Virtual Network Gateway, possible values are `1` through `40`.
+  ///
+  /// &gt; **Note:** `maximumScaleUnit` is only supported for the `ErGwScale` SKU.
+  late final pulumi.Output<int> maximumScaleUnit;
+  /// The minimum scale unit for the Virtual Network Gateway, possible values are `1` through `40`.
+  ///
+  /// &gt; **Note:** `minimumScaleUnit` is only supported for the `ErGwScale` SKU.
+  ///
+  /// &gt; **Note:** To configure a `fixed-size` gateway, set `minimumScaleUnit` and `maximumScaleUnit` to the same value. To enable `autoscaling`, set `minimumScaleUnit` to `2` or higher and `maximumScaleUnit` up to `40`. When `maximumScaleUnit` is set to `1`, `minimumScaleUnit` must also be set to `1`.
+  ///
+  /// &gt; **Note:** Changing the `sku` between an availability-zone SKU (`ErGwScale`, `ErGw1AZ`, `ErGw2AZ`, `ErGw3AZ`) and a non-availability-zone SKU (`Standard`, `HighPerformance`, `UltraPerformance`) forces a new resource to be created.
+  late final pulumi.Output<int> minimumScaleUnit;
   /// The name of the Virtual Network Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// One or more `policy_group` blocks as defined below.
+  /// One or more `policyGroup` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> policyGroups;
   /// Should private IP be enabled on this gateway for connections? Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> privateIpAddressEnabled;
@@ -619,7 +693,7 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
   late final pulumi.Output<bool?> remoteVnetTrafficEnabled;
   /// The name of the resource group in which to create the Virtual Network Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// Configuration of the size and capacity of the virtual network gateway. Valid options are `Basic`, `Standard`, `HighPerformance`, `UltraPerformance`, `ErGwScale`, `ErGw1AZ`, `ErGw2AZ`, `ErGw3AZ`, `VpnGw1`, `VpnGw2`, `VpnGw3`, `VpnGw4`,`VpnGw5`, `VpnGw1AZ`, `VpnGw2AZ`, `VpnGw3AZ`,`VpnGw4AZ` and `VpnGw5AZ` and depend on the `type`, `vpn_type` and `generation` arguments. A `PolicyBased` gateway only supports the `Basic` SKU. Further, the `UltraPerformance` and `ErGwScale` SKU is only supported by an `ExpressRoute` gateway.
+  /// Configuration of the size and capacity of the virtual network gateway. Valid options are `Basic`, `Standard`, `HighPerformance`, `UltraPerformance`, `ErGwScale`, `ErGw1AZ`, `ErGw2AZ`, `ErGw3AZ`, `VpnGw1`, `VpnGw2`, `VpnGw3`, `VpnGw4`,`VpnGw5`, `VpnGw1AZ`, `VpnGw2AZ`, `VpnGw3AZ`,`VpnGw4AZ` and `VpnGw5AZ` and depend on the `type`, `vpnType` and `generation` arguments. A `PolicyBased` gateway only supports the `Basic` SKU. Further, the `UltraPerformance` and `ErGwScale` SKU is only supported by an `ExpressRoute` gateway.
   ///
   /// &gt; **Note:** To build a UltraPerformance ExpressRoute Virtual Network gateway, the associated Public IP needs to be SKU "Basic" not "Standard"
   ///
@@ -631,7 +705,7 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
   late final pulumi.Output<String> type;
   /// Is remote vnet traffic that is used to configure this gateway to accept traffic from remote Virtual WAN networks enabled? Defaults to `false`.
   late final pulumi.Output<bool?> virtualWanTrafficEnabled;
-  /// A `vpn_client_configuration` block which is documented below. In this block the Virtual Network Gateway can be configured to accept IPSec point-to-site connections.
+  /// A `vpnClientConfiguration` block which is documented below. In this block the Virtual Network Gateway can be configured to accept IPSec point-to-site connections.
   late final pulumi.Output<VirtualNetworkGatewayVpnClientConfiguration?> vpnClientConfiguration;
   /// The routing type of the Virtual Network Gateway. Valid options are `RouteBased` or `PolicyBased`. Defaults to `RouteBased`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> vpnType;
@@ -651,6 +725,7 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     activeActive = registerOutput<bool>('activeActive');
+    bgpEnabled = registerOutput<bool>('bgpEnabled');
     bgpRouteTranslationForNatEnabled = registerOutput<bool?>('bgpRouteTranslationForNatEnabled');
     bgpSettings = registerOutput<VirtualNetworkGatewayBgpSettings>('bgpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayBgpSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customRoute = registerOutput<VirtualNetworkGatewayCustomRoute?>('customRoute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayCustomRoute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -662,6 +737,8 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
     ipConfigurations = registerOutput<List<Map<String, dynamic>>>('ipConfigurations');
     ipSecReplayProtectionEnabled = registerOutput<bool?>('ipSecReplayProtectionEnabled');
     location = registerOutput<String>('location');
+    maximumScaleUnit = registerOutput<int>('maximumScaleUnit');
+    minimumScaleUnit = registerOutput<int>('minimumScaleUnit');
     this.name = registerOutput<String>('name');
     policyGroups = registerOutput<List<Map<String, dynamic>>?>('policyGroups');
     privateIpAddressEnabled = registerOutput<bool?>('privateIpAddressEnabled');
@@ -699,6 +776,7 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     activeActive = registerOutput<bool>('activeActive');
+    bgpEnabled = registerOutput<bool>('bgpEnabled');
     bgpRouteTranslationForNatEnabled = registerOutput<bool?>('bgpRouteTranslationForNatEnabled');
     bgpSettings = registerOutput<VirtualNetworkGatewayBgpSettings>('bgpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayBgpSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customRoute = registerOutput<VirtualNetworkGatewayCustomRoute?>('customRoute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayCustomRoute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -710,6 +788,8 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
     ipConfigurations = registerOutput<List<Map<String, dynamic>>>('ipConfigurations');
     ipSecReplayProtectionEnabled = registerOutput<bool?>('ipSecReplayProtectionEnabled');
     location = registerOutput<String>('location');
+    maximumScaleUnit = registerOutput<int>('maximumScaleUnit');
+    minimumScaleUnit = registerOutput<int>('minimumScaleUnit');
     this.name = registerOutput<String>('name');
     policyGroups = registerOutput<List<Map<String, dynamic>>?>('policyGroups');
     privateIpAddressEnabled = registerOutput<bool?>('privateIpAddressEnabled');

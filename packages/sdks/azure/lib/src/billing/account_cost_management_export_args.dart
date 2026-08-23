@@ -13,9 +13,9 @@ class AccountCostManagementExportArgs {
   final pulumi.Input<bool>? active;
   /// The id of the billing account on which to create an export. Changing this forces a new resource to be created.
   final pulumi.Input<String> billingAccountId;
-  /// A `export_data_options` block as defined below.
+  /// A `exportDataOptions` block as defined below.
   final pulumi.Input<AccountCostManagementExportExportDataOptions> exportDataOptions;
-  /// A `export_data_storage_location` block as defined below.
+  /// A `exportDataStorageLocation` block as defined below.
   final pulumi.Input<AccountCostManagementExportExportDataStorageLocation> exportDataStorageLocation;
   /// Format for export. Valid values are `Csv` only. Default is `Csv`.
   final pulumi.Input<String>? fileFormat;
@@ -31,8 +31,8 @@ class AccountCostManagementExportArgs {
   /// Creates a new [AccountCostManagementExportArgs].
   /// [active] Is the cost management export active? Default is `true`.
   /// [billingAccountId] The id of the billing account on which to create an export. Changing this forces a new resource to be created.
-  /// [exportDataOptions] A `export_data_options` block as defined below.
-  /// [exportDataStorageLocation] A `export_data_storage_location` block as defined below.
+  /// [exportDataOptions] A `exportDataOptions` block as defined below.
+  /// [exportDataStorageLocation] A `exportDataStorageLocation` block as defined below.
   /// [fileFormat] Format for export. Valid values are `Csv` only. Default is `Csv`.
   /// [name] Specifies the name of the Cost Management Export. Changing this forces a new resource to be created.
   /// [recurrencePeriodEndDate] The date the export will stop capturing information.
@@ -78,4 +78,3 @@ class AccountCostManagementExportArgs {
     );
   }
 }
-

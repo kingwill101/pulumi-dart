@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxFunctionAppAuthSettingsGithub {
   /// The ID of the GitHub app used for login.
   final pulumi.Input<String> clientId;
-  /// The Client Secret of the GitHub app used for GitHub login. Cannot be specified with `client_secret_setting_name`.
+  /// The Client Secret of the GitHub app used for GitHub login. Cannot be specified with `clientSecretSettingName`.
   final pulumi.Input<String>? clientSecret;
-  /// The app setting name that contains the `client_secret` value used for GitHub login. Cannot be specified with `client_secret`.
+  /// The app setting name that contains the `clientSecret` value used for GitHub login. Cannot be specified with `clientSecret`.
   final pulumi.Input<String>? clientSecretSettingName;
   /// Specifies a list of OAuth 2.0 scopes that will be requested as part of GitHub login authentication.
   final pulumi.Input<List<String>>? oauthScopes;
 
   /// Creates a new [LinuxFunctionAppAuthSettingsGithub].
   /// [clientId] The ID of the GitHub app used for login.
-  /// [clientSecret] The Client Secret of the GitHub app used for GitHub login. Cannot be specified with `client_secret_setting_name`.
-  /// [clientSecretSettingName] The app setting name that contains the `client_secret` value used for GitHub login. Cannot be specified with `client_secret`.
+  /// [clientSecret] The Client Secret of the GitHub app used for GitHub login. Cannot be specified with `clientSecretSettingName`.
+  /// [clientSecretSettingName] The app setting name that contains the `clientSecret` value used for GitHub login. Cannot be specified with `clientSecret`.
   /// [oauthScopes] Specifies a list of OAuth 2.0 scopes that will be requested as part of GitHub login authentication.
   const LinuxFunctionAppAuthSettingsGithub({
     required this.clientId,
@@ -42,4 +42,3 @@ class LinuxFunctionAppAuthSettingsGithub {
     );
   }
 }
-

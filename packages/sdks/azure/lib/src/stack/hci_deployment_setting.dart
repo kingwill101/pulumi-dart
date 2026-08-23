@@ -18,7 +18,7 @@ import 'hci_deployment_setting_state.dart';
 class HciDeploymentSetting extends pulumi.CustomResource {
   /// Specifies a list of IDs of Azure ARC machine resource to be part of cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   late final pulumi.Output<List<String>> arcResourceIds;
-  /// One or more `scale_unit` blocks as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// One or more `scaleUnit` blocks as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> scaleUnits;
   /// The ID of the Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   late final pulumi.Output<String> stackHciClusterId;

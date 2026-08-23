@@ -271,13 +271,13 @@ import 'vpn_gateway_connection_state.dart';
 /// 				&network.VpnGatewayConnectionVpnLinkArgs{
 /// 					Name: pulumi.String("link1"),
 /// 					VpnSiteLinkId: exampleVpnSite.Links.ApplyT(func(links []network.VpnSiteLink) (*string, error) {
-/// 						return &links[0].Id, nil
+/// 						return links[0].Id, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 				},
 /// 				&network.VpnGatewayConnectionVpnLinkArgs{
 /// 					Name: pulumi.String("link2"),
 /// 					VpnSiteLinkId: exampleVpnSite.Links.ApplyT(func(links []network.VpnSiteLink) (*string, error) {
-/// 						return &links[1].Id, nil
+/// 						return links[1].Id, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 				},
 /// 			},
@@ -287,6 +287,65 @@ import 'vpn_gateway_connection_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualwan" "example" {
+///   name                = "example-vwan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_virtualhub" "example" {
+///   name                = "example-hub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   address_prefix      = "10.0.0.0/24"
+/// }
+/// resource "azure_network_vpngateway" "example" {
+///   name                = "example-vpng"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   virtual_hub_id      = azure_network_virtualhub.example.id
+/// }
+/// resource "azure_network_vpnsite" "example" {
+///   name                = "example-vpn-site"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   links {
+///     name       = "link1"
+///     ip_address = "10.1.0.0"
+///   }
+///   links {
+///     name       = "link2"
+///     ip_address = "10.2.0.0"
+///   }
+/// }
+/// resource "azure_network_vpngatewayconnection" "example" {
+///   name               = "example"
+///   vpn_gateway_id     = azure_network_vpngateway.example.id
+///   remote_vpn_site_id = azure_network_vpnsite.example.id
+///   vpn_links {
+///     name             = "link1"
+///     vpn_site_link_id = azure_network_vpnsite.example.links[0].id
+///   }
+///   vpn_links {
+///     name             = "link2"
+///     vpn_site_link_id = azure_network_vpnsite.example.links[1].id
+///   }
 /// }
 /// ```
 /// ```java
@@ -309,8 +368,8 @@ import 'vpn_gateway_connection_state.dart';
 /// import com.pulumi.azure.network.VpnGatewayConnection;
 /// import com.pulumi.azure.network.VpnGatewayConnectionArgs;
 /// import com.pulumi.azure.network.inputs.VpnGatewayConnectionVpnLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -464,11 +523,11 @@ class VpnGatewayConnection extends pulumi.CustomResource {
   late final pulumi.Output<String> remoteVpnSiteId;
   /// A `routing` block as defined below. If this is not specified, there will be a default route table created implicitly.
   late final pulumi.Output<VpnGatewayConnectionRouting> routing;
-  /// One or more `traffic_selector_policy` blocks as defined below.
+  /// One or more `trafficSelectorPolicy` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> trafficSelectorPolicies;
   /// The ID of the VPN Gateway that this VPN Gateway Connection belongs to. Changing this forces a new VPN Gateway Connection to be created.
   late final pulumi.Output<String> vpnGatewayId;
-  /// One or more `vpn_link` blocks as defined below.
+  /// One or more `vpnLink` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> vpnLinks;
 
   /// Creates a new [VpnGatewayConnection].

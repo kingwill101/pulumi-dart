@@ -165,10 +165,10 @@ import 'output_mssql_state.dart';
 /// 		_, err = streamanalytics.NewOutputMssql(ctx, "example", &streamanalytics.OutputMssqlArgs{
 /// 			Name: pulumi.String("example-output-sql"),
 /// 			StreamAnalyticsJobName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return &example.Name, nil
+/// 				return example.Name, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return &example.ResourceGroupName, nil
+/// 				return example.ResourceGroupName, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Server:   exampleServer.FullyQualifiedDomainName,
 /// 			User:     exampleServer.AdministratorLogin,
@@ -181,6 +181,47 @@ import 'output_mssql_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_streamanalytics_getjob" "example" {
+///   name                = "example-job"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "example-server"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "dbadmin"
+///   administrator_login_password = "example-password"
+/// }
+/// resource "azure_mssql_database" "example" {
+///   name      = "exampledb"
+///   server_id = test.id
+/// }
+/// resource "azure_streamanalytics_outputmssql" "example" {
+///   name                      = "example-output-sql"
+///   stream_analytics_job_name = data.azure_streamanalytics_getjob.example.name
+///   resource_group_name       = data.azure_streamanalytics_getjob.example.resource_group_name
+///   server                    = azure_mssql_server.example.fully_qualified_domain_name
+///   user                      = azure_mssql_server.example.administrator_login
+///   password                  = azure_mssql_server.example.administrator_login_password
+///   database                  = azure_mssql_database.example.name
+///   table                     = "ExampleTable"
 /// }
 /// ```
 /// ```java
@@ -199,8 +240,8 @@ import 'output_mssql_state.dart';
 /// import com.pulumi.azure.mssql.DatabaseArgs;
 /// import com.pulumi.azure.streamanalytics.OutputMssql;
 /// import com.pulumi.azure.streamanalytics.OutputMssqlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -321,7 +362,7 @@ class OutputMssql extends pulumi.CustomResource {
   late final pulumi.Output<double?> maxWriterCount;
   /// The name of the Stream Output. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// Password used together with username, to login to the Microsoft SQL Server. Required if `authentication_mode` is `ConnectionString`.
+  /// Password used together with username, to login to the Microsoft SQL Server. Required if `authenticationMode` is `ConnectionString`.
   late final pulumi.Output<String?> password;
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
@@ -331,7 +372,7 @@ class OutputMssql extends pulumi.CustomResource {
   late final pulumi.Output<String> streamAnalyticsJobName;
   /// Table in the database that the output points to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> table;
-  /// Username used to login to the Microsoft SQL Server. Changing this forces a new resource to be created. Required if `authentication_mode` is `ConnectionString`.
+  /// Username used to login to the Microsoft SQL Server. Changing this forces a new resource to be created. Required if `authenticationMode` is `ConnectionString`.
   late final pulumi.Output<String?> user;
 
   /// Creates a new [OutputMssql].

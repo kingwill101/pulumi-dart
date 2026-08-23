@@ -36,4 +36,3 @@ class ServerIpv4FirewallRule {
     );
   }
 }
-

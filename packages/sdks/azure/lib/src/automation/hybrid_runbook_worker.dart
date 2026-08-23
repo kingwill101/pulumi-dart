@@ -355,6 +355,80 @@ import 'hybrid_runbook_worker_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "example-account"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_automation_hybridrunbookworkergroup" "example" {
+///   name                    = "example"
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   automation_account_name = azure_automation_account.example.name
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["192.168.1.0/24"]
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["192.168.1.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "example" {
+///   name                = "example-nic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "vm-example"
+///     subnet_id                     = azure_network_subnet.example.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_linuxvirtualmachine" "example" {
+///   name                            = "example-vm"
+///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   size                            = "Standard_B1s"
+///   admin_username                  = "testadmin"
+///   admin_password                  = "Password1234!"
+///   disable_password_authentication = false
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+///   os_disk = {
+///     caching              = "ReadWrite"
+///     storage_account_type = "Standard_LRS"
+///   }
+///   network_interface_ids = [azure_network_networkinterface.example.id]
+/// }
+/// resource "azure_automation_hybridrunbookworker" "example" {
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   automation_account_name = azure_automation_account.example.name
+///   worker_group_name       = azure_automation_hybridrunbookworkergroup.example.name
+///   vm_resource_id          = azure_compute_linuxvirtualmachine.example.id
+///   worker_id               = "00000000-0000-0000-0000-000000000000"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -380,8 +454,8 @@ import 'hybrid_runbook_worker_state.dart';
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineOsDiskArgs;
 /// import com.pulumi.azure.automation.HybridRunbookWorker;
 /// import com.pulumi.azure.automation.HybridRunbookWorkerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

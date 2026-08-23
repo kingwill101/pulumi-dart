@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering RegistryWebhook resources.
 class RegistryWebhookState {
-  /// A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chart_push`, `chart_delete`
+  /// A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chartPush`, `chartDelete`
   final pulumi.Input<List<String>>? actions;
   /// Custom headers that will be added to the webhook notifications request.
   final pulumi.Input<Map<String, String>>? customHeaders;
@@ -26,7 +26,7 @@ class RegistryWebhookState {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [RegistryWebhookState].
-  /// [actions] A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chart_push`, `chart_delete`
+  /// [actions] A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chartPush`, `chartDelete`
   /// [customHeaders] Custom headers that will be added to the webhook notifications request.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Container Registry Webhook. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
@@ -79,4 +79,3 @@ class RegistryWebhookState {
     );
   }
 }
-

@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxFunctionAppSlotAuthSettingsV2GithubV2 {
   /// The ID of the GitHub app used for login.
   final pulumi.Input<String> clientId;
-  /// The app setting name that contains the `client_secret` value used for GitHub Login.
+  /// The app setting name that contains the `clientSecret` value used for GitHub Login.
   ///
-  /// !&gt; **Note:** A setting with this name must exist in `app_settings` to function correctly.
+  /// &gt; **Note:** A setting with this name must exist in `appSettings` to function correctly.
   final pulumi.Input<String> clientSecretSettingName;
   /// The list of OAuth 2.0 scopes that should be requested as part of GitHub Login authentication.
   final pulumi.Input<List<String>>? loginScopes;
 
   /// Creates a new [LinuxFunctionAppSlotAuthSettingsV2GithubV2].
   /// [clientId] The ID of the GitHub app used for login.
-  /// [clientSecretSettingName] The app setting name that contains the `client_secret` value used for GitHub Login.
+  /// [clientSecretSettingName] The app setting name that contains the `clientSecret` value used for GitHub Login.
   /// [loginScopes] The list of OAuth 2.0 scopes that should be requested as part of GitHub Login authentication.
   const LinuxFunctionAppSlotAuthSettingsV2GithubV2({
     required this.clientId,
@@ -38,4 +38,3 @@ class LinuxFunctionAppSlotAuthSettingsV2GithubV2 {
     );
   }
 }
-

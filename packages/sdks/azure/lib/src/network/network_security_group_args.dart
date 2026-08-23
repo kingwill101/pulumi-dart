@@ -16,7 +16,7 @@ class NetworkSecurityGroupArgs {
   final pulumi.Input<String> resourceGroupName;
   /// A list of objects representing security rules, as defined below.
   ///
-  /// &gt; **NOTE** Since `security_rule` can be configured both inline and via the separate `azure.network.NetworkSecurityRule` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
+  /// &gt; **NOTE** Since `securityRule` can be configured both inline and via the separate `azure.network.NetworkSecurityRule` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
   final pulumi.Input<List<NetworkSecurityGroupSecurityRule>>? securityRules;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
@@ -55,4 +55,3 @@ class NetworkSecurityGroupArgs {
     );
   }
 }
-

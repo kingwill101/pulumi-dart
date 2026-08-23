@@ -6,7 +6,7 @@ import 'spring_cloud_api_portal_custom_domain_state.dart';
 ///
 /// &gt; **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApiPortalCustomDomain` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApiPortalCustomDomain` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -163,6 +163,39 @@ import 'spring_cloud_api_portal_custom_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "E0"
+/// }
+/// resource "azure_appplatform_springcloudgateway" "example" {
+///   name                    = "default"
+///   spring_cloud_service_id = azure_appplatform_springcloudservice.example.id
+/// }
+/// resource "azure_appplatform_springcloudapiportal" "example" {
+///   name                    = "default"
+///   spring_cloud_service_id = azure_appplatform_springcloudservice.example.id
+///   gateway_ids             = [azure_appplatform_springcloudgateway.example.id]
+/// }
+/// resource "azure_appplatform_springcloudapiportalcustomdomain" "example" {
+///   name                       = "example.com"
+///   spring_cloud_api_portal_id = azure_appplatform_springcloudapiportal.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +212,8 @@ import 'spring_cloud_api_portal_custom_domain_state.dart';
 /// import com.pulumi.azure.appplatform.SpringCloudApiPortalArgs;
 /// import com.pulumi.azure.appplatform.SpringCloudApiPortalCustomDomain;
 /// import com.pulumi.azure.appplatform.SpringCloudApiPortalCustomDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

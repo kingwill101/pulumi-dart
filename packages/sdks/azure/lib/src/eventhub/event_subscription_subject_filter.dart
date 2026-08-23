@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventSubscriptionSubjectFilter {
-  /// Specifies if `subject_begins_with` and `subject_ends_with` case sensitive. This value
+  /// Specifies if `subjectBeginsWith` and `subjectEndsWith` case sensitive. This value
   final pulumi.Input<bool>? caseSensitive;
   /// A string to filter events for an event subscription based on a resource path prefix.
   final pulumi.Input<String>? subjectBeginsWith;
@@ -11,7 +11,7 @@ class EventSubscriptionSubjectFilter {
   final pulumi.Input<String>? subjectEndsWith;
 
   /// Creates a new [EventSubscriptionSubjectFilter].
-  /// [caseSensitive] Specifies if `subject_begins_with` and `subject_ends_with` case sensitive. This value
+  /// [caseSensitive] Specifies if `subjectBeginsWith` and `subjectEndsWith` case sensitive. This value
   /// [subjectBeginsWith] A string to filter events for an event subscription based on a resource path prefix.
   /// [subjectEndsWith] A string to filter events for an event subscription based on a resource path suffix.
   const EventSubscriptionSubjectFilter({
@@ -36,4 +36,3 @@ class EventSubscriptionSubjectFilter {
     );
   }
 }
-

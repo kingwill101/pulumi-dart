@@ -4,7 +4,7 @@ import 'data_connector_microsoft_cloud_app_security_state.dart';
 
 /// Manages a Microsoft Cloud App Security Data Connector.
 ///
-/// !&gt; **Note:** This resource requires that [Enterprise Mobility + Security E5](https://www.microsoft.com/en-us/microsoft-365/enterprise-mobility-security) is enabled on the tenant being connected to.
+/// &gt; **Note:** This resource requires that [Enterprise Mobility + Security E5](https://www.microsoft.com/en-us/microsoft-365/enterprise-mobility-security) is enabled on the tenant being connected to.
 ///
 /// ## Example Usage
 ///
@@ -126,6 +126,33 @@ import 'data_connector_microsoft_cloud_app_security_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "west europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-workspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
+///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// resource "azure_sentinel_dataconnectormicrosoftcloudappsecurity" "example" {
+///   name                       = "example"
+///   log_analytics_workspace_id = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +167,8 @@ import 'data_connector_microsoft_cloud_app_security_state.dart';
 /// import com.pulumi.azure.sentinel.LogAnalyticsWorkspaceOnboardingArgs;
 /// import com.pulumi.azure.sentinel.DataConnectorMicrosoftCloudAppSecurity;
 /// import com.pulumi.azure.sentinel.DataConnectorMicrosoftCloudAppSecurityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -218,7 +245,7 @@ class DataConnectorMicrosoftCloudAppSecurity extends pulumi.CustomResource {
   late final pulumi.Output<bool?> alertsEnabled;
   /// Should the Discovery Logs be enabled? Defaults to `true`.
   ///
-  /// &gt; **Note:** One of either `alerts_enabled` or `discovery_logs_enabled` has to be specified.
+  /// &gt; **Note:** One of either `alertsEnabled` or `discoveryLogsEnabled` has to be specified.
   late final pulumi.Output<bool?> discoveryLogsEnabled;
   /// The ID of the Log Analytics Workspace that this Microsoft Cloud App Security Data Connector resides in. Changing this forces a new Microsoft Cloud App Security Data Connector to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;

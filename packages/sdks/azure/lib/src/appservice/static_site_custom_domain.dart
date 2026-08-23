@@ -4,9 +4,9 @@ import 'static_site_custom_domain_state.dart';
 
 /// Manages a Static Site Custom Domain.
 ///
-/// !&gt; **Note:** DNS validation polling is only done for CNAME records, terraform will not validate TXT validation records are complete.
+/// &gt; **Note:** This resource has been superseded by `azure.appservice.StaticWebAppCustomDomain` and will be removed in version 5.0 of the AzureRM provider.
 ///
-/// &gt; **Note:** The `azure.appservice.StaticSiteCustomDomain` resource is deprecated in favour of `azure.appservice.StaticWebAppCustomDomain` and will be removed in a future major release.
+/// &gt; **Note:** DNS validation polling is only done for CNAME records, terraform will not validate TXT validation records are complete.
 ///
 /// ## Example Usage
 ///
@@ -164,6 +164,37 @@ import 'static_site_custom_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_staticsite" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_dns_cnamerecord" "example" {
+///   name                = "my-domain"
+///   zone_name           = "contoso.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ttl                 = 300
+///   record              = azure_appservice_staticsite.example.default_host_name
+/// }
+/// resource "azure_appservice_staticsitecustomdomain" "example" {
+///   static_site_id  = azure_appservice_staticsite.example.id
+///   domain_name     ="${azure_dns_cnamerecord.example.name}.${azure_dns_cnamerecord.example.zone_name}"
+///   validation_type = "cname-delegation"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +209,8 @@ import 'static_site_custom_domain_state.dart';
 /// import com.pulumi.azure.dns.CNameRecordArgs;
 /// import com.pulumi.azure.appservice.StaticSiteCustomDomain;
 /// import com.pulumi.azure.appservice.StaticSiteCustomDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -409,6 +440,39 @@ import 'static_site_custom_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_staticsite" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_appservice_staticsitecustomdomain" "example" {
+///   static_site_id  = azure_appservice_staticsite.example.id
+///   domain_name     = "my-domain.contoso.com"
+///   validation_type = "dns-txt-token"
+/// }
+/// resource "azure_dns_txtrecord" "example" {
+///   name                = "_dnsauth.my-domain"
+///   zone_name           = "contoso.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ttl                 = 300
+///   records {
+///     value = azure_appservice_staticsitecustomdomain.example.validation_token
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -424,8 +488,8 @@ import 'static_site_custom_domain_state.dart';
 /// import com.pulumi.azure.dns.TxtRecord;
 /// import com.pulumi.azure.dns.TxtRecordArgs;
 /// import com.pulumi.azure.dns.inputs.TxtRecordRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

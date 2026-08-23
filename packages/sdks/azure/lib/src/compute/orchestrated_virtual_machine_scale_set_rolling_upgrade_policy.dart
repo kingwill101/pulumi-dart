@@ -3,7 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrchestratedVirtualMachineScaleSetRollingUpgradePolicy {
-  /// Should the Virtual Machine Scale Set ignore the Azure Zone boundaries when constructing upgrade batches? Possible values are `true` or `false`.
+  /// Should the Virtual Machine Scale Set ignore the Azure Zone boundaries when constructing upgrade batches? Possible values are `true` and `false`.
+  ///
+  /// &gt; **Note:** `crossZoneUpgradesEnabled` can only be set to `true` when `zones` is specified.
   final pulumi.Input<bool>? crossZoneUpgradesEnabled;
   /// The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability.
   final pulumi.Input<int> maxBatchInstancePercent;
@@ -11,21 +13,21 @@ class OrchestratedVirtualMachineScaleSetRollingUpgradePolicy {
   final pulumi.Input<int> maxUnhealthyInstancePercent;
   /// The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts.
   final pulumi.Input<int> maxUnhealthyUpgradedInstancePercent;
-  /// Create new virtual machines to upgrade the scale set, rather than updating the existing virtual machines. Existing virtual machines will be deleted once the new virtual machines are created for each batch. Possible values are `true` or `false`.
+  /// Create new virtual machines to upgrade the scale set, rather than updating the existing virtual machines. Existing virtual machines will be deleted once the new virtual machines are created for each batch. Possible values are `true` and `false`.
   final pulumi.Input<bool>? maximumSurgeInstancesEnabled;
   /// The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 duration format.
   final pulumi.Input<String> pauseTimeBetweenBatches;
-  /// Upgrade all unhealthy instances in a scale set before any healthy instances. Possible values are `true` or `false`.
+  /// Upgrade all unhealthy instances in a scale set before any healthy instances. Possible values are `true` and `false`.
   final pulumi.Input<bool>? prioritizeUnhealthyInstancesEnabled;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetRollingUpgradePolicy].
-  /// [crossZoneUpgradesEnabled] Should the Virtual Machine Scale Set ignore the Azure Zone boundaries when constructing upgrade batches? Possible values are `true` or `false`.
+  /// [crossZoneUpgradesEnabled] Should the Virtual Machine Scale Set ignore the Azure Zone boundaries when constructing upgrade batches? Possible values are `true` and `false`.
   /// [maxBatchInstancePercent] The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability.
   /// [maxUnhealthyInstancePercent] The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch.
   /// [maxUnhealthyUpgradedInstancePercent] The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts.
-  /// [maximumSurgeInstancesEnabled] Create new virtual machines to upgrade the scale set, rather than updating the existing virtual machines. Existing virtual machines will be deleted once the new virtual machines are created for each batch. Possible values are `true` or `false`.
+  /// [maximumSurgeInstancesEnabled] Create new virtual machines to upgrade the scale set, rather than updating the existing virtual machines. Existing virtual machines will be deleted once the new virtual machines are created for each batch. Possible values are `true` and `false`.
   /// [pauseTimeBetweenBatches] The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 duration format.
-  /// [prioritizeUnhealthyInstancesEnabled] Upgrade all unhealthy instances in a scale set before any healthy instances. Possible values are `true` or `false`.
+  /// [prioritizeUnhealthyInstancesEnabled] Upgrade all unhealthy instances in a scale set before any healthy instances. Possible values are `true` and `false`.
   const OrchestratedVirtualMachineScaleSetRollingUpgradePolicy({
     this.crossZoneUpgradesEnabled,
     required this.maxBatchInstancePercent,
@@ -60,4 +62,3 @@ class OrchestratedVirtualMachineScaleSetRollingUpgradePolicy {
     );
   }
 }
-

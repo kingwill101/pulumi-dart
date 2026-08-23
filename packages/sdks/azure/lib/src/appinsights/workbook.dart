@@ -174,6 +174,41 @@ import 'workbook_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_workbook" "example" {
+///   name                = "85b3e8bb-fc93-40be-83f2-98f6bec18ba0"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   display_name        = "workbook1"
+///   data_json = jsonencode({
+///     "version" = "Notebook/1.0"
+///     "items" = [{
+///       "type" = 1
+///       "content" = {
+///         "json" = "Test2022"
+///       }
+///       "name" = "text - 0"
+///     }]
+///     "isLocked"            = false
+///     "fallbackResourceIds" = ["Azure Monitor"]
+///   })
+///   tags = {
+///     "ENV" = "Test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -185,8 +220,8 @@ import 'workbook_state.dart';
 /// import com.pulumi.azure.appinsights.Workbook;
 /// import com.pulumi.azure.appinsights.WorkbookArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -293,7 +328,7 @@ class Workbook extends pulumi.CustomResource {
   late final pulumi.Output<String?> sourceId;
   /// Specifies the Resource Manager ID of the Storage Container when bring your own storage is used. Changing this forces a new Workbook to be created.
   ///
-  /// &gt; **Note:** This is the Resource Manager ID of the Storage Container, rather than the regular ID - and can be accessed on the `azure.storage.Container` Data Source/Resource as `resource_manager_id`.
+  /// &gt; **Note:** This is the Resource Manager ID of the Storage Container, rather than the regular ID - and can be accessed on the `azure.storage.Container` Data Source/Resource as `resourceManagerId`.
   late final pulumi.Output<String?> storageContainerId;
   /// A mapping of tags which should be assigned to the Workbook.
   late final pulumi.Output<Map<String, String>?> tags;

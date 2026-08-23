@@ -8,7 +8,7 @@ import 'smart_detector_alert_rule_action_group.dart';
 /// {@endtemplate}
 /// {@macro pulumi_monitoring_smart_detector_alert_rule_smart_detector_alert_rule_args_doc}
 class SmartDetectorAlertRuleArgs {
-  /// An `action_group` block as defined below.
+  /// An `actionGroup` block as defined below.
   final pulumi.Input<SmartDetectorAlertRuleActionGroup> actionGroup;
   /// Specifies a description for the Smart Detector Alert Rule.
   final pulumi.Input<String>? description;
@@ -32,7 +32,7 @@ class SmartDetectorAlertRuleArgs {
   final pulumi.Input<String>? throttlingDuration;
 
   /// Creates a new [SmartDetectorAlertRuleArgs].
-  /// [actionGroup] An `action_group` block as defined below.
+  /// [actionGroup] An `actionGroup` block as defined below.
   /// [description] Specifies a description for the Smart Detector Alert Rule.
   /// [detectorType] Specifies the Built-In Smart Detector type that this alert rule will use. Currently the only possible values are `FailureAnomaliesDetector`, `RequestPerformanceDegradationDetector`, `DependencyPerformanceDegradationDetector`, `ExceptionVolumeChangedDetector`, `TraceSeverityDetector`, `MemoryLeakDetector`.
   /// [enabled] Is the Smart Detector Alert Rule enabled? Defaults to `true`.
@@ -89,4 +89,3 @@ class SmartDetectorAlertRuleArgs {
     );
   }
 }
-

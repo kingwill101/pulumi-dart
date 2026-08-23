@@ -9,7 +9,7 @@ class GetPartnerNamespaceResult {
   final String endpoint;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// One or more `inbound_ip_rule` blocks as defined below.
+  /// One or more `inboundIpRule` blocks as defined below.
   final List<GetPartnerNamespaceInboundIpRule> inboundIpRules;
   /// Whether local authentication methods are enabled for the Event Grid Partner Namespace.
   final bool localAuthenticationEnabled;
@@ -29,7 +29,7 @@ class GetPartnerNamespaceResult {
   /// Creates a new [GetPartnerNamespaceResult].
   /// [endpoint] The endpoint for the Event Grid Partner Namespace.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [inboundIpRules] One or more `inbound_ip_rule` blocks as defined below.
+  /// [inboundIpRules] One or more `inboundIpRule` blocks as defined below.
   /// [localAuthenticationEnabled] Whether local authentication methods are enabled for the Event Grid Partner Namespace.
   /// [location] The Azure Region where the Event Grid Partner Namespace exists.
   /// [name] Required.
@@ -84,4 +84,3 @@ class GetPartnerNamespaceResult {
     );
   }
 }
-

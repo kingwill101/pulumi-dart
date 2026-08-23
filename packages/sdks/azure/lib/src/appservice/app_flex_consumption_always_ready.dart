@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppFlexConsumptionAlwaysReady {
-  /// The instance count of the `always_ready` of the Function App. The minimum number is `0`. The total number of `instance_count` should not exceed the `maximum_instance_count`.
+  /// The instance count of the `alwaysReady` of the Function App. The minimum number is `0`. The total number of `instanceCount` should not exceed the `maximumInstanceCount`.
   final pulumi.Input<int>? instanceCount;
-  /// The name of the `always_ready` of the Function App.
+  /// The name of the `alwaysReady` of the Function App.
   final pulumi.Input<String> name;
 
   /// Creates a new [AppFlexConsumptionAlwaysReady].
-  /// [instanceCount] The instance count of the `always_ready` of the Function App. The minimum number is `0`. The total number of `instance_count` should not exceed the `maximum_instance_count`.
-  /// [name] The name of the `always_ready` of the Function App.
+  /// [instanceCount] The instance count of the `alwaysReady` of the Function App. The minimum number is `0`. The total number of `instanceCount` should not exceed the `maximumInstanceCount`.
+  /// [name] The name of the `alwaysReady` of the Function App.
   const AppFlexConsumptionAlwaysReady({
     this.instanceCount,
     required this.name,
@@ -30,4 +30,3 @@ class AppFlexConsumptionAlwaysReady {
     );
   }
 }
-

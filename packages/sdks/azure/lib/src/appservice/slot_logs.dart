@@ -5,20 +5,20 @@ import 'slot_logs_application_logs.dart';
 import 'slot_logs_http_logs.dart';
 
 class SlotLogs {
-  /// An `application_logs` block as defined below.
+  /// An `applicationLogs` block as defined below.
   final pulumi.Input<SlotLogsApplicationLogs>? applicationLogs;
   /// Should `Detailed error messages` be enabled on this App Service slot? Defaults to `false`.
   final pulumi.Input<bool>? detailedErrorMessagesEnabled;
   /// Should `Failed request tracing` be enabled on this App Service slot? Defaults to `false`.
   final pulumi.Input<bool>? failedRequestTracingEnabled;
-  /// An `http_logs` block as defined below.
+  /// An `httpLogs` block as defined below.
   final pulumi.Input<SlotLogsHttpLogs>? httpLogs;
 
   /// Creates a new [SlotLogs].
-  /// [applicationLogs] An `application_logs` block as defined below.
+  /// [applicationLogs] An `applicationLogs` block as defined below.
   /// [detailedErrorMessagesEnabled] Should `Detailed error messages` be enabled on this App Service slot? Defaults to `false`.
   /// [failedRequestTracingEnabled] Should `Failed request tracing` be enabled on this App Service slot? Defaults to `false`.
-  /// [httpLogs] An `http_logs` block as defined below.
+  /// [httpLogs] An `httpLogs` block as defined below.
   const SlotLogs({
     this.applicationLogs,
     this.detailedErrorMessagesEnabled,
@@ -44,4 +44,3 @@ class SlotLogs {
     );
   }
 }
-

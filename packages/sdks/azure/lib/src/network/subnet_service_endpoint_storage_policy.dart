@@ -224,6 +224,44 @@ import 'subnet_service_endpoint_storage_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_subnetserviceendpointstoragepolicy" "example" {
+///   name                = "example-policy"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   definitions {
+///     name              = "name1"
+///     description       = "definition1"
+///     service           = "Microsoft.Storage"
+///     service_resources = [azure_core_resourcegroup.example.id, azure_storage_account.example.id]
+///   }
+///   definitions {
+///     name              = "name2"
+///     description       = "definition2"
+///     service           = "Global"
+///     service_resources = ["/services/Azure", "/services/Azure/Batch", "/services/Azure/Databricks", "/services/Azure/DataFactory", "/services/Azure/MachineLearning", "/services/Azure/ManagedInstance", "/services/Azure/WebPI"]
+///   }
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageacct"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -237,8 +275,8 @@ import 'subnet_service_endpoint_storage_policy_state.dart';
 /// import com.pulumi.azure.network.SubnetServiceEndpointStoragePolicy;
 /// import com.pulumi.azure.network.SubnetServiceEndpointStoragePolicyArgs;
 /// import com.pulumi.azure.network.inputs.SubnetServiceEndpointStoragePolicyDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

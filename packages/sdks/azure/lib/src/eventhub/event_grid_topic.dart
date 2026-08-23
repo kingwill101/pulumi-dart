@@ -104,6 +104,28 @@ import 'event_grid_topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_eventgrid_topic" "example" {
+///   name                = "my-eventgrid-topic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +136,8 @@ import 'event_grid_topic_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.eventgrid.Topic;
 /// import com.pulumi.azure.eventgrid.TopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -180,11 +202,11 @@ class EventGridTopic extends pulumi.CustomResource {
   late final pulumi.Output<String> endpoint;
   /// An `identity` block as defined below.
   late final pulumi.Output<EventGridTopicIdentity?> identity;
-  /// One or more `inbound_ip_rule` blocks as defined below.
+  /// One or more `inboundIpRule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
-  /// A `input_mapping_default_values` block as defined below. Changing this forces a new resource to be created.
+  /// A `inputMappingDefaultValues` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<EventGridTopicInputMappingDefaultValues?> inputMappingDefaultValues;
-  /// A `input_mapping_fields` block as defined below. Changing this forces a new resource to be created.
+  /// A `inputMappingFields` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<EventGridTopicInputMappingFields?> inputMappingFields;
   /// Specifies the schema in which incoming events will be published to this domain. Allowed values are `CloudEventSchemaV1_0`, `CustomEventSchema`, or `EventGridSchema`. Defaults to `EventGridSchema`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> inputSchema;

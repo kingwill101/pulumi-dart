@@ -11,7 +11,7 @@ import 'flux_configuration_kustomization.dart';
 /// {@endtemplate}
 /// {@macro pulumi_containerservice_flux_configuration_flux_configuration_args_doc}
 class FluxConfigurationArgs {
-  /// An `blob_storage` block as defined below.
+  /// An `blobStorage` block as defined below.
   final pulumi.Input<FluxConfigurationBlobStorage>? blobStorage;
   /// A `bucket` block as defined below.
   final pulumi.Input<FluxConfigurationBucket>? bucket;
@@ -19,7 +19,7 @@ class FluxConfigurationArgs {
   final pulumi.Input<String> clusterId;
   /// Whether the configuration will keep its reconciliation of its kustomizations and sources with the repository. Defaults to `true`.
   final pulumi.Input<bool>? continuousReconciliationEnabled;
-  /// A `git_repository` block as defined below.
+  /// A `gitRepository` block as defined below.
   final pulumi.Input<FluxConfigurationGitRepository>? gitRepository;
   /// A `kustomizations` block as defined below.
   final pulumi.Input<List<FluxConfigurationKustomization>> kustomizations;
@@ -31,11 +31,11 @@ class FluxConfigurationArgs {
   final pulumi.Input<String>? scope;
 
   /// Creates a new [FluxConfigurationArgs].
-  /// [blobStorage] An `blob_storage` block as defined below.
+  /// [blobStorage] An `blobStorage` block as defined below.
   /// [bucket] A `bucket` block as defined below.
   /// [clusterId] Specifies the Cluster ID. Changing this forces a new Kubernetes Cluster Extension to be created.
   /// [continuousReconciliationEnabled] Whether the configuration will keep its reconciliation of its kustomizations and sources with the repository. Defaults to `true`.
-  /// [gitRepository] A `git_repository` block as defined below.
+  /// [gitRepository] A `gitRepository` block as defined below.
   /// [kustomizations] A `kustomizations` block as defined below.
   /// [name] Specifies the name which should be used for this Kubernetes Flux Configuration. Changing this forces a new Kubernetes Flux Configuration to be created.
   /// [namespace] Specifies the namespace to which this configuration is installed to. Changing this forces a new Kubernetes Flux Configuration to be created.
@@ -80,4 +80,3 @@ class FluxConfigurationArgs {
     );
   }
 }
-

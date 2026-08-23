@@ -9,9 +9,9 @@ import 'catalog_catalog_github.dart';
 /// {@endtemplate}
 /// {@macro pulumi_devcenter_catalog_catalog_args_doc}
 class CatalogArgs {
-  /// A `catalog_adogit` block as defined below.
+  /// A `catalogAdogit` block as defined below.
   final pulumi.Input<CatalogCatalogAdogit>? catalogAdogit;
-  /// A `catalog_github` block as defined below.
+  /// A `catalogGithub` block as defined below.
   final pulumi.Input<CatalogCatalogGithub>? catalogGithub;
   /// Specifies the Dev Center Id within which this Dev Center Catalog should exist. Changing this forces a new Dev Center Catalog to be created.
   final pulumi.Input<String> devCenterId;
@@ -21,8 +21,8 @@ class CatalogArgs {
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [CatalogArgs].
-  /// [catalogAdogit] A `catalog_adogit` block as defined below.
-  /// [catalogGithub] A `catalog_github` block as defined below.
+  /// [catalogAdogit] A `catalogAdogit` block as defined below.
+  /// [catalogGithub] A `catalogGithub` block as defined below.
   /// [devCenterId] Specifies the Dev Center Id within which this Dev Center Catalog should exist. Changing this forces a new Dev Center Catalog to be created.
   /// [name] Specifies the name of this Dev Center Catalog. Changing this forces a new Dev Center to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group within which this Dev Center Catalog should exist. Changing this forces a new Dev Center to be created.
@@ -54,4 +54,3 @@ class CatalogArgs {
     );
   }
 }
-

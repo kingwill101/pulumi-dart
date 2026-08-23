@@ -281,6 +281,58 @@ import 'virtual_network_swift_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-virtual-network"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+///   delegations {
+///     name = "example-delegation"
+///     service_delegation = {
+///       name    = "Microsoft.Web/serverFarms"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
+///     }
+///   }
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "example-app-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     tier = "Standard"
+///     size = "S1"
+///   }
+/// }
+/// resource "azure_appservice_appservice" "example" {
+///   name                = "example-app-service"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   app_service_plan_id = azure_appservice_plan.example.id
+/// }
+/// resource "azure_appservice_virtualnetworkswiftconnection" "example" {
+///   app_service_id = azure_appservice_appservice.example.id
+///   subnet_id      = azure_network_subnet.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -302,8 +354,8 @@ import 'virtual_network_swift_connection_state.dart';
 /// import com.pulumi.azure.appservice.AppServiceArgs;
 /// import com.pulumi.azure.appservice.VirtualNetworkSwiftConnection;
 /// import com.pulumi.azure.appservice.VirtualNetworkSwiftConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -720,6 +772,67 @@ import 'virtual_network_swift_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-virtual-network"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+///   delegations {
+///     name = "example-delegation"
+///     service_delegation = {
+///       name    = "Microsoft.Web/serverFarms"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
+///     }
+///   }
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "example-app-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     tier = "Standard"
+///     size = "S1"
+///   }
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "functionsappexamplesa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_functionapp" "example" {
+///   name                       = "example-function-app"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   app_service_plan_id        = azure_appservice_plan.example.id
+///   storage_account_name       = azure_storage_account.example.name
+///   storage_account_access_key = azure_storage_account.example.primary_access_key
+/// }
+/// resource "azure_appservice_virtualnetworkswiftconnection" "example" {
+///   app_service_id = azure_appservice_functionapp.example.id
+///   subnet_id      = azure_network_subnet.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -743,8 +856,8 @@ import 'virtual_network_swift_connection_state.dart';
 /// import com.pulumi.azure.appservice.FunctionAppArgs;
 /// import com.pulumi.azure.appservice.VirtualNetworkSwiftConnection;
 /// import com.pulumi.azure.appservice.VirtualNetworkSwiftConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -886,6 +999,13 @@ import 'virtual_network_swift_connection_state.dart';
 /// ```
 ///
 ///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.Web` - 2023-12-01
+///
 /// ## Import
 ///
 /// App Service Virtual Network Associations can be imported using the `resource id`, e.g.
@@ -896,7 +1016,7 @@ import 'virtual_network_swift_connection_state.dart';
 class VirtualNetworkSwiftConnection extends pulumi.CustomResource {
   /// The ID of the App Service or Function App to associate to the VNet. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appServiceId;
-  /// The ID of the subnet the app service will be associated to (the subnet must have a `service_delegation` configured for `Microsoft.Web/serverFarms`).
+  /// The ID of the subnet the app service will be associated to (the subnet must have a `serviceDelegation` configured for `Microsoft.Web/serverFarms`).
   late final pulumi.Output<String> subnetId;
 
   /// Creates a new [VirtualNetworkSwiftConnection].

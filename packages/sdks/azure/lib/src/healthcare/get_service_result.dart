@@ -7,9 +7,9 @@ import 'get_service_cors_configuration.dart';
 /// Result data returned by getService.
 class GetServiceResult {
   final List<String> accessPolicyObjectIds;
-  /// An `authentication_configuration` block as defined below.
+  /// An `authenticationConfiguration` block as defined below.
   final List<GetServiceAuthenticationConfiguration> authenticationConfigurations;
-  /// A `cors_configuration` block as defined below.
+  /// A `corsConfiguration` block as defined below.
   final List<GetServiceCorsConfiguration> corsConfigurations;
   /// The versionless Key Vault Key ID for CMK encryption of the backing database.
   final String cosmosdbKeyVaultKeyVersionlessId;
@@ -28,8 +28,8 @@ class GetServiceResult {
 
   /// Creates a new [GetServiceResult].
   /// [accessPolicyObjectIds] Required.
-  /// [authenticationConfigurations] An `authentication_configuration` block as defined below.
-  /// [corsConfigurations] A `cors_configuration` block as defined below.
+  /// [authenticationConfigurations] An `authenticationConfiguration` block as defined below.
+  /// [corsConfigurations] A `corsConfiguration` block as defined below.
   /// [cosmosdbKeyVaultKeyVersionlessId] The versionless Key Vault Key ID for CMK encryption of the backing database.
   /// [cosmosdbThroughput] The provisioned throughput for the backing database.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -84,4 +84,3 @@ class GetServiceResult {
     );
   }
 }
-

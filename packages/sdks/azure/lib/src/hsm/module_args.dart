@@ -11,13 +11,13 @@ import 'module_network_profile.dart';
 class ModuleArgs {
   /// The Azure Region where the Dedicated Hardware Security Module should exist. Changing this forces a new Dedicated Hardware Security Module to be created.
   final pulumi.Input<String>? location;
-  /// A `management_network_profile` block as defined below.
+  /// A `managementNetworkProfile` block as defined below.
   ///
-  /// &gt; **Note:** The `management_network_profile` should not be specified when `sku_name` is `SafeNet Luna Network HSM A790`.
+  /// &gt; **Note:** The `managementNetworkProfile` should not be specified when `skuName` is `SafeNet Luna Network HSM A790`.
   final pulumi.Input<ModuleManagementNetworkProfile>? managementNetworkProfile;
   /// The name which should be used for this Dedicated Hardware Security Module. Changing this forces a new Dedicated Hardware Security Module to be created.
   final pulumi.Input<String>? name;
-  /// A `network_profile` block as defined below.
+  /// A `networkProfile` block as defined below.
   final pulumi.Input<ModuleNetworkProfile> networkProfile;
   /// The name of the Resource Group where the Dedicated Hardware Security Module should exist. Changing this forces a new Dedicated Hardware Security Module to be created.
   final pulumi.Input<String> resourceGroupName;
@@ -32,9 +32,9 @@ class ModuleArgs {
 
   /// Creates a new [ModuleArgs].
   /// [location] The Azure Region where the Dedicated Hardware Security Module should exist. Changing this forces a new Dedicated Hardware Security Module to be created.
-  /// [managementNetworkProfile] A `management_network_profile` block as defined below.
+  /// [managementNetworkProfile] A `managementNetworkProfile` block as defined below.
   /// [name] The name which should be used for this Dedicated Hardware Security Module. Changing this forces a new Dedicated Hardware Security Module to be created.
-  /// [networkProfile] A `network_profile` block as defined below.
+  /// [networkProfile] A `networkProfile` block as defined below.
   /// [resourceGroupName] The name of the Resource Group where the Dedicated Hardware Security Module should exist. Changing this forces a new Dedicated Hardware Security Module to be created.
   /// [skuName] The SKU name of the dedicated hardware security module. Possible values are `payShield10K_LMK1_CPS60`,`payShield10K_LMK1_CPS250`,`payShield10K_LMK1_CPS2500`,`payShield10K_LMK2_CPS60`,`payShield10K_LMK2_CPS250`,`payShield10K_LMK2_CPS2500` and `SafeNet Luna Network HSM A790`. Changing this forces a new Dedicated Hardware Security Module to be created.
   /// [stampId] The ID of the stamp. Possible values are `stamp1` or `stamp2`. Changing this forces a new Dedicated Hardware Security Module to be created.
@@ -80,4 +80,3 @@ class ModuleArgs {
     );
   }
 }
-

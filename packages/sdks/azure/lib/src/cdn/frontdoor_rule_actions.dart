@@ -8,23 +8,23 @@ import 'frontdoor_rule_actions_url_redirect_action.dart';
 import 'frontdoor_rule_actions_url_rewrite_action.dart';
 
 class FrontdoorRuleActions {
-  /// A `request_header_action` block as defined below.
+  /// A `requestHeaderAction` block as defined below.
   final pulumi.Input<List<FrontdoorRuleActionsRequestHeaderAction>>? requestHeaderActions;
-  /// A `response_header_action` block as defined below.
+  /// A `responseHeaderAction` block as defined below.
   final pulumi.Input<List<FrontdoorRuleActionsResponseHeaderAction>>? responseHeaderActions;
-  /// A `route_configuration_override_action` block as defined below.
+  /// A `routeConfigurationOverrideAction` block as defined below.
   final pulumi.Input<FrontdoorRuleActionsRouteConfigurationOverrideAction>? routeConfigurationOverrideAction;
-  /// A `url_redirect_action` block as defined below. You may **not** have a `url_redirect_action` **and** a `url_rewrite_action` defined in the same `actions` block.
+  /// A `urlRedirectAction` block as defined below. You may **not** have a `urlRedirectAction` **and** a `urlRewriteAction` defined in the same `actions` block.
   final pulumi.Input<FrontdoorRuleActionsUrlRedirectAction>? urlRedirectAction;
-  /// A `url_rewrite_action` block as defined below. You may **not** have a `url_rewrite_action` **and** a `url_redirect_action` defined in the same `actions` block.
+  /// A `urlRewriteAction` block as defined below. You may **not** have a `urlRewriteAction` **and** a `urlRedirectAction` defined in the same `actions` block.
   final pulumi.Input<FrontdoorRuleActionsUrlRewriteAction>? urlRewriteAction;
 
   /// Creates a new [FrontdoorRuleActions].
-  /// [requestHeaderActions] A `request_header_action` block as defined below.
-  /// [responseHeaderActions] A `response_header_action` block as defined below.
-  /// [routeConfigurationOverrideAction] A `route_configuration_override_action` block as defined below.
-  /// [urlRedirectAction] A `url_redirect_action` block as defined below. You may **not** have a `url_redirect_action` **and** a `url_rewrite_action` defined in the same `actions` block.
-  /// [urlRewriteAction] A `url_rewrite_action` block as defined below. You may **not** have a `url_rewrite_action` **and** a `url_redirect_action` defined in the same `actions` block.
+  /// [requestHeaderActions] A `requestHeaderAction` block as defined below.
+  /// [responseHeaderActions] A `responseHeaderAction` block as defined below.
+  /// [routeConfigurationOverrideAction] A `routeConfigurationOverrideAction` block as defined below.
+  /// [urlRedirectAction] A `urlRedirectAction` block as defined below. You may **not** have a `urlRedirectAction` **and** a `urlRewriteAction` defined in the same `actions` block.
+  /// [urlRewriteAction] A `urlRewriteAction` block as defined below. You may **not** have a `urlRewriteAction` **and** a `urlRedirectAction` defined in the same `actions` block.
   const FrontdoorRuleActions({
     this.requestHeaderActions,
     this.responseHeaderActions,
@@ -53,4 +53,3 @@ class FrontdoorRuleActions {
     );
   }
 }
-

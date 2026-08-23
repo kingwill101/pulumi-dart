@@ -22,6 +22,8 @@ import 'web_app_state.dart';
 ///     resourceGroupName: example.name,
 ///     sku: "F0",
 ///     microsoftAppId: current.then(current => current.clientId),
+///     microsoftAppType: "SingleTenant",
+///     microsoftAppTenantId: current.then(current => current.tenantId),
 /// });
 /// ```
 /// ```python
@@ -37,7 +39,9 @@ import 'web_app_state.dart';
 ///     location="global",
 ///     resource_group_name=example.name,
 ///     sku="F0",
-///     microsoft_app_id=current.client_id)
+///     microsoft_app_id=current.client_id,
+///     microsoft_app_type="SingleTenant",
+///     microsoft_app_tenant_id=current.tenant_id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -62,6 +66,8 @@ import 'web_app_state.dart';
 ///         ResourceGroupName = example.Name,
 ///         Sku = "F0",
 ///         MicrosoftAppId = current.Apply(getClientConfigResult => getClientConfigResult.ClientId),
+///         MicrosoftAppType = "SingleTenant",
+///         MicrosoftAppTenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///     });
 ///
 /// });
@@ -89,17 +95,45 @@ import 'web_app_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bot.NewWebApp(ctx, "example", &bot.WebAppArgs{
-/// 			Name:              pulumi.String("example"),
-/// 			Location:          pulumi.String("global"),
-/// 			ResourceGroupName: example.Name,
-/// 			Sku:               pulumi.String("F0"),
-/// 			MicrosoftAppId:    pulumi.String(current.ClientId),
+/// 			Name:                 pulumi.String("example"),
+/// 			Location:             pulumi.String("global"),
+/// 			ResourceGroupName:    example.Name,
+/// 			Sku:                  pulumi.String("F0"),
+/// 			MicrosoftAppId:       pulumi.String(current.ClientId),
+/// 			MicrosoftAppType:     pulumi.String("SingleTenant"),
+/// 			MicrosoftAppTenantId: pulumi.String(current.TenantId),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_bot_webapp" "example" {
+///   name                    = "example"
+///   location                = "global"
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   sku                     = "F0"
+///   microsoft_app_id        = data.azure_core_getclientconfig.current.client_id
+///   microsoft_app_type      = "SingleTenant"
+///   microsoft_app_tenant_id = data.azure_core_getclientconfig.current.tenant_id
 /// }
 /// ```
 /// ```java
@@ -113,8 +147,8 @@ import 'web_app_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.bot.WebApp;
 /// import com.pulumi.azure.bot.WebAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -139,6 +173,8 @@ import 'web_app_state.dart';
 ///             .resourceGroupName(example.name())
 ///             .sku("F0")
 ///             .microsoftAppId(current.clientId())
+///             .microsoftAppType("SingleTenant")
+///             .microsoftAppTenantId(current.tenantId())
 ///             .build());
 ///
 ///     }
@@ -160,6 +196,8 @@ import 'web_app_state.dart';
 ///       resourceGroupName: ${example.name}
 ///       sku: F0
 ///       microsoftAppId: ${current.clientId}
+///       microsoftAppType: SingleTenant
+///       microsoftAppTenantId: ${current.tenantId}
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -194,6 +232,14 @@ class WebApp extends pulumi.CustomResource {
   late final pulumi.Output<String?> luisKey;
   /// The Microsoft Application ID for the Web App Bot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> microsoftAppId;
+  /// The Microsoft Application Tenant ID for the Bot Channels Registration. Changing this forces a new resource to be created.
+  late final pulumi.Output<String?> microsoftAppTenantId;
+  /// The Microsoft Application Type for the Bot Channels Registration. Possible values are `MultiTenant`, `SingleTenant` and `UserAssignedMSI`. Defaults to `MultiTenant`. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** Creation of `azure.bot.WebApp` resources using the `MultiTenant` type is no longer supported by Azure, existing resources can continue using this type.
+  late final pulumi.Output<String> microsoftAppType;
+  /// The ID of Microsoft Application User Assigned Identity for the Bot Channels Registration. Changing this forces a new resource to be created.
+  late final pulumi.Output<String?> microsoftAppUserAssignedIdentityId;
   /// Specifies the name of the Web App Bot. Changing this forces a new resource to be created. Must be globally unique.
   late final pulumi.Output<String> name;
   /// The name of the resource group in which to create the Web App Bot. Changing this forces a new resource to be created.
@@ -226,6 +272,9 @@ class WebApp extends pulumi.CustomResource {
     luisAppIds = registerOutput<List<String>?>('luisAppIds');
     luisKey = registerOutput<String?>('luisKey');
     microsoftAppId = registerOutput<String>('microsoftAppId');
+    microsoftAppTenantId = registerOutput<String?>('microsoftAppTenantId');
+    microsoftAppType = registerOutput<String>('microsoftAppType');
+    microsoftAppUserAssignedIdentityId = registerOutput<String?>('microsoftAppUserAssignedIdentityId');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
@@ -264,6 +313,9 @@ class WebApp extends pulumi.CustomResource {
     luisAppIds = registerOutput<List<String>?>('luisAppIds');
     luisKey = registerOutput<String?>('luisKey');
     microsoftAppId = registerOutput<String>('microsoftAppId');
+    microsoftAppTenantId = registerOutput<String?>('microsoftAppTenantId');
+    microsoftAppType = registerOutput<String>('microsoftAppType');
+    microsoftAppUserAssignedIdentityId = registerOutput<String?>('microsoftAppUserAssignedIdentityId');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');

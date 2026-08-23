@@ -92,6 +92,28 @@ import 'group_user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getuser" "example" {
+///   user_id             = "my-user"
+///   api_management_name = "example-apim"
+///   resource_group_name = "search-service"
+/// }
+///
+/// resource "azure_apimanagement_groupuser" "example" {
+///   user_id             = data.azure_apimanagement_getuser.example.id
+///   group_name          = "example-group"
+///   resource_group_name = data.azure_apimanagement_getuser.example.resource_group_name
+///   api_management_name = data.azure_apimanagement_getuser.example.api_management_name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +124,8 @@ import 'group_user_state.dart';
 /// import com.pulumi.azure.apimanagement.inputs.GetUserArgs;
 /// import com.pulumi.azure.apimanagement.GroupUser;
 /// import com.pulumi.azure.apimanagement.GroupUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

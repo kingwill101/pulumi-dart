@@ -13,7 +13,7 @@ class FlexibleServerStorage {
   final pulumi.Input<bool>? logOnDiskEnabled;
   /// The max storage allowed for the MySQL Flexible Server. Possible values are between `20` and `16384`.
   ///
-  /// &gt; **Note:** Decreasing `size_gb` forces a new resource to be created.
+  /// &gt; **Note:** Decreasing `sizeGb` forces a new resource to be created.
   final pulumi.Input<int>? sizeGb;
 
   /// Creates a new [FlexibleServerStorage].
@@ -50,4 +50,3 @@ class FlexibleServerStorage {
     );
   }
 }
-

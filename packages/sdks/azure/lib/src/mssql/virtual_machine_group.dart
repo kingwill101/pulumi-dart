@@ -112,6 +112,31 @@ import 'virtual_machine_group_wsfc_domain_profile.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_mssql_virtualmachinegroup" "example" {
+///   name                = "examplegroup"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sql_image_offer     = "SQL2017-WS2016"
+///   sql_image_sku       = "Developer"
+///   wsfc_domain_profile = {
+///     fqdn                = "testdomain.com"
+///     cluster_subnet_type = "SingleSubnet"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +148,8 @@ import 'virtual_machine_group_wsfc_domain_profile.dart';
 /// import com.pulumi.azure.mssql.VirtualMachineGroup;
 /// import com.pulumi.azure.mssql.VirtualMachineGroupArgs;
 /// import com.pulumi.azure.mssql.inputs.VirtualMachineGroupWsfcDomainProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -205,7 +230,7 @@ class VirtualMachineGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> sqlImageSku;
   /// A mapping of tags which should be assigned to the Microsoft SQL Virtual Machine Group.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A `wsfc_domain_profile` block as defined below.
+  /// A `wsfcDomainProfile` block as defined below.
   late final pulumi.Output<VirtualMachineGroupWsfcDomainProfile> wsfcDomainProfile;
 
   /// Creates a new [VirtualMachineGroup].

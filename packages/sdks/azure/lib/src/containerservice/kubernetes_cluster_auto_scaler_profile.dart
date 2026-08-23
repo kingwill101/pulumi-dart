@@ -27,7 +27,7 @@ class KubernetesClusterAutoScalerProfile {
   final pulumi.Input<String>? newPodScaleUpDelay;
   /// How long after the scale up of AKS nodes the scale down evaluation resumes. Defaults to `10m`.
   final pulumi.Input<String>? scaleDownDelayAfterAdd;
-  /// How long after node deletion that scale down evaluation resumes. Defaults to the value used for `scan_interval`.
+  /// How long after node deletion that scale down evaluation resumes. Defaults to the value used for `scanInterval`.
   final pulumi.Input<String>? scaleDownDelayAfterDelete;
   /// How long after scale down failure that scale down evaluation resumes. Defaults to `3m`.
   final pulumi.Input<String>? scaleDownDelayAfterFailure;
@@ -40,7 +40,7 @@ class KubernetesClusterAutoScalerProfile {
   /// How often the AKS Cluster should be re-evaluated for scale up/down. Defaults to `10s`.
   final pulumi.Input<String>? scanInterval;
   /// If `true` cluster autoscaler will never delete nodes with pods with local storage, for example, EmptyDir or HostPath. Defaults to `false`.
-  /// &lt;!-- Note: Although Azure’s API default is `true`, Terraform sends the zero-value (`false`) whenever an `auto_scaler_profile` block is present but this field isn’t set. --&gt;
+  /// &lt;!-- Note: Although Azure’s API default is `true`, Terraform sends the zero-value (`false`) whenever an `autoScalerProfile` block is present but this field isn’t set. --&gt;
   final pulumi.Input<bool>? skipNodesWithLocalStorage;
   /// If `true` cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Defaults to `true`.
   final pulumi.Input<bool>? skipNodesWithSystemPods;
@@ -58,7 +58,7 @@ class KubernetesClusterAutoScalerProfile {
   /// [maxUnreadyPercentage] Maximum percentage of unready nodes the cluster autoscaler will stop if the percentage is exceeded. Defaults to `45`.
   /// [newPodScaleUpDelay] For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. Defaults to `10s`.
   /// [scaleDownDelayAfterAdd] How long after the scale up of AKS nodes the scale down evaluation resumes. Defaults to `10m`.
-  /// [scaleDownDelayAfterDelete] How long after node deletion that scale down evaluation resumes. Defaults to the value used for `scan_interval`.
+  /// [scaleDownDelayAfterDelete] How long after node deletion that scale down evaluation resumes. Defaults to the value used for `scanInterval`.
   /// [scaleDownDelayAfterFailure] How long after scale down failure that scale down evaluation resumes. Defaults to `3m`.
   /// [scaleDownUnneeded] How long a node should be unneeded before it is eligible for scale down. Defaults to `10m`.
   /// [scaleDownUnready] How long an unready node should be unneeded before it is eligible for scale down. Defaults to `20m`.
@@ -139,4 +139,3 @@ class KubernetesClusterAutoScalerProfile {
     );
   }
 }
-

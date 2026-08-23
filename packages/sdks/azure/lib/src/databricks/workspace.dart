@@ -105,6 +105,29 @@ import 'workspace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_databricks_workspace" "example" {
+///   name                = "databricks-test"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "standard"
+///   tags = {
+///     "Environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +138,8 @@ import 'workspace_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.databricks.Workspace;
 /// import com.pulumi.azure.databricks.WorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -182,7 +205,7 @@ import 'workspace_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Databricks` - 2024-05-01, 2022-10-01-preview
+/// * `Microsoft.Databricks` - 2026-01-01
 ///
 /// * `Microsoft.Network` - 2025-01-01, 2023-09-01
 ///
@@ -196,9 +219,9 @@ import 'workspace_state.dart';
 class Workspace extends pulumi.CustomResource {
   /// Access Connector ID to use when default storage account firewall is enabled.
   ///
-  /// &gt; **Note:** The `access_connector_id` field is only required if `default_storage_firewall_enabled` is set to `true`.
+  /// &gt; **Note:** The `accessConnectorId` field is only required if `defaultStorageFirewallEnabled` is set to `true`.
   late final pulumi.Output<String?> accessConnectorId;
-  /// A `custom_parameters` block as documented below.
+  /// A `customParameters` block as documented below.
   late final pulumi.Output<WorkspaceCustomParameters> customParameters;
   /// Is the workspace enabled for customer managed key encryption? If `true` this enables the Managed Identity for the managed storage account. Possible values are `true` or `false`. Defaults to `false`. This field is only valid if the Databricks Workspace `sku` is set to `premium`.
   late final pulumi.Output<bool?> customerManagedKeyEnabled;
@@ -206,7 +229,7 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<bool?> defaultStorageFirewallEnabled;
   /// The ID of Managed Disk Encryption Set created by the Databricks Workspace.
   late final pulumi.Output<String> diskEncryptionSetId;
-  /// An `enhanced_security_compliance` block as documented below. This feature is only valid if `sku` is set to `premium`.
+  /// An `enhancedSecurityCompliance` block as documented below. This feature is only valid if `sku` is set to `premium`.
   late final pulumi.Output<WorkspaceEnhancedSecurityCompliance?> enhancedSecurityCompliance;
   /// Is the Databricks File System root file system enabled with a secondary layer of encryption with platform managed keys? Possible values are `true` or `false`. Defaults to `false`. This field is only valid if the Databricks Workspace `sku` is set to `premium`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> infrastructureEncryptionEnabled;
@@ -214,9 +237,9 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String?> loadBalancerBackendAddressPoolId;
   /// Specifies the supported Azure location where the resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// Resource ID of the Key Vault which contains the `managed_disk_cmk_key_vault_key_id` key.
+  /// Resource ID of the Key Vault which contains the `managedDiskCmkKeyVaultKeyId` key.
   ///
-  /// &gt; **Note:** The `managed_disk_cmk_key_vault_id` field is only required if the Key Vault exists in a different subscription than the Databricks Workspace. If the `managed_disk_cmk_key_vault_id` field is not specified it is assumed that the `managed_disk_cmk_key_vault_key_id` is hosted in the same subscriptioin as the Databricks Workspace.
+  /// &gt; **Note:** The `managedDiskCmkKeyVaultId` field is only required if the Key Vault exists in a different subscription than the Databricks Workspace. If the `managedDiskCmkKeyVaultId` field is not specified it is assumed that the `managedDiskCmkKeyVaultKeyId` is hosted in the same subscriptioin as the Databricks Workspace.
   ///
   /// &gt; **Note:** If you are using multiple service principals to execute Terraform across subscriptions you will need to add an additional `azure.keyvault.AccessPolicy` resource granting the service principal access to the key vault in that subscription.
   late final pulumi.Output<String?> managedDiskCmkKeyVaultId;
@@ -224,17 +247,17 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String?> managedDiskCmkKeyVaultKeyId;
   /// Whether customer managed keys for disk encryption will automatically be rotated to the latest version.
   late final pulumi.Output<bool?> managedDiskCmkRotationToLatestVersionEnabled;
-  /// A `managed_disk_identity` block as documented below.
+  /// A `managedDiskIdentity` block as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> managedDiskIdentities;
   /// The ID of the Managed Resource Group created by the Databricks Workspace.
   late final pulumi.Output<String> managedResourceGroupId;
   /// The name of the resource group where Azure should place the managed Databricks resources. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Make sure that this field is unique if you have multiple Databrick Workspaces deployed in your subscription and choose to not have the `managed_resource_group_name` auto generated by the Azure Resource Provider. Having multiple Databrick Workspaces deployed in the same subscription with the same `manage_resource_group_name` may result in some resources that cannot be deleted.
+  /// &gt; **Note:** Make sure that this field is unique if you have multiple Databrick Workspaces deployed in your subscription and choose to not have the `managedResourceGroupName` auto generated by the Azure Resource Provider. Having multiple Databrick Workspaces deployed in the same subscription with the same `manageResourceGroupName` may result in some resources that cannot be deleted.
   late final pulumi.Output<String> managedResourceGroupName;
-  /// Resource ID of the Key Vault which contains the `managed_services_cmk_key_vault_key_id` key.
+  /// Resource ID of the Key Vault which contains the `managedServicesCmkKeyVaultKeyId` key.
   ///
-  /// &gt; **Note:** The `managed_services_cmk_key_vault_id` field is only required if the Key Vault exists in a different subscription than the Databricks Workspace. If the `managed_services_cmk_key_vault_id` field is not specified it is assumed that the `managed_services_cmk_key_vault_key_id` is hosted in the same subscriptioin as the Databricks Workspace.
+  /// &gt; **Note:** The `managedServicesCmkKeyVaultId` field is only required if the Key Vault exists in a different subscription than the Databricks Workspace. If the `managedServicesCmkKeyVaultId` field is not specified it is assumed that the `managedServicesCmkKeyVaultKeyId` is hosted in the same subscriptioin as the Databricks Workspace.
   ///
   /// &gt; **Note:** If you are using multiple service principals to execute Terraform across subscriptions you will need to add an additional `azure.keyvault.AccessPolicy` resource granting the service principal access to the key vault in that subscription.
   late final pulumi.Output<String?> managedServicesCmkKeyVaultId;
@@ -242,7 +265,7 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String?> managedServicesCmkKeyVaultKeyId;
   /// Specifies the name of the Databricks Workspace resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// Does the data plane (clusters) to control plane communication happen over private link endpoint only or publicly? Possible values `AllRules`, `NoAzureDatabricksRules` or `NoAzureServiceRules`. Required when `public_network_access_enabled` is set to `false`.
+  /// Does the data plane (clusters) to control plane communication happen over private link endpoint only or publicly? Possible values `AllRules`, `NoAzureDatabricksRules` or `NoAzureServiceRules`. Required when `publicNetworkAccessEnabled` is set to `false`.
   late final pulumi.Output<String?> networkSecurityGroupRulesRequired;
   /// Allow public access for accessing workspace. Set value to `false` to access workspace only via private link endpoint. Possible values include `true` or `false`. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
@@ -252,7 +275,7 @@ class Workspace extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Downgrading to a `trial sku` from a `standard` or `premium sku` will force a new resource to be created.
   late final pulumi.Output<String> sku;
-  /// A `storage_account_identity` block as documented below.
+  /// A `storageAccountIdentity` block as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> storageAccountIdentities;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;

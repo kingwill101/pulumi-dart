@@ -574,6 +574,150 @@ import 'portal_dashboard_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "mygroup"
+///   location = "West Europe"
+/// }
+/// resource "azure_portal_portaldashboard" "my-board" {
+///   name                = "my-cool-dashboard"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   tags = {
+///     "source" = "terraform"
+///   }
+///   dashboard_properties ="{
+///    \"lenses\": {
+///         \"0\": {
+///             \"order\": 0,
+///             \"parts\": {
+///                 \"0\": {
+///                     \"position\": {
+///                         \"x\": 0,
+///                         \"y\": 0,
+///                         \"rowSpan\": 2,
+///                         \"colSpan\": 3
+///                     },
+///                     \"metadata\": {
+///                         \"inputs\": [],
+///                         \"type\": \"Extension/HubsExtension/PartType/MarkdownPart\",
+///                         \"settings\": {
+///                             \"content\": {
+///                                 \"settings\": {
+///                                     \"content\": \"${var.mdContent}\",
+///                                     \"subtitle\": \"\",
+///                                     \"title\": \"\"
+///                                 }
+///                             }
+///                         }
+///                     }
+///                 },
+///                 \"1\": {
+///                     \"position\": {
+///                         \"x\": 5,
+///                         \"y\": 0,
+///                         \"rowSpan\": 4,
+///                         \"colSpan\": 6
+///                     },
+///                     \"metadata\": {
+///                         \"inputs\": [],
+///                         \"type\": \"Extension/HubsExtension/PartType/VideoPart\",
+///                         \"settings\": {
+///                             \"content\": {
+///                                 \"settings\": {
+///                                     \"title\": \"Important Information\",
+///                                     \"subtitle\": \"\",
+///                                     \"src\": \"${var.videoLink}\",
+///                                     \"autoplay\": true
+///                                 }
+///                             }
+///                         }
+///                     }
+///                 },
+///                 \"2\": {
+///                     \"position\": {
+///                         \"x\": 0,
+///                         \"y\": 4,
+///                         \"rowSpan\": 4,
+///                         \"colSpan\": 6
+///                     },
+///                     \"metadata\": {
+///                         \"inputs\": [
+///                             {
+///                                 \"name\": \"ComponentId\",
+///                                 \"value\": \"/subscriptions/${data.azure_core_getsubscription.current.subscription_id}/resourceGroups/myRG/providers/microsoft.insights/components/myWebApp\"
+///                             }
+///                         ],
+///                         \"type\": \"Extension/AppInsightsExtension/PartType/AppMapGalPt\",
+///                         \"settings\": {},
+///                         \"asset\": {
+///                             \"idInputName\": \"ComponentId\",
+///                             \"type\": \"ApplicationInsights\"
+///                         }
+///                     }
+///                 }
+///             }
+///         }
+///     },
+///     \"metadata\": {
+///         \"model\": {
+///             \"timeRange\": {
+///                 \"value\": {
+///                     \"relative\": {
+///                         \"duration\": 24,
+///                         \"timeUnit\": 1
+///                     }
+///                 },
+///                 \"type\": \"MsPortalFx.Composition.Configuration.ValueTypes.TimeRange\"
+///             },
+///             \"filterLocale\": {
+///                 \"value\": \"en-us\"
+///             },
+///             \"filters\": {
+///                 \"value\": {
+///                     \"MsPortalFx_TimeRange\": {
+///                         \"model\": {
+///                             \"format\": \"utc\",
+///                             \"granularity\": \"auto\",
+///                             \"relative\": \"24h\"
+///                         },
+///                         \"displayCache\": {
+///                             \"name\": \"UTC Time\",
+///                             \"value\": \"Past 24 hours\"
+///                         },
+///                         \"filteredPartIds\": [
+///                             \"StartboardPart-UnboundPart-ae44fef5-76b8-46b0-86f0-2b3f47bad1c7\"
+///                         ]
+///                     }
+///                 }
+///             }
+///         }
+///     }
+/// }
+/// "
+/// }
+/// variable "mdContent" {
+///   type        = string
+///   default     = "# Hello all :)"
+///   description = "Content for the MD tile"
+/// }
+/// variable "videoLink" {
+///   type        = string
+///   default     = "https://www.youtube.com/watch?v=......"
+///   description = "Link to a video"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -586,8 +730,8 @@ import 'portal_dashboard_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.portal.PortalDashboard;
 /// import com.pulumi.azure.portal.PortalDashboardArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -764,7 +908,7 @@ import 'portal_dashboard_state.dart';
 /// It is recommended to follow the steps outlined
 /// [here](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards-create-programmatically#fetch-the-json-representation-of-the-dashboard) to create a Dashboard in the Portal and extract the relevant JSON to use in this resource. From the extracted JSON, the contents of the `properties: {}` object can used. Variables can be injected as needed - see above example.
 ///
-/// ### Using a `template_file` data source or the `templatefile` function
+/// ### Using a `templateFile` data source or the `templatefile` function
 ///
 /// Since the contents of the dashboard JSON can be quite lengthy, use a template file to improve readability:
 ///
@@ -801,7 +945,7 @@ import 'portal_dashboard_state.dart';
 ///                  ...
 /// ```
 ///
-/// This is then referenced in the `.tf` file by using a `template_file` data source (terraform 0.11 or earlier), or the `templatefile` function (terraform 0.12+).
+/// This is then referenced in the `.tf` file by using a `templateFile` data source (terraform 0.11 or earlier), or the `templatefile` function (terraform 0.12+).
 ///
 /// `main.tf` (terraform 0.11 or earlier):
 ///
@@ -836,7 +980,7 @@ import 'portal_dashboard_state.dart';
 ///
 /// dash_template = not_implemented("The template_file data resource is not yet supported.")
 /// #...
-/// my_board = azurerm.index.Dashboard("my-board",
+/// my_board = azurerm.Dashboard("my-board",
 ///     name=my-cool-dashboard,
 ///     resource_group_name=example.name,
 ///     location=example.location,
@@ -862,7 +1006,7 @@ import 'portal_dashboard_state.dart';
 ///     var dash_template = NotImplemented("The template_file data resource is not yet supported.");
 ///
 ///     //...
-///     var my_board = new Azurerm.Index.Dashboard("my-board", new()
+///     var my_board = new Azurerm.Dashboard("my-board", new()
 ///     {
 ///         Name = "my-cool-dashboard",
 ///         ResourceGroupName = example.Name,
@@ -899,13 +1043,28 @@ import 'portal_dashboard_state.dart';
 /// 			Tags: map[string]interface{}{
 /// 				"source": "terraform",
 /// 			},
-/// 			DashboardProperties: dash_template.Rendered,
+/// 			DashboardProperties: dash_template.(map[string]interface{})["rendered"],
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// #...
+/// resource "azurerm_dashboard" "my-board" {
+///   name                = "my-cool-dashboard"
+///   resource_group_name = example.name
+///   location            = example.location
+///   tags = {
+///     "source" = "terraform"
+///   }
+///   dashboard_properties = local.dash-template.rendered
+/// }
+/// locals {
+///   dash-template = notImplemented("The template_file data resource is not yet supported.")
 /// }
 /// ```
 ///

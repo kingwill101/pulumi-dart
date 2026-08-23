@@ -66,6 +66,21 @@ import 'get_policy_vmresult.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_backup_getpolicyfileshare" "policy" {
+///   name                = "policy"
+///   recovery_vault_name = "recovery_vault"
+///   resource_group_name = "resource_group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +89,8 @@ import 'get_policy_vmresult.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.backup.BackupFunctions;
 /// import com.pulumi.azure.backup.inputs.GetPolicyFileshareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -183,6 +198,21 @@ Future<GetPolicyFileshareResult> getPolicyFileshare(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_backup_getpolicyvm" "policy" {
+///   name                = "policy"
+///   recovery_vault_name = "recovery_vault"
+///   resource_group_name = "resource_group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -191,8 +221,8 @@ Future<GetPolicyFileshareResult> getPolicyFileshare(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.backup.BackupFunctions;
 /// import com.pulumi.azure.backup.inputs.GetPolicyVMArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

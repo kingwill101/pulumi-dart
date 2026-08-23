@@ -17,7 +17,7 @@ class ResourceDeploymentScriptPowerShellArgs {
   final pulumi.Input<String>? commandLine;
   /// A `container` block as defined below. Changing this forces a new Resource Deployment Script to be created.
   final pulumi.Input<ResourceDeploymentScriptPowerShellContainer>? container;
-  /// An `environment_variable` block as defined below. Changing this forces a new Resource Deployment Script to be created.
+  /// An `environmentVariable` block as defined below. Changing this forces a new Resource Deployment Script to be created.
   final pulumi.Input<List<ResourceDeploymentScriptPowerShellEnvironmentVariable>>? environmentVariables;
   /// Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID. Changing this forces a new Resource Deployment Script to be created.
   final pulumi.Input<String>? forceUpdateTag;
@@ -35,7 +35,7 @@ class ResourceDeploymentScriptPowerShellArgs {
   final pulumi.Input<String> retentionInterval;
   /// Script body. Changing this forces a new Resource Deployment Script to be created.
   final pulumi.Input<String>? scriptContent;
-  /// A `storage_account` block as defined below. Changing this forces a new Resource Deployment Script to be created.
+  /// A `storageAccount` block as defined below. Changing this forces a new Resource Deployment Script to be created.
   final pulumi.Input<ResourceDeploymentScriptPowerShellStorageAccount>? storageAccount;
   /// Supporting files for the external script. Changing this forces a new Resource Deployment Script to be created.
   final pulumi.Input<List<String>>? supportingScriptUris;
@@ -50,7 +50,7 @@ class ResourceDeploymentScriptPowerShellArgs {
   /// [cleanupPreference] Specifies the cleanup preference when the script execution gets in a terminal state. Possible values are `Always`, `OnExpiration`, `OnSuccess`. Defaults to `Always`. Changing this forces a new Resource Deployment Script to be created.
   /// [commandLine] Command line arguments to pass to the script. Changing this forces a new Resource Deployment Script to be created.
   /// [container] A `container` block as defined below. Changing this forces a new Resource Deployment Script to be created.
-  /// [environmentVariables] An `environment_variable` block as defined below. Changing this forces a new Resource Deployment Script to be created.
+  /// [environmentVariables] An `environmentVariable` block as defined below. Changing this forces a new Resource Deployment Script to be created.
   /// [forceUpdateTag] Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID. Changing this forces a new Resource Deployment Script to be created.
   /// [identity] An `identity` block as defined below. Changing this forces a new Resource Deployment Script to be created.
   /// [location] Specifies the Azure Region where the Resource Deployment Script should exist. Changing this forces a new Resource Deployment Script to be created.
@@ -59,7 +59,7 @@ class ResourceDeploymentScriptPowerShellArgs {
   /// [resourceGroupName] Specifies the name of the Resource Group where the Resource Deployment Script should exist. Changing this forces a new Resource Deployment Script to be created.
   /// [retentionInterval] Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. The time duration should be between `1` hour and `26` hours (inclusive) and should be specified in ISO 8601 format. Changing this forces a new Resource Deployment Script to be created.
   /// [scriptContent] Script body. Changing this forces a new Resource Deployment Script to be created.
-  /// [storageAccount] A `storage_account` block as defined below. Changing this forces a new Resource Deployment Script to be created.
+  /// [storageAccount] A `storageAccount` block as defined below. Changing this forces a new Resource Deployment Script to be created.
   /// [supportingScriptUris] Supporting files for the external script. Changing this forces a new Resource Deployment Script to be created.
   /// [tags] A mapping of tags which should be assigned to the Resource Deployment Script.
   /// [timeout] Maximum allowed script execution time specified in ISO 8601 format. Needs to be greater than 0 and smaller than 1 day. Defaults to `P1D`. Changing this forces a new Resource Deployment Script to be created.
@@ -128,4 +128,3 @@ class ResourceDeploymentScriptPowerShellArgs {
     );
   }
 }
-

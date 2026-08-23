@@ -7,7 +7,7 @@ class VirtualMachineAssessmentSchedule {
   final pulumi.Input<String> dayOfWeek;
   /// How many months between assessment runs. Valid values are between `1` and `5`.
   ///
-  /// &gt; **Note:** Either one of `weekly_interval` or `monthly_occurrence` must be specified.
+  /// &gt; **Note:** Either one of `weeklyInterval` or `monthlyOccurrence` must be specified.
   final pulumi.Input<int>? monthlyOccurrence;
   /// What time the assessment will be run. Must be in the format `HH:mm`.
   final pulumi.Input<String> startTime;
@@ -44,4 +44,3 @@ class VirtualMachineAssessmentSchedule {
     );
   }
 }
-

@@ -145,6 +145,37 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_streamanalytics_job" "example" {
+///   name                                     = "example-job"
+///   resource_group_name                      = azure_core_resourcegroup.example.name
+///   location                                 = azure_core_resourcegroup.example.location
+///   compatibility_level                      = "1.2"
+///   data_locale                              = "en-GB"
+///   events_late_arrival_max_delay_in_seconds = 60
+///   events_out_of_order_max_delay_in_seconds = 50
+///   events_out_of_order_policy               = "Adjust"
+///   output_error_policy                      = "Drop"
+///   streaming_units                          = 3
+///   sku_name                                 = "StandardV2"
+///   tags = {
+///     "environment" = "Example"
+///   }
+///   transformation_query = "    SELECT *\n    INTO [YourOutputAlias]\n    FROM [YourInputAlias]\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -155,8 +186,8 @@ import 'job_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.streamanalytics.Job;
 /// import com.pulumi.azure.streamanalytics.JobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,9 +291,9 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<JobIdentity?> identity;
   /// The Job ID assigned by the Stream Analytics Job.
   late final pulumi.Output<String> jobId;
-  /// The details of the job storage account. A `job_storage_account` block as defined below.
+  /// The details of the job storage account. A `jobStorageAccount` block as defined below.
   ///
-  /// &gt; **Note:** `content_storage_policy` must be set to `JobStorageAccount` when specifying `job_storage_account`.
+  /// &gt; **Note:** `contentStoragePolicy` must be set to `JobStorageAccount` when specifying `jobStorageAccount`.
   late final pulumi.Output<List<Map<String, dynamic>>?> jobStorageAccounts;
   /// The Azure Region in which the Resource Group exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
@@ -278,13 +309,13 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<String?> streamAnalyticsClusterId;
   /// Specifies the number of streaming units that the streaming job uses. Supported values are `1`, `3`, `6` and multiples of `6` up to `120`. A conversion table for V2 streaming units can be found [here](https://learn.microsoft.com/azure/stream-analytics/stream-analytics-streaming-unit-consumption#understand-streaming-unit-conversions-and-where-they-apply)
   ///
-  /// &gt; **Note:** `streaming_units` must be set when `type` is `Cloud`.
+  /// &gt; **Note:** `streamingUnits` must be set when `type` is `Cloud`.
   late final pulumi.Output<int?> streamingUnits;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<String> transformationQuery;
   /// The type of the Stream Analytics Job. Possible values are `Cloud` and `Edge`. Defaults to `Cloud`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `Edge` doesn't support `stream_analytics_cluster_id` and `streaming_units`.
+  /// &gt; **Note:** `Edge` doesn't support `streamAnalyticsClusterId` and `streamingUnits`.
   late final pulumi.Output<String?> type;
 
   /// Creates a new [Job].

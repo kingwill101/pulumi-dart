@@ -28,8 +28,7 @@ import 'endpoint_event_hub_state.dart';
 /// });
 /// const exampleEventHub = new azure.eventhub.EventHub("example", {
 ///     name: "example-eh",
-///     namespaceName: exampleEventHubNamespace.name,
-///     resourceGroupName: example.name,
+///     namespaceId: exampleEventHubNamespace.id,
 ///     partitionCount: 2,
 ///     messageRetention: 1,
 /// });
@@ -67,8 +66,7 @@ import 'endpoint_event_hub_state.dart';
 ///     sku="Standard")
 /// example_event_hub = azure.eventhub.EventHub("example",
 ///     name="example-eh",
-///     namespace_name=example_event_hub_namespace.name,
-///     resource_group_name=example.name,
+///     namespace_id=example_event_hub_namespace.id,
 ///     partition_count=2,
 ///     message_retention=1)
 /// example_authorization_rule = azure.eventhub.AuthorizationRule("example",
@@ -117,8 +115,7 @@ import 'endpoint_event_hub_state.dart';
 ///     var exampleEventHub = new Azure.EventHub.EventHub("example", new()
 ///     {
 ///         Name = "example-eh",
-///         NamespaceName = exampleEventHubNamespace.Name,
-///         ResourceGroupName = example.Name,
+///         NamespaceId = exampleEventHubNamespace.Id,
 ///         PartitionCount = 2,
 ///         MessageRetention = 1,
 ///     });
@@ -181,11 +178,10 @@ import 'endpoint_event_hub_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
-/// 			Name:              pulumi.String("example-eh"),
-/// 			NamespaceName:     exampleEventHubNamespace.Name,
-/// 			ResourceGroupName: example.Name,
-/// 			PartitionCount:    pulumi.Int(2),
-/// 			MessageRetention:  pulumi.Int(1),
+/// 			Name:             pulumi.String("example-eh"),
+/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			PartitionCount:   pulumi.Int(2),
+/// 			MessageRetention: pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -215,6 +211,52 @@ import 'endpoint_event_hub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example_resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_digitaltwins_instance" "example" {
+///   name                = "example-DT"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "example" {
+///   name                = "example-eh-ns"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_eventhub_eventhub" "example" {
+///   name              = "example-eh"
+///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   partition_count   = 2
+///   message_retention = 1
+/// }
+/// resource "azure_eventhub_authorizationrule" "example" {
+///   name                = "example-ar"
+///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
+///   eventhub_name       = azure_eventhub_eventhub.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   listen              = false
+///   send                = true
+///   manage              = false
+/// }
+/// resource "azure_digitaltwins_endpointeventhub" "example" {
+///   name                                 = "example-EH"
+///   digital_twins_id                     = azure_digitaltwins_instance.example.id
+///   eventhub_primary_connection_string   = azure_eventhub_authorizationrule.example.primary_connection_string
+///   eventhub_secondary_connection_string = azure_eventhub_authorizationrule.example.secondary_connection_string
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -233,8 +275,8 @@ import 'endpoint_event_hub_state.dart';
 /// import com.pulumi.azure.eventhub.AuthorizationRuleArgs;
 /// import com.pulumi.azure.digitaltwins.EndpointEventHub;
 /// import com.pulumi.azure.digitaltwins.EndpointEventHubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -266,8 +308,7 @@ import 'endpoint_event_hub_state.dart';
 ///
 ///         var exampleEventHub = new EventHub("exampleEventHub", EventHubArgs.builder()
 ///             .name("example-eh")
-///             .namespaceName(exampleEventHubNamespace.name())
-///             .resourceGroupName(example.name())
+///             .namespaceId(exampleEventHubNamespace.id())
 ///             .partitionCount(2)
 ///             .messageRetention(1)
 ///             .build());
@@ -319,8 +360,7 @@ import 'endpoint_event_hub_state.dart';
 ///     name: example
 ///     properties:
 ///       name: example-eh
-///       namespaceName: ${exampleEventHubNamespace.name}
-///       resourceGroupName: ${example.name}
+///       namespaceId: ${exampleEventHubNamespace.id}
 ///       partitionCount: 2
 ///       messageRetention: 1
 ///   exampleAuthorizationRule:

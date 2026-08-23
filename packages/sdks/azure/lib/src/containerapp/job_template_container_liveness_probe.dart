@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_template_container_liveness_probe_header.dart';
 
 class JobTemplateContainerLivenessProbe {
-  /// The number of consecutive failures required to consider this probe as failed. Possible values are between `1` and `10`. Defaults to `3`.
+  /// The number of consecutive failures required to consider this probe as failed. Possible values are between `1` and `30`. Defaults to `3`.
   final pulumi.Input<int>? failureCountThreshold;
   /// A `header` block as detailed below.
   final pulumi.Input<List<JobTemplateContainerLivenessProbeHeader>>? headers;
@@ -26,7 +26,7 @@ class JobTemplateContainerLivenessProbe {
   final pulumi.Input<String> transport;
 
   /// Creates a new [JobTemplateContainerLivenessProbe].
-  /// [failureCountThreshold] The number of consecutive failures required to consider this probe as failed. Possible values are between `1` and `10`. Defaults to `3`.
+  /// [failureCountThreshold] The number of consecutive failures required to consider this probe as failed. Possible values are between `1` and `30`. Defaults to `3`.
   /// [headers] A `header` block as detailed below.
   /// [host] The probe hostname. Defaults to the pod IP address. Setting a value for `Host` in `headers` can be used to override this for `HTTP` and `HTTPS` type probes.
   /// [initialDelay] The time in seconds to wait after the container has started before the probe is started.
@@ -79,4 +79,3 @@ class JobTemplateContainerLivenessProbe {
     );
   }
 }
-

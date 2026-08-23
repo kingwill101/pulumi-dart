@@ -77,6 +77,22 @@ import 'get_user_assigned_identity_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// output "accountId" {
+///   value = data.azure_core_getclientconfig.current.client_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +100,8 @@ import 'get_user_assigned_identity_result.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.core.CoreFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -180,6 +196,19 @@ Future<GetClientConfigResult> getClientConfig(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getextendedlocations" "example" {
+///   location = "West Europe"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -188,8 +217,8 @@ Future<GetClientConfigResult> getClientConfig(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.core.CoreFunctions;
 /// import com.pulumi.azure.core.inputs.GetExtendedLocationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -285,6 +314,19 @@ Future<GetExtendedLocationsResult> getExtendedLocations(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getlocation" "example" {
+///   location = "West Europe"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -293,8 +335,8 @@ Future<GetExtendedLocationsResult> getExtendedLocations(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.core.CoreFunctions;
 /// import com.pulumi.azure.core.inputs.GetLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -397,6 +439,23 @@ Future<GetLocationResult> getLocation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getresourcegroup" "example" {
+///   name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_core_getresourcegroup.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -405,8 +464,8 @@ Future<GetLocationResult> getLocation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.core.CoreFunctions;
 /// import com.pulumi.azure.core.inputs.GetResourceGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -531,6 +590,30 @@ Future<GetResourceGroupResult> getResourceGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getresourcegrouptemplatedeployment" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_core_getresourcegrouptemplatedeployment.example.id
+/// }
+/// output "exampleOutput" {
+///   value = jsondecode(data.azure_core_getresourcegrouptemplatedeployment.example.output_content).example_output.value
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -541,8 +624,8 @@ Future<GetResourceGroupResult> getResourceGroup(
 /// import com.pulumi.azure.core.inputs.GetResourceGroupTemplateDeploymentArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JsondecodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -668,6 +751,22 @@ Future<GetResourcesResult> getResources(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// output "currentSubscriptionDisplayName" {
+///   value = data.azure_core_getsubscription.current.display_name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -676,8 +775,8 @@ Future<GetResourcesResult> getResources(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.core.CoreFunctions;
 /// import com.pulumi.azure.core.inputs.GetSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -796,6 +895,29 @@ Future<GetSubscriptionResult> getSubscription(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscriptiontemplatedeployment" "example" {
+///   name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_core_getsubscriptiontemplatedeployment.example.id
+/// }
+/// output "exampleOutput" {
+///   value = jsondecode(data.azure_core_getsubscriptiontemplatedeployment.example.output_content).example_output.value
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -806,8 +928,8 @@ Future<GetSubscriptionResult> getSubscription(
 /// import com.pulumi.azure.core.inputs.GetSubscriptionTemplateDeploymentArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JsondecodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -919,6 +1041,25 @@ Future<GetSubscriptionTemplateDeploymentResult> getSubscriptionTemplateDeploymen
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscriptions" "available" {
+/// }
+///
+/// output "availableSubscriptions" {
+///   value = data.azure_core_getsubscriptions.available.subscriptions
+/// }
+/// output "firstAvailableSubscriptionDisplayName" {
+///   value = data.azure_core_getsubscriptions.available.subscriptions[0].display_name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -927,8 +1068,8 @@ Future<GetSubscriptionTemplateDeploymentResult> getSubscriptionTemplateDeploymen
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.core.CoreFunctions;
 /// import com.pulumi.azure.core.inputs.GetSubscriptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1042,6 +1183,25 @@ Future<GetSubscriptionsResult> getSubscriptions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_gettemplatespecversion" "example" {
+///   name                = "exampleTemplateSpec"
+///   resource_group_name = "MyResourceGroup"
+///   version             = "v1.0.4"
+/// }
+///
+/// output "id" {
+///   value = data.azure_core_gettemplatespecversion.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1050,8 +1210,8 @@ Future<GetSubscriptionsResult> getSubscriptions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.core.CoreFunctions;
 /// import com.pulumi.azure.core.inputs.GetTemplateSpecVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1184,6 +1344,29 @@ Future<GetTemplateSpecVersionResult> getTemplateSpecVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_gettenanttemplatedeployment" "example" {
+///   name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_core_gettenanttemplatedeployment.example.id
+/// }
+/// output "exampleOutput" {
+///   value = jsondecode(data.azure_core_gettenanttemplatedeployment.example.output_content).example_output.value
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1194,8 +1377,8 @@ Future<GetTemplateSpecVersionResult> getTemplateSpecVersion(
 /// import com.pulumi.azure.core.inputs.GetTenantTemplateDeploymentArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JsondecodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1324,6 +1507,30 @@ Future<GetTenantTemplateDeploymentResult> getTenantTemplateDeployment(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_authorization_getuserassignedidentity" "example" {
+///   name                = "name_of_user_assigned_identity"
+///   resource_group_name = "name_of_resource_group"
+/// }
+///
+/// output "uaiClientId" {
+///   value = data.azure_authorization_getuserassignedidentity.example.client_id
+/// }
+/// output "uaiPrincipalId" {
+///   value = data.azure_authorization_getuserassignedidentity.example.principal_id
+/// }
+/// output "uaiTenantId" {
+///   value = data.azure_authorization_getuserassignedidentity.example.tenant_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1332,8 +1539,8 @@ Future<GetTenantTemplateDeploymentResult> getTenantTemplateDeployment(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.authorization.AuthorizationFunctions;
 /// import com.pulumi.azure.authorization.inputs.GetUserAssignedIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

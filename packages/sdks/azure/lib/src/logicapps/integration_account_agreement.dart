@@ -273,6 +273,64 @@ import 'integration_account_agreement_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_logicapps_integrationaccount" "test" {
+///   name                = "example-ia"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Standard"
+/// }
+/// resource "azure_logicapps_integrationaccountpartner" "host" {
+///   name                     = "example-hostpartner"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   integration_account_name = azure_logicapps_integrationaccount.test.name
+///   business_identities {
+///     qualifier = "AS2Identity"
+///     value     = "FabrikamNY"
+///   }
+/// }
+/// resource "azure_logicapps_integrationaccountpartner" "guest" {
+///   name                     = "example-guestpartner"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   integration_account_name = azure_logicapps_integrationaccount.test.name
+///   business_identities {
+///     qualifier = "AS2Identity"
+///     value     = "FabrikamDC"
+///   }
+/// }
+/// resource "azure_logicapps_integrationaccountagreement" "test" {
+///   name                     = "example-agreement"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   integration_account_name = azure_logicapps_integrationaccount.test.name
+///   agreement_type           = "AS2"
+///   host_partner_name        = azure_logicapps_integrationaccountpartner.host.name
+///   guest_partner_name       = azure_logicapps_integrationaccountpartner.guest.name
+///   content                  = file("testdata/integration_account_agreement_content_as2.json")
+///   host_identity = {
+///     qualifier = "AS2Identity"
+///     value     = "FabrikamNY"
+///   }
+///   guest_identity = {
+///     qualifier = "AS2Identity"
+///     value     = "FabrikamDC"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -292,8 +350,8 @@ import 'integration_account_agreement_state.dart';
 /// import com.pulumi.azure.logicapps.inputs.IntegrationAccountAgreementGuestIdentityArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -436,11 +494,11 @@ class IntegrationAccountAgreement extends pulumi.CustomResource {
   late final pulumi.Output<String> agreementType;
   /// The content of the Logic App Integration Account Agreement.
   late final pulumi.Output<String> content;
-  /// A `guest_identity` block as documented below.
+  /// A `guestIdentity` block as documented below.
   late final pulumi.Output<IntegrationAccountAgreementGuestIdentity> guestIdentity;
   /// The name of the guest Logic App Integration Account Partner.
   late final pulumi.Output<String> guestPartnerName;
-  /// A `host_identity` block as documented below.
+  /// A `hostIdentity` block as documented below.
   late final pulumi.Output<IntegrationAccountAgreementHostIdentity> hostIdentity;
   /// The name of the host Logic App Integration Account Partner.
   late final pulumi.Output<String> hostPartnerName;

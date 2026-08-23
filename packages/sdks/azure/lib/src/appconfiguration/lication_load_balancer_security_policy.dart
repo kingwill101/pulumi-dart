@@ -187,6 +187,46 @@ import 'lication_load_balancer_security_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_appconfiguration_licationloadbalancer" "example" {
+///   name                = "example-alb"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_waf_policy" "example" {
+///   name                = "example-wafpolicy"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   managed_rules = {
+///     managed_rule_sets = [{
+///       "type"    = "Microsoft_DefaultRuleSet"
+///       "version" = "2.1"
+///     }]
+///   }
+///   policy_settings = {
+///     enabled = true
+///     mode    = "Detection"
+///   }
+/// }
+/// resource "azure_appconfiguration_licationloadbalancersecuritypolicy" "example" {
+///   name                               = "example-albsp"
+///   application_load_balancer_id       = azure_appconfiguration_licationloadbalancer.example.id
+///   location                           = azure_core_resourcegroup.example.location
+///   web_application_firewall_policy_id = azure_waf_policy.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,11 +240,12 @@ import 'lication_load_balancer_security_policy_state.dart';
 /// import com.pulumi.azure.waf.Policy;
 /// import com.pulumi.azure.waf.PolicyArgs;
 /// import com.pulumi.azure.waf.inputs.PolicyManagedRulesArgs;
+/// import com.pulumi.azure.waf.inputs.PolicyManagedRulesManagedRuleSetArgs;
 /// import com.pulumi.azure.waf.inputs.PolicyPolicySettingsArgs;
 /// import com.pulumi.azure.appconfiguration.LicationLoadBalancerSecurityPolicy;
 /// import com.pulumi.azure.appconfiguration.LicationLoadBalancerSecurityPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

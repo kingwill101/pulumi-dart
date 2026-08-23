@@ -134,6 +134,36 @@ import 'capacity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_fabric_capacity" "example" {
+///   name                   = "exampleffc"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = "West Europe"
+///   administration_members = [data.azure_core_getclientconfig.current.object_id]
+///   sku = {
+///     name = "F32"
+///     tier = "Fabric"
+///   }
+///   tags = {
+///     "environment" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +176,8 @@ import 'capacity_state.dart';
 /// import com.pulumi.azure.fabric.Capacity;
 /// import com.pulumi.azure.fabric.CapacityArgs;
 /// import com.pulumi.azure.fabric.inputs.CapacitySkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

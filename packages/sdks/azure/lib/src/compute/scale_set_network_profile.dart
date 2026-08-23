@@ -7,9 +7,9 @@ import 'scale_set_network_profile_ip_configuration.dart';
 class ScaleSetNetworkProfile {
   /// Specifies whether to enable accelerated networking or not.
   final pulumi.Input<bool>? acceleratedNetworking;
-  /// A `dns_settings` block as documented below.
+  /// A `dnsSettings` block as documented below.
   final pulumi.Input<ScaleSetNetworkProfileDnsSettings>? dnsSettings;
-  /// An `ip_configuration` block as documented below.
+  /// An `ipConfiguration` block as documented below.
   final pulumi.Input<List<ScaleSetNetworkProfileIpConfiguration>> ipConfigurations;
   /// Whether IP forwarding is enabled on this NIC. Defaults to `false`.
   final pulumi.Input<bool>? ipForwarding;
@@ -22,8 +22,8 @@ class ScaleSetNetworkProfile {
 
   /// Creates a new [ScaleSetNetworkProfile].
   /// [acceleratedNetworking] Specifies whether to enable accelerated networking or not.
-  /// [dnsSettings] A `dns_settings` block as documented below.
-  /// [ipConfigurations] An `ip_configuration` block as documented below.
+  /// [dnsSettings] A `dnsSettings` block as documented below.
+  /// [ipConfigurations] An `ipConfiguration` block as documented below.
   /// [ipForwarding] Whether IP forwarding is enabled on this NIC. Defaults to `false`.
   /// [name] Specifies the name of the network interface configuration.
   /// [networkSecurityGroupId] Specifies the identifier for the network security group.
@@ -62,4 +62,3 @@ class ScaleSetNetworkProfile {
     );
   }
 }
-

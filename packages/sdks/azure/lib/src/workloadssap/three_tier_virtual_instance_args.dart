@@ -31,7 +31,7 @@ class ThreeTierVirtualInstanceArgs {
   final pulumi.Input<String> sapProduct;
   /// A mapping of tags which should be assigned to the SAP Three Tier Virtual Instance.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A `three_tier_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// A `threeTierConfiguration` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfiguration> threeTierConfiguration;
 
   /// Creates a new [ThreeTierVirtualInstanceArgs].
@@ -46,7 +46,7 @@ class ThreeTierVirtualInstanceArgs {
   /// [sapFqdn] The FQDN of the SAP system. Changing this forces a new resource to be created.
   /// [sapProduct] The SAP Product type for the SAP Three Tier Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the SAP Three Tier Virtual Instance.
-  /// [threeTierConfiguration] A `three_tier_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// [threeTierConfiguration] A `threeTierConfiguration` block as defined below. Changing this forces a new resource to be created.
   const ThreeTierVirtualInstanceArgs({
     required this.appLocation,
     required this.environment,
@@ -96,4 +96,3 @@ class ThreeTierVirtualInstanceArgs {
     );
   }
 }
-

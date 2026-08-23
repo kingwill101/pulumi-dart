@@ -144,6 +144,37 @@ import 'schedule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tfex-automation-account"
+///   location = "West Europe"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "tfex-automation-account"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_automation_schedule" "example" {
+///   name                    = "tfex-automation-schedule"
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   automation_account_name = azure_automation_account.example.name
+///   frequency               = "Week"
+///   interval                = 1
+///   timezone                = "Australia/Perth"
+///   start_time              = "2014-04-15T18:00:15+02:00"
+///   description             = "This is an example schedule"
+///   week_days               = ["Friday"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -156,8 +187,8 @@ import 'schedule_state.dart';
 /// import com.pulumi.azure.automation.AccountArgs;
 /// import com.pulumi.azure.automation.Schedule;
 /// import com.pulumi.azure.automation.ScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -255,7 +286,7 @@ class Schedule extends pulumi.CustomResource {
   late final pulumi.Output<int> interval;
   /// List of days of the month that the job should execute on. Must be between `1` and `31`. `-1` for last day of the month. Only valid when frequency is `Month`.
   late final pulumi.Output<List<int>?> monthDays;
-  /// One `monthly_occurrence` blocks as defined below to specifies occurrences of days within a month. Only valid when frequency is `Month`. The `monthly_occurrence` block supports fields documented below.
+  /// One `monthlyOccurrence` blocks as defined below to specifies occurrences of days within a month. Only valid when frequency is `Month`. The `monthlyOccurrence` block supports fields documented below.
   late final pulumi.Output<ScheduleMonthlyOccurrence?> monthlyOccurrence;
   /// Specifies the name of the Schedule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;

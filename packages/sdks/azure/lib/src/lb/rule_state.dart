@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleState {
   /// A list of reference to a Backend Address Pool over which this Load Balancing Rule operates.
   ///
-  /// &gt; **Note:** In most cases users can only set one Backend Address Pool ID in the `backend_address_pool_ids`. Especially, when the sku of the LB is `Gateway`, users can set up to two IDs in the `backend_address_pool_ids`.
+  /// &gt; **Note:** In most cases users can only set one Backend Address Pool ID in the `backendAddressPoolIds`. Especially, when the sku of the LB is `Gateway`, users can set up to two IDs in the `backendAddressPoolIds`.
   final pulumi.Input<List<String>>? backendAddressPoolIds;
   /// The port used for internal connections on the endpoint. Possible values range between 0 and 65535, inclusive. A port of `0` means "Any Port".
   final pulumi.Input<int>? backendPort;
@@ -119,4 +119,3 @@ class RuleState {
     );
   }
 }
-

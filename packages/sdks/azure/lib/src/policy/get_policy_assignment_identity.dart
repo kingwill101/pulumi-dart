@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPolicyAssignmentIdentity {
-  /// A `identity_ids` block as defined below.
+  /// A `identityIds` block as defined below.
   final pulumi.Input<List<String>> identityIds;
   /// The Principal ID of the Policy Assignment for this Resource.
   final pulumi.Input<String> principalId;
@@ -13,7 +13,7 @@ class GetPolicyAssignmentIdentity {
   final pulumi.Input<String> type;
 
   /// Creates a new [GetPolicyAssignmentIdentity].
-  /// [identityIds] A `identity_ids` block as defined below.
+  /// [identityIds] A `identityIds` block as defined below.
   /// [principalId] The Principal ID of the Policy Assignment for this Resource.
   /// [tenantId] The Tenant ID of the Policy Assignment for this Resource.
   /// [type] The Type of Managed Identity which is added to this Policy Assignment.
@@ -42,4 +42,3 @@ class GetPolicyAssignmentIdentity {
     );
   }
 }
-

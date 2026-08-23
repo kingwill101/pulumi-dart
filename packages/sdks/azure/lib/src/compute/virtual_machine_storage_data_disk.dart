@@ -13,13 +13,13 @@ class VirtualMachineStorageDataDisk {
   final pulumi.Input<int>? diskSizeGb;
   /// Specifies the logical unit number of the data disk. This needs to be unique within all the Data Disks on the Virtual Machine.
   final pulumi.Input<int> lun;
-  /// Specifies the ID of an Existing Managed Disk which should be attached to this Virtual Machine. When this field is set `create_option` must be set to `Attach`.
+  /// Specifies the ID of an Existing Managed Disk which should be attached to this Virtual Machine. When this field is set `createOption` must be set to `Attach`.
   ///
   /// The following properties apply when using Unmanaged Disks:
   final pulumi.Input<String>? managedDiskId;
   /// Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`, `Premium_LRS` or `UltraSSD_LRS`.
   ///
-  /// &gt; **Note:** `managed_disk_type` of type `UltraSSD_LRS` is currently in preview and are not available to subscriptions that have not [requested](https://aka.ms/UltraSSDPreviewSignUp) onboarding to `Azure Ultra Disk Storage` preview. `Azure Ultra Disk Storage` is only available in `East US 2`, `North Europe`, and `Southeast Asia` regions. For more information see the `Azure Ultra Disk Storage` [product documentation](https://docs.microsoft.com/azure/virtual-machines/windows/disks-enable-ultra-ssd), [product blog](https://azure.microsoft.com/en-us/blog/announcing-the-general-availability-of-azure-ultra-disk-storage/) and [FAQ](https://docs.microsoft.com/azure/virtual-machines/windows/faq-for-disks#ultra-disks). You must also set `additional_capabilities.ultra_ssd_enabled` to `true`.
+  /// &gt; **Note:** `managedDiskType` of type `UltraSSD_LRS` is currently in preview and are not available to subscriptions that have not [requested](https://aka.ms/UltraSSDPreviewSignUp) onboarding to `Azure Ultra Disk Storage` preview. `Azure Ultra Disk Storage` is only available in `East US 2`, `North Europe`, and `Southeast Asia` regions. For more information see the `Azure Ultra Disk Storage` [product documentation](https://docs.microsoft.com/azure/virtual-machines/windows/disks-enable-ultra-ssd), [product blog](https://azure.microsoft.com/en-us/blog/announcing-the-general-availability-of-azure-ultra-disk-storage/) and [FAQ](https://docs.microsoft.com/azure/virtual-machines/windows/faq-for-disks#ultra-disks). You must also set `additional_capabilities.ultra_ssd_enabled` to `true`.
   final pulumi.Input<String>? managedDiskType;
   /// The name of the Data Disk.
   final pulumi.Input<String> name;
@@ -35,7 +35,7 @@ class VirtualMachineStorageDataDisk {
   /// [createOption] Specifies how the data disk should be created. Possible values are `Attach`, `FromImage` and `Empty`.
   /// [diskSizeGb] Specifies the size of the data disk in gigabytes.
   /// [lun] Specifies the logical unit number of the data disk. This needs to be unique within all the Data Disks on the Virtual Machine.
-  /// [managedDiskId] Specifies the ID of an Existing Managed Disk which should be attached to this Virtual Machine. When this field is set `create_option` must be set to `Attach`.
+  /// [managedDiskId] Specifies the ID of an Existing Managed Disk which should be attached to this Virtual Machine. When this field is set `createOption` must be set to `Attach`.
   /// [managedDiskType] Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`, `Premium_LRS` or `UltraSSD_LRS`.
   /// [name] The name of the Data Disk.
   /// [vhdUri] Specifies the URI of the VHD file backing this Unmanaged Data Disk.
@@ -80,4 +80,3 @@ class VirtualMachineStorageDataDisk {
     );
   }
 }
-

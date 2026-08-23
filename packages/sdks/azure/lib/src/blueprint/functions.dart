@@ -89,6 +89,25 @@ import 'get_published_version_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+/// data "azure_management_getgroup" "root" {
+///   name = data.azure_core_getclientconfig.current.tenant_id
+/// }
+/// data "azure_blueprint_getdefinition" "example" {
+///   name     = "exampleManagementGroupBP"
+///   scope_id = data.azure_management_getgroup.root.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +119,8 @@ import 'get_published_version_result.dart';
 /// import com.pulumi.azure.management.inputs.GetGroupArgs;
 /// import com.pulumi.azure.blueprint.BlueprintFunctions;
 /// import com.pulumi.azure.blueprint.inputs.GetDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -241,6 +260,23 @@ Future<GetDefinitionResult> getDefinition(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+/// data "azure_blueprint_getpublishedversion" "test" {
+///   scope_id       = data.azure_core_getsubscription.current.id
+///   blueprint_name = "exampleBluePrint"
+///   version        = "dev_v2.3"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -251,8 +287,8 @@ Future<GetDefinitionResult> getDefinition(
 /// import com.pulumi.azure.core.inputs.GetSubscriptionArgs;
 /// import com.pulumi.azure.blueprint.BlueprintFunctions;
 /// import com.pulumi.azure.blueprint.inputs.GetPublishedVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

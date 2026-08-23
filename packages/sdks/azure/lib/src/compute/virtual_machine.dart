@@ -346,6 +346,76 @@ import 'virtual_machine_storage_os_disk.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     ="${var.prefix}-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "main" {
+///   name                ="${var.prefix}-network"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "internal" {
+///   name                 = "internal"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.main.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "main" {
+///   name                ="${var.prefix}-nic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "testconfiguration1"
+///     subnet_id                     = azure_network_subnet.internal.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_virtualmachine" "main" {
+///   name                  ="${var.prefix}-vm"
+///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   network_interface_ids = [azure_network_networkinterface.main.id]
+///   vm_size               = "Standard_DS1_v2"
+///   storage_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+///   storage_os_disk = {
+///     name              = "myosdisk1"
+///     caching           = "ReadWrite"
+///     create_option     = "FromImage"
+///     managed_disk_type = "Standard_LRS"
+///   }
+///   os_profile = {
+///     computer_name  = "hostname"
+///     admin_username = "testadmin"
+///     admin_password = "Password1234!"
+///   }
+///   os_profile_linux_config = {
+///     disable_password_authentication = false
+///   }
+///   tags = {
+///     "environment" = "staging"
+///   }
+/// }
+/// variable "prefix" {
+///   type    = string
+///   default = "tfvmex"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -367,8 +437,8 @@ import 'virtual_machine_storage_os_disk.dart';
 /// import com.pulumi.azure.compute.inputs.VirtualMachineStorageOsDiskArgs;
 /// import com.pulumi.azure.compute.inputs.VirtualMachineOsProfileArgs;
 /// import com.pulumi.azure.compute.inputs.VirtualMachineOsProfileLinuxConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -530,11 +600,11 @@ import 'virtual_machine_storage_os_disk.dart';
 /// $ pulumi import azure:compute/virtualMachine:VirtualMachine example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Compute/virtualMachines/machine1
 /// ```
 class VirtualMachine extends pulumi.CustomResource {
-  /// An `additional_capabilities` block as defined below.
+  /// An `additionalCapabilities` block as defined below.
   late final pulumi.Output<VirtualMachineAdditionalCapabilities?> additionalCapabilities;
   /// The ID of the Availability Set in which the Virtual Machine should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> availabilitySetId;
-  /// A `boot_diagnostics` block as defined below.
+  /// A `bootDiagnostics` block as defined below.
   late final pulumi.Output<VirtualMachineBootDiagnostics?> bootDiagnostics;
   /// Should the Data Disks (either the Managed Disks / VHD Blobs) be deleted when the Virtual Machine is destroyed? Defaults to `false`.
   ///
@@ -554,13 +624,13 @@ class VirtualMachine extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A list of Network Interface IDs which should be associated with the Virtual Machine.
   late final pulumi.Output<List<String>> networkInterfaceIds;
-  /// An `os_profile` block as defined below. Required when `create_option` in the `storage_os_disk` block is set to `FromImage`.
+  /// An `osProfile` block as defined below. Required when `createOption` in the `storageOsDisk` block is set to `FromImage`.
   late final pulumi.Output<VirtualMachineOsProfile?> osProfile;
-  /// (Required, when a Linux machine) An `os_profile_linux_config` block as defined below.
+  /// (Required, when a Linux machine) An `osProfileLinuxConfig` block as defined below.
   late final pulumi.Output<VirtualMachineOsProfileLinuxConfig?> osProfileLinuxConfig;
-  /// One or more `os_profile_secrets` blocks as defined below.
+  /// One or more `osProfileSecrets` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> osProfileSecrets;
-  /// (Required, when a Windows machine) An `os_profile_windows_config` block as defined below.
+  /// (Required, when a Windows machine) An `osProfileWindowsConfig` block as defined below.
   late final pulumi.Output<VirtualMachineOsProfileWindowsConfig?> osProfileWindowsConfig;
   /// A `plan` block as defined below.
   late final pulumi.Output<VirtualMachinePlan?> plan;
@@ -570,13 +640,13 @@ class VirtualMachine extends pulumi.CustomResource {
   late final pulumi.Output<String?> proximityPlacementGroupId;
   /// Specifies the name of the Resource Group in which the Virtual Machine should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// One or more `storage_data_disk` blocks as defined below.
+  /// One or more `storageDataDisk` blocks as defined below.
   ///
   /// &gt; **Please Note:** Data Disks can also be attached either using this block or the `azure.compute.DataDiskAttachment` resource - but not both.
   late final pulumi.Output<List<Map<String, dynamic>>> storageDataDisks;
-  /// A `storage_image_reference` block as defined below. Changing this forces a new resource to be created.
+  /// A `storageImageReference` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<VirtualMachineStorageImageReference> storageImageReference;
-  /// A `storage_os_disk` block as defined below.
+  /// A `storageOsDisk` block as defined below.
   late final pulumi.Output<VirtualMachineStorageOsDisk> storageOsDisk;
   /// A mapping of tags to assign to the Virtual Machine.
   late final pulumi.Output<Map<String, String>?> tags;

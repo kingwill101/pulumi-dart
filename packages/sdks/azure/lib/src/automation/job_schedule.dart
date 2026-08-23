@@ -4,7 +4,7 @@ import 'job_schedule_state.dart';
 
 /// Links an Automation Runbook and Schedule.
 ///
-/// &gt; **Note:** AzureRM provides this stand-alone azure.automation.JobSchedule and an inlined `job_schedule` property in azurerm_runbook to manage the job schedules. You can only make use of one of these methods to manage a job schedule.
+/// &gt; **Note:** AzureRM provides this stand-alone azure.automation.JobSchedule and an inlined `jobSchedule` property in azurermRunbook to manage the job schedules. You can only make use of one of these methods to manage a job schedule.
 ///
 /// ## Example Usage
 ///
@@ -90,6 +90,26 @@ import 'job_schedule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_automation_jobschedule" "example" {
+///   resource_group_name     = "tf-rgr-automation"
+///   automation_account_name = "tf-automation-account"
+///   schedule_name           = "hour"
+///   runbook_name            = "Get-VirtualMachine"
+///   parameters = {
+///     "resourcegroup" = "tf-rgr-vm"
+///     "vmname"        = "TF-VM-01"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +118,8 @@ import 'job_schedule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.automation.JobSchedule;
 /// import com.pulumi.azure.automation.JobScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

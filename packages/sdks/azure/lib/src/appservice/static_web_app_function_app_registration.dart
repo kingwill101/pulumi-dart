@@ -213,6 +213,52 @@ import 'static_web_app_function_app_registration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_staticwebapp" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplesstorageacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   name                = "example-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   os_type             = "Linux"
+///   sku_name            = "S1"
+/// }
+/// resource "azure_appservice_linuxfunctionapp" "example" {
+///   name                       = "example-function-app"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   service_plan_id            = azure_appservice_serviceplan.example.id
+///   storage_account_name       = azure_storage_account.example.name
+///   storage_account_access_key = azure_storage_account.example.primary_access_key
+///   site_config                = {}
+/// }
+/// resource "azure_appservice_staticwebappfunctionappregistration" "example" {
+///   static_web_app_id = azure_appservice_staticwebapp.example.id
+///   function_app_id   = azure_appservice_linuxfunctionapp.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -232,8 +278,8 @@ import 'static_web_app_function_app_registration_state.dart';
 /// import com.pulumi.azure.appservice.inputs.LinuxFunctionAppSiteConfigArgs;
 /// import com.pulumi.azure.appservice.StaticWebAppFunctionAppRegistration;
 /// import com.pulumi.azure.appservice.StaticWebAppFunctionAppRegistrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -362,7 +408,7 @@ class StaticWebAppFunctionAppRegistration extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Only one Function App can be connected to a Static Web App. Multiple Function Apps are not currently supported.
   ///
-  /// &gt; **Note:** Connecting a Function App resource to a Static Web App resource updates the Function App to use AuthV2 and configures the `azure_static_web_app_v2` which may need to be accounted for by the use of `ignore_changes` depending on the existing `auth_settings_v2` configuration of the target Function App.
+  /// &gt; **Note:** Connecting a Function App resource to a Static Web App resource updates the Function App to use AuthV2 and configures the `azureStaticWebAppV2` which may need to be accounted for by the use of `ignoreChanges` depending on the existing `authSettingsV2` configuration of the target Function App.
   late final pulumi.Output<String> functionAppId;
   /// The ID of the Static Web App to register the Function App to as a backend. Changing this forces a new resource to be created.
   late final pulumi.Output<String> staticWebAppId;

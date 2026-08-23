@@ -161,6 +161,41 @@ import 'linked_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "resourcegroup-01"
+///   location = "West Europe"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "automation-01"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+///   tags = {
+///     "environment" = "development"
+///   }
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "workspace-01"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+///   retention_in_days   = 30
+/// }
+/// resource "azure_loganalytics_linkedservice" "example" {
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   workspace_id        = azure_operationalinsights_analyticsworkspace.example.id
+///   read_access_id      = azure_automation_account.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +210,8 @@ import 'linked_service_state.dart';
 /// import com.pulumi.azure.operationalinsights.AnalyticsWorkspaceArgs;
 /// import com.pulumi.azure.loganalytics.LinkedService;
 /// import com.pulumi.azure.loganalytics.LinkedServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -265,11 +300,11 @@ import 'linked_service_state.dart';
 ///
 /// Log Analytics Workspaces can be imported using the `resource id`, e.g.
 ///
-/// When `read_access_id` has been specified:
+/// When `readAccessId` has been specified:
 /// ```sh
 /// $ pulumi import azure:loganalytics/linkedService:LinkedService example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.OperationalInsights/workspaces/workspace1/linkedServices/Automation
 /// ```
-/// When `read_access_id` has been omitted:
+/// When `readAccessId` has been omitted:
 /// ```sh
 /// $ pulumi import azure:loganalytics/linkedService:LinkedService example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.OperationalInsights/workspaces/workspace1/linkedServices/Cluster
 /// ```
@@ -284,7 +319,7 @@ class LinkedService extends pulumi.CustomResource {
   late final pulumi.Output<String> workspaceId;
   /// The ID of the writable Resource that will be linked to the workspace. This should be used for linking to a Log Analytics Cluster resource.
   ///
-  /// &gt; **Note:** You must define at least one of the above access resource id attributes (e.g. `read_access_id` or `write_access_id`).
+  /// &gt; **Note:** You must define at least one of the above access resource id attributes (e.g. `readAccessId` or `writeAccessId`).
   late final pulumi.Output<String?> writeAccessId;
 
   /// Creates a new [LinkedService].

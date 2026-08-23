@@ -86,7 +86,7 @@ import 'metric_alert_state.dart';
 ///         "metric_name": "Transactions",
 ///         "aggregation": "Total",
 ///         "operator": "GreaterThan",
-///         "threshold": 50,
+///         "threshold": float(50),
 ///         "dimensions": [{
 ///             "name": "ApiName",
 ///             "operator": "Include",
@@ -259,6 +259,57 @@ import 'metric_alert_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "to_monitor" {
+///   name                     = "examplestorageaccount"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_monitoring_actiongroup" "main" {
+///   name                = "example-actiongroup"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   short_name          = "exampleact"
+///   webhook_receivers {
+///     name        = "callmyapi"
+///     service_uri = "http://example.com/alert"
+///   }
+/// }
+/// resource "azure_monitoring_metricalert" "example" {
+///   name                = "example-metricalert"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   scopes              = [azure_storage_account.to_monitor.id]
+///   description         = "Action will be triggered when Transactions count is greater than 50."
+///   criterias {
+///     metric_namespace = "Microsoft.Storage/storageAccounts"
+///     metric_name      = "Transactions"
+///     aggregation      = "Total"
+///     operator         = "GreaterThan"
+///     threshold        = 50
+///     dimensions {
+///       name     = "ApiName"
+///       operator = "Include"
+///       values   = ["*"]
+///     }
+///   }
+///   actions {
+///     action_group_id = azure_monitoring_actiongroup.main.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -275,9 +326,10 @@ import 'metric_alert_state.dart';
 /// import com.pulumi.azure.monitoring.MetricAlert;
 /// import com.pulumi.azure.monitoring.MetricAlertArgs;
 /// import com.pulumi.azure.monitoring.inputs.MetricAlertCriteriaArgs;
+/// import com.pulumi.azure.monitoring.inputs.MetricAlertCriteriaDimensionArgs;
 /// import com.pulumi.azure.monitoring.inputs.MetricAlertActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -404,21 +456,21 @@ import 'metric_alert_state.dart';
 class MetricAlert extends pulumi.CustomResource {
   /// One or more `action` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> actions;
-  /// A `application_insights_web_test_location_availability_criteria` block as defined below.
+  /// A `applicationInsightsWebTestLocationAvailabilityCriteria` block as defined below.
   ///
-  /// &gt; **Note:** One of either `criteria`, `dynamic_criteria` or `application_insights_web_test_location_availability_criteria` must be specified.
+  /// &gt; **Note:** One of either `criteria`, `dynamicCriteria` or `applicationInsightsWebTestLocationAvailabilityCriteria` must be specified.
   late final pulumi.Output<MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria?> applicationInsightsWebTestLocationAvailabilityCriteria;
   /// Should the alerts in this Metric Alert be auto resolved? Defaults to `true`.
   late final pulumi.Output<bool?> autoMitigate;
   /// One or more (static) `criteria` blocks as defined below.
   ///
-  /// &gt; **Note:** One of either `criteria`, `dynamic_criteria` or `application_insights_web_test_location_availability_criteria` must be specified.
+  /// &gt; **Note:** One of either `criteria`, `dynamicCriteria` or `applicationInsightsWebTestLocationAvailabilityCriteria` must be specified.
   late final pulumi.Output<List<Map<String, dynamic>>?> criterias;
   /// The description of this Metric Alert.
   late final pulumi.Output<String?> description;
-  /// A `dynamic_criteria` block as defined below.
+  /// A `dynamicCriteria` block as defined below.
   ///
-  /// &gt; **Note:** One of either `criteria`, `dynamic_criteria` or `application_insights_web_test_location_availability_criteria` must be specified.
+  /// &gt; **Note:** One of either `criteria`, `dynamicCriteria` or `applicationInsightsWebTestLocationAvailabilityCriteria` must be specified.
   late final pulumi.Output<MetricAlertDynamicCriteria?> dynamicCriteria;
   /// Should this Metric Alert be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;

@@ -8,7 +8,7 @@ class MonitorTagRuleLog {
   final pulumi.Input<bool>? aadLogEnabled;
   /// A `filter` block as defined below.
   ///
-  /// &gt; **Note:** List of filtering tags to be used for capturing logs. This only takes effect if `resource_log_enabled` flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+  /// &gt; **Note:** List of filtering tags to be used for capturing logs. This only takes effect if `resourceLogEnabled` flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
   final pulumi.Input<List<MonitorTagRuleLogFilter>>? filters;
   /// Whether Azure resource logs should be sent for the Monitor resource?
   final pulumi.Input<bool>? resourceLogEnabled;
@@ -45,4 +45,3 @@ class MonitorTagRuleLog {
     );
   }
 }
-

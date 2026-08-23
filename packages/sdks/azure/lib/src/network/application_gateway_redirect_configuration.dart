@@ -14,9 +14,9 @@ class ApplicationGatewayRedirectConfiguration {
   /// The type of redirect. Possible values are `Permanent`, `Temporary`, `Found` and `SeeOther`
   final pulumi.Input<String> redirectType;
   final pulumi.Input<String>? targetListenerId;
-  /// The name of the listener to redirect to. Cannot be set if `target_url` is set.
+  /// The name of the listener to redirect to. Cannot be set if `targetUrl` is set.
   final pulumi.Input<String>? targetListenerName;
-  /// The URL to redirect the request to. Cannot be set if `target_listener_name` is set.
+  /// The URL to redirect the request to. Cannot be set if `targetListenerName` is set.
   final pulumi.Input<String>? targetUrl;
 
   /// Creates a new [ApplicationGatewayRedirectConfiguration].
@@ -26,8 +26,8 @@ class ApplicationGatewayRedirectConfiguration {
   /// [name] Unique name of the redirect configuration block
   /// [redirectType] The type of redirect. Possible values are `Permanent`, `Temporary`, `Found` and `SeeOther`
   /// [targetListenerId] Optional.
-  /// [targetListenerName] The name of the listener to redirect to. Cannot be set if `target_url` is set.
-  /// [targetUrl] The URL to redirect the request to. Cannot be set if `target_listener_name` is set.
+  /// [targetListenerName] The name of the listener to redirect to. Cannot be set if `targetUrl` is set.
+  /// [targetUrl] The URL to redirect the request to. Cannot be set if `targetListenerName` is set.
   const ApplicationGatewayRedirectConfiguration({
     this.id,
     this.includePath,
@@ -65,4 +65,3 @@ class ApplicationGatewayRedirectConfiguration {
     );
   }
 }
-

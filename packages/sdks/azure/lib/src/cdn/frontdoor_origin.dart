@@ -5,7 +5,7 @@ import 'frontdoor_origin_state.dart';
 
 /// Manages a Front Door (standard/premium) Origin.
 ///
-/// !&gt; **Note:** If you are attempting to implement an Origin that uses its own Private Link Service with a Load Balancer the Profile resource in your configuration file **must** have a `depends_on` meta-argument which references the `azure.privatedns.LinkService`, see `Example Usage With Private Link Service` below.
+/// &gt; **Note:** If you are attempting to implement an Origin that uses its own Private Link Service with a Load Balancer the Profile resource in your configuration file **must** have a `dependsOn` meta-argument which references the `azure.privatedns.LinkService`, see `Example Usage With Private Link Service` below.
 ///
 /// ## Example Usage
 ///
@@ -165,6 +165,42 @@ import 'frontdoor_origin_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_cdn_frontdoorprofile" "example" {
+///   name                = "example-profile"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Premium_AzureFrontDoor"
+/// }
+/// resource "azure_cdn_frontdoororigingroup" "example" {
+///   name                     = "example-origingroup"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   load_balancing           = {}
+/// }
+/// resource "azure_cdn_frontdoororigin" "example" {
+///   name                           = "example-origin"
+///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoororigingroup.example.id
+///   enabled                        = true
+///   certificate_name_check_enabled = false
+///   host_name                      = "contoso.com"
+///   http_port                      = 80
+///   https_port                     = 443
+///   origin_host_header             = "www.contoso.com"
+///   priority                       = 1
+///   weight                         = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -180,8 +216,8 @@ import 'frontdoor_origin_state.dart';
 /// import com.pulumi.azure.cdn.inputs.FrontdoorOriginGroupLoadBalancingArgs;
 /// import com.pulumi.azure.cdn.FrontdoorOrigin;
 /// import com.pulumi.azure.cdn.FrontdoorOriginArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -504,6 +540,60 @@ import 'frontdoor_origin_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                            = "examplestoracc"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resourcegroup.example.location
+///   account_tier                    = "Premium"
+///   account_replication_type        = "LRS"
+///   allow_nested_items_to_be_public = false
+///   network_rules = {
+///     default_action = "Deny"
+///   }
+///   tags = {
+///     "environment" = "Example"
+///   }
+/// }
+/// resource "azure_cdn_frontdoorprofile" "example" {
+///   name                = "example-profile"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Premium_AzureFrontDoor"
+/// }
+/// resource "azure_cdn_frontdoororigingroup" "example" {
+///   name                     = "example-origin-group"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   load_balancing           = {}
+/// }
+/// resource "azure_cdn_frontdoororigin" "example" {
+///   name                           = "example-origin"
+///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoororigingroup.example.id
+///   enabled                        = true
+///   certificate_name_check_enabled = true
+///   host_name                      = azure_storage_account.example.primary_blob_host
+///   origin_host_header             = azure_storage_account.example.primary_blob_host
+///   priority                       = 1
+///   weight                         = 500
+///   private_link = {
+///     request_message        = "Request access for Private Link Origin CDN Frontdoor"
+///     target_type            = "blob"
+///     location               = azure_storage_account.example.location
+///     private_link_target_id = azure_storage_account.example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -523,8 +613,8 @@ import 'frontdoor_origin_state.dart';
 /// import com.pulumi.azure.cdn.FrontdoorOrigin;
 /// import com.pulumi.azure.cdn.FrontdoorOriginArgs;
 /// import com.pulumi.azure.cdn.inputs.FrontdoorOriginPrivateLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1023,7 +1113,7 @@ import 'frontdoor_origin_state.dart';
 /// 			},
 /// 			LoadBalancerFrontendIpConfigurationIds: pulumi.StringArray{
 /// 				pulumi.String(exampleLoadBalancer.FrontendIpConfigurations.ApplyT(func(frontendIpConfigurations []lb.LoadBalancerFrontendIpConfiguration) (*string, error) {
-/// 					return &frontendIpConfigurations[0].Id, nil
+/// 					return frontendIpConfigurations[0].Id, nil
 /// 				}).(pulumi.StringPtrOutput)),
 /// 			},
 /// 			NatIpConfigurations: privatedns.LinkServiceNatIpConfigurationArray{
@@ -1083,6 +1173,97 @@ import 'frontdoor_origin_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_cdn_frontdoorprofile" "example" {
+///   depends_on          = [azure_privatedns_linkservice.example]
+///   name                = "profile-example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Premium_AzureFrontDoor"
+/// }
+/// resource "azure_cdn_frontdoororigin" "example" {
+///   name                           = "origin-example"
+///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoororigingroup.example.id
+///   enabled                        = true
+///   host_name                      = "example.com"
+///   origin_host_header             = "example.com"
+///   priority                       = 1
+///   weight                         = 1000
+///   certificate_name_check_enabled = false
+///   private_link = {
+///     request_message        = "Request access for Private Link Origin CDN Frontdoor"
+///     location               = azure_core_resourcegroup.example.location
+///     private_link_target_id = azure_privatedns_linkservice.example.id
+///   }
+/// }
+/// resource "azure_cdn_frontdoororigingroup" "example" {
+///   name                     = "group-example"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   load_balancing = {
+///     additional_latency_in_milliseconds = 0
+///     sample_size                        = 16
+///     successful_samples_required        = 3
+///   }
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "vn-example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   address_spaces      = ["10.5.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                                          = "sn-example"
+///   resource_group_name                           = azure_core_resourcegroup.example.name
+///   virtual_network_name                          = azure_network_virtualnetwork.example.name
+///   address_prefixes                              = ["10.5.1.0/24"]
+///   private_link_service_network_policies_enabled = false
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "ip-example"
+///   sku                 = "Standard"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+/// }
+/// resource "azure_lb_loadbalancer" "example" {
+///   name                = "lb-example"
+///   sku                 = "Standard"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   frontend_ip_configurations {
+///     name                 = azure_network_publicip.example.name
+///     public_ip_address_id = azure_network_publicip.example.id
+///   }
+/// }
+/// resource "azure_privatedns_linkservice" "example" {
+///   name                                        = "pls-example"
+///   resource_group_name                         = azure_core_resourcegroup.example.name
+///   location                                    = azure_core_resourcegroup.example.location
+///   visibility_subscription_ids                 = [data.azure_core_getclientconfig.current.subscription_id]
+///   load_balancer_frontend_ip_configuration_ids = [azure_lb_loadbalancer.example.frontend_ip_configurations[0].id]
+///   nat_ip_configurations {
+///     name                       = "primary"
+///     private_ip_address         = "10.5.1.17"
+///     private_ip_address_version = "IPv4"
+///     subnet_id                  = azure_network_subnet.example.id
+///     primary                    = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1113,8 +1294,8 @@ import 'frontdoor_origin_state.dart';
 /// import com.pulumi.azure.cdn.FrontdoorOriginArgs;
 /// import com.pulumi.azure.cdn.inputs.FrontdoorOriginPrivateLinkArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1356,7 +1537,7 @@ class FrontdoorOrigin extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enabled;
   /// The IPv4 address, IPv6 address or Domain name of the Origin.
   ///
-  /// !&gt; **Note:** This must be unique across all Front Door Origins within a Front Door Endpoint.
+  /// &gt; **Note:** This must be unique across all Front Door Origins within a Front Door Endpoint.
   late final pulumi.Output<String> hostName;
   /// The value of the HTTP port. Must be between `1` and `65535`. Defaults to `80`.
   late final pulumi.Output<int?> httpPort;
@@ -1370,9 +1551,9 @@ class FrontdoorOrigin extends pulumi.CustomResource {
   late final pulumi.Output<String?> originHostHeader;
   /// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy. Must be between `1` and `5` (inclusive). Defaults to `1`.
   late final pulumi.Output<int?> priority;
-  /// A `private_link` block as defined below.
+  /// A `privateLink` block as defined below.
   ///
-  /// &gt; **Note:** Private Link requires that the Front Door Profile this Origin is hosted within is using the SKU `Premium_AzureFrontDoor` and that the `certificate_name_check_enabled` field is set to `true`.
+  /// &gt; **Note:** Private Link requires that the Front Door Profile this Origin is hosted within is using the SKU `Premium_AzureFrontDoor` and that the `certificateNameCheckEnabled` field is set to `true`.
   late final pulumi.Output<FrontdoorOriginPrivateLink?> privateLink;
   /// The weight of the origin in a given origin group for load balancing. Must be between `1` and `1000`. Defaults to `500`.
   late final pulumi.Output<int?> weight;

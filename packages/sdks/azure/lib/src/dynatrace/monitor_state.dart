@@ -8,7 +8,7 @@ import 'monitor_user.dart';
 
 /// Input properties used for looking up and filtering Monitor resources.
 class MonitorState {
-  /// Properties of the Dynatrace environment. An `environment_properties` block as defined below.
+  /// Properties of the Dynatrace environment. An `environmentProperties` block as defined below.
   final pulumi.Input<List<MonitorEnvironmentProperty>>? environmentProperties;
   /// The kind of managed identity assigned to this resource. A `identity` block as defined below.
   final pulumi.Input<MonitorIdentity>? identity;
@@ -30,7 +30,7 @@ class MonitorState {
   final pulumi.Input<MonitorUser>? user;
 
   /// Creates a new [MonitorState].
-  /// [environmentProperties] Properties of the Dynatrace environment. An `environment_properties` block as defined below.
+  /// [environmentProperties] Properties of the Dynatrace environment. An `environmentProperties` block as defined below.
   /// [identity] The kind of managed identity assigned to this resource. A `identity` block as defined below.
   /// [location] The Azure Region where the Dynatrace monitor should exist. Changing this forces a new resource to be created.
   /// [marketplaceSubscription] Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state. Possible values are `Active` and `Suspended`. Changing this forces a new resource to be created.
@@ -83,4 +83,3 @@ class MonitorState {
     );
   }
 }
-

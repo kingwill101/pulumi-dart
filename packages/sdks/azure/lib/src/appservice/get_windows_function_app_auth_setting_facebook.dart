@@ -7,7 +7,7 @@ class GetWindowsFunctionAppAuthSettingFacebook {
   final pulumi.Input<String> appId;
   /// The App Secret of the Facebook app used for Facebook Login.
   final pulumi.Input<String> appSecret;
-  /// The app setting name that contains the `app_secret` value used for Facebook Login.
+  /// The app setting name that contains the `appSecret` value used for Facebook Login.
   final pulumi.Input<String> appSecretSettingName;
   /// A list of OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication.
   final pulumi.Input<List<String>> oauthScopes;
@@ -15,7 +15,7 @@ class GetWindowsFunctionAppAuthSettingFacebook {
   /// Creates a new [GetWindowsFunctionAppAuthSettingFacebook].
   /// [appId] The App ID of the Facebook app used for login.
   /// [appSecret] The App Secret of the Facebook app used for Facebook Login.
-  /// [appSecretSettingName] The app setting name that contains the `app_secret` value used for Facebook Login.
+  /// [appSecretSettingName] The app setting name that contains the `appSecret` value used for Facebook Login.
   /// [oauthScopes] A list of OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication.
   const GetWindowsFunctionAppAuthSettingFacebook({
     required this.appId,
@@ -42,4 +42,3 @@ class GetWindowsFunctionAppAuthSettingFacebook {
     );
   }
 }
-

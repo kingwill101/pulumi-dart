@@ -162,6 +162,42 @@ import 'authorization_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "notificationhub-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_notificationhub_namespace" "example" {
+///   name                = "myappnamespace"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   namespace_type      = "NotificationHub"
+///   sku_name            = "Free"
+/// }
+/// resource "azure_notificationhub_hub" "example" {
+///   name                = "mynotificationhub"
+///   namespace_name      = azure_notificationhub_namespace.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_notificationhub_authorizationrule" "example" {
+///   name                  = "management-auth-rule"
+///   notification_hub_name = azure_notificationhub_hub.example.name
+///   namespace_name        = azure_notificationhub_namespace.example.name
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   manage                = true
+///   send                  = true
+///   listen                = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -176,8 +212,8 @@ import 'authorization_rule_state.dart';
 /// import com.pulumi.azure.notificationhub.HubArgs;
 /// import com.pulumi.azure.notificationhub.AuthorizationRule;
 /// import com.pulumi.azure.notificationhub.AuthorizationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

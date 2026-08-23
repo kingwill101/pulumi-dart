@@ -162,6 +162,42 @@ import 'shared_image_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_compute_sharedimagegallery" "example" {
+///   name                = "example_image_gallery"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   description         = "Shared images and things."
+///   tags = {
+///     "Hello" = "There"
+///     "World" = "Example"
+///   }
+/// }
+/// resource "azure_compute_sharedimage" "example" {
+///   name                = "my-image"
+///   gallery_name        = azure_compute_sharedimagegallery.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   os_type             = "Linux"
+///   identifier = {
+///     publisher = "PublisherName"
+///     offer     = "OfferName"
+///     sku       = "ExampleSku"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +211,8 @@ import 'shared_image_state.dart';
 /// import com.pulumi.azure.compute.SharedImage;
 /// import com.pulumi.azure.compute.SharedImageArgs;
 /// import com.pulumi.azure.compute.inputs.SharedImageIdentifierArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -275,7 +311,7 @@ class SharedImage extends pulumi.CustomResource {
   late final pulumi.Output<String?> architecture;
   /// Specifies if Confidential Virtual Machines enabled. It will enable all the features of trusted, with higher confidentiality features for isolate machines or encrypted data. Available for Gen2 machines. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Only one of `trusted_launch_supported`, `trusted_launch_enabled`, `confidential_vm_supported` and `confidential_vm_enabled` can be specified.
+  /// &gt; **Note:** Only one of `trustedLaunchSupported`, `trustedLaunchEnabled`, `confidentialVmSupported` and `confidentialVmEnabled` can be specified.
   late final pulumi.Output<bool?> confidentialVmEnabled;
   /// Specifies if supports creation of both Confidential virtual machines and Gen2 virtual machines with standard security from a compatible Gen2 OS disk VHD or Gen2 Managed image. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> confidentialVmSupported;
@@ -313,7 +349,7 @@ class SharedImage extends pulumi.CustomResource {
   late final pulumi.Output<String> osType;
   /// The URI containing the Privacy Statement associated with this Shared Image. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> privacyStatementUri;
-  /// A `purchase_plan` block as defined below.
+  /// A `purchasePlan` block as defined below.
   late final pulumi.Output<SharedImagePurchasePlan?> purchasePlan;
   /// The URI containing the Release Notes associated with this Shared Image.
   late final pulumi.Output<String?> releaseNoteUri;
@@ -321,7 +357,7 @@ class SharedImage extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// Specifies that the Operating System used inside this Image has not been Generalized (for example, `sysprep` on Windows has not been run). Changing this forces a new resource to be created.
   ///
-  /// !&gt; **Note:** It's recommended to Generalize images where possible - Specialized Images reuse the same UUID internally within each Virtual Machine, which can have unintended side-effects.
+  /// &gt; **Note:** It's recommended to Generalize images where possible - Specialized Images reuse the same UUID internally within each Virtual Machine, which can have unintended side-effects.
   late final pulumi.Output<bool?> specialized;
   /// A mapping of tags to assign to the Shared Image.
   late final pulumi.Output<Map<String, String>?> tags;

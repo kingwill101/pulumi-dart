@@ -9,9 +9,9 @@ class GetVpnGatewayBgpSetting {
   final pulumi.Input<int> asn;
   /// The Address which should be used for the BGP Peering.
   final pulumi.Input<String> bgpPeeringAddress;
-  /// an `instance_bgp_peering_address` block as defined below.
+  /// an `instanceBgpPeeringAddress` block as defined below.
   final pulumi.Input<List<GetVpnGatewayBgpSettingInstance0BgpPeeringAddress>> instance0BgpPeeringAddresses;
-  /// an `instance_bgp_peering_address` block as defined below.
+  /// an `instanceBgpPeeringAddress` block as defined below.
   final pulumi.Input<List<GetVpnGatewayBgpSettingInstance1BgpPeeringAddress>> instance1BgpPeeringAddresses;
   /// The weight added to Routes learned from this BGP Speaker.
   final pulumi.Input<int> peerWeight;
@@ -19,8 +19,8 @@ class GetVpnGatewayBgpSetting {
   /// Creates a new [GetVpnGatewayBgpSetting].
   /// [asn] The ASN of the BGP Speaker.
   /// [bgpPeeringAddress] The Address which should be used for the BGP Peering.
-  /// [instance0BgpPeeringAddresses] an `instance_bgp_peering_address` block as defined below.
-  /// [instance1BgpPeeringAddresses] an `instance_bgp_peering_address` block as defined below.
+  /// [instance0BgpPeeringAddresses] an `instanceBgpPeeringAddress` block as defined below.
+  /// [instance1BgpPeeringAddresses] an `instanceBgpPeeringAddress` block as defined below.
   /// [peerWeight] The weight added to Routes learned from this BGP Speaker.
   const GetVpnGatewayBgpSetting({
     required this.asn,
@@ -50,4 +50,3 @@ class GetVpnGatewayBgpSetting {
     );
   }
 }
-

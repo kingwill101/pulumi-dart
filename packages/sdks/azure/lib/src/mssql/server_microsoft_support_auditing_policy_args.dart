@@ -11,7 +11,7 @@ class ServerMicrosoftSupportAuditingPolicyArgs {
   final pulumi.Input<String>? blobStorageEndpoint;
   /// Whether to enable the extended auditing policy. Possible values are `true` and `false`. Defaults to `true`.
   ///
-  /// &gt; **Note:** If `enabled` is `true`, `blob_storage_endpoint` or `log_monitoring_enabled` are required.
+  /// &gt; **Note:** If `enabled` is `true`, `blobStorageEndpoint` or `logMonitoringEnabled` are required.
   final pulumi.Input<bool>? enabled;
   /// Enable audit events to Azure Monitor? To enable server audit events to Azure Monitor, please enable its main database audit events to Azure Monitor. Defaults to `true`.
   final pulumi.Input<bool>? logMonitoringEnabled;
@@ -60,4 +60,3 @@ class ServerMicrosoftSupportAuditingPolicyArgs {
     );
   }
 }
-

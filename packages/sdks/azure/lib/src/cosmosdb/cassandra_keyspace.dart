@@ -172,6 +172,42 @@ import 'cassandra_keyspace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tflex-cosmosdb-account-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_cosmosdb_account" "example" {
+///   name                = "tfex-cosmosdb-account"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   offer_type          = "Standard"
+///   capabilities {
+///     name = "EnableCassandra"
+///   }
+///   consistency_policy = {
+///     consistency_level = "Strong"
+///   }
+///   geo_locations {
+///     location          = azure_core_resourcegroup.example.location
+///     failover_priority = 0
+///   }
+/// }
+/// resource "azure_cosmosdb_cassandrakeyspace" "example" {
+///   name                = "tfex-cosmos-cassandra-keyspace"
+///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
+///   account_name        = azure_cosmosdb_account.example.name
+///   throughput          = 400
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,8 +223,8 @@ import 'cassandra_keyspace_state.dart';
 /// import com.pulumi.azure.cosmosdb.inputs.AccountGeoLocationArgs;
 /// import com.pulumi.azure.cosmosdb.CassandraKeyspace;
 /// import com.pulumi.azure.cosmosdb.CassandraKeyspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -265,6 +301,13 @@ import 'cassandra_keyspace_state.dart';
 /// ```
 ///
 ///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.DocumentDB` - 2024-08-15
+///
 /// ## Import
 ///
 /// Cosmos Cassandra KeySpace can be imported using the `resource id`, e.g.
@@ -275,7 +318,7 @@ import 'cassandra_keyspace_state.dart';
 class CassandraKeyspace extends pulumi.CustomResource {
   /// The name of the Cosmos DB Cassandra KeySpace to create the table within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-  /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
+  /// An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   late final pulumi.Output<CassandraKeyspaceAutoscaleSettings?> autoscaleSettings;

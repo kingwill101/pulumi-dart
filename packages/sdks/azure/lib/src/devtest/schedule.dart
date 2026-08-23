@@ -177,6 +177,42 @@ import 'schedule_weekly_recurrence.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_devtest_lab" "example" {
+///   name                = "YourDevTestLab"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_devtest_schedule" "example" {
+///   name                = "LabVmAutoStart"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   lab_name            = azure_devtest_lab.example.name
+///   status              = "Enabled"
+///   weekly_recurrence = {
+///     time      = "1100"
+///     week_days = ["Monday", "Tuesday"]
+///   }
+///   time_zone_id          = "Pacific Standard Time"
+///   task_type             = "LabVmsStartupTask"
+///   notification_settings = {}
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -191,8 +227,8 @@ import 'schedule_weekly_recurrence.dart';
 /// import com.pulumi.azure.devtest.ScheduleArgs;
 /// import com.pulumi.azure.devtest.inputs.ScheduleWeeklyRecurrenceArgs;
 /// import com.pulumi.azure.devtest.inputs.ScheduleNotificationSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -288,17 +324,17 @@ import 'schedule_weekly_recurrence.dart';
 /// $ pulumi import azure:devtest/schedule:Schedule example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.DevTestLab/labs/myDevTestLab/schedules/labvmautostart
 /// ```
 class Schedule extends pulumi.CustomResource {
-  /// The properties of a daily schedule. If the schedule occurs once each day of the week, specify the daily recurrence. A `daily_recurrence` block as defined below.
+  /// The properties of a daily schedule. If the schedule occurs once each day of the week, specify the daily recurrence. A `dailyRecurrence` block as defined below.
   late final pulumi.Output<ScheduleDailyRecurrence?> dailyRecurrence;
-  /// The properties of an hourly schedule. If the schedule occurs multiple times a day, specify the hourly recurrence. A `hourly_recurrence` block as defined below.
+  /// The properties of an hourly schedule. If the schedule occurs multiple times a day, specify the hourly recurrence. A `hourlyRecurrence` block as defined below.
   late final pulumi.Output<ScheduleHourlyRecurrence?> hourlyRecurrence;
   /// The name of the dev test lab. Changing this forces a new resource to be created.
   late final pulumi.Output<String> labName;
   /// The location where the schedule is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// The name of the dev test lab schedule. Valid value for name depends on the `task_type`. For instance for task_type `LabVmsStartupTask` the name needs to be `LabVmAutoStart`. Changing this forces a new resource to be created.
+  /// The name of the dev test lab schedule. Valid value for name depends on the `taskType`. For instance for taskType `LabVmsStartupTask` the name needs to be `LabVmAutoStart`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// The notification setting of a schedule. A `notification_settings` block as defined below.
+  /// The notification setting of a schedule. A `notificationSettings` block as defined below.
   late final pulumi.Output<ScheduleNotificationSettings> notificationSettings;
   /// The name of the resource group in which to create the dev test lab schedule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
@@ -310,7 +346,7 @@ class Schedule extends pulumi.CustomResource {
   late final pulumi.Output<String> taskType;
   /// The time zone ID (e.g. Pacific Standard time).
   late final pulumi.Output<String> timeZoneId;
-  /// The properties of a weekly schedule. If the schedule occurs only some days of the week, specify the weekly recurrence. A `weekly_recurrence` block as defined below.
+  /// The properties of a weekly schedule. If the schedule occurs only some days of the week, specify the weekly recurrence. A `weeklyRecurrence` block as defined below.
   late final pulumi.Output<ScheduleWeeklyRecurrence?> weeklyRecurrence;
 
   /// Creates a new [Schedule].

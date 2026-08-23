@@ -8,23 +8,23 @@ import 'extension_protected_settings_from_key_vault.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_extension_extension_args_doc}
 class ExtensionArgs {
-  /// Specifies if the platform deploys the latest minor version update to the `type_handler_version` specified.
+  /// Specifies if the platform deploys the latest minor version update to the `typeHandlerVersion` specified.
   final pulumi.Input<bool>? autoUpgradeMinorVersion;
   /// Should the Extension be automatically updated whenever the Publisher releases a new version of this VM Extension?
   final pulumi.Input<bool>? automaticUpgradeEnabled;
   /// Should failures from the extension be suppressed? Possible values are `true` or `false`. Defaults to `false`.
   ///
-  /// &gt; **Note:** Operational failures such as not connecting to the VM will not be suppressed regardless of the `failure_suppression_enabled` value.
+  /// &gt; **Note:** Operational failures such as not connecting to the VM will not be suppressed regardless of the `failureSuppressionEnabled` value.
   final pulumi.Input<bool>? failureSuppressionEnabled;
   /// The name of the virtual machine extension peering. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// The protected_settings passed to the extension, like settings, these are specified as a JSON object in a string.
+  /// The protectedSettings passed to the extension, like settings, these are specified as a JSON object in a string.
   ///
-  /// &gt; **Note:** Certain VM Extensions require that the keys in the `protected_settings` block are case sensitive. If you're seeing unhelpful errors, please ensure the keys are consistent with how Azure is expecting them (for instance, for the `JsonADDomainExtension` extension, the keys are expected to be in `TitleCase`.)
+  /// &gt; **Note:** Certain VM Extensions require that the keys in the `protectedSettings` block are case sensitive. If you're seeing unhelpful errors, please ensure the keys are consistent with how Azure is expecting them (for instance, for the `JsonADDomainExtension` extension, the keys are expected to be in `TitleCase`.)
   final pulumi.Input<String>? protectedSettings;
-  /// A `protected_settings_from_key_vault` block as defined below.
+  /// A `protectedSettingsFromKeyVault` block as defined below.
   ///
-  /// &gt; **Note:** `protected_settings_from_key_vault` cannot be used with `protected_settings`
+  /// &gt; **Note:** `protectedSettingsFromKeyVault` cannot be used with `protectedSettings`
   final pulumi.Input<ExtensionProtectedSettingsFromKeyVault>? protectedSettingsFromKeyVault;
   /// Specifies the collection of extension names after which this extension needs to be provisioned.
   final pulumi.Input<List<String>>? provisionAfterExtensions;
@@ -50,12 +50,12 @@ class ExtensionArgs {
   final pulumi.Input<String> virtualMachineId;
 
   /// Creates a new [ExtensionArgs].
-  /// [autoUpgradeMinorVersion] Specifies if the platform deploys the latest minor version update to the `type_handler_version` specified.
+  /// [autoUpgradeMinorVersion] Specifies if the platform deploys the latest minor version update to the `typeHandlerVersion` specified.
   /// [automaticUpgradeEnabled] Should the Extension be automatically updated whenever the Publisher releases a new version of this VM Extension?
   /// [failureSuppressionEnabled] Should failures from the extension be suppressed? Possible values are `true` or `false`. Defaults to `false`.
   /// [name] The name of the virtual machine extension peering. Changing this forces a new resource to be created.
-  /// [protectedSettings] The protected_settings passed to the extension, like settings, these are specified as a JSON object in a string.
-  /// [protectedSettingsFromKeyVault] A `protected_settings_from_key_vault` block as defined below.
+  /// [protectedSettings] The protectedSettings passed to the extension, like settings, these are specified as a JSON object in a string.
+  /// [protectedSettingsFromKeyVault] A `protectedSettingsFromKeyVault` block as defined below.
   /// [provisionAfterExtensions] Specifies the collection of extension names after which this extension needs to be provisioned.
   /// [publisher] The publisher of the extension, available publishers can be found by using the Azure CLI. Changing this forces a new resource to be created.
   /// [settings] The settings passed to the extension, these are specified as a JSON object in a string.
@@ -115,4 +115,3 @@ class ExtensionArgs {
     );
   }
 }
-

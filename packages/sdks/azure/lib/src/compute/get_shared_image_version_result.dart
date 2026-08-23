@@ -25,7 +25,7 @@ class GetSharedImageVersionResult {
   final bool? sortVersionsBySemver;
   /// A mapping of tags assigned to the Shared Image.
   final Map<String, String>? tags;
-  /// One or more `target_region` blocks as documented below.
+  /// One or more `targetRegion` blocks as documented below.
   final List<GetSharedImageVersionTargetRegion> targetRegions;
 
   /// Creates a new [GetSharedImageVersionResult].
@@ -41,7 +41,7 @@ class GetSharedImageVersionResult {
   /// [resourceGroupName] Required.
   /// [sortVersionsBySemver] Optional.
   /// [tags] A mapping of tags assigned to the Shared Image.
-  /// [targetRegions] One or more `target_region` blocks as documented below.
+  /// [targetRegions] One or more `targetRegion` blocks as documented below.
   const GetSharedImageVersionResult({
     required this.excludeFromLatest,
     required this.galleryName,
@@ -94,4 +94,3 @@ class GetSharedImageVersionResult {
     );
   }
 }
-

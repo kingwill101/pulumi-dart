@@ -30,7 +30,7 @@ import 'cluster_principal_assignment_state.dart';
 ///     resourceGroupName: example.name,
 ///     clusterName: exampleCluster.name,
 ///     tenantId: current.then(current => current.tenantId),
-///     principalId: current.then(current => current.principalId),
+///     principalId: output(current.then(current => current.principalId)).apply(x =>String(x)),
 ///     principalType: "App",
 ///     role: "AllDatabasesAdmin",
 /// });
@@ -56,7 +56,7 @@ import 'cluster_principal_assignment_state.dart';
 ///     resource_group_name=example.name,
 ///     cluster_name=example_cluster.name,
 ///     tenant_id=current.tenant_id,
-///     principal_id=current.principal_id,
+///     principal_id=output(current.principal_id).apply(lambda x: str(x)),
 ///     principal_type="App",
 ///     role="AllDatabasesAdmin")
 /// ```
@@ -151,6 +151,41 @@ import 'cluster_principal_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "KustoRG"
+///   location = "West Europe"
+/// }
+/// resource "azure_kusto_cluster" "example" {
+///   name                = "kustocluster"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Standard_D13_v2"
+///     capacity = 2
+///   }
+/// }
+/// resource "azure_kusto_clusterprincipalassignment" "example" {
+///   name                = "KustoPrincipalAssignment"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   cluster_name        = azure_kusto_cluster.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   principal_id        = data.azure_core_getclientconfig.current.principalId
+///   principal_type      = "App"
+///   role                = "AllDatabasesAdmin"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -165,8 +200,8 @@ import 'cluster_principal_assignment_state.dart';
 /// import com.pulumi.azure.kusto.inputs.ClusterSkuArgs;
 /// import com.pulumi.azure.kusto.ClusterPrincipalAssignment;
 /// import com.pulumi.azure.kusto.ClusterPrincipalAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

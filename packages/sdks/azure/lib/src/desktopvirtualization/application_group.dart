@@ -210,6 +210,53 @@ import 'application_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example-virtualdesktop"
+///   location = "West Europe"
+/// }
+/// resource "azure_desktopvirtualization_hostpool" "pooledbreadthfirst" {
+///   name                = "pooledbreadthfirst"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   type                = "Pooled"
+///   load_balancer_type  = "BreadthFirst"
+/// }
+/// resource "azure_desktopvirtualization_hostpool" "personalautomatic" {
+///   name                             = "personalautomatic"
+///   location                         = azure_core_resourcegroup.example.location
+///   resource_group_name              = azure_core_resourcegroup.example.name
+///   type                             = "Personal"
+///   personal_desktop_assignment_type = "Automatic"
+///   load_balancer_type               = "BreadthFirst"
+/// }
+/// resource "azure_desktopvirtualization_applicationgroup" "remoteapp" {
+///   name                = "acctag"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   type                = "RemoteApp"
+///   host_pool_id        = azure_desktopvirtualization_hostpool.pooledbreadthfirst.id
+///   friendly_name       = "TestAppGroup"
+///   description         = "Acceptance Test: An application group"
+/// }
+/// resource "azure_desktopvirtualization_applicationgroup" "desktopapp" {
+///   name                = "appgroupdesktop"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   type                = "Desktop"
+///   host_pool_id        = azure_desktopvirtualization_hostpool.personalautomatic.id
+///   friendly_name       = "TestAppGroup"
+///   description         = "Acceptance Test: An application group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -222,8 +269,8 @@ import 'application_group_state.dart';
 /// import com.pulumi.azure.desktopvirtualization.HostPoolArgs;
 /// import com.pulumi.azure.desktopvirtualization.ApplicationGroup;
 /// import com.pulumi.azure.desktopvirtualization.ApplicationGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -332,7 +379,7 @@ import 'application_group_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.DesktopVirtualization` - 2024-04-03
+/// * `Microsoft.DesktopVirtualization` - 2025-10-10
 ///
 /// ## Import
 ///

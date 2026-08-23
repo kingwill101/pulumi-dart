@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_policy_mysql_flexible_server_default_retention_rule_life_cycle.dart';
 
 class BackupPolicyMysqlFlexibleServerDefaultRetentionRule {
-  /// A `life_cycle` block as defined below. Changing this forces a new resource to be created.
+  /// A `lifeCycle` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<BackupPolicyMysqlFlexibleServerDefaultRetentionRuleLifeCycle>> lifeCycles;
 
   /// Creates a new [BackupPolicyMysqlFlexibleServerDefaultRetentionRule].
-  /// [lifeCycles] A `life_cycle` block as defined below. Changing this forces a new resource to be created.
+  /// [lifeCycles] A `lifeCycle` block as defined below. Changing this forces a new resource to be created.
   const BackupPolicyMysqlFlexibleServerDefaultRetentionRule({
     required this.lifeCycles,
   });
@@ -25,4 +25,3 @@ class BackupPolicyMysqlFlexibleServerDefaultRetentionRule {
     );
   }
 }
-

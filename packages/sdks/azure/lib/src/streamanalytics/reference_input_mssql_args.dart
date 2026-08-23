@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReferenceInputMssqlArgs {
   /// The MS SQL database name where the reference data exists.
   final pulumi.Input<String> database;
-  /// The query used to retrieve incremental changes in the reference data from the MS SQL database. Cannot be set when `refresh_type` is `Static`.
+  /// The query used to retrieve incremental changes in the reference data from the MS SQL database. Cannot be set when `refreshType` is `Static`.
   final pulumi.Input<String>? deltaSnapshotQuery;
   /// The query used to retrieve the reference data from the MS SQL database.
   final pulumi.Input<String> fullSnapshotQuery;
@@ -17,7 +17,7 @@ class ReferenceInputMssqlArgs {
   final pulumi.Input<String>? name;
   /// The password to connect to the MS SQL database.
   final pulumi.Input<String> password;
-  /// The frequency in `hh:mm:ss` with which the reference data should be retrieved from the MS SQL database e.g. `00:20:00` for every 20 minutes. Must be set when `refresh_type` is `RefreshPeriodicallyWithFull` or `RefreshPeriodicallyWithDelta`.
+  /// The frequency in `hh:mm:ss` with which the reference data should be retrieved from the MS SQL database e.g. `00:20:00` for every 20 minutes. Must be set when `refreshType` is `RefreshPeriodicallyWithFull` or `RefreshPeriodicallyWithDelta`.
   final pulumi.Input<String>? refreshIntervalDuration;
   /// Defines whether and how the reference data should be refreshed. Accepted values are `Static`, `RefreshPeriodicallyWithFull` and `RefreshPeriodicallyWithDelta`.
   final pulumi.Input<String> refreshType;
@@ -34,11 +34,11 @@ class ReferenceInputMssqlArgs {
 
   /// Creates a new [ReferenceInputMssqlArgs].
   /// [database] The MS SQL database name where the reference data exists.
-  /// [deltaSnapshotQuery] The query used to retrieve incremental changes in the reference data from the MS SQL database. Cannot be set when `refresh_type` is `Static`.
+  /// [deltaSnapshotQuery] The query used to retrieve incremental changes in the reference data from the MS SQL database. Cannot be set when `refreshType` is `Static`.
   /// [fullSnapshotQuery] The query used to retrieve the reference data from the MS SQL database.
   /// [name] The name of the Reference Input MS SQL data. Changing this forces a new resource to be created.
   /// [password] The password to connect to the MS SQL database.
-  /// [refreshIntervalDuration] The frequency in `hh:mm:ss` with which the reference data should be retrieved from the MS SQL database e.g. `00:20:00` for every 20 minutes. Must be set when `refresh_type` is `RefreshPeriodicallyWithFull` or `RefreshPeriodicallyWithDelta`.
+  /// [refreshIntervalDuration] The frequency in `hh:mm:ss` with which the reference data should be retrieved from the MS SQL database e.g. `00:20:00` for every 20 minutes. Must be set when `refreshType` is `RefreshPeriodicallyWithFull` or `RefreshPeriodicallyWithDelta`.
   /// [refreshType] Defines whether and how the reference data should be refreshed. Accepted values are `Static`, `RefreshPeriodicallyWithFull` and `RefreshPeriodicallyWithDelta`.
   /// [resourceGroupName] The name of the Resource Group where the Stream Analytics Job should exist. Changing this forces a new resource to be created.
   /// [server] The fully qualified domain name of the MS SQL server.
@@ -94,4 +94,3 @@ class ReferenceInputMssqlArgs {
     );
   }
 }
-

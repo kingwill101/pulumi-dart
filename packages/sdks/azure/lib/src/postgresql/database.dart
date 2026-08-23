@@ -6,7 +6,7 @@ import 'database_state.dart';
 ///
 /// &gt; **Note:** The `azure.postgresql.Database` resource is deprecated and will be removed in v5.0 of the AzureRM Provider. Azure Database for PostgreSQL Single Server and its sub resources have been retired as of 2025-03-28, please use the `azure.postgresql.FlexibleServerDatabase` resource instead. For more information, see https://techcommunity.microsoft.com/blog/adforpostgresql/retiring-azure-database-for-postgresql-single-server-in-2025/3783783.
 ///
-/// !&gt; **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `prevent_destroy` lifecycle argument in your configuration file for this resource. For more information on the `prevent_destroy` lifecycle argument please see the terraform documentation.
+/// &gt; **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `preventDestroy` lifecycle argument in your configuration file for this resource. For more information on the `preventDestroy` lifecycle argument please see the terraform documentation.
 ///
 /// ## Example Usage
 ///
@@ -158,6 +158,41 @@ import 'database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "api-rg-pro"
+///   location = "West Europe"
+/// }
+/// resource "azure_postgresql_server" "example" {
+///   name                         = "postgresql-server-1"
+///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   sku_name                     = "B_Gen5_2"
+///   storage_mb                   = 5120
+///   backup_retention_days        = 7
+///   geo_redundant_backup_enabled = false
+///   auto_grow_enabled            = true
+///   administrator_login          = "psqladmin"
+///   administrator_login_password = "H@Sh1CoR3!"
+///   version                      = "9.5"
+///   ssl_enforcement_enabled      = true
+/// }
+/// resource "azure_postgresql_database" "example" {
+///   name                = "exampledb"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   server_name         = azure_postgresql_server.example.name
+///   charset             = "UTF8"
+///   collation           = "English_United States.1252"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -170,8 +205,8 @@ import 'database_state.dart';
 /// import com.pulumi.azure.postgresql.ServerArgs;
 /// import com.pulumi.azure.postgresql.Database;
 /// import com.pulumi.azure.postgresql.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

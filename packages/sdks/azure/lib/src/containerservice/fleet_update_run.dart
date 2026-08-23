@@ -276,6 +276,65 @@ import 'fleet_update_run_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "westeurope"
+/// }
+/// resource "azure_containerservice_kubernetesfleetmanager" "example" {
+///   location            = azure_core_resourcegroup.example.location
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_containerservice_kubernetescluster" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   dns_prefix          = "example"
+///   default_node_pool = {
+///     name       = "default"
+///     node_count = 1
+///     vm_size    = "Standard_DS2_v2"
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_containerservice_fleetmember" "example" {
+///   name                  = "example"
+///   kubernetes_fleet_id   = azure_containerservice_kubernetesfleetmanager.example.id
+///   kubernetes_cluster_id = azure_containerservice_kubernetescluster.example.id
+///   group                 = "example-group"
+/// }
+/// resource "azure_containerservice_fleetupdaterun" "example" {
+///   name                        = "example"
+///   kubernetes_fleet_manager_id = azure_containerservice_kubernetesfleetmanager.example.id
+///   managed_cluster_update = {
+///     upgrade = {
+///       type               = "Full"
+///       kubernetes_version = "1.27"
+///     }
+///     node_image_selection = {
+///       type = "Latest"
+///     }
+///   }
+///   stages {
+///     name = "example"
+///     groups {
+///       name = "example-group"
+///     }
+///     after_stage_wait_in_seconds = 21
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -298,8 +357,9 @@ import 'fleet_update_run_state.dart';
 /// import com.pulumi.azure.containerservice.inputs.FleetUpdateRunManagedClusterUpdateUpgradeArgs;
 /// import com.pulumi.azure.containerservice.inputs.FleetUpdateRunManagedClusterUpdateNodeImageSelectionArgs;
 /// import com.pulumi.azure.containerservice.inputs.FleetUpdateRunStageArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.containerservice.inputs.FleetUpdateRunStageGroupArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -429,7 +489,7 @@ import 'fleet_update_run_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.ContainerService` - 2024-04-01
+/// * `Microsoft.ContainerService` - 2025-03-01
 ///
 /// ## Import
 ///
@@ -439,15 +499,15 @@ import 'fleet_update_run_state.dart';
 /// $ pulumi import azure:containerservice/fleetUpdateRun:FleetUpdateRun example /subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/resourceGroup1/providers/Microsoft.ContainerService/fleets/fleet1/updateRuns/updateRun1
 /// ```
 class FleetUpdateRun extends pulumi.CustomResource {
-  /// The ID of the Fleet Update Strategy. Only one of `fleet_update_strategy_id` or `stage` can be specified.
+  /// The ID of the Fleet Update Strategy. Only one of `fleetUpdateStrategyId` or `stage` can be specified.
   late final pulumi.Output<String?> fleetUpdateStrategyId;
   /// The ID of the Fleet Manager. Changing this forces a new Kubernetes Fleet Update Run to be created.
   late final pulumi.Output<String> kubernetesFleetManagerId;
-  /// A `managed_cluster_update` block as defined below.
+  /// A `managedClusterUpdate` block as defined below.
   late final pulumi.Output<FleetUpdateRunManagedClusterUpdate> managedClusterUpdate;
   /// The name which should be used for this Kubernetes Fleet Update Run. Changing this forces a new Kubernetes Fleet Update Run to be created.
   late final pulumi.Output<String> name;
-  /// One or more `stage` blocks as defined below. Only one of `stage` or `fleet_update_strategy_id` can be specified.
+  /// One or more `stage` blocks as defined below. Only one of `stage` or `fleetUpdateStrategyId` can be specified.
   late final pulumi.Output<List<Map<String, dynamic>>?> stages;
 
   /// Creates a new [FleetUpdateRun].

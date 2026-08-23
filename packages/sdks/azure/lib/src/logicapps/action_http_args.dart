@@ -22,7 +22,7 @@ class ActionHttpArgs {
   final pulumi.Input<String>? name;
   /// Specifies a Map of Key-Value Pairs that should be sent to the `uri` when this HTTP Action is triggered.
   final pulumi.Input<Map<String, String>>? queries;
-  /// Specifies the place of the HTTP Action in the Logic App Workflow. If not specified, the HTTP Action is right after the Trigger. A `run_after` block is as defined below.
+  /// Specifies the place of the HTTP Action in the Logic App Workflow. If not specified, the HTTP Action is right after the Trigger. A `runAfter` block is as defined below.
   final pulumi.Input<List<ActionHttpRunAfter>>? runAfters;
   /// Specifies the URI which will be called when this HTTP Action is triggered.
   final pulumi.Input<String> uri;
@@ -34,7 +34,7 @@ class ActionHttpArgs {
   /// [method] Specifies the HTTP Method which should be used for this HTTP Action. Possible values include `DELETE`, `GET`, `PATCH`, `POST` and `PUT`.
   /// [name] Specifies the name of the HTTP Action to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   /// [queries] Specifies a Map of Key-Value Pairs that should be sent to the `uri` when this HTTP Action is triggered.
-  /// [runAfters] Specifies the place of the HTTP Action in the Logic App Workflow. If not specified, the HTTP Action is right after the Trigger. A `run_after` block is as defined below.
+  /// [runAfters] Specifies the place of the HTTP Action in the Logic App Workflow. If not specified, the HTTP Action is right after the Trigger. A `runAfter` block is as defined below.
   /// [uri] Specifies the URI which will be called when this HTTP Action is triggered.
   const ActionHttpArgs({
     this.body,
@@ -73,4 +73,3 @@ class ActionHttpArgs {
     );
   }
 }
-

@@ -145,6 +145,36 @@ import 'function_java_script_udfstate.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getresourcegroup" "example" {
+///   name = "example-resources"
+/// }
+/// data "azure_streamanalytics_getjob" "exampleGetJob" {
+///   name                = "example-job"
+///   resource_group_name = data.azure_core_getresourcegroup.example.name
+/// }
+///
+/// resource "azure_streamanalytics_functionjavascriptudf" "example" {
+///   name                      = "example-javascript-function"
+///   stream_analytics_job_name = data.azure_streamanalytics_getjob.exampleGetJob.name
+///   resource_group_name       = data.azure_streamanalytics_getjob.exampleGetJob.resource_group_name
+///   script                    = "function getRandomNumber(in) {\n  return in;\n}\n"
+///   inputs {
+///     type = "bigint"
+///   }
+///   output = {
+///     type = "bigint"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -159,8 +189,8 @@ import 'function_java_script_udfstate.dart';
 /// import com.pulumi.azure.streamanalytics.FunctionJavaScriptUDFArgs;
 /// import com.pulumi.azure.streamanalytics.inputs.FunctionJavaScriptUDFInputArgs;
 /// import com.pulumi.azure.streamanalytics.inputs.FunctionJavaScriptUDFOutputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

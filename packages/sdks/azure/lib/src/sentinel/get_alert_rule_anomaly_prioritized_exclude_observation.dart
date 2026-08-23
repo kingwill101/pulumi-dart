@@ -7,7 +7,7 @@ class GetAlertRuleAnomalyPrioritizedExcludeObservation {
   final pulumi.Input<String> description;
   /// The excluded value per `description`.
   final pulumi.Input<String> exclude;
-  /// The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
+  /// The guid of this Sentinel Alert Rule Template. Either `displayName` or `name` have to be specified.
   final pulumi.Input<String> name;
   /// The prioritized value per `description`.
   final pulumi.Input<String> prioritize;
@@ -15,7 +15,7 @@ class GetAlertRuleAnomalyPrioritizedExcludeObservation {
   /// Creates a new [GetAlertRuleAnomalyPrioritizedExcludeObservation].
   /// [description] The description of the threshold observation.
   /// [exclude] The excluded value per `description`.
-  /// [name] The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
+  /// [name] The guid of this Sentinel Alert Rule Template. Either `displayName` or `name` have to be specified.
   /// [prioritize] The prioritized value per `description`.
   const GetAlertRuleAnomalyPrioritizedExcludeObservation({
     required this.description,
@@ -42,4 +42,3 @@ class GetAlertRuleAnomalyPrioritizedExcludeObservation {
     );
   }
 }
-

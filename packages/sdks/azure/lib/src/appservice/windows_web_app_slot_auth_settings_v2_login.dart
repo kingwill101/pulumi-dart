@@ -86,4 +86,3 @@ class WindowsWebAppSlotAuthSettingsV2Login {
     );
   }
 }
-

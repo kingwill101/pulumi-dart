@@ -14,6 +14,10 @@ import 'get_snapshot_policy_args.dart';
 import 'get_snapshot_policy_result.dart';
 import 'get_snapshot_result.dart';
 import 'get_volume_args.dart';
+import 'get_volume_bucket_args.dart';
+import 'get_volume_bucket_result.dart';
+import 'get_volume_bucket_with_server_args.dart';
+import 'get_volume_bucket_with_server_result.dart';
 import 'get_volume_group_oracle_args.dart';
 import 'get_volume_group_oracle_result.dart';
 import 'get_volume_group_sap_hana_args.dart';
@@ -87,6 +91,24 @@ import 'get_volume_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_netapp_getaccount" "example" {
+///   resource_group_name = "acctestRG"
+///   name                = "acctestnetappaccount"
+/// }
+///
+/// output "netappAccountId" {
+///   value = data.azure_netapp_getaccount.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +117,8 @@ import 'get_volume_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.netapp.NetappFunctions;
 /// import com.pulumi.azure.netapp.inputs.GetAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -135,7 +157,7 @@ import 'get_volume_result.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_get_account_get_account_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAccountResult> getAccount(
@@ -212,6 +234,23 @@ Future<GetAccountResult> getAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_netapp_getaccountencryption" "example" {
+///   netapp_account_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.NetApp/netAppAccounts/account1"
+/// }
+///
+/// output "id" {
+///   value = data.azure_netapp_getaccountencryption.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -220,8 +259,8 @@ Future<GetAccountResult> getAccount(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.netapp.NetappFunctions;
 /// import com.pulumi.azure.netapp.inputs.GetAccountEncryptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -258,7 +297,7 @@ Future<GetAccountResult> getAccount(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_get_account_encryption_get_account_encryption_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAccountEncryptionResult> getAccountEncryption(
@@ -343,6 +382,25 @@ Future<GetAccountEncryptionResult> getAccountEncryption(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_netapp_getbackuppolicy" "example" {
+///   resource_group_name = "example-resource-group"
+///   account_name        = "example-netappaccount"
+///   name                = "example-backuppolicy"
+/// }
+///
+/// output "backupPolicyId" {
+///   value = data.azure_netapp_getbackuppolicy.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -351,8 +409,8 @@ Future<GetAccountEncryptionResult> getAccountEncryption(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.netapp.NetappFunctions;
 /// import com.pulumi.azure.netapp.inputs.GetBackupPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -393,7 +451,7 @@ Future<GetAccountEncryptionResult> getAccountEncryption(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_get_backup_policy_get_backup_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBackupPolicyResult> getBackupPolicy(
@@ -478,6 +536,25 @@ Future<GetBackupPolicyResult> getBackupPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_netapp_getbackupvault" "example" {
+///   resource_group_name = "example-resource-group"
+///   account_name        = "example-netappaccount"
+///   name                = "example-backupvault"
+/// }
+///
+/// output "backupVaultId" {
+///   value = data.azure_netapp_getbackupvault.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -486,8 +563,8 @@ Future<GetBackupPolicyResult> getBackupPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.netapp.NetappFunctions;
 /// import com.pulumi.azure.netapp.inputs.GetBackupVaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -528,7 +605,7 @@ Future<GetBackupPolicyResult> getBackupPolicy(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_get_backup_vault_get_backup_vault_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBackupVaultResult> getBackupVault(
@@ -613,6 +690,25 @@ Future<GetBackupVaultResult> getBackupVault(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_netapp_getpool" "example" {
+///   resource_group_name = "acctestRG"
+///   account_name        = "acctestnetappaccount"
+///   name                = "acctestnetapppool"
+/// }
+///
+/// output "netappPoolId" {
+///   value = data.azure_netapp_getpool.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -621,8 +717,8 @@ Future<GetBackupVaultResult> getBackupVault(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.netapp.NetappFunctions;
 /// import com.pulumi.azure.netapp.inputs.GetPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -663,7 +759,7 @@ Future<GetBackupVaultResult> getBackupVault(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_get_pool_get_pool_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPoolResult> getPool(
@@ -751,9 +847,30 @@ Future<GetPoolResult> getPool(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("netappSnapshotId", example.Id)
+/// 		ctx.Export("netappSnapshotId", pulumi.Any(example.Id))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_netapp_getsnapshot" "test" {
+///   resource_group_name = "acctestRG"
+///   name                = "acctestnetappsnapshot"
+///   account_name        = "acctestnetappaccount"
+///   pool_name           = "acctestnetapppool"
+///   volume_name         = "acctestnetappvolume"
+/// }
+///
+/// output "netappSnapshotId" {
+///   value = example.id
 /// }
 /// ```
 /// ```java
@@ -764,8 +881,8 @@ Future<GetPoolResult> getPool(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.netapp.NetappFunctions;
 /// import com.pulumi.azure.netapp.inputs.GetSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -810,7 +927,7 @@ Future<GetPoolResult> getPool(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_get_snapshot_get_snapshot_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSnapshotResult> getSnapshot(
@@ -919,6 +1036,43 @@ Future<GetSnapshotResult> getSnapshot(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_netapp_getsnapshotpolicy" "example" {
+///   resource_group_name = "acctestRG"
+///   account_name        = "acctestnetappaccount"
+///   name                = "example-snapshot-policy"
+/// }
+///
+/// output "id" {
+///   value = data.azure_netapp_getsnapshotpolicy.example.id
+/// }
+/// output "name" {
+///   value = data.azure_netapp_getsnapshotpolicy.example.name
+/// }
+/// output "enabled" {
+///   value = data.azure_netapp_getsnapshotpolicy.example.enabled
+/// }
+/// output "hourlySchedule" {
+///   value = data.azure_netapp_getsnapshotpolicy.example.hourly_schedules
+/// }
+/// output "dailySchedule" {
+///   value = data.azure_netapp_getsnapshotpolicy.example.daily_schedules
+/// }
+/// output "weeklySchedule" {
+///   value = data.azure_netapp_getsnapshotpolicy.example.weekly_schedules
+/// }
+/// output "monthlySchedule" {
+///   value = data.azure_netapp_getsnapshotpolicy.example.monthly_schedules
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -927,8 +1081,8 @@ Future<GetSnapshotResult> getSnapshot(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.netapp.NetappFunctions;
 /// import com.pulumi.azure.netapp.inputs.GetSnapshotPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -981,7 +1135,7 @@ Future<GetSnapshotResult> getSnapshot(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_get_snapshot_policy_get_snapshot_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSnapshotPolicyResult> getSnapshotPolicy(
@@ -1070,6 +1224,26 @@ Future<GetSnapshotPolicyResult> getSnapshotPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_netapp_getvolume" "example" {
+///   resource_group_name = "acctestRG"
+///   account_name        = "acctestnetappaccount"
+///   pool_name           = "acctestnetapppool"
+///   name                = "example-volume"
+/// }
+///
+/// output "netappVolumeId" {
+///   value = data.azure_netapp_getvolume.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1078,8 +1252,8 @@ Future<GetSnapshotPolicyResult> getSnapshotPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.netapp.NetappFunctions;
 /// import com.pulumi.azure.netapp.inputs.GetVolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1122,7 +1296,7 @@ Future<GetSnapshotPolicyResult> getSnapshotPolicy(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_get_volume_get_volume_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVolumeResult> getVolume(
@@ -1136,6 +1310,318 @@ Future<GetVolumeResult> getVolume(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVolumeResult.fromMap(result);
+}
+
+/// Use this data source to access information about an existing NetApp Files Volume Bucket.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure from "@pulumi/azure";
+///
+/// const example = azure.netapp.getVolumeBucket({
+///     name: "example-bucket",
+///     netappVolumeId: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume",
+/// });
+/// export const bucketStatus = example.then(example => example.status);
+/// export const bucketServerIpAddress = example.then(example => example.serverIpAddress);
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_azure as azure
+///
+/// example = azure.netapp.get_volume_bucket(name="example-bucket",
+///     netapp_volume_id="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume")
+/// pulumi.export("bucketStatus", example.status)
+/// pulumi.export("bucketServerIpAddress", example.server_ip_address)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Azure = Pulumi.Azure;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Azure.NetApp.GetVolumeBucket.Invoke(new()
+///     {
+///         Name = "example-bucket",
+///         NetappVolumeId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume",
+///     });
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["bucketStatus"] = example.Apply(getVolumeBucketResult => getVolumeBucketResult.Status),
+///         ["bucketServerIpAddress"] = example.Apply(getVolumeBucketResult => getVolumeBucketResult.ServerIpAddress),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/netapp"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := netapp.LookupVolumeBucket(ctx, &netapp.LookupVolumeBucketArgs{
+/// 			Name:           "example-bucket",
+/// 			NetappVolumeId: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ctx.Export("bucketStatus", example.Status)
+/// 		ctx.Export("bucketServerIpAddress", example.ServerIpAddress)
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_netapp_getvolumebucket" "example" {
+///   name             = "example-bucket"
+///   netapp_volume_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume"
+/// }
+///
+/// output "bucketStatus" {
+///   value = data.azure_netapp_getvolumebucket.example.status
+/// }
+/// output "bucketServerIpAddress" {
+///   value = data.azure_netapp_getvolumebucket.example.server_ip_address
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azure.netapp.NetappFunctions;
+/// import com.pulumi.azure.netapp.inputs.GetVolumeBucketArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = NetappFunctions.getVolumeBucket(GetVolumeBucketArgs.builder()
+///             .name("example-bucket")
+///             .netappVolumeId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume")
+///             .build());
+///
+///         ctx.export("bucketStatus", example.status());
+///         ctx.export("bucketServerIpAddress", example.serverIpAddress());
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: azure:netapp:getVolumeBucket
+///       arguments:
+///         name: example-bucket
+///         netappVolumeId: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume
+/// outputs:
+///   bucketStatus: ${example.status}
+///   bucketServerIpAddress: ${example.serverIpAddress}
+/// ```
+///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This data source uses the following Azure API Providers:
+///
+/// * `Microsoft.NetApp` - 2026-01-01
+/// [args] Arguments passed to this invoke. {@macro pulumi_netapp_get_volume_bucket_get_volume_bucket_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetVolumeBucketResult> getVolumeBucket(
+  GetVolumeBucketArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure:netapp/getVolumeBucket:getVolumeBucket',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetVolumeBucketResult.fromMap(result);
+}
+
+/// Use this data source to access information about an existing NetApp Files Volume Bucket, including its bucket server configuration.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure from "@pulumi/azure";
+///
+/// const example = azure.netapp.getVolumeBucketWithServer({
+///     name: "example-bucket",
+///     netappVolumeId: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume",
+/// });
+/// export const bucketStatus = example.then(example => example.status);
+/// export const bucketServerIpAddress = example.then(example => example.serverIpAddress);
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_azure as azure
+///
+/// example = azure.netapp.get_volume_bucket_with_server(name="example-bucket",
+///     netapp_volume_id="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume")
+/// pulumi.export("bucketStatus", example.status)
+/// pulumi.export("bucketServerIpAddress", example.server_ip_address)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Azure = Pulumi.Azure;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Azure.NetApp.GetVolumeBucketWithServer.Invoke(new()
+///     {
+///         Name = "example-bucket",
+///         NetappVolumeId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume",
+///     });
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["bucketStatus"] = example.Apply(getVolumeBucketWithServerResult => getVolumeBucketWithServerResult.Status),
+///         ["bucketServerIpAddress"] = example.Apply(getVolumeBucketWithServerResult => getVolumeBucketWithServerResult.ServerIpAddress),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/netapp"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := netapp.LookupVolumeBucketWithServer(ctx, &netapp.LookupVolumeBucketWithServerArgs{
+/// 			Name:           "example-bucket",
+/// 			NetappVolumeId: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ctx.Export("bucketStatus", example.Status)
+/// 		ctx.Export("bucketServerIpAddress", example.ServerIpAddress)
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_netapp_getvolumebucketwithserver" "example" {
+///   name             = "example-bucket"
+///   netapp_volume_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume"
+/// }
+///
+/// output "bucketStatus" {
+///   value = data.azure_netapp_getvolumebucketwithserver.example.status
+/// }
+/// output "bucketServerIpAddress" {
+///   value = data.azure_netapp_getvolumebucketwithserver.example.server_ip_address
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azure.netapp.NetappFunctions;
+/// import com.pulumi.azure.netapp.inputs.GetVolumeBucketWithServerArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = NetappFunctions.getVolumeBucketWithServer(GetVolumeBucketWithServerArgs.builder()
+///             .name("example-bucket")
+///             .netappVolumeId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume")
+///             .build());
+///
+///         ctx.export("bucketStatus", example.status());
+///         ctx.export("bucketServerIpAddress", example.serverIpAddress());
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: azure:netapp:getVolumeBucketWithServer
+///       arguments:
+///         name: example-bucket
+///         netappVolumeId: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume
+/// outputs:
+///   bucketStatus: ${example.status}
+///   bucketServerIpAddress: ${example.serverIpAddress}
+/// ```
+///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This data source uses the following Azure API Providers:
+///
+/// * `Microsoft.NetApp` - 2026-01-01
+/// [args] Arguments passed to this invoke. {@macro pulumi_netapp_get_volume_bucket_with_server_get_volume_bucket_with_server_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetVolumeBucketWithServerResult> getVolumeBucketWithServer(
+  GetVolumeBucketWithServerArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure:netapp/getVolumeBucketWithServer:getVolumeBucketWithServer',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetVolumeBucketWithServerResult.fromMap(result);
 }
 
 /// Use this data source to access information about an existing Application Volume Group for Oracle application.
@@ -1207,6 +1693,25 @@ Future<GetVolumeResult> getVolume(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_netapp_getvolumegrouporacle" "example" {
+///   name                = "existing application volume group name"
+///   resource_group_name = "resource group name where the account and volume group belong to"
+///   account_name        = "existing account where the application volume group belong to"
+/// }
+///
+/// output "id" {
+///   value = data.azure_netapp_getvolumegrouporacle.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1215,8 +1720,8 @@ Future<GetVolumeResult> getVolume(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.netapp.NetappFunctions;
 /// import com.pulumi.azure.netapp.inputs.GetVolumeGroupOracleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1257,7 +1762,7 @@ Future<GetVolumeResult> getVolume(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_get_volume_group_oracle_get_volume_group_oracle_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVolumeGroupOracleResult> getVolumeGroupOracle(
@@ -1342,6 +1847,25 @@ Future<GetVolumeGroupOracleResult> getVolumeGroupOracle(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_netapp_getvolumegroupsaphana" "example" {
+///   name                = "existing application volume group name"
+///   resource_group_name = "resource group name where the account and volume group belong to"
+///   account_name        = "existing account where the application volume group belong to"
+/// }
+///
+/// output "id" {
+///   value = data.azure_netapp_getvolumegroupsaphana.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1350,8 +1874,8 @@ Future<GetVolumeGroupOracleResult> getVolumeGroupOracle(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.netapp.NetappFunctions;
 /// import com.pulumi.azure.netapp.inputs.GetVolumeGroupSapHanaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1392,7 +1916,7 @@ Future<GetVolumeGroupOracleResult> getVolumeGroupOracle(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_get_volume_group_sap_hana_get_volume_group_sap_hana_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVolumeGroupSapHanaResult> getVolumeGroupSapHana(
@@ -1473,6 +1997,24 @@ Future<GetVolumeGroupSapHanaResult> getVolumeGroupSapHana(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_netapp_getvolumequotarule" "example" {
+///   name      = "exampleQuotaRule"
+///   volume_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1/volumes/vol1"
+/// }
+///
+/// output "id" {
+///   value = data.azure_netapp_getvolumequotarule.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1481,8 +2023,8 @@ Future<GetVolumeGroupSapHanaResult> getVolumeGroupSapHana(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.netapp.NetappFunctions;
 /// import com.pulumi.azure.netapp.inputs.GetVolumeQuotaRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1521,7 +2063,7 @@ Future<GetVolumeGroupSapHanaResult> getVolumeGroupSapHana(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_netapp_get_volume_quota_rule_get_volume_quota_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVolumeQuotaRuleResult> getVolumeQuotaRule(

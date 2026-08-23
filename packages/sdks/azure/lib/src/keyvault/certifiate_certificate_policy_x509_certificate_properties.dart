@@ -10,7 +10,7 @@ class CertifiateCertificatePolicyX509CertificateProperties {
   final pulumi.Input<List<String>> keyUsages;
   /// The Certificate's Subject.
   final pulumi.Input<String> subject;
-  /// A `subject_alternative_names` block as defined below.
+  /// A `subjectAlternativeNames` block as defined below.
   final pulumi.Input<CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames>? subjectAlternativeNames;
   /// The Certificates Validity Period in Months.
   final pulumi.Input<int> validityInMonths;
@@ -19,7 +19,7 @@ class CertifiateCertificatePolicyX509CertificateProperties {
   /// [extendedKeyUsages] A list of Extended/Enhanced Key Usages.
   /// [keyUsages] A list of uses associated with this Key. Possible values include `cRLSign`, `dataEncipherment`, `decipherOnly`, `digitalSignature`, `encipherOnly`, `keyAgreement`, `keyCertSign`, `keyEncipherment` and `nonRepudiation` and are case-sensitive.
   /// [subject] The Certificate's Subject.
-  /// [subjectAlternativeNames] A `subject_alternative_names` block as defined below.
+  /// [subjectAlternativeNames] A `subjectAlternativeNames` block as defined below.
   /// [validityInMonths] The Certificates Validity Period in Months.
   const CertifiateCertificatePolicyX509CertificateProperties({
     this.extendedKeyUsages,
@@ -49,4 +49,3 @@ class CertifiateCertificatePolicyX509CertificateProperties {
     );
   }
 }
-

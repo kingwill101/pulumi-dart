@@ -49,7 +49,7 @@ import 'analytics_solution_state.dart';
 /// example = azure.core.ResourceGroup("example",
 ///     name="k8s-log-analytics-test",
 ///     location="West Europe")
-/// workspace = random.index.Id("workspace",
+/// workspace = random.Id("workspace",
 ///     keepers={
 ///         groupName: example.name,
 ///     },
@@ -85,7 +85,7 @@ import 'analytics_solution_state.dart';
 ///         Location = "West Europe",
 ///     });
 ///
-///     var workspace = new Random.Index.Id("workspace", new()
+///     var workspace = new Random.Id("workspace", new()
 ///     {
 ///         Keepers =
 ///         {
@@ -173,6 +173,46 @@ import 'analytics_solution_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "k8s-log-analytics-test"
+///   location = "West Europe"
+/// }
+/// resource "random_id" "workspace" {
+///   keepers = {
+///     "groupName" = azure_core_resourcegroup.example.name
+///   }
+///   byte_length = 8
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                ="k8s-workspace-${random_id.workspace.hex}"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_operationalinsights_analyticssolution" "example" {
+///   solution_name         = "ContainerInsights"
+///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   workspace_resource_id = azure_operationalinsights_analyticsworkspace.example.id
+///   workspace_name        = azure_operationalinsights_analyticsworkspace.example.name
+///   plan = {
+///     publisher = "Microsoft"
+///     product   = "OMSGallery/ContainerInsights"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -188,8 +228,8 @@ import 'analytics_solution_state.dart';
 /// import com.pulumi.azure.operationalinsights.AnalyticsSolution;
 /// import com.pulumi.azure.operationalinsights.AnalyticsSolutionArgs;
 /// import com.pulumi.azure.operationalinsights.inputs.AnalyticsSolutionPlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -22,7 +22,7 @@ class GalleryApplicationVersionArgs {
   final pulumi.Input<String> galleryApplicationId;
   /// The Azure Region where the Gallery Application Version exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-  /// A `manage_action` block as defined below.
+  /// A `manageAction` block as defined below.
   final pulumi.Input<GalleryApplicationVersionManageAction> manageAction;
   /// The version name of the Gallery Application Version, such as `1.0.0`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -32,7 +32,7 @@ class GalleryApplicationVersionArgs {
   final pulumi.Input<GalleryApplicationVersionSource> source;
   /// A mapping of tags to assign to the Gallery Application Version.
   final pulumi.Input<Map<String, String>>? tags;
-  /// One or more `target_region` blocks as defined below.
+  /// One or more `targetRegion` blocks as defined below.
   final pulumi.Input<List<GalleryApplicationVersionTargetRegion>> targetRegions;
 
   /// Creates a new [GalleryApplicationVersionArgs].
@@ -42,12 +42,12 @@ class GalleryApplicationVersionArgs {
   /// [excludeFromLatest] Should the Gallery Application Version be excluded from the `latest` filter? If set to `true` this Gallery Application Version won't be returned for the `latest` version. Defaults to `false`.
   /// [galleryApplicationId] The ID of the Gallery Application. Changing this forces a new resource to be created.
   /// [location] The Azure Region where the Gallery Application Version exists. Changing this forces a new resource to be created.
-  /// [manageAction] A `manage_action` block as defined below.
+  /// [manageAction] A `manageAction` block as defined below.
   /// [name] The version name of the Gallery Application Version, such as `1.0.0`. Changing this forces a new resource to be created.
   /// [packageFile] Specifies the name of the package file on the VM. Changing this forces a new resource to be created.
   /// [source] A `source` block as defined below.
   /// [tags] A mapping of tags to assign to the Gallery Application Version.
-  /// [targetRegions] One or more `target_region` blocks as defined below.
+  /// [targetRegions] One or more `targetRegion` blocks as defined below.
   const GalleryApplicationVersionArgs({
     this.configFile,
     this.enableHealthCheck,
@@ -97,4 +97,3 @@ class GalleryApplicationVersionArgs {
     );
   }
 }
-

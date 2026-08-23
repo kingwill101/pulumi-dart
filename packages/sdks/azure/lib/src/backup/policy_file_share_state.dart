@@ -13,7 +13,7 @@ class PolicyFileShareState {
   final pulumi.Input<PolicyFileShareBackup>? backup;
   /// The backup tier to use. Possible values are `vault-standard` and `snapshot`. Defaults to `snapshot`.
   ///
-  /// &gt; **Note:** When `backup_tier` is set to `vault-standard`, the `snapshot_retention_in_days` value must be less than the `retention_daily` count.
+  /// &gt; **Note:** When `backupTier` is set to `vault-standard`, the `snapshotRetentionInDays` value must be less than the `retentionDaily` count.
   final pulumi.Input<String>? backupTier;
   /// Specifies the name of the policy. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -21,13 +21,13 @@ class PolicyFileShareState {
   final pulumi.Input<String>? recoveryVaultName;
   /// The name of the resource group in which to create the policy. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-  /// Configures the policy daily retention as documented in the `retention_daily` block below.
+  /// Configures the policy daily retention as documented in the `retentionDaily` block below.
   final pulumi.Input<PolicyFileShareRetentionDaily>? retentionDaily;
-  /// Configures the policy monthly retention as documented in the `retention_monthly` block below.
+  /// Configures the policy monthly retention as documented in the `retentionMonthly` block below.
   final pulumi.Input<PolicyFileShareRetentionMonthly>? retentionMonthly;
-  /// Configures the policy weekly retention as documented in the `retention_weekly` block below.
+  /// Configures the policy weekly retention as documented in the `retentionWeekly` block below.
   final pulumi.Input<PolicyFileShareRetentionWeekly>? retentionWeekly;
-  /// Configures the policy yearly retention as documented in the `retention_yearly` block below.
+  /// Configures the policy yearly retention as documented in the `retentionYearly` block below.
   final pulumi.Input<PolicyFileShareRetentionYearly>? retentionYearly;
   /// The number of days to retain the snapshots. Defaults to `0`.
   final pulumi.Input<int>? snapshotRetentionInDays;
@@ -42,10 +42,10 @@ class PolicyFileShareState {
   /// [name] Specifies the name of the policy. Changing this forces a new resource to be created.
   /// [recoveryVaultName] Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the policy. Changing this forces a new resource to be created.
-  /// [retentionDaily] Configures the policy daily retention as documented in the `retention_daily` block below.
-  /// [retentionMonthly] Configures the policy monthly retention as documented in the `retention_monthly` block below.
-  /// [retentionWeekly] Configures the policy weekly retention as documented in the `retention_weekly` block below.
-  /// [retentionYearly] Configures the policy yearly retention as documented in the `retention_yearly` block below.
+  /// [retentionDaily] Configures the policy daily retention as documented in the `retentionDaily` block below.
+  /// [retentionMonthly] Configures the policy monthly retention as documented in the `retentionMonthly` block below.
+  /// [retentionWeekly] Configures the policy weekly retention as documented in the `retentionWeekly` block below.
+  /// [retentionYearly] Configures the policy yearly retention as documented in the `retentionYearly` block below.
   /// [snapshotRetentionInDays] The number of days to retain the snapshots. Defaults to `0`.
   /// [timezone] Specifies the timezone. [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/). Defaults to `UTC`
   const PolicyFileShareState({
@@ -94,4 +94,3 @@ class PolicyFileShareState {
     );
   }
 }
-

@@ -32,7 +32,7 @@ class AutonomousDatabaseArgs {
   /// The Autonomous Database workload type. Changing this forces a new Autonomous Database to be created. Possible values are `AJD`, `APEX`, `DW` and `OLTP`.
   ///
   /// &gt; **Note:** `AJD` indicates an Autonomous JSON database; `APEX` indicates an Autonomous Database with the Oracle APEX Application Development workload type; `DW` indicates an Autonomous Data Warehouse database; `OLTP` indicates an Autonomous Transaction Processing database
-  /// &gt; **Note:** When Provisioning Database with `APEX` workload `mtls_connection_required` must be set to `true`.
+  /// &gt; **Note:** When Provisioning Database with `APEX` workload `mtlsConnectionRequired` must be set to `true`.
   final pulumi.Input<String> dbWorkload;
   /// The user-friendly name for the Autonomous Database. The name does not have to be unique. Changing this forces a new Autonomous Database to be created.
   final pulumi.Input<String> displayName;
@@ -43,7 +43,7 @@ class AutonomousDatabaseArgs {
   final pulumi.Input<AutonomousDatabaseLongTermBackupSchedule>? longTermBackupSchedule;
   /// Specifies if the Autonomous Database requires mTLS connections. Changing this forces a new Autonomous Database to be created. Default value `false`.
   ///
-  /// &gt; **Note:** `mtls_connection_required`  must be set to `true` for all workload types except 'APEX' when creating a database with public access.
+  /// &gt; **Note:** `mtlsConnectionRequired`  must be set to `true` for all workload types except 'APEX' when creating a database with public access.
   final pulumi.Input<bool> mtlsConnectionRequired;
   /// The name which should be used for this Autonomous Database. Changing this forces a new Autonomous Database to be created.
   final pulumi.Input<String>? name;
@@ -163,4 +163,3 @@ class AutonomousDatabaseArgs {
     );
   }
 }
-

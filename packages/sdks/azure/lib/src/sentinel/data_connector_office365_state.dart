@@ -14,7 +14,7 @@ class DataConnectorOffice365State {
   final pulumi.Input<bool>? sharepointEnabled;
   /// Should the Microsoft Teams data connector be enabled? Defaults to `true`.
   ///
-  /// &gt; **Note:** At least one of `exchange_enabled`, `sharedpoint_enabled` and `teams_enabled` has to be specified.
+  /// &gt; **Note:** At least one of `exchangeEnabled`, `sharedpointEnabled` and `teamsEnabled` has to be specified.
   final pulumi.Input<bool>? teamsEnabled;
   /// The ID of the Tenant that this Office 365 Data Connector connects to. Changing this forces a new Office 365 Data Connector to be created.
   ///
@@ -59,4 +59,3 @@ class DataConnectorOffice365State {
     );
   }
 }
-

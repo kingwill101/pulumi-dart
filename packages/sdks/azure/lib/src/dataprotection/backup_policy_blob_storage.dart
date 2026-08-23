@@ -296,6 +296,67 @@ import 'backup_policy_blob_storage_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dataprotection_backupvault" "example" {
+///   name                = "example-backup-vault"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   datastore_type      = "VaultStore"
+///   redundancy          = "LocallyRedundant"
+/// }
+/// resource "azure_dataprotection_backuppolicyblobstorage" "example" {
+///   name                                   = "example-backup-policy"
+///   vault_id                               = azure_dataprotection_backupvault.example.id
+///   operational_default_retention_duration = "P30D"
+///   vault_default_retention_duration       = "P7D"
+///   retention_rules {
+///     name     = "Weekly"
+///     priority = 20
+///     life_cycle = {
+///       duration        = "P90D"
+///       data_store_type = "VaultStore"
+///     }
+///     criteria = {
+///       days_of_weeks = ["Monday"]
+///     }
+///   }
+///   retention_rules {
+///     name     = "Monthly"
+///     priority = 10
+///     life_cycle = {
+///       duration        = "P180D"
+///       data_store_type = "VaultStore"
+///     }
+///     criteria = {
+///       days_of_months = [1]
+///     }
+///   }
+///   retention_rules {
+///     name     = "Yearly"
+///     priority = 5
+///     life_cycle = {
+///       duration        = "P365D"
+///       data_store_type = "VaultStore"
+///     }
+///     criteria = {
+///       months_of_years = ["January"]
+///       days_of_months  = [1]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -311,8 +372,8 @@ import 'backup_policy_blob_storage_state.dart';
 /// import com.pulumi.azure.dataprotection.inputs.BackupPolicyBlobStorageRetentionRuleArgs;
 /// import com.pulumi.azure.dataprotection.inputs.BackupPolicyBlobStorageRetentionRuleLifeCycleArgs;
 /// import com.pulumi.azure.dataprotection.inputs.BackupPolicyBlobStorageRetentionRuleCriteriaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -441,7 +502,7 @@ import 'backup_policy_blob_storage_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.DataProtection` - 2024-04-01
+/// * `Microsoft.DataProtection` - 2025-07-01
 ///
 /// ## Import
 ///
@@ -457,15 +518,15 @@ class BackupPolicyBlobStorage extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The duration of operational default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
   late final pulumi.Output<String?> operationalDefaultRetentionDuration;
-  /// One or more `retention_rule` blocks as defined below. Changing this forces a new Backup Policy Blob Storage to be created.
+  /// One or more `retentionRule` blocks as defined below. Changing this forces a new Backup Policy Blob Storage to be created.
   ///
-  /// &gt; **Note:** Setting `retention_rule` also requires setting `vault_default_retention_duration`.
+  /// &gt; **Note:** Setting `retentionRule` also requires setting `vaultDefaultRetentionDuration`.
   late final pulumi.Output<List<Map<String, dynamic>>?> retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy Blob Storage to be created.
   late final pulumi.Output<String?> timeZone;
   /// The duration of vault default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
   ///
-  /// &gt; **Note:** Setting `vault_default_retention_duration` also requires setting `backup_repeating_time_intervals`. At least one of `operational_default_retention_duration` or `vault_default_retention_duration` must be specified.
+  /// &gt; **Note:** Setting `vaultDefaultRetentionDuration` also requires setting `backupRepeatingTimeIntervals`. At least one of `operationalDefaultRetentionDuration` or `vaultDefaultRetentionDuration` must be specified.
   late final pulumi.Output<String?> vaultDefaultRetentionDuration;
   /// The ID of the Backup Vault within which the Backup Policy Blob Storage should exist. Changing this forces a new Backup Policy Blob Storage to be created.
   late final pulumi.Output<String> vaultId;

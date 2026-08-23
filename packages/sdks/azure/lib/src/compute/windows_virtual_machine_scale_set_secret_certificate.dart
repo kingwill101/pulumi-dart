@@ -7,7 +7,7 @@ class WindowsVirtualMachineScaleSetSecretCertificate {
   final pulumi.Input<String> store;
   /// The Secret URL of a Key Vault Certificate.
   ///
-  /// &gt; **Note:** This can be sourced from the `secret_id` field within the `azure.keyvault.Certificate` Resource.
+  /// &gt; **Note:** This can be sourced from the `secretId` field within the `azure.keyvault.Certificate` Resource.
   final pulumi.Input<String> url;
 
   /// Creates a new [WindowsVirtualMachineScaleSetSecretCertificate].
@@ -32,4 +32,3 @@ class WindowsVirtualMachineScaleSetSecretCertificate {
     );
   }
 }
-

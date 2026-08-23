@@ -140,6 +140,38 @@ import 'channel_sms_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_bot_channelsregistration" "example" {
+///   name                = "example-bcr"
+///   location            = "global"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "F0"
+///   microsoft_app_id    = data.azure_core_getclientconfig.current.client_id
+/// }
+/// resource "azure_bot_channelsms" "example" {
+///   bot_name                        = azure_bot_channelsregistration.example.name
+///   location                        = azure_bot_channelsregistration.example.location
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   sms_channel_account_security_id = "BG61f7cf5157f439b084e98256409c2815"
+///   sms_channel_auth_token          = "jh8980432610052ed4e29565c5e232f"
+///   phone_number                    = "+12313803556"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -153,8 +185,8 @@ import 'channel_sms_state.dart';
 /// import com.pulumi.azure.bot.ChannelsRegistrationArgs;
 /// import com.pulumi.azure.bot.ChannelSms;
 /// import com.pulumi.azure.bot.ChannelSmsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

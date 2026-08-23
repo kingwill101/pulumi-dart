@@ -7,7 +7,7 @@ class ResourceGroupCostManagementExportExportDataStorageLocation {
   final pulumi.Input<String> containerId;
   /// The path of the directory where exports will be uploaded. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The Resource Manager ID of a Storage Container is exposed via the `resource_manager_id` attribute of the `azure.storage.Container` resource.
+  /// &gt; **Note:** The Resource Manager ID of a Storage Container is exposed via the `resourceManagerId` attribute of the `azure.storage.Container` resource.
   final pulumi.Input<String> rootFolderPath;
 
   /// Creates a new [ResourceGroupCostManagementExportExportDataStorageLocation].
@@ -32,4 +32,3 @@ class ResourceGroupCostManagementExportExportDataStorageLocation {
     );
   }
 }
-

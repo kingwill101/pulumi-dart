@@ -142,6 +142,30 @@ import 'trigger_http_request_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "workflow-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_logicapps_workflow" "example" {
+///   name                = "workflow1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_logicapps_triggerhttprequest" "example" {
+///   name         = "some-http-trigger"
+///   logic_app_id = azure_logicapps_workflow.example.id
+///   schema       = "{\n    \\\"type\\\": \\\"object\\\",\n    \\\"properties\\\": {\n        \\\"hello\\\": {\n            \\\"type\\\": \\\"string\\\"\n        }\n    }\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +178,8 @@ import 'trigger_http_request_state.dart';
 /// import com.pulumi.azure.logicapps.WorkflowArgs;
 /// import com.pulumi.azure.logicapps.TriggerHttpRequest;
 /// import com.pulumi.azure.logicapps.TriggerHttpRequestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -238,7 +262,7 @@ import 'trigger_http_request_state.dart';
 ///
 /// &gt; **NOTE:** This ID is unique to this provider and doesn't directly match to any other resource. To compose this ID, you can take the ID Logic App Workflow and append `/triggers/{name of the trigger}`.
 class TriggerHttpRequest extends pulumi.CustomResource {
-  /// The URL of the Trigger within the Logic App Workflow. For use with certain resources like monitor_action_group and security_center_automation.
+  /// The URL of the Trigger within the Logic App Workflow. For use with certain resources like monitorActionGroup and security_center_automation.
   late final pulumi.Output<String> callbackUrl;
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   late final pulumi.Output<String> logicAppId;
@@ -250,7 +274,7 @@ class TriggerHttpRequest extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Specifies the Relative Path used for this Request.
   ///
-  /// &gt; **NOTE:** When `relative_path` is set a `method` must also be set.
+  /// &gt; **NOTE:** When `relativePath` is set a `method` must also be set.
   late final pulumi.Output<String?> relativePath;
   /// A JSON Blob defining the Schema of the incoming request. This needs to be valid JSON.
   late final pulumi.Output<String> schema;

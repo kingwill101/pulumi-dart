@@ -6,7 +6,7 @@ import 'account_identity.dart';
 
 /// Input properties used for looking up and filtering Account resources.
 class AccountState {
-  /// A `active_directory` block as defined below.
+  /// A `activeDirectory` block as defined below.
   final pulumi.Input<AccountActiveDirectory>? activeDirectory;
   /// The `identity` block where it is used when customer managed keys based encryption will be enabled as defined below.
   final pulumi.Input<AccountIdentity>? identity;
@@ -20,7 +20,7 @@ class AccountState {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AccountState].
-  /// [activeDirectory] A `active_directory` block as defined below.
+  /// [activeDirectory] A `activeDirectory` block as defined below.
   /// [identity] The `identity` block where it is used when customer managed keys based encryption will be enabled as defined below.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] The name of the NetApp Account. Changing this forces a new resource to be created.
@@ -57,4 +57,3 @@ class AccountState {
     );
   }
 }
-

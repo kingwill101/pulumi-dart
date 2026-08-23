@@ -9,13 +9,15 @@ class ServerState {
   final pulumi.Input<List<String>>? adminUsers;
   /// URI and SAS token for a blob container to store backups.
   final pulumi.Input<String>? backupBlobContainerUri;
-  /// One or more `ipv4_firewall_rule` block(s) as defined below.
+  /// One or more `ipv4FirewallRule` block(s) as defined below.
   final pulumi.Input<List<ServerIpv4FirewallRule>>? ipv4FirewallRules;
   /// The Azure location where the Analysis Services Server exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
   /// The name of the Analysis Services Server. Only lowercase Alphanumeric characters allowed, starting with a letter. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
   /// Indicates if the Power BI service is allowed to access or not.
+  ///
+  /// &gt; **Note:** `powerBiServiceEnabled` is required when `ipv4FirewallRule` is defined.
   final pulumi.Input<bool>? powerBiServiceEnabled;
   /// Controls how the read-write server is used in the query pool. If this value is set to `All` then read-write servers are also used for queries. Otherwise with `ReadOnly` these servers do not participate in query operations. Defaults to `All`.
   final pulumi.Input<String>? querypoolConnectionMode;
@@ -31,7 +33,7 @@ class ServerState {
   /// Creates a new [ServerState].
   /// [adminUsers] List of email addresses of admin users.
   /// [backupBlobContainerUri] URI and SAS token for a blob container to store backups.
-  /// [ipv4FirewallRules] One or more `ipv4_firewall_rule` block(s) as defined below.
+  /// [ipv4FirewallRules] One or more `ipv4FirewallRule` block(s) as defined below.
   /// [location] The Azure location where the Analysis Services Server exists. Changing this forces a new resource to be created.
   /// [name] The name of the Analysis Services Server. Only lowercase Alphanumeric characters allowed, starting with a letter. Changing this forces a new resource to be created.
   /// [powerBiServiceEnabled] Indicates if the Power BI service is allowed to access or not.
@@ -86,4 +88,3 @@ class ServerState {
     );
   }
 }
-

@@ -134,6 +134,36 @@ import 'postgresql_coordinator_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "test" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_cosmosdb_postgresqlcluster" "example" {
+///   name                            = "examplecluster"
+///   resource_group_name             = exampleAzurermResourceGroup.name
+///   location                        = exampleAzurermResourceGroup.location
+///   administrator_login_password    = "H@Sh1CoR3!"
+///   coordinator_storage_quota_in_mb = 131072
+///   coordinator_vcore_count         = 2
+///   node_count                      = 2
+///   node_storage_quota_in_mb        = 131072
+///   node_vcores                     = 2
+/// }
+/// resource "azure_cosmosdb_postgresqlcoordinatorconfiguration" "example" {
+///   name       = "array_nulls"
+///   cluster_id = azure_cosmosdb_postgresqlcluster.example.id
+///   value      = "on"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +176,8 @@ import 'postgresql_coordinator_configuration_state.dart';
 /// import com.pulumi.azure.cosmosdb.PostgresqlClusterArgs;
 /// import com.pulumi.azure.cosmosdb.PostgresqlCoordinatorConfiguration;
 /// import com.pulumi.azure.cosmosdb.PostgresqlCoordinatorConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

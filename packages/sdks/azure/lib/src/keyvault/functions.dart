@@ -87,6 +87,23 @@ import 'get_secrets_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getaccesspolicy" "contributor" {
+///   name = "Key Management"
+/// }
+///
+/// output "accessPolicyKeyPermissions" {
+///   value = data.azure_keyvault_getaccesspolicy.contributor.key_permissions
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +112,8 @@ import 'get_secrets_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.keyvault.KeyvaultFunctions;
 /// import com.pulumi.azure.keyvault.inputs.GetAccessPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -225,6 +242,28 @@ Future<GetAccessPolicyResult> getAccessPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getkeyvault" "example" {
+///   name                = "examplekv"
+///   resource_group_name = "some-resource-group"
+/// }
+/// data "azure_keyvault_getcertificate" "exampleGetCertificate" {
+///   name         = "secret-sauce"
+///   key_vault_id = data.azure_keyvault_getkeyvault.example.id
+/// }
+///
+/// output "certificateThumbprint" {
+///   value = data.azure_keyvault_getcertificate.exampleGetCertificate.thumbprint
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -234,8 +273,8 @@ Future<GetAccessPolicyResult> getAccessPolicy(
 /// import com.pulumi.azure.keyvault.KeyvaultFunctions;
 /// import com.pulumi.azure.keyvault.inputs.GetKeyVaultArgs;
 /// import com.pulumi.azure.keyvault.inputs.GetCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -379,6 +418,28 @@ Future<GetCertificateResult> getCertificate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getkeyvault" "example" {
+///   name                = "examplekv"
+///   resource_group_name = "some-resource-group"
+/// }
+/// data "azure_keyvault_getcertificatedata" "exampleGetCertificateData" {
+///   name         = "secret-sauce"
+///   key_vault_id = data.azure_keyvault_getkeyvault.example.id
+/// }
+///
+/// output "examplePem" {
+///   value = data.azure_keyvault_getcertificatedata.exampleGetCertificateData.pem
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -388,8 +449,8 @@ Future<GetCertificateResult> getCertificate(
 /// import com.pulumi.azure.keyvault.KeyvaultFunctions;
 /// import com.pulumi.azure.keyvault.inputs.GetKeyVaultArgs;
 /// import com.pulumi.azure.keyvault.inputs.GetCertificateDataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -531,6 +592,28 @@ Future<GetCertificateDataResult> getCertificateData(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getkeyvault" "example" {
+///   name                = "mykeyvault"
+///   resource_group_name = "some-resource-group"
+/// }
+/// data "azure_keyvault_getcertificateissuer" "exampleGetCertificateIssuer" {
+///   name         = "existing"
+///   key_vault_id = data.azure_keyvault_getkeyvault.example.id
+/// }
+///
+/// output "id" {
+///   value = data.azure_keyvault_getcertificateissuer.exampleGetCertificateIssuer.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -540,8 +623,8 @@ Future<GetCertificateDataResult> getCertificateData(
 /// import com.pulumi.azure.keyvault.KeyvaultFunctions;
 /// import com.pulumi.azure.keyvault.inputs.GetKeyVaultArgs;
 /// import com.pulumi.azure.keyvault.inputs.GetCertificateIssuerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -614,10 +697,10 @@ Future<GetCertificateIssuerResult> getCertificateIssuer(
 /// });
 /// const exampleGetCertificate = example.then(example => std.toset({
 ///     input: example.names,
-/// })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: azure.keyvault.getCertificate({
-///     name: __key,
+/// })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: azure.keyvault.getCertificate({
+///     name: String(__key),
 ///     keyVaultId: existing.id,
-/// }) })));
+/// }) }), {}));
 /// ```
 /// ```python
 /// import pulumi
@@ -625,8 +708,8 @@ Future<GetCertificateIssuerResult> getCertificateIssuer(
 /// import pulumi_std as std
 ///
 /// example = azure.keyvault.get_certificates(key_vault_id=existing["id"])
-/// example_get_certificate = {__key: azure.keyvault.get_certificate(name=__key,
-///     key_vault_id=existing["id"]) for __key, __value in std.toset(input=example.names).result}
+/// example_get_certificate = {str(__key): azure.keyvault.get_certificate(name=str(__key),
+///     key_vault_id=existing["id"]) for __key, __value in enumerate(std.toset(input=example.names).result)}
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -648,6 +731,31 @@ Future<GetCertificateIssuerResult> getCertificateIssuer(
 ///     }).Apply(invoke => );
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getcertificates" "example" {
+///   key_vault_id = existing.id
+/// }
+/// data "azure_keyvault_getcertificate" "invoke_1" {
+///   for_each     = toset(data.azure_keyvault_getcertificates.example.names)
+///   name         = each.key
+///   key_vault_id = existing.id
+/// }
+///
+/// locals {
+///   exampleGetCertificate = {for __key, __value in toset(data.azure_keyvault_getcertificates.example.names) : __key => data.azure_keyvault_getcertificate.invoke_1[__key]}
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_keyvault_get_certificates_get_certificates_args_doc}
 /// [options] Invoke options controlling this call.
@@ -745,6 +853,24 @@ Future<GetEncryptedValueResult> getEncryptedValue(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getkey" "example" {
+///   name         = "secret-sauce"
+///   key_vault_id = existing.id
+/// }
+///
+/// output "keyType" {
+///   value = data.azure_keyvault_getkey.example.key_type
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -753,8 +879,8 @@ Future<GetEncryptedValueResult> getEncryptedValue(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.keyvault.KeyvaultFunctions;
 /// import com.pulumi.azure.keyvault.inputs.GetKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -866,6 +992,24 @@ Future<GetKeyResult> getKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getkeyvault" "example" {
+///   name                = "mykeyvault"
+///   resource_group_name = "some-resource-group"
+/// }
+///
+/// output "vaultUri" {
+///   value = data.azure_keyvault_getkeyvault.example.vault_uri
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -874,8 +1018,8 @@ Future<GetKeyResult> getKey(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.keyvault.KeyvaultFunctions;
 /// import com.pulumi.azure.keyvault.inputs.GetKeyVaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -987,6 +1131,24 @@ Future<GetKeyVaultResult> getKeyVault(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getmanagedhardwaresecuritymodule" "example" {
+///   name                = "mykeyvaultHsm"
+///   resource_group_name = "some-resource-group"
+/// }
+///
+/// output "hsmUri" {
+///   value = data.azure_keyvault_getmanagedhardwaresecuritymodule.example.hsm_uri
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -995,8 +1157,8 @@ Future<GetKeyVaultResult> getKeyVault(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.keyvault.KeyvaultFunctions;
 /// import com.pulumi.azure.keyvault.inputs.GetManagedHardwareSecurityModuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1035,7 +1197,7 @@ Future<GetKeyVaultResult> getKeyVault(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.KeyVault` - 2023-07-01
+/// * `Microsoft.KeyVault` - 2026-02-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_keyvault_get_managed_hardware_security_module_get_managed_hardware_security_module_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedHardwareSecurityModuleResult> getManagedHardwareSecurityModule(
@@ -1123,6 +1285,24 @@ Future<GetManagedHardwareSecurityModuleResult> getManagedHardwareSecurityModule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getmanagedhardwaresecuritymodulekey" "example" {
+///   managed_hsm_id = exampleAzurermKeyVaultManagedHardwareSecurityModule.id
+///   name           = exampleAzurermKeyVaultManagedHardwareSecurityModuleKey.name
+/// }
+///
+/// output "hsm-key-vesrion" {
+///   value = data.azure_keyvault_getmanagedhardwaresecuritymodulekey.example.version
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1131,8 +1311,8 @@ Future<GetManagedHardwareSecurityModuleResult> getManagedHardwareSecurityModule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.keyvault.KeyvaultFunctions;
 /// import com.pulumi.azure.keyvault.inputs.GetManagedHardwareSecurityModuleKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1244,6 +1424,24 @@ Future<GetManagedHardwareSecurityModuleKeyResult> getManagedHardwareSecurityModu
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getmanagedhardwaresecuritymoduleroledefinition" "example" {
+///   managed_hsm_id = exampleAzurermKeyVaultManagedHardwareSecurityModule.id
+///   name           = "21dbd100-6940-42c2-9190-5d6cb909625b"
+/// }
+///
+/// output "id" {
+///   value = data.azure_keyvault_getmanagedhardwaresecuritymoduleroledefinition.example.resource_manager_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1252,8 +1450,8 @@ Future<GetManagedHardwareSecurityModuleKeyResult> getManagedHardwareSecurityModu
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.keyvault.KeyvaultFunctions;
 /// import com.pulumi.azure.keyvault.inputs.GetManagedHardwareSecurityModuleRoleDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1365,6 +1563,24 @@ Future<GetManagedHardwareSecurityModuleRoleDefinitionResult> getManagedHardwareS
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getsecret" "example" {
+///   name         = "secret-sauce"
+///   key_vault_id = existing.id
+/// }
+///
+/// output "secretValue" {
+///   value = data.azure_keyvault_getsecret.example.value
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1373,8 +1589,8 @@ Future<GetManagedHardwareSecurityModuleRoleDefinitionResult> getManagedHardwareS
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.keyvault.KeyvaultFunctions;
 /// import com.pulumi.azure.keyvault.inputs.GetSecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1436,10 +1652,10 @@ Future<GetSecretResult> getSecret(
 /// });
 /// const exampleGetSecret = example.then(example => std.toset({
 ///     input: example.names,
-/// })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: azure.keyvault.getSecret({
-///     name: __key,
+/// })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: azure.keyvault.getSecret({
+///     name: String(__key),
 ///     keyVaultId: existing.id,
-/// }) })));
+/// }) }), {}));
 /// ```
 /// ```python
 /// import pulumi
@@ -1447,8 +1663,8 @@ Future<GetSecretResult> getSecret(
 /// import pulumi_std as std
 ///
 /// example = azure.keyvault.get_secrets(key_vault_id=existing["id"])
-/// example_get_secret = {__key: azure.keyvault.get_secret(name=__key,
-///     key_vault_id=existing["id"]) for __key, __value in std.toset(input=example.names).result}
+/// example_get_secret = {str(__key): azure.keyvault.get_secret(name=str(__key),
+///     key_vault_id=existing["id"]) for __key, __value in enumerate(std.toset(input=example.names).result)}
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1470,6 +1686,31 @@ Future<GetSecretResult> getSecret(
 ///     }).Apply(invoke => );
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getsecrets" "example" {
+///   key_vault_id = existing.id
+/// }
+/// data "azure_keyvault_getsecret" "invoke_1" {
+///   for_each     = toset(data.azure_keyvault_getsecrets.example.names)
+///   name         = each.key
+///   key_vault_id = existing.id
+/// }
+///
+/// locals {
+///   exampleGetSecret = {for __key, __value in toset(data.azure_keyvault_getsecrets.example.names) : __key => data.azure_keyvault_getsecret.invoke_1[__key]}
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_keyvault_get_secrets_get_secrets_args_doc}
 /// [options] Invoke options controlling this call.

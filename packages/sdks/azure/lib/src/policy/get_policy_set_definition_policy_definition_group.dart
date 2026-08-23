@@ -11,9 +11,9 @@ class GetPolicySetDefinitionPolicyDefinitionGroup {
   final pulumi.Input<String> description;
   /// Specifies the display name of the Policy Set Definition. Conflicts with `name`.
   ///
-  /// **NOTE** As `display_name` is not unique errors may occur when there are multiple policy set definitions with same display name.
+  /// **NOTE** As `displayName` is not unique errors may occur when there are multiple policy set definitions with same display name.
   final pulumi.Input<String> displayName;
-  /// Specifies the name of the Policy Set Definition. Conflicts with `display_name`.
+  /// Specifies the name of the Policy Set Definition. Conflicts with `displayName`.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetPolicySetDefinitionPolicyDefinitionGroup].
@@ -21,7 +21,7 @@ class GetPolicySetDefinitionPolicyDefinitionGroup {
   /// [category] The category of this policy definition group.
   /// [description] The description of this policy definition group.
   /// [displayName] Specifies the display name of the Policy Set Definition. Conflicts with `name`.
-  /// [name] Specifies the name of the Policy Set Definition. Conflicts with `display_name`.
+  /// [name] Specifies the name of the Policy Set Definition. Conflicts with `displayName`.
   const GetPolicySetDefinitionPolicyDefinitionGroup({
     required this.additionalMetadataResourceId,
     required this.category,
@@ -50,4 +50,3 @@ class GetPolicySetDefinitionPolicyDefinitionGroup {
     );
   }
 }
-

@@ -14,7 +14,7 @@ class ManagedClusterState {
   final pulumi.Input<bool>? backupServiceEnabled;
   /// Port to use when connecting to the cluster.
   final pulumi.Input<int>? clientConnectionPort;
-  /// One or more `custom_fabric_setting` blocks as defined below.
+  /// One or more `customFabricSetting` blocks as defined below.
   final pulumi.Input<List<ManagedClusterCustomFabricSetting>>? customFabricSettings;
   /// Hostname for the cluster. If unset the cluster's name will be used..
   final pulumi.Input<String>? dnsName;
@@ -22,13 +22,13 @@ class ManagedClusterState {
   final pulumi.Input<bool>? dnsServiceEnabled;
   /// Port that should be used by the Service Fabric Explorer to visualize applications and cluster status.
   final pulumi.Input<int>? httpGatewayPort;
-  /// One or more `lb_rule` blocks as defined below.
+  /// One or more `lbRule` blocks as defined below.
   final pulumi.Input<List<ManagedClusterLbRule>>? lbRules;
   /// The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created.
   final pulumi.Input<String>? location;
   /// The name which should be used for this Resource Group. Changing this forces a new Resource Group to be created.
   final pulumi.Input<String>? name;
-  /// One or more `node_type` blocks as defined below.
+  /// One or more `nodeType` blocks as defined below.
   final pulumi.Input<List<ManagedClusterNodeType>>? nodeTypes;
   /// Administrator password for the VMs that will be created as part of this cluster.
   final pulumi.Input<String>? password;
@@ -49,14 +49,14 @@ class ManagedClusterState {
   /// [authentication] Controls how connections to the cluster are authenticated. A `authentication` block as defined below.
   /// [backupServiceEnabled] If true, backup service is enabled.
   /// [clientConnectionPort] Port to use when connecting to the cluster.
-  /// [customFabricSettings] One or more `custom_fabric_setting` blocks as defined below.
+  /// [customFabricSettings] One or more `customFabricSetting` blocks as defined below.
   /// [dnsName] Hostname for the cluster. If unset the cluster's name will be used..
   /// [dnsServiceEnabled] If true, DNS service is enabled.
   /// [httpGatewayPort] Port that should be used by the Service Fabric Explorer to visualize applications and cluster status.
-  /// [lbRules] One or more `lb_rule` blocks as defined below.
+  /// [lbRules] One or more `lbRule` blocks as defined below.
   /// [location] The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created.
   /// [name] The name which should be used for this Resource Group. Changing this forces a new Resource Group to be created.
-  /// [nodeTypes] One or more `node_type` blocks as defined below.
+  /// [nodeTypes] One or more `nodeType` blocks as defined below.
   /// [password] Administrator password for the VMs that will be created as part of this cluster.
   /// [resourceGroupName] The name of the Resource Group where the Resource Group should exist. Changing this forces a new Resource Group to be created.
   /// [sku] SKU for this cluster. Changing this forces a new resource to be created. Default is `Basic`, allowed values are either `Basic` or `Standard`.
@@ -131,4 +131,3 @@ class ManagedClusterState {
     );
   }
 }
-

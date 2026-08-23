@@ -9,13 +9,13 @@ import 'get_linux_function_app_auth_setting_microsoft.dart';
 import 'get_linux_function_app_auth_setting_twitter.dart';
 
 class GetLinuxFunctionAppAuthSetting {
-  /// An `active_directory` block as defined above.
+  /// An `activeDirectory` block as defined above.
   final pulumi.Input<List<GetLinuxFunctionAppAuthSettingActiveDirectory>> activeDirectories;
   /// A map of login parameters sent to the OpenID Connect authorization endpoint when a user logs in.
   final pulumi.Input<Map<String, String>> additionalLoginParameters;
   /// External URLs that can be redirected to as part of logging in or logging out of the app.
   final pulumi.Input<List<String>> allowedExternalRedirectUrls;
-  /// The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticated_action` is set to `RedirectToLoginPage`.
+  /// The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticatedAction` is set to `RedirectToLoginPage`.
   final pulumi.Input<String> defaultProvider;
   /// Is this backup job enabled?
   final pulumi.Input<bool> enabled;
@@ -41,10 +41,10 @@ class GetLinuxFunctionAppAuthSetting {
   final pulumi.Input<String> unauthenticatedClientAction;
 
   /// Creates a new [GetLinuxFunctionAppAuthSetting].
-  /// [activeDirectories] An `active_directory` block as defined above.
+  /// [activeDirectories] An `activeDirectory` block as defined above.
   /// [additionalLoginParameters] A map of login parameters sent to the OpenID Connect authorization endpoint when a user logs in.
   /// [allowedExternalRedirectUrls] External URLs that can be redirected to as part of logging in or logging out of the app.
-  /// [defaultProvider] The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticated_action` is set to `RedirectToLoginPage`.
+  /// [defaultProvider] The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticatedAction` is set to `RedirectToLoginPage`.
   /// [enabled] Is this backup job enabled?
   /// [facebooks] A `facebook` block as defined below.
   /// [githubs] A `github` block as defined below.
@@ -114,4 +114,3 @@ class GetLinuxFunctionAppAuthSetting {
     );
   }
 }
-

@@ -239,6 +239,39 @@ import 'resource_group_policy_remediation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_policy_definition" "example" {
+///   name         = "my-policy-definition"
+///   policy_type  = "Custom"
+///   mode         = "All"
+///   display_name = "my-policy-definition"
+///   policy_rule  = "    {\n    \"if\": {\n      \"not\": {\n        \"field\": \"location\",\n        \"in\": \"[parameters('allowedLocations')]\"\n      }\n    },\n    \"then\": {\n      \"effect\": \"audit\"\n    }\n  }\n"
+///   parameters   = "    {\n    \\\"allowedLocations\\\": {\n      \\\"type\\\": \\\"Array\\\",\n      \\\"metadata\\\": {\n        \\\"description\\\": \\\"The list of allowed locations for resources.\\\",\n        \\\"displayName\\\": \\\"Allowed locations\\\",\n        \\\"strongType\\\": \\\"location\\\"\n      }\n    }\n  }\n"
+/// }
+/// resource "azure_core_resourcegrouppolicyassignment" "example" {
+///   name                 = "example"
+///   resource_group_id    = azure_core_resourcegroup.example.id
+///   policy_definition_id = azure_policy_definition.example.id
+/// }
+/// resource "azure_core_resourcegrouppolicyremediation" "example" {
+///   name                 = "example-policy-remediation"
+///   resource_group_id    = azure_core_resourcegroup.example.id
+///   policy_assignment_id = azure_core_resourcegrouppolicyassignment.example.id
+///   location_filters     = ["West Europe"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -253,8 +286,8 @@ import 'resource_group_policy_remediation_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupPolicyAssignmentArgs;
 /// import com.pulumi.azure.core.ResourceGroupPolicyRemediation;
 /// import com.pulumi.azure.core.ResourceGroupPolicyRemediationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

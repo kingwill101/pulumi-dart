@@ -236,6 +236,56 @@ import 'local_user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "WestEurope"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example-account"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_kind             = "StorageV2"
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   is_hns_enabled           = true
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                 = "example-container"
+///   storage_account_name = azure_storage_account.example.name
+/// }
+/// resource "azure_storage_localuser" "example" {
+///   name                 = "user1"
+///   storage_account_id   = azure_storage_account.example.id
+///   ssh_key_enabled      = true
+///   ssh_password_enabled = true
+///   home_directory       = "example_path"
+///   ssh_authorized_keys {
+///     description = "key1"
+///     key         = firstPublicKey
+///   }
+///   ssh_authorized_keys {
+///     description = "key2"
+///     key         = secondPublicKey
+///   }
+///   permission_scopes {
+///     permissions = {
+///       read   = true
+///       create = true
+///     }
+///     service       = "blob"
+///     resource_name = azure_storage_container.example.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -253,8 +303,8 @@ import 'local_user_state.dart';
 /// import com.pulumi.azure.storage.inputs.LocalUserSshAuthorizedKeyArgs;
 /// import com.pulumi.azure.storage.inputs.LocalUserPermissionScopeArgs;
 /// import com.pulumi.azure.storage.inputs.LocalUserPermissionScopePermissionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -366,7 +416,7 @@ import 'local_user_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Storage` - 2023-05-01
+/// * `Microsoft.Storage` - 2025-08-01
 ///
 /// ## Import
 ///
@@ -380,13 +430,13 @@ class LocalUser extends pulumi.CustomResource {
   late final pulumi.Output<String?> homeDirectory;
   /// The name which should be used for this Storage Account Local User. Changing this forces a new Storage Account Local User to be created.
   late final pulumi.Output<String> name;
-  /// The value of the password, which is only available when `ssh_password_enabled` is set to `true`.
+  /// The value of the password, which is only available when `sshPasswordEnabled` is set to `true`.
   late final pulumi.Output<String> password;
-  /// One or more `permission_scope` blocks as defined below.
+  /// One or more `permissionScope` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> permissionScopes;
   /// The unique Security Identifier of this Storage Account Local User.
   late final pulumi.Output<String> sid;
-  /// One or more `ssh_authorized_key` blocks as defined below.
+  /// One or more `sshAuthorizedKey` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> sshAuthorizedKeys;
   /// Specifies whether SSH Key Authentication is enabled. Defaults to `false`.
   late final pulumi.Output<bool?> sshKeyEnabled;

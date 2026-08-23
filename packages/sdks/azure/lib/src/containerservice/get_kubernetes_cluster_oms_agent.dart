@@ -8,13 +8,13 @@ class GetKubernetesClusterOmsAgent {
   final pulumi.Input<String> logAnalyticsWorkspaceId;
   /// Is managed identity authentication for monitoring enabled?
   final pulumi.Input<bool> msiAuthForMonitoringEnabled;
-  /// An `oms_agent_identity` block as defined below.
+  /// An `omsAgentIdentity` block as defined below.
   final pulumi.Input<List<GetKubernetesClusterOmsAgentOmsAgentIdentity>> omsAgentIdentities;
 
   /// Creates a new [GetKubernetesClusterOmsAgent].
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace to which the OMS Agent should send data.
   /// [msiAuthForMonitoringEnabled] Is managed identity authentication for monitoring enabled?
-  /// [omsAgentIdentities] An `oms_agent_identity` block as defined below.
+  /// [omsAgentIdentities] An `omsAgentIdentity` block as defined below.
   const GetKubernetesClusterOmsAgent({
     required this.logAnalyticsWorkspaceId,
     required this.msiAuthForMonitoringEnabled,
@@ -37,4 +37,3 @@ class GetKubernetesClusterOmsAgent {
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'function_app_state.dart';
 
 /// Manages a Function App.
 ///
-/// !&gt; **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.LinuxFunctionApp` and `azure.appservice.WindowsFunctionApp` resources instead.
+/// &gt; **NOTE:** This resource has been deprecated and will be removed in version 6.0 of the provider. Please use `azure.appservice.LinuxFunctionApp` and `azure.appservice.WindowsFunctionApp` resources instead.
 ///
 /// &gt; **Note:** To connect an Azure Function App and a subnet within the same region `azure.appservice.VirtualNetworkSwiftConnection` can be used.
 /// For an example, check the `azure.appservice.VirtualNetworkSwiftConnection` documentation.
@@ -183,6 +183,44 @@ import 'function_app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "azure-functions-test-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "functionsapptestsa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "azure-functions-test-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     tier = "Standard"
+///     size = "S1"
+///   }
+/// }
+/// resource "azure_appservice_functionapp" "example" {
+///   name                       = "test-azure-functions"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   app_service_plan_id        = azure_appservice_plan.example.id
+///   storage_account_name       = azure_storage_account.example.name
+///   storage_account_access_key = azure_storage_account.example.primary_access_key
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -198,8 +236,8 @@ import 'function_app_state.dart';
 /// import com.pulumi.azure.appservice.inputs.PlanSkuArgs;
 /// import com.pulumi.azure.appservice.FunctionApp;
 /// import com.pulumi.azure.appservice.FunctionAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -458,6 +496,45 @@ import 'function_app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "azure-functions-cptest-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "functionsapptestsa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "azure-functions-test-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   kind                = "FunctionApp"
+///   sku = {
+///     tier = "Dynamic"
+///     size = "Y1"
+///   }
+/// }
+/// resource "azure_appservice_functionapp" "example" {
+///   name                       = "test-azure-functions"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   app_service_plan_id        = azure_appservice_plan.example.id
+///   storage_account_name       = azure_storage_account.example.name
+///   storage_account_access_key = azure_storage_account.example.primary_access_key
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -473,8 +550,8 @@ import 'function_app_state.dart';
 /// import com.pulumi.azure.appservice.inputs.PlanSkuArgs;
 /// import com.pulumi.azure.appservice.FunctionApp;
 /// import com.pulumi.azure.appservice.FunctionAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -747,6 +824,48 @@ import 'function_app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "azure-functions-cptest-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "functionsapptestsa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "azure-functions-test-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   kind                = "Linux"
+///   reserved            = true
+///   sku = {
+///     tier = "Dynamic"
+///     size = "Y1"
+///   }
+/// }
+/// resource "azure_appservice_functionapp" "example" {
+///   name                       = "test-azure-functions"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   app_service_plan_id        = azure_appservice_plan.example.id
+///   storage_account_name       = azure_storage_account.example.name
+///   storage_account_access_key = azure_storage_account.example.primary_access_key
+///   os_type                    = "linux"
+///   version                    = "~3"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -762,8 +881,8 @@ import 'function_app_state.dart';
 /// import com.pulumi.azure.appservice.inputs.PlanSkuArgs;
 /// import com.pulumi.azure.appservice.FunctionApp;
 /// import com.pulumi.azure.appservice.FunctionAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -863,6 +982,54 @@ import 'function_app_state.dart';
 /// ### Python In A Consumption Plan)
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "azure-functions-example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "functionsappexamlpesa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "azure-functions-example-sp"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   kind                = "Linux"
+///   reserved            = true
+///   sku = {
+///     tier = "Dynamic"
+///     size = "Y1"
+///   }
+/// }
+/// resource "azure_appservice_functionapp" "example" {
+///   name                       = "example-azure-function"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   app_service_plan_id        = azure_appservice_plan.example.id
+///   storage_account_name       = azure_storage_account.example.name
+///   storage_account_access_key = azure_storage_account.example.primary_access_key
+///   os_type                    = "linux"
+///   version                    = "~4"
+///   app_settings = [{
+///     "FUNCTIONS_WORKER_RUNTIME" = "python"
+///   }]
+///   site_config = {
+///     linux_fx_version = "python|3.9"
+///   }
+/// }
+/// ```
 /// ```yaml
 /// resources:
 ///   example:
@@ -924,13 +1091,13 @@ class FunctionApp extends pulumi.CustomResource {
   late final pulumi.Output<String> appServicePlanId;
   /// A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
   ///
-  /// &gt; **NOTE:** The values for `AzureWebJobsStorage` and `FUNCTIONS_EXTENSION_VERSION` will be filled by other input arguments and shouldn't be configured separately. `AzureWebJobsStorage` is filled based on `storage_account_name` and `storage_account_access_key`. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`.
+  /// &gt; **NOTE:** The values for `AzureWebJobsStorage` and `FUNCTIONS_EXTENSION_VERSION` will be filled by other input arguments and shouldn't be configured separately. `AzureWebJobsStorage` is filled based on `storageAccountName` and `storageAccountAccessKey`. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`.
   late final pulumi.Output<Map<String, String>> appSettings;
-  /// A `auth_settings` block as defined below.
+  /// A `authSettings` block as defined below.
   late final pulumi.Output<FunctionAppAuthSettings> authSettings;
   /// The mode of the Function App's client certificates requirement for incoming requests. Possible values are `Required` and `Optional`.
   late final pulumi.Output<String?> clientCertMode;
-  /// An `connection_string` block as defined below.
+  /// An `connectionString` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
   /// An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   late final pulumi.Output<String> customDomainVerificationId;
@@ -960,21 +1127,21 @@ class FunctionApp extends pulumi.CustomResource {
   late final pulumi.Output<String?> osType;
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`
   late final pulumi.Output<String> outboundIpAddresses;
-  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   late final pulumi.Output<String> possibleOutboundIpAddresses;
   /// The name of the resource group in which to create the Function App. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `site_config` object as defined below.
+  /// A `siteConfig` object as defined below.
   late final pulumi.Output<FunctionAppSiteConfig> siteConfig;
-  /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service.
+  /// A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service.
   late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
-  /// A `source_control` block, as defined below.
+  /// A `sourceControl` block, as defined below.
   late final pulumi.Output<FunctionAppSourceControl> sourceControl;
   /// The access key which will be used to access the backend storage account for the Function App.
   ///
   /// &gt; **Note:** When integrating a `CI/CD pipeline` and expecting to run from a deployed package in `Azure` you must seed your `app settings` as part of the application code for function app to be successfully deployed. `Important Default key pairs`: (`"WEBSITE_RUN_FROM_PACKAGE" = ""`, `"FUNCTIONS_WORKER_RUNTIME" = "node"` (or python, etc), `"WEBSITE_NODE_DEFAULT_VERSION" = "10.14.1"`, `"APPINSIGHTS_INSTRUMENTATIONKEY" = ""`).
   ///
-  /// &gt; **Note:**  When using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
+  /// &gt; **Note:**  When using an App Service Plan in the `Free` or `Shared` Tiers `use32BitWorkerProcess` must be set to `true`.
   late final pulumi.Output<String> storageAccountAccessKey;
   /// The backend storage account name which will be used by this Function App (such as the dashboard, logs). Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountName;

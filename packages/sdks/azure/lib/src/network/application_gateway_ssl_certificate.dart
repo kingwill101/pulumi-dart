@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewaySslCertificate {
-  /// The base64-encoded PFX certificate data. Required if `key_vault_secret_id` is not set.
+  /// The base64-encoded PFX certificate data. Required if `keyVaultSecretId` is not set.
   ///
   /// &gt; **Note:** When specifying a file, use `data = filebase64("path/to/file")` to encode the contents of that file.
   final pulumi.Input<String>? data;
@@ -11,7 +11,7 @@ class ApplicationGatewaySslCertificate {
   final pulumi.Input<String>? id;
   /// The Secret ID of the (base-64 encoded unencrypted pfx) `Secret` or `Certificate` object stored in Azure KeyVault. You need to enable soft delete for Key Vault to use this feature. Required if `data` is not set.
   ///
-  /// &gt; **Note:** To implement certificate rotation, the `azure.keyvault.Secret` attribute `versionless_id` should be used, although `id` is also supported.
+  /// &gt; **Note:** To implement certificate rotation, the `azure.keyvault.Secret` attribute `versionlessId` should be used, although `id` is also supported.
   ///
   /// &gt; **Note:** TLS termination with Key Vault certificates is limited to the [v2 SKUs](https://docs.microsoft.com/azure/application-gateway/key-vault-certs).
   ///
@@ -25,7 +25,7 @@ class ApplicationGatewaySslCertificate {
   final pulumi.Input<String>? publicCertData;
 
   /// Creates a new [ApplicationGatewaySslCertificate].
-  /// [data] The base64-encoded PFX certificate data. Required if `key_vault_secret_id` is not set.
+  /// [data] The base64-encoded PFX certificate data. Required if `keyVaultSecretId` is not set.
   /// [id] The ID of the Rewrite Rule Set
   /// [keyVaultSecretId] The Secret ID of the (base-64 encoded unencrypted pfx) `Secret` or `Certificate` object stored in Azure KeyVault. You need to enable soft delete for Key Vault to use this feature. Required if `data` is not set.
   /// [name] The Name of the SSL certificate that is unique within this Application Gateway
@@ -62,4 +62,3 @@ class ApplicationGatewaySslCertificate {
     );
   }
 }
-

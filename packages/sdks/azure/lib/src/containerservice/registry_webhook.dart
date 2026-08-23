@@ -156,6 +156,40 @@ import 'registry_webhook_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_containerservice_registry" "acr" {
+///   name                = "containerRegistry1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Standard"
+///   admin_enabled       = false
+/// }
+/// resource "azure_containerservice_registrywebhook" "webhook" {
+///   name                = "mywebhook"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   registry_name       = azure_containerservice_registry.acr.name
+///   location            = azure_core_resourcegroup.example.location
+///   service_uri         = "https://mywebhookreceiver.example/mytag"
+///   status              = "enabled"
+///   scope               = "mytag:*"
+///   actions             = ["push"]
+///   custom_headers = {
+///     "Content-Type" = "application/json"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +202,8 @@ import 'registry_webhook_state.dart';
 /// import com.pulumi.azure.containerservice.RegistryArgs;
 /// import com.pulumi.azure.containerservice.RegistryWebhook;
 /// import com.pulumi.azure.containerservice.RegistryWebhookArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -256,7 +290,7 @@ import 'registry_webhook_state.dart';
 /// $ pulumi import azure:containerservice/registryWebhook:RegistryWebhook example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.ContainerRegistry/registries/myregistry1/webHooks/mywebhook1
 /// ```
 class RegistryWebhook extends pulumi.CustomResource {
-  /// A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chart_push`, `chart_delete`
+  /// A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chartPush`, `chartDelete`
   late final pulumi.Output<List<String>> actions;
   /// Custom headers that will be added to the webhook notifications request.
   late final pulumi.Output<Map<String, String>?> customHeaders;

@@ -155,6 +155,40 @@ import 'managed_private_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                            = "example"
+///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   managed_virtual_network_enabled = true
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_kind             = "BlobStorage"
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_datafactory_managedprivateendpoint" "example" {
+///   name               = "example"
+///   data_factory_id    = azure_datafactory_factory.example.id
+///   target_resource_id = azure_storage_account.example.id
+///   subresource_name   = "blob"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +203,8 @@ import 'managed_private_endpoint_state.dart';
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.datafactory.ManagedPrivateEndpoint;
 /// import com.pulumi.azure.datafactory.ManagedPrivateEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -273,6 +307,8 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
   /// Specifies the name which should be used for this Managed Private Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// Specifies the sub resource name which the Data Factory Private Endpoint is able to connect to. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** `subresourceName` must not be specified when `targetResourceId` is a Private Link Service. For all other target resources, `subresourceName` is required and must be at least 3 characters in length.
   late final pulumi.Output<String?> subresourceName;
   /// The ID of the Private Link Enabled Remote Resource which this Data Factory Private Endpoint should be connected to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetResourceId;

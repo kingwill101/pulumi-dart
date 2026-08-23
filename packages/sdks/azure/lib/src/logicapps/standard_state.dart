@@ -12,15 +12,15 @@ class StandardState {
   final pulumi.Input<String>? appServicePlanId;
   /// A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
   ///
-  /// &gt; **Note:** There are a number of application settings that will be managed for you by this resource type and *shouldn't* be configured separately as part of the app_settings you specify.  `AzureWebJobsStorage` is filled based on `storage_account_name` and `storage_account_access_key`. `WEBSITE_CONTENTSHARE` is detailed below. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`. `APP_KIND` is set to workflowApp and `AzureFunctionsJobHost__extensionBundle__id` and `AzureFunctionsJobHost__extensionBundle__version` are set as detailed below.
+  /// &gt; **Note:** There are a number of application settings that will be managed for you by this resource type and *shouldn't* be configured separately as part of the appSettings you specify.  `AzureWebJobsStorage` is filled based on `storageAccountName` and `storageAccountAccessKey`. `WEBSITE_CONTENTSHARE` is detailed below. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`. `APP_KIND` is set to workflowApp and `AzureFunctionsJobHost__extensionBundle__id` and `AzureFunctionsJobHost__extensionBundle__version` are set as detailed below.
   final pulumi.Input<Map<String, String>>? appSettings;
-  /// If `use_extension_bundle` is set to `true` this controls the allowed range for bundle versions. Defaults to `[1.*, 2.0.0)`.
+  /// If `useExtensionBundle` is set to `true` this controls the allowed range for bundle versions. Defaults to `[1.*, 2.0.0)`.
   final pulumi.Input<String>? bundleVersion;
   /// Should the Logic App send session affinity cookies, which route client requests in the same session to the same instance?
   final pulumi.Input<bool>? clientAffinityEnabled;
   /// The mode of the Logic App's client certificates requirement for incoming requests. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`.
   final pulumi.Input<String>? clientCertificateMode;
-  /// A `connection_string` block as defined below.
+  /// A `connectionString` block as defined below.
   final pulumi.Input<List<StandardConnectionString>>? connectionStrings;
   /// An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   final pulumi.Input<String>? customDomainVerificationId;
@@ -34,6 +34,10 @@ class StandardState {
   final pulumi.Input<bool>? httpsOnly;
   /// An `identity` block as defined below.
   final pulumi.Input<StandardIdentity>? identity;
+  /// The User Assigned Identity ID used for accessing KeyVault secrets.
+  ///
+  /// &gt; **Note:** The identity must be assigned to the Logic App in the `identity` block. [For more information see - Access vaults with a user-assigned identity](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#access-vaults-with-a-user-assigned-identity)
+  final pulumi.Input<String>? keyVaultReferenceIdentityId;
   /// The Logic App kind.
   final pulumi.Input<String>? kind;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
@@ -42,7 +46,7 @@ class StandardState {
   final pulumi.Input<String>? name;
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`.
   final pulumi.Input<String>? outboundIpAddresses;
-  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   final pulumi.Input<String>? possibleOutboundIpAddresses;
   /// Whether Public Network Access should be enabled or not. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
   ///
@@ -52,9 +56,9 @@ class StandardState {
   final pulumi.Input<String>? resourceGroupName;
   /// Whether the default SCM basic authentication publishing profile is enabled. Defaults to `true`.
   final pulumi.Input<bool>? scmPublishBasicAuthenticationEnabled;
-  /// A `site_config` object as defined below.
+  /// A `siteConfig` object as defined below.
   final pulumi.Input<StandardSiteConfig>? siteConfig;
-  /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service.
+  /// A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service.
   final pulumi.Input<List<StandardSiteCredential>>? siteCredentials;
   /// The access key which will be used to access the backend storage account for the Logic App.
   final pulumi.Input<String>? storageAccountAccessKey;
@@ -64,7 +68,7 @@ class StandardState {
   ///
   /// &gt; **Note:** When integrating a `CI/CD pipeline` and expecting to run from a deployed package in `Azure` you must seed your `app settings` as part of terraform code for Logic App to be successfully deployed. `Important Default key pairs`: (`"WEBSITE_RUN_FROM_PACKAGE" = ""`, `"FUNCTIONS_WORKER_RUNTIME" = "node"` (or Python, etc.), `"WEBSITE_NODE_DEFAULT_VERSION" = "10.14.1"`, `"APPINSIGHTS_INSTRUMENTATIONKEY" = ""`).
   ///
-  /// &gt; **Note:** When using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
+  /// &gt; **Note:** When using an App Service Plan in the `Free` or `Shared` Tiers `use32BitWorkerProcess` must be set to `true`.
   final pulumi.Input<String>? storageAccountShareName;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
@@ -74,9 +78,9 @@ class StandardState {
   final pulumi.Input<String>? version;
   /// The subnet ID which will be used by this resource for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   ///
-  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource app_service_virtual_network_swift_connection and in-line within this resource using the `virtual_network_subnet_id` property. You cannot use both methods simultaneously.
+  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource appServiceVirtualNetworkSwiftConnection and in-line within this resource using the `virtualNetworkSubnetId` property. You cannot use both methods simultaneously.
   ///
-  /// &gt; **Note:** Assigning the `virtual_network_subnet_id` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
+  /// &gt; **Note:** Assigning the `virtualNetworkSubnetId` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
   final pulumi.Input<String>? virtualNetworkSubnetId;
   /// Specifies whether allow routing traffic between the Logic App and Storage Account content share through a virtual network. Defaults to `false`.
   final pulumi.Input<bool>? vnetContentShareEnabled;
@@ -84,26 +88,27 @@ class StandardState {
   /// Creates a new [StandardState].
   /// [appServicePlanId] The ID of the App Service Plan within which to create this Logic App.
   /// [appSettings] A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
-  /// [bundleVersion] If `use_extension_bundle` is set to `true` this controls the allowed range for bundle versions. Defaults to `[1.*, 2.0.0)`.
+  /// [bundleVersion] If `useExtensionBundle` is set to `true` this controls the allowed range for bundle versions. Defaults to `[1.*, 2.0.0)`.
   /// [clientAffinityEnabled] Should the Logic App send session affinity cookies, which route client requests in the same session to the same instance?
   /// [clientCertificateMode] The mode of the Logic App's client certificates requirement for incoming requests. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`.
-  /// [connectionStrings] A `connection_string` block as defined below.
+  /// [connectionStrings] A `connectionString` block as defined below.
   /// [customDomainVerificationId] An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   /// [defaultHostname] The default hostname associated with the Logic App - such as `mysite.azurewebsites.net`.
   /// [enabled] Is the Logic App enabled? Defaults to `true`.
   /// [ftpPublishBasicAuthenticationEnabled] Whether the FTP basic authentication publishing profile is enabled. Defaults to `true`.
   /// [httpsOnly] Can the Logic App only be accessed via HTTPS? Defaults to `false`.
   /// [identity] An `identity` block as defined below.
+  /// [keyVaultReferenceIdentityId] The User Assigned Identity ID used for accessing KeyVault secrets.
   /// [kind] The Logic App kind.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Logic App. Changing this forces a new resource to be created.
   /// [outboundIpAddresses] A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`.
-  /// [possibleOutboundIpAddresses] A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// [possibleOutboundIpAddresses] A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   /// [publicNetworkAccess] Whether Public Network Access should be enabled or not. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
   /// [resourceGroupName] The name of the resource group in which to create the Logic App. Changing this forces a new resource to be created.
   /// [scmPublishBasicAuthenticationEnabled] Whether the default SCM basic authentication publishing profile is enabled. Defaults to `true`.
-  /// [siteConfig] A `site_config` object as defined below.
-  /// [siteCredentials] A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service.
+  /// [siteConfig] A `siteConfig` object as defined below.
+  /// [siteCredentials] A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service.
   /// [storageAccountAccessKey] The access key which will be used to access the backend storage account for the Logic App.
   /// [storageAccountName] The backend storage account name which will be used by this Logic App (e.g. for Stateful workflows data). Changing this forces a new resource to be created.
   /// [storageAccountShareName] The name of the share used by the logic app, if you want to use a custom name. This corresponds to the WEBSITE_CONTENTSHARE appsetting, which this resource will create for you. If you don't specify a name, then this resource will generate a dynamic name. This setting is useful if you want to provision a storage account and create a share using `azure.storage.Share`.
@@ -125,6 +130,7 @@ class StandardState {
     this.ftpPublishBasicAuthenticationEnabled,
     this.httpsOnly,
     this.identity,
+    this.keyVaultReferenceIdentityId,
     this.kind,
     this.location,
     this.name,
@@ -159,6 +165,7 @@ class StandardState {
       'ftpPublishBasicAuthenticationEnabled': ?ftpPublishBasicAuthenticationEnabled,
       'httpsOnly': ?httpsOnly,
       'identity': ?pulumi.Input.mapOptionalInputValue<StandardIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'keyVaultReferenceIdentityId': ?keyVaultReferenceIdentityId,
       'kind': ?kind,
       'location': ?location,
       'name': ?name,
@@ -194,6 +201,7 @@ class StandardState {
       ftpPublishBasicAuthenticationEnabled: (() { final guardedValue = map['ftpPublishBasicAuthenticationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       httpsOnly: (() { final guardedValue = map['httpsOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandardIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      keyVaultReferenceIdentityId: (() { final guardedValue = map['keyVaultReferenceIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -215,4 +223,3 @@ class StandardState {
     );
   }
 }
-

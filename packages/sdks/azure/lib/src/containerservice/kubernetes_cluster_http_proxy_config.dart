@@ -9,9 +9,9 @@ class KubernetesClusterHttpProxyConfig {
   final pulumi.Input<String>? httpsProxy;
   /// The list of domains that will not use the proxy for communication.
   ///
-  /// &gt; **Note:** If you specify the `default_node_pool[0].vnet_subnet_id`, be sure to include the Subnet CIDR in the `no_proxy` list.
+  /// &gt; **Note:** If you specify the `default_node_pool[0].vnet_subnet_id`, be sure to include the Subnet CIDR in the `noProxy` list.
   ///
-  /// &gt; **Note:** You may wish to use Terraform's `ignore_changes` functionality to ignore the changes to this field.
+  /// &gt; **Note:** You may wish to use Terraform's `ignoreChanges` functionality to ignore the changes to this field.
   final pulumi.Input<List<String>>? noProxies;
   /// The base64 encoded alternative CA certificate content in PEM format.
   final pulumi.Input<String>? trustedCa;
@@ -46,4 +46,3 @@ class KubernetesClusterHttpProxyConfig {
     );
   }
 }
-

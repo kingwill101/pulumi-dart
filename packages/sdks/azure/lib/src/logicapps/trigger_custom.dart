@@ -138,6 +138,30 @@ import 'trigger_custom_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "workflow-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_logicapps_workflow" "example" {
+///   name                = "workflow1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_logicapps_triggercustom" "example" {
+///   name         = "example-trigger"
+///   logic_app_id = azure_logicapps_workflow.example.id
+///   body         = "{\n  \\\"recurrence\\\": {\n    \\\"frequency\\\": \\\"Day\\\",\n    \\\"interval\\\": 1\n  },\n  \\\"type\\\": \\\"Recurrence\\\"\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +174,8 @@ import 'trigger_custom_state.dart';
 /// import com.pulumi.azure.logicapps.WorkflowArgs;
 /// import com.pulumi.azure.logicapps.TriggerCustom;
 /// import com.pulumi.azure.logicapps.TriggerCustomArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,7 +258,7 @@ import 'trigger_custom_state.dart';
 class TriggerCustom extends pulumi.CustomResource {
   /// Specifies the JSON Blob defining the Body of this Custom Trigger.
   late final pulumi.Output<String> body;
-  /// The URL of the Trigger within the Logic App Workflow. For use with certain resources like monitor_action_group and security_center_automation.
+  /// The URL of the Trigger within the Logic App Workflow. For use with certain resources like monitorActionGroup and security_center_automation.
   late final pulumi.Output<String> callbackUrl;
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   late final pulumi.Output<String> logicAppId;

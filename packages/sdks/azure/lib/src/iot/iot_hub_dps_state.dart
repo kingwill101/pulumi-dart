@@ -15,9 +15,9 @@ class IotHubDpsState {
   final pulumi.Input<String>? deviceProvisioningHostName;
   /// The unique identifier of the IoT Device Provisioning Service.
   final pulumi.Input<String>? idScope;
-  /// An `ip_filter_rule` block as defined below.
+  /// An `ipFilterRule` block as defined below.
   final pulumi.Input<List<IotHubDpsIpFilterRule>>? ipFilterRules;
-  /// A `linked_hub` block as defined below.
+  /// A `linkedHub` block as defined below.
   final pulumi.Input<List<IotHubDpsLinkedHub>>? linkedHubs;
   /// Specifies the supported Azure location where the resource has to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -39,8 +39,8 @@ class IotHubDpsState {
   /// [dataResidencyEnabled] Specifies if the IoT Device Provisioning Service has data residency enabled, removing the cross geo-pair disaster recovery. Defaults to `false`. Changing this forces a new resource to be created.
   /// [deviceProvisioningHostName] The device endpoint of the IoT Device Provisioning Service.
   /// [idScope] The unique identifier of the IoT Device Provisioning Service.
-  /// [ipFilterRules] An `ip_filter_rule` block as defined below.
-  /// [linkedHubs] A `linked_hub` block as defined below.
+  /// [ipFilterRules] An `ipFilterRule` block as defined below.
+  /// [linkedHubs] A `linkedHub` block as defined below.
   /// [location] Specifies the supported Azure location where the resource has to be created. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Iot Device Provisioning Service resource. Changing this forces a new resource to be created.
   /// [publicNetworkAccessEnabled] Whether requests from Public Network are allowed. Defaults to `true`.
@@ -100,4 +100,3 @@ class IotHubDpsState {
     );
   }
 }
-

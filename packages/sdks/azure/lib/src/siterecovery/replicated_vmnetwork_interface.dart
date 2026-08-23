@@ -13,7 +13,7 @@ class ReplicatedVMNetworkInterface {
   final pulumi.Input<List<String>>? recoveryLoadBalancerBackendAddressPoolIds;
   /// Id of the public IP object to use when a failover is done.
   final pulumi.Input<String>? recoveryPublicIpAddressId;
-  /// (Required if the network_interface block is specified) Id source network interface.
+  /// (Required if the networkInterface block is specified) Id source network interface.
   final pulumi.Input<String>? sourceNetworkInterfaceId;
   /// Static IP to assign when a failover is done.
   final pulumi.Input<String>? targetStaticIp;
@@ -26,7 +26,7 @@ class ReplicatedVMNetworkInterface {
   /// [failoverTestSubnetName] Name of the subnet to use when a test failover is done.
   /// [recoveryLoadBalancerBackendAddressPoolIds] A list of IDs of Load Balancer Backend Address Pools to use when a failover is done.
   /// [recoveryPublicIpAddressId] Id of the public IP object to use when a failover is done.
-  /// [sourceNetworkInterfaceId] (Required if the network_interface block is specified) Id source network interface.
+  /// [sourceNetworkInterfaceId] (Required if the networkInterface block is specified) Id source network interface.
   /// [targetStaticIp] Static IP to assign when a failover is done.
   /// [targetSubnetName] Name of the subnet to use when a failover is done.
   const ReplicatedVMNetworkInterface({
@@ -66,4 +66,3 @@ class ReplicatedVMNetworkInterface {
     );
   }
 }
-

@@ -157,6 +157,34 @@ import 'virtual_network_dns_servers_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   subnets {
+///     name           = "subnet1"
+///     address_prefix = "10.0.1.0/24"
+///   }
+/// }
+/// resource "azure_network_virtualnetworkdnsservers" "example" {
+///   virtual_network_id = azure_network_virtualnetwork.example.id
+///   dns_servers        = ["10.7.7.2", "10.7.7.7", "10.7.7.1"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -170,8 +198,8 @@ import 'virtual_network_dns_servers_state.dart';
 /// import com.pulumi.azure.network.inputs.VirtualNetworkSubnetArgs;
 /// import com.pulumi.azure.network.VirtualNetworkDnsServers;
 /// import com.pulumi.azure.network.VirtualNetworkDnsServersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

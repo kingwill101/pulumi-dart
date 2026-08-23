@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_managed_rules_exclusion_excluded_rule_set.dart';
 
 class PolicyManagedRulesExclusion {
-  /// One or more `excluded_rule_set` block defined below.
+  /// One or more `excludedRuleSet` block defined below.
   final pulumi.Input<PolicyManagedRulesExclusionExcludedRuleSet>? excludedRuleSet;
   /// The name of the Match Variable. Possible values: `RequestArgKeys`, `RequestArgNames`, `RequestArgValues`, `RequestCookieKeys`, `RequestCookieNames`, `RequestCookieValues`, `RequestHeaderKeys`, `RequestHeaderNames`, `RequestHeaderValues`.
   final pulumi.Input<String> matchVariable;
@@ -14,7 +14,7 @@ class PolicyManagedRulesExclusion {
   final pulumi.Input<String> selectorMatchOperator;
 
   /// Creates a new [PolicyManagedRulesExclusion].
-  /// [excludedRuleSet] One or more `excluded_rule_set` block defined below.
+  /// [excludedRuleSet] One or more `excludedRuleSet` block defined below.
   /// [matchVariable] The name of the Match Variable. Possible values: `RequestArgKeys`, `RequestArgNames`, `RequestArgValues`, `RequestCookieKeys`, `RequestCookieNames`, `RequestCookieValues`, `RequestHeaderKeys`, `RequestHeaderNames`, `RequestHeaderValues`.
   /// [selector] Describes field of the matchVariable collection.
   /// [selectorMatchOperator] Describes operator to be matched. Possible values: `Contains`, `EndsWith`, `Equals`, `EqualsAny`, `StartsWith`.
@@ -43,4 +43,3 @@ class PolicyManagedRulesExclusion {
     );
   }
 }
-

@@ -7,7 +7,7 @@ class ServiceHostnameConfigurationProxy {
   final pulumi.Input<String>? certificate;
   /// The password associated with the certificate provided above.
   ///
-  /// &gt; **Note:** Either `key_vault_certificate_id` or `certificate` and `certificate_password` must be specified.
+  /// &gt; **Note:** Either `keyVaultCertificateId` or `certificate` and `certificatePassword` must be specified.
   final pulumi.Input<String>? certificatePassword;
   /// The source of the certificate.
   final pulumi.Input<String>? certificateSource;
@@ -99,4 +99,3 @@ class ServiceHostnameConfigurationProxy {
     );
   }
 }
-

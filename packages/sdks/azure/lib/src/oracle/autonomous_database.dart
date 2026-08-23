@@ -26,7 +26,7 @@ import 'autonomous_database_state.dart';
 ///     autoScalingForStorageEnabled: false,
 ///     virtualNetworkId: "example",
 ///     adminPassword: "example",
-///     autoScalingEnabled: "example",
+///     autoScalingEnabled: "example" === "true",
 ///     characterSet: "example",
 ///     computeCount: 1.23456,
 ///     nationalCharacterSet: "example",
@@ -52,7 +52,7 @@ import 'autonomous_database_state.dart';
 ///     auto_scaling_for_storage_enabled=False,
 ///     virtual_network_id="example",
 ///     admin_password="example",
-///     auto_scaling_enabled="example",
+///     auto_scaling_enabled="example" == "true",
 ///     character_set="example",
 ///     compute_count=1.23456,
 ///     national_character_set="example",
@@ -130,6 +130,37 @@ import 'autonomous_database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_oracle_autonomousdatabase" "example" {
+///   name                             = "example"
+///   resource_group_name              = "example"
+///   location                         = "West Europe"
+///   subnet_id                        = "example"
+///   display_name                     = "example"
+///   db_workload                      = "example"
+///   mtls_connection_required         = false
+///   backup_retention_period_in_days  = 42
+///   compute_model                    = "example"
+///   data_storage_size_in_gbs         = 42
+///   auto_scaling_for_storage_enabled = false
+///   virtual_network_id               = "example"
+///   admin_password                   = "example"
+///   auto_scaling_enabled             = "example"
+///   character_set                    = "example"
+///   compute_count                    = 1.23456
+///   national_character_set           = "example"
+///   license_model                    = false
+///   db_version                       = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +169,8 @@ import 'autonomous_database_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.AutonomousDatabase;
 /// import com.pulumi.azure.oracle.AutonomousDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -203,28 +234,28 @@ import 'autonomous_database_state.dart';
 /// ```
 ///
 ///
-/// ## &gt; **Note:** `allowed_ips`  cannot be updated after provisioning the resource with an empty list (i.e., a publicly accessible Autonomous Database)
+/// ## &gt; **Note:** `allowedIps`  cannot be updated after provisioning the resource with an empty list (i.e., a publicly accessible Autonomous Database)
 ///
 /// size: the maximum number of Ips provided shouldn't exceed 1024. At this time we only support IpV4.
 /// ---
 ///
-/// * `customer_contacts` - (Optional) Specifies a list of customer contacts as email addresses. Changing this forces a new Autonomous Database to be created.
+/// * `customerContacts` - (Optional) Specifies a list of customer contacts as email addresses. Changing this forces a new Autonomous Database to be created.
 ///
 /// * `tags` - (Optional) A mapping of tags which should be assigned to the Autonomous Database.
 ///
-/// * `long_term_backup_schedule` - (Optional) A `long_term_backup_schedule` block as defined below.
+/// * `longTermBackupSchedule` - (Optional) A `longTermBackupSchedule` block as defined below.
 ///
 /// &gt; **Note:** for more information see [Create Long-Term Backups on Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/backup-long-term.html#GUID-BD76E02E-AEB0-4450-A6AB-5C9EB1F4EAD0)
 ///
 /// ---
 ///
-/// A `long_term_backup_schedule` blocks supports the following:
+/// A `longTermBackupSchedule` blocks supports the following:
 ///
-/// * `repeat_cadence` - (Required) Specifies the schedule for automated long-term backups. Possible values are `Weekly`, `Monthly`, `Yearly`, or `OneTime` (does not repeat) . For example, if the Backup date and Time is `Jan 24, 2025 00:09:00 UTC` and this is a Tuesday, and Weekly is selected, the long-term backup will happen every Tuesday.
+/// * `repeatCadence` - (Required) Specifies the schedule for automated long-term backups. Possible values are `Weekly`, `Monthly`, `Yearly`, or `OneTime` (does not repeat) . For example, if the Backup date and Time is `Jan 24, 2025 00:09:00 UTC` and this is a Tuesday, and Weekly is selected, the long-term backup will happen every Tuesday.
 ///
-/// * `time_of_backup` - (Required) The date and time in which the backup should be taken in ISO8601 Date Time format.
+/// * `timeOfBackup` - (Required) The date and time in which the backup should be taken in ISO8601 Date Time format.
 ///
-/// * `retention_period_in_days` - (Required) The retention period in days for the Autonomous Database Backup. Possible values range from `90` to `2558` days (7 years).
+/// * `retentionPeriodInDays` - (Required) The retention period in days for the Autonomous Database Backup. Possible values range from `90` to `2558` days (7 years).
 ///
 /// * `enabled` - (Required) A boolean value that indicates whether the long term backup schedule is enabled.
 ///
@@ -267,7 +298,7 @@ class AutonomousDatabase extends pulumi.CustomResource {
   /// The Autonomous Database workload type. Changing this forces a new Autonomous Database to be created. Possible values are `AJD`, `APEX`, `DW` and `OLTP`.
   ///
   /// &gt; **Note:** `AJD` indicates an Autonomous JSON database; `APEX` indicates an Autonomous Database with the Oracle APEX Application Development workload type; `DW` indicates an Autonomous Data Warehouse database; `OLTP` indicates an Autonomous Transaction Processing database
-  /// &gt; **Note:** When Provisioning Database with `APEX` workload `mtls_connection_required` must be set to `true`.
+  /// &gt; **Note:** When Provisioning Database with `APEX` workload `mtlsConnectionRequired` must be set to `true`.
   late final pulumi.Output<String> dbWorkload;
   /// The user-friendly name for the Autonomous Database. The name does not have to be unique. Changing this forces a new Autonomous Database to be created.
   late final pulumi.Output<String> displayName;
@@ -278,7 +309,7 @@ class AutonomousDatabase extends pulumi.CustomResource {
   late final pulumi.Output<AutonomousDatabaseLongTermBackupSchedule?> longTermBackupSchedule;
   /// Specifies if the Autonomous Database requires mTLS connections. Changing this forces a new Autonomous Database to be created. Default value `false`.
   ///
-  /// &gt; **Note:** `mtls_connection_required`  must be set to `true` for all workload types except 'APEX' when creating a database with public access.
+  /// &gt; **Note:** `mtlsConnectionRequired`  must be set to `true` for all workload types except 'APEX' when creating a database with public access.
   late final pulumi.Output<bool> mtlsConnectionRequired;
   /// The name which should be used for this Autonomous Database. Changing this forces a new Autonomous Database to be created.
   late final pulumi.Output<String> name;

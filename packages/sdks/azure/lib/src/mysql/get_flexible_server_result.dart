@@ -17,13 +17,13 @@ class GetFlexibleServerResult {
   final String fqdn;
   /// Is geo redundant backup enabled?
   final bool geoRedundantBackupEnabled;
-  /// A `high_availability` block for this MySQL Flexible Server as defined below.
+  /// A `highAvailability` block for this MySQL Flexible Server as defined below.
   final List<GetFlexibleServerHighAvailability> highAvailabilities;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   /// The Azure Region of the MySQL Flexible Server.
   final String location;
-  /// A `maintenance_window` block for this MySQL Flexible Server as defined below.
+  /// A `maintenanceWindow` block for this MySQL Flexible Server as defined below.
   final List<GetFlexibleServerMaintenanceWindow> maintenanceWindows;
   final String name;
   /// The ID of the Private DNS zone of the MySQL Flexible Server.
@@ -53,10 +53,10 @@ class GetFlexibleServerResult {
   /// [delegatedSubnetId] The ID of the virtual network subnet the MySQL Flexible Server is created in.
   /// [fqdn] The fully qualified domain name of the MySQL Flexible Server.
   /// [geoRedundantBackupEnabled] Is geo redundant backup enabled?
-  /// [highAvailabilities] A `high_availability` block for this MySQL Flexible Server as defined below.
+  /// [highAvailabilities] A `highAvailability` block for this MySQL Flexible Server as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] The Azure Region of the MySQL Flexible Server.
-  /// [maintenanceWindows] A `maintenance_window` block for this MySQL Flexible Server as defined below.
+  /// [maintenanceWindows] A `maintenanceWindow` block for this MySQL Flexible Server as defined below.
   /// [name] Required.
   /// [privateDnsZoneId] The ID of the Private DNS zone of the MySQL Flexible Server.
   /// [publicNetworkAccessEnabled] Is the public network access enabled?
@@ -145,4 +145,3 @@ class GetFlexibleServerResult {
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'network_manager_scope.dart';
 
 /// Input properties used for looking up and filtering NetworkManager resources.
 class NetworkManagerState {
-  /// One or more `cross_tenant_scopes` blocks as defined below.
+  /// One or more `crossTenantScopes` blocks as defined below.
   final pulumi.Input<List<NetworkManagerCrossTenantScope>>? crossTenantScopes;
   /// A description of the Network Manager.
   final pulumi.Input<String>? description;
@@ -24,7 +24,7 @@ class NetworkManagerState {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [NetworkManagerState].
-  /// [crossTenantScopes] One or more `cross_tenant_scopes` blocks as defined below.
+  /// [crossTenantScopes] One or more `crossTenantScopes` blocks as defined below.
   /// [description] A description of the Network Manager.
   /// [location] Specifies the Azure Region where the Network Manager should exist. Changing this forces a new resource to be created.
   /// [name] Specifies the name which should be used for this Network Manager. Changing this forces a new Network Manager to be created.
@@ -69,4 +69,3 @@ class NetworkManagerState {
     );
   }
 }
-

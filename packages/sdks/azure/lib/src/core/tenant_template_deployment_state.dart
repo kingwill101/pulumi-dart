@@ -16,9 +16,9 @@ class TenantTemplateDeploymentState {
   final pulumi.Input<String>? parametersContent;
   /// A mapping of tags which should be assigned to the Template.
   final pulumi.Input<Map<String, String>>? tags;
-  /// The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `template_spec_version_id`.
+  /// The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `templateSpecVersionId`.
   final pulumi.Input<String>? templateContent;
-  /// The ID of the Template Spec Version to deploy. Cannot be specified with `template_content`.
+  /// The ID of the Template Spec Version to deploy. Cannot be specified with `templateContent`.
   final pulumi.Input<String>? templateSpecVersionId;
 
   /// Creates a new [TenantTemplateDeploymentState].
@@ -28,8 +28,8 @@ class TenantTemplateDeploymentState {
   /// [outputContent] The JSON Content of the Outputs of the ARM Template Deployment.
   /// [parametersContent] The contents of the ARM Template parameters file - containing a JSON list of parameters.
   /// [tags] A mapping of tags which should be assigned to the Template.
-  /// [templateContent] The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `template_spec_version_id`.
-  /// [templateSpecVersionId] The ID of the Template Spec Version to deploy. Cannot be specified with `template_content`.
+  /// [templateContent] The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `templateSpecVersionId`.
+  /// [templateSpecVersionId] The ID of the Template Spec Version to deploy. Cannot be specified with `templateContent`.
   const TenantTemplateDeploymentState({
     this.debugLevel,
     this.location,
@@ -67,4 +67,3 @@ class TenantTemplateDeploymentState {
     );
   }
 }
-

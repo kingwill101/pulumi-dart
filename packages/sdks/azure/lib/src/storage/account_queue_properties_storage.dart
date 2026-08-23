@@ -251,6 +251,55 @@ import 'account_queue_properties_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "storageaccountname"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+///   tags = {
+///     "environment" = "staging"
+///   }
+/// }
+/// resource "azure_storage_accountqueueproperties" "example" {
+///   storage_account_id = azure_storage_account.example.id
+///   cors_rules {
+///     allowed_origins    = ["http://www.example.com"]
+///     exposed_headers    = ["x-tempo-*"]
+///     allowed_headers    = ["x-tempo-*"]
+///     allowed_methods    = ["GET", "PUT"]
+///     max_age_in_seconds = "500"
+///   }
+///   logging = {
+///     version               = "1.0"
+///     delete                = true
+///     read                  = true
+///     write                 = true
+///     retention_policy_days = 7
+///   }
+///   hour_metrics = {
+///     version               = "1.0"
+///     retention_policy_days = 7
+///   }
+///   minute_metrics = {
+///     version               = "1.0"
+///     retention_policy_days = 7
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -267,8 +316,8 @@ import 'account_queue_properties_state.dart';
 /// import com.pulumi.azure.storage.inputs.AccountQueuePropertiesLoggingArgs;
 /// import com.pulumi.azure.storage.inputs.AccountQueuePropertiesHourMetricsArgs;
 /// import com.pulumi.azure.storage.inputs.AccountQueuePropertiesMinuteMetricsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -382,15 +431,15 @@ import 'account_queue_properties_state.dart';
 /// $ pulumi import azure:storage/accountQueueProperties:AccountQueueProperties queueprops /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount
 /// ```
 class AccountQueuePropertiesStorage extends pulumi.CustomResource {
-  /// A `cors_rule` block as defined above.
+  /// A `corsRule` block as defined above.
   late final pulumi.Output<List<Map<String, dynamic>>?> corsRules;
-  /// A `hour_metrics` block as defined below.
+  /// A `hourMetrics` block as defined below.
   ///
-  /// &gt; **Note:** At least one of `cors_rule`, `logging`, `minute_metrics`, or `hour_metrics` must be specified.
+  /// &gt; **Note:** At least one of `corsRule`, `logging`, `minuteMetrics`, or `hourMetrics` must be specified.
   late final pulumi.Output<AccountQueuePropertiesHourMetrics> hourMetrics;
   /// A `logging` block as defined below.
   late final pulumi.Output<AccountQueuePropertiesLogging> logging;
-  /// A `minute_metrics` block as defined below.
+  /// A `minuteMetrics` block as defined below.
   late final pulumi.Output<AccountQueuePropertiesMinuteMetrics> minuteMetrics;
   /// The ID of the Storage Account to set Queue Properties on. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;

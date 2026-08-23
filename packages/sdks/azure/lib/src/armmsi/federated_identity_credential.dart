@@ -24,7 +24,7 @@ import 'federated_identity_credential_state.dart';
 ///     name: "example",
 ///     audience: "foo",
 ///     issuer: "https://foo",
-///     parentId: exampleUserAssignedIdentity.id,
+///     userAssignedIdentityId: exampleUserAssignedIdentity.id,
 ///     subject: "foo",
 /// });
 /// ```
@@ -43,7 +43,7 @@ import 'federated_identity_credential_state.dart';
 ///     name="example",
 ///     audience="foo",
 ///     issuer="https://foo",
-///     parent_id=example_user_assigned_identity.id,
+///     user_assigned_identity_id=example_user_assigned_identity.id,
 ///     subject="foo")
 /// ```
 /// ```csharp
@@ -72,7 +72,7 @@ import 'federated_identity_credential_state.dart';
 ///         Name = "example",
 ///         Audience = "foo",
 ///         Issuer = "https://foo",
-///         ParentId = exampleUserAssignedIdentity.Id,
+///         UserAssignedIdentityId = exampleUserAssignedIdentity.Id,
 ///         Subject = "foo",
 ///     });
 ///
@@ -106,17 +106,43 @@ import 'federated_identity_credential_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = armmsi.NewFederatedIdentityCredential(ctx, "example", &armmsi.FederatedIdentityCredentialArgs{
-/// 			Name:     pulumi.String("example"),
-/// 			Audience: pulumi.String("foo"),
-/// 			Issuer:   pulumi.String("https://foo"),
-/// 			ParentId: exampleUserAssignedIdentity.ID(),
-/// 			Subject:  pulumi.String("foo"),
+/// 			Name:                   pulumi.String("example"),
+/// 			Audience:               pulumi.String("foo"),
+/// 			Issuer:                 pulumi.String("https://foo"),
+/// 			UserAssignedIdentityId: exampleUserAssignedIdentity.ID(),
+/// 			Subject:                pulumi.String("foo"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   location            = azure_core_resourcegroup.example.location
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_armmsi_federatedidentitycredential" "example" {
+///   name                      = "example"
+///   audience                  = "foo"
+///   issuer                    = "https://foo"
+///   user_assigned_identity_id = azure_authorization_userassignedidentity.example.id
+///   subject                   = "foo"
 /// }
 /// ```
 /// ```java
@@ -131,8 +157,8 @@ import 'federated_identity_credential_state.dart';
 /// import com.pulumi.azure.authorization.UserAssignedIdentityArgs;
 /// import com.pulumi.azure.armmsi.FederatedIdentityCredential;
 /// import com.pulumi.azure.armmsi.FederatedIdentityCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -159,7 +185,7 @@ import 'federated_identity_credential_state.dart';
 ///             .name("example")
 ///             .audience("foo")
 ///             .issuer("https://foo")
-///             .parentId(exampleUserAssignedIdentity.id())
+///             .userAssignedIdentityId(exampleUserAssignedIdentity.id())
 ///             .subject("foo")
 ///             .build());
 ///
@@ -187,7 +213,7 @@ import 'federated_identity_credential_state.dart';
 ///       name: example
 ///       audience: foo
 ///       issuer: https://foo
-///       parentId: ${exampleUserAssignedIdentity.id}
+///       userAssignedIdentityId: ${exampleUserAssignedIdentity.id}
 ///       subject: foo
 /// ```
 ///
@@ -213,11 +239,12 @@ class FederatedIdentityCredential extends pulumi.CustomResource {
   late final pulumi.Output<String> issuer;
   /// Specifies the name of this Federated Identity Credential. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// Specifies parent ID of User Assigned Identity for this Federated Identity Credential. Changing this forces a new Federated Identity Credential to be created.
   late final pulumi.Output<String> parentId;
   late final pulumi.Output<String> resourceGroupName;
   /// Specifies the subject for this Federated Identity Credential.
   late final pulumi.Output<String> subject;
+  /// Specifies the ID of the User Assigned Identity for this Federated Identity Credential. Changing this forces a new Federated Identity Credential to be created.
+  late final pulumi.Output<String> userAssignedIdentityId;
 
   /// Creates a new [FederatedIdentityCredential].
   /// [name] The Pulumi resource name.
@@ -239,6 +266,7 @@ class FederatedIdentityCredential extends pulumi.CustomResource {
     parentId = registerOutput<String>('parentId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subject = registerOutput<String>('subject');
+    userAssignedIdentityId = registerOutput<String>('userAssignedIdentityId');
   }
 
   /// Gets an existing [FederatedIdentityCredential] resource's state with the given [name] and [id].
@@ -270,5 +298,6 @@ class FederatedIdentityCredential extends pulumi.CustomResource {
     parentId = registerOutput<String>('parentId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subject = registerOutput<String>('subject');
+    userAssignedIdentityId = registerOutput<String>('userAssignedIdentityId');
   }
 }

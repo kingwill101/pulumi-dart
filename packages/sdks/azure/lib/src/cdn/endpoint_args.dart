@@ -13,11 +13,11 @@ import 'endpoint_origin.dart';
 class EndpointArgs {
   /// An array of strings that indicates a content types on which compression will be applied. The value for the elements should be MIME types.
   final pulumi.Input<List<String>>? contentTypesToCompresses;
-  /// Rules for the rules engine. An endpoint can contain up until 4 of those rules that consist of conditions and actions. A `delivery_rule` blocks as defined below.
+  /// Rules for the rules engine. An endpoint can contain up until 4 of those rules that consist of conditions and actions. A `deliveryRule` blocks as defined below.
   final pulumi.Input<List<EndpointDeliveryRule>>? deliveryRules;
-  /// A set of Geo Filters for this CDN Endpoint. Each `geo_filter` block supports fields documented below.
+  /// A set of Geo Filters for this CDN Endpoint. Each `geoFilter` block supports fields documented below.
   final pulumi.Input<List<EndpointGeoFilter>>? geoFilters;
-  /// Actions that are valid for all resources regardless of any conditions. A `global_delivery_rule` block as defined below.
+  /// Actions that are valid for all resources regardless of any conditions. A `globalDeliveryRule` block as defined below.
   final pulumi.Input<EndpointGlobalDeliveryRule>? globalDeliveryRule;
   /// Indicates whether compression is to be enabled.
   final pulumi.Input<bool>? isCompressionEnabled;
@@ -37,9 +37,9 @@ class EndpointArgs {
   final pulumi.Input<String>? originPath;
   /// The set of origins of the CDN endpoint. When multiple origins exist, the first origin will be used as primary and rest will be used as failover options. Each `origin` block supports fields documented below. Changing this forces a new resource to be created.
   final pulumi.Input<List<EndpointOrigin>> origins;
-  /// the path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the `origin_path`.
+  /// the path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the `originPath`.
   ///
-  /// &gt; **Note:** `global_delivery_rule` and `delivery_rule` are currently only available for `Microsoft_Standard` CDN profiles.
+  /// &gt; **Note:** `globalDeliveryRule` and `deliveryRule` are currently only available for `Microsoft_Standard` CDN profiles.
   final pulumi.Input<String>? probePath;
   /// The CDN Profile to which to attach the CDN Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String> profileName;
@@ -52,9 +52,9 @@ class EndpointArgs {
 
   /// Creates a new [EndpointArgs].
   /// [contentTypesToCompresses] An array of strings that indicates a content types on which compression will be applied. The value for the elements should be MIME types.
-  /// [deliveryRules] Rules for the rules engine. An endpoint can contain up until 4 of those rules that consist of conditions and actions. A `delivery_rule` blocks as defined below.
-  /// [geoFilters] A set of Geo Filters for this CDN Endpoint. Each `geo_filter` block supports fields documented below.
-  /// [globalDeliveryRule] Actions that are valid for all resources regardless of any conditions. A `global_delivery_rule` block as defined below.
+  /// [deliveryRules] Rules for the rules engine. An endpoint can contain up until 4 of those rules that consist of conditions and actions. A `deliveryRule` blocks as defined below.
+  /// [geoFilters] A set of Geo Filters for this CDN Endpoint. Each `geoFilter` block supports fields documented below.
+  /// [globalDeliveryRule] Actions that are valid for all resources regardless of any conditions. A `globalDeliveryRule` block as defined below.
   /// [isCompressionEnabled] Indicates whether compression is to be enabled.
   /// [isHttpAllowed] Specifies if http allowed. Defaults to `true`.
   /// [isHttpsAllowed] Specifies if https allowed. Defaults to `true`.
@@ -64,7 +64,7 @@ class EndpointArgs {
   /// [originHostHeader] The host header CDN provider will send along with content requests to origins.
   /// [originPath] The path used at for origin requests.
   /// [origins] The set of origins of the CDN endpoint. When multiple origins exist, the first origin will be used as primary and rest will be used as failover options. Each `origin` block supports fields documented below. Changing this forces a new resource to be created.
-  /// [probePath] the path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the `origin_path`.
+  /// [probePath] the path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the `originPath`.
   /// [profileName] The CDN Profile to which to attach the CDN Endpoint. Changing this forces a new resource to be created.
   /// [querystringCachingBehaviour] Sets query string caching behavior. Allowed values are `IgnoreQueryString`, `BypassCaching` and `UseQueryString`. `NotSet` value can be used for `Premium Verizon` CDN profile. Defaults to `IgnoreQueryString`.
   /// [resourceGroupName] The name of the resource group in which to create the CDN Endpoint. Changing this forces a new resource to be created.
@@ -136,4 +136,3 @@ class EndpointArgs {
     );
   }
 }
-

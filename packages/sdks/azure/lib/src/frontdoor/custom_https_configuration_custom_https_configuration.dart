@@ -13,7 +13,7 @@ class CustomHttpsConfigurationCustomHttpsConfiguration {
   final pulumi.Input<String>? azureKeyVaultCertificateVaultId;
   /// Certificate source to encrypted `HTTPS` traffic with. Allowed values are `FrontDoor` or `AzureKeyVault`. Defaults to `FrontDoor`.
   ///
-  /// The following attributes are only valid if `certificate_source` is set to `AzureKeyVault`:
+  /// The following attributes are only valid if `certificateSource` is set to `AzureKeyVault`:
   final pulumi.Input<String>? certificateSource;
   /// Minimum client TLS version supported.
   final pulumi.Input<String>? minimumTlsVersion;
@@ -62,4 +62,3 @@ class CustomHttpsConfigurationCustomHttpsConfiguration {
     );
   }
 }
-

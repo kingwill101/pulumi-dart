@@ -14,7 +14,7 @@ class BackupPolicyDiskArgs {
   final pulumi.Input<String> defaultRetentionDuration;
   /// The name which should be used for this Backup Policy Disk. Changing this forces a new Backup Policy Disk to be created.
   final pulumi.Input<String>? name;
-  /// One or more `retention_rule` blocks as defined below. Changing this forces a new Backup Policy Disk to be created.
+  /// One or more `retentionRule` blocks as defined below. Changing this forces a new Backup Policy Disk to be created.
   final pulumi.Input<List<BackupPolicyDiskRetentionRule>>? retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy Disk to be created.
   final pulumi.Input<String>? timeZone;
@@ -25,7 +25,7 @@ class BackupPolicyDiskArgs {
   /// [backupRepeatingTimeIntervals] Specifies a list of repeating time interval. It should follow `ISO 8601` repeating time interval . Changing this forces a new Backup Policy Disk to be created.
   /// [defaultRetentionDuration] The duration of default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Disk to be created.
   /// [name] The name which should be used for this Backup Policy Disk. Changing this forces a new Backup Policy Disk to be created.
-  /// [retentionRules] One or more `retention_rule` blocks as defined below. Changing this forces a new Backup Policy Disk to be created.
+  /// [retentionRules] One or more `retentionRule` blocks as defined below. Changing this forces a new Backup Policy Disk to be created.
   /// [timeZone] Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy Disk to be created.
   /// [vaultId] The ID of the Backup Vault within which the Backup Policy Disk should exist. Changing this forces a new Backup Policy Disk to be created.
   const BackupPolicyDiskArgs({
@@ -59,4 +59,3 @@ class BackupPolicyDiskArgs {
     );
   }
 }
-

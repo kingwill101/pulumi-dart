@@ -7,9 +7,9 @@ import 'load_balancer_frontend_ip_configuration.dart';
 class LoadBalancerState {
   /// Specifies the Edge Zone within the Azure Region where this Load Balancer should exist. Changing this forces a new Load Balancer to be created.
   final pulumi.Input<String>? edgeZone;
-  /// One or more `frontend_ip_configuration` blocks as documented below.
+  /// One or more `frontendIpConfiguration` blocks as documented below.
   ///
-  /// &gt; **Note:** Azure Load Balancer does not allow the complete removal of all previously attached frontend configurations. If you have previously applied with one or more `frontend_ip_configuration` arguments, the removal of them all will result in a replacement  (destroy/create) of the Load Balancer.
+  /// &gt; **Note:** Azure Load Balancer does not allow the complete removal of all previously attached frontend configurations. If you have previously applied with one or more `frontendIpConfiguration` arguments, the removal of them all will result in a replacement  (destroy/create) of the Load Balancer.
   final pulumi.Input<List<LoadBalancerFrontendIpConfiguration>>? frontendIpConfigurations;
   /// Specifies the supported Azure Region where the Load Balancer should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -17,7 +17,7 @@ class LoadBalancerState {
   final pulumi.Input<String>? name;
   /// Private IP Address to assign to the Load Balancer.
   final pulumi.Input<String>? privateIpAddress;
-  /// The list of private IP address assigned to the load balancer in `frontend_ip_configuration` blocks, if any.
+  /// The list of private IP address assigned to the load balancer in `frontendIpConfiguration` blocks, if any.
   final pulumi.Input<List<String>>? privateIpAddresses;
   /// The ID of a Public IP Address which is associated with this Load Balancer.
   final pulumi.Input<String>? publicIpAddressId;
@@ -27,7 +27,7 @@ class LoadBalancerState {
   ///
   /// &gt; **Note:** The `Microsoft.Network/AllowGatewayLoadBalancer` feature is required to be registered in order to use the `Gateway` SKU. The feature can only be registered by the Azure service team, please submit an [Azure support ticket](https://azure.microsoft.com/en-us/support/create-ticket/) for that.
   final pulumi.Input<String>? sku;
-  /// `sku_tier` - (Optional) The SKU tier of this Load Balancer. Possible values are `Global` and `Regional`. Defaults to `Regional`. Changing this forces a new resource to be created.
+  /// `skuTier` - (Optional) The SKU tier of this Load Balancer. Possible values are `Global` and `Regional`. Defaults to `Regional`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? skuTier;
   /// The ID of the Subnet which is associated with the IP Configuration.
   final pulumi.Input<String>? subnetId;
@@ -36,15 +36,15 @@ class LoadBalancerState {
 
   /// Creates a new [LoadBalancerState].
   /// [edgeZone] Specifies the Edge Zone within the Azure Region where this Load Balancer should exist. Changing this forces a new Load Balancer to be created.
-  /// [frontendIpConfigurations] One or more `frontend_ip_configuration` blocks as documented below.
+  /// [frontendIpConfigurations] One or more `frontendIpConfiguration` blocks as documented below.
   /// [location] Specifies the supported Azure Region where the Load Balancer should be created. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Load Balancer. Changing this forces a new resource to be created.
   /// [privateIpAddress] Private IP Address to assign to the Load Balancer.
-  /// [privateIpAddresses] The list of private IP address assigned to the load balancer in `frontend_ip_configuration` blocks, if any.
+  /// [privateIpAddresses] The list of private IP address assigned to the load balancer in `frontendIpConfiguration` blocks, if any.
   /// [publicIpAddressId] The ID of a Public IP Address which is associated with this Load Balancer.
   /// [resourceGroupName] The name of the Resource Group in which to create the Load Balancer. Changing this forces a new resource to be created.
   /// [sku] The SKU of the Azure Load Balancer. Accepted values are `Basic`, `Standard` and `Gateway`. Defaults to `Standard`. Changing this forces a new resource to be created.
-  /// [skuTier] `sku_tier` - (Optional) The SKU tier of this Load Balancer. Possible values are `Global` and `Regional`. Defaults to `Regional`. Changing this forces a new resource to be created.
+  /// [skuTier] `skuTier` - (Optional) The SKU tier of this Load Balancer. Possible values are `Global` and `Regional`. Defaults to `Regional`. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet which is associated with the IP Configuration.
   /// [tags] A mapping of tags to assign to the resource.
   const LoadBalancerState({
@@ -96,4 +96,3 @@ class LoadBalancerState {
     );
   }
 }
-

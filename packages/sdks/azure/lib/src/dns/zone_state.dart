@@ -15,7 +15,7 @@ class ZoneState {
   final pulumi.Input<int>? numberOfRecordSets;
   /// Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-  /// A `soa_record` block as defined below.
+  /// A `soaRecord` block as defined below.
   final pulumi.Input<ZoneSoaRecord>? soaRecord;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
@@ -26,7 +26,7 @@ class ZoneState {
   /// [nameServers] A list of values that make up the NS record for the zone.
   /// [numberOfRecordSets] The number of records already in the zone.
   /// [resourceGroupName] Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
-  /// [soaRecord] A `soa_record` block as defined below.
+  /// [soaRecord] A `soaRecord` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   const ZoneState({
     this.maxNumberOfRecordSets,
@@ -62,4 +62,3 @@ class ZoneState {
     );
   }
 }
-

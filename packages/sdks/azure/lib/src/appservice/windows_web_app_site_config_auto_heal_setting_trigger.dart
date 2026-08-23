@@ -11,19 +11,19 @@ class WindowsWebAppSiteConfigAutoHealSettingTrigger {
   final pulumi.Input<int>? privateMemoryKb;
   /// A `requests` block as defined above.
   final pulumi.Input<WindowsWebAppSiteConfigAutoHealSettingTriggerRequests>? requests;
-  /// A `slow_request` block as defined above.
+  /// A `slowRequest` block as defined above.
   final pulumi.Input<WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest>? slowRequest;
-  /// One or more `slow_request_with_path` blocks as defined above.
+  /// One or more `slowRequestWithPath` blocks as defined above.
   final pulumi.Input<List<WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>>? slowRequestWithPaths;
-  /// One or more `status_code` blocks as defined above.
+  /// One or more `statusCode` blocks as defined above.
   final pulumi.Input<List<WindowsWebAppSiteConfigAutoHealSettingTriggerStatusCode>>? statusCodes;
 
   /// Creates a new [WindowsWebAppSiteConfigAutoHealSettingTrigger].
   /// [privateMemoryKb] The amount of Private Memory to be consumed for this rule to trigger. Possible values are between `102400` and `13631488`.
   /// [requests] A `requests` block as defined above.
-  /// [slowRequest] A `slow_request` block as defined above.
-  /// [slowRequestWithPaths] One or more `slow_request_with_path` blocks as defined above.
-  /// [statusCodes] One or more `status_code` blocks as defined above.
+  /// [slowRequest] A `slowRequest` block as defined above.
+  /// [slowRequestWithPaths] One or more `slowRequestWithPath` blocks as defined above.
+  /// [statusCodes] One or more `statusCode` blocks as defined above.
   const WindowsWebAppSiteConfigAutoHealSettingTrigger({
     this.privateMemoryKb,
     this.requests,
@@ -52,4 +52,3 @@ class WindowsWebAppSiteConfigAutoHealSettingTrigger {
     );
   }
 }
-

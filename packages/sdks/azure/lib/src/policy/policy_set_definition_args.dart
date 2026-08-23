@@ -20,9 +20,9 @@ class PolicySetDefinitionArgs {
   final pulumi.Input<String>? name;
   /// The parameters for the Policy Set Definition in JSON format. Reducing the number of parameters forces a new resource to be created.
   final pulumi.Input<String>? parameters;
-  /// One or more `policy_definition_group` blocks as defined below.
+  /// One or more `policyDefinitionGroup` blocks as defined below.
   final pulumi.Input<List<PolicySetDefinitionPolicyDefinitionGroup>>? policyDefinitionGroups;
-  /// One or more `policy_definition_reference` blocks as defined below.
+  /// One or more `policyDefinitionReference` blocks as defined below.
   final pulumi.Input<List<PolicySetDefinitionPolicyDefinitionReference>> policyDefinitionReferences;
   /// The Policy Set Definition type. Possible values are `BuiltIn`, `Custom`, `NotSpecified`, and `Static`. Changing this forces a new Policy Set Definition to be created.
   final pulumi.Input<String> policyType;
@@ -34,8 +34,8 @@ class PolicySetDefinitionArgs {
   /// [metadata] The metadata for the Policy Set Definition in JSON format.
   /// [name] The name which should be used for this Policy Set Definition. Changing this forces a new Policy Set Definition to be created.
   /// [parameters] The parameters for the Policy Set Definition in JSON format. Reducing the number of parameters forces a new resource to be created.
-  /// [policyDefinitionGroups] One or more `policy_definition_group` blocks as defined below.
-  /// [policyDefinitionReferences] One or more `policy_definition_reference` blocks as defined below.
+  /// [policyDefinitionGroups] One or more `policyDefinitionGroup` blocks as defined below.
+  /// [policyDefinitionReferences] One or more `policyDefinitionReference` blocks as defined below.
   /// [policyType] The Policy Set Definition type. Possible values are `BuiltIn`, `Custom`, `NotSpecified`, and `Static`. Changing this forces a new Policy Set Definition to be created.
   const PolicySetDefinitionArgs({
     this.description,
@@ -77,4 +77,3 @@ class PolicySetDefinitionArgs {
     );
   }
 }
-

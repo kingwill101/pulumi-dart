@@ -446,6 +446,98 @@ import 'volume_quota_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-virtualnetwork"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+///   delegations {
+///     name = "netapp"
+///     service_delegation = {
+///       name    = "Microsoft.Netapp/volumes"
+///       actions = ["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"]
+///     }
+///   }
+/// }
+/// resource "azure_netapp_account" "example" {
+///   name                = "example-netappaccount"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_netapp_pool" "example" {
+///   name                = "example-netapppool"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   account_name        = azure_netapp_account.example.name
+///   service_level       = "Premium"
+///   size_in_tb          = 4
+/// }
+/// resource "azure_netapp_volume" "example" {
+///   name                       = "example-netappvolume"
+///   location                   = azure_core_resourcegroup.example.location
+///   zone                       = "1"
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   account_name               = azure_netapp_account.example.name
+///   pool_name                  = azure_netapp_pool.example.name
+///   volume_path                = "my-unique-file-path"
+///   service_level              = "Premium"
+///   subnet_id                  = azure_network_subnet.example.id
+///   network_features           = "Basic"
+///   protocols                  = ["NFSv4.1"]
+///   security_style             = "unix"
+///   storage_quota_in_gb        = 100
+///   snapshot_directory_visible = false
+/// }
+/// resource "azure_netapp_volumequotarule" "quota1" {
+///   name              = "example-quota-rule-1"
+///   location          = azure_core_resourcegroup.example.location
+///   volume_id         = azure_netapp_volume.example.id
+///   quota_target      = "3001"
+///   quota_size_in_kib = 1024
+///   quota_type        = "IndividualGroupQuota"
+/// }
+/// resource "azure_netapp_volumequotarule" "quota2" {
+///   name              = "example-quota-rule-2"
+///   location          = azure_core_resourcegroup.example.location
+///   volume_id         = azure_netapp_volume.example.id
+///   quota_target      = "2001"
+///   quota_size_in_kib = 1024
+///   quota_type        = "IndividualUserQuota"
+/// }
+/// resource "azure_netapp_volumequotarule" "quota3" {
+///   name              = "example-quota-rule-3"
+///   location          = azure_core_resourcegroup.example.location
+///   volume_id         = azure_netapp_volume.example.id
+///   quota_size_in_kib = 1024
+///   quota_type        = "DefaultUserQuota"
+/// }
+/// resource "azure_netapp_volumequotarule" "quota4" {
+///   name              = "example-quota-rule-4"
+///   location          = azure_core_resourcegroup.example.location
+///   volume_id         = azure_netapp_volume.example.id
+///   quota_size_in_kib = 1024
+///   quota_type        = "DefaultGroupQuota"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -468,8 +560,8 @@ import 'volume_quota_rule_state.dart';
 /// import com.pulumi.azure.netapp.VolumeArgs;
 /// import com.pulumi.azure.netapp.VolumeQuotaRule;
 /// import com.pulumi.azure.netapp.VolumeQuotaRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -688,7 +780,7 @@ import 'volume_quota_rule_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 ///
 /// ## Import
 ///
@@ -706,7 +798,7 @@ class VolumeQuotaRule extends pulumi.CustomResource {
   late final pulumi.Output<int> quotaSizeInKib;
   /// Quota Target. This can be Unix UID/GID for NFSv3/NFSv4.1 volumes and Windows User SID for CIFS based volumes. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `quota_target ` must be used when `quota_type` is `IndividualGroupQuota` or `IndividualUserQuota`
+  /// &gt; **Note:** `quotaTarget ` must be used when `quotaType` is `IndividualGroupQuota` or `IndividualUserQuota`
   ///
   /// &gt; **Note:** more information about this resource can be found at [Understand default and individual user and group quotas](https://learn.microsoft.com/en-us/azure/azure-netapp-files/default-individual-user-group-quotas-introduction)
   late final pulumi.Output<String?> quotaTarget;

@@ -9,7 +9,7 @@ class LinkedServiceOdbcState {
   final pulumi.Input<Map<String, String>>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service ODBC.
   final pulumi.Input<List<String>>? annotations;
-  /// A `basic_authentication` block as defined below.
+  /// A `basicAuthentication` block as defined below.
   final pulumi.Input<LinkedServiceOdbcBasicAuthentication>? basicAuthentication;
   /// The connection string in which to authenticate with ODBC.
   final pulumi.Input<String>? connectionString;
@@ -27,7 +27,7 @@ class LinkedServiceOdbcState {
   /// Creates a new [LinkedServiceOdbcState].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Linked Service ODBC.
   /// [annotations] List of tags that can be used for describing the Data Factory Linked Service ODBC.
-  /// [basicAuthentication] A `basic_authentication` block as defined below.
+  /// [basicAuthentication] A `basicAuthentication` block as defined below.
   /// [connectionString] The connection string in which to authenticate with ODBC.
   /// [dataFactoryId] The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   /// [description] The description for the Data Factory Linked Service ODBC.
@@ -74,4 +74,3 @@ class LinkedServiceOdbcState {
     );
   }
 }
-

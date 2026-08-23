@@ -10,7 +10,7 @@ class SpringCloudGatewayRouteConfigState {
   final pulumi.Input<List<String>>? filters;
   /// The name which should be used for this Spring Cloud Gateway Route Config. Changing this forces a new Spring Cloud Gateway Route Config to be created.
   final pulumi.Input<String>? name;
-  /// One or more `open_api` blocks as defined below.
+  /// One or more `openApi` blocks as defined below.
   final pulumi.Input<SpringCloudGatewayRouteConfigOpenApi>? openApi;
   /// Specifies a list of conditions to evaluate a route for each request in app level. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request.
   final pulumi.Input<List<String>>? predicates;
@@ -30,7 +30,7 @@ class SpringCloudGatewayRouteConfigState {
   /// Creates a new [SpringCloudGatewayRouteConfigState].
   /// [filters] Specifies a list of filters which are used to modify the request before sending it to the target endpoint, or the received response in app level.
   /// [name] The name which should be used for this Spring Cloud Gateway Route Config. Changing this forces a new Spring Cloud Gateway Route Config to be created.
-  /// [openApi] One or more `open_api` blocks as defined below.
+  /// [openApi] One or more `openApi` blocks as defined below.
   /// [predicates] Specifies a list of conditions to evaluate a route for each request in app level. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request.
   /// [protocol] Specifies the protocol of routed Spring Cloud App. Allowed values are `HTTP` and `HTTPS`.
   /// [routes] One or more `route` blocks as defined below.
@@ -77,4 +77,3 @@ class SpringCloudGatewayRouteConfigState {
     );
   }
 }
-

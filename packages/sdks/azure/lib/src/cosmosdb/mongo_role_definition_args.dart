@@ -12,7 +12,7 @@ class MongoRoleDefinitionArgs {
   final pulumi.Input<String> cosmosMongoDatabaseId;
   /// A list of Mongo Roles which are inherited to the Mongo Role Definition.
   ///
-  /// &gt; **Note:** The role that needs to be inherited should exist in the Mongo DB of `cosmos_mongo_database_id`.
+  /// &gt; **Note:** The role that needs to be inherited should exist in the Mongo DB of `cosmosMongoDatabaseId`.
   final pulumi.Input<List<String>>? inheritedRoleNames;
   /// A `privilege` block as defined below.
   final pulumi.Input<List<MongoRoleDefinitionPrivilege>>? privileges;
@@ -49,4 +49,3 @@ class MongoRoleDefinitionArgs {
     );
   }
 }
-

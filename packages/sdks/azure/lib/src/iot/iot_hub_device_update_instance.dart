@@ -219,6 +219,54 @@ import 'iot_hub_device_update_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "East US"
+/// }
+/// resource "azure_iot_iothubdeviceupdateaccount" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_iot_iothub" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku = {
+///     name     = "S1"
+///     capacity = "1"
+///   }
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_iot_iothubdeviceupdateinstance" "example" {
+///   name                     = "example"
+///   device_update_account_id = azure_iot_iothubdeviceupdateaccount.example.id
+///   iothub_id                = azure_iot_iothub.example.id
+///   diagnostic_enabled       = true
+///   diagnostic_storage_account = {
+///     connection_string = azure_storage_account.example.primary_connection_string
+///     id                = azure_storage_account.example.id
+///   }
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -237,8 +285,8 @@ import 'iot_hub_device_update_instance_state.dart';
 /// import com.pulumi.azure.iot.IotHubDeviceUpdateInstance;
 /// import com.pulumi.azure.iot.IotHubDeviceUpdateInstanceArgs;
 /// import com.pulumi.azure.iot.inputs.IotHubDeviceUpdateInstanceDiagnosticStorageAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -362,7 +410,7 @@ class IotHubDeviceUpdateInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> deviceUpdateAccountId;
   /// Whether the diagnostic log collection is enabled. Possible values are `true` and `false`. Defaults to `false`.
   late final pulumi.Output<bool?> diagnosticEnabled;
-  /// A `diagnostic_storage_account` block as defined below.
+  /// A `diagnosticStorageAccount` block as defined below.
   late final pulumi.Output<IotHubDeviceUpdateInstanceDiagnosticStorageAccount?> diagnosticStorageAccount;
   /// Specifies the ID of the IoT Hub associated with the IoT Hub Device Update Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubId;

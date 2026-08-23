@@ -14,7 +14,7 @@ class ClusterCustomerManagedKeyState {
   final pulumi.Input<String>? keyVersion;
   /// The Managed HSM Key ID for CMK encryption.
   ///
-  /// &gt; **Note:** Exactly one of `managed_hsm_key_id` or `key_vault_id` must be specified.
+  /// &gt; **Note:** Exactly one of `managedHsmKeyId` or `keyVaultId` must be specified.
   final pulumi.Input<String>? managedHsmKeyId;
   /// The user assigned identity that has access to the Key Vault Key. If not specified, system assigned identity will be used.
   final pulumi.Input<String>? userIdentity;
@@ -57,4 +57,3 @@ class ClusterCustomerManagedKeyState {
     );
   }
 }
-

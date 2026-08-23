@@ -199,6 +199,33 @@ import 'resource_group_policy_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_policy_definition" "example" {
+///   name         = "only-deploy-in-westeurope"
+///   policy_type  = "Custom"
+///   mode         = "All"
+///   display_name = "my-policy-definition"
+///   policy_rule  = " {\n    \"if\": {\n      \"not\": {\n        \"field\": \"location\",\n        \"equals\": \"westeurope\"\n      }\n    },\n    \"then\": {\n      \"effect\": \"Deny\"\n    }\n  }\n"
+/// }
+/// resource "azure_core_resourcegrouppolicyassignment" "example" {
+///   name                 = "example"
+///   resource_group_id    = azure_core_resourcegroup.example.id
+///   policy_definition_id = azure_policy_definition.example.id
+///   parameters           = "    {\n      \\\"tagName\\\": {\n        \\\"value\\\": \\\"Business Unit\\\"\n      },\n      \\\"tagValue\\\": {\n        \\\"value\\\": \\\"BU\\\"\n      }\n    }\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -211,8 +238,8 @@ import 'resource_group_policy_assignment_state.dart';
 /// import com.pulumi.azure.policy.DefinitionArgs;
 /// import com.pulumi.azure.core.ResourceGroupPolicyAssignment;
 /// import com.pulumi.azure.core.ResourceGroupPolicyAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,11 +372,11 @@ class ResourceGroupPolicyAssignment extends pulumi.CustomResource {
   late final pulumi.Output<String> metadata;
   /// The name which should be used for this Policy Assignment. Changing this forces a new Policy Assignment to be created. Cannot exceed 64 characters in length.
   late final pulumi.Output<String> name;
-  /// One or more `non_compliance_message` blocks as defined below.
+  /// One or more `nonComplianceMessage` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> nonComplianceMessages;
   /// Specifies a list of Resource Scopes (for example a Subscription, or a Resource Group) within this Management Group which are excluded from this Policy.
   late final pulumi.Output<List<String>?> notScopes;
-  /// One or more `overrides` blocks as defined below. More detail about `overrides` and `resource_selectors` see [policy assignment structure](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure)
+  /// One or more `overrides` blocks as defined below. More detail about `overrides` and `resourceSelectors` see [policy assignment structure](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure)
   late final pulumi.Output<List<Map<String, dynamic>>?> overrides;
   /// A JSON mapping of any Parameters for this Policy.
   late final pulumi.Output<String?> parameters;
@@ -357,7 +384,7 @@ class ResourceGroupPolicyAssignment extends pulumi.CustomResource {
   late final pulumi.Output<String> policyDefinitionId;
   /// The ID of the Resource Group where this Policy Assignment should be created. Changing this forces a new Policy Assignment to be created.
   late final pulumi.Output<String> resourceGroupId;
-  /// One or more `resource_selectors` blocks as defined below to filter polices by resource properties.
+  /// One or more `resourceSelectors` blocks as defined below to filter polices by resource properties.
   late final pulumi.Output<List<Map<String, dynamic>>?> resourceSelectors;
 
   /// Creates a new [ResourceGroupPolicyAssignment].

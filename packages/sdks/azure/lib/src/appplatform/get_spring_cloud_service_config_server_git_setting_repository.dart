@@ -5,7 +5,7 @@ import 'get_spring_cloud_service_config_server_git_setting_repository_http_basic
 import 'get_spring_cloud_service_config_server_git_setting_repository_ssh_auth.dart';
 
 class GetSpringCloudServiceConfigServerGitSettingRepository {
-  /// A `http_basic_auth` block as defined below.
+  /// A `httpBasicAuth` block as defined below.
   final pulumi.Input<List<GetSpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuth>> httpBasicAuths;
   /// The default label of the Git repository, which is a branch name, tag name, or commit-id of the repository
   final pulumi.Input<String> label;
@@ -15,18 +15,18 @@ class GetSpringCloudServiceConfigServerGitSettingRepository {
   final pulumi.Input<List<String>> patterns;
   /// An array of strings used to search subdirectories of the Git repository.
   final pulumi.Input<List<String>> searchPaths;
-  /// A `ssh_auth` block as defined below.
+  /// A `sshAuth` block as defined below.
   final pulumi.Input<List<GetSpringCloudServiceConfigServerGitSettingRepositorySshAuth>> sshAuths;
   /// The URI of the Git repository
   final pulumi.Input<String> uri;
 
   /// Creates a new [GetSpringCloudServiceConfigServerGitSettingRepository].
-  /// [httpBasicAuths] A `http_basic_auth` block as defined below.
+  /// [httpBasicAuths] A `httpBasicAuth` block as defined below.
   /// [label] The default label of the Git repository, which is a branch name, tag name, or commit-id of the repository
   /// [name] Specifies The name of the Spring Cloud Service resource.
   /// [patterns] An array of strings used to match an application name. For each pattern, use the `{application}/{profile}` format with wildcards.
   /// [searchPaths] An array of strings used to search subdirectories of the Git repository.
-  /// [sshAuths] A `ssh_auth` block as defined below.
+  /// [sshAuths] A `sshAuth` block as defined below.
   /// [uri] The URI of the Git repository
   const GetSpringCloudServiceConfigServerGitSettingRepository({
     required this.httpBasicAuths,
@@ -62,4 +62,3 @@ class GetSpringCloudServiceConfigServerGitSettingRepository {
     );
   }
 }
-

@@ -146,6 +146,38 @@ import 'eventhub_namespace_disaster_recovery_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "eventhub-replication"
+///   location = "West Europe"
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "primary" {
+///   name                = "eventhub-primary"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "secondary" {
+///   name                = "eventhub-secondary"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_eventhub_eventhubnamespacedisasterrecoveryconfig" "example" {
+///   name                 = "replicate-eventhub"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   namespace_name       = azure_eventhub_eventhubnamespace.primary.name
+///   partner_namespace_id = azure_eventhub_eventhubnamespace.secondary.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -158,8 +190,8 @@ import 'eventhub_namespace_disaster_recovery_config_state.dart';
 /// import com.pulumi.azure.eventhub.EventHubNamespaceArgs;
 /// import com.pulumi.azure.eventhub.EventhubNamespaceDisasterRecoveryConfig;
 /// import com.pulumi.azure.eventhub.EventhubNamespaceDisasterRecoveryConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

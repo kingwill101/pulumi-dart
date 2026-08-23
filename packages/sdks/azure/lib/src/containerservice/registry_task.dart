@@ -161,6 +161,39 @@ import 'registry_task_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_containerservice_registry" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Basic"
+/// }
+/// resource "azure_containerservice_registrytask" "example" {
+///   name                  = "example-task"
+///   container_registry_id = azure_containerservice_registry.example.id
+///   platform = {
+///     os = "Linux"
+///   }
+///   docker_step = {
+///     dockerfile_path      = "Dockerfile"
+///     context_path         = "https://github.com/<username>/<repository>#<branch>:<folder>"
+///     context_access_token = "<github personal access token>"
+///     image_names          = ["helloworld:{{.Run.ID}}"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +208,8 @@ import 'registry_task_state.dart';
 /// import com.pulumi.azure.containerservice.RegistryTaskArgs;
 /// import com.pulumi.azure.containerservice.inputs.RegistryTaskPlatformArgs;
 /// import com.pulumi.azure.containerservice.inputs.RegistryTaskDockerStepArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -266,23 +299,23 @@ import 'registry_task_state.dart';
 class RegistryTask extends pulumi.CustomResource {
   /// The name of the dedicated Container Registry Agent Pool for this Container Registry Task.
   late final pulumi.Output<String?> agentPoolName;
-  /// A `agent_setting` block as defined below.
+  /// A `agentSetting` block as defined below.
   ///
-  /// &gt; **Note:** Only one of `agent_pool_name` and `agent_setting` can be specified.
+  /// &gt; **Note:** Only one of `agentPoolName` and `agentSetting` can be specified.
   late final pulumi.Output<RegistryTaskAgentSetting?> agentSetting;
-  /// A `base_image_trigger` block as defined below.
+  /// A `baseImageTrigger` block as defined below.
   late final pulumi.Output<RegistryTaskBaseImageTrigger?> baseImageTrigger;
   /// The ID of the Container Registry that this Container Registry Task resides in. Changing this forces a new Container Registry Task to be created.
   late final pulumi.Output<String> containerRegistryId;
-  /// A `docker_step` block as defined below.
+  /// A `dockerStep` block as defined below.
   late final pulumi.Output<RegistryTaskDockerStep?> dockerStep;
   /// Should this Container Registry Task be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-  /// A `encoded_step` block as defined below.
+  /// A `encodedStep` block as defined below.
   late final pulumi.Output<RegistryTaskEncodedStep?> encodedStep;
-  /// A `file_step` block as defined below.
+  /// A `fileStep` block as defined below.
   ///
-  /// &gt; **Note:** For non-system task (when `is_system_task` is set to `false`), one and only one of the `docker_step`, `encoded_step` and `file_step` should be specified.
+  /// &gt; **Note:** For non-system task (when `isSystemTask` is set to `false`), one and only one of the `dockerStep`, `encodedStep` and `fileStep` should be specified.
   late final pulumi.Output<RegistryTaskFileStep?> fileStep;
   /// An `identity` block as defined below.
   late final pulumi.Output<RegistryTaskIdentity?> identity;
@@ -293,14 +326,14 @@ class RegistryTask extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A `platform` block as defined below.
   ///
-  /// &gt; **Note:** The `platform` is required for non-system task (when `is_system_task` is set to `false`).
+  /// &gt; **Note:** The `platform` is required for non-system task (when `isSystemTask` is set to `false`).
   late final pulumi.Output<RegistryTaskPlatform?> platform;
   late final pulumi.Output<RegistryTaskRegistryCredential?> registryCredential;
-  /// One or more `source_trigger` blocks as defined below.
+  /// One or more `sourceTrigger` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> sourceTriggers;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<int?> timeoutInSeconds;
-  /// One or more `timer_trigger` blocks as defined below.
+  /// One or more `timerTrigger` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> timerTriggers;
 
   /// Creates a new [RegistryTask].

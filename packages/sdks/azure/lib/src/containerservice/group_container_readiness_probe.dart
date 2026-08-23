@@ -8,7 +8,7 @@ class GroupContainerReadinessProbe {
   final pulumi.Input<List<String>>? execs;
   /// How many times to try the probe before restarting the container (liveness probe) or marking the container as unhealthy (readiness probe). Changing this forces a new resource to be created.
   final pulumi.Input<int>? failureThreshold;
-  /// The definition of the http_get for this container as documented in the `http_get` block below. Changing this forces a new resource to be created.
+  /// The definition of the httpGet for this container as documented in the `httpGet` block below. Changing this forces a new resource to be created.
   final pulumi.Input<List<GroupContainerReadinessProbeHttpGet>>? httpGets;
   /// Number of seconds after the container has started before liveness or readiness probes are initiated. Changing this forces a new resource to be created.
   final pulumi.Input<int>? initialDelaySeconds;
@@ -22,7 +22,7 @@ class GroupContainerReadinessProbe {
   /// Creates a new [GroupContainerReadinessProbe].
   /// [execs] Commands to be run to validate container readiness. Changing this forces a new resource to be created.
   /// [failureThreshold] How many times to try the probe before restarting the container (liveness probe) or marking the container as unhealthy (readiness probe). Changing this forces a new resource to be created.
-  /// [httpGets] The definition of the http_get for this container as documented in the `http_get` block below. Changing this forces a new resource to be created.
+  /// [httpGets] The definition of the httpGet for this container as documented in the `httpGet` block below. Changing this forces a new resource to be created.
   /// [initialDelaySeconds] Number of seconds after the container has started before liveness or readiness probes are initiated. Changing this forces a new resource to be created.
   /// [periodSeconds] How often (in seconds) to perform the probe. Changing this forces a new resource to be created.
   /// [successThreshold] Minimum consecutive successes for the probe to be considered successful after having failed. Changing this forces a new resource to be created.
@@ -61,4 +61,3 @@ class GroupContainerReadinessProbe {
     );
   }
 }
-

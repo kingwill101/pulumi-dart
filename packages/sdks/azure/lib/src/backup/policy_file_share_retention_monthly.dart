@@ -9,7 +9,7 @@ class PolicyFileShareRetentionMonthly {
   final pulumi.Input<List<int>>? days;
   /// Including the last day of the month, default to `false`.
   ///
-  /// &gt; **Note:** Either `weekdays` and `weeks` or `days` and `include_last_days` must be specified.
+  /// &gt; **Note:** Either `weekdays` and `weeks` or `days` and `includeLastDays` must be specified.
   final pulumi.Input<bool>? includeLastDays;
   /// The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
   final pulumi.Input<List<String>>? weekdays;
@@ -50,4 +50,3 @@ class PolicyFileShareRetentionMonthly {
     );
   }
 }
-

@@ -5,20 +5,20 @@ import 'linux_web_app_slot_logs_application_logs.dart';
 import 'linux_web_app_slot_logs_http_logs.dart';
 
 class LinuxWebAppSlotLogs {
-  /// A `application_logs` block as defined above.
+  /// A `applicationLogs` block as defined above.
   final pulumi.Input<LinuxWebAppSlotLogsApplicationLogs>? applicationLogs;
   /// Should detailed error messages be enabled?
   final pulumi.Input<bool>? detailedErrorMessages;
   /// Should the failed request tracing be enabled?
   final pulumi.Input<bool>? failedRequestTracing;
-  /// An `http_logs` block as defined above.
+  /// An `httpLogs` block as defined above.
   final pulumi.Input<LinuxWebAppSlotLogsHttpLogs>? httpLogs;
 
   /// Creates a new [LinuxWebAppSlotLogs].
-  /// [applicationLogs] A `application_logs` block as defined above.
+  /// [applicationLogs] A `applicationLogs` block as defined above.
   /// [detailedErrorMessages] Should detailed error messages be enabled?
   /// [failedRequestTracing] Should the failed request tracing be enabled?
-  /// [httpLogs] An `http_logs` block as defined above.
+  /// [httpLogs] An `httpLogs` block as defined above.
   const LinuxWebAppSlotLogs({
     this.applicationLogs,
     this.detailedErrorMessages,
@@ -44,4 +44,3 @@ class LinuxWebAppSlotLogs {
     );
   }
 }
-

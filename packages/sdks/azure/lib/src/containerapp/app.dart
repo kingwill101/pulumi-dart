@@ -194,6 +194,47 @@ import 'app_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "acctest-01"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+///   retention_in_days   = 30
+/// }
+/// resource "azure_containerapp_environment" "example" {
+///   name                       = "Example-Environment"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// resource "azure_containerapp_app" "example" {
+///   name                         = "example-app"
+///   container_app_environment_id = azure_containerapp_environment.example.id
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   revision_mode                = "Single"
+///   template = {
+///     containers = [{
+///       "name"   = "examplecontainerapp"
+///       "image"  = "mcr.microsoft.com/k8se/quickstart:latest"
+///       "cpu"    = 0.25
+///       "memory" = "0.5Gi"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -209,8 +250,9 @@ import 'app_template.dart';
 /// import com.pulumi.azure.containerapp.App;
 /// import com.pulumi.azure.containerapp.AppArgs;
 /// import com.pulumi.azure.containerapp.inputs.AppTemplateArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.containerapp.inputs.AppTemplateContainerArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -342,7 +384,7 @@ class App extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> registries;
   /// The name of the resource group in which the Container App Environment is to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// The revisions operational mode for the Container App. Possible values include `Single` and `Multiple`. In `Single` mode, a single revision is in operation at any given time. In `Multiple` mode, more than one revision can be active at a time and can be configured with load distribution via the `traffic_weight` block in the `ingress` configuration.
+  /// The revisions operational mode for the Container App. Possible values include `Single` and `Multiple`. In `Single` mode, a single revision is in operation at any given time. In `Multiple` mode, more than one revision can be active at a time and can be configured with load distribution via the `trafficWeight` block in the `ingress` configuration.
   late final pulumi.Output<String> revisionMode;
   /// One or more `secret` block as detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>?> secrets;

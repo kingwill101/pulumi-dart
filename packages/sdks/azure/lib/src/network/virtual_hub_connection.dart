@@ -176,6 +176,43 @@ import 'virtual_hub_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-network"
+///   address_spaces      = ["172.16.0.0/12"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_virtualwan" "example" {
+///   name                = "example-vwan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_virtualhub" "example" {
+///   name                = "example-hub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   address_prefix      = "10.0.1.0/24"
+/// }
+/// resource "azure_network_virtualhubconnection" "example" {
+///   name                      = "example-vhub"
+///   virtual_hub_id            = azure_network_virtualhub.example.id
+///   remote_virtual_network_id = azure_network_virtualnetwork.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -192,8 +229,8 @@ import 'virtual_hub_connection_state.dart';
 /// import com.pulumi.azure.network.VirtualHubArgs;
 /// import com.pulumi.azure.network.VirtualHubConnection;
 /// import com.pulumi.azure.network.VirtualHubConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

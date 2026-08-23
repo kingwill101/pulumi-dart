@@ -183,6 +183,46 @@ import 'slot_custom_hostname_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "some-resource-group"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "some-app-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     tier = "Standard"
+///     size = "S1"
+///   }
+/// }
+/// resource "azure_appservice_appservice" "example" {
+///   name                = "some-app-service"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   app_service_plan_id = azure_appservice_plan.example.id
+/// }
+/// resource "azure_appservice_slot" "example" {
+///   name                = "staging"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   app_service_name    = azure_appservice_appservice.example.name
+///   app_service_plan_id = azure_appservice_plan.example.id
+/// }
+/// resource "azure_appservice_slotcustomhostnamebinding" "example" {
+///   app_service_slot_id = azure_appservice_slot.example.id
+///   hostname            = "www.mywebsite.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +240,8 @@ import 'slot_custom_hostname_binding_state.dart';
 /// import com.pulumi.azure.appservice.SlotArgs;
 /// import com.pulumi.azure.appservice.SlotCustomHostnameBinding;
 /// import com.pulumi.azure.appservice.SlotCustomHostnameBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -294,6 +334,13 @@ import 'slot_custom_hostname_binding_state.dart';
 /// ```
 ///
 ///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.Web` - 2023-12-01
+///
 /// ## Import
 ///
 /// App Service Custom Hostname Bindings can be imported using the `resource id`, e.g.
@@ -312,7 +359,7 @@ class SlotCustomHostnameBinding extends pulumi.CustomResource {
   late final pulumi.Output<String> sslState;
   /// The SSL certificate thumbprint. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `thumbprint` must be specified when `ssl_state` is set.
+  /// &gt; **Note:** `thumbprint` must be specified when `sslState` is set.
   late final pulumi.Output<String> thumbprint;
   /// The virtual IP address assigned to the hostname if IP based SSL is enabled.
   late final pulumi.Output<String> virtualIp;

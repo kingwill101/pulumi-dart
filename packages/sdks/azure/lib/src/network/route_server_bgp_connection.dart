@@ -241,6 +241,57 @@ import 'route_server_bgp_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vn"
+///   address_spaces      = ["10.0.0.0/16"]
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "RouteServerSubnet"
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "example-pip"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   allocation_method   = "Static"
+///   sku                 = "Standard"
+/// }
+/// resource "azure_network_routeserver" "example" {
+///   name                             = "example-routerserver"
+///   resource_group_name              = azure_core_resourcegroup.example.name
+///   location                         = azure_core_resourcegroup.example.location
+///   sku                              = "Standard"
+///   public_ip_address_id             = azure_network_publicip.example.id
+///   subnet_id                        = azure_network_subnet.example.id
+///   branch_to_branch_traffic_enabled = true
+/// }
+/// resource "azure_network_routeserverbgpconnection" "example" {
+///   name            = "example-rs-bgpconnection"
+///   route_server_id = azure_network_routeserver.example.id
+///   peer_asn        = 65501
+///   peer_ip         = "169.254.21.5"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -259,8 +310,8 @@ import 'route_server_bgp_connection_state.dart';
 /// import com.pulumi.azure.network.RouteServerArgs;
 /// import com.pulumi.azure.network.RouteServerBgpConnection;
 /// import com.pulumi.azure.network.RouteServerBgpConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -13,17 +13,17 @@ import 'spring_cloud_service_trace.dart';
 class SpringCloudServiceState {
   /// Specifies the size for this Spring Cloud Service's default build agent pool. Possible values are `S1`, `S2`, `S3`, `S4` and `S5`. This field is applicable only for Spring Cloud Service with enterprise tier.
   final pulumi.Input<String>? buildAgentPoolSize;
-  /// A `config_server_git_setting` block as defined below. This field is applicable only for Spring Cloud Service with basic and standard tier.
+  /// A `configServerGitSetting` block as defined below. This field is applicable only for Spring Cloud Service with basic and standard tier.
   final pulumi.Input<SpringCloudServiceConfigServerGitSetting>? configServerGitSetting;
-  /// One or more `container_registry` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
+  /// One or more `containerRegistry` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
   final pulumi.Input<List<SpringCloudServiceContainerRegistry>>? containerRegistries;
-  /// A `default_build_service` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
+  /// A `defaultBuildService` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
   final pulumi.Input<SpringCloudServiceDefaultBuildService>? defaultBuildService;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
   /// Should the log stream in vnet injection instance could be accessed from Internet?
   final pulumi.Input<bool>? logStreamPublicEndpointEnabled;
-  /// The resource Id of the Managed Environment that the Spring Apps instance builds on. Can only be specified when `sku_tier` is set to `StandardGen2`.
+  /// The resource Id of the Managed Environment that the Spring Apps instance builds on. Can only be specified when `skuTier` is set to `StandardGen2`.
   final pulumi.Input<String>? managedEnvironmentId;
   /// A `marketplace` block as defined below. Can only be specified when `sku` is set to `E0`.
   final pulumi.Input<SpringCloudServiceMarketplace>? marketplace;
@@ -33,7 +33,7 @@ class SpringCloudServiceState {
   final pulumi.Input<SpringCloudServiceNetwork>? network;
   /// A list of the outbound Public IP Addresses used by this Spring Cloud Service.
   final pulumi.Input<List<String>>? outboundPublicIpAddresses;
-  /// A list of `required_network_traffic_rules` blocks as defined below.
+  /// A list of `requiredNetworkTrafficRules` blocks as defined below.
   final pulumi.Input<List<SpringCloudServiceRequiredNetworkTrafficRule>>? requiredNetworkTrafficRules;
   /// Specifies The name of the resource group in which to create the Spring Cloud Service. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
@@ -43,7 +43,7 @@ class SpringCloudServiceState {
   final pulumi.Input<String>? serviceRegistryId;
   /// Specifies the SKU Name for this Spring Cloud Service. Possible values are `B0`, `S0` and `E0`. Defaults to `S0`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? skuName;
-  /// Specifies the SKU Tier for this Spring Cloud Service. Possible values are `Basic`, `Enterprise`, `Standard` and `StandardGen2`. The attribute is automatically computed from API response except when `managed_environment_id` is defined. Changing this forces a new resource to be created.
+  /// Specifies the SKU Tier for this Spring Cloud Service. Possible values are `Basic`, `Enterprise`, `Standard` and `StandardGen2`. The attribute is automatically computed from API response except when `managedEnvironmentId` is defined. Changing this forces a new resource to be created.
   final pulumi.Input<String>? skuTier;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
@@ -54,22 +54,22 @@ class SpringCloudServiceState {
 
   /// Creates a new [SpringCloudServiceState].
   /// [buildAgentPoolSize] Specifies the size for this Spring Cloud Service's default build agent pool. Possible values are `S1`, `S2`, `S3`, `S4` and `S5`. This field is applicable only for Spring Cloud Service with enterprise tier.
-  /// [configServerGitSetting] A `config_server_git_setting` block as defined below. This field is applicable only for Spring Cloud Service with basic and standard tier.
-  /// [containerRegistries] One or more `container_registry` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
-  /// [defaultBuildService] A `default_build_service` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
+  /// [configServerGitSetting] A `configServerGitSetting` block as defined below. This field is applicable only for Spring Cloud Service with basic and standard tier.
+  /// [containerRegistries] One or more `containerRegistry` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
+  /// [defaultBuildService] A `defaultBuildService` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [logStreamPublicEndpointEnabled] Should the log stream in vnet injection instance could be accessed from Internet?
-  /// [managedEnvironmentId] The resource Id of the Managed Environment that the Spring Apps instance builds on. Can only be specified when `sku_tier` is set to `StandardGen2`.
+  /// [managedEnvironmentId] The resource Id of the Managed Environment that the Spring Apps instance builds on. Can only be specified when `skuTier` is set to `StandardGen2`.
   /// [marketplace] A `marketplace` block as defined below. Can only be specified when `sku` is set to `E0`.
   /// [name] Specifies the name of the Spring Cloud Service resource. Changing this forces a new resource to be created.
   /// [network] A `network` block as defined below. Changing this forces a new resource to be created.
   /// [outboundPublicIpAddresses] A list of the outbound Public IP Addresses used by this Spring Cloud Service.
-  /// [requiredNetworkTrafficRules] A list of `required_network_traffic_rules` blocks as defined below.
+  /// [requiredNetworkTrafficRules] A list of `requiredNetworkTrafficRules` blocks as defined below.
   /// [resourceGroupName] Specifies The name of the resource group in which to create the Spring Cloud Service. Changing this forces a new resource to be created.
   /// [serviceRegistryEnabled] Whether enable the default Service Registry. This field is applicable only for Spring Cloud Service with enterprise tier.
   /// [serviceRegistryId] The ID of the Spring Cloud Service Registry.
   /// [skuName] Specifies the SKU Name for this Spring Cloud Service. Possible values are `B0`, `S0` and `E0`. Defaults to `S0`. Changing this forces a new resource to be created.
-  /// [skuTier] Specifies the SKU Tier for this Spring Cloud Service. Possible values are `Basic`, `Enterprise`, `Standard` and `StandardGen2`. The attribute is automatically computed from API response except when `managed_environment_id` is defined. Changing this forces a new resource to be created.
+  /// [skuTier] Specifies the SKU Tier for this Spring Cloud Service. Possible values are `Basic`, `Enterprise`, `Standard` and `StandardGen2`. The attribute is automatically computed from API response except when `managedEnvironmentId` is defined. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [trace] A `trace` block as defined below.
   /// [zoneRedundant] Whether zone redundancy is enabled for this Spring Cloud Service. Defaults to `false`.
@@ -146,4 +146,3 @@ class SpringCloudServiceState {
     );
   }
 }
-

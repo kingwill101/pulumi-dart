@@ -12,7 +12,7 @@ class GetRestorableDatabaseAccountsAccount {
   final pulumi.Input<String> deletionTime;
   /// The ID of the Cosmos DB Restorable Database Account.
   final pulumi.Input<String> id;
-  /// One or more `restorable_locations` blocks as defined below.
+  /// One or more `restorableLocations` blocks as defined below.
   final pulumi.Input<List<GetRestorableDatabaseAccountsAccountRestorableLocation>> restorableLocations;
 
   /// Creates a new [GetRestorableDatabaseAccountsAccount].
@@ -20,7 +20,7 @@ class GetRestorableDatabaseAccountsAccount {
   /// [creationTime] The creation time of the regional Cosmos DB Restorable Database Account.
   /// [deletionTime] The deletion time of the regional Cosmos DB Restorable Database Account.
   /// [id] The ID of the Cosmos DB Restorable Database Account.
-  /// [restorableLocations] One or more `restorable_locations` blocks as defined below.
+  /// [restorableLocations] One or more `restorableLocations` blocks as defined below.
   const GetRestorableDatabaseAccountsAccount({
     required this.apiType,
     required this.creationTime,
@@ -49,4 +49,3 @@ class GetRestorableDatabaseAccountsAccount {
     );
   }
 }
-

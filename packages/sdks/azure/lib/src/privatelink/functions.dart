@@ -71,6 +71,24 @@ import 'get_service_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_privatelink_getendpointconnection" "example" {
+///   name                = "example-private-endpoint"
+///   resource_group_name = "example-rg"
+/// }
+///
+/// output "privateEndpointStatus" {
+///   value = data.azure_privatelink_getendpointconnection.example.private_service_connections[0].status
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +97,8 @@ import 'get_service_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatelink.PrivatelinkFunctions;
 /// import com.pulumi.azure.privatelink.inputs.GetEndpointConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,6 +218,24 @@ Future<GetEndpointConnectionResult> getEndpointConnection(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_privatelink_getservice" "example" {
+///   name                = "myPrivateLinkService"
+///   resource_group_name = "PrivateLinkServiceRG"
+/// }
+///
+/// output "privateLinkServiceId" {
+///   value = data.azure_privatelink_getservice.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -208,8 +244,8 @@ Future<GetEndpointConnectionResult> getEndpointConnection(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatelink.PrivatelinkFunctions;
 /// import com.pulumi.azure.privatelink.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -329,6 +365,24 @@ Future<GetServiceResult> getService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_privatelink_getserviceendpointconnections" "example" {
+///   service_id          = exampleAzurermPrivateLinkService.id
+///   resource_group_name = exampleAzurermResourceGroup.name
+/// }
+///
+/// output "privateEndpointStatus" {
+///   value = data.azure_privatelink_getserviceendpointconnections.example.private_endpoint_connections[0].status
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -337,8 +391,8 @@ Future<GetServiceResult> getService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.privatelink.PrivatelinkFunctions;
 /// import com.pulumi.azure.privatelink.inputs.GetServiceEndpointConnectionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

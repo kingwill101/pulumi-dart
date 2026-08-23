@@ -150,6 +150,39 @@ import 'deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_cognitive_account" "example" {
+///   name                = "example-ca"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   kind                = "OpenAI"
+///   sku_name            = "S0"
+/// }
+/// resource "azure_cognitive_deployment" "example" {
+///   name                 = "example-cd"
+///   cognitive_account_id = azure_cognitive_account.example.id
+///   model = {
+///     format  = "OpenAI"
+///     name    = "text-curie-001"
+///     version = "1"
+///   }
+///   sku = {
+///     name = "Standard"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +197,8 @@ import 'deployment_state.dart';
 /// import com.pulumi.azure.cognitive.DeploymentArgs;
 /// import com.pulumi.azure.cognitive.inputs.DeploymentModelArgs;
 /// import com.pulumi.azure.cognitive.inputs.DeploymentSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -242,7 +275,7 @@ import 'deployment_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.CognitiveServices` - 2025-06-01
+/// * `Microsoft.CognitiveServices` - 2026-03-01
 ///
 /// ## Import
 ///
@@ -261,7 +294,7 @@ class DeploymentType extends pulumi.CustomResource {
   /// The name of the Cognitive Services Account Deployment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// The name of RAI policy.
-  late final pulumi.Output<String?> raiPolicyName;
+  late final pulumi.Output<String> raiPolicyName;
   /// A `sku` block as defined below.
   late final pulumi.Output<DeploymentSku> sku;
   /// Deployment model version upgrade option. Possible values are `OnceNewDefaultVersionAvailable`, `OnceCurrentVersionExpired`, and `NoAutoUpgrade`. Defaults to `OnceNewDefaultVersionAvailable`.
@@ -285,7 +318,7 @@ class DeploymentType extends pulumi.CustomResource {
     dynamicThrottlingEnabled = registerOutput<bool?>('dynamicThrottlingEnabled');
     model = registerOutput<DeploymentModel>('model', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    raiPolicyName = registerOutput<String?>('raiPolicyName');
+    raiPolicyName = registerOutput<String>('raiPolicyName');
     sku = registerOutput<DeploymentSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     versionUpgradeOption = registerOutput<String?>('versionUpgradeOption');
   }
@@ -317,7 +350,7 @@ class DeploymentType extends pulumi.CustomResource {
     dynamicThrottlingEnabled = registerOutput<bool?>('dynamicThrottlingEnabled');
     model = registerOutput<DeploymentModel>('model', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    raiPolicyName = registerOutput<String?>('raiPolicyName');
+    raiPolicyName = registerOutput<String>('raiPolicyName');
     sku = registerOutput<DeploymentSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     versionUpgradeOption = registerOutput<String?>('versionUpgradeOption');
   }

@@ -8,19 +8,19 @@ import 'next_generation_firewall_virtual_network_strata_cloud_manager_network_pr
 
 /// Input properties used for looking up and filtering NextGenerationFirewallVirtualNetworkStrataCloudManager resources.
 class NextGenerationFirewallVirtualNetworkStrataCloudManagerState {
-  /// One or more `destination_nat` blocks as defined below.
+  /// One or more `destinationNat` blocks as defined below.
   final pulumi.Input<List<NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNat>>? destinationNats;
-  /// A `dns_settings` block as defined below.
+  /// A `dnsSettings` block as defined below.
   final pulumi.Input<NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings>? dnsSettings;
   /// An `identity` block as defined below.
   final pulumi.Input<NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity>? identity;
   /// The Azure Region where the Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager to be created.
   final pulumi.Input<String>? location;
-  /// The marketplace offer ID. Defaults to `pan_swfw_cloud_ngfw`. Changing this forces a new resource to be created.
+  /// The marketplace offer ID. Defaults to `panSwfwCloudNgfw`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? marketplaceOfferId;
   /// The name which should be used for this Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager. Changing this forces a new Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager to be created.
   final pulumi.Input<String>? name;
-  /// A `network_profile` block as defined below.
+  /// A `networkProfile` block as defined below.
   final pulumi.Input<NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile>? networkProfile;
   /// The billing plan ID as published by Liftr.PAN. Defaults to `panw-cngfw-payg`.
   final pulumi.Input<String>? planId;
@@ -32,13 +32,13 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerState {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [NextGenerationFirewallVirtualNetworkStrataCloudManagerState].
-  /// [destinationNats] One or more `destination_nat` blocks as defined below.
-  /// [dnsSettings] A `dns_settings` block as defined below.
+  /// [destinationNats] One or more `destinationNat` blocks as defined below.
+  /// [dnsSettings] A `dnsSettings` block as defined below.
   /// [identity] An `identity` block as defined below.
   /// [location] The Azure Region where the Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager to be created.
-  /// [marketplaceOfferId] The marketplace offer ID. Defaults to `pan_swfw_cloud_ngfw`. Changing this forces a new resource to be created.
+  /// [marketplaceOfferId] The marketplace offer ID. Defaults to `panSwfwCloudNgfw`. Changing this forces a new resource to be created.
   /// [name] The name which should be used for this Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager. Changing this forces a new Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager to be created.
-  /// [networkProfile] A `network_profile` block as defined below.
+  /// [networkProfile] A `networkProfile` block as defined below.
   /// [planId] The billing plan ID as published by Liftr.PAN. Defaults to `panw-cngfw-payg`.
   /// [resourceGroupName] The name of the Resource Group where the Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager to be created.
   /// [strataCloudManagerTenantName] Strata Cloud Manager name which is intended to manage the policy for this firewall.
@@ -89,4 +89,3 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerState {
     );
   }
 }
-

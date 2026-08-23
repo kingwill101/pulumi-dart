@@ -8,14 +8,14 @@ import 'job_template_volume.dart';
 class JobTemplate {
   /// A `container` block as defined below.
   final pulumi.Input<List<JobTemplateContainer>> containers;
-  /// A `init_container` block as defined below.
+  /// A `initContainer` block as defined below.
   final pulumi.Input<List<JobTemplateInitContainer>>? initContainers;
   /// A `volume` block as defined below.
   final pulumi.Input<List<JobTemplateVolume>>? volumes;
 
   /// Creates a new [JobTemplate].
   /// [containers] A `container` block as defined below.
-  /// [initContainers] A `init_container` block as defined below.
+  /// [initContainers] A `initContainer` block as defined below.
   /// [volumes] A `volume` block as defined below.
   const JobTemplate({
     required this.containers,
@@ -39,4 +39,3 @@ class JobTemplate {
     );
   }
 }
-

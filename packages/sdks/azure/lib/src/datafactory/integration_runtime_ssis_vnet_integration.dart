@@ -7,7 +7,7 @@ class IntegrationRuntimeSsisVnetIntegration {
   final pulumi.Input<List<String>>? publicIps;
   /// id of the subnet to which the nodes of the Azure-SSIS Integration Runtime will be added.
   ///
-  /// &gt; **Note:** Only one of `subnet_id` and `subnet_name` can be specified. If `subnet_name` is specified, `vnet_id` must be provided.
+  /// &gt; **Note:** Only one of `subnetId` and `subnetName` can be specified. If `subnetName` is specified, `vnetId` must be provided.
   final pulumi.Input<String>? subnetId;
   /// Name of the subnet to which the nodes of the Azure-SSIS Integration Runtime will be added.
   final pulumi.Input<String>? subnetName;
@@ -44,4 +44,3 @@ class IntegrationRuntimeSsisVnetIntegration {
     );
   }
 }
-

@@ -134,6 +134,35 @@ import 'firewall_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "api-rg-pro"
+///   location = "West Europe"
+/// }
+/// resource "azure_postgresql_server" "example" {
+///   name                    = "example-postgre-server"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   sku_name                = "GP_Gen5_2"
+///   version                 = "11"
+///   ssl_enforcement_enabled = true
+/// }
+/// resource "azure_postgresql_firewallrule" "example" {
+///   name                = "office"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   server_name         = azure_postgresql_server.example.name
+///   start_ip_address    = "40.112.8.12"
+///   end_ip_address      = "40.112.8.12"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +175,8 @@ import 'firewall_rule_state.dart';
 /// import com.pulumi.azure.postgresql.ServerArgs;
 /// import com.pulumi.azure.postgresql.FirewallRule;
 /// import com.pulumi.azure.postgresql.FirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -312,6 +341,29 @@ import 'firewall_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "api-rg-pro"
+///   location = "West Europe"
+/// }
+/// resource "azure_postgresql_server" "example" {
+/// }
+/// resource "azure_postgresql_firewallrule" "example" {
+///   name                = "office"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   server_name         = azure_postgresql_server.example.name
+///   start_ip_address    = "40.112.0.0"
+///   end_ip_address      = "40.112.255.255"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -323,8 +375,8 @@ import 'firewall_rule_state.dart';
 /// import com.pulumi.azure.postgresql.Server;
 /// import com.pulumi.azure.postgresql.FirewallRule;
 /// import com.pulumi.azure.postgresql.FirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -393,7 +445,7 @@ import 'firewall_rule_state.dart';
 class FirewallRule extends pulumi.CustomResource {
   /// Specifies the End IP Address associated with this Firewall Rule. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
+  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `startIpAddress` and `endIpAddress` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
   late final pulumi.Output<String> endIpAddress;
   /// Specifies the name of the PostgreSQL Firewall Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;

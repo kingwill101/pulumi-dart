@@ -153,6 +153,39 @@ import 'network_security_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networksecuritygroup" "example" {
+///   name                = "acceptanceTestSecurityGroup1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   security_rules {
+///     name                       = "test123"
+///     priority                   = 100
+///     direction                  = "Inbound"
+///     access                     = "Allow"
+///     protocol                   = "Tcp"
+///     source_port_range          = "*"
+///     destination_port_range     = "*"
+///     source_address_prefix      = "*"
+///     destination_address_prefix = "*"
+///   }
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +197,8 @@ import 'network_security_group_state.dart';
 /// import com.pulumi.azure.network.NetworkSecurityGroup;
 /// import com.pulumi.azure.network.NetworkSecurityGroupArgs;
 /// import com.pulumi.azure.network.inputs.NetworkSecurityGroupSecurityRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -255,7 +288,7 @@ class NetworkSecurityGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// A list of objects representing security rules, as defined below.
   ///
-  /// &gt; **NOTE** Since `security_rule` can be configured both inline and via the separate `azure.network.NetworkSecurityRule` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
+  /// &gt; **NOTE** Since `securityRule` can be configured both inline and via the separate `azure.network.NetworkSecurityRule` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
   late final pulumi.Output<List<Map<String, dynamic>>> securityRules;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;

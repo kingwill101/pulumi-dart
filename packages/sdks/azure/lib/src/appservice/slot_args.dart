@@ -19,11 +19,11 @@ class SlotArgs {
   final pulumi.Input<String> appServicePlanId;
   /// A key-value pair of App Settings.
   final pulumi.Input<Map<String, String>>? appSettings;
-  /// A `auth_settings` block as defined below.
+  /// A `authSettings` block as defined below.
   final pulumi.Input<SlotAuthSettings>? authSettings;
   /// Should the App Service Slot send session affinity cookies, which route client requests in the same session to the same instance?
   final pulumi.Input<bool>? clientAffinityEnabled;
-  /// An `connection_string` block as defined below.
+  /// An `connectionString` block as defined below.
   final pulumi.Input<List<SlotConnectionString>>? connectionStrings;
   /// Is the App Service Slot Enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
@@ -41,9 +41,9 @@ class SlotArgs {
   final pulumi.Input<String>? name;
   /// The name of the resource group in which to create the App Service Slot component. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-  /// A `site_config` object as defined below.
+  /// A `siteConfig` object as defined below.
   final pulumi.Input<SlotSiteConfig>? siteConfig;
-  /// One or more `storage_account` blocks as defined below.
+  /// One or more `storageAccount` blocks as defined below.
   final pulumi.Input<List<SlotStorageAccount>>? storageAccounts;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
@@ -52,9 +52,9 @@ class SlotArgs {
   /// [appServiceName] The name of the App Service within which to create the App Service Slot. Changing this forces a new resource to be created.
   /// [appServicePlanId] The ID of the App Service Plan within which to create this App Service Slot. Changing this forces a new resource to be created.
   /// [appSettings] A key-value pair of App Settings.
-  /// [authSettings] A `auth_settings` block as defined below.
+  /// [authSettings] A `authSettings` block as defined below.
   /// [clientAffinityEnabled] Should the App Service Slot send session affinity cookies, which route client requests in the same session to the same instance?
-  /// [connectionStrings] An `connection_string` block as defined below.
+  /// [connectionStrings] An `connectionString` block as defined below.
   /// [enabled] Is the App Service Slot Enabled? Defaults to `true`.
   /// [httpsOnly] Can the App Service Slot only be accessed via HTTPS? Defaults to `false`.
   /// [identity] An `identity` block as defined below.
@@ -63,8 +63,8 @@ class SlotArgs {
   /// [logs] A `logs` block as defined below.
   /// [name] Specifies the name of the App Service Slot component. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the App Service Slot component. Changing this forces a new resource to be created.
-  /// [siteConfig] A `site_config` object as defined below.
-  /// [storageAccounts] One or more `storage_account` blocks as defined below.
+  /// [siteConfig] A `siteConfig` object as defined below.
+  /// [storageAccounts] One or more `storageAccount` blocks as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   const SlotArgs({
     required this.appServiceName,
@@ -130,4 +130,3 @@ class SlotArgs {
     );
   }
 }
-

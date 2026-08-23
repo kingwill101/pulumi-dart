@@ -252,6 +252,57 @@ import 'resolver_inbound_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_privatedns_resolver" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_network_id  = azure_network_virtualnetwork.example.id
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "inbounddns"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.0.0/28"]
+///   delegations {
+///     name = "Microsoft.Network.dnsResolvers"
+///     service_delegation = {
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+///       name    = "Microsoft.Network/dnsResolvers"
+///     }
+///   }
+/// }
+/// resource "azure_privatedns_resolverinboundendpoint" "example" {
+///   name                    = "example-drie"
+///   private_dns_resolver_id = azure_privatedns_resolver.example.id
+///   location                = azure_privatedns_resolver.example.location
+///   ip_configurations = {
+///     private_ip_allocation_method = "Dynamic"
+///     subnet_id                    = azure_network_subnet.example.id
+///   }
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -271,8 +322,8 @@ import 'resolver_inbound_endpoint_state.dart';
 /// import com.pulumi.azure.privatedns.ResolverInboundEndpoint;
 /// import com.pulumi.azure.privatedns.ResolverInboundEndpointArgs;
 /// import com.pulumi.azure.privatedns.inputs.ResolverInboundEndpointIpConfigurationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -400,13 +451,13 @@ import 'resolver_inbound_endpoint_state.dart';
 /// $ pulumi import azure:privatedns/resolverInboundEndpoint:ResolverInboundEndpoint example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1/providers/Microsoft.Network/dnsResolvers/dnsResolver1/inboundEndpoints/inboundEndpoint1
 /// ```
 class ResolverInboundEndpoint extends pulumi.CustomResource {
-  /// One `ip_configurations` block as defined below. Changing this forces a new Private DNS Resolver Inbound Endpoint to be created.
+  /// One `ipConfigurations` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ResolverInboundEndpointIpConfigurations> ipConfigurations;
-  /// Specifies the Azure Region where the Private DNS Resolver Inbound Endpoint should exist. Changing this forces a new Private DNS Resolver Inbound Endpoint to be created.
+  /// Specifies the Azure Region where the Private DNS Resolver Inbound Endpoint should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// Specifies the name which should be used for this Private DNS Resolver Inbound Endpoint. Changing this forces a new Private DNS Resolver Inbound Endpoint to be created.
+  /// Specifies the name which should be used for this Private DNS Resolver Inbound Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// Specifies the ID of the Private DNS Resolver Inbound Endpoint. Changing this forces a new Private DNS Resolver Inbound Endpoint to be created.
+  /// Specifies the ID of the Private DNS Resolver Inbound Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> privateDnsResolverId;
   /// A mapping of tags which should be assigned to the Private DNS Resolver Inbound Endpoint.
   late final pulumi.Output<Map<String, String>?> tags;

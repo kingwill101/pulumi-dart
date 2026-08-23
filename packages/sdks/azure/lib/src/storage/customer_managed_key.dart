@@ -4,7 +4,7 @@ import 'customer_managed_key_state.dart';
 
 /// Manages a Customer Managed Key for a Storage Account.
 ///
-/// &gt; **Note:** It's possible to define a Customer Managed Key both within the `azure.storage.Account` resource via the `customer_managed_key` block and by using the `azure.storage.CustomerManagedKey` resource. However it's not possible to use both methods to manage a Customer Managed Key for a Storage Account, since there'll be conflicts.
+/// &gt; **Note:** It's possible to define a Customer Managed Key both within the `azure.storage.Account` resource via the `customerManagedKey` block and by using the `azure.storage.CustomerManagedKey` resource. However it's not possible to use both methods to manage a Customer Managed Key for a Storage Account, since there'll be conflicts.
 ///
 /// ## Example Usage
 ///
@@ -335,11 +335,11 @@ import 'customer_managed_key_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		storage, err := keyvault.NewAccessPolicy(ctx, "storage", &keyvault.AccessPolicyArgs{
+/// 		storage2, err := keyvault.NewAccessPolicy(ctx, "storage", &keyvault.AccessPolicyArgs{
 /// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId: pulumi.String(exampleAccount.Identity.ApplyT(func(identity storage.AccountIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			SecretPermissions: pulumi.StringArray{
 /// 				pulumi.String("Get"),
@@ -396,7 +396,7 @@ import 'customer_managed_key_state.dart';
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			client,
-/// 			storage,
+/// 			storage2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -410,6 +410,67 @@ import 'customer_managed_key_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                     = "examplekv"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                 = "standard"
+///   purge_protection_enabled = true
+/// }
+/// resource "azure_keyvault_accesspolicy" "storage" {
+///   key_vault_id       = azure_keyvault_keyvault.example.id
+///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///   object_id          = azure_storage_account.example.identity.principal_id
+///   secret_permissions = ["Get"]
+///   key_permissions    = ["Get", "UnwrapKey", "WrapKey"]
+/// }
+/// resource "azure_keyvault_accesspolicy" "client" {
+///   key_vault_id       = azure_keyvault_keyvault.example.id
+///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///   object_id          = data.azure_core_getclientconfig.current.object_id
+///   secret_permissions = ["Get"]
+///   key_permissions    = ["Get", "Create", "Delete", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify", "GetRotationPolicy", "SetRotationPolicy"]
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_accesspolicy.client, azure_keyvault_accesspolicy.storage]
+///   name         = "tfex-key"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestor"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_storage_customermanagedkey" "example" {
+///   storage_account_id = azure_storage_account.example.id
+///   key_vault_key_id   = azure_keyvault_key.example.id
 /// }
 /// ```
 /// ```java
@@ -433,8 +494,8 @@ import 'customer_managed_key_state.dart';
 /// import com.pulumi.azure.storage.CustomerManagedKey;
 /// import com.pulumi.azure.storage.CustomerManagedKeyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -635,7 +696,7 @@ import 'customer_managed_key_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Storage` - 2023-05-01
+/// * `Microsoft.Storage` - 2025-08-01
 ///
 /// ## Import
 ///

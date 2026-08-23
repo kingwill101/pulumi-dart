@@ -84,6 +84,26 @@ import 'assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "primary" {
+/// }
+/// data "azure_core_getclientconfig" "example" {
+/// }
+///
+/// resource "azure_authorization_assignment" "example" {
+///   scope                = data.azure_core_getsubscription.primary.id
+///   role_definition_name = "Reader"
+///   principal_id         = data.azure_core_getclientconfig.example.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +114,8 @@ import 'assignment_state.dart';
 /// import com.pulumi.azure.core.inputs.GetSubscriptionArgs;
 /// import com.pulumi.azure.authorization.Assignment;
 /// import com.pulumi.azure.authorization.AssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -285,6 +305,37 @@ import 'assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "primary" {
+/// }
+/// data "azure_core_getclientconfig" "example" {
+/// }
+///
+/// resource "azure_authorization_roledefinition" "example" {
+///   role_definition_id = "00000000-0000-0000-0000-000000000000"
+///   name               = "my-custom-role-definition"
+///   scope              = data.azure_core_getsubscription.primary.id
+///   permissions {
+///     actions     = ["Microsoft.Resources/subscriptions/resourceGroups/read"]
+///     not_actions = []
+///   }
+///   assignable_scopes = [data.azure_core_getsubscription.primary.id]
+/// }
+/// resource "azure_authorization_assignment" "example" {
+///   name               = "00000000-0000-0000-0000-000000000000"
+///   scope              = data.azure_core_getsubscription.primary.id
+///   role_definition_id = azure_authorization_roledefinition.example.role_definition_resource_id
+///   principal_id       = data.azure_core_getclientconfig.example.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -298,8 +349,8 @@ import 'assignment_state.dart';
 /// import com.pulumi.azure.authorization.inputs.RoleDefinitionPermissionArgs;
 /// import com.pulumi.azure.authorization.Assignment;
 /// import com.pulumi.azure.authorization.AssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -515,6 +566,37 @@ import 'assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "primary" {
+/// }
+/// data "azure_core_getclientconfig" "example" {
+/// }
+///
+/// resource "azure_authorization_roledefinition" "example" {
+///   role_definition_id = "00000000-0000-0000-0000-000000000000"
+///   name               = "my-custom-role-definition"
+///   scope              = data.azure_core_getsubscription.primary.id
+///   permissions {
+///     actions     = ["Microsoft.Resources/subscriptions/resourceGroups/read"]
+///     not_actions = []
+///   }
+///   assignable_scopes = [data.azure_core_getsubscription.primary.id]
+/// }
+/// resource "azure_authorization_assignment" "example" {
+///   name               = "00000000-0000-0000-0000-000000000000"
+///   scope              = data.azure_core_getsubscription.primary.id
+///   role_definition_id = azure_authorization_roledefinition.example.role_definition_resource_id
+///   principal_id       = data.azure_core_getclientconfig.example.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -528,8 +610,8 @@ import 'assignment_state.dart';
 /// import com.pulumi.azure.authorization.inputs.RoleDefinitionPermissionArgs;
 /// import com.pulumi.azure.authorization.Assignment;
 /// import com.pulumi.azure.authorization.AssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -761,6 +843,40 @@ import 'assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "primary" {
+/// }
+/// data "azure_core_getclientconfig" "example" {
+/// }
+/// data "azure_management_getgroup" "exampleGetGroup" {
+///   name = "00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// resource "azure_authorization_roledefinition" "example" {
+///   role_definition_id = "00000000-0000-0000-0000-000000000000"
+///   name               = "my-custom-role-definition"
+///   scope              = data.azure_core_getsubscription.primary.id
+///   permissions {
+///     actions     = ["Microsoft.Resources/subscriptions/resourceGroups/read"]
+///     not_actions = []
+///   }
+///   assignable_scopes = [data.azure_core_getsubscription.primary.id]
+/// }
+/// resource "azure_authorization_assignment" "example" {
+///   name               = "00000000-0000-0000-0000-000000000000"
+///   scope              = primaryAzurermManagementGroup.id
+///   role_definition_id = azure_authorization_roledefinition.example.role_definition_resource_id
+///   principal_id       = data.azure_core_getclientconfig.example.object_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -776,8 +892,8 @@ import 'assignment_state.dart';
 /// import com.pulumi.azure.authorization.inputs.RoleDefinitionPermissionArgs;
 /// import com.pulumi.azure.authorization.Assignment;
 /// import com.pulumi.azure.authorization.AssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1076,6 +1192,55 @@ import 'assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "primary" {
+/// }
+/// data "azure_core_getclientconfig" "example" {
+/// }
+/// data "azure_authorization_getroledefinition" "builtin" {
+///   name = "Reader"
+/// }
+///
+/// resource "azure_authorization_assignment" "example" {
+///   role_definition_name = "Role Based Access Control Administrator"
+///   scope                = data.azure_core_getsubscription.primary.id
+///   principal_id         = data.azure_core_getclientconfig.example.object_id
+///   principal_type       = "ServicePrincipal"
+///   description          = "Role Based Access Control Administrator role assignment with ABAC Condition."
+///   condition_version    = "2.0"
+///   condition            ="(
+///  (
+///   !(ActionMatches{'Microsoft.Authorization/roleAssignments/write'})
+///  )
+///  OR
+///  (
+///   @Request[Microsoft.Authorization/roleAssignments:RoleDefinitionId] ForAnyOfAnyValues:GuidEquals {${basename(data.azure_authorization_getroledefinition.builtin.role_definition_id)}}
+///  )
+/// )
+/// AND
+/// (
+///  (
+///   !(ActionMatches{'Microsoft.Authorization/roleAssignments/delete'})
+///  )
+///  OR
+///  (
+///   @Resource[Microsoft.Authorization/roleAssignments:RoleDefinitionId] ForAnyOfAnyValues:GuidEquals {${basename(data.azure_authorization_getroledefinition.builtin.role_definition_id)}}
+///  )
+/// )
+/// "
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1090,8 +1255,8 @@ import 'assignment_state.dart';
 /// import com.pulumi.azure.authorization.AssignmentArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.BasenameArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1247,7 +1412,7 @@ class Assignment extends pulumi.CustomResource {
   late final pulumi.Output<String?> condition;
   /// The version of the condition. Possible values are `1.0` or `2.0`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `condition` is required when `condition_version` is set.
+  /// &gt; **Note:** `condition` is required when `conditionVersion` is set.
   late final pulumi.Output<String> conditionVersion;
   /// The delegated Azure Resource Id which contains a Managed Identity. Changing this forces a new resource to be created.
   ///
@@ -1261,17 +1426,17 @@ class Assignment extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** The Principal ID is also known as the Object ID (i.e. not the "Application ID" for applications).
   late final pulumi.Output<String> principalId;
-  /// The type of the `principal_id`. Possible values are `User`, `Group` and `ServicePrincipal`. Changing this forces a new resource to be created. It is necessary to explicitly set this attribute when creating role assignments if the principal creating the assignment is constrained by ABAC rules that filters on the PrincipalType attribute.
+  /// The type of the `principalId`. Possible values are `User`, `Group` and `ServicePrincipal`. Changing this forces a new resource to be created. It is necessary to explicitly set this attribute when creating role assignments if the principal creating the assignment is constrained by ABAC rules that filters on the PrincipalType attribute.
   late final pulumi.Output<String> principalType;
   /// The Scoped-ID of the Role Definition. Changing this forces a new resource to be created.
   late final pulumi.Output<String> roleDefinitionId;
   /// The name of a built-in Role. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Either `role_definition_id` or `role_definition_name` must be set.
+  /// &gt; **Note:** Either `roleDefinitionId` or `roleDefinitionName` must be set.
   late final pulumi.Output<String> roleDefinitionName;
   /// The scope at which the Role Assignment applies to, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`, or `/providers/Microsoft.Management/managementGroups/myMG`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scope;
-  /// If the `principal_id` is a newly provisioned `Service Principal` set this value to `true` to skip the `Azure Active Directory` check which may fail due to replication lag. This argument is only valid if the `principal_id` is a `Service Principal` identity. Defaults to `false`.
+  /// If the `principalId` is a newly provisioned `Service Principal` set this value to `true` to skip the `Azure Active Directory` check which may fail due to replication lag. This argument is only valid if the `principalId` is a `Service Principal` identity. Defaults to `false`.
   ///
   /// &gt; **Note:** If it is not a `Service Principal` identity it will cause the role assignment to fail.
   late final pulumi.Output<bool> skipServicePrincipalAadCheck;

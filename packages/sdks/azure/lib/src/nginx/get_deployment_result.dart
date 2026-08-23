@@ -11,7 +11,7 @@ import 'get_deployment_web_application_firewall.dart';
 
 /// Result data returned by getDeployment.
 class GetDeploymentResult {
-  /// An `auto_scale_profile` block as defined below.
+  /// An `autoScaleProfile` block as defined below.
   final List<GetDeploymentAutoScaleProfile> autoScaleProfiles;
   /// The automatic upgrade channel for this NGINX deployment.
   final String automaticUpgradeChannel;
@@ -19,13 +19,12 @@ class GetDeploymentResult {
   final int capacity;
   /// The dataplane API endpoint of the NGINX Deployment.
   final String dataplaneApiEndpoint;
-  /// Whether metrics are exported to Azure Monitor.
   final bool diagnoseSupportEnabled;
   /// Preferred email associated with the NGINX Deployment.
   final String email;
-  /// A `frontend_private` block as defined below.
+  /// A `frontendPrivate` block as defined below.
   final List<GetDeploymentFrontendPrivate> frontendPrivates;
-  /// A `frontend_public` block as defined below.
+  /// A `frontendPublic` block as defined below.
   final List<GetDeploymentFrontendPublic> frontendPublics;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -39,7 +38,7 @@ class GetDeploymentResult {
   final String managedResourceGroup;
   /// Name of the autoscaling profile.
   final String name;
-  /// A `network_interface` block as defined below.
+  /// A `networkInterface` block as defined below.
   final List<GetDeploymentNetworkInterface> networkInterfaces;
   /// NGINX version of the Deployment.
   final String nginxVersion;
@@ -48,18 +47,18 @@ class GetDeploymentResult {
   final String sku;
   /// A mapping of tags assigned to the NGINX Deployment.
   final Map<String, String> tags;
-  /// A `web_application_firewall` block as defined below.
+  /// A `webApplicationFirewall` block as defined below.
   final List<GetDeploymentWebApplicationFirewall> webApplicationFirewalls;
 
   /// Creates a new [GetDeploymentResult].
-  /// [autoScaleProfiles] An `auto_scale_profile` block as defined below.
+  /// [autoScaleProfiles] An `autoScaleProfile` block as defined below.
   /// [automaticUpgradeChannel] The automatic upgrade channel for this NGINX deployment.
   /// [capacity] The number of NGINX capacity units for this NGINX Deployment.
   /// [dataplaneApiEndpoint] The dataplane API endpoint of the NGINX Deployment.
-  /// [diagnoseSupportEnabled] Whether metrics are exported to Azure Monitor.
+  /// [diagnoseSupportEnabled] Required.
   /// [email] Preferred email associated with the NGINX Deployment.
-  /// [frontendPrivates] A `frontend_private` block as defined below.
-  /// [frontendPublics] A `frontend_public` block as defined below.
+  /// [frontendPrivates] A `frontendPrivate` block as defined below.
+  /// [frontendPublics] A `frontendPublic` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] A `identity` block as defined below.
   /// [ipAddress] The list of Public IP Resource IDs for this NGINX Deployment.
@@ -67,12 +66,12 @@ class GetDeploymentResult {
   /// [loggingStorageAccounts] Required.
   /// [managedResourceGroup] Required.
   /// [name] Name of the autoscaling profile.
-  /// [networkInterfaces] A `network_interface` block as defined below.
+  /// [networkInterfaces] A `networkInterface` block as defined below.
   /// [nginxVersion] NGINX version of the Deployment.
   /// [resourceGroupName] Required.
   /// [sku] The NGINX Deployment SKU.
   /// [tags] A mapping of tags assigned to the NGINX Deployment.
-  /// [webApplicationFirewalls] A `web_application_firewall` block as defined below.
+  /// [webApplicationFirewalls] A `webApplicationFirewall` block as defined below.
   const GetDeploymentResult({
     required this.autoScaleProfiles,
     required this.automaticUpgradeChannel,
@@ -149,4 +148,3 @@ class GetDeploymentResult {
     );
   }
 }
-

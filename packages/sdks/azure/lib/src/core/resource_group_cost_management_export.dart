@@ -186,6 +186,47 @@ import 'resource_group_cost_management_export_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                 = "examplecontainer"
+///   storage_account_name = azure_storage_account.example.name
+/// }
+/// resource "azure_core_resourcegroupcostmanagementexport" "example" {
+///   name                         = "example"
+///   resource_group_id            = azure_core_resourcegroup.example.id
+///   recurrence_type              = "Monthly"
+///   recurrence_period_start_date = "2020-08-18T00:00:00Z"
+///   recurrence_period_end_date   = "2020-09-18T00:00:00Z"
+///   file_format                  = "Csv"
+///   export_data_storage_location = {
+///     container_id     = azure_storage_container.example.id
+///     root_folder_path = "/root/updated"
+///   }
+///   export_data_options = {
+///     type       = "Usage"
+///     time_frame = "WeekToDate"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -202,8 +243,8 @@ import 'resource_group_cost_management_export_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupCostManagementExportArgs;
 /// import com.pulumi.azure.core.inputs.ResourceGroupCostManagementExportExportDataStorageLocationArgs;
 /// import com.pulumi.azure.core.inputs.ResourceGroupCostManagementExportExportDataOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -311,9 +352,9 @@ import 'resource_group_cost_management_export_state.dart';
 class ResourceGroupCostManagementExport extends pulumi.CustomResource {
   /// Is the cost management export active? Default is `true`.
   late final pulumi.Output<bool?> active;
-  /// A `export_data_options` block as defined below.
+  /// A `exportDataOptions` block as defined below.
   late final pulumi.Output<ResourceGroupCostManagementExportExportDataOptions> exportDataOptions;
-  /// A `export_data_storage_location` block as defined below.
+  /// A `exportDataStorageLocation` block as defined below.
   late final pulumi.Output<ResourceGroupCostManagementExportExportDataStorageLocation> exportDataStorageLocation;
   /// Format for export. Valid values are `Csv` only. Default is `Csv`.
   late final pulumi.Output<String?> fileFormat;

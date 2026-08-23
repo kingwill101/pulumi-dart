@@ -162,6 +162,42 @@ import 'dataset_cosmos_dbapi_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cosmosdb_getaccount" "example" {
+///   name                = "tfex-cosmosdb-account"
+///   resource_group_name = "tfex-cosmosdb-account-rg"
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedservicecosmosdb" "example" {
+///   name             = "example"
+///   data_factory_id  = azure_datafactory_factory.example.id
+///   account_endpoint = data.azure_cosmosdb_getaccount.example.endpoint
+///   database         = "foo"
+/// }
+/// resource "azure_datafactory_datasetcosmosdbapi" "example" {
+///   name                = "example"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   linked_service_name = azure_datafactory_linkedservicecosmosdb.example.name
+///   collection_name     = "bar"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +214,8 @@ import 'dataset_cosmos_dbapi_state.dart';
 /// import com.pulumi.azure.datafactory.LinkedServiceCosmosDbArgs;
 /// import com.pulumi.azure.datafactory.DatasetCosmosDBApi;
 /// import com.pulumi.azure.datafactory.DatasetCosmosDBApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -293,7 +329,7 @@ class DatasetCosmosDBApi extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A map of parameters to associate with the Data Factory Dataset.
   late final pulumi.Output<Map<String, String>?> parameters;
-  /// A `schema_column` block as defined below.
+  /// A `schemaColumn` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
 
   /// Creates a new [DatasetCosmosDBApi].

@@ -6,7 +6,7 @@ import 'traffic_manager_nested_endpoint_subnet.dart';
 
 /// Input properties used for looking up and filtering TrafficManagerNestedEndpoint resources.
 class TrafficManagerNestedEndpointState {
-  /// One or more `custom_header` blocks as defined below.
+  /// One or more `customHeader` blocks as defined below.
   final pulumi.Input<List<TrafficManagerNestedEndpointCustomHeader>>? customHeaders;
   /// Is the endpoint enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
@@ -16,7 +16,7 @@ class TrafficManagerNestedEndpointState {
   final pulumi.Input<List<String>>? geoMappings;
   /// This argument specifies the minimum number of endpoints that must be ‘online’ in the child profile in order for the parent profile to direct traffic to any of the endpoints in that child profile. This value must be larger than `0`.
   ///
-  /// &gt; **Note:** If `min_child_endpoints` is less than either `minimum_required_child_endpoints_ipv4` or `minimum_required_child_endpoints_ipv6`, then it won't have any effect.
+  /// &gt; **Note:** If `minChildEndpoints` is less than either `minimumRequiredChildEndpointsIpv4` or `minimumRequiredChildEndpointsIpv6`, then it won't have any effect.
   final pulumi.Input<int>? minimumChildEndpoints;
   /// This argument specifies the minimum number of IPv4 (DNS record type A) endpoints that must be ‘online’ in the child profile in order for the parent profile to direct traffic to any of the endpoints in that child profile. This argument only applies to Endpoints of type `nestedEndpoints` and
   final pulumi.Input<int>? minimumRequiredChildEndpointsIpv4;
@@ -36,7 +36,7 @@ class TrafficManagerNestedEndpointState {
   final pulumi.Input<int>? weight;
 
   /// Creates a new [TrafficManagerNestedEndpointState].
-  /// [customHeaders] One or more `custom_header` blocks as defined below.
+  /// [customHeaders] One or more `customHeader` blocks as defined below.
   /// [enabled] Is the endpoint enabled? Defaults to `true`.
   /// [endpointLocation] Specifies the Azure location of the Endpoint, this must be specified for Profiles using the `Performance` routing method.
   /// [geoMappings] A list of Geographic Regions used to distribute traffic, such as `WORLD`, `UK` or `DE`. The same location can't be specified in two endpoints. [See the Geographic Hierarchies documentation for more information](https://docs.microsoft.com/rest/api/trafficmanager/geographichierarchies/getdefault).
@@ -101,4 +101,3 @@ class TrafficManagerNestedEndpointState {
     );
   }
 }
-

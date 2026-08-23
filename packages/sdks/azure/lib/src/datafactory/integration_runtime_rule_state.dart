@@ -14,6 +14,10 @@ class IntegrationRuntimeRuleState {
   final pulumi.Input<String>? dataFactoryId;
   /// Integration runtime description.
   final pulumi.Input<String>? description;
+  /// The time to live in minutes for the interactive authoring feature, setting this enables interactive authoring. Possible values are `10`, `30`, `60`, and `120`.
+  ///
+  /// &gt; **Note:** `interactiveAuthoringTimeToLiveInMinutes` can only be set when `virtualNetworkEnabled` is `true`.
+  final pulumi.Input<int>? interactiveAuthoringTimeToLiveInMinutes;
   /// Specifies the supported Azure location where the resource exists. Use `AutoResolve` to create an auto-resolve integration runtime. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
   /// Specifies the name of the Managed Integration Runtime. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
@@ -29,6 +33,7 @@ class IntegrationRuntimeRuleState {
   /// [coreCount] Core count of the cluster which will execute data flow job. Valid values are `8`, `16`, `32`, `48`, `80`, `144` and `272`. Defaults to `8`.
   /// [dataFactoryId] The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource to be created.
   /// [description] Integration runtime description.
+  /// [interactiveAuthoringTimeToLiveInMinutes] The time to live in minutes for the interactive authoring feature, setting this enables interactive authoring. Possible values are `10`, `30`, `60`, and `120`.
   /// [location] Specifies the supported Azure location where the resource exists. Use `AutoResolve` to create an auto-resolve integration runtime. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Managed Integration Runtime. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [timeToLiveMin] Time to live (in minutes) setting of the cluster which will execute data flow job. Defaults to `0`.
@@ -39,6 +44,7 @@ class IntegrationRuntimeRuleState {
     this.coreCount,
     this.dataFactoryId,
     this.description,
+    this.interactiveAuthoringTimeToLiveInMinutes,
     this.location,
     this.name,
     this.timeToLiveMin,
@@ -52,6 +58,7 @@ class IntegrationRuntimeRuleState {
       'coreCount': ?coreCount,
       'dataFactoryId': ?dataFactoryId,
       'description': ?description,
+      'interactiveAuthoringTimeToLiveInMinutes': ?interactiveAuthoringTimeToLiveInMinutes,
       'location': ?location,
       'name': ?name,
       'timeToLiveMin': ?timeToLiveMin,
@@ -66,6 +73,7 @@ class IntegrationRuntimeRuleState {
       coreCount: (() { final guardedValue = map['coreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       dataFactoryId: (() { final guardedValue = map['dataFactoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interactiveAuthoringTimeToLiveInMinutes: (() { final guardedValue = map['interactiveAuthoringTimeToLiveInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeToLiveMin: (() { final guardedValue = map['timeToLiveMin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
@@ -73,4 +81,3 @@ class IntegrationRuntimeRuleState {
     );
   }
 }
-

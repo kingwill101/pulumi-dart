@@ -17,7 +17,7 @@ class OutputBlobSerialization {
   final pulumi.Input<String>? format;
   /// The serialization format used for outgoing data streams. Possible values are `Avro`, `Csv`, `Json` and `Parquet`.
   ///
-  /// &gt; **Note:** `batch_max_wait_time` and `batch_min_rows` are required when `type` is set to `Parquet`
+  /// &gt; **Note:** `batchMaxWaitTime` and `batchMinRows` are required when `type` is set to `Parquet`
   final pulumi.Input<String> type;
 
   /// Creates a new [OutputBlobSerialization].
@@ -50,4 +50,3 @@ class OutputBlobSerialization {
     );
   }
 }
-

@@ -65,6 +65,23 @@ import 'get_group_template_deployment_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_management_getgroup" "example" {
+///   name = "00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// output "displayName" {
+///   value = data.azure_management_getgroup.example.display_name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +90,8 @@ import 'get_group_template_deployment_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.management.ManagementFunctions;
 /// import com.pulumi.azure.management.inputs.GetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -207,6 +224,30 @@ Future<GetGroupResult> getGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_management_getgrouptemplatedeployment" "example" {
+///   name                = "existing"
+///   management_group_id = "00000000-0000-0000-000000000000"
+/// }
+///
+/// output "id" {
+///   value = data.azure_management_getgrouptemplatedeployment.example.id
+/// }
+/// output "exampleOutput" {
+///   value = jsondecode(data.azure_management_getgrouptemplatedeployment.example.output_content).example_output.value
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -217,8 +258,8 @@ Future<GetGroupResult> getGroup(
 /// import com.pulumi.azure.management.inputs.GetGroupTemplateDeploymentArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JsondecodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

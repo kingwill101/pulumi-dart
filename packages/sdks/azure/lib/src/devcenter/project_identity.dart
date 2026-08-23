@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectIdentity {
   /// The ID of the User Assigned Identity which should be assigned to this Dev Center Project.
   ///
-  /// &gt; **Note:** `identity_ids` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
+  /// &gt; **Note:** `identityIds` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
   final pulumi.Input<List<String>>? identityIds;
   /// The Principal ID for the Service Principal associated with the Identity of this Dev Center Project.
   final pulumi.Input<String>? principalId;
@@ -44,4 +44,3 @@ class ProjectIdentity {
     );
   }
 }
-

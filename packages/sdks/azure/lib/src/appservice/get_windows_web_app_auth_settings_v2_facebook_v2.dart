@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsWebAppAuthSettingsV2FacebookV2 {
   /// The App ID of the Facebook app used for login.
   final pulumi.Input<String> appId;
-  /// The app setting name that contains the `app_secret` value used for Facebook login.
+  /// The app setting name that contains the `appSecret` value used for Facebook login.
   final pulumi.Input<String> appSecretSettingName;
   /// The version of the Facebook API to be used while logging in.
   final pulumi.Input<String> graphApiVersion;
@@ -14,7 +14,7 @@ class GetWindowsWebAppAuthSettingsV2FacebookV2 {
 
   /// Creates a new [GetWindowsWebAppAuthSettingsV2FacebookV2].
   /// [appId] The App ID of the Facebook app used for login.
-  /// [appSecretSettingName] The app setting name that contains the `app_secret` value used for Facebook login.
+  /// [appSecretSettingName] The app setting name that contains the `appSecret` value used for Facebook login.
   /// [graphApiVersion] The version of the Facebook API to be used while logging in.
   /// [loginScopes] The list of Login scopes that are requested as part of Microsoft Account authentication.
   const GetWindowsWebAppAuthSettingsV2FacebookV2({
@@ -42,4 +42,3 @@ class GetWindowsWebAppAuthSettingsV2FacebookV2 {
     );
   }
 }
-

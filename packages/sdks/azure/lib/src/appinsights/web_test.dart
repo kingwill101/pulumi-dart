@@ -188,6 +188,44 @@ import 'web_test_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tf-test"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "tf-test-appinsights"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_appinsights_webtest" "example" {
+///   name                    = "tf-test-appinsights-webtest"
+///   location                = azure_appinsights_insights.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   application_insights_id = azure_appinsights_insights.example.id
+///   kind                    = "ping"
+///   frequency               = 300
+///   timeout                 = 60
+///   enabled                 = true
+///   geo_locations           = ["us-tx-sn1-azr", "us-il-ch1-azr"]
+///   configuration           = "<WebTest Name=\\\"WebTest1\\\" Id=\\\"ABD48585-0831-40CB-9069-682EA6BB3583\\\" Enabled=\\\"True\\\" CssProjectStructure=\\\"\\\" CssIteration=\\\"\\\" Timeout=\\\"0\\\" WorkItemIds=\\\"\\\" xmlns=\\\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\\\" Description=\\\"\\\" CredentialUserName=\\\"\\\" CredentialPassword=\\\"\\\" PreAuthenticate=\\\"True\\\" Proxy=\\\"default\\\" StopOnError=\\\"False\\\" RecordedResultFile=\\\"\\\" ResultsLocale=\\\"\\\">\n  <Items>\n    <Request Method=\\\"GET\\\" Guid=\\\"a5f10126-e4cd-570d-961c-cea43999a200\\\" Version=\\\"1.1\\\" Url=\\\"http://microsoft.com\\\" ThinkTime=\\\"0\\\" Timeout=\\\"300\\\" ParseDependentRequests=\\\"True\\\" FollowRedirects=\\\"True\\\" RecordResult=\\\"True\\\" Cache=\\\"False\\\" ResponseTimeGoal=\\\"0\\\" Encoding=\\\"utf-8\\\" ExpectedHttpStatusCode=\\\"200\\\" ExpectedResponseUrl=\\\"\\\" ReportingName=\\\"\\\" IgnoreHttpStatusCode=\\\"False\\\" />\n  </Items>\n</WebTest>\n"
+/// }
+/// output "webtestId" {
+///   value = azure_appinsights_webtest.example.id
+/// }
+/// output "webtestsSyntheticId" {
+///   value = azure_appinsights_webtest.example.synthetic_monitor_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +238,8 @@ import 'web_test_state.dart';
 /// import com.pulumi.azure.appinsights.InsightsArgs;
 /// import com.pulumi.azure.appinsights.WebTest;
 /// import com.pulumi.azure.appinsights.WebTestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

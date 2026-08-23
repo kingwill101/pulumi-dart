@@ -674,7 +674,7 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// 			Scope:              exampleAccount.ID(),
 /// 			RoleDefinitionName: pulumi.String("Storage Account Contributor"),
 /// 			PrincipalId: pulumi.String(exampleKubernetesClusterExtension.AksAssignedIdentities.ApplyT(func(aksAssignedIdentities []containerservice.KubernetesClusterExtensionAksAssignedIdentity) (*string, error) {
-/// 				return &aksAssignedIdentities[0].PrincipalId, nil
+/// 				return aksAssignedIdentities[0].PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -684,7 +684,7 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// 			Scope:              exampleKubernetesCluster.ID(),
 /// 			RoleDefinitionName: pulumi.String("Reader"),
 /// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -694,7 +694,7 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// 			Scope:              snap.ID(),
 /// 			RoleDefinitionName: pulumi.String("Reader"),
 /// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -704,7 +704,7 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// 			Scope:              snap.ID(),
 /// 			RoleDefinitionName: pulumi.String("Disk Snapshot Contributor"),
 /// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -714,7 +714,7 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// 			Scope:              snap.ID(),
 /// 			RoleDefinitionName: pulumi.String("Data Operator for Managed Disks"),
 /// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -724,7 +724,7 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// 			Scope:              exampleAccount.ID(),
 /// 			RoleDefinitionName: pulumi.String("Storage Blob Data Contributor"),
 /// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -734,7 +734,7 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// 			Scope:              snap.ID(),
 /// 			RoleDefinitionName: pulumi.String("Contributor"),
 /// 			PrincipalId: pulumi.String(exampleKubernetesCluster.Identity.ApplyT(func(identity containerservice.KubernetesClusterIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -827,6 +827,163 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_core_resourcegroup" "snap" {
+///   name     = "example-snap"
+///   location = "West Europe"
+/// }
+/// resource "azure_dataprotection_backupvault" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   datastore_type      = "VaultStore"
+///   redundancy          = "LocallyRedundant"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_containerservice_kubernetescluster" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   dns_prefix          = "dns"
+///   default_node_pool = {
+///     name                    = "default"
+///     node_count              = 1
+///     vm_size                 = "Standard_DS2_v2"
+///     host_encryption_enabled = true
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_containerservice_clustertrustedaccessrolebinding" "aks_cluster_trusted_access" {
+///   kubernetes_cluster_id = azure_containerservice_kubernetescluster.example.id
+///   name                  = "example"
+///   roles                 = ["Microsoft.DataProtection/backupVaults/backup-operator"]
+///   source_resource_id    = azure_dataprotection_backupvault.example.id
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "example"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_containerservice_kubernetesclusterextension" "example" {
+///   name              = "example"
+///   cluster_id        = azure_containerservice_kubernetescluster.example.id
+///   extension_type    = "Microsoft.DataProtection.Kubernetes"
+///   release_train     = "stable"
+///   release_namespace = "dataprotection-microsoft"
+///   configuration_settings = {
+///     "configuration.backupStorageLocation.bucket"                = azure_storage_container.example.name
+///     "configuration.backupStorageLocation.config.resourceGroup"  = azure_core_resourcegroup.example.name
+///     "configuration.backupStorageLocation.config.storageAccount" = azure_storage_account.example.name
+///     "configuration.backupStorageLocation.config.subscriptionId" = data.azure_core_getclientconfig.current.subscription_id
+///     "credentials.tenantId"                                      = data.azure_core_getclientconfig.current.tenant_id
+///   }
+/// }
+/// resource "azure_authorization_assignment" "test_extension_and_storage_account_permission" {
+///   scope                = azure_storage_account.example.id
+///   role_definition_name = "Storage Account Contributor"
+///   principal_id         = azure_containerservice_kubernetesclusterextension.example.aks_assigned_identities[0].principal_id
+/// }
+/// resource "azure_authorization_assignment" "test_vault_msi_read_on_cluster" {
+///   scope                = azure_containerservice_kubernetescluster.example.id
+///   role_definition_name = "Reader"
+///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+/// }
+/// resource "azure_authorization_assignment" "test_vault_msi_read_on_snap_rg" {
+///   scope                = azure_core_resourcegroup.snap.id
+///   role_definition_name = "Reader"
+///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+/// }
+/// resource "azure_authorization_assignment" "test_vault_msi_snapshot_contributor_on_snap_rg" {
+///   scope                = azure_core_resourcegroup.snap.id
+///   role_definition_name = "Disk Snapshot Contributor"
+///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+/// }
+/// resource "azure_authorization_assignment" "test_vault_data_operator_on_snap_rg" {
+///   scope                = azure_core_resourcegroup.snap.id
+///   role_definition_name = "Data Operator for Managed Disks"
+///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+/// }
+/// resource "azure_authorization_assignment" "test_vault_data_contributor_on_storage" {
+///   scope                = azure_storage_account.example.id
+///   role_definition_name = "Storage Blob Data Contributor"
+///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+/// }
+/// resource "azure_authorization_assignment" "test_cluster_msi_contributor_on_snap_rg" {
+///   scope                = azure_core_resourcegroup.snap.id
+///   role_definition_name = "Contributor"
+///   principal_id         = azure_containerservice_kubernetescluster.example.identity.principal_id
+/// }
+/// resource "azure_dataprotection_backuppolicykubernetescluster" "example" {
+///   name                            = "example"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   vault_name                      = azure_dataprotection_backupvault.example.name
+///   backup_repeating_time_intervals = ["R/2023-05-23T02:30:00+00:00/P1W"]
+///   retention_rules {
+///     name     = "Daily"
+///     priority = 25
+///     life_cycles {
+///       duration        = "P84D"
+///       data_store_type = "OperationalStore"
+///     }
+///     criteria = {
+///       days_of_weeks          = ["Thursday"]
+///       months_of_years        = ["November"]
+///       weeks_of_months        = ["First"]
+///       scheduled_backup_times = ["2023-05-23T02:30:00Z"]
+///     }
+///   }
+///   default_retention_rule = {
+///     life_cycles = [{
+///       "duration"      = "P14D"
+///       "dataStoreType" = "OperationalStore"
+///     }]
+///   }
+/// }
+/// resource "azure_dataprotection_backupinstancekubernetescluster" "example" {
+///   depends_on                   = [azure_authorization_assignment.test_extension_and_storage_account_permission, azure_authorization_assignment.test_vault_msi_read_on_cluster, azure_authorization_assignment.test_vault_msi_read_on_snap_rg, azure_authorization_assignment.test_cluster_msi_contributor_on_snap_rg, azure_authorization_assignment.test_vault_msi_snapshot_contributor_on_snap_rg, azure_authorization_assignment.test_vault_data_operator_on_snap_rg, azure_authorization_assignment.test_vault_data_contributor_on_storage]
+///   name                         = "example"
+///   location                     = azure_core_resourcegroup.example.location
+///   vault_id                     = azure_dataprotection_backupvault.example.id
+///   kubernetes_cluster_id        = azure_containerservice_kubernetescluster.example.id
+///   snapshot_resource_group_name = azure_core_resourcegroup.snap.name
+///   backup_policy_id             = azure_dataprotection_backuppolicykubernetescluster.example.id
+///   backup_datasource_parameters = {
+///     excluded_namespaces              = ["test-excluded-namespaces"]
+///     excluded_resource_types          = ["exvolumesnapshotcontents.snapshot.storage.k8s.io"]
+///     cluster_scoped_resources_enabled = true
+///     included_namespaces              = ["test-included-namespaces"]
+///     included_resource_types          = ["involumesnapshotcontents.snapshot.storage.k8s.io"]
+///     label_selectors                  = ["kubernetes.io/metadata.name:test"]
+///     volume_snapshot_enabled          = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -856,14 +1013,16 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// import com.pulumi.azure.dataprotection.BackupPolicyKubernetesCluster;
 /// import com.pulumi.azure.dataprotection.BackupPolicyKubernetesClusterArgs;
 /// import com.pulumi.azure.dataprotection.inputs.BackupPolicyKubernetesClusterRetentionRuleArgs;
+/// import com.pulumi.azure.dataprotection.inputs.BackupPolicyKubernetesClusterRetentionRuleLifeCycleArgs;
 /// import com.pulumi.azure.dataprotection.inputs.BackupPolicyKubernetesClusterRetentionRuleCriteriaArgs;
 /// import com.pulumi.azure.dataprotection.inputs.BackupPolicyKubernetesClusterDefaultRetentionRuleArgs;
+/// import com.pulumi.azure.dataprotection.inputs.BackupPolicyKubernetesClusterDefaultRetentionRuleLifeCycleArgs;
 /// import com.pulumi.azure.dataprotection.BackupInstanceKubernetesCluster;
 /// import com.pulumi.azure.dataprotection.BackupInstanceKubernetesClusterArgs;
 /// import com.pulumi.azure.dataprotection.inputs.BackupInstanceKubernetesClusterBackupDatasourceParametersArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1249,7 +1408,7 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.DataProtection` - 2024-04-01
+/// * `Microsoft.DataProtection` - 2025-07-01
 ///
 /// ## Import
 ///
@@ -1259,7 +1418,7 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// $ pulumi import azure:dataprotection/backupInstanceKubernetesCluster:BackupInstanceKubernetesCluster example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.DataProtection/backupVaults/vault1/backupInstances/backupInstance1
 /// ```
 class BackupInstanceKubernetesCluster extends pulumi.CustomResource {
-  /// A `backup_datasource_parameters` block as defined below. Changing this forces a new resource to be created.
+  /// A `backupDatasourceParameters` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<BackupInstanceKubernetesClusterBackupDatasourceParameters?> backupDatasourceParameters;
   /// The ID of the Backup Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> backupPolicyId;

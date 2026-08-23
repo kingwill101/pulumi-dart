@@ -8,17 +8,17 @@ import 'replication_recovery_plan_shutdown_recovery_group.dart';
 
 /// Input properties used for looking up and filtering ReplicationRecoveryPlan resources.
 class ReplicationRecoveryPlanState {
-  /// An `azure_to_azure_settings` block as defined below.
+  /// An `azureToAzureSettings` block as defined below.
   final pulumi.Input<ReplicationRecoveryPlanAzureToAzureSettings>? azureToAzureSettings;
-  /// One or more `boot_recovery_group` blocks as defined below.
+  /// One or more `bootRecoveryGroup` blocks as defined below.
   final pulumi.Input<List<ReplicationRecoveryPlanBootRecoveryGroup>>? bootRecoveryGroups;
-  /// One `failover_recovery_group` block as defined below.
+  /// One `failoverRecoveryGroup` block as defined below.
   final pulumi.Input<ReplicationRecoveryPlanFailoverRecoveryGroup>? failoverRecoveryGroup;
   /// The name of the Replication Plan. The name can contain only letters, numbers, and hyphens. It should start with a letter and end with a letter or a number. Can be a maximum of 63 characters. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
   /// The ID of the vault that should be updated. Changing this forces a new resource to be created.
   final pulumi.Input<String>? recoveryVaultId;
-  /// One `shutdown_recovery_group` block as defined below.
+  /// One `shutdownRecoveryGroup` block as defined below.
   final pulumi.Input<ReplicationRecoveryPlanShutdownRecoveryGroup>? shutdownRecoveryGroup;
   /// ID of source fabric to be recovered from. Changing this forces a new Replication Plan to be created.
   final pulumi.Input<String>? sourceRecoveryFabricId;
@@ -26,12 +26,12 @@ class ReplicationRecoveryPlanState {
   final pulumi.Input<String>? targetRecoveryFabricId;
 
   /// Creates a new [ReplicationRecoveryPlanState].
-  /// [azureToAzureSettings] An `azure_to_azure_settings` block as defined below.
-  /// [bootRecoveryGroups] One or more `boot_recovery_group` blocks as defined below.
-  /// [failoverRecoveryGroup] One `failover_recovery_group` block as defined below.
+  /// [azureToAzureSettings] An `azureToAzureSettings` block as defined below.
+  /// [bootRecoveryGroups] One or more `bootRecoveryGroup` blocks as defined below.
+  /// [failoverRecoveryGroup] One `failoverRecoveryGroup` block as defined below.
   /// [name] The name of the Replication Plan. The name can contain only letters, numbers, and hyphens. It should start with a letter and end with a letter or a number. Can be a maximum of 63 characters. Changing this forces a new resource to be created.
   /// [recoveryVaultId] The ID of the vault that should be updated. Changing this forces a new resource to be created.
-  /// [shutdownRecoveryGroup] One `shutdown_recovery_group` block as defined below.
+  /// [shutdownRecoveryGroup] One `shutdownRecoveryGroup` block as defined below.
   /// [sourceRecoveryFabricId] ID of source fabric to be recovered from. Changing this forces a new Replication Plan to be created.
   /// [targetRecoveryFabricId] ID of target fabric to recover. Changing this forces a new Replication Plan to be created.
   const ReplicationRecoveryPlanState({
@@ -71,4 +71,3 @@ class ReplicationRecoveryPlanState {
     );
   }
 }
-

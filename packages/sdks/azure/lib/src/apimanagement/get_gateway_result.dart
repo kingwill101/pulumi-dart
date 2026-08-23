@@ -10,7 +10,7 @@ class GetGatewayResult {
   final String description;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// A `location_data` block as documented below.
+  /// A `locationData` block as documented below.
   final List<GetGatewayLocationData> locationDatas;
   /// A canonical name for the geographic or physical location.
   final String name;
@@ -19,7 +19,7 @@ class GetGatewayResult {
   /// [apiManagementId] Required.
   /// [description] The description of the API Management Gateway.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [locationDatas] A `location_data` block as documented below.
+  /// [locationDatas] A `locationData` block as documented below.
   /// [name] A canonical name for the geographic or physical location.
   const GetGatewayResult({
     required this.apiManagementId,
@@ -49,4 +49,3 @@ class GetGatewayResult {
     );
   }
 }
-

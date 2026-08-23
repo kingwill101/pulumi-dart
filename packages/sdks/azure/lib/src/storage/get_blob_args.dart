@@ -12,28 +12,37 @@ class GetBlobArgs {
   /// The name of the Blob.
   final pulumi.Input<String> name;
   /// The name of the Storage Account where the Container exists.
-  final pulumi.Input<String> storageAccountName;
+  ///
+  /// &gt; **Note:** This property is deprecated in favour of `storageContainerId` and will be removed in version 5.0 of the AzureRM Provider.
+  final pulumi.Input<String>? storageAccountName;
+  /// The ID of the Storage Container where the Blob exists.
+  final pulumi.Input<String>? storageContainerId;
   /// The name of the Storage Container where the Blob exists.
-  final pulumi.Input<String> storageContainerName;
+  ///
+  /// &gt; **Note:** This property is deprecated in favour of `storageContainerId` and will be removed in version 5.0 of the AzureRM Provider.
+  final pulumi.Input<String>? storageContainerName;
 
   /// Creates a new [GetBlobArgs].
   /// [metadata] A map of custom blob metadata.
   /// [name] The name of the Blob.
   /// [storageAccountName] The name of the Storage Account where the Container exists.
+  /// [storageContainerId] The ID of the Storage Container where the Blob exists.
   /// [storageContainerName] The name of the Storage Container where the Blob exists.
   const GetBlobArgs({
     this.metadata,
     required this.name,
-    required this.storageAccountName,
-    required this.storageContainerName,
+    this.storageAccountName,
+    this.storageContainerId,
+    this.storageContainerName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'metadata': ?metadata,
       'name': name,
-      'storageAccountName': storageAccountName,
-      'storageContainerName': storageContainerName,
+      'storageAccountName': ?storageAccountName,
+      'storageContainerId': ?storageContainerId,
+      'storageContainerName': ?storageContainerName,
     };
   }
 
@@ -41,9 +50,9 @@ class GetBlobArgs {
     return GetBlobArgs(
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      storageAccountName: pulumi.Input.fromValue(map['storageAccountName'] as String),
-      storageContainerName: pulumi.Input.fromValue(map['storageContainerName'] as String),
+      storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageContainerId: (() { final guardedValue = map['storageContainerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageContainerName: (() { final guardedValue = map['storageContainerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

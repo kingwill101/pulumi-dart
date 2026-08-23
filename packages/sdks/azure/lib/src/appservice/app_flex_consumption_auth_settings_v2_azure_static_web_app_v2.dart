@@ -24,4 +24,3 @@ class AppFlexConsumptionAuthSettingsV2AzureStaticWebAppV2 {
     );
   }
 }
-

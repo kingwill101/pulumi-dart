@@ -12,7 +12,7 @@ class DataFlowTransformation {
   final pulumi.Input<String>? description;
   /// A `flowlet` block as defined below.
   final pulumi.Input<DataFlowTransformationFlowlet>? flowlet;
-  /// A `linked_service` block as defined below.
+  /// A `linkedService` block as defined below.
   final pulumi.Input<DataFlowTransformationLinkedService>? linkedService;
   /// The name for the Data Flow transformation.
   final pulumi.Input<String> name;
@@ -21,7 +21,7 @@ class DataFlowTransformation {
   /// [dataset] A `dataset` block as defined below.
   /// [description] The description for the Data Flow transformation.
   /// [flowlet] A `flowlet` block as defined below.
-  /// [linkedService] A `linked_service` block as defined below.
+  /// [linkedService] A `linkedService` block as defined below.
   /// [name] The name for the Data Flow transformation.
   const DataFlowTransformation({
     this.dataset,
@@ -51,4 +51,3 @@ class DataFlowTransformation {
     );
   }
 }
-

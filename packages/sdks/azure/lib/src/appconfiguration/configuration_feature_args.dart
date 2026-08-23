@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'configuration_feature_custom_filter.dart';
 import 'configuration_feature_targeting_filter.dart';
 import 'configuration_feature_timewindow_filter.dart';
 
@@ -11,6 +12,8 @@ import 'configuration_feature_timewindow_filter.dart';
 class ConfigurationFeatureArgs {
   /// Specifies the id of the App Configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String> configurationStoreId;
+  /// A `customFilter` block as defined below.
+  final pulumi.Input<List<ConfigurationFeatureCustomFilter>>? customFilters;
   /// The description of the App Configuration Feature.
   final pulumi.Input<String>? description;
   /// The status of the App Configuration Feature. By default, this is set to false.
@@ -28,13 +31,14 @@ class ConfigurationFeatureArgs {
   final pulumi.Input<double>? percentageFilterValue;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A `targeting_filter` block as defined below.
+  /// A `targetingFilter` block as defined below.
   final pulumi.Input<List<ConfigurationFeatureTargetingFilter>>? targetingFilters;
-  /// A `timewindow_filter` block as defined below.
+  /// A `timewindowFilter` block as defined below.
   final pulumi.Input<List<ConfigurationFeatureTimewindowFilter>>? timewindowFilters;
 
   /// Creates a new [ConfigurationFeatureArgs].
   /// [configurationStoreId] Specifies the id of the App Configuration. Changing this forces a new resource to be created.
+  /// [customFilters] A `customFilter` block as defined below.
   /// [description] The description of the App Configuration Feature.
   /// [enabled] The status of the App Configuration Feature. By default, this is set to false.
   /// [etag] Optional.
@@ -44,10 +48,11 @@ class ConfigurationFeatureArgs {
   /// [name] The name of the App Configuration Feature. Changing this forces a new resource to be created.
   /// [percentageFilterValue] A number representing the value of the percentage required to enable this feature.
   /// [tags] A mapping of tags to assign to the resource.
-  /// [targetingFilters] A `targeting_filter` block as defined below.
-  /// [timewindowFilters] A `timewindow_filter` block as defined below.
+  /// [targetingFilters] A `targetingFilter` block as defined below.
+  /// [timewindowFilters] A `timewindowFilter` block as defined below.
   const ConfigurationFeatureArgs({
     required this.configurationStoreId,
+    this.customFilters,
     this.description,
     this.enabled,
     this.etag,
@@ -64,6 +69,7 @@ class ConfigurationFeatureArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configurationStoreId': configurationStoreId,
+      'customFilters': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationFeatureCustomFilter>, List<Map<String, dynamic>>>(customFilters, (value) => pulumi.Input.encodeList<ConfigurationFeatureCustomFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'enabled': ?enabled,
       'etag': ?etag,
@@ -81,6 +87,7 @@ class ConfigurationFeatureArgs {
   factory ConfigurationFeatureArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationFeatureArgs(
       configurationStoreId: pulumi.Input.fromValue(map['configurationStoreId'] as String),
+      customFilters: (() { final guardedValue = map['customFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationFeatureCustomFilter>(guardedValue, (value) => ConfigurationFeatureCustomFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -95,4 +102,3 @@ class ConfigurationFeatureArgs {
     );
   }
 }
-

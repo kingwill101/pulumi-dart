@@ -6,7 +6,7 @@ import 'get_sql_database_autoscale_setting.dart';
 /// Result data returned by getSqlDatabase.
 class GetSqlDatabaseResult {
   final String accountName;
-  /// An `autoscale_settings` block as defined below.
+  /// An `autoscaleSettings` block as defined below.
   final List<GetSqlDatabaseAutoscaleSetting> autoscaleSettings;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -17,7 +17,7 @@ class GetSqlDatabaseResult {
 
   /// Creates a new [GetSqlDatabaseResult].
   /// [accountName] Required.
-  /// [autoscaleSettings] An `autoscale_settings` block as defined below.
+  /// [autoscaleSettings] An `autoscaleSettings` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [resourceGroupName] Required.
@@ -53,4 +53,3 @@ class GetSqlDatabaseResult {
     );
   }
 }
-

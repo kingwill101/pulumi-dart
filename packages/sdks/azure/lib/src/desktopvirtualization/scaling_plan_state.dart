@@ -12,7 +12,7 @@ class ScalingPlanState {
   final pulumi.Input<String>? exclusionTag;
   /// Friendly name of the Scaling Plan.
   final pulumi.Input<String>? friendlyName;
-  /// One or more `host_pool` blocks as defined below.
+  /// One or more `hostPool` blocks as defined below.
   final pulumi.Input<List<ScalingPlanHostPool>>? hostPools;
   /// The Azure Region where the Virtual Desktop Scaling Plan should exist. Changing this forces a new Virtual Desktop Scaling Plan to be created.
   final pulumi.Input<String>? location;
@@ -31,7 +31,7 @@ class ScalingPlanState {
   /// [description] A description of the Scaling Plan.
   /// [exclusionTag] The name of the tag associated with the VMs you want to exclude from autoscaling.
   /// [friendlyName] Friendly name of the Scaling Plan.
-  /// [hostPools] One or more `host_pool` blocks as defined below.
+  /// [hostPools] One or more `hostPool` blocks as defined below.
   /// [location] The Azure Region where the Virtual Desktop Scaling Plan should exist. Changing this forces a new Virtual Desktop Scaling Plan to be created.
   /// [name] The name which should be used for this Virtual Desktop Scaling Plan . Changing this forces a new Virtual Desktop Scaling Plan to be created.
   /// [resourceGroupName] The name of the Resource Group where the Virtual Desktop Scaling Plan should exist. Changing this forces a new Virtual Desktop Scaling Plan to be created.
@@ -81,4 +81,3 @@ class ScalingPlanState {
     );
   }
 }
-

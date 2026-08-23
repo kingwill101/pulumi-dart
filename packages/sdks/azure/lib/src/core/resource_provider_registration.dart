@@ -4,9 +4,9 @@ import 'resource_provider_registration_state.dart';
 
 /// Manages the registration of a Resource Provider - which allows access to the API's supported by this Resource Provider.
 ///
-/// &gt; **Note:** The Azure Provider will automatically register all of the Resource Providers which it supports on launch (unless opted-out using the `skip_provider_registration` field within the provider block).
+/// &gt; **Note:** The Azure Provider will automatically register all of the Resource Providers which it supports on launch (unless opted-out using the `skipProviderRegistration` field within the provider block).
 ///
-/// !&gt; **Note:** The errors returned from the Azure API when a Resource Provider is unregistered are unclear (example `API version '2019-01-01' was not found for 'Microsoft.Foo'`) - please ensure that all of the necessary Resource Providers you're using are registered - if in doubt **we strongly recommend letting the provider register these for you**.
+/// &gt; **Note:** The errors returned from the Azure API when a Resource Provider is unregistered are unclear (example `API version '2019-01-01' was not found for 'Microsoft.Foo'`) - please ensure that all of the necessary Resource Providers you're using are registered - if in doubt **we strongly recommend letting the provider register these for you**.
 ///
 /// &gt; **Note:** Adding or Removing a Preview Feature will re-register the Resource Provider.
 ///
@@ -60,6 +60,19 @@ import 'resource_provider_registration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourceproviderregistration" "example" {
+///   name = "Microsoft.PolicyInsights"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +81,8 @@ import 'resource_provider_registration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.core.ResourceProviderRegistration;
 /// import com.pulumi.azure.core.ResourceProviderRegistrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -173,6 +186,23 @@ import 'resource_provider_registration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourceproviderregistration" "example" {
+///   name = "Microsoft.ContainerService"
+///   features {
+///     name       = "AKS-DataPlaneAutoApprove"
+///     registered = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +212,8 @@ import 'resource_provider_registration_state.dart';
 /// import com.pulumi.azure.core.ResourceProviderRegistration;
 /// import com.pulumi.azure.core.ResourceProviderRegistrationArgs;
 /// import com.pulumi.azure.core.inputs.ResourceProviderRegistrationFeatureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

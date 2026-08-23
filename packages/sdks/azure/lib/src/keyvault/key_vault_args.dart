@@ -12,7 +12,7 @@ import 'key_vault_network_acls.dart';
 class KeyVaultArgs {
   /// A list of up to 1024 objects describing access policies, as described below.
   ///
-  /// &gt; **Note:** Since `access_policy` can be configured both inline and via the separate `azure.keyvault.AccessPolicy` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
+  /// &gt; **Note:** Since `accessPolicy` can be configured both inline and via the separate `azure.keyvault.AccessPolicy` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
   final pulumi.Input<List<KeyVaultAccessPolicy>>? accessPolicies;
   final pulumi.Input<List<KeyVaultContact>>? contacts;
   final pulumi.Input<bool>? enableRbacAuthorization;
@@ -26,13 +26,13 @@ class KeyVaultArgs {
   final pulumi.Input<String>? location;
   /// Specifies the name of the Key Vault. Changing this forces a new resource to be created. The name must be globally unique. If the vault is in a recoverable state then the vault will need to be purged before reusing the name.
   final pulumi.Input<String>? name;
-  /// A `network_acls` block as defined below.
+  /// A `networkAcls` block as defined below.
   final pulumi.Input<KeyVaultNetworkAcls>? networkAcls;
   /// Whether public network access is allowed for this Key Vault. Defaults to `true`.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
   /// Is Purge Protection enabled for this Key Vault?
   ///
-  /// !&gt; **Note:** Once Purge Protection has been Enabled it's not possible to Disable it. Support for [disabling purge protection is being tracked in this Azure API issue](https://github.com/Azure/azure-rest-api-specs/issues/8075). Deleting the Key Vault with Purge Protection Enabled will schedule the Key Vault to be deleted (which will happen by Azure in the configured number of days, currently 90 days).
+  /// &gt; **Note:** Once Purge Protection has been Enabled it's not possible to Disable it. Support for [disabling purge protection is being tracked in this Azure API issue](https://github.com/Azure/azure-rest-api-specs/issues/8075). Deleting the Key Vault with Purge Protection Enabled will schedule the Key Vault to be deleted (which will happen by Azure in the configured number of days, currently 90 days).
   final pulumi.Input<bool>? purgeProtectionEnabled;
   /// Boolean flag to specify whether Azure Key Vault uses Role Based Access Control (RBAC) for authorization of data actions.
   ///
@@ -60,7 +60,7 @@ class KeyVaultArgs {
   /// [enabledForTemplateDeployment] Boolean flag to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Key Vault. Changing this forces a new resource to be created. The name must be globally unique. If the vault is in a recoverable state then the vault will need to be purged before reusing the name.
-  /// [networkAcls] A `network_acls` block as defined below.
+  /// [networkAcls] A `networkAcls` block as defined below.
   /// [publicNetworkAccessEnabled] Whether public network access is allowed for this Key Vault. Defaults to `true`.
   /// [purgeProtectionEnabled] Is Purge Protection enabled for this Key Vault?
   /// [rbacAuthorizationEnabled] Boolean flag to specify whether Azure Key Vault uses Role Based Access Control (RBAC) for authorization of data actions.
@@ -133,4 +133,3 @@ class KeyVaultArgs {
     );
   }
 }
-

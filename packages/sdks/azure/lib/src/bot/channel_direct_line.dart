@@ -148,6 +148,39 @@ import 'channel_direct_line_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_bot_channelsregistration" "example" {
+///   name                = "example"
+///   location            = "global"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "F0"
+///   microsoft_app_id    = data.azure_core_getclientconfig.current.client_id
+/// }
+/// resource "azure_bot_channeldirectline" "example" {
+///   bot_name            = azure_bot_channelsregistration.example.name
+///   location            = azure_bot_channelsregistration.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sites {
+///     name    = "default"
+///     enabled = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -162,8 +195,8 @@ import 'channel_direct_line_state.dart';
 /// import com.pulumi.azure.bot.ChannelDirectLine;
 /// import com.pulumi.azure.bot.ChannelDirectLineArgs;
 /// import com.pulumi.azure.bot.inputs.ChannelDirectLineSiteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -247,6 +280,10 @@ import 'channel_direct_line_state.dart';
 class ChannelDirectLine extends pulumi.CustomResource {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
+  /// The first key for Directline App Service Extension.
+  late final pulumi.Output<String> extensionKey1;
+  /// The second key for Directline App Service Extension.
+  late final pulumi.Output<String> extensionKey2;
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
@@ -269,6 +306,8 @@ class ChannelDirectLine extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     botName = registerOutput<String>('botName');
+    extensionKey1 = registerOutput<String>('extensionKey1');
+    extensionKey2 = registerOutput<String>('extensionKey2');
     location = registerOutput<String>('location');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sites = registerOutput<List<Map<String, dynamic>>>('sites');
@@ -298,6 +337,8 @@ class ChannelDirectLine extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     botName = registerOutput<String>('botName');
+    extensionKey1 = registerOutput<String>('extensionKey1');
+    extensionKey2 = registerOutput<String>('extensionKey2');
     location = registerOutput<String>('location');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sites = registerOutput<List<Map<String, dynamic>>>('sites');

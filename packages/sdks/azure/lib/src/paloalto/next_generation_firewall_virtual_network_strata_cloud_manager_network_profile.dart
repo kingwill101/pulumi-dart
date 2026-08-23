@@ -14,7 +14,7 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile {
   final pulumi.Input<List<String>>? publicIpAddresses;
   /// A list of trusted ranges to use for the Network.
   final pulumi.Input<List<String>>? trustedAddressRanges;
-  /// A `vnet_configuration` block as defined below.
+  /// A `vnetConfiguration` block as defined below.
   final pulumi.Input<NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfileVnetConfiguration> vnetConfiguration;
 
   /// Creates a new [NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile].
@@ -23,7 +23,7 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile {
   /// [publicIpAddressIds] A list of Azure Public IP Address IDs.
   /// [publicIpAddresses] A list of public IPs associated with this Next Generation Firewall.
   /// [trustedAddressRanges] A list of trusted ranges to use for the Network.
-  /// [vnetConfiguration] A `vnet_configuration` block as defined below.
+  /// [vnetConfiguration] A `vnetConfiguration` block as defined below.
   const NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile({
     this.egressNatIpAddressIds,
     this.egressNatIpAddresses,
@@ -55,4 +55,3 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile {
     );
   }
 }
-

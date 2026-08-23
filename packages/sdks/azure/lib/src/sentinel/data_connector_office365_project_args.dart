@@ -42,4 +42,3 @@ class DataConnectorOffice365ProjectArgs {
     );
   }
 }
-

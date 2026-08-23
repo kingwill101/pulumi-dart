@@ -7,7 +7,7 @@ class GroupExposedPort {
   final pulumi.Input<int>? port;
   /// The network protocol associated with port. Possible values are `TCP` & `UDP`. Changing this forces a new resource to be created. Defaults to `TCP`.
   ///
-  /// &gt; **Note:** Removing all `exposed_port` blocks requires setting `exposed_port = []`.
+  /// &gt; **Note:** Removing all `exposedPort` blocks requires setting `exposedPort = []`.
   final pulumi.Input<String>? protocol;
 
   /// Creates a new [GroupExposedPort].
@@ -32,4 +32,3 @@ class GroupExposedPort {
     );
   }
 }
-

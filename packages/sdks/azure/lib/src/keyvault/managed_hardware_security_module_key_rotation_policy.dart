@@ -102,6 +102,28 @@ import 'managed_hardware_security_module_key_rotation_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_keyvault_managedhardwaresecuritymodulekey" "example" {
+///   name           = "example-key"
+///   managed_hsm_id = exampleAzurermKeyVaultManagedHardwareSecurityModule.id
+///   key_type       = "EC-HSM"
+///   curve          = "P-521"
+///   key_opts       = ["sign"]
+/// }
+/// resource "azure_keyvault_managedhardwaresecuritymodulekeyrotationpolicy" "example" {
+///   managed_hsm_key_id = azure_keyvault_managedhardwaresecuritymodulekey.example.id
+///   expire_after       = "P60D"
+///   time_before_expiry = "P30D"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +134,8 @@ import 'managed_hardware_security_module_key_rotation_policy_state.dart';
 /// import com.pulumi.azure.keyvault.ManagedHardwareSecurityModuleKeyArgs;
 /// import com.pulumi.azure.keyvault.ManagedHardwareSecurityModuleKeyRotationPolicy;
 /// import com.pulumi.azure.keyvault.ManagedHardwareSecurityModuleKeyRotationPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,9 +197,9 @@ class ManagedHardwareSecurityModuleKeyRotationPolicy extends pulumi.CustomResour
   late final pulumi.Output<String> expireAfter;
   /// The ID of the Managed HSM Key. Changing this forces a new Managed HSM Key rotation policy to be created.
   late final pulumi.Output<String> managedHsmKeyId;
-  /// Rotate automatically at a duration after key creation as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). Exactly one of `time_after_creation` or `time_before_expiry` should be specified.
+  /// Rotate automatically at a duration after key creation as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). Exactly one of `timeAfterCreation` or `timeBeforeExpiry` should be specified.
   late final pulumi.Output<String?> timeAfterCreation;
-  /// Rotate automatically at a duration before key expiry as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). Exactly one of `time_after_creation` or `time_before_expiry` should be specified.
+  /// Rotate automatically at a duration before key expiry as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). Exactly one of `timeAfterCreation` or `timeBeforeExpiry` should be specified.
   late final pulumi.Output<String?> timeBeforeExpiry;
 
   /// Creates a new [ManagedHardwareSecurityModuleKeyRotationPolicy].

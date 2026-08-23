@@ -475,6 +475,102 @@ import 'action_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "monitoring-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "workspace-01"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_monitoring_actiongroup" "example" {
+///   name                = "CriticalAlertsAction"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   short_name          = "p0action"
+///   arm_role_receivers {
+///     name                    = "armroleaction"
+///     role_id                 = "de139f84-1756-47ae-9be6-808fbbe84772"
+///     use_common_alert_schema = true
+///   }
+///   automation_runbook_receivers {
+///     name                    = "action_name_1"
+///     automation_account_id   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-runbooks/providers/Microsoft.Automation/automationAccounts/aaa001"
+///     runbook_name            = "my runbook"
+///     webhook_resource_id     = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-runbooks/providers/Microsoft.Automation/automationAccounts/aaa001/webHooks/webhook_alert"
+///     is_global_runbook       = true
+///     service_uri             = "https://s13events.azure-automation.net/webhooks?token=randomtoken"
+///     use_common_alert_schema = true
+///   }
+///   azure_app_push_receivers {
+///     name          = "pushtoadmin"
+///     email_address = "admin@contoso.com"
+///   }
+///   azure_function_receivers {
+///     name                     = "funcaction"
+///     function_app_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-funcapp/providers/Microsoft.Web/sites/funcapp"
+///     function_name            = "myfunc"
+///     http_trigger_url         = "https://example.com/trigger"
+///     use_common_alert_schema  = true
+///   }
+///   email_receivers {
+///     name          = "sendtoadmin"
+///     email_address = "admin@contoso.com"
+///   }
+///   email_receivers {
+///     name                    = "sendtodevops"
+///     email_address           = "devops@contoso.com"
+///     use_common_alert_schema = true
+///   }
+///   event_hub_receivers {
+///     name                    = "sendtoeventhub"
+///     event_hub_namespace     = "eventhubnamespace"
+///     event_hub_name          = "eventhub1"
+///     subscription_id         = "00000000-0000-0000-0000-000000000000"
+///     use_common_alert_schema = false
+///   }
+///   itsm_receivers {
+///     name                 = "createorupdateticket"
+///     workspace_id         ="${data.azure_core_getclientconfig.current.subscription_id}|${azure_operationalinsights_analyticsworkspace.example.workspace_id}"
+///     connection_id        = "53de6956-42b4-41ba-be3c-b154cdf17b13"
+///     ticket_configuration = "{\"PayloadRevision\":0,\"WorkItemType\":\"Incident\",\"UseTemplate\":false,\"WorkItemData\":\"{}\",\"CreateOneWIPerCI\":false}"
+///     region               = "southcentralus"
+///   }
+///   logic_app_receivers {
+///     name                    = "logicappaction"
+///     resource_id             = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-logicapp/providers/Microsoft.Logic/workflows/logicapp"
+///     callback_url            = "https://logicapptriggerurl/..."
+///     use_common_alert_schema = true
+///   }
+///   sms_receivers {
+///     name         = "oncallmsg"
+///     country_code = "1"
+///     phone_number = "1231231234"
+///   }
+///   voice_receivers {
+///     name         = "remotesupport"
+///     country_code = "86"
+///     phone_number = "13888888888"
+///   }
+///   webhook_receivers {
+///     name                    = "callmyapiaswell"
+///     service_uri             = "http://example.com/alert"
+///     use_common_alert_schema = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -499,8 +595,8 @@ import 'action_group_state.dart';
 /// import com.pulumi.azure.monitoring.inputs.ActionGroupSmsReceiverArgs;
 /// import com.pulumi.azure.monitoring.inputs.ActionGroupVoiceReceiverArgs;
 /// import com.pulumi.azure.monitoring.inputs.ActionGroupWebhookReceiverArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -704,25 +800,25 @@ import 'action_group_state.dart';
 /// $ pulumi import azure:monitoring/actionGroup:ActionGroup example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Insights/actionGroups/myagname
 /// ```
 class ActionGroup extends pulumi.CustomResource {
-  /// One or more `arm_role_receiver` blocks as defined below.
+  /// One or more `armRoleReceiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> armRoleReceivers;
-  /// One or more `automation_runbook_receiver` blocks as defined below.
+  /// One or more `automationRunbookReceiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> automationRunbookReceivers;
-  /// One or more `azure_app_push_receiver` blocks as defined below.
+  /// One or more `azureAppPushReceiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> azureAppPushReceivers;
-  /// One or more `azure_function_receiver` blocks as defined below.
+  /// One or more `azureFunctionReceiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> azureFunctionReceivers;
-  /// One or more `email_receiver` blocks as defined below.
+  /// One or more `emailReceiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> emailReceivers;
   /// Whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-  /// One or more `event_hub_receiver` blocks as defined below.
+  /// One or more `eventHubReceiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> eventHubReceivers;
-  /// One or more `itsm_receiver` blocks as defined below.
+  /// One or more `itsmReceiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> itsmReceivers;
   /// The Azure Region where the Action Group should exist. Changing this forces a new Action Group to be created. Defaults to `global`.
   late final pulumi.Output<String> location;
-  /// One or more `logic_app_receiver` blocks as defined below.
+  /// One or more `logicAppReceiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> logicAppReceivers;
   /// The name of the Action Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
@@ -730,13 +826,13 @@ class ActionGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// The short name of the action group. This will be used in SMS messages.
   late final pulumi.Output<String> shortName;
-  /// One or more `sms_receiver` blocks as defined below.
+  /// One or more `smsReceiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> smsReceivers;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// One or more `voice_receiver` blocks as defined below.
+  /// One or more `voiceReceiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> voiceReceivers;
-  /// One or more `webhook_receiver` blocks as defined below.
+  /// One or more `webhookReceiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> webhookReceivers;
 
   /// Creates a new [ActionGroup].

@@ -216,6 +216,53 @@ import 'environment_storage_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "acctest-01"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+///   retention_in_days   = 30
+/// }
+/// resource "azure_containerapp_environment" "example" {
+///   name                       = "myEnvironment"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "azureteststorage"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_share" "example" {
+///   name                 = "sharename"
+///   storage_account_name = azure_storage_account.example.name
+///   quota                = 5
+/// }
+/// resource "azure_containerapp_environmentstorage" "example" {
+///   name                         = "mycontainerappstorage"
+///   container_app_environment_id = azure_containerapp_environment.example.id
+///   account_name                 = azure_storage_account.example.name
+///   share_name                   = azure_storage_share.example.name
+///   access_key                   = azure_storage_account.example.primary_access_key
+///   access_mode                  = "ReadOnly"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -234,8 +281,8 @@ import 'environment_storage_state.dart';
 /// import com.pulumi.azure.storage.ShareArgs;
 /// import com.pulumi.azure.containerapp.EnvironmentStorage;
 /// import com.pulumi.azure.containerapp.EnvironmentStorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -7,7 +7,7 @@ import 'get_resolver_inbound_endpoint_ip_configuration.dart';
 class GetResolverInboundEndpointResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// A list of `ip_configurations` block as defined below.
+  /// A list of `ipConfigurations` block as defined below.
   final List<GetResolverInboundEndpointIpConfiguration> ipConfigurations;
   /// The Azure Region where the Private DNS Resolver Inbound Endpoint exists.
   final String location;
@@ -18,7 +18,7 @@ class GetResolverInboundEndpointResult {
 
   /// Creates a new [GetResolverInboundEndpointResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ipConfigurations] A list of `ip_configurations` block as defined below.
+  /// [ipConfigurations] A list of `ipConfigurations` block as defined below.
   /// [location] The Azure Region where the Private DNS Resolver Inbound Endpoint exists.
   /// [name] Required.
   /// [privateDnsResolverId] Required.
@@ -54,4 +54,3 @@ class GetResolverInboundEndpointResult {
     );
   }
 }
-

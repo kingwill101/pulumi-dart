@@ -5,14 +5,14 @@ import 'software_update_configuration_target_azure_query.dart';
 import 'software_update_configuration_target_non_azure_query.dart';
 
 class SoftwareUpdateConfigurationTarget {
-  /// One or more `azure_query` blocks as defined above.
+  /// One or more `azureQuery` blocks as defined above.
   final pulumi.Input<List<SoftwareUpdateConfigurationTargetAzureQuery>>? azureQueries;
-  /// One or more `non_azure_query` blocks as defined above.
+  /// One or more `nonAzureQuery` blocks as defined above.
   final pulumi.Input<List<SoftwareUpdateConfigurationTargetNonAzureQuery>>? nonAzureQueries;
 
   /// Creates a new [SoftwareUpdateConfigurationTarget].
-  /// [azureQueries] One or more `azure_query` blocks as defined above.
-  /// [nonAzureQueries] One or more `non_azure_query` blocks as defined above.
+  /// [azureQueries] One or more `azureQuery` blocks as defined above.
+  /// [nonAzureQueries] One or more `nonAzureQuery` blocks as defined above.
   const SoftwareUpdateConfigurationTarget({
     this.azureQueries,
     this.nonAzureQueries,
@@ -32,4 +32,3 @@ class SoftwareUpdateConfigurationTarget {
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kubernetes_cluster_aci_connector_linux_connector_identity.dart';
 
 class KubernetesClusterAciConnectorLinux {
-  /// A `connector_identity` block is exported. The exported attributes are defined below.
+  /// A `connectorIdentity` block is exported. The exported attributes are defined below.
   final pulumi.Input<List<KubernetesClusterAciConnectorLinuxConnectorIdentity>>? connectorIdentities;
   /// The subnet name for the virtual nodes to run.
   ///
@@ -96,6 +96,25 @@ class KubernetesClusterAciConnectorLinux {
   /// 	})
   /// }
   /// ```
+  /// ```hcl
+  /// pulumi {
+  ///   required_providers {
+  ///     azure = {
+  ///       source = "pulumi/azure"
+  ///     }
+  ///   }
+  /// }
+  ///
+  /// resource "azure_network_subnet" "virtual" {
+  ///   delegations {
+  ///     name = "aciDelegation"
+  ///     service_delegation = {
+  ///       name    = "Microsoft.ContainerInstance/containerGroups"
+  ///       actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
+  ///     }
+  ///   }
+  /// }
+  /// ```
   /// ```java
   /// package generated_program;
   ///
@@ -106,8 +125,8 @@ class KubernetesClusterAciConnectorLinux {
   /// import com.pulumi.azure.network.SubnetArgs;
   /// import com.pulumi.azure.network.inputs.SubnetDelegationArgs;
   /// import com.pulumi.azure.network.inputs.SubnetDelegationServiceDelegationArgs;
-  /// import java.util.List;
   /// import java.util.ArrayList;
+  /// import java.util.Arrays;
   /// import java.util.Map;
   /// import java.io.File;
   /// import java.nio.file.Files;
@@ -147,7 +166,7 @@ class KubernetesClusterAciConnectorLinux {
   final pulumi.Input<String> subnetName;
 
   /// Creates a new [KubernetesClusterAciConnectorLinux].
-  /// [connectorIdentities] A `connector_identity` block is exported. The exported attributes are defined below.
+  /// [connectorIdentities] A `connectorIdentity` block is exported. The exported attributes are defined below.
   /// [subnetName] The subnet name for the virtual nodes to run.
   const KubernetesClusterAciConnectorLinux({
     this.connectorIdentities,
@@ -168,4 +187,3 @@ class KubernetesClusterAciConnectorLinux {
     );
   }
 }
-

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheAccessPolicyAccessRule {
   /// The access level for this rule. Possible values are: `rw`, `ro`, `no`.
   final pulumi.Input<String> access;
-  /// The anonymous GID used when `root_squash_enabled` is `true`.
+  /// The anonymous GID used when `rootSquashEnabled` is `true`.
   final pulumi.Input<int>? anonymousGid;
-  /// The anonymous UID used when `root_squash_enabled` is `true`.
+  /// The anonymous UID used when `rootSquashEnabled` is `true`.
   final pulumi.Input<int>? anonymousUid;
   /// The filter applied to the `scope` for this rule. The filter's format depends on its scope: `default` scope matches all clients and has no filter value; `network` scope takes a CIDR format; `host` takes an IP address or fully qualified domain name. If a client does not match any filter rule and there is no default rule, access is denied.
   final pulumi.Input<String>? filter;
@@ -15,7 +15,7 @@ class CacheAccessPolicyAccessRule {
   final pulumi.Input<bool>? rootSquashEnabled;
   /// The scope of this rule. The `scope` and (potentially) the `filter` determine which clients match the rule. Possible values are: `default`, `network`, `host`.
   ///
-  /// &gt; **Note:** Each `access_rule` should set a unique `scope`.
+  /// &gt; **Note:** Each `accessRule` should set a unique `scope`.
   final pulumi.Input<String> scope;
   /// Whether allow access to subdirectories under the root export?
   final pulumi.Input<bool>? submountAccessEnabled;
@@ -24,8 +24,8 @@ class CacheAccessPolicyAccessRule {
 
   /// Creates a new [CacheAccessPolicyAccessRule].
   /// [access] The access level for this rule. Possible values are: `rw`, `ro`, `no`.
-  /// [anonymousGid] The anonymous GID used when `root_squash_enabled` is `true`.
-  /// [anonymousUid] The anonymous UID used when `root_squash_enabled` is `true`.
+  /// [anonymousGid] The anonymous GID used when `rootSquashEnabled` is `true`.
+  /// [anonymousUid] The anonymous UID used when `rootSquashEnabled` is `true`.
   /// [filter] The filter applied to the `scope` for this rule. The filter's format depends on its scope: `default` scope matches all clients and has no filter value; `network` scope takes a CIDR format; `host` takes an IP address or fully qualified domain name. If a client does not match any filter rule and there is no default rule, access is denied.
   /// [rootSquashEnabled] Whether to enable [root squash](https://docs.microsoft.com/azure/hpc-cache/access-policies#root-squash)?
   /// [scope] The scope of this rule. The `scope` and (potentially) the `filter` determine which clients match the rule. Possible values are: `default`, `network`, `host`.
@@ -68,4 +68,3 @@ class CacheAccessPolicyAccessRule {
     );
   }
 }
-

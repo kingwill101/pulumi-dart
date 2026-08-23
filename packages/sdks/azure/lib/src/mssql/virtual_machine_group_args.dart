@@ -20,7 +20,7 @@ class VirtualMachineGroupArgs {
   final pulumi.Input<String> sqlImageSku;
   /// A mapping of tags which should be assigned to the Microsoft SQL Virtual Machine Group.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A `wsfc_domain_profile` block as defined below.
+  /// A `wsfcDomainProfile` block as defined below.
   final pulumi.Input<VirtualMachineGroupWsfcDomainProfile> wsfcDomainProfile;
 
   /// Creates a new [VirtualMachineGroupArgs].
@@ -30,7 +30,7 @@ class VirtualMachineGroupArgs {
   /// [sqlImageOffer] The offer type of the marketplace image cluster to be used by the SQL Virtual Machine Group. Changing this forces a new resource to be created.
   /// [sqlImageSku] The sku type of the marketplace image cluster to be used by the SQL Virtual Machine Group. Possible values are `Developer` and `Enterprise`.
   /// [tags] A mapping of tags which should be assigned to the Microsoft SQL Virtual Machine Group.
-  /// [wsfcDomainProfile] A `wsfc_domain_profile` block as defined below.
+  /// [wsfcDomainProfile] A `wsfcDomainProfile` block as defined below.
   const VirtualMachineGroupArgs({
     this.location,
     this.name,
@@ -65,4 +65,3 @@ class VirtualMachineGroupArgs {
     );
   }
 }
-

@@ -8,7 +8,7 @@ class GetOrchestratedVirtualMachineScaleSetNetworkInterface {
   final pulumi.Input<bool> acceleratedNetworkingEnabled;
   /// An array of the DNS servers in use.
   final pulumi.Input<List<String>> dnsServers;
-  /// An `ip_configuration` block as documented below.
+  /// An `ipConfiguration` block as documented below.
   final pulumi.Input<List<GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration>> ipConfigurations;
   /// Is IP forwarding enabled?
   final pulumi.Input<bool> ipForwardingEnabled;
@@ -16,17 +16,17 @@ class GetOrchestratedVirtualMachineScaleSetNetworkInterface {
   final pulumi.Input<String> name;
   /// The identifier for the network security group.
   final pulumi.Input<String> networkSecurityGroupId;
-  /// If this ip_configuration is the primary one.
+  /// If this ipConfiguration is the primary one.
   final pulumi.Input<bool> primary;
 
   /// Creates a new [GetOrchestratedVirtualMachineScaleSetNetworkInterface].
   /// [acceleratedNetworkingEnabled] Is accelerated networking enabled?
   /// [dnsServers] An array of the DNS servers in use.
-  /// [ipConfigurations] An `ip_configuration` block as documented below.
+  /// [ipConfigurations] An `ipConfiguration` block as documented below.
   /// [ipForwardingEnabled] Is IP forwarding enabled?
   /// [name] The name of this Orchestrated Virtual Machine Scale Set.
   /// [networkSecurityGroupId] The identifier for the network security group.
-  /// [primary] If this ip_configuration is the primary one.
+  /// [primary] If this ipConfiguration is the primary one.
   const GetOrchestratedVirtualMachineScaleSetNetworkInterface({
     required this.acceleratedNetworkingEnabled,
     required this.dnsServers,
@@ -61,4 +61,3 @@ class GetOrchestratedVirtualMachineScaleSetNetworkInterface {
     );
   }
 }
-

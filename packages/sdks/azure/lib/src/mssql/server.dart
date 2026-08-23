@@ -134,6 +134,36 @@ import 'server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "database-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "mssqlserver"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "missadministrator"
+///   administrator_login_password = "thisIsKat11"
+///   minimum_tls_version          = "1.2"
+///   azuread_administrator = {
+///     login_username = "AzureAD Admin"
+///     object_id      = "00000000-0000-0000-0000-000000000000"
+///   }
+///   tags = {
+///     "environment" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -145,8 +175,8 @@ import 'server_state.dart';
 /// import com.pulumi.azure.mssql.Server;
 /// import com.pulumi.azure.mssql.ServerArgs;
 /// import com.pulumi.azure.mssql.inputs.ServerAzureadAdministratorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -596,6 +626,76 @@ import 'server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "example-admin"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "example-resource"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "Example-Administrator"
+///   administrator_login_password = "Example_Password!"
+///   minimum_tls_version          = "1.2"
+///   azuread_administrator = {
+///     login_username = azure_authorization_userassignedidentity.example.name
+///     object_id      = azure_authorization_userassignedidentity.example.principal_id
+///   }
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+///   primary_user_assigned_identity_id            = azure_authorization_userassignedidentity.example.id
+///   transparent_data_encryption_key_vault_key_id = azure_keyvault_key.example.id
+/// }
+/// # Create a key vault with access policies which allow for the current user to get, list, create, delete, update, recover, purge and getRotationPolicy for the key vault key and also add a key vault access policy for the Microsoft Sql Server instance User Managed Identity to get, wrap, and unwrap key(s)
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                        = "mssqltdeexample"
+///   location                    = azure_core_resourcegroup.example.location
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   enabled_for_disk_encryption = true
+///   tenant_id                   = azure_authorization_userassignedidentity.example.tenant_id
+///   soft_delete_retention_days  = 7
+///   purge_protection_enabled    = true
+///   sku_name                    = "standard"
+///   access_policies {
+///     tenant_id       = data.azure_core_getclientconfig.current.tenant_id
+///     object_id       = data.azure_core_getclientconfig.current.object_id
+///     key_permissions = ["Get", "List", "Create", "Delete", "Update", "Recover", "Purge", "GetRotationPolicy"]
+///   }
+///   access_policies {
+///     tenant_id       = azure_authorization_userassignedidentity.example.tenant_id
+///     object_id       = azure_authorization_userassignedidentity.example.principal_id
+///     key_permissions = ["Get", "WrapKey", "UnwrapKey"]
+///   }
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_keyvault.example]
+///   name         = "example-key"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["unwrapKey", "wrapKey"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -617,8 +717,8 @@ import 'server_state.dart';
 /// import com.pulumi.azure.mssql.inputs.ServerAzureadAdministratorArgs;
 /// import com.pulumi.azure.mssql.inputs.ServerIdentityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -814,19 +914,19 @@ import 'server_state.dart';
 /// $ pulumi import azure:mssql/server:Server example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Sql/servers/myserver
 /// ```
 class Server extends pulumi.CustomResource {
-  /// The administrator login name for the new server. Required unless `azuread_authentication_only` in the `azuread_administrator` block is `true`. When omitted, Azure will generate a default username which cannot be subsequently changed. Changing this forces a new resource to be created.
+  /// The administrator login name for the new server. Required unless `azureadAuthenticationOnly` in the `azureadAdministrator` block is `true`. When omitted, Azure will generate a default username which cannot be subsequently changed. Changing this forces a new resource to be created.
   late final pulumi.Output<String> administratorLogin;
-  /// The password associated with the `administrator_login` user. Needs to comply with Azure's [Password Policy](https://msdn.microsoft.com/library/ms161959.aspx).
+  /// The password associated with the `administratorLogin` user. Needs to comply with Azure's [Password Policy](https://msdn.microsoft.com/library/ms161959.aspx).
   late final pulumi.Output<String?> administratorLoginPassword;
-  /// An integer value used to trigger an update for `administrator_login_password_wo`. This property should be incremented when updating `administrator_login_password_wo`.
+  /// An integer value used to trigger an update for `administratorLoginPasswordWo`. This property should be incremented when updating `administratorLoginPasswordWo`.
   late final pulumi.Output<int?> administratorLoginPasswordWoVersion;
-  /// An `azuread_administrator` block as defined below.
+  /// An `azureadAdministrator` block as defined below.
   late final pulumi.Output<ServerAzureadAdministrator?> azureadAdministrator;
   /// The connection policy the server will use. Possible values are `Default`, `Proxy`, and `Redirect`. Defaults to `Default`.
   late final pulumi.Output<String?> connectionPolicy;
   /// Whether to enable the Express Vulnerability Assessment Configuration. Defaults to `false`.
   ///
-  /// &gt; **Note:** If you have enabled the Classic SQL Vulnerability Assessment configuration using the `azure.mssql.ServerVulnerabilityAssessment` resource, you must first delete it before enabling `express_vulnerability_assessment_enabled`. If you wish to revert back to using the Classic SQL Vulnerability Assessment configuration you must first disable this setting.
+  /// &gt; **Note:** If you have enabled the Classic SQL Vulnerability Assessment configuration using the `azure.mssql.ServerVulnerabilityAssessment` resource, you must first delete it before enabling `expressVulnerabilityAssessmentEnabled`. If you wish to revert back to using the Classic SQL Vulnerability Assessment configuration you must first disable this setting.
   late final pulumi.Output<bool?> expressVulnerabilityAssessmentEnabled;
   /// The fully qualified domain name of the Azure SQL Server (e.g. myServerName.database.windows.net)
   late final pulumi.Output<String> fullyQualifiedDomainName;
@@ -836,7 +936,7 @@ class Server extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// The Minimum TLS Version for all SQL Database and SQL Data Warehouse databases associated with the server. Valid values are: `1.0`, `1.1` , `1.2` and `Disabled`. Defaults to `1.2`.
   ///
-  /// &gt; **Note:** The `minimum_tls_version` is set to `Disabled` means all TLS versions are allowed. After you enforce a version of `minimum_tls_version`, it's not possible to revert to `Disabled`.
+  /// &gt; **Note:** The `minimumTlsVersion` is set to `Disabled` means all TLS versions are allowed. After you enforce a version of `minimumTlsVersion`, it's not possible to revert to `Disabled`.
   ///
   /// &gt; **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
   late final pulumi.Output<String?> minimumTlsVersion;
@@ -844,7 +944,7 @@ class Server extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Whether outbound network traffic is restricted for this server. Defaults to `false`.
   late final pulumi.Output<bool?> outboundNetworkRestrictionEnabled;
-  /// Specifies the primary user managed identity id. Required if `type` within the `identity` block is set to either `SystemAssigned, UserAssigned` or `UserAssigned` and should be set at same time as setting `identity_ids`.
+  /// Specifies the primary user managed identity id. Required if `type` within the `identity` block is set to either `SystemAssigned, UserAssigned` or `UserAssigned` and should be set at same time as setting `identityIds`.
   late final pulumi.Output<String> primaryUserAssignedIdentityId;
   /// Whether public network access is allowed for this server. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;

@@ -91,6 +91,28 @@ import 'get_alert_rule_template_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_operationalinsights_getanalyticsworkspace" "example" {
+///   name                = "example"
+///   resource_group_name = "example-resources"
+/// }
+/// data "azure_sentinel_getalertrule" "exampleGetAlertRule" {
+///   name                       = "existing"
+///   log_analytics_workspace_id = data.azure_operationalinsights_getanalyticsworkspace.example.id
+/// }
+///
+/// output "id" {
+///   value = data.azure_sentinel_getalertrule.exampleGetAlertRule.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +123,8 @@ import 'get_alert_rule_template_result.dart';
 /// import com.pulumi.azure.operationalinsights.inputs.GetAnalyticsWorkspaceArgs;
 /// import com.pulumi.azure.sentinel.SentinelFunctions;
 /// import com.pulumi.azure.sentinel.inputs.GetAlertRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -296,10 +318,42 @@ Future<GetAlertRuleResult> getAlertRule(
 /// 			DisplayName:             pulumi.String("Potential data staging"),
 /// 		}, nil)
 /// 		ctx.Export("id", example.ApplyT(func(example sentinel.GetAlertRuleAnomalyResult) (*string, error) {
-/// 			return &example.Id, nil
+/// 			return example.Id, nil
 /// 		}).(pulumi.StringPtrOutput))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_sentinel_getalertruleanomaly" "example" {
+///   log_analytics_workspace_id = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+///   display_name               = "Potential data staging"
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-law"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
+///   workspace_id                 = azure_operationalinsights_analyticsworkspace.example.id
+///   customer_managed_key_enabled = false
+/// }
+/// output "id" {
+///   value = data.azure_sentinel_getalertruleanomaly.example.id
 /// }
 /// ```
 /// ```java
@@ -316,8 +370,8 @@ Future<GetAlertRuleResult> getAlertRule(
 /// import com.pulumi.azure.sentinel.LogAnalyticsWorkspaceOnboardingArgs;
 /// import com.pulumi.azure.sentinel.SentinelFunctions;
 /// import com.pulumi.azure.sentinel.inputs.GetAlertRuleAnomalyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -467,6 +521,24 @@ Future<GetAlertRuleAnomalyResult> getAlertRuleAnomaly(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_sentinel_getalertruletemplate" "example" {
+///   log_analytics_workspace_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.OperationalInsights/workspaces/workspace1"
+///   display_name               = "Create incidents based on Azure Security Center for IoT alerts"
+/// }
+///
+/// output "id" {
+///   value = data.azure_sentinel_getalertruletemplate.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -475,8 +547,8 @@ Future<GetAlertRuleAnomalyResult> getAlertRuleAnomaly(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.sentinel.SentinelFunctions;
 /// import com.pulumi.azure.sentinel.inputs.GetAlertRuleTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

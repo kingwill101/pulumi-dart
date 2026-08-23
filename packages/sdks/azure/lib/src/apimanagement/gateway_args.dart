@@ -12,7 +12,7 @@ class GatewayArgs {
   final pulumi.Input<String> apiManagementId;
   /// The description of the API Management Gateway.
   final pulumi.Input<String>? description;
-  /// A `location_data` block as documented below.
+  /// A `locationData` block as documented below.
   final pulumi.Input<GatewayLocationData> locationData;
   /// The name which should be used for the API Management Gateway. Changing this forces a new API Management Gateway to be created.
   final pulumi.Input<String>? name;
@@ -20,7 +20,7 @@ class GatewayArgs {
   /// Creates a new [GatewayArgs].
   /// [apiManagementId] The ID of the API Management Resource in which the gateway will be created. Changing this forces a new API Management Gateway resource to be created.
   /// [description] The description of the API Management Gateway.
-  /// [locationData] A `location_data` block as documented below.
+  /// [locationData] A `locationData` block as documented below.
   /// [name] The name which should be used for the API Management Gateway. Changing this forces a new API Management Gateway to be created.
   const GatewayArgs({
     required this.apiManagementId,
@@ -47,4 +47,3 @@ class GatewayArgs {
     );
   }
 }
-

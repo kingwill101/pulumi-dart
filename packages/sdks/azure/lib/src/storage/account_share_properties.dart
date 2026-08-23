@@ -6,16 +6,16 @@ import 'account_share_properties_retention_policy.dart';
 import 'account_share_properties_smb.dart';
 
 class AccountShareProperties {
-  /// A `cors_rule` block as defined below.
+  /// A `corsRule` block as defined below.
   final pulumi.Input<List<AccountSharePropertiesCorsRule>>? corsRules;
-  /// A `retention_policy` block as defined below.
+  /// A `retentionPolicy` block as defined below.
   final pulumi.Input<AccountSharePropertiesRetentionPolicy>? retentionPolicy;
   /// A `smb` block as defined below.
   final pulumi.Input<AccountSharePropertiesSmb>? smb;
 
   /// Creates a new [AccountShareProperties].
-  /// [corsRules] A `cors_rule` block as defined below.
-  /// [retentionPolicy] A `retention_policy` block as defined below.
+  /// [corsRules] A `corsRule` block as defined below.
+  /// [retentionPolicy] A `retentionPolicy` block as defined below.
   /// [smb] A `smb` block as defined below.
   const AccountShareProperties({
     this.corsRules,
@@ -39,4 +39,3 @@ class AccountShareProperties {
     );
   }
 }
-

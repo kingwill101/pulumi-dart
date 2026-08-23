@@ -130,6 +130,34 @@ import 'flexible_server_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_mysql_flexibleserver" "example" {
+///   name                   = "example-fs"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resourcegroup.example.location
+///   administrator_login    = "adminTerraform"
+///   administrator_password = "H@Sh1CoR3!"
+///   sku_name               = "GP_Standard_D2ds_v4"
+/// }
+/// resource "azure_mysql_flexibleserverconfiguration" "example" {
+///   name                = "interactive_timeout"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   server_name         = azure_mysql_flexibleserver.example.name
+///   value               = "600"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +170,8 @@ import 'flexible_server_configuration_state.dart';
 /// import com.pulumi.azure.mysql.FlexibleServerArgs;
 /// import com.pulumi.azure.mysql.FlexibleServerConfiguration;
 /// import com.pulumi.azure.mysql.FlexibleServerConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

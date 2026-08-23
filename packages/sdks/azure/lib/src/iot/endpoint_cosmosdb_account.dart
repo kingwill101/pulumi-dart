@@ -286,6 +286,68 @@ import 'endpoint_cosmosdb_account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_iot_iothub" "example" {
+///   name                = "exampleIothub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku = {
+///     name     = "B1"
+///     capacity = "1"
+///   }
+///   tags = {
+///     "purpose" = "example"
+///   }
+/// }
+/// resource "azure_cosmosdb_account" "example" {
+///   name                = "cosmosdb-account"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   offer_type          = "Standard"
+///   kind                = "GlobalDocumentDB"
+///   consistency_policy = {
+///     consistency_level = "Strong"
+///   }
+///   geo_locations {
+///     location          = azure_core_resourcegroup.example.location
+///     failover_priority = 0
+///   }
+/// }
+/// resource "azure_cosmosdb_sqldatabase" "example" {
+///   name                = "cosmos-sql-db"
+///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
+///   account_name        = azure_cosmosdb_account.example.name
+/// }
+/// resource "azure_cosmosdb_sqlcontainer" "example" {
+///   name                = "example-container"
+///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
+///   account_name        = azure_cosmosdb_account.example.name
+///   database_name       = azure_cosmosdb_sqldatabase.example.name
+///   partition_key_path  = "/definition/id"
+/// }
+/// resource "azure_iot_endpointcosmosdbaccount" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   iothub_id           = azure_iot_iothub.example.id
+///   container_name      = azure_cosmosdb_sqlcontainer.example.name
+///   database_name       = azure_cosmosdb_sqldatabase.example.name
+///   endpoint_uri        = azure_cosmosdb_account.example.endpoint
+///   primary_key         = azure_cosmosdb_account.example.primary_key
+///   secondary_key       = azure_cosmosdb_account.example.secondary_key
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -307,8 +369,8 @@ import 'endpoint_cosmosdb_account_state.dart';
 /// import com.pulumi.azure.cosmosdb.SqlContainerArgs;
 /// import com.pulumi.azure.iot.EndpointCosmosdbAccount;
 /// import com.pulumi.azure.iot.EndpointCosmosdbAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -461,7 +523,7 @@ class EndpointCosmosdbAccount extends pulumi.CustomResource {
   late final pulumi.Output<String> endpointUri;
   /// The ID of the User Managed Identity used to authenticate against the Cosmos DB Account endpoint.
   ///
-  /// &gt; **Note:** `identity_id` can only be specified when `authentication_type` is `identityBased`. It must be one of the `identity_ids` of the Iot Hub. If not specified when `authentication_type` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
+  /// &gt; **Note:** `identityId` can only be specified when `authenticationType` is `identityBased`. It must be one of the `identityIds` of the Iot Hub. If not specified when `authenticationType` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
   late final pulumi.Output<String?> identityId;
   /// The ID of the IoT Hub to create the endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubId;
@@ -473,17 +535,17 @@ class EndpointCosmosdbAccount extends pulumi.CustomResource {
   late final pulumi.Output<String?> partitionKeyTemplate;
   /// The primary key of the Cosmos DB Account.
   ///
-  /// &gt; **Note:** `primary_key` must and can only be specified when `authentication_type` is `keyBased`.
+  /// &gt; **Note:** `primaryKey` must and can only be specified when `authenticationType` is `keyBased`.
   late final pulumi.Output<String?> primaryKey;
   /// The name of the resource group under which the Cosmos DB Account has been created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// The secondary key of the Cosmos DB Account.
   ///
-  /// &gt; **Note:** `secondary_key` must and can only be specified when `authentication_type` is `keyBased`.
+  /// &gt; **Note:** `secondaryKey` must and can only be specified when `authenticationType` is `keyBased`.
   late final pulumi.Output<String?> secondaryKey;
   /// The subscription ID for the endpoint.
   ///
-  /// &gt; **Note:** When `subscription_id` isn't specified it will be set to the subscription ID of the IoT Hub resource.
+  /// &gt; **Note:** When `subscriptionId` isn't specified it will be set to the subscription ID of the IoT Hub resource.
   late final pulumi.Output<String> subscriptionId;
 
   /// Creates a new [EndpointCosmosdbAccount].

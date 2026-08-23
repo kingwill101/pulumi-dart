@@ -6,14 +6,14 @@ import 'get_db_nodes_db_node.dart';
 /// Result data returned by getDbNodes.
 class GetDbNodesResult {
   final String cloudVmClusterId;
-  /// A `db_nodes` block as defined below.
+  /// A `dbNodes` block as defined below.
   final List<GetDbNodesDbNode> dbNodes;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
   /// Creates a new [GetDbNodesResult].
   /// [cloudVmClusterId] Required.
-  /// [dbNodes] A `db_nodes` block as defined below.
+  /// [dbNodes] A `dbNodes` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   const GetDbNodesResult({
     required this.cloudVmClusterId,
@@ -37,4 +37,3 @@ class GetDbNodesResult {
     );
   }
 }
-

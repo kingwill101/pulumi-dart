@@ -9,7 +9,7 @@ class ClusterWorkerProfile {
   final pulumi.Input<int> diskSizeGb;
   /// Whether worker virtual machines are encrypted at host. Defaults to `false`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `encryption_at_host_enabled` is only available for certain VM sizes and the `EncryptionAtHost` feature must be enabled for your subscription. Please see the [Azure documentation](https://learn.microsoft.com/azure/virtual-machines/disks-enable-host-based-encryption-portal?tabs=azure-powershell) for more information.
+  /// &gt; **Note:** `encryptionAtHostEnabled` is only available for certain VM sizes and the `EncryptionAtHost` feature must be enabled for your subscription. Please see the [Azure documentation](https://learn.microsoft.com/azure/virtual-machines/disks-enable-host-based-encryption-portal?tabs=azure-powershell) for more information.
   final pulumi.Input<bool>? encryptionAtHostEnabled;
   /// The initial number of worker nodes which should exist in the cluster. Changing this forces a new resource to be created.
   final pulumi.Input<int> nodeCount;
@@ -56,4 +56,3 @@ class ClusterWorkerProfile {
     );
   }
 }
-

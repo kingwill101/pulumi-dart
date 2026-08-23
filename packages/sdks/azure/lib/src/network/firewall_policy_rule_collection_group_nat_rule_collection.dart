@@ -10,14 +10,14 @@ class FirewallPolicyRuleCollectionGroupNatRuleCollection {
   final pulumi.Input<String> name;
   /// The priority of the NAT rule collection. The range is `100` - `65000`.
   final pulumi.Input<int> priority;
-  /// A `nat_rule` block as defined below.
+  /// A `natRule` block as defined below.
   final pulumi.Input<List<FirewallPolicyRuleCollectionGroupNatRuleCollectionRule>> rules;
 
   /// Creates a new [FirewallPolicyRuleCollectionGroupNatRuleCollection].
   /// [action] The action to take for the NAT rules in this collection. Currently, the only possible value is `Dnat`.
   /// [name] The name which should be used for this NAT rule collection.
   /// [priority] The priority of the NAT rule collection. The range is `100` - `65000`.
-  /// [rules] A `nat_rule` block as defined below.
+  /// [rules] A `natRule` block as defined below.
   const FirewallPolicyRuleCollectionGroupNatRuleCollection({
     required this.action,
     required this.name,
@@ -43,4 +43,3 @@ class FirewallPolicyRuleCollectionGroupNatRuleCollection {
     );
   }
 }
-

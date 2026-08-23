@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_cool_access.dart';
+import 'volume_data_protection_advanced_ransomware.dart';
 import 'volume_data_protection_backup_policy.dart';
 import 'volume_data_protection_replication.dart';
 import 'volume_data_protection_snapshot_policy.dart';
@@ -9,7 +10,7 @@ import 'volume_export_policy_rule.dart';
 
 /// Input properties used for looking up and filtering Volume resources.
 class VolumeState {
-  /// While auto splitting the short term clone volume, if the parent pool does not have enough space to accommodate the volume after split, it will be automatically resized, which will lead to increased billing. To accept capacity pool size auto grow and create a short term clone volume, set the property as `Accepted`. If `Declined`, the short term clone volume creation operation will fail. This property can only be used in conjunction with `create_from_snapshot_resource_id`. Changing this forces a new resource to be created.
+  /// While auto splitting the short term clone volume, if the parent pool does not have enough space to accommodate the volume after split, it will be automatically resized, which will lead to increased billing. To accept capacity pool size auto grow and create a short term clone volume, set the property as `Accepted`. If `Declined`, the short term clone volume creation operation will fail. This property can only be used in conjunction with `createFromSnapshotResourceId`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Short-term clones are not supported on large volumes or volumes enabled for cool access. Short-term clones automatically convert to regular volumes after 32 days. For more information, please refer to [Create a short-term clone volume in Azure NetApp Files](https://learn.microsoft.com/en-us/azure/azure-netapp-files/create-short-term-clone)
   final pulumi.Input<String>? acceptGrowCapacityPoolForShortTermCloneSplit;
@@ -17,25 +18,27 @@ class VolumeState {
   final pulumi.Input<String>? accountName;
   /// Is the NetApp Volume enabled for Azure VMware Solution (AVS) datastore purpose. Defaults to `false`. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? azureVmwareDataStoreEnabled;
-  /// A `cool_access` block as defined below.
+  /// A `coolAccess` block as defined below.
   final pulumi.Input<VolumeCoolAccess>? coolAccess;
-  /// Creates volume from snapshot. Following properties must be the same as the original volume where the snapshot was taken from: `protocols`, `subnet_id`, `location`, `service_level`, `resource_group_name` and `account_name`. Changing this forces a new resource to be created.
+  /// Creates volume from snapshot. Following properties must be the same as the original volume where the snapshot was taken from: `protocols`, `subnetId`, `location`, `serviceLevel`, `resourceGroupName` and `accountName`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? createFromSnapshotResourceId;
-  /// A `data_protection_backup_policy` block as defined below.
+  /// A `dataProtectionAdvancedRansomware` block as defined below.
+  final pulumi.Input<VolumeDataProtectionAdvancedRansomware>? dataProtectionAdvancedRansomware;
+  /// A `dataProtectionBackupPolicy` block as defined below.
   final pulumi.Input<VolumeDataProtectionBackupPolicy>? dataProtectionBackupPolicy;
-  /// A `data_protection_replication` block as defined below. Changing this forces a new resource to be created.
+  /// A `dataProtectionReplication` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<VolumeDataProtectionReplication>? dataProtectionReplication;
-  /// A `data_protection_snapshot_policy` block as defined below.
+  /// A `dataProtectionSnapshotPolicy` block as defined below.
   final pulumi.Input<VolumeDataProtectionSnapshotPolicy>? dataProtectionSnapshotPolicy;
-  /// The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys. This is required with `key_vault_private_endpoint_id`. Changing this forces a new resource to be created.
+  /// The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys. This is required with `keyVaultPrivateEndpointId`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? encryptionKeySource;
-  /// One or more `export_policy_rule` block defined below.
+  /// One or more `exportPolicyRule` block defined below.
   final pulumi.Input<List<VolumeExportPolicyRule>>? exportPolicyRules;
   /// Enable to allow Kerberos secured volumes. Requires appropriate export rules. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `kerberos_enabled` requires that the parent `azure.netapp.Account` has a *valid* AD connection defined. If the configuration is invalid, the volume will still be created but in a failed state. This requires manually deleting the volume and recreating it again via Terraform once the AD configuration has been corrected.
+  /// &gt; **Note:** `kerberosEnabled` requires that the parent `azure.netapp.Account` has a *valid* AD connection defined. If the configuration is invalid, the volume will still be created but in a failed state. This requires manually deleting the volume and recreating it again via Terraform once the AD configuration has been corrected.
   final pulumi.Input<bool>? kerberosEnabled;
-  /// The Private Endpoint ID for Key Vault, which is required when using customer-managed keys. This is required with `encryption_key_source`. Changing this forces a new resource to be created.
+  /// The Private Endpoint ID for Key Vault, which is required when using customer-managed keys. This is required with `encryptionKeySource`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? keyVaultPrivateEndpointId;
   /// A boolean specifying if the volume is a large volume. Defaults to `false`.
   ///
@@ -51,7 +54,7 @@ class VolumeState {
   final pulumi.Input<String>? networkFeatures;
   /// The name of the NetApp pool in which the NetApp Volume should be created.
   final pulumi.Input<String>? poolName;
-  /// The target volume protocol expressed as a list. Supported single value include `CIFS`, `NFSv3`, or `NFSv4.1`. If argument is not defined it will default to `NFSv3`. Protocol conversion between `NFSv3` and `NFSv4.1` and vice-versa is supported without recreating the volume, however export policy rules must be updated accordingly to avoid configuration drift (e.g., when converting from `NFSv3` to `NFSv4.1`, set `nfsv3_enabled = false` and `nfsv41_enabled = true` in export policy rules). Dual protocol scenario is supported for CIFS and NFSv3, for more information, please refer to [Create a dual-protocol volume for Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/create-volumes-dual-protocol) document.
+  /// The target volume protocol expressed as a list. Supported single value include `CIFS`, `NFSv3`, or `NFSv4.1`. If argument is not defined it will default to `NFSv3`. Protocol conversion between `NFSv3` and `NFSv4.1` and vice-versa is supported without recreating the volume, however export policy rules must be updated accordingly to avoid configuration drift (e.g., when converting from `NFSv3` to `NFSv4.1`, set `nfsv3Enabled = false` and `nfsv41Enabled = true` in export policy rules). Dual protocol scenario is supported for CIFS and NFSv3, for more information, please refer to [Create a dual-protocol volume for Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/create-volumes-dual-protocol) document.
   ///
   /// &gt; **Note:** When converting protocols, ensure that export policy rules are updated to match the new protocol to avoid configuration drift. For example, when changing from NFSv3 to NFSv4.1, update the `protocol` field in export policy rules accordingly.
   final pulumi.Input<List<String>>? protocols;
@@ -61,9 +64,9 @@ class VolumeState {
   final pulumi.Input<String>? securityStyle;
   /// The target performance of the file system. Possible values are `Premium`, `Standard`, `Ultra` and `Flexible`.
   ///
-  /// &gt; **Note:** When updating `service_level` by migrating it to another Capacity Pool, both `service_level` and `pool_name` must be changed, otherwise the volume will be recreated with the specified `service_level`.
+  /// &gt; **Note:** When updating `serviceLevel` by migrating it to another Capacity Pool, both `serviceLevel` and `poolName` must be changed, otherwise the volume will be recreated with the specified `serviceLevel`.
   ///
-  /// &gt; **Note:** After updating `service_level` the `id` for the volume will change to include the new Capacity Pool so any resources referencing the Volume will be silently removed from state. They will still exist in Azure but need to reimported into Terraform.
+  /// &gt; **Note:** After updating `serviceLevel` the `id` for the volume will change to include the new Capacity Pool so any resources referencing the Volume will be silently removed from state. They will still exist in Azure but need to reimported into Terraform.
   final pulumi.Input<String>? serviceLevel;
   /// Enable SMB encryption. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? smb3ProtocolEncryptionEnabled;
@@ -91,25 +94,26 @@ class VolumeState {
   final pulumi.Input<String>? zone;
 
   /// Creates a new [VolumeState].
-  /// [acceptGrowCapacityPoolForShortTermCloneSplit] While auto splitting the short term clone volume, if the parent pool does not have enough space to accommodate the volume after split, it will be automatically resized, which will lead to increased billing. To accept capacity pool size auto grow and create a short term clone volume, set the property as `Accepted`. If `Declined`, the short term clone volume creation operation will fail. This property can only be used in conjunction with `create_from_snapshot_resource_id`. Changing this forces a new resource to be created.
+  /// [acceptGrowCapacityPoolForShortTermCloneSplit] While auto splitting the short term clone volume, if the parent pool does not have enough space to accommodate the volume after split, it will be automatically resized, which will lead to increased billing. To accept capacity pool size auto grow and create a short term clone volume, set the property as `Accepted`. If `Declined`, the short term clone volume creation operation will fail. This property can only be used in conjunction with `createFromSnapshotResourceId`. Changing this forces a new resource to be created.
   /// [accountName] The name of the NetApp account in which the NetApp Pool should be created. Changing this forces a new resource to be created.
   /// [azureVmwareDataStoreEnabled] Is the NetApp Volume enabled for Azure VMware Solution (AVS) datastore purpose. Defaults to `false`. Changing this forces a new resource to be created.
-  /// [coolAccess] A `cool_access` block as defined below.
-  /// [createFromSnapshotResourceId] Creates volume from snapshot. Following properties must be the same as the original volume where the snapshot was taken from: `protocols`, `subnet_id`, `location`, `service_level`, `resource_group_name` and `account_name`. Changing this forces a new resource to be created.
-  /// [dataProtectionBackupPolicy] A `data_protection_backup_policy` block as defined below.
-  /// [dataProtectionReplication] A `data_protection_replication` block as defined below. Changing this forces a new resource to be created.
-  /// [dataProtectionSnapshotPolicy] A `data_protection_snapshot_policy` block as defined below.
-  /// [encryptionKeySource] The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys. This is required with `key_vault_private_endpoint_id`. Changing this forces a new resource to be created.
-  /// [exportPolicyRules] One or more `export_policy_rule` block defined below.
+  /// [coolAccess] A `coolAccess` block as defined below.
+  /// [createFromSnapshotResourceId] Creates volume from snapshot. Following properties must be the same as the original volume where the snapshot was taken from: `protocols`, `subnetId`, `location`, `serviceLevel`, `resourceGroupName` and `accountName`. Changing this forces a new resource to be created.
+  /// [dataProtectionAdvancedRansomware] A `dataProtectionAdvancedRansomware` block as defined below.
+  /// [dataProtectionBackupPolicy] A `dataProtectionBackupPolicy` block as defined below.
+  /// [dataProtectionReplication] A `dataProtectionReplication` block as defined below. Changing this forces a new resource to be created.
+  /// [dataProtectionSnapshotPolicy] A `dataProtectionSnapshotPolicy` block as defined below.
+  /// [encryptionKeySource] The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys. This is required with `keyVaultPrivateEndpointId`. Changing this forces a new resource to be created.
+  /// [exportPolicyRules] One or more `exportPolicyRule` block defined below.
   /// [kerberosEnabled] Enable to allow Kerberos secured volumes. Requires appropriate export rules. Changing this forces a new resource to be created.
-  /// [keyVaultPrivateEndpointId] The Private Endpoint ID for Key Vault, which is required when using customer-managed keys. This is required with `encryption_key_source`. Changing this forces a new resource to be created.
+  /// [keyVaultPrivateEndpointId] The Private Endpoint ID for Key Vault, which is required when using customer-managed keys. This is required with `encryptionKeySource`. Changing this forces a new resource to be created.
   /// [largeVolumeEnabled] A boolean specifying if the volume is a large volume. Defaults to `false`.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [mountIpAddresses] A list of IPv4 Addresses which should be used to mount the volume.
   /// [name] The name of the NetApp Volume. Changing this forces a new resource to be created.
   /// [networkFeatures] Indicates which network feature to use, accepted values are `Basic` or `Standard`, it defaults to `Basic` if not defined. This is a feature in public preview and for more information about it and how to register, please refer to [Configure network features for an Azure NetApp Files volume](https://docs.microsoft.com/en-us/azure/azure-netapp-files/configure-network-features).
   /// [poolName] The name of the NetApp pool in which the NetApp Volume should be created.
-  /// [protocols] The target volume protocol expressed as a list. Supported single value include `CIFS`, `NFSv3`, or `NFSv4.1`. If argument is not defined it will default to `NFSv3`. Protocol conversion between `NFSv3` and `NFSv4.1` and vice-versa is supported without recreating the volume, however export policy rules must be updated accordingly to avoid configuration drift (e.g., when converting from `NFSv3` to `NFSv4.1`, set `nfsv3_enabled = false` and `nfsv41_enabled = true` in export policy rules). Dual protocol scenario is supported for CIFS and NFSv3, for more information, please refer to [Create a dual-protocol volume for Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/create-volumes-dual-protocol) document.
+  /// [protocols] The target volume protocol expressed as a list. Supported single value include `CIFS`, `NFSv3`, or `NFSv4.1`. If argument is not defined it will default to `NFSv3`. Protocol conversion between `NFSv3` and `NFSv4.1` and vice-versa is supported without recreating the volume, however export policy rules must be updated accordingly to avoid configuration drift (e.g., when converting from `NFSv3` to `NFSv4.1`, set `nfsv3Enabled = false` and `nfsv41Enabled = true` in export policy rules). Dual protocol scenario is supported for CIFS and NFSv3, for more information, please refer to [Create a dual-protocol volume for Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/create-volumes-dual-protocol) document.
   /// [resourceGroupName] The name of the resource group where the NetApp Volume should be created. Changing this forces a new resource to be created.
   /// [securityStyle] Volume security style, accepted values are `unix` or `ntfs`. If not provided, single-protocol volume is created defaulting to `unix` if it is `NFSv3` or `NFSv4.1` volume, if `CIFS`, it will default to `ntfs`. In a dual-protocol volume, if not provided, its value will be `ntfs`. Changing this forces a new resource to be created.
   /// [serviceLevel] The target performance of the file system. Possible values are `Premium`, `Standard`, `Ultra` and `Flexible`.
@@ -130,6 +134,7 @@ class VolumeState {
     this.azureVmwareDataStoreEnabled,
     this.coolAccess,
     this.createFromSnapshotResourceId,
+    this.dataProtectionAdvancedRansomware,
     this.dataProtectionBackupPolicy,
     this.dataProtectionReplication,
     this.dataProtectionSnapshotPolicy,
@@ -167,6 +172,7 @@ class VolumeState {
       'azureVmwareDataStoreEnabled': ?azureVmwareDataStoreEnabled,
       'coolAccess': ?pulumi.Input.mapOptionalInputValue<VolumeCoolAccess, Map<String, dynamic>>(coolAccess, (value) => value.toMap()),
       'createFromSnapshotResourceId': ?createFromSnapshotResourceId,
+      'dataProtectionAdvancedRansomware': ?pulumi.Input.mapOptionalInputValue<VolumeDataProtectionAdvancedRansomware, Map<String, dynamic>>(dataProtectionAdvancedRansomware, (value) => value.toMap()),
       'dataProtectionBackupPolicy': ?pulumi.Input.mapOptionalInputValue<VolumeDataProtectionBackupPolicy, Map<String, dynamic>>(dataProtectionBackupPolicy, (value) => value.toMap()),
       'dataProtectionReplication': ?pulumi.Input.mapOptionalInputValue<VolumeDataProtectionReplication, Map<String, dynamic>>(dataProtectionReplication, (value) => value.toMap()),
       'dataProtectionSnapshotPolicy': ?pulumi.Input.mapOptionalInputValue<VolumeDataProtectionSnapshotPolicy, Map<String, dynamic>>(dataProtectionSnapshotPolicy, (value) => value.toMap()),
@@ -205,6 +211,7 @@ class VolumeState {
       azureVmwareDataStoreEnabled: (() { final guardedValue = map['azureVmwareDataStoreEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       coolAccess: (() { final guardedValue = map['coolAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeCoolAccess.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createFromSnapshotResourceId: (() { final guardedValue = map['createFromSnapshotResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataProtectionAdvancedRansomware: (() { final guardedValue = map['dataProtectionAdvancedRansomware']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeDataProtectionAdvancedRansomware.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataProtectionBackupPolicy: (() { final guardedValue = map['dataProtectionBackupPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeDataProtectionBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataProtectionReplication: (() { final guardedValue = map['dataProtectionReplication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeDataProtectionReplication.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataProtectionSnapshotPolicy: (() { final guardedValue = map['dataProtectionSnapshotPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeDataProtectionSnapshotPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -236,4 +243,3 @@ class VolumeState {
     );
   }
 }
-

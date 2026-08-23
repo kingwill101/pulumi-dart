@@ -6,18 +6,18 @@ import 'get_account_network_acl_virtual_network_rule.dart';
 class GetAccountNetworkAcl {
   /// Whether trusted Azure Services are allowed to access the service.
   final pulumi.Input<String> bypass;
-  /// The Default Action to use when no rules match from `ip_rules` / `virtual_network_rules`.
+  /// The Default Action to use when no rules match from `ipRules` / `virtualNetworkRules`.
   final pulumi.Input<String> defaultAction;
   /// One or more IP Addresses, or CIDR Blocks that are able to access the Cognitive Services Account.
   final pulumi.Input<List<String>> ipRules;
-  /// A `virtual_network_rules` block as defined below.
+  /// A `virtualNetworkRules` block as defined below.
   final pulumi.Input<List<GetAccountNetworkAclVirtualNetworkRule>> virtualNetworkRules;
 
   /// Creates a new [GetAccountNetworkAcl].
   /// [bypass] Whether trusted Azure Services are allowed to access the service.
-  /// [defaultAction] The Default Action to use when no rules match from `ip_rules` / `virtual_network_rules`.
+  /// [defaultAction] The Default Action to use when no rules match from `ipRules` / `virtualNetworkRules`.
   /// [ipRules] One or more IP Addresses, or CIDR Blocks that are able to access the Cognitive Services Account.
-  /// [virtualNetworkRules] A `virtual_network_rules` block as defined below.
+  /// [virtualNetworkRules] A `virtualNetworkRules` block as defined below.
   const GetAccountNetworkAcl({
     required this.bypass,
     required this.defaultAction,
@@ -43,4 +43,3 @@ class GetAccountNetworkAcl {
     );
   }
 }
-

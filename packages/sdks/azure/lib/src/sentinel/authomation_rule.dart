@@ -154,6 +154,39 @@ import 'authomation_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "west europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-workspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
+///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// resource "azure_sentinel_automationrule" "example" {
+///   name                       = "56094f72-ac3f-40e7-a0c0-47bd95f70336"
+///   log_analytics_workspace_id = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+///   display_name               = "automation_rule1"
+///   order                      = 1
+///   action_incidents {
+///     order  = 1
+///     status = "Active"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +202,8 @@ import 'authomation_rule_state.dart';
 /// import com.pulumi.azure.sentinel.AutomationRule;
 /// import com.pulumi.azure.sentinel.AutomationRuleArgs;
 /// import com.pulumi.azure.sentinel.inputs.AutomationRuleActionIncidentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -261,13 +294,13 @@ import 'authomation_rule_state.dart';
 /// $ pulumi import azure:sentinel/authomationRule:AuthomationRule example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.OperationalInsights/workspaces/workspace1/providers/Microsoft.SecurityInsights/automationRules/rule1
 /// ```
 class AuthomationRule extends pulumi.CustomResource {
-  /// One or more `action_incident_task` blocks as defined below.
+  /// One or more `actionIncidentTask` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> actionIncidentTasks;
-  /// One or more `action_incident` blocks as defined below.
+  /// One or more `actionIncident` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> actionIncidents;
-  /// One or more `action_playbook` blocks as defined below.
+  /// One or more `actionPlaybook` blocks as defined below.
   ///
-  /// &gt; **Note:** Either one `action_incident` block or `action_playbook` block has to be specified.
+  /// &gt; **Note:** Either one `actionIncident` block or `actionPlaybook` block has to be specified.
   late final pulumi.Output<List<Map<String, dynamic>>?> actionPlaybooks;
   /// A JSON array of one or more condition JSON objects as is defined [here](https://learn.microsoft.com/en-us/rest/api/securityinsights/preview/automation-rules/create-or-update?tabs=HTTP#automationruletriggeringlogic).
   late final pulumi.Output<String?> conditionJson;

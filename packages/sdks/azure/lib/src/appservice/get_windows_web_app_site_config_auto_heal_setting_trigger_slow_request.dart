@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest {
-  /// The number of occurrences of the defined `status_code` in the specified `interval` on which to trigger this rule.
+  /// The number of occurrences of the defined `statusCode` in the specified `interval` on which to trigger this rule.
   final pulumi.Input<int> count;
   /// The time interval in the form `hh:mm:ss`.
   final pulumi.Input<String> interval;
@@ -11,7 +11,7 @@ class GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest {
   final pulumi.Input<String> timeTaken;
 
   /// Creates a new [GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest].
-  /// [count] The number of occurrences of the defined `status_code` in the specified `interval` on which to trigger this rule.
+  /// [count] The number of occurrences of the defined `statusCode` in the specified `interval` on which to trigger this rule.
   /// [interval] The time interval in the form `hh:mm:ss`.
   /// [timeTaken] (Required) The threshold of time passed to qualify as a Slow Request in `hh:mm:ss`.
   const GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest({
@@ -36,4 +36,3 @@ class GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest {
     );
   }
 }
-

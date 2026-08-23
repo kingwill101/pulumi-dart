@@ -9,7 +9,7 @@ import 'spring_cloud_service_trace.dart';
 
 /// Manages an Azure Spring Cloud Service.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudService` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudService` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -77,7 +77,7 @@ import 'spring_cloud_service_trace.dart';
 ///     },
 ///     trace={
 ///         "connection_string": example_insights.connection_string,
-///         "sample_rate": 10,
+///         "sample_rate": float(10),
 ///     },
 ///     tags={
 ///         "Env": "staging",
@@ -190,6 +190,44 @@ import 'spring_cloud_service_trace.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "tf-test-appinsights"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example-springcloud"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku_name            = "S0"
+///   config_server_git_setting = {
+///     uri          = "https://github.com/Azure-Samples/piggymetrics"
+///     label        = "config"
+///     search_paths = ["dir1", "dir2"]
+///   }
+///   trace = {
+///     connection_string = azure_appinsights_insights.example.connection_string
+///     sample_rate       = 10
+///   }
+///   tags = {
+///     "Env" = "staging"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -204,8 +242,8 @@ import 'spring_cloud_service_trace.dart';
 /// import com.pulumi.azure.appplatform.SpringCloudServiceArgs;
 /// import com.pulumi.azure.appplatform.inputs.SpringCloudServiceConfigServerGitSettingArgs;
 /// import com.pulumi.azure.appplatform.inputs.SpringCloudServiceTraceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -298,17 +336,17 @@ import 'spring_cloud_service_trace.dart';
 class SpringCloudService extends pulumi.CustomResource {
   /// Specifies the size for this Spring Cloud Service's default build agent pool. Possible values are `S1`, `S2`, `S3`, `S4` and `S5`. This field is applicable only for Spring Cloud Service with enterprise tier.
   late final pulumi.Output<String?> buildAgentPoolSize;
-  /// A `config_server_git_setting` block as defined below. This field is applicable only for Spring Cloud Service with basic and standard tier.
+  /// A `configServerGitSetting` block as defined below. This field is applicable only for Spring Cloud Service with basic and standard tier.
   late final pulumi.Output<SpringCloudServiceConfigServerGitSetting?> configServerGitSetting;
-  /// One or more `container_registry` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
+  /// One or more `containerRegistry` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
   late final pulumi.Output<List<Map<String, dynamic>>?> containerRegistries;
-  /// A `default_build_service` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
+  /// A `defaultBuildService` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
   late final pulumi.Output<SpringCloudServiceDefaultBuildService?> defaultBuildService;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// Should the log stream in vnet injection instance could be accessed from Internet?
   late final pulumi.Output<bool?> logStreamPublicEndpointEnabled;
-  /// The resource Id of the Managed Environment that the Spring Apps instance builds on. Can only be specified when `sku_tier` is set to `StandardGen2`.
+  /// The resource Id of the Managed Environment that the Spring Apps instance builds on. Can only be specified when `skuTier` is set to `StandardGen2`.
   late final pulumi.Output<String?> managedEnvironmentId;
   /// A `marketplace` block as defined below. Can only be specified when `sku` is set to `E0`.
   late final pulumi.Output<SpringCloudServiceMarketplace> marketplace;
@@ -318,7 +356,7 @@ class SpringCloudService extends pulumi.CustomResource {
   late final pulumi.Output<SpringCloudServiceNetwork?> network;
   /// A list of the outbound Public IP Addresses used by this Spring Cloud Service.
   late final pulumi.Output<List<String>> outboundPublicIpAddresses;
-  /// A list of `required_network_traffic_rules` blocks as defined below.
+  /// A list of `requiredNetworkTrafficRules` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> requiredNetworkTrafficRules;
   /// Specifies The name of the resource group in which to create the Spring Cloud Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
@@ -328,7 +366,7 @@ class SpringCloudService extends pulumi.CustomResource {
   late final pulumi.Output<String> serviceRegistryId;
   /// Specifies the SKU Name for this Spring Cloud Service. Possible values are `B0`, `S0` and `E0`. Defaults to `S0`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> skuName;
-  /// Specifies the SKU Tier for this Spring Cloud Service. Possible values are `Basic`, `Enterprise`, `Standard` and `StandardGen2`. The attribute is automatically computed from API response except when `managed_environment_id` is defined. Changing this forces a new resource to be created.
+  /// Specifies the SKU Tier for this Spring Cloud Service. Possible values are `Basic`, `Enterprise`, `Standard` and `StandardGen2`. The attribute is automatically computed from API response except when `managedEnvironmentId` is defined. Changing this forces a new resource to be created.
   late final pulumi.Output<String> skuTier;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;

@@ -8,11 +8,11 @@ import 'aiservices_storage.dart';
 
 /// Input properties used for looking up and filtering AIServices resources.
 class AIServicesState {
-  /// The subdomain name used for token-based authentication. This property is required when `network_acls` is specified. Changing this forces a new resource to be created.
+  /// The subdomain name used for token-based authentication. This property is required when `networkAcls` is specified. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** If you do not specify a `custom_subdomain_name` then you will not be able to attach a Private Endpoint to the resource.
+  /// &gt; **Note:** If you do not specify a `customSubdomainName` then you will not be able to attach a Private Endpoint to the resource.
   final pulumi.Input<String>? customSubdomainName;
-  /// A `customer_managed_key` block as documented below.
+  /// A `customerManagedKey` block as documented below.
   final pulumi.Input<AIServicesCustomerManagedKey>? customerManagedKey;
   /// The endpoint used to connect to the AI Services Account.
   final pulumi.Input<String>? endpoint;
@@ -26,7 +26,7 @@ class AIServicesState {
   final pulumi.Input<String>? location;
   /// Specifies the name of the AI Services Account. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// A `network_acls` block as defined below. When this property is specified, `custom_subdomain_name` is also required to be set.
+  /// A `networkAcls` block as defined below. When this property is specified, `customSubdomainName` is also required to be set.
   final pulumi.Input<AIServicesNetworkAcls>? networkAcls;
   /// Whether outbound network access is restricted for the AI Services Account. Defaults to `false`.
   final pulumi.Input<bool>? outboundNetworkAccessRestricted;
@@ -48,15 +48,15 @@ class AIServicesState {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AIServicesState].
-  /// [customSubdomainName] The subdomain name used for token-based authentication. This property is required when `network_acls` is specified. Changing this forces a new resource to be created.
-  /// [customerManagedKey] A `customer_managed_key` block as documented below.
+  /// [customSubdomainName] The subdomain name used for token-based authentication. This property is required when `networkAcls` is specified. Changing this forces a new resource to be created.
+  /// [customerManagedKey] A `customerManagedKey` block as documented below.
   /// [endpoint] The endpoint used to connect to the AI Services Account.
   /// [fqdns] List of FQDNs allowed for the AI Services Account.
   /// [identity] An `identity` block as defined below.
   /// [localAuthenticationEnabled] Whether local authentication is enabled for the AI Services Account. Defaults to `true`.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the AI Services Account. Changing this forces a new resource to be created.
-  /// [networkAcls] A `network_acls` block as defined below. When this property is specified, `custom_subdomain_name` is also required to be set.
+  /// [networkAcls] A `networkAcls` block as defined below. When this property is specified, `customSubdomainName` is also required to be set.
   /// [outboundNetworkAccessRestricted] Whether outbound network access is restricted for the AI Services Account. Defaults to `false`.
   /// [primaryAccessKey] A primary access key which can be used to connect to the AI Services Account.
   /// [publicNetworkAccess] Whether public network access is allowed for the AI Services Account. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
@@ -129,4 +129,3 @@ class AIServicesState {
     );
   }
 }
-

@@ -14,7 +14,7 @@ class DefinitionArgs {
   final pulumi.Input<List<DefinitionAuthorization>> authorizations;
   /// A description of the Lighthouse Definition.
   final pulumi.Input<String>? description;
-  /// An `eligible_authorization` block as defined below.
+  /// An `eligibleAuthorization` block as defined below.
   final pulumi.Input<List<DefinitionEligibleAuthorization>>? eligibleAuthorizations;
   /// A unique UUID/GUID which identifies this lighthouse definition - one will be generated if not specified. Changing this forces a new resource to be created.
   final pulumi.Input<String>? lighthouseDefinitionId;
@@ -30,7 +30,7 @@ class DefinitionArgs {
   /// Creates a new [DefinitionArgs].
   /// [authorizations] An `authorization` block as defined below.
   /// [description] A description of the Lighthouse Definition.
-  /// [eligibleAuthorizations] An `eligible_authorization` block as defined below.
+  /// [eligibleAuthorizations] An `eligibleAuthorization` block as defined below.
   /// [lighthouseDefinitionId] A unique UUID/GUID which identifies this lighthouse definition - one will be generated if not specified. Changing this forces a new resource to be created.
   /// [managingTenantId] The ID of the managing tenant. Changing this forces a new resource to be created.
   /// [name] The name of the Lighthouse Definition. Changing this forces a new resource to be created.
@@ -73,4 +73,3 @@ class DefinitionArgs {
     );
   }
 }
-

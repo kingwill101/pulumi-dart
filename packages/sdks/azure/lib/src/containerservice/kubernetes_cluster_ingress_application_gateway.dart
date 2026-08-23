@@ -10,22 +10,22 @@ class KubernetesClusterIngressApplicationGateway {
   final pulumi.Input<String>? gatewayId;
   /// The name of the Application Gateway to be used or created in the Nodepool Resource Group, which in turn will be integrated with the ingress controller of this Kubernetes Cluster. See [this](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-new) page for further details.
   final pulumi.Input<String>? gatewayName;
-  /// An `ingress_application_gateway_identity` block is exported. The exported attributes are defined below.
+  /// An `ingressApplicationGatewayIdentity` block is exported. The exported attributes are defined below.
   final pulumi.Input<List<KubernetesClusterIngressApplicationGatewayIngressApplicationGatewayIdentity>>? ingressApplicationGatewayIdentities;
   /// The subnet CIDR to be used to create an Application Gateway, which in turn will be integrated with the ingress controller of this Kubernetes Cluster. See [this](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-new) page for further details.
   final pulumi.Input<String>? subnetCidr;
   /// The ID of the subnet on which to create an Application Gateway, which in turn will be integrated with the ingress controller of this Kubernetes Cluster. See [this](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-new) page for further details.
   ///
-  /// &gt; **Note:** Exactly one of `gateway_id`, `subnet_id` or `subnet_cidr` must be specified.
+  /// &gt; **Note:** Exactly one of `gatewayId`, `subnetId` or `subnetCidr` must be specified.
   ///
-  /// &gt; **Note:** If specifying `ingress_application_gateway` in conjunction with `only_critical_addons_enabled`, the AGIC pod will fail to start. A separate `azure.containerservice.KubernetesClusterNodePool` is required to run the AGIC pod successfully. This is because AGIC is classed as a "non-critical addon".
+  /// &gt; **Note:** If specifying `ingressApplicationGateway` in conjunction with `onlyCriticalAddonsEnabled`, the AGIC pod will fail to start. A separate `azure.containerservice.KubernetesClusterNodePool` is required to run the AGIC pod successfully. This is because AGIC is classed as a "non-critical addon".
   final pulumi.Input<String>? subnetId;
 
   /// Creates a new [KubernetesClusterIngressApplicationGateway].
   /// [effectiveGatewayId] The ID of the Application Gateway associated with the ingress controller deployed to this Kubernetes Cluster.
   /// [gatewayId] The ID of the Application Gateway to integrate with the ingress controller of this Kubernetes Cluster. See [this](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-existing) page for further details.
   /// [gatewayName] The name of the Application Gateway to be used or created in the Nodepool Resource Group, which in turn will be integrated with the ingress controller of this Kubernetes Cluster. See [this](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-new) page for further details.
-  /// [ingressApplicationGatewayIdentities] An `ingress_application_gateway_identity` block is exported. The exported attributes are defined below.
+  /// [ingressApplicationGatewayIdentities] An `ingressApplicationGatewayIdentity` block is exported. The exported attributes are defined below.
   /// [subnetCidr] The subnet CIDR to be used to create an Application Gateway, which in turn will be integrated with the ingress controller of this Kubernetes Cluster. See [this](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-new) page for further details.
   /// [subnetId] The ID of the subnet on which to create an Application Gateway, which in turn will be integrated with the ingress controller of this Kubernetes Cluster. See [this](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-new) page for further details.
   const KubernetesClusterIngressApplicationGateway({
@@ -59,4 +59,3 @@ class KubernetesClusterIngressApplicationGateway {
     );
   }
 }
-

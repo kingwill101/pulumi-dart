@@ -17,7 +17,7 @@ class GetVirtualMachineScaleSetResult {
   final String location;
   /// The name of the public IP address configuration
   final String name;
-  /// A list of `network_interface` blocks as defined below.
+  /// A list of `networkInterface` blocks as defined below.
   final List<GetVirtualMachineScaleSetNetworkInterface> networkInterfaces;
   final String resourceGroupName;
 
@@ -27,7 +27,7 @@ class GetVirtualMachineScaleSetResult {
   /// [instances] A list of `instances` blocks as defined below.
   /// [location] The Azure Region in which this Virtual Machine Scale Set exists.
   /// [name] The name of the public IP address configuration
-  /// [networkInterfaces] A list of `network_interface` blocks as defined below.
+  /// [networkInterfaces] A list of `networkInterface` blocks as defined below.
   /// [resourceGroupName] Required.
   const GetVirtualMachineScaleSetResult({
     required this.id,
@@ -63,4 +63,3 @@ class GetVirtualMachineScaleSetResult {
     );
   }
 }
-

@@ -16,6 +16,8 @@ class GetManagedInstanceResult {
   final String dnsZonePartnerId;
   /// The fully qualified domain name of the Azure Managed SQL Instance.
   final String fqdn;
+  /// Whether the SQL Managed Instance is using the Next-gen General Purpose service tier
+  final bool generalPurposeV2Enabled;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   /// An `identity` block as defined below.
@@ -54,6 +56,7 @@ class GetManagedInstanceResult {
   /// [dnsZone] The Dns Zone where the SQL Managed Instance is located.
   /// [dnsZonePartnerId] The ID of the SQL Managed Instance which shares the DNS zone.
   /// [fqdn] The fully qualified domain name of the Azure Managed SQL Instance.
+  /// [generalPurposeV2Enabled] Whether the SQL Managed Instance is using the Next-gen General Purpose service tier
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] An `identity` block as defined below.
   /// [licenseType] What type of license the SQL Managed Instance uses.
@@ -77,6 +80,7 @@ class GetManagedInstanceResult {
     required this.dnsZone,
     required this.dnsZonePartnerId,
     required this.fqdn,
+    required this.generalPurposeV2Enabled,
     required this.id,
     required this.identities,
     required this.licenseType,
@@ -103,6 +107,7 @@ class GetManagedInstanceResult {
       'dnsZone': dnsZone,
       'dnsZonePartnerId': dnsZonePartnerId,
       'fqdn': fqdn,
+      'generalPurposeV2Enabled': generalPurposeV2Enabled,
       'id': id,
       'identities': pulumi.Input.encodeList<GetManagedInstanceIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'licenseType': licenseType,
@@ -130,6 +135,7 @@ class GetManagedInstanceResult {
       dnsZone: map['dnsZone'] as String,
       dnsZonePartnerId: map['dnsZonePartnerId'] as String,
       fqdn: map['fqdn'] as String,
+      generalPurposeV2Enabled: map['generalPurposeV2Enabled'] as bool,
       id: map['id'] as String,
       identities: pulumi.Input.decodeList<GetManagedInstanceIdentity>(map['identities']!, (value) => GetManagedInstanceIdentity.fromMap((value as Map).cast<String, dynamic>())),
       licenseType: map['licenseType'] as String,
@@ -149,4 +155,3 @@ class GetManagedInstanceResult {
     );
   }
 }
-

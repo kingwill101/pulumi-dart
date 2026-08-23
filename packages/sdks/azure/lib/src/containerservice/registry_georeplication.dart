@@ -11,7 +11,7 @@ class RegistryGeoreplication {
   final pulumi.Input<Map<String, String>>? tags;
   /// Whether zone redundancy is enabled for this replication location? Defaults to `false`.
   ///
-  /// &gt; **Note:** Changing the `zone_redundancy_enabled` forces an underlying replication to be created.
+  /// &gt; **Note:** Changing the `zoneRedundancyEnabled` forces an underlying replication to be created.
   final pulumi.Input<bool>? zoneRedundancyEnabled;
 
   /// Creates a new [RegistryGeoreplication].
@@ -44,4 +44,3 @@ class RegistryGeoreplication {
     );
   }
 }
-

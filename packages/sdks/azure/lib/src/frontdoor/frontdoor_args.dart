@@ -13,19 +13,19 @@ import 'frontdoor_routing_rule.dart';
 /// {@endtemplate}
 /// {@macro pulumi_frontdoor_frontdoor_frontdoor_args_doc}
 class FrontdoorArgs {
-  /// A `backend_pool_health_probe` block as defined below.
+  /// A `backendPoolHealthProbe` block as defined below.
   final pulumi.Input<List<FrontdoorBackendPoolHealthProbe>> backendPoolHealthProbes;
-  /// A `backend_pool_load_balancing` block as defined below.
+  /// A `backendPoolLoadBalancing` block as defined below.
   final pulumi.Input<List<FrontdoorBackendPoolLoadBalancing>> backendPoolLoadBalancings;
-  /// A `backend_pool_settings` block as defined below.
+  /// A `backendPoolSettings` block as defined below.
   final pulumi.Input<List<FrontdoorBackendPoolSetting>>? backendPoolSettings;
-  /// A `backend_pool` block as defined below.
+  /// A `backendPool` block as defined below.
   ///
   /// &gt; Azure by default allows specifying up to 50 Backend Pools - but this quota can be increased via Microsoft Support.
   final pulumi.Input<List<FrontdoorBackendPool>> backendPools;
   /// A friendly name for the Front Door service.
   final pulumi.Input<String>? friendlyName;
-  /// A `frontend_endpoint` block as defined below.
+  /// A `frontendEndpoint` block as defined below.
   final pulumi.Input<List<FrontdoorFrontendEndpoint>> frontendEndpoints;
   /// Should the Front Door Load Balancer be Enabled? Defaults to `true`.
   final pulumi.Input<bool>? loadBalancerEnabled;
@@ -33,22 +33,22 @@ class FrontdoorArgs {
   final pulumi.Input<String>? name;
   /// Specifies the name of the Resource Group in which the Front Door service should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-  /// A `routing_rule` block as defined below.
+  /// A `routingRule` block as defined below.
   final pulumi.Input<List<FrontdoorRoutingRule>> routingRules;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [FrontdoorArgs].
-  /// [backendPoolHealthProbes] A `backend_pool_health_probe` block as defined below.
-  /// [backendPoolLoadBalancings] A `backend_pool_load_balancing` block as defined below.
-  /// [backendPoolSettings] A `backend_pool_settings` block as defined below.
-  /// [backendPools] A `backend_pool` block as defined below.
+  /// [backendPoolHealthProbes] A `backendPoolHealthProbe` block as defined below.
+  /// [backendPoolLoadBalancings] A `backendPoolLoadBalancing` block as defined below.
+  /// [backendPoolSettings] A `backendPoolSettings` block as defined below.
+  /// [backendPools] A `backendPool` block as defined below.
   /// [friendlyName] A friendly name for the Front Door service.
-  /// [frontendEndpoints] A `frontend_endpoint` block as defined below.
+  /// [frontendEndpoints] A `frontendEndpoint` block as defined below.
   /// [loadBalancerEnabled] Should the Front Door Load Balancer be Enabled? Defaults to `true`.
   /// [name] Specifies the name of the Front Door service. Must be globally unique. Changing this forces a new resource to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group in which the Front Door service should exist. Changing this forces a new resource to be created.
-  /// [routingRules] A `routing_rule` block as defined below.
+  /// [routingRules] A `routingRule` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   const FrontdoorArgs({
     required this.backendPoolHealthProbes,
@@ -96,4 +96,3 @@ class FrontdoorArgs {
     );
   }
 }
-

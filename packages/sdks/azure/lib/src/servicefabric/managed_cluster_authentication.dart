@@ -5,13 +5,13 @@ import 'managed_cluster_authentication_active_directory.dart';
 import 'managed_cluster_authentication_certificate.dart';
 
 class ManagedClusterAuthentication {
-  /// A `active_directory` block as defined above.
+  /// A `activeDirectory` block as defined above.
   final pulumi.Input<ManagedClusterAuthenticationActiveDirectory>? activeDirectory;
   /// One or more `certificate` blocks as defined below.
   final pulumi.Input<List<ManagedClusterAuthenticationCertificate>>? certificates;
 
   /// Creates a new [ManagedClusterAuthentication].
-  /// [activeDirectory] A `active_directory` block as defined above.
+  /// [activeDirectory] A `activeDirectory` block as defined above.
   /// [certificates] One or more `certificate` blocks as defined below.
   const ManagedClusterAuthentication({
     this.activeDirectory,
@@ -32,4 +32,3 @@ class ManagedClusterAuthentication {
     );
   }
 }
-

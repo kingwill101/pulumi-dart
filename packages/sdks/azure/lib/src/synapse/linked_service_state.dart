@@ -11,7 +11,7 @@ class LinkedServiceState {
   final pulumi.Input<List<String>>? annotations;
   /// The description for the Synapse Linked Service.
   final pulumi.Input<String>? description;
-  /// A `integration_runtime` block as defined below.
+  /// A `integrationRuntime` block as defined below.
   final pulumi.Input<LinkedServiceIntegrationRuntime>? integrationRuntime;
   /// The name which should be used for this Synapse Linked Service. Changing this forces a new Synapse Linked Service to be created.
   final pulumi.Input<String>? name;
@@ -36,7 +36,7 @@ class LinkedServiceState {
   /// [additionalProperties] A map of additional properties to associate with the Synapse Linked Service.
   /// [annotations] List of tags that can be used for describing the Synapse Linked Service.
   /// [description] The description for the Synapse Linked Service.
-  /// [integrationRuntime] A `integration_runtime` block as defined below.
+  /// [integrationRuntime] A `integrationRuntime` block as defined below.
   /// [name] The name which should be used for this Synapse Linked Service. Changing this forces a new Synapse Linked Service to be created.
   /// [parameters] A map of parameters to associate with the Synapse Linked Service.
   /// [synapseWorkspaceId] The Synapse Workspace ID in which to associate the Linked Service with. Changing this forces a new Synapse Linked Service to be created.
@@ -82,4 +82,3 @@ class LinkedServiceState {
     );
   }
 }
-

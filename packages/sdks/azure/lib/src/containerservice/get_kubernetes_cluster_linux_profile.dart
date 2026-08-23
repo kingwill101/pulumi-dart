@@ -6,12 +6,12 @@ import 'get_kubernetes_cluster_linux_profile_ssh_key.dart';
 class GetKubernetesClusterLinuxProfile {
   /// The username associated with the administrator account of the Windows VMs.
   final pulumi.Input<String> adminUsername;
-  /// An `ssh_key` block as defined below.
+  /// An `sshKey` block as defined below.
   final pulumi.Input<List<GetKubernetesClusterLinuxProfileSshKey>> sshKeys;
 
   /// Creates a new [GetKubernetesClusterLinuxProfile].
   /// [adminUsername] The username associated with the administrator account of the Windows VMs.
-  /// [sshKeys] An `ssh_key` block as defined below.
+  /// [sshKeys] An `sshKey` block as defined below.
   const GetKubernetesClusterLinuxProfile({
     required this.adminUsername,
     required this.sshKeys,
@@ -31,4 +31,3 @@ class GetKubernetesClusterLinuxProfile {
     );
   }
 }
-

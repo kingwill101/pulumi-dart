@@ -313,7 +313,7 @@ import 'cluster_customer_managed_key_state.dart';
 /// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId: pulumi.String(exampleCluster.Identity.ApplyT(func(identity kusto.ClusterIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Get"),
@@ -373,6 +373,69 @@ import 'cluster_customer_managed_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                     = "examplekv"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                 = "standard"
+///   purge_protection_enabled = true
+/// }
+/// resource "azure_keyvault_accesspolicy" "cluster" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
+///   object_id       = azure_kusto_cluster.example.identity.principal_id
+///   key_permissions = ["Get", "UnwrapKey", "WrapKey"]
+/// }
+/// resource "azure_keyvault_accesspolicy" "client" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
+///   object_id       = data.azure_core_getclientconfig.current.object_id
+///   key_permissions = ["Get", "List", "Create", "Delete", "Recover", "GetRotationPolicy"]
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_accesspolicy.client, azure_keyvault_accesspolicy.cluster]
+///   name         = "tfex-key"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_kusto_cluster" "example" {
+///   name                = "kustocluster"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Standard_D13_v2"
+///     capacity = 2
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_kusto_clustercustomermanagedkey" "example" {
+///   cluster_id   = azure_kusto_cluster.example.id
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_name     = azure_keyvault_key.example.name
+///   key_version  = azure_keyvault_key.example.version
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -395,8 +458,8 @@ import 'cluster_customer_managed_key_state.dart';
 /// import com.pulumi.azure.kusto.ClusterCustomerManagedKey;
 /// import com.pulumi.azure.kusto.ClusterCustomerManagedKeyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -600,7 +663,7 @@ class ClusterCustomerManagedKey extends pulumi.CustomResource {
   late final pulumi.Output<String?> keyVersion;
   /// The Managed HSM Key ID for CMK encryption.
   ///
-  /// &gt; **Note:** Exactly one of `managed_hsm_key_id` or `key_vault_id` must be specified.
+  /// &gt; **Note:** Exactly one of `managedHsmKeyId` or `keyVaultId` must be specified.
   late final pulumi.Output<String?> managedHsmKeyId;
   /// The user assigned identity that has access to the Key Vault Key. If not specified, system assigned identity will be used.
   late final pulumi.Output<String?> userIdentity;

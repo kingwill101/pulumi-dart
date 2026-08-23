@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsFunctionAppAuthSettingsGoogle {
   /// The OpenID Connect Client ID for the Google web application.
   final pulumi.Input<String> clientId;
-  /// The client secret associated with the Google web application. Cannot be specified with `client_secret_setting_name`.
+  /// The client secret associated with the Google web application. Cannot be specified with `clientSecretSettingName`.
   final pulumi.Input<String>? clientSecret;
-  /// The app setting name that contains the `client_secret` value used for Google login. Cannot be specified with `client_secret`.
+  /// The app setting name that contains the `clientSecret` value used for Google login. Cannot be specified with `clientSecret`.
   final pulumi.Input<String>? clientSecretSettingName;
   /// Specifies a list of OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. If not specified, `openid`, `profile`, and `email` are used as default scopes.
   final pulumi.Input<List<String>>? oauthScopes;
 
   /// Creates a new [WindowsFunctionAppAuthSettingsGoogle].
   /// [clientId] The OpenID Connect Client ID for the Google web application.
-  /// [clientSecret] The client secret associated with the Google web application. Cannot be specified with `client_secret_setting_name`.
-  /// [clientSecretSettingName] The app setting name that contains the `client_secret` value used for Google login. Cannot be specified with `client_secret`.
+  /// [clientSecret] The client secret associated with the Google web application. Cannot be specified with `clientSecretSettingName`.
+  /// [clientSecretSettingName] The app setting name that contains the `clientSecret` value used for Google login. Cannot be specified with `clientSecret`.
   /// [oauthScopes] Specifies a list of OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. If not specified, `openid`, `profile`, and `email` are used as default scopes.
   const WindowsFunctionAppAuthSettingsGoogle({
     required this.clientId,
@@ -42,4 +42,3 @@ class WindowsFunctionAppAuthSettingsGoogle {
     );
   }
 }
-

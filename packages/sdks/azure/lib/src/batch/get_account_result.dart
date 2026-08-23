@@ -12,7 +12,7 @@ class GetAccountResult {
   final List<GetAccountEncryption> encryptions;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// The `key_vault_reference` block that describes the Azure KeyVault reference to use when deploying the Azure Batch account using the `UserSubscription` pool allocation mode.
+  /// The `keyVaultReference` block that describes the Azure KeyVault reference to use when deploying the Azure Batch account using the `UserSubscription` pool allocation mode.
   final List<GetAccountKeyVaultReference> keyVaultReferences;
   /// The Azure Region in which this Batch account exists.
   final String location;
@@ -34,7 +34,7 @@ class GetAccountResult {
   /// [accountEndpoint] The account endpoint used to interact with the Batch service.
   /// [encryptions] The `encryption` block that describes the Azure KeyVault key reference used to encrypt data for the Azure Batch account.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [keyVaultReferences] The `key_vault_reference` block that describes the Azure KeyVault reference to use when deploying the Azure Batch account using the `UserSubscription` pool allocation mode.
+  /// [keyVaultReferences] The `keyVaultReference` block that describes the Azure KeyVault reference to use when deploying the Azure Batch account using the `UserSubscription` pool allocation mode.
   /// [location] The Azure Region in which this Batch account exists.
   /// [name] The Batch account name.
   /// [poolAllocationMode] The pool allocation mode configured for this Batch account.
@@ -92,4 +92,3 @@ class GetAccountResult {
     );
   }
 }
-

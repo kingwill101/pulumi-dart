@@ -94,6 +94,27 @@ import 'service_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   os_type             = "Linux"
+///   sku_name            = "P1v2"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +125,8 @@ import 'service_plan_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.appservice.ServicePlan;
 /// import com.pulumi.azure.appservice.ServicePlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,7 +196,7 @@ class ServicePlan extends pulumi.CustomResource {
   late final pulumi.Output<String> kind;
   /// The Azure Region where the Service Plan should exist. Changing this forces a new Service Plan to be created.
   late final pulumi.Output<String> location;
-  /// The maximum number of workers to use in an Elastic SKU Plan or Premium Plan that have `premium_plan_auto_scale_enabled` set to `true`. Cannot be set unless using an Elastic or Premium SKU.
+  /// The maximum number of workers to use in an Elastic SKU Plan or Premium Plan that have `premiumPlanAutoScaleEnabled` set to `true`. Cannot be set unless using an Elastic or Premium SKU.
   late final pulumi.Output<int> maximumElasticWorkerCount;
   /// The name which should be used for this Service Plan. Changing this forces a new Service Plan to be created.
   late final pulumi.Output<String> name;
@@ -185,7 +206,7 @@ class ServicePlan extends pulumi.CustomResource {
   late final pulumi.Output<bool?> perSiteScalingEnabled;
   /// Should automatic scaling be enabled for the Premium SKU Plan. Defaults to `false`. Cannot be set unless using a Premium SKU.
   late final pulumi.Output<bool?> premiumPlanAutoScaleEnabled;
-  /// Whether this is a reserved Service Plan Type. `true` if `os_type` is `Linux`, otherwise `false`.
+  /// Whether this is a reserved Service Plan Type. `true` if `osType` is `Linux`, otherwise `false`.
   late final pulumi.Output<bool> reserved;
   /// The name of the Resource Group where the Service Plan should exist. Changing this forces a new Service Plan to be created.
   late final pulumi.Output<String> resourceGroupName;
@@ -194,6 +215,8 @@ class ServicePlan extends pulumi.CustomResource {
   /// &gt; **Note:** Isolated SKUs (`I1`, `I2`, `I3`, `I1v2`, `I1mv2`, `I2v2`, `I2mv2`, `I3v2`, `I3mv2`) can only be used with App Service Environments
   ///
   /// &gt; **Note:** Elastic and Consumption SKUs (`Y1`, `FC1`, `EP1`, `EP2`, and `EP3`) are for use with Function Apps.
+  ///
+  /// &gt; **Note:** Hosting Azure Functions on Linux using the Consumption plan will be retired after September 30, 2028. It is recommended to use the Flex Consumption plan for Linux Function Apps. See [here](https://learn.microsoft.com/en-us/azure/azure-functions/consumption-plan) for more information.
   late final pulumi.Output<String> skuName;
   /// A mapping of tags which should be assigned to the AppService.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -201,9 +224,9 @@ class ServicePlan extends pulumi.CustomResource {
   late final pulumi.Output<int> workerCount;
   /// Should the Service Plan balance across Availability Zones in the region.
   ///
-  /// &gt; **Note:** If this setting is set to `true` and the `worker_count` value is specified, it should be set to a multiple of the number of availability zones in the region. Please see the Azure documentation for the number of Availability Zones in your region.
+  /// &gt; **Note:** If this setting is set to `true` and the `workerCount` value is specified, it should be set to a multiple of the number of availability zones in the region. Please see the Azure documentation for the number of Availability Zones in your region.
   ///
-  /// &gt; **Note:** `zone_balancing_enabled` can only be set to `true` on Consumption, Premium, Isolated, or Workflow SKUs. It can be disabled. To enable it, the `worker_count` must be greater than `1`, and the Service Plan must support more than one availability zone. In all other cases, changing this forces a new resource to be created. For more information, please see the [Availability Zone Support](https://learn.microsoft.com/en-us/azure/reliability/reliability-app-service?tabs=azurecli&pivots=free-shared-basic#availability-zone-support).
+  /// &gt; **Note:** `zoneBalancingEnabled` can only be set to `true` on Consumption, Premium, Isolated, or Workflow SKUs. It can be disabled. To enable it, the `workerCount` must be greater than `1`, and the Service Plan must support more than one availability zone. In all other cases, changing this forces a new resource to be created. For more information, please see the [Availability Zone Support](https://learn.microsoft.com/en-us/azure/reliability/reliability-app-service?tabs=azurecli&pivots=free-shared-basic#availability-zone-support).
   late final pulumi.Output<bool?> zoneBalancingEnabled;
 
   /// Creates a new [ServicePlan].

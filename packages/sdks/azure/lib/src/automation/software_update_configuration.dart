@@ -10,7 +10,7 @@ import 'software_update_configuration_windows.dart';
 
 /// Manages an Automation Software Update Configuration.
 ///
-/// !&gt; **Note:** The `azure.automation.SoftwareUpdateConfiguration` resource has been deprecated because the Azure Automation Update Management was retired on 2024-08-31 and has been shutdown on 2025-02-28. This resource will be removed in v5.0 of the AzureRM Provider. Please migrate to Azure Update Manager, and use the `azure.maintenance.Configuration` resource combined with the appropriate assignment resources instead. See https://techcommunity.microsoft.com/blog/azuregovernanceandmanagementblog/log-analytics-agent-based-azure-management-services-shut-down-starting-28-februa/4381853 for more information.
+/// &gt; **Note:** The `azure.automation.SoftwareUpdateConfiguration` resource has been deprecated because the Azure Automation Update Management was retired on 2024-08-31 and has been shutdown on 2025-02-28. This resource will be removed in v5.0 of the AzureRM Provider. Please migrate to Azure Update Manager, and use the `azure.maintenance.Configuration` resource combined with the appropriate assignment resources instead. See https://techcommunity.microsoft.com/blog/azuregovernanceandmanagementblog/log-analytics-agent-based-azure-management-services-shut-down-starting-28-februa/4381853 for more information.
 ///
 /// ## Example Usage
 ///
@@ -250,6 +250,57 @@ import 'software_update_configuration_windows.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "East US"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_automation_runbook" "example" {
+///   name                    = "Get-AzureVMTutorial"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   automation_account_name = azure_automation_account.example.name
+///   log_verbose             = "true"
+///   log_progress            = "true"
+///   description             = "This is a example runbook for terraform acceptance example"
+///   runbook_type            = "Python3"
+///   content                 = "# Some example content\n# for Terraform acceptance example\n"
+///   tags = {
+///     "ENV" = "runbook_test"
+///   }
+/// }
+/// resource "azure_automation_softwareupdateconfiguration" "example" {
+///   name                  = "example"
+///   automation_account_id = azure_automation_account.example.id
+///   linux = {
+///     classifications_includeds = "Security"
+///     excluded_packages         = ["apt"]
+///     included_packages         = ["vim"]
+///     reboot                    = "IfRequired"
+///   }
+///   pre_task = {
+///     source = azure_automation_runbook.example.name
+///     parameters = {
+///       "COMPUTER_NAME" = "Foo"
+///     }
+///   }
+///   duration = "PT2H2M2S"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -266,8 +317,8 @@ import 'software_update_configuration_windows.dart';
 /// import com.pulumi.azure.automation.SoftwareUpdateConfigurationArgs;
 /// import com.pulumi.azure.automation.inputs.SoftwareUpdateConfigurationLinuxArgs;
 /// import com.pulumi.azure.automation.inputs.SoftwareUpdateConfigurationPreTaskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -408,9 +459,9 @@ class SoftwareUpdateConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Specifies a list of names of non-Azure machines for the software update configuration.
   late final pulumi.Output<List<String>?> nonAzureComputerNames;
-  /// A `post_task` blocks as defined below.
+  /// A `postTask` blocks as defined below.
   late final pulumi.Output<SoftwareUpdateConfigurationPostTask?> postTask;
-  /// A `pre_task` blocks as defined below.
+  /// A `preTask` blocks as defined below.
   late final pulumi.Output<SoftwareUpdateConfigurationPreTask?> preTask;
   /// A `schedule` blocks as defined below.
   late final pulumi.Output<SoftwareUpdateConfigurationSchedule> schedule;

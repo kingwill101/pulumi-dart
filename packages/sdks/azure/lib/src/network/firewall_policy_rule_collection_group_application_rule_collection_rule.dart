@@ -10,16 +10,16 @@ class FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule {
   /// Specifies a list of destination FQDN tags.
   final pulumi.Input<List<String>>? destinationFqdnTags;
   final pulumi.Input<List<String>>? destinationFqdns;
-  /// Specifies a list of destination URLs for which policy should hold. Needs Premium SKU for Firewall Policy. Conflicts with `destination_fqdns`.
+  /// Specifies a list of destination URLs for which policy should hold. Needs Premium SKU for Firewall Policy. Conflicts with `destinationFqdns`.
   final pulumi.Input<List<String>>? destinationUrls;
-  /// Specifies a list of HTTP/HTTPS headers to insert. One or more `http_headers` blocks as defined below.
+  /// Specifies a list of HTTP/HTTPS headers to insert. One or more `httpHeaders` blocks as defined below.
   final pulumi.Input<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleHttpHeader>>? httpHeaders;
   /// The name which should be used for this Firewall Policy Rule Collection Group. Changing this forces a new Firewall Policy Rule Collection Group to be created.
   final pulumi.Input<String> name;
   final pulumi.Input<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocol>>? protocols;
   final pulumi.Input<List<String>>? sourceAddresses;
   final pulumi.Input<List<String>>? sourceIpGroups;
-  /// Boolean specifying if TLS shall be terminated (true) or not (false). Must be `true` when using `destination_urls`. Needs Premium SKU for Firewall Policy.
+  /// Boolean specifying if TLS shall be terminated (true) or not (false). Must be `true` when using `destinationUrls`. Needs Premium SKU for Firewall Policy.
   final pulumi.Input<bool>? terminateTls;
   /// Specifies a list of web categories to which access is denied or allowed depending on the value of `action` above. Needs Premium SKU for Firewall Policy.
   final pulumi.Input<List<String>>? webCategories;
@@ -29,13 +29,13 @@ class FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule {
   /// [destinationAddresses] Optional.
   /// [destinationFqdnTags] Specifies a list of destination FQDN tags.
   /// [destinationFqdns] Optional.
-  /// [destinationUrls] Specifies a list of destination URLs for which policy should hold. Needs Premium SKU for Firewall Policy. Conflicts with `destination_fqdns`.
-  /// [httpHeaders] Specifies a list of HTTP/HTTPS headers to insert. One or more `http_headers` blocks as defined below.
+  /// [destinationUrls] Specifies a list of destination URLs for which policy should hold. Needs Premium SKU for Firewall Policy. Conflicts with `destinationFqdns`.
+  /// [httpHeaders] Specifies a list of HTTP/HTTPS headers to insert. One or more `httpHeaders` blocks as defined below.
   /// [name] The name which should be used for this Firewall Policy Rule Collection Group. Changing this forces a new Firewall Policy Rule Collection Group to be created.
   /// [protocols] Optional.
   /// [sourceAddresses] Optional.
   /// [sourceIpGroups] Optional.
-  /// [terminateTls] Boolean specifying if TLS shall be terminated (true) or not (false). Must be `true` when using `destination_urls`. Needs Premium SKU for Firewall Policy.
+  /// [terminateTls] Boolean specifying if TLS shall be terminated (true) or not (false). Must be `true` when using `destinationUrls`. Needs Premium SKU for Firewall Policy.
   /// [webCategories] Specifies a list of web categories to which access is denied or allowed depending on the value of `action` above. Needs Premium SKU for Firewall Policy.
   const FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule({
     this.description,
@@ -86,4 +86,3 @@ class FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule {
     );
   }
 }
-

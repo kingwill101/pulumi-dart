@@ -9,7 +9,7 @@ class VirtualNetworkGatewayBgpSettingsPeeringAddress {
   final pulumi.Input<List<String>>? apipaAddresses;
   /// A list of peering address assigned to the BGP peer of the Virtual Network Gateway.
   final pulumi.Input<List<String>>? defaultAddresses;
-  /// The name of the IP configuration of this Virtual Network Gateway. In case there are multiple `ip_configuration` blocks defined, this property is **required** to specify.
+  /// The name of the IP configuration of this Virtual Network Gateway. In case there are multiple `ipConfiguration` blocks defined, this property is **required** to specify.
   final pulumi.Input<String>? ipConfigurationName;
   /// A list of tunnel IP addresses assigned to the BGP peer of the Virtual Network Gateway.
   final pulumi.Input<List<String>>? tunnelIpAddresses;
@@ -17,7 +17,7 @@ class VirtualNetworkGatewayBgpSettingsPeeringAddress {
   /// Creates a new [VirtualNetworkGatewayBgpSettingsPeeringAddress].
   /// [apipaAddresses] A list of Azure custom APIPA addresses assigned to the BGP peer of the Virtual Network Gateway.
   /// [defaultAddresses] A list of peering address assigned to the BGP peer of the Virtual Network Gateway.
-  /// [ipConfigurationName] The name of the IP configuration of this Virtual Network Gateway. In case there are multiple `ip_configuration` blocks defined, this property is **required** to specify.
+  /// [ipConfigurationName] The name of the IP configuration of this Virtual Network Gateway. In case there are multiple `ipConfiguration` blocks defined, this property is **required** to specify.
   /// [tunnelIpAddresses] A list of tunnel IP addresses assigned to the BGP peer of the Virtual Network Gateway.
   const VirtualNetworkGatewayBgpSettingsPeeringAddress({
     this.apipaAddresses,
@@ -44,4 +44,3 @@ class VirtualNetworkGatewayBgpSettingsPeeringAddress {
     );
   }
 }
-

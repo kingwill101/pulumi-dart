@@ -9,11 +9,11 @@ import 'virtual_machine_availability_group_listener_replica.dart';
 class VirtualMachineAvailabilityGroupListenerState {
   /// The name of the Availability Group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? availabilityGroupName;
-  /// A `load_balancer_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// A `loadBalancerConfiguration` block as defined below. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Either one of `load_balancer_configuration` or `multi_subnet_ip_configuration` must be specified.
+  /// &gt; **Note:** Either one of `loadBalancerConfiguration` or `multiSubnetIpConfiguration` must be specified.
   final pulumi.Input<VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration>? loadBalancerConfiguration;
-  /// One or more `multi_subnet_ip_configuration` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `multiSubnetIpConfiguration` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration>>? multiSubnetIpConfigurations;
   /// The name which should be used for the Microsoft SQL Virtual Machine Availability Group Listener. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -26,8 +26,8 @@ class VirtualMachineAvailabilityGroupListenerState {
 
   /// Creates a new [VirtualMachineAvailabilityGroupListenerState].
   /// [availabilityGroupName] The name of the Availability Group. Changing this forces a new resource to be created.
-  /// [loadBalancerConfiguration] A `load_balancer_configuration` block as defined below. Changing this forces a new resource to be created.
-  /// [multiSubnetIpConfigurations] One or more `multi_subnet_ip_configuration` blocks as defined below. Changing this forces a new resource to be created.
+  /// [loadBalancerConfiguration] A `loadBalancerConfiguration` block as defined below. Changing this forces a new resource to be created.
+  /// [multiSubnetIpConfigurations] One or more `multiSubnetIpConfiguration` blocks as defined below. Changing this forces a new resource to be created.
   /// [name] The name which should be used for the Microsoft SQL Virtual Machine Availability Group Listener. Changing this forces a new resource to be created.
   /// [port] The port of the listener. Changing this forces a new resource to be created.
   /// [replicas] One or more `replica` blocks as defined below. Changing this forces a new resource to be created.
@@ -66,4 +66,3 @@ class VirtualMachineAvailabilityGroupListenerState {
     );
   }
 }
-

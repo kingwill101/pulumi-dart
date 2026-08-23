@@ -42,4 +42,3 @@ class GetWindowsFunctionAppAuthSettingsV2GoogleV2 {
     );
   }
 }
-

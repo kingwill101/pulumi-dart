@@ -7,7 +7,7 @@ import 'account_restore_gremlin_database.dart';
 class AccountRestore {
   /// A `database` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<AccountRestoreDatabase>>? databases;
-  /// One or more `gremlin_database` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `gremlinDatabase` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<AccountRestoreGremlinDatabase>>? gremlinDatabases;
   /// The creation time of the database or the collection (Datetime Format `RFC 3339`). Changing this forces a new resource to be created.
   final pulumi.Input<String> restoreTimestampInUtc;
@@ -20,7 +20,7 @@ class AccountRestore {
 
   /// Creates a new [AccountRestore].
   /// [databases] A `database` block as defined below. Changing this forces a new resource to be created.
-  /// [gremlinDatabases] One or more `gremlin_database` blocks as defined below. Changing this forces a new resource to be created.
+  /// [gremlinDatabases] One or more `gremlinDatabase` blocks as defined below. Changing this forces a new resource to be created.
   /// [restoreTimestampInUtc] The creation time of the database or the collection (Datetime Format `RFC 3339`). Changing this forces a new resource to be created.
   /// [sourceCosmosdbAccountId] The resource ID of the restorable database account from which the restore has to be initiated. The example is `/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName}`. Changing this forces a new resource to be created.
   /// [tablesToRestores] A list of specific tables available for restore. Changing this forces a new resource to be created.
@@ -52,4 +52,3 @@ class AccountRestore {
     );
   }
 }
-

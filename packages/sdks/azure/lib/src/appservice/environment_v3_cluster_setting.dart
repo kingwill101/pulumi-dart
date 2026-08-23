@@ -30,4 +30,3 @@ class EnvironmentV3ClusterSetting {
     );
   }
 }
-

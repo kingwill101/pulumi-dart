@@ -5,7 +5,7 @@ import 'spring_cloud_customized_accelerator_state.dart';
 
 /// Manages a Spring Cloud Customized Accelerator.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudCustomizedAccelerator` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudCustomizedAccelerator` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -183,6 +183,43 @@ import 'spring_cloud_customized_accelerator_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "west europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "E0"
+/// }
+/// resource "azure_appplatform_springcloudaccelerator" "example" {
+///   name                    = "default"
+///   spring_cloud_service_id = azure_appplatform_springcloudservice.example.id
+/// }
+/// resource "azure_appplatform_springcloudcustomizedaccelerator" "example" {
+///   name                        = "example"
+///   spring_cloud_accelerator_id = azure_appplatform_springcloudaccelerator.example.id
+///   git_repository = {
+///     url                 = "https://github.com/Azure-Samples/piggymetrics"
+///     git_tag             = "spring.version.2.0.3"
+///     interval_in_seconds = 100
+///   }
+///   accelerator_tags = ["tag-a", "tag-b"]
+///   description      = "example description"
+///   display_name     = "example name"
+///   icon_url         = "https://images.freecreatives.com/wp-content/uploads/2015/05/smiley-559124_640.jpg"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -198,8 +235,8 @@ import 'spring_cloud_customized_accelerator_state.dart';
 /// import com.pulumi.azure.appplatform.SpringCloudCustomizedAccelerator;
 /// import com.pulumi.azure.appplatform.SpringCloudCustomizedAcceleratorArgs;
 /// import com.pulumi.azure.appplatform.inputs.SpringCloudCustomizedAcceleratorGitRepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -310,7 +347,7 @@ class SpringCloudCustomizedAccelerator extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// Specifies the display name of the Spring Cloud Customized Accelerator..
   late final pulumi.Output<String?> displayName;
-  /// A `git_repository` block as defined below.
+  /// A `gitRepository` block as defined below.
   late final pulumi.Output<SpringCloudCustomizedAcceleratorGitRepository> gitRepository;
   /// Specifies the icon URL of the Spring Cloud Customized Accelerator..
   late final pulumi.Output<String?> iconUrl;

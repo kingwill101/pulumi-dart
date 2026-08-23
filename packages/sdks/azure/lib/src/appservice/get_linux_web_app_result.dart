@@ -14,13 +14,13 @@ import 'get_linux_web_app_storage_account.dart';
 
 /// Result data returned by getLinuxWebApp.
 class GetLinuxWebAppResult {
-  /// An `app_metadata` block as defined below.
+  /// An `appMetadata` block as defined below.
   final Map<String, String> appMetadata;
-  /// An `app_settings` block as defined below.
+  /// An `appSettings` block as defined below.
   final Map<String, String> appSettings;
-  /// An `auth_settings` block as defined below.
+  /// An `authSettings` block as defined below.
   final List<GetLinuxWebAppAuthSetting> authSettings;
-  /// An `auth_settings_v2` block as defined below.
+  /// An `authSettingsV2` block as defined below.
   final List<GetLinuxWebAppAuthSettingsV2> authSettingsV2s;
   /// The current availability state. Possible values are `Normal`, `Limited`, and `DisasterRecoveryMode`.
   final String availability;
@@ -34,7 +34,7 @@ class GetLinuxWebAppResult {
   final String clientCertificateExclusionPaths;
   /// The Client Certificate mode.
   final String clientCertificateMode;
-  /// A `connection_string` block as defined below.
+  /// A `connectionString` block as defined below.
   final List<GetLinuxWebAppConnectionString> connectionStrings;
   /// The identifier used by App Service to perform domain ownership verification via DNS TXT record.
   final String customDomainVerificationId;
@@ -61,26 +61,26 @@ class GetLinuxWebAppResult {
   final List<GetLinuxWebAppLog> logs;
   /// The name of this Storage Account.
   final String name;
-  /// A `outbound_ip_address_list` block as defined below.
+  /// A `outboundIpAddressList` block as defined below.
   final List<String> outboundIpAddressLists;
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`.
   final String outboundIpAddresses;
-  /// A `possible_outbound_ip_address_list` block as defined below.
+  /// A `possibleOutboundIpAddressList` block as defined below.
   final List<String> possibleOutboundIpAddressLists;
-  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   final String possibleOutboundIpAddresses;
   /// Is Public Network Access enabled for this Linux Web App.
   final bool publicNetworkAccessEnabled;
   final String resourceGroupName;
   /// The ID of the Service Plan that this Linux Web App exists in.
   final String servicePlanId;
-  /// A `site_config` block as defined below.
+  /// A `siteConfig` block as defined below.
   final List<GetLinuxWebAppSiteConfig> siteConfigs;
-  /// A `site_credential` block as defined below.
+  /// A `siteCredential` block as defined below.
   final List<GetLinuxWebAppSiteCredential> siteCredentials;
-  /// A `sticky_settings` block as defined below.
+  /// A `stickySettings` block as defined below.
   final List<GetLinuxWebAppStickySetting> stickySettings;
-  /// A `storage_account` block as defined below.
+  /// A `storageAccount` block as defined below.
   final List<GetLinuxWebAppStorageAccount> storageAccounts;
   /// A mapping of tags assigned to the Linux Web App.
   final Map<String, String> tags;
@@ -94,17 +94,17 @@ class GetLinuxWebAppResult {
   final bool webdeployPublishBasicAuthenticationEnabled;
 
   /// Creates a new [GetLinuxWebAppResult].
-  /// [appMetadata] An `app_metadata` block as defined below.
-  /// [appSettings] An `app_settings` block as defined below.
-  /// [authSettings] An `auth_settings` block as defined below.
-  /// [authSettingsV2s] An `auth_settings_v2` block as defined below.
+  /// [appMetadata] An `appMetadata` block as defined below.
+  /// [appSettings] An `appSettings` block as defined below.
+  /// [authSettings] An `authSettings` block as defined below.
+  /// [authSettingsV2s] An `authSettingsV2` block as defined below.
   /// [availability] The current availability state. Possible values are `Normal`, `Limited`, and `DisasterRecoveryMode`.
   /// [backups] A `backup` block as defined below.
   /// [clientAffinityEnabled] Is Client Affinity enabled?
   /// [clientCertificateEnabled] Are Client Certificates enabled?
   /// [clientCertificateExclusionPaths] Paths to exclude when using client certificates, separated by ;
   /// [clientCertificateMode] The Client Certificate mode.
-  /// [connectionStrings] A `connection_string` block as defined below.
+  /// [connectionStrings] A `connectionString` block as defined below.
   /// [customDomainVerificationId] The identifier used by App Service to perform domain ownership verification via DNS TXT record.
   /// [defaultHostname] The default hostname of the Linux Web App.
   /// [enabled] Is the Backup enabled?
@@ -118,17 +118,17 @@ class GetLinuxWebAppResult {
   /// [location] The Azure Region where the Linux Web App exists.
   /// [logs] A `logs` block as defined below.
   /// [name] The name of this Storage Account.
-  /// [outboundIpAddressLists] A `outbound_ip_address_list` block as defined below.
+  /// [outboundIpAddressLists] A `outboundIpAddressList` block as defined below.
   /// [outboundIpAddresses] A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`.
-  /// [possibleOutboundIpAddressLists] A `possible_outbound_ip_address_list` block as defined below.
-  /// [possibleOutboundIpAddresses] A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// [possibleOutboundIpAddressLists] A `possibleOutboundIpAddressList` block as defined below.
+  /// [possibleOutboundIpAddresses] A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   /// [publicNetworkAccessEnabled] Is Public Network Access enabled for this Linux Web App.
   /// [resourceGroupName] Required.
   /// [servicePlanId] The ID of the Service Plan that this Linux Web App exists in.
-  /// [siteConfigs] A `site_config` block as defined below.
-  /// [siteCredentials] A `site_credential` block as defined below.
-  /// [stickySettings] A `sticky_settings` block as defined below.
-  /// [storageAccounts] A `storage_account` block as defined below.
+  /// [siteConfigs] A `siteConfig` block as defined below.
+  /// [siteCredentials] A `siteCredential` block as defined below.
+  /// [stickySettings] A `stickySettings` block as defined below.
+  /// [storageAccounts] A `storageAccount` block as defined below.
   /// [tags] A mapping of tags assigned to the Linux Web App.
   /// [usage] The current usage state. Possible values are `Normal` and `Exceeded`.
   /// [virtualNetworkBackupRestoreEnabled] Whether backup and restore operations over the linked virtual network are enabled.
@@ -267,4 +267,3 @@ class GetLinuxWebAppResult {
     );
   }
 }
-

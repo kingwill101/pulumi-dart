@@ -12,11 +12,11 @@ class GetAlertRuleTemplateResult {
   final String id;
   final String logAnalyticsWorkspaceId;
   final String name;
-  /// A `nrt_template` block as defined below. This only applies to Sentinel NRT Alert Rule Template.
+  /// A `nrtTemplate` block as defined below. This only applies to Sentinel NRT Alert Rule Template.
   final List<GetAlertRuleTemplateNrtTemplate> nrtTemplates;
-  /// A `scheduled_template` block as defined below. This only applies to Sentinel Scheduled Alert Rule Template.
+  /// A `scheduledTemplate` block as defined below. This only applies to Sentinel Scheduled Alert Rule Template.
   final List<GetAlertRuleTemplateScheduledTemplate> scheduledTemplates;
-  /// A `security_incident_template` block as defined below. This only applies to Sentinel MS Security Incident Alert Rule Template.
+  /// A `securityIncidentTemplate` block as defined below. This only applies to Sentinel MS Security Incident Alert Rule Template.
   final List<GetAlertRuleTemplateSecurityIncidentTemplate> securityIncidentTemplates;
 
   /// Creates a new [GetAlertRuleTemplateResult].
@@ -24,9 +24,9 @@ class GetAlertRuleTemplateResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [logAnalyticsWorkspaceId] Required.
   /// [name] Required.
-  /// [nrtTemplates] A `nrt_template` block as defined below. This only applies to Sentinel NRT Alert Rule Template.
-  /// [scheduledTemplates] A `scheduled_template` block as defined below. This only applies to Sentinel Scheduled Alert Rule Template.
-  /// [securityIncidentTemplates] A `security_incident_template` block as defined below. This only applies to Sentinel MS Security Incident Alert Rule Template.
+  /// [nrtTemplates] A `nrtTemplate` block as defined below. This only applies to Sentinel NRT Alert Rule Template.
+  /// [scheduledTemplates] A `scheduledTemplate` block as defined below. This only applies to Sentinel Scheduled Alert Rule Template.
+  /// [securityIncidentTemplates] A `securityIncidentTemplate` block as defined below. This only applies to Sentinel MS Security Incident Alert Rule Template.
   const GetAlertRuleTemplateResult({
     required this.displayName,
     required this.id,
@@ -61,4 +61,3 @@ class GetAlertRuleTemplateResult {
     );
   }
 }
-

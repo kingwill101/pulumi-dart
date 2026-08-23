@@ -156,6 +156,40 @@ import 'configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "api-rg-pro"
+///   location = "West Europe"
+/// }
+/// resource "azure_postgresql_server" "example" {
+///   name                         = "postgresql-server-1"
+///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   sku_name                     = "B_Gen5_2"
+///   storage_mb                   = 5120
+///   backup_retention_days        = 7
+///   geo_redundant_backup_enabled = false
+///   auto_grow_enabled            = true
+///   administrator_login          = "psqladmin"
+///   administrator_login_password = "H@Sh1CoR3!"
+///   version                      = "9.5"
+///   ssl_enforcement_enabled      = true
+/// }
+/// resource "azure_postgresql_configuration" "example" {
+///   name                = "backslash_quote"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   server_name         = azure_postgresql_server.example.name
+///   value               = "on"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +202,8 @@ import 'configuration_state.dart';
 /// import com.pulumi.azure.postgresql.ServerArgs;
 /// import com.pulumi.azure.postgresql.Configuration;
 /// import com.pulumi.azure.postgresql.ConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

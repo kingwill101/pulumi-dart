@@ -11,9 +11,9 @@ class PoolArgs {
   final pulumi.Input<String> accountName;
   /// Whether the NetApp Pool can hold cool access enabled volumes. Defaults to `false`.
   ///
-  /// &gt; **Note:** Disabling `cool_access_enabled` is not allowed and forces a new resource to be created.
+  /// &gt; **Note:** Disabling `coolAccessEnabled` is not allowed and forces a new resource to be created.
   final pulumi.Input<bool>? coolAccessEnabled;
-  /// The custom throughput for the pool in MiB/s. Minimum value is `128`. This field can only be set when `service_level` is set to `Flexible` and `qos_type` is set to `Manual`.
+  /// The custom throughput for the pool in MiB/s. Minimum value is `128`. This field can only be set when `serviceLevel` is set to `Flexible` and `qosType` is set to `Manual`.
   final pulumi.Input<int>? customThroughputMibps;
   /// The encryption type of the pool. Valid values include `Single`, and `Double`. Defaults to `Single`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? encryptionType;
@@ -31,7 +31,7 @@ class PoolArgs {
   ///
   /// &gt; **Note:** `2` TB capacity pool sizing is currently in preview. You can only take advantage of the `2` TB minimum if all the volumes in the capacity pool are using `Standard` network features. If any volume is using `Basic` network features, the minimum size is `4` TB. Please see the product [documentation](https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool) for more information.
   ///
-  /// &gt; **Note:** The maximum `size_in_tb` is goverened by regional quotas. You may request additional capacity from Azure, currently up to `2048`.
+  /// &gt; **Note:** The maximum `sizeInTb` is goverened by regional quotas. You may request additional capacity from Azure, currently up to `2048`.
   final pulumi.Input<int> sizeInTb;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
@@ -39,7 +39,7 @@ class PoolArgs {
   /// Creates a new [PoolArgs].
   /// [accountName] The name of the NetApp account in which the NetApp Pool should be created. Changing this forces a new resource to be created.
   /// [coolAccessEnabled] Whether the NetApp Pool can hold cool access enabled volumes. Defaults to `false`.
-  /// [customThroughputMibps] The custom throughput for the pool in MiB/s. Minimum value is `128`. This field can only be set when `service_level` is set to `Flexible` and `qos_type` is set to `Manual`.
+  /// [customThroughputMibps] The custom throughput for the pool in MiB/s. Minimum value is `128`. This field can only be set when `serviceLevel` is set to `Flexible` and `qosType` is set to `Manual`.
   /// [encryptionType] The encryption type of the pool. Valid values include `Single`, and `Double`. Defaults to `Single`. Changing this forces a new resource to be created.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] The name of the NetApp Pool. Changing this forces a new resource to be created.
@@ -94,4 +94,3 @@ class PoolArgs {
     );
   }
 }
-

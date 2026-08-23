@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineAutoBackupManualSchedule {
   /// A list of days on which backup can take place. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`
   ///
-  /// &gt; **Note:** `days_of_week` can only be specified when `manual_schedule` is set to `Weekly`
+  /// &gt; **Note:** `daysOfWeek` can only be specified when `manualSchedule` is set to `Weekly`
   final pulumi.Input<List<String>>? daysOfWeeks;
   /// Frequency of full backups. Valid values include `Daily` or `Weekly`.
   final pulumi.Input<String> fullBackupFrequency;
@@ -50,4 +50,3 @@ class VirtualMachineAutoBackupManualSchedule {
     );
   }
 }
-

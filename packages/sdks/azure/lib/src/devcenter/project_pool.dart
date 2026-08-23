@@ -326,6 +326,74 @@ import 'project_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_devcenter_devcenter" "example" {
+///   name                = "example-dc"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "internal"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_devcenter_networkconnection" "example" {
+///   name                = "example-dcnc"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   subnet_id           = azure_network_subnet.example.id
+///   domain_join_type    = "AzureADJoin"
+/// }
+/// resource "azure_devcenter_attachednetwork" "example" {
+///   name                  = "example-dcet"
+///   dev_center_id         = azure_devcenter_devcenter.example.id
+///   network_connection_id = azure_devcenter_networkconnection.example.id
+/// }
+/// resource "azure_devcenter_project" "example" {
+///   name                = "example-dcp"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   dev_center_id       = azure_devcenter_devcenter.example.id
+/// }
+/// resource "azure_devcenter_devboxdefinition" "example" {
+///   name               = "example-dcet"
+///   location           = azure_core_resourcegroup.example.location
+///   dev_center_id      = azure_devcenter_devcenter.example.id
+///   image_reference_id ="${azure_devcenter_devcenter.example.id}/galleries/default/images/microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win10-m365-gen2"
+///   sku_name           = "general_i_8c32gb256ssd_v2"
+/// }
+/// resource "azure_devcenter_projectpool" "example" {
+///   name                                    = "example-dcpl"
+///   location                                = azure_core_resourcegroup.example.location
+///   dev_center_project_id                   = azure_devcenter_project.example.id
+///   dev_box_definition_name                 = azure_devcenter_devboxdefinition.example.name
+///   local_administrator_enabled             = true
+///   dev_center_attached_network_name        = azure_devcenter_attachednetwork.example.name
+///   stop_on_disconnect_grace_period_minutes = 60
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -351,8 +419,8 @@ import 'project_pool_state.dart';
 /// import com.pulumi.azure.devcenter.DevBoxDefinitionArgs;
 /// import com.pulumi.azure.devcenter.ProjectPool;
 /// import com.pulumi.azure.devcenter.ProjectPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -542,7 +610,7 @@ class ProjectPool extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// A list of the regions of the managed Virtual Network. When specified, the Dev Center Project Pool will use a Microsoft managed network.
   ///
-  /// &gt; **Note:** Currently only one region can be specified for `managed_virtual_network_regions`.
+  /// &gt; **Note:** Currently only one region can be specified for `managedVirtualNetworkRegions`.
   late final pulumi.Output<String?> managedVirtualNetworkRegions;
   /// Specifies the name of this Dev Center Project Pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;

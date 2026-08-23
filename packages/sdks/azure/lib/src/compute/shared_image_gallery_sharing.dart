@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'shared_image_gallery_sharing_community_gallery.dart';
 
 class SharedImageGallerySharing {
-  /// A `community_gallery` block as defined below. Changing this forces a new resource to be created.
+  /// A `communityGallery` block as defined below. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `community_gallery` must be set when `permission` is set to `Community`.
+  /// &gt; **Note:** `communityGallery` must be set when `permission` is set to `Community`.
   final pulumi.Input<SharedImageGallerySharingCommunityGallery>? communityGallery;
   /// The permission of the Shared Image Gallery when sharing. Possible values are `Community`, `Groups` and `Private`. Changing this forces a new resource to be created.
   ///
@@ -14,7 +14,7 @@ class SharedImageGallerySharing {
   final pulumi.Input<String> permission;
 
   /// Creates a new [SharedImageGallerySharing].
-  /// [communityGallery] A `community_gallery` block as defined below. Changing this forces a new resource to be created.
+  /// [communityGallery] A `communityGallery` block as defined below. Changing this forces a new resource to be created.
   /// [permission] The permission of the Shared Image Gallery when sharing. Possible values are `Community`, `Groups` and `Private`. Changing this forces a new resource to be created.
   const SharedImageGallerySharing({
     this.communityGallery,
@@ -35,4 +35,3 @@ class SharedImageGallerySharing {
     );
   }
 }
-

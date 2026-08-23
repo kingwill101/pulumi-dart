@@ -119,6 +119,30 @@ import 'account_static_website.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "storageaccountname"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+///   tags = {
+///     "environment" = "staging"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -129,8 +153,8 @@ import 'account_static_website.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.storage.Account;
 /// import com.pulumi.azure.storage.AccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -399,6 +423,48 @@ import 'account_static_website.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "virtnetname"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "subnetname"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+///   service_endpoints    = ["Microsoft.Sql", "Microsoft.Storage"]
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "storageaccountname"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   network_rules = {
+///     default_action             = "Deny"
+///     ip_rules                   = ["100.0.0.1"]
+///     virtual_network_subnet_ids = [azure_network_subnet.example.id]
+///   }
+///   tags = {
+///     "environment" = "staging"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -414,8 +480,8 @@ import 'account_static_website.dart';
 /// import com.pulumi.azure.storage.Account;
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.storage.inputs.AccountNetworkRulesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -519,7 +585,7 @@ import 'account_static_website.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Storage` - 2023-05-01
+/// * `Microsoft.Storage` - 2025-08-01
 ///
 /// ## Import
 ///
@@ -529,11 +595,11 @@ import 'account_static_website.dart';
 /// $ pulumi import azure:storage/account:Account storageAcc1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount
 /// ```
 class Account extends pulumi.CustomResource {
-  /// Defines the access tier for `BlobStorage`, `FileStorage` and `StorageV2` accounts. Valid options are `Hot`, `Cool`, `Cold` and `Premium`. Defaults to `Hot`.
+  /// Defines the access tier for `BlobStorage`, `FileStorage` and `StorageV2` accounts. Valid options are `Hot`, `Cool`, `Cold`, `Smart` and `Premium`. Defaults to `Hot`.
   late final pulumi.Output<String> accessTier;
   /// Defines the Kind of account. Valid options are `BlobStorage`, `BlockBlobStorage`, `FileStorage`, `Storage` and `StorageV2`. Defaults to `StorageV2`.
   ///
-  /// &gt; **Note:** Changing the `account_kind` value from `Storage` to `StorageV2` will not trigger a force new on the storage account, it will only upgrade the existing storage account from `Storage` to `StorageV2` keeping the existing storage account in place.
+  /// &gt; **Note:** Changing the `accountKind` value from `Storage` to `StorageV2` will not trigger a force new on the storage account, it will only upgrade the existing storage account from `Storage` to `StorageV2` keeping the existing storage account in place.
   late final pulumi.Output<String?> accountKind;
   /// Defines the type of replication to use for this storage account. Valid options are `LRS`, `GRS`, `RAGRS`, `ZRS`, `GZRS` and `RAGZRS`. Changing this forces a new resource to be created when types `LRS`, `GRS` and `RAGRS` are changed to `ZRS`, `GZRS` or `RAGZRS` and vice versa.
   late final pulumi.Output<String> accountReplicationType;
@@ -543,21 +609,21 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String> accountTier;
   /// Allow or disallow nested items within this Account to opt into being public. Defaults to `true`.
   ///
-  /// &gt; **Note:** At this time `allow_nested_items_to_be_public` is only supported in the Public Cloud, China Cloud, and US Government Cloud.
+  /// &gt; **Note:** At this time `allowNestedItemsToBePublic` is only supported in the Public Cloud, China Cloud, and US Government Cloud.
   late final pulumi.Output<bool?> allowNestedItemsToBePublic;
-  /// Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values are `AAD` and `PrivateLink`.
+  /// The permitted scope for copy operations between storage accounts. Possible values are `AAD`, `PrivateLink` and `All`.
   late final pulumi.Output<String?> allowedCopyScope;
-  /// A `azure_files_authentication` block as defined below.
+  /// A `azureFilesAuthentication` block as defined below.
   late final pulumi.Output<AccountAzureFilesAuthentication?> azureFilesAuthentication;
-  /// A `blob_properties` block as defined below.
+  /// A `blobProperties` block as defined below.
   late final pulumi.Output<AccountBlobProperties> blobProperties;
   /// Should cross Tenant replication be enabled? Defaults to `false`.
   late final pulumi.Output<bool?> crossTenantReplicationEnabled;
-  /// A `custom_domain` block as documented below.
+  /// A `customDomain` block as documented below.
   late final pulumi.Output<AccountCustomDomain?> customDomain;
-  /// A `customer_managed_key` block as documented below.
+  /// A `customerManagedKey` block as documented below.
   ///
-  /// &gt; **Note:** It's possible to define a Customer Managed Key both within either the `customer_managed_key` block or by using the `azure.storage.CustomerManagedKey` resource. However, it's not possible to use both methods to manage a Customer Managed Key for a Storage Account, since these will conflict. When using the `azure.storage.CustomerManagedKey` resource, you will need to use `ignore_changes` on the `customer_managed_key` block.
+  /// &gt; **Note:** It's possible to define a Customer Managed Key both within either the `customerManagedKey` block or by using the `azure.storage.CustomerManagedKey` resource. However, it's not possible to use both methods to manage a Customer Managed Key for a Storage Account, since these will conflict. When using the `azure.storage.CustomerManagedKey` resource, you will need to use `ignoreChanges` on the `customerManagedKey` block.
   late final pulumi.Output<AccountCustomerManagedKey?> customerManagedKey;
   /// Default to Azure Active Directory authorization in the Azure portal when accessing the Storage Account. The default value is `false`
   late final pulumi.Output<bool?> defaultToOauthAuthentication;
@@ -571,37 +637,37 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<bool?> httpsTrafficOnlyEnabled;
   /// An `identity` block as defined below.
   late final pulumi.Output<AccountIdentity?> identity;
-  /// An `immutability_policy` block as defined below. Changing this forces a new resource to be created.
+  /// An `immutabilityPolicy` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<AccountImmutabilityPolicy?> immutabilityPolicy;
   /// Is infrastructure encryption enabled? Changing this forces a new resource to be created. Defaults to `false`.
   ///
-  /// &gt; **Note:** This can only be `true` when `account_kind` is `StorageV2` or when `account_tier` is `Premium` *and* `account_kind` is one of `BlockBlobStorage` or `FileStorage`.
+  /// &gt; **Note:** This can only be `true` when `accountKind` is `StorageV2` or when `accountTier` is `Premium` *and* `accountKind` is one of `BlockBlobStorage` or `FileStorage`.
   late final pulumi.Output<bool?> infrastructureEncryptionEnabled;
   /// Is Hierarchical Namespace enabled? This can be used with Azure Data Lake Storage Gen 2 ([see here for more information](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account/)). Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** This can only be `true` when `account_tier` is `Standard` or when `account_tier` is `Premium` *and* `account_kind` is `BlockBlobStorage`
+  /// &gt; **Note:** This can only be `true` when `accountTier` is `Standard` or when `accountTier` is `Premium` *and* `accountKind` is `BlockBlobStorage`
   late final pulumi.Output<bool?> isHnsEnabled;
   /// Are Large File Shares Enabled? Defaults to `false`.
   ///
-  /// &gt; **Note:** Large File Shares are enabled by default when using an `account_kind` of `FileStorage`.
+  /// &gt; **Note:** Large File Shares are enabled by default when using an `accountKind` of `FileStorage`.
   late final pulumi.Output<bool> largeFileShareEnabled;
   /// Is Local User Enabled? Defaults to `true`.
   late final pulumi.Output<bool?> localUserEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// The minimum supported TLS version for the storage account. Possible values are `TLS1_0`, `TLS1_1`, `TLS1_2` and `TLS1_3`. Defaults to `TLS1_2` for new storage accounts.
+  /// The minimum supported TLS version for the storage account. Possible values are `TLS1_0`, `TLS1_1` and `TLS1_2`. Defaults to `TLS1_2` for new storage accounts.
   ///
   /// &gt; **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
   ///
-  /// &gt; **Note:** At this time `min_tls_version` is only supported in the Public Cloud, China Cloud, and US Government Cloud.
+  /// &gt; **Note:** At this time `minTlsVersion` is only supported in the Public Cloud, China Cloud, and US Government Cloud.
   late final pulumi.Output<String?> minTlsVersion;
   /// Specifies the name of the storage account. Only lowercase Alphanumeric characters allowed. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
   late final pulumi.Output<String> name;
-  /// A `network_rules` block as documented below.
+  /// A `networkRules` block as documented below.
   late final pulumi.Output<AccountNetworkRules> networkRules;
   /// Is NFSv3 protocol enabled? Changing this forces a new resource to be created. Defaults to `false`.
   ///
-  /// &gt; **Note:** This can only be `true` when `account_tier` is `Standard` and `account_kind` is `StorageV2`, or `account_tier` is `Premium` and `account_kind` is `BlockBlobStorage`. Additionally, the `is_hns_enabled` is `true` and `account_replication_type` must be `LRS` or `RAGRS`.
+  /// &gt; **Note:** This can only be `true` when `accountTier` is `Standard` and `accountKind` is `StorageV2`, or `accountTier` is `Premium` and `accountKind` is `BlockBlobStorage`. Additionally, the `isHnsEnabled` is `true` and `accountReplicationType` must be `LRS` or `RAGRS`.
   late final pulumi.Output<bool?> nfsv3Enabled;
   /// The primary access key for the storage account.
   late final pulumi.Output<String> primaryAccessKey;
@@ -675,21 +741,21 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String> primaryWebMicrosoftEndpoint;
   /// The microsoft routing hostname with port if applicable for web storage in the primary location.
   late final pulumi.Output<String> primaryWebMicrosoftHost;
-  /// Specifies the version of the **provisioned** billing model (e.g. when `account_kind = "FileStorage"` for Storage File). Possible value is `V2`. Changing this forces a new resource to be created.
+  /// Specifies the version of the **provisioned** billing model (e.g. when `accountKind = "FileStorage"` for Storage File). Possible value is `V2`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> provisionedBillingModelVersion;
   /// Whether the public network access is enabled? Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
   /// The encryption type of the queue service. Possible values are `Service` and `Account`. Changing this forces a new resource to be created. Default value is `Service`.
   late final pulumi.Output<String?> queueEncryptionKeyType;
-  /// A `queue_properties` block as defined below.
+  /// A `queueProperties` block as defined below.
   ///
-  /// &gt; **Note:** `queue_properties` can only be configured when `account_tier` is set to `Standard` and `account_kind` is set to either `Storage` or `StorageV2`.
+  /// &gt; **Note:** `queueProperties` can only be configured when `accountTier` is set to `Standard` and `accountKind` is set to either `Storage` or `StorageV2`.
   late final pulumi.Output<AccountQueueProperties> queueProperties;
   /// The name of the resource group in which to create the storage account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A `routing` block as defined below.
   late final pulumi.Output<AccountRouting> routing;
-  /// A `sas_policy` block as defined below.
+  /// A `sasPolicy` block as defined below.
   late final pulumi.Output<AccountSasPolicy?> sasPolicy;
   /// The secondary access key for the storage account.
   late final pulumi.Output<String> secondaryAccessKey;
@@ -765,25 +831,25 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String> secondaryWebMicrosoftHost;
   /// Boolean, enable SFTP for the storage account
   ///
-  /// &gt; **Note:** SFTP support requires `is_hns_enabled` set to `true`. [More information on SFTP support can be found here](https://learn.microsoft.com/azure/storage/blobs/secure-file-transfer-protocol-support). Defaults to `false`
+  /// &gt; **Note:** SFTP support requires `isHnsEnabled` set to `true`. [More information on SFTP support can be found here](https://learn.microsoft.com/azure/storage/blobs/secure-file-transfer-protocol-support). Defaults to `false`
   late final pulumi.Output<bool?> sftpEnabled;
-  /// A `share_properties` block as defined below.
+  /// A `shareProperties` block as defined below.
   ///
-  /// &gt; **Note:** `share_properties` can only be configured when either `account_tier` is `Standard` and `account_kind` is either `Storage` or `StorageV2` - or when `account_tier` is `Premium` and `account_kind` is `FileStorage`.
+  /// &gt; **Note:** `shareProperties` can only be configured when either `accountTier` is `Standard` and `accountKind` is either `Storage` or `StorageV2` - or when `accountTier` is `Premium` and `accountKind` is `FileStorage`.
   late final pulumi.Output<AccountShareProperties> shareProperties;
   /// Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). Defaults to `true`.
   ///
-  /// &gt; **Note:** Terraform uses Shared Key Authorisation to provision Storage Containers, Blobs and other items - when Shared Key Access is disabled, you will need to enable the `storage_use_azuread` flag in the Provider block to use Azure AD for authentication, however not all Azure Storage services support Active Directory authentication.
+  /// &gt; **Note:** Terraform uses Shared Key Authorisation to provision Storage Containers, Blobs and other items - when Shared Key Access is disabled, you will need to enable the `storageUseAzuread` flag in the Provider block to use Azure AD for authentication, however not all Azure Storage services support Active Directory authentication.
   late final pulumi.Output<bool?> sharedAccessKeyEnabled;
-  /// A `static_website` block as defined below.
+  /// A `staticWebsite` block as defined below.
   ///
-  /// &gt; **Note:** `static_website` can only be set when the `account_kind` is set to `StorageV2` or `BlockBlobStorage`.
+  /// &gt; **Note:** `staticWebsite` can only be set when the `accountKind` is set to `StorageV2` or `BlockBlobStorage`.
   ///
-  /// &gt; **Note:** If `static_website` is specified, the service will automatically create a `azure.storage.Container` named `$web`.
+  /// &gt; **Note:** If `staticWebsite` is specified, the service will automatically create a `azure.storage.Container` named `$web`.
   late final pulumi.Output<AccountStaticWebsite> staticWebsite;
   /// The encryption type of the table service. Possible values are `Service` and `Account`. Changing this forces a new resource to be created. Default value is `Service`.
   ///
-  /// &gt; **Note:** `queue_encryption_key_type` and `table_encryption_key_type` cannot be set to `Account` when `account_kind` is set `Storage`
+  /// &gt; **Note:** `queueEncryptionKeyType` and `tableEncryptionKeyType` cannot be set to `Account` when `accountKind` is set `Storage`
   late final pulumi.Output<String?> tableEncryptionKeyType;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;

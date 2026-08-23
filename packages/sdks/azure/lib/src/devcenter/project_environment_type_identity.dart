@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectEnvironmentTypeIdentity {
   /// The ID of the User Assigned Identity which should be assigned to this Dev Center Project Environment Type.
   ///
-  /// &gt; **Note:** `identity_ids` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
+  /// &gt; **Note:** `identityIds` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
   final pulumi.Input<List<String>>? identityIds;
   final pulumi.Input<String>? principalId;
   final pulumi.Input<String>? tenantId;
@@ -42,4 +42,3 @@ class ProjectEnvironmentTypeIdentity {
     );
   }
 }
-

@@ -251,6 +251,51 @@ import 'managed_storage_account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "storageaccountname"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "keyvaultname"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name            = "standard"
+///   access_policies {
+///     tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///     object_id           = data.azure_core_getclientconfig.current.object_id
+///     secret_permissions  = ["Get", "Delete"]
+///     storage_permissions = ["Get", "List", "Set", "SetSAS", "GetSAS", "DeleteSAS", "Update", "RegenerateKey"]
+///   }
+/// }
+/// resource "azure_keyvault_managedstorageaccount" "example" {
+///   name                         = "examplemanagedstorage"
+///   key_vault_id                 = azure_keyvault_keyvault.example.id
+///   storage_account_id           = azure_storage_account.example.id
+///   storage_account_key          = "key1"
+///   regenerate_key_automatically = false
+///   regeneration_period          = "P1D"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -267,8 +312,8 @@ import 'managed_storage_account_state.dart';
 /// import com.pulumi.azure.keyvault.inputs.KeyVaultAccessPolicyArgs;
 /// import com.pulumi.azure.keyvault.ManagedStorageAccount;
 /// import com.pulumi.azure.keyvault.ManagedStorageAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

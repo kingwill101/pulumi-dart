@@ -65,6 +65,21 @@ import 'workspace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_healthcare_workspace" "test" {
+///   name                = "tfexworkspace"
+///   resource_group_name = "tfex-resource_group"
+///   location            = "east us"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'workspace_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.healthcare.Workspace;
 /// import com.pulumi.azure.healthcare.WorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

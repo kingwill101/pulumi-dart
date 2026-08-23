@@ -10,13 +10,13 @@ class LocalUserState {
   final pulumi.Input<String>? homeDirectory;
   /// The name which should be used for this Storage Account Local User. Changing this forces a new Storage Account Local User to be created.
   final pulumi.Input<String>? name;
-  /// The value of the password, which is only available when `ssh_password_enabled` is set to `true`.
+  /// The value of the password, which is only available when `sshPasswordEnabled` is set to `true`.
   final pulumi.Input<String>? password;
-  /// One or more `permission_scope` blocks as defined below.
+  /// One or more `permissionScope` blocks as defined below.
   final pulumi.Input<List<LocalUserPermissionScope>>? permissionScopes;
   /// The unique Security Identifier of this Storage Account Local User.
   final pulumi.Input<String>? sid;
-  /// One or more `ssh_authorized_key` blocks as defined below.
+  /// One or more `sshAuthorizedKey` blocks as defined below.
   final pulumi.Input<List<LocalUserSshAuthorizedKey>>? sshAuthorizedKeys;
   /// Specifies whether SSH Key Authentication is enabled. Defaults to `false`.
   final pulumi.Input<bool>? sshKeyEnabled;
@@ -28,10 +28,10 @@ class LocalUserState {
   /// Creates a new [LocalUserState].
   /// [homeDirectory] The home directory of the Storage Account Local User.
   /// [name] The name which should be used for this Storage Account Local User. Changing this forces a new Storage Account Local User to be created.
-  /// [password] The value of the password, which is only available when `ssh_password_enabled` is set to `true`.
-  /// [permissionScopes] One or more `permission_scope` blocks as defined below.
+  /// [password] The value of the password, which is only available when `sshPasswordEnabled` is set to `true`.
+  /// [permissionScopes] One or more `permissionScope` blocks as defined below.
   /// [sid] The unique Security Identifier of this Storage Account Local User.
-  /// [sshAuthorizedKeys] One or more `ssh_authorized_key` blocks as defined below.
+  /// [sshAuthorizedKeys] One or more `sshAuthorizedKey` blocks as defined below.
   /// [sshKeyEnabled] Specifies whether SSH Key Authentication is enabled. Defaults to `false`.
   /// [sshPasswordEnabled] Specifies whether SSH Password Authentication is enabled. Defaults to `false`.
   /// [storageAccountId] The ID of the Storage Account that this Storage Account Local User resides in. Changing this forces a new Storage Account Local User to be created.
@@ -75,4 +75,3 @@ class LocalUserState {
     );
   }
 }
-

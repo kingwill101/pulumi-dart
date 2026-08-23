@@ -17,7 +17,7 @@ class GetExpressRouteCircuitResult {
   final String resourceGroupName;
   /// The string needed by the service provider to provision the ExpressRoute circuit.
   final String serviceKey;
-  /// A `service_provider_properties` block for the ExpressRoute circuit as documented below
+  /// A `serviceProviderProperties` block for the ExpressRoute circuit as documented below
   final List<GetExpressRouteCircuitServiceProviderProperty> serviceProviderProperties;
   /// The ExpressRoute circuit provisioning state from your chosen service provider. Possible values are `NotProvisioned`, `Provisioning`, `Provisioned`, and `Deprovisioning`.
   final String serviceProviderProvisioningState;
@@ -31,7 +31,7 @@ class GetExpressRouteCircuitResult {
   /// [peerings] A `peerings` block for the ExpressRoute circuit as documented below
   /// [resourceGroupName] Required.
   /// [serviceKey] The string needed by the service provider to provision the ExpressRoute circuit.
-  /// [serviceProviderProperties] A `service_provider_properties` block for the ExpressRoute circuit as documented below
+  /// [serviceProviderProperties] A `serviceProviderProperties` block for the ExpressRoute circuit as documented below
   /// [serviceProviderProvisioningState] The ExpressRoute circuit provisioning state from your chosen service provider. Possible values are `NotProvisioned`, `Provisioning`, `Provisioned`, and `Deprovisioning`.
   /// [sku] A `sku` block for the ExpressRoute circuit as documented below.
   const GetExpressRouteCircuitResult({
@@ -74,4 +74,3 @@ class GetExpressRouteCircuitResult {
     );
   }
 }
-

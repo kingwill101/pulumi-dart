@@ -297,6 +297,65 @@ import 'network_manager_connectivity_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-network-manager"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///   }
+///   scope_accesses = ["Connectivity", "SecurityAdmin"]
+///   description    = "example network manager"
+/// }
+/// resource "azure_network_networkmanagernetworkgroup" "example" {
+///   name               = "example-group"
+///   network_manager_id = azure_network_networkmanager.example.id
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                    = "example-net"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   address_spaces          = ["10.0.0.0/16"]
+///   flow_timeout_in_minutes = 10
+/// }
+/// resource "azure_network_networkmanagernetworkgroup" "example2" {
+///   name               = "example-group2"
+///   network_manager_id = azure_network_networkmanager.example.id
+/// }
+/// resource "azure_network_networkmanagerconnectivityconfiguration" "example" {
+///   name                  = "example-connectivity-conf"
+///   network_manager_id    = azure_network_networkmanager.example.id
+///   connectivity_topology = "HubAndSpoke"
+///   applies_to_groups {
+///     group_connectivity = "DirectlyConnected"
+///     network_group_id   = azure_network_networkmanagernetworkgroup.example.id
+///   }
+///   applies_to_groups {
+///     group_connectivity = "DirectlyConnected"
+///     network_group_id   = azure_network_networkmanagernetworkgroup.example2.id
+///   }
+///   hub = {
+///     resource_id   = azure_network_virtualnetwork.example.id
+///     resource_type = "Microsoft.Network/virtualNetworks"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -318,8 +377,8 @@ import 'network_manager_connectivity_configuration_state.dart';
 /// import com.pulumi.azure.network.NetworkManagerConnectivityConfigurationArgs;
 /// import com.pulumi.azure.network.inputs.NetworkManagerConnectivityConfigurationAppliesToGroupArgs;
 /// import com.pulumi.azure.network.inputs.NetworkManagerConnectivityConfigurationHubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -472,8 +531,14 @@ import 'network_manager_connectivity_configuration_state.dart';
 /// $ pulumi import azure:network/networkManagerConnectivityConfiguration:NetworkManagerConnectivityConfiguration example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1/providers/Microsoft.Network/networkManagers/networkManager1/connectivityConfigurations/configuration1
 /// ```
 class NetworkManagerConnectivityConfiguration extends pulumi.CustomResource {
-  /// One or more `applies_to_group` blocks as defined below.
+  /// One or more `appliesToGroup` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> appliesToGroups;
+  /// Whether connected group address overlap is enabled. Defaults to `true`.
+  ///
+  /// &gt; **Note:** Changing `connectedGroupAddressOverlapEnabled` from `true` to `false` forces a new Network Manager Connectivity Configuration to be created because the Azure API does not support this modification.
+  late final pulumi.Output<bool?> connectedGroupAddressOverlapEnabled;
+  /// Specifies the scale of private endpoints allowed in the connected group. Possible values are `Standard` and `HighScale`. Defaults to `Standard`.
+  late final pulumi.Output<String?> connectedGroupPrivateEndpointsScale;
   /// Specifies the connectivity topology type. Possible values are `HubAndSpoke` and `Mesh`.
   late final pulumi.Output<String> connectivityTopology;
   /// Indicates whether to remove current existing Virtual Network Peering in the Connectivity Configuration affected scope. Possible values are `true` and `false`.
@@ -488,6 +553,8 @@ class NetworkManagerConnectivityConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Specifies the ID of the Network Manager. Changing this forces a new Network Manager Connectivity Configuration to be created.
   late final pulumi.Output<String> networkManagerId;
+  /// Whether peering enforcement is enabled. Defaults to `false`.
+  late final pulumi.Output<bool?> peeringEnforcementEnabled;
 
   /// Creates a new [NetworkManagerConnectivityConfiguration].
   /// [name] The Pulumi resource name.
@@ -504,6 +571,8 @@ class NetworkManagerConnectivityConfiguration extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     appliesToGroups = registerOutput<List<Map<String, dynamic>>>('appliesToGroups');
+    connectedGroupAddressOverlapEnabled = registerOutput<bool?>('connectedGroupAddressOverlapEnabled');
+    connectedGroupPrivateEndpointsScale = registerOutput<String?>('connectedGroupPrivateEndpointsScale');
     connectivityTopology = registerOutput<String>('connectivityTopology');
     deleteExistingPeeringEnabled = registerOutput<bool?>('deleteExistingPeeringEnabled');
     description = registerOutput<String?>('description');
@@ -511,6 +580,7 @@ class NetworkManagerConnectivityConfiguration extends pulumi.CustomResource {
     hub = registerOutput<NetworkManagerConnectivityConfigurationHub?>('hub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerConnectivityConfigurationHub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     networkManagerId = registerOutput<String>('networkManagerId');
+    peeringEnforcementEnabled = registerOutput<bool?>('peeringEnforcementEnabled');
   }
 
   /// Gets an existing [NetworkManagerConnectivityConfiguration] resource's state with the given [name] and [id].
@@ -537,6 +607,8 @@ class NetworkManagerConnectivityConfiguration extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     appliesToGroups = registerOutput<List<Map<String, dynamic>>>('appliesToGroups');
+    connectedGroupAddressOverlapEnabled = registerOutput<bool?>('connectedGroupAddressOverlapEnabled');
+    connectedGroupPrivateEndpointsScale = registerOutput<String?>('connectedGroupPrivateEndpointsScale');
     connectivityTopology = registerOutput<String>('connectivityTopology');
     deleteExistingPeeringEnabled = registerOutput<bool?>('deleteExistingPeeringEnabled');
     description = registerOutput<String?>('description');
@@ -544,5 +616,6 @@ class NetworkManagerConnectivityConfiguration extends pulumi.CustomResource {
     hub = registerOutput<NetworkManagerConnectivityConfigurationHub?>('hub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerConnectivityConfigurationHub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     networkManagerId = registerOutput<String>('networkManagerId');
+    peeringEnforcementEnabled = registerOutput<bool?>('peeringEnforcementEnabled');
   }
 }

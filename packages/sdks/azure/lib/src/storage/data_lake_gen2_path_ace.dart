@@ -11,7 +11,7 @@ class DataLakeGen2PathAce {
   ///
   /// &gt; **Note:** Using the service's ACE inheritance features will not work well with terraform since we cannot handle changes that are taking place out-of-band. Setting the path to inherit its permissions from its parent will result in terraform trying to revert them in the next apply operation.
   ///
-  /// &gt; **Note:** The Storage Account requires `account_kind` to be either `StorageV2` or `BlobStorage`. In addition, `is_hns_enabled` has to be set to `true`.
+  /// &gt; **Note:** The Storage Account requires `accountKind` to be either `StorageV2` or `BlobStorage`. In addition, `isHnsEnabled` has to be set to `true`.
   final pulumi.Input<String> permissions;
   /// Specifies whether the ACE represents an `access` entry or a `default` entry. Default value is `access`.
   final pulumi.Input<String>? scope;
@@ -48,4 +48,3 @@ class DataLakeGen2PathAce {
     );
   }
 }
-

@@ -63,6 +63,23 @@ import 'get_management_group_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_management_getgroup" "example" {
+///   name = "00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// output "displayName" {
+///   value = data.azure_management_getgroup.example.display_name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +88,8 @@ import 'get_management_group_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.management.ManagementFunctions;
 /// import com.pulumi.azure.management.inputs.GetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

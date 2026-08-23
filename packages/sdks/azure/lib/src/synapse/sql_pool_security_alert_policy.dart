@@ -320,6 +320,73 @@ import 'sql_pool_security_alert_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   account_kind             = "StorageV2"
+///   is_hns_enabled           = "true"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// resource "azure_synapse_workspace" "example" {
+///   name                                 = "example"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   location                             = azure_core_resourcegroup.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   sql_administrator_login              = "sqladminuser"
+///   sql_administrator_login_password     = "H@Sh1CoR3!"
+///   aad_admin = [{
+///     "login"    = "AzureAD Admin"
+///     "objectId" = "00000000-0000-0000-0000-000000000000"
+///     "tenantId" = "00000000-0000-0000-0000-000000000000"
+///   }]
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "Env" = "production"
+///   }
+/// }
+/// resource "azure_synapse_sqlpool" "example" {
+///   name                 = "examplesqlpool"
+///   synapse_workspace_id = azure_synapse_workspace.example.id
+///   sku_name             = "DW100c"
+///   create_mode          = "Default"
+/// }
+/// resource "azure_storage_account" "audit_logs" {
+///   name                     = "examplesa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_synapse_sqlpoolsecurityalertpolicy" "example" {
+///   sql_pool_id                = azure_synapse_sqlpool.example.id
+///   policy_state               = "Enabled"
+///   storage_endpoint           = azure_storage_account.audit_logs.primary_blob_endpoint
+///   storage_account_access_key = azure_storage_account.audit_logs.primary_access_key
+///   disabled_alerts            = ["Sql_Injection", "Data_Exfiltration"]
+///   retention_days             = 20
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -339,8 +406,8 @@ import 'sql_pool_security_alert_policy_state.dart';
 /// import com.pulumi.azure.synapse.SqlPoolArgs;
 /// import com.pulumi.azure.synapse.SqlPoolSecurityAlertPolicy;
 /// import com.pulumi.azure.synapse.SqlPoolSecurityAlertPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -379,7 +446,7 @@ import 'sql_pool_security_alert_policy_state.dart';
 ///             .storageDataLakeGen2FilesystemId(exampleDataLakeGen2Filesystem.id())
 ///             .sqlAdministratorLogin("sqladminuser")
 ///             .sqlAdministratorLoginPassword("H@Sh1CoR3!")
-///             .aadAdmin(List.of(Map.ofEntries(
+///             .aadAdmin(Arrays.asList(Map.ofEntries(
 ///                 Map.entry("login", "AzureAD Admin"),
 ///                 Map.entry("objectId", "00000000-0000-0000-0000-000000000000"),
 ///                 Map.entry("tenantId", "00000000-0000-0000-0000-000000000000")

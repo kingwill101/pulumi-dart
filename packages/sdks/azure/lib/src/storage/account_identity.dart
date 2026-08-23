@@ -7,7 +7,7 @@ class AccountIdentity {
   ///
   /// &gt; **Note:** This is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
   ///
-  /// &gt; **Note:** The assigned `principal_id` and `tenant_id` can be retrieved after the identity `type` has been set to `SystemAssigned`  and Storage Account has been created. More details are available below.
+  /// &gt; **Note:** The assigned `principalId` and `tenantId` can be retrieved after the identity `type` has been set to `SystemAssigned`  and Storage Account has been created. More details are available below.
   final pulumi.Input<List<String>>? identityIds;
   /// The Principal ID for the Service Principal associated with the Identity of this Storage Account.
   final pulumi.Input<String>? principalId;
@@ -46,4 +46,3 @@ class AccountIdentity {
     );
   }
 }
-

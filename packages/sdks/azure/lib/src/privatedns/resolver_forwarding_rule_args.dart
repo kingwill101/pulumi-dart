@@ -18,7 +18,7 @@ class ResolverForwardingRuleArgs {
   final pulumi.Input<Map<String, String>>? metadata;
   /// Specifies the name which should be used for this Private DNS Resolver Forwarding Rule. Changing this forces a new Private DNS Resolver Forwarding Rule to be created.
   final pulumi.Input<String>? name;
-  /// Can be specified multiple times to define multiple target DNS servers. Each `target_dns_servers` block as defined below.
+  /// Can be specified multiple times to define multiple target DNS servers. Each `targetDnsServers` block as defined below.
   final pulumi.Input<List<ResolverForwardingRuleTargetDnsServer>> targetDnsServers;
 
   /// Creates a new [ResolverForwardingRuleArgs].
@@ -27,7 +27,7 @@ class ResolverForwardingRuleArgs {
   /// [enabled] Specifies the state of the Private DNS Resolver Forwarding Rule. Defaults to `true`.
   /// [metadata] Metadata attached to the Private DNS Resolver Forwarding Rule.
   /// [name] Specifies the name which should be used for this Private DNS Resolver Forwarding Rule. Changing this forces a new Private DNS Resolver Forwarding Rule to be created.
-  /// [targetDnsServers] Can be specified multiple times to define multiple target DNS servers. Each `target_dns_servers` block as defined below.
+  /// [targetDnsServers] Can be specified multiple times to define multiple target DNS servers. Each `targetDnsServers` block as defined below.
   const ResolverForwardingRuleArgs({
     required this.dnsForwardingRulesetId,
     required this.domainName,
@@ -59,4 +59,3 @@ class ResolverForwardingRuleArgs {
     );
   }
 }
-

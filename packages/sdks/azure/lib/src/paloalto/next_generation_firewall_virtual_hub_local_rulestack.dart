@@ -245,6 +245,58 @@ import 'next_generation_firewall_virtual_hub_local_rulestack_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "acceptanceTestPublicIp1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   allocation_method   = "Static"
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// resource "azure_network_virtualwan" "example" {
+///   name                = "example-virtualwan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_virtualhub" "example" {
+///   name                = "example-virtualhub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   address_prefix      = "10.0.0.0/23"
+///   tags = {
+///     "hubSaaSPreview" = "true"
+///   }
+/// }
+/// resource "azure_paloalto_virtualnetworkappliance" "example" {
+///   name           = "example-appliance"
+///   virtual_hub_id = azure_network_virtualhub.example.id
+/// }
+/// resource "azure_paloalto_nextgenerationfirewallvirtualhublocalrulestack" "example" {
+///   name                = "example-ngfwvn"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   rulestack_id        = exampleAzurermPaloAltoLocalRulestack.id
+///   network_profile = {
+///     public_ip_address_ids        = [azure_network_publicip.example.id]
+///     virtual_hub_id               = azure_network_virtualhub.example.id
+///     network_virtual_appliance_id = azure_paloalto_virtualnetworkappliance.example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -264,8 +316,8 @@ import 'next_generation_firewall_virtual_hub_local_rulestack_state.dart';
 /// import com.pulumi.azure.paloalto.NextGenerationFirewallVirtualHubLocalRulestack;
 /// import com.pulumi.azure.paloalto.NextGenerationFirewallVirtualHubLocalRulestackArgs;
 /// import com.pulumi.azure.paloalto.inputs.NextGenerationFirewallVirtualHubLocalRulestackNetworkProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -385,7 +437,7 @@ import 'next_generation_firewall_virtual_hub_local_rulestack_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `PaloAltoNetworks.Cloudngfw` - 2025-05-23, 2022-08-29
+/// * `PaloAltoNetworks.Cloudngfw` - 2025-10-08
 ///
 /// ## Import
 ///
@@ -395,19 +447,19 @@ import 'next_generation_firewall_virtual_hub_local_rulestack_state.dart';
 /// $ pulumi import azure:paloalto/nextGenerationFirewallVirtualHubLocalRulestack:NextGenerationFirewallVirtualHubLocalRulestack example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/PaloAltoNetworks.Cloudngfw/firewalls/myVhubRulestackFW
 /// ```
 class NextGenerationFirewallVirtualHubLocalRulestack extends pulumi.CustomResource {
-  /// One or more `destination_nat` blocks as defined below.
+  /// One or more `destinationNat` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> destinationNats;
-  /// A `dns_settings` block as defined below.
+  /// A `dnsSettings` block as defined below.
   late final pulumi.Output<NextGenerationFirewallVirtualHubLocalRulestackDnsSettings?> dnsSettings;
-  /// The marketplace offer ID. Defaults to `pan_swfw_cloud_ngfw`. Changing this forces a new resource to be created.
+  /// The marketplace offer ID. Defaults to `panSwfwCloudNgfw`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> marketplaceOfferId;
   /// The name which should be used for this Palo Alto Next Generation Firewall VHub Local Rulestack. Changing this forces a new Palo Alto Next Generation Firewall VHub Local Rulestack to be created.
   late final pulumi.Output<String> name;
-  /// A `network_profile` block as defined below.
+  /// A `networkProfile` block as defined below.
   late final pulumi.Output<NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile> networkProfile;
   /// The billing plan ID as published by Liftr.PAN. Defaults to `panw-cloud-ngfw-payg`.
   ///
-  /// &gt; **Note:** The former `plan_id` `panw-cloud-ngfw-payg` is defined as stop sell, but has been set as the default to not break any existing resources that were originally provisioned with it. Users need to explicitly set `plan_id` to `panw-cngfw-payg` when creating new resources.
+  /// &gt; **Note:** The former `planId` `panw-cloud-ngfw-payg` is defined as stop sell, but has been set as the default to not break any existing resources that were originally provisioned with it. Users need to explicitly set `planId` to `panw-cngfw-payg` when creating new resources.
   late final pulumi.Output<String?> planId;
   /// The name of the Resource Group where the Palo Alto Next Generation Firewall VHub Local Rulestack should exist. Changing this forces a new Palo Alto Next Generation Firewall VHub Local Rulestack to be created.
   late final pulumi.Output<String> resourceGroupName;

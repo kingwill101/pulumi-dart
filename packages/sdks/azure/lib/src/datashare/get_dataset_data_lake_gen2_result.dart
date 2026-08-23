@@ -64,4 +64,3 @@ class GetDatasetDataLakeGen2Result {
     );
   }
 }
-

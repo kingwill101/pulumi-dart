@@ -77,6 +77,25 @@ import 'get_configuration_store_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appconfiguration_getconfigurationkey" "test" {
+///   configuration_store_id = appconf.id
+///   key                    = "appConfKey1"
+///   label                  = "somelabel"
+/// }
+///
+/// output "value" {
+///   value = data.azure_appconfiguration_getconfigurationkey.test.value
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +104,8 @@ import 'get_configuration_store_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appconfiguration.AppconfigurationFunctions;
 /// import com.pulumi.azure.appconfiguration.inputs.GetConfigurationKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -198,6 +217,23 @@ Future<GetConfigurationKeyResult> getConfigurationKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appconfiguration_getconfigurationkeys" "test" {
+///   configuration_store_id = appconf.id
+/// }
+///
+/// output "value" {
+///   value = data.azure_appconfiguration_getconfigurationkeys.test.items
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -206,8 +242,8 @@ Future<GetConfigurationKeyResult> getConfigurationKey(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appconfiguration.AppconfigurationFunctions;
 /// import com.pulumi.azure.appconfiguration.inputs.GetConfigurationKeysArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -317,6 +353,24 @@ Future<GetConfigurationKeysResult> getConfigurationKeys(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appconfiguration_getconfigurationstore" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_appconfiguration_getconfigurationstore.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -325,8 +379,8 @@ Future<GetConfigurationKeysResult> getConfigurationKeys(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appconfiguration.AppconfigurationFunctions;
 /// import com.pulumi.azure.appconfiguration.inputs.GetConfigurationStoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

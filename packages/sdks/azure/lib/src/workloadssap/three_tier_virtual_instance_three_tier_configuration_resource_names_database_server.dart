@@ -7,15 +7,15 @@ import 'three_tier_virtual_instance_three_tier_configuration_resource_names_data
 class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServer {
   /// The full name for the availability set. Changing this forces a new resource to be created.
   final pulumi.Input<String>? availabilitySetName;
-  /// A `load_balancer` block as defined below. Changing this forces a new resource to be created.
+  /// A `loadBalancer` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerLoadBalancer>? loadBalancer;
-  /// One or more `virtual_machine` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `virtualMachine` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerVirtualMachine>>? virtualMachines;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServer].
   /// [availabilitySetName] The full name for the availability set. Changing this forces a new resource to be created.
-  /// [loadBalancer] A `load_balancer` block as defined below. Changing this forces a new resource to be created.
-  /// [virtualMachines] One or more `virtual_machine` blocks as defined below. Changing this forces a new resource to be created.
+  /// [loadBalancer] A `loadBalancer` block as defined below. Changing this forces a new resource to be created.
+  /// [virtualMachines] One or more `virtualMachine` blocks as defined below. Changing this forces a new resource to be created.
   const ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServer({
     this.availabilitySetName,
     this.loadBalancer,
@@ -38,4 +38,3 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServer 
     );
   }
 }
-

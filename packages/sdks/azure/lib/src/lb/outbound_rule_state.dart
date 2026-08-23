@@ -10,7 +10,7 @@ class OutboundRuleState {
   /// The ID of the Backend Address Pool. Outbound traffic is randomly load balanced across IPs in the backend IPs.
   final pulumi.Input<String>? backendAddressPoolId;
   final pulumi.Input<bool>? enableTcpReset;
-  /// One or more `frontend_ip_configuration` blocks as defined below.
+  /// One or more `frontendIpConfiguration` blocks as defined below.
   final pulumi.Input<List<OutboundRuleFrontendIpConfiguration>>? frontendIpConfigurations;
   /// The timeout for the TCP idle connection Defaults to `4`.
   final pulumi.Input<int>? idleTimeoutInMinutes;
@@ -27,7 +27,7 @@ class OutboundRuleState {
   /// [allocatedOutboundPorts] The number of outbound ports to be used for NAT. Defaults to `1024`.
   /// [backendAddressPoolId] The ID of the Backend Address Pool. Outbound traffic is randomly load balanced across IPs in the backend IPs.
   /// [enableTcpReset] Optional.
-  /// [frontendIpConfigurations] One or more `frontend_ip_configuration` blocks as defined below.
+  /// [frontendIpConfigurations] One or more `frontendIpConfiguration` blocks as defined below.
   /// [idleTimeoutInMinutes] The timeout for the TCP idle connection Defaults to `4`.
   /// [loadbalancerId] The ID of the Load Balancer in which to create the Outbound Rule. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Outbound Rule. Changing this forces a new resource to be created.
@@ -73,4 +73,3 @@ class OutboundRuleState {
     );
   }
 }
-

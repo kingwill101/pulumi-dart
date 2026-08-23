@@ -7,20 +7,20 @@ import 'three_tier_virtual_instance_three_tier_configuration_resource_names_data
 import 'three_tier_virtual_instance_three_tier_configuration_resource_names_shared_storage.dart';
 
 class ThreeTierVirtualInstanceThreeTierConfigurationResourceNames {
-  /// An `application_server` block as defined below. Changing this forces a new resource to be created.
+  /// An `applicationServer` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServer>? applicationServer;
-  /// A `central_server` block as defined below. Changing this forces a new resource to be created.
+  /// A `centralServer` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServer>? centralServer;
-  /// A `database_server` block as defined below. Changing this forces a new resource to be created.
+  /// A `databaseServer` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServer>? databaseServer;
-  /// A `shared_storage` block as defined below. Changing this forces a new resource to be created.
+  /// A `sharedStorage` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage>? sharedStorage;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationResourceNames].
-  /// [applicationServer] An `application_server` block as defined below. Changing this forces a new resource to be created.
-  /// [centralServer] A `central_server` block as defined below. Changing this forces a new resource to be created.
-  /// [databaseServer] A `database_server` block as defined below. Changing this forces a new resource to be created.
-  /// [sharedStorage] A `shared_storage` block as defined below. Changing this forces a new resource to be created.
+  /// [applicationServer] An `applicationServer` block as defined below. Changing this forces a new resource to be created.
+  /// [centralServer] A `centralServer` block as defined below. Changing this forces a new resource to be created.
+  /// [databaseServer] A `databaseServer` block as defined below. Changing this forces a new resource to be created.
+  /// [sharedStorage] A `sharedStorage` block as defined below. Changing this forces a new resource to be created.
   const ThreeTierVirtualInstanceThreeTierConfigurationResourceNames({
     this.applicationServer,
     this.centralServer,
@@ -46,4 +46,3 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNames {
     );
   }
 }
-

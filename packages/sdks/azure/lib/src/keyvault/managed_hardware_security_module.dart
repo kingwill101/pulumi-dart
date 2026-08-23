@@ -5,7 +5,7 @@ import 'managed_hardware_security_module_state.dart';
 
 /// Manages a Key Vault Managed Hardware Security Module.
 ///
-/// &gt; **Note:** The Azure Provider includes a Feature Toggle which will purge a Key Vault Managed Hardware Security Module resource on destroy, rather than the default soft-delete. See `purge_soft_deleted_hardware_security_modules_on_destroy` for more information.
+/// &gt; **Note:** The Azure Provider includes a Feature Toggle which will purge a Key Vault Managed Hardware Security Module resource on destroy, rather than the default soft-delete. See `purgeSoftDeletedHardwareSecurityModulesOnDestroy` for more information.
 ///
 /// ## Example Usage
 ///
@@ -135,6 +135,36 @@ import 'managed_hardware_security_module_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_managedhardwaresecuritymodule" "example" {
+///   name                       = "exampleKVHsm"
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resourcegroup.example.location
+///   sku_name                   = "Standard_B1"
+///   purge_protection_enabled   = false
+///   soft_delete_retention_days = 90
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   admin_object_ids           = [data.azure_core_getclientconfig.current.object_id]
+///   tags = {
+///     "Env" = "Test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +176,8 @@ import 'managed_hardware_security_module_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.keyvault.ManagedHardwareSecurityModule;
 /// import com.pulumi.azure.keyvault.ManagedHardwareSecurityModuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -216,7 +246,7 @@ import 'managed_hardware_security_module_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.KeyVault` - 2023-07-01
+/// * `Microsoft.KeyVault` - 2026-02-01
 ///
 /// ## Import
 ///
@@ -234,7 +264,7 @@ class ManagedHardwareSecurityModule extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// Specifies the name of the Key Vault Managed Hardware Security Module. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A `network_acls` block as defined below.
+  /// A `networkAcls` block as defined below.
   late final pulumi.Output<ManagedHardwareSecurityModuleNetworkAcls> networkAcls;
   /// Whether traffic from public networks is permitted. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
@@ -246,7 +276,7 @@ class ManagedHardwareSecurityModule extends pulumi.CustomResource {
   late final pulumi.Output<String> securityDomainEncryptedData;
   /// A list of KeyVault certificates resource IDs (minimum of three and up to a maximum of 10) to activate this Managed HSM. More information see [activate-your-managed-hsm](https://learn.microsoft.com/azure/key-vault/managed-hsm/quick-create-cli#activate-your-managed-hsm)
   late final pulumi.Output<List<String>?> securityDomainKeyVaultCertificateIds;
-  /// Specifies the minimum number of shares required to decrypt the security domain for recovery. This is required when `security_domain_key_vault_certificate_ids` is specified. Valid values are between 2 and 10.
+  /// Specifies the minimum number of shares required to decrypt the security domain for recovery. This is required when `securityDomainKeyVaultCertificateIds` is specified. Valid values are between 2 and 10.
   late final pulumi.Output<int?> securityDomainQuorum;
   /// The Name of the SKU used for this Key Vault Managed Hardware Security Module. Possible value is `Standard_B1`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> skuName;

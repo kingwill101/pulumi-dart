@@ -7,15 +7,15 @@ class WorkspaceEnhancedSecurityCompliance {
   final pulumi.Input<bool>? automaticClusterUpdateEnabled;
   /// Enables compliance security profile for this workspace. Defaults to `false`.
   ///
-  /// &gt; **Note:** Changing the value of `compliance_security_profile_enabled` from `true` to `false` forces a replacement of the Databricks workspace.
+  /// &gt; **Note:** Changing the value of `complianceSecurityProfileEnabled` from `true` to `false` forces a replacement of the Databricks workspace.
   ///
-  /// &gt; **Note:** The attributes `automatic_cluster_update_enabled` and `enhanced_security_monitoring_enabled` must be set to `true` in order to set `compliance_security_profile_enabled` to `true`.
+  /// &gt; **Note:** The attributes `automaticClusterUpdateEnabled` and `enhancedSecurityMonitoringEnabled` must be set to `true` in order to set `complianceSecurityProfileEnabled` to `true`.
   final pulumi.Input<bool>? complianceSecurityProfileEnabled;
-  /// A list of standards to enforce on this workspace. Possible values include `HIPAA` and `PCI_DSS`.
+  /// A list of standards to enforce on this workspace. Possible values include `HIPAA`, `PCI_DSS`, `FEDRAMP_MODERATE`, `IRAP_PROTECTED`, `FEDRAMP_HIGH`, `FEDRAMP_IL5`, `ITAR_EAR`, `CYBER_ESSENTIAL_PLUS`, `CANADA_PROTECTED_B`, `ISMAP`, `HITRUST`, `K_FSI`, `GERMANY_C5`, and `GERMANY_TISAX`
   ///
-  /// &gt; **Note:** `compliance_security_profile_enabled` must be set to `true` in order to use `compliance_security_profile_standards`.
+  /// &gt; **Note:** `complianceSecurityProfileEnabled` must be set to `true` in order to use `complianceSecurityProfileStandards`.
   ///
-  /// &gt; **Note:** Removing a standard from the `compliance_security_profile_standards` list forces a replacement of the Databricks workspace.
+  /// &gt; **Note:** Removing a standard from the `complianceSecurityProfileStandards` list forces a replacement of the Databricks workspace.
   final pulumi.Input<List<String>>? complianceSecurityProfileStandards;
   /// Enables enhanced security monitoring for this workspace. Defaults to `false`.
   final pulumi.Input<bool>? enhancedSecurityMonitoringEnabled;
@@ -23,7 +23,7 @@ class WorkspaceEnhancedSecurityCompliance {
   /// Creates a new [WorkspaceEnhancedSecurityCompliance].
   /// [automaticClusterUpdateEnabled] Enables automatic cluster updates for this workspace. Defaults to `false`.
   /// [complianceSecurityProfileEnabled] Enables compliance security profile for this workspace. Defaults to `false`.
-  /// [complianceSecurityProfileStandards] A list of standards to enforce on this workspace. Possible values include `HIPAA` and `PCI_DSS`.
+  /// [complianceSecurityProfileStandards] A list of standards to enforce on this workspace. Possible values include `HIPAA`, `PCI_DSS`, `FEDRAMP_MODERATE`, `IRAP_PROTECTED`, `FEDRAMP_HIGH`, `FEDRAMP_IL5`, `ITAR_EAR`, `CYBER_ESSENTIAL_PLUS`, `CANADA_PROTECTED_B`, `ISMAP`, `HITRUST`, `K_FSI`, `GERMANY_C5`, and `GERMANY_TISAX`
   /// [enhancedSecurityMonitoringEnabled] Enables enhanced security monitoring for this workspace. Defaults to `false`.
   const WorkspaceEnhancedSecurityCompliance({
     this.automaticClusterUpdateEnabled,
@@ -50,4 +50,3 @@ class WorkspaceEnhancedSecurityCompliance {
     );
   }
 }
-

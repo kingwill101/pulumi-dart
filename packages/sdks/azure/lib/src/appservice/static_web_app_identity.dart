@@ -7,14 +7,14 @@ class StaticWebAppIdentity {
   final pulumi.Input<List<String>>? identityIds;
   final pulumi.Input<String>? principalId;
   final pulumi.Input<String>? tenantId;
-  /// The Type of Managed Identity assigned to this Static Web App resource. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
+  /// The Type of Managed Identity assigned to this Static Web App resource. Possible values are `SystemAssigned` and `UserAssigned`.
   final pulumi.Input<String> type;
 
   /// Creates a new [StaticWebAppIdentity].
   /// [identityIds] A list of Managed Identity IDs which should be assigned to this Static Web App resource.
   /// [principalId] Optional.
   /// [tenantId] Optional.
-  /// [type] The Type of Managed Identity assigned to this Static Web App resource. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
+  /// [type] The Type of Managed Identity assigned to this Static Web App resource. Possible values are `SystemAssigned` and `UserAssigned`.
   const StaticWebAppIdentity({
     this.identityIds,
     this.principalId,
@@ -40,4 +40,3 @@ class StaticWebAppIdentity {
     );
   }
 }
-

@@ -10,7 +10,7 @@ class GetStaticWebAppResult {
   final String apiKey;
   /// The map of key-value pairs of App Settings for the Static Web App.
   final Map<String, String> appSettings;
-  /// A `basic_auth` block as defined below.
+  /// A `basicAuth` block as defined below.
   final List<GetStaticWebAppBasicAuth> basicAuths;
   /// Are changes to the configuration file permitted.
   final bool configurationFileChangesEnabled;
@@ -42,7 +42,7 @@ class GetStaticWebAppResult {
   /// Creates a new [GetStaticWebAppResult].
   /// [apiKey] The API key of this Static Web App, which is used for later interacting with this Static Web App from other clients, e.g. GitHub Action.
   /// [appSettings] The map of key-value pairs of App Settings for the Static Web App.
-  /// [basicAuths] A `basic_auth` block as defined below.
+  /// [basicAuths] A `basicAuth` block as defined below.
   /// [configurationFileChangesEnabled] Are changes to the configuration file permitted.
   /// [defaultHostName] The default host name of the Static Web App.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -121,4 +121,3 @@ class GetStaticWebAppResult {
     );
   }
 }
-

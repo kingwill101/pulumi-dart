@@ -8,9 +8,9 @@ import 'vpn_gateway_ip_configuration.dart';
 class VpnGatewayState {
   /// Is BGP route translation for NAT on this VPN Gateway enabled? Defaults to `false`.
   final pulumi.Input<bool>? bgpRouteTranslationForNatEnabled;
-  /// A `bgp_settings` block as defined below.
+  /// A `bgpSettings` block as defined below.
   final pulumi.Input<VpnGatewayBgpSettings>? bgpSettings;
-  /// An `ip_configuration` block as defined below.
+  /// An `ipConfiguration` block as defined below.
   final pulumi.Input<List<VpnGatewayIpConfiguration>>? ipConfigurations;
   /// The Azure location where this VPN Gateway should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -29,8 +29,8 @@ class VpnGatewayState {
 
   /// Creates a new [VpnGatewayState].
   /// [bgpRouteTranslationForNatEnabled] Is BGP route translation for NAT on this VPN Gateway enabled? Defaults to `false`.
-  /// [bgpSettings] A `bgp_settings` block as defined below.
-  /// [ipConfigurations] An `ip_configuration` block as defined below.
+  /// [bgpSettings] A `bgpSettings` block as defined below.
+  /// [ipConfigurations] An `ipConfiguration` block as defined below.
   /// [location] The Azure location where this VPN Gateway should be created. Changing this forces a new resource to be created.
   /// [name] The Name which should be used for this VPN Gateway. Changing this forces a new resource to be created.
   /// [resourceGroupName] The Name of the Resource Group in which this VPN Gateway should be created. Changing this forces a new resource to be created.
@@ -81,4 +81,3 @@ class VpnGatewayState {
     );
   }
 }
-

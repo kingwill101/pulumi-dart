@@ -25,21 +25,21 @@ class ApiArgs {
   final pulumi.Input<String>? displayName;
   /// A `import` block as documented below.
   ///
-  /// &gt; **Note:** The `display_name`, `description`, `contact`, and `license` fields can be imported by the `import` block, which might cause a drift if these fields are set along with the `import` block.
+  /// &gt; **Note:** The `displayName`, `description`, `contact`, and `license` fields can be imported by the `import` block, which might cause a drift if these fields are set along with the `import` block.
   final pulumi.Input<ApiImport>? import;
   /// A `license` block as documented below.
   final pulumi.Input<ApiLicense>? license;
   /// The name of the API Management API. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// An `oauth2_authorization` block as documented below.
+  /// An `oauth2Authorization` block as documented below.
   final pulumi.Input<ApiOauth2Authorization>? oauth2Authorization;
-  /// An `openid_authentication` block as documented below.
+  /// An `openidAuthentication` block as documented below.
   final pulumi.Input<ApiOpenidAuthentication>? openidAuthentication;
   /// The Path for this API Management API, which is a relative URL which uniquely identifies this API and all of its resource paths within the API Management Service.
   final pulumi.Input<String>? path;
   /// A list of protocols the operations in this API can be invoked. Possible values are `http`, `https`, `ws`, and `wss`.
   ///
-  /// &gt; **Note:** `display_name`, `path` and `protocols` are required when `source_api_id` is not set.
+  /// &gt; **Note:** `displayName`, `path` and `protocols` are required when `sourceApiId` is not set.
   final pulumi.Input<List<String>>? protocols;
   /// The Name of the Resource Group where the API Management API exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
@@ -49,11 +49,11 @@ class ApiArgs {
   final pulumi.Input<String>? revisionDescription;
   /// Absolute URL of the backend service implementing this API.
   ///
-  /// &gt; **Note:** The `service_url` is required when `api_type` is specified as `websocket`.
+  /// &gt; **Note:** The `serviceUrl` is required when `apiType` is specified as `websocket`.
   final pulumi.Input<String>? serviceUrl;
   /// The API id of the source API, which could be in format `azurerm_api_management_api.example.id` or in format `azurerm_api_management_api.example.id;rev=1`
   final pulumi.Input<String>? sourceApiId;
-  /// A `subscription_key_parameter_names` block as documented below.
+  /// A `subscriptionKeyParameterNames` block as documented below.
   final pulumi.Input<ApiSubscriptionKeyParameterNames>? subscriptionKeyParameterNames;
   /// Should this API require a subscription key? Defaults to `true`.
   final pulumi.Input<bool>? subscriptionRequired;
@@ -65,7 +65,7 @@ class ApiArgs {
   final pulumi.Input<String>? versionDescription;
   /// The ID of the Version Set which this API is associated with.
   ///
-  /// &gt; **Note:** When `version` is set, `version_set_id` must also be specified
+  /// &gt; **Note:** When `version` is set, `versionSetId` must also be specified
   final pulumi.Input<String>? versionSetId;
 
   /// Creates a new [ApiArgs].
@@ -77,8 +77,8 @@ class ApiArgs {
   /// [import] A `import` block as documented below.
   /// [license] A `license` block as documented below.
   /// [name] The name of the API Management API. Changing this forces a new resource to be created.
-  /// [oauth2Authorization] An `oauth2_authorization` block as documented below.
-  /// [openidAuthentication] An `openid_authentication` block as documented below.
+  /// [oauth2Authorization] An `oauth2Authorization` block as documented below.
+  /// [openidAuthentication] An `openidAuthentication` block as documented below.
   /// [path] The Path for this API Management API, which is a relative URL which uniquely identifies this API and all of its resource paths within the API Management Service.
   /// [protocols] A list of protocols the operations in this API can be invoked. Possible values are `http`, `https`, `ws`, and `wss`.
   /// [resourceGroupName] The Name of the Resource Group where the API Management API exists. Changing this forces a new resource to be created.
@@ -86,7 +86,7 @@ class ApiArgs {
   /// [revisionDescription] The description of the API Revision of the API Management API.
   /// [serviceUrl] Absolute URL of the backend service implementing this API.
   /// [sourceApiId] The API id of the source API, which could be in format `azurerm_api_management_api.example.id` or in format `azurerm_api_management_api.example.id;rev=1`
-  /// [subscriptionKeyParameterNames] A `subscription_key_parameter_names` block as documented below.
+  /// [subscriptionKeyParameterNames] A `subscriptionKeyParameterNames` block as documented below.
   /// [subscriptionRequired] Should this API require a subscription key? Defaults to `true`.
   /// [termsOfServiceUrl] Absolute URL of the Terms of Service for the API.
   /// [version] The Version number of this API, if this API is versioned.
@@ -174,4 +174,3 @@ class ApiArgs {
     );
   }
 }
-

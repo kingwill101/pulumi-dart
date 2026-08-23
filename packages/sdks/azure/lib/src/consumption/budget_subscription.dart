@@ -85,7 +85,7 @@ import 'budget_subscription_time_period.dart';
 /// example_budget_subscription = azure.consumption.BudgetSubscription("example",
 ///     name="example",
 ///     subscription_id=current.id,
-///     amount=1000,
+///     amount=float(1000),
 ///     time_grain="Monthly",
 ///     time_period={
 ///         "start_date": "2022-06-01T00:00:00Z",
@@ -320,6 +320,63 @@ import 'budget_subscription_time_period.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "eastus"
+/// }
+/// resource "azure_monitoring_actiongroup" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   short_name          = "example"
+/// }
+/// resource "azure_consumption_budgetsubscription" "example" {
+///   name            = "example"
+///   subscription_id = data.azure_core_getsubscription.current.id
+///   amount          = 1000
+///   time_grain      = "Monthly"
+///   time_period = {
+///     start_date = "2022-06-01T00:00:00Z"
+///     end_date   = "2022-07-01T00:00:00Z"
+///   }
+///   filter = {
+///     dimensions = [{
+///       "name"   = "ResourceGroupName"
+///       "values" = [azure_core_resourcegroup.example.name]
+///     }]
+///     tags = [{
+///       "name"   = "foo"
+///       "values" = ["bar", "baz"]
+///     }]
+///   }
+///   notifications {
+///     enabled        = true
+///     threshold      = 90
+///     operator       = "EqualTo"
+///     contact_emails = ["foo@example.com", "bar@example.com"]
+///     contact_groups = [azure_monitoring_actiongroup.example.id]
+///     contact_roles  = ["Owner"]
+///   }
+///   notifications {
+///     enabled        = false
+///     threshold      = 100
+///     operator       = "GreaterThan"
+///     threshold_type = "Forecasted"
+///     contact_emails = ["foo@example.com", "bar@example.com"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -336,9 +393,11 @@ import 'budget_subscription_time_period.dart';
 /// import com.pulumi.azure.consumption.BudgetSubscriptionArgs;
 /// import com.pulumi.azure.consumption.inputs.BudgetSubscriptionTimePeriodArgs;
 /// import com.pulumi.azure.consumption.inputs.BudgetSubscriptionFilterArgs;
+/// import com.pulumi.azure.consumption.inputs.BudgetSubscriptionFilterDimensionArgs;
+/// import com.pulumi.azure.consumption.inputs.BudgetSubscriptionFilterTagArgs;
 /// import com.pulumi.azure.consumption.inputs.BudgetSubscriptionNotificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -498,11 +557,11 @@ class BudgetSubscription extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> notifications;
   /// The ID of the Subscription for which to create a Consumption Budget. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The `subscription_id` property can accept a subscription ID e.g. `00000000-0000-0000-0000-000000000000` or the subscription resource ID e.g. `/subscriptions/00000000-0000-0000-0000-000000000000`. In version 3.0 this property will only accept the subscription resource ID.
+  /// &gt; **Note:** The `subscriptionId` property can accept a subscription ID e.g. `00000000-0000-0000-0000-000000000000` or the subscription resource ID e.g. `/subscriptions/00000000-0000-0000-0000-000000000000`. In version 3.0 this property will only accept the subscription resource ID.
   late final pulumi.Output<String> subscriptionId;
   /// The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> timeGrain;
-  /// A `time_period` block as defined below.
+  /// A `timePeriod` block as defined below.
   late final pulumi.Output<BudgetSubscriptionTimePeriod> timePeriod;
 
   /// Creates a new [BudgetSubscription].

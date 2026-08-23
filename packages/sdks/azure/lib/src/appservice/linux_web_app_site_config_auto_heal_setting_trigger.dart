@@ -9,18 +9,18 @@ import 'linux_web_app_site_config_auto_heal_setting_trigger_status_code.dart';
 class LinuxWebAppSiteConfigAutoHealSettingTrigger {
   /// A `requests` block as defined above.
   final pulumi.Input<LinuxWebAppSiteConfigAutoHealSettingTriggerRequests>? requests;
-  /// A `slow_request` blocks as defined above.
+  /// A `slowRequest` blocks as defined above.
   final pulumi.Input<LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest>? slowRequest;
-  /// One or more `slow_request_with_path` blocks as defined above.
+  /// One or more `slowRequestWithPath` blocks as defined above.
   final pulumi.Input<List<LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>>? slowRequestWithPaths;
-  /// One or more `status_code` blocks as defined above.
+  /// One or more `statusCode` blocks as defined above.
   final pulumi.Input<List<LinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode>>? statusCodes;
 
   /// Creates a new [LinuxWebAppSiteConfigAutoHealSettingTrigger].
   /// [requests] A `requests` block as defined above.
-  /// [slowRequest] A `slow_request` blocks as defined above.
-  /// [slowRequestWithPaths] One or more `slow_request_with_path` blocks as defined above.
-  /// [statusCodes] One or more `status_code` blocks as defined above.
+  /// [slowRequest] A `slowRequest` blocks as defined above.
+  /// [slowRequestWithPaths] One or more `slowRequestWithPath` blocks as defined above.
+  /// [statusCodes] One or more `statusCode` blocks as defined above.
   const LinuxWebAppSiteConfigAutoHealSettingTrigger({
     this.requests,
     this.slowRequest,
@@ -46,4 +46,3 @@ class LinuxWebAppSiteConfigAutoHealSettingTrigger {
     );
   }
 }
-

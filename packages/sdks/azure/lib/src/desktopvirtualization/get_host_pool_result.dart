@@ -25,7 +25,7 @@ class GetHostPoolResult {
   /// The preferred Application Group type for the Virtual Desktop Host Pool.
   final String preferredAppGroupType;
   final String resourceGroupName;
-  /// A `scheduled_agent_updates` block as defined below.
+  /// A `scheduledAgentUpdates` block as defined below.
   final List<GetHostPoolScheduledAgentUpdate> scheduledAgentUpdates;
   /// Returns `true` if the Start VM on Connection Feature is enabled.
   final bool startVmOnConnect;
@@ -48,7 +48,7 @@ class GetHostPoolResult {
   /// [personalDesktopAssignmentType] The type of personal desktop assignment in use by the Host Pool
   /// [preferredAppGroupType] The preferred Application Group type for the Virtual Desktop Host Pool.
   /// [resourceGroupName] Required.
-  /// [scheduledAgentUpdates] A `scheduled_agent_updates` block as defined below.
+  /// [scheduledAgentUpdates] A `scheduledAgentUpdates` block as defined below.
   /// [startVmOnConnect] Returns `true` if the Start VM on Connection Feature is enabled.
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] The type of the Virtual Desktop Host Pool.
@@ -114,4 +114,3 @@ class GetHostPoolResult {
     );
   }
 }
-

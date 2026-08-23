@@ -9,7 +9,7 @@ class WindowsFunctionAppSlotSiteConfigApplicationStack {
   final pulumi.Input<String>? javaVersion;
   /// The version of Node to use. Possible values are `~12`, `~14`, `~16`, `~18`, `~20`, `~22` and `~24`.
   final pulumi.Input<String>? nodeVersion;
-  /// The PowerShell Core version to use. Possible values are `7`, `7.2`, and `7.4`.
+  /// The PowerShell Core version to use. Possible values are `7`, `7.2`, `7.4`, and `7.6`.
   final pulumi.Input<String>? powershellCoreVersion;
   /// Does the Function App use a custom Application Stack?
   final pulumi.Input<bool>? useCustomRuntime;
@@ -20,7 +20,7 @@ class WindowsFunctionAppSlotSiteConfigApplicationStack {
   /// [dotnetVersion] The version of .Net. Possible values are `v3.0`, `v4.0`, `v6.0`, `v7.0`, `v8.0`, `v9.0` and `v10.0`. Defaults to `v4.0`.
   /// [javaVersion] The version of Java to use. Possible values are `1.8`, `11`, `17` and `21`.
   /// [nodeVersion] The version of Node to use. Possible values are `~12`, `~14`, `~16`, `~18`, `~20`, `~22` and `~24`.
-  /// [powershellCoreVersion] The PowerShell Core version to use. Possible values are `7`, `7.2`, and `7.4`.
+  /// [powershellCoreVersion] The PowerShell Core version to use. Possible values are `7`, `7.2`, `7.4`, and `7.6`.
   /// [useCustomRuntime] Does the Function App use a custom Application Stack?
   /// [useDotnetIsolatedRuntime] Should the DotNet process use an isolated runtime. Defaults to `false`.
   const WindowsFunctionAppSlotSiteConfigApplicationStack({
@@ -54,4 +54,3 @@ class WindowsFunctionAppSlotSiteConfigApplicationStack {
     );
   }
 }
-

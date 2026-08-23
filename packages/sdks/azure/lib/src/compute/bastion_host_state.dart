@@ -11,35 +11,37 @@ class BastionHostState {
   final pulumi.Input<String>? dnsName;
   /// Is File Copy feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `file_copy_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `fileCopyEnabled` is only supported when `sku` is `Standard` or `Premium`.
   final pulumi.Input<bool>? fileCopyEnabled;
-  /// A `ip_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// A `ipConfiguration` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<BastionHostIpConfiguration>? ipConfiguration;
   /// Is IP Connect feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `ip_connect_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `ipConnectEnabled` is only supported when `sku` is `Standard` or `Premium`.
   final pulumi.Input<bool>? ipConnectEnabled;
   /// Is Kerberos authentication feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `kerberos_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `kerberosEnabled` is only supported when `sku` is `Standard` or `Premium`.
   final pulumi.Input<bool>? kerberosEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. Review [Azure Bastion Host FAQ](https://docs.microsoft.com/azure/bastion/bastion-faq) for supported locations.
   final pulumi.Input<String>? location;
   /// Specifies the name of the Bastion Host. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+  /// Whether Private-Only deployment is enabled for the Bastion Host.
+  final pulumi.Input<bool>? privateOnlyEnabled;
   /// The name of the resource group in which to create the Bastion Host. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
   /// The number of scale units with which to provision the Bastion Host. Possible values are between `2` and `50`. Defaults to `2`.
   ///
-  /// &gt; **Note:** `scale_units` only can be changed when `sku` is `Standard` or `Premium`. `scale_units` is always `2` when `sku` is `Basic`.
+  /// &gt; **Note:** `scaleUnits` only can be changed when `sku` is `Standard` or `Premium`. `scaleUnits` is always `2` when `sku` is `Basic`.
   final pulumi.Input<int>? scaleUnits;
   /// Is Session Recording feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `session_recording_enabled` is only supported when `sku` is `Premium`.
+  /// &gt; **Note:** `sessionRecordingEnabled` is only supported when `sku` is `Premium`.
   final pulumi.Input<bool>? sessionRecordingEnabled;
   /// Is Shareable Link feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `shareable_link_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `shareableLinkEnabled` is only supported when `sku` is `Standard` or `Premium`.
   final pulumi.Input<bool>? shareableLinkEnabled;
   /// The SKU of the Bastion Host. Accepted values are `Developer`, `Basic`, `Standard` and `Premium`. Defaults to `Basic`.
   ///
@@ -49,7 +51,7 @@ class BastionHostState {
   final pulumi.Input<Map<String, String>>? tags;
   /// Is Tunneling feature enabled for the Bastion Host. Defaults to `false`.
   ///
-  /// &gt; **Note:** `tunneling_enabled` is only supported when `sku` is `Standard` or `Premium`.
+  /// &gt; **Note:** `tunnelingEnabled` is only supported when `sku` is `Standard` or `Premium`.
   final pulumi.Input<bool>? tunnelingEnabled;
   /// The ID of the Virtual Network for the Developer Bastion Host. Changing this forces a new resource to be created.
   final pulumi.Input<String>? virtualNetworkId;
@@ -60,11 +62,12 @@ class BastionHostState {
   /// [copyPasteEnabled] Is Copy/Paste feature enabled for the Bastion Host. Defaults to `true`.
   /// [dnsName] The FQDN for the Bastion Host.
   /// [fileCopyEnabled] Is File Copy feature enabled for the Bastion Host. Defaults to `false`.
-  /// [ipConfiguration] A `ip_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// [ipConfiguration] A `ipConfiguration` block as defined below. Changing this forces a new resource to be created.
   /// [ipConnectEnabled] Is IP Connect feature enabled for the Bastion Host. Defaults to `false`.
   /// [kerberosEnabled] Is Kerberos authentication feature enabled for the Bastion Host. Defaults to `false`.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. Review [Azure Bastion Host FAQ](https://docs.microsoft.com/azure/bastion/bastion-faq) for supported locations.
   /// [name] Specifies the name of the Bastion Host. Changing this forces a new resource to be created.
+  /// [privateOnlyEnabled] Whether Private-Only deployment is enabled for the Bastion Host.
   /// [resourceGroupName] The name of the resource group in which to create the Bastion Host. Changing this forces a new resource to be created.
   /// [scaleUnits] The number of scale units with which to provision the Bastion Host. Possible values are between `2` and `50`. Defaults to `2`.
   /// [sessionRecordingEnabled] Is Session Recording feature enabled for the Bastion Host. Defaults to `false`.
@@ -83,6 +86,7 @@ class BastionHostState {
     this.kerberosEnabled,
     this.location,
     this.name,
+    this.privateOnlyEnabled,
     this.resourceGroupName,
     this.scaleUnits,
     this.sessionRecordingEnabled,
@@ -104,6 +108,7 @@ class BastionHostState {
       'kerberosEnabled': ?kerberosEnabled,
       'location': ?location,
       'name': ?name,
+      'privateOnlyEnabled': ?privateOnlyEnabled,
       'resourceGroupName': ?resourceGroupName,
       'scaleUnits': ?scaleUnits,
       'sessionRecordingEnabled': ?sessionRecordingEnabled,
@@ -126,6 +131,7 @@ class BastionHostState {
       kerberosEnabled: (() { final guardedValue = map['kerberosEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateOnlyEnabled: (() { final guardedValue = map['privateOnlyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scaleUnits: (() { final guardedValue = map['scaleUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       sessionRecordingEnabled: (() { final guardedValue = map['sessionRecordingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -138,4 +144,3 @@ class BastionHostState {
     );
   }
 }
-

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HadoopClusterStorageAccount {
   /// Is this the Default Storage Account for the HDInsight Hadoop Cluster? Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** One of the `storage_account` or `storage_account_gen2` blocks must be marked as the default.
+  /// &gt; **Note:** One of the `storageAccount` or `storageAccountGen2` blocks must be marked as the default.
   final pulumi.Input<bool> isDefault;
   /// The Access Key which should be used to connect to the Storage Account. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageAccountKey;
   /// The ID of the Storage Container. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** When the `azure.storage.Container` resource is created with `storage_account_name`, this can be obtained from the `id` of the `azure.storage.Container` resource. When the `azure.storage.Container` resource is created with `storage_account_id`, please use `azure.storage.getContainers` data source to get the `data_plane_id` of the `azure.storage.Container` resource for this field.
+  /// &gt; **Note:** When the `azure.storage.Container` resource is created with `storageAccountName`, this can be obtained from the `id` of the `azure.storage.Container` resource. When the `azure.storage.Container` resource is created with `storageAccountId`, please use `azure.storage.getContainers` data source to get the `dataPlaneId` of the `azure.storage.Container` resource for this field.
   final pulumi.Input<String> storageContainerId;
   /// The ID of the Storage Account. Changing this forces a new resource to be created.
   final pulumi.Input<String>? storageResourceId;
@@ -46,4 +46,3 @@ class HadoopClusterStorageAccount {
     );
   }
 }
-

@@ -280,8 +280,8 @@ import 'replicated_vmstate.dart';
 ///     name="policy",
 ///     resource_group_name=secondary.name,
 ///     recovery_vault_name=vault.name,
-///     recovery_point_retention_in_minutes=24 * 60,
-///     application_consistent_snapshot_frequency_in_minutes=4 * 60)
+///     recovery_point_retention_in_minutes=int(24 * 60),
+///     application_consistent_snapshot_frequency_in_minutes=int(4 * 60))
 /// container_mapping = azure.siterecovery.ProtectionContainerMapping("container-mapping",
 ///     name="container-mapping",
 ///     resource_group_name=secondary.name,
@@ -852,7 +852,7 @@ import 'replicated_vmstate.dart';
 /// 			ManagedDisks: siterecovery.ReplicatedVMManagedDiskArray{
 /// 				&siterecovery.ReplicatedVMManagedDiskArgs{
 /// 					DiskId: vm.StorageOsDisk.ApplyT(func(storageOsDisk compute.VirtualMachineStorageOsDisk) (*string, error) {
-/// 						return &storageOsDisk.ManagedDiskId, nil
+/// 						return storageOsDisk.ManagedDiskId, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 					StagingStorageAccountId: primaryAccount.ID(),
 /// 					TargetResourceGroupId:   secondary.ID(),
@@ -876,6 +876,188 @@ import 'replicated_vmstate.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "primary" {
+///   name     = "tfex-replicated-vm-primary"
+///   location = "West US"
+/// }
+/// resource "azure_core_resourcegroup" "secondary" {
+///   name     = "tfex-replicated-vm-secondary"
+///   location = "East US"
+/// }
+/// resource "azure_compute_virtualmachine" "vm" {
+///   name                  = "vm"
+///   location              = azure_core_resourcegroup.primary.location
+///   resource_group_name   = azure_core_resourcegroup.primary.name
+///   vm_size               = "Standard_B1s"
+///   network_interface_ids = [azure_network_networkinterface.vm.id]
+///   storage_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+///   storage_os_disk = {
+///     name              = "vm-os-disk"
+///     os_type           = "Linux"
+///     caching           = "ReadWrite"
+///     create_option     = "FromImage"
+///     managed_disk_type = "Premium_LRS"
+///   }
+///   os_profile = {
+///     admin_username = "test-admin-123"
+///     admin_password = "test-pwd-123"
+///     computer_name  = "vm"
+///   }
+///   os_profile_linux_config = {
+///     disable_password_authentication = false
+///   }
+/// }
+/// resource "azure_recoveryservices_vault" "vault" {
+///   name                = "example-recovery-vault"
+///   location            = azure_core_resourcegroup.secondary.location
+///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_siterecovery_fabric" "primary" {
+///   name                = "primary-fabric"
+///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   recovery_vault_name = azure_recoveryservices_vault.vault.name
+///   location            = azure_core_resourcegroup.primary.location
+/// }
+/// resource "azure_siterecovery_fabric" "secondary" {
+///   name                = "secondary-fabric"
+///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   recovery_vault_name = azure_recoveryservices_vault.vault.name
+///   location            = azure_core_resourcegroup.secondary.location
+/// }
+/// resource "azure_siterecovery_protectioncontainer" "primary" {
+///   name                 = "primary-protection-container"
+///   resource_group_name  = azure_core_resourcegroup.secondary.name
+///   recovery_vault_name  = azure_recoveryservices_vault.vault.name
+///   recovery_fabric_name = azure_siterecovery_fabric.primary.name
+/// }
+/// resource "azure_siterecovery_protectioncontainer" "secondary" {
+///   name                 = "secondary-protection-container"
+///   resource_group_name  = azure_core_resourcegroup.secondary.name
+///   recovery_vault_name  = azure_recoveryservices_vault.vault.name
+///   recovery_fabric_name = azure_siterecovery_fabric.secondary.name
+/// }
+/// resource "azure_siterecovery_replicationpolicy" "policy" {
+///   name                                                 = "policy"
+///   resource_group_name                                  = azure_core_resourcegroup.secondary.name
+///   recovery_vault_name                                  = azure_recoveryservices_vault.vault.name
+///   recovery_point_retention_in_minutes                  = 24 * 60
+///   application_consistent_snapshot_frequency_in_minutes = 4 * 60
+/// }
+/// resource "azure_siterecovery_protectioncontainermapping" "container-mapping" {
+///   name                                      = "container-mapping"
+///   resource_group_name                       = azure_core_resourcegroup.secondary.name
+///   recovery_vault_name                       = azure_recoveryservices_vault.vault.name
+///   recovery_fabric_name                      = azure_siterecovery_fabric.primary.name
+///   recovery_source_protection_container_name = azure_siterecovery_protectioncontainer.primary.name
+///   recovery_target_protection_container_id   = azure_siterecovery_protectioncontainer.secondary.id
+///   recovery_replication_policy_id            = azure_siterecovery_replicationpolicy.policy.id
+/// }
+/// resource "azure_siterecovery_networkmapping" "network-mapping" {
+///   name                        = "network-mapping"
+///   resource_group_name         = azure_core_resourcegroup.secondary.name
+///   recovery_vault_name         = azure_recoveryservices_vault.vault.name
+///   source_recovery_fabric_name = azure_siterecovery_fabric.primary.name
+///   target_recovery_fabric_name = azure_siterecovery_fabric.secondary.name
+///   source_network_id           = azure_network_virtualnetwork.primary.id
+///   target_network_id           = azure_network_virtualnetwork.secondary.id
+/// }
+/// resource "azure_storage_account" "primary" {
+///   name                     = "primaryrecoverycache"
+///   location                 = azure_core_resourcegroup.primary.location
+///   resource_group_name      = azure_core_resourcegroup.primary.name
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_network_virtualnetwork" "primary" {
+///   name                = "network1"
+///   resource_group_name = azure_core_resourcegroup.primary.name
+///   address_spaces      = ["192.168.1.0/24"]
+///   location            = azure_core_resourcegroup.primary.location
+/// }
+/// resource "azure_network_virtualnetwork" "secondary" {
+///   name                = "network2"
+///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   address_spaces      = ["192.168.2.0/24"]
+///   location            = azure_core_resourcegroup.secondary.location
+/// }
+/// resource "azure_network_subnet" "primary" {
+///   name                 = "network1-subnet"
+///   resource_group_name  = azure_core_resourcegroup.primary.name
+///   virtual_network_name = azure_network_virtualnetwork.primary.name
+///   address_prefixes     = ["192.168.1.0/24"]
+/// }
+/// resource "azure_network_subnet" "secondary" {
+///   name                 = "network2-subnet"
+///   resource_group_name  = azure_core_resourcegroup.secondary.name
+///   virtual_network_name = azure_network_virtualnetwork.secondary.name
+///   address_prefixes     = ["192.168.2.0/24"]
+/// }
+/// resource "azure_network_publicip" "primary" {
+///   name                = "vm-public-ip-primary"
+///   allocation_method   = "Static"
+///   location            = azure_core_resourcegroup.primary.location
+///   resource_group_name = azure_core_resourcegroup.primary.name
+///   sku                 = "Basic"
+/// }
+/// resource "azure_network_publicip" "secondary" {
+///   name                = "vm-public-ip-secondary"
+///   allocation_method   = "Static"
+///   location            = azure_core_resourcegroup.secondary.location
+///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   sku                 = "Basic"
+/// }
+/// resource "azure_network_networkinterface" "vm" {
+///   name                = "vm-nic"
+///   location            = azure_core_resourcegroup.primary.location
+///   resource_group_name = azure_core_resourcegroup.primary.name
+///   ip_configurations {
+///     name                          = "vm"
+///     subnet_id                     = azure_network_subnet.primary.id
+///     private_ip_address_allocation = "Dynamic"
+///     public_ip_address_id          = azure_network_publicip.primary.id
+///   }
+/// }
+/// resource "azure_siterecovery_replicatedvm" "vm-replication" {
+///   depends_on                                = [azure_siterecovery_protectioncontainermapping.container-mapping, azure_siterecovery_networkmapping.network-mapping]
+///   name                                      = "vm-replication"
+///   resource_group_name                       = azure_core_resourcegroup.secondary.name
+///   recovery_vault_name                       = azure_recoveryservices_vault.vault.name
+///   source_recovery_fabric_name               = azure_siterecovery_fabric.primary.name
+///   source_vm_id                              = azure_compute_virtualmachine.vm.id
+///   recovery_replication_policy_id            = azure_siterecovery_replicationpolicy.policy.id
+///   source_recovery_protection_container_name = azure_siterecovery_protectioncontainer.primary.name
+///   target_resource_group_id                  = azure_core_resourcegroup.secondary.id
+///   target_recovery_fabric_id                 = azure_siterecovery_fabric.secondary.id
+///   target_recovery_protection_container_id   = azure_siterecovery_protectioncontainer.secondary.id
+///   managed_disks {
+///     disk_id                    = azure_compute_virtualmachine.vm.storage_os_disk.managed_disk_id
+///     staging_storage_account_id = azure_storage_account.primary.id
+///     target_resource_group_id   = azure_core_resourcegroup.secondary.id
+///     target_disk_type           = "Premium_LRS"
+///     target_replica_disk_type   = "Premium_LRS"
+///   }
+///   network_interfaces {
+///     source_network_interface_id   = azure_network_networkinterface.vm.id
+///     target_subnet_name            = azure_network_subnet.secondary.name
+///     recovery_public_ip_address_id = azure_network_publicip.secondary.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -920,8 +1102,8 @@ import 'replicated_vmstate.dart';
 /// import com.pulumi.azure.siterecovery.inputs.ReplicatedVMManagedDiskArgs;
 /// import com.pulumi.azure.siterecovery.inputs.ReplicatedVMNetworkInterfaceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1148,13 +1330,13 @@ import 'replicated_vmstate.dart';
 /// $ pulumi import azure:siterecovery/replicatedVM:ReplicatedVM vmreplication /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.RecoveryServices/vaults/recovery-vault-name/replicationFabrics/fabric-name/replicationProtectionContainers/protection-container-name/replicationProtectedItems/vm-replication-name
 /// ```
 class ReplicatedVM extends pulumi.CustomResource {
-  /// One or more `managed_disk` block as defined below. Changing this forces a new resource to be created.
+  /// One or more `managedDisk` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> managedDisks;
   /// Name of group in which all machines will replicate together and have shared crash consistent and app-consistent recovery points when failed over.
   late final pulumi.Output<String?> multiVmGroupName;
   /// The name of the replication for the replicated VM. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// One or more `network_interface` block as defined below.
+  /// One or more `networkInterface` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
   /// Id of the policy to use for this replicated vm. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryReplicationPolicyId;
@@ -1176,7 +1358,7 @@ class ReplicatedVM extends pulumi.CustomResource {
   late final pulumi.Output<String?> targetCapacityReservationGroupId;
   /// Specifies the Edge Zone within the Azure Region where this Managed Kubernetes Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> targetEdgeZone;
-  /// Network to use when a failover is done (recommended to set if any network_interface is configured for failover).
+  /// Network to use when a failover is done (recommended to set if any networkInterface is configured for failover).
   late final pulumi.Output<String> targetNetworkId;
   /// Id of Proximity Placement Group the new VM should belong to when a failover is done.
   late final pulumi.Output<String?> targetProximityPlacementGroupId;
@@ -1194,7 +1376,7 @@ class ReplicatedVM extends pulumi.CustomResource {
   late final pulumi.Output<String?> targetZone;
   /// Network to use when a test failover is done.
   late final pulumi.Output<String> testNetworkId;
-  /// One or more `unmanaged_disk` block as defined below. Changing this forces a new resource to be created.
+  /// One or more `unmanagedDisk` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> unmanagedDisks;
 
   /// Creates a new [ReplicatedVM].

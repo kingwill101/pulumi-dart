@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VmwareReplicatedVmNetworkInterface {
-  /// Whether this `network_interface` is primary for the replicated VM.
+  /// Whether this `networkInterface` is primary for the replicated VM.
   final pulumi.Input<bool> isPrimary;
   /// Mac address of the network interface of source VM.
   final pulumi.Input<String> sourceMacAddress;
@@ -15,7 +15,7 @@ class VmwareReplicatedVmNetworkInterface {
   final pulumi.Input<String>? testSubnetName;
 
   /// Creates a new [VmwareReplicatedVmNetworkInterface].
-  /// [isPrimary] Whether this `network_interface` is primary for the replicated VM.
+  /// [isPrimary] Whether this `networkInterface` is primary for the replicated VM.
   /// [sourceMacAddress] Mac address of the network interface of source VM.
   /// [targetStaticIp] Static IP to assign when a failover is done.
   /// [targetSubnetName] Name of the subnet to use when a failover is done.
@@ -48,4 +48,3 @@ class VmwareReplicatedVmNetworkInterface {
     );
   }
 }
-

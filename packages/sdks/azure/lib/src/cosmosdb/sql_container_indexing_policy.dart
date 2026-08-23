@@ -7,23 +7,23 @@ import 'sql_container_indexing_policy_included_path.dart';
 import 'sql_container_indexing_policy_spatial_index.dart';
 
 class SqlContainerIndexingPolicy {
-  /// One or more `composite_index` blocks as defined below.
+  /// One or more `compositeIndex` blocks as defined below.
   final pulumi.Input<List<SqlContainerIndexingPolicyCompositeIndex>>? compositeIndices;
-  /// One or more `excluded_path` blocks as defined below. Either `included_path` or `excluded_path` must contain the `path` `/*`
+  /// One or more `excludedPath` blocks as defined below. Either `includedPath` or `excludedPath` must contain the `path` `/*`
   final pulumi.Input<List<SqlContainerIndexingPolicyExcludedPath>>? excludedPaths;
-  /// One or more `included_path` blocks as defined below. Either `included_path` or `excluded_path` must contain the `path` `/*`
+  /// One or more `includedPath` blocks as defined below. Either `includedPath` or `excludedPath` must contain the `path` `/*`
   final pulumi.Input<List<SqlContainerIndexingPolicyIncludedPath>>? includedPaths;
   /// Indicates the indexing mode. Possible values include: `consistent` and `none`. Defaults to `consistent`.
   final pulumi.Input<String>? indexingMode;
-  /// One or more `spatial_index` blocks as defined below.
+  /// One or more `spatialIndex` blocks as defined below.
   final pulumi.Input<List<SqlContainerIndexingPolicySpatialIndex>>? spatialIndices;
 
   /// Creates a new [SqlContainerIndexingPolicy].
-  /// [compositeIndices] One or more `composite_index` blocks as defined below.
-  /// [excludedPaths] One or more `excluded_path` blocks as defined below. Either `included_path` or `excluded_path` must contain the `path` `/*`
-  /// [includedPaths] One or more `included_path` blocks as defined below. Either `included_path` or `excluded_path` must contain the `path` `/*`
+  /// [compositeIndices] One or more `compositeIndex` blocks as defined below.
+  /// [excludedPaths] One or more `excludedPath` blocks as defined below. Either `includedPath` or `excludedPath` must contain the `path` `/*`
+  /// [includedPaths] One or more `includedPath` blocks as defined below. Either `includedPath` or `excludedPath` must contain the `path` `/*`
   /// [indexingMode] Indicates the indexing mode. Possible values include: `consistent` and `none`. Defaults to `consistent`.
-  /// [spatialIndices] One or more `spatial_index` blocks as defined below.
+  /// [spatialIndices] One or more `spatialIndex` blocks as defined below.
   const SqlContainerIndexingPolicy({
     this.compositeIndices,
     this.excludedPaths,
@@ -52,4 +52,3 @@ class SqlContainerIndexingPolicy {
     );
   }
 }
-

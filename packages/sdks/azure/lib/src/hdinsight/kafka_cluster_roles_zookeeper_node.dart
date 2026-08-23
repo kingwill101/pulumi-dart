@@ -8,11 +8,11 @@ class KafkaClusterRolesZookeeperNode {
   ///
   /// &gt; **Note:** If specified, this password must be at least 10 characters in length and must contain at least one digit, one uppercase and one lower case letter, one non-alphanumeric character (except characters ' " ` \).
   final pulumi.Input<String>? password;
-  /// The script action which will run on the cluster. One or more `script_actions` blocks as defined below. Changing this forces a new resource to be created.
+  /// The script action which will run on the cluster. One or more `scriptActions` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<KafkaClusterRolesZookeeperNodeScriptAction>>? scriptActions;
   /// A list of SSH Keys which should be used for the local administrator on the Zookeeper Nodes. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Either a `password` or one or more `ssh_keys` must be specified - but not both.
+  /// &gt; **Note:** Either a `password` or one or more `sshKeys` must be specified - but not both.
   final pulumi.Input<List<String>>? sshKeys;
   /// The ID of the Subnet within the Virtual Network where the Zookeeper Nodes should be provisioned within. Changing this forces a new resource to be created.
   final pulumi.Input<String>? subnetId;
@@ -25,7 +25,7 @@ class KafkaClusterRolesZookeeperNode {
 
   /// Creates a new [KafkaClusterRolesZookeeperNode].
   /// [password] The Password associated with the local administrator for the Zookeeper Nodes. Changing this forces a new resource to be created.
-  /// [scriptActions] The script action which will run on the cluster. One or more `script_actions` blocks as defined below. Changing this forces a new resource to be created.
+  /// [scriptActions] The script action which will run on the cluster. One or more `scriptActions` blocks as defined below. Changing this forces a new resource to be created.
   /// [sshKeys] A list of SSH Keys which should be used for the local administrator on the Zookeeper Nodes. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet within the Virtual Network where the Zookeeper Nodes should be provisioned within. Changing this forces a new resource to be created.
   /// [username] The Username of the local administrator for the Zookeeper Nodes. Changing this forces a new resource to be created.
@@ -65,4 +65,3 @@ class KafkaClusterRolesZookeeperNode {
     );
   }
 }
-

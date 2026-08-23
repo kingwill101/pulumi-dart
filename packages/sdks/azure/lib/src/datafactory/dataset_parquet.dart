@@ -162,6 +162,41 @@ import 'dataset_parquet_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedserviceweb" "example" {
+///   name                = "example"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   authentication_type = "Anonymous"
+///   url                 = "https://www.bing.com"
+/// }
+/// resource "azure_datafactory_datasetparquet" "example" {
+///   name                = "example"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   linked_service_name = azure_datafactory_linkedserviceweb.example.name
+///   http_server_location = {
+///     relative_url = "http://www.bing.com"
+///     path         = "foo/bar/"
+///     filename     = "fizz.txt"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +212,8 @@ import 'dataset_parquet_state.dart';
 /// import com.pulumi.azure.datafactory.DatasetParquet;
 /// import com.pulumi.azure.datafactory.DatasetParquetArgs;
 /// import com.pulumi.azure.datafactory.inputs.DatasetParquetHttpServerLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -272,9 +307,9 @@ class DatasetParquet extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> additionalProperties;
   /// List of tags that can be used for describing the Data Factory Dataset.
   late final pulumi.Output<List<String>?> annotations;
-  /// A `azure_blob_fs_location` block as defined below.
+  /// A `azureBlobFsLocation` block as defined below.
   late final pulumi.Output<DatasetParquetAzureBlobFsLocation?> azureBlobFsLocation;
-  /// A `azure_blob_storage_location` block as defined below.
+  /// A `azureBlobStorageLocation` block as defined below.
   ///
   /// The following supported arguments are specific to Parquet Dataset:
   late final pulumi.Output<DatasetParquetAzureBlobStorageLocation?> azureBlobStorageLocation;
@@ -288,7 +323,7 @@ class DatasetParquet extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   late final pulumi.Output<String?> folder;
-  /// A `http_server_location` block as defined below.
+  /// A `httpServerLocation` block as defined below.
   late final pulumi.Output<DatasetParquetHttpServerLocation?> httpServerLocation;
   /// The Data Factory Linked Service name in which to associate the Dataset with.
   late final pulumi.Output<String> linkedServiceName;
@@ -296,7 +331,7 @@ class DatasetParquet extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A map of parameters to associate with the Data Factory Dataset.
   late final pulumi.Output<Map<String, String>?> parameters;
-  /// A `schema_column` block as defined below.
+  /// A `schemaColumn` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
 
   /// Creates a new [DatasetParquet].

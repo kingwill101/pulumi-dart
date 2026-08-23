@@ -13,9 +13,9 @@ class FailoverGroupArgs {
   final pulumi.Input<List<String>>? databases;
   /// The name of the Failover Group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// A `partner_server` block as defined below.
+  /// A `partnerServer` block as defined below.
   final pulumi.Input<List<FailoverGroupPartnerServer>> partnerServers;
-  /// A `read_write_endpoint_failover_policy` block as defined below.
+  /// A `readWriteEndpointFailoverPolicy` block as defined below.
   final pulumi.Input<FailoverGroupReadWriteEndpointFailoverPolicy> readWriteEndpointFailoverPolicy;
   /// Whether failover is enabled for the readonly endpoint. Defaults to `false`.
   final pulumi.Input<bool>? readonlyEndpointFailoverPolicyEnabled;
@@ -27,8 +27,8 @@ class FailoverGroupArgs {
   /// Creates a new [FailoverGroupArgs].
   /// [databases] A set of database names to include in the failover group.
   /// [name] The name of the Failover Group. Changing this forces a new resource to be created.
-  /// [partnerServers] A `partner_server` block as defined below.
-  /// [readWriteEndpointFailoverPolicy] A `read_write_endpoint_failover_policy` block as defined below.
+  /// [partnerServers] A `partnerServer` block as defined below.
+  /// [readWriteEndpointFailoverPolicy] A `readWriteEndpointFailoverPolicy` block as defined below.
   /// [readonlyEndpointFailoverPolicyEnabled] Whether failover is enabled for the readonly endpoint. Defaults to `false`.
   /// [serverId] The ID of the primary SQL Server on which to create the failover group. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
@@ -66,4 +66,3 @@ class FailoverGroupArgs {
     );
   }
 }
-

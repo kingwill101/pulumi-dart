@@ -41,7 +41,7 @@ import 'automanage_configuration_assignment_state.dart';
 ///     name: "examplevm",
 ///     resourceGroupName: example.name,
 ///     location: example.location,
-///     size: "Standard_F2",
+///     size: "Standard_D4_v5",
 ///     adminUsername: "adminuser",
 ///     adminPassword: "P@$$w0rd1234!",
 ///     disablePasswordAuthentication: false,
@@ -97,7 +97,7 @@ import 'automanage_configuration_assignment_state.dart';
 ///     name="examplevm",
 ///     resource_group_name=example.name,
 ///     location=example.location,
-///     size="Standard_F2",
+///     size="Standard_D4_v5",
 ///     admin_username="adminuser",
 ///     admin_password="P@$$w0rd1234!",
 ///     disable_password_authentication=False,
@@ -177,7 +177,7 @@ import 'automanage_configuration_assignment_state.dart';
 ///         Name = "examplevm",
 ///         ResourceGroupName = example.Name,
 ///         Location = example.Location,
-///         Size = "Standard_F2",
+///         Size = "Standard_D4_v5",
 ///         AdminUsername = "adminuser",
 ///         AdminPassword = "P@$$w0rd1234!",
 ///         DisablePasswordAuthentication = false,
@@ -275,7 +275,7 @@ import 'automanage_configuration_assignment_state.dart';
 /// 			Name:                          pulumi.String("examplevm"),
 /// 			ResourceGroupName:             example.Name,
 /// 			Location:                      example.Location,
-/// 			Size:                          pulumi.String("Standard_F2"),
+/// 			Size:                          pulumi.String("Standard_D4_v5"),
 /// 			AdminUsername:                 pulumi.String("adminuser"),
 /// 			AdminPassword:                 pulumi.String("P@$$w0rd1234!"),
 /// 			DisablePasswordAuthentication: pulumi.Bool(false),
@@ -315,6 +315,71 @@ import 'automanage_configuration_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "westus"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "examplevnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "internal"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "example" {
+///   name                = "exampleni"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "internal"
+///     subnet_id                     = azure_network_subnet.example.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_linuxvirtualmachine" "example" {
+///   name                            = "examplevm"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resourcegroup.example.location
+///   size                            = "Standard_D4_v5"
+///   admin_username                  = "adminuser"
+///   admin_password                  = "P@$$w0rd1234!"
+///   disable_password_authentication = false
+///   network_interface_ids           = [azure_network_networkinterface.example.id]
+///   os_disk = {
+///     caching              = "ReadWrite"
+///     storage_account_type = "Standard_LRS"
+///   }
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+/// }
+/// resource "azure_automanage_configuration" "example" {
+///   name                = "exampleconfig"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_compute_automanageconfigurationassignment" "example" {
+///   virtual_machine_id = azure_compute_linuxvirtualmachine.example.id
+///   configuration_id   = azure_automanage_configuration.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -338,8 +403,8 @@ import 'automanage_configuration_assignment_state.dart';
 /// import com.pulumi.azure.automanage.ConfigurationArgs;
 /// import com.pulumi.azure.compute.AutomanageConfigurationAssignment;
 /// import com.pulumi.azure.compute.AutomanageConfigurationAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -385,7 +450,7 @@ import 'automanage_configuration_assignment_state.dart';
 ///             .name("examplevm")
 ///             .resourceGroupName(example.name())
 ///             .location(example.location())
-///             .size("Standard_F2")
+///             .size("Standard_D4_v5")
 ///             .adminUsername("adminuser")
 ///             .adminPassword("P@$$w0rd1234!")
 ///             .disablePasswordAuthentication(false)
@@ -459,7 +524,7 @@ import 'automanage_configuration_assignment_state.dart';
 ///       name: examplevm
 ///       resourceGroupName: ${example.name}
 ///       location: ${example.location}
-///       size: Standard_F2
+///       size: Standard_D4_v5
 ///       adminUsername: adminuser
 ///       adminPassword: P@$$w0rd1234!
 ///       disablePasswordAuthentication: false

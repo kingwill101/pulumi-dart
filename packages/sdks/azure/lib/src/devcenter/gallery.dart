@@ -182,6 +182,44 @@ import 'gallery_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_devcenter_devcenter" "test" {
+///   name                = "example-devcenter"
+///   resource_group_name = testAzurermResourceGroup.name
+///   location            = testAzurermResourceGroup.location
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.test.id]
+///   }
+/// }
+/// resource "azure_authorization_userassignedidentity" "test" {
+///   name                = "example-uai"
+///   location            = testAzurermResourceGroup.location
+///   resource_group_name = testAzurermResourceGroup.name
+/// }
+/// resource "azure_compute_sharedimagegallery" "example" {
+///   name                = "example-image-gallery"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_devcenter_gallery" "example" {
+///   dev_center_id     = exampleAzurermDevCenter.id
+///   shared_gallery_id = azure_compute_sharedimagegallery.example.id
+///   name              = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -199,8 +237,8 @@ import 'gallery_state.dart';
 /// import com.pulumi.azure.compute.SharedImageGalleryArgs;
 /// import com.pulumi.azure.devcenter.Gallery;
 /// import com.pulumi.azure.devcenter.GalleryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

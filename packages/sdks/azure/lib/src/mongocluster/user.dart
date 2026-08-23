@@ -189,6 +189,46 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_mongocluster_mongocluster" "example" {
+///   name                   = "example-mc"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resourcegroup.example.location
+///   administrator_username = "adminTerraform"
+///   administrator_password = "QAZwsx123"
+///   shard_count            = "1"
+///   compute_tier           = "M30"
+///   high_availability_mode = "Disabled"
+///   storage_size_in_gb     = "32"
+///   version                = "8.0"
+///   authentication_methods = ["NativeAuth", "MicrosoftEntraID"]
+/// }
+/// resource "azure_mongocluster_user" "example" {
+///   object_id              = data.azure_core_getclientconfig.current.object_id
+///   mongo_cluster_id       = azure_mongocluster_mongocluster.example.id
+///   identity_provider_type = "MicrosoftEntraID"
+///   principal_type         = "servicePrincipal"
+///   roles {
+///     database = "admin"
+///     name     = "root"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -203,8 +243,8 @@ import 'user_state.dart';
 /// import com.pulumi.azure.mongocluster.User;
 /// import com.pulumi.azure.mongocluster.UserArgs;
 /// import com.pulumi.azure.mongocluster.inputs.UserRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

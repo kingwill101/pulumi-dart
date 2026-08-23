@@ -142,6 +142,38 @@ import 'firewall_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_mongocluster_mongocluster" "example" {
+///   name                   = "example-mongocluster"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resourcegroup.example.location
+///   administrator_username = "adminuser"
+///   administrator_password = "P@ssw0rd1234!"
+///   shard_count            = 1
+///   compute_tier           = "M30"
+///   high_availability_mode = "Disabled"
+///   storage_size_in_gb     = 32
+///   version                = "7.0"
+/// }
+/// resource "azure_mongocluster_firewallrule" "example" {
+///   name             = "example-firewall-rule"
+///   mongo_cluster_id = azure_mongocluster_mongocluster.example.id
+///   start_ip_address = "10.0.0.1"
+///   end_ip_address   = "10.0.0.255"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +186,8 @@ import 'firewall_rule_state.dart';
 /// import com.pulumi.azure.mongocluster.MongoClusterArgs;
 /// import com.pulumi.azure.mongocluster.FirewallRule;
 /// import com.pulumi.azure.mongocluster.FirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

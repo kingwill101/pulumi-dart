@@ -125,6 +125,21 @@ import 'subscription_template_deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_subscriptiontemplatedeployment" "example" {
+///   name             = "example-deployment"
+///   location         = "West Europe"
+///   template_content = " {\n   \\\"$schema\\\": \\\"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\\\",\n   \\\"contentVersion\\\": \\\"1.0.0.0\\\",\n   \\\"parameters\\\": {},\n   \\\"variables\\\": {},\n   \\\"resources\\\": [\n     {\n       \\\"type\\\": \\\"Microsoft.Resources/resourceGroups\\\",\n       \\\"apiVersion\\\": \\\"2018-05-01\\\",\n       \\\"location\\\": \\\"West Europe\\\",\n       \\\"name\\\": \\\"some-resource-group\\\",\n       \\\"properties\\\": {}\n     }\n   ]\n }\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -133,8 +148,8 @@ import 'subscription_template_deployment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.core.SubscriptionTemplateDeployment;
 /// import com.pulumi.azure.core.SubscriptionTemplateDeploymentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,7 +234,7 @@ class SubscriptionTemplateDeployment extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// The contents of the ARM Template which should be deployed into this Subscription.
   late final pulumi.Output<String> templateContent;
-  /// The ID of the Template Spec Version to deploy into the Subscription. Cannot be specified with `template_content`.
+  /// The ID of the Template Spec Version to deploy into the Subscription. Cannot be specified with `templateContent`.
   late final pulumi.Output<String?> templateSpecVersionId;
 
   /// Creates a new [SubscriptionTemplateDeployment].

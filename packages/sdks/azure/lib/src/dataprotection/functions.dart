@@ -65,10 +65,31 @@ import 'get_backup_vault_result.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("azurermDataProtectionBackupVaultId", exampleAzurermVpnGateway.Id)
+/// 		ctx.Export("azurermDataProtectionBackupVaultId", pulumi.Any(exampleAzurermVpnGateway.Id))
 /// 		ctx.Export("azurermDataProtectionBackupVaultPrincipalId", example.Identities[0].PrincipalId)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_dataprotection_getbackupvault" "example" {
+///   name                = "existing-backup-vault"
+///   resource_group_name = "existing-resource-group"
+/// }
+///
+/// output "azurermDataProtectionBackupVaultId" {
+///   value = exampleAzurermVpnGateway.id
+/// }
+/// output "azurermDataProtectionBackupVaultPrincipalId" {
+///   value = data.azure_dataprotection_getbackupvault.example.identities[0].principal_id
 /// }
 /// ```
 /// ```java
@@ -79,8 +100,8 @@ import 'get_backup_vault_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.dataprotection.DataprotectionFunctions;
 /// import com.pulumi.azure.dataprotection.inputs.GetBackupVaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -121,7 +142,7 @@ import 'get_backup_vault_result.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.DataProtection` - 2024-04-01
+/// * `Microsoft.DataProtection` - 2025-07-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataprotection_get_backup_vault_get_backup_vault_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBackupVaultResult> getBackupVault(

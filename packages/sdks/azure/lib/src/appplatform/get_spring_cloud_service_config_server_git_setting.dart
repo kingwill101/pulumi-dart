@@ -6,7 +6,7 @@ import 'get_spring_cloud_service_config_server_git_setting_repository.dart';
 import 'get_spring_cloud_service_config_server_git_setting_ssh_auth.dart';
 
 class GetSpringCloudServiceConfigServerGitSetting {
-  /// A `http_basic_auth` block as defined below.
+  /// A `httpBasicAuth` block as defined below.
   final pulumi.Input<List<GetSpringCloudServiceConfigServerGitSettingHttpBasicAuth>> httpBasicAuths;
   /// The default label of the Git repository, which is a branch name, tag name, or commit-id of the repository
   final pulumi.Input<String> label;
@@ -14,17 +14,17 @@ class GetSpringCloudServiceConfigServerGitSetting {
   final pulumi.Input<List<GetSpringCloudServiceConfigServerGitSettingRepository>> repositories;
   /// An array of strings used to search subdirectories of the Git repository.
   final pulumi.Input<List<String>> searchPaths;
-  /// A `ssh_auth` block as defined below.
+  /// A `sshAuth` block as defined below.
   final pulumi.Input<List<GetSpringCloudServiceConfigServerGitSettingSshAuth>> sshAuths;
   /// The URI of the Git repository
   final pulumi.Input<String> uri;
 
   /// Creates a new [GetSpringCloudServiceConfigServerGitSetting].
-  /// [httpBasicAuths] A `http_basic_auth` block as defined below.
+  /// [httpBasicAuths] A `httpBasicAuth` block as defined below.
   /// [label] The default label of the Git repository, which is a branch name, tag name, or commit-id of the repository
   /// [repositories] One or more `repository` blocks as defined below.
   /// [searchPaths] An array of strings used to search subdirectories of the Git repository.
-  /// [sshAuths] A `ssh_auth` block as defined below.
+  /// [sshAuths] A `sshAuth` block as defined below.
   /// [uri] The URI of the Git repository
   const GetSpringCloudServiceConfigServerGitSetting({
     required this.httpBasicAuths,
@@ -57,4 +57,3 @@ class GetSpringCloudServiceConfigServerGitSetting {
     );
   }
 }
-

@@ -24,7 +24,7 @@ class NamedValueArgs {
   final pulumi.Input<List<String>>? tags;
   /// The value of this API Management Named Value.
   final pulumi.Input<String>? value;
-  /// A `value_from_key_vault` block as defined below. If specified, `secret` must also be set to `true`.
+  /// A `valueFromKeyVault` block as defined below. If specified, `secret` must also be set to `true`.
   final pulumi.Input<NamedValueValueFromKeyVault>? valueFromKeyVault;
 
   /// Creates a new [NamedValueArgs].
@@ -35,7 +35,7 @@ class NamedValueArgs {
   /// [secret] Specifies whether the API Management Named Value is secret. Valid values are `true` or `false`. The default value is `false`.
   /// [tags] A list of tags to be applied to the API Management Named Value.
   /// [value] The value of this API Management Named Value.
-  /// [valueFromKeyVault] A `value_from_key_vault` block as defined below. If specified, `secret` must also be set to `true`.
+  /// [valueFromKeyVault] A `valueFromKeyVault` block as defined below. If specified, `secret` must also be set to `true`.
   const NamedValueArgs({
     required this.apiManagementName,
     required this.displayName,
@@ -73,4 +73,3 @@ class NamedValueArgs {
     );
   }
 }
-

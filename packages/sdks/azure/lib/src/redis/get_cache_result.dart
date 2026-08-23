@@ -22,7 +22,7 @@ class GetCacheResult {
   final String minimumTlsVersion;
   final String name;
   final bool nonSslPortEnabled;
-  /// A list of `patch_schedule` blocks as defined below.
+  /// A list of `patchSchedule` blocks as defined below.
   final List<GetCachePatchSchedule> patchSchedules;
   /// The non-SSL Port of the Redis Instance
   final int port;
@@ -32,7 +32,7 @@ class GetCacheResult {
   final String primaryConnectionString;
   /// The Static IP Address assigned to the Redis Cache when hosted inside the Virtual Network.
   final String privateStaticIpAddress;
-  /// A `redis_configuration` block as defined below.
+  /// A `redisConfiguration` block as defined below.
   final List<GetCacheRedisConfiguration> redisConfigurations;
   final String resourceGroupName;
   /// The Secondary Access Key for the Redis Instance
@@ -59,12 +59,12 @@ class GetCacheResult {
   /// [minimumTlsVersion] The minimum TLS version.
   /// [name] Required.
   /// [nonSslPortEnabled] Required.
-  /// [patchSchedules] A list of `patch_schedule` blocks as defined below.
+  /// [patchSchedules] A list of `patchSchedule` blocks as defined below.
   /// [port] The non-SSL Port of the Redis Instance
   /// [primaryAccessKey] The Primary Access Key for the Redis Instance
   /// [primaryConnectionString] The primary connection string of the Redis Instance.
   /// [privateStaticIpAddress] The Static IP Address assigned to the Redis Cache when hosted inside the Virtual Network.
-  /// [redisConfigurations] A `redis_configuration` block as defined below.
+  /// [redisConfigurations] A `redisConfiguration` block as defined below.
   /// [resourceGroupName] Required.
   /// [secondaryAccessKey] The Secondary Access Key for the Redis Instance
   /// [secondaryConnectionString] The secondary connection string of the Redis Instance.
@@ -159,4 +159,3 @@ class GetCacheResult {
     );
   }
 }
-

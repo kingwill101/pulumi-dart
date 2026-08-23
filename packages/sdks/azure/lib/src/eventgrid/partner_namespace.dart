@@ -110,6 +110,30 @@ import 'partner_namespace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_eventgrid_partnerregistration" "example" {
+///   name                = "example-partner-registration"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_eventgrid_partnernamespace" "example" {
+///   name                    = "example-partner-namespace"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   partner_registration_id = azure_eventgrid_partnerregistration.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +146,8 @@ import 'partner_namespace_state.dart';
 /// import com.pulumi.azure.eventgrid.PartnerRegistrationArgs;
 /// import com.pulumi.azure.eventgrid.PartnerNamespace;
 /// import com.pulumi.azure.eventgrid.PartnerNamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,7 +220,7 @@ import 'partner_namespace_state.dart';
 class PartnerNamespace extends pulumi.CustomResource {
   /// The endpoint for the Event Grid Partner Namespace.
   late final pulumi.Output<String> endpoint;
-  /// One or more `inbound_ip_rule` blocks as defined below.
+  /// One or more `inboundIpRule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
   /// Whether local authentication methods are enabled for the Event Grid Partner Namespace. Defaults to `true`.
   late final pulumi.Output<bool?> localAuthenticationEnabled;

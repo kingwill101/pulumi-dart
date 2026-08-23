@@ -8,7 +8,7 @@ class VirtualNetworkGatewayPolicyGroup {
   final pulumi.Input<bool>? isDefault;
   /// The name of the Virtual Network Gateway Policy Group.
   final pulumi.Input<String> name;
-  /// One or more `policy_member` blocks as defined below.
+  /// One or more `policyMember` blocks as defined below.
   final pulumi.Input<List<VirtualNetworkGatewayPolicyGroupPolicyMember>> policyMembers;
   /// The priority for the Virtual Network Gateway Policy Group. Defaults to `0`.
   final pulumi.Input<int>? priority;
@@ -16,7 +16,7 @@ class VirtualNetworkGatewayPolicyGroup {
   /// Creates a new [VirtualNetworkGatewayPolicyGroup].
   /// [isDefault] Is this a Default Virtual Network Gateway Policy Group? Defaults to `false`.
   /// [name] The name of the Virtual Network Gateway Policy Group.
-  /// [policyMembers] One or more `policy_member` blocks as defined below.
+  /// [policyMembers] One or more `policyMember` blocks as defined below.
   /// [priority] The priority for the Virtual Network Gateway Policy Group. Defaults to `0`.
   const VirtualNetworkGatewayPolicyGroup({
     this.isDefault,
@@ -43,4 +43,3 @@ class VirtualNetworkGatewayPolicyGroup {
     );
   }
 }
-

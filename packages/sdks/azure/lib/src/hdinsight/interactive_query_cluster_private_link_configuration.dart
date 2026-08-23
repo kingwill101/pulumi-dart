@@ -6,14 +6,14 @@ import 'interactive_query_cluster_private_link_configuration_ip_configuration.da
 class InteractiveQueryClusterPrivateLinkConfiguration {
   /// The ID of the private link service group.
   final pulumi.Input<String> groupId;
-  /// An `ip_configuration` block as defined below.
+  /// An `ipConfiguration` block as defined below.
   final pulumi.Input<InteractiveQueryClusterPrivateLinkConfigurationIpConfiguration> ipConfiguration;
   /// The name of the private link configuration.
   final pulumi.Input<String> name;
 
   /// Creates a new [InteractiveQueryClusterPrivateLinkConfiguration].
   /// [groupId] The ID of the private link service group.
-  /// [ipConfiguration] An `ip_configuration` block as defined below.
+  /// [ipConfiguration] An `ipConfiguration` block as defined below.
   /// [name] The name of the private link configuration.
   const InteractiveQueryClusterPrivateLinkConfiguration({
     required this.groupId,
@@ -37,4 +37,3 @@ class InteractiveQueryClusterPrivateLinkConfiguration {
     );
   }
 }
-

@@ -394,7 +394,7 @@ import 'application_security_group_association_state.dart';
 /// 			},
 /// 			LoadBalancerFrontendIpConfigurationIds: pulumi.StringArray{
 /// 				pulumi.String(exampleLoadBalancer.FrontendIpConfigurations.ApplyT(func(frontendIpConfigurations []lb.LoadBalancerFrontendIpConfiguration) (*string, error) {
-/// 					return &frontendIpConfigurations[0].Id, nil
+/// 					return frontendIpConfigurations[0].Id, nil
 /// 				}).(pulumi.StringPtrOutput)),
 /// 			},
 /// 		})
@@ -434,6 +434,93 @@ import 'application_security_group_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-PEASGAsso"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "examplevnet"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   address_spaces      = ["10.5.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "service" {
+///   name                                          = "examplenetservice"
+///   resource_group_name                           = azure_core_resourcegroup.example.name
+///   virtual_network_name                          = azure_network_virtualnetwork.example.name
+///   address_prefixes                              = ["10.5.1.0/24"]
+///   enforce_private_link_service_network_policies = true
+/// }
+/// resource "azure_network_subnet" "endpoint" {
+///   name                                           = "examplenetendpoint"
+///   resource_group_name                            = azure_core_resourcegroup.example.name
+///   virtual_network_name                           = azure_network_virtualnetwork.example.name
+///   address_prefixes                               = ["10.5.2.0/24"]
+///   enforce_private_link_endpoint_network_policies = true
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "examplepip"
+///   sku                 = "Standard"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+/// }
+/// resource "azure_lb_loadbalancer" "example" {
+///   name                = "examplelb"
+///   sku                 = "Standard"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   frontend_ip_configurations {
+///     name                 = azure_network_publicip.example.name
+///     public_ip_address_id = azure_network_publicip.example.id
+///   }
+/// }
+/// resource "azure_privatedns_linkservice" "example" {
+///   name                           = "examplePLS"
+///   location                       = azure_core_resourcegroup.example.location
+///   resource_group_name            = azure_core_resourcegroup.example.name
+///   auto_approval_subscription_ids = [data.azure_core_getsubscription.current.subscription_id]
+///   visibility_subscription_ids    = [data.azure_core_getsubscription.current.subscription_id]
+///   nat_ip_configurations {
+///     name      = "primaryIpConfiguration"
+///     primary   = true
+///     subnet_id = azure_network_subnet.service.id
+///   }
+///   load_balancer_frontend_ip_configuration_ids = [azure_lb_loadbalancer.example.frontend_ip_configurations[0].id]
+/// }
+/// resource "azure_privatelink_endpoint" "example" {
+///   name                = "example-privatelink"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   subnet_id           = azure_network_subnet.endpoint.id
+///   private_service_connection = {
+///     name                           = azure_privatedns_linkservice.example.name
+///     is_manual_connection           = false
+///     private_connection_resource_id = azure_privatedns_linkservice.example.id
+///   }
+/// }
+/// resource "azure_network_applicationsecuritygroup" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_privatelink_applicationsecuritygroupassociation" "example" {
+///   private_endpoint_id           = azure_privatelink_endpoint.example.id
+///   application_security_group_id = azure_network_applicationsecuritygroup.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -463,8 +550,8 @@ import 'application_security_group_association_state.dart';
 /// import com.pulumi.azure.network.ApplicationSecurityGroupArgs;
 /// import com.pulumi.azure.privatelink.ApplicationSecurityGroupAssociation;
 /// import com.pulumi.azure.privatelink.ApplicationSecurityGroupAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

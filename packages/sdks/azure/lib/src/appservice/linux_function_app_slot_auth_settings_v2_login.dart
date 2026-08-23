@@ -86,4 +86,3 @@ class LinuxFunctionAppSlotAuthSettingsV2Login {
     );
   }
 }
-

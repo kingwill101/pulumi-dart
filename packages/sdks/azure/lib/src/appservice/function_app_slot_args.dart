@@ -17,13 +17,13 @@ class FunctionAppSlotArgs {
   ///
   /// &gt; **Note:** When integrating a `CI/CD pipeline` and expecting to run from a deployed package in `Azure` you must seed your `app settings` as part of the application code for function app to be successfully deployed. `Important Default key pairs`: (`"WEBSITE_RUN_FROM_PACKAGE" = ""`, `"FUNCTIONS_WORKER_RUNTIME" = "node"` (or python, etc), `"WEBSITE_NODE_DEFAULT_VERSION" = "10.14.1"`, `"APPINSIGHTS_INSTRUMENTATIONKEY" = ""`).
   ///
-  /// &gt; **NOTE:** The values for `AzureWebJobsStorage` and `FUNCTIONS_EXTENSION_VERSION` will be filled by other input arguments and shouldn't be configured separately. `AzureWebJobsStorage` is filled based on `storage_account_name` and `storage_account_access_key`. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`.
+  /// &gt; **NOTE:** The values for `AzureWebJobsStorage` and `FUNCTIONS_EXTENSION_VERSION` will be filled by other input arguments and shouldn't be configured separately. `AzureWebJobsStorage` is filled based on `storageAccountName` and `storageAccountAccessKey`. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`.
   ///
-  /// &gt; **Note:**  When using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
+  /// &gt; **Note:**  When using an App Service Plan in the `Free` or `Shared` Tiers `use32BitWorkerProcess` must be set to `true`.
   final pulumi.Input<Map<String, String>>? appSettings;
-  /// An `auth_settings` block as defined below.
+  /// An `authSettings` block as defined below.
   final pulumi.Input<FunctionAppSlotAuthSettings>? authSettings;
-  /// A `connection_string` block as defined below.
+  /// A `connectionString` block as defined below.
   final pulumi.Input<List<FunctionAppSlotConnectionString>>? connectionStrings;
   /// The amount of memory in gigabyte-seconds that your application is allowed to consume per day. Setting this value only affects function apps under the consumption plan.
   final pulumi.Input<int>? dailyMemoryTimeQuota;
@@ -47,7 +47,7 @@ class FunctionAppSlotArgs {
   final pulumi.Input<String>? osType;
   /// The name of the resource group in which to create the Function App Slot. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-  /// A `site_config` object as defined below.
+  /// A `siteConfig` object as defined below.
   final pulumi.Input<FunctionAppSlotSiteConfig>? siteConfig;
   /// The access key which will be used to access the backend storage account for the Function App.
   final pulumi.Input<String> storageAccountAccessKey;
@@ -61,8 +61,8 @@ class FunctionAppSlotArgs {
   /// Creates a new [FunctionAppSlotArgs].
   /// [appServicePlanId] The ID of the App Service Plan within which to create this Function App Slot. Changing this forces a new resource to be created.
   /// [appSettings] A key-value pair of App Settings.
-  /// [authSettings] An `auth_settings` block as defined below.
-  /// [connectionStrings] A `connection_string` block as defined below.
+  /// [authSettings] An `authSettings` block as defined below.
+  /// [connectionStrings] A `connectionString` block as defined below.
   /// [dailyMemoryTimeQuota] The amount of memory in gigabyte-seconds that your application is allowed to consume per day. Setting this value only affects function apps under the consumption plan.
   /// [enableBuiltinLogging] Should the built-in logging of the Function App be enabled? Defaults to `true`.
   /// [enabled] Is the Function App enabled? Defaults to `true`.
@@ -73,7 +73,7 @@ class FunctionAppSlotArgs {
   /// [name] Specifies the name of the Function App. Changing this forces a new resource to be created.
   /// [osType] A string indicating the Operating System type for this function app. The only possible value is `linux`. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the Function App Slot. Changing this forces a new resource to be created.
-  /// [siteConfig] A `site_config` object as defined below.
+  /// [siteConfig] A `siteConfig` object as defined below.
   /// [storageAccountAccessKey] The access key which will be used to access the backend storage account for the Function App.
   /// [storageAccountName] The backend storage account name which will be used by the Function App (such as the dashboard, logs). Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
@@ -148,4 +148,3 @@ class FunctionAppSlotArgs {
     );
   }
 }
-

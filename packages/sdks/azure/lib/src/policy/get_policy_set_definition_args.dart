@@ -9,17 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicySetDefinitionArgs {
   /// Specifies the display name of the Policy Set Definition. Conflicts with `name`.
   ///
-  /// **NOTE** As `display_name` is not unique errors may occur when there are multiple policy set definitions with same display name.
+  /// **NOTE** As `displayName` is not unique errors may occur when there are multiple policy set definitions with same display name.
   final pulumi.Input<String>? displayName;
   /// Only retrieve Policy Set Definitions from this Management Group.
   final pulumi.Input<String>? managementGroupName;
-  /// Specifies the name of the Policy Set Definition. Conflicts with `display_name`.
+  /// Specifies the name of the Policy Set Definition. Conflicts with `displayName`.
   final pulumi.Input<String>? name;
 
   /// Creates a new [GetPolicySetDefinitionArgs].
   /// [displayName] Specifies the display name of the Policy Set Definition. Conflicts with `name`.
   /// [managementGroupName] Only retrieve Policy Set Definitions from this Management Group.
-  /// [name] Specifies the name of the Policy Set Definition. Conflicts with `display_name`.
+  /// [name] Specifies the name of the Policy Set Definition. Conflicts with `displayName`.
   const GetPolicySetDefinitionArgs({
     this.displayName,
     this.managementGroupName,
@@ -42,4 +42,3 @@ class GetPolicySetDefinitionArgs {
     );
   }
 }
-

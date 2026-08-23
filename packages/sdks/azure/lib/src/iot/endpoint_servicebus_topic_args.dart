@@ -9,15 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointServicebusTopicArgs {
   /// Type used to authenticate against the Service Bus Topic endpoint. Possible values are `keyBased` and `identityBased`. Defaults to `keyBased`.
   final pulumi.Input<String>? authenticationType;
-  /// The connection string for the endpoint. This attribute can only be specified and is mandatory when `authentication_type` is `keyBased`.
+  /// The connection string for the endpoint. This attribute can only be specified and is mandatory when `authenticationType` is `keyBased`.
   final pulumi.Input<String>? connectionString;
-  /// URI of the Service Bus endpoint. This attribute can only be specified and is mandatory when `authentication_type` is `identityBased`.
+  /// URI of the Service Bus endpoint. This attribute can only be specified and is mandatory when `authenticationType` is `identityBased`.
   final pulumi.Input<String>? endpointUri;
-  /// Name of the Service Bus Topic. This attribute can only be specified and is mandatory when `authentication_type` is `identityBased`.
+  /// Name of the Service Bus Topic. This attribute can only be specified and is mandatory when `authenticationType` is `identityBased`.
   final pulumi.Input<String>? entityPath;
   /// ID of the User Managed Identity used to authenticate against the Service Bus Topic endpoint.
   ///
-  /// &gt; **Note:** `identity_id` can only be specified when `authentication_type` is `identityBased`. It must be one of the `identity_ids` of the Iot Hub. If not specified when `authentication_type` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
+  /// &gt; **Note:** `identityId` can only be specified when `authenticationType` is `identityBased`. It must be one of the `identityIds` of the Iot Hub. If not specified when `authenticationType` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
   final pulumi.Input<String>? identityId;
   /// The IoTHub ID for the endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String> iothubId;
@@ -27,14 +27,14 @@ class EndpointServicebusTopicArgs {
   final pulumi.Input<String> resourceGroupName;
   /// The subscription ID for the endpoint.
   ///
-  /// &gt; **Note:** When `subscription_id` isn't specified it will be set to the subscription ID of the IoT Hub resource.
+  /// &gt; **Note:** When `subscriptionId` isn't specified it will be set to the subscription ID of the IoT Hub resource.
   final pulumi.Input<String>? subscriptionId;
 
   /// Creates a new [EndpointServicebusTopicArgs].
   /// [authenticationType] Type used to authenticate against the Service Bus Topic endpoint. Possible values are `keyBased` and `identityBased`. Defaults to `keyBased`.
-  /// [connectionString] The connection string for the endpoint. This attribute can only be specified and is mandatory when `authentication_type` is `keyBased`.
-  /// [endpointUri] URI of the Service Bus endpoint. This attribute can only be specified and is mandatory when `authentication_type` is `identityBased`.
-  /// [entityPath] Name of the Service Bus Topic. This attribute can only be specified and is mandatory when `authentication_type` is `identityBased`.
+  /// [connectionString] The connection string for the endpoint. This attribute can only be specified and is mandatory when `authenticationType` is `keyBased`.
+  /// [endpointUri] URI of the Service Bus endpoint. This attribute can only be specified and is mandatory when `authenticationType` is `identityBased`.
+  /// [entityPath] Name of the Service Bus Topic. This attribute can only be specified and is mandatory when `authenticationType` is `identityBased`.
   /// [identityId] ID of the User Managed Identity used to authenticate against the Service Bus Topic endpoint.
   /// [iothubId] The IoTHub ID for the endpoint. Changing this forces a new resource to be created.
   /// [name] The name of the endpoint. The name must be unique across endpoint types. The following names are reserved: `events`, `operationsMonitoringEvents`, `fileNotifications` and `$default`. Changing this forces a new resource to be created.
@@ -80,4 +80,3 @@ class EndpointServicebusTopicArgs {
     );
   }
 }
-

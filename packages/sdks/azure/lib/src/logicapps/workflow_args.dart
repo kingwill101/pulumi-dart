@@ -9,7 +9,7 @@ import 'workflow_identity.dart';
 /// {@endtemplate}
 /// {@macro pulumi_logicapps_workflow_workflow_args_doc}
 class WorkflowArgs {
-  /// A `access_control` block as defined below.
+  /// A `accessControl` block as defined below.
   final pulumi.Input<WorkflowAccessControl>? accessControl;
   /// Is the Logic App Workflow enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
@@ -25,7 +25,7 @@ class WorkflowArgs {
   final pulumi.Input<String>? name;
   /// A map of Key-Value pairs.
   ///
-  /// &gt; **Note:** Any parameters specified must exist in the Schema defined in `workflow_parameters`.
+  /// &gt; **Note:** Any parameters specified must exist in the Schema defined in `workflowParameters`.
   final pulumi.Input<Map<String, String>>? parameters;
   /// The name of the Resource Group in which the Logic App Workflow should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
@@ -39,7 +39,7 @@ class WorkflowArgs {
   final pulumi.Input<String>? workflowVersion;
 
   /// Creates a new [WorkflowArgs].
-  /// [accessControl] A `access_control` block as defined below.
+  /// [accessControl] A `accessControl` block as defined below.
   /// [enabled] Is the Logic App Workflow enabled? Defaults to `true`.
   /// [identity] An `identity` block as defined below.
   /// [integrationServiceEnvironmentId] The ID of the Integration Service Environment to which this Logic App Workflow belongs. Changing this forces a new Logic App Workflow to be created.
@@ -104,4 +104,3 @@ class WorkflowArgs {
     );
   }
 }
-

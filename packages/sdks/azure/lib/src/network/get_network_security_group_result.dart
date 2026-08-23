@@ -12,7 +12,7 @@ class GetNetworkSecurityGroupResult {
   /// The name of the security rule.
   final String name;
   final String resourceGroupName;
-  /// One or more `security_rule` blocks as defined below.
+  /// One or more `securityRule` blocks as defined below.
   final List<GetNetworkSecurityGroupSecurityRule> securityRules;
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
@@ -22,7 +22,7 @@ class GetNetworkSecurityGroupResult {
   /// [location] The supported Azure location where the resource exists.
   /// [name] The name of the security rule.
   /// [resourceGroupName] Required.
-  /// [securityRules] One or more `security_rule` blocks as defined below.
+  /// [securityRules] One or more `securityRule` blocks as defined below.
   /// [tags] A mapping of tags assigned to the resource.
   const GetNetworkSecurityGroupResult({
     required this.id,
@@ -55,4 +55,3 @@ class GetNetworkSecurityGroupResult {
     );
   }
 }
-

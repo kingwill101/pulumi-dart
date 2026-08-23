@@ -9,7 +9,7 @@ import 'server_identity.dart';
 /// {@endtemplate}
 /// {@macro pulumi_fluidrelay_server_server_args_doc}
 class ServerArgs {
-  /// A `customer_managed_key` block as defined below. Changing this forces a new resource to be created.
+  /// A `customerManagedKey` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ServerCustomerManagedKey>? customerManagedKey;
   /// An `identity` block as defined below.
   final pulumi.Input<ServerIdentity>? identity;
@@ -25,7 +25,7 @@ class ServerArgs {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ServerArgs].
-  /// [customerManagedKey] A `customer_managed_key` block as defined below. Changing this forces a new resource to be created.
+  /// [customerManagedKey] A `customerManagedKey` block as defined below. Changing this forces a new resource to be created.
   /// [identity] An `identity` block as defined below.
   /// [location] The Azure Region where the Fluid Relay Server should exist. Changing this forces a new Fluid Relay Server to be created.
   /// [name] The name which should be used for this Fluid Relay Server. Changing this forces a new Fluid Relay Server to be created.
@@ -66,4 +66,3 @@ class ServerArgs {
     );
   }
 }
-

@@ -166,6 +166,42 @@ import 'environment_custom_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "acctest-01"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+///   retention_in_days   = 30
+/// }
+/// resource "azure_containerapp_environment" "example" {
+///   name                       = "my-environment"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// resource "azure_containerapp_environmentcustomdomain" "example" {
+///   container_app_environment_id = azure_containerapp_environment.example.id
+///   certificate_blob_base64      = filebase64("testacc.pfx")
+///   certificate_password         = "TestAcc"
+///   dns_suffix                   = "acceptancetest.contoso.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +218,8 @@ import 'environment_custom_domain_state.dart';
 /// import com.pulumi.azure.containerapp.EnvironmentCustomDomainArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

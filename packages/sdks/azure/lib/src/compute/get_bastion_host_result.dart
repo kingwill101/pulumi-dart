@@ -13,7 +13,7 @@ class GetBastionHostResult {
   final bool fileCopyEnabled;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// A `ip_configuration` block as defined below.
+  /// A `ipConfiguration` block as defined below.
   final List<GetBastionHostIpConfiguration> ipConfigurations;
   /// Is IP Connect feature enabled for the Bastion Host.
   final bool ipConnectEnabled;
@@ -21,6 +21,8 @@ class GetBastionHostResult {
   final String location;
   /// The name of the IP configuration.
   final String name;
+  /// Whether Private-Only deployment is enabled for the Bastion Host.
+  final bool privateOnlyEnabled;
   final String resourceGroupName;
   /// The number of scale units provisioned for the Bastion Host.
   final int scaleUnits;
@@ -42,10 +44,11 @@ class GetBastionHostResult {
   /// [dnsName] The FQDN for the Bastion Host.
   /// [fileCopyEnabled] Is File Copy feature enabled for the Bastion Host.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ipConfigurations] A `ip_configuration` block as defined below.
+  /// [ipConfigurations] A `ipConfiguration` block as defined below.
   /// [ipConnectEnabled] Is IP Connect feature enabled for the Bastion Host.
   /// [location] The Azure Region where the Bastion Host exists.
   /// [name] The name of the IP configuration.
+  /// [privateOnlyEnabled] Whether Private-Only deployment is enabled for the Bastion Host.
   /// [resourceGroupName] Required.
   /// [scaleUnits] The number of scale units provisioned for the Bastion Host.
   /// [sessionRecordingEnabled] Is Session Recording feature enabled for the Bastion Host.
@@ -63,6 +66,7 @@ class GetBastionHostResult {
     required this.ipConnectEnabled,
     required this.location,
     required this.name,
+    required this.privateOnlyEnabled,
     required this.resourceGroupName,
     required this.scaleUnits,
     required this.sessionRecordingEnabled,
@@ -83,6 +87,7 @@ class GetBastionHostResult {
       'ipConnectEnabled': ipConnectEnabled,
       'location': location,
       'name': name,
+      'privateOnlyEnabled': privateOnlyEnabled,
       'resourceGroupName': resourceGroupName,
       'scaleUnits': scaleUnits,
       'sessionRecordingEnabled': sessionRecordingEnabled,
@@ -104,6 +109,7 @@ class GetBastionHostResult {
       ipConnectEnabled: map['ipConnectEnabled'] as bool,
       location: map['location'] as String,
       name: map['name'] as String,
+      privateOnlyEnabled: map['privateOnlyEnabled'] as bool,
       resourceGroupName: map['resourceGroupName'] as String,
       scaleUnits: map['scaleUnits'] as int,
       sessionRecordingEnabled: map['sessionRecordingEnabled'] as bool,
@@ -115,4 +121,3 @@ class GetBastionHostResult {
     );
   }
 }
-

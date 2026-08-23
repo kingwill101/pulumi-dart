@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SocketioIdentity {
   /// Specifies a list of User Assigned Managed Identity IDs for this Web PubSub Service.
   ///
-  /// &gt; **Note:** `identity_ids` is required when `type` is `UserAssigned`.
+  /// &gt; **Note:** `identityIds` is required when `type` is `UserAssigned`.
   final pulumi.Input<List<String>>? identityIds;
   final pulumi.Input<String>? principalId;
   final pulumi.Input<String>? tenantId;
@@ -42,4 +42,3 @@ class SocketioIdentity {
     );
   }
 }
-

@@ -6,9 +6,9 @@ import 'get_catalog_catalog_github.dart';
 
 /// Result data returned by getCatalog.
 class GetCatalogResult {
-  /// A `catalog_adogit` block as defined below.
+  /// A `catalogAdogit` block as defined below.
   final List<GetCatalogCatalogAdogit> catalogAdogits;
-  /// A `catalog_github` block as defined below.
+  /// A `catalogGithub` block as defined below.
   final List<GetCatalogCatalogGithub> catalogGithubs;
   final String devCenterId;
   /// The provider-assigned unique ID for this managed resource.
@@ -16,8 +16,8 @@ class GetCatalogResult {
   final String name;
 
   /// Creates a new [GetCatalogResult].
-  /// [catalogAdogits] A `catalog_adogit` block as defined below.
-  /// [catalogGithubs] A `catalog_github` block as defined below.
+  /// [catalogAdogits] A `catalogAdogit` block as defined below.
+  /// [catalogGithubs] A `catalogGithub` block as defined below.
   /// [devCenterId] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
@@ -49,4 +49,3 @@ class GetCatalogResult {
     );
   }
 }
-

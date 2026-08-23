@@ -13,7 +13,7 @@ class LinkedServiceAzureSqlDatabaseArgs {
   final pulumi.Input<Map<String, String>>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service Azure SQL Database.
   final pulumi.Input<List<String>>? annotations;
-  /// The connection string in which to authenticate with Azure SQL Database. Exactly one of either `connection_string` or `key_vault_connection_string` is required.
+  /// The connection string in which to authenticate with Azure SQL Database. Exactly one of either `connectionString` or `keyVaultConnectionString` is required.
   final pulumi.Input<String>? connectionString;
   /// The name of a User-assigned Managed Identity. Use this argument to authenticate against the linked resource using a User-assigned Managed Identity.
   final pulumi.Input<String>? credentialName;
@@ -23,39 +23,39 @@ class LinkedServiceAzureSqlDatabaseArgs {
   final pulumi.Input<String>? description;
   /// The integration runtime reference to associate with the Data Factory Linked Service Azure SQL Database.
   final pulumi.Input<String>? integrationRuntimeName;
-  /// A `key_vault_connection_string` block as defined below. Use this argument to store Azure SQL Database connection string in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `connection_string` or `key_vault_connection_string` is required.
+  /// A `keyVaultConnectionString` block as defined below. Use this argument to store Azure SQL Database connection string in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `connectionString` or `keyVaultConnectionString` is required.
   final pulumi.Input<LinkedServiceAzureSqlDatabaseKeyVaultConnectionString>? keyVaultConnectionString;
-  /// A `key_vault_password` block as defined below. Use this argument to store SQL Server password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
+  /// A `keyVaultPassword` block as defined below. Use this argument to store SQL Server password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
   final pulumi.Input<LinkedServiceAzureSqlDatabaseKeyVaultPassword>? keyVaultPassword;
   /// Specifies the name of the Data Factory Linked Service Azure SQL Database. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
   /// A map of parameters to associate with the Data Factory Linked Service Azure SQL Database.
   final pulumi.Input<Map<String, String>>? parameters;
-  /// The service principal id in which to authenticate against the Azure SQL Database. Required if `service_principal_key` is set.
+  /// The service principal id in which to authenticate against the Azure SQL Database. Required if `servicePrincipalKey` is set.
   final pulumi.Input<String>? servicePrincipalId;
-  /// The service principal key in which to authenticate against the Azure SQL Database. Required if `service_principal_id` is set.
+  /// The service principal key in which to authenticate against the Azure SQL Database. Required if `servicePrincipalId` is set.
   final pulumi.Input<String>? servicePrincipalKey;
   /// The tenant id or name in which to authenticate against the Azure SQL Database.
   final pulumi.Input<String>? tenantId;
-  /// Whether to use the Data Factory's managed identity to authenticate against the Azure SQL Database. Incompatible with `service_principal_id` and `service_principal_key`
+  /// Whether to use the Data Factory's managed identity to authenticate against the Azure SQL Database. Incompatible with `servicePrincipalId` and `servicePrincipalKey`
   final pulumi.Input<bool>? useManagedIdentity;
 
   /// Creates a new [LinkedServiceAzureSqlDatabaseArgs].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Linked Service Azure SQL Database.
   /// [annotations] List of tags that can be used for describing the Data Factory Linked Service Azure SQL Database.
-  /// [connectionString] The connection string in which to authenticate with Azure SQL Database. Exactly one of either `connection_string` or `key_vault_connection_string` is required.
+  /// [connectionString] The connection string in which to authenticate with Azure SQL Database. Exactly one of either `connectionString` or `keyVaultConnectionString` is required.
   /// [credentialName] The name of a User-assigned Managed Identity. Use this argument to authenticate against the linked resource using a User-assigned Managed Identity.
   /// [dataFactoryId] The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   /// [description] The description for the Data Factory Linked Service Azure SQL Database.
   /// [integrationRuntimeName] The integration runtime reference to associate with the Data Factory Linked Service Azure SQL Database.
-  /// [keyVaultConnectionString] A `key_vault_connection_string` block as defined below. Use this argument to store Azure SQL Database connection string in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `connection_string` or `key_vault_connection_string` is required.
-  /// [keyVaultPassword] A `key_vault_password` block as defined below. Use this argument to store SQL Server password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
+  /// [keyVaultConnectionString] A `keyVaultConnectionString` block as defined below. Use this argument to store Azure SQL Database connection string in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `connectionString` or `keyVaultConnectionString` is required.
+  /// [keyVaultPassword] A `keyVaultPassword` block as defined below. Use this argument to store SQL Server password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
   /// [name] Specifies the name of the Data Factory Linked Service Azure SQL Database. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service Azure SQL Database.
-  /// [servicePrincipalId] The service principal id in which to authenticate against the Azure SQL Database. Required if `service_principal_key` is set.
-  /// [servicePrincipalKey] The service principal key in which to authenticate against the Azure SQL Database. Required if `service_principal_id` is set.
+  /// [servicePrincipalId] The service principal id in which to authenticate against the Azure SQL Database. Required if `servicePrincipalKey` is set.
+  /// [servicePrincipalKey] The service principal key in which to authenticate against the Azure SQL Database. Required if `servicePrincipalId` is set.
   /// [tenantId] The tenant id or name in which to authenticate against the Azure SQL Database.
-  /// [useManagedIdentity] Whether to use the Data Factory's managed identity to authenticate against the Azure SQL Database. Incompatible with `service_principal_id` and `service_principal_key`
+  /// [useManagedIdentity] Whether to use the Data Factory's managed identity to authenticate against the Azure SQL Database. Incompatible with `servicePrincipalId` and `servicePrincipalKey`
   const LinkedServiceAzureSqlDatabaseArgs({
     this.additionalProperties,
     this.annotations,
@@ -114,4 +114,3 @@ class LinkedServiceAzureSqlDatabaseArgs {
     );
   }
 }
-

@@ -88,6 +88,25 @@ import 'workflow_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "workflow-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_logicapps_workflow" "example" {
+///   name                = "workflow1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +117,8 @@ import 'workflow_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.logicapps.Workflow;
 /// import com.pulumi.azure.logicapps.WorkflowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -157,7 +176,7 @@ import 'workflow_state.dart';
 /// $ pulumi import azure:logicapps/workflow:Workflow workflow1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Logic/workflows/workflow1
 /// ```
 class Workflow extends pulumi.CustomResource {
-  /// A `access_control` block as defined below.
+  /// A `accessControl` block as defined below.
   late final pulumi.Output<WorkflowAccessControl?> accessControl;
   /// The Access Endpoint for the Logic App Workflow.
   late final pulumi.Output<String> accessEndpoint;
@@ -179,7 +198,7 @@ class Workflow extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A map of Key-Value pairs.
   ///
-  /// &gt; **Note:** Any parameters specified must exist in the Schema defined in `workflow_parameters`.
+  /// &gt; **Note:** Any parameters specified must exist in the Schema defined in `workflowParameters`.
   late final pulumi.Output<Map<String, String>?> parameters;
   /// The name of the Resource Group in which the Logic App Workflow should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;

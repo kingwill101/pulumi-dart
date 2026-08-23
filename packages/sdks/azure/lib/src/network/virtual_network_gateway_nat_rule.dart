@@ -291,12 +291,12 @@ import 'virtual_network_gateway_nat_rule_state.dart';
 /// 			Name:              pulumi.String("example-vnetgwnatrule"),
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 			VirtualNetworkGatewayId: pulumi.String(example.ApplyT(func(example network.GetVirtualNetworkGatewayResult) (*string, error) {
-/// 				return &example.Id, nil
+/// 				return example.Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Mode: pulumi.String("EgressSnat"),
 /// 			Type: pulumi.String("Dynamic"),
 /// 			IpConfigurationId: pulumi.String(example.ApplyT(func(example network.GetVirtualNetworkGatewayResult) (*string, error) {
-/// 				return &example.IpConfigurations[0].Id, nil
+/// 				return example.IpConfigurations[0].Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ExternalMappings: network.VirtualNetworkGatewayNatRuleExternalMappingArray{
 /// 				&network.VirtualNetworkGatewayNatRuleExternalMappingArgs{
@@ -316,6 +316,72 @@ import 'virtual_network_gateway_nat_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getvirtualnetworkgateway" "example" {
+///   name                = azure_network_virtualnetworkgateway.example.name
+///   resource_group_name = azure_network_virtualnetworkgateway.example.resource_group_name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "GatewaySubnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "example-pip"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Dynamic"
+/// }
+/// resource "azure_network_virtualnetworkgateway" "example" {
+///   name                = "example-vnetgw"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   type                = "Vpn"
+///   vpn_type            = "RouteBased"
+///   sku                 = "Basic"
+///   ip_configurations {
+///     public_ip_address_id          = azure_network_publicip.example.id
+///     private_ip_address_allocation = "Dynamic"
+///     subnet_id                     = azure_network_subnet.example.id
+///   }
+/// }
+/// resource "azure_network_virtualnetworkgatewaynatrule" "example" {
+///   name                       = "example-vnetgwnatrule"
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   virtual_network_gateway_id = data.azure_network_getvirtualnetworkgateway.example.id
+///   mode                       = "EgressSnat"
+///   type                       = "Dynamic"
+///   ip_configuration_id        = data.azure_network_getvirtualnetworkgateway.example.ip_configurations[0].id
+///   external_mappings {
+///     address_space = "10.2.0.0/26"
+///     port_range    = "200"
+///   }
+///   internal_mappings {
+///     address_space = "10.4.0.0/26"
+///     port_range    = "400"
+///   }
 /// }
 /// ```
 /// ```java
@@ -341,8 +407,8 @@ import 'virtual_network_gateway_nat_rule_state.dart';
 /// import com.pulumi.azure.network.VirtualNetworkGatewayNatRuleArgs;
 /// import com.pulumi.azure.network.inputs.VirtualNetworkGatewayNatRuleExternalMappingArgs;
 /// import com.pulumi.azure.network.inputs.VirtualNetworkGatewayNatRuleInternalMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -508,9 +574,9 @@ import 'virtual_network_gateway_nat_rule_state.dart';
 /// $ pulumi import azure:network/virtualNetworkGatewayNatRule:VirtualNetworkGatewayNatRule example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resGroup1/providers/Microsoft.Network/virtualNetworkGateways/gw1/natRules/rule1
 /// ```
 class VirtualNetworkGatewayNatRule extends pulumi.CustomResource {
-  /// One or more `external_mapping` blocks as documented below.
+  /// One or more `externalMapping` blocks as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> externalMappings;
-  /// One or more `internal_mapping` blocks as documented below.
+  /// One or more `internalMapping` blocks as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> internalMappings;
   /// The ID of the IP Configuration this Virtual Network Gateway Nat Rule applies to.
   late final pulumi.Output<String?> ipConfigurationId;

@@ -19,15 +19,15 @@ class CacheArgs {
   ///
   /// &gt; **Note:** The `21623`, `43246` and `86491` sizes are restricted to read only resources.
   final pulumi.Input<int> cacheSizeInGb;
-  /// A `default_access_policy` block as defined below.
+  /// A `defaultAccessPolicy` block as defined below.
   final pulumi.Input<CacheDefaultAccessPolicy>? defaultAccessPolicy;
-  /// A `directory_active_directory` block as defined below.
+  /// A `directoryActiveDirectory` block as defined below.
   final pulumi.Input<CacheDirectoryActiveDirectory>? directoryActiveDirectory;
-  /// A `directory_flat_file` block as defined below.
+  /// A `directoryFlatFile` block as defined below.
   final pulumi.Input<CacheDirectoryFlatFile>? directoryFlatFile;
-  /// A `directory_ldap` block as defined below.
+  /// A `directoryLdap` block as defined below.
   ///
-  /// &gt; **Note:** Only one of `directory_active_directory`, `directory_flat_file` and `directory_ldap` can be set.
+  /// &gt; **Note:** Only one of `directoryActiveDirectory`, `directoryFlatFile` and `directoryLdap` can be set.
   final pulumi.Input<CacheDirectoryLdap>? directoryLdap;
   /// A `dns` block as defined below.
   final pulumi.Input<CacheDns>? dns;
@@ -57,10 +57,10 @@ class CacheArgs {
   /// Creates a new [CacheArgs].
   /// [automaticallyRotateKeyToLatestEnabled] Specifies whether the HPC Cache automatically rotates Encryption Key to the latest version.
   /// [cacheSizeInGb] The size of the HPC Cache, in GB. Possible values are `3072`, `6144`, `12288`, `21623`, `24576`, `43246`, `49152` and `86491`. Changing this forces a new resource to be created.
-  /// [defaultAccessPolicy] A `default_access_policy` block as defined below.
-  /// [directoryActiveDirectory] A `directory_active_directory` block as defined below.
-  /// [directoryFlatFile] A `directory_flat_file` block as defined below.
-  /// [directoryLdap] A `directory_ldap` block as defined below.
+  /// [defaultAccessPolicy] A `defaultAccessPolicy` block as defined below.
+  /// [directoryActiveDirectory] A `directoryActiveDirectory` block as defined below.
+  /// [directoryFlatFile] A `directoryFlatFile` block as defined below.
+  /// [directoryLdap] A `directoryLdap` block as defined below.
   /// [dns] A `dns` block as defined below.
   /// [identity] An `identity` block as defined below. Changing this forces a new resource to be created.
   /// [keyVaultKeyId] The ID of the Key Vault Key which should be used to encrypt the data in this HPC Cache.
@@ -136,4 +136,3 @@ class CacheArgs {
     );
   }
 }
-

@@ -6,14 +6,14 @@ import 'automation_source_rule_set.dart';
 class AutomationSource {
   /// Type of data that will trigger this automation. Must be one of `Alerts`, `Assessments`, `AssessmentsSnapshot`, `RegulatoryComplianceAssessment`, `RegulatoryComplianceAssessmentSnapshot`, `SecureScoreControls`, `SecureScoreControlsSnapshot`, `SecureScores`, `SecureScoresSnapshot`, `SubAssessments` or `SubAssessmentsSnapshot`. Note. assessments are also referred to as recommendations
   final pulumi.Input<String> eventSource;
-  /// A set of rules which evaluate upon event and data interception. This is defined in one or more `rule_set` blocks as defined below.
+  /// A set of rules which evaluate upon event and data interception. This is defined in one or more `ruleSet` blocks as defined below.
   ///
-  /// &gt; **Note:** When multiple `rule_set` block are provided, a logical 'OR' is applied to the evaluation of them.
+  /// &gt; **Note:** When multiple `ruleSet` block are provided, a logical 'OR' is applied to the evaluation of them.
   final pulumi.Input<List<AutomationSourceRuleSet>>? ruleSets;
 
   /// Creates a new [AutomationSource].
   /// [eventSource] Type of data that will trigger this automation. Must be one of `Alerts`, `Assessments`, `AssessmentsSnapshot`, `RegulatoryComplianceAssessment`, `RegulatoryComplianceAssessmentSnapshot`, `SecureScoreControls`, `SecureScoreControlsSnapshot`, `SecureScores`, `SecureScoresSnapshot`, `SubAssessments` or `SubAssessmentsSnapshot`. Note. assessments are also referred to as recommendations
-  /// [ruleSets] A set of rules which evaluate upon event and data interception. This is defined in one or more `rule_set` blocks as defined below.
+  /// [ruleSets] A set of rules which evaluate upon event and data interception. This is defined in one or more `ruleSet` blocks as defined below.
   const AutomationSource({
     required this.eventSource,
     this.ruleSets,
@@ -33,4 +33,3 @@ class AutomationSource {
     );
   }
 }
-

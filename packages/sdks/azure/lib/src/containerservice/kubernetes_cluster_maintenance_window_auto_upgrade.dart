@@ -14,15 +14,15 @@ class KubernetesClusterMaintenanceWindowAutoUpgrade {
   final pulumi.Input<String> frequency;
   /// The interval for maintenance runs. Depending on the frequency this interval is week or month based.
   final pulumi.Input<int> interval;
-  /// One or more `not_allowed` block as defined below.
+  /// One or more `notAllowed` block as defined below.
   final pulumi.Input<List<KubernetesClusterMaintenanceWindowAutoUpgradeNotAllowed>>? notAlloweds;
   /// The date on which the maintenance window begins to take effect.
   final pulumi.Input<String>? startDate;
-  /// The time for maintenance to begin, based on the timezone determined by `utc_offset`. Format is `HH:mm`.
+  /// The time for maintenance to begin, based on the timezone determined by `utcOffset`. Format is `HH:mm`.
   final pulumi.Input<String>? startTime;
   /// Used to determine the timezone for cluster maintenance.
   final pulumi.Input<String>? utcOffset;
-  /// Specifies on which instance of the allowed days specified in `day_of_week` the maintenance occurs. Options are `First`, `Second`, `Third`, `Fourth`, and `Last`.
+  /// Specifies on which instance of the allowed days specified in `dayOfWeek` the maintenance occurs. Options are `First`, `Second`, `Third`, `Fourth`, and `Last`.
   /// Required in combination with relative monthly frequency.
   final pulumi.Input<String>? weekIndex;
 
@@ -32,11 +32,11 @@ class KubernetesClusterMaintenanceWindowAutoUpgrade {
   /// [duration] The duration of the window for maintenance to run in hours. Possible options are between `4` to `24`.
   /// [frequency] Frequency of maintenance. Possible options are `Daily`, `Weekly`, `AbsoluteMonthly` and `RelativeMonthly`.
   /// [interval] The interval for maintenance runs. Depending on the frequency this interval is week or month based.
-  /// [notAlloweds] One or more `not_allowed` block as defined below.
+  /// [notAlloweds] One or more `notAllowed` block as defined below.
   /// [startDate] The date on which the maintenance window begins to take effect.
-  /// [startTime] The time for maintenance to begin, based on the timezone determined by `utc_offset`. Format is `HH:mm`.
+  /// [startTime] The time for maintenance to begin, based on the timezone determined by `utcOffset`. Format is `HH:mm`.
   /// [utcOffset] Used to determine the timezone for cluster maintenance.
-  /// [weekIndex] Specifies on which instance of the allowed days specified in `day_of_week` the maintenance occurs. Options are `First`, `Second`, `Third`, `Fourth`, and `Last`.
+  /// [weekIndex] Specifies on which instance of the allowed days specified in `dayOfWeek` the maintenance occurs. Options are `First`, `Second`, `Third`, `Fourth`, and `Last`.
   const KubernetesClusterMaintenanceWindowAutoUpgrade({
     this.dayOfMonth,
     this.dayOfWeek,
@@ -80,4 +80,3 @@ class KubernetesClusterMaintenanceWindowAutoUpgrade {
     );
   }
 }
-

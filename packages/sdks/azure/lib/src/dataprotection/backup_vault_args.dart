@@ -10,7 +10,7 @@ import 'backup_vault_identity.dart';
 class BackupVaultArgs {
   /// Whether to enable cross-region restore for the Backup Vault.
   ///
-  /// &gt; **Note:** The `cross_region_restore_enabled` can only be specified when `redundancy` is specified for `GeoRedundant`. Once `cross_region_restore_enabled` is enabled, it cannot be disabled.
+  /// &gt; **Note:** The `crossRegionRestoreEnabled` can only be specified when `redundancy` is specified for `GeoRedundant`. Once `crossRegionRestoreEnabled` is enabled, it cannot be disabled.
   final pulumi.Input<bool>? crossRegionRestoreEnabled;
   /// Specifies the type of the data store. Possible values are `ArchiveStore`, `OperationalStore`, `SnapshotStore` and `VaultStore`. Changing this forces a new resource to be created.
   ///
@@ -30,11 +30,11 @@ class BackupVaultArgs {
   final pulumi.Input<String> resourceGroupName;
   /// The soft delete retention duration for this Backup Vault. Possible values are between `14` and `180`. Defaults to `14`.
   ///
-  /// &gt; **Note:** The `retention_duration_in_days` is the number of days for which deleted data is retained before being permanently deleted. Retention period till 14 days are free of cost, however, retention beyond 14 days may incur additional charges. The `retention_duration_in_days` is required when the `soft_delete` is set to `On`.
+  /// &gt; **Note:** The `retentionDurationInDays` is the number of days for which deleted data is retained before being permanently deleted. Retention period till 14 days are free of cost, however, retention beyond 14 days may incur additional charges. The `retentionDurationInDays` is required when the `softDelete` is set to `On`.
   final pulumi.Input<double>? retentionDurationInDays;
   /// The state of soft delete for this Backup Vault. Possible values are `AlwaysOn`, `Off`, and `On`. Defaults to `On`.
   ///
-  /// &gt; **Note:** Once the `soft_delete` is set to `AlwaysOn`, the setting cannot be changed.
+  /// &gt; **Note:** Once the `softDelete` is set to `AlwaysOn`, the setting cannot be changed.
   final pulumi.Input<String>? softDelete;
   /// A mapping of tags which should be assigned to the Backup Vault.
   final pulumi.Input<Map<String, String>>? tags;
@@ -97,4 +97,3 @@ class BackupVaultArgs {
     );
   }
 }
-

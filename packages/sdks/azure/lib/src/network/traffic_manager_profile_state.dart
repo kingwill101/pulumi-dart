@@ -6,15 +6,15 @@ import 'traffic_manager_profile_monitor_config.dart';
 
 /// Input properties used for looking up and filtering TrafficManagerProfile resources.
 class TrafficManagerProfileState {
-  /// This block specifies the DNS configuration of the Profile. One `dns_config` block as defined below.
+  /// This block specifies the DNS configuration of the Profile. One `dnsConfig` block as defined below.
   final pulumi.Input<TrafficManagerProfileDnsConfig>? dnsConfig;
   /// The FQDN of the created Profile.
   final pulumi.Input<String>? fqdn;
   /// The amount of endpoints to return for DNS queries to this Profile. Possible values range from `1` to `8`.
   ///
-  /// &gt; **Note:** `max_return` must be set when the `traffic_routing_method` is `MultiValue`.
+  /// &gt; **Note:** `maxReturn` must be set when the `trafficRoutingMethod` is `MultiValue`.
   final pulumi.Input<int>? maxReturn;
-  /// This block specifies the Endpoint monitoring configuration for the Profile. One `monitor_config` block as defined below.
+  /// This block specifies the Endpoint monitoring configuration for the Profile. One `monitorConfig` block as defined below.
   final pulumi.Input<TrafficManagerProfileMonitorConfig>? monitorConfig;
   /// The name of the Traffic Manager profile. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -36,10 +36,10 @@ class TrafficManagerProfileState {
   final pulumi.Input<bool>? trafficViewEnabled;
 
   /// Creates a new [TrafficManagerProfileState].
-  /// [dnsConfig] This block specifies the DNS configuration of the Profile. One `dns_config` block as defined below.
+  /// [dnsConfig] This block specifies the DNS configuration of the Profile. One `dnsConfig` block as defined below.
   /// [fqdn] The FQDN of the created Profile.
   /// [maxReturn] The amount of endpoints to return for DNS queries to this Profile. Possible values range from `1` to `8`.
-  /// [monitorConfig] This block specifies the Endpoint monitoring configuration for the Profile. One `monitor_config` block as defined below.
+  /// [monitorConfig] This block specifies the Endpoint monitoring configuration for the Profile. One `monitorConfig` block as defined below.
   /// [name] The name of the Traffic Manager profile. Changing this forces a new resource to be created.
   /// [profileStatus] The status of the profile, can be set to either `Enabled` or `Disabled`. Defaults to `Enabled`.
   /// [resourceGroupName] The name of the resource group in which to create the Traffic Manager profile. Changing this forces a new resource to be created.
@@ -89,4 +89,3 @@ class TrafficManagerProfileState {
     );
   }
 }
-

@@ -9,29 +9,36 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableArgs {
   /// The name of the Table.
   final pulumi.Input<String> name;
+  /// The ID of the Storage Account where the Table exists.
+  final pulumi.Input<String>? storageAccountId;
   /// The name of the Storage Account where the Table exists.
-  final pulumi.Input<String> storageAccountName;
+  ///
+  /// &gt; **Note:** This property is deprecated in favour of `storageAccountId` and will be removed in version 5.0 of the AzureRM Provider.
+  final pulumi.Input<String>? storageAccountName;
 
   /// Creates a new [GetTableArgs].
   /// [name] The name of the Table.
+  /// [storageAccountId] The ID of the Storage Account where the Table exists.
   /// [storageAccountName] The name of the Storage Account where the Table exists.
   const GetTableArgs({
     required this.name,
-    required this.storageAccountName,
+    this.storageAccountId,
+    this.storageAccountName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'storageAccountName': storageAccountName,
+      'storageAccountId': ?storageAccountId,
+      'storageAccountName': ?storageAccountName,
     };
   }
 
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      storageAccountName: pulumi.Input.fromValue(map['storageAccountName'] as String),
+      storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

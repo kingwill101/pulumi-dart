@@ -24,7 +24,7 @@ class BudgetManagementGroupArgs {
   final pulumi.Input<List<BudgetManagementGroupNotification>> notifications;
   /// The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? timeGrain;
-  /// A `time_period` block as defined below.
+  /// A `timePeriod` block as defined below.
   final pulumi.Input<BudgetManagementGroupTimePeriod> timePeriod;
 
   /// Creates a new [BudgetManagementGroupArgs].
@@ -35,7 +35,7 @@ class BudgetManagementGroupArgs {
   /// [name] The name which should be used for this Management Group Consumption Budget. Changing this forces a new resource to be created.
   /// [notifications] One or more `notification` blocks as defined below.
   /// [timeGrain] The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
-  /// [timePeriod] A `time_period` block as defined below.
+  /// [timePeriod] A `timePeriod` block as defined below.
   const BudgetManagementGroupArgs({
     required this.amount,
     this.etag,
@@ -73,4 +73,3 @@ class BudgetManagementGroupArgs {
     );
   }
 }
-

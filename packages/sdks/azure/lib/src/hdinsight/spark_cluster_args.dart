@@ -22,11 +22,11 @@ import 'spark_cluster_storage_account_gen2.dart';
 class SparkClusterArgs {
   /// Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String> clusterVersion;
-  /// A `component_version` block as defined below.
+  /// A `componentVersion` block as defined below.
   final pulumi.Input<SparkClusterComponentVersion> componentVersion;
-  /// A `compute_isolation` block as defined below.
+  /// A `computeIsolation` block as defined below.
   final pulumi.Input<SparkClusterComputeIsolation>? computeIsolation;
-  /// One or more `disk_encryption` block as defined below.
+  /// One or more `diskEncryption` block as defined below.
   final pulumi.Input<List<SparkClusterDiskEncryption>>? diskEncryptions;
   /// Whether encryption in transit is enabled for this Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? encryptionInTransitEnabled;
@@ -44,17 +44,17 @@ class SparkClusterArgs {
   final pulumi.Input<String>? name;
   /// A `network` block as defined below.
   final pulumi.Input<SparkClusterNetwork>? network;
-  /// A `private_link_configuration` block as defined below.
+  /// A `privateLinkConfiguration` block as defined below.
   final pulumi.Input<SparkClusterPrivateLinkConfiguration>? privateLinkConfiguration;
   /// Specifies the name of the Resource Group in which this HDInsight Spark Cluster should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `roles` block as defined below.
   final pulumi.Input<SparkClusterRoles> roles;
-  /// A `security_profile` block as defined below. Changing this forces a new resource to be created.
+  /// A `securityProfile` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<SparkClusterSecurityProfile>? securityProfile;
-  /// A `storage_account_gen2` block as defined below.
+  /// A `storageAccountGen2` block as defined below.
   final pulumi.Input<SparkClusterStorageAccountGen2>? storageAccountGen2;
-  /// One or more `storage_account` block as defined below.
+  /// One or more `storageAccount` block as defined below.
   final pulumi.Input<List<SparkClusterStorageAccount>>? storageAccounts;
   /// A map of Tags which should be assigned to this HDInsight Spark Cluster.
   final pulumi.Input<Map<String, String>>? tags;
@@ -69,9 +69,9 @@ class SparkClusterArgs {
 
   /// Creates a new [SparkClusterArgs].
   /// [clusterVersion] Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
-  /// [componentVersion] A `component_version` block as defined below.
-  /// [computeIsolation] A `compute_isolation` block as defined below.
-  /// [diskEncryptions] One or more `disk_encryption` block as defined below.
+  /// [componentVersion] A `componentVersion` block as defined below.
+  /// [computeIsolation] A `computeIsolation` block as defined below.
+  /// [diskEncryptions] One or more `diskEncryption` block as defined below.
   /// [encryptionInTransitEnabled] Whether encryption in transit is enabled for this Cluster. Changing this forces a new resource to be created.
   /// [extension] An `extension` block as defined below.
   /// [gateway] A `gateway` block as defined below.
@@ -80,12 +80,12 @@ class SparkClusterArgs {
   /// [monitor] A `monitor` block as defined below.
   /// [name] Specifies the name for this HDInsight Spark Cluster. Changing this forces a new resource to be created.
   /// [network] A `network` block as defined below.
-  /// [privateLinkConfiguration] A `private_link_configuration` block as defined below.
+  /// [privateLinkConfiguration] A `privateLinkConfiguration` block as defined below.
   /// [resourceGroupName] Specifies the name of the Resource Group in which this HDInsight Spark Cluster should exist. Changing this forces a new resource to be created.
   /// [roles] A `roles` block as defined below.
-  /// [securityProfile] A `security_profile` block as defined below. Changing this forces a new resource to be created.
-  /// [storageAccountGen2] A `storage_account_gen2` block as defined below.
-  /// [storageAccounts] One or more `storage_account` block as defined below.
+  /// [securityProfile] A `securityProfile` block as defined below. Changing this forces a new resource to be created.
+  /// [storageAccountGen2] A `storageAccountGen2` block as defined below.
+  /// [storageAccounts] One or more `storageAccount` block as defined below.
   /// [tags] A map of Tags which should be assigned to this HDInsight Spark Cluster.
   /// [tier] Specifies the Tier which should be used for this HDInsight Spark Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
   /// [tlsMinVersion] The minimal supported TLS version. Possible values are 1.0, 1.1 or 1.2. Changing this forces a new resource to be created.
@@ -169,4 +169,3 @@ class SparkClusterArgs {
     );
   }
 }
-

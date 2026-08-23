@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppTemplateTcpScaleRuleAuthentication {
   /// The name of the Container App Secret to use for this Scale Rule Authentication.
   final pulumi.Input<String> secretName;
-  /// The Trigger Parameter name to use the supply the value retrieved from the `secret_name`.
+  /// The Trigger Parameter name to use the supply the value retrieved from the `secretName`.
   final pulumi.Input<String>? triggerParameter;
 
   /// Creates a new [AppTemplateTcpScaleRuleAuthentication].
   /// [secretName] The name of the Container App Secret to use for this Scale Rule Authentication.
-  /// [triggerParameter] The Trigger Parameter name to use the supply the value retrieved from the `secret_name`.
+  /// [triggerParameter] The Trigger Parameter name to use the supply the value retrieved from the `secretName`.
   const AppTemplateTcpScaleRuleAuthentication({
     required this.secretName,
     this.triggerParameter,
@@ -30,4 +30,3 @@ class AppTemplateTcpScaleRuleAuthentication {
     );
   }
 }
-

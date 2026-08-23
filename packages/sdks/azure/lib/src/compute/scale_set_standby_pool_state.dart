@@ -7,7 +7,7 @@ import 'scale_set_standby_pool_elasticity_profile.dart';
 class ScaleSetStandbyPoolState {
   /// Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to.
   final pulumi.Input<String>? attachedVirtualMachineScaleSetId;
-  /// An `elasticity_profile` block as defined below.
+  /// An `elasticityProfile` block as defined below.
   final pulumi.Input<ScaleSetStandbyPoolElasticityProfile>? elasticityProfile;
   /// Specifies the Azure Region where the Standby Pool should exist. Changing this forces a new Standby Pool to be created.
   final pulumi.Input<String>? location;
@@ -22,7 +22,7 @@ class ScaleSetStandbyPoolState {
 
   /// Creates a new [ScaleSetStandbyPoolState].
   /// [attachedVirtualMachineScaleSetId] Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to.
-  /// [elasticityProfile] An `elasticity_profile` block as defined below.
+  /// [elasticityProfile] An `elasticityProfile` block as defined below.
   /// [location] Specifies the Azure Region where the Standby Pool should exist. Changing this forces a new Standby Pool to be created.
   /// [name] Specifies the name which should be used for this Standby Pool. Changing this forces a new Standby Pool to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Standby Pool should exist. Changing this forces a new Standby Pool to be created.
@@ -62,4 +62,3 @@ class ScaleSetStandbyPoolState {
     );
   }
 }
-

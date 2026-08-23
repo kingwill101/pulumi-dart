@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProjectEnvironmentTypeUserRoleAssignment {
-  /// A list of roles to assign to the `user_id`.
+  /// A list of roles to assign to the `userId`.
   final pulumi.Input<List<String>> roles;
   /// The user object ID that is assigned roles.
   final pulumi.Input<String> userId;
 
   /// Creates a new [GetProjectEnvironmentTypeUserRoleAssignment].
-  /// [roles] A list of roles to assign to the `user_id`.
+  /// [roles] A list of roles to assign to the `userId`.
   /// [userId] The user object ID that is assigned roles.
   const GetProjectEnvironmentTypeUserRoleAssignment({
     required this.roles,
@@ -30,4 +30,3 @@ class GetProjectEnvironmentTypeUserRoleAssignment {
     );
   }
 }
-

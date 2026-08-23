@@ -71,6 +71,24 @@ import 'get_volume_snapshot_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_elasticsan_get" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_elasticsan_get.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +97,8 @@ import 'get_volume_snapshot_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.elasticsan.ElasticsanFunctions;
 /// import com.pulumi.azure.elasticsan.inputs.GetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,6 +237,28 @@ Future<GetResult> get(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_elasticsan_get" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+/// data "azure_elasticsan_getvolumegroup" "exampleGetVolumeGroup" {
+///   name           = "existing"
+///   elastic_san_id = data.azure_elasticsan_get.example.id
+/// }
+///
+/// output "id" {
+///   value = data.azure_elasticsan_getvolumegroup.exampleGetVolumeGroup.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +268,8 @@ Future<GetResult> get(
 /// import com.pulumi.azure.elasticsan.ElasticsanFunctions;
 /// import com.pulumi.azure.elasticsan.inputs.GetArgs;
 /// import com.pulumi.azure.elasticsan.inputs.GetVolumeGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -398,6 +438,32 @@ Future<GetVolumeGroupResult> getVolumeGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_elasticsan_get" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+/// data "azure_elasticsan_getvolumegroup" "exampleGetVolumeGroup" {
+///   name           = "existing"
+///   elastic_san_id = data.azure_elasticsan_get.example.id
+/// }
+/// data "azure_elasticsan_getvolumesnapshot" "exampleGetVolumeSnapshot" {
+///   name            = "existing"
+///   volume_group_id = data.azure_elasticsan_getvolumegroup.exampleGetVolumeGroup.id
+/// }
+///
+/// output "id" {
+///   value = data.azure_elasticsan_getvolumesnapshot.exampleGetVolumeSnapshot.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -408,8 +474,8 @@ Future<GetVolumeGroupResult> getVolumeGroup(
 /// import com.pulumi.azure.elasticsan.inputs.GetArgs;
 /// import com.pulumi.azure.elasticsan.inputs.GetVolumeGroupArgs;
 /// import com.pulumi.azure.elasticsan.inputs.GetVolumeSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

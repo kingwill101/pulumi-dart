@@ -10,9 +10,9 @@ import 'app_service_state.dart';
 
 /// Manages an App Service (within an App Service Plan).
 ///
-/// !&gt; **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.LinuxWebApp` and `azure.appservice.WindowsWebApp` resources instead.
+/// &gt; **NOTE:** This resource has been deprecated and will be removed in version 6.0 of the provider. Please use `azure.appservice.LinuxWebApp` and `azure.appservice.WindowsWebApp` resources instead.
 ///
-/// &gt; **Note:** When using Slots - the `app_settings`, `connection_string` and `site_config` blocks on the `azure.appservice.AppService` resource will be overwritten when promoting a Slot using the `azure.appservice.ActiveSlot` resource.
+/// &gt; **Note:** When using Slots - the `appSettings`, `connectionString` and `siteConfig` blocks on the `azure.appservice.AppService` resource will be overwritten when promoting a Slot using the `azure.appservice.ActiveSlot` resource.
 ///
 /// ## Example Usage
 ///
@@ -199,6 +199,47 @@ import 'app_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "example-appserviceplan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     tier = "Standard"
+///     size = "S1"
+///   }
+/// }
+/// resource "azure_appservice_appservice" "example" {
+///   name                = "example-app-service"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   app_service_plan_id = azure_appservice_plan.example.id
+///   site_config = {
+///     dotnet_framework_version = "v4.0"
+///     scm_type                 = "LocalGit"
+///   }
+///   app_settings = {
+///     "SOME_KEY" = "some-value"
+///   }
+///   connection_strings {
+///     name  = "Database"
+///     type  = "SQLServer"
+///     value = "Server=some-server.mydomain.com;Integrated Security=SSPI"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +255,8 @@ import 'app_service_state.dart';
 /// import com.pulumi.azure.appservice.AppServiceArgs;
 /// import com.pulumi.azure.appservice.inputs.AppServiceSiteConfigArgs;
 /// import com.pulumi.azure.appservice.inputs.AppServiceConnectionStringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -311,7 +352,7 @@ class AppService extends pulumi.CustomResource {
   late final pulumi.Output<String> appServicePlanId;
   /// A key-value pair of App Settings.
   late final pulumi.Output<Map<String, String>> appSettings;
-  /// A `auth_settings` block as defined below.
+  /// A `authSettings` block as defined below.
   late final pulumi.Output<AppServiceAuthSettings> authSettings;
   /// A `backup` block as defined below.
   late final pulumi.Output<AppServiceBackup?> backup;
@@ -319,9 +360,9 @@ class AppService extends pulumi.CustomResource {
   late final pulumi.Output<bool?> clientAffinityEnabled;
   /// Does the App Service require client certificates for incoming requests? Defaults to `false`.
   late final pulumi.Output<bool?> clientCertEnabled;
-  /// Mode of client certificates for this App Service. Possible values are `Required`, `Optional` and `OptionalInteractiveUser`. If this parameter is set, `client_cert_enabled` must be set to `true`, otherwise this parameter is ignored.
+  /// Mode of client certificates for this App Service. Possible values are `Required`, `Optional` and `OptionalInteractiveUser`. If this parameter is set, `clientCertEnabled` must be set to `true`, otherwise this parameter is ignored.
   late final pulumi.Output<String> clientCertMode;
-  /// One or more `connection_string` blocks as defined below.
+  /// One or more `connectionString` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
   /// An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   late final pulumi.Output<String> customDomainVerificationId;
@@ -345,19 +386,19 @@ class AppService extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> outboundIpAddressLists;
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`
   late final pulumi.Output<String> outboundIpAddresses;
-  /// A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12", "52.143.43.17"]` - not all of which are necessarily in use. Superset of `outbound_ip_address_list`.
+  /// A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12", "52.143.43.17"]` - not all of which are necessarily in use. Superset of `outboundIpAddressList`.
   late final pulumi.Output<List<String>> possibleOutboundIpAddressLists;
-  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   late final pulumi.Output<String> possibleOutboundIpAddresses;
   /// The name of the resource group in which to create the App Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `site_config` block as defined below.
+  /// A `siteConfig` block as defined below.
   late final pulumi.Output<AppServiceSiteConfig> siteConfig;
-  /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service.
+  /// A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service.
   late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
-  /// A `source_control` block as defined below.
+  /// A `sourceControl` block as defined below.
   late final pulumi.Output<AppServiceSourceControl> sourceControl;
-  /// One or more `storage_account` blocks as defined below.
+  /// One or more `storageAccount` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> storageAccounts;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;

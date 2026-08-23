@@ -7,19 +7,19 @@ import 'policy_policy_settings.dart';
 
 /// Input properties used for looking up and filtering Policy resources.
 class PolicyState {
-  /// One or more `custom_rules` blocks as defined below.
+  /// One or more `customRules` blocks as defined below.
   final pulumi.Input<List<PolicyCustomRule>>? customRules;
   /// A list of HTTP Listener IDs from an `azure.network.ApplicationGateway`.
   final pulumi.Input<List<String>>? httpListenerIds;
   /// Resource location. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-  /// A `managed_rules` blocks as defined below.
+  /// A `managedRules` blocks as defined below.
   final pulumi.Input<PolicyManagedRules>? managedRules;
   /// The name of the policy. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
   /// A list of URL Path Map Path Rule IDs from an `azure.network.ApplicationGateway`.
   final pulumi.Input<List<String>>? pathBasedRuleIds;
-  /// A `policy_settings` block as defined below.
+  /// A `policySettings` block as defined below.
   final pulumi.Input<PolicyPolicySettings>? policySettings;
   /// The name of the resource group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
@@ -27,13 +27,13 @@ class PolicyState {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [PolicyState].
-  /// [customRules] One or more `custom_rules` blocks as defined below.
+  /// [customRules] One or more `customRules` blocks as defined below.
   /// [httpListenerIds] A list of HTTP Listener IDs from an `azure.network.ApplicationGateway`.
   /// [location] Resource location. Changing this forces a new resource to be created.
-  /// [managedRules] A `managed_rules` blocks as defined below.
+  /// [managedRules] A `managedRules` blocks as defined below.
   /// [name] The name of the policy. Changing this forces a new resource to be created.
   /// [pathBasedRuleIds] A list of URL Path Map Path Rule IDs from an `azure.network.ApplicationGateway`.
-  /// [policySettings] A `policy_settings` block as defined below.
+  /// [policySettings] A `policySettings` block as defined below.
   /// [resourceGroupName] The name of the resource group. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Web Application Firewall Policy.
   const PolicyState({
@@ -76,4 +76,3 @@ class PolicyState {
     );
   }
 }
-

@@ -607,6 +607,133 @@ import 'service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "deploy" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "deploy" {
+///   name                = "deploy-vnet"
+///   location            = azure_core_resourcegroup.deploy.location
+///   resource_group_name = azure_core_resourcegroup.deploy.name
+///   address_spaces      = ["10.0.1.0/16"]
+/// }
+/// resource "azure_network_subnet" "deploy" {
+///   name                 = "deploy-subnet"
+///   resource_group_name  = azure_core_resourcegroup.deploy.name
+///   virtual_network_name = azure_network_virtualnetwork.deploy.name
+///   address_prefixes     = ["10.0.1.0/24"]
+/// }
+/// resource "azure_network_networksecuritygroup" "deploy" {
+///   name                = "deploy-nsg"
+///   location            = azure_core_resourcegroup.deploy.location
+///   resource_group_name = azure_core_resourcegroup.deploy.name
+///   security_rules {
+///     name                       = "AllowSyncWithAzureAD"
+///     priority                   = 101
+///     direction                  = "Inbound"
+///     access                     = "Allow"
+///     protocol                   = "Tcp"
+///     source_port_range          = "*"
+///     destination_port_range     = "443"
+///     source_address_prefix      = "AzureActiveDirectoryDomainServices"
+///     destination_address_prefix = "*"
+///   }
+///   security_rules {
+///     name                       = "AllowRD"
+///     priority                   = 201
+///     direction                  = "Inbound"
+///     access                     = "Allow"
+///     protocol                   = "Tcp"
+///     source_port_range          = "*"
+///     destination_port_range     = "3389"
+///     source_address_prefix      = "CorpNetSaw"
+///     destination_address_prefix = "*"
+///   }
+///   security_rules {
+///     name                       = "AllowPSRemoting"
+///     priority                   = 301
+///     direction                  = "Inbound"
+///     access                     = "Allow"
+///     protocol                   = "Tcp"
+///     source_port_range          = "*"
+///     destination_port_range     = "5986"
+///     source_address_prefix      = "AzureActiveDirectoryDomainServices"
+///     destination_address_prefix = "*"
+///   }
+///   security_rules {
+///     name                       = "AllowLDAPS"
+///     priority                   = 401
+///     direction                  = "Inbound"
+///     access                     = "Allow"
+///     protocol                   = "Tcp"
+///     source_port_range          = "*"
+///     destination_port_range     = "636"
+///     source_address_prefix      = "*"
+///     destination_address_prefix = "*"
+///   }
+/// }
+/// resource "azure_network_subnetnetworksecuritygroupassociation" "deploy" {
+///   subnet_id                 = azure_network_subnet.deploy.id
+///   network_security_group_id = azure_network_networksecuritygroup.deploy.id
+/// }
+/// resource "azuread_group" "dc_admins" {
+///   display_name     = "AAD DC Administrators"
+///   security_enabled = true
+/// }
+/// resource "azuread_user" "admin" {
+///   user_principal_name = "dc-admin@hashicorp-example.com"
+///   display_name        = "DC Administrator"
+///   password            = "Pa55w0Rd!!1"
+/// }
+/// resource "azuread_groupmember" "admin" {
+///   group_object_id  = azuread_group.dc_admins.object_id
+///   member_object_id = azuread_user.admin.object_id
+/// }
+/// resource "azuread_serviceprincipal" "example" {
+///   application_id = "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+/// }
+/// resource "azure_core_resourcegroup" "aadds" {
+///   name     = "aadds-rg"
+///   location = "westeurope"
+/// }
+/// resource "azure_domainservices_service" "example" {
+///   depends_on            = [azuread_serviceprincipal.example, azure_network_subnetnetworksecuritygroupassociation.deploy]
+///   name                  = "example-aadds"
+///   location              = azure_core_resourcegroup.aadds.location
+///   resource_group_name   = azure_core_resourcegroup.aadds.name
+///   domain_name           = "widgetslogin.net"
+///   sku                   = "Enterprise"
+///   filtered_sync_enabled = false
+///   initial_replica_set = {
+///     subnet_id = azure_network_subnet.deploy.id
+///   }
+///   notifications = {
+///     additional_recipients = ["notifyA@example.net", "notifyB@example.org"]
+///     notify_dc_admins      = true
+///     notify_global_admins  = true
+///   }
+///   security = {
+///     sync_kerberos_passwords = true
+///     sync_ntlm_passwords     = true
+///     sync_on_prem_passwords  = true
+///   }
+///   tags = {
+///     "Environment" = "prod"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -638,8 +765,8 @@ import 'service_state.dart';
 /// import com.pulumi.azure.domainservices.inputs.ServiceNotificationsArgs;
 /// import com.pulumi.azure.domainservices.inputs.ServiceSecurityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -939,7 +1066,7 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> domainName;
   /// Whether to enable group-based filtered sync (also called scoped synchronisation). Defaults to `false`.
   late final pulumi.Output<bool?> filteredSyncEnabled;
-  /// An `initial_replica_set` block as defined below. The initial replica set inherits the same location as the Domain Service resource.
+  /// An `initialReplicaSet` block as defined below. The initial replica set inherits the same location as the Domain Service resource.
   late final pulumi.Output<ServiceInitialReplicaSet> initialReplicaSet;
   /// The Azure location where the Domain Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
@@ -951,7 +1078,7 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// The Azure resource ID for the domain service.
   late final pulumi.Output<String> resourceId;
-  /// A `secure_ldap` block as defined below.
+  /// A `secureLdap` block as defined below.
   late final pulumi.Output<ServiceSecureLdap> secureLdap;
   /// A `security` block as defined below.
   late final pulumi.Output<ServiceSecurity> security;

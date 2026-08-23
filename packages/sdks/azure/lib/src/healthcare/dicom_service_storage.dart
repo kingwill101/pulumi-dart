@@ -7,7 +7,7 @@ class DicomServiceStorage {
   final pulumi.Input<String> fileSystemName;
   /// The resource ID of connected storage account. Changing this forces a new Healthcare DICOM Service to be created.
   ///
-  /// &gt; **Note:** The `is_hns_enabled` needs to be set to `true` for the storage account to be used with the Healthcare DICOM Service.
+  /// &gt; **Note:** The `isHnsEnabled` needs to be set to `true` for the storage account to be used with the Healthcare DICOM Service.
   final pulumi.Input<String> storageAccountId;
 
   /// Creates a new [DicomServiceStorage].
@@ -32,4 +32,3 @@ class DicomServiceStorage {
     );
   }
 }
-

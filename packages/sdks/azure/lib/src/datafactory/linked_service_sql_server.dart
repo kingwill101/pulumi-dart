@@ -112,6 +112,30 @@ import 'linked_service_sql_server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedservicesqlserver" "example" {
+///   name              = "example"
+///   data_factory_id   = azure_datafactory_factory.example.id
+///   connection_string = "Integrated Security=False;Data Source=test;Initial Catalog=test;User ID=test;Password=test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -124,8 +148,8 @@ import 'linked_service_sql_server_state.dart';
 /// import com.pulumi.azure.datafactory.FactoryArgs;
 /// import com.pulumi.azure.datafactory.LinkedServiceSqlServer;
 /// import com.pulumi.azure.datafactory.LinkedServiceSqlServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -370,6 +394,49 @@ import 'linked_service_sql_server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name            = "standard"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedservicekeyvault" "example" {
+///   name            = "kvlink"
+///   data_factory_id = azure_datafactory_factory.example.id
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+/// }
+/// resource "azure_datafactory_linkedservicesqlserver" "example" {
+///   name              = "example"
+///   data_factory_id   = azure_datafactory_factory.example.id
+///   connection_string = "Integrated Security=False;Data Source=test;Initial Catalog=test;User ID=test;"
+///   key_vault_password = {
+///     linked_service_name = azure_datafactory_linkedservicekeyvault.example.name
+///     secret_name         = "secret"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -388,8 +455,8 @@ import 'linked_service_sql_server_state.dart';
 /// import com.pulumi.azure.datafactory.LinkedServiceSqlServer;
 /// import com.pulumi.azure.datafactory.LinkedServiceSqlServerArgs;
 /// import com.pulumi.azure.datafactory.inputs.LinkedServiceSqlServerKeyVaultPasswordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -501,7 +568,7 @@ class LinkedServiceSqlServer extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service SQL Server.
   late final pulumi.Output<List<String>?> annotations;
-  /// The connection string in which to authenticate with the SQL Server. Exactly one of either `connection_string` or `key_vault_connection_string` is required.
+  /// The connection string in which to authenticate with the SQL Server. Exactly one of either `connectionString` or `keyVaultConnectionString` is required.
   late final pulumi.Output<String?> connectionString;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
@@ -509,9 +576,9 @@ class LinkedServiceSqlServer extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The integration runtime reference to associate with the Data Factory Linked Service SQL Server.
   late final pulumi.Output<String?> integrationRuntimeName;
-  /// A `key_vault_connection_string` block as defined below. Use this argument to store SQL Server connection string in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `connection_string` or `key_vault_connection_string` is required.
+  /// A `keyVaultConnectionString` block as defined below. Use this argument to store SQL Server connection string in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `connectionString` or `keyVaultConnectionString` is required.
   late final pulumi.Output<LinkedServiceSqlServerKeyVaultConnectionString?> keyVaultConnectionString;
-  /// A `key_vault_password` block as defined below. Use this argument to store SQL Server password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
+  /// A `keyVaultPassword` block as defined below. Use this argument to store SQL Server password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
   late final pulumi.Output<LinkedServiceSqlServerKeyVaultPassword?> keyVaultPassword;
   /// Specifies the name of the Data Factory Linked Service SQL Server. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;

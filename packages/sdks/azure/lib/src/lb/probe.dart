@@ -163,6 +163,40 @@ import 'probe_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "LoadBalancerRG"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "PublicIPForLB"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+/// }
+/// resource "azure_lb_loadbalancer" "example" {
+///   name                = "TestLoadBalancer"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   frontend_ip_configurations {
+///     name                 = "PublicIPAddress"
+///     public_ip_address_id = azure_network_publicip.example.id
+///   }
+/// }
+/// resource "azure_lb_probe" "example" {
+///   loadbalancer_id = azure_lb_loadbalancer.example.id
+///   name            = "ssh-running-probe"
+///   port            = 22
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +212,8 @@ import 'probe_state.dart';
 /// import com.pulumi.azure.lb.inputs.LoadBalancerFrontendIpConfigurationArgs;
 /// import com.pulumi.azure.lb.Probe;
 /// import com.pulumi.azure.lb.ProbeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -8,23 +8,23 @@ import 'certificate_certificate_policy_secret_properties.dart';
 import 'certificate_certificate_policy_x509_certificate_properties.dart';
 
 class CertificateCertificatePolicy {
-  /// A `issuer_parameters` block as defined below.
+  /// A `issuerParameters` block as defined below.
   final pulumi.Input<CertificateCertificatePolicyIssuerParameters> issuerParameters;
-  /// A `key_properties` block as defined below.
+  /// A `keyProperties` block as defined below.
   final pulumi.Input<CertificateCertificatePolicyKeyProperties> keyProperties;
-  /// A `lifetime_action` block as defined below.
+  /// A `lifetimeAction` block as defined below.
   final pulumi.Input<List<CertificateCertificatePolicyLifetimeAction>>? lifetimeActions;
-  /// A `secret_properties` block as defined below.
+  /// A `secretProperties` block as defined below.
   final pulumi.Input<CertificateCertificatePolicySecretProperties> secretProperties;
-  /// A `x509_certificate_properties` block as defined below. Required when `certificate` block is not specified.
+  /// A `x509CertificateProperties` block as defined below. Required when `certificate` block is not specified.
   final pulumi.Input<CertificateCertificatePolicyX509CertificateProperties>? x509CertificateProperties;
 
   /// Creates a new [CertificateCertificatePolicy].
-  /// [issuerParameters] A `issuer_parameters` block as defined below.
-  /// [keyProperties] A `key_properties` block as defined below.
-  /// [lifetimeActions] A `lifetime_action` block as defined below.
-  /// [secretProperties] A `secret_properties` block as defined below.
-  /// [x509CertificateProperties] A `x509_certificate_properties` block as defined below. Required when `certificate` block is not specified.
+  /// [issuerParameters] A `issuerParameters` block as defined below.
+  /// [keyProperties] A `keyProperties` block as defined below.
+  /// [lifetimeActions] A `lifetimeAction` block as defined below.
+  /// [secretProperties] A `secretProperties` block as defined below.
+  /// [x509CertificateProperties] A `x509CertificateProperties` block as defined below. Required when `certificate` block is not specified.
   const CertificateCertificatePolicy({
     required this.issuerParameters,
     required this.keyProperties,
@@ -53,4 +53,3 @@ class CertificateCertificatePolicy {
     );
   }
 }
-

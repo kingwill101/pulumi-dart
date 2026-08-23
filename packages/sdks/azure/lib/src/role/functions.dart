@@ -17,14 +17,14 @@ import 'get_role_definition_result.dart';
 ///     name: "CustomRoleDef",
 ///     scope: primary.then(primary => primary.id),
 /// });
-/// const custom = pulumi.all([customRoleDefinition.roleDefinitionId, primary]).apply(([roleDefinitionId, primary]) => azure.authorization.getRoleDefinitionOutput({
-///     roleDefinitionId: roleDefinitionId,
-///     scope: primary.id,
-/// }));
-/// const custom_byname = pulumi.all([customRoleDefinition.name, primary]).apply(([name, primary]) => azure.authorization.getRoleDefinitionOutput({
-///     name: name,
-///     scope: primary.id,
-/// }));
+/// const custom = azure.authorization.getRoleDefinitionOutput({
+///     roleDefinitionId: customRoleDefinition.roleDefinitionId,
+///     scope: primary.then(primary => primary.id),
+/// });
+/// const custom_byname = azure.authorization.getRoleDefinitionOutput({
+///     name: customRoleDefinition.name,
+///     scope: primary.then(primary => primary.id),
+/// });
 /// const builtin = azure.authorization.getRoleDefinition({
 ///     name: "Contributor",
 /// });
@@ -40,10 +40,10 @@ import 'get_role_definition_result.dart';
 ///     role_definition_id="00000000-0000-0000-0000-000000000000",
 ///     name="CustomRoleDef",
 ///     scope=primary.id)
-/// custom = custom_role_definition.role_definition_id.apply(lambda role_definition_id: azure.authorization.get_role_definition(role_definition_id=role_definition_id,
-///     scope=primary.id))
-/// custom_byname = custom_role_definition.name.apply(lambda name: azure.authorization.get_role_definition(name=name,
-///     scope=primary.id))
+/// custom = azure.authorization.get_role_definition_output(role_definition_id=custom_role_definition.role_definition_id,
+///     scope=primary.id)
+/// custom_byname = azure.authorization.get_role_definition_output(name=custom_role_definition.name,
+///     scope=primary.id)
 /// builtin = azure.authorization.get_role_definition(name="Contributor")
 /// pulumi.export("customRoleDefinitionId", custom.id)
 /// pulumi.export("contributorRoleDefinitionId", builtin.id)
@@ -112,28 +112,61 @@ import 'get_role_definition_result.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		custom := customRoleDefinition.RoleDefinitionId.ApplyT(func(roleDefinitionId string) (authorization.GetRoleDefinitionResult, error) {
-/// 			return authorization.GetRoleDefinitionResult(authorization.LookupRoleDefinition(ctx, &authorization.LookupRoleDefinitionArgs{
-/// 				RoleDefinitionId: pulumi.StringRef(pulumi.StringRef(roleDefinitionId)),
-/// 				Scope:            pulumi.StringRef(pulumi.StringRef(primary.Id)),
-/// 			}, nil)), nil
-/// 		}).(authorization.GetRoleDefinitionResultOutput)
-/// 		_ = customRoleDefinition.Name.ApplyT(func(name string) (authorization.GetRoleDefinitionResult, error) {
-/// 			return authorization.GetRoleDefinitionResult(authorization.LookupRoleDefinition(ctx, &authorization.LookupRoleDefinitionArgs{
-/// 				Name:  pulumi.StringRef(pulumi.StringRef(name)),
-/// 				Scope: pulumi.StringRef(pulumi.StringRef(primary.Id)),
-/// 			}, nil)), nil
-/// 		}).(authorization.GetRoleDefinitionResultOutput)
+/// 		custom := authorization.LookupRoleDefinitionOutput(ctx, authorization.GetRoleDefinitionOutputArgs{
+/// 			RoleDefinitionId: customRoleDefinition.RoleDefinitionId,
+/// 			Scope:            pulumi.String(primary.Id),
+/// 		}, nil)
+/// 		_ = authorization.LookupRoleDefinitionOutput(ctx, authorization.GetRoleDefinitionOutputArgs{
+/// 			Name:  customRoleDefinition.Name,
+/// 			Scope: pulumi.String(primary.Id),
+/// 		}, nil)
 /// 		builtin, err := authorization.LookupRoleDefinition(ctx, &authorization.LookupRoleDefinitionArgs{
 /// 			Name: pulumi.StringRef("Contributor"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("customRoleDefinitionId", custom.Id)
+/// 		ctx.Export("customRoleDefinitionId", custom.ApplyT(func(custom authorization.GetRoleDefinitionResult) (*string, error) {
+/// 			return custom.Id, nil
+/// 		}).(pulumi.StringPtrOutput))
 /// 		ctx.Export("contributorRoleDefinitionId", builtin.Id)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "primary" {
+/// }
+/// data "azure_authorization_getroledefinition" "custom" {
+///   role_definition_id = azure_authorization_roledefinition.custom.role_definition_id
+///   scope              = data.azure_core_getsubscription.primary.id
+/// }
+/// data "azure_authorization_getroledefinition" "custom-byname" {
+///   name  = azure_authorization_roledefinition.custom.name
+///   scope = data.azure_core_getsubscription.primary.id
+/// }
+/// data "azure_authorization_getroledefinition" "builtin" {
+///   name = "Contributor"
+/// }
+///
+/// resource "azure_authorization_roledefinition" "custom" {
+///   role_definition_id = "00000000-0000-0000-0000-000000000000"
+///   name               = "CustomRoleDef"
+///   scope              = data.azure_core_getsubscription.primary.id
+/// }
+/// output "customRoleDefinitionId" {
+///   value = data.azure_authorization_getroledefinition.custom.id
+/// }
+/// output "contributorRoleDefinitionId" {
+///   value = data.azure_authorization_getroledefinition.builtin.id
 /// }
 /// ```
 /// ```java
@@ -148,8 +181,8 @@ import 'get_role_definition_result.dart';
 /// import com.pulumi.azure.authorization.RoleDefinitionArgs;
 /// import com.pulumi.azure.authorization.AuthorizationFunctions;
 /// import com.pulumi.azure.authorization.inputs.GetRoleDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,21 +203,21 @@ import 'get_role_definition_result.dart';
 ///             .scope(primary.id())
 ///             .build());
 ///
-///         final var custom = customRoleDefinition.roleDefinitionId().applyValue(_roleDefinitionId -> AuthorizationFunctions.getRoleDefinition(GetRoleDefinitionArgs.builder()
-///             .roleDefinitionId(_roleDefinitionId)
+///         final var custom = AuthorizationFunctions.getRoleDefinition(GetRoleDefinitionArgs.builder()
+///             .roleDefinitionId(customRoleDefinition.roleDefinitionId())
 ///             .scope(primary.id())
-///             .build()));
+///             .build());
 ///
-///         final var custom-byname = customRoleDefinition.name().applyValue(_name -> AuthorizationFunctions.getRoleDefinition(GetRoleDefinitionArgs.builder()
-///             .name(_name)
+///         final var custom-byname = AuthorizationFunctions.getRoleDefinition(GetRoleDefinitionArgs.builder()
+///             .name(customRoleDefinition.name())
 ///             .scope(primary.id())
-///             .build()));
+///             .build());
 ///
 ///         final var builtin = AuthorizationFunctions.getRoleDefinition(GetRoleDefinitionArgs.builder()
 ///             .name("Contributor")
 ///             .build());
 ///
-///         ctx.export("customRoleDefinitionId", custom.id());
+///         ctx.export("customRoleDefinitionId", custom.applyValue(_custom -> _custom.id()));
 ///         ctx.export("contributorRoleDefinitionId", builtin.id());
 ///     }
 /// }

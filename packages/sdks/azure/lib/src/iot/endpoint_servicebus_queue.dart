@@ -231,6 +231,56 @@ import 'endpoint_servicebus_queue_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_servicebus_namespace" "example" {
+///   name                = "exampleNamespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_servicebus_queue" "example" {
+///   name                = "exampleQueue"
+///   namespace_id        = azure_servicebus_namespace.example.id
+///   enable_partitioning = true
+/// }
+/// resource "azure_servicebus_queueauthorizationrule" "example" {
+///   name     = "exampleRule"
+///   queue_id = azure_servicebus_queue.example.id
+///   listen   = false
+///   send     = true
+///   manage   = false
+/// }
+/// resource "azure_iot_iothub" "example" {
+///   name                = "exampleIothub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku = {
+///     name     = "B1"
+///     capacity = "1"
+///   }
+///   tags = {
+///     "purpose" = "example"
+///   }
+/// }
+/// resource "azure_iot_endpointservicebusqueue" "example" {
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   iothub_id           = azure_iot_iothub.example.id
+///   name                = "example"
+///   connection_string   = azure_servicebus_queueauthorizationrule.example.primary_connection_string
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -250,8 +300,8 @@ import 'endpoint_servicebus_queue_state.dart';
 /// import com.pulumi.azure.iot.inputs.IoTHubSkuArgs;
 /// import com.pulumi.azure.iot.EndpointServicebusQueue;
 /// import com.pulumi.azure.iot.EndpointServicebusQueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -374,15 +424,15 @@ import 'endpoint_servicebus_queue_state.dart';
 class EndpointServicebusQueue extends pulumi.CustomResource {
   /// Type used to authenticate against the Service Bus Queue endpoint. Possible values are `keyBased` and `identityBased`. Defaults to `keyBased`.
   late final pulumi.Output<String?> authenticationType;
-  /// The connection string for the endpoint. This attribute can only be specified and is mandatory when `authentication_type` is `keyBased`.
+  /// The connection string for the endpoint. This attribute can only be specified and is mandatory when `authenticationType` is `keyBased`.
   late final pulumi.Output<String?> connectionString;
-  /// URI of the Service Bus endpoint. This attribute can only be specified and is mandatory when `authentication_type` is `identityBased`.
+  /// URI of the Service Bus endpoint. This attribute can only be specified and is mandatory when `authenticationType` is `identityBased`.
   late final pulumi.Output<String?> endpointUri;
-  /// Name of the Service Bus Queue. This attribute can only be specified and is mandatory when `authentication_type` is `identityBased`.
+  /// Name of the Service Bus Queue. This attribute can only be specified and is mandatory when `authenticationType` is `identityBased`.
   late final pulumi.Output<String?> entityPath;
   /// ID of the User Managed Identity used to authenticate against the Service Bus Queue endpoint.
   ///
-  /// &gt; **Note:** `identity_id` can only be specified when `authentication_type` is `identityBased`. It must be one of the `identity_ids` of the Iot Hub. If not specified when `authentication_type` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
+  /// &gt; **Note:** `identityId` can only be specified when `authenticationType` is `identityBased`. It must be one of the `identityIds` of the Iot Hub. If not specified when `authenticationType` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
   late final pulumi.Output<String?> identityId;
   /// The IoTHub ID for the endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubId;
@@ -392,7 +442,7 @@ class EndpointServicebusQueue extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// The subscription ID for the endpoint.
   ///
-  /// &gt; **Note:** When `subscription_id` isn't specified it will be set to the subscription ID of the IoT Hub resource.
+  /// &gt; **Note:** When `subscriptionId` isn't specified it will be set to the subscription ID of the IoT Hub resource.
   late final pulumi.Output<String> subscriptionId;
 
   /// Creates a new [EndpointServicebusQueue].

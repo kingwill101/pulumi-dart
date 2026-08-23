@@ -171,6 +171,43 @@ import 'dataset_binary_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedservicesftp" "example" {
+///   name                = "example"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   authentication_type = "Basic"
+///   host                = "http://www.bing.com"
+///   port                = 22
+///   username            = "foo"
+///   password            = "bar"
+/// }
+/// resource "azure_datafactory_datasetbinary" "example" {
+///   name                = "example"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   linked_service_name = azure_datafactory_linkedservicesftp.example.name
+///   sftp_server_location = {
+///     path     = "/test/"
+///     filename = "**"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -186,8 +223,8 @@ import 'dataset_binary_state.dart';
 /// import com.pulumi.azure.datafactory.DatasetBinary;
 /// import com.pulumi.azure.datafactory.DatasetBinaryArgs;
 /// import com.pulumi.azure.datafactory.inputs.DatasetBinarySftpServerLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -283,7 +320,7 @@ class DatasetBinary extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> additionalProperties;
   /// List of tags that can be used for describing the Data Factory Binary Dataset.
   late final pulumi.Output<List<String>?> annotations;
-  /// A `azure_blob_storage_location` block as defined below.
+  /// A `azureBlobStorageLocation` block as defined below.
   late final pulumi.Output<DatasetBinaryAzureBlobStorageLocation?> azureBlobStorageLocation;
   /// A `compression` block as defined below.
   late final pulumi.Output<DatasetBinaryCompression?> compression;
@@ -293,7 +330,7 @@ class DatasetBinary extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   late final pulumi.Output<String?> folder;
-  /// A `http_server_location` block as defined below.
+  /// A `httpServerLocation` block as defined below.
   late final pulumi.Output<DatasetBinaryHttpServerLocation?> httpServerLocation;
   /// The Data Factory Linked Service name in which to associate the Binary Dataset with.
   late final pulumi.Output<String> linkedServiceName;
@@ -303,7 +340,7 @@ class DatasetBinary extends pulumi.CustomResource {
   ///
   /// The following supported locations for a Binary Dataset. One of these should be specified:
   late final pulumi.Output<Map<String, String>?> parameters;
-  /// A `sftp_server_location` block as defined below.
+  /// A `sftpServerLocation` block as defined below.
   late final pulumi.Output<DatasetBinarySftpServerLocation?> sftpServerLocation;
 
   /// Creates a new [DatasetBinary].

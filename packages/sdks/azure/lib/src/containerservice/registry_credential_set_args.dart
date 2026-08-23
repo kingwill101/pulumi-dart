@@ -9,7 +9,7 @@ import 'registry_credential_set_identity.dart';
 /// {@endtemplate}
 /// {@macro pulumi_containerservice_registry_credential_set_registry_credential_set_args_doc}
 class RegistryCredentialSetArgs {
-  /// A `authentication_credentials` block as defined below.
+  /// A `authenticationCredentials` block as defined below.
   final pulumi.Input<RegistryCredentialSetAuthenticationCredentials> authenticationCredentials;
   /// The ID of the Container Registry. Changing this forces a new Container Registry Credential Set to be created.
   final pulumi.Input<String> containerRegistryId;
@@ -21,7 +21,7 @@ class RegistryCredentialSetArgs {
   final pulumi.Input<String>? name;
 
   /// Creates a new [RegistryCredentialSetArgs].
-  /// [authenticationCredentials] A `authentication_credentials` block as defined below.
+  /// [authenticationCredentials] A `authenticationCredentials` block as defined below.
   /// [containerRegistryId] The ID of the Container Registry. Changing this forces a new Container Registry Credential Set to be created.
   /// [identity] An `identity` block as defined below.
   /// [loginServer] The login server for the Credential Set. Changing this forces a new Container Registry Credential Set to be created.
@@ -54,4 +54,3 @@ class RegistryCredentialSetArgs {
     );
   }
 }
-

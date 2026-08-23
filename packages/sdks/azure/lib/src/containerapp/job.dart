@@ -328,6 +328,74 @@ import 'job_template.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-log-analytics-workspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+///   retention_in_days   = 30
+/// }
+/// resource "azure_containerapp_environment" "example" {
+///   name                       = "example-container-app-environment"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// resource "azure_containerapp_job" "example" {
+///   name                         = "example-container-app-job"
+///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   container_app_environment_id = azure_containerapp_environment.example.id
+///   replica_timeout_in_seconds   = 10
+///   replica_retry_limit          = 10
+///   manual_trigger_config = {
+///     parallelism              = 4
+///     replica_completion_count = 1
+///   }
+///   template = {
+///     containers = [{
+///       "image" = "repo/testcontainerAppsJob0:v1"
+///       "name"  = "testcontainerappsjob0"
+///       "readinessProbes" = [{
+///         "transport" = "HTTP"
+///         "port"      = 5000
+///       }]
+///       "livenessProbes" = [{
+///         "transport" = "HTTP"
+///         "port"      = 5000
+///         "path"      = "/health"
+///         "headers" = [{
+///           "name"  = "Cache-Control"
+///           "value" = "no-cache"
+///         }]
+///         "initialDelay"          = 5
+///         "intervalSeconds"       = 20
+///         "timeout"               = 2
+///         "failureCountThreshold" = 1
+///       }]
+///       "startupProbes" = [{
+///         "transport" = "TCP"
+///         "port"      = 5000
+///       }]
+///       "cpu"    = 0.5
+///       "memory" = "1Gi"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -344,8 +412,13 @@ import 'job_template.dart';
 /// import com.pulumi.azure.containerapp.JobArgs;
 /// import com.pulumi.azure.containerapp.inputs.JobManualTriggerConfigArgs;
 /// import com.pulumi.azure.containerapp.inputs.JobTemplateArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.containerapp.inputs.JobTemplateContainerArgs;
+/// import com.pulumi.azure.containerapp.inputs.JobTemplateContainerReadinessProbeArgs;
+/// import com.pulumi.azure.containerapp.inputs.JobTemplateContainerLivenessProbeArgs;
+/// import com.pulumi.azure.containerapp.inputs.JobTemplateContainerLivenessProbeHeaderArgs;
+/// import com.pulumi.azure.containerapp.inputs.JobTemplateContainerStartupProbeArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -504,13 +577,13 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<String> containerAppEnvironmentId;
   /// The endpoint for the Container App Job event stream.
   late final pulumi.Output<String> eventStreamEndpoint;
-  /// A `event_trigger_config` block as defined below. Changing this forces a new resource to be created.
+  /// A `eventTriggerConfig` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<JobEventTriggerConfig?> eventTriggerConfig;
   /// A `identity` block as defined below.
   late final pulumi.Output<JobIdentity?> identity;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// A `manual_trigger_config` block as defined below. Changing this forces a new resource to be created.
+  /// A `manualTriggerConfig` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<JobManualTriggerConfig?> manualTriggerConfig;
   /// Specifies the name of the Container App Job resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
@@ -524,9 +597,9 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<int> replicaTimeoutInSeconds;
   /// The name of the resource group in which to create the Container App Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `schedule_trigger_config` block as defined below. Changing this forces a new resource to be created.
+  /// A `scheduleTriggerConfig` block as defined below. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Only one of `manual_trigger_config`, `event_trigger_config` or `schedule_trigger_config` can be specified.
+  /// &gt; **Note:** Only one of `manualTriggerConfig`, `eventTriggerConfig` or `scheduleTriggerConfig` can be specified.
   late final pulumi.Output<JobScheduleTriggerConfig?> scheduleTriggerConfig;
   /// One or more `secret` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> secrets;

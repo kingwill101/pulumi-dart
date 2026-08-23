@@ -210,6 +210,50 @@ import 'system_topic_event_subscription_webhook_endpoint.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageaccount"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   tags = {
+///     "environment" = "staging"
+///   }
+/// }
+/// resource "azure_storage_queue" "example" {
+///   name                 = "examplestoragequeue"
+///   storage_account_name = azure_storage_account.example.name
+/// }
+/// resource "azure_eventgrid_systemtopic" "example" {
+///   name                = "example-system-topic"
+///   location            = "Global"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   source_resource_id  = azure_core_resourcegroup.example.id
+///   topic_type          = "Microsoft.Resources.ResourceGroups"
+/// }
+/// resource "azure_eventgrid_systemtopiceventsubscription" "example" {
+///   name                = "example-event-subscription"
+///   system_topic        = azure_eventgrid_systemtopic.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   storage_queue_endpoint = {
+///     storage_account_id = azure_storage_account.example.id
+///     queue_name         = azure_storage_queue.example.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -227,8 +271,8 @@ import 'system_topic_event_subscription_webhook_endpoint.dart';
 /// import com.pulumi.azure.eventgrid.SystemTopicEventSubscription;
 /// import com.pulumi.azure.eventgrid.SystemTopicEventSubscriptionArgs;
 /// import com.pulumi.azure.eventgrid.inputs.SystemTopicEventSubscriptionStorageQueueEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -341,19 +385,19 @@ import 'system_topic_event_subscription_webhook_endpoint.dart';
 /// $ pulumi import azure:eventgrid/systemTopicEventSubscription:SystemTopicEventSubscription example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.EventGrid/systemTopics/topic1/eventSubscriptions/subscription1
 /// ```
 class SystemTopicEventSubscription extends pulumi.CustomResource {
-  /// A `advanced_filter` block as defined below.
+  /// A `advancedFilter` block as defined below.
   late final pulumi.Output<SystemTopicEventSubscriptionAdvancedFilter?> advancedFilter;
   /// Specifies whether advanced filters should be evaluated against an array of values instead of expecting a singular value. Defaults to `false`.
   late final pulumi.Output<bool?> advancedFilteringOnArraysEnabled;
-  /// An `azure_function_endpoint` block as defined below.
+  /// An `azureFunctionEndpoint` block as defined below.
   late final pulumi.Output<SystemTopicEventSubscriptionAzureFunctionEndpoint?> azureFunctionEndpoint;
-  /// A `dead_letter_identity` block as defined below.
+  /// A `deadLetterIdentity` block as defined below.
   ///
-  /// &gt; **Note:** `storage_blob_dead_letter_destination` must be specified when a `dead_letter_identity` is specified
+  /// &gt; **Note:** `storageBlobDeadLetterDestination` must be specified when a `deadLetterIdentity` is specified
   late final pulumi.Output<SystemTopicEventSubscriptionDeadLetterIdentity?> deadLetterIdentity;
-  /// A `delivery_identity` block as defined below.
+  /// A `deliveryIdentity` block as defined below.
   late final pulumi.Output<SystemTopicEventSubscriptionDeliveryIdentity?> deliveryIdentity;
-  /// One or more `delivery_property` blocks as defined below.
+  /// One or more `deliveryProperty` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> deliveryProperties;
   /// Specifies the event delivery schema for the event subscription. Possible values include: `EventGridSchema`, `CloudEventSchemaV1_0`, `CustomInputSchema`. Defaults to `EventGridSchema`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> eventDeliverySchema;
@@ -371,23 +415,23 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The name of the Resource Group where the System Topic exists. Changing this forces a new Event Subscription to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `retry_policy` block as defined below.
+  /// A `retryPolicy` block as defined below.
   late final pulumi.Output<SystemTopicEventSubscriptionRetryPolicy> retryPolicy;
   /// Specifies the id where the Service Bus Queue is located.
   late final pulumi.Output<String?> serviceBusQueueEndpointId;
   /// Specifies the id where the Service Bus Topic is located.
   late final pulumi.Output<String?> serviceBusTopicEndpointId;
-  /// A `storage_blob_dead_letter_destination` block as defined below.
+  /// A `storageBlobDeadLetterDestination` block as defined below.
   late final pulumi.Output<SystemTopicEventSubscriptionStorageBlobDeadLetterDestination?> storageBlobDeadLetterDestination;
-  /// A `storage_queue_endpoint` block as defined below.
+  /// A `storageQueueEndpoint` block as defined below.
   late final pulumi.Output<SystemTopicEventSubscriptionStorageQueueEndpoint?> storageQueueEndpoint;
-  /// A `subject_filter` block as defined below.
+  /// A `subjectFilter` block as defined below.
   late final pulumi.Output<SystemTopicEventSubscriptionSubjectFilter?> subjectFilter;
   /// The System Topic where the Event Subscription should be created in. Changing this forces a new Event Subscription to be created.
   late final pulumi.Output<String> systemTopic;
-  /// A `webhook_endpoint` block as defined below.
+  /// A `webhookEndpoint` block as defined below.
   ///
-  /// &gt; **Note:** One of `azure_function_endpoint`, `eventhub_endpoint_id`, `hybrid_connection_endpoint`, `hybrid_connection_endpoint_id`, `service_bus_queue_endpoint_id`, `service_bus_topic_endpoint_id`, `storage_queue_endpoint` or `webhook_endpoint` must be specified.
+  /// &gt; **Note:** One of `azureFunctionEndpoint`, `eventhubEndpointId`, `hybridConnectionEndpoint`, `hybridConnectionEndpointId`, `serviceBusQueueEndpointId`, `serviceBusTopicEndpointId`, `storageQueueEndpoint` or `webhookEndpoint` must be specified.
   late final pulumi.Output<SystemTopicEventSubscriptionWebhookEndpoint?> webhookEndpoint;
 
   /// Creates a new [SystemTopicEventSubscription].

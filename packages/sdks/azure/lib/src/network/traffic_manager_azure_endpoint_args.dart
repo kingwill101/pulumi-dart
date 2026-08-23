@@ -11,7 +11,7 @@ import 'traffic_manager_azure_endpoint_subnet.dart';
 class TrafficManagerAzureEndpointArgs {
   /// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method. Defaults to `false`.
   final pulumi.Input<bool>? alwaysServeEnabled;
-  /// One or more `custom_header` blocks as defined below.
+  /// One or more `customHeader` blocks as defined below.
   final pulumi.Input<List<TrafficManagerAzureEndpointCustomHeader>>? customHeaders;
   /// Is the endpoint enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
@@ -32,7 +32,7 @@ class TrafficManagerAzureEndpointArgs {
 
   /// Creates a new [TrafficManagerAzureEndpointArgs].
   /// [alwaysServeEnabled] If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method. Defaults to `false`.
-  /// [customHeaders] One or more `custom_header` blocks as defined below.
+  /// [customHeaders] One or more `customHeader` blocks as defined below.
   /// [enabled] Is the endpoint enabled? Defaults to `true`.
   /// [geoMappings] A list of Geographic Regions used to distribute traffic, such as `WORLD`, `UK` or `DE`. The same location can't be specified in two endpoints. [See the Geographic Hierarchies documentation for more information](https://docs.microsoft.com/rest/api/trafficmanager/geographichierarchies/getdefault).
   /// [name] The name of the Azure Endpoint. Changing this forces a new resource to be created.
@@ -84,4 +84,3 @@ class TrafficManagerAzureEndpointArgs {
     );
   }
 }
-

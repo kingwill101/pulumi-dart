@@ -20,9 +20,9 @@ class OutputServicebusTopicArgs {
   final pulumi.Input<OutputServicebusTopicSerialization> serialization;
   /// The namespace that is associated with the desired Event Hub, Service Bus Topic, Service Bus Topic, etc.
   final pulumi.Input<String> servicebusNamespace;
-  /// The shared access policy key for the specified shared access policy. Required if `authentication_mode` is `ConnectionString`.
+  /// The shared access policy key for the specified shared access policy. Required if `authenticationMode` is `ConnectionString`.
   final pulumi.Input<String>? sharedAccessPolicyKey;
-  /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required if `authentication_mode` is `ConnectionString`.
+  /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required if `authenticationMode` is `ConnectionString`.
   final pulumi.Input<String>? sharedAccessPolicyName;
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String> streamAnalyticsJobName;
@@ -40,8 +40,8 @@ class OutputServicebusTopicArgs {
   /// [resourceGroupName] The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   /// [serialization] A `serialization` block as defined below.
   /// [servicebusNamespace] The namespace that is associated with the desired Event Hub, Service Bus Topic, Service Bus Topic, etc.
-  /// [sharedAccessPolicyKey] The shared access policy key for the specified shared access policy. Required if `authentication_mode` is `ConnectionString`.
-  /// [sharedAccessPolicyName] The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required if `authentication_mode` is `ConnectionString`.
+  /// [sharedAccessPolicyKey] The shared access policy key for the specified shared access policy. Required if `authenticationMode` is `ConnectionString`.
+  /// [sharedAccessPolicyName] The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required if `authenticationMode` is `ConnectionString`.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   /// [systemPropertyColumns] A key-value pair of system property columns that will be attached to the outgoing messages for the Service Bus Topic Output.
   /// [topicName] The name of the Service Bus Topic.
@@ -91,4 +91,3 @@ class OutputServicebusTopicArgs {
     );
   }
 }
-

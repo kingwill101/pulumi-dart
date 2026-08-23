@@ -10,7 +10,7 @@ class CacheDirectoryLdap {
   final pulumi.Input<CacheDirectoryLdapBind>? bind;
   /// The URI of the CA certificate to validate the LDAP secure connection.
   final pulumi.Input<String>? certificateValidationUri;
-  /// Whether the certificate should be automatically downloaded. This can be set to `true` only when `certificate_validation_uri` is provided.
+  /// Whether the certificate should be automatically downloaded. This can be set to `true` only when `certificateValidationUri` is provided.
   final pulumi.Input<bool>? downloadCertificateAutomatically;
   /// Whether the LDAP connection should be encrypted?
   final pulumi.Input<bool>? encrypted;
@@ -21,7 +21,7 @@ class CacheDirectoryLdap {
   /// [baseDn] The base distinguished name (DN) for the LDAP domain.
   /// [bind] A `bind` block as defined above.
   /// [certificateValidationUri] The URI of the CA certificate to validate the LDAP secure connection.
-  /// [downloadCertificateAutomatically] Whether the certificate should be automatically downloaded. This can be set to `true` only when `certificate_validation_uri` is provided.
+  /// [downloadCertificateAutomatically] Whether the certificate should be automatically downloaded. This can be set to `true` only when `certificateValidationUri` is provided.
   /// [encrypted] Whether the LDAP connection should be encrypted?
   /// [server] The FQDN or IP address of the LDAP server.
   const CacheDirectoryLdap({
@@ -55,4 +55,3 @@ class CacheDirectoryLdap {
     );
   }
 }
-

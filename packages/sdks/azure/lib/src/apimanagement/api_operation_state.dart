@@ -25,7 +25,7 @@ class ApiOperationState {
   final pulumi.Input<String>? resourceGroupName;
   /// One or more `response` blocks as defined below.
   final pulumi.Input<List<ApiOperationResponse>>? responses;
-  /// One or more `template_parameter` blocks as defined below. Required if `url_template` contains one or more parameters.
+  /// One or more `templateParameter` blocks as defined below. Required if `urlTemplate` contains one or more parameters.
   final pulumi.Input<List<ApiOperationTemplateParameter>>? templateParameters;
   /// The relative URL Template identifying the target resource for this operation, which may include parameters.
   final pulumi.Input<String>? urlTemplate;
@@ -40,7 +40,7 @@ class ApiOperationState {
   /// [request] A `request` block as defined below.
   /// [resourceGroupName] The Name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   /// [responses] One or more `response` blocks as defined below.
-  /// [templateParameters] One or more `template_parameter` blocks as defined below. Required if `url_template` contains one or more parameters.
+  /// [templateParameters] One or more `templateParameter` blocks as defined below. Required if `urlTemplate` contains one or more parameters.
   /// [urlTemplate] The relative URL Template identifying the target resource for this operation, which may include parameters.
   const ApiOperationState({
     this.apiManagementName,
@@ -88,4 +88,3 @@ class ApiOperationState {
     );
   }
 }
-

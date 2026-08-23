@@ -185,6 +185,44 @@ import 'virtual_network_peering_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "peeredvnets-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example-1" {
+///   name                = "peternetwork1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.1.0/24"]
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_virtualnetwork" "example-2" {
+///   name                = "peternetwork2"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.2.0/24"]
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_virtualnetworkpeering" "example-1" {
+///   name                      = "peer1to2"
+///   resource_group_name       = azure_core_resourcegroup.example.name
+///   virtual_network_name      = azure_network_virtualnetwork.example-1.name
+///   remote_virtual_network_id = azure_network_virtualnetwork.example-2.id
+/// }
+/// resource "azure_network_virtualnetworkpeering" "example-2" {
+///   name                      = "peer2to1"
+///   resource_group_name       = azure_core_resourcegroup.example.name
+///   virtual_network_name      = azure_network_virtualnetwork.example-2.name
+///   remote_virtual_network_id = azure_network_virtualnetwork.example-1.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +235,8 @@ import 'virtual_network_peering_state.dart';
 /// import com.pulumi.azure.network.VirtualNetworkArgs;
 /// import com.pulumi.azure.network.VirtualNetworkPeering;
 /// import com.pulumi.azure.network.VirtualNetworkPeeringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -307,29 +345,29 @@ import 'virtual_network_peering_state.dart';
 ///     "10.1.0.0/16",
 /// ];
 /// const example: azure.core.ResourceGroup[] = [];
-/// for (const range = {value: 0}; range.value < location.length; range.value++) {
-///     example.push(new azure.core.ResourceGroup(`example-${range.value}`, {
-///         name: `rg-global-vnet-peering-${range.value}`,
-///         location: location[range.value],
+/// for (let range = 0; range < location.length; range++) {
+///     example.push(new azure.core.ResourceGroup(`example-${range}`, {
+///         name: `rg-global-vnet-peering-${range}`,
+///         location: location[range],
 ///     }));
 /// }
 /// const vnet: azure.network.VirtualNetwork[] = [];
-/// for (const range = {value: 0}; range.value < location.length; range.value++) {
-///     vnet.push(new azure.network.VirtualNetwork(`vnet-${range.value}`, {
-///         name: `vnet-${range.value}`,
-///         resourceGroupName: example.map(__item => __item.name)[range.value],
-///         addressSpaces: [vnetAddressSpace[range.value]],
-///         location: example.map(__item => __item.location)[range.value],
+/// for (let range = 0; range < location.length; range++) {
+///     vnet.push(new azure.network.VirtualNetwork(`vnet-${range}`, {
+///         name: `vnet-${range}`,
+///         resourceGroupName: example.map(__item => __item.name)[range],
+///         addressSpaces: [vnetAddressSpace[range]],
+///         location: example.map(__item => __item.location)[range],
 ///     }));
 /// }
 /// const nva: azure.network.Subnet[] = [];
-/// for (const range = {value: 0}; range.value < location.length; range.value++) {
-///     nva.push(new azure.network.Subnet(`nva-${range.value}`, {
+/// for (let range = 0; range < location.length; range++) {
+///     nva.push(new azure.network.Subnet(`nva-${range}`, {
 ///         name: "nva",
-///         resourceGroupName: example.map(__item => __item.name)[range.value],
-///         virtualNetworkName: vnet.map(__item => __item.name)[range.value],
+///         resourceGroupName: example.map(__item => __item.name)[range],
+///         virtualNetworkName: vnet.map(__item => __item.name)[range],
 ///         addressPrefix: std.cidrsubnet({
-///             input: vnet[range.value].addressSpace[range.value],
+///             input: vnet[range].addressSpace[range],
 ///             newbits: 13,
 ///             netnum: 0,
 ///         }).then(invoke => invoke.result),
@@ -337,12 +375,12 @@ import 'virtual_network_peering_state.dart';
 /// }
 /// // enable global peering between the two virtual network
 /// const peering: azure.network.VirtualNetworkPeering[] = [];
-/// for (const range = {value: 0}; range.value < location.length; range.value++) {
-///     peering.push(new azure.network.VirtualNetworkPeering(`peering-${range.value}`, {
-///         name: vnet.map(__item => __item.name)[1 - range.value].apply(names => `peering-to-${names}`),
-///         resourceGroupName: example.map(__item => __item.name)[range.value],
-///         virtualNetworkName: vnet.map(__item => __item.name)[range.value],
-///         remoteVirtualNetworkId: vnet.map(__item => __item.id)[1 - range.value],
+/// for (let range = 0; range < location.length; range++) {
+///     peering.push(new azure.network.VirtualNetworkPeering(`peering-${range}`, {
+///         name: vnet.map(__item => __item.name)[1 - range].apply(names => `peering-to-${names}`),
+///         resourceGroupName: example.map(__item => __item.name)[range],
+///         virtualNetworkName: vnet.map(__item => __item.name)[range],
+///         remoteVirtualNetworkId: vnet.map(__item => __item.id)[1 - range],
 ///         allowVirtualNetworkAccess: true,
 ///         allowForwardedTraffic: true,
 ///         allowGatewayTransit: false,
@@ -351,6 +389,7 @@ import 'virtual_network_peering_state.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_azure as azure
 /// import pulumi_std as std
 ///
@@ -367,35 +406,35 @@ import 'virtual_network_peering_state.dart';
 ///         "10.0.0.0/16",
 ///         "10.1.0.0/16",
 ///     ]
-/// example = []
-/// for range in [{"value": i} for i in range(0, len(location))]:
-///     example.append(azure.core.ResourceGroup(f"example-{range['value']}",
-///         name=f"rg-global-vnet-peering-{range['value']}",
-///         location=location[range["value"]]))
-/// vnet = []
-/// for range in [{"value": i} for i in range(0, len(location))]:
-///     vnet.append(azure.network.VirtualNetwork(f"vnet-{range['value']}",
-///         name=f"vnet-{range['value']}",
-///         resource_group_name=[__item.name for __item in example][range["value"]],
-///         address_spaces=[vnet_address_space[range["value"]]],
-///         location=[__item.location for __item in example][range["value"]]))
-/// nva = []
-/// for range in [{"value": i} for i in range(0, len(location))]:
-///     nva.append(azure.network.Subnet(f"nva-{range['value']}",
+/// example: list[azure.core.ResourceGroup] = []
+/// for example_range in [{"value": i} for i in range(0, len(location))]:
+///     example.append(azure.core.ResourceGroup(f"example-{example_range['value']}",
+///         name=f"rg-global-vnet-peering-{example_range['value']}",
+///         location=location[example_range["value"]]))
+/// vnet: list[azure.network.VirtualNetwork] = []
+/// for vnet_range in [{"value": i} for i in range(0, len(location))]:
+///     vnet.append(azure.network.VirtualNetwork(f"vnet-{vnet_range['value']}",
+///         name=f"vnet-{vnet_range['value']}",
+///         resource_group_name=[__item.name for __item in example][vnet_range["value"]],
+///         address_spaces=[vnet_address_space[vnet_range["value"]]],
+///         location=[__item.location for __item in example][vnet_range["value"]]))
+/// nva: list[azure.network.Subnet] = []
+/// for nva_range in [{"value": i} for i in range(0, len(location))]:
+///     nva.append(azure.network.Subnet(f"nva-{nva_range['value']}",
 ///         name="nva",
-///         resource_group_name=[__item.name for __item in example][range["value"]],
-///         virtual_network_name=[__item.name for __item in vnet][range["value"]],
-///         address_prefix=std.cidrsubnet(input=vnet[range["value"]].address_space[range["value"]],
+///         resource_group_name=[__item.name for __item in example][nva_range["value"]],
+///         virtual_network_name=[__item.name for __item in vnet][nva_range["value"]],
+///         address_prefix=std.cidrsubnet(input=vnet[nva_range["value"]].address_space[nva_range["value"]],
 ///             newbits=13,
 ///             netnum=0).result))
 /// # enable global peering between the two virtual network
-/// peering = []
-/// for range in [{"value": i} for i in range(0, len(location))]:
-///     peering.append(azure.network.VirtualNetworkPeering(f"peering-{range['value']}",
-///         name=[__item.name for __item in vnet][1 - range["value"]].apply(lambda names: f"peering-to-{names}"),
-///         resource_group_name=[__item.name for __item in example][range["value"]],
-///         virtual_network_name=[__item.name for __item in vnet][range["value"]],
-///         remote_virtual_network_id=[__item.id for __item in vnet][1 - range["value"]],
+/// peering: list[azure.network.VirtualNetworkPeering] = []
+/// for peering_range in [{"value": i} for i in range(0, len(location))]:
+///     peering.append(azure.network.VirtualNetworkPeering(f"peering-{peering_range['value']}",
+///         name=[__item.name for __item in vnet][int(1 - peering_range["value"])].apply(lambda names: f"peering-to-{names}"),
+///         resource_group_name=[__item.name for __item in example][peering_range["value"]],
+///         virtual_network_name=[__item.name for __item in vnet][peering_range["value"]],
+///         remote_virtual_network_id=[__item.id for __item in vnet][int(1 - peering_range["value"])],
 ///         allow_virtual_network_access=True,
 ///         allow_forwarded_traffic=True,
 ///         allow_gateway_transit=False))
@@ -480,6 +519,163 @@ import 'virtual_network_peering_state.dart';
 ///     }
 /// });
 /// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/core"
+/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/network"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+/// )
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// cfg := config.New(ctx, "")
+/// location := []string{
+/// "uksouth",
+/// "southeastasia",
+/// };
+/// if param := cfg.GetObject("location"); param != nil {
+/// location = param
+/// }
+/// vnetAddressSpace := []string{
+/// "10.0.0.0/16",
+/// "10.1.0.0/16",
+/// };
+/// if param := cfg.GetObject("vnetAddressSpace"); param != nil {
+/// vnetAddressSpace = param
+/// }
+/// var example []*core.ResourceGroup
+/// for index := 0; index < len(location); index++ {
+///     key0 := index
+///     val0 := index
+/// __res, err := core.NewResourceGroup(ctx, fmt.Sprintf("example-%v", key0), &core.ResourceGroupArgs{
+/// Name: pulumi.Sprintf("rg-global-vnet-peering-%v", val0),
+/// Location: location[val0],
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// example = append(example, __res)
+/// }
+/// var vnet []*network.VirtualNetwork
+/// for index := 0; index < len(location); index++ {
+///     key0 := index
+///     val0 := index
+/// __res, err := network.NewVirtualNetwork(ctx, fmt.Sprintf("vnet-%v", key0), &network.VirtualNetworkArgs{
+/// Name: pulumi.Sprintf("vnet-%v", val0),
+/// ResourceGroupName: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:21,31-46)[val0],
+/// AddressSpaces: pulumi.StringArray{
+/// vnetAddressSpace[val0],
+/// },
+/// Location: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:23,31-50)[val0],
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// vnet = append(vnet, __res)
+/// }
+/// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+/// Input: vnet[val0].AddressSpace[val0],
+/// Newbits: 13,
+/// Netnum: 0,
+/// }, nil)
+/// if err != nil {
+/// return err
+/// }
+/// var nva []*network.Subnet
+/// for index := 0; index < len(location); index++ {
+///     key0 := index
+///     val0 := index
+/// __res, err := network.NewSubnet(ctx, fmt.Sprintf("nva-%v", key0), &network.SubnetArgs{
+/// Name: pulumi.String("nva"),
+/// ResourceGroupName: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:31,32-47)[val0],
+/// VirtualNetworkName: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:32,32-44)[val0],
+/// AddressPrefix: invokeCidrsubnet.Result,
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// nva = append(nva, __res)
+/// }
+/// // enable global peering between the two virtual network
+/// var peering []*network.VirtualNetworkPeering
+/// for index := 0; index < len(location); index++ {
+///     key0 := index
+///     val0 := index
+/// __res, err := network.NewVirtualNetworkPeering(ctx, fmt.Sprintf("peering-%v", key0), &network.VirtualNetworkPeeringArgs{
+/// Name: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:46,53-65)[int(1 - val0)].ApplyT(func(names string) (string, error) {
+/// return fmt.Sprintf("peering-to-%v", names), nil
+/// }).(pulumi.StringOutput),
+/// ResourceGroupName: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:47,39-54)[val0],
+/// VirtualNetworkName: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:48,39-51)[val0],
+/// RemoteVirtualNetworkId: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:49,39-49)[int(1 - val0)],
+/// AllowVirtualNetworkAccess: pulumi.Bool(true),
+/// AllowForwardedTraffic: pulumi.Bool(true),
+/// AllowGatewayTransit: pulumi.Bool(false),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// peering = append(peering, __res)
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   count    = length(var.location)
+///   name     ="rg-global-vnet-peering-${count.index}"
+///   location = element(var.location, count.index)
+/// }
+/// resource "azure_network_virtualnetwork" "vnet" {
+///   count               = length(var.location)
+///   name                ="vnet-${count.index}"
+///   resource_group_name = element(azure_core_resourcegroup.example[*].name, count.index)
+///   address_spaces      = [element(var.vnetAddressSpace, count.index)]
+///   location            = element(azure_core_resourcegroup.example[*].location, count.index)
+/// }
+/// resource "azure_network_subnet" "nva" {
+///   count                = length(var.location)
+///   name                 = "nva"
+///   resource_group_name  = element(azure_core_resourcegroup.example[*].name, count.index)
+///   virtual_network_name = element(azure_network_virtualnetwork.vnet[*].name, count.index)
+///   address_prefix       = cidrsubnet(element(azure_network_virtualnetwork.vnet[count.index].address_space, count.index), 13, 0)
+/// }
+/// # enable global peering between the two virtual network
+/// resource "azure_network_virtualnetworkpeering" "peering" {
+///   count                        = length(var.location)
+///   name                         ="peering-to-${element(azure_network_virtualnetwork.vnet[*].name,1-count.index)}"
+///   resource_group_name          = element(azure_core_resourcegroup.example[*].name, count.index)
+///   virtual_network_name         = element(azure_network_virtualnetwork.vnet[*].name, count.index)
+///   remote_virtual_network_id    = element(azure_network_virtualnetwork.vnet[*].id, 1 - count.index)
+///   allow_virtual_network_access = true
+///   allow_forwarded_traffic      = true
+///   # `allow_gateway_transit` must be set to false for vnet Global Peering
+///   allow_gateway_transit = false
+/// }
+/// variable "location" {
+///   default = ["uksouth", "southeastasia"]
+/// }
+/// variable "vnetAddressSpace" {
+///   default = ["10.0.0.0/16", "10.1.0.0/16"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -497,8 +693,8 @@ import 'virtual_network_peering_state.dart';
 /// import com.pulumi.azure.network.VirtualNetworkPeering;
 /// import com.pulumi.azure.network.VirtualNetworkPeeringArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -511,13 +707,13 @@ import 'virtual_network_peering_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var location = config.get("location").orElse(List.of(
+///         final var location = config.get("location").orElse(Arrays.asList(
 ///             "uksouth",
 ///             "southeastasia"));
-///         final var vnetAddressSpace = config.get("vnetAddressSpace").orElse(List.of(
+///         final var vnetAddressSpace = config.get("vnetAddressSpace").orElse(Arrays.asList(
 ///             "10.0.0.0/16",
 ///             "10.1.0.0/16"));
-///         for (var i = 0; i < location.length(); i++) {
+///         for (var i = 0; i < location.size(); i++) {
 ///             new ResourceGroup("example-" + i, ResourceGroupArgs.builder()
 ///                 .name(String.format("rg-global-vnet-peering-%s", range.value()))
 ///                 .location(location[range.value()])
@@ -525,7 +721,7 @@ import 'virtual_network_peering_state.dart';
 ///
 ///
 /// }
-///         for (var i = 0; i < location.length(); i++) {
+///         for (var i = 0; i < location.size(); i++) {
 ///             new VirtualNetwork("vnet-" + i, VirtualNetworkArgs.builder()
 ///                 .name(String.format("vnet-%s", range.value()))
 ///                 .resourceGroupName(example.stream().map(element -> element.name()).collect(toList())[range.value()])
@@ -535,7 +731,7 @@ import 'virtual_network_peering_state.dart';
 ///
 ///
 /// }
-///         for (var i = 0; i < location.length(); i++) {
+///         for (var i = 0; i < location.size(); i++) {
 ///             new Subnet("nva-" + i, SubnetArgs.builder()
 ///                 .name("nva")
 ///                 .resourceGroupName(example.stream().map(element -> element.name()).collect(toList())[range.value()])
@@ -550,7 +746,7 @@ import 'virtual_network_peering_state.dart';
 ///
 /// }
 ///         // enable global peering between the two virtual network
-///         for (var i = 0; i < location.length(); i++) {
+///         for (var i = 0; i < location.size(); i++) {
 ///             new VirtualNetworkPeering("peering-" + i, VirtualNetworkPeeringArgs.builder()
 ///                 .name(vnet.stream().map(element -> element.name()).collect(toList())[1 - range.value()].applyValue(_names -> String.format("peering-to-%s", _names)))
 ///                 .resourceGroupName(example.stream().map(element -> element.name()).collect(toList())[range.value()])
@@ -600,10 +796,10 @@ import 'virtual_network_peering_state.dart';
 ///     virtualNetworkName: example_1.name,
 ///     remoteVirtualNetworkId: example_2.id,
 ///     triggers: {
-///         remote_address_space: example_2.addressSpaces.apply(addressSpaces => std.joinOutput({
+///         remote_address_space: std.joinOutput({
 ///             separator: ",",
-///             input: addressSpaces,
-///         })).apply(invoke => invoke.result),
+///             input: example_2.addressSpaces,
+///         }).apply(invoke => invoke.result),
 ///     },
 /// });
 /// const example_2VirtualNetworkPeering = new azure.network.VirtualNetworkPeering("example-2", {
@@ -612,10 +808,10 @@ import 'virtual_network_peering_state.dart';
 ///     virtualNetworkName: example_2.name,
 ///     remoteVirtualNetworkId: example_1.id,
 ///     triggers: {
-///         remote_address_space: example_1.addressSpaces.apply(addressSpaces => std.joinOutput({
+///         remote_address_space: std.joinOutput({
 ///             separator: ",",
-///             input: addressSpaces,
-///         })).apply(invoke => invoke.result),
+///             input: example_1.addressSpaces,
+///         }).apply(invoke => invoke.result),
 ///     },
 /// });
 /// ```
@@ -643,8 +839,8 @@ import 'virtual_network_peering_state.dart';
 ///     virtual_network_name=example_1.name,
 ///     remote_virtual_network_id=example_2.id,
 ///     triggers={
-///         "remote_address_space": example_2.address_spaces.apply(lambda address_spaces: std.join_output(separator=",",
-///             input=address_spaces)).apply(lambda invoke: invoke.result),
+///         "remote_address_space": std.join_output(separator=",",
+///             input=example_2.address_spaces).apply(lambda invoke: invoke.result),
 ///     })
 /// example_2_virtual_network_peering = azure.network.VirtualNetworkPeering("example-2",
 ///     name="peer2to1",
@@ -652,8 +848,8 @@ import 'virtual_network_peering_state.dart';
 ///     virtual_network_name=example_2.name,
 ///     remote_virtual_network_id=example_1.id,
 ///     triggers={
-///         "remote_address_space": example_1.address_spaces.apply(lambda address_spaces: std.join_output(separator=",",
-///             input=address_spaces)).apply(lambda invoke: invoke.result),
+///         "remote_address_space": std.join_output(separator=",",
+///             input=example_1.address_spaces).apply(lambda invoke: invoke.result),
 ///     })
 /// ```
 /// ```csharp
@@ -701,11 +897,11 @@ import 'virtual_network_peering_state.dart';
 ///         RemoteVirtualNetworkId = example_2.Id,
 ///         Triggers =
 ///         {
-///             { "remote_address_space", example_2.AddressSpaces.Apply(addressSpaces => Std.Join.Invoke(new()
+///             { "remote_address_space", Std.Join.Invoke(new()
 ///             {
 ///                 Separator = ",",
-///                 Input = addressSpaces,
-///             })).Apply(invoke => invoke.Result) },
+///                 Input = example_2.AddressSpaces,
+///             }).Apply(invoke => invoke.Result) },
 ///         },
 ///     });
 ///
@@ -717,11 +913,11 @@ import 'virtual_network_peering_state.dart';
 ///         RemoteVirtualNetworkId = example_1.Id,
 ///         Triggers =
 ///         {
-///             { "remote_address_space", example_1.AddressSpaces.Apply(addressSpaces => Std.Join.Invoke(new()
+///             { "remote_address_space", Std.Join.Invoke(new()
 ///             {
 ///                 Separator = ",",
-///                 Input = addressSpaces,
-///             })).Apply(invoke => invoke.Result) },
+///                 Input = example_1.AddressSpaces,
+///             }).Apply(invoke => invoke.Result) },
 ///         },
 ///     });
 ///
@@ -736,83 +932,123 @@ import 'virtual_network_peering_state.dart';
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// example, err := core.NewResourceGroup(ctx, "example", &core.ResourceGroupArgs{
-/// Name: pulumi.String("peeredvnets-rg"),
-/// Location: pulumi.String("West Europe"),
-/// })
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := core.NewResourceGroup(ctx, "example", &core.ResourceGroupArgs{
+/// 			Name:     pulumi.String("peeredvnets-rg"),
+/// 			Location: pulumi.String("West Europe"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example_1, err := network.NewVirtualNetwork(ctx, "example-1", &network.VirtualNetworkArgs{
+/// 			Name:              pulumi.String("peternetwork1"),
+/// 			ResourceGroupName: example.Name,
+/// 			AddressSpaces: pulumi.StringArray{
+/// 				pulumi.String("10.0.1.0/24"),
+/// 			},
+/// 			Location: example.Location,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example_2, err := network.NewVirtualNetwork(ctx, "example-2", &network.VirtualNetworkArgs{
+/// 			Name:              pulumi.String("peternetwork2"),
+/// 			ResourceGroupName: example.Name,
+/// 			AddressSpaces: pulumi.StringArray{
+/// 				pulumi.String("10.0.2.0/24"),
+/// 			},
+/// 			Location: example.Location,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = network.NewVirtualNetworkPeering(ctx, "example-1", &network.VirtualNetworkPeeringArgs{
+/// 			Name:                   pulumi.String("peer1to2"),
+/// 			ResourceGroupName:      example.Name,
+/// 			VirtualNetworkName:     example_1.Name,
+/// 			RemoteVirtualNetworkId: example_2.ID(),
+/// 			Triggers: pulumi.StringMap{
+/// 				"remote_address_space": pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+/// 					Separator: pulumi.String(","),
+/// 					Input:     example_2.AddressSpaces,
+/// 				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
+/// 					val := invoke.Result
+/// 					return &val, nil
+/// 				}).(pulumi.StringPtrOutput)),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = network.NewVirtualNetworkPeering(ctx, "example-2", &network.VirtualNetworkPeeringArgs{
+/// 			Name:                   pulumi.String("peer2to1"),
+/// 			ResourceGroupName:      example.Name,
+/// 			VirtualNetworkName:     example_2.Name,
+/// 			RemoteVirtualNetworkId: example_1.ID(),
+/// 			Triggers: pulumi.StringMap{
+/// 				"remote_address_space": pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+/// 					Separator: pulumi.String(","),
+/// 					Input:     example_1.AddressSpaces,
+/// 				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
+/// 					val := invoke.Result
+/// 					return &val, nil
+/// 				}).(pulumi.StringPtrOutput)),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// example_1, err := network.NewVirtualNetwork(ctx, "example-1", &network.VirtualNetworkArgs{
-/// Name: pulumi.String("peternetwork1"),
-/// ResourceGroupName: example.Name,
-/// AddressSpaces: pulumi.StringArray{
-/// pulumi.String("10.0.1.0/24"),
-/// },
-/// Location: example.Location,
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
 /// }
-/// example_2, err := network.NewVirtualNetwork(ctx, "example-2", &network.VirtualNetworkArgs{
-/// Name: pulumi.String("peternetwork2"),
-/// ResourceGroupName: example.Name,
-/// AddressSpaces: pulumi.StringArray{
-/// pulumi.String("10.0.2.0/24"),
-/// },
-/// Location: example.Location,
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "peeredvnets-rg"
+///   location = "West Europe"
 /// }
-/// invokeJoin, err := std.Join(ctx, &std.JoinArgs{
-/// Separator: ",",
-/// Input: addressSpaces,
-/// }, nil)
-/// if err != nil {
-/// return err
+/// resource "azure_network_virtualnetwork" "example-1" {
+///   name                = "peternetwork1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.1.0/24"]
+///   location            = azure_core_resourcegroup.example.location
 /// }
-/// _, err = network.NewVirtualNetworkPeering(ctx, "example-1", &network.VirtualNetworkPeeringArgs{
-/// Name: pulumi.String("peer1to2"),
-/// ResourceGroupName: example.Name,
-/// VirtualNetworkName: example_1.Name,
-/// RemoteVirtualNetworkId: example_2.ID(),
-/// Triggers: pulumi.StringMap{
-/// "remote_address_space": pulumi.String(example_2.AddressSpaces.ApplyT(func(addressSpaces interface{}) (std.JoinResult, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.JoinResultOutput).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// return invoke.Result, nil
-/// }).(pulumi.StringPtrOutput)),
-/// },
-/// })
-/// if err != nil {
-/// return err
+/// resource "azure_network_virtualnetwork" "example-2" {
+///   name                = "peternetwork2"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.2.0/24"]
+///   location            = azure_core_resourcegroup.example.location
 /// }
-/// invokeJoin1, err := std.Join(ctx, &std.JoinArgs{
-/// Separator: ",",
-/// Input: addressSpaces,
-/// }, nil)
-/// if err != nil {
-/// return err
+/// resource "azure_network_virtualnetworkpeering" "example-1" {
+///   name                      = "peer1to2"
+///   resource_group_name       = azure_core_resourcegroup.example.name
+///   virtual_network_name      = azure_network_virtualnetwork.example-1.name
+///   remote_virtual_network_id = azure_network_virtualnetwork.example-2.id
+///   triggers = {
+///     "remote_address_space" = join(",", azure_network_virtualnetwork.example-2.address_spaces)
+///   }
 /// }
-/// _, err = network.NewVirtualNetworkPeering(ctx, "example-2", &network.VirtualNetworkPeeringArgs{
-/// Name: pulumi.String("peer2to1"),
-/// ResourceGroupName: example.Name,
-/// VirtualNetworkName: example_2.Name,
-/// RemoteVirtualNetworkId: example_1.ID(),
-/// Triggers: pulumi.StringMap{
-/// "remote_address_space": pulumi.String(example_1.AddressSpaces.ApplyT(func(addressSpaces interface{}) (std.JoinResult, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.JoinResultOutput).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// return invoke.Result, nil
-/// }).(pulumi.StringPtrOutput)),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
+/// resource "azure_network_virtualnetworkpeering" "example-2" {
+///   name                      = "peer2to1"
+///   resource_group_name       = azure_core_resourcegroup.example.name
+///   virtual_network_name      = azure_network_virtualnetwork.example-2.name
+///   remote_virtual_network_id = azure_network_virtualnetwork.example-1.id
+///   triggers = {
+///     "remote_address_space" = join(",", azure_network_virtualnetwork.example-1.address_spaces)
+///   }
 /// }
 /// ```
 /// ```java
@@ -829,8 +1065,8 @@ import 'virtual_network_peering_state.dart';
 /// import com.pulumi.azure.network.VirtualNetworkPeeringArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JoinArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -866,10 +1102,10 @@ import 'virtual_network_peering_state.dart';
 ///             .resourceGroupName(example.name())
 ///             .virtualNetworkName(example_1.name())
 ///             .remoteVirtualNetworkId(example_2.id())
-///             .triggers(Map.of("remote_address_space", example_2.addressSpaces().applyValue(_addressSpaces -> StdFunctions.join(JoinArgs.builder()
+///             .triggers(Map.of("remote_address_space", StdFunctions.join(JoinArgs.builder()
 ///                 .separator(",")
-///                 .input(_addressSpaces)
-///                 .build())).applyValue(_invoke -> _invoke.result())))
+///                 .input(example_2.addressSpaces())
+///                 .build()).applyValue(_invoke -> _invoke.result())))
 ///             .build());
 ///
 ///         var example_2VirtualNetworkPeering = new VirtualNetworkPeering("example-2VirtualNetworkPeering", VirtualNetworkPeeringArgs.builder()
@@ -877,10 +1113,10 @@ import 'virtual_network_peering_state.dart';
 ///             .resourceGroupName(example.name())
 ///             .virtualNetworkName(example_2.name())
 ///             .remoteVirtualNetworkId(example_1.id())
-///             .triggers(Map.of("remote_address_space", example_1.addressSpaces().applyValue(_addressSpaces -> StdFunctions.join(JoinArgs.builder()
+///             .triggers(Map.of("remote_address_space", StdFunctions.join(JoinArgs.builder()
 ///                 .separator(",")
-///                 .input(_addressSpaces)
-///                 .build())).applyValue(_invoke -> _invoke.result())))
+///                 .input(example_1.addressSpaces())
+///                 .build()).applyValue(_invoke -> _invoke.result())))
 ///             .build());
 ///
 ///     }
@@ -985,9 +1221,9 @@ class VirtualNetworkPeering extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// A mapping of key values pairs that can be used to sync network routes from the remote virtual network to the local virtual network. See the trigger example for an example on how to set it up.
   late final pulumi.Output<Map<String, String>?> triggers;
-  /// Controls if remote gateways can be used on the local virtual network. If the flag is set to `true`, and `allow_gateway_transit` on the remote peering is also `true`, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to `true`. This flag cannot be set if virtual network already has a gateway. Defaults to `false`.
+  /// Controls if remote gateways can be used on the local virtual network. If the flag is set to `true`, and `allowGatewayTransit` on the remote peering is also `true`, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to `true`. This flag cannot be set if virtual network already has a gateway. Defaults to `false`.
   ///
-  /// &gt; **Note:** `use_remote_gateways` must be set to `false` if using Global Virtual Network Peerings.
+  /// &gt; **Note:** `useRemoteGateways` must be set to `false` if using Global Virtual Network Peerings.
   late final pulumi.Output<bool?> useRemoteGateways;
   /// The name of the virtual network. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualNetworkName;

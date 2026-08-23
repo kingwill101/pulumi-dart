@@ -142,6 +142,36 @@ import 'standard_web_test_validation_rules.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_appinsights_standardwebtest" "example" {
+///   name                    = "example-test"
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = "West Europe"
+///   application_insights_id = azure_appinsights_insights.example.id
+///   geo_locations           = ["example"]
+///   request = {
+///     url = "http://www.example.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -155,8 +185,8 @@ import 'standard_web_test_validation_rules.dart';
 /// import com.pulumi.azure.appinsights.StandardWebTest;
 /// import com.pulumi.azure.appinsights.StandardWebTestArgs;
 /// import com.pulumi.azure.appinsights.inputs.StandardWebTestRequestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -267,7 +297,7 @@ class StandardWebTest extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// Seconds until this WebTest will timeout and fail. Default is `30`.
   late final pulumi.Output<int?> timeout;
-  /// A `validation_rules` block as defined below.
+  /// A `validationRules` block as defined below.
   late final pulumi.Output<StandardWebTestValidationRules?> validationRules;
 
   /// Creates a new [StandardWebTest].

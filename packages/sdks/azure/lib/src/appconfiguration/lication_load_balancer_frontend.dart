@@ -85,6 +85,25 @@ import 'lication_load_balancer_frontend_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_appconfiguration_licationloadbalancer" "example" {
+///   name                = "example"
+///   resource_group_name = "example"
+///   location            = "West Europe"
+/// }
+/// resource "azure_appconfiguration_licationloadbalancerfrontend" "example" {
+///   name                         = "example"
+///   application_load_balancer_id = azure_appconfiguration_licationloadbalancer.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +114,8 @@ import 'lication_load_balancer_frontend_state.dart';
 /// import com.pulumi.azure.appconfiguration.LicationLoadBalancerArgs;
 /// import com.pulumi.azure.appconfiguration.LicationLoadBalancerFrontend;
 /// import com.pulumi.azure.appconfiguration.LicationLoadBalancerFrontendArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

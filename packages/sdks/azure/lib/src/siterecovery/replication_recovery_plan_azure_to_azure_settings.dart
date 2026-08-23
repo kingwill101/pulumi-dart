@@ -9,11 +9,11 @@ class ReplicationRecoveryPlanAzureToAzureSettings {
   final pulumi.Input<String>? primaryZone;
   /// The Edge Zone within the Azure Region where the VM is recovered. Changing this forces a new Site Recovery Replication Recovery Plan to be created.
   ///
-  /// &gt; **Note:** `primary_edge_zone` and `recovery_edge_zone` must be specified together.
+  /// &gt; **Note:** `primaryEdgeZone` and `recoveryEdgeZone` must be specified together.
   final pulumi.Input<String>? recoveryEdgeZone;
   /// The Availability Zone in which the VM is recovered. Changing this forces a new Site Recovery Replication Recovery Plan to be created.
   ///
-  /// &gt; **Note:** `primary_zone` and `recovery_zone` must be specified together.
+  /// &gt; **Note:** `primaryZone` and `recoveryZone` must be specified together.
   final pulumi.Input<String>? recoveryZone;
 
   /// Creates a new [ReplicationRecoveryPlanAzureToAzureSettings].
@@ -46,4 +46,3 @@ class ReplicationRecoveryPlanAzureToAzureSettings {
     );
   }
 }
-

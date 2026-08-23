@@ -94,7 +94,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///     },
 ///     healthProbeId: exampleProbe.id,
 ///     sku: {
-///         name: "Standard_F2",
+///         name: "Standard_D4_v5",
 ///         tier: "Standard",
 ///         capacity: 2,
 ///     },
@@ -212,7 +212,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///     },
 ///     health_probe_id=example_probe.id,
 ///     sku={
-///         "name": "Standard_F2",
+///         "name": "Standard_D4_v5",
 ///         "tier": "Standard",
 ///         "capacity": 2,
 ///     },
@@ -369,7 +369,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///         HealthProbeId = exampleProbe.Id,
 ///         Sku = new Azure.Compute.Inputs.ScaleSetSkuArgs
 ///         {
-///             Name = "Standard_F2",
+///             Name = "Standard_D4_v5",
 ///             Tier = "Standard",
 ///             Capacity = 2,
 ///         },
@@ -570,7 +570,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 			},
 /// 			HealthProbeId: exampleProbe.ID(),
 /// 			Sku: &compute.ScaleSetSkuArgs{
-/// 				Name:     pulumi.String("Standard_F2"),
+/// 				Name:     pulumi.String("Standard_D4_v5"),
 /// 				Tier:     pulumi.String("Standard"),
 /// 				Capacity: pulumi.Int(2),
 /// 			},
@@ -637,6 +637,137 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "acctvn"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "acctsub"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "test"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+///   domain_name_label   = azure_core_resourcegroup.example.name
+///   tags = {
+///     "environment" = "staging"
+///   }
+/// }
+/// resource "azure_lb_loadbalancer" "example" {
+///   name                = "test"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   frontend_ip_configurations {
+///     name                 = "PublicIPAddress"
+///     public_ip_address_id = azure_network_publicip.example.id
+///   }
+/// }
+/// resource "azure_lb_backendaddresspool" "bpepool" {
+///   loadbalancer_id = azure_lb_loadbalancer.example.id
+///   name            = "BackEndAddressPool"
+/// }
+/// resource "azure_lb_natpool" "lbnatpool" {
+///   resource_group_name            = azure_core_resourcegroup.example.name
+///   name                           = "ssh"
+///   loadbalancer_id                = azure_lb_loadbalancer.example.id
+///   protocol                       = "Tcp"
+///   frontend_port_start            = 50000
+///   frontend_port_end              = 50119
+///   backend_port                   = 22
+///   frontend_ip_configuration_name = "PublicIPAddress"
+/// }
+/// resource "azure_lb_probe" "example" {
+///   loadbalancer_id = azure_lb_loadbalancer.example.id
+///   name            = "http-probe"
+///   protocol        = "Http"
+///   request_path    = "/health"
+///   port            = 8080
+/// }
+/// resource "azure_compute_scaleset" "example" {
+///   name                 = "mytestscaleset-1"
+///   location             = azure_core_resourcegroup.example.location
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   automatic_os_upgrade = true
+///   upgrade_policy_mode  = "Rolling"
+///   rolling_upgrade_policy = {
+///     max_batch_instance_percent              = 20
+///     max_unhealthy_instance_percent          = 20
+///     max_unhealthy_upgraded_instance_percent = 5
+///     pause_time_between_batches              = "PT0S"
+///   }
+///   health_probe_id = azure_lb_probe.example.id
+///   sku = {
+///     name     = "Standard_D4_v5"
+///     tier     = "Standard"
+///     capacity = 2
+///   }
+///   storage_profile_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+///   storage_profile_os_disk = {
+///     name              = ""
+///     caching           = "ReadWrite"
+///     create_option     = "FromImage"
+///     managed_disk_type = "Standard_LRS"
+///   }
+///   storage_profile_data_disks {
+///     lun           = 0
+///     caching       = "ReadWrite"
+///     create_option = "Empty"
+///     disk_size_gb  = 10
+///   }
+///   os_profile = {
+///     computer_name_prefix = "testvm"
+///     admin_username       = "myadmin"
+///   }
+///   os_profile_linux_config = {
+///     disable_password_authentication = true
+///     ssh_keys = [{
+///       "path"    = "/home/myadmin/.ssh/authorized_keys"
+///       "keyData" = file("~/.ssh/demo_key.pub")
+///     }]
+///   }
+///   network_profiles {
+///     name    = "mynetworkprofile"
+///     primary = true
+///     ip_configurations {
+///       name                                   = "TestIPConfiguration"
+///       primary                                = true
+///       subnet_id                              = azure_network_subnet.example.id
+///       load_balancer_backend_address_pool_ids = [azure_lb_backendaddresspool.bpepool.id]
+///       load_balancer_inbound_nat_rules_ids    = [azure_lb_natpool.lbnatpool.id]
+///     }
+///   }
+///   tags = {
+///     "environment" = "staging"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -669,11 +800,13 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// import com.pulumi.azure.compute.inputs.ScaleSetStorageProfileDataDiskArgs;
 /// import com.pulumi.azure.compute.inputs.ScaleSetOsProfileArgs;
 /// import com.pulumi.azure.compute.inputs.ScaleSetOsProfileLinuxConfigArgs;
+/// import com.pulumi.azure.compute.inputs.ScaleSetOsProfileLinuxConfigSshKeyArgs;
 /// import com.pulumi.azure.compute.inputs.ScaleSetNetworkProfileArgs;
+/// import com.pulumi.azure.compute.inputs.ScaleSetNetworkProfileIpConfigurationArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -761,7 +894,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///                 .build())
 ///             .healthProbeId(exampleProbe.id())
 ///             .sku(ScaleSetSkuArgs.builder()
-///                 .name("Standard_F2")
+///                 .name("Standard_D4_v5")
 ///                 .tier("Standard")
 ///                 .capacity(2)
 ///                 .build())
@@ -900,7 +1033,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///         pauseTimeBetweenBatches: PT0S
 ///       healthProbeId: ${exampleProbe.id}
 ///       sku:
-///         name: Standard_F2
+///         name: Standard_D4_v5
 ///         tier: Standard
 ///         capacity: 2
 ///       storageProfileImageReference:
@@ -993,7 +1126,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///     resourceGroupName: example.name,
 ///     upgradePolicyMode: "Manual",
 ///     sku: {
-///         name: "Standard_F2",
+///         name: "Standard_D4_v5",
 ///         tier: "Standard",
 ///         capacity: 2,
 ///     },
@@ -1070,7 +1203,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///     resource_group_name=example.name,
 ///     upgrade_policy_mode="Manual",
 ///     sku={
-///         "name": "Standard_F2",
+///         "name": "Standard_D4_v5",
 ///         "tier": "Standard",
 ///         "capacity": 2,
 ///     },
@@ -1176,7 +1309,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///         UpgradePolicyMode = "Manual",
 ///         Sku = new Azure.Compute.Inputs.ScaleSetSkuArgs
 ///         {
-///             Name = "Standard_F2",
+///             Name = "Standard_D4_v5",
 ///             Tier = "Standard",
 ///             Capacity = 2,
 ///         },
@@ -1321,7 +1454,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 			ResourceGroupName: example.Name,
 /// 			UpgradePolicyMode: pulumi.String("Manual"),
 /// 			Sku: &compute.ScaleSetSkuArgs{
-/// 				Name:     pulumi.String("Standard_F2"),
+/// 				Name:     pulumi.String("Standard_D4_v5"),
 /// 				Tier:     pulumi.String("Standard"),
 /// 				Capacity: pulumi.Int(2),
 /// 			},
@@ -1377,6 +1510,93 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "acctvn"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "acctsub"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "accsa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   tags = {
+///     "environment" = "staging"
+///   }
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "vhds"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_compute_scaleset" "example" {
+///   name                = "mytestscaleset-1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   upgrade_policy_mode = "Manual"
+///   sku = {
+///     name     = "Standard_D4_v5"
+///     tier     = "Standard"
+///     capacity = 2
+///   }
+///   os_profile = {
+///     computer_name_prefix = "testvm"
+///     admin_username       = "myadmin"
+///   }
+///   os_profile_linux_config = {
+///     disable_password_authentication = true
+///     ssh_keys = [{
+///       "path"    = "/home/myadmin/.ssh/authorized_keys"
+///       "keyData" = file("~/.ssh/demo_key.pub")
+///     }]
+///   }
+///   network_profiles {
+///     name    = "TestNetworkProfile"
+///     primary = true
+///     ip_configurations {
+///       name      = "TestIPConfiguration"
+///       primary   = true
+///       subnet_id = azure_network_subnet.example.id
+///     }
+///   }
+///   storage_profile_os_disk = {
+///     name           = "osDiskProfile"
+///     caching        = "ReadWrite"
+///     create_option  = "FromImage"
+///     vhd_containers = ["${azure_storage_account.example.primary_blob_endpoint}${azure_storage_container.example.name}"]
+///   }
+///   storage_profile_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1398,13 +1618,15 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// import com.pulumi.azure.compute.inputs.ScaleSetSkuArgs;
 /// import com.pulumi.azure.compute.inputs.ScaleSetOsProfileArgs;
 /// import com.pulumi.azure.compute.inputs.ScaleSetOsProfileLinuxConfigArgs;
+/// import com.pulumi.azure.compute.inputs.ScaleSetOsProfileLinuxConfigSshKeyArgs;
 /// import com.pulumi.azure.compute.inputs.ScaleSetNetworkProfileArgs;
+/// import com.pulumi.azure.compute.inputs.ScaleSetNetworkProfileIpConfigurationArgs;
 /// import com.pulumi.azure.compute.inputs.ScaleSetStorageProfileOsDiskArgs;
 /// import com.pulumi.azure.compute.inputs.ScaleSetStorageProfileImageReferenceArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1456,7 +1678,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///             .resourceGroupName(example.name())
 ///             .upgradePolicyMode("Manual")
 ///             .sku(ScaleSetSkuArgs.builder()
-///                 .name("Standard_F2")
+///                 .name("Standard_D4_v5")
 ///                 .tier("Standard")
 ///                 .capacity(2)
 ///                 .build())
@@ -1555,7 +1777,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///       resourceGroupName: ${example.name}
 ///       upgradePolicyMode: Manual
 ///       sku:
-///         name: Standard_F2
+///         name: Standard_D4_v5
 ///         tier: Standard
 ///         capacity: 2
 ///       osProfile:
@@ -1592,7 +1814,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// ```
 ///
 ///
-/// ## Example of storage_profile_image_reference with id
+/// ## Example of storageProfileImageReference with id
 ///
 ///
 /// ```typescript
@@ -1671,6 +1893,25 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_compute_image" "example" {
+///   name = "test"
+/// }
+/// resource "azure_compute_scaleset" "example" {
+///   name = "test"
+///   storage_profile_image_reference = {
+///     id = azure_compute_image.example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1682,8 +1923,8 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// import com.pulumi.azure.compute.ScaleSet;
 /// import com.pulumi.azure.compute.ScaleSetArgs;
 /// import com.pulumi.azure.compute.inputs.ScaleSetStorageProfileImageReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1740,17 +1981,17 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// $ pulumi import azure:compute/scaleSet:ScaleSet scaleset1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Compute/virtualMachineScaleSets/scaleset1
 /// ```
 class ScaleSet extends pulumi.CustomResource {
-  /// Automatic OS patches can be applied by Azure to your scaleset. This is particularly useful when `upgrade_policy_mode` is set to `Rolling`. Defaults to `false`.
+  /// Automatic OS patches can be applied by Azure to your scaleset. This is particularly useful when `upgradePolicyMode` is set to `Rolling`. Defaults to `false`.
   late final pulumi.Output<bool?> automaticOsUpgrade;
-  /// A `boot_diagnostics` block as referenced below.
+  /// A `bootDiagnostics` block as referenced below.
   late final pulumi.Output<ScaleSetBootDiagnostics?> bootDiagnostics;
   /// Specifies the eviction policy for Virtual Machines in this Scale Set. Possible values are `Deallocate` and `Delete`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **NOTE:** `eviction_policy` can only be set when `priority` is set to `Low`.
+  /// &gt; **NOTE:** `evictionPolicy` can only be set when `priority` is set to `Low`.
   late final pulumi.Output<String?> evictionPolicy;
   /// Can be specified multiple times to add extension profiles to the scale set. Each `extension` block supports the fields documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> extensions;
-  /// Specifies the identifier for the load balancer health probe. Required when using `Rolling` as your `upgrade_policy_mode`.
+  /// Specifies the identifier for the load balancer health probe. Required when using `Rolling` as your `upgradePolicyMode`.
   late final pulumi.Output<String?> healthProbeId;
   /// An `identity` block as defined below.
   late final pulumi.Output<ScaleSetIdentity?> identity;
@@ -1760,15 +2001,15 @@ class ScaleSet extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// Specifies the name of the virtual machine scale set resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A collection of `network_profile` blocks as documented below.
+  /// A collection of `networkProfile` blocks as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> networkProfiles;
-  /// A `os_profile` block as documented below.
+  /// A `osProfile` block as documented below.
   late final pulumi.Output<ScaleSetOsProfile> osProfile;
-  /// A `os_profile_linux_config` block as documented below.
+  /// A `osProfileLinuxConfig` block as documented below.
   late final pulumi.Output<ScaleSetOsProfileLinuxConfig> osProfileLinuxConfig;
-  /// A collection of `os_profile_secrets` blocks as documented below.
+  /// A collection of `osProfileSecrets` blocks as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> osProfileSecrets;
-  /// A `os_profile_windows_config` block as documented below.
+  /// A `osProfileWindowsConfig` block as documented below.
   late final pulumi.Output<ScaleSetOsProfileWindowsConfig?> osProfileWindowsConfig;
   /// Specifies whether the virtual machine scale set should be overprovisioned. Defaults to `true`.
   late final pulumi.Output<bool?> overprovision;
@@ -1780,17 +2021,17 @@ class ScaleSet extends pulumi.CustomResource {
   late final pulumi.Output<String?> proximityPlacementGroupId;
   /// The name of the resource group in which to create the virtual machine scale set. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `rolling_upgrade_policy` block as defined below. This is only applicable when the `upgrade_policy_mode` is `Rolling`.
+  /// A `rollingUpgradePolicy` block as defined below. This is only applicable when the `upgradePolicyMode` is `Rolling`.
   late final pulumi.Output<ScaleSetRollingUpgradePolicy?> rollingUpgradePolicy;
   /// Specifies whether the scale set is limited to a single placement group with a maximum size of 100 virtual machines. If set to false, managed disks must be used. Changing this forces a new resource to be created. See [documentation](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups) for more information. Defaults to `true`.
   late final pulumi.Output<bool?> singlePlacementGroup;
   /// A `sku` block as documented below.
   late final pulumi.Output<ScaleSetSku> sku;
-  /// A `storage_profile_data_disk` block as documented below.
+  /// A `storageProfileDataDisk` block as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> storageProfileDataDisks;
-  /// A `storage_profile_image_reference` block as documented below.
+  /// A `storageProfileImageReference` block as documented below.
   late final pulumi.Output<ScaleSetStorageProfileImageReference> storageProfileImageReference;
-  /// A `storage_profile_os_disk` block as documented below.
+  /// A `storageProfileOsDisk` block as documented below.
   late final pulumi.Output<ScaleSetStorageProfileOsDisk> storageProfileOsDisk;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;

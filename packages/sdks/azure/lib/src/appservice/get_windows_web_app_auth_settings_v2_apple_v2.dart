@@ -36,4 +36,3 @@ class GetWindowsWebAppAuthSettingsV2AppleV2 {
     );
   }
 }
-

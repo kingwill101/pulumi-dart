@@ -60,6 +60,20 @@ import 'get_vault_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_recoveryservices_getvault" "vault" {
+///   name                = "tfex-recovery_vault"
+///   resource_group_name = "tfex-resource_group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +82,8 @@ import 'get_vault_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.recoveryservices.RecoveryservicesFunctions;
 /// import com.pulumi.azure.recoveryservices.inputs.GetVaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -105,7 +119,7 @@ import 'get_vault_result.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.RecoveryServices` - 2024-01-01
+/// * `Microsoft.RecoveryServices` - 2025-08-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_recoveryservices_get_vault_get_vault_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVaultResult> getVault(

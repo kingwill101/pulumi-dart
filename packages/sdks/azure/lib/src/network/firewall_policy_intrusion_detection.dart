@@ -9,16 +9,16 @@ class FirewallPolicyIntrusionDetection {
   final pulumi.Input<String>? mode;
   /// A list of Private IP address ranges to identify traffic direction. By default, only ranges defined by IANA RFC 1918 are considered private IP addresses.
   final pulumi.Input<List<String>>? privateRanges;
-  /// One or more `signature_overrides` blocks as defined below.
+  /// One or more `signatureOverrides` blocks as defined below.
   final pulumi.Input<List<FirewallPolicyIntrusionDetectionSignatureOverride>>? signatureOverrides;
-  /// One or more `traffic_bypass` blocks as defined below.
+  /// One or more `trafficBypass` blocks as defined below.
   final pulumi.Input<List<FirewallPolicyIntrusionDetectionTrafficBypass>>? trafficBypasses;
 
   /// Creates a new [FirewallPolicyIntrusionDetection].
   /// [mode] In which mode you want to run intrusion detection: `Off`, `Alert` or `Deny`.
   /// [privateRanges] A list of Private IP address ranges to identify traffic direction. By default, only ranges defined by IANA RFC 1918 are considered private IP addresses.
-  /// [signatureOverrides] One or more `signature_overrides` blocks as defined below.
-  /// [trafficBypasses] One or more `traffic_bypass` blocks as defined below.
+  /// [signatureOverrides] One or more `signatureOverrides` blocks as defined below.
+  /// [trafficBypasses] One or more `trafficBypass` blocks as defined below.
   const FirewallPolicyIntrusionDetection({
     this.mode,
     this.privateRanges,
@@ -44,4 +44,3 @@ class FirewallPolicyIntrusionDetection {
     );
   }
 }
-

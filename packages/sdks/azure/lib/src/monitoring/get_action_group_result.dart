@@ -15,55 +15,55 @@ import 'get_action_group_webhook_receiver.dart';
 
 /// Result data returned by getActionGroup.
 class GetActionGroupResult {
-  /// One or more `arm_role_receiver` blocks as defined below.
+  /// One or more `armRoleReceiver` blocks as defined below.
   final List<GetActionGroupArmRoleReceiver> armRoleReceivers;
-  /// One or more `automation_runbook_receiver` blocks as defined below.
+  /// One or more `automationRunbookReceiver` blocks as defined below.
   final List<GetActionGroupAutomationRunbookReceiver> automationRunbookReceivers;
-  /// One or more `azure_app_push_receiver` blocks as defined below.
+  /// One or more `azureAppPushReceiver` blocks as defined below.
   final List<GetActionGroupAzureAppPushReceiver> azureAppPushReceivers;
-  /// One or more `azure_function_receiver` blocks as defined below.
+  /// One or more `azureFunctionReceiver` blocks as defined below.
   final List<GetActionGroupAzureFunctionReceiver> azureFunctionReceivers;
-  /// One or more `email_receiver` blocks as defined below.
+  /// One or more `emailReceiver` blocks as defined below.
   final List<GetActionGroupEmailReceiver> emailReceivers;
   /// Whether this action group is enabled.
   final bool enabled;
-  /// One or more `event_hub_receiver` blocks as defined below.
+  /// One or more `eventHubReceiver` blocks as defined below.
   final List<GetActionGroupEventHubReceiver> eventHubReceivers;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// One or more `itsm_receiver` blocks as defined below.
+  /// One or more `itsmReceiver` blocks as defined below.
   final List<GetActionGroupItsmReceiver> itsmReceivers;
-  /// One or more `logic_app_receiver` blocks as defined below.
+  /// One or more `logicAppReceiver` blocks as defined below.
   final List<GetActionGroupLogicAppReceiver> logicAppReceivers;
   /// The name of the webhook receiver.
   final String name;
   final String resourceGroupName;
   /// The short name of the action group.
   final String shortName;
-  /// One or more `sms_receiver` blocks as defined below.
+  /// One or more `smsReceiver` blocks as defined below.
   final List<GetActionGroupSmsReceiver> smsReceivers;
-  /// One or more `voice_receiver` blocks as defined below.
+  /// One or more `voiceReceiver` blocks as defined below.
   final List<GetActionGroupVoiceReceiver> voiceReceivers;
-  /// One or more `webhook_receiver` blocks as defined below.
+  /// One or more `webhookReceiver` blocks as defined below.
   final List<GetActionGroupWebhookReceiver> webhookReceivers;
 
   /// Creates a new [GetActionGroupResult].
-  /// [armRoleReceivers] One or more `arm_role_receiver` blocks as defined below.
-  /// [automationRunbookReceivers] One or more `automation_runbook_receiver` blocks as defined below.
-  /// [azureAppPushReceivers] One or more `azure_app_push_receiver` blocks as defined below.
-  /// [azureFunctionReceivers] One or more `azure_function_receiver` blocks as defined below.
-  /// [emailReceivers] One or more `email_receiver` blocks as defined below.
+  /// [armRoleReceivers] One or more `armRoleReceiver` blocks as defined below.
+  /// [automationRunbookReceivers] One or more `automationRunbookReceiver` blocks as defined below.
+  /// [azureAppPushReceivers] One or more `azureAppPushReceiver` blocks as defined below.
+  /// [azureFunctionReceivers] One or more `azureFunctionReceiver` blocks as defined below.
+  /// [emailReceivers] One or more `emailReceiver` blocks as defined below.
   /// [enabled] Whether this action group is enabled.
-  /// [eventHubReceivers] One or more `event_hub_receiver` blocks as defined below.
+  /// [eventHubReceivers] One or more `eventHubReceiver` blocks as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [itsmReceivers] One or more `itsm_receiver` blocks as defined below.
-  /// [logicAppReceivers] One or more `logic_app_receiver` blocks as defined below.
+  /// [itsmReceivers] One or more `itsmReceiver` blocks as defined below.
+  /// [logicAppReceivers] One or more `logicAppReceiver` blocks as defined below.
   /// [name] The name of the webhook receiver.
   /// [resourceGroupName] Required.
   /// [shortName] The short name of the action group.
-  /// [smsReceivers] One or more `sms_receiver` blocks as defined below.
-  /// [voiceReceivers] One or more `voice_receiver` blocks as defined below.
-  /// [webhookReceivers] One or more `webhook_receiver` blocks as defined below.
+  /// [smsReceivers] One or more `smsReceiver` blocks as defined below.
+  /// [voiceReceivers] One or more `voiceReceiver` blocks as defined below.
+  /// [webhookReceivers] One or more `webhookReceiver` blocks as defined below.
   const GetActionGroupResult({
     required this.armRoleReceivers,
     required this.automationRunbookReceivers,
@@ -125,4 +125,3 @@ class GetActionGroupResult {
     );
   }
 }
-

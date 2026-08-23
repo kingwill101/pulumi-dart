@@ -5,7 +5,7 @@ import 'integration_account_partner_business_identity.dart';
 
 /// Input properties used for looking up and filtering IntegrationAccountPartner resources.
 class IntegrationAccountPartnerState {
-  /// A `business_identity` block as documented below.
+  /// A `businessIdentity` block as documented below.
   final pulumi.Input<List<IntegrationAccountPartnerBusinessIdentity>>? businessIdentities;
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Partner to be created.
   final pulumi.Input<String>? integrationAccountName;
@@ -17,7 +17,7 @@ class IntegrationAccountPartnerState {
   final pulumi.Input<String>? resourceGroupName;
 
   /// Creates a new [IntegrationAccountPartnerState].
-  /// [businessIdentities] A `business_identity` block as documented below.
+  /// [businessIdentities] A `businessIdentity` block as documented below.
   /// [integrationAccountName] The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Partner to be created.
   /// [metadata] A JSON mapping of any Metadata for this Logic App Integration Account Partner.
   /// [name] The name which should be used for this Logic App Integration Account Partner. Changing this forces a new Logic App Integration Account Partner to be created.
@@ -50,4 +50,3 @@ class IntegrationAccountPartnerState {
     );
   }
 }
-
