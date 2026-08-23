@@ -3,6 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_capabilities.dart';
 import 'container_device.dart';
+import 'container_device_read_bp.dart';
+import 'container_device_read_iop.dart';
+import 'container_device_request.dart';
+import 'container_device_write_bp.dart';
+import 'container_device_write_iop.dart';
 import 'container_healthcheck.dart';
 import 'container_host.dart';
 import 'container_label.dart';
@@ -20,7 +25,7 @@ import 'container_volume.dart';
 class ContainerArgs {
   /// If `true` attach to the container after its creation and waits the end of its execution. Defaults to `false`.
   final pulumi.Input<bool>? attach;
-  /// Add or drop certrain linux capabilities.
+  /// Add or drop certain linux capabilities.
   final pulumi.Input<ContainerCapabilities>? capabilities;
   /// Optional parent cgroup for the container
   final pulumi.Input<String>? cgroupParent;
@@ -38,11 +43,21 @@ class ContainerArgs {
   final pulumi.Input<String>? cpuSet;
   /// CPU shares (relative weight) for the container.
   final pulumi.Input<int>? cpuShares;
-  /// Specify how much of the available CPU resources a container can use. e.g a value of 1.5 means the container is guaranteed at most one and a half of the CPUs. Has precedence over `cpu_period` and `cpu_quota`.
+  /// Specify how much of the available CPU resources a container can use. e.g a value of 1.5 means the container is guaranteed at most one and a half of the CPUs. Has precedence over `cpuPeriod` and `cpuQuota`.
   final pulumi.Input<String>? cpus;
   /// If defined will attempt to stop the container before destroying. Container will be destroyed after `n` seconds or on successful stop.
   final pulumi.Input<int>? destroyGraceSeconds;
-  /// Bind devices to the container.
+  /// Limit read rate (bytes per second) from a device. This is the equivalent to repeating `--device-read-bps` for `docker run`.
+  final pulumi.Input<List<ContainerDeviceReadBp>>? deviceReadBps;
+  /// Limit read rate (IO per second) from a device. This is the equivalent to repeating `--device-read-iops` for `docker run`.
+  final pulumi.Input<List<ContainerDeviceReadIop>>? deviceReadIops;
+  /// Device requests for the container, such as CDI devices (e.g., `nvidia.com/gpu=all`) or GPU requests. This is the equivalent to using the `--device` flag for CDI devices in `docker run`.
+  final pulumi.Input<List<ContainerDeviceRequest>>? deviceRequests;
+  /// Limit write rate (bytes per second) to a device. This is the equivalent to repeating `--device-write-bps` for `docker run`.
+  final pulumi.Input<List<ContainerDeviceWriteBp>>? deviceWriteBps;
+  /// Limit write rate (IO per second) to a device. This is the equivalent to repeating `--device-write-iops` for `docker run`.
+  final pulumi.Input<List<ContainerDeviceWriteIop>>? deviceWriteIops;
+  /// Bind traditional devices to the container (e.g., `/dev/nvidia0`). For CDI devices, use `deviceRequests` instead.
   final pulumi.Input<List<ContainerDevice>>? devices;
   /// DNS servers to use.
   final pulumi.Input<List<String>>? dns;
@@ -56,7 +71,7 @@ class ContainerArgs {
   final pulumi.Input<List<String>>? entrypoints;
   /// Environment variables to set in the form of `KEY=VALUE`, e.g. `DEBUG=0`
   final pulumi.Input<List<String>>? envs;
-  /// GPU devices to add to the container. Currently, only the value `all` is supported. Passing any other value will result in unexpected behavior.
+  /// GPU devices to add to the container. Supported values are `all` or `device=&lt;id[,id...]&gt;`, for example `device=0,2` or `device=GPU-3a23c669-1f69-c64e-cf85-44e9b07e7a2a`.
   final pulumi.Input<String>? gpus;
   /// Additional groups for the container user
   final pulumi.Input<List<String>>? groupAdds;
@@ -66,7 +81,7 @@ class ContainerArgs {
   final pulumi.Input<String>? hostname;
   /// Additional hosts to add to the container.
   final pulumi.Input<List<ContainerHost>>? hosts;
-  /// The ID of the image to back this container. The easiest way to get this value is to use the `image_id` attribute of the `docker.RemoteImage` resource as is shown in the example.
+  /// The ID of the image to back this container. The easiest way to get this value is to use the `imageId` attribute of the `docker.RemoteImage` resource as is shown in the example.
   final pulumi.Input<String> image;
   /// Configured whether an init process should be injected for this container. If unset this will default to the `dockerd` defaults.
   final pulumi.Input<bool>? init;
@@ -90,15 +105,18 @@ class ContainerArgs {
   final pulumi.Input<int>? memorySwap;
   /// Specification for mounts to be added to containers created as part of the service.
   final pulumi.Input<List<ContainerMount>>? mounts;
+  /// If `true`, then the Docker container will be kept running. If `false`, Terraform leaves the container alone. This attribute is also used to trigger a restart of a stopped container. If your container is stopped, Terraform will set `mustRun` to `false` and this will trigger a change. Defaults to `true`.
   final pulumi.Input<bool>? mustRun;
   /// The name of the container.
   final pulumi.Input<String>? name;
   /// Network mode of the container. Defaults to `bridge`. If your host OS is any other OS, you need to set this value explicitly, e.g. `nat` when your container will be running on an Windows host. See https://docs.docker.com/engine/network/ for more information.
   final pulumi.Input<String>? networkMode;
-  /// The networks the container is attached to
+  /// The networks the container is attached to. This is the equivalent to the `--network` option of `docker run`
   final pulumi.Input<List<ContainerNetworksAdvanced>>? networksAdvanced;
-  /// he PID (Process) Namespace mode for the container. Either `container:&lt;name|id&gt;` or `host`.
+  /// The PID (Process) Namespace mode for the container. Either `container:&lt;name|id&gt;` or `host`.
   final pulumi.Input<String>? pidMode;
+  /// Platform in the format `os[/arch[/variant]]` used for image lookup and container runtime, for example `linux/amd64`.
+  final pulumi.Input<String>? platform;
   /// Publish a container's port(s) to the host.
   final pulumi.Input<List<ContainerPort>>? ports;
   /// If `true`, the container runs in privileged mode.
@@ -137,9 +155,9 @@ class ContainerArgs {
   final pulumi.Input<bool>? tty;
   /// Ulimit options to add.
   final pulumi.Input<List<ContainerUlimit>>? ulimits;
-  /// Specifies files to upload to the container before starting it. Only one of `content` or `content_base64` can be set and at least one of them has to be set.
+  /// Specifies files to upload to the container before starting it. Only one of `content` or `contentBase64` can be set and at least one of them has to be set.
   final pulumi.Input<List<ContainerUpload>>? uploads;
-  /// User used for run the first process. Format is `user` or `user:group` which user and group can be passed literraly or by name.
+  /// User used for run the first process. Format is `user` or `user:group` which user and group can be passed literally or by name.
   final pulumi.Input<String>? user;
   /// Sets the usernamespace mode for the container when usernamespace remapping option is enabled.
   final pulumi.Input<String>? usernsMode;
@@ -154,7 +172,7 @@ class ContainerArgs {
 
   /// Creates a new [ContainerArgs].
   /// [attach] If `true` attach to the container after its creation and waits the end of its execution. Defaults to `false`.
-  /// [capabilities] Add or drop certrain linux capabilities.
+  /// [capabilities] Add or drop certain linux capabilities.
   /// [cgroupParent] Optional parent cgroup for the container
   /// [cgroupnsMode] Cgroup namespace mode to use for the container. Possible values are: `private`, `host`.
   /// [command] The command to use to start the container. For example, to run `/usr/bin/myprogram -f baz.conf` set the command to be `["/usr/bin/myprogram","-f","baz.conf"]`.
@@ -163,21 +181,26 @@ class ContainerArgs {
   /// [cpuQuota] Impose a CPU CFS quota on the container (in microseconds). The number of microseconds per `cpu-period` that the container is limited to before throttled. Is ignored if `cpus` is set.
   /// [cpuSet] A comma-separated list or hyphen-separated range of CPUs a container can use, e.g. `0-1`.
   /// [cpuShares] CPU shares (relative weight) for the container.
-  /// [cpus] Specify how much of the available CPU resources a container can use. e.g a value of 1.5 means the container is guaranteed at most one and a half of the CPUs. Has precedence over `cpu_period` and `cpu_quota`.
+  /// [cpus] Specify how much of the available CPU resources a container can use. e.g a value of 1.5 means the container is guaranteed at most one and a half of the CPUs. Has precedence over `cpuPeriod` and `cpuQuota`.
   /// [destroyGraceSeconds] If defined will attempt to stop the container before destroying. Container will be destroyed after `n` seconds or on successful stop.
-  /// [devices] Bind devices to the container.
+  /// [deviceReadBps] Limit read rate (bytes per second) from a device. This is the equivalent to repeating `--device-read-bps` for `docker run`.
+  /// [deviceReadIops] Limit read rate (IO per second) from a device. This is the equivalent to repeating `--device-read-iops` for `docker run`.
+  /// [deviceRequests] Device requests for the container, such as CDI devices (e.g., `nvidia.com/gpu=all`) or GPU requests. This is the equivalent to using the `--device` flag for CDI devices in `docker run`.
+  /// [deviceWriteBps] Limit write rate (bytes per second) to a device. This is the equivalent to repeating `--device-write-bps` for `docker run`.
+  /// [deviceWriteIops] Limit write rate (IO per second) to a device. This is the equivalent to repeating `--device-write-iops` for `docker run`.
+  /// [devices] Bind traditional devices to the container (e.g., `/dev/nvidia0`). For CDI devices, use `deviceRequests` instead.
   /// [dns] DNS servers to use.
   /// [dnsOpts] DNS options used by the DNS provider(s), see `resolv.conf` documentation for valid list of options.
   /// [dnsSearches] DNS search domains that are used when bare unqualified hostnames are used inside of the container.
   /// [domainname] Domain name of the container.
   /// [entrypoints] The command to use as the Entrypoint for the container. The Entrypoint allows you to configure a container to run as an executable. For example, to run `/usr/bin/myprogram` when starting a container, set the entrypoint to be `"/usr/bin/myprogram"]`.
   /// [envs] Environment variables to set in the form of `KEY=VALUE`, e.g. `DEBUG=0`
-  /// [gpus] GPU devices to add to the container. Currently, only the value `all` is supported. Passing any other value will result in unexpected behavior.
+  /// [gpus] GPU devices to add to the container. Supported values are `all` or `device=&lt;id[,id...]&gt;`, for example `device=0,2` or `device=GPU-3a23c669-1f69-c64e-cf85-44e9b07e7a2a`.
   /// [groupAdds] Additional groups for the container user
   /// [healthcheck] A test to perform to check that the container is healthy
   /// [hostname] Hostname of the container.
   /// [hosts] Additional hosts to add to the container.
-  /// [image] The ID of the image to back this container. The easiest way to get this value is to use the `image_id` attribute of the `docker.RemoteImage` resource as is shown in the example.
+  /// [image] The ID of the image to back this container. The easiest way to get this value is to use the `imageId` attribute of the `docker.RemoteImage` resource as is shown in the example.
   /// [init] Configured whether an init process should be injected for this container. If unset this will default to the `dockerd` defaults.
   /// [ipcMode] IPC sharing mode for the container. Possible values are: `none`, `private`, `shareable`, `container:&lt;name|id&gt;` or `host`.
   /// [labels] User-defined key/value metadata
@@ -189,11 +212,12 @@ class ContainerArgs {
   /// [memoryReservation] The memory-resveration for the container in MBs. Defaults to 0. Allows you to specify a soft limit smaller than `memory` which is activated when Docker detects contention or low memory on the host machine. If you use `memory-reservation`, it must be set lower than `memory` for it to take precedence. Because it is a soft limit, it doesn't guarantee that the container doesn't exceed the limit.
   /// [memorySwap] The total memory limit (memory + swap) for the container in MBs. This setting may compute to `-1` after `pulumi up` if the target host doesn't support memory swap, when that is the case docker will use a soft limitation.
   /// [mounts] Specification for mounts to be added to containers created as part of the service.
-  /// [mustRun] Optional.
+  /// [mustRun] If `true`, then the Docker container will be kept running. If `false`, Terraform leaves the container alone. This attribute is also used to trigger a restart of a stopped container. If your container is stopped, Terraform will set `mustRun` to `false` and this will trigger a change. Defaults to `true`.
   /// [name] The name of the container.
   /// [networkMode] Network mode of the container. Defaults to `bridge`. If your host OS is any other OS, you need to set this value explicitly, e.g. `nat` when your container will be running on an Windows host. See https://docs.docker.com/engine/network/ for more information.
-  /// [networksAdvanced] The networks the container is attached to
-  /// [pidMode] he PID (Process) Namespace mode for the container. Either `container:&lt;name|id&gt;` or `host`.
+  /// [networksAdvanced] The networks the container is attached to. This is the equivalent to the `--network` option of `docker run`
+  /// [pidMode] The PID (Process) Namespace mode for the container. Either `container:&lt;name|id&gt;` or `host`.
+  /// [platform] Platform in the format `os[/arch[/variant]]` used for image lookup and container runtime, for example `linux/amd64`.
   /// [ports] Publish a container's port(s) to the host.
   /// [privileged] If `true`, the container runs in privileged mode.
   /// [publishAllPorts] Publish all ports of the container.
@@ -213,8 +237,8 @@ class ContainerArgs {
   /// [tmpfs] A map of container directories which should be replaced by `tmpfs mounts`, and their corresponding mount options.
   /// [tty] If `true`, allocate a pseudo-tty (`docker run -t`). Defaults to `false`.
   /// [ulimits] Ulimit options to add.
-  /// [uploads] Specifies files to upload to the container before starting it. Only one of `content` or `content_base64` can be set and at least one of them has to be set.
-  /// [user] User used for run the first process. Format is `user` or `user:group` which user and group can be passed literraly or by name.
+  /// [uploads] Specifies files to upload to the container before starting it. Only one of `content` or `contentBase64` can be set and at least one of them has to be set.
+  /// [user] User used for run the first process. Format is `user` or `user:group` which user and group can be passed literally or by name.
   /// [usernsMode] Sets the usernamespace mode for the container when usernamespace remapping option is enabled.
   /// [volumes] Spec for mounting volumes in the container.
   /// [wait] If `true`, then the Docker container is waited for being healthy state after creation. This requires your container to have a healthcheck, otherwise this provider will error. If `false`, then the container health state is not checked. Defaults to `false`.
@@ -233,6 +257,11 @@ class ContainerArgs {
     this.cpuShares,
     this.cpus,
     this.destroyGraceSeconds,
+    this.deviceReadBps,
+    this.deviceReadIops,
+    this.deviceRequests,
+    this.deviceWriteBps,
+    this.deviceWriteIops,
     this.devices,
     this.dns,
     this.dnsOpts,
@@ -262,6 +291,7 @@ class ContainerArgs {
     this.networkMode,
     this.networksAdvanced,
     this.pidMode,
+    this.platform,
     this.ports,
     this.privileged,
     this.publishAllPorts,
@@ -304,6 +334,11 @@ class ContainerArgs {
       'cpuShares': ?cpuShares,
       'cpus': ?cpus,
       'destroyGraceSeconds': ?destroyGraceSeconds,
+      'deviceReadBps': ?pulumi.Input.mapOptionalInputValue<List<ContainerDeviceReadBp>, List<Map<String, dynamic>>>(deviceReadBps, (value) => pulumi.Input.encodeList<ContainerDeviceReadBp, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deviceReadIops': ?pulumi.Input.mapOptionalInputValue<List<ContainerDeviceReadIop>, List<Map<String, dynamic>>>(deviceReadIops, (value) => pulumi.Input.encodeList<ContainerDeviceReadIop, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deviceRequests': ?pulumi.Input.mapOptionalInputValue<List<ContainerDeviceRequest>, List<Map<String, dynamic>>>(deviceRequests, (value) => pulumi.Input.encodeList<ContainerDeviceRequest, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deviceWriteBps': ?pulumi.Input.mapOptionalInputValue<List<ContainerDeviceWriteBp>, List<Map<String, dynamic>>>(deviceWriteBps, (value) => pulumi.Input.encodeList<ContainerDeviceWriteBp, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deviceWriteIops': ?pulumi.Input.mapOptionalInputValue<List<ContainerDeviceWriteIop>, List<Map<String, dynamic>>>(deviceWriteIops, (value) => pulumi.Input.encodeList<ContainerDeviceWriteIop, Map<String, dynamic>>(value, (value) => value.toMap())),
       'devices': ?pulumi.Input.mapOptionalInputValue<List<ContainerDevice>, List<Map<String, dynamic>>>(devices, (value) => pulumi.Input.encodeList<ContainerDevice, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dns': ?dns,
       'dnsOpts': ?dnsOpts,
@@ -333,6 +368,7 @@ class ContainerArgs {
       'networkMode': ?networkMode,
       'networksAdvanced': ?pulumi.Input.mapOptionalInputValue<List<ContainerNetworksAdvanced>, List<Map<String, dynamic>>>(networksAdvanced, (value) => pulumi.Input.encodeList<ContainerNetworksAdvanced, Map<String, dynamic>>(value, (value) => value.toMap())),
       'pidMode': ?pidMode,
+      'platform': ?platform,
       'ports': ?pulumi.Input.mapOptionalInputValue<List<ContainerPort>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<ContainerPort, Map<String, dynamic>>(value, (value) => value.toMap())),
       'privileged': ?privileged,
       'publishAllPorts': ?publishAllPorts,
@@ -376,6 +412,11 @@ class ContainerArgs {
       cpuShares: (() { final guardedValue = map['cpuShares']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       cpus: (() { final guardedValue = map['cpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destroyGraceSeconds: (() { final guardedValue = map['destroyGraceSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deviceReadBps: (() { final guardedValue = map['deviceReadBps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerDeviceReadBp>(guardedValue, (value) => ContainerDeviceReadBp.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deviceReadIops: (() { final guardedValue = map['deviceReadIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerDeviceReadIop>(guardedValue, (value) => ContainerDeviceReadIop.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deviceRequests: (() { final guardedValue = map['deviceRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerDeviceRequest>(guardedValue, (value) => ContainerDeviceRequest.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deviceWriteBps: (() { final guardedValue = map['deviceWriteBps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerDeviceWriteBp>(guardedValue, (value) => ContainerDeviceWriteBp.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deviceWriteIops: (() { final guardedValue = map['deviceWriteIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerDeviceWriteIop>(guardedValue, (value) => ContainerDeviceWriteIop.fromMap((value as Map).cast<String, dynamic>()))); })(),
       devices: (() { final guardedValue = map['devices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerDevice>(guardedValue, (value) => ContainerDevice.fromMap((value as Map).cast<String, dynamic>()))); })(),
       dns: (() { final guardedValue = map['dns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       dnsOpts: (() { final guardedValue = map['dnsOpts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -405,6 +446,7 @@ class ContainerArgs {
       networkMode: (() { final guardedValue = map['networkMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networksAdvanced: (() { final guardedValue = map['networksAdvanced']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerNetworksAdvanced>(guardedValue, (value) => ContainerNetworksAdvanced.fromMap((value as Map).cast<String, dynamic>()))); })(),
       pidMode: (() { final guardedValue = map['pidMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      platform: (() { final guardedValue = map['platform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ports: (() { final guardedValue = map['ports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerPort>(guardedValue, (value) => ContainerPort.fromMap((value as Map).cast<String, dynamic>()))); })(),
       privileged: (() { final guardedValue = map['privileged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       publishAllPorts: (() { final guardedValue = map['publishAllPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -434,4 +476,3 @@ class ContainerArgs {
     );
   }
 }
-

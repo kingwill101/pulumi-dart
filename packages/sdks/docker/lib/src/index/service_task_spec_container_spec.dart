@@ -35,8 +35,10 @@ class ServiceTaskSpecContainerSpec {
   final pulumi.Input<String>? hostname;
   /// A list of hostname/IP mappings to add to the container's hosts file
   final pulumi.Input<List<ServiceTaskSpecContainerSpecHost>>? hosts;
-  /// The image name to use for the containers of the service, like `nginx:1.17.6`. Also use the data-source or resource of `docker.RemoteImage` with the `repo_digest` or `docker.RegistryImage` with the `name` attribute for this, as shown in the examples.
+  /// The image name to use for the containers of the service, like `nginx:1.17.6`. Also use the data-source or resource of `docker.RemoteImage` with the `repoDigest` or `docker.RegistryImage` with the `name` attribute for this, as shown in the examples.
   final pulumi.Input<String> image;
+  /// Configured whether an init process should be injected for this container. If unset this will default to the `dockerd` defaults.
+  final pulumi.Input<bool>? init;
   /// Isolation technology of the containers running the service. (Windows only). Defaults to `default`.
   final pulumi.Input<String>? isolation;
   /// User-defined key/value metadata
@@ -71,7 +73,8 @@ class ServiceTaskSpecContainerSpec {
   /// [healthcheck] A test to perform to check that the container is healthy. It works in the same way, and has the same default values, as the HEALTHCHECK Dockerfile instruction set by the service's Docker image. Your Compose file can override the values set in the Dockerfile.
   /// [hostname] The hostname to use for the container, as a valid RFC 1123 hostname
   /// [hosts] A list of hostname/IP mappings to add to the container's hosts file
-  /// [image] The image name to use for the containers of the service, like `nginx:1.17.6`. Also use the data-source or resource of `docker.RemoteImage` with the `repo_digest` or `docker.RegistryImage` with the `name` attribute for this, as shown in the examples.
+  /// [image] The image name to use for the containers of the service, like `nginx:1.17.6`. Also use the data-source or resource of `docker.RemoteImage` with the `repoDigest` or `docker.RegistryImage` with the `name` attribute for this, as shown in the examples.
+  /// [init] Configured whether an init process should be injected for this container. If unset this will default to the `dockerd` defaults.
   /// [isolation] Isolation technology of the containers running the service. (Windows only). Defaults to `default`.
   /// [labels] User-defined key/value metadata
   /// [mounts] Specification for mounts to be added to containers created as part of the service
@@ -96,6 +99,7 @@ class ServiceTaskSpecContainerSpec {
     this.hostname,
     this.hosts,
     required this.image,
+    this.init,
     this.isolation,
     this.labels,
     this.mounts,
@@ -123,6 +127,7 @@ class ServiceTaskSpecContainerSpec {
       'hostname': ?hostname,
       'hosts': ?pulumi.Input.mapOptionalInputValue<List<ServiceTaskSpecContainerSpecHost>, List<Map<String, dynamic>>>(hosts, (value) => pulumi.Input.encodeList<ServiceTaskSpecContainerSpecHost, Map<String, dynamic>>(value, (value) => value.toMap())),
       'image': image,
+      'init': ?init,
       'isolation': ?isolation,
       'labels': ?pulumi.Input.mapOptionalInputValue<List<ServiceTaskSpecContainerSpecLabel>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<ServiceTaskSpecContainerSpecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'mounts': ?pulumi.Input.mapOptionalInputValue<List<ServiceTaskSpecContainerSpecMount>, List<Map<String, dynamic>>>(mounts, (value) => pulumi.Input.encodeList<ServiceTaskSpecContainerSpecMount, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -151,6 +156,7 @@ class ServiceTaskSpecContainerSpec {
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hosts: (() { final guardedValue = map['hosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTaskSpecContainerSpecHost>(guardedValue, (value) => ServiceTaskSpecContainerSpecHost.fromMap((value as Map).cast<String, dynamic>()))); })(),
       image: pulumi.Input.fromValue(map['image'] as String),
+      init: (() { final guardedValue = map['init']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isolation: (() { final guardedValue = map['isolation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTaskSpecContainerSpecLabel>(guardedValue, (value) => ServiceTaskSpecContainerSpecLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
       mounts: (() { final guardedValue = map['mounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTaskSpecContainerSpecMount>(guardedValue, (value) => ServiceTaskSpecContainerSpecMount.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -164,4 +170,3 @@ class ServiceTaskSpecContainerSpec {
     );
   }
 }
-

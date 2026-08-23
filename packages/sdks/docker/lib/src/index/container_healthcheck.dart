@@ -11,8 +11,8 @@ class ContainerHealthcheck {
   final pulumi.Input<String>? startInterval;
   /// Start period for the container to initialize before counting retries towards unstable (ms|s|m|h). Defaults to `0s`.
   final pulumi.Input<String>? startPeriod;
-  /// Command to run to check health. For example, to run `curl -f localhost/health` set the command to be `["CMD", "curl", "-f", "localhost/health"]`.
-  final pulumi.Input<List<String>> tests;
+  /// Command to run to check health. For example, to run `curl -f localhost/health` set the command to be `["CMD", "curl", "-f", "localhost/health"]`. It works in the same way, and has the same default values, as the HEALTHCHECK Dockerfile instruction set by the service's Docker image. Your Compose file can override the values set in the Dockerfile.
+  final pulumi.Input<List<String>>? tests;
   /// Maximum time to allow one check to run (ms|s|m|h). Defaults to `0s`.
   final pulumi.Input<String>? timeout;
 
@@ -21,14 +21,14 @@ class ContainerHealthcheck {
   /// [retries] Consecutive failures needed to report unhealthy. Defaults to `0`.
   /// [startInterval] Interval before the healthcheck starts (ms|s|m|h). Defaults to `0s`.
   /// [startPeriod] Start period for the container to initialize before counting retries towards unstable (ms|s|m|h). Defaults to `0s`.
-  /// [tests] Command to run to check health. For example, to run `curl -f localhost/health` set the command to be `["CMD", "curl", "-f", "localhost/health"]`.
+  /// [tests] Command to run to check health. For example, to run `curl -f localhost/health` set the command to be `["CMD", "curl", "-f", "localhost/health"]`. It works in the same way, and has the same default values, as the HEALTHCHECK Dockerfile instruction set by the service's Docker image. Your Compose file can override the values set in the Dockerfile.
   /// [timeout] Maximum time to allow one check to run (ms|s|m|h). Defaults to `0s`.
   const ContainerHealthcheck({
     this.interval,
     this.retries,
     this.startInterval,
     this.startPeriod,
-    required this.tests,
+    this.tests,
     this.timeout,
   });
 
@@ -38,7 +38,7 @@ class ContainerHealthcheck {
       'retries': ?retries,
       'startInterval': ?startInterval,
       'startPeriod': ?startPeriod,
-      'tests': tests,
+      'tests': ?tests,
       'timeout': ?timeout,
     };
   }
@@ -49,9 +49,8 @@ class ContainerHealthcheck {
       retries: (() { final guardedValue = map['retries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       startInterval: (() { final guardedValue = map['startInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startPeriod: (() { final guardedValue = map['startPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tests: pulumi.Input.fromValue((map['tests'] as List).cast<String>()),
+      tests: (() { final guardedValue = map['tests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

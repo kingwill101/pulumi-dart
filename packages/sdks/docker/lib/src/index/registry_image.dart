@@ -71,10 +71,9 @@ import 'registry_image_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
 /// 	"os"
 ///
-/// 	"github.com/pulumi/pulumi-docker/sdk/v4/go/docker"
+/// 	"github.com/pulumi/pulumi-docker/sdk/v5/go/docker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -105,9 +104,83 @@ import 'registry_image_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     docker = {
+///       source = "pulumi/docker"
+///     }
+///   }
+/// }
+///
+/// resource "docker_registryimage" "helloworld" {
+///   name          = docker_remoteimage.image.name
+///   keep_remotely = true
+/// }
+/// resource "docker_remoteimage" "image" {
+///   name = "registry.com/somename:1.0"
+///   build = {
+///     context ="${path.cwd}/absolutePathToContextFolder"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.docker.RemoteImage;
+/// import com.pulumi.docker.RemoteImageArgs;
+/// import com.pulumi.docker.inputs.RemoteImageBuildArgs;
+/// import com.pulumi.docker.RegistryImage;
+/// import com.pulumi.docker.RegistryImageArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var image = new RemoteImage("image", RemoteImageArgs.builder()
+///             .name("registry.com/somename:1.0")
+///             .build(RemoteImageBuildArgs.builder()
+///                 .context(String.format("%s/absolutePathToContextFolder", System.getProperty("user.dir")))
+///                 .build())
+///             .build());
+///
+///         var helloworld = new RegistryImage("helloworld", RegistryImageArgs.builder()
+///             .name(image.name())
+///             .keepRemotely(true)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   helloworld:
+///     type: docker:RegistryImage
+///     properties:
+///       name: ${image.name}
+///       keepRemotely: true
+///   image:
+///     type: docker:RemoteImage
+///     properties:
+///       name: registry.com/somename:1.0
+///       build:
+///         context: ${pulumi.cwd}/absolutePathToContextFolder
+/// ```
 class RegistryImage extends pulumi.CustomResource {
   /// Authentication configuration for the Docker registry. It is only used for this resource.
   late final pulumi.Output<RegistryImageAuthConfig?> authConfig;
+  /// Configuration to build an image. Requires the `Use containerd for pulling and storing images` option to be disabled in the Docker Host(https://github.com/kreuzwerker/terraform-provider-docker/issues/534). Please see [docker build command reference](https://docs.docker.com/engine/reference/commandline/build/#options) too.
   late final pulumi.Output<RegistryImageBuild?> build;
   /// If `true`, the verification of TLS certificates of the server/registry is disabled. Defaults to `false`
   late final pulumi.Output<bool?> insecureSkipVerify;

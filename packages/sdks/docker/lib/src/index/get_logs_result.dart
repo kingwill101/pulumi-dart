@@ -9,7 +9,7 @@ class GetLogsResult {
   final bool? follow;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// If true populate computed value `logs_list_string`
+  /// If true populate computed value `logsListString`
   final bool? logsListStringEnabled;
   /// List of container logs, each element is a line.
   final List<String> logsListStrings;
@@ -27,7 +27,7 @@ class GetLogsResult {
   /// [discardHeaders] Discard headers that docker appends to each log entry
   /// [follow] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [logsListStringEnabled] If true populate computed value `logs_list_string`
+  /// [logsListStringEnabled] If true populate computed value `logsListString`
   /// [logsListStrings] List of container logs, each element is a line.
   /// [name] The name of the Docker Container
   /// [showStderr] Optional.
@@ -88,4 +88,3 @@ class GetLogsResult {
     );
   }
 }
-

@@ -11,7 +11,7 @@ class GetLogsArgs {
   /// Discard headers that docker appends to each log entry
   final pulumi.Input<bool>? discardHeaders;
   final pulumi.Input<bool>? follow;
-  /// If true populate computed value `logs_list_string`
+  /// If true populate computed value `logsListString`
   final pulumi.Input<bool>? logsListStringEnabled;
   /// The name of the Docker Container
   final pulumi.Input<String> name;
@@ -26,7 +26,7 @@ class GetLogsArgs {
   /// [details] Optional.
   /// [discardHeaders] Discard headers that docker appends to each log entry
   /// [follow] Optional.
-  /// [logsListStringEnabled] If true populate computed value `logs_list_string`
+  /// [logsListStringEnabled] If true populate computed value `logsListString`
   /// [name] The name of the Docker Container
   /// [showStderr] Optional.
   /// [showStdout] Optional.
@@ -80,4 +80,3 @@ class GetLogsArgs {
     );
   }
 }
-

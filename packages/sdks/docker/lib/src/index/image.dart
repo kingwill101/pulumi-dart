@@ -77,6 +77,8 @@ import 'image_args.dart';
 ///     },
 ///     imageName: "username/image:tag1",
 ///     skipPush: true,
+/// }, {
+///     version: "v4.4.0",
 /// });
 /// export const imageName = demoImage.imageName;
 /// ```
@@ -91,7 +93,8 @@ import 'image_args.dart';
 ///         "platform": "linux/amd64",
 ///     },
 ///     image_name="username/image:tag1",
-///     skip_push=True)
+///     skip_push=True,
+///     opts = pulumi.ResourceOptions(version="v4.4.0"))
 /// pulumi.export("imageName", demo_image.image_name)
 /// ```
 /// ```csharp
@@ -112,6 +115,9 @@ import 'image_args.dart';
 ///         },
 ///         ImageName = "username/image:tag1",
 ///         SkipPush = true,
+///     }, new CustomResourceOptions
+///     {
+///         Version = "v4.4.0",
 ///     });
 ///
 ///     return new Dictionary<string, object?>
@@ -139,7 +145,7 @@ import 'image_args.dart';
 /// 			},
 /// 			ImageName: pulumi.String("username/image:tag1"),
 /// 			SkipPush:  pulumi.Bool(true),
-/// 		})
+/// 		}, pulumi.Version("v4.4.0"))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -178,8 +184,9 @@ import 'image_args.dart';
 /// import com.pulumi.docker.Image;
 /// import com.pulumi.docker.ImageArgs;
 /// import com.pulumi.docker.inputs.DockerBuildArgs;
-/// import java.util.List;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -199,7 +206,9 @@ import 'image_args.dart';
 ///                 .build())
 ///             .imageName("username/image:tag1")
 ///             .skipPush(true)
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .version("v4.4.0")
+///                 .build());
 ///
 ///         ctx.export("imageName", demoImage.imageName());
 ///     }
@@ -219,6 +228,8 @@ import 'image_args.dart';
 ///         dockerfile: "Dockerfile",
 ///     },
 ///     imageName: "docker.io/username/push-image:tag1",
+/// }, {
+///     version: "v4.4.0",
 /// });
 /// export const imageName = demoPushImage.imageName;
 /// export const repoDigest = demoPushImage.repoDigest;
@@ -232,7 +243,8 @@ import 'image_args.dart';
 ///         "context": ".",
 ///         "dockerfile": "Dockerfile",
 ///     },
-///     image_name="docker.io/username/push-image:tag1")
+///     image_name="docker.io/username/push-image:tag1",
+///     opts = pulumi.ResourceOptions(version="v4.4.0"))
 /// pulumi.export("imageName", demo_push_image.image_name)
 /// pulumi.export("repoDigest", demo_push_image.repo_digest)
 /// ```
@@ -252,6 +264,9 @@ import 'image_args.dart';
 ///             Dockerfile = "Dockerfile",
 ///         },
 ///         ImageName = "docker.io/username/push-image:tag1",
+///     }, new CustomResourceOptions
+///     {
+///         Version = "v4.4.0",
 ///     });
 ///
 ///     return new Dictionary<string, object?>
@@ -278,7 +293,7 @@ import 'image_args.dart';
 /// 				Dockerfile: pulumi.String("Dockerfile"),
 /// 			},
 /// 			ImageName: pulumi.String("docker.io/username/push-image:tag1"),
-/// 		})
+/// 		}, pulumi.Version("v4.4.0"))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -317,8 +332,9 @@ import 'image_args.dart';
 /// import com.pulumi.docker.Image;
 /// import com.pulumi.docker.ImageArgs;
 /// import com.pulumi.docker.inputs.DockerBuildArgs;
-/// import java.util.List;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,7 +352,9 @@ import 'image_args.dart';
 ///                 .dockerfile("Dockerfile")
 ///                 .build())
 ///             .imageName("docker.io/username/push-image:tag1")
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .version("v4.4.0")
+///                 .build());
 ///
 ///         ctx.export("imageName", demoPushImage.imageName());
 ///         ctx.export("repoDigest", demoPushImage.repoDigest());
@@ -373,6 +391,8 @@ import 'image_args.dart';
 ///         server: ecrRepository.repositoryUrl,
 ///         username: authToken.apply(authToken => authToken.userName),
 ///     },
+/// }, {
+///     version: "v4.1.2",
 /// });
 /// export const imageName = myAppImage.imageName;
 /// ```
@@ -399,7 +419,8 @@ import 'image_args.dart';
 ///         "password": pulumi.Output.secret(auth_token.password),
 ///         "server": ecr_repository.repository_url,
 ///         "username": auth_token.user_name,
-///     })
+///     },
+///     opts = pulumi.ResourceOptions(version="v4.1.2"))
 /// pulumi.export("imageName", my_app_image.image_name)
 /// ```
 /// ```csharp
@@ -446,6 +467,9 @@ import 'image_args.dart';
 ///             Server = ecrRepository.RepositoryUrl,
 ///             Username = authToken.Apply(getAuthorizationTokenResult => getAuthorizationTokenResult.UserName),
 ///         },
+///     }, new CustomResourceOptions
+///     {
+///         Version = "v4.1.2",
 ///     });
 ///
 ///     return new Dictionary<string, object?>
@@ -497,14 +521,14 @@ import 'image_args.dart';
 /// 			}).(pulumi.StringOutput),
 /// 			Registry: &docker.RegistryArgs{
 /// 				Password: pulumi.ToSecret(authToken.ApplyT(func(authToken ecr.GetAuthorizationTokenResult) (*string, error) {
-/// 					return &authToken.Password, nil
+/// 					return authToken.Password, nil
 /// 				}).(pulumi.StringPtrOutput)).(pulumi.StringOutput),
 /// 				Server: ecrRepository.RepositoryUrl,
 /// 				Username: authToken.ApplyT(func(authToken ecr.GetAuthorizationTokenResult) (*string, error) {
-/// 					return &authToken.UserName, nil
+/// 					return authToken.UserName, nil
 /// 				}).(pulumi.StringPtrOutput),
 /// 			},
-/// 		})
+/// 		}, pulumi.Version("v4.1.2"))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -564,8 +588,9 @@ import 'image_args.dart';
 /// import com.pulumi.docker.inputs.DockerBuildArgs;
 /// import com.pulumi.docker.inputs.CacheFromArgs;
 /// import com.pulumi.docker.inputs.RegistryArgs;
-/// import java.util.List;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -596,11 +621,13 @@ import 'image_args.dart';
 ///                 .build())
 ///             .imageName(ecrRepository.repositoryUrl().applyValue(_repositoryUrl -> String.format("%s:latest", _repositoryUrl)))
 ///             .registry(RegistryArgs.builder()
-///                 .password(Output.ofSecret(authToken.applyValue(_authToken -> _authToken.password())))
+///                 .password(authToken.applyValue(_authToken -> _authToken.password()).asSecret())
 ///                 .server(ecrRepository.repositoryUrl())
 ///                 .username(authToken.applyValue(_authToken -> _authToken.userName()))
 ///                 .build())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .version("v4.1.2")
+///                 .build());
 ///
 ///         ctx.export("imageName", myAppImage.imageName());
 ///     }

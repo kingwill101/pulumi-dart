@@ -6,14 +6,14 @@ import 'service_task_spec_resources_reservation_generic_resources.dart';
 class ServiceTaskSpecResourcesReservation {
   /// User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, GPU=UUID1)
   final pulumi.Input<ServiceTaskSpecResourcesReservationGenericResources>? genericResources;
-  /// The amounf of memory in bytes the container allocates
+  /// The amount of memory in bytes the container allocates
   final pulumi.Input<int>? memoryBytes;
   /// CPU shares in units of 1/1e9 (or 10^-9) of the CPU. Should be at least `1000000`
   final pulumi.Input<int>? nanoCpus;
 
   /// Creates a new [ServiceTaskSpecResourcesReservation].
   /// [genericResources] User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, GPU=UUID1)
-  /// [memoryBytes] The amounf of memory in bytes the container allocates
+  /// [memoryBytes] The amount of memory in bytes the container allocates
   /// [nanoCpus] CPU shares in units of 1/1e9 (or 10^-9) of the CPU. Should be at least `1000000`
   const ServiceTaskSpecResourcesReservation({
     this.genericResources,
@@ -37,4 +37,3 @@ class ServiceTaskSpecResourcesReservation {
     );
   }
 }
-
