@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"strings"
 
-	codegenerator "github.com/kingwill101/pulumi-dart/pulumi-language-dart/generator"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/darttext"
 )
 
 func WriteDocComment(b *strings.Builder, indent, comment string) {
-	comment = codegenerator.SanitizeDartDocComment(comment)
+	comment = darttext.SanitizeDocComment(comment)
 	if comment == "" {
 		return
 	}
