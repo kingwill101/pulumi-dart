@@ -28,4 +28,3 @@ class RandomUuid7Args {
     );
   }
 }
-

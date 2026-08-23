@@ -4,7 +4,7 @@ import 'random_pet_state.dart';
 
 /// The resource `random.RandomPet` generates random pet names that are intended to be used as unique identifiers for other resources.
 ///
-/// This resource can be used in conjunction with resources that have the `create_before_destroy` lifecycle flag set, to avoid conflicts with unique names during the brief period where both the old and new resources exist concurrently.
+/// This resource can be used in conjunction with resources that have the `createBeforeDestroy` lifecycle flag set, to avoid conflicts with unique names during the brief period where both the old and new resources exist concurrently.
 ///
 /// ## Example Usage
 ///
@@ -38,7 +38,7 @@ import 'random_pet_state.dart';
 /// server = random.RandomPet("server", keepers={
 ///     "ami_id": ami_id,
 /// })
-/// server_instance = aws.index.Instance("server",
+/// server_instance = aws.Instance("server",
 ///     tags={
 ///         name: fweb-server-{server.id},
 ///     },
@@ -64,7 +64,7 @@ import 'random_pet_state.dart';
 ///         },
 ///     });
 ///
-///     var serverInstance = new Aws.Index.Instance("server", new()
+///     var serverInstance = new Aws.Instance("server", new()
 ///     {
 ///         Tags =
 ///         {
@@ -79,8 +79,6 @@ import 'random_pet_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -112,6 +110,33 @@ import 'random_pet_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// # The following example shows how to generate a unique pet name
+/// # for an AWS EC2 instance that changes each time a new AMI id is
+/// # selected.
+/// resource "random_randompet" "server" {
+///   keepers = {
+///     "ami_id" = amiId
+///   }
+/// }
+/// resource "aws_instance" "server" {
+///   tags = {
+///     "name" ="web-server-${random_randompet.server.id}"
+///   }
+///   ami = random_randompet.server.keepers.amiId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +147,8 @@ import 'random_pet_state.dart';
 /// import com.pulumi.random.RandomPetArgs;
 /// import com.pulumi.aws.Instance;
 /// import com.pulumi.aws.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

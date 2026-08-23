@@ -36,7 +36,7 @@ import 'random_shuffle_state.dart';
 ///         "us-west-1e",
 ///     ],
 ///     result_count=2)
-/// example = aws.index.Elb("example", availability_zones=az.results)
+/// example = aws.Elb("example", availability_zones=az.results)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -59,7 +59,7 @@ import 'random_shuffle_state.dart';
 ///         ResultCount = 2,
 ///     });
 ///
-///     var example = new Aws.Index.Elb("example", new()
+///     var example = new Aws.Elb("example", new()
 ///     {
 ///         AvailabilityZones = az.Results,
 ///     });
@@ -99,6 +99,26 @@ import 'random_shuffle_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_randomshuffle" "az" {
+///   inputs       = ["us-west-1a", "us-west-1c", "us-west-1d", "us-west-1e"]
+///   result_count = 2
+/// }
+/// resource "aws_elb" "example" {
+///   availability_zones = random_randomshuffle.az.results
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +129,8 @@ import 'random_shuffle_state.dart';
 /// import com.pulumi.random.RandomShuffleArgs;
 /// import com.pulumi.aws.Elb;
 /// import com.pulumi.aws.ElbArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -161,7 +181,7 @@ class RandomShuffle extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> keepers;
   /// The number of results to return. Defaults to the number of items in the `input` list. If fewer items are requested, some elements will be excluded from the result. If more items are requested, items will be repeated in the result but not more frequently than the number of items in the input list.
   late final pulumi.Output<int?> resultCount;
-  /// Random permutation of the list of strings given in `input`. The number of elements is determined by `result_count` if set, or the number of elements in `input`.
+  /// Random permutation of the list of strings given in `input`. The number of elements is determined by `resultCount` if set, or the number of elements in `input`.
   late final pulumi.Output<List<String>> results;
   /// Arbitrary string with which to seed the random number generator, in order to produce less-volatile permutations of the list.
   late final pulumi.Output<String?> seed;

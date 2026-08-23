@@ -2,6 +2,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'random_password_args.dart';
 import 'random_password_state.dart';
 
+/// &gt; If the managed resource supports a write-only attribute for the password (first introduced in Terraform 1.11), then the ephemeral variant of `random.RandomPassword` should be used, when possible, to avoid storing the password in the plan or state file.
+///
+/// Identical to `random.RandomString` with the exception that the result is treated as sensitive and, thus, _not_ displayed in console output. Read more about sensitive data handling in the Terraform documentation.
+///
+/// This resource *does* use a cryptographic random number generator.
+///
 /// ## Example Usage
 ///
 ///
@@ -32,7 +38,7 @@ import 'random_password_state.dart';
 ///     length=16,
 ///     special=True,
 ///     override_special="!#$%&*()-_=+[]{}<>:?")
-/// example = aws.index.DbInstance("example",
+/// example = aws.DbInstance("example",
 ///     instance_class=db.t3.micro,
 ///     allocated_storage=64,
 ///     engine=mysql,
@@ -55,7 +61,7 @@ import 'random_password_state.dart';
 ///         OverrideSpecial = "!#$%&*()-_=+[]{}<>:?",
 ///     });
 ///
-///     var example = new Aws.Index.DbInstance("example", new()
+///     var example = new Aws.DbInstance("example", new()
 ///     {
 ///         InstanceClass = "db.t3.micro",
 ///         AllocatedStorage = 64,
@@ -99,6 +105,31 @@ import 'random_password_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_randompassword" "password" {
+///   length           = 16
+///   special          = true
+///   override_special = "!#$%&*()-_=+[]{}<>:?"
+/// }
+/// resource "aws_dbinstance" "example" {
+///   instance_class    = "db.t3.micro"
+///   allocated_storage = 64
+///   engine            = "mysql"
+///   username          = "someone"
+///   password          = random_randompassword.password.result
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +140,8 @@ import 'random_password_state.dart';
 /// import com.pulumi.random.RandomPasswordArgs;
 /// import com.pulumi.aws.DbInstance;
 /// import com.pulumi.aws.DbInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,13 +201,14 @@ import 'random_password_state.dart';
 /// include a new RandomPassword resource in your Pulumi program. Include the suggested code and do a
 /// `pulumi up`. Your secret password is now securely stored in Pulumi, and you can reference it in your
 /// Pulumi program as `newPassword.result`.
+///
 /// ```
 class RandomPassword extends pulumi.CustomResource {
-  /// A bcrypt hash of the generated random string. **NOTE**: If the generated random string is greater than 72 bytes in length, `bcrypt_hash` will contain a hash of the first 72 bytes.
+  /// A bcrypt hash of the generated random string. **NOTE**: If the generated random string is greater than 72 bytes in length, `bcryptHash` will contain a hash of the first 72 bytes.
   late final pulumi.Output<String> bcryptHash;
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   late final pulumi.Output<Map<String, String>?> keepers;
-  /// The length of the string desired. The minimum value for length is 1 and, length must also be &gt;= (`min_upper` + `min_lower` + `min_numeric` + `min_special`).
+  /// The length of the string desired. The minimum value for length is 1 and, length must also be &gt;= (`minUpper` + `minLower` + `minNumeric` + `minSpecial`).
   late final pulumi.Output<int> length;
   /// Include lowercase alphabet characters in the result. Default value is `true`.
   late final pulumi.Output<bool> lower;

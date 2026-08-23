@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RandomPasswordArgs {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   final pulumi.Input<Map<String, String>>? keepers;
-  /// The length of the string desired. The minimum value for length is 1 and, length must also be &gt;= (`min_upper` + `min_lower` + `min_numeric` + `min_special`).
+  /// The length of the string desired. The minimum value for length is 1 and, length must also be &gt;= (`minUpper` + `minLower` + `minNumeric` + `minSpecial`).
   final pulumi.Input<int> length;
   /// Include lowercase alphabet characters in the result. Default value is `true`.
   final pulumi.Input<bool>? lower;
@@ -34,7 +34,7 @@ class RandomPasswordArgs {
 
   /// Creates a new [RandomPasswordArgs].
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  /// [length] The length of the string desired. The minimum value for length is 1 and, length must also be &gt;= (`min_upper` + `min_lower` + `min_numeric` + `min_special`).
+  /// [length] The length of the string desired. The minimum value for length is 1 and, length must also be &gt;= (`minUpper` + `minLower` + `minNumeric` + `minSpecial`).
   /// [lower] Include lowercase alphabet characters in the result. Default value is `true`.
   /// [minLower] Minimum number of lowercase alphabet characters in the result. Default value is `0`.
   /// [minNumeric] Minimum number of numeric characters in the result. Default value is `0`.
@@ -94,4 +94,3 @@ class RandomPasswordArgs {
     );
   }
 }
-

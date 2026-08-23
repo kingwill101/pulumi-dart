@@ -27,7 +27,7 @@ import 'random_bytes_state.dart';
 /// import pulumi_random as random
 ///
 /// jwt_secret = random.RandomBytes("jwt_secret", length=64)
-/// jwt_secret_key_vault_secret = azurerm.index.KeyVaultSecret("jwt_secret",
+/// jwt_secret_key_vault_secret = azurerm.KeyVaultSecret("jwt_secret",
 ///     key_vault_id=some-azure-key-vault-id,
 ///     name=JwtSecret,
 ///     value=jwt_secret.base64)
@@ -46,7 +46,7 @@ import 'random_bytes_state.dart';
 ///         Length = 64,
 ///     });
 ///
-///     var jwtSecretKeyVaultSecret = new Azurerm.Index.KeyVaultSecret("jwt_secret", new()
+///     var jwtSecretKeyVaultSecret = new Azurerm.KeyVaultSecret("jwt_secret", new()
 ///     {
 ///         KeyVaultId = "some-azure-key-vault-id",
 ///         Name = "JwtSecret",
@@ -84,6 +84,24 @@ import 'random_bytes_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_randombytes" "jwt_secret" {
+///   length = 64
+/// }
+/// resource "azurerm_keyvaultsecret" "jwt_secret" {
+///   key_vault_id = "some-azure-key-vault-id"
+///   name         = "JwtSecret"
+///   value        = random_randombytes.jwt_secret.base64
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +112,8 @@ import 'random_bytes_state.dart';
 /// import com.pulumi.random.RandomBytesArgs;
 /// import com.pulumi.azurerm.KeyVaultSecret;
 /// import com.pulumi.azurerm.KeyVaultSecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

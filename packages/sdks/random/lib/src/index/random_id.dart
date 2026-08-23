@@ -13,7 +13,7 @@ import 'random_id_state.dart';
 /// type-4 UUID.
 ///
 /// This resource can be used in conjunction with resources that have
-/// the `create_before_destroy` lifecycle flag set to avoid conflicts with
+/// the `createBeforeDestroy` lifecycle flag set to avoid conflicts with
 /// unique names during the brief period where both the old and new resources
 /// exist concurrently.
 ///
@@ -52,7 +52,7 @@ import 'random_id_state.dart';
 ///         "ami_id": ami_id,
 ///     },
 ///     byte_length=8)
-/// server_instance = aws.index.Instance("server",
+/// server_instance = aws.Instance("server",
 ///     tags={
 ///         name: fweb-server {server.hex},
 ///     },
@@ -78,7 +78,7 @@ import 'random_id_state.dart';
 ///         ByteLength = 8,
 ///     });
 ///
-///     var serverInstance = new Aws.Index.Instance("server", new()
+///     var serverInstance = new Aws.Instance("server", new()
 ///     {
 ///         Tags =
 ///         {
@@ -93,8 +93,6 @@ import 'random_id_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -126,6 +124,33 @@ import 'random_id_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// # The following example shows how to generate a unique name for an AWS EC2
+/// # instance that changes each time a new AMI id is selected.
+/// resource "random_randomid" "server" {
+///   keepers = {
+///     "ami_id" = amiId
+///   }
+///   byte_length = 8
+/// }
+/// resource "aws_instance" "server" {
+///   tags = {
+///     "name" ="web-server ${random_randomid.server.hex}"
+///   }
+///   ami = random_randomid.server.keepers.amiId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -136,8 +161,8 @@ import 'random_id_state.dart';
 /// import com.pulumi.random.RandomIdArgs;
 /// import com.pulumi.aws.Instance;
 /// import com.pulumi.aws.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -188,10 +213,8 @@ import 'random_id_state.dart';
 ///
 /// The `pulumi import` command can be used, for example:
 ///
-/// Random IDs can be imported using the b64_url with an optional prefix. This
-///
+/// Random IDs can be imported using the b64Url with an optional prefix. This
 /// can be used to replace a config value with a value interpolated from the
-///
 /// random provider without experiencing diffs.
 ///
 /// Example with no prefix:
