@@ -11,4 +11,6 @@ workspace:
 dependencies:
   crypto: ^3.0.7
   path: ^1.9.1
-  
+
+dev_dependencies:
+  test: ^1.29.0

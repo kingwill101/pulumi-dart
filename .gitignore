@@ -2,8 +2,13 @@
 # Created by `dart pub`
 .dart_tool/
 
-# Prepared Dagger CI artifacts
-.dagger-ci/
+# Local devenv state
+.devenv*
+devenv.local.nix
+
+# Prepared integration CI artifacts
+.integration-ci/
+.local-prewarm/
 
 # Local reference repositories used for proto regeneration
 .googleapis/

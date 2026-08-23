@@ -63,14 +63,22 @@ import (
 // If we see this error, there's no need for us to print any additional error messages since the user already got a good one they can handle.
 const dartProcessExitedAfterShowingUserActionableMessage = 32
 
+const sharedKernelCacheSchema = "pulumi-dart-kernel-cache-v1"
+
 // main is the entry point for the Dart language host.
 func main() {
 	var tracing string
 	var binary string
 	var root string
+	var prewarmProgram string
+	var prewarmEntryPoint string
+	var prewarmCache string
 	flag.StringVar(&tracing, "tracing", "", "Emit tracing to a Zipkin-compatible tracing endpoint")
 	flag.StringVar(&binary, "binary", "", "A relative or absolute path to a precompiled Dart executable to execute")
 	flag.StringVar(&root, "root", "", "Project root path to use")
+	flag.StringVar(&prewarmProgram, "prewarm-program", "", "Compile a program into the shared kernel cache and exit")
+	flag.StringVar(&prewarmEntryPoint, "prewarm-entrypoint", "", "Entrypoint relative to --prewarm-program")
+	flag.StringVar(&prewarmCache, "prewarm-cache", "", "Shared kernel cache directory")
 
 	flag.Parse()
 	args := flag.Args()
@@ -82,6 +90,21 @@ func main() {
 	if err != nil {
 		err = errors.Wrap(err, "could not find `dart` on the $PATH")
 		cmdutil.Exit(err)
+	}
+
+	if prewarmProgram != "" || prewarmEntryPoint != "" || prewarmCache != "" {
+		if prewarmProgram == "" || prewarmEntryPoint == "" || prewarmCache == "" {
+			cmdutil.Exit(errors.New("--prewarm-program, --prewarm-entrypoint, and --prewarm-cache must be supplied together"))
+		}
+		kernel, fingerprint, err := compileSharedDartKernel(
+			context.Background(), dartExec, prewarmProgram, prewarmEntryPoint, prewarmCache,
+		)
+		if err != nil {
+			cmdutil.Exit(err)
+		}
+		encoded, _ := json.Marshal(map[string]string{"fingerprint": fingerprint, "kernel": kernel})
+		fmt.Println(string(encoded))
+		return
 	}
 
 	// Optionally pluck out the engine so we can do logging, etc.
@@ -501,6 +524,10 @@ func shouldEmitCompileCacheLogs() bool {
 }
 
 func appendDartFileFingerprint(entries *[]string, programDirectory, path string) error {
+	return appendLabeledDartFileFingerprint(entries, programDirectory, path, "")
+}
+
+func appendLabeledDartFileFingerprint(entries *[]string, rootDirectory, path, labelPrefix string) error {
 	stat, err := os.Stat(path)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -519,17 +546,24 @@ func appendDartFileFingerprint(entries *[]string, programDirectory, path string)
 	contentHash := sha256.Sum256(contents)
 
 	relative := path
-	if programDirectory != "" {
-		if rel, err := filepath.Rel(programDirectory, path); err == nil {
+	if rootDirectory != "" {
+		if rel, err := filepath.Rel(rootDirectory, path); err == nil {
 			relative = rel
 		}
 	}
 	relative = filepath.ToSlash(relative)
+	if labelPrefix != "" {
+		relative = strings.TrimSuffix(labelPrefix, "/") + "/" + strings.TrimPrefix(relative, "./")
+	}
 	*entries = append(*entries, fmt.Sprintf("%s|%x", relative, contentHash))
 	return nil
 }
 
 func appendDartDirectoryFingerprints(entries *[]string, programDirectory, dir string) error {
+	return appendLabeledDartDirectoryFingerprints(entries, programDirectory, dir, "")
+}
+
+func appendLabeledDartDirectoryFingerprints(entries *[]string, rootDirectory, dir, labelPrefix string) error {
 	stat, err := os.Stat(dir)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -554,7 +588,7 @@ func appendDartDirectoryFingerprints(entries *[]string, programDirectory, dir st
 		if filepath.Ext(path) != ".dart" {
 			return nil
 		}
-		return appendDartFileFingerprint(entries, programDirectory, path)
+		return appendLabeledDartFileFingerprint(entries, rootDirectory, path, labelPrefix)
 	})
 }
 
@@ -569,9 +603,9 @@ func appendLocalDependencyFingerprints(entries *[]string, programDirectory strin
 		return nil
 	}
 
-	dependencyDirs := map[string]struct{}{}
+	dependencyDirs := map[string]string{}
 	appendDepPaths := func(deps map[string]interface{}) {
-		for _, depSpec := range deps {
+		for name, depSpec := range deps {
 			rawPath, ok := codegen.DependencySpecPath(depSpec)
 			if !ok {
 				continue
@@ -583,7 +617,7 @@ func appendLocalDependencyFingerprints(entries *[]string, programDirectory strin
 			if !filepath.IsAbs(depPath) {
 				depPath = filepath.Join(programDirectory, filepath.FromSlash(depPath))
 			}
-			dependencyDirs[filepath.Clean(depPath)] = struct{}{}
+			dependencyDirs[filepath.Clean(depPath)] = name
 		}
 	}
 	appendDepPaths(pubspec.Dependencies)
@@ -624,7 +658,7 @@ func appendLocalDependencyFingerprints(entries *[]string, programDirectory strin
 				if filepath.Base(rootPath) == "lib" {
 					rootPath = filepath.Dir(rootPath)
 				}
-				dependencyDirs[rootPath] = struct{}{}
+				dependencyDirs[rootPath] = name
 			}
 		}
 	}
@@ -640,6 +674,7 @@ func appendLocalDependencyFingerprints(entries *[]string, programDirectory strin
 	sort.Strings(dirs)
 
 	for _, depDir := range dirs {
+		packageLabel := "package:" + dependencyDirs[depDir]
 		stat, err := os.Stat(depDir)
 		if err != nil {
 			if os.IsNotExist(err) {
@@ -650,11 +685,11 @@ func appendLocalDependencyFingerprints(entries *[]string, programDirectory strin
 		if !stat.IsDir() {
 			continue
 		}
-		if err := appendDartFileFingerprint(entries, programDirectory, filepath.Join(depDir, "pubspec.yaml")); err != nil {
+		if err := appendLabeledDartFileFingerprint(entries, depDir, filepath.Join(depDir, "pubspec.yaml"), packageLabel); err != nil {
 			return err
 		}
 		for _, relativeDir := range []string{"lib", "bin", "tool"} {
-			if err := appendDartDirectoryFingerprints(entries, programDirectory, filepath.Join(depDir, relativeDir)); err != nil {
+			if err := appendLabeledDartDirectoryFingerprints(entries, depDir, filepath.Join(depDir, relativeDir), packageLabel); err != nil {
 				return err
 			}
 		}
@@ -704,6 +739,128 @@ func computeDartProgramFingerprint(programDirectory, entryPoint string) (string,
 	return hex.EncodeToString(hasher.Sum(nil))[:24], nil
 }
 
+func dartSDKIdentity(ctx context.Context, dartExec string) (string, error) {
+	command := exec.CommandContext(ctx, dartExec, "--version")
+	output, err := command.CombinedOutput()
+	if err != nil {
+		return "", fmt.Errorf("determine Dart SDK version: %w", err)
+	}
+	identity := strings.TrimSpace(string(output))
+	if identity == "" {
+		return "", errors.New("Dart SDK returned an empty version")
+	}
+	return identity, nil
+}
+
+func sharedDartKernelFingerprint(
+	ctx context.Context,
+	dartExec string,
+	programDirectory string,
+	entryPoint string,
+) (string, error) {
+	programFingerprint, err := computeDartProgramFingerprint(programDirectory, entryPoint)
+	if err != nil {
+		return "", err
+	}
+	sdkIdentity, err := dartSDKIdentity(ctx, dartExec)
+	if err != nil {
+		return "", err
+	}
+	hash := sha256.Sum256([]byte(strings.Join([]string{
+		sharedKernelCacheSchema,
+		"compiler=dart-compile-kernel",
+		"sdk=" + sdkIdentity,
+		"program=" + programFingerprint,
+	}, "\n") + "\n"))
+	return hex.EncodeToString(hash[:]), nil
+}
+
+func sharedDartKernelPath(cacheDirectory, fingerprint string) string {
+	return filepath.Join(cacheDirectory, "kernels", fingerprint+".dill")
+}
+
+func findSharedDartKernel(
+	ctx context.Context,
+	dartExec string,
+	programDirectory string,
+	entryPoint string,
+) (string, bool) {
+	cacheDirectory := strings.TrimSpace(os.Getenv("PULUMI_DART_PREWARM_CACHE"))
+	if cacheDirectory == "" {
+		return "", false
+	}
+	fingerprint, err := sharedDartKernelFingerprint(ctx, dartExec, programDirectory, entryPoint)
+	if err != nil {
+		logging.V(5).Infof("Shared Dart kernel fingerprint failed; using source cache: %v", err)
+		return "", false
+	}
+	kernel := sharedDartKernelPath(cacheDirectory, fingerprint)
+	stat, err := os.Stat(kernel)
+	if err != nil || stat.IsDir() {
+		if err != nil && !os.IsNotExist(err) {
+			logging.V(5).Infof("Shared Dart kernel lookup failed; using source cache: %v", err)
+		}
+		return "", false
+	}
+	if shouldEmitCompileCacheLogs() {
+		logging.Infof("pulumi-language-dart: shared kernel hit=%s", kernel)
+	}
+	return kernel, true
+}
+
+func compileSharedDartKernel(
+	ctx context.Context,
+	dartExec string,
+	programDirectory string,
+	entryPoint string,
+	cacheDirectory string,
+) (string, string, error) {
+	programDirectory, err := filepath.Abs(programDirectory)
+	if err != nil {
+		return "", "", fmt.Errorf("resolve program directory: %w", err)
+	}
+	cacheDirectory, err = filepath.Abs(cacheDirectory)
+	if err != nil {
+		return "", "", fmt.Errorf("resolve shared kernel cache: %w", err)
+	}
+	fingerprint, err := sharedDartKernelFingerprint(ctx, dartExec, programDirectory, entryPoint)
+	if err != nil {
+		return "", "", fmt.Errorf("fingerprint Dart program: %w", err)
+	}
+	kernel := sharedDartKernelPath(cacheDirectory, fingerprint)
+	if stat, statErr := os.Stat(kernel); statErr == nil && !stat.IsDir() {
+		return kernel, fingerprint, nil
+	}
+	if err := os.MkdirAll(filepath.Dir(kernel), 0o755); err != nil {
+		return "", "", fmt.Errorf("create shared kernel cache: %w", err)
+	}
+	temporary, err := os.CreateTemp(filepath.Dir(kernel), fingerprint+"-*.tmp")
+	if err != nil {
+		return "", "", fmt.Errorf("create temporary kernel: %w", err)
+	}
+	temporaryPath := temporary.Name()
+	if err := temporary.Close(); err != nil {
+		return "", "", err
+	}
+	_ = os.Remove(temporaryPath)
+	defer os.Remove(temporaryPath)
+
+	command := exec.CommandContext(ctx, dartExec, "compile", "kernel", entryPoint, "-o", temporaryPath)
+	command.Dir = programDirectory
+	command.Stdout = os.Stdout
+	command.Stderr = os.Stderr
+	if err := command.Run(); err != nil {
+		return "", "", fmt.Errorf("compile shared Dart kernel: %w", err)
+	}
+	if err := os.Rename(temporaryPath, kernel); err != nil {
+		if stat, statErr := os.Stat(kernel); statErr == nil && !stat.IsDir() {
+			return kernel, fingerprint, nil
+		}
+		return "", "", fmt.Errorf("publish shared Dart kernel: %w", err)
+	}
+	return kernel, fingerprint, nil
+}
+
 // defaultDartBuildTarget returns the standard cache executable path for a
 // program fingerprint.
 //
@@ -743,16 +900,16 @@ func (host *dartLanguageHost) ensureCompiledDartProgram(
 		return "", errors.New("build target is required for compilation")
 	}
 
-		if reuseExisting {
-			if stat, err := os.Stat(buildTarget); err == nil && !stat.IsDir() {
-				logging.V(5).Infof("Reusing cached Dart executable: %s", buildTarget)
-				if shouldEmitCompileCacheLogs() {
-					logging.Infof("pulumi-language-dart: cache hit executable=%s", buildTarget)
-				}
-				return buildTarget, nil
-			} else if err != nil && !os.IsNotExist(err) {
-				return "", fmt.Errorf("failed to inspect cached executable %s: %w", buildTarget, err)
+	if reuseExisting {
+		if stat, err := os.Stat(buildTarget); err == nil && !stat.IsDir() {
+			logging.V(5).Infof("Reusing cached Dart executable: %s", buildTarget)
+			if shouldEmitCompileCacheLogs() {
+				logging.Infof("pulumi-language-dart: cache hit executable=%s", buildTarget)
 			}
+			return buildTarget, nil
+		} else if err != nil && !os.IsNotExist(err) {
+			return "", fmt.Errorf("failed to inspect cached executable %s: %w", buildTarget, err)
+		}
 	}
 
 	if err := os.MkdirAll(filepath.Dir(buildTarget), 0o700); err != nil {
@@ -894,6 +1051,9 @@ func (host *dartLanguageHost) warmUpCompileCacheFromProgramInfo(
 	buildTarget, err := defaultDartBuildTarget(programDirectory, entryPoint)
 	if err != nil {
 		return fmt.Errorf("failed to determine Dart build target: %w", err)
+	}
+	if _, ok := findSharedDartKernel(ctx, host.exec, programDirectory, entryPoint); ok {
+		return nil
 	}
 
 	_, err = host.ensureCompiledDartProgram(ctx, programDirectory, entryPoint, buildTarget, true /*reuseExisting*/)
@@ -1725,24 +1885,29 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 			}
 
 			if entryPoint != "" && entryPoint != "." {
-				buildTarget := normalizeDartBuildTargetPath(programDirectory, runtimeOptions.buildTarget)
-				reuseExisting := runtimeOptions.buildTarget == ""
-				if buildTarget == "" {
-					buildTarget, err = defaultDartBuildTarget(programDirectory, entryPoint)
-					if err != nil {
-						return nil, err
+				if kernel, ok := findSharedDartKernel(runCtx, host.exec, programDirectory, entryPoint); ok {
+					executable = host.exec
+					args = append(args, "run", kernel)
+				} else {
+					buildTarget := normalizeDartBuildTargetPath(programDirectory, runtimeOptions.buildTarget)
+					reuseExisting := runtimeOptions.buildTarget == ""
+					if buildTarget == "" {
+						buildTarget, err = defaultDartBuildTarget(programDirectory, entryPoint)
+						if err != nil {
+							return nil, err
+						}
 					}
-				}
 
-				executable, err = host.ensureCompiledDartProgram(runCtx, programDirectory, entryPoint, buildTarget, reuseExisting)
-				if err != nil {
-					return &pulumirpc.RunResponse{
-						Error: fmt.Sprintf("Problem compiling program: %v", err),
-					}, nil
+					executable, err = host.ensureCompiledDartProgram(runCtx, programDirectory, entryPoint, buildTarget, reuseExisting)
+					if err != nil {
+						return &pulumirpc.RunResponse{
+							Error: fmt.Sprintf("Problem compiling program: %v", err),
+						}, nil
+					}
 				}
 			}
 
-			if executable == host.exec {
+			if executable == host.exec && len(args) == 0 {
 				args = append(args, "run")
 				if entryPoint != "" && entryPoint != "." {
 					args = append(args, entryPoint)
@@ -1836,12 +2001,12 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 			return &pulumirpc.RunResponse{
 				Error: fmt.Sprintf("problem starting debugger: %v", err),
 			}, nil
-			}
-			if endpoint := vmServiceEndpointFromURI(vmServiceURI); endpoint != "" {
-				logging.Infof("pulumi-language-dart: debugger endpoint=%s", endpoint)
-			} else if port := vmServicePortFromURI(vmServiceURI); port != "" {
-				logging.Infof("pulumi-language-dart: debugger endpoint=127.0.0.1:%s", port)
-			}
+		}
+		if endpoint := vmServiceEndpointFromURI(vmServiceURI); endpoint != "" {
+			logging.Infof("pulumi-language-dart: debugger endpoint=%s", endpoint)
+		} else if port := vmServicePortFromURI(vmServiceURI); port != "" {
+			logging.Infof("pulumi-language-dart: debugger endpoint=127.0.0.1:%s", port)
+		}
 
 		if err := <-runDone; err != nil {
 			return runResponseForProcessError(err), nil

@@ -5,8 +5,7 @@ on:
   merge_group:
   pull_request:
   push:
-    branches:
-      - master
+    branches: [master]
 
 permissions:
   contents: read
@@ -15,89 +14,71 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  PULUMI_SKIP_UPDATE_CHECK: "true"
+  PULUMI_CONFIG_PASSPHRASE: pulumi-dart-test-passphrase
+
 jobs:
-  dart-integration-tools:
-    name: Prepare Dagger integration artifacts
+  prepare:
+    name: Prepare integration artifacts
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.prepare.outputs.output }}
+      matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
-
-      - name: Set up Go for the Dagger client
-        uses: actions/setup-go@v7
+      - uses: actions/checkout@v7
         with:
-          go-version: 1.26.x
-          cache-dependency-path: tool/dagger/go.sum
-
-      - name: Compile integration tooling with Dagger
-        id: prepare
-        uses: dagger/dagger-for-github@v8.4.1
+          submodules: recursive
+      - uses: cachix/install-nix-action@v31
+      - uses: cachix/cachix-action@v16
         with:
-          version: v0.21.8
-          verb: run
-          workdir: tool/dagger
-          args: >-
-            -- go run -mod=readonly . prepare
-            --source=../..
-            --output=../../.dagger-ci
-            --partitions=8
-          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
-          enable-github-summary: true
-
-      - name: Upload prepared integration tooling
-        uses: actions/upload-artifact@v7
+          name: devenv
+      - name: Install devenv
+        run: nix profile add nixpkgs#devenv
+      - name: Prepare host, tests, matrix, and prewarmed kernels
+        run: devenv shell -- integration-ci-prepare
+      - name: Export test matrix
+        id: matrix
+        run: echo "matrix=$(tr -d '\n' < .integration-ci/matrix.json)" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v7
         with:
           name: dart-integration-tools
-          path: .dagger-ci
+          path: .integration-ci
           if-no-files-found: error
           include-hidden-files: true
 
-  dart-integration-tests:
+  core:
     name: Dart integration (core ${{ matrix.name }})
     runs-on: ubuntu-latest
-    needs: dart-integration-tools
+    needs: prepare
     timeout-minutes: 60
     strategy:
       fail-fast: false
-      matrix: ${{ fromJson(needs.dart-integration-tools.outputs.matrix) }}
+      matrix: ${{ fromJson(needs.prepare.outputs.matrix) }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
-
-      - name: Set up Go for the Dagger client
-        uses: actions/setup-go@v7
+      - uses: actions/checkout@v7
         with:
-          go-version: 1.26.x
-          cache-dependency-path: tool/dagger/go.sum
-
-      - name: Download prepared integration tooling
-        uses: actions/download-artifact@v8
+          submodules: recursive
+      - uses: cachix/install-nix-action@v31
+      - uses: cachix/cachix-action@v16
+        with:
+          name: devenv
+      - name: Install devenv
+        run: nix profile add nixpkgs#devenv
+      - uses: actions/download-artifact@v8
         with:
           name: dart-integration-tools
-          path: .dagger-ci
+          path: .integration-ci
+      - name: Run integration partition
+        env:
+          INTEGRATION_TESTS: ${{ matrix.testsCsv }}
+          INTEGRATION_TIMEOUT: 60m
+          INTEGRATION_PARALLEL: 4
+        run: devenv shell -- integration-ci-run
 
-      - name: Run the integration partition with Dagger
-        uses: dagger/dagger-for-github@v8.4.1
-        with:
-          version: v0.21.8
-          verb: run
-          workdir: tool/dagger
-          args: >-
-            -- go run -mod=readonly . integration
-            --source=../..
-            --artifacts=../../.dagger-ci
-            --tests=${{ matrix.testsCsv }}
-            --timeout=60m
-            --parallel=4
-          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
-          enable-github-summary: true
-
-  dart-integration-tests-cloud:
+  cloud:
     name: Dart integration (cloud-only)
     runs-on: ubuntu-latest
-    needs: dart-integration-tools
+    needs: prepare
     timeout-minutes: 60
     env:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
@@ -110,70 +91,57 @@ jobs:
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ env.OP_SERVICE_ACCOUNT_TOKEN }}
           PULUMI_ACCESS_TOKEN: "op://devops/pulumi token/credential"
-
-      - name: Checkout code
+      - uses: actions/checkout@v7
         if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
-        uses: actions/checkout@v7
-
-      - name: Set up Go for the Dagger client
-        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
-        uses: actions/setup-go@v7
         with:
-          go-version: 1.26.x
-          cache-dependency-path: tool/dagger/go.sum
-
-      - name: Download prepared integration tooling
+          submodules: recursive
+      - uses: cachix/install-nix-action@v31
         if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
-        uses: actions/download-artifact@v8
+      - uses: cachix/cachix-action@v16
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
+        with:
+          name: devenv
+      - name: Install devenv
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
+        run: nix profile add nixpkgs#devenv
+      - uses: actions/download-artifact@v8
+        if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
         with:
           name: dart-integration-tools
-          path: .dagger-ci
-
-      - name: Run cloud integration tests with Dagger
+          path: .integration-ci
+      - name: Run cloud integration tests
         if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
-        uses: dagger/dagger-for-github@v8.4.1
-        with:
-          version: v0.21.8
-          verb: run
-          workdir: tool/dagger
-          args: >-
-            -- go run -mod=readonly . integration
-            --source=../..
-            --artifacts=../../.dagger-ci
-            --tests=TestEnvironmentsBasicDart,TestEnvironmentsMergeDart,TestTracePropagationDart,TestAutomationEnvironmentManagementDart,TestAutomationRemoteWorkspaceLifecycleDart,TestPolicyPublishEnableDisableDart
-            --timeout=60m
-            --parallel=4
-            --cloud
-          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
-          enable-github-summary: true
+        env:
+          INTEGRATION_TESTS: TestEnvironmentsBasicDart,TestEnvironmentsMergeDart,TestTracePropagationDart,TestAutomationEnvironmentManagementDart,TestAutomationRemoteWorkspaceLifecycleDart,TestPolicyPublishEnableDisableDart
+          INTEGRATION_TIMEOUT: 60m
+          INTEGRATION_PARALLEL: 4
+        run: devenv shell -- integration-ci-run
 
   check-integration:
     name: check-integration
     if: always()
     runs-on: ubuntu-latest
-    needs:
-      - dart-integration-tools
-      - dart-integration-tests
-      - dart-integration-tests-cloud
+    needs: [prepare, core, cloud]
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
-
-      - name: Set up Go for the Dagger client
-        uses: actions/setup-go@v7
-        with:
-          go-version: 1.26.x
-          cache-dependency-path: tool/dagger/go.sum
-
       - name: Verify integration job results
-        uses: dagger/dagger-for-github@v8.4.1
+        env:
+          PREPARE_RESULT: ${{ needs.prepare.result }}
+          CORE_RESULT: ${{ needs.core.result }}
+          CLOUD_RESULT: ${{ needs.cloud.result }}
+        run: |
+          test "$PREPARE_RESULT" = success
+          test "$CORE_RESULT" = success
+          test "$CLOUD_RESULT" = success || test "$CLOUD_RESULT" = skipped
+      - uses: actions/checkout@v7
+      - uses: cachix/install-nix-action@v31
+      - uses: cachix/cachix-action@v16
         with:
-          version: v0.21.8
-          verb: run
-          workdir: tool/dagger
-          args: >-
-            -- go run -mod=readonly . status
-            --prepare=${{ needs.dart-integration-tools.result }}
-            --core=${{ needs.dart-integration-tests.result }}
-            --cloud=${{ needs.dart-integration-tests-cloud.result }}
-          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
+          name: devenv
+      - name: Install devenv
+        run: nix profile add nixpkgs#devenv
+      - name: Test Dart language host
+        run: devenv shell -- bash -lc 'cd pulumi-language-dart && go test -count=1 ./...'
+      - name: Analyze and test Dart SDK package
+        run: >-
+          devenv shell -- bash -lc
+          'cd packages/pulumi-dart && dart pub get && dart analyze && dart test'

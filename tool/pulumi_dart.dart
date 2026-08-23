@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math' as math;
 
+import 'src/integration_prewarm.dart';
+
 const _isolatedIntegrationTests = <String>{
   // This test intentionally verifies shutdown behavior and relies on a fresh
   // Go test process. Reuse the precompiled binary, but do not share its process
@@ -37,6 +39,7 @@ Pulumi Dart repository tooling
 Usage:
   pulumi-dart-tool integration matrix [options]
   pulumi-dart-tool integration run [options]
+  pulumi-dart-tool integration prewarm [options]
 
 Integration matrix options:
   --package-dir <path>   Go integration package directory.
@@ -50,6 +53,14 @@ Integration run options:
   --tests <csv>          Test names for this partition; an alternative to --run.
   --timeout <duration>   Go test timeout. Defaults to 60m.
   --parallel <count>     Go test parallelism. Defaults to 4.
+
+Integration prewarm options:
+  --root <path>              Integration fixture root.
+  --output <path>            Kernel and manifest output directory.
+  --language-host <path>     Local pulumi-language-dart executable.
+  --dart-sdk-version <value> Dart SDK version recorded in the manifest.
+  --jobs <count>             Concurrent compile jobs. Defaults to 4.
+
 ''';
 
   Future<int> run(List<String> arguments) async {
@@ -82,21 +93,17 @@ Integration run options:
         return _writeIntegrationMatrix(options);
       case 'run':
         return _runIntegrationPartition(options);
+      case 'prewarm':
+        return _prewarmIntegrationPrograms(options);
       default:
-        throw ToolUsageException(
-          'Unknown integration subcommand: $subcommand',
-        );
+        throw ToolUsageException('Unknown integration subcommand: $subcommand');
     }
   }
 
   Future<int> _writeIntegrationMatrix(CommandOptions options) async {
     final packageDirectory = options.path('package-dir', 'integration_tests');
     final binary = options.optionalPath('binary');
-    final requestedPartitions = options.integer(
-      'partitions',
-      8,
-      minimum: 1,
-    );
+    final requestedPartitions = options.integer('partitions', 8, minimum: 1);
     options.assertNoPositionals();
 
     final tests = await _listIntegrationTests(
@@ -129,7 +136,8 @@ Integration run options:
   Future<int> _runIntegrationPartition(CommandOptions options) async {
     final packageDirectory = options.path('package-dir', 'integration_tests');
     final explicitBinary = options.optionalPath('binary');
-    final binary = explicitBinary ??
+    final binary =
+        explicitBinary ??
         _join(packageDirectory, '.dart_tool/pulumi/integration-tests');
     final explicitRunPattern = options.optional('run');
     final testsCsv = options.optional('tests');
@@ -149,11 +157,13 @@ Integration run options:
     // hidden behind an existence-only cache entry.
     if (explicitBinary == null || !binaryFile.existsSync()) {
       binaryFile.parent.createSync(recursive: true);
-      final compile = await _runProcess(
-        'go',
-        ['test', '-c', '-o', binaryFile.absolute.path, '.'],
-        workingDirectory: packageDirectory,
-      );
+      final compile = await _runProcess('go', [
+        'test',
+        '-c',
+        '-o',
+        binaryFile.absolute.path,
+        '.',
+      ], workingDirectory: packageDirectory);
       if (compile != 0) {
         return compile;
       }
@@ -217,6 +227,25 @@ Integration run options:
     return 0;
   }
 
+  Future<int> _prewarmIntegrationPrograms(CommandOptions options) {
+    final root = Directory(options.path('root', 'integration_tests'));
+    final output = Directory(
+      options.path('output', '.dart_tool/pulumi/prewarm'),
+    );
+    final languageHost = File(options.requiredPath('language-host'));
+    final dartSdkVersion = options.value('dart-sdk-version', 'unknown');
+    final jobs = options.integer('jobs', 4, minimum: 1);
+    options.assertNoPositionals();
+
+    return IntegrationPrewarmer(
+      root: root,
+      output: output,
+      languageHost: languageHost,
+      dartSdkVersion: dartSdkVersion,
+      jobs: jobs,
+    ).run();
+  }
+
   Future<int> _runTestBinary({
     required File binaryFile,
     required String packageDirectory,
@@ -226,17 +255,13 @@ Integration run options:
     required String description,
   }) {
     stdout.writeln('Running $description with pattern $runPattern');
-    return _runProcess(
-      binaryFile.absolute.path,
-      [
-        '-test.count=1',
-        '-test.timeout=$timeout',
-        '-test.parallel=$parallel',
-        '-test.run=$runPattern',
-        '-test.v',
-      ],
-      workingDirectory: packageDirectory,
-    );
+    return _runProcess(binaryFile.absolute.path, [
+      '-test.count=1',
+      '-test.timeout=$timeout',
+      '-test.parallel=$parallel',
+      '-test.run=$runPattern',
+      '-test.v',
+    ], workingDirectory: packageDirectory);
   }
 
   Future<List<String>> _listIntegrationTests({
@@ -273,13 +298,14 @@ Integration run options:
     }
 
     final testPattern = RegExp(r'^Test[A-Za-z0-9_]+$');
-    final tests = const LineSplitter()
-        .convert(result.stdout as String)
-        .map((line) => line.trim())
-        .where(testPattern.hasMatch)
-        .toSet()
-        .toList(growable: false)
-      ..sort();
+    final tests =
+        const LineSplitter()
+            .convert(result.stdout as String)
+            .map((line) => line.trim())
+            .where(testPattern.hasMatch)
+            .toSet()
+            .toList(growable: false)
+          ..sort();
     return tests;
   }
 
@@ -382,8 +408,9 @@ class CommandOptions {
       final option = item.substring(2);
       final equalsIndex = option.indexOf('=');
       if (equalsIndex >= 0) {
-        values[option.substring(0, equalsIndex)] =
-            option.substring(equalsIndex + 1);
+        values[option.substring(0, equalsIndex)] = option.substring(
+          equalsIndex + 1,
+        );
         continue;
       }
 
@@ -403,6 +430,8 @@ class CommandOptions {
     }
     return result;
   }
+
+  String requiredPath(String name) => File(required(name)).absolute.path;
 
   String? optional(String name) => _values.remove(name);
 

@@ -338,6 +338,41 @@ func TestRunReusesCompiledCacheWhenProgramUnchanged(t *testing.T) {
 	assert.Equal(t, 2, strings.Count(trace, "RUN_PWD="+runDir))
 }
 
+func TestRunUsesExactSharedKernel(t *testing.T) {
+	runDir := t.TempDir()
+	entryPoint := "bin/main.dart"
+	require.NoError(t, os.MkdirAll(filepath.Join(runDir, "bin"), 0o700))
+	require.NoError(t, os.WriteFile(filepath.Join(runDir, entryPoint), []byte("void main() {}"), 0o600))
+	require.NoError(t, os.WriteFile(filepath.Join(runDir, "pubspec.yaml"), []byte("name: test\n"), 0o600))
+
+	tracePath := filepath.Join(runDir, "shared.trace")
+	dartPath := writeExecutableScript(t, fmt.Sprintf(`#!/usr/bin/env bash
+set -euo pipefail
+if [ "$1" = "--version" ]; then
+  echo "Dart SDK version: 3.11.0" >&2
+  exit 0
+fi
+echo "DART_ARGS=$*" >> %q
+`, tracePath))
+	cacheDir := t.TempDir()
+	t.Setenv("PULUMI_DART_PREWARM_CACHE", cacheDir)
+	fingerprint, err := sharedDartKernelFingerprint(context.Background(), dartPath, runDir, entryPoint)
+	require.NoError(t, err)
+	kernel := sharedDartKernelPath(cacheDir, fingerprint)
+	require.NoError(t, os.MkdirAll(filepath.Dir(kernel), 0o700))
+	require.NoError(t, os.WriteFile(kernel, []byte("kernel"), 0o600))
+
+	host := &dartLanguageHost{exec: dartPath, engineAddress: "127.0.0.1:0"}
+	resp, err := host.Run(context.Background(), &pulumirpc.RunRequest{
+		Args: []string{"--flag", "value"},
+		Info: &pulumirpc.ProgramInfo{ProgramDirectory: runDir, EntryPoint: entryPoint},
+	})
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+	assert.Empty(t, resp.GetError())
+	assert.Equal(t, "DART_ARGS=run "+kernel+" --flag value\n", readFileString(t, tracePath))
+}
+
 func TestAboutCapturesVersionFromStderr(t *testing.T) {
 	scriptPath := writeExecutableScript(t,
 		"#!/usr/bin/env bash\n"+
