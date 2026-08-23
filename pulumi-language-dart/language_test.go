@@ -132,6 +132,7 @@ var passingConformanceTests = []string{
 	"l2-resource-elide-unknowns",
 	"l2-target-up-skipped-create-output",
 	"l2-target-up-with-new-dependency",
+	"l2-provider-config-enum",
 	"l2-docs",
 	"l2-elide-index",
 	"l2-proxy-index",

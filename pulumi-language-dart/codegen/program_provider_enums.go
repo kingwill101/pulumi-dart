@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/pulumi/pulumi/pkg/v3/codegen/hcl2/model"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/pcl"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 )
 
@@ -18,6 +19,9 @@ func (lowerer programLowerer) providerEnumExpression(
 	pkg, module, className := providerEnumName(defaultPackage, enum)
 	lowerer.imports[pkg+"\x00"+module] = dartProgramImport{Package: pkg, Module: module}
 	typeName := programModuleAlias(pkg, module) + "." + className
+	if sameProviderEnumType(expression.Type(), enum) {
+		return value, nil
+	}
 	if model.ContainsOutputs(expression.Type()) {
 		return fmt.Sprintf(
 			"pulumi.output(%s).apply<%s>((value) => %s.fromValue(value))",
@@ -25,6 +29,16 @@ func (lowerer programLowerer) providerEnumExpression(
 		), nil
 	}
 	return fmt.Sprintf("%s.fromValue(%s)", typeName, value), nil
+}
+
+func sameProviderEnumType(typ model.Type, target *schema.EnumType) bool {
+	source, ok := pcl.GetSchemaForType(model.ResolveOutputs(typ))
+	if !ok {
+		return false
+	}
+	source = unwrapProviderInputType(source)
+	enum, ok := source.(*schema.EnumType)
+	return ok && enum.Token == target.Token
 }
 
 func providerEnumName(defaultPackage string, enum *schema.EnumType) (string, string, string) {

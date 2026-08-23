@@ -161,6 +161,12 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
       return null;
     }
 
+    // Registration responses can reuse already-decoded input values (for
+    // example provider configuration enums). Do not run wire decoders twice.
+    if (value is T) {
+      return value as T;
+    }
+
     final rawTargetType = _normalizeType(T.toString());
     final targetType = _normalizeType(_stripNullableType(T.toString()));
     final isNullableTarget = rawTargetType.endsWith('?');

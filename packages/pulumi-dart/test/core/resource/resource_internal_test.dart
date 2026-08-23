@@ -15,9 +15,18 @@ class _LateOutputResource extends CustomResource {
   _LateOutputResource(String name)
     : super('sample:index:LateOutput', name, const {}, CustomResourceOptions());
 
-  Output<T> createOutput<T>(String propertyName) {
-    return registerOutput<T>(propertyName);
+  Output<T> createOutput<T>(
+    String propertyName, {
+    Object? Function(Object?)? decoder,
+  }) {
+    return registerOutput<T>(propertyName, decoder: decoder);
   }
+}
+
+class _DecodedValue {
+  final String value;
+
+  const _DecodedValue(this.value);
 }
 
 void main() {
@@ -112,6 +121,25 @@ void main() {
       final data = await output.getData();
       expect(data.isKnown, isFalse);
       expect(data.value, isNull);
+    });
+
+    test('already decoded output values bypass the wire decoder', () async {
+      final resource = _LateOutputResource('late');
+      final output = resource.createOutput<_DecodedValue>(
+        'value',
+        decoder: (_) => throw StateError('decoder must not run'),
+      );
+
+      resource.completionSources['value']!.setValue(
+        OutputData<Object?>(
+          value: const _DecodedValue('ready'),
+          isKnown: true,
+          isSecret: false,
+          resources: {},
+        ),
+      );
+
+      expect((await output.getValue()).value, 'ready');
     });
 
     test(
