@@ -194,6 +194,7 @@ class DeploymentImpl extends Deployment
   final bool _isDryRun;
   final List<Exception> _swallowedExceptions = [];
   final List<Future<void>> _resourceOperations = [];
+  final Map<String, Future<String?>> _packageReferences = {};
   ICallbackServer? _callbacks;
   bool? _supportsTransforms;
   bool? _supportsInvokeTransforms;
@@ -606,7 +607,7 @@ class DeploymentImpl extends Deployment
         }
       }
       if (registerPackageRequest != null) {
-        final packageRef = await _resolvePackageRef(registerPackageRequest);
+        final packageRef = await resolvePackageRef(registerPackageRequest);
         if (packageRef != null) {
           request.packageRef = packageRef;
         }
@@ -756,11 +757,24 @@ class DeploymentImpl extends Deployment
     resource.resolveId(readId, isKnown: true);
   }
 
-  Future<String?> _resolvePackageRef(
-    models.RegisterPackageRequest request,
-  ) async {
-    final response = await monitor.registerPackage(request.toProto());
-    return response.ref;
+  @override
+  Future<String?> resolvePackageRef(models.RegisterPackageRequest request) {
+    final key = request.cacheKey;
+    final existing = _packageReferences[key];
+    if (existing != null) return existing;
+
+    late final Future<String?> registration;
+    registration = monitor
+        .registerPackage(request.toProto())
+        .then<String?>((response) => response.ref)
+        .onError((Object error, StackTrace stackTrace) {
+          if (identical(_packageReferences[key], registration)) {
+            _packageReferences.remove(key);
+          }
+          Error.throwWithStackTrace(error, stackTrace);
+        });
+    _packageReferences[key] = registration;
+    return registration;
   }
 
   List<String> _validatePropertyPaths(

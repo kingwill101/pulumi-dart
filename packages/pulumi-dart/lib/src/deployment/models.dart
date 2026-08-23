@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:pulumi/src/resource/resource.dart';
 
 import '../pulumirpc/pulumi/resource.pb.dart' as pb;
@@ -61,6 +63,7 @@ class RegisterPackageRequest {
   final String? downloadUrl;
   final Map<String, List<int>>? checksums;
   final Parameterization? parameterization;
+  final Parameterization? extensionParameterization;
 
   RegisterPackageRequest({
     required this.name,
@@ -68,7 +71,24 @@ class RegisterPackageRequest {
     this.downloadUrl,
     this.checksums,
     this.parameterization,
+    this.extensionParameterization,
   });
+
+  /// Stable identity used to deduplicate package registration in a deployment.
+  String get cacheKey {
+    final checksumEntries = checksums?.entries.toList()
+      ?..sort((left, right) => left.key.compareTo(right.key));
+    Object? encode(Parameterization? value) =>
+        value == null ? null : [value.name, value.version, value.value];
+    return jsonEncode([
+      name,
+      version,
+      downloadUrl,
+      checksumEntries?.map((entry) => [entry.key, entry.value]).toList(),
+      encode(parameterization),
+      encode(extensionParameterization),
+    ]);
+  }
 }
 
 /// Protobuf conversion helpers for [RegisterPackageRequest].
@@ -88,6 +108,13 @@ extension RegisterPackageRequestProto on RegisterPackageRequest {
         name: parameterization!.name ?? '',
         version: parameterization!.version ?? '',
         value: parameterization!.value ?? const <int>[],
+      );
+    }
+    if (extensionParameterization != null) {
+      request.extension_6 = pb.Parameterization(
+        name: extensionParameterization!.name ?? '',
+        version: extensionParameterization!.version ?? '',
+        value: extensionParameterization!.value ?? const <int>[],
       );
     }
     return request;

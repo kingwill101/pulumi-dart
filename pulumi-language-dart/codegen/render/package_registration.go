@@ -13,13 +13,17 @@ func PackageRegistration(registration dartir.PackageRegistration) []byte {
 	if registration.DownloadURL != "" {
 		downloadURLLine = fmt.Sprintf("\n  downloadUrl: %q,", registration.DownloadURL)
 	}
+	parameterizationField := "parameterization"
+	if registration.IsExtension {
+		parameterizationField = "extensionParameterization"
+	}
 	return []byte(fmt.Sprintf(
 		`import 'package:pulumi/pulumi.dart' as pulumi;
 
 final registerPackageRequest = pulumi.RegisterPackageRequest(
   name: %q,
   version: %q,%s
-  parameterization: pulumi.Parameterization(
+  %s: pulumi.Parameterization(
     name: %q,
     version: %q,
     value: %s,
@@ -29,6 +33,7 @@ final registerPackageRequest = pulumi.RegisterPackageRequest(
 		registration.PluginName,
 		registration.PluginVersion,
 		downloadURLLine,
+		parameterizationField,
 		registration.PackageName,
 		registration.PackageVersion,
 		byteListLiteral(registration.Value),

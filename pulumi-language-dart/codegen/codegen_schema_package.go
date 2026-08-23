@@ -22,10 +22,22 @@ func newBoundPackageSchema(pkg *schema.Package) *packageSchema {
 }
 
 func boundPackageParameterization(pkg *schema.Package, packageVersion string) *packageParameterizationSpec {
-	if pkg.Parameterization == nil {
+	if pkg.Parameterization == nil && pkg.ExtensionParameterization == nil {
 		return nil
 	}
-	pluginVersion := pkg.Parameterization.BasePlugin.Version.String()
+	isExtension := pkg.ExtensionParameterization != nil
+	pluginName := ""
+	pluginVersion := ""
+	var value []byte
+	if isExtension {
+		pluginName = pkg.ExtensionParameterization.BaseProvider.Name
+		pluginVersion = pkg.ExtensionParameterization.BaseProvider.Version.String()
+		value = pkg.ExtensionParameterization.Parameter
+	} else {
+		pluginName = pkg.Parameterization.BasePlugin.Name
+		pluginVersion = pkg.Parameterization.BasePlugin.Version.String()
+		value = pkg.Parameterization.Parameter
+	}
 	if packageVersion == "" {
 		packageVersion = pluginVersion
 	}
@@ -39,8 +51,8 @@ func boundPackageParameterization(pkg *schema.Package, packageVersion string) *p
 		packageVersion = pluginVersion
 	}
 	return &packageParameterizationSpec{
-		PluginName: pkg.Parameterization.BasePlugin.Name, PluginVersion: pluginVersion,
+		IsExtension: isExtension, PluginName: pluginName, PluginVersion: pluginVersion,
 		PackageName: pkg.Name, PackageVersion: packageVersion, DownloadURL: pkg.PluginDownloadURL,
-		Value: append([]byte(nil), pkg.Parameterization.Parameter...),
+		Value: append([]byte(nil), value...),
 	}
 }

@@ -31,3 +31,18 @@ func TestPackageRegistrationUsesConstEmptyValue(t *testing.T) {
 
 	require.Contains(t, actual, "value: const <int>[]")
 }
+
+func TestPackageRegistrationRendersExtensionParameterization(t *testing.T) {
+	t.Parallel()
+
+	actual := string(PackageRegistration(dartir.PackageRegistration{
+		IsExtension:    true,
+		PluginName:     "base",
+		PluginVersion:  "1.2.3",
+		PackageName:    "extension",
+		PackageVersion: "4.5.6",
+	}))
+
+	require.Contains(t, actual, "extensionParameterization: pulumi.Parameterization(")
+	require.NotContains(t, actual, "\n  parameterization:")
+}

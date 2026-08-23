@@ -64,5 +64,75 @@ void main() {
       expect(proto.parameterization.version, isEmpty);
       expect(proto.parameterization.value, isEmpty);
     });
+
+    test('register package proto maps extension parameterization', () {
+      final request = deployment_models.RegisterPackageRequest(
+        name: 'pulumi-base',
+        version: '1.2.3',
+        extensionParameterization: deployment_models.Parameterization(
+          name: 'extension',
+          version: '4.5.6',
+          value: [1, 3, 5],
+        ),
+      );
+
+      final proto = request.toProto();
+      expect(proto.hasExtension_6(), isTrue);
+      expect(proto.extension_6.name, 'extension');
+      expect(proto.extension_6.version, '4.5.6');
+      expect(proto.extension_6.value, orderedEquals([1, 3, 5]));
+    });
+
+    test(
+      'cache identity is checksum-order independent and parameter-aware',
+      () {
+        deployment_models.RegisterPackageRequest request(
+          Map<String, List<int>> checksums,
+          List<int> value,
+        ) => deployment_models.RegisterPackageRequest(
+          name: 'pulumi-base',
+          version: '1.2.3',
+          checksums: checksums,
+          extensionParameterization: deployment_models.Parameterization(
+            name: 'extension',
+            version: '4.5.6',
+            value: value,
+          ),
+        );
+
+        expect(
+          request(
+            {
+              'z': [2],
+              'a': [1],
+            },
+            [3],
+          ).cacheKey,
+          request(
+            {
+              'a': [1],
+              'z': [2],
+            },
+            [3],
+          ).cacheKey,
+        );
+        expect(
+          request(
+            {
+              'a': [1],
+            },
+            [3],
+          ).cacheKey,
+          isNot(
+            request(
+              {
+                'a': [1],
+              },
+              [4],
+            ).cacheKey,
+          ),
+        );
+      },
+    );
   });
 }

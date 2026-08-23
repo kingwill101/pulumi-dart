@@ -24,15 +24,16 @@ parity decision.
 
 | Upstream change | Dart status | Next action |
 | --- | --- | --- |
-| [`CustomTimeouts.read`](https://github.com/pulumi/pulumi/pull/23459) | Missing | Add after regenerating the newer resource protocol. |
-| [`Output.recover`](https://github.com/pulumi/pulumi/pull/23642) | Missing | Add typed recovery semantics and parity tests. |
-| [Failed registrations produce faulted outputs](https://github.com/pulumi/pulumi/pull/23844) | Needs verification | Add a focused failed-registration test before changing runtime behavior. |
+| Double-underscore property preservation | Present | Covered by serializer round-trip tests. |
+| [`CustomTimeouts.read`](https://github.com/pulumi/pulumi/pull/23459) | Present | Covered across resource options, transforms, provider authoring, and policy types. |
+| [`Output.recover`](https://github.com/pulumi/pulumi/pull/23642) | Present | Typed recovery and metadata propagation are covered by focused tests. |
+| [Failed registrations produce faulted outputs](https://github.com/pulumi/pulumi/pull/23844) | Present | Existing failed-registration tests verify pending outputs fault before errors are rethrown. |
 | [Output invoke dependency inference](https://github.com/pulumi/pulumi/pull/24054) | Present | Keep the existing Dart dependency/preview tests. |
 | [`onError` resource hooks](https://github.com/pulumi/pulumi/pull/23839) | Present | No action. |
 | [Language host cancellation](https://github.com/pulumi/pulumi/releases/tag/v3.229.0) | Present | No action. |
-| [`RunPlugin2` language RPC](https://github.com/pulumi/pulumi/releases/tag/v3.229.0) | Missing | Review protocol and host behavior during the protobuf update. |
-| [Extension-parameterized packages](https://github.com/pulumi/pulumi/pull/23579) | Partial | Audit generator namespacing and package registration end to end. |
-| [`multiArgumentInputs`](https://github.com/pulumi/pulumi/pull/23571) | Missing | Design Dart signatures and add generator fixtures. |
+| [`RunPlugin2` language RPC](https://github.com/pulumi/pulumi/releases/tag/v3.229.0) | Not applicable | The RPC was removed from the current upstream protocol before the Dart protocol refresh. |
+| [Extension-parameterized packages](https://github.com/pulumi/pulumi/pull/23579) | Present | Generator registration, protocol mapping, and deployment-scoped reference caching are covered end to end. |
+| [`multiArgumentInputs`](https://github.com/pulumi/pulumi/pull/23571) | Present | Schema-declared positional order and generated invoke signatures are covered end to end. |
 
 Provider findings are classified differently:
 

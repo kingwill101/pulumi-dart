@@ -19,6 +19,9 @@ mixin InvokeMixin {
   /// Active monitor RPC wrapper.
   Monitor get monitor;
 
+  /// Resolves a monitor package reference for this deployment.
+  Future<String?> resolvePackageRef(models.RegisterPackageRequest request);
+
   /// Invokes a provider function token and deserializes its return payload.
   ///
   /// [token] is typically in `pkg:module:function` form.
@@ -42,7 +45,7 @@ mixin InvokeMixin {
     applyRequestSourceMetadata(request, StackTrace.current);
 
     if (registerPackageRequest != null) {
-      final packageRef = await _resolvePackageRef(registerPackageRequest);
+      final packageRef = await resolvePackageRef(registerPackageRequest);
       if (packageRef != null) {
         request.packageRef = packageRef;
       }
@@ -75,14 +78,6 @@ mixin InvokeMixin {
       registerPackageRequest: registerPackageRequest,
     );
     return result.values.first as T;
-  }
-
-  /// Registers a package with the monitor and returns package reference.
-  Future<String?> _resolvePackageRef(
-    models.RegisterPackageRequest request,
-  ) async {
-    final response = await monitor.registerPackage(request.toProto());
-    return response.ref;
   }
 
   /// Deserializes monitor invoke responses using Pulumi wire semantics.
