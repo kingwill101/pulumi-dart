@@ -50,6 +50,7 @@ type dartProgramComponentArg struct {
 type dartProgramComponentInstance struct {
 	Name, LogicalName, Class string
 	PrefixLogicalName        bool
+	OmitRegistrationInputs   bool
 	Inputs                   []dartProgramResourceInput
 	Options                  []dartProgramResourceOption
 	Range                    *dartProgramResourceRange

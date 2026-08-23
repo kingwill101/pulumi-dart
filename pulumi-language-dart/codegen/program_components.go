@@ -98,7 +98,8 @@ func (lowerer programLowerer) componentInstance(
 	return dartProgramComponentInstance{
 		Name: lowerer.names[component.Name()], LogicalName: component.LogicalName(),
 		Class: component.DeclarationName(), Inputs: inputs, Options: options,
-		PrefixLogicalName: lowerer.componentMode,
-		Range:             rangeSpec,
+		PrefixLogicalName:      lowerer.componentMode,
+		OmitRegistrationInputs: len(declarations) > 0,
+		Range:                  rangeSpec,
 	}, declarations, nil
 }

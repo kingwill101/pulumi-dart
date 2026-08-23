@@ -35,11 +35,15 @@ func renderDartComponent(component dartProgramComponent) string {
 	}
 	fmt.Fprintf(&body, "\n  %s(String name, {", component.Name)
 	if len(component.Args) > 0 {
-		fmt.Fprintf(&body, "required %sArgs args, ", component.Name)
+		fmt.Fprintf(&body, "required %sArgs args, bool registerInputs = true, ", component.Name)
 	}
 	body.WriteString("pulumi.ComponentResourceOptions? options})\n      : super(")
 	fmt.Fprintf(&body, "%s, name, ", dartStringLiteral("components:index:"+component.Name))
-	body.WriteString("const {}, ")
+	if len(component.Args) > 0 {
+		body.WriteString("registerInputs ? pulumi.Input.mapToInputs(args.toMap()) : const {}, ")
+	} else {
+		body.WriteString("const {}, ")
+	}
 	body.WriteString("options) {\n")
 	body.WriteString(renderDartComponentStatements(component.Program))
 	for _, output := range component.Program.Outputs {
@@ -90,6 +94,9 @@ func renderDartComponentInstanceValue(component dartProgramComponentInstance, na
 	args := ""
 	if len(component.Inputs) > 0 {
 		args = fmt.Sprintf(", args: %sArgs(%s)", component.Class, fields.String())
+	}
+	if component.OmitRegistrationInputs {
+		args += ", registerInputs: false"
 	}
 	options := renderDartComponentOptions(component.Options)
 	return fmt.Sprintf("%s(%s%s%s)", component.Class, name, args, options)
