@@ -138,6 +138,7 @@ void main() {
       schemaPath: '/tmp/aws.schema.json',
       packagePath: '/tmp/aws',
       contentChanged: true,
+      versionChanged: false,
     );
 
     expect(
@@ -157,6 +158,7 @@ void main() {
       schemaPath: '/tmp/aws.schema.json',
       packagePath: '/tmp/aws',
       contentChanged: true,
+      versionChanged: true,
     );
 
     expect(

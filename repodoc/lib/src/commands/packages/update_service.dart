@@ -18,6 +18,7 @@ final class PackageUpdatePlan {
     required this.schemaPath,
     required this.packagePath,
     required this.contentChanged,
+    required this.versionChanged,
     this.dependencyPubspecPaths = const [],
   });
 
@@ -29,6 +30,7 @@ final class PackageUpdatePlan {
   final String schemaPath;
   final String packagePath;
   final bool contentChanged;
+  final bool versionChanged;
   final List<String> dependencyPubspecPaths;
 }
 
@@ -52,6 +54,7 @@ final class PackageUpdater {
       schemaPath: p.join(repositoryRoot.path, schemaPath),
       packagePath: p.dirname(p.join(repositoryRoot.path, packagePubspec)),
       contentChanged: report['upstream_checksum_changed'] == true,
+      versionChanged: report['upstream_version_changed'] == true,
       dependencyPubspecPaths: _exactDependencyPubspecs(
         provider,
         _string(report, 'local_version'),
@@ -60,7 +63,7 @@ final class PackageUpdater {
   }
 
   void validate(PackageUpdatePlan plan, {required bool allowSameVersion}) {
-    if (!plan.contentChanged) {
+    if (!plan.contentChanged && !plan.versionChanged) {
       throw StateError('${plan.provider} is already current.');
     }
     if (plan.upstreamVersion.isEmpty) {
