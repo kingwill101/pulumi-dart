@@ -189,13 +189,18 @@ final class UpstreamCheckCommand extends Command<int> {
   }
 
   String _terminalLink(String url, String label) {
-    if (!LinkComponent.isSupported) return '$label ($url)';
-    return LinkComponent(
-      url: url,
-      text: label,
-      styled: true,
-      renderConfig: io.renderConfig,
-    ).render();
+    final styledLabel = LinkComponent.isSupported
+        ? LinkComponent(
+            url: url,
+            text: label,
+            styled: true,
+            renderConfig: io.renderConfig,
+          ).render()
+        : Style().foreground(Colors.info).underline().render(label);
+    // ANSI support does not imply OSC-8 support. Keep the raw URL visible so
+    // terminals can apply their ordinary URL detection even when OSC-8 is not
+    // implemented or is disabled.
+    return '$styledLabel ($url)';
   }
 
   String _wrappedFinding(String summary) {
