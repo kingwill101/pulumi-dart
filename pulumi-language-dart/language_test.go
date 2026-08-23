@@ -41,6 +41,7 @@ var initialConformanceTests = []string{
 	"l1-empty",
 	"l1-config-types-primitive",
 	"l1-config-types-optional",
+	"l1-config-types-object",
 	"l1-keyword-overlap",
 	"l1-output-array",
 	"l1-output-bool",

@@ -65,3 +65,31 @@ func TestLowerDartProgramLengthCall(t *testing.T) {
 	require.NoError(t, err)
 	assert.Equal(t, "(['one', 'two']).length", result)
 }
+
+func TestLowerDartProgramIndexExpression(t *testing.T) {
+	t.Parallel()
+
+	expression := &model.IndexExpression{
+		Collection: &model.ObjectConsExpression{Items: []model.ObjectConsItem{{
+			Key:   &model.LiteralValueExpression{Value: cty.StringVal("answer")},
+			Value: &model.LiteralValueExpression{Value: cty.NumberIntVal(42)},
+		}}},
+		Key: &model.LiteralValueExpression{Value: cty.StringVal("answer")},
+	}
+	result, err := lowerDartProgramExpression(expression)
+	require.NoError(t, err)
+	assert.Equal(t, "({'answer': 42})['answer']", result)
+}
+
+func TestLowerDartProgramConditionalExpression(t *testing.T) {
+	t.Parallel()
+
+	expression := &model.ConditionalExpression{
+		Condition:   &model.LiteralValueExpression{Value: cty.True},
+		TrueResult:  &model.LiteralValueExpression{Value: cty.StringVal("yes")},
+		FalseResult: &model.LiteralValueExpression{Value: cty.StringVal("no")},
+	}
+	result, err := lowerDartProgramExpression(expression)
+	require.NoError(t, err)
+	assert.Equal(t, "(true ? 'yes' : 'no')", result)
+}

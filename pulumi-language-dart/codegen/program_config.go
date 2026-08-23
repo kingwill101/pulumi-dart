@@ -48,10 +48,15 @@ func dartConfigGetter(typ model.Type, required bool) (string, error) {
 	}
 	switch typ.(type) {
 	case *model.ListType, *model.TupleType, *model.SetType:
-		return prefix + "Object<List<Object?>>", nil
+		return prefix + "Object<List<dynamic>>", nil
 	case *model.MapType, *model.ObjectType:
-		return prefix + "Object<Map<String, Object?>>", nil
+		return prefix + "Object<Map<String, dynamic>>", nil
+	case *model.UnionType:
+		return prefix + "Object<dynamic>", nil
 	default:
+		if typ == model.DynamicType {
+			return prefix + "Object<dynamic>", nil
+		}
 		return "", fmt.Errorf("unsupported config type %v", typ)
 	}
 }

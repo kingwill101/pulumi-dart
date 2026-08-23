@@ -5,8 +5,8 @@ class GeneratedStack extends pulumi.Stack {
 
   GeneratedStack() {
     _outputProperties = [
-      pulumi.OutputProperty('output_true', pulumi.Output.create<Object?>(true)),
-      pulumi.OutputProperty('output_false', pulumi.Output.create<Object?>(false)),
+      pulumi.OutputProperty('output_true', pulumi.output(true).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('output_false', pulumi.output(false).apply<Object?>((value) => value)),
     ];
   }
 

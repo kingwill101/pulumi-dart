@@ -5,10 +5,10 @@ class GeneratedStack extends pulumi.Stack {
 
   GeneratedStack() {
     final config = pulumi.Config();
-    final names = config.getObject<List<Object?>>('names') ?? [null, 'hello', null];
+    final names = config.getObject<List<dynamic>>('names') ?? [null, 'hello', null];
 
     _outputProperties = [
-      pulumi.OutputProperty('namesLength', pulumi.Output.create<Object?>((names).length)),
+      pulumi.OutputProperty('namesLength', pulumi.output((names).length).apply<Object?>((value) => value)),
     ];
   }
 

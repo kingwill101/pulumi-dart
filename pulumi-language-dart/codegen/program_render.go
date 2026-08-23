@@ -28,7 +28,7 @@ func renderDartProgram(program dartProgram) []byte {
 	for _, output := range program.Outputs {
 		fmt.Fprintf(
 			&body,
-			"      pulumi.OutputProperty(%s, pulumi.Output.create<Object?>(%s)),\n",
+			"      pulumi.OutputProperty(%s, pulumi.output(%s).apply<Object?>((value) => value)),\n",
 			dartStringLiteral(output.Name),
 			output.Expression,
 		)

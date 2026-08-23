@@ -89,15 +89,18 @@ func (lowerer programLowerer) expression(expression model.Expression) (string, e
 		return lowerer.binaryExpression(expression)
 	case *model.FunctionCallExpression:
 		return lowerer.functionCallExpression(expression)
+	case *model.IndexExpression:
+		return lowerer.indexExpression(expression)
+	case *model.RelativeTraversalExpression:
+		return lowerer.relativeTraversalExpression(expression)
+	case *model.ConditionalExpression:
+		return lowerer.conditionalExpression(expression)
 	case *model.ScopeTraversalExpression:
-		if len(expression.Traversal) != 1 {
-			return "", fmt.Errorf("unsupported traversal %v", expression.Traversal)
-		}
 		name, ok := lowerer.names[expression.RootName]
 		if !ok {
 			return "", fmt.Errorf("unknown variable %q", expression.RootName)
 		}
-		return name, nil
+		return lowerDartTraversal(name, expression.Traversal[1:], false)
 	default:
 		return "", fmt.Errorf("unsupported expression %T", expression)
 	}

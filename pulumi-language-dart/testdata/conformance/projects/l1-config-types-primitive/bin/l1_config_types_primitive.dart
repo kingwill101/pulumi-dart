@@ -15,14 +15,14 @@ class GeneratedStack extends pulumi.Stack {
     final optionalBool = config.getBoolean('optionalBool') ?? false;
 
     _outputProperties = [
-      pulumi.OutputProperty('theNumber', pulumi.Output.create<Object?>((aNumber + 1.25))),
-      pulumi.OutputProperty('defaultNumber', pulumi.Output.create<Object?>((optionalNumber + 1.2))),
-      pulumi.OutputProperty('theInteger', pulumi.Output.create<Object?>((anInt + 4))),
-      pulumi.OutputProperty('defaultInteger', pulumi.Output.create<Object?>((optionalInt + 2))),
-      pulumi.OutputProperty('theString', pulumi.Output.create<Object?>((aString).toString() + ' World')),
-      pulumi.OutputProperty('defaultString', pulumi.Output.create<Object?>(optionalString)),
-      pulumi.OutputProperty('theBool', pulumi.Output.create<Object?>((!(aBool) && true))),
-      pulumi.OutputProperty('defaultBool', pulumi.Output.create<Object?>(optionalBool)),
+      pulumi.OutputProperty('theNumber', pulumi.output((aNumber + 1.25)).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('defaultNumber', pulumi.output((optionalNumber + 1.2)).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('theInteger', pulumi.output((anInt + 4)).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('defaultInteger', pulumi.output((optionalInt + 2)).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('theString', pulumi.output((aString).toString() + ' World').apply<Object?>((value) => value)),
+      pulumi.OutputProperty('defaultString', pulumi.output(optionalString).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('theBool', pulumi.output((!(aBool) && true)).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('defaultBool', pulumi.output(optionalBool).apply<Object?>((value) => value)),
     ];
   }
 

@@ -21,6 +21,11 @@ func (lowerer programLowerer) functionCallExpression(expression *model.FunctionC
 			return "", fmt.Errorf("length expects one argument")
 		}
 		return "(" + arguments[0] + ").length", nil
+	case "toJSON":
+		if len(arguments) != 1 {
+			return "", fmt.Errorf("toJSON expects one argument")
+		}
+		return "pulumi.jsonStringify(" + arguments[0] + ")", nil
 	default:
 		return "", fmt.Errorf("unsupported function %q", expression.Name)
 	}

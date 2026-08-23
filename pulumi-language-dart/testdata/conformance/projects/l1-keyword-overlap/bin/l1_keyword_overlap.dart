@@ -14,14 +14,14 @@ class GeneratedStack extends pulumi.Stack {
     final if_ = 'if_output_string';
 
     _outputProperties = [
-      pulumi.OutputProperty('class', pulumi.Output.create<Object?>(class_)),
-      pulumi.OutputProperty('export', pulumi.Output.create<Object?>(export)),
-      pulumi.OutputProperty('import', pulumi.Output.create<Object?>(import)),
-      pulumi.OutputProperty('mod', pulumi.Output.create<Object?>(mod)),
-      pulumi.OutputProperty('object', pulumi.Output.create<Object?>(object_)),
-      pulumi.OutputProperty('self', pulumi.Output.create<Object?>(self)),
-      pulumi.OutputProperty('this', pulumi.Output.create<Object?>(this_)),
-      pulumi.OutputProperty('if', pulumi.Output.create<Object?>(if_)),
+      pulumi.OutputProperty('class', pulumi.output(class_).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('export', pulumi.output(export).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('import', pulumi.output(import).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('mod', pulumi.output(mod).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('object', pulumi.output(object_).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('self', pulumi.output(self).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('this', pulumi.output(this_).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('if', pulumi.output(if_).apply<Object?>((value) => value)),
     ];
   }
 
