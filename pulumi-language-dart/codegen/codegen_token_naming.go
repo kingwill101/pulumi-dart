@@ -163,6 +163,3 @@ func canonicalFunctionNameFromToken(token string) string {
 func functionNameFromToken(token string, used map[string]int) string {
 	return claimUniqueIdentifierFromCandidates(functionNameCandidatesFromToken(token), used)
 }
-
-// propertyTypeSpec returns the effective type spec for a property, preferring
-// fully populated TypeSpec and falling back to DartType when needed.

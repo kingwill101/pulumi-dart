@@ -3,6 +3,8 @@ package codegen
 import (
 	"sort"
 	"strings"
+
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/lower"
 )
 
 func toSnakeCaseIdentifier(value string) string {
@@ -102,11 +104,11 @@ func objectClassNeedsObjectHelpers(objectClass packageObjectClassSpec) bool {
 		return true
 	}
 	for _, property := range objectClass.Properties {
-		typeSpec := propertyTypeSpec(property)
-		if typeSpecNeedsDecodeListHelper(typeSpec) || typeSpecNeedsDecodeMapHelper(typeSpec) {
+		typeSpec := lower.PropertyType(property)
+		if lower.NeedsDecodeListHelper(typeSpec) || lower.NeedsDecodeMapHelper(typeSpec) {
 			return true
 		}
-		if typeSpecNeedsEncodeListHelper(typeSpec) || typeSpecNeedsEncodeMapHelper(typeSpec) {
+		if lower.NeedsEncodeListHelper(typeSpec) || lower.NeedsEncodeMapHelper(typeSpec) {
 			return true
 		}
 	}
@@ -115,8 +117,8 @@ func objectClassNeedsObjectHelpers(objectClass packageObjectClassSpec) bool {
 
 func configNeedsObjectHelpers(configSpec packageConfigSpec) bool {
 	for _, property := range configSpec.Properties {
-		typeSpec := propertyTypeSpec(property)
-		if typeSpecNeedsDecodeListHelper(typeSpec) || typeSpecNeedsDecodeMapHelper(typeSpec) {
+		typeSpec := lower.PropertyType(property)
+		if lower.NeedsDecodeListHelper(typeSpec) || lower.NeedsDecodeMapHelper(typeSpec) {
 			return true
 		}
 	}

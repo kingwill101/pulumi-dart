@@ -66,3 +66,21 @@ func TestResourceRegisterOutputExpressionUsesDecoder(t *testing.T) {
 	require.Contains(t, actual, "registerOutput<Widget>('widget', decoder:")
 	require.Contains(t, actual, "Widget.fromMap")
 }
+
+func TestRegisterOutputAssignmentTargetAvoidsConstructorShadowing(t *testing.T) {
+	t.Parallel()
+
+	require.Equal(t, "this.name", RegisterOutputAssignmentTarget("name", "name", "args", "options"))
+	require.Equal(t, "this.options", RegisterOutputAssignmentTarget("options", "name", "args", "options"))
+	require.Equal(t, "state", RegisterOutputAssignmentTarget("state", "name", "args", "options"))
+	require.Equal(t, "this.state", RegisterOutputAssignmentTarget("state", "name", "state", "options"))
+}
+
+func TestConfigTypeRequiresJSONDecode(t *testing.T) {
+	t.Parallel()
+
+	require.True(t, ConfigTypeRequiresJSONDecode(schemair.Type{Kind: "array"}))
+	require.True(t, ConfigTypeRequiresJSONDecode(schemair.Type{Kind: "map"}))
+	require.True(t, ConfigTypeRequiresJSONDecode(schemair.Type{Kind: "object"}))
+	require.False(t, ConfigTypeRequiresJSONDecode(schemair.Type{Kind: "string"}))
+}

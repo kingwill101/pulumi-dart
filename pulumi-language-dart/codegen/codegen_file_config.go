@@ -26,7 +26,7 @@ func generatedConfigFile(
 	imports := []dartir.Import{}
 	configNeedsJSONDecode := false
 	for _, property := range spec.Config.Properties {
-		if configTypeRequiresJSONDecode(propertyTypeSpec(property)) {
+		if lower.ConfigTypeRequiresJSONDecode(lower.PropertyType(property)) {
 			configNeedsJSONDecode = true
 			break
 		}
