@@ -2087,16 +2087,18 @@ void main() {
       },
     );
 
-    test('Deserialize map skips internal fields', () {
+    test('Deserialize map preserves double-underscore-prefixed fields', () {
       final value = Value()
         ..structValue = (Struct()
           ..fields['foo'] = (Value()..stringValue = 'bar')
+          ..fields['__type'] = (Value()..stringValue = 'example')
           ..fields['__default'] = (Value()..stringValue = 'buzz'));
 
       final result = Deserializer.deserialize<Map<String, dynamic>>(value);
       expect(result.isKnown, isTrue);
       expect(result.value, containsPair('foo', 'bar'));
-      expect(result.value, isNot(contains('__default')));
+      expect(result.value, containsPair('__type', 'example'));
+      expect(result.value, containsPair('__default', 'buzz'));
     });
 
     test('Deserialize invalid asset shape throws', () {
