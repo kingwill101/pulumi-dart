@@ -8,7 +8,7 @@ class SubscriptionState {
   final pulumi.Input<bool>? allowTracing;
   /// The ID of the API which should be assigned to this Subscription. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Only one of `product_id` and `api_id` can be set. If both are missing `/apis` scope is used for the subscription and all apis are accessible.
+  /// &gt; **Note:** Only one of `productId` and `apiId` can be set. If both are missing `/apis` scope is used for the subscription and all apis are accessible.
   final pulumi.Input<String>? apiId;
   /// The name of the API Management Service where this Subscription should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiManagementName;
@@ -18,7 +18,7 @@ class SubscriptionState {
   final pulumi.Input<String>? primaryKey;
   /// The ID of the Product which should be assigned to this Subscription. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Only one of `product_id` and `api_id` can be set. If both are missing `all_apis` scope is used for the subscription.
+  /// &gt; **Note:** Only one of `productId` and `apiId` can be set. If both are missing `allApis` scope is used for the subscription.
   final pulumi.Input<String>? productId;
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
@@ -89,4 +89,3 @@ class SubscriptionState {
     );
   }
 }
-

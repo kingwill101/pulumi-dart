@@ -8,11 +8,11 @@ import 'get_frontdoor_origin_group_load_balancing.dart';
 class GetFrontdoorOriginGroupResult {
   /// Specifies the ID of the Front Door Profile within which this Front Door Origin Group exists.
   final String cdnFrontdoorProfileId;
-  /// A `health_probe` block as defined below.
+  /// A `healthProbe` block as defined below.
   final List<GetFrontdoorOriginGroupHealthProbe> healthProbes;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// A `load_balancing` block as defined below.
+  /// A `loadBalancing` block as defined below.
   final List<GetFrontdoorOriginGroupLoadBalancing> loadBalancings;
   final String name;
   final String profileName;
@@ -23,9 +23,9 @@ class GetFrontdoorOriginGroupResult {
 
   /// Creates a new [GetFrontdoorOriginGroupResult].
   /// [cdnFrontdoorProfileId] Specifies the ID of the Front Door Profile within which this Front Door Origin Group exists.
-  /// [healthProbes] A `health_probe` block as defined below.
+  /// [healthProbes] A `healthProbe` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [loadBalancings] A `load_balancing` block as defined below.
+  /// [loadBalancings] A `loadBalancing` block as defined below.
   /// [name] Required.
   /// [profileName] Required.
   /// [resourceGroupName] Required.
@@ -71,4 +71,3 @@ class GetFrontdoorOriginGroupResult {
     );
   }
 }
-

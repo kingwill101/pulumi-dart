@@ -1,3 +1,4 @@
+export 'index/provider_enhanced_validation.dart';
 export 'index/provider_features.dart';
 export 'index/provider_features_api_management.dart';
 export 'index/provider_features_app_configuration.dart';

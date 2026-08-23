@@ -143,6 +143,37 @@ import 'vmware_replication_policy_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "East US"
+/// }
+/// resource "azure_recoveryservices_vault" "example" {
+///   name                = "example-recovery-vault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_siterecovery_vmwarereplicationpolicy" "example" {
+///   name                                                 = "example-policy"
+///   recovery_vault_id                                    = azure_recoveryservices_vault.example.id
+///   recovery_point_retention_in_minutes                  = 1440
+///   application_consistent_snapshot_frequency_in_minutes = 240
+/// }
+/// resource "azure_siterecovery_vmwarereplicationpolicyassociation" "example" {
+///   name              = "example-association"
+///   recovery_vault_id = azure_recoveryservices_vault.example.id
+///   policy_id         = azure_siterecovery_vmwarereplicationpolicy.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -157,8 +188,8 @@ import 'vmware_replication_policy_association_state.dart';
 /// import com.pulumi.azure.siterecovery.VMWareReplicationPolicyArgs;
 /// import com.pulumi.azure.siterecovery.VmwareReplicationPolicyAssociation;
 /// import com.pulumi.azure.siterecovery.VmwareReplicationPolicyAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

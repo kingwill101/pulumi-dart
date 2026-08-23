@@ -91,4 +91,3 @@ class IdentityProviderAadb2cState {
     );
   }
 }
-

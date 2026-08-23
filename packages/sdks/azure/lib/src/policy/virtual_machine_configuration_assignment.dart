@@ -44,7 +44,7 @@ import 'virtual_machine_configuration_assignment_state.dart';
 ///     name: "examplevm",
 ///     resourceGroupName: example.name,
 ///     location: example.location,
-///     size: "Standard_F2",
+///     size: "Standard_D4_v5",
 ///     adminUsername: "adminuser",
 ///     adminPassword: "P@$$w0rd1234!",
 ///     networkInterfaceIds: [exampleNetworkInterface.id],
@@ -132,7 +132,7 @@ import 'virtual_machine_configuration_assignment_state.dart';
 ///     name="examplevm",
 ///     resource_group_name=example.name,
 ///     location=example.location,
-///     size="Standard_F2",
+///     size="Standard_D4_v5",
 ///     admin_username="adminuser",
 ///     admin_password="P@$$w0rd1234!",
 ///     network_interface_ids=[example_network_interface.id],
@@ -244,7 +244,7 @@ import 'virtual_machine_configuration_assignment_state.dart';
 ///         Name = "examplevm",
 ///         ResourceGroupName = example.Name,
 ///         Location = example.Location,
-///         Size = "Standard_F2",
+///         Size = "Standard_D4_v5",
 ///         AdminUsername = "adminuser",
 ///         AdminPassword = "P@$$w0rd1234!",
 ///         NetworkInterfaceIds = new[]
@@ -382,7 +382,7 @@ import 'virtual_machine_configuration_assignment_state.dart';
 /// 			Name:              pulumi.String("examplevm"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			Size:              pulumi.String("Standard_F2"),
+/// 			Size:              pulumi.String("Standard_D4_v5"),
 /// 			AdminUsername:     pulumi.String("adminuser"),
 /// 			AdminPassword:     pulumi.String("P@$$w0rd1234!"),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
@@ -454,6 +454,97 @@ import 'virtual_machine_configuration_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-gca"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "internal"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "example" {
+///   name                = "example-nic"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   ip_configurations {
+///     name                          = "internal"
+///     subnet_id                     = azure_network_subnet.example.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_windowsvirtualmachine" "example" {
+///   name                  = "examplevm"
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   location              = azure_core_resourcegroup.example.location
+///   size                  = "Standard_D4_v5"
+///   admin_username        = "adminuser"
+///   admin_password        = "P@$$w0rd1234!"
+///   network_interface_ids = [azure_network_networkinterface.example.id]
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   os_disk = {
+///     caching              = "ReadWrite"
+///     storage_account_type = "Standard_LRS"
+///   }
+///   source_image_reference = {
+///     publisher = "MicrosoftWindowsServer"
+///     offer     = "WindowsServer"
+///     sku       = "2019-Datacenter"
+///     version   = "latest"
+///   }
+/// }
+/// resource "azure_compute_extension" "example" {
+///   name                       = "AzurePolicyforWindows"
+///   virtual_machine_id         = azure_compute_windowsvirtualmachine.example.id
+///   publisher                  = "Microsoft.GuestConfiguration"
+///   type                       = "ConfigurationforWindows"
+///   type_handler_version       = "1.29"
+///   auto_upgrade_minor_version = "true"
+/// }
+/// resource "azure_policy_virtualmachineconfigurationassignment" "example" {
+///   name               = "AzureWindowsBaseline"
+///   location           = azure_compute_windowsvirtualmachine.example.location
+///   virtual_machine_id = azure_compute_windowsvirtualmachine.example.id
+///   configuration = {
+///     assignment_type = "ApplyAndMonitor"
+///     version         = "1.*"
+///     parameters = [{
+///       "name"  = "Minimum Password Length;ExpectedValue"
+///       "value" = "16"
+///       }, {
+///       "name"  = "Minimum Password Age;ExpectedValue"
+///       "value" = "0"
+///       }, {
+///       "name"  = "Maximum Password Age;ExpectedValue"
+///       "value" = "30,45"
+///       }, {
+///       "name"  = "Enforce Password History;ExpectedValue"
+///       "value" = "10"
+///       }, {
+///       "name"  = "Password Must Meet Complexity Requirements;ExpectedValue"
+///       "value" = "1"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -479,8 +570,9 @@ import 'virtual_machine_configuration_assignment_state.dart';
 /// import com.pulumi.azure.policy.VirtualMachineConfigurationAssignment;
 /// import com.pulumi.azure.policy.VirtualMachineConfigurationAssignmentArgs;
 /// import com.pulumi.azure.policy.inputs.VirtualMachineConfigurationAssignmentConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.policy.inputs.VirtualMachineConfigurationAssignmentConfigurationParameterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -526,7 +618,7 @@ import 'virtual_machine_configuration_assignment_state.dart';
 ///             .name("examplevm")
 ///             .resourceGroupName(example.name())
 ///             .location(example.location())
-///             .size("Standard_F2")
+///             .size("Standard_D4_v5")
 ///             .adminUsername("adminuser")
 ///             .adminPassword("P@$$w0rd1234!")
 ///             .networkInterfaceIds(exampleNetworkInterface.id())
@@ -631,7 +723,7 @@ import 'virtual_machine_configuration_assignment_state.dart';
 ///       name: examplevm
 ///       resourceGroupName: ${example.name}
 ///       location: ${example.location}
-///       size: Standard_F2
+///       size: Standard_D4_v5
 ///       adminUsername: adminuser
 ///       adminPassword: P@$$w0rd1234!
 ///       networkInterfaceIds:

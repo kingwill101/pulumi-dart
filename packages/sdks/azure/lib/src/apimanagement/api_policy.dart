@@ -116,6 +116,29 @@ import 'api_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getapi" "example" {
+///   name                = "my-api"
+///   api_management_name = "example-apim"
+///   resource_group_name = "search-service"
+///   revision            = "2"
+/// }
+///
+/// resource "azure_apimanagement_apipolicy" "example" {
+///   api_name            = data.azure_apimanagement_getapi.example.name
+///   api_management_name = data.azure_apimanagement_getapi.example.api_management_name
+///   resource_group_name = data.azure_apimanagement_getapi.example.resource_group_name
+///   xml_content         = "<policies>\n  <inbound>\n    <find-and-replace from=\\\"xyz\\\" to=\\\"abc\\\" />\n  </inbound>\n</policies>\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +149,8 @@ import 'api_policy_state.dart';
 /// import com.pulumi.azure.apimanagement.inputs.GetApiArgs;
 /// import com.pulumi.azure.apimanagement.ApiPolicy;
 /// import com.pulumi.azure.apimanagement.ApiPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

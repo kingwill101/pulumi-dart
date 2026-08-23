@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetDelimitedTextAzureBlobFsLocation {
-  /// Is the `file_system` using dynamic expression, function or system variables? Defaults to `false`.
+  /// Is the `fileSystem` using dynamic expression, function or system variables? Defaults to `false`.
   final pulumi.Input<bool>? dynamicFileSystemEnabled;
   /// Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
   final pulumi.Input<bool>? dynamicFilenameEnabled;
@@ -17,7 +17,7 @@ class DatasetDelimitedTextAzureBlobFsLocation {
   final pulumi.Input<String>? path;
 
   /// Creates a new [DatasetDelimitedTextAzureBlobFsLocation].
-  /// [dynamicFileSystemEnabled] Is the `file_system` using dynamic expression, function or system variables? Defaults to `false`.
+  /// [dynamicFileSystemEnabled] Is the `fileSystem` using dynamic expression, function or system variables? Defaults to `false`.
   /// [dynamicFilenameEnabled] Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
   /// [dynamicPathEnabled] Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
   /// [fileSystem] The storage data lake gen2 file system on the Azure Blob Storage Account hosting the file.
@@ -54,4 +54,3 @@ class DatasetDelimitedTextAzureBlobFsLocation {
     );
   }
 }
-

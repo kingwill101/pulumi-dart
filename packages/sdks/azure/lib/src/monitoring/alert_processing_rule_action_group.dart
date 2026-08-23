@@ -287,6 +287,58 @@ import 'alert_processing_rule_action_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_monitoring_actiongroup" "example" {
+///   name                = "example-action-group"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   short_name          = "action"
+/// }
+/// resource "azure_monitoring_alertprocessingruleactiongroup" "example" {
+///   name                 = "example"
+///   resource_group_name  = "example"
+///   scopes               = [azure_core_resourcegroup.example.id]
+///   add_action_group_ids = [azure_monitoring_actiongroup.example.id]
+///   condition = {
+///     target_resource_type = {
+///       operator = "Equals"
+///       values   = ["Microsoft.Compute/VirtualMachines"]
+///     }
+///     severity = {
+///       operator = "Equals"
+///       values   = ["Sev0", "Sev1", "Sev2"]
+///     }
+///   }
+///   schedule = {
+///     effective_from  = "2022-01-01T01:02:03"
+///     effective_until = "2022-02-02T01:02:03"
+///     time_zone       = "Pacific Standard Time"
+///     recurrence = {
+///       dailies = [{
+///         "startTime" = "17:00:00"
+///         "endTime"   = "09:00:00"
+///       }]
+///       weeklies = [{
+///         "daysOfWeeks" = ["Saturday", "Sunday"]
+///       }]
+///     }
+///   }
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -304,8 +356,10 @@ import 'alert_processing_rule_action_group_state.dart';
 /// import com.pulumi.azure.monitoring.inputs.AlertProcessingRuleActionGroupConditionSeverityArgs;
 /// import com.pulumi.azure.monitoring.inputs.AlertProcessingRuleActionGroupScheduleArgs;
 /// import com.pulumi.azure.monitoring.inputs.AlertProcessingRuleActionGroupScheduleRecurrenceArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.monitoring.inputs.AlertProcessingRuleActionGroupScheduleRecurrenceDailyArgs;
+/// import com.pulumi.azure.monitoring.inputs.AlertProcessingRuleActionGroupScheduleRecurrenceWeeklyArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -52,7 +52,6 @@ import 'deployment_web_application_firewall.dart';
 ///     resourceGroupName: example.name,
 ///     sku: "standardv3_Monthly",
 ///     location: example.location,
-///     diagnoseSupportEnabled: true,
 ///     automaticUpgradeChannel: "stable",
 ///     frontendPublic: {
 ///         ipAddresses: [examplePublicIp.id],
@@ -102,7 +101,6 @@ import 'deployment_web_application_firewall.dart';
 ///     resource_group_name=example.name,
 ///     sku="standardv3_Monthly",
 ///     location=example.location,
-///     diagnose_support_enabled=True,
 ///     automatic_upgrade_channel="stable",
 ///     frontend_public={
 ///         "ip_addresses": [example_public_ip.id],
@@ -183,7 +181,6 @@ import 'deployment_web_application_firewall.dart';
 ///         ResourceGroupName = example.Name,
 ///         Sku = "standardv3_Monthly",
 ///         Location = example.Location,
-///         DiagnoseSupportEnabled = true,
 ///         AutomaticUpgradeChannel = "stable",
 ///         FrontendPublic = new Azure.Nginx.Inputs.DeploymentFrontendPublicArgs
 ///         {
@@ -275,7 +272,6 @@ import 'deployment_web_application_firewall.dart';
 /// 			ResourceGroupName:       example.Name,
 /// 			Sku:                     pulumi.String("standardv3_Monthly"),
 /// 			Location:                example.Location,
-/// 			DiagnoseSupportEnabled:  pulumi.Bool(true),
 /// 			AutomaticUpgradeChannel: pulumi.String("stable"),
 /// 			FrontendPublic: &nginx.DeploymentFrontendPublicArgs{
 /// 				IpAddresses: pulumi.StringArray{
@@ -295,6 +291,64 @@ import 'deployment_web_application_firewall.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   allocation_method   = "Static"
+///   sku                 = "Standard"
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+///   delegations {
+///     name = "delegation"
+///     service_delegation = {
+///       name    = "NGINX.NGINXPLUS/nginxDeployments"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+///     }
+///   }
+/// }
+/// resource "azure_nginx_deployment" "example" {
+///   name                      = "example-nginx"
+///   resource_group_name       = azure_core_resourcegroup.example.name
+///   sku                       = "standardv3_Monthly"
+///   location                  = azure_core_resourcegroup.example.location
+///   automatic_upgrade_channel = "stable"
+///   frontend_public = {
+///     ip_addresses = [azure_network_publicip.example.id]
+///   }
+///   network_interfaces {
+///     subnet_id = azure_network_subnet.example.id
+///   }
+///   capacity = 20
+///   email    = "user@test.com"
 /// }
 /// ```
 /// ```java
@@ -317,8 +371,8 @@ import 'deployment_web_application_firewall.dart';
 /// import com.pulumi.azure.nginx.DeploymentArgs;
 /// import com.pulumi.azure.nginx.inputs.DeploymentFrontendPublicArgs;
 /// import com.pulumi.azure.nginx.inputs.DeploymentNetworkInterfaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -370,7 +424,6 @@ import 'deployment_web_application_firewall.dart';
 ///             .resourceGroupName(example.name())
 ///             .sku("standardv3_Monthly")
 ///             .location(example.location())
-///             .diagnoseSupportEnabled(true)
 ///             .automaticUpgradeChannel("stable")
 ///             .frontendPublic(DeploymentFrontendPublicArgs.builder()
 ///                 .ipAddresses(examplePublicIp.id())
@@ -435,7 +488,6 @@ import 'deployment_web_application_firewall.dart';
 ///       resourceGroupName: ${example.name}
 ///       sku: standardv3_Monthly
 ///       location: ${example.location}
-///       diagnoseSupportEnabled: true
 ///       automaticUpgradeChannel: stable
 ///       frontendPublic:
 ///         ipAddresses:
@@ -462,7 +514,7 @@ import 'deployment_web_application_firewall.dart';
 /// $ pulumi import azure:nginx/deployment:Deployment example /subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/group1/providers/Nginx.NginxPlus/nginxDeployments/dep1
 /// ```
 class DeploymentType extends pulumi.CustomResource {
-  /// An `auto_scale_profile` block as defined below.
+  /// An `autoScaleProfile` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> autoScaleProfiles;
   /// Specify the automatic upgrade channel for the NGINX deployment. Defaults to `stable`. The possible values are `stable` and `preview`.
   late final pulumi.Output<String?> automaticUpgradeChannel;
@@ -472,13 +524,12 @@ class DeploymentType extends pulumi.CustomResource {
   late final pulumi.Output<int?> capacity;
   /// The dataplane API endpoint of the NGINX Deployment.
   late final pulumi.Output<String> dataplaneApiEndpoint;
-  /// Should the metrics be exported to Azure Monitor?
   late final pulumi.Output<bool?> diagnoseSupportEnabled;
   /// Specify the preferred support contact email address for receiving alerts and notifications.
   late final pulumi.Output<String?> email;
-  /// One or more `frontend_private` blocks as defined below.
+  /// One or more `frontendPrivate` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> frontendPrivates;
-  /// A `frontend_public` block as defined below.
+  /// A `frontendPublic` block as defined below.
   late final pulumi.Output<DeploymentFrontendPublic?> frontendPublic;
   /// An `identity` block as defined below.
   late final pulumi.Output<DeploymentIdentity?> identity;
@@ -490,7 +541,7 @@ class DeploymentType extends pulumi.CustomResource {
   late final pulumi.Output<String> managedResourceGroup;
   /// The name which should be used for this NGINX Deployment. Changing this forces a new NGINX Deployment to be created.
   late final pulumi.Output<String> name;
-  /// One or more `network_interface` blocks as defined below.
+  /// One or more `networkInterface` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> networkInterfaces;
   /// The version of the NGINX Deployment.
   late final pulumi.Output<String> nginxVersion;
@@ -500,11 +551,11 @@ class DeploymentType extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** For a list of available SKUs, please reference the [NGINXaaS for Azure documentation](https://docs.nginx.com/nginxaas/azure/billing/overview)
   ///
-  /// &gt; **Note:** If you are setting the `sku` to `basic_Monthly`, you cannot specify a `capacity` or `auto_scale_profile`; basic plans do not support scaling. Other `sku`s require either `capacity` or `auto_scale_profile`. If you're using `basic_Monthly` with deployments created before v4.0, you may need to use Terraform's `ignore_changes` functionality to ignore changes to the `capacity` field.
+  /// &gt; **Note:** If you are setting the `sku` to `basic_Monthly`, you cannot specify a `capacity` or `autoScaleProfile`; basic plans do not support scaling. Other `sku`s require either `capacity` or `autoScaleProfile`. If you're using `basic_Monthly` with deployments created before v4.0, you may need to use Terraform's `ignoreChanges` functionality to ignore changes to the `capacity` field.
   late final pulumi.Output<String> sku;
   /// A mapping of tags which should be assigned to the NGINX Deployment.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A `web_application_firewall` blocks as defined below.
+  /// A `webApplicationFirewall` blocks as defined below.
   late final pulumi.Output<DeploymentWebApplicationFirewall?> webApplicationFirewall;
 
   /// Creates a new [DeploymentType].

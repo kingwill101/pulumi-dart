@@ -5,7 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesClusterNodePoolKubeletConfig {
   /// Specifies the allow list of unsafe sysctls command or patterns (ending in `*`).
   final pulumi.Input<List<String>>? allowedUnsafeSysctls;
-  /// Specifies the maximum number of container log files that can be present for a container. must be at least 2.
+  /// Specifies the maximum number of container log files that can be present for a container. Must be at least 2.
+  final pulumi.Input<int>? containerLogMaxFiles;
   final pulumi.Input<int>? containerLogMaxLine;
   /// Specifies the maximum size (e.g. 10MB) of container log file before it is rotated.
   final pulumi.Input<int>? containerLogMaxSizeMb;
@@ -26,7 +27,8 @@ class KubernetesClusterNodePoolKubeletConfig {
 
   /// Creates a new [KubernetesClusterNodePoolKubeletConfig].
   /// [allowedUnsafeSysctls] Specifies the allow list of unsafe sysctls command or patterns (ending in `*`).
-  /// [containerLogMaxLine] Specifies the maximum number of container log files that can be present for a container. must be at least 2.
+  /// [containerLogMaxFiles] Specifies the maximum number of container log files that can be present for a container. Must be at least 2.
+  /// [containerLogMaxLine] Optional.
   /// [containerLogMaxSizeMb] Specifies the maximum size (e.g. 10MB) of container log file before it is rotated.
   /// [cpuCfsQuotaEnabled] Is CPU CFS quota enforcement for containers enabled? Defaults to `true`.
   /// [cpuCfsQuotaPeriod] Specifies the CPU CFS quota period value.
@@ -37,6 +39,7 @@ class KubernetesClusterNodePoolKubeletConfig {
   /// [topologyManagerPolicy] Specifies the Topology Manager policy to use. Possible values are `none`, `best-effort`, `restricted` or `single-numa-node`.
   const KubernetesClusterNodePoolKubeletConfig({
     this.allowedUnsafeSysctls,
+    this.containerLogMaxFiles,
     this.containerLogMaxLine,
     this.containerLogMaxSizeMb,
     this.cpuCfsQuotaEnabled,
@@ -51,6 +54,7 @@ class KubernetesClusterNodePoolKubeletConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedUnsafeSysctls': ?allowedUnsafeSysctls,
+      'containerLogMaxFiles': ?containerLogMaxFiles,
       'containerLogMaxLine': ?containerLogMaxLine,
       'containerLogMaxSizeMb': ?containerLogMaxSizeMb,
       'cpuCfsQuotaEnabled': ?cpuCfsQuotaEnabled,
@@ -66,6 +70,7 @@ class KubernetesClusterNodePoolKubeletConfig {
   factory KubernetesClusterNodePoolKubeletConfig.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNodePoolKubeletConfig(
       allowedUnsafeSysctls: (() { final guardedValue = map['allowedUnsafeSysctls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      containerLogMaxFiles: (() { final guardedValue = map['containerLogMaxFiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       containerLogMaxLine: (() { final guardedValue = map['containerLogMaxLine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       containerLogMaxSizeMb: (() { final guardedValue = map['containerLogMaxSizeMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       cpuCfsQuotaEnabled: (() { final guardedValue = map['cpuCfsQuotaEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -78,4 +83,3 @@ class KubernetesClusterNodePoolKubeletConfig {
     );
   }
 }
-

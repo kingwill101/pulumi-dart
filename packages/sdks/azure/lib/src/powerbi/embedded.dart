@@ -99,6 +99,27 @@ import 'embedded_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_powerbi_embedded" "example" {
+///   name                = "examplepowerbi"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "A1"
+///   administrators      = ["azsdktest@microsoft.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +130,8 @@ import 'embedded_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.powerbi.Embedded;
 /// import com.pulumi.azure.powerbi.EmbeddedArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

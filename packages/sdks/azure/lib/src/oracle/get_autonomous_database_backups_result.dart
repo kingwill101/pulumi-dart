@@ -5,14 +5,14 @@ import 'get_autonomous_database_backups_autonomous_database_backup.dart';
 
 /// Result data returned by getAutonomousDatabaseBackups.
 class GetAutonomousDatabaseBackupsResult {
-  /// An `autonomous_database_backups` block as defined below.
+  /// An `autonomousDatabaseBackups` block as defined below.
   final List<GetAutonomousDatabaseBackupsAutonomousDatabaseBackup> autonomousDatabaseBackups;
   final String autonomousDatabaseId;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
   /// Creates a new [GetAutonomousDatabaseBackupsResult].
-  /// [autonomousDatabaseBackups] An `autonomous_database_backups` block as defined below.
+  /// [autonomousDatabaseBackups] An `autonomousDatabaseBackups` block as defined below.
   /// [autonomousDatabaseId] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   const GetAutonomousDatabaseBackupsResult({
@@ -37,4 +37,3 @@ class GetAutonomousDatabaseBackupsResult {
     );
   }
 }
-

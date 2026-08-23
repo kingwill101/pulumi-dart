@@ -8,23 +8,23 @@ import 'endpoint_custom_domain_user_managed_https.dart';
 class EndpointCustomDomainState {
   /// The ID of the CDN Endpoint. Changing this forces a new CDN Endpoint Custom Domain to be created.
   final pulumi.Input<String>? cdnEndpointId;
-  /// A `cdn_managed_https` block as defined below.
+  /// A `cdnManagedHttps` block as defined below.
   final pulumi.Input<EndpointCustomDomainCdnManagedHttps>? cdnManagedHttps;
   /// The host name of the custom domain. Changing this forces a new CDN Endpoint Custom Domain to be created.
   final pulumi.Input<String>? hostName;
   /// The name which should be used for this CDN Endpoint Custom Domain. Changing this forces a new CDN Endpoint Custom Domain to be created.
   final pulumi.Input<String>? name;
-  /// A `user_managed_https` block as defined below.
+  /// A `userManagedHttps` block as defined below.
   ///
-  /// &gt; **Note:** Only one of `cdn_managed_https` and `user_managed_https` can be specified.
+  /// &gt; **Note:** Only one of `cdnManagedHttps` and `userManagedHttps` can be specified.
   final pulumi.Input<EndpointCustomDomainUserManagedHttps>? userManagedHttps;
 
   /// Creates a new [EndpointCustomDomainState].
   /// [cdnEndpointId] The ID of the CDN Endpoint. Changing this forces a new CDN Endpoint Custom Domain to be created.
-  /// [cdnManagedHttps] A `cdn_managed_https` block as defined below.
+  /// [cdnManagedHttps] A `cdnManagedHttps` block as defined below.
   /// [hostName] The host name of the custom domain. Changing this forces a new CDN Endpoint Custom Domain to be created.
   /// [name] The name which should be used for this CDN Endpoint Custom Domain. Changing this forces a new CDN Endpoint Custom Domain to be created.
-  /// [userManagedHttps] A `user_managed_https` block as defined below.
+  /// [userManagedHttps] A `userManagedHttps` block as defined below.
   const EndpointCustomDomainState({
     this.cdnEndpointId,
     this.cdnManagedHttps,
@@ -53,4 +53,3 @@ class EndpointCustomDomainState {
     );
   }
 }
-

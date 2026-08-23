@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxWebAppAuthSettingsV2FacebookV2 {
   /// The App ID of the Facebook app used for login.
   final pulumi.Input<String> appId;
-  /// The app setting name that contains the `app_secret` value used for Facebook Login.
+  /// The app setting name that contains the `appSecret` value used for Facebook Login.
   ///
-  /// !&gt; **Note:** A setting with this name must exist in `app_settings` to function correctly.
+  /// &gt; **Note:** A setting with this name must exist in `appSettings` to function correctly.
   final pulumi.Input<String> appSecretSettingName;
   /// The version of the Facebook API to be used while logging in.
   final pulumi.Input<String>? graphApiVersion;
@@ -16,7 +16,7 @@ class LinuxWebAppAuthSettingsV2FacebookV2 {
 
   /// Creates a new [LinuxWebAppAuthSettingsV2FacebookV2].
   /// [appId] The App ID of the Facebook app used for login.
-  /// [appSecretSettingName] The app setting name that contains the `app_secret` value used for Facebook Login.
+  /// [appSecretSettingName] The app setting name that contains the `appSecret` value used for Facebook Login.
   /// [graphApiVersion] The version of the Facebook API to be used while logging in.
   /// [loginScopes] The list of scopes that should be requested as part of Facebook Login authentication.
   const LinuxWebAppAuthSettingsV2FacebookV2({
@@ -44,4 +44,3 @@ class LinuxWebAppAuthSettingsV2FacebookV2 {
     );
   }
 }
-

@@ -71,6 +71,24 @@ import 'get_mpa_account_scope_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_billing_getenrollmentaccountscope" "example" {
+///   billing_account_name    = "existing"
+///   enrollment_account_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_billing_getenrollmentaccountscope.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +97,8 @@ import 'get_mpa_account_scope_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.billing.BillingFunctions;
 /// import com.pulumi.azure.billing.inputs.GetEnrollmentAccountScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,6 +214,25 @@ Future<GetEnrollmentAccountScopeResult> getEnrollmentAccountScope(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_billing_getmcaaccountscope" "example" {
+///   billing_account_name = "e879cf0f-2b4d-5431-109a-f72fc9868693:024cabf4-7321-4cf9-be59-df0c77ca51de_2019-05-31"
+///   billing_profile_name = "PE2Q-NOIT-BG7-TGB"
+///   invoice_section_name = "MTT4-OBS7-PJA-TGB"
+/// }
+///
+/// output "id" {
+///   value = data.azure_billing_getmcaaccountscope.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -204,8 +241,8 @@ Future<GetEnrollmentAccountScopeResult> getEnrollmentAccountScope(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.billing.BillingFunctions;
 /// import com.pulumi.azure.billing.inputs.GetMcaAccountScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -319,6 +356,24 @@ Future<GetMcaAccountScopeResult> getMcaAccountScope(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_billing_getmpaaccountscope" "example" {
+///   billing_account_name = "e879cf0f-2b4d-5431-109a-f72fc9868693:024cabf4-7321-4cf9-be59-df0c77ca51de_2019-05-31"
+///   customer_name        = "2281f543-7321-4cf9-1e23-edb4Oc31a31c"
+/// }
+///
+/// output "id" {
+///   value = data.azure_billing_getmpaaccountscope.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -327,8 +382,8 @@ Future<GetMcaAccountScopeResult> getMcaAccountScope(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.billing.BillingFunctions;
 /// import com.pulumi.azure.billing.inputs.GetMpaAccountScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

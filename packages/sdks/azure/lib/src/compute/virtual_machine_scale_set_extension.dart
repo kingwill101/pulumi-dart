@@ -22,7 +22,7 @@ import 'virtual_machine_scale_set_extension_state.dart';
 ///     name: "example",
 ///     resourceGroupName: example.name,
 ///     location: example.location,
-///     sku: "Standard_F2",
+///     sku: "Standard_D4_v5",
 ///     adminUsername: "adminuser",
 ///     instances: 1,
 ///     sourceImageReference: {
@@ -65,7 +65,7 @@ import 'virtual_machine_scale_set_extension_state.dart';
 ///     name="example",
 ///     resource_group_name=example.name,
 ///     location=example.location,
-///     sku="Standard_F2",
+///     sku="Standard_D4_v5",
 ///     admin_username="adminuser",
 ///     instances=1,
 ///     source_image_reference={
@@ -114,7 +114,7 @@ import 'virtual_machine_scale_set_extension_state.dart';
 ///         Name = "example",
 ///         ResourceGroupName = example.Name,
 ///         Location = example.Location,
-///         Sku = "Standard_F2",
+///         Sku = "Standard_D4_v5",
 ///         AdminUsername = "adminuser",
 ///         Instances = 1,
 ///         SourceImageReference = new Azure.Compute.Inputs.LinuxVirtualMachineScaleSetSourceImageReferenceArgs
@@ -184,7 +184,7 @@ import 'virtual_machine_scale_set_extension_state.dart';
 /// 			Name:              pulumi.String("example"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			Sku:               pulumi.String("Standard_F2"),
+/// 			Sku:               pulumi.String("Standard_D4_v5"),
 /// 			AdminUsername:     pulumi.String("adminuser"),
 /// 			Instances:         pulumi.Int(1),
 /// 			SourceImageReference: &compute.LinuxVirtualMachineScaleSetSourceImageReferenceArgs{
@@ -233,6 +233,54 @@ import 'virtual_machine_scale_set_extension_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_compute_linuxvirtualmachinescaleset" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Standard_D4_v5"
+///   admin_username      = "adminuser"
+///   instances           = 1
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+///   network_interfaces {
+///     name = "example"
+///     ip_configurations {
+///       name = "internal"
+///     }
+///   }
+///   os_disk = {
+///     storage_account_type = "Standard_LRS"
+///     caching              = "ReadWrite"
+///   }
+/// }
+/// resource "azure_compute_virtualmachinescalesetextension" "example" {
+///   name                         = "example"
+///   virtual_machine_scale_set_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///   publisher                    = "Microsoft.Azure.Extensions"
+///   type                         = "CustomScript"
+///   type_handler_version         = "2.0"
+///   settings = jsonencode({
+///     "commandToExecute" = "echo $HOSTNAME"
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -245,12 +293,13 @@ import 'virtual_machine_scale_set_extension_state.dart';
 /// import com.pulumi.azure.compute.LinuxVirtualMachineScaleSetArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetSourceImageReferenceArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetNetworkInterfaceArgs;
+/// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetOsDiskArgs;
 /// import com.pulumi.azure.compute.VirtualMachineScaleSetExtension;
 /// import com.pulumi.azure.compute.VirtualMachineScaleSetExtensionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -271,7 +320,7 @@ import 'virtual_machine_scale_set_extension_state.dart';
 ///             .name("example")
 ///             .resourceGroupName(example.name())
 ///             .location(example.location())
-///             .sku("Standard_F2")
+///             .sku("Standard_D4_v5")
 ///             .adminUsername("adminuser")
 ///             .instances(1)
 ///             .sourceImageReference(LinuxVirtualMachineScaleSetSourceImageReferenceArgs.builder()
@@ -321,7 +370,7 @@ import 'virtual_machine_scale_set_extension_state.dart';
 ///       name: example
 ///       resourceGroupName: ${example.name}
 ///       location: ${example.location}
-///       sku: Standard_F2
+///       sku: Standard_D4_v5
 ///       adminUsername: adminuser
 ///       instances: 1
 ///       sourceImageReference:
@@ -372,7 +421,7 @@ class VirtualMachineScaleSetExtension extends pulumi.CustomResource {
   late final pulumi.Output<bool?> automaticUpgradeEnabled;
   /// Should failures from the extension be suppressed? Possible values are `true` or `false`. Defaults to `false`.
   ///
-  /// &gt; **Note:** Operational failures such as not connecting to the VM will not be suppressed regardless of the `failure_suppression_enabled` value.
+  /// &gt; **Note:** Operational failures such as not connecting to the VM will not be suppressed regardless of the `failureSuppressionEnabled` value.
   late final pulumi.Output<bool?> failureSuppressionEnabled;
   /// A value which, when different to the previous value can be used to force-run the Extension even if the Extension Configuration hasn't changed.
   late final pulumi.Output<String?> forceUpdateTag;
@@ -380,11 +429,11 @@ class VirtualMachineScaleSetExtension extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A JSON String which specifies Sensitive Settings (such as Passwords) for the Extension.
   ///
-  /// &gt; **Note:** Keys within the `protected_settings` block are notoriously case-sensitive, where the casing required (e.g. TitleCase vs snakeCase) depends on the Extension being used. Please refer to the documentation for the specific Virtual Machine Extension you're looking to use for more information.
+  /// &gt; **Note:** Keys within the `protectedSettings` block are notoriously case-sensitive, where the casing required (e.g. TitleCase vs snakeCase) depends on the Extension being used. Please refer to the documentation for the specific Virtual Machine Extension you're looking to use for more information.
   late final pulumi.Output<String?> protectedSettings;
-  /// A `protected_settings_from_key_vault` block as defined below.
+  /// A `protectedSettingsFromKeyVault` block as defined below.
   ///
-  /// &gt; **Note:** `protected_settings_from_key_vault` cannot be used with `protected_settings`
+  /// &gt; **Note:** `protectedSettingsFromKeyVault` cannot be used with `protectedSettings`
   late final pulumi.Output<VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault?> protectedSettingsFromKeyVault;
   /// An ordered list of Extension names which this should be provisioned after.
   late final pulumi.Output<List<String>?> provisionAfterExtensions;

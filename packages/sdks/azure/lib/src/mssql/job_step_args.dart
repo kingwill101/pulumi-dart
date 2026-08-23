@@ -12,7 +12,7 @@ class JobStepArgs {
   final pulumi.Input<int>? initialRetryIntervalSeconds;
   /// The ID of the Elastic Job Credential to use when executing this Elastic Job Step. Omit this argument to run the step under the Job Agent's managed identity (user-assigned).
   ///
-  /// !&gt; **Note:** Once set, `job_credential_id` cannot be removed. Removing the credential will force a new resource to be created.
+  /// &gt; **Note:** Once set, `jobCredentialId` cannot be removed. Removing the credential will force a new resource to be created.
   final pulumi.Input<String>? jobCredentialId;
   /// The ID of the Elastic Job. Changing this forces a new Elastic Job Step to be created.
   final pulumi.Input<String> jobId;
@@ -24,11 +24,11 @@ class JobStepArgs {
   final pulumi.Input<String> jobTargetGroupId;
   /// The maximum retry interval in seconds. Defaults to `120`.
   ///
-  /// &gt; **Note:** `maximum_retry_interval_seconds` must be greater than `initial_retry_interval_seconds`.
+  /// &gt; **Note:** `maximumRetryIntervalSeconds` must be greater than `initialRetryIntervalSeconds`.
   final pulumi.Input<int>? maximumRetryIntervalSeconds;
   /// The name which should be used for this Elastic Job Step. Changing this forces a new Elastic Job Step to be created.
   final pulumi.Input<String>? name;
-  /// An `output_target` block as defined below.
+  /// An `outputTarget` block as defined below.
   final pulumi.Input<JobStepOutputTarget>? outputTarget;
   /// The number of retry attempts. Defaults to `10`.
   final pulumi.Input<int>? retryAttempts;
@@ -49,7 +49,7 @@ class JobStepArgs {
   /// [jobTargetGroupId] The ID of the Elastic Job Target Group.
   /// [maximumRetryIntervalSeconds] The maximum retry interval in seconds. Defaults to `120`.
   /// [name] The name which should be used for this Elastic Job Step. Changing this forces a new Elastic Job Step to be created.
-  /// [outputTarget] An `output_target` block as defined below.
+  /// [outputTarget] An `outputTarget` block as defined below.
   /// [retryAttempts] The number of retry attempts. Defaults to `10`.
   /// [retryIntervalBackoffMultiplier] The multiplier for time between retries. Defaults to `2.0`.
   /// [sqlScript] The T-SQL script to be executed by this Elastic Job Step.
@@ -103,4 +103,3 @@ class JobStepArgs {
     );
   }
 }
-

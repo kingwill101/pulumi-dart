@@ -9,17 +9,17 @@ class GetVolumeGroupOracleVolume {
   /// The ID of the Capacity Pool.
   final pulumi.Input<String> capacityPoolId;
   final pulumi.Input<List<GetVolumeGroupOracleVolumeDataProtectionReplication>> dataProtectionReplications;
-  /// A `data_protection_snapshot_policy` block as defined below.
+  /// A `dataProtectionSnapshotPolicy` block as defined below.
   final pulumi.Input<List<GetVolumeGroupOracleVolumeDataProtectionSnapshotPolicy>> dataProtectionSnapshotPolicies;
   /// The encryption key source.
   final pulumi.Input<String> encryptionKeySource;
-  /// A `export_policy_rule` block as defined below.
+  /// A `exportPolicyRule` block as defined below.
   final pulumi.Input<List<GetVolumeGroupOracleVolumeExportPolicyRule>> exportPolicyRules;
   /// Volume ID.
   final pulumi.Input<String> id;
   /// The Private Endpoint ID for Key Vault when using customer managed keys.
   final pulumi.Input<String> keyVaultPrivateEndpointId;
-  /// A `mount_ip_addresses` block as defined below.
+  /// A `mountIpAddresses` block as defined below.
   final pulumi.Input<List<String>> mountIpAddresses;
   /// The name of this Application Volume Group for Oracle application.
   final pulumi.Input<String> name;
@@ -52,12 +52,12 @@ class GetVolumeGroupOracleVolume {
   /// Creates a new [GetVolumeGroupOracleVolume].
   /// [capacityPoolId] The ID of the Capacity Pool.
   /// [dataProtectionReplications] Required.
-  /// [dataProtectionSnapshotPolicies] A `data_protection_snapshot_policy` block as defined below.
+  /// [dataProtectionSnapshotPolicies] A `dataProtectionSnapshotPolicy` block as defined below.
   /// [encryptionKeySource] The encryption key source.
-  /// [exportPolicyRules] A `export_policy_rule` block as defined below.
+  /// [exportPolicyRules] A `exportPolicyRule` block as defined below.
   /// [id] Volume ID.
   /// [keyVaultPrivateEndpointId] The Private Endpoint ID for Key Vault when using customer managed keys.
-  /// [mountIpAddresses] A `mount_ip_addresses` block as defined below.
+  /// [mountIpAddresses] A `mountIpAddresses` block as defined below.
   /// [name] The name of this Application Volume Group for Oracle application.
   /// [networkFeatures] Network feature in use at the time of volume creation.
   /// [protocols] A `protocols` block as defined below.
@@ -151,4 +151,3 @@ class GetVolumeGroupOracleVolume {
     );
   }
 }
-

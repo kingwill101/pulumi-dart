@@ -11,15 +11,15 @@ class BackupPolicyBlobStorageState {
   final pulumi.Input<String>? name;
   /// The duration of operational default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
   final pulumi.Input<String>? operationalDefaultRetentionDuration;
-  /// One or more `retention_rule` blocks as defined below. Changing this forces a new Backup Policy Blob Storage to be created.
+  /// One or more `retentionRule` blocks as defined below. Changing this forces a new Backup Policy Blob Storage to be created.
   ///
-  /// &gt; **Note:** Setting `retention_rule` also requires setting `vault_default_retention_duration`.
+  /// &gt; **Note:** Setting `retentionRule` also requires setting `vaultDefaultRetentionDuration`.
   final pulumi.Input<List<BackupPolicyBlobStorageRetentionRule>>? retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy Blob Storage to be created.
   final pulumi.Input<String>? timeZone;
   /// The duration of vault default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
   ///
-  /// &gt; **Note:** Setting `vault_default_retention_duration` also requires setting `backup_repeating_time_intervals`. At least one of `operational_default_retention_duration` or `vault_default_retention_duration` must be specified.
+  /// &gt; **Note:** Setting `vaultDefaultRetentionDuration` also requires setting `backupRepeatingTimeIntervals`. At least one of `operationalDefaultRetentionDuration` or `vaultDefaultRetentionDuration` must be specified.
   final pulumi.Input<String>? vaultDefaultRetentionDuration;
   /// The ID of the Backup Vault within which the Backup Policy Blob Storage should exist. Changing this forces a new Backup Policy Blob Storage to be created.
   final pulumi.Input<String>? vaultId;
@@ -28,7 +28,7 @@ class BackupPolicyBlobStorageState {
   /// [backupRepeatingTimeIntervals] Specifies a list of repeating time interval. It should follow `ISO 8601` repeating time interval. Changing this forces a new Backup Policy Blob Storage to be created.
   /// [name] The name which should be used for this Backup Policy Blob Storage. Changing this forces a new Backup Policy Blob Storage to be created.
   /// [operationalDefaultRetentionDuration] The duration of operational default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
-  /// [retentionRules] One or more `retention_rule` blocks as defined below. Changing this forces a new Backup Policy Blob Storage to be created.
+  /// [retentionRules] One or more `retentionRule` blocks as defined below. Changing this forces a new Backup Policy Blob Storage to be created.
   /// [timeZone] Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy Blob Storage to be created.
   /// [vaultDefaultRetentionDuration] The duration of vault default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
   /// [vaultId] The ID of the Backup Vault within which the Backup Policy Blob Storage should exist. Changing this forces a new Backup Policy Blob Storage to be created.
@@ -66,4 +66,3 @@ class BackupPolicyBlobStorageState {
     );
   }
 }
-

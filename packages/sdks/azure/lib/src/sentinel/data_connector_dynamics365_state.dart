@@ -39,4 +39,3 @@ class DataConnectorDynamics365State {
     );
   }
 }
-

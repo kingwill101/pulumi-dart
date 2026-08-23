@@ -8,7 +8,7 @@ import 'aad_diagnostic_setting_enabled_log.dart';
 /// {@endtemplate}
 /// {@macro pulumi_monitoring_aad_diagnostic_setting_aad_diagnostic_setting_args_doc}
 class AadDiagnosticSettingArgs {
-  /// One or more `enabled_log` blocks as defined below.
+  /// One or more `enabledLog` blocks as defined below.
   final pulumi.Input<List<AadDiagnosticSettingEnabledLog>>? enabledLogs;
   /// Specifies the ID of an Event Hub Namespace Authorization Rule used to send Diagnostics Data. Changing this forces a new resource to be created.
   ///
@@ -22,11 +22,11 @@ class AadDiagnosticSettingArgs {
   final pulumi.Input<String>? name;
   /// The ID of the Storage Account where logs should be sent. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** One of `eventhub_authorization_rule_id`, `log_analytics_workspace_id` and `storage_account_id` must be specified.
+  /// &gt; **Note:** One of `eventhubAuthorizationRuleId`, `logAnalyticsWorkspaceId` and `storageAccountId` must be specified.
   final pulumi.Input<String>? storageAccountId;
 
   /// Creates a new [AadDiagnosticSettingArgs].
-  /// [enabledLogs] One or more `enabled_log` blocks as defined below.
+  /// [enabledLogs] One or more `enabledLog` blocks as defined below.
   /// [eventhubAuthorizationRuleId] Specifies the ID of an Event Hub Namespace Authorization Rule used to send Diagnostics Data. Changing this forces a new resource to be created.
   /// [eventhubName] Specifies the name of the Event Hub where Diagnostics Data should be sent. If not specified, the default Event Hub will be used. Changing this forces a new resource to be created.
   /// [logAnalyticsWorkspaceId] Specifies the ID of a Log Analytics Workspace where Diagnostics Data should be sent.
@@ -63,4 +63,3 @@ class AadDiagnosticSettingArgs {
     );
   }
 }
-

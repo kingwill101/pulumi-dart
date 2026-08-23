@@ -8,19 +8,19 @@ import 'volume_create_source.dart';
 /// {@endtemplate}
 /// {@macro pulumi_elasticsan_volume_volume_args_doc}
 class VolumeArgs {
-  /// A `create_source` block as defined below. Changing this forces a new resource to be created.
+  /// A `createSource` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<VolumeCreateSource>? createSource;
   /// Specifies the name of this Elastic SAN Volume. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
   /// Specifies the size of the Elastic SAN Volume in GiB. The size should be within the remaining capacity of the parent Elastic SAN. Possible values are between `1` and `65536` (16 TiB).
   ///
-  /// &gt; **Note:** The size can only be increased. If `create_source` is specified, then the size must be equal to or greater than the source's size.
+  /// &gt; **Note:** The size can only be increased. If `createSource` is specified, then the size must be equal to or greater than the source's size.
   final pulumi.Input<int> sizeInGib;
   /// Specifies the Volume Group ID within which this Elastic SAN Volume should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> volumeGroupId;
 
   /// Creates a new [VolumeArgs].
-  /// [createSource] A `create_source` block as defined below. Changing this forces a new resource to be created.
+  /// [createSource] A `createSource` block as defined below. Changing this forces a new resource to be created.
   /// [name] Specifies the name of this Elastic SAN Volume. Changing this forces a new resource to be created.
   /// [sizeInGib] Specifies the size of the Elastic SAN Volume in GiB. The size should be within the remaining capacity of the parent Elastic SAN. Possible values are between `1` and `65536` (16 TiB).
   /// [volumeGroupId] Specifies the Volume Group ID within which this Elastic SAN Volume should exist. Changing this forces a new resource to be created.
@@ -49,4 +49,3 @@ class VolumeArgs {
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceAzureBotState {
   /// The CMK Key Vault Key URL that will be used to encrypt the Bot with the Customer Managed Encryption Key.
   ///
-  /// &gt; **Note:** In order to utilize CMEK, you must add the `Key Vault Crypto Service Encryption User` role to the Azure-defined `Bot Service CMEK Prod` Service Principal. You must also enable `soft_delete_enabled` and `purge_protection_enabled` on the `azure.keyvault.KeyVault` that `cmk_key_vault_key_url` refers to. [See Azure Documentation](https://learn.microsoft.com/en-us/azure/bot-service/bot-service-encryption?view=azure-bot-service-4.0#how-to-configure-your-azure-key-vault-instance)
+  /// &gt; **Note:** In order to utilize CMEK, you must add the `Key Vault Crypto Service Encryption User` role to the Azure-defined `Bot Service CMEK Prod` Service Principal. You must also enable `softDeleteEnabled` and `purgeProtectionEnabled` on the `azure.keyvault.KeyVault` that `cmkKeyVaultKeyUrl` refers to. [See Azure Documentation](https://learn.microsoft.com/en-us/azure/bot-service/bot-service-encryption?view=azure-bot-service-4.0#how-to-configure-your-azure-key-vault-instance)
   final pulumi.Input<String>? cmkKeyVaultKeyUrl;
   /// The Application Insights API Key to associate with this Azure Bot Service.
   final pulumi.Input<String>? developerAppInsightsApiKey;
@@ -35,6 +35,8 @@ class ServiceAzureBotState {
   /// The Tenant ID of the Microsoft App for this Azure Bot Service. Changing this forces a new resource to be created.
   final pulumi.Input<String>? microsoftAppTenantId;
   /// The Microsoft App Type for this Azure Bot Service. Possible values are `MultiTenant`, `SingleTenant` and `UserAssignedMSI`. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** Creation of `azure.bot.ServiceAzureBot` resources using the `MultiTenant` type is no longer supported by Azure, existing resources can continue using this type.
   final pulumi.Input<String>? microsoftAppType;
   /// The name which should be used for this Azure Bot Service. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -147,4 +149,3 @@ class ServiceAzureBotState {
     );
   }
 }
-

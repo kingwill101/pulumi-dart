@@ -352,7 +352,7 @@ import 'server_key_state.dart';
 /// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId: pulumi.String(exampleServer.Identity.ApplyT(func(identity postgresql.ServerIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Get"),
@@ -424,6 +424,71 @@ import 'server_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                     = "examplekv"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                 = "premium"
+///   purge_protection_enabled = true
+/// }
+/// resource "azure_keyvault_accesspolicy" "server" {
+///   key_vault_id       = azure_keyvault_keyvault.example.id
+///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///   object_id          = azure_postgresql_server.example.identity.principal_id
+///   key_permissions    = ["Get", "UnwrapKey", "WrapKey"]
+///   secret_permissions = ["Get"]
+/// }
+/// resource "azure_keyvault_accesspolicy" "client" {
+///   key_vault_id       = azure_keyvault_keyvault.example.id
+///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///   object_id          = data.azure_core_getclientconfig.current.object_id
+///   key_permissions    = ["Get", "Create", "Delete", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify", "GetRotationPolicy"]
+///   secret_permissions = ["Get"]
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_accesspolicy.client, azure_keyvault_accesspolicy.server]
+///   name         = "tfex-key"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_postgresql_server" "example" {
+///   name                         = "example-postgre-server"
+///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   administrator_login          = "psqladmin"
+///   administrator_login_password = "H@Sh1CoR3!"
+///   sku_name                     = "GP_Gen5_2"
+///   version                      = "11"
+///   storage_mb                   = 51200
+///   ssl_enforcement_enabled      = true
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_postgresql_serverkey" "example" {
+///   server_id        = azure_postgresql_server.example.id
+///   key_vault_key_id = azure_keyvault_key.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -445,8 +510,8 @@ import 'server_key_state.dart';
 /// import com.pulumi.azure.postgresql.ServerKey;
 /// import com.pulumi.azure.postgresql.ServerKeyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

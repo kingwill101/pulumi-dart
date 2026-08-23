@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationWinrmListener {
   /// The Secret URL of a Key Vault Certificate, which must be specified when protocol is set to `Https`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** This can be sourced from the `secret_id` field within the `azure.keyvault.Certificate` Resource.
+  /// &gt; **Note:** This can be sourced from the `secretId` field within the `azure.keyvault.Certificate` Resource.
   final pulumi.Input<String>? certificateUrl;
-  /// Specifies the protocol of listener. Possible values are `Http` or `Https`. Changing this forces a new resource to be created.
+  /// Specifies the protocol of listener. Possible values are `Http` and `Https`. Changing this forces a new resource to be created.
   final pulumi.Input<String> protocol;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationWinrmListener].
   /// [certificateUrl] The Secret URL of a Key Vault Certificate, which must be specified when protocol is set to `Https`. Changing this forces a new resource to be created.
-  /// [protocol] Specifies the protocol of listener. Possible values are `Http` or `Https`. Changing this forces a new resource to be created.
+  /// [protocol] Specifies the protocol of listener. Possible values are `Http` and `Https`. Changing this forces a new resource to be created.
   const OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationWinrmListener({
     this.certificateUrl,
     required this.protocol,
@@ -32,4 +32,3 @@ class OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationWinrmListen
     );
   }
 }
-

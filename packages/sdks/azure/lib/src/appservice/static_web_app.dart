@@ -88,6 +88,25 @@ import 'static_web_app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_staticwebapp" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +117,8 @@ import 'static_web_app_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.appservice.StaticWebApp;
 /// import com.pulumi.azure.appservice.StaticWebAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -161,9 +180,9 @@ class StaticWebApp extends pulumi.CustomResource {
   late final pulumi.Output<String> apiKey;
   /// A key-value pair of App Settings.
   ///
-  /// &gt; **Note:** If using the `api_key` to deploy a Static Web App from a CI/CD pipeline or other source, `repository_branch` and `repository_url` will get updated in Azure, but it is not possible to set `repository_token` in that case. Use a `lifecycle` block to `ignore_changes` for `repository_branch` and`repository_url` if that is your deployment scenario.
+  /// &gt; **Note:** If using the `apiKey` to deploy a Static Web App from a CI/CD pipeline or other source, `repositoryBranch` and `repositoryUrl` will get updated in Azure, but it is not possible to set `repositoryToken` in that case. Use a `lifecycle` block to `ignoreChanges` for `repositoryBranch` and`repositoryUrl` if that is your deployment scenario.
   late final pulumi.Output<Map<String, String>?> appSettings;
-  /// A `basic_auth` block as defined below.
+  /// A `basicAuth` block as defined below.
   late final pulumi.Output<StaticWebAppBasicAuth?> basicAuth;
   /// Should changes to the configuration file be permitted. Defaults to `true`.
   late final pulumi.Output<bool?> configurationFileChangesEnabled;
@@ -179,11 +198,11 @@ class StaticWebApp extends pulumi.CustomResource {
   late final pulumi.Output<bool?> previewEnvironmentsEnabled;
   /// Should public network access be enabled for the Static Web App. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-  /// Repository branch to use for the Static Web App. `repository_url` and `repository_token` must also be set.
+  /// Repository branch to use for the Static Web App. `repositoryUrl` and `repositoryToken` must also be set.
   late final pulumi.Output<String?> repositoryBranch;
-  /// Repository Token with `admin` privileges to use for the Static Web App. `repository_branch` and `repository_url` must also be set.
+  /// Repository Token with `admin` privileges to use for the Static Web App. `repositoryBranch` and `repositoryUrl` must also be set.
   late final pulumi.Output<String?> repositoryToken;
-  /// Repository URL to use for the Static Web App. `repository_branch` and `repository_token` must also be set.
+  /// Repository URL to use for the Static Web App. `repositoryBranch` and `repositoryToken` must also be set.
   late final pulumi.Output<String?> repositoryUrl;
   /// The name of the Resource Group where the Static Web App should exist. Changing this forces a new Static Web App to be created.
   late final pulumi.Output<String> resourceGroupName;

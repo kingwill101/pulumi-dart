@@ -18,9 +18,9 @@ class ManagedInstanceSecurityAlertPolicyState {
   final pulumi.Input<String>? resourceGroupName;
   /// Specifies the number of days to keep in the Threat Detection audit logs. Defaults to `0`.
   final pulumi.Input<int>? retentionDays;
-  /// Specifies the identifier key of the Threat Detection audit storage account. This is mandatory when you use `storage_endpoint` to specify a storage account blob endpoint.
+  /// Specifies the identifier key of the Threat Detection audit storage account. This is mandatory when you use `storageEndpoint` to specify a storage account blob endpoint.
   ///
-  /// &gt; **Note:** Please note that storage accounts configured with `shared_access_key_enabled = false` cannot be used to configure `azure.mssql.ManagedInstanceSecurityAlertPolicy` with `storage_endpoint` for now.
+  /// &gt; **Note:** Please note that storage accounts configured with `sharedAccessKeyEnabled = false` cannot be used to configure `azure.mssql.ManagedInstanceSecurityAlertPolicy` with `storageEndpoint` for now.
   final pulumi.Input<String>? storageAccountAccessKey;
   /// Specifies the blob storage endpoint (e.g. https://example.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
   final pulumi.Input<String>? storageEndpoint;
@@ -33,7 +33,7 @@ class ManagedInstanceSecurityAlertPolicyState {
   /// [managedInstanceName] Specifies the name of the MS SQL Managed Instance. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group that contains the MS SQL Managed Instance. Changing this forces a new resource to be created.
   /// [retentionDays] Specifies the number of days to keep in the Threat Detection audit logs. Defaults to `0`.
-  /// [storageAccountAccessKey] Specifies the identifier key of the Threat Detection audit storage account. This is mandatory when you use `storage_endpoint` to specify a storage account blob endpoint.
+  /// [storageAccountAccessKey] Specifies the identifier key of the Threat Detection audit storage account. This is mandatory when you use `storageEndpoint` to specify a storage account blob endpoint.
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. https://example.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
   const ManagedInstanceSecurityAlertPolicyState({
     this.disabledAlerts,
@@ -75,4 +75,3 @@ class ManagedInstanceSecurityAlertPolicyState {
     );
   }
 }
-

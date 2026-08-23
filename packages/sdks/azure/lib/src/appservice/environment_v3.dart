@@ -312,6 +312,69 @@ import 'environment_v3_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "exampleRG1"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+///   delegations {
+///     name = "Microsoft.Web.hostingEnvironments"
+///     service_delegation = {
+///       name    = "Microsoft.Web/hostingEnvironments"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
+///     }
+///   }
+/// }
+/// resource "azure_appservice_environmentv3" "example" {
+///   name                         = "example-asev3"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   subnet_id                    = azure_network_subnet.example.id
+///   internal_load_balancing_mode = "Web, Publishing"
+///   cluster_settings {
+///     name  = "DisableTls1.0"
+///     value = "1"
+///   }
+///   cluster_settings {
+///     name  = "InternalEncryption"
+///     value = "true"
+///   }
+///   cluster_settings {
+///     name  = "FrontEndSSLCipherSuiteOrder"
+///     value = "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+///   }
+///   tags = {
+///     "env"         = "production"
+///     "terraformed" = "true"
+///   }
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   name                       = "example"
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resourcegroup.example.location
+///   os_type                    = "Linux"
+///   sku_name                   = "I1v2"
+///   app_service_environment_id = azure_appservice_environmentv3.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -331,8 +394,8 @@ import 'environment_v3_state.dart';
 /// import com.pulumi.azure.appservice.inputs.EnvironmentV3ClusterSettingArgs;
 /// import com.pulumi.azure.appservice.ServicePlan;
 /// import com.pulumi.azure.appservice.ServicePlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -487,7 +550,7 @@ import 'environment_v3_state.dart';
 class EnvironmentV3 extends pulumi.CustomResource {
   /// Should new Private Endpoint Connections be allowed. Defaults to `true`.
   late final pulumi.Output<bool?> allowNewPrivateEndpointConnections;
-  /// Zero or more `cluster_setting` blocks as defined below.
+  /// Zero or more `clusterSetting` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> clusterSettings;
   /// This ASEv3 should use dedicated Hosts. Possible values are `2`. Changing this forces a new resource to be created.
   late final pulumi.Output<int?> dedicatedHostCount;
@@ -495,7 +558,7 @@ class EnvironmentV3 extends pulumi.CustomResource {
   late final pulumi.Output<String> dnsSuffix;
   /// The external inbound IP addresses of the App Service Environment V3.
   late final pulumi.Output<List<String>> externalInboundIpAddresses;
-  /// An `inbound_network_dependencies` block as defined below.
+  /// An `inboundNetworkDependencies` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> inboundNetworkDependencies;
   /// The internal inbound IP addresses of the App Service Environment V3.
   late final pulumi.Output<List<String>> internalInboundIpAddresses;
@@ -513,7 +576,7 @@ class EnvironmentV3 extends pulumi.CustomResource {
   late final pulumi.Output<String> pricingTier;
   /// Whether to enable remote debug. Defaults to `false`.
   late final pulumi.Output<bool?> remoteDebuggingEnabled;
-  /// The name of the Resource Group where the App Service Environment exists. Defaults to the Resource Group of the Subnet (specified by `subnet_id`). Changing this forces a new resource to be created.
+  /// The name of the Resource Group where the App Service Environment exists. Defaults to the Resource Group of the Subnet (specified by `subnetId`). Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// The ID of the Subnet which the App Service Environment should be connected to. Changing this forces a new resource to be created.
   ///
@@ -523,11 +586,11 @@ class EnvironmentV3 extends pulumi.CustomResource {
   late final pulumi.Output<String> subnetId;
   /// A mapping of tags to assign to the resource.
   ///
-  /// &gt; **Note:** The underlying API does not currently support changing Tags on this resource. Making changes in the portal for tags will cause Terraform to detect a change that will force a recreation of the ASEV3 unless `ignore_changes` lifecycle meta-argument is used.
+  /// &gt; **Note:** The underlying API does not currently support changing Tags on this resource. Making changes in the portal for tags will cause Terraform to detect a change that will force a recreation of the ASEV3 unless `ignoreChanges` lifecycle meta-argument is used.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Outbound addresses of Windows based Apps in this App Service Environment V3.
   late final pulumi.Output<List<String>> windowsOutboundIpAddresses;
-  /// Set to `true` to deploy the ASEv3 with availability zones supported. Zonal ASEs can be deployed in some regions, you can refer to [Availability Zone support for App Service Environments](https://docs.microsoft.com/azure/app-service/environment/zone-redundancy). You can only set either `dedicated_host_count` or `zone_redundant` but not both. Changing this forces a new resource to be created.
+  /// Set to `true` to deploy the ASEv3 with availability zones supported. Zonal ASEs can be deployed in some regions, you can refer to [Availability Zone support for App Service Environments](https://docs.microsoft.com/azure/app-service/environment/zone-redundancy). You can only set either `dedicatedHostCount` or `zoneRedundant` but not both. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Setting this value will provision 2 Physical Hosts for your App Service Environment V3, this is done at additional cost, please be aware of the pricing commitment in the [General Availability Notes](https://techcommunity.microsoft.com/t5/apps-on-azure/announcing-app-service-environment-v3-ga/ba-p/2517990)
   late final pulumi.Output<bool?> zoneRedundant;

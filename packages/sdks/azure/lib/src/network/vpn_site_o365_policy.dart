@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_site_o365_policy_traffic_category.dart';
 
 class VpnSiteO365Policy {
-  /// A `traffic_category` block as defined above.
+  /// A `trafficCategory` block as defined above.
   final pulumi.Input<VpnSiteO365PolicyTrafficCategory>? trafficCategory;
 
   /// Creates a new [VpnSiteO365Policy].
-  /// [trafficCategory] A `traffic_category` block as defined above.
+  /// [trafficCategory] A `trafficCategory` block as defined above.
   const VpnSiteO365Policy({
     this.trafficCategory,
   });
@@ -25,4 +25,3 @@ class VpnSiteO365Policy {
     );
   }
 }
-

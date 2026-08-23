@@ -13,7 +13,7 @@ class GetAccountResult {
   final String customQuestionAnsweringSearchServiceId;
   /// The subdomain name used for Entra ID token-based authentication.
   final String customSubdomainName;
-  /// A `customer_managed_key` block as defined below.
+  /// A `customerManagedKey` block as defined below.
   final List<GetAccountCustomerManagedKey> customerManagedKeys;
   /// Whether dynamic throttling is enabled for this Cognitive Services Account.
   final bool dynamicThrottlingEnabled;
@@ -40,9 +40,9 @@ class GetAccountResult {
   /// The website name of Metrics Advisor.
   final String metricsAdvisorWebsiteName;
   final String name;
-  /// A `network_acls` block as defined below.
+  /// A `networkAcls` block as defined below.
   final List<GetAccountNetworkAcl> networkAcls;
-  /// A `network_injection` block as defined below.
+  /// A `networkInjection` block as defined below.
   final List<GetAccountNetworkInjection> networkInjections;
   /// Whether outbound network access is restricted for the Cognitive Services Account.
   final bool outboundNetworkAccessRestricted;
@@ -67,7 +67,7 @@ class GetAccountResult {
   /// Creates a new [GetAccountResult].
   /// [customQuestionAnsweringSearchServiceId] The ID of the search service.
   /// [customSubdomainName] The subdomain name used for Entra ID token-based authentication.
-  /// [customerManagedKeys] A `customer_managed_key` block as defined below.
+  /// [customerManagedKeys] A `customerManagedKey` block as defined below.
   /// [dynamicThrottlingEnabled] Whether dynamic throttling is enabled for this Cognitive Services Account.
   /// [endpoint] The endpoint of the Cognitive Services Account.
   /// [fqdns] List of FQDNs allowed for the Cognitive Services Account.
@@ -81,8 +81,8 @@ class GetAccountResult {
   /// [metricsAdvisorSuperUserName] The super user of Metrics Advisor.
   /// [metricsAdvisorWebsiteName] The website name of Metrics Advisor.
   /// [name] Required.
-  /// [networkAcls] A `network_acls` block as defined below.
-  /// [networkInjections] A `network_injection` block as defined below.
+  /// [networkAcls] A `networkAcls` block as defined below.
+  /// [networkInjections] A `networkInjection` block as defined below.
   /// [outboundNetworkAccessRestricted] Whether outbound network access is restricted for the Cognitive Services Account.
   /// [primaryAccessKey] The primary access key of the Cognitive Services Account.
   /// [projectManagementEnabled] Whether project management is enabled.
@@ -190,4 +190,3 @@ class GetAccountResult {
     );
   }
 }
-

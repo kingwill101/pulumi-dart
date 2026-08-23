@@ -107,6 +107,29 @@ import 'custom_provider_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_core_customprovider" "example" {
+///   name                = "example_provider"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_types {
+///     name     = "dEf1"
+///     endpoint = "https://testendpoint.com/"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +141,8 @@ import 'custom_provider_state.dart';
 /// import com.pulumi.azure.core.CustomProvider;
 /// import com.pulumi.azure.core.CustomProviderArgs;
 /// import com.pulumi.azure.core.inputs.CustomProviderResourceTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -184,7 +207,7 @@ import 'custom_provider_state.dart';
 /// $ pulumi import azure:core/customProvider:CustomProvider example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.CustomProviders/resourceProviders/example
 /// ```
 class CustomProvider extends pulumi.CustomResource {
-  /// Any number of `action` block as defined below. One of `resource_type` or `action` must be specified.
+  /// Any number of `action` block as defined below. One of `resourceType` or `action` must be specified.
   late final pulumi.Output<List<Map<String, dynamic>>?> actions;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
@@ -192,7 +215,7 @@ class CustomProvider extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The name of the resource group in which to create the Custom Provider. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// Any number of `resource_type` block as defined below. One of `resource_type` or `action` must be specified.
+  /// Any number of `resourceType` block as defined below. One of `resourceType` or `action` must be specified.
   late final pulumi.Output<List<Map<String, dynamic>>?> resourceTypes;
   /// A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
   late final pulumi.Output<Map<String, String>?> tags;

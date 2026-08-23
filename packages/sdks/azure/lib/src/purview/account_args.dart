@@ -14,11 +14,11 @@ class AccountArgs {
   final pulumi.Input<String>? location;
   /// Whether the Purview Account should create a managed Event Hub Namespace. Defaults to `true`.
   ///
-  /// &gt; **Note:** `managed_event_hub_enabled` must be `false` in order to use a Kafka Configuration with the Purview Account.
+  /// &gt; **Note:** `managedEventHubEnabled` must be `false` in order to use a Kafka Configuration with the Purview Account.
   final pulumi.Input<bool>? managedEventHubEnabled;
   /// The name which should be used for the new Resource Group where Purview Account creates the managed resources. Changing this forces a new Purview Account to be created.
   ///
-  /// &gt; **Note:** `managed_resource_group_name` must be a new Resource Group.
+  /// &gt; **Note:** `managedResourceGroupName` must be a new Resource Group.
   final pulumi.Input<String>? managedResourceGroupName;
   /// The name which should be used for this Purview Account. Changing this forces a new Purview Account to be created.
   final pulumi.Input<String>? name;
@@ -75,4 +75,3 @@ class AccountArgs {
     );
   }
 }
-

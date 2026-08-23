@@ -6,7 +6,7 @@ import 'spring_cloud_application_insights_application_performance_monitoring_sta
 ///
 /// Manages a Spring Cloud Application Performance Monitoring resource for Application Insights.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApplicationInsightsApplicationPerformanceMonitoring` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApplicationInsightsApplicationPerformanceMonitoring` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -167,6 +167,42 @@ import 'spring_cloud_application_insights_application_performance_monitoring_sta
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "E0"
+/// }
+/// resource "azure_appplatform_springcloudapplicationinsightsapplicationperformancemonitoring" "example" {
+///   name                         = "example"
+///   spring_cloud_service_id      = azure_appplatform_springcloudservice.example.id
+///   connection_string            = azure_appinsights_insights.example.instrumentation_key
+///   globally_enabled             = true
+///   role_name                    = "test-role"
+///   role_instance                = "test-instance"
+///   sampling_percentage          = 50
+///   sampling_requests_per_second = 10
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +217,8 @@ import 'spring_cloud_application_insights_application_performance_monitoring_sta
 /// import com.pulumi.azure.appplatform.SpringCloudServiceArgs;
 /// import com.pulumi.azure.appplatform.SpringCloudApplicationInsightsApplicationPerformanceMonitoring;
 /// import com.pulumi.azure.appplatform.SpringCloudApplicationInsightsApplicationPerformanceMonitoringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

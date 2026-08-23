@@ -9,9 +9,9 @@ import 'image_os_disk.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_image_image_args_doc}
 class ImageArgs {
-  /// One or more `data_disk` blocks as defined below.
+  /// One or more `dataDisk` blocks as defined below.
   ///
-  /// &gt; **Note:** `data_disk` cannot be set together with `source_virtual_machine_id`.
+  /// &gt; **Note:** `dataDisk` cannot be set together with `sourceVirtualMachineId`.
   final pulumi.Input<List<ImageDataDisk>>? dataDisks;
   /// The Hyper-V Generation Type of the Virtual Machine created from the image as `V1`, `V2`. Defaults to `V1`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? hyperVGeneration;
@@ -19,9 +19,9 @@ class ImageArgs {
   final pulumi.Input<String>? location;
   /// Specifies the name of the image. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// One or more `os_disk` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `osDisk` blocks as defined below. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `os_disk` cannot be set together with `source_virtual_machine_id`.
+  /// &gt; **Note:** `osDisk` cannot be set together with `sourceVirtualMachineId`.
   final pulumi.Input<ImageOsDisk>? osDisk;
   /// The name of the resource group in which to create the image. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
@@ -31,17 +31,17 @@ class ImageArgs {
   final pulumi.Input<Map<String, String>>? tags;
   /// Is zone resiliency enabled? Defaults to `false`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `zone_resilient` can only be set to `true` if the image is stored in a region that supports availability zones.
+  /// &gt; **Note:** `zoneResilient` can only be set to `true` if the image is stored in a region that supports availability zones.
   ///
-  /// &gt; **Note:** `zone_resilient` cannot be set together with `source_virtual_machine_id`.
+  /// &gt; **Note:** `zoneResilient` cannot be set together with `sourceVirtualMachineId`.
   final pulumi.Input<bool>? zoneResilient;
 
   /// Creates a new [ImageArgs].
-  /// [dataDisks] One or more `data_disk` blocks as defined below.
+  /// [dataDisks] One or more `dataDisk` blocks as defined below.
   /// [hyperVGeneration] The Hyper-V Generation Type of the Virtual Machine created from the image as `V1`, `V2`. Defaults to `V1`. Changing this forces a new resource to be created.
   /// [location] Specified the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the image. Changing this forces a new resource to be created.
-  /// [osDisk] One or more `os_disk` blocks as defined below. Changing this forces a new resource to be created.
+  /// [osDisk] One or more `osDisk` blocks as defined below. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the image. Changing this forces a new resource to be created.
   /// [sourceVirtualMachineId] The Virtual Machine ID from which to create the image.
   /// [tags] A mapping of tags to assign to the resource.
@@ -86,4 +86,3 @@ class ImageArgs {
     );
   }
 }
-

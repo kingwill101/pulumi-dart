@@ -5,7 +5,7 @@ import 'cluster_node_type_application_ports.dart';
 import 'cluster_node_type_ephemeral_ports.dart';
 
 class ClusterNodeType {
-  /// A `application_ports` block as defined below.
+  /// A `applicationPorts` block as defined below.
   final pulumi.Input<ClusterNodeTypeApplicationPorts>? applicationPorts;
   /// The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has.
   final pulumi.Input<Map<String, String>>? capacities;
@@ -13,7 +13,7 @@ class ClusterNodeType {
   final pulumi.Input<int> clientEndpointPort;
   /// The Durability Level for this Node Type. Possible values include `Bronze`, `Gold` and `Silver`. Defaults to `Bronze`.
   final pulumi.Input<String>? durabilityLevel;
-  /// A `ephemeral_ports` block as defined below.
+  /// A `ephemeralPorts` block as defined below.
   final pulumi.Input<ClusterNodeTypeEphemeralPorts>? ephemeralPorts;
   /// The Port used for the HTTP Endpoint for this Node Type.
   final pulumi.Input<int> httpEndpointPort;
@@ -33,11 +33,11 @@ class ClusterNodeType {
   final pulumi.Input<int>? reverseProxyEndpointPort;
 
   /// Creates a new [ClusterNodeType].
-  /// [applicationPorts] A `application_ports` block as defined below.
+  /// [applicationPorts] A `applicationPorts` block as defined below.
   /// [capacities] The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has.
   /// [clientEndpointPort] The Port used for the Client Endpoint for this Node Type.
   /// [durabilityLevel] The Durability Level for this Node Type. Possible values include `Bronze`, `Gold` and `Silver`. Defaults to `Bronze`.
-  /// [ephemeralPorts] A `ephemeral_ports` block as defined below.
+  /// [ephemeralPorts] A `ephemeralPorts` block as defined below.
   /// [httpEndpointPort] The Port used for the HTTP Endpoint for this Node Type.
   /// [instanceCount] The number of nodes for this Node Type.
   /// [isPrimary] Is this the Primary Node Type?
@@ -98,4 +98,3 @@ class ClusterNodeType {
     );
   }
 }
-

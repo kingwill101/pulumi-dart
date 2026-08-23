@@ -90,6 +90,26 @@ import 'dedicated_host_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg-compute"
+///   location = "West Europe"
+/// }
+/// resource "azure_compute_dedicatedhostgroup" "example" {
+///   name                        = "example-dedicated-host-group"
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   location                    = azure_core_resourcegroup.example.location
+///   platform_fault_domain_count = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +120,8 @@ import 'dedicated_host_group_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.compute.DedicatedHostGroup;
 /// import com.pulumi.azure.compute.DedicatedHostGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

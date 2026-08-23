@@ -10,7 +10,7 @@ class GetConfigurationResult {
   final String id;
   /// The in guest user patch mode.
   final String inGuestUserPatchMode;
-  /// An `install_patches` block as defined below.
+  /// An `installPatches` block as defined below.
   final List<GetConfigurationInstallPatch> installPatches;
   /// The Azure location where the resource exists.
   final String location;
@@ -30,7 +30,7 @@ class GetConfigurationResult {
   /// Creates a new [GetConfigurationResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [inGuestUserPatchMode] The in guest user patch mode.
-  /// [installPatches] An `install_patches` block as defined below.
+  /// [installPatches] An `installPatches` block as defined below.
   /// [location] The Azure location where the resource exists.
   /// [name] Required.
   /// [properties] The properties assigned to the resource.
@@ -85,4 +85,3 @@ class GetConfigurationResult {
     );
   }
 }
-

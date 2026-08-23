@@ -6,14 +6,14 @@ import 'diagnostic_frontend_response_data_masking.dart';
 class DiagnosticFrontendResponse {
   /// Number of payload bytes to log (up to 8192).
   final pulumi.Input<int>? bodyBytes;
-  /// A `data_masking` block as defined below.
+  /// A `dataMasking` block as defined below.
   final pulumi.Input<DiagnosticFrontendResponseDataMasking>? dataMasking;
   /// Specifies a list of headers to log.
   final pulumi.Input<List<String>>? headersToLogs;
 
   /// Creates a new [DiagnosticFrontendResponse].
   /// [bodyBytes] Number of payload bytes to log (up to 8192).
-  /// [dataMasking] A `data_masking` block as defined below.
+  /// [dataMasking] A `dataMasking` block as defined below.
   /// [headersToLogs] Specifies a list of headers to log.
   const DiagnosticFrontendResponse({
     this.bodyBytes,
@@ -37,4 +37,3 @@ class DiagnosticFrontendResponse {
     );
   }
 }
-

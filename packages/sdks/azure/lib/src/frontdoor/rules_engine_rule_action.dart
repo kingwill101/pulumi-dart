@@ -5,14 +5,14 @@ import 'rules_engine_rule_action_request_header.dart';
 import 'rules_engine_rule_action_response_header.dart';
 
 class RulesEngineRuleAction {
-  /// A `request_header` block as defined below.
+  /// A `requestHeader` block as defined below.
   final pulumi.Input<List<RulesEngineRuleActionRequestHeader>>? requestHeaders;
-  /// A `response_header` block as defined below.
+  /// A `responseHeader` block as defined below.
   final pulumi.Input<List<RulesEngineRuleActionResponseHeader>>? responseHeaders;
 
   /// Creates a new [RulesEngineRuleAction].
-  /// [requestHeaders] A `request_header` block as defined below.
-  /// [responseHeaders] A `response_header` block as defined below.
+  /// [requestHeaders] A `requestHeader` block as defined below.
+  /// [responseHeaders] A `responseHeader` block as defined below.
   const RulesEngineRuleAction({
     this.requestHeaders,
     this.responseHeaders,
@@ -32,4 +32,3 @@ class RulesEngineRuleAction {
     );
   }
 }
-

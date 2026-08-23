@@ -313,7 +313,7 @@ import 'script_state.dart';
 /// 			DatabaseId: exampleDatabase.ID(),
 /// 			Url:        exampleBlob.ID(),
 /// 			SasToken: pulumi.String(example.ApplyT(func(example storage.GetAccountBlobContainerSASResult) (*string, error) {
-/// 				return &example.Sas, nil
+/// 				return example.Sas, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ContinueOnErrorsEnabled:       pulumi.Bool(true),
 /// 			ForceAnUpdateWhenValueChanged: pulumi.String("first"),
@@ -325,6 +325,80 @@ import 'script_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getaccountblobcontainersas" "example" {
+///   connection_string = azure_storage_account.example.primary_connection_string
+///   container_name    = azure_storage_container.example.name
+///   https_only        = true
+///   start             = "2017-03-21"
+///   expiry            = "2022-03-21"
+///   permissions = {
+///     read   = true
+///     add    = false
+///     create = false
+///     write  = true
+///     delete = false
+///     list   = true
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_kusto_cluster" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Dev(No SLA)_Standard_D11_v2"
+///     capacity = 1
+///   }
+/// }
+/// resource "azure_kusto_database" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cluster_name        = azure_kusto_cluster.example.name
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "setup-files"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_storage_blob" "example" {
+///   name                   = "script.txt"
+///   storage_account_name   = azure_storage_account.example.name
+///   storage_container_name = azure_storage_container.example.name
+///   type                   = "Block"
+///   source_content         = ".create table MyTable (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)"
+/// }
+/// resource "azure_kusto_script" "example" {
+///   name                               = "example"
+///   database_id                        = azure_kusto_database.example.id
+///   url                                = azure_storage_blob.example.id
+///   sas_token                          = data.azure_storage_getaccountblobcontainersas.example.sas
+///   continue_on_errors_enabled         = true
+///   force_an_update_when_value_changed = "first"
+///   script_level                       = "Database"
+///   principal_permissions_action       = "RemovePermissionOnScriptCompletion"
 /// }
 /// ```
 /// ```java
@@ -351,8 +425,8 @@ import 'script_state.dart';
 /// import com.pulumi.azure.storage.inputs.GetAccountBlobContainerSASPermissionsArgs;
 /// import com.pulumi.azure.kusto.Script;
 /// import com.pulumi.azure.kusto.ScriptArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -548,7 +622,7 @@ class Script extends pulumi.CustomResource {
   late final pulumi.Output<String?> principalPermissionsAction;
   /// The SAS token used to access the script. Must be provided when using scriptUrl property. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sasToken;
-  /// The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with `url` and `sas_token` properties. Changing this forces a new resource to be created.
+  /// The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with `url` and `sasToken` properties. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> scriptContent;
   /// The type of script commands. Possible values are `Database` or `Cluster`. Defaults to `Database`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> scriptLevel;

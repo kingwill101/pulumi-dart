@@ -10,7 +10,7 @@ class ApiOperationRequest {
   final pulumi.Input<String>? description;
   /// One or more `header` blocks as defined above.
   final pulumi.Input<List<ApiOperationRequestHeader>>? headers;
-  /// One or more `query_parameter` blocks as defined above.
+  /// One or more `queryParameter` blocks as defined above.
   final pulumi.Input<List<ApiOperationRequestQueryParameter>>? queryParameters;
   /// One or more `representation` blocks as defined below.
   final pulumi.Input<List<ApiOperationRequestRepresentation>>? representations;
@@ -18,7 +18,7 @@ class ApiOperationRequest {
   /// Creates a new [ApiOperationRequest].
   /// [description] A description of the HTTP Request, which may include HTML tags.
   /// [headers] One or more `header` blocks as defined above.
-  /// [queryParameters] One or more `query_parameter` blocks as defined above.
+  /// [queryParameters] One or more `queryParameter` blocks as defined above.
   /// [representations] One or more `representation` blocks as defined below.
   const ApiOperationRequest({
     this.description,
@@ -45,4 +45,3 @@ class ApiOperationRequest {
     );
   }
 }
-

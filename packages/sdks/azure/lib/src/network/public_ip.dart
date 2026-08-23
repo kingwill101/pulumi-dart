@@ -4,7 +4,7 @@ import 'public_ip_state.dart';
 
 /// Manages a Public IP Address.
 ///
-/// &gt; **Note** If this resource is to be associated with a resource that requires disassociation before destruction (such as `azure.network.NetworkInterface`) it is recommended to set the `lifecycle` argument `create_before_destroy = true`. Otherwise, it can fail to disassociate on destruction.
+/// &gt; **Note** If this resource is to be associated with a resource that requires disassociation before destruction (such as `azure.network.NetworkInterface`) it is recommended to set the `lifecycle` argument `createBeforeDestroy = true`. Otherwise, it can fail to disassociate on destruction.
 ///
 /// ## Example Usage
 ///
@@ -105,6 +105,29 @@ import 'public_ip_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "acceptanceTestPublicIp1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   allocation_method   = "Static"
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +138,8 @@ import 'public_ip_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.network.PublicIp;
 /// import com.pulumi.azure.network.PublicIpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,13 +204,15 @@ import 'public_ip_state.dart';
 class PublicIp extends pulumi.CustomResource {
   /// Defines the allocation method for this IP address. Possible values are `Static` or `Dynamic`.
   ///
-  /// &gt; **Note** `Dynamic` Public IP Addresses aren't allocated until they're assigned to a resource (such as a Virtual Machine or a Load Balancer) by design within Azure. See `ip_address` argument.
+  /// &gt; **Note** `Dynamic` Public IP Addresses aren't allocated until they're assigned to a resource (such as a Virtual Machine or a Load Balancer) by design within Azure. See `ipAddress` argument.
+  ///
+  /// &gt; **Note:** `Dynamic` allocation is only available with `Basic` SKU public IP addresses. Since `Basic` SKU public IP addresses have been deprecated (see `sku` below), `Dynamic` allocation is no longer available for new public IP addresses.
   late final pulumi.Output<String> allocationMethod;
   /// The DDoS protection mode of the public IP. Possible values are `Disabled`, `Enabled`, and `VirtualNetworkInherited`. Defaults to `VirtualNetworkInherited`.
   late final pulumi.Output<String?> ddosProtectionMode;
   /// The ID of DDoS protection plan associated with the public IP.
   ///
-  /// &gt; **Note:** `ddos_protection_plan_id` can only be set when `ddos_protection_mode` is `Enabled`.
+  /// &gt; **Note:** `ddosProtectionPlanId` can only be set when `ddosProtectionMode` is `Enabled`.
   late final pulumi.Output<String?> ddosProtectionPlanId;
   /// Label for the Domain Name. Will be used to make up the FQDN. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
   late final pulumi.Output<String?> domainNameLabel;
@@ -195,7 +220,7 @@ class PublicIp extends pulumi.CustomResource {
   late final pulumi.Output<String?> domainNameLabelScope;
   /// Specifies the Edge Zone within the Azure Region where this Public IP should exist. Changing this forces a new Public IP to be created.
   late final pulumi.Output<String?> edgeZone;
-  /// Fully qualified domain name of the A DNS record associated with the public IP. `domain_name_label` must be specified to get the `fqdn`. This is the concatenation of the `domain_name_label` and the regionalized DNS zone
+  /// Fully qualified domain name of the A DNS record associated with the public IP. `domainNameLabel` must be specified to get the `fqdn`. This is the concatenation of the `domainNameLabel` and the regionalized DNS zone
   late final pulumi.Output<String> fqdn;
   /// Specifies the timeout for the TCP idle connection. The value can be set between 4 and 30 minutes.
   late final pulumi.Output<int?> idleTimeoutInMinutes;
@@ -207,7 +232,7 @@ class PublicIp extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> ipTags;
   /// The IP Version to use, IPv6 or IPv4. Changing this forces a new resource to be created. Defaults to `IPv4`.
   ///
-  /// &gt; **Note** Only `static` IP address allocation is supported for IPv6.
+  /// &gt; **Note** Only `Static` IP address allocation is supported for IPv6.
   late final pulumi.Output<String?> ipVersion;
   /// Specifies the supported Azure location where the Public IP should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
@@ -219,13 +244,15 @@ class PublicIp extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// A fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
   late final pulumi.Output<String?> reverseFqdn;
-  /// The SKU of the Public IP. Accepted values are `Basic` and `Standard`. Defaults to `Standard`. Changing this forces a new resource to be created.
+  /// The SKU of the Public IP. Possible values are `Basic`, `Standard`, and `StandardV2`. Defaults to `Standard`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note** Public IP Standard SKUs require `allocation_method` to be set to `Static`.
+  /// &gt; **Note** Public IP `Standard` and `StandardV2` SKUs require `allocationMethod` to be set to `Static`.
+  ///
+  /// &gt; **Note:** `sku` can no longer be set to `Basic` as of 31 March 2025 for new resources. This also affects `allocationMethod` set to `Dynamic`, as it is only available with the `Basic` SKU. Please see the Azure Update [retirement notification](https://azure.microsoft.com/updates/upgrade-to-standard-sku-public-ip-addresses-in-azure-by-30-september-2025-basic-sku-will-be-retired/) for more information.
   late final pulumi.Output<String?> sku;
   /// The SKU Tier that should be used for the Public IP. Possible values are `Regional` and `Global`. Defaults to `Regional`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note** When `sku_tier` is set to `Global`, `sku` must be set to `Standard`.
+  /// &gt; **Note** When `skuTier` is set to `Global`, `sku` must be set to `Standard`.
   late final pulumi.Output<String?> skuTier;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;

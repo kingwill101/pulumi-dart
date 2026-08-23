@@ -338,6 +338,79 @@ import 'app_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_cosmosdb_account" "example" {
+///   name                = "example-cosmosdb-account"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   offer_type          = "Standard"
+///   kind                = "GlobalDocumentDB"
+///   consistency_policy = {
+///     consistency_level       = "BoundedStaleness"
+///     max_interval_in_seconds = 10
+///     max_staleness_prefix    = 200
+///   }
+///   geo_locations {
+///     location          = azure_core_resourcegroup.example.location
+///     failover_priority = 0
+///   }
+/// }
+/// resource "azure_cosmosdb_sqldatabase" "example" {
+///   name                = "cosmos-sql-db"
+///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
+///   account_name        = azure_cosmosdb_account.example.name
+///   throughput          = 400
+/// }
+/// resource "azure_cosmosdb_sqlcontainer" "example" {
+///   name                = "example-container"
+///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
+///   account_name        = azure_cosmosdb_account.example.name
+///   database_name       = azure_cosmosdb_sqldatabase.example.name
+///   partition_key_path  = "/definition"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageaccount"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   location            = azure_core_resourcegroup.example.location
+///   name                = "example-serviceplan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "P1v2"
+///   os_type             = "Linux"
+/// }
+/// resource "azure_appservice_functionapp" "test" {
+///   name                       = "example-function-app"
+///   location                   = testAzurermResourceGroup.location
+///   resource_group_name        = testAzurermResourceGroup.name
+///   app_service_plan_id        = testAzurermAppServicePlan.id
+///   storage_account_name       = testAzurermStorageAccount.name
+///   storage_account_access_key = testAzurermStorageAccount.primaryAccessKey
+/// }
+/// resource "azure_appservice_appconnection" "example" {
+///   name               = "example-serviceconnector"
+///   function_app_id    = exampleAzurermFunctionApp.id
+///   target_resource_id = testAzurermCosmosdbAccount.id
+///   authentication = {
+///     type = "systemAssignedIdentity"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -359,8 +432,8 @@ import 'app_connection_state.dart';
 /// import com.pulumi.azure.appservice.AppConnection;
 /// import com.pulumi.azure.appservice.AppConnectionArgs;
 /// import com.pulumi.azure.appservice.inputs.AppConnectionAuthenticationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

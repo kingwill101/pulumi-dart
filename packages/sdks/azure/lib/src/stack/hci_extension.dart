@@ -102,6 +102,29 @@ import 'hci_extension_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-hci-ext"
+///   location = "West Europe"
+/// }
+/// resource "azure_stack_hciextension" "example" {
+///   name                               = "AzureMonitorWindowsAgent"
+///   arc_setting_id                     = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-hci/providers/Microsoft.AzureStackHCI/clusters/hci-cl/arcSettings/default"
+///   publisher                          = "Microsoft.Azure.Monitor"
+///   type                               = "MicrosoftMonitoringAgent"
+///   auto_upgrade_minor_version_enabled = true
+///   automatic_upgrade_enabled          = true
+///   type_handler_version               = "1.22.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +135,8 @@ import 'hci_extension_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.stack.HciExtension;
 /// import com.pulumi.azure.stack.HciExtensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -197,7 +220,7 @@ class HciExtension extends pulumi.CustomResource {
   late final pulumi.Output<String> type;
   /// Specifies the version of the script handler.
   ///
-  /// &gt; **Note:** `type_handler_version` cannot be set when `automatic_upgrade_enabled` is set to `true`.
+  /// &gt; **Note:** `typeHandlerVersion` cannot be set when `automaticUpgradeEnabled` is set to `true`.
   late final pulumi.Output<String?> typeHandlerVersion;
 
   /// Creates a new [HciExtension].

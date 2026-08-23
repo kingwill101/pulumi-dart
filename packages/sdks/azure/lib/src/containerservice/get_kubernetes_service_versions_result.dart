@@ -8,7 +8,7 @@ class GetKubernetesServiceVersionsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? includePreview;
-  /// The most recent version available. If `include_preview == false`, this is the most recent non-preview version available.
+  /// The most recent version available. If `includePreview == false`, this is the most recent non-preview version available.
   final String latestVersion;
   final String location;
   final String? versionPrefix;
@@ -19,7 +19,7 @@ class GetKubernetesServiceVersionsResult {
   /// [defaultVersion] The N-1 minor non-preview version and latest patch.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [includePreview] Optional.
-  /// [latestVersion] The most recent version available. If `include_preview == false`, this is the most recent non-preview version available.
+  /// [latestVersion] The most recent version available. If `includePreview == false`, this is the most recent non-preview version available.
   /// [location] Required.
   /// [versionPrefix] Optional.
   /// [versions] The list of all supported versions.
@@ -57,4 +57,3 @@ class GetKubernetesServiceVersionsResult {
     );
   }
 }
-

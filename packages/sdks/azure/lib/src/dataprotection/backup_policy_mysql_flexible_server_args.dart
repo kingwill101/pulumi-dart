@@ -11,11 +11,11 @@ import 'backup_policy_mysql_flexible_server_retention_rule.dart';
 class BackupPolicyMysqlFlexibleServerArgs {
   /// Specifies a list of repeating time interval. It supports weekly back. It should follow `ISO 8601` repeating time interval format. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>> backupRepeatingTimeIntervals;
-  /// A `default_retention_rule` block as defined below. Changing this forces a new resource to be created.
+  /// A `defaultRetentionRule` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<BackupPolicyMysqlFlexibleServerDefaultRetentionRule> defaultRetentionRule;
   /// Specifies the name of the Backup Policy for the MySQL Flexible Server. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// One or more `retention_rule` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `retentionRule` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<BackupPolicyMysqlFlexibleServerRetentionRule>>? retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? timeZone;
@@ -24,9 +24,9 @@ class BackupPolicyMysqlFlexibleServerArgs {
 
   /// Creates a new [BackupPolicyMysqlFlexibleServerArgs].
   /// [backupRepeatingTimeIntervals] Specifies a list of repeating time interval. It supports weekly back. It should follow `ISO 8601` repeating time interval format. Changing this forces a new resource to be created.
-  /// [defaultRetentionRule] A `default_retention_rule` block as defined below. Changing this forces a new resource to be created.
+  /// [defaultRetentionRule] A `defaultRetentionRule` block as defined below. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Backup Policy for the MySQL Flexible Server. Changing this forces a new resource to be created.
-  /// [retentionRules] One or more `retention_rule` blocks as defined below. Changing this forces a new resource to be created.
+  /// [retentionRules] One or more `retentionRule` blocks as defined below. Changing this forces a new resource to be created.
   /// [timeZone] Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new resource to be created.
   /// [vaultId] The ID of the Backup Vault where the Backup Policy MySQL Flexible Server should exist. Changing this forces a new resource to be created.
   const BackupPolicyMysqlFlexibleServerArgs({
@@ -60,4 +60,3 @@ class BackupPolicyMysqlFlexibleServerArgs {
     );
   }
 }
-

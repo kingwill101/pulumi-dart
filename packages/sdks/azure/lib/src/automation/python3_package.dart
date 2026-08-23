@@ -143,6 +143,38 @@ import 'python3_package_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "%[2]s"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "accexample"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_automation_python3package" "example" {
+///   name                    = "example"
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   automation_account_name = azure_automation_account.example.name
+///   content_uri             = "https://pypi.org/packages/source/r/requests/requests-2.31.0.tar.gz"
+///   content_version         = "2.31.0"
+///   hash_algorithm          = "sha256"
+///   hash_value              = "942c5a758f98d790eaed1a29cb6eefc7ffb0d1cf7af05c3d2791656dbd6ad1e1"
+///   tags = {
+///     "key" = "foo"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -155,8 +187,8 @@ import 'python3_package_state.dart';
 /// import com.pulumi.azure.automation.AccountArgs;
 /// import com.pulumi.azure.automation.Python3Package;
 /// import com.pulumi.azure.automation.Python3PackageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

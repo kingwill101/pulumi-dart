@@ -9,7 +9,7 @@ class MonitorIdentity {
   final pulumi.Input<String>? tenantId;
   /// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is `SystemAssigned`.
   ///
-  /// &gt; **Note:** The assigned `principal_id` and `tenant_id` can be retrieved after the identity `type` has been set to `SystemAssigned` and the Datadog Monitor has been created. More details are available below.
+  /// &gt; **Note:** The assigned `principalId` and `tenantId` can be retrieved after the identity `type` has been set to `SystemAssigned` and the Datadog Monitor has been created. More details are available below.
   final pulumi.Input<String> type;
 
   /// Creates a new [MonitorIdentity].
@@ -38,4 +38,3 @@ class MonitorIdentity {
     );
   }
 }
-

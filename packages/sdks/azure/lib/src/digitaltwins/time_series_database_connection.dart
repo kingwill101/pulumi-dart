@@ -31,8 +31,7 @@ import 'time_series_database_connection_state.dart';
 /// });
 /// const exampleEventHub = new azure.eventhub.EventHub("example", {
 ///     name: "exampleEventHub",
-///     namespaceName: exampleEventHubNamespace.name,
-///     resourceGroupName: example.name,
+///     namespaceId: exampleEventHubNamespace.id,
 ///     partitionCount: 2,
 ///     messageRetention: 7,
 /// });
@@ -117,8 +116,7 @@ import 'time_series_database_connection_state.dart';
 ///     sku="Standard")
 /// example_event_hub = azure.eventhub.EventHub("example",
 ///     name="exampleEventHub",
-///     namespace_name=example_event_hub_namespace.name,
-///     resource_group_name=example.name,
+///     namespace_id=example_event_hub_namespace.id,
 ///     partition_count=2,
 ///     message_retention=7)
 /// example_consumer_group = azure.eventhub.ConsumerGroup("example",
@@ -209,8 +207,7 @@ import 'time_series_database_connection_state.dart';
 ///     var exampleEventHub = new Azure.EventHub.EventHub("example", new()
 ///     {
 ///         Name = "exampleEventHub",
-///         NamespaceName = exampleEventHubNamespace.Name,
-///         ResourceGroupName = example.Name,
+///         NamespaceId = exampleEventHubNamespace.Id,
 ///         PartitionCount = 2,
 ///         MessageRetention = 7,
 ///     });
@@ -337,11 +334,10 @@ import 'time_series_database_connection_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
-/// 			Name:              pulumi.String("exampleEventHub"),
-/// 			NamespaceName:     exampleEventHubNamespace.Name,
-/// 			ResourceGroupName: example.Name,
-/// 			PartitionCount:    pulumi.Int(2),
-/// 			MessageRetention:  pulumi.Int(7),
+/// 			Name:             pulumi.String("exampleEventHub"),
+/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			PartitionCount:   pulumi.Int(2),
+/// 			MessageRetention: pulumi.Int(7),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -379,7 +375,7 @@ import 'time_series_database_connection_state.dart';
 /// 		databaseContributor, err := authorization.NewAssignment(ctx, "database_contributor", &authorization.AssignmentArgs{
 /// 			Scope: exampleDatabase.ID(),
 /// 			PrincipalId: pulumi.String(exampleInstance.Identity.ApplyT(func(identity digitaltwins.InstanceIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			RoleDefinitionName: pulumi.String("Contributor"),
 /// 		})
@@ -389,7 +385,7 @@ import 'time_series_database_connection_state.dart';
 /// 		eventhubDataOwner, err := authorization.NewAssignment(ctx, "eventhub_data_owner", &authorization.AssignmentArgs{
 /// 			Scope: exampleEventHub.ID(),
 /// 			PrincipalId: pulumi.String(exampleInstance.Identity.ApplyT(func(identity digitaltwins.InstanceIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			RoleDefinitionName: pulumi.String("Azure Event Hubs Data Owner"),
 /// 		})
@@ -402,10 +398,10 @@ import 'time_series_database_connection_state.dart';
 /// 			ClusterName:       exampleCluster.Name,
 /// 			DatabaseName:      exampleDatabase.Name,
 /// 			TenantId: pulumi.String(exampleInstance.Identity.ApplyT(func(identity digitaltwins.InstanceIdentity) (*string, error) {
-/// 				return &identity.TenantId, nil
+/// 				return identity.TenantId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			PrincipalId: pulumi.String(exampleInstance.Identity.ApplyT(func(identity digitaltwins.InstanceIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			PrincipalType: pulumi.String("App"),
 /// 			Role:          pulumi.String("Admin"),
@@ -438,6 +434,94 @@ import 'time_series_database_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_digitaltwins_instance" "example" {
+///   name                = "example-DT"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "example" {
+///   name                = "exampleEventHubNamespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_eventhub_eventhub" "example" {
+///   name              = "exampleEventHub"
+///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   partition_count   = 2
+///   message_retention = 7
+/// }
+/// resource "azure_eventhub_consumergroup" "example" {
+///   name                = "example-consumergroup"
+///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
+///   eventhub_name       = azure_eventhub_eventhub.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_kusto_cluster" "example" {
+///   name                = "examplekc"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Dev(No SLA)_Standard_D11_v2"
+///     capacity = 1
+///   }
+/// }
+/// resource "azure_kusto_database" "example" {
+///   name                = "example-kusto-database"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cluster_name        = azure_kusto_cluster.example.name
+/// }
+/// resource "azure_authorization_assignment" "database_contributor" {
+///   scope                = azure_kusto_database.example.id
+///   principal_id         = azure_digitaltwins_instance.example.identity.principal_id
+///   role_definition_name = "Contributor"
+/// }
+/// resource "azure_authorization_assignment" "eventhub_data_owner" {
+///   scope                = azure_eventhub_eventhub.example.id
+///   principal_id         = azure_digitaltwins_instance.example.identity.principal_id
+///   role_definition_name = "Azure Event Hubs Data Owner"
+/// }
+/// resource "azure_kusto_databaseprincipalassignment" "example" {
+///   name                = "dataadmin"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   cluster_name        = azure_kusto_cluster.example.name
+///   database_name       = azure_kusto_database.example.name
+///   tenant_id           = azure_digitaltwins_instance.example.identity.tenant_id
+///   principal_id        = azure_digitaltwins_instance.example.identity.principal_id
+///   principal_type      = "App"
+///   role                = "Admin"
+/// }
+/// resource "azure_digitaltwins_timeseriesdatabaseconnection" "example" {
+///   depends_on                      = [azure_authorization_assignment.database_contributor, azure_authorization_assignment.eventhub_data_owner, azure_kusto_databaseprincipalassignment.example]
+///   name                            = "example-connection"
+///   digital_twins_id                = azure_digitaltwins_instance.example.id
+///   eventhub_name                   = azure_eventhub_eventhub.example.name
+///   eventhub_namespace_id           = azure_eventhub_eventhubnamespace.example.id
+///   eventhub_namespace_endpoint_uri ="sb://${azure_eventhub_eventhubnamespace.example.name}.servicebus.windows.net"
+///   eventhub_consumer_group_name    = azure_eventhub_consumergroup.example.name
+///   kusto_cluster_id                = azure_kusto_cluster.example.id
+///   kusto_cluster_uri               = azure_kusto_cluster.example.uri
+///   kusto_database_name             = azure_kusto_database.example.name
+///   kusto_table_name                = "exampleTable"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -467,8 +551,8 @@ import 'time_series_database_connection_state.dart';
 /// import com.pulumi.azure.digitaltwins.TimeSeriesDatabaseConnection;
 /// import com.pulumi.azure.digitaltwins.TimeSeriesDatabaseConnectionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -503,8 +587,7 @@ import 'time_series_database_connection_state.dart';
 ///
 ///         var exampleEventHub = new EventHub("exampleEventHub", EventHubArgs.builder()
 ///             .name("exampleEventHub")
-///             .namespaceName(exampleEventHubNamespace.name())
-///             .resourceGroupName(example.name())
+///             .namespaceId(exampleEventHubNamespace.id())
 ///             .partitionCount(2)
 ///             .messageRetention(7)
 ///             .build());
@@ -606,8 +689,7 @@ import 'time_series_database_connection_state.dart';
 ///     name: example
 ///     properties:
 ///       name: exampleEventHub
-///       namespaceName: ${exampleEventHubNamespace.name}
-///       resourceGroupName: ${example.name}
+///       namespaceId: ${exampleEventHubNamespace.id}
 ///       partitionCount: 2
 ///       messageRetention: 7
 ///   exampleConsumerGroup:

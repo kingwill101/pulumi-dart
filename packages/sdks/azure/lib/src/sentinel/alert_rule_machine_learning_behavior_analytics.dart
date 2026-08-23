@@ -128,6 +128,34 @@ import 'alert_rule_machine_learning_behavior_analytics_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-workspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
+///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// resource "azure_sentinel_alertrulemachinelearningbehavioranalytics" "example" {
+///   name                       = "example-ml-alert-rule"
+///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+///   alert_rule_template_guid   = "737a2ce1-70a3-4968-9e90-3e6aca836abf"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +170,8 @@ import 'alert_rule_machine_learning_behavior_analytics_state.dart';
 /// import com.pulumi.azure.sentinel.LogAnalyticsWorkspaceOnboardingArgs;
 /// import com.pulumi.azure.sentinel.AlertRuleMachineLearningBehaviorAnalytics;
 /// import com.pulumi.azure.sentinel.AlertRuleMachineLearningBehaviorAnalyticsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

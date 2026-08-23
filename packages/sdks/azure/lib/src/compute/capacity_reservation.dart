@@ -124,6 +124,33 @@ import 'capacity_reservation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_compute_capacityreservationgroup" "example" {
+///   name                = "example-capacity-reservation-group"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_compute_capacityreservation" "example" {
+///   name                          = "example-capacity-reservation"
+///   capacity_reservation_group_id = azure_compute_capacityreservationgroup.example.id
+///   sku = {
+///     name     = "Standard_D2s_v3"
+///     capacity = 1
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +164,8 @@ import 'capacity_reservation_state.dart';
 /// import com.pulumi.azure.compute.CapacityReservation;
 /// import com.pulumi.azure.compute.CapacityReservationArgs;
 /// import com.pulumi.azure.compute.inputs.CapacityReservationSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -11,7 +11,7 @@ import 'traffic_manager_external_endpoint_subnet.dart';
 class TrafficManagerExternalEndpointArgs {
   /// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method. Defaults to `false`.
   final pulumi.Input<bool>? alwaysServeEnabled;
-  /// One or more `custom_header` blocks as defined below.
+  /// One or more `customHeader` blocks as defined below.
   final pulumi.Input<List<TrafficManagerExternalEndpointCustomHeader>>? customHeaders;
   /// Is the endpoint enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
@@ -34,7 +34,7 @@ class TrafficManagerExternalEndpointArgs {
 
   /// Creates a new [TrafficManagerExternalEndpointArgs].
   /// [alwaysServeEnabled] If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method. Defaults to `false`.
-  /// [customHeaders] One or more `custom_header` blocks as defined below.
+  /// [customHeaders] One or more `customHeader` blocks as defined below.
   /// [enabled] Is the endpoint enabled? Defaults to `true`.
   /// [endpointLocation] Specifies the Azure location of the Endpoint, this must be specified for Profiles using the `Performance` routing method.
   /// [geoMappings] A list of Geographic Regions used to distribute traffic, such as `WORLD`, `UK` or `DE`. The same location can't be specified in two endpoints. [See the Geographic Hierarchies documentation for more information](https://docs.microsoft.com/rest/api/trafficmanager/geographichierarchies/getdefault).
@@ -90,4 +90,3 @@ class TrafficManagerExternalEndpointArgs {
     );
   }
 }
-

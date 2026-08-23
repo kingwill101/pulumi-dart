@@ -23,7 +23,7 @@ class LocalRulestackRuleState {
   final pulumi.Input<LocalRulestackRuleDestination>? destination;
   /// Should this Rule be enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-  /// The ID of the certificate for inbound inspection. Only valid when `decryption_rule_type` is set to `SSLInboundInspection`.
+  /// The ID of the certificate for inbound inspection. Only valid when `decryptionRuleType` is set to `SSLInboundInspection`.
   final pulumi.Input<String>? inspectionCertificateId;
   /// Should Logging be enabled? Defaults to `false`.
   final pulumi.Input<bool>? loggingEnabled;
@@ -37,9 +37,9 @@ class LocalRulestackRuleState {
   ///
   /// &gt; **Note:** This is the primary identifier of a rule, as such it is not possible to change the Priority of a rule once created.
   final pulumi.Input<int>? priority;
-  /// The Protocol and port to use in the form `[protocol]:[port_number]` e.g. `TCP:8080` or `UDP:53`. Conflicts with `protocol_ports`.
+  /// The Protocol and port to use in the form `[protocol]:[portNumber]` e.g. `TCP:8080` or `UDP:53`. Conflicts with `protocolPorts`.
   ///
-  /// &gt; **Note:** In 4.0 or later versions, the default of `protocol` will no longer be set by provider, exactly one of `protocol` and `protocol_ports` must be specified. You need to explicitly specify `protocol="application-default"` to keep the the current default of the `protocol`.
+  /// &gt; **Note:** In 4.0 or later versions, the default of `protocol` will no longer be set by provider, exactly one of `protocol` and `protocolPorts` must be specified. You need to explicitly specify `protocol="application-default"` to keep the the current default of the `protocol`.
   final pulumi.Input<String>? protocol;
   /// Specifies a list of Protocol:Port entries. E.g. `[ "TCP:80", "UDP:5431" ]`. Conflicts with `protocol`.
   final pulumi.Input<List<String>>? protocolPorts;
@@ -59,13 +59,13 @@ class LocalRulestackRuleState {
   /// [description] The description for the rule.
   /// [destination] One or more `destination` blocks as defined below.
   /// [enabled] Should this Rule be enabled? Defaults to `true`.
-  /// [inspectionCertificateId] The ID of the certificate for inbound inspection. Only valid when `decryption_rule_type` is set to `SSLInboundInspection`.
+  /// [inspectionCertificateId] The ID of the certificate for inbound inspection. Only valid when `decryptionRuleType` is set to `SSLInboundInspection`.
   /// [loggingEnabled] Should Logging be enabled? Defaults to `false`.
   /// [name] The name which should be used for this Palo Alto Local Rulestack Rule.
   /// [negateDestination] Should the inverse of the Destination configuration be used. Defaults to `false`.
   /// [negateSource] Should the inverse of the Source configuration be used. Defaults to `false`.
   /// [priority] The Priority of this rule. Rules are executed in numerical order. Possible values are between 1 and 1000000. Changing this forces a new Palo Alto Local Rulestack Rule to be created.
-  /// [protocol] The Protocol and port to use in the form `[protocol]:[port_number]` e.g. `TCP:8080` or `UDP:53`. Conflicts with `protocol_ports`.
+  /// [protocol] The Protocol and port to use in the form `[protocol]:[portNumber]` e.g. `TCP:8080` or `UDP:53`. Conflicts with `protocolPorts`.
   /// [protocolPorts] Specifies a list of Protocol:Port entries. E.g. `[ "TCP:80", "UDP:5431" ]`. Conflicts with `protocol`.
   /// [rulestackId] The ID of the Local Rulestack in which to create this Rule. Changing this forces a new Palo Alto Local Rulestack Rule to be created.
   /// [source] One or more `source` blocks as defined below.
@@ -140,4 +140,3 @@ class LocalRulestackRuleState {
     );
   }
 }
-

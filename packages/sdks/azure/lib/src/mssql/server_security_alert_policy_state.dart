@@ -20,13 +20,13 @@ class ServerSecurityAlertPolicyState {
   final pulumi.Input<String>? state;
   /// Specifies the primary access key of the Threat Detection audit logs blob storage endpoint.
   ///
-  /// &gt; **Note:** The `storage_account_access_key` only applies if the storage account is not behind a virtual network or a firewall.
+  /// &gt; **Note:** The `storageAccountAccessKey` only applies if the storage account is not behind a virtual network or a firewall.
   final pulumi.Input<String>? storageAccountAccessKey;
   /// Specifies the blob storage endpoint that will hold all Threat Detection audit logs (e.g., `https://example.blob.core.windows.net`).
   ///
-  /// &gt; **Note:** The `storage_account_access_key` field is required when the `storage_endpoint` field has been set.
+  /// &gt; **Note:** The `storageAccountAccessKey` field is required when the `storageEndpoint` field has been set.
   ///
-  /// &gt; **Note:** Storage accounts configured with `shared_access_key_enabled = false` cannot be used for the `storage_endpoint` field.
+  /// &gt; **Note:** Storage accounts configured with `sharedAccessKeyEnabled = false` cannot be used for the `storageEndpoint` field.
   final pulumi.Input<String>? storageEndpoint;
 
   /// Creates a new [ServerSecurityAlertPolicyState].
@@ -79,4 +79,3 @@ class ServerSecurityAlertPolicyState {
     );
   }
 }
-

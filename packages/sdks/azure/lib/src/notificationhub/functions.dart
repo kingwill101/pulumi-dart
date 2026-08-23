@@ -73,6 +73,25 @@ import 'get_namespace_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_notificationhub_gethub" "example" {
+///   name                = "notification-hub"
+///   namespace_name      = "namespace-name"
+///   resource_group_name = "resource-group-name"
+/// }
+///
+/// output "id" {
+///   value = data.azure_notificationhub_gethub.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +100,8 @@ import 'get_namespace_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.notificationhub.NotificationhubFunctions;
 /// import com.pulumi.azure.notificationhub.inputs.GetHubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -204,6 +223,24 @@ Future<GetHubResult> getHub(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_notificationhub_getnamespace" "example" {
+///   name                = "my-namespace"
+///   resource_group_name = "my-resource-group"
+/// }
+///
+/// output "servicebusEndpoint" {
+///   value = data.azure_notificationhub_getnamespace.example.servicebus_endpoint
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -212,8 +249,8 @@ Future<GetHubResult> getHub(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.notificationhub.NotificationhubFunctions;
 /// import com.pulumi.azure.notificationhub.inputs.GetNamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

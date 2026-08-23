@@ -172,6 +172,37 @@ import 'managed_hardware_security_module_role_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_keyvault_managedhardwaresecuritymodule" "example" {
+///   name                     = "example"
+///   resource_group_name      = exampleAzurermResourceGroup.name
+///   location                 = exampleAzurermResourceGroup.location
+///   sku_name                 = "Standard_B1"
+///   tenant_id                = current.tenantId
+///   admin_object_ids         = [current.objectId]
+///   purge_protection_enabled = false
+///   active_config = [{
+///     "securityDomainCertificate" = [cert[0].id, cert[1].id, cert[2].id]
+///     "securityDomainQuorum"      = 2
+///   }]
+/// }
+/// resource "azure_keyvault_managedhardwaresecuritymoduleroledefinition" "example" {
+///   name           = "7d206142-bf01-11ed-80bc-00155d61ee9e"
+///   managed_hsm_id = azure_keyvault_managedhardwaresecuritymodule.example.id
+///   description    = "desc foo"
+///   permissions {
+///     data_actions = ["Microsoft.KeyVault/managedHsm/keys/read/action"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +214,8 @@ import 'managed_hardware_security_module_role_definition_state.dart';
 /// import com.pulumi.azure.keyvault.ManagedHardwareSecurityModuleRoleDefinition;
 /// import com.pulumi.azure.keyvault.ManagedHardwareSecurityModuleRoleDefinitionArgs;
 /// import com.pulumi.azure.keyvault.inputs.ManagedHardwareSecurityModuleRoleDefinitionPermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -204,8 +235,8 @@ import 'managed_hardware_security_module_role_definition_state.dart';
 ///             .tenantId(current.tenantId())
 ///             .adminObjectIds(current.objectId())
 ///             .purgeProtectionEnabled(false)
-///             .activeConfig(List.of(Map.ofEntries(
-///                 Map.entry("securityDomainCertificate", List.of(
+///             .activeConfig(Arrays.asList(Map.ofEntries(
+///                 Map.entry("securityDomainCertificate", Arrays.asList(
 ///                     cert[0].id(),
 ///                     cert[1].id(),
 ///                     cert[2].id())),

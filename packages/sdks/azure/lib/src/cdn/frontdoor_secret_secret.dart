@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'frontdoor_secret_secret_customer_certificate.dart';
 
 class FrontdoorSecretSecret {
-  /// A `customer_certificate` block as defined below. Changing this forces a new Front Door Secret to be created.
+  /// A `customerCertificate` block as defined below. Changing this forces a new Front Door Secret to be created.
   final pulumi.Input<List<FrontdoorSecretSecretCustomerCertificate>> customerCertificates;
 
   /// Creates a new [FrontdoorSecretSecret].
-  /// [customerCertificates] A `customer_certificate` block as defined below. Changing this forces a new Front Door Secret to be created.
+  /// [customerCertificates] A `customerCertificate` block as defined below. Changing this forces a new Front Door Secret to be created.
   const FrontdoorSecretSecret({
     required this.customerCertificates,
   });
@@ -25,4 +25,3 @@ class FrontdoorSecretSecret {
     );
   }
 }
-

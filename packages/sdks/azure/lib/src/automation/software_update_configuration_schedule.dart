@@ -22,7 +22,7 @@ class SoftwareUpdateConfigurationSchedule {
   /// Whether the schedule is enabled. Defaults to `true`.
   final pulumi.Input<bool>? isEnabled;
   final pulumi.Input<String>? lastModifiedTime;
-  /// List of `monthly_occurrence` blocks as defined below to specifies occurrences of days within a month. Only valid when frequency is `Month`. The `monthly_occurrence` block supports fields as defined below.
+  /// List of `monthlyOccurrence` blocks as defined below to specifies occurrences of days within a month. Only valid when frequency is `Month`. The `monthlyOccurrence` block supports fields as defined below.
   final pulumi.Input<SoftwareUpdateConfigurationScheduleMonthlyOccurrence>? monthlyOccurrence;
   final pulumi.Input<String>? nextRun;
   /// The time offset in minutes for the next run time.
@@ -45,7 +45,7 @@ class SoftwareUpdateConfigurationSchedule {
   /// [interval] The number of `frequency`s between runs. Only valid when frequency is `Day`, `Hour`, `Week`, or `Month`.
   /// [isEnabled] Whether the schedule is enabled. Defaults to `true`.
   /// [lastModifiedTime] Optional.
-  /// [monthlyOccurrence] List of `monthly_occurrence` blocks as defined below to specifies occurrences of days within a month. Only valid when frequency is `Month`. The `monthly_occurrence` block supports fields as defined below.
+  /// [monthlyOccurrence] List of `monthlyOccurrence` blocks as defined below to specifies occurrences of days within a month. Only valid when frequency is `Month`. The `monthlyOccurrence` block supports fields as defined below.
   /// [nextRun] Optional.
   /// [nextRunOffsetMinutes] The time offset in minutes for the next run time.
   /// [startTime] Start time of the schedule. Must be at least five minutes in the future. Defaults to seven minutes in the future from the time the resource is created.
@@ -112,4 +112,3 @@ class SoftwareUpdateConfigurationSchedule {
     );
   }
 }
-

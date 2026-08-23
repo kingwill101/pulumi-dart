@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlexibleServerCustomerManagedKey {
   /// The ID of the geo backup Key Vault Key. It can't cross region and need Customer Managed Key in same region as geo backup.
   final pulumi.Input<String>? geoBackupKeyVaultKeyId;
-  /// The geo backup user managed identity id for a Customer Managed Key. Should be added with `identity_ids`. It can't cross region and need identity in same region as geo backup.
+  /// The geo backup user managed identity id for a Customer Managed Key. Should be added with `identityIds`. It can't cross region and need identity in same region as geo backup.
   ///
-  /// &gt; **Note:** `primary_user_assigned_identity_id` or `geo_backup_user_assigned_identity_id` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
+  /// &gt; **Note:** `primaryUserAssignedIdentityId` or `geoBackupUserAssignedIdentityId` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
   final pulumi.Input<String>? geoBackupUserAssignedIdentityId;
   /// The ID of the Key Vault Key.
   final pulumi.Input<String>? keyVaultKeyId;
   /// The ID of the Managed HSM Key.
   final pulumi.Input<String>? managedHsmKeyId;
-  /// Specifies the primary user managed identity id for a Customer Managed Key. Should be added with `identity_ids`.
+  /// Specifies the primary user managed identity id for a Customer Managed Key. Should be added with `identityIds`.
   final pulumi.Input<String>? primaryUserAssignedIdentityId;
 
   /// Creates a new [FlexibleServerCustomerManagedKey].
   /// [geoBackupKeyVaultKeyId] The ID of the geo backup Key Vault Key. It can't cross region and need Customer Managed Key in same region as geo backup.
-  /// [geoBackupUserAssignedIdentityId] The geo backup user managed identity id for a Customer Managed Key. Should be added with `identity_ids`. It can't cross region and need identity in same region as geo backup.
+  /// [geoBackupUserAssignedIdentityId] The geo backup user managed identity id for a Customer Managed Key. Should be added with `identityIds`. It can't cross region and need identity in same region as geo backup.
   /// [keyVaultKeyId] The ID of the Key Vault Key.
   /// [managedHsmKeyId] The ID of the Managed HSM Key.
-  /// [primaryUserAssignedIdentityId] Specifies the primary user managed identity id for a Customer Managed Key. Should be added with `identity_ids`.
+  /// [primaryUserAssignedIdentityId] Specifies the primary user managed identity id for a Customer Managed Key. Should be added with `identityIds`.
   const FlexibleServerCustomerManagedKey({
     this.geoBackupKeyVaultKeyId,
     this.geoBackupUserAssignedIdentityId,
@@ -50,4 +50,3 @@ class FlexibleServerCustomerManagedKey {
     );
   }
 }
-

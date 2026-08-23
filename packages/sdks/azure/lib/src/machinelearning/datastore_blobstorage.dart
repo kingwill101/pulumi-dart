@@ -268,6 +268,65 @@ import 'datastore_blobstorage_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "workspace-example-ai"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "workspaceexamplekeyvault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name            = "premium"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "workspacestorageaccount"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+/// }
+/// resource "azure_machinelearning_workspace" "example" {
+///   name                    = "example-workspace"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   application_insights_id = azure_appinsights_insights.example.id
+///   key_vault_id            = azure_keyvault_keyvault.example.id
+///   storage_account_id      = azure_storage_account.example.id
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "example-container"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_machinelearning_datastoreblobstorage" "example" {
+///   name                 = "example-datastore"
+///   workspace_id         = azure_machinelearning_workspace.example.id
+///   storage_container_id = azure_storage_container.example.id
+///   account_key          = azure_storage_account.example.primary_access_key
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -290,8 +349,8 @@ import 'datastore_blobstorage_state.dart';
 /// import com.pulumi.azure.storage.ContainerArgs;
 /// import com.pulumi.azure.machinelearning.DatastoreBlobstorage;
 /// import com.pulumi.azure.machinelearning.DatastoreBlobstorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -444,21 +503,21 @@ import 'datastore_blobstorage_state.dart';
 /// $ pulumi import azure:machinelearning/datastoreBlobstorage:DatastoreBlobstorage example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.MachineLearningServices/workspaces/mlw1/dataStores/datastore1
 /// ```
 class DatastoreBlobstorage extends pulumi.CustomResource {
-  /// The access key of the Storage Account. Conflicts with `shared_access_signature`.
+  /// The access key of the Storage Account. Conflicts with `sharedAccessSignature`.
   late final pulumi.Output<String?> accountKey;
   /// Text used to describe the asset. Changing this forces a new Machine Learning DataStore to be created.
   late final pulumi.Output<String?> description;
   /// Specifies whether this Machines Learning DataStore is the default for the Workspace. Defaults to `false`.
   ///
-  /// &gt; **Note:** `is_default` can only be set to `true` on update.
+  /// &gt; **Note:** `isDefault` can only be set to `true` on update.
   late final pulumi.Output<bool?> isDefault;
   /// The name of the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
   late final pulumi.Output<String> name;
   /// Specifies which identity to use when retrieving data from the specified source. Defaults to `None`. Possible values are `None`, `WorkspaceSystemAssignedIdentity` and `WorkspaceUserAssignedIdentity`.
   late final pulumi.Output<String?> serviceDataAuthIdentity;
-  /// The Shared Access Signature of the Storage Account. Conflicts with `account_key`.
+  /// The Shared Access Signature of the Storage Account. Conflicts with `accountKey`.
   ///
-  /// &gt; **Note:** If `service_data_auth_identity` is set to `None` or omitted, one of `account_key` or `shared_access_signature` must be specified.
+  /// &gt; **Note:** If `serviceDataAuthIdentity` is set to `None` or omitted, one of `accountKey` or `sharedAccessSignature` must be specified.
   late final pulumi.Output<String?> sharedAccessSignature;
   /// The ID of the Storage Account Container. Changing this forces a new Machine Learning DataStore to be created.
   late final pulumi.Output<String> storageContainerId;

@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReplicationPolicyArgs {
   /// Specifies the frequency(in minutes) at which to create application consistent recovery points.
   ///
-  /// &gt; **Note:** The value of `application_consistent_snapshot_frequency_in_minutes` must be less than or equal to the value of `recovery_point_retention_in_minutes`.
+  /// &gt; **Note:** The value of `applicationConsistentSnapshotFrequencyInMinutes` must be less than or equal to the value of `recoveryPointRetentionInMinutes`.
   final pulumi.Input<int> applicationConsistentSnapshotFrequencyInMinutes;
   /// The name of the replication policy. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -54,4 +54,3 @@ class ReplicationPolicyArgs {
     );
   }
 }
-

@@ -196,6 +196,48 @@ import 'windows_function_app_slot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "windowsfunctionappsa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   name                = "example-app-service-plan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   os_type             = "Windows"
+///   sku_name            = "Y1"
+/// }
+/// resource "azure_appservice_windowsfunctionapp" "example" {
+///   name                 = "example-windows-function-app"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resourcegroup.example.location
+///   storage_account_name = azure_storage_account.example.name
+///   service_plan_id      = azure_appservice_serviceplan.example.id
+///   site_config          = {}
+/// }
+/// resource "azure_appservice_windowsfunctionappslot" "example" {
+///   name                 = "example-slot"
+///   function_app_id      = azure_appservice_windowsfunctionapp.example.id
+///   storage_account_name = azure_storage_account.example.name
+///   site_config          = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +256,8 @@ import 'windows_function_app_slot_state.dart';
 /// import com.pulumi.azure.appservice.WindowsFunctionAppSlot;
 /// import com.pulumi.azure.appservice.WindowsFunctionAppSlotArgs;
 /// import com.pulumi.azure.appservice.inputs.WindowsFunctionAppSlotSiteConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -332,9 +374,9 @@ import 'windows_function_app_slot_state.dart';
 class WindowsFunctionAppSlot extends pulumi.CustomResource {
   /// A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
   late final pulumi.Output<Map<String, String>?> appSettings;
-  /// an `auth_settings` block as detailed below.
+  /// an `authSettings` block as detailed below.
   late final pulumi.Output<WindowsFunctionAppSlotAuthSettings?> authSettings;
-  /// an `auth_settings_v2` block as detailed below.
+  /// an `authSettingsV2` block as detailed below.
   late final pulumi.Output<WindowsFunctionAppSlotAuthSettingsV2?> authSettingsV2;
   /// a `backup` block as detailed below.
   late final pulumi.Output<WindowsFunctionAppSlotBackup?> backup;
@@ -343,10 +385,12 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
   /// Should the Function App Slot use Client Certificates.
   late final pulumi.Output<bool?> clientCertificateEnabled;
   /// Paths to exclude when using client certificates, separated by ;
+  ///
+  /// &gt; **Note:** TLS 1.3 and HTTP 2.0 don't support TLS renegotiation. These protocols will not work if your app is configured with client certificate settings that use TLS renegotiation. Either set `clientCertificateEnabled` to `false`, or set `clientCertificateMode` to `Optional` or `Required` and remove all `clientCertificateExclusionPaths`.
   late final pulumi.Output<String?> clientCertificateExclusionPaths;
   /// The mode of the Function App Slot's client certificates requirement for incoming requests. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. Defaults to `Optional`.
   late final pulumi.Output<String?> clientCertificateMode;
-  /// a `connection_string` block as detailed below.
+  /// a `connectionString` block as detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>?> connectionStrings;
   /// Force disable the content share settings.
   late final pulumi.Output<bool?> contentShareForceDisabled;
@@ -380,33 +424,33 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> outboundIpAddressLists;
   /// A comma separated list of outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12`.
   late final pulumi.Output<String> outboundIpAddresses;
-  /// A list of possible outbound IP addresses, not all of which are necessarily in use. This is a superset of `outbound_ip_address_list`. For example `["52.23.25.3", "52.143.43.12"]`.
+  /// A list of possible outbound IP addresses, not all of which are necessarily in use. This is a superset of `outboundIpAddressList`. For example `["52.23.25.3", "52.143.43.12"]`.
   late final pulumi.Output<List<String>> possibleOutboundIpAddressLists;
-  /// A comma separated list of possible outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12,52.143.43.17`. This is a superset of `outbound_ip_addresses`. For example `["52.23.25.3", "52.143.43.12","52.143.43.17"]`.
+  /// A comma separated list of possible outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12,52.143.43.17`. This is a superset of `outboundIpAddresses`. For example `["52.23.25.3", "52.143.43.12","52.143.43.17"]`.
   late final pulumi.Output<String> possibleOutboundIpAddresses;
   /// Should public network access be enabled for the Function App. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
   /// The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Windows Function App will be used.
   late final pulumi.Output<String?> servicePlanId;
-  /// a `site_config` block as detailed below.
+  /// a `siteConfig` block as detailed below.
   late final pulumi.Output<WindowsFunctionAppSlotSiteConfig> siteConfig;
-  /// A `site_credential` block as defined below.
+  /// A `siteCredential` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
   /// The access key which will be used to access the storage account for the Function App Slot.
   late final pulumi.Output<String?> storageAccountAccessKey;
   /// The backend storage account name which will be used by this Function App Slot.
   late final pulumi.Output<String?> storageAccountName;
-  /// One or more `storage_account` blocks as defined below.
+  /// One or more `storageAccount` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
   /// The Key Vault Secret ID, optionally including version, that contains the Connection String to connect to the storage account for this Function App Slot.
   ///
-  /// &gt; **Note:** `storage_key_vault_secret_id` cannot be used with `storage_account_name`.
+  /// &gt; **Note:** `storageKeyVaultSecretId` cannot be used with `storageAccountName`.
   ///
-  /// &gt; **Note:** `storage_key_vault_secret_id` used without a version will use the latest version of the secret, however, the service can take up to 24h to pick up a rotation of the latest version. See the [official docs](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#rotation) for more information.
+  /// &gt; **Note:** `storageKeyVaultSecretId` used without a version will use the latest version of the secret, however, the service can take up to 24h to pick up a rotation of the latest version. See the [official docs](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#rotation) for more information.
   late final pulumi.Output<String?> storageKeyVaultSecretId;
   /// Should the Function App Slot use its Managed Identity to access storage.
   ///
-  /// &gt; **Note:** One of `storage_account_access_key` or `storage_uses_managed_identity` must be specified when using `storage_account_name`.
+  /// &gt; **Note:** One of `storageAccountAccessKey` or `storageUsesManagedIdentity` must be specified when using `storageAccountName`.
   late final pulumi.Output<bool?> storageUsesManagedIdentity;
   /// A mapping of tags which should be assigned to the Windows Function App Slot.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -414,9 +458,9 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
   late final pulumi.Output<bool?> virtualNetworkBackupRestoreEnabled;
   /// The subnet id which will be used by this Function App Slot for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   ///
-  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource app_service_virtual_network_swift_connection and in-line within this resource using the `virtual_network_subnet_id` property. You cannot use both methods simultaneously. If the virtual network is set via the resource `app_service_virtual_network_swift_connection` then `ignore_changes` should be used in the function app slot configuration.
+  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource appServiceVirtualNetworkSwiftConnection and in-line within this resource using the `virtualNetworkSubnetId` property. You cannot use both methods simultaneously. If the virtual network is set via the resource `appServiceVirtualNetworkSwiftConnection` then `ignoreChanges` should be used in the function app slot configuration.
   ///
-  /// &gt; **Note:** Assigning the `virtual_network_subnet_id` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
+  /// &gt; **Note:** Assigning the `virtualNetworkSubnetId` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
   late final pulumi.Output<String?> virtualNetworkSubnetId;
   /// Specifies whether traffic for the image pull should be routed over virtual network. Defaults to `false`.
   ///

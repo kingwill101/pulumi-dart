@@ -17,7 +17,7 @@ class GetVirtualMachineScaleSetInstance {
   final pulumi.Input<String> privateIpAddress;
   /// A list of Private IP Addresses assigned to this Virtual Machine.
   final pulumi.Input<List<String>> privateIpAddresses;
-  /// A `public_ip_address` block as defined below.
+  /// A `publicIpAddress` block as defined below.
   final pulumi.Input<String> publicIpAddress;
   /// A list of the Public IP Addresses assigned to this Virtual Machine.
   final pulumi.Input<List<String>> publicIpAddresses;
@@ -34,7 +34,7 @@ class GetVirtualMachineScaleSetInstance {
   /// [powerState] The power state of the virtual machine.
   /// [privateIpAddress] The Primary Private IP Address assigned to this Virtual Machine.
   /// [privateIpAddresses] A list of Private IP Addresses assigned to this Virtual Machine.
-  /// [publicIpAddress] A `public_ip_address` block as defined below.
+  /// [publicIpAddress] A `publicIpAddress` block as defined below.
   /// [publicIpAddresses] A list of the Public IP Addresses assigned to this Virtual Machine.
   /// [virtualMachineId] The unique ID of the virtual machine.
   /// [zone] The zones of the virtual machine.
@@ -84,4 +84,3 @@ class GetVirtualMachineScaleSetInstance {
     );
   }
 }
-

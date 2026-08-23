@@ -105,6 +105,29 @@ import 'account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_maps_account" "example" {
+///   name                         = "example-maps-account"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   sku_name                     = "S1"
+///   local_authentication_enabled = true
+///   tags = {
+///     "environment" = "Test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +138,8 @@ import 'account_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.maps.Account;
 /// import com.pulumi.azure.maps.AccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,7 +204,7 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// A `cors` block as defined below
   late final pulumi.Output<AccountCors?> cors;
-  /// One or more `data_store` blocks as defined below.
+  /// One or more `dataStore` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> dataStores;
   /// An `identity` block as defined below.
   late final pulumi.Output<AccountIdentity?> identity;

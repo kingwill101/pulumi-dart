@@ -139,6 +139,35 @@ import 'network_security_perimeter_access_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networksecurityperimeter" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = "West Europe"
+/// }
+/// resource "azure_network_networksecurityperimeterprofile" "example" {
+///   name                          = "example"
+///   network_security_perimeter_id = azure_network_networksecurityperimeter.example.id
+/// }
+/// resource "azure_network_networksecurityperimeteraccessrule" "example" {
+///   name                                  = "example"
+///   network_security_perimeter_profile_id = azure_network_networksecurityperimeterprofile.example.id
+///   direction                             = "Inbound"
+///   address_prefixes                      = ["8.8.8.8/32"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -153,8 +182,8 @@ import 'network_security_perimeter_access_rule_state.dart';
 /// import com.pulumi.azure.network.NetworkSecurityPerimeterProfileArgs;
 /// import com.pulumi.azure.network.NetworkSecurityPerimeterAccessRule;
 /// import com.pulumi.azure.network.NetworkSecurityPerimeterAccessRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -239,19 +268,19 @@ import 'network_security_perimeter_access_rule_state.dart';
 /// $ pulumi import azure:network/networkSecurityPerimeterAccessRule:NetworkSecurityPerimeterAccessRule example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Network/networkSecurityPerimeters/example-nsp/profiles/defaultProfile/accessRules/example-accessrule
 /// ```
 class NetworkSecurityPerimeterAccessRule extends pulumi.CustomResource {
-  /// Specifies a list of CIDRs. Can only be specified when direction is set to `Inbound`. Conflicts with `fqdns`, `service_tags`, `subscription_ids`.
+  /// Specifies a list of CIDRs. Can only be specified when direction is set to `Inbound`. Conflicts with `fqdns`, `serviceTags`, `subscriptionIds`.
   late final pulumi.Output<List<String>?> addressPrefixes;
   /// The direction of the rule. Possible values are `Inbound` and `Outbound`. Changing this forces a new Network Security Perimeter Access Rule to be created.
   late final pulumi.Output<String> direction;
-  /// Specifies a list of fully qualified domain names. Can only be specified when direction is set to `Outbound`. Conflicts with `address_prefixes`, `service_tags`, and `subscription_ids`.
+  /// Specifies a list of fully qualified domain names. Can only be specified when direction is set to `Outbound`. Conflicts with `addressPrefixes`, `serviceTags`, and `subscriptionIds`.
   late final pulumi.Output<List<String>?> fqdns;
   /// The name which should be used for this Network Security Perimeter Access Rule. Changing this forces a new Network Security Perimeter Access Rule to be created.
   late final pulumi.Output<String> name;
   /// The ID of the Network Security Perimeter Profile within which this Access Rule is created. Changing this forces a new Network Security Perimeter Access Rule to be created.
   late final pulumi.Output<String> networkSecurityPerimeterProfileId;
-  /// Specifies a list of service tags. Can only be specified when direction is set to `Inbound`. Conflicts with `address_prefixes`, `fqdns`, and `subscription_ids`.
+  /// Specifies a list of service tags. Can only be specified when direction is set to `Inbound`. Conflicts with `addressPrefixes`, `fqdns`, and `subscriptionIds`.
   late final pulumi.Output<List<String>?> serviceTags;
-  /// Specifies a list of subscription IDs this rule applies to. Can only be specified when direction is set to `Inbound`. Conflicts with `address_prefixes`, `fqdns`, and `service_tags`.
+  /// Specifies a list of subscription IDs this rule applies to. Can only be specified when direction is set to `Inbound`. Conflicts with `addressPrefixes`, `fqdns`, and `serviceTags`.
   late final pulumi.Output<List<String>?> subscriptionIds;
 
   /// Creates a new [NetworkSecurityPerimeterAccessRule].

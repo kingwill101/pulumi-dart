@@ -6,7 +6,7 @@ import 'custom_domain_state.dart';
 ///
 /// ## Disclaimers
 ///
-/// &gt; **Note:** It's possible to define Custom Domains both within the `azure.apimanagement.Service` resource via the `hostname_configurations` block and by using this resource. However it's not possible to use both methods to manage Custom Domains within an API Management Service, since there will be conflicts.
+/// &gt; **Note:** It's possible to define Custom Domains both within the `azure.apimanagement.Service` resource via the `hostnameConfigurations` block and by using this resource. However it's not possible to use both methods to manage Custom Domains within an API Management Service, since there will be conflicts.
 ///
 /// ## Example Usage
 ///
@@ -378,6 +378,78 @@ import 'custom_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getkeyvault" "example" {
+///   name                = "mykeyvault"
+///   resource_group_name = "some-resource-group"
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "pub1"
+///   publisher_email     = "pub1@email.com"
+///   sku_name            = "Developer_1"
+/// }
+/// resource "azure_keyvault_certificate" "example" {
+///   name         = "example-certificate"
+///   key_vault_id = data.azure_keyvault_getkeyvault.example.id
+///   certificate_policy = {
+///     issuer_parameters = {
+///       name = "Self"
+///     }
+///     key_properties = {
+///       exportable = true
+///       key_size   = 2048
+///       key_type   = "RSA"
+///       reuse_key  = true
+///     }
+///     lifetime_actions = [{
+///       "action" = {
+///         "actionType" = "AutoRenew"
+///       }
+///       "trigger" = {
+///         "daysBeforeExpiry" = 30
+///       }
+///     }]
+///     secret_properties = {
+///       content_type = "application/x-pkcs12"
+///     }
+///     x509_certificate_properties = {
+///       key_usages         = ["cRLSign", "dataEncipherment", "digitalSignature", "keyAgreement", "keyCertSign", "keyEncipherment"]
+///       subject            = "CN=api.example.com"
+///       validity_in_months = 12
+///       subject_alternative_names = {
+///         dns_names = ["api.example.com", "portal.example.com"]
+///       }
+///     }
+///   }
+/// }
+/// resource "azure_apimanagement_customdomain" "example" {
+///   api_management_id = azure_apimanagement_service.example.id
+///   gateways {
+///     host_name    = "api.example.com"
+///     key_vault_id = azure_keyvault_certificate.example.versionless_secret_id
+///   }
+///   developer_portals {
+///     host_name    = "portal.example.com"
+///     key_vault_id = azure_keyvault_certificate.example.versionless_secret_id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -395,6 +467,9 @@ import 'custom_domain_state.dart';
 /// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyArgs;
 /// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyIssuerParametersArgs;
 /// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyKeyPropertiesArgs;
+/// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyLifetimeActionArgs;
+/// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyLifetimeActionActionArgs;
+/// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyLifetimeActionTriggerArgs;
 /// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicySecretPropertiesArgs;
 /// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyX509CertificatePropertiesArgs;
 /// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs;
@@ -402,8 +477,8 @@ import 'custom_domain_state.dart';
 /// import com.pulumi.azure.apimanagement.CustomDomainArgs;
 /// import com.pulumi.azure.apimanagement.inputs.CustomDomainGatewayArgs;
 /// import com.pulumi.azure.apimanagement.inputs.CustomDomainDeveloperPortalArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -583,7 +658,7 @@ import 'custom_domain_state.dart';
 class CustomDomain extends pulumi.CustomResource {
   /// The ID of the API Management service for which to configure Custom Domains. Changing this forces a new API Management Custom Domain resource to be created.
   late final pulumi.Output<String> apiManagementId;
-  /// One or more `developer_portal` blocks as defined below.
+  /// One or more `developerPortal` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> developerPortals;
   /// One or more `gateway` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> gateways;

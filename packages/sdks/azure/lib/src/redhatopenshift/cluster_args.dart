@@ -14,41 +14,41 @@ import 'cluster_worker_profile.dart';
 /// {@endtemplate}
 /// {@macro pulumi_redhatopenshift_cluster_cluster_args_doc}
 class ClusterArgs {
-  /// An `api_server_profile` block as defined below. Changing this forces a new resource to be created.
+  /// An `apiServerProfile` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ClusterApiServerProfile> apiServerProfile;
-  /// A `cluster_profile` block as defined below. Changing this forces a new resource to be created.
+  /// A `clusterProfile` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ClusterClusterProfile> clusterProfile;
-  /// An `ingress_profile` block as defined below. Changing this forces a new resource to be created.
+  /// An `ingressProfile` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ClusterIngressProfile> ingressProfile;
   /// The location where the Azure Red Hat OpenShift Cluster should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-  /// A `main_profile` block as defined below. Changing this forces a new resource to be created.
+  /// A `mainProfile` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ClusterMainProfile> mainProfile;
   /// The name of the Azure Red Hat OpenShift Cluster to create. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// A `network_profile` block as defined below. Changing this forces a new resource to be created.
+  /// A `networkProfile` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ClusterNetworkProfile> networkProfile;
   /// Specifies the Resource Group where the Azure Red Hat OpenShift Cluster should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-  /// A `service_principal` block as defined below.
+  /// A `servicePrincipal` block as defined below.
   final pulumi.Input<ClusterServicePrincipal> servicePrincipal;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A `worker_profile` block as defined below. Changing this forces a new resource to be created.
+  /// A `workerProfile` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ClusterWorkerProfile> workerProfile;
 
   /// Creates a new [ClusterArgs].
-  /// [apiServerProfile] An `api_server_profile` block as defined below. Changing this forces a new resource to be created.
-  /// [clusterProfile] A `cluster_profile` block as defined below. Changing this forces a new resource to be created.
-  /// [ingressProfile] An `ingress_profile` block as defined below. Changing this forces a new resource to be created.
+  /// [apiServerProfile] An `apiServerProfile` block as defined below. Changing this forces a new resource to be created.
+  /// [clusterProfile] A `clusterProfile` block as defined below. Changing this forces a new resource to be created.
+  /// [ingressProfile] An `ingressProfile` block as defined below. Changing this forces a new resource to be created.
   /// [location] The location where the Azure Red Hat OpenShift Cluster should be created. Changing this forces a new resource to be created.
-  /// [mainProfile] A `main_profile` block as defined below. Changing this forces a new resource to be created.
+  /// [mainProfile] A `mainProfile` block as defined below. Changing this forces a new resource to be created.
   /// [name] The name of the Azure Red Hat OpenShift Cluster to create. Changing this forces a new resource to be created.
-  /// [networkProfile] A `network_profile` block as defined below. Changing this forces a new resource to be created.
+  /// [networkProfile] A `networkProfile` block as defined below. Changing this forces a new resource to be created.
   /// [resourceGroupName] Specifies the Resource Group where the Azure Red Hat OpenShift Cluster should exist. Changing this forces a new resource to be created.
-  /// [servicePrincipal] A `service_principal` block as defined below.
+  /// [servicePrincipal] A `servicePrincipal` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  /// [workerProfile] A `worker_profile` block as defined below. Changing this forces a new resource to be created.
+  /// [workerProfile] A `workerProfile` block as defined below. Changing this forces a new resource to be created.
   const ClusterArgs({
     required this.apiServerProfile,
     required this.clusterProfile,
@@ -95,4 +95,3 @@ class ClusterArgs {
     );
   }
 }
-

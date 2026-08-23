@@ -40,15 +40,15 @@ class AuthorizationServerArgs {
   final pulumi.Input<String> resourceGroupName;
   /// The password associated with the Resource Owner.
   ///
-  /// &gt; **Note:** This can only be specified when `grant_type` includes `resourceOwnerPassword`.
+  /// &gt; **Note:** This can only be specified when `grantType` includes `resourceOwnerPassword`.
   final pulumi.Input<String>? resourceOwnerPassword;
   /// The username associated with the Resource Owner.
   ///
-  /// &gt; **Note:** This can only be specified when `grant_type` includes `resourceOwnerPassword`.
+  /// &gt; **Note:** This can only be specified when `grantType` includes `resourceOwnerPassword`.
   final pulumi.Input<String>? resourceOwnerUsername;
   /// Does this Authorization Server support State? If this is set to `true` the client may use the state parameter to raise protocol security.
   final pulumi.Input<bool>? supportState;
-  /// A `token_body_parameter` block as defined below.
+  /// A `tokenBodyParameter` block as defined below.
   final pulumi.Input<List<AuthorizationServerTokenBodyParameter>>? tokenBodyParameters;
   /// The OAUTH Token Endpoint.
   final pulumi.Input<String>? tokenEndpoint;
@@ -71,7 +71,7 @@ class AuthorizationServerArgs {
   /// [resourceOwnerPassword] The password associated with the Resource Owner.
   /// [resourceOwnerUsername] The username associated with the Resource Owner.
   /// [supportState] Does this Authorization Server support State? If this is set to `true` the client may use the state parameter to raise protocol security.
-  /// [tokenBodyParameters] A `token_body_parameter` block as defined below.
+  /// [tokenBodyParameters] A `tokenBodyParameter` block as defined below.
   /// [tokenEndpoint] The OAUTH Token Endpoint.
   const AuthorizationServerArgs({
     required this.apiManagementName,
@@ -143,4 +143,3 @@ class AuthorizationServerArgs {
     );
   }
 }
-

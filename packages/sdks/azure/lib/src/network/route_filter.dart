@@ -96,6 +96,27 @@ import 'route_filter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_network_routefilter" "example" {
+///   name                = "example"
+///   resource_group_name = "example"
+///   location            = "East US"
+///   rule = {
+///     name        = "rule"
+///     access      = "Allow"
+///     rule_type   = "Community"
+///     communities = ["12076:52004"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +126,8 @@ import 'route_filter_state.dart';
 /// import com.pulumi.azure.network.RouteFilter;
 /// import com.pulumi.azure.network.RouteFilterArgs;
 /// import com.pulumi.azure.network.inputs.RouteFilterRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

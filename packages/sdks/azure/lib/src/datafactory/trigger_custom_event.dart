@@ -253,6 +253,54 @@ import 'trigger_custom_event_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_pipeline" "example" {
+///   name            = "example"
+///   data_factory_id = azure_datafactory_factory.example.id
+/// }
+/// resource "azure_eventgrid_topic" "example" {
+///   name                = "example-topic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_triggercustomevent" "example" {
+///   name                = "example"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   eventgrid_topic_id  = azure_eventgrid_topic.example.id
+///   events              = ["event1", "event2"]
+///   subject_begins_with = "abc"
+///   subject_ends_with   = "xyz"
+///   annotations         = ["example1", "example2", "example3"]
+///   description         = "example description"
+///   pipelines {
+///     name = azure_datafactory_pipeline.example.name
+///     parameters = {
+///       "Env" = "Prod"
+///     }
+///   }
+///   additional_properties = {
+///     "foo" = "foo1"
+///     "bar" = "bar2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -270,8 +318,8 @@ import 'trigger_custom_event_state.dart';
 /// import com.pulumi.azure.datafactory.TriggerCustomEvent;
 /// import com.pulumi.azure.datafactory.TriggerCustomEventArgs;
 /// import com.pulumi.azure.datafactory.inputs.TriggerCustomEventPipelineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

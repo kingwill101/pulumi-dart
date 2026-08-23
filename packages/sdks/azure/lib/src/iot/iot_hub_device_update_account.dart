@@ -113,6 +113,31 @@ import 'iot_hub_device_update_account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "East US"
+/// }
+/// resource "azure_iot_iothubdeviceupdateaccount" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -124,8 +149,8 @@ import 'iot_hub_device_update_account_state.dart';
 /// import com.pulumi.azure.iot.IotHubDeviceUpdateAccount;
 /// import com.pulumi.azure.iot.IotHubDeviceUpdateAccountArgs;
 /// import com.pulumi.azure.iot.inputs.IotHubDeviceUpdateAccountIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

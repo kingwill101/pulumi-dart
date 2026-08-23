@@ -913,6 +913,188 @@ import 'managed_instance_failover_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_mssql_managedinstancefailovergroup" "example" {
+///   depends_on                  = [azure_privatedns_zonevirtualnetworklink.primary, azure_privatedns_zonevirtualnetworklink.failover]
+///   name                        = "example-failover-group"
+///   location                    = azure_mssql_managedinstance.primary.location
+///   managed_instance_id         = azure_mssql_managedinstance.primary.id
+///   partner_managed_instance_id = azure_mssql_managedinstance.failover.id
+///   secondary_type              = "Geo"
+///   read_write_endpoint_failover_policy = {
+///     mode          = "Automatic"
+///     grace_minutes = 60
+///   }
+/// }
+/// resource "azure_privatedns_zone" "example" {
+///   name                ="${local.name}.private"
+///   resource_group_name = azure_core_resourcegroup.primary.name
+/// }
+/// ## Primary SQL Managed Instance
+/// resource "azure_core_resourcegroup" "primary" {
+///   name     = local.primaryName
+///   location = local.primaryLocation
+/// }
+/// resource "azure_network_virtualnetwork" "primary" {
+///   name                = local.primaryName
+///   location            = azure_core_resourcegroup.primary.location
+///   resource_group_name = azure_core_resourcegroup.primary.name
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_privatedns_zonevirtualnetworklink" "primary" {
+///   name                  = "primary-link"
+///   resource_group_name   = azure_core_resourcegroup.primary.name
+///   private_dns_zone_name = azure_privatedns_zone.example.name
+///   virtual_network_id    = azure_network_virtualnetwork.primary.id
+/// }
+/// resource "azure_network_subnet" "primary" {
+///   name                 = local.primaryName
+///   resource_group_name  = azure_core_resourcegroup.primary.name
+///   virtual_network_name = azure_network_virtualnetwork.primary.name
+///   address_prefixes     = ["10.0.1.0/24"]
+///   delegations {
+///     name = "delegation"
+///     service_delegation = {
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action", "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action"]
+///       name    = "Microsoft.Sql/managedInstances"
+///     }
+///   }
+/// }
+/// resource "azure_network_networksecuritygroup" "primary" {
+///   name                = local.primaryName
+///   location            = azure_core_resourcegroup.primary.location
+///   resource_group_name = azure_core_resourcegroup.primary.name
+/// }
+/// resource "azure_network_subnetnetworksecuritygroupassociation" "primary" {
+///   subnet_id                 = azure_network_subnet.primary.id
+///   network_security_group_id = azure_network_networksecuritygroup.primary.id
+/// }
+/// resource "azure_network_routetable" "primary" {
+///   name                = local.primaryName
+///   location            = azure_core_resourcegroup.primary.location
+///   resource_group_name = azure_core_resourcegroup.primary.name
+/// }
+/// resource "azure_network_subnetroutetableassociation" "primary" {
+///   subnet_id      = azure_network_subnet.primary.id
+///   route_table_id = azure_network_routetable.primary.id
+/// }
+/// resource "azure_mssql_managedinstance" "primary" {
+///   depends_on                   = [azure_network_subnetnetworksecuritygroupassociation.primary, azure_network_subnetroutetableassociation.primary]
+///   name                         = local.primaryName
+///   resource_group_name          = azure_core_resourcegroup.primary.name
+///   location                     = azure_core_resourcegroup.primary.location
+///   administrator_login          = "mradministrator"
+///   administrator_login_password = "thisIsDog11"
+///   license_type                 = "BasePrice"
+///   subnet_id                    = azure_network_subnet.primary.id
+///   sku_name                     = "GP_Gen5"
+///   vcores                       = 4
+///   storage_size_in_gb           = 32
+/// }
+/// resource "azure_network_virtualnetworkpeering" "primary_to_failover" {
+///   name                      = "primary-to-failover"
+///   remote_virtual_network_id = azure_network_virtualnetwork.failover.id
+///   resource_group_name       = azure_core_resourcegroup.primary.name
+///   virtual_network_name      = azure_network_virtualnetwork.primary.name
+/// }
+/// ## Secondary (Fail-over) SQL Managed Instance
+/// resource "azure_core_resourcegroup" "failover" {
+///   name     = local.failoverName
+///   location = local.failoverLocation
+/// }
+/// resource "azure_network_virtualnetwork" "failover" {
+///   name                = local.failoverName
+///   location            = azure_core_resourcegroup.failover.location
+///   resource_group_name = azure_core_resourcegroup.failover.name
+///   address_spaces      = ["10.1.0.0/16"]
+/// }
+/// resource "azure_privatedns_zonevirtualnetworklink" "failover" {
+///   name                  = "failover-link"
+///   resource_group_name   = azure_privatedns_zone.example.resource_group_name
+///   private_dns_zone_name = azure_privatedns_zone.example.name
+///   virtual_network_id    = azure_network_virtualnetwork.failover.id
+/// }
+/// resource "azure_network_subnet" "default" {
+///   name                 = "default"
+///   resource_group_name  = azure_core_resourcegroup.failover.name
+///   virtual_network_name = azure_network_virtualnetwork.failover.name
+///   address_prefixes     = ["10.1.0.0/24"]
+/// }
+/// resource "azure_network_subnet" "failover" {
+///   name                 = "ManagedInstance"
+///   resource_group_name  = azure_core_resourcegroup.failover.name
+///   virtual_network_name = azure_network_virtualnetwork.failover.name
+///   address_prefixes     = ["10.1.1.0/24"]
+///   delegations {
+///     name = "delegation"
+///     service_delegation = {
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action", "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action"]
+///       name    = "Microsoft.Sql/managedInstances"
+///     }
+///   }
+/// }
+/// resource "azure_network_networksecuritygroup" "failover" {
+///   name                = local.failoverName
+///   location            = azure_core_resourcegroup.failover.location
+///   resource_group_name = azure_core_resourcegroup.failover.name
+/// }
+/// resource "azure_network_subnetnetworksecuritygroupassociation" "failover" {
+///   subnet_id                 = azure_network_subnet.failover.id
+///   network_security_group_id = azure_network_networksecuritygroup.failover.id
+/// }
+/// resource "azure_network_routetable" "failover" {
+///   name                = local.failoverName
+///   location            = azure_core_resourcegroup.failover.location
+///   resource_group_name = azure_core_resourcegroup.failover.name
+/// }
+/// resource "azure_network_subnetroutetableassociation" "failover" {
+///   subnet_id      = azure_network_subnet.failover.id
+///   route_table_id = azure_network_routetable.failover.id
+/// }
+/// resource "azure_mssql_managedinstance" "failover" {
+///   depends_on                   = [azure_network_subnetnetworksecuritygroupassociation.failover, azure_network_subnetroutetableassociation.failover]
+///   name                         = local.failoverName
+///   resource_group_name          = azure_core_resourcegroup.failover.name
+///   location                     = azure_core_resourcegroup.failover.location
+///   administrator_login          = "mradministrator"
+///   administrator_login_password = "thisIsDog11"
+///   license_type                 = "BasePrice"
+///   subnet_id                    = azure_network_subnet.failover.id
+///   sku_name                     = "GP_Gen5"
+///   vcores                       = 4
+///   storage_size_in_gb           = 32
+///   dns_zone_partner_id          = azure_mssql_managedinstance.primary.id
+/// }
+/// resource "azure_network_virtualnetworkpeering" "failover_to_primary" {
+///   name                      = "failover-to-primary"
+///   remote_virtual_network_id = azure_network_virtualnetwork.primary.id
+///   resource_group_name       = azure_core_resourcegroup.failover.name
+///   virtual_network_name      = azure_network_virtualnetwork.failover.name
+/// }
+/// locals {
+///   name = "mymssqlmitest"
+/// }
+/// locals {
+///   primaryName ="${local.name}-primary"
+/// }
+/// locals {
+///   primaryLocation = "West Europe"
+/// }
+/// locals {
+///   failoverName ="${local.name}-failover"
+/// }
+/// locals {
+///   failoverLocation = "North Europe"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -947,8 +1129,8 @@ import 'managed_instance_failover_group_state.dart';
 /// import com.pulumi.azure.network.VirtualNetworkPeering;
 /// import com.pulumi.azure.network.VirtualNetworkPeeringArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1418,9 +1600,9 @@ class ManagedInstanceFailoverGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The ID of the Azure SQL Managed Instance which will be replicated to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> partnerManagedInstanceId;
-  /// A `partner_region` block as defined below.
+  /// A `partnerRegion` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> partnerRegions;
-  /// A `read_write_endpoint_failover_policy` block as defined below.
+  /// A `readWriteEndpointFailoverPolicy` block as defined below.
   late final pulumi.Output<ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy> readWriteEndpointFailoverPolicy;
   /// Failover policy for the read-only endpoint. Defaults to `true`.
   late final pulumi.Output<bool?> readonlyEndpointFailoverPolicyEnabled;

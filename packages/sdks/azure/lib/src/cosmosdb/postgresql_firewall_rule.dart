@@ -130,6 +130,35 @@ import 'postgresql_firewall_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_cosmosdb_postgresqlcluster" "example" {
+///   name                            = "examplecluster"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resourcegroup.example.location
+///   administrator_login_password    = "H@Sh1CoR3!"
+///   coordinator_storage_quota_in_mb = 131072
+///   coordinator_vcore_count         = 2
+///   node_count                      = 0
+/// }
+/// resource "azure_cosmosdb_postgresqlfirewallrule" "example" {
+///   name             = "example-firewallrule"
+///   cluster_id       = azure_cosmosdb_postgresqlcluster.example.id
+///   start_ip_address = "10.0.17.62"
+///   end_ip_address   = "10.0.17.64"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +171,8 @@ import 'postgresql_firewall_rule_state.dart';
 /// import com.pulumi.azure.cosmosdb.PostgresqlClusterArgs;
 /// import com.pulumi.azure.cosmosdb.PostgresqlFirewallRule;
 /// import com.pulumi.azure.cosmosdb.PostgresqlFirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

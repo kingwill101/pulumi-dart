@@ -18,10 +18,10 @@ import 'automanage_configuration_assignment_state.dart';
 ///     name: "example-resources",
 ///     location: "West Europe",
 /// });
-/// const example = exampleResourceGroup.name.apply(name => azure.arcmachine.getOutput({
+/// const example = azure.arcmachine.getOutput({
 ///     name: arcMachineName,
-///     resourceGroupName: name,
-/// }));
+///     resourceGroupName: exampleResourceGroup.name,
+/// });
 /// const exampleConfiguration = new azure.automanage.Configuration("example", {
 ///     name: "example-configuration",
 ///     resourceGroupName: exampleResourceGroup.name,
@@ -42,8 +42,8 @@ import 'automanage_configuration_assignment_state.dart';
 /// example_resource_group = azure.core.ResourceGroup("example",
 ///     name="example-resources",
 ///     location="West Europe")
-/// example = example_resource_group.name.apply(lambda name: azure.arcmachine.get_output(name=arc_machine_name,
-///     resource_group_name=name))
+/// example = azure.arcmachine.get_output(name=arc_machine_name,
+///     resource_group_name=example_resource_group.name)
 /// example_configuration = azure.automanage.Configuration("example",
 ///     name="example-configuration",
 ///     resource_group_name=example_resource_group.name,
@@ -105,7 +105,8 @@ import 'automanage_configuration_assignment_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
 /// 		// The name of the Arc Machine.
-/// 		arcMachineName := cfg.RequireObject("arcMachineName")
+/// 		var arcMachineName interface{}
+/// 		cfg.RequireObject("arcMachineName", &arcMachineName)
 /// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "example", &core.ResourceGroupArgs{
 /// 			Name:     pulumi.String("example-resources"),
 /// 			Location: pulumi.String("West Europe"),
@@ -113,12 +114,10 @@ import 'automanage_configuration_assignment_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		example := exampleResourceGroup.Name.ApplyT(func(name string) (arcmachine.GetResult, error) {
-/// 			return arcmachine.GetResult(interface{}(arcmachine.Get(ctx, &arcmachine.GetArgs{
-/// 				Name:              arcMachineName,
-/// 				ResourceGroupName: name,
-/// 			}, nil))), nil
-/// 		}).(arcmachine.GetResultOutput)
+/// 		example := arcmachine.GetOutput(ctx, arcmachine.GetOutputArgs{
+/// 			Name:              pulumi.Any(arcMachineName),
+/// 			ResourceGroupName: exampleResourceGroup.Name,
+/// 		}, nil)
 /// 		exampleConfiguration, err := automanage.NewConfiguration(ctx, "example", &automanage.ConfigurationArgs{
 /// 			Name:              pulumi.String("example-configuration"),
 /// 			ResourceGroupName: exampleResourceGroup.Name,
@@ -129,7 +128,7 @@ import 'automanage_configuration_assignment_state.dart';
 /// 		}
 /// 		_, err = arcmachine.NewAutomanageConfigurationAssignment(ctx, "example", &arcmachine.AutomanageConfigurationAssignmentArgs{
 /// 			ArcMachineId: pulumi.String(example.ApplyT(func(example arcmachine.GetResult) (*string, error) {
-/// 				return &example.Id, nil
+/// 				return example.Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ConfigurationId: exampleConfiguration.ID(),
 /// 		})
@@ -138,6 +137,37 @@ import 'automanage_configuration_assignment_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_arcmachine_get" "example" {
+///   name                = var.arcMachineName
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_automanage_configuration" "example" {
+///   name                = "example-configuration"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_arcmachine_automanageconfigurationassignment" "example" {
+///   arc_machine_id   = data.azure_arcmachine_get.example.id
+///   configuration_id = azure_automanage_configuration.example.id
+/// }
+/// variable "arcMachineName" {
+///   description = "The name of the Arc Machine."
 /// }
 /// ```
 /// ```java
@@ -154,8 +184,8 @@ import 'automanage_configuration_assignment_state.dart';
 /// import com.pulumi.azure.automanage.ConfigurationArgs;
 /// import com.pulumi.azure.arcmachine.AutomanageConfigurationAssignment;
 /// import com.pulumi.azure.arcmachine.AutomanageConfigurationAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -168,16 +198,16 @@ import 'automanage_configuration_assignment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var arcMachineName = config.get("arcMachineName");
+///         final var arcMachineName = config.require("arcMachineName");
 ///         var exampleResourceGroup = new ResourceGroup("exampleResourceGroup", ResourceGroupArgs.builder()
 ///             .name("example-resources")
 ///             .location("West Europe")
 ///             .build());
 ///
-///         final var example = exampleResourceGroup.name().applyValue(_name -> ArcmachineFunctions.get(GetArgs.builder()
+///         final var example = ArcmachineFunctions.get(GetArgs.builder()
 ///             .name(arcMachineName)
-///             .resourceGroupName(_name)
-///             .build()));
+///             .resourceGroupName(exampleResourceGroup.name())
+///             .build());
 ///
 ///         var exampleConfiguration = new Configuration("exampleConfiguration", ConfigurationArgs.builder()
 ///             .name("example-configuration")
@@ -196,7 +226,7 @@ import 'automanage_configuration_assignment_state.dart';
 /// ```yaml
 /// configuration:
 ///   arcMachineName:
-///     type: dynamic
+///     type: object
 /// resources:
 ///   exampleResourceGroup:
 ///     type: azure:core:ResourceGroup

@@ -14,7 +14,7 @@ class ConfigurationStoreArgs {
   final pulumi.Input<String>? dataPlaneProxyAuthenticationMode;
   /// Whether data plane proxy private link delegation is enabled. Defaults to `false`.
   ///
-  /// &gt; **Note:** `data_plane_proxy_private_link_delegation_enabled` cannot be set to `true` when `data_plane_proxy_authentication_mode` is set to `Local`.
+  /// &gt; **Note:** `dataPlaneProxyPrivateLinkDelegationEnabled` cannot be set to `true` when `dataPlaneProxyAuthenticationMode` is set to `Local`.
   final pulumi.Input<bool>? dataPlaneProxyPrivateLinkDelegationEnabled;
   /// An `encryption` block as defined below.
   final pulumi.Input<ConfigurationStoreEncryption>? encryption;
@@ -28,11 +28,11 @@ class ConfigurationStoreArgs {
   final pulumi.Input<String>? name;
   /// The Public Network Access setting of the App Configuration. Possible values are `Enabled` and `Disabled`.
   ///
-  /// &gt; **Note:** If `public_network_access` is not specified, the App Configuration will be created as  `Automatic`. However, once a different value is defined, can not be set again as automatic.
+  /// &gt; **Note:** If `publicNetworkAccess` is not specified, the App Configuration will be created as  `Automatic`. However, once a different value is defined, can not be set again as automatic.
   final pulumi.Input<String>? publicNetworkAccess;
   /// Whether Purge Protection is enabled. This field only works for `standard` sku. Defaults to `false`.
   ///
-  /// !&gt; **Note:** Once Purge Protection has been enabled it's not possible to disable it. Deleting the App Configuration with Purge Protection enabled will schedule the App Configuration to be deleted (which will happen by Azure in the configured number of days).
+  /// &gt; **Note:** Once Purge Protection has been enabled it's not possible to disable it. Deleting the App Configuration with Purge Protection enabled will schedule the App Configuration to be deleted (which will happen by Azure in the configured number of days).
   final pulumi.Input<bool>? purgeProtectionEnabled;
   /// One or more `replica` blocks as defined below.
   final pulumi.Input<List<ConfigurationStoreReplica>>? replicas;
@@ -119,4 +119,3 @@ class ConfigurationStoreArgs {
     );
   }
 }
-

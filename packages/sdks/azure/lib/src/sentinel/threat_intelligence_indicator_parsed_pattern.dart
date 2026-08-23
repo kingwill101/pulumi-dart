@@ -6,12 +6,12 @@ import 'threat_intelligence_indicator_parsed_pattern_pattern_type_value.dart';
 class ThreatIntelligenceIndicatorParsedPattern {
   /// The type key of parsed pattern.
   final pulumi.Input<String>? patternTypeKey;
-  /// A `pattern_type_values` block as defined below.
+  /// A `patternTypeValues` block as defined below.
   final pulumi.Input<List<ThreatIntelligenceIndicatorParsedPatternPatternTypeValue>>? patternTypeValues;
 
   /// Creates a new [ThreatIntelligenceIndicatorParsedPattern].
   /// [patternTypeKey] The type key of parsed pattern.
-  /// [patternTypeValues] A `pattern_type_values` block as defined below.
+  /// [patternTypeValues] A `patternTypeValues` block as defined below.
   const ThreatIntelligenceIndicatorParsedPattern({
     this.patternTypeKey,
     this.patternTypeValues,
@@ -31,4 +31,3 @@ class ThreatIntelligenceIndicatorParsedPattern {
     );
   }
 }
-

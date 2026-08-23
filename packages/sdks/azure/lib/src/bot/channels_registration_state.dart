@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelsRegistrationState {
   /// The CMK Key Vault Key URL to encrypt the Bot Channels Registration with the Customer Managed Encryption Key.
   ///
-  /// &gt; **Note:** It has to add the Key Vault Access Policy for the `Bot Service CMEK Prod` Service Principal and the `soft_delete_enabled` and the `purge_protection_enabled` is enabled on the `azure.keyvault.KeyVault` resource while using `cmk_key_vault_url`.
+  /// &gt; **Note:** It has to add the Key Vault Access Policy for the `Bot Service CMEK Prod` Service Principal and the `softDeleteEnabled` and the `purgeProtectionEnabled` is enabled on the `azure.keyvault.KeyVault` resource while using `cmkKeyVaultUrl`.
   ///
   /// &gt; **Note:** It has to turn off the CMK feature before revoking Key Vault Access Policy. For more information, please refer to [Revoke access to customer-managed keys](https://docs.microsoft.com/azure/bot-service/bot-service-encryption?view=azure-bot-service-4.0&WT.mc_id=Portal-Microsoft_Azure_BotService#revoke-access-to-customer-managed-keys).
   final pulumi.Input<String>? cmkKeyVaultUrl;
@@ -28,6 +28,14 @@ class ChannelsRegistrationState {
   final pulumi.Input<String>? location;
   /// The Microsoft Application ID for the Bot Channels Registration. Changing this forces a new resource to be created.
   final pulumi.Input<String>? microsoftAppId;
+  /// The Microsoft Application Tenant ID for the Bot Channels Registration. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? microsoftAppTenantId;
+  /// The Microsoft Application Type for the Bot Channels Registration. Possible values are `MultiTenant`, `SingleTenant` and `UserAssignedMSI`. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** Creation of `azure.bot.ChannelsRegistration` resources using the `MultiTenant` type is no longer supported by Azure, existing resources can continue using this type.
+  final pulumi.Input<String>? microsoftAppType;
+  /// The ID of Microsoft Application User Assigned Identity for the Bot Channels Registration. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? microsoftAppUserAssignedIdentityId;
   /// Specifies the name of the Bot Channels Registration. Changing this forces a new resource to be created. Must be globally unique.
   final pulumi.Input<String>? name;
   /// Is the Bot Channels Registration in an isolated network?
@@ -52,6 +60,9 @@ class ChannelsRegistrationState {
   /// [iconUrl] The icon URL to visually identify the Bot Channels Registration. Defaults to `https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png`.
   /// [location] The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [microsoftAppId] The Microsoft Application ID for the Bot Channels Registration. Changing this forces a new resource to be created.
+  /// [microsoftAppTenantId] The Microsoft Application Tenant ID for the Bot Channels Registration. Changing this forces a new resource to be created.
+  /// [microsoftAppType] The Microsoft Application Type for the Bot Channels Registration. Possible values are `MultiTenant`, `SingleTenant` and `UserAssignedMSI`. Changing this forces a new resource to be created.
+  /// [microsoftAppUserAssignedIdentityId] The ID of Microsoft Application User Assigned Identity for the Bot Channels Registration. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Bot Channels Registration. Changing this forces a new resource to be created. Must be globally unique.
   /// [publicNetworkAccessEnabled] Is the Bot Channels Registration in an isolated network?
   /// [resourceGroupName] The name of the resource group in which to create the Bot Channels Registration. Changing this forces a new resource to be created.
@@ -69,6 +80,9 @@ class ChannelsRegistrationState {
     this.iconUrl,
     this.location,
     this.microsoftAppId,
+    this.microsoftAppTenantId,
+    this.microsoftAppType,
+    this.microsoftAppUserAssignedIdentityId,
     this.name,
     this.publicNetworkAccessEnabled,
     this.resourceGroupName,
@@ -89,6 +103,9 @@ class ChannelsRegistrationState {
       'iconUrl': ?iconUrl,
       'location': ?location,
       'microsoftAppId': ?microsoftAppId,
+      'microsoftAppTenantId': ?microsoftAppTenantId,
+      'microsoftAppType': ?microsoftAppType,
+      'microsoftAppUserAssignedIdentityId': ?microsoftAppUserAssignedIdentityId,
       'name': ?name,
       'publicNetworkAccessEnabled': ?publicNetworkAccessEnabled,
       'resourceGroupName': ?resourceGroupName,
@@ -110,6 +127,9 @@ class ChannelsRegistrationState {
       iconUrl: (() { final guardedValue = map['iconUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       microsoftAppId: (() { final guardedValue = map['microsoftAppId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      microsoftAppTenantId: (() { final guardedValue = map['microsoftAppTenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      microsoftAppType: (() { final guardedValue = map['microsoftAppType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      microsoftAppUserAssignedIdentityId: (() { final guardedValue = map['microsoftAppUserAssignedIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publicNetworkAccessEnabled: (() { final guardedValue = map['publicNetworkAccessEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -119,4 +139,3 @@ class ChannelsRegistrationState {
     );
   }
 }
-

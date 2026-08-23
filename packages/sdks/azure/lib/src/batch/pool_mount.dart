@@ -7,20 +7,20 @@ import 'pool_mount_cifs_mount.dart';
 import 'pool_mount_nfs_mount.dart';
 
 class PoolMount {
-  /// A `azure_blob_file_system` block defined as below.
+  /// A `azureBlobFileSystem` block defined as below.
   final pulumi.Input<PoolMountAzureBlobFileSystem>? azureBlobFileSystem;
-  /// A `azure_file_share` block defined as below.
+  /// A `azureFileShare` block defined as below.
   final pulumi.Input<List<PoolMountAzureFileShare>>? azureFileShares;
-  /// A `cifs_mount` block defined as below.
+  /// A `cifsMount` block defined as below.
   final pulumi.Input<List<PoolMountCifsMount>>? cifsMounts;
-  /// A `nfs_mount` block defined as below.
+  /// A `nfsMount` block defined as below.
   final pulumi.Input<List<PoolMountNfsMount>>? nfsMounts;
 
   /// Creates a new [PoolMount].
-  /// [azureBlobFileSystem] A `azure_blob_file_system` block defined as below.
-  /// [azureFileShares] A `azure_file_share` block defined as below.
-  /// [cifsMounts] A `cifs_mount` block defined as below.
-  /// [nfsMounts] A `nfs_mount` block defined as below.
+  /// [azureBlobFileSystem] A `azureBlobFileSystem` block defined as below.
+  /// [azureFileShares] A `azureFileShare` block defined as below.
+  /// [cifsMounts] A `cifsMount` block defined as below.
+  /// [nfsMounts] A `nfsMount` block defined as below.
   const PoolMount({
     this.azureBlobFileSystem,
     this.azureFileShares,
@@ -46,4 +46,3 @@ class PoolMount {
     );
   }
 }
-

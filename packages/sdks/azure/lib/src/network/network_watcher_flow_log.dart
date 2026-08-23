@@ -6,7 +6,7 @@ import 'network_watcher_flow_log_traffic_analytics.dart';
 
 /// Manages a Network Watcher Flow Log.
 ///
-/// &gt; **Note:** The `azure.network.NetworkWatcherFlowLog` creates a new storage lifecyle management rule that overwrites existing rules. Please make sure to use a `storage_account` with no existing management rules, until the issue is fixed.
+/// &gt; **Note:** The `azure.network.NetworkWatcherFlowLog` creates a new storage lifecyle management rule that overwrites existing rules. Please make sure to use a `storageAccount` with no existing management rules, until the issue is fixed.
 ///
 /// ## Example Usage
 ///
@@ -266,6 +266,64 @@ import 'network_watcher_flow_log_traffic_analytics.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networksecuritygroup" "test" {
+///   name                = "acctestnsg"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_networkwatcher" "test" {
+///   name                = "acctestnw"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_storage_account" "test" {
+///   name                       = "acctestsa"
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resourcegroup.example.location
+///   account_tier               = "Standard"
+///   account_kind               = "StorageV2"
+///   account_replication_type   = "LRS"
+///   https_traffic_only_enabled = true
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "test" {
+///   name                = "acctestlaw"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_network_networkwatcherflowlog" "test" {
+///   network_watcher_name = azure_network_networkwatcher.test.name
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   name                 = "example-log"
+///   target_resource_id   = azure_network_networksecuritygroup.test.id
+///   storage_account_id   = azure_storage_account.test.id
+///   enabled              = true
+///   retention_policy = {
+///     enabled = true
+///     days    = 7
+///   }
+///   traffic_analytics = {
+///     enabled               = true
+///     workspace_id          = azure_operationalinsights_analyticsworkspace.test.workspace_id
+///     workspace_region      = azure_operationalinsights_analyticsworkspace.test.location
+///     workspace_resource_id = azure_operationalinsights_analyticsworkspace.test.id
+///     interval_in_minutes   = 10
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -286,8 +344,8 @@ import 'network_watcher_flow_log_traffic_analytics.dart';
 /// import com.pulumi.azure.network.NetworkWatcherFlowLogArgs;
 /// import com.pulumi.azure.network.inputs.NetworkWatcherFlowLogRetentionPolicyArgs;
 /// import com.pulumi.azure.network.inputs.NetworkWatcherFlowLogTrafficAnalyticsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -443,7 +501,7 @@ class NetworkWatcherFlowLog extends pulumi.CustomResource {
   late final pulumi.Output<String> networkWatcherName;
   /// The name of the resource group in which the Network Watcher was deployed. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `retention_policy` block as documented below.
+  /// A `retentionPolicy` block as documented below.
   late final pulumi.Output<NetworkWatcherFlowLogRetentionPolicy> retentionPolicy;
   /// The ID of the Storage Account where flow logs are stored.
   late final pulumi.Output<String> storageAccountId;
@@ -453,7 +511,7 @@ class NetworkWatcherFlowLog extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** As of July 30, 2025, it is no longer possible to create new flow logs for Network Security Groups.
   late final pulumi.Output<String> targetResourceId;
-  /// A `traffic_analytics` block as documented below.
+  /// A `trafficAnalytics` block as documented below.
   late final pulumi.Output<NetworkWatcherFlowLogTrafficAnalytics?> trafficAnalytics;
   /// The version (revision) of the flow log. Possible values are `1` and `2`. Defaults to `1`.
   late final pulumi.Output<int?> version;

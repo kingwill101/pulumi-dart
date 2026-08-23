@@ -122,6 +122,33 @@ import 'express_route_port_authorization_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "exprtTest"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_expressrouteport" "example" {
+///   name                = "port1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   peering_location    = "Airtel-Chennai-CLS"
+///   bandwidth_in_gbps   = 10
+///   encapsulation       = "Dot1Q"
+/// }
+/// resource "azure_network_expressrouteportauthorization" "example" {
+///   name                    = "exampleERCAuth"
+///   express_route_port_name = azure_network_expressrouteport.example.name
+///   resource_group_name     = azure_core_resourcegroup.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,8 +161,8 @@ import 'express_route_port_authorization_state.dart';
 /// import com.pulumi.azure.network.ExpressRoutePortArgs;
 /// import com.pulumi.azure.network.ExpressRoutePortAuthorization;
 /// import com.pulumi.azure.network.ExpressRoutePortAuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -198,6 +198,45 @@ import 'registry_token_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resource-group"
+///   location = "West Europe"
+/// }
+/// resource "azure_containerservice_registry" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Basic"
+///   admin_enabled       = false
+///   georeplications {
+///     location = "East US"
+///   }
+///   georeplications {
+///     location = "West Europe"
+///   }
+/// }
+/// resource "azure_containerservice_registryscopemap" "example" {
+///   name                    = "example-scope-map"
+///   container_registry_name = azure_containerservice_registry.example.name
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   actions                 = ["repositories/repo1/content/read", "repositories/repo1/content/write"]
+/// }
+/// resource "azure_containerservice_registrytoken" "example" {
+///   name                    = "exampletoken"
+///   container_registry_name = azure_containerservice_registry.example.name
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   scope_map_id            = azure_containerservice_registryscopemap.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -213,8 +252,8 @@ import 'registry_token_state.dart';
 /// import com.pulumi.azure.containerservice.RegistryScopeMapArgs;
 /// import com.pulumi.azure.containerservice.RegistryToken;
 /// import com.pulumi.azure.containerservice.RegistryTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -285,10 +285,10 @@ import 'cluster_customer_managed_key_state.dart';
 /// 				},
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: exampleCluster.Identity.ApplyT(func(identity loganalytics.ClusterIdentity) (*string, error) {
-/// 						return &identity.TenantId, nil
+/// 						return identity.TenantId, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 					ObjectId: exampleCluster.Identity.ApplyT(func(identity loganalytics.ClusterIdentity) (*string, error) {
-/// 						return &identity.PrincipalId, nil
+/// 						return identity.PrincipalId, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 					KeyPermissions: pulumi.StringArray{
 /// 						pulumi.String("Get"),
@@ -332,6 +332,63 @@ import 'cluster_customer_managed_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_loganalytics_cluster" "example" {
+///   name                = "example-cluster"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "keyvaultkeyexample"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name            = "premium"
+///   access_policies {
+///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     key_permissions    = ["Create", "Get", "GetRotationPolicy"]
+///     secret_permissions = ["Set"]
+///   }
+///   access_policies {
+///     tenant_id       = azure_loganalytics_cluster.example.identity.tenant_id
+///     object_id       = azure_loganalytics_cluster.example.identity.principal_id
+///     key_permissions = ["Get", "Unwrapkey", "Wrapkey"]
+///   }
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   name         = "generated-certificate"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_loganalytics_clustercustomermanagedkey" "example" {
+///   log_analytics_cluster_id = azure_loganalytics_cluster.example.id
+///   key_vault_key_id         = azure_keyvault_key.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -351,8 +408,8 @@ import 'cluster_customer_managed_key_state.dart';
 /// import com.pulumi.azure.keyvault.KeyArgs;
 /// import com.pulumi.azure.loganalytics.ClusterCustomerManagedKey;
 /// import com.pulumi.azure.loganalytics.ClusterCustomerManagedKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

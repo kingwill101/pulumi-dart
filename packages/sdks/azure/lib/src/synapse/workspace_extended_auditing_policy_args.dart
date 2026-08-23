@@ -13,7 +13,7 @@ class WorkspaceExtendedAuditingPolicyArgs {
   final pulumi.Input<int>? retentionInDays;
   /// The access key to use for the auditing storage account.
   final pulumi.Input<String>? storageAccountAccessKey;
-  /// Is `storage_account_access_key` value the storage's secondary key?
+  /// Is `storageAccountAccessKey` value the storage's secondary key?
   final pulumi.Input<bool>? storageAccountAccessKeyIsSecondary;
   /// The blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all extended auditing logs.
   final pulumi.Input<String>? storageEndpoint;
@@ -24,7 +24,7 @@ class WorkspaceExtendedAuditingPolicyArgs {
   /// [logMonitoringEnabled] Enable audit events to Azure Monitor? To enable server audit events to Azure Monitor, please enable its master database audit events to Azure Monitor. Defaults to `true`.
   /// [retentionInDays] The number of days to retain logs for in the storage account. Defaults to `0`.
   /// [storageAccountAccessKey] The access key to use for the auditing storage account.
-  /// [storageAccountAccessKeyIsSecondary] Is `storage_account_access_key` value the storage's secondary key?
+  /// [storageAccountAccessKeyIsSecondary] Is `storageAccountAccessKey` value the storage's secondary key?
   /// [storageEndpoint] The blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all extended auditing logs.
   /// [synapseWorkspaceId] The ID of the Synapse workspace to set the extended auditing policy. Changing this forces a new resource to be created.
   const WorkspaceExtendedAuditingPolicyArgs({
@@ -58,4 +58,3 @@ class WorkspaceExtendedAuditingPolicyArgs {
     );
   }
 }
-

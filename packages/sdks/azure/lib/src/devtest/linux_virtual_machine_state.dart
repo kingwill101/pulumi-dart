@@ -12,11 +12,11 @@ class LinuxVirtualMachineState {
   final pulumi.Input<bool>? disallowPublicIpAddress;
   /// The FQDN of the Virtual Machine.
   final pulumi.Input<String>? fqdn;
-  /// A `gallery_image_reference` block as defined below.
+  /// A `galleryImageReference` block as defined below.
   final pulumi.Input<LinuxVirtualMachineGalleryImageReference>? galleryImageReference;
-  /// One or more `inbound_nat_rule` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `inboundNatRule` blocks as defined below. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** If any `inbound_nat_rule` blocks are specified then `disallow_public_ip_address` must be set to `true`.
+  /// &gt; **Note:** If any `inboundNatRule` blocks are specified then `disallowPublicIpAddress` must be set to `true`.
   final pulumi.Input<List<LinuxVirtualMachineInboundNatRule>>? inboundNatRules;
   /// Specifies the name of the Dev Test Lab in which the Virtual Machine should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? labName;
@@ -28,7 +28,7 @@ class LinuxVirtualMachineState {
   final pulumi.Input<String>? location;
   /// Specifies the name of the Dev Test Machine. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The validation requirements for the Name change based on the `os_type` used in this Virtual Machine. For a Linux VM the name must be between 1-62 characters, and for a Windows VM the name must be between 1-15 characters. It must begin and end with a letter or number, and cannot be all numbers.
+  /// &gt; **Note:** The validation requirements for the Name change based on the `osType` used in this Virtual Machine. For a Linux VM the name must be between 1-62 characters, and for a Windows VM the name must be between 1-15 characters. It must begin and end with a letter or number, and cannot be all numbers.
   final pulumi.Input<String>? name;
   /// Any notes about the Virtual Machine.
   final pulumi.Input<String>? notes;
@@ -36,11 +36,11 @@ class LinuxVirtualMachineState {
   final pulumi.Input<String>? password;
   /// The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-  /// The Machine Size to use for this Virtual Machine, such as `Standard_F2`. Changing this forces a new resource to be created.
+  /// The Machine Size to use for this Virtual Machine, such as `Standard_D4_v5`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? size;
   /// The SSH Key associated with the `username` used to login to this Virtual Machine. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** One or either `password` or `ssh_key` must be specified.
+  /// &gt; **Note:** One or either `password` or `sshKey` must be specified.
   final pulumi.Input<String>? sshKey;
   /// The type of Storage to use on this Virtual Machine. Possible values are `Standard` and `Premium`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? storageType;
@@ -55,8 +55,8 @@ class LinuxVirtualMachineState {
   /// [allowClaim] Can this Virtual Machine be claimed by users? Defaults to `true`.
   /// [disallowPublicIpAddress] Should the Virtual Machine be created without a Public IP Address? Changing this forces a new resource to be created.
   /// [fqdn] The FQDN of the Virtual Machine.
-  /// [galleryImageReference] A `gallery_image_reference` block as defined below.
-  /// [inboundNatRules] One or more `inbound_nat_rule` blocks as defined below. Changing this forces a new resource to be created.
+  /// [galleryImageReference] A `galleryImageReference` block as defined below.
+  /// [inboundNatRules] One or more `inboundNatRule` blocks as defined below. Changing this forces a new resource to be created.
   /// [labName] Specifies the name of the Dev Test Lab in which the Virtual Machine should be created. Changing this forces a new resource to be created.
   /// [labSubnetName] The name of a Subnet within the Dev Test Virtual Network where this machine should exist. Changing this forces a new resource to be created.
   /// [labVirtualNetworkId] The ID of the Dev Test Virtual Network where this Virtual Machine should be created. Changing this forces a new resource to be created.
@@ -65,7 +65,7 @@ class LinuxVirtualMachineState {
   /// [notes] Any notes about the Virtual Machine.
   /// [password] The Password associated with the `username` used to login to this Virtual Machine. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
-  /// [size] The Machine Size to use for this Virtual Machine, such as `Standard_F2`. Changing this forces a new resource to be created.
+  /// [size] The Machine Size to use for this Virtual Machine, such as `Standard_D4_v5`. Changing this forces a new resource to be created.
   /// [sshKey] The SSH Key associated with the `username` used to login to this Virtual Machine. Changing this forces a new resource to be created.
   /// [storageType] The type of Storage to use on this Virtual Machine. Possible values are `Standard` and `Premium`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
@@ -141,4 +141,3 @@ class LinuxVirtualMachineState {
     );
   }
 }
-

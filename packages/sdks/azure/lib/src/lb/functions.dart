@@ -95,6 +95,31 @@ import 'get_lbrule_result.dart';
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_lb_getlb" "example" {
+///   name                = "example-lb"
+///   resource_group_name = "example-resources"
+/// }
+/// data "azure_lb_getbackendaddresspool" "exampleGetBackendAddressPool" {
+///   name            = "first"
+///   loadbalancer_id = data.azure_lb_getlb.example.id
+/// }
+///
+/// output "backendAddressPoolId" {
+///   value = data.azure_lb_getbackendaddresspool.exampleGetBackendAddressPool.id
+/// }
+/// output "backendIpConfigurationIds" {
+///   value = beap.backendIpConfigurations[*].id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +129,8 @@ import 'get_lbrule_result.dart';
 /// import com.pulumi.azure.lb.LbFunctions;
 /// import com.pulumi.azure.lb.inputs.GetLBArgs;
 /// import com.pulumi.azure.lb.inputs.GetBackendAddressPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,6 +245,24 @@ Future<GetBackendAddressPoolResult> getBackendAddressPool(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_lb_getlb" "example" {
+///   name                = "example-lb"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "loadbalancerId" {
+///   value = data.azure_lb_getlb.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +271,8 @@ Future<GetBackendAddressPoolResult> getBackendAddressPool(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.lb.LbFunctions;
 /// import com.pulumi.azure.lb.inputs.GetLBArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -349,6 +392,24 @@ Future<GetLBResult> getLB(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_lb_getlboutboundrule" "example" {
+///   name            = "existing_lb_outbound_rule"
+///   loadbalancer_id = "existing_load_balancer_id"
+/// }
+///
+/// output "id" {
+///   value = data.azure_lb_getlboutboundrule.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -357,8 +418,8 @@ Future<GetLBResult> getLB(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.lb.LbFunctions;
 /// import com.pulumi.azure.lb.inputs.GetLBOutboundRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -418,6 +479,29 @@ Future<GetLBOutboundRuleResult> getLBOutboundRule(
 /// ## Example Usage
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_lb_getlb" "example" {
+///   name                = "example-lb"
+///   resource_group_name = "example-resources"
+/// }
+/// data "azure_lb_getlbrule" "exampleGetLBRule" {
+///   name                = "first"
+///   resource_group_name = "example-resources"
+///   loadbalancer_id     = data.azure_lb_getlb.example.id
+/// }
+///
+/// output "lbRuleId" {
+///   value = data.azure_lb_getlbrule.exampleGetLBRule.id
+/// }
+/// ```
 /// ```yaml
 /// variables:
 ///   example:

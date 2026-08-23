@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering NetworkManagerDeployment resources.
 class NetworkManagerDeploymentState {
-  /// A list of Network Manager Configuration IDs which should be aligned with `scope_access`.
+  /// A list of Network Manager Configuration IDs which should be aligned with `scopeAccess`.
   final pulumi.Input<List<String>>? configurationIds;
   /// Specifies the location which the configurations will be deployed to. Changing this forces a new Network Manager Deployment to be created.
   final pulumi.Input<String>? location;
@@ -16,7 +16,7 @@ class NetworkManagerDeploymentState {
   final pulumi.Input<Map<String, String>>? triggers;
 
   /// Creates a new [NetworkManagerDeploymentState].
-  /// [configurationIds] A list of Network Manager Configuration IDs which should be aligned with `scope_access`.
+  /// [configurationIds] A list of Network Manager Configuration IDs which should be aligned with `scopeAccess`.
   /// [location] Specifies the location which the configurations will be deployed to. Changing this forces a new Network Manager Deployment to be created.
   /// [networkManagerId] Specifies the ID of the Network Manager. Changing this forces a new Network Manager Deployment to be created.
   /// [scopeAccess] Specifies the configuration deployment type. Possible values are `Connectivity`, `SecurityAdmin` and `Routing`. Changing this forces a new Network Manager Deployment to be created.
@@ -49,4 +49,3 @@ class NetworkManagerDeploymentState {
     );
   }
 }
-

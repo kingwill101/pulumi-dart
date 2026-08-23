@@ -6,16 +6,16 @@ import 'management_policy_rule_filters_match_blob_index_tag.dart';
 class ManagementPolicyRuleFilters {
   /// An array of predefined values. Valid options are `blockBlob` and `appendBlob`.
   final pulumi.Input<List<String>> blobTypes;
-  /// A `match_blob_index_tag` block as defined below. The block defines the blob index tag based filtering for blob objects.
+  /// A `matchBlobIndexTag` block as defined below. The block defines the blob index tag based filtering for blob objects.
   ///
-  /// &gt; **Note:** The `match_blob_index_tag` property requires enabling the `blobIndex` feature with [PSH or CLI commands](https://azure.microsoft.com/en-us/blog/manage-and-find-data-with-blob-index-for-azure-storage-now-in-preview/).
+  /// &gt; **Note:** The `matchBlobIndexTag` property requires enabling the `blobIndex` feature with [PSH or CLI commands](https://azure.microsoft.com/en-us/blog/manage-and-find-data-with-blob-index-for-azure-storage-now-in-preview/).
   final pulumi.Input<List<ManagementPolicyRuleFiltersMatchBlobIndexTag>>? matchBlobIndexTags;
   /// An array of strings for prefixes to be matched.
   final pulumi.Input<List<String>>? prefixMatches;
 
   /// Creates a new [ManagementPolicyRuleFilters].
   /// [blobTypes] An array of predefined values. Valid options are `blockBlob` and `appendBlob`.
-  /// [matchBlobIndexTags] A `match_blob_index_tag` block as defined below. The block defines the blob index tag based filtering for blob objects.
+  /// [matchBlobIndexTags] A `matchBlobIndexTag` block as defined below. The block defines the blob index tag based filtering for blob objects.
   /// [prefixMatches] An array of strings for prefixes to be matched.
   const ManagementPolicyRuleFilters({
     required this.blobTypes,
@@ -39,4 +39,3 @@ class ManagementPolicyRuleFilters {
     );
   }
 }
-

@@ -127,10 +127,40 @@ import 'get_server_result.dart';
 /// 			ServerId: exampleServer.ID(),
 /// 		}, nil)
 /// 		ctx.Export("databaseId", example.ApplyT(func(example mssql.GetDatabaseResult) (*string, error) {
-/// 			return &example.Id, nil
+/// 			return example.Id, nil
 /// 		}).(pulumi.StringPtrOutput))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_mssql_getdatabase" "example" {
+///   name      = "example-mssql-db"
+///   server_id = azure_mssql_server.example.id
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "example"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "4dm1n157r470r"
+///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
+/// }
+/// output "databaseId" {
+///   value = data.azure_mssql_getdatabase.example.id
 /// }
 /// ```
 /// ```java
@@ -145,8 +175,8 @@ import 'get_server_result.dart';
 /// import com.pulumi.azure.mssql.ServerArgs;
 /// import com.pulumi.azure.mssql.MssqlFunctions;
 /// import com.pulumi.azure.mssql.inputs.GetDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -301,6 +331,25 @@ Future<GetDatabaseResult> getDatabase(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_mssql_getelasticpool" "example" {
+///   name                = "mssqlelasticpoolname"
+///   resource_group_name = "example-resources"
+///   server_name         = "example-sql-server"
+/// }
+///
+/// output "elasticpoolId" {
+///   value = data.azure_mssql_getelasticpool.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -309,8 +358,8 @@ Future<GetDatabaseResult> getDatabase(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.mssql.MssqlFunctions;
 /// import com.pulumi.azure.mssql.inputs.GetElasticPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -432,6 +481,24 @@ Future<GetElasticPoolResult> getElasticPool(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_mssql_getfailovergroup" "example" {
+///   name      = "example"
+///   server_id = "example-sql-server"
+/// }
+///
+/// output "mssqlFailoverGroupId" {
+///   value = data.azure_mssql_getfailovergroup.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -440,8 +507,8 @@ Future<GetElasticPoolResult> getElasticPool(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.mssql.MssqlFunctions;
 /// import com.pulumi.azure.mssql.inputs.GetFailoverGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -501,6 +568,21 @@ Future<GetFailoverGroupResult> getFailoverGroup(
 /// ## Example Usage
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_mssql_getmanageddatabase" "example" {
+///   name                  = "example"
+///   resource_group_name   = exampleAzurermResourceGroup.name
+///   managed_instance_name = exampleAzurermMssqlManagedInstance.name
+/// }
+/// ```
 /// ```yaml
 /// variables:
 ///   example:
@@ -592,6 +674,20 @@ Future<GetManagedDatabaseResult> getManagedDatabase(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_mssql_getmanagedinstance" "example" {
+///   name                = "managedsqlinstance"
+///   resource_group_name = exampleAzurermResourceGroup.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -600,8 +696,8 @@ Future<GetManagedDatabaseResult> getManagedDatabase(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.mssql.MssqlFunctions;
 /// import com.pulumi.azure.mssql.inputs.GetManagedInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -718,6 +814,24 @@ Future<GetManagedInstanceResult> getManagedInstance(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_mssql_getserver" "example" {
+///   name                = "existingMsSqlServer"
+///   resource_group_name = "existingResGroup"
+/// }
+///
+/// output "id" {
+///   value = data.azure_mssql_getserver.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -726,8 +840,8 @@ Future<GetManagedInstanceResult> getManagedInstance(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.mssql.MssqlFunctions;
 /// import com.pulumi.azure.mssql.inputs.GetServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

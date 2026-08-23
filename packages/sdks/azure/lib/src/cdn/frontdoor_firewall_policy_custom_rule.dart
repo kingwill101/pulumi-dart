@@ -6,11 +6,11 @@ import 'frontdoor_firewall_policy_custom_rule_match_condition.dart';
 class FrontdoorFirewallPolicyCustomRule {
   /// The action to perform when the rule is matched. Possible values are `Allow`, `Block`, `Log`, `Redirect`, `JSChallenge`, or `CAPTCHA`.
   ///
-  /// !&gt; **Note:** Setting the `action` field to `JSChallenge` or `CAPTCHA` is currently in **PREVIEW**. Please see the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+  /// &gt; **Note:** Setting the `action` field to `JSChallenge` or `CAPTCHA` is currently in **PREVIEW**. Please see the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
   final pulumi.Input<String> action;
   /// Is the rule is enabled or disabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-  /// One or more `match_condition` block defined below. Can support up to `10` `match_condition` blocks.
+  /// One or more `matchCondition` block defined below. Can support up to `10` `matchCondition` blocks.
   final pulumi.Input<List<FrontdoorFirewallPolicyCustomRuleMatchCondition>>? matchConditions;
   /// Gets name of the resource that is unique within a policy. This name can be used to access the resource.
   final pulumi.Input<String> name;
@@ -26,7 +26,7 @@ class FrontdoorFirewallPolicyCustomRule {
   /// Creates a new [FrontdoorFirewallPolicyCustomRule].
   /// [action] The action to perform when the rule is matched. Possible values are `Allow`, `Block`, `Log`, `Redirect`, `JSChallenge`, or `CAPTCHA`.
   /// [enabled] Is the rule is enabled or disabled? Defaults to `true`.
-  /// [matchConditions] One or more `match_condition` block defined below. Can support up to `10` `match_condition` blocks.
+  /// [matchConditions] One or more `matchCondition` block defined below. Can support up to `10` `matchCondition` blocks.
   /// [name] Gets name of the resource that is unique within a policy. This name can be used to access the resource.
   /// [priority] The priority of the rule. Rules with a lower value will be evaluated before rules with a higher value. Defaults to `1`.
   /// [rateLimitDurationInMinutes] The rate limit duration in minutes. Defaults to `1`.
@@ -69,4 +69,3 @@ class FrontdoorFirewallPolicyCustomRule {
     );
   }
 }
-

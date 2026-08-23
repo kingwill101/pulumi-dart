@@ -10,7 +10,7 @@ import 'volume_group_oracle_volume.dart';
 class VolumeGroupOracleArgs {
   /// Name of the account where the application volume group belong to. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> accountName;
-  /// The SAP System ID, maximum 3 characters, e.g. `OR1`. Changing this forces a new Application Volume Group to be created and data will be lost.
+  /// The Oracle System ID. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> applicationIdentifier;
   /// Volume group description. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> groupDescription;
@@ -25,7 +25,7 @@ class VolumeGroupOracleArgs {
 
   /// Creates a new [VolumeGroupOracleArgs].
   /// [accountName] Name of the account where the application volume group belong to. Changing this forces a new Application Volume Group to be created and data will be lost.
-  /// [applicationIdentifier] The SAP System ID, maximum 3 characters, e.g. `OR1`. Changing this forces a new Application Volume Group to be created and data will be lost.
+  /// [applicationIdentifier] The Oracle System ID. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [groupDescription] Volume group description. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [location] The Azure Region where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [name] The name which should be used for this Application Volume Group. Changing this forces a new Application Volume Group to be created and data will be lost.
@@ -65,4 +65,3 @@ class VolumeGroupOracleArgs {
     );
   }
 }
-

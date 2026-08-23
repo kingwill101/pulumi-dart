@@ -391,6 +391,77 @@ import 'service_custom_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_signalr_service" "example" {
+///   name                = "example-signalr"
+///   location            = testAzurermResourceGroup.location
+///   resource_group_name = testAzurermResourceGroup.name
+///   sku = {
+///     name     = "Premium_P1"
+///     capacity = 1
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "example-keyvault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name            = "premium"
+///   access_policies {
+///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
+///     object_id               = data.azure_core_getclientconfig.current.object_id
+///     certificate_permissions = ["Create", "Get", "List"]
+///     secret_permissions      = ["Get", "List"]
+///   }
+///   access_policies {
+///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
+///     object_id               = testAzurermSignalrService.identity[0].principalId
+///     certificate_permissions = ["Create", "Get", "List"]
+///     secret_permissions      = ["Get", "List"]
+///   }
+/// }
+/// resource "azure_keyvault_certificate" "example" {
+///   name         = "imported-cert"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   certificate = {
+///     contents = filebase64("certificate-to-import.pfx")
+///     password = ""
+///   }
+/// }
+/// resource "azure_signalr_servicecustomcertificate" "test" {
+///   depends_on            = [exampleAzurermKeyVaultAccessPolicy]
+///   name                  = "example-cert"
+///   signalr_service_id    = azure_signalr_service.example.id
+///   custom_certificate_id = azure_keyvault_certificate.example.id
+/// }
+/// resource "azure_signalr_servicecustomdomain" "test" {
+///   name                          = "example-domain"
+///   signalr_service_id            = testAzurermSignalrService.id
+///   domain_name                   = "tftest.com"
+///   signalr_custom_certificate_id = azure_signalr_servicecustomcertificate.test.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -417,8 +488,8 @@ import 'service_custom_domain_state.dart';
 /// import com.pulumi.azure.signalr.ServiceCustomDomain;
 /// import com.pulumi.azure.signalr.ServiceCustomDomainArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -11,9 +11,9 @@ class GetFailoverGroupResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-  /// A `partner_server` block as defined below.
+  /// A `partnerServer` block as defined below.
   final List<GetFailoverGroupPartnerServer> partnerServers;
-  /// A `read_write_endpoint_failover_policy` block as defined below.
+  /// A `readWriteEndpointFailoverPolicy` block as defined below.
   final List<GetFailoverGroupReadWriteEndpointFailoverPolicy> readWriteEndpointFailoverPolicies;
   /// Whether failover is enabled for the readonly endpoint.
   final bool readonlyEndpointFailoverPolicyEnabled;
@@ -25,8 +25,8 @@ class GetFailoverGroupResult {
   /// [databases] A set of database names in the Failover Group.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
-  /// [partnerServers] A `partner_server` block as defined below.
-  /// [readWriteEndpointFailoverPolicies] A `read_write_endpoint_failover_policy` block as defined below.
+  /// [partnerServers] A `partnerServer` block as defined below.
+  /// [readWriteEndpointFailoverPolicies] A `readWriteEndpointFailoverPolicy` block as defined below.
   /// [readonlyEndpointFailoverPolicyEnabled] Whether failover is enabled for the readonly endpoint.
   /// [serverId] Required.
   /// [tags] A mapping of tags which are assigned to the resource.
@@ -67,4 +67,3 @@ class GetFailoverGroupResult {
     );
   }
 }
-

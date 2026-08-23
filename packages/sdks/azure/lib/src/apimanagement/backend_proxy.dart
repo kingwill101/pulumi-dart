@@ -8,7 +8,7 @@ class BackendProxy {
   /// The URL of the proxy server.
   final pulumi.Input<String> url;
   /// The username to connect to the proxy server.
-  final pulumi.Input<String> username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [BackendProxy].
   /// [password] The password to connect to the proxy server.
@@ -17,14 +17,14 @@ class BackendProxy {
   const BackendProxy({
     this.password,
     required this.url,
-    required this.username,
+    this.username,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'password': ?password,
       'url': url,
-      'username': username,
+      'username': ?username,
     };
   }
 
@@ -32,8 +32,7 @@ class BackendProxy {
     return BackendProxy(
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       url: pulumi.Input.fromValue(map['url'] as String),
-      username: pulumi.Input.fromValue(map['username'] as String),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

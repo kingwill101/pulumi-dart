@@ -10,15 +10,15 @@ import 'hub_gcm_credential.dart';
 /// {@endtemplate}
 /// {@macro pulumi_notificationhub_hub_hub_args_doc}
 class HubArgs {
-  /// A `apns_credential` block as defined below.
+  /// A `apnsCredential` block as defined below.
   ///
-  /// &gt; **Note:** Removing the `apns_credential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
+  /// &gt; **Note:** Removing the `apnsCredential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
   final pulumi.Input<HubApnsCredential>? apnsCredential;
-  /// A `browser_credential` block as defined below. Changing this forces a new resource to be created.
+  /// A `browserCredential` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<HubBrowserCredential>? browserCredential;
-  /// A `gcm_credential` block as defined below.
+  /// A `gcmCredential` block as defined below.
   ///
-  /// &gt; **Note:** Removing the `gcm_credential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
+  /// &gt; **Note:** Removing the `gcmCredential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
   final pulumi.Input<HubGcmCredential>? gcmCredential;
   /// The Azure Region in which this Notification Hub Namespace exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -32,9 +32,9 @@ class HubArgs {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [HubArgs].
-  /// [apnsCredential] A `apns_credential` block as defined below.
-  /// [browserCredential] A `browser_credential` block as defined below. Changing this forces a new resource to be created.
-  /// [gcmCredential] A `gcm_credential` block as defined below.
+  /// [apnsCredential] A `apnsCredential` block as defined below.
+  /// [browserCredential] A `browserCredential` block as defined below. Changing this forces a new resource to be created.
+  /// [gcmCredential] A `gcmCredential` block as defined below.
   /// [location] The Azure Region in which this Notification Hub Namespace exists. Changing this forces a new resource to be created.
   /// [name] The name to use for this Notification Hub. Changing this forces a new resource to be created.
   /// [namespaceName] The name of the Notification Hub Namespace in which to create this Notification Hub. Changing this forces a new resource to be created.
@@ -77,4 +77,3 @@ class HubArgs {
     );
   }
 }
-

@@ -29,7 +29,7 @@ class SocketioArgs {
   final pulumi.Input<String>? name;
   /// Whether public network access is enabled. Defaults to `Enabled`. Possible values are `Enabled` and `Disabled`.
   ///
-  /// &gt; **Note:** `public_network_access` cannot be set to `Disabled` when `sku` is `Free_F1`.
+  /// &gt; **Note:** `publicNetworkAccess` cannot be set to `Disabled` when `sku` is `Free_F1`.
   final pulumi.Input<String>? publicNetworkAccess;
   /// The name of the Resource Group where the Web PubSub Service should exist. Changing this forces a new Web PubSub Service to be created.
   final pulumi.Input<String> resourceGroupName;
@@ -41,7 +41,7 @@ class SocketioArgs {
   final pulumi.Input<Map<String, String>>? tags;
   /// Whether the service should request a client certificate during a TLS handshake. Defaults to `false`.
   ///
-  /// &gt; **Note:** `tls_client_cert_enabled` cannot be set to `true` when `sku` is `Free_F1`.
+  /// &gt; **Note:** `tlsClientCertEnabled` cannot be set to `true` when `sku` is `Free_F1`.
   final pulumi.Input<bool>? tlsClientCertEnabled;
 
   /// Creates a new [SocketioArgs].
@@ -118,4 +118,3 @@ class SocketioArgs {
     );
   }
 }
-

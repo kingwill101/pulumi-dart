@@ -13,23 +13,23 @@ import 'get_windows_web_app_auth_settings_v2_microsoft_v2.dart';
 import 'get_windows_web_app_auth_settings_v2_twitter_v2.dart';
 
 class GetWindowsWebAppAuthSettingsV2 {
-  /// An `active_directory_v2` block as defined below.
+  /// An `activeDirectoryV2` block as defined below.
   final pulumi.Input<List<GetWindowsWebAppAuthSettingsV2ActiveDirectoryV2>> activeDirectoryV2s;
-  /// An `apple_v2` block as defined below.
+  /// An `appleV2` block as defined below.
   final pulumi.Input<List<GetWindowsWebAppAuthSettingsV2AppleV2>> appleV2s;
   /// Are the AuthV2 Settings enabled.
   final pulumi.Input<bool> authEnabled;
-  /// An `azure_static_web_app_v2` block as defined below.
+  /// An `azureStaticWebAppV2` block as defined below.
   final pulumi.Input<List<GetWindowsWebAppAuthSettingsV2AzureStaticWebAppV2>> azureStaticWebAppV2s;
   /// The path to the App Auth settings.
   final pulumi.Input<String> configFilePath;
-  /// Zero or more `custom_oidc_v2` blocks as defined below.
+  /// Zero or more `customOidcV2` blocks as defined below.
   final pulumi.Input<List<GetWindowsWebAppAuthSettingsV2CustomOidcV2>> customOidcV2s;
-  /// The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticated_action` is set to `RedirectToLoginPage`.
+  /// The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticatedAction` is set to `RedirectToLoginPage`.
   final pulumi.Input<String> defaultProvider;
-  /// The paths which should be excluded from the `unauthenticated_action` when it is set to `RedirectToLoginPage`.
+  /// The paths which should be excluded from the `unauthenticatedAction` when it is set to `RedirectToLoginPage`.
   final pulumi.Input<List<String>> excludedPaths;
-  /// A `facebook_v2` block as defined below.
+  /// A `facebookV2` block as defined below.
   final pulumi.Input<List<GetWindowsWebAppAuthSettingsV2FacebookV2>> facebookV2s;
   /// The convention used to determine the url of the request made.
   final pulumi.Input<String> forwardProxyConvention;
@@ -37,15 +37,15 @@ class GetWindowsWebAppAuthSettingsV2 {
   final pulumi.Input<String> forwardProxyCustomHostHeaderName;
   /// The name of the custom header containing the scheme of the request.
   final pulumi.Input<String> forwardProxyCustomSchemeHeaderName;
-  /// A `github_v2` block as defined below.
+  /// A `githubV2` block as defined below.
   final pulumi.Input<List<GetWindowsWebAppAuthSettingsV2GithubV2>> githubV2s;
-  /// A `google_v2` block as defined below.
+  /// A `googleV2` block as defined below.
   final pulumi.Input<List<GetWindowsWebAppAuthSettingsV2GoogleV2>> googleV2s;
   /// The prefix that should precede all the authentication and authorisation paths.
   final pulumi.Input<String> httpRouteApiPrefix;
   /// A `login` block as defined below.
   final pulumi.Input<List<GetWindowsWebAppAuthSettingsV2Login>> logins;
-  /// A `microsoft_v2` block as defined below.
+  /// A `microsoftV2` block as defined below.
   final pulumi.Input<List<GetWindowsWebAppAuthSettingsV2MicrosoftV2>> microsoftV2s;
   /// Is the authentication flow used for all requests.
   final pulumi.Input<bool> requireAuthentication;
@@ -53,33 +53,33 @@ class GetWindowsWebAppAuthSettingsV2 {
   final pulumi.Input<bool> requireHttps;
   /// The Runtime Version of the Authentication and Authorisation feature of this App.
   final pulumi.Input<String> runtimeVersion;
-  /// A `twitter_v2` block as defined below.
+  /// A `twitterV2` block as defined below.
   final pulumi.Input<List<GetWindowsWebAppAuthSettingsV2TwitterV2>> twitterV2s;
   /// The action to take for requests made without authentication.
   final pulumi.Input<String> unauthenticatedAction;
 
   /// Creates a new [GetWindowsWebAppAuthSettingsV2].
-  /// [activeDirectoryV2s] An `active_directory_v2` block as defined below.
-  /// [appleV2s] An `apple_v2` block as defined below.
+  /// [activeDirectoryV2s] An `activeDirectoryV2` block as defined below.
+  /// [appleV2s] An `appleV2` block as defined below.
   /// [authEnabled] Are the AuthV2 Settings enabled.
-  /// [azureStaticWebAppV2s] An `azure_static_web_app_v2` block as defined below.
+  /// [azureStaticWebAppV2s] An `azureStaticWebAppV2` block as defined below.
   /// [configFilePath] The path to the App Auth settings.
-  /// [customOidcV2s] Zero or more `custom_oidc_v2` blocks as defined below.
-  /// [defaultProvider] The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticated_action` is set to `RedirectToLoginPage`.
-  /// [excludedPaths] The paths which should be excluded from the `unauthenticated_action` when it is set to `RedirectToLoginPage`.
-  /// [facebookV2s] A `facebook_v2` block as defined below.
+  /// [customOidcV2s] Zero or more `customOidcV2` blocks as defined below.
+  /// [defaultProvider] The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticatedAction` is set to `RedirectToLoginPage`.
+  /// [excludedPaths] The paths which should be excluded from the `unauthenticatedAction` when it is set to `RedirectToLoginPage`.
+  /// [facebookV2s] A `facebookV2` block as defined below.
   /// [forwardProxyConvention] The convention used to determine the url of the request made.
   /// [forwardProxyCustomHostHeaderName] The name of the custom header containing the host of the request.
   /// [forwardProxyCustomSchemeHeaderName] The name of the custom header containing the scheme of the request.
-  /// [githubV2s] A `github_v2` block as defined below.
-  /// [googleV2s] A `google_v2` block as defined below.
+  /// [githubV2s] A `githubV2` block as defined below.
+  /// [googleV2s] A `googleV2` block as defined below.
   /// [httpRouteApiPrefix] The prefix that should precede all the authentication and authorisation paths.
   /// [logins] A `login` block as defined below.
-  /// [microsoftV2s] A `microsoft_v2` block as defined below.
+  /// [microsoftV2s] A `microsoftV2` block as defined below.
   /// [requireAuthentication] Is the authentication flow used for all requests.
   /// [requireHttps] Is HTTPS required on connections?
   /// [runtimeVersion] The Runtime Version of the Authentication and Authorisation feature of this App.
-  /// [twitterV2s] A `twitter_v2` block as defined below.
+  /// [twitterV2s] A `twitterV2` block as defined below.
   /// [unauthenticatedAction] The action to take for requests made without authentication.
   const GetWindowsWebAppAuthSettingsV2({
     required this.activeDirectoryV2s,
@@ -160,4 +160,3 @@ class GetWindowsWebAppAuthSettingsV2 {
     );
   }
 }
-

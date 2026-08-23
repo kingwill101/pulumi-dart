@@ -18,7 +18,7 @@ class ServiceState {
   final pulumi.Input<String>? hostname;
   /// An `identity` block as defined below.
   final pulumi.Input<ServiceIdentity>? identity;
-  /// A `live_trace` block as defined below.
+  /// A `liveTrace` block as defined below.
   final pulumi.Input<ServiceLiveTrace>? liveTrace;
   /// Whether to enable local auth? Defaults to `true`.
   final pulumi.Input<bool>? localAuthEnabled;
@@ -56,7 +56,7 @@ class ServiceState {
   /// [externalIp] The publicly accessible IP of the Web PubSub service.
   /// [hostname] The FQDN of the Web PubSub service.
   /// [identity] An `identity` block as defined below.
-  /// [liveTrace] A `live_trace` block as defined below.
+  /// [liveTrace] A `liveTrace` block as defined below.
   /// [localAuthEnabled] Whether to enable local auth? Defaults to `true`.
   /// [location] Specifies the supported Azure location where the Web PubSub service exists. Changing this forces a new resource to be created.
   /// [name] The name of the Web PubSub service. Changing this forces a new resource to be created.
@@ -148,4 +148,3 @@ class ServiceState {
     );
   }
 }
-

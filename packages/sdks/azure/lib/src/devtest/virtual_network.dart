@@ -141,6 +141,37 @@ import 'virtual_network_subnet.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_devtest_lab" "example" {
+///   name                = "example-devtestlab"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tags = {
+///     "Sydney" = "Australia"
+///   }
+/// }
+/// resource "azure_devtest_virtualnetwork" "example" {
+///   name                = "example-network"
+///   lab_name            = azure_devtest_lab.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   subnet = {
+///     use_public_ip_address           = "Allow"
+///     use_in_virtual_machine_creation = "Allow"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +185,8 @@ import 'virtual_network_subnet.dart';
 /// import com.pulumi.azure.devtest.VirtualNetwork;
 /// import com.pulumi.azure.devtest.VirtualNetworkArgs;
 /// import com.pulumi.azure.devtest.inputs.VirtualNetworkSubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -285,6 +285,64 @@ import 'network_mapping_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "primary" {
+///   name     = "tfex-network-mapping-primary"
+///   location = "West US"
+/// }
+/// resource "azure_core_resourcegroup" "secondary" {
+///   name     = "tfex-network-mapping-secondary"
+///   location = "East US"
+/// }
+/// resource "azure_recoveryservices_vault" "vault" {
+///   name                = "example-recovery-vault"
+///   location            = azure_core_resourcegroup.secondary.location
+///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_siterecovery_fabric" "primary" {
+///   name                = "primary-fabric"
+///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   recovery_vault_name = azure_recoveryservices_vault.vault.name
+///   location            = azure_core_resourcegroup.primary.location
+/// }
+/// resource "azure_siterecovery_fabric" "secondary" {
+///   depends_on          = [azure_siterecovery_fabric.primary]
+///   name                = "secondary-fabric"
+///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   recovery_vault_name = azure_recoveryservices_vault.vault.name
+///   location            = azure_core_resourcegroup.secondary.location
+/// }
+/// resource "azure_network_virtualnetwork" "primary" {
+///   name                = "network1"
+///   resource_group_name = azure_core_resourcegroup.primary.name
+///   address_spaces      = ["192.168.1.0/24"]
+///   location            = azure_core_resourcegroup.primary.location
+/// }
+/// resource "azure_network_virtualnetwork" "secondary" {
+///   name                = "network2"
+///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   address_spaces      = ["192.168.2.0/24"]
+///   location            = azure_core_resourcegroup.secondary.location
+/// }
+/// resource "azure_siterecovery_networkmapping" "recovery-mapping" {
+///   name                        = "recovery-network-mapping-1"
+///   resource_group_name         = azure_core_resourcegroup.secondary.name
+///   recovery_vault_name         = azure_recoveryservices_vault.vault.name
+///   source_recovery_fabric_name = "primary-fabric"
+///   target_recovery_fabric_name = "secondary-fabric"
+///   source_network_id           = azure_network_virtualnetwork.primary.id
+///   target_network_id           = azure_network_virtualnetwork.secondary.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -302,8 +360,8 @@ import 'network_mapping_state.dart';
 /// import com.pulumi.azure.siterecovery.NetworkMapping;
 /// import com.pulumi.azure.siterecovery.NetworkMappingArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

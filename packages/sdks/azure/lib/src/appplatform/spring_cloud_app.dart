@@ -7,7 +7,7 @@ import 'spring_cloud_app_state.dart';
 
 /// Manage an Azure Spring Cloud Application.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApp` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApp` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -128,6 +128,33 @@ import 'spring_cloud_app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example-springcloud"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_appplatform_springcloudapp" "example" {
+///   name                = "example-springcloudapp"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   service_name        = azure_appplatform_springcloudservice.example.name
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +168,8 @@ import 'spring_cloud_app_state.dart';
 /// import com.pulumi.azure.appplatform.SpringCloudApp;
 /// import com.pulumi.azure.appplatform.SpringCloudAppArgs;
 /// import com.pulumi.azure.appplatform.inputs.SpringCloudAppIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -213,7 +240,7 @@ import 'spring_cloud_app_state.dart';
 class SpringCloudApp extends pulumi.CustomResource {
   /// A JSON object that contains the addon configurations of the Spring Cloud Service.
   late final pulumi.Output<String> addonJson;
-  /// A `custom_persistent_disk` block as defined below.
+  /// A `customPersistentDisk` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> customPersistentDisks;
   /// The Fully Qualified DNS Name of the Spring Application in the service.
   late final pulumi.Output<String> fqdn;
@@ -221,13 +248,13 @@ class SpringCloudApp extends pulumi.CustomResource {
   late final pulumi.Output<bool?> httpsOnly;
   /// An `identity` block as defined below.
   late final pulumi.Output<SpringCloudAppIdentity?> identity;
-  /// An `ingress_settings` block as defined below.
+  /// An `ingressSettings` block as defined below.
   late final pulumi.Output<SpringCloudAppIngressSettings> ingressSettings;
   /// Does the Spring Cloud Application have public endpoint? Defaults to `false`.
   late final pulumi.Output<bool?> isPublic;
   /// Specifies the name of the Spring Cloud Application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// An `persistent_disk` block as defined below.
+  /// An `persistentDisk` block as defined below.
   late final pulumi.Output<SpringCloudAppPersistentDisk> persistentDisk;
   /// Should the App in vnet injection instance exposes endpoint which could be accessed from Internet?
   late final pulumi.Output<bool?> publicEndpointEnabled;

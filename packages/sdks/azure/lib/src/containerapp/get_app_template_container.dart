@@ -20,17 +20,17 @@ class GetAppTemplateContainer {
   final pulumi.Input<String> ephemeralStorage;
   /// The image to use to create the container.
   final pulumi.Input<String> image;
-  /// A `liveness_probe` block as detailed below.
+  /// A `livenessProbe` block as detailed below.
   final pulumi.Input<List<GetAppTemplateContainerLivenessProbe>> livenessProbes;
   /// The amount of memory allocated to the container.
   final pulumi.Input<String> memory;
   /// The name of the Container App.
   final pulumi.Input<String> name;
-  /// A `readiness_probe` block as detailed below.
+  /// A `readinessProbe` block as detailed below.
   final pulumi.Input<List<GetAppTemplateContainerReadinessProbe>> readinessProbes;
-  /// A `startup_probe` block as detailed below.
+  /// A `startupProbe` block as detailed below.
   final pulumi.Input<List<GetAppTemplateContainerStartupProbe>> startupProbes;
-  /// A `volume_mounts` block as detailed below.
+  /// A `volumeMounts` block as detailed below.
   final pulumi.Input<List<GetAppTemplateContainerVolumeMount>> volumeMounts;
 
   /// Creates a new [GetAppTemplateContainer].
@@ -40,12 +40,12 @@ class GetAppTemplateContainer {
   /// [envs] One or more `env` blocks as detailed below.
   /// [ephemeralStorage] The amount of ephemeral storage available to the Container App.
   /// [image] The image to use to create the container.
-  /// [livenessProbes] A `liveness_probe` block as detailed below.
+  /// [livenessProbes] A `livenessProbe` block as detailed below.
   /// [memory] The amount of memory allocated to the container.
   /// [name] The name of the Container App.
-  /// [readinessProbes] A `readiness_probe` block as detailed below.
-  /// [startupProbes] A `startup_probe` block as detailed below.
-  /// [volumeMounts] A `volume_mounts` block as detailed below.
+  /// [readinessProbes] A `readinessProbe` block as detailed below.
+  /// [startupProbes] A `startupProbe` block as detailed below.
+  /// [volumeMounts] A `volumeMounts` block as detailed below.
   const GetAppTemplateContainer({
     required this.args,
     required this.commands,
@@ -95,4 +95,3 @@ class GetAppTemplateContainer {
     );
   }
 }
-

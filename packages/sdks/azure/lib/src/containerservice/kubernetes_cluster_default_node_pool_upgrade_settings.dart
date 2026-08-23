@@ -7,11 +7,11 @@ class KubernetesClusterDefaultNodePoolUpgradeSettings {
   final pulumi.Input<int>? drainTimeoutInMinutes;
   /// The maximum number or percentage of nodes which will be added to the Node Pool size during an upgrade.
   ///
-  /// &gt; **Note:** If a percentage is provided, the number of surge nodes is calculated from the `node_count` value on the current cluster. Node surge can allow a cluster to have more nodes than `max_count` during an upgrade. Ensure that your cluster has enough [IP space](https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade) during an upgrade.
+  /// &gt; **Note:** If a percentage is provided, the number of surge nodes is calculated from the `nodeCount` value on the current cluster. Node surge can allow a cluster to have more nodes than `maxCount` during an upgrade. Ensure that your cluster has enough [IP space](https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade) during an upgrade.
   final pulumi.Input<String> maxSurge;
   /// The amount of time in minutes to wait after draining a node and before reimaging and moving on to next node.
   ///
-  /// &gt; **Note:** The default value for `node_soak_duration_in_minutes` is `0`. &lt;!-- The 0 default happens in code, not in Schema --&gt;.
+  /// &gt; **Note:** The default value for `nodeSoakDurationInMinutes` is `0`. &lt;!-- The 0 default happens in code, not in Schema --&gt;.
   final pulumi.Input<int>? nodeSoakDurationInMinutes;
   /// Specifies the action when a node is undrainable during upgrade. Possible values are `Cordon` and `Schedule`. Unsetting this after configuring it will force a new resource to be created.
   final pulumi.Input<String>? undrainableNodeBehavior;
@@ -46,4 +46,3 @@ class KubernetesClusterDefaultNodePoolUpgradeSettings {
     );
   }
 }
-

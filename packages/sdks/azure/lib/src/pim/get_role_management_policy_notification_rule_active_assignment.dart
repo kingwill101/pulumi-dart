@@ -6,17 +6,17 @@ import 'get_role_management_policy_notification_rule_active_assignment_approver_
 import 'get_role_management_policy_notification_rule_active_assignment_assignee_notification.dart';
 
 class GetRoleManagementPolicyNotificationRuleActiveAssignment {
-  /// A `notification_settings` block as defined above.
+  /// A `notificationSettings` block as defined above.
   final pulumi.Input<List<GetRoleManagementPolicyNotificationRuleActiveAssignmentAdminNotification>> adminNotifications;
-  /// A `notification_settings` block as defined above.
+  /// A `notificationSettings` block as defined above.
   final pulumi.Input<List<GetRoleManagementPolicyNotificationRuleActiveAssignmentApproverNotification>> approverNotifications;
-  /// A `notification_settings` block as defined above.
+  /// A `notificationSettings` block as defined above.
   final pulumi.Input<List<GetRoleManagementPolicyNotificationRuleActiveAssignmentAssigneeNotification>> assigneeNotifications;
 
   /// Creates a new [GetRoleManagementPolicyNotificationRuleActiveAssignment].
-  /// [adminNotifications] A `notification_settings` block as defined above.
-  /// [approverNotifications] A `notification_settings` block as defined above.
-  /// [assigneeNotifications] A `notification_settings` block as defined above.
+  /// [adminNotifications] A `notificationSettings` block as defined above.
+  /// [approverNotifications] A `notificationSettings` block as defined above.
+  /// [assigneeNotifications] A `notificationSettings` block as defined above.
   const GetRoleManagementPolicyNotificationRuleActiveAssignment({
     required this.adminNotifications,
     required this.approverNotifications,
@@ -39,4 +39,3 @@ class GetRoleManagementPolicyNotificationRuleActiveAssignment {
     );
   }
 }
-

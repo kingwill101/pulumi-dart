@@ -6,7 +6,7 @@ import 'kubernetes_cluster_extension_plan.dart';
 
 /// Input properties used for looking up and filtering KubernetesClusterExtension resources.
 class KubernetesClusterExtensionState {
-  /// An `aks_assigned_identity` block as defined below.
+  /// An `aksAssignedIdentity` block as defined below.
   final pulumi.Input<List<KubernetesClusterExtensionAksAssignedIdentity>>? aksAssignedIdentities;
   /// Specifies the Cluster ID. Changing this forces a new Kubernetes Cluster Extension to be created.
   final pulumi.Input<String>? clusterId;
@@ -32,7 +32,7 @@ class KubernetesClusterExtensionState {
   final pulumi.Input<String>? version;
 
   /// Creates a new [KubernetesClusterExtensionState].
-  /// [aksAssignedIdentities] An `aks_assigned_identity` block as defined below.
+  /// [aksAssignedIdentities] An `aksAssignedIdentity` block as defined below.
   /// [clusterId] Specifies the Cluster ID. Changing this forces a new Kubernetes Cluster Extension to be created.
   /// [configurationProtectedSettings] Configuration settings that are sensitive, as name-value pairs for configuring this extension.
   /// [configurationSettings] Configuration settings, as name-value pairs for configuring this extension.
@@ -93,4 +93,3 @@ class KubernetesClusterExtensionState {
     );
   }
 }
-

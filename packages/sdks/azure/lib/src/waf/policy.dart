@@ -485,6 +485,96 @@ import 'policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_waf_policy" "example" {
+///   name                = "example-wafpolicy"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   custom_rules {
+///     name      = "Rule1"
+///     priority  = 1
+///     rule_type = "MatchRule"
+///     match_conditions {
+///       match_variables {
+///         variable_name = "RemoteAddr"
+///       }
+///       operator           = "IPMatch"
+///       negation_condition = false
+///       match_values       = ["192.168.1.0/24", "10.0.0.0/24"]
+///     }
+///     action = "Block"
+///   }
+///   custom_rules {
+///     name      = "Rule2"
+///     priority  = 2
+///     rule_type = "MatchRule"
+///     match_conditions {
+///       match_variables {
+///         variable_name = "RemoteAddr"
+///       }
+///       operator           = "IPMatch"
+///       negation_condition = false
+///       match_values       = ["192.168.1.0/24"]
+///     }
+///     match_conditions {
+///       match_variables {
+///         variable_name = "RequestHeaders"
+///         selector      = "UserAgent"
+///       }
+///       operator           = "Contains"
+///       negation_condition = false
+///       match_values       = ["Windows"]
+///     }
+///     action = "Block"
+///   }
+///   policy_settings = {
+///     enabled                     = true
+///     mode                        = "Prevention"
+///     request_body_check          = true
+///     file_upload_limit_in_mb     = 100
+///     max_request_body_size_in_kb = 128
+///   }
+///   managed_rules = {
+///     exclusions = [{
+///       "matchVariable"         = "RequestHeaderNames"
+///       "selector"              = "x-company-secret-header"
+///       "selectorMatchOperator" = "Equals"
+///       }, {
+///       "matchVariable"         = "RequestCookieNames"
+///       "selector"              = "too-tasty"
+///       "selectorMatchOperator" = "EndsWith"
+///     }]
+///     managed_rule_sets = [{
+///       "type"    = "OWASP"
+///       "version" = "3.2"
+///       "ruleGroupOverrides" = [{
+///         "ruleGroupName" = "REQUEST-920-PROTOCOL-ENFORCEMENT"
+///         "rules" = [{
+///           "id"      = "920300"
+///           "enabled" = true
+///           "action"  = "Log"
+///           }, {
+///           "id"      = "920440"
+///           "enabled" = true
+///           "action"  = "Block"
+///         }]
+///       }]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -496,10 +586,16 @@ import 'policy_state.dart';
 /// import com.pulumi.azure.waf.Policy;
 /// import com.pulumi.azure.waf.PolicyArgs;
 /// import com.pulumi.azure.waf.inputs.PolicyCustomRuleArgs;
+/// import com.pulumi.azure.waf.inputs.PolicyCustomRuleMatchConditionArgs;
+/// import com.pulumi.azure.waf.inputs.PolicyCustomRuleMatchConditionMatchVariableArgs;
 /// import com.pulumi.azure.waf.inputs.PolicyPolicySettingsArgs;
 /// import com.pulumi.azure.waf.inputs.PolicyManagedRulesArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.waf.inputs.PolicyManagedRulesExclusionArgs;
+/// import com.pulumi.azure.waf.inputs.PolicyManagedRulesManagedRuleSetArgs;
+/// import com.pulumi.azure.waf.inputs.PolicyManagedRulesManagedRuleSetRuleGroupOverrideArgs;
+/// import com.pulumi.azure.waf.inputs.PolicyManagedRulesManagedRuleSetRuleGroupOverrideRuleArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -693,19 +789,19 @@ import 'policy_state.dart';
 /// $ pulumi import azure:waf/policy:Policy example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/example-wafpolicy
 /// ```
 class Policy extends pulumi.CustomResource {
-  /// One or more `custom_rules` blocks as defined below.
+  /// One or more `customRules` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> customRules;
   /// A list of HTTP Listener IDs from an `azure.network.ApplicationGateway`.
   late final pulumi.Output<List<String>> httpListenerIds;
   /// Resource location. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// A `managed_rules` blocks as defined below.
+  /// A `managedRules` blocks as defined below.
   late final pulumi.Output<PolicyManagedRules> managedRules;
   /// The name of the policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// A list of URL Path Map Path Rule IDs from an `azure.network.ApplicationGateway`.
   late final pulumi.Output<List<String>> pathBasedRuleIds;
-  /// A `policy_settings` block as defined below.
+  /// A `policySettings` block as defined below.
   late final pulumi.Output<PolicyPolicySettings?> policySettings;
   /// The name of the resource group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;

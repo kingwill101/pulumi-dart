@@ -129,6 +129,33 @@ import 'registry_cache_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_containerservice_registry" "acr" {
+///   name                = "containerRegistry1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Basic"
+/// }
+/// resource "azure_containerservice_registrycacherule" "cache_rule" {
+///   name                  = "cacherule"
+///   container_registry_id = azure_containerservice_registry.acr.id
+///   target_repo           = "target"
+///   source_repo           = "docker.io/hello-world"
+///   credential_set_id     ="${azure_containerservice_registry.acr.id}/credentialSets/example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +168,8 @@ import 'registry_cache_rule_state.dart';
 /// import com.pulumi.azure.containerservice.RegistryArgs;
 /// import com.pulumi.azure.containerservice.RegistryCacheRule;
 /// import com.pulumi.azure.containerservice.RegistryCacheRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

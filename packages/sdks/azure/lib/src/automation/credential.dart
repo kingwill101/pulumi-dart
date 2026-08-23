@@ -126,6 +126,34 @@ import 'credential_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "account1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_automation_credential" "example" {
+///   name                    = "credential1"
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   automation_account_name = azure_automation_account.example.name
+///   username                = "example_user"
+///   password                = "example_pwd"
+///   description             = "This is an example credential"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +166,8 @@ import 'credential_state.dart';
 /// import com.pulumi.azure.automation.AccountArgs;
 /// import com.pulumi.azure.automation.Credential;
 /// import com.pulumi.azure.automation.CredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

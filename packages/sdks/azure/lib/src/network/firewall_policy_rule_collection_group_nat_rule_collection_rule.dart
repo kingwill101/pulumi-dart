@@ -16,7 +16,7 @@ class FirewallPolicyRuleCollectionGroupNatRuleCollectionRule {
   final pulumi.Input<String>? translatedAddress;
   /// Specifies the translated FQDN.
   ///
-  /// &gt; **Note:** Exactly one of `translated_address` and `translated_fqdn` should be set.
+  /// &gt; **Note:** Exactly one of `translatedAddress` and `translatedFqdn` should be set.
   final pulumi.Input<String>? translatedFqdn;
   /// Specifies the translated port.
   final pulumi.Input<int> translatedPort;
@@ -75,4 +75,3 @@ class FirewallPolicyRuleCollectionGroupNatRuleCollectionRule {
     );
   }
 }
-

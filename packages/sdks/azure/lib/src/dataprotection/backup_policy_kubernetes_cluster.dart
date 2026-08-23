@@ -224,6 +224,52 @@ import 'backup_policy_kubernetes_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dataprotection_backupvault" "example" {
+///   name                = "example-backup-vault"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   datastore_type      = "VaultStore"
+///   redundancy          = "LocallyRedundant"
+/// }
+/// resource "azure_dataprotection_backuppolicykubernetescluster" "example" {
+///   name                            = "example-backup-policy"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   vault_name                      = azure_dataprotection_backupvault.example.name
+///   backup_repeating_time_intervals = ["R/2021-05-23T02:30:00+00:00/P1W"]
+///   time_zone                       = "India Standard Time"
+///   default_retention_duration      = "P4M"
+///   retention_rules {
+///     name     = "Daily"
+///     priority = 25
+///     life_cycles {
+///       duration        = "P84D"
+///       data_store_type = "OperationalStore"
+///     }
+///     criteria = {
+///       absolute_criteria = "FirstOfDay"
+///     }
+///   }
+///   default_retention_rule = {
+///     life_cycles = [{
+///       "duration"      = "P7D"
+///       "dataStoreType" = "OperationalStore"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -237,10 +283,12 @@ import 'backup_policy_kubernetes_cluster_state.dart';
 /// import com.pulumi.azure.dataprotection.BackupPolicyKubernetesCluster;
 /// import com.pulumi.azure.dataprotection.BackupPolicyKubernetesClusterArgs;
 /// import com.pulumi.azure.dataprotection.inputs.BackupPolicyKubernetesClusterRetentionRuleArgs;
+/// import com.pulumi.azure.dataprotection.inputs.BackupPolicyKubernetesClusterRetentionRuleLifeCycleArgs;
 /// import com.pulumi.azure.dataprotection.inputs.BackupPolicyKubernetesClusterRetentionRuleCriteriaArgs;
 /// import com.pulumi.azure.dataprotection.inputs.BackupPolicyKubernetesClusterDefaultRetentionRuleArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.dataprotection.inputs.BackupPolicyKubernetesClusterDefaultRetentionRuleLifeCycleArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -341,7 +389,7 @@ import 'backup_policy_kubernetes_cluster_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.DataProtection` - 2024-04-01
+/// * `Microsoft.DataProtection` - 2025-07-01
 ///
 /// ## Import
 ///
@@ -353,13 +401,13 @@ import 'backup_policy_kubernetes_cluster_state.dart';
 class BackupPolicyKubernetesCluster extends pulumi.CustomResource {
   /// Specifies a list of repeating time interval. It supports weekly back. It should follow `ISO 8601` repeating time interval. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>> backupRepeatingTimeIntervals;
-  /// A `default_retention_rule` block as defined below. Changing this forces a new resource to be created.
+  /// A `defaultRetentionRule` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<BackupPolicyKubernetesClusterDefaultRetentionRule> defaultRetentionRule;
   /// The name which should be used for the Backup Policy Kubernetes Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// The name of the Resource Group where the Backup Policy Kubernetes Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// One or more `retention_rule` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `retentionRule` blocks as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> timeZone;

@@ -6,7 +6,7 @@ import 'network_manager_routing_rule_state.dart';
 
 /// Manages a Network Manager Routing Rule.
 ///
-/// !&gt; **Note:** Terraform has enabled force deletion. This setting deletes the resource even if it's part of a deployed configuration. If the configuration is deployed, the service will perform a cleanup deployment in the background before the deletion.
+/// &gt; **Note:** Terraform has enabled force deletion. This setting deletes the resource even if it's part of a deployed configuration. If the configuration is deployed, the service will perform a cleanup deployment in the background before the deletion.
 ///
 /// ## Example Usage
 ///
@@ -252,6 +252,58 @@ import 'network_manager_routing_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-network-manager"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///   }
+///   scope_accesses = ["Routing"]
+/// }
+/// resource "azure_network_networkmanagernetworkgroup" "example" {
+///   name               = "example-network-group"
+///   network_manager_id = azure_network_networkmanager.example.id
+/// }
+/// resource "azure_network_networkmanagerroutingconfiguration" "example" {
+///   name               = "example-routing-configuration"
+///   network_manager_id = azure_network_networkmanager.example.id
+/// }
+/// resource "azure_network_networkmanagerroutingrulecollection" "example" {
+///   name                     = "example-routing-rule-collection"
+///   routing_configuration_id = azure_network_networkmanagerroutingconfiguration.example.id
+///   network_group_ids        = [azure_network_networkmanagernetworkgroup.example.id]
+///   description              = "example routing rule collection"
+/// }
+/// resource "azure_network_networkmanagerroutingrule" "example" {
+///   name               = "example-routing-rule"
+///   rule_collection_id = azure_network_networkmanagerroutingrulecollection.example.id
+///   description        = "example routing rule"
+///   destination = {
+///     type    = "AddressPrefix"
+///     address = "10.0.0.0/24"
+///   }
+///   next_hop = {
+///     type = "VirtualNetworkGateway"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -275,8 +327,8 @@ import 'network_manager_routing_rule_state.dart';
 /// import com.pulumi.azure.network.NetworkManagerRoutingRuleArgs;
 /// import com.pulumi.azure.network.inputs.NetworkManagerRoutingRuleDestinationArgs;
 /// import com.pulumi.azure.network.inputs.NetworkManagerRoutingRuleNextHopArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -420,7 +472,7 @@ class NetworkManagerRoutingRule extends pulumi.CustomResource {
   late final pulumi.Output<NetworkManagerRoutingRuleDestination> destination;
   /// The name of the Network Manager Routing Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A `next_hop` block as defined below.
+  /// A `nextHop` block as defined below.
   late final pulumi.Output<NetworkManagerRoutingRuleNextHop> nextHop;
   /// The ID of the Network Manager Routing Rule Collection to which this rule belongs. Changing this forces a new resource to be created.
   late final pulumi.Output<String> ruleCollectionId;

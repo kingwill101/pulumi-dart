@@ -16,7 +16,7 @@ class OutputBlobArgs {
   final pulumi.Input<int>? batchMinRows;
   /// Determines whether blob blocks are either committed automatically or appended. Possible values are `Append` and `Once`. Defaults to `Append`.
   final pulumi.Input<String>? blobWriteMode;
-  /// The date format. Wherever `{date}` appears in `path_pattern`, the value of this property is used as the date format instead.
+  /// The date format. Wherever `{date}` appears in `pathPattern`, the value of this property is used as the date format instead.
   final pulumi.Input<String> dateFormat;
   /// The name of the Stream Output. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -34,7 +34,7 @@ class OutputBlobArgs {
   final pulumi.Input<String> storageContainerName;
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String> streamAnalyticsJobName;
-  /// The time format. Wherever `{time}` appears in `path_pattern`, the value of this property is used as the time format instead.
+  /// The time format. Wherever `{time}` appears in `pathPattern`, the value of this property is used as the time format instead.
   final pulumi.Input<String> timeFormat;
 
   /// Creates a new [OutputBlobArgs].
@@ -42,7 +42,7 @@ class OutputBlobArgs {
   /// [batchMaxWaitTime] The maximum wait time per batch in `hh:mm:ss` e.g. `00:02:00` for two minutes.
   /// [batchMinRows] The minimum number of rows per batch (must be between `0` and `1000000`).
   /// [blobWriteMode] Determines whether blob blocks are either committed automatically or appended. Possible values are `Append` and `Once`. Defaults to `Append`.
-  /// [dateFormat] The date format. Wherever `{date}` appears in `path_pattern`, the value of this property is used as the date format instead.
+  /// [dateFormat] The date format. Wherever `{date}` appears in `pathPattern`, the value of this property is used as the date format instead.
   /// [name] The name of the Stream Output. Changing this forces a new resource to be created.
   /// [pathPattern] The blob path pattern. Not a regular expression. It represents a pattern against which blob names will be matched to determine whether or not they should be included as input or output to the job.
   /// [resourceGroupName] The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
@@ -51,7 +51,7 @@ class OutputBlobArgs {
   /// [storageAccountName] The name of the Storage Account.
   /// [storageContainerName] The name of the Container within the Storage Account.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-  /// [timeFormat] The time format. Wherever `{time}` appears in `path_pattern`, the value of this property is used as the time format instead.
+  /// [timeFormat] The time format. Wherever `{time}` appears in `pathPattern`, the value of this property is used as the time format instead.
   const OutputBlobArgs({
     this.authenticationMode,
     this.batchMaxWaitTime,
@@ -107,4 +107,3 @@ class OutputBlobArgs {
     );
   }
 }
-

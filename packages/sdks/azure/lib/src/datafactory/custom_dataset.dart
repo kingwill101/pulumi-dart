@@ -437,6 +437,83 @@ import 'custom_dataset_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_kind             = "BlobStorage"
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_datafactory_linkedcustomservice" "example" {
+///   name                 = "example"
+///   data_factory_id      = azure_datafactory_factory.example.id
+///   type                 = "AzureBlobStorage"
+///   type_properties_json ="{
+///   \"connectionString\":\"${azure_storage_account.example.primary_connection_string}\"
+/// }
+/// "
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "content"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_datafactory_customdataset" "example" {
+///   name            = "example"
+///   data_factory_id = azure_datafactory_factory.example.id
+///   type            = "Json"
+///   linked_service = {
+///     name = azure_datafactory_linkedcustomservice.example.name
+///     parameters = {
+///       "key1" = "value1"
+///     }
+///   }
+///   type_properties_json ="{
+///   \"location\": {
+///     \"container\":\"${azure_storage_container.example.name}\",
+///     \"fileName\":\"foo.txt\",
+///     \"folderPath\": \"foo/bar/\",
+///     \"type\":\"AzureBlobStorageLocation\"
+///   },
+///   \"encodingName\":\"UTF-8\"
+/// }
+/// "
+///   description          = "test description"
+///   annotations          = ["test1", "test2", "test3"]
+///   folder               = "testFolder"
+///   parameters = {
+///     "foo" = "test1"
+///     "Bar" = "Test2"
+///   }
+///   additional_properties = {
+///     "foo" = "test1"
+///     "bar" = "test2"
+///   }
+///   schema_json = "{\n  \\\"type\\\": \\\"object\\\",\n  \\\"properties\\\": {\n    \\\"name\\\": {\n      \\\"type\\\": \\\"object\\\",\n      \\\"properties\\\": {\n        \\\"firstName\\\": {\n          \\\"type\\\": \\\"string\\\"\n        },\n        \\\"lastName\\\": {\n          \\\"type\\\": \\\"string\\\"\n        }\n      }\n    },\n    \\\"age\\\": {\n      \\\"type\\\": \\\"integer\\\"\n    }\n  }\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -457,8 +534,8 @@ import 'custom_dataset_state.dart';
 /// import com.pulumi.azure.datafactory.CustomDataset;
 /// import com.pulumi.azure.datafactory.CustomDatasetArgs;
 /// import com.pulumi.azure.datafactory.inputs.CustomDatasetLinkedServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -687,7 +764,7 @@ class CustomDataset extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   late final pulumi.Output<String?> folder;
-  /// A `linked_service` block as defined below.
+  /// A `linkedService` block as defined below.
   late final pulumi.Output<CustomDatasetLinkedService> linkedService;
   /// Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;

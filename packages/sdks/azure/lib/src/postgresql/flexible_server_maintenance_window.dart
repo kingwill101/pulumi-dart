@@ -9,7 +9,7 @@ class FlexibleServerMaintenanceWindow {
   final pulumi.Input<int>? startHour;
   /// The start minute for maintenance window. Defaults to `0`.
   ///
-  /// &gt; **Note:** The specified `maintenance_window` is always defined in UTC time. When unspecified, the maintenance window falls back to the default [system-managed](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-maintenance-portal#specify-maintenance-schedule-options).
+  /// &gt; **Note:** The specified `maintenanceWindow` is always defined in UTC time. When unspecified, the maintenance window falls back to the default [system-managed](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-maintenance-portal#specify-maintenance-schedule-options).
   final pulumi.Input<int>? startMinute;
 
   /// Creates a new [FlexibleServerMaintenanceWindow].
@@ -38,4 +38,3 @@ class FlexibleServerMaintenanceWindow {
     );
   }
 }
-

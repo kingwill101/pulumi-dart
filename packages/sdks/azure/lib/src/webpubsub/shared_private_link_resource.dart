@@ -216,6 +216,51 @@ import 'shared_private_link_resource_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "terraform-webpubsub"
+///   location = "east us"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                       = "examplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   soft_delete_retention_days = 7
+///   access_policies {
+///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
+///     object_id               = data.azure_core_getclientconfig.current.object_id
+///     certificate_permissions = ["managecontacts"]
+///     key_permissions         = ["create"]
+///     secret_permissions      = ["set"]
+///   }
+/// }
+/// resource "azure_webpubsub_service" "example" {
+///   name                = "tfex-webpubsub"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard_S1"
+///   capacity            = 1
+/// }
+/// resource "azure_webpubsub_sharedprivatelinkresource" "example" {
+///   name               = "tfex-webpubsub-splr"
+///   web_pubsub_id      = azure_webpubsub_service.example.id
+///   subresource_name   = "vault"
+///   target_resource_id = azure_keyvault_keyvault.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -232,8 +277,8 @@ import 'shared_private_link_resource_state.dart';
 /// import com.pulumi.azure.webpubsub.ServiceArgs;
 /// import com.pulumi.azure.webpubsub.SharedPrivateLinkResource;
 /// import com.pulumi.azure.webpubsub.SharedPrivateLinkResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

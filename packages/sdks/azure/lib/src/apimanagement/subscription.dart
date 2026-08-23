@@ -138,6 +138,38 @@ import 'subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getservice" "example" {
+///   name                = "example-apim"
+///   resource_group_name = "example-resources"
+/// }
+/// data "azure_apimanagement_getproduct" "exampleGetProduct" {
+///   product_id          = "00000000-0000-0000-0000-000000000000"
+///   api_management_name = data.azure_apimanagement_getservice.example.name
+///   resource_group_name = data.azure_apimanagement_getservice.example.resource_group_name
+/// }
+/// data "azure_apimanagement_getuser" "exampleGetUser" {
+///   user_id             = "11111111-1111-1111-1111-111111111111"
+///   api_management_name = data.azure_apimanagement_getservice.example.name
+///   resource_group_name = data.azure_apimanagement_getservice.example.resource_group_name
+/// }
+///
+/// resource "azure_apimanagement_subscription" "example" {
+///   api_management_name = data.azure_apimanagement_getservice.example.name
+///   resource_group_name = data.azure_apimanagement_getservice.example.resource_group_name
+///   user_id             = data.azure_apimanagement_getuser.exampleGetUser.id
+///   product_id          = data.azure_apimanagement_getproduct.exampleGetProduct.id
+///   display_name        = "Parser API"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +182,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.azure.apimanagement.inputs.GetUserArgs;
 /// import com.pulumi.azure.apimanagement.Subscription;
 /// import com.pulumi.azure.apimanagement.SubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -245,7 +277,7 @@ class Subscription extends pulumi.CustomResource {
   late final pulumi.Output<bool?> allowTracing;
   /// The ID of the API which should be assigned to this Subscription. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Only one of `product_id` and `api_id` can be set. If both are missing `/apis` scope is used for the subscription and all apis are accessible.
+  /// &gt; **Note:** Only one of `productId` and `apiId` can be set. If both are missing `/apis` scope is used for the subscription and all apis are accessible.
   late final pulumi.Output<String?> apiId;
   /// The name of the API Management Service where this Subscription should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
@@ -255,7 +287,7 @@ class Subscription extends pulumi.CustomResource {
   late final pulumi.Output<String> primaryKey;
   /// The ID of the Product which should be assigned to this Subscription. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Only one of `product_id` and `api_id` can be set. If both are missing `all_apis` scope is used for the subscription.
+  /// &gt; **Note:** Only one of `productId` and `apiId` can be set. If both are missing `allApis` scope is used for the subscription.
   late final pulumi.Output<String?> productId;
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;

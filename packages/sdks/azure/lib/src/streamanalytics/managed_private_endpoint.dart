@@ -163,6 +163,42 @@ import 'managed_private_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   account_kind             = "StorageV2"
+///   is_hns_enabled           = "true"
+/// }
+/// resource "azure_streamanalytics_cluster" "example" {
+///   name                = "examplestreamanalyticscluster"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   streaming_capacity  = 36
+/// }
+/// resource "azure_streamanalytics_managedprivateendpoint" "example" {
+///   name                          = "exampleprivateendpoint"
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   stream_analytics_cluster_name = azure_streamanalytics_cluster.example.name
+///   target_resource_id            = azure_storage_account.example.id
+///   subresource_name              = "blob"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +213,8 @@ import 'managed_private_endpoint_state.dart';
 /// import com.pulumi.azure.streamanalytics.ClusterArgs;
 /// import com.pulumi.azure.streamanalytics.ManagedPrivateEndpoint;
 /// import com.pulumi.azure.streamanalytics.ManagedPrivateEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

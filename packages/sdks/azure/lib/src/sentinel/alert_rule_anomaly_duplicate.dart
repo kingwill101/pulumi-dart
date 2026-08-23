@@ -165,7 +165,7 @@ import 'alert_rule_anomaly_duplicate_state.dart';
 /// 			DisplayName:             pulumi.String("example duplicated UEBA Anomalous Sign In"),
 /// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID(),
 /// 			BuiltInRuleId: pulumi.String(example.ApplyT(func(example sentinel.GetAlertRuleAnomalyResult) (*string, error) {
-/// 				return &example.Id, nil
+/// 				return example.Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Enabled: pulumi.Bool(true),
 /// 			Mode:    pulumi.String("Flighting"),
@@ -181,6 +181,46 @@ import 'alert_rule_anomaly_duplicate_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_sentinel_getalertruleanomaly" "example" {
+///   log_analytics_workspace_id = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+///   display_name               = "UEBA Anomalous Sign In"
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-law"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
+///   workspace_id                 = azure_operationalinsights_analyticsworkspace.example.id
+///   customer_managed_key_enabled = false
+/// }
+/// resource "azure_sentinel_alertruleanomalyduplicate" "example" {
+///   display_name               = "example duplicated UEBA Anomalous Sign In"
+///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+///   built_in_rule_id           = data.azure_sentinel_getalertruleanomaly.example.id
+///   enabled                    = true
+///   mode                       = "Flighting"
+///   threshold_observations {
+///     name  = "Anomaly score threshold"
+///     value = "0.6"
+///   }
 /// }
 /// ```
 /// ```java
@@ -200,8 +240,8 @@ import 'alert_rule_anomaly_duplicate_state.dart';
 /// import com.pulumi.azure.sentinel.AlertRuleAnomalyDuplicate;
 /// import com.pulumi.azure.sentinel.AlertRuleAnomalyDuplicateArgs;
 /// import com.pulumi.azure.sentinel.inputs.AlertRuleAnomalyDuplicateThresholdObservationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -322,24 +362,24 @@ class AlertRuleAnomalyDuplicate extends pulumi.CustomResource {
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
   /// mode of the Duplicated Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
   late final pulumi.Output<String> mode;
-  /// A list of `multi_select_observation` blocks as defined below.
+  /// A list of `multiSelectObservation` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> multiSelectObservations;
   late final pulumi.Output<String> name;
-  /// A list of `prioritized_exclude_observation` blocks as defined below.
+  /// A list of `prioritizedExcludeObservation` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> prioritizedExcludeObservations;
-  /// A `required_data_connector` block as defined below.
+  /// A `requiredDataConnector` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> requiredDataConnectors;
   /// The ID of the anomaly settings definition Id.
   late final pulumi.Output<String> settingsDefinitionId;
-  /// A list of `single_select_observation` blocks as defined below.
+  /// A list of `singleSelectObservation` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> singleSelectObservations;
   /// A list of categories of attacks by which to classify the rule.
   late final pulumi.Output<List<String>> tactics;
   /// A list of techniques of attacks by which to classify the rule.
   late final pulumi.Output<List<String>> techniques;
-  /// A list of `threshold_observation` blocks as defined below.
+  /// A list of `thresholdObservation` blocks as defined below.
   ///
-  /// &gt; **Note:** un-specified `multi_select_observation`, `single_select_observation`, `prioritized_exclude_observation` and `threshold_observation` will be inherited from the built-in Anomaly Alert Rule.
+  /// &gt; **Note:** un-specified `multiSelectObservation`, `singleSelectObservation`, `prioritizedExcludeObservation` and `thresholdObservation` will be inherited from the built-in Anomaly Alert Rule.
   late final pulumi.Output<List<Map<String, dynamic>>> thresholdObservations;
 
   /// Creates a new [AlertRuleAnomalyDuplicate].

@@ -18,11 +18,11 @@ import 'virtual_machine_storage_os_disk.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_virtual_machine_virtual_machine_args_doc}
 class VirtualMachineArgs {
-  /// An `additional_capabilities` block as defined below.
+  /// An `additionalCapabilities` block as defined below.
   final pulumi.Input<VirtualMachineAdditionalCapabilities>? additionalCapabilities;
   /// The ID of the Availability Set in which the Virtual Machine should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? availabilitySetId;
-  /// A `boot_diagnostics` block as defined below.
+  /// A `bootDiagnostics` block as defined below.
   final pulumi.Input<VirtualMachineBootDiagnostics>? bootDiagnostics;
   /// Should the Data Disks (either the Managed Disks / VHD Blobs) be deleted when the Virtual Machine is destroyed? Defaults to `false`.
   ///
@@ -42,13 +42,13 @@ class VirtualMachineArgs {
   final pulumi.Input<String>? name;
   /// A list of Network Interface IDs which should be associated with the Virtual Machine.
   final pulumi.Input<List<String>> networkInterfaceIds;
-  /// An `os_profile` block as defined below. Required when `create_option` in the `storage_os_disk` block is set to `FromImage`.
+  /// An `osProfile` block as defined below. Required when `createOption` in the `storageOsDisk` block is set to `FromImage`.
   final pulumi.Input<VirtualMachineOsProfile>? osProfile;
-  /// (Required, when a Linux machine) An `os_profile_linux_config` block as defined below.
+  /// (Required, when a Linux machine) An `osProfileLinuxConfig` block as defined below.
   final pulumi.Input<VirtualMachineOsProfileLinuxConfig>? osProfileLinuxConfig;
-  /// One or more `os_profile_secrets` blocks as defined below.
+  /// One or more `osProfileSecrets` blocks as defined below.
   final pulumi.Input<List<VirtualMachineOsProfileSecret>>? osProfileSecrets;
-  /// (Required, when a Windows machine) An `os_profile_windows_config` block as defined below.
+  /// (Required, when a Windows machine) An `osProfileWindowsConfig` block as defined below.
   final pulumi.Input<VirtualMachineOsProfileWindowsConfig>? osProfileWindowsConfig;
   /// A `plan` block as defined below.
   final pulumi.Input<VirtualMachinePlan>? plan;
@@ -58,13 +58,13 @@ class VirtualMachineArgs {
   final pulumi.Input<String>? proximityPlacementGroupId;
   /// Specifies the name of the Resource Group in which the Virtual Machine should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-  /// One or more `storage_data_disk` blocks as defined below.
+  /// One or more `storageDataDisk` blocks as defined below.
   ///
   /// &gt; **Please Note:** Data Disks can also be attached either using this block or the `azure.compute.DataDiskAttachment` resource - but not both.
   final pulumi.Input<List<VirtualMachineStorageDataDisk>>? storageDataDisks;
-  /// A `storage_image_reference` block as defined below. Changing this forces a new resource to be created.
+  /// A `storageImageReference` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<VirtualMachineStorageImageReference>? storageImageReference;
-  /// A `storage_os_disk` block as defined below.
+  /// A `storageOsDisk` block as defined below.
   final pulumi.Input<VirtualMachineStorageOsDisk> storageOsDisk;
   /// A mapping of tags to assign to the Virtual Machine.
   final pulumi.Input<Map<String, String>>? tags;
@@ -78,9 +78,9 @@ class VirtualMachineArgs {
   final pulumi.Input<String>? zones;
 
   /// Creates a new [VirtualMachineArgs].
-  /// [additionalCapabilities] An `additional_capabilities` block as defined below.
+  /// [additionalCapabilities] An `additionalCapabilities` block as defined below.
   /// [availabilitySetId] The ID of the Availability Set in which the Virtual Machine should exist. Changing this forces a new resource to be created.
-  /// [bootDiagnostics] A `boot_diagnostics` block as defined below.
+  /// [bootDiagnostics] A `bootDiagnostics` block as defined below.
   /// [deleteDataDisksOnTermination] Should the Data Disks (either the Managed Disks / VHD Blobs) be deleted when the Virtual Machine is destroyed? Defaults to `false`.
   /// [deleteOsDiskOnTermination] Should the OS Disk (either the Managed Disk / VHD Blob) be deleted when the Virtual Machine is destroyed? Defaults to `false`.
   /// [identity] An `identity` block as defined below.
@@ -88,17 +88,17 @@ class VirtualMachineArgs {
   /// [location] Specifies the Azure Region where the Virtual Machine exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Virtual Machine. Changing this forces a new resource to be created.
   /// [networkInterfaceIds] A list of Network Interface IDs which should be associated with the Virtual Machine.
-  /// [osProfile] An `os_profile` block as defined below. Required when `create_option` in the `storage_os_disk` block is set to `FromImage`.
-  /// [osProfileLinuxConfig] (Required, when a Linux machine) An `os_profile_linux_config` block as defined below.
-  /// [osProfileSecrets] One or more `os_profile_secrets` blocks as defined below.
-  /// [osProfileWindowsConfig] (Required, when a Windows machine) An `os_profile_windows_config` block as defined below.
+  /// [osProfile] An `osProfile` block as defined below. Required when `createOption` in the `storageOsDisk` block is set to `FromImage`.
+  /// [osProfileLinuxConfig] (Required, when a Linux machine) An `osProfileLinuxConfig` block as defined below.
+  /// [osProfileSecrets] One or more `osProfileSecrets` blocks as defined below.
+  /// [osProfileWindowsConfig] (Required, when a Windows machine) An `osProfileWindowsConfig` block as defined below.
   /// [plan] A `plan` block as defined below.
   /// [primaryNetworkInterfaceId] The ID of the Network Interface (which must be attached to the Virtual Machine) which should be the Primary Network Interface for this Virtual Machine.
   /// [proximityPlacementGroupId] The ID of the Proximity Placement Group to which this Virtual Machine should be assigned. Changing this forces a new resource to be created
   /// [resourceGroupName] Specifies the name of the Resource Group in which the Virtual Machine should exist. Changing this forces a new resource to be created.
-  /// [storageDataDisks] One or more `storage_data_disk` blocks as defined below.
-  /// [storageImageReference] A `storage_image_reference` block as defined below. Changing this forces a new resource to be created.
-  /// [storageOsDisk] A `storage_os_disk` block as defined below.
+  /// [storageDataDisks] One or more `storageDataDisk` blocks as defined below.
+  /// [storageImageReference] A `storageImageReference` block as defined below. Changing this forces a new resource to be created.
+  /// [storageOsDisk] A `storageOsDisk` block as defined below.
   /// [tags] A mapping of tags to assign to the Virtual Machine.
   /// [vmSize] Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
   /// [zones] A list of a single item of the Availability Zone which the Virtual Machine should be allocated in. Changing this forces a new resource to be created.
@@ -187,4 +187,3 @@ class VirtualMachineArgs {
     );
   }
 }
-

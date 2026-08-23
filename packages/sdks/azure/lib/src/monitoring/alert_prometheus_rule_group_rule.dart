@@ -9,7 +9,7 @@ class AlertPrometheusRuleGroupRule {
   final pulumi.Input<List<AlertPrometheusRuleGroupRuleAction>>? actions;
   /// Specifies the Alert rule name.
   final pulumi.Input<String>? alert;
-  /// An `alert_resolution` block as defined below.
+  /// An `alertResolution` block as defined below.
   final pulumi.Input<AlertPrometheusRuleGroupRuleAlertResolution>? alertResolution;
   /// Specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links.
   final pulumi.Input<Map<String, String>>? annotations;
@@ -29,7 +29,7 @@ class AlertPrometheusRuleGroupRule {
   /// Creates a new [AlertPrometheusRuleGroupRule].
   /// [actions] An `action` block as defined below.
   /// [alert] Specifies the Alert rule name.
-  /// [alertResolution] An `alert_resolution` block as defined below.
+  /// [alertResolution] An `alertResolution` block as defined below.
   /// [annotations] Specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links.
   /// [enabled] Is this rule enabled? Possible values are `true` and `false`.
   /// [expression] Specifies the Prometheus Query Language expression to evaluate. For more details see [this doc](https://prometheus.io/docs/prometheus/latest/querying/basics). Evaluate at the period given by `interval` and record the result as a new set of time series with the metric name given by `record`.
@@ -80,4 +80,3 @@ class AlertPrometheusRuleGroupRule {
     );
   }
 }
-

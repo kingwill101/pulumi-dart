@@ -13,15 +13,15 @@ import 'snapshot_policy_weekly_schedule.dart';
 class SnapshotPolicyArgs {
   /// The name of the NetApp Account in which the NetApp Snapshot Policy should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> accountName;
-  /// Sets a daily snapshot schedule. A `daily_schedule` block as defined below.
+  /// Sets a daily snapshot schedule. A `dailySchedule` block as defined below.
   final pulumi.Input<SnapshotPolicyDailySchedule>? dailySchedule;
   /// Defines that the NetApp Snapshot Policy is enabled or not.
   final pulumi.Input<bool> enabled;
-  /// Sets an hourly snapshot schedule. A `hourly_schedule` block as defined below.
+  /// Sets an hourly snapshot schedule. A `hourlySchedule` block as defined below.
   final pulumi.Input<SnapshotPolicyHourlySchedule>? hourlySchedule;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-  /// Sets a monthly snapshot schedule. A `monthly_schedule` block as defined below.
+  /// Sets a monthly snapshot schedule. A `monthlySchedule` block as defined below.
   final pulumi.Input<SnapshotPolicyMonthlySchedule>? monthlySchedule;
   /// The name of the NetApp Snapshot Policy. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -29,20 +29,20 @@ class SnapshotPolicyArgs {
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Sets a weekly snapshot schedule. A `weekly_schedule` block as defined below.
+  /// Sets a weekly snapshot schedule. A `weeklySchedule` block as defined below.
   final pulumi.Input<SnapshotPolicyWeeklySchedule>? weeklySchedule;
 
   /// Creates a new [SnapshotPolicyArgs].
   /// [accountName] The name of the NetApp Account in which the NetApp Snapshot Policy should be created. Changing this forces a new resource to be created.
-  /// [dailySchedule] Sets a daily snapshot schedule. A `daily_schedule` block as defined below.
+  /// [dailySchedule] Sets a daily snapshot schedule. A `dailySchedule` block as defined below.
   /// [enabled] Defines that the NetApp Snapshot Policy is enabled or not.
-  /// [hourlySchedule] Sets an hourly snapshot schedule. A `hourly_schedule` block as defined below.
+  /// [hourlySchedule] Sets an hourly snapshot schedule. A `hourlySchedule` block as defined below.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  /// [monthlySchedule] Sets a monthly snapshot schedule. A `monthly_schedule` block as defined below.
+  /// [monthlySchedule] Sets a monthly snapshot schedule. A `monthlySchedule` block as defined below.
   /// [name] The name of the NetApp Snapshot Policy. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group where the NetApp Snapshot Policy should be created. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  /// [weeklySchedule] Sets a weekly snapshot schedule. A `weekly_schedule` block as defined below.
+  /// [weeklySchedule] Sets a weekly snapshot schedule. A `weeklySchedule` block as defined below.
   const SnapshotPolicyArgs({
     required this.accountName,
     this.dailySchedule,
@@ -86,4 +86,3 @@ class SnapshotPolicyArgs {
     );
   }
 }
-

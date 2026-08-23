@@ -12,9 +12,9 @@ class InsightsState {
   final pulumi.Input<String>? connectionString;
   /// Specifies the Application Insights component daily data volume cap in GB. Defaults to `100`.
   final pulumi.Input<double>? dailyDataCapInGb;
-  /// Specifies if a notification email will be sent when the daily data volume cap is met. Defaults to `false`.
   final pulumi.Input<bool>? dailyDataCapNotificationsDisabled;
-  /// By default the real client IP is masked as `0.0.0.0` in the logs. Use this argument to disable masking and log the real client IP. Defaults to `false`.
+  /// Whether a notification email will be sent when the daily data volume cap is met. Defaults to `true`.
+  final pulumi.Input<bool>? dailyDataCapNotificationsEnabled;
   final pulumi.Input<bool>? disableIpMasking;
   /// Should the Application Insights component force users to create their own storage account for profiling? Defaults to `false`.
   final pulumi.Input<bool>? forceCustomerStorageForProfiler;
@@ -24,8 +24,11 @@ class InsightsState {
   final pulumi.Input<bool>? internetIngestionEnabled;
   /// Should the Application Insights component support querying over the Public Internet? Defaults to `true`.
   final pulumi.Input<bool>? internetQueryEnabled;
-  /// Disable Non-Azure AD based Auth. Defaults to `false`.
+  /// By default the real client IP is masked as `0.0.0.0` in the logs. Set this argument to `false` to disable masking and log the real client IP. Defaults to `true`.
+  final pulumi.Input<bool>? ipMaskingEnabled;
   final pulumi.Input<bool>? localAuthenticationDisabled;
+  /// Whether Non-Azure AD based Auth is enabled. Defaults to `true`.
+  final pulumi.Input<bool>? localAuthenticationEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
   /// Specifies the name of the Application Insights component. Changing this forces a new resource to be created.
@@ -40,7 +43,7 @@ class InsightsState {
   final pulumi.Input<Map<String, String>>? tags;
   /// Specifies the id of a log analytics workspace resource.
   ///
-  /// &gt; **Note:** `workspace_id` cannot be removed after set. More details can be found at [Migrate to workspace-based Application Insights resources](https://docs.microsoft.com/azure/azure-monitor/app/convert-classic-resource#migration-process). If `workspace_id` is not specified but you encounter a diff, this might indicate a Microsoft initiated automatic migration from classic resources to workspace-based resources. If this is the case, please update `workspace_id` in the config file to the new value.
+  /// &gt; **Note:** `workspaceId` cannot be removed after set. More details can be found at [Migrate to workspace-based Application Insights resources](https://docs.microsoft.com/azure/azure-monitor/app/convert-classic-resource#migration-process). If `workspaceId` is not specified but you encounter a diff, this might indicate a Microsoft initiated automatic migration from classic resources to workspace-based resources. If this is the case, please update `workspaceId` in the config file to the new value.
   final pulumi.Input<String>? workspaceId;
 
   /// Creates a new [InsightsState].
@@ -48,13 +51,16 @@ class InsightsState {
   /// [applicationType] Specifies the type of Application Insights to create. Valid values are `ios` for _iOS_, `java` for _Java web_, `MobileCenter` for _App Center_, `Node.JS` for _Node.js_, `other` for _General_, `phone` for _Windows Phone_, `store` for _Windows Store_ and `web` for _ASP.NET_. Please note these values are case sensitive; unmatched values are treated as _ASP.NET_ by Azure. Changing this forces a new resource to be created.
   /// [connectionString] The Connection String for this Application Insights component. (Sensitive)
   /// [dailyDataCapInGb] Specifies the Application Insights component daily data volume cap in GB. Defaults to `100`.
-  /// [dailyDataCapNotificationsDisabled] Specifies if a notification email will be sent when the daily data volume cap is met. Defaults to `false`.
-  /// [disableIpMasking] By default the real client IP is masked as `0.0.0.0` in the logs. Use this argument to disable masking and log the real client IP. Defaults to `false`.
+  /// [dailyDataCapNotificationsDisabled] Optional.
+  /// [dailyDataCapNotificationsEnabled] Whether a notification email will be sent when the daily data volume cap is met. Defaults to `true`.
+  /// [disableIpMasking] Optional.
   /// [forceCustomerStorageForProfiler] Should the Application Insights component force users to create their own storage account for profiling? Defaults to `false`.
   /// [instrumentationKey] The Instrumentation Key for this Application Insights component. (Sensitive)
   /// [internetIngestionEnabled] Should the Application Insights component support ingestion over the Public Internet? Defaults to `true`.
   /// [internetQueryEnabled] Should the Application Insights component support querying over the Public Internet? Defaults to `true`.
-  /// [localAuthenticationDisabled] Disable Non-Azure AD based Auth. Defaults to `false`.
+  /// [ipMaskingEnabled] By default the real client IP is masked as `0.0.0.0` in the logs. Set this argument to `false` to disable masking and log the real client IP. Defaults to `true`.
+  /// [localAuthenticationDisabled] Optional.
+  /// [localAuthenticationEnabled] Whether Non-Azure AD based Auth is enabled. Defaults to `true`.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Application Insights component. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the Application Insights component. Changing this forces a new resource to be created.
@@ -68,12 +74,15 @@ class InsightsState {
     this.connectionString,
     this.dailyDataCapInGb,
     this.dailyDataCapNotificationsDisabled,
+    this.dailyDataCapNotificationsEnabled,
     this.disableIpMasking,
     this.forceCustomerStorageForProfiler,
     this.instrumentationKey,
     this.internetIngestionEnabled,
     this.internetQueryEnabled,
+    this.ipMaskingEnabled,
     this.localAuthenticationDisabled,
+    this.localAuthenticationEnabled,
     this.location,
     this.name,
     this.resourceGroupName,
@@ -90,12 +99,15 @@ class InsightsState {
       'connectionString': ?connectionString,
       'dailyDataCapInGb': ?dailyDataCapInGb,
       'dailyDataCapNotificationsDisabled': ?dailyDataCapNotificationsDisabled,
+      'dailyDataCapNotificationsEnabled': ?dailyDataCapNotificationsEnabled,
       'disableIpMasking': ?disableIpMasking,
       'forceCustomerStorageForProfiler': ?forceCustomerStorageForProfiler,
       'instrumentationKey': ?instrumentationKey,
       'internetIngestionEnabled': ?internetIngestionEnabled,
       'internetQueryEnabled': ?internetQueryEnabled,
+      'ipMaskingEnabled': ?ipMaskingEnabled,
       'localAuthenticationDisabled': ?localAuthenticationDisabled,
+      'localAuthenticationEnabled': ?localAuthenticationEnabled,
       'location': ?location,
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
@@ -113,12 +125,15 @@ class InsightsState {
       connectionString: (() { final guardedValue = map['connectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dailyDataCapInGb: (() { final guardedValue = map['dailyDataCapInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       dailyDataCapNotificationsDisabled: (() { final guardedValue = map['dailyDataCapNotificationsDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      dailyDataCapNotificationsEnabled: (() { final guardedValue = map['dailyDataCapNotificationsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       disableIpMasking: (() { final guardedValue = map['disableIpMasking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       forceCustomerStorageForProfiler: (() { final guardedValue = map['forceCustomerStorageForProfiler']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       instrumentationKey: (() { final guardedValue = map['instrumentationKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       internetIngestionEnabled: (() { final guardedValue = map['internetIngestionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       internetQueryEnabled: (() { final guardedValue = map['internetQueryEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ipMaskingEnabled: (() { final guardedValue = map['ipMaskingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       localAuthenticationDisabled: (() { final guardedValue = map['localAuthenticationDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      localAuthenticationEnabled: (() { final guardedValue = map['localAuthenticationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -129,4 +144,3 @@ class InsightsState {
     );
   }
 }
-

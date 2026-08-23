@@ -84,4 +84,3 @@ class GetWindowsFunctionAppAuthSettingsV2Login {
     );
   }
 }
-

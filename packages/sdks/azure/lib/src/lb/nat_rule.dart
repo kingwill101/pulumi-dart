@@ -4,7 +4,7 @@ import 'nat_rule_state.dart';
 
 /// Manages a Load Balancer NAT Rule.
 ///
-/// &gt; **Note:** This resource cannot be used with with virtual machine scale sets, instead use the `azure.lb.NatPool` resource.
+/// &gt; **Note:** To target a Virtual Machine Scale Set, set `frontendPortStart`, `frontendPortEnd` and `backendAddressPoolId` to create an Inbound NAT rule v2. The legacy `azure.lb.NatPool` resource maps to Inbound NAT rule v1, which Azure has scheduled for retirement on September 30, 2027.
 ///
 /// &gt; **Note:** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
 ///
@@ -249,6 +249,59 @@ import 'nat_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "LoadBalancerRG"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "PublicIPForLB"
+///   location            = "West US"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+/// }
+/// resource "azure_lb_loadbalancer" "example" {
+///   name                = "TestLoadBalancer"
+///   location            = "West US"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   frontend_ip_configurations {
+///     name                 = "PublicIPAddress"
+///     public_ip_address_id = azure_network_publicip.example.id
+///   }
+/// }
+/// resource "azure_lb_backendaddresspool" "example" {
+///   loadbalancer_id = azure_lb_loadbalancer.example.id
+///   name            = "be"
+/// }
+/// resource "azure_lb_natrule" "example" {
+///   resource_group_name            = azure_core_resourcegroup.example.name
+///   loadbalancer_id                = azure_lb_loadbalancer.example.id
+///   name                           = "RDPAccess"
+///   protocol                       = "Tcp"
+///   frontend_port                  = 3389
+///   backend_port                   = 3389
+///   frontend_ip_configuration_name = "PublicIPAddress"
+/// }
+/// resource "azure_lb_natrule" "example1" {
+///   resource_group_name            = azure_core_resourcegroup.example.name
+///   loadbalancer_id                = azure_lb_loadbalancer.example.id
+///   name                           = "RDPAccess"
+///   protocol                       = "Tcp"
+///   frontend_port_start            = 3000
+///   frontend_port_end              = 3389
+///   backend_port                   = 3389
+///   backend_address_pool_id        = azure_lb_backendaddresspool.example.id
+///   frontend_ip_configuration_name = "PublicIPAddress"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -266,8 +319,8 @@ import 'nat_rule_state.dart';
 /// import com.pulumi.azure.lb.BackendAddressPoolArgs;
 /// import com.pulumi.azure.lb.NatRule;
 /// import com.pulumi.azure.lb.NatRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

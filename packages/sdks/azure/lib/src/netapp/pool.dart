@@ -122,6 +122,33 @@ import 'pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_netapp_account" "example" {
+///   name                = "example-netappaccount"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_netapp_pool" "example" {
+///   name                = "example-netapppool"
+///   account_name        = azure_netapp_account.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   service_level       = "Premium"
+///   size_in_tb          = 4
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,8 +161,8 @@ import 'pool_state.dart';
 /// import com.pulumi.azure.netapp.AccountArgs;
 /// import com.pulumi.azure.netapp.Pool;
 /// import com.pulumi.azure.netapp.PoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -323,6 +350,35 @@ import 'pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_netapp_account" "example" {
+///   name                = "example-netappaccount"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_netapp_pool" "example" {
+///   name                    = "example-netapppool"
+///   account_name            = azure_netapp_account.example.name
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   service_level           = "Flexible"
+///   size_in_tb              = 4
+///   qos_type                = "Manual"
+///   custom_throughput_mibps = 256
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -335,8 +391,8 @@ import 'pool_state.dart';
 /// import com.pulumi.azure.netapp.AccountArgs;
 /// import com.pulumi.azure.netapp.Pool;
 /// import com.pulumi.azure.netapp.PoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -407,7 +463,7 @@ import 'pool_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 ///
 /// ## Import
 ///
@@ -421,9 +477,9 @@ class Pool extends pulumi.CustomResource {
   late final pulumi.Output<String> accountName;
   /// Whether the NetApp Pool can hold cool access enabled volumes. Defaults to `false`.
   ///
-  /// &gt; **Note:** Disabling `cool_access_enabled` is not allowed and forces a new resource to be created.
+  /// &gt; **Note:** Disabling `coolAccessEnabled` is not allowed and forces a new resource to be created.
   late final pulumi.Output<bool?> coolAccessEnabled;
-  /// The custom throughput for the pool in MiB/s. Minimum value is `128`. This field can only be set when `service_level` is set to `Flexible` and `qos_type` is set to `Manual`.
+  /// The custom throughput for the pool in MiB/s. Minimum value is `128`. This field can only be set when `serviceLevel` is set to `Flexible` and `qosType` is set to `Manual`.
   late final pulumi.Output<int?> customThroughputMibps;
   /// The encryption type of the pool. Valid values include `Single`, and `Double`. Defaults to `Single`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> encryptionType;
@@ -441,7 +497,7 @@ class Pool extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** `2` TB capacity pool sizing is currently in preview. You can only take advantage of the `2` TB minimum if all the volumes in the capacity pool are using `Standard` network features. If any volume is using `Basic` network features, the minimum size is `4` TB. Please see the product [documentation](https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool) for more information.
   ///
-  /// &gt; **Note:** The maximum `size_in_tb` is goverened by regional quotas. You may request additional capacity from Azure, currently up to `2048`.
+  /// &gt; **Note:** The maximum `sizeInTb` is goverened by regional quotas. You may request additional capacity from Azure, currently up to `2048`.
   late final pulumi.Output<int> sizeInTb;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;

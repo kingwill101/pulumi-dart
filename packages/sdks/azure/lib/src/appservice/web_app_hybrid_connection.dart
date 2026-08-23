@@ -207,6 +207,51 @@ import 'web_app_hybrid_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   name                = "example-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   os_type             = "Windows"
+///   sku_name            = "S1"
+/// }
+/// resource "azure_relay_namespace" "example" {
+///   name                = "example-relay"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Standard"
+/// }
+/// resource "azure_relay_hybridconnection" "example" {
+///   name                 = "examplerhc1"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   relay_namespace_name = azure_relay_namespace.example.name
+/// }
+/// resource "azure_appservice_windowswebapp" "example" {
+///   name                = "example-web-app"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   service_plan_id     = azure_appservice_serviceplan.example.id
+///   site_config         = {}
+/// }
+/// resource "azure_appservice_webapphybridconnection" "example" {
+///   web_app_id = azure_appservice_windowswebapp.example.id
+///   relay_id   = azure_relay_hybridconnection.example.id
+///   hostname   = "myhostname.example"
+///   port       = 8081
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -226,8 +271,8 @@ import 'web_app_hybrid_connection_state.dart';
 /// import com.pulumi.azure.appservice.inputs.WindowsWebAppSiteConfigArgs;
 /// import com.pulumi.azure.appservice.WebAppHybridConnection;
 /// import com.pulumi.azure.appservice.WebAppHybridConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -364,7 +409,7 @@ class WebAppHybridConnection extends pulumi.CustomResource {
   late final pulumi.Output<String> relayName;
   /// The name of the Relay key with `Send` permission to use. Defaults to `RootManageSharedAccessKey`
   late final pulumi.Output<String?> sendKeyName;
-  /// The Primary Access Key for the `send_key_name`
+  /// The Primary Access Key for the `sendKeyName`
   late final pulumi.Output<String> sendKeyValue;
   /// The Service Bus Namespace.
   late final pulumi.Output<String> serviceBusNamespace;

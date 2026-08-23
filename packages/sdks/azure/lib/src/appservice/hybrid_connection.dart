@@ -4,7 +4,7 @@ import 'hybrid_connection_state.dart';
 
 /// Manages an App Service Hybrid Connection for an existing App Service, Relay and Service Bus.
 ///
-/// !&gt; **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.FunctionAppHybridConnection` and `azure.appservice.WebAppHybridConnection` resources instead.
+/// &gt; **NOTE:** This resource has been deprecated and will be removed in version 6.0 of the provider. Please use `azure.appservice.FunctionAppHybridConnection` and `azure.appservice.WebAppHybridConnection` resources instead.
 ///
 /// ## Example Usage
 ///
@@ -228,6 +228,55 @@ import 'hybrid_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "exampleResourceGroup1"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "exampleAppServicePlan1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     tier = "Standard"
+///     size = "S1"
+///   }
+/// }
+/// resource "azure_appservice_appservice" "example" {
+///   name                = "exampleAppService1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   app_service_plan_id = azure_appservice_plan.example.id
+/// }
+/// resource "azure_relay_namespace" "example" {
+///   name                = "exampleRN1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Standard"
+/// }
+/// resource "azure_relay_hybridconnection" "example" {
+///   name                 = "exampleRHC1"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   relay_namespace_name = azure_relay_namespace.example.name
+///   user_metadata        = "examplemetadata"
+/// }
+/// resource "azure_appservice_hybridconnection" "example" {
+///   app_service_name    = azure_appservice_appservice.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   relay_id            = azure_relay_hybridconnection.example.id
+///   hostname            = "testhostname.example"
+///   port                = 8080
+///   send_key_name       = "exampleSharedAccessKey"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -243,8 +292,8 @@ import 'hybrid_connection_state.dart';
 /// import com.pulumi.azure.appservice.AppServiceArgs;
 /// import com.pulumi.azure.relay.Namespace;
 /// import com.pulumi.azure.relay.NamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

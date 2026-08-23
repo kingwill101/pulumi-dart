@@ -22,11 +22,11 @@ class WorkspaceTableCustomLogState {
   final pulumi.Input<String>? plan;
   /// The table's retention in days. Possible values range between `4` and `730`.
   ///
-  /// &gt; **Note:** `retention_in_days` cannot be set when `plan` is set to `Basic` because the retention is fixed.
+  /// &gt; **Note:** `retentionInDays` cannot be set when `plan` is set to `Basic` because the retention is fixed.
   final pulumi.Input<int>? retentionInDays;
   /// A list of solutions associated with the table.
   final pulumi.Input<List<String>>? solutions;
-  /// One or more `standard_column` blocks as defined below.
+  /// One or more `standardColumn` blocks as defined below.
   final pulumi.Input<List<WorkspaceTableCustomLogStandardColumn>>? standardColumns;
   /// The table's total retention in days. Possible values range between `4` and `730`; or `1095`, `1460`, `1826`, `2191`, `2556`, `2922`, `3288`, `3653`, `4018`, or `4383`.
   final pulumi.Input<int>? totalRetentionInDays;
@@ -41,7 +41,7 @@ class WorkspaceTableCustomLogState {
   /// [plan] Specify the system how to handle and charge the logs ingested to the table. Possible values are `Analytics` and `Basic`. Defaults to `Analytics`.
   /// [retentionInDays] The table's retention in days. Possible values range between `4` and `730`.
   /// [solutions] A list of solutions associated with the table.
-  /// [standardColumns] One or more `standard_column` blocks as defined below.
+  /// [standardColumns] One or more `standardColumn` blocks as defined below.
   /// [totalRetentionInDays] The table's total retention in days. Possible values range between `4` and `730`; or `1095`, `1460`, `1826`, `2191`, `2556`, `2922`, `3288`, `3653`, `4018`, or `4383`.
   /// [workspaceId] The object ID of the Log Analytics Workspace that contains the table. Changing this forces a new resource to be created.
   const WorkspaceTableCustomLogState({
@@ -87,4 +87,3 @@ class WorkspaceTableCustomLogState {
     );
   }
 }
-

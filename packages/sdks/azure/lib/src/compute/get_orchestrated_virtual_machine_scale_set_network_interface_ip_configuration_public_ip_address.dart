@@ -8,7 +8,7 @@ class GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublic
   final pulumi.Input<String> domainNameLabel;
   /// The idle timeout in minutes.
   final pulumi.Input<int> idleTimeoutInMinutes;
-  /// A list of `ip_tag` blocks as defined below.
+  /// A list of `ipTag` blocks as defined below.
   final pulumi.Input<List<GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>> ipTags;
   /// The name of this Orchestrated Virtual Machine Scale Set.
   final pulumi.Input<String> name;
@@ -20,7 +20,7 @@ class GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublic
   /// Creates a new [GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress].
   /// [domainNameLabel] The domain name label for the DNS settings.
   /// [idleTimeoutInMinutes] The idle timeout in minutes.
-  /// [ipTags] A list of `ip_tag` blocks as defined below.
+  /// [ipTags] A list of `ipTag` blocks as defined below.
   /// [name] The name of this Orchestrated Virtual Machine Scale Set.
   /// [publicIpPrefixId] The ID of the public IP prefix.
   /// [version] The Internet Protocol Version of the public IP address.
@@ -55,4 +55,3 @@ class GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublic
     );
   }
 }
-

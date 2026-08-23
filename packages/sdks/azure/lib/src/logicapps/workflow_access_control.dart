@@ -13,14 +13,14 @@ class WorkflowAccessControl {
   final pulumi.Input<WorkflowAccessControlContent>? content;
   /// A `trigger` block as defined below.
   final pulumi.Input<WorkflowAccessControlTrigger>? trigger;
-  /// A `workflow_management` block as defined below.
+  /// A `workflowManagement` block as defined below.
   final pulumi.Input<WorkflowAccessControlWorkflowManagement>? workflowManagement;
 
   /// Creates a new [WorkflowAccessControl].
   /// [action] A `action` block as defined below.
   /// [content] A `content` block as defined below.
   /// [trigger] A `trigger` block as defined below.
-  /// [workflowManagement] A `workflow_management` block as defined below.
+  /// [workflowManagement] A `workflowManagement` block as defined below.
   const WorkflowAccessControl({
     this.action,
     this.content,
@@ -46,4 +46,3 @@ class WorkflowAccessControl {
     );
   }
 }
-

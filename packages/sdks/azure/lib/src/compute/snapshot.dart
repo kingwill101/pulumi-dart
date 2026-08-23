@@ -131,6 +131,35 @@ import 'snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "snapshot-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_compute_manageddisk" "example" {
+///   name                 = "managed-disk"
+///   location             = azure_core_resourcegroup.example.location
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   storage_account_type = "Standard_LRS"
+///   create_option        = "Empty"
+///   disk_size_gb         = "10"
+/// }
+/// resource "azure_compute_snapshot" "example" {
+///   name                = "snapshot"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   create_option       = "Copy"
+///   source_uri          = azure_compute_manageddisk.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +172,8 @@ import 'snapshot_state.dart';
 /// import com.pulumi.azure.compute.ManagedDiskArgs;
 /// import com.pulumi.azure.compute.Snapshot;
 /// import com.pulumi.azure.compute.SnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -227,15 +256,15 @@ import 'snapshot_state.dart';
 class Snapshot extends pulumi.CustomResource {
   /// Indicates how the snapshot is to be created. Possible values are `Copy` or `Import`.
   ///
-  /// &gt; **Note:** One of `source_uri`, `source_resource_id` or `storage_account_id` must be specified.
+  /// &gt; **Note:** One of `sourceUri`, `sourceResourceId` or `storageAccountId` must be specified.
   late final pulumi.Output<String> createOption;
-  /// Specifies the ID of the Disk Access which should be used for this Snapshot. This is used in conjunction with setting `network_access_policy` to `AllowPrivate`.
+  /// Specifies the ID of the Disk Access which should be used for this Snapshot. This is used in conjunction with setting `networkAccessPolicy` to `AllowPrivate`.
   late final pulumi.Output<String?> diskAccessId;
   /// The size of the Snapshotted Disk in GB.
   late final pulumi.Output<int> diskSizeGb;
-  /// A `encryption_settings` block as defined below.
+  /// A `encryptionSettings` block as defined below.
   ///
-  /// &gt; **Note:** Removing `encryption_settings` forces a new resource to be created.
+  /// &gt; **Note:** Removing `encryptionSettings` forces a new resource to be created.
   late final pulumi.Output<SnapshotEncryptionSettings?> encryptionSettings;
   /// Specifies if the Snapshot is incremental. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> incrementalEnabled;
@@ -249,11 +278,11 @@ class Snapshot extends pulumi.CustomResource {
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
   /// The name of the resource group in which to create the Snapshot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// Specifies a reference to an existing snapshot, when `create_option` is `Copy`. Changing this forces a new resource to be created.
+  /// Specifies a reference to an existing snapshot, when `createOption` is `Copy`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sourceResourceId;
   /// Specifies the URI to a Managed or Unmanaged Disk. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sourceUri;
-  /// Specifies the ID of an storage account. Used with `source_uri` to allow authorization during import of unmanaged blobs from a different subscription. Changing this forces a new resource to be created.
+  /// Specifies the ID of an storage account. Used with `sourceUri` to allow authorization during import of unmanaged blobs from a different subscription. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> storageAccountId;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;

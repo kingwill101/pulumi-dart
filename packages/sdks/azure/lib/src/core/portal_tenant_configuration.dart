@@ -62,6 +62,19 @@ import 'portal_tenant_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_portaltenantconfiguration" "example" {
+///   private_markdown_storage_enforced = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +83,8 @@ import 'portal_tenant_configuration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.core.PortalTenantConfiguration;
 /// import com.pulumi.azure.core.PortalTenantConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -116,7 +129,7 @@ import 'portal_tenant_configuration_state.dart';
 class PortalTenantConfiguration extends pulumi.CustomResource {
   /// Is the private tile markdown storage which used to display custom dynamic and static content enabled?
   ///
-  /// &gt; **Note:** When `private_markdown_storage_enforced` is set to `true`, only external storage configuration (URI) is allowed for Markdown tiles. Inline content configuration will be prohibited.
+  /// &gt; **Note:** When `privateMarkdownStorageEnforced` is set to `true`, only external storage configuration (URI) is allowed for Markdown tiles. Inline content configuration will be prohibited.
   late final pulumi.Output<bool> privateMarkdownStorageEnforced;
 
   /// Creates a new [PortalTenantConfiguration].

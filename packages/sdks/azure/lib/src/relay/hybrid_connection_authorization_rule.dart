@@ -175,6 +175,45 @@ import 'hybrid_connection_authorization_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_relay_namespace" "example" {
+///   name                = "example-relay"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Standard"
+///   tags = {
+///     "source" = "terraform"
+///   }
+/// }
+/// resource "azure_relay_hybridconnection" "example" {
+///   name                          = "acctestrnhc-%d"
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   relay_namespace_name          = azure_relay_namespace.example.name
+///   requires_client_authorization = false
+///   user_metadata                 = "testmetadata"
+/// }
+/// resource "azure_relay_hybridconnectionauthorizationrule" "example" {
+///   name                   = "example"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   hybrid_connection_name = azure_relay_hybridconnection.example.name
+///   namespace_name         = azure_relay_namespace.example.name
+///   listen                 = true
+///   send                   = true
+///   manage                 = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -189,8 +228,8 @@ import 'hybrid_connection_authorization_rule_state.dart';
 /// import com.pulumi.azure.relay.HybridConnectionArgs;
 /// import com.pulumi.azure.relay.HybridConnectionAuthorizationRule;
 /// import com.pulumi.azure.relay.HybridConnectionAuthorizationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

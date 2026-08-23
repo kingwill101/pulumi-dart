@@ -10,7 +10,7 @@ import 'channel_line_line_channel.dart';
 class ChannelLineArgs {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String> botName;
-  /// One or more `line_channel` blocks as defined below.
+  /// One or more `lineChannel` blocks as defined below.
   final pulumi.Input<List<ChannelLineLineChannel>> lineChannels;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -19,7 +19,7 @@ class ChannelLineArgs {
 
   /// Creates a new [ChannelLineArgs].
   /// [botName] The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
-  /// [lineChannels] One or more `line_channel` blocks as defined below.
+  /// [lineChannels] One or more `lineChannel` blocks as defined below.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group where the Line Channel should be created. Changing this forces a new resource to be created.
   const ChannelLineArgs({
@@ -47,4 +47,3 @@ class ChannelLineArgs {
     );
   }
 }
-

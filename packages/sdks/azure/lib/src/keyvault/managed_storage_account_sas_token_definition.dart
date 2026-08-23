@@ -393,7 +393,7 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 /// 			ValidityPeriod:          pulumi.String("P1D"),
 /// 			ManagedStorageAccountId: exampleManagedStorageAccount.ID(),
 /// 			SasTemplateUri: pulumi.String(exampleGetAccountSAS.ApplyT(func(exampleGetAccountSAS storage.GetAccountSASResult) (*string, error) {
-/// 				return &exampleGetAccountSAS.Sas, nil
+/// 				return exampleGetAccountSAS.Sas, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			SasType: pulumi.String("account"),
 /// 		})
@@ -402,6 +402,87 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "example" {
+/// }
+/// data "azure_storage_getaccountsas" "exampleGetAccountSAS" {
+///   connection_string = azure_storage_account.example.primary_connection_string
+///   https_only        = true
+///   resource_types = {
+///     service   = true
+///     container = false
+///     object    = false
+///   }
+///   services = {
+///     blob  = true
+///     queue = false
+///     table = false
+///     file  = false
+///   }
+///   start  = "2021-04-30T00:00:00Z"
+///   expiry = "2023-04-30T00:00:00Z"
+///   permissions = {
+///     read    = true
+///     write   = true
+///     delete  = false
+///     list    = false
+///     add     = true
+///     create  = true
+///     update  = false
+///     process = false
+///     tag     = false
+///     filter  = false
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "storageaccountname"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "example-keyvault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.example.tenant_id
+///   sku_name            = "standard"
+///   access_policies {
+///     tenant_id           = data.azure_core_getclientconfig.example.tenant_id
+///     object_id           = data.azure_core_getclientconfig.example.object_id
+///     secret_permissions  = ["Get", "Delete"]
+///     storage_permissions = ["Get", "List", "Set", "SetSAS", "GetSAS", "DeleteSAS", "Update", "RegenerateKey"]
+///   }
+/// }
+/// resource "azure_keyvault_managedstorageaccount" "example" {
+///   name                         = "examplemanagedstorage"
+///   key_vault_id                 = azure_keyvault_keyvault.example.id
+///   storage_account_id           = azure_storage_account.example.id
+///   storage_account_key          = "key1"
+///   regenerate_key_automatically = false
+///   regeneration_period          = "P1D"
+/// }
+/// resource "azure_keyvault_managedstorageaccountsastokendefinition" "example" {
+///   name                       = "examplesasdefinition"
+///   validity_period            = "P1D"
+///   managed_storage_account_id = azure_keyvault_managedstorageaccount.example.id
+///   sas_template_uri           = data.azure_storage_getaccountsas.exampleGetAccountSAS.sas
+///   sas_type                   = "account"
 /// }
 /// ```
 /// ```java
@@ -427,8 +508,8 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 /// import com.pulumi.azure.keyvault.ManagedStorageAccountArgs;
 /// import com.pulumi.azure.keyvault.ManagedStorageAccountSasTokenDefinition;
 /// import com.pulumi.azure.keyvault.ManagedStorageAccountSasTokenDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

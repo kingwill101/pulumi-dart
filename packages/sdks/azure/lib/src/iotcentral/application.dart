@@ -116,6 +116,32 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resource"
+///   location = "West Europe"
+/// }
+/// resource "azure_iotcentral_application" "example" {
+///   name                = "example-iotcentral-app"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sub_domain          = "example-iotcentral-app-subdomain"
+///   display_name        = "example-iotcentral-app-display-name"
+///   sku                 = "ST1"
+///   template            = "iotc-default@1.0.0"
+///   tags = {
+///     "Foo" = "Bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +152,8 @@ import 'application_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.iotcentral.Application;
 /// import com.pulumi.azure.iotcentral.ApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,9 +222,9 @@ import 'application_state.dart';
 /// $ pulumi import azure:iotcentral/application:Application example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.IoTCentral/iotApps/app1
 /// ```
 class Application extends pulumi.CustomResource {
-  /// A `display_name` name. Custom display name for the IoT Central application. Default is resource name.
+  /// A `displayName` name. Custom display name for the IoT Central application. Default is resource name.
   ///
-  /// &gt; **Note:** Due to a bug in the provider, the default value of `display_name` of a newly created IoT Central App will be the Resource Group Name, it will be fixed and use resource name in 4.0. For an existing IoT Central App, this could be fixed by specifying the `display_name` explicitly.
+  /// &gt; **Note:** Due to a bug in the provider, the default value of `displayName` of a newly created IoT Central App will be the Resource Group Name, it will be fixed and use resource name in 4.0. For an existing IoT Central App, this could be fixed by specifying the `displayName` explicitly.
   late final pulumi.Output<String> displayName;
   /// An `identity` block as defined below.
   late final pulumi.Output<ApplicationIdentity?> identity;
@@ -212,7 +238,7 @@ class Application extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// A `sku` name. Possible values is `ST0`, `ST1`, `ST2`, Default value is `ST1`
   late final pulumi.Output<String?> sku;
-  /// A `sub_domain` name. Subdomain for the IoT Central URL. Each application must have a unique subdomain.
+  /// A `subDomain` name. Subdomain for the IoT Central URL. Each application must have a unique subdomain.
   late final pulumi.Output<String> subDomain;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;

@@ -232,6 +232,54 @@ import 'flux_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_arckubernetes_cluster" "example" {
+///   name                         = "example-akcc"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = "West Europe"
+///   agent_public_key_certificate = filebase64("testdata/public.cer")
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "ENV" = "Test"
+///   }
+/// }
+/// resource "azure_arckubernetes_clusterextension" "example" {
+///   name           = "example-ext"
+///   cluster_id     = test.id
+///   extension_type = "microsoft.flux"
+/// }
+/// resource "azure_arckubernetes_fluxconfiguration" "example" {
+///   depends_on = [azure_arckubernetes_clusterextension.example]
+///   name       = "example-fc"
+///   cluster_id = test.id
+///   namespace  = "flux"
+///   git_repository = {
+///     url             = "https://github.com/Azure/arc-k8s-demo"
+///     reference_type  = "branch"
+///     reference_value = "main"
+///   }
+///   kustomizations {
+///     name = "kustomization-1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -252,8 +300,8 @@ import 'flux_configuration_state.dart';
 /// import com.pulumi.azure.arckubernetes.inputs.FluxConfigurationGitRepositoryArgs;
 /// import com.pulumi.azure.arckubernetes.inputs.FluxConfigurationKustomizationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -363,17 +411,17 @@ import 'flux_configuration_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.KubernetesConfiguration` - 2024-11-01
+/// * `Microsoft.KubernetesConfiguration` - 2025-04-01
 ///
 /// ## Import
 ///
-/// Arc Kubernetes Flux Configuration can be imported using the `resource id` for different `cluster_resource_name`, e.g.
+/// Arc Kubernetes Flux Configuration can be imported using the `resource id` for different `clusterResourceName`, e.g.
 ///
 /// ```sh
 /// $ pulumi import azure:arckubernetes/fluxConfiguration:FluxConfiguration example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1/providers/Microsoft.Kubernetes/connectedClusters/cluster1/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/fluxConfiguration1
 /// ```
 class FluxConfiguration extends pulumi.CustomResource {
-  /// An `blob_storage` block as defined below.
+  /// An `blobStorage` block as defined below.
   late final pulumi.Output<FluxConfigurationBlobStorage?> blobStorage;
   /// A `bucket` block as defined below.
   late final pulumi.Output<FluxConfigurationBucket?> bucket;
@@ -381,7 +429,7 @@ class FluxConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> clusterId;
   /// Whether the configuration will keep its reconciliation of its kustomizations and sources with the repository. Defaults to `true`.
   late final pulumi.Output<bool?> continuousReconciliationEnabled;
-  /// A `git_repository` block as defined below.
+  /// A `gitRepository` block as defined below.
   late final pulumi.Output<FluxConfigurationGitRepository?> gitRepository;
   /// A `kustomizations` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> kustomizations;

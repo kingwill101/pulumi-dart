@@ -8,7 +8,7 @@ import 'get_environment_v3_inbound_network_dependency.dart';
 class GetEnvironmentV3Result {
   /// Are new Private Endpoint Connections allowed.
   final bool allowNewPrivateEndpointConnections;
-  /// A `cluster_setting` block as defined below.
+  /// A `clusterSetting` block as defined below.
   final List<GetEnvironmentV3ClusterSetting> clusterSettings;
   /// The number of Dedicated Hosts used by this ASEv3.
   final int dedicatedHostCount;
@@ -46,7 +46,7 @@ class GetEnvironmentV3Result {
 
   /// Creates a new [GetEnvironmentV3Result].
   /// [allowNewPrivateEndpointConnections] Are new Private Endpoint Connections allowed.
-  /// [clusterSettings] A `cluster_setting` block as defined below.
+  /// [clusterSettings] A `clusterSetting` block as defined below.
   /// [dedicatedHostCount] The number of Dedicated Hosts used by this ASEv3.
   /// [dnsSuffix] the DNS suffix for this App Service Environment V3.
   /// [externalInboundIpAddresses] The external inbound IP addresses of the App Service Environment V3.
@@ -138,4 +138,3 @@ class GetEnvironmentV3Result {
     );
   }
 }
-

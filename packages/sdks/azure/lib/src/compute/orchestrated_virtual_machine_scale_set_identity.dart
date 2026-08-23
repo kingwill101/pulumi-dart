@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrchestratedVirtualMachineScaleSetIdentity {
-  /// Specifies a list of User Managed Identity IDs to be assigned to this Windows Virtual Machine Scale Set.
+  /// Specifies a list of User Managed Identity IDs to be assigned to this Orchestrated Virtual Machine Scale Set.
   final pulumi.Input<List<String>> identityIds;
-  /// The type of Managed Identity that should be configured on this Windows Virtual Machine Scale Set. Only possible value is `UserAssigned`.
+  /// The type of Managed Identity that should be configured on this Orchestrated Virtual Machine Scale Set. The only possible value is `UserAssigned`.
   final pulumi.Input<String> type;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetIdentity].
-  /// [identityIds] Specifies a list of User Managed Identity IDs to be assigned to this Windows Virtual Machine Scale Set.
-  /// [type] The type of Managed Identity that should be configured on this Windows Virtual Machine Scale Set. Only possible value is `UserAssigned`.
+  /// [identityIds] Specifies a list of User Managed Identity IDs to be assigned to this Orchestrated Virtual Machine Scale Set.
+  /// [type] The type of Managed Identity that should be configured on this Orchestrated Virtual Machine Scale Set. The only possible value is `UserAssigned`.
   const OrchestratedVirtualMachineScaleSetIdentity({
     required this.identityIds,
     required this.type,
@@ -30,4 +30,3 @@ class OrchestratedVirtualMachineScaleSetIdentity {
     );
   }
 }
-

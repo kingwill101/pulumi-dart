@@ -80,6 +80,25 @@ import 'lock_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_management_lock" "subscription-level" {
+///   name       = "subscription-level"
+///   scope      = data.azure_core_getsubscription.current.id
+///   lock_level = "CanNotDelete"
+///   notes      = "Items can't be deleted in this subscription!"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +109,8 @@ import 'lock_state.dart';
 /// import com.pulumi.azure.core.inputs.GetSubscriptionArgs;
 /// import com.pulumi.azure.management.Lock;
 /// import com.pulumi.azure.management.LockArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,6 +239,26 @@ import 'lock_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "locked-resource-group"
+///   location = "West Europe"
+/// }
+/// resource "azure_management_lock" "resource-group-level" {
+///   name       = "resource-group-level"
+///   scope      = azure_core_resourcegroup.example.id
+///   lock_level = "ReadOnly"
+///   notes      = "This Resource Group is Read-Only"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -230,8 +269,8 @@ import 'lock_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.management.Lock;
 /// import com.pulumi.azure.management.LockArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -395,6 +434,33 @@ import 'lock_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "locked-resource-group"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                    = "locked-publicip"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   allocation_method       = "Static"
+///   idle_timeout_in_minutes = 30
+/// }
+/// resource "azure_management_lock" "public-ip" {
+///   name       = "resource-ip"
+///   scope      = azure_network_publicip.example.id
+///   lock_level = "CanNotDelete"
+///   notes      = "Locked because it's needed by a third-party"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -407,8 +473,8 @@ import 'lock_state.dart';
 /// import com.pulumi.azure.network.PublicIpArgs;
 /// import com.pulumi.azure.management.Lock;
 /// import com.pulumi.azure.management.LockArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

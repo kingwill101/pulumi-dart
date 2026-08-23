@@ -16,7 +16,7 @@ class ShareArgs {
   final pulumi.Input<String> kind;
   /// The name which should be used for this Data Share. Changing this forces a new Data Share to be created.
   final pulumi.Input<String>? name;
-  /// A `snapshot_schedule` block as defined below.
+  /// A `snapshotSchedule` block as defined below.
   final pulumi.Input<ShareSnapshotSchedule>? snapshotSchedule;
   /// The terms of the Data Share.
   final pulumi.Input<String>? terms;
@@ -26,7 +26,7 @@ class ShareArgs {
   /// [description] The Data Share's description.
   /// [kind] The kind of the Data Share. Possible values are `CopyBased` and `InPlace`. Changing this forces a new Data Share to be created.
   /// [name] The name which should be used for this Data Share. Changing this forces a new Data Share to be created.
-  /// [snapshotSchedule] A `snapshot_schedule` block as defined below.
+  /// [snapshotSchedule] A `snapshotSchedule` block as defined below.
   /// [terms] The terms of the Data Share.
   const ShareArgs({
     required this.accountId,
@@ -59,4 +59,3 @@ class ShareArgs {
     );
   }
 }
-

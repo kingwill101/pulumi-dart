@@ -6,16 +6,16 @@ import 'vpn_server_configuration_radius_server.dart';
 import 'vpn_server_configuration_radius_server_root_certificate.dart';
 
 class VpnServerConfigurationRadius {
-  /// One or more `client_root_certificate` blocks as defined below.
+  /// One or more `clientRootCertificate` blocks as defined below.
   final pulumi.Input<List<VpnServerConfigurationRadiusClientRootCertificate>>? clientRootCertificates;
-  /// One or more `server_root_certificate` blocks as defined below.
+  /// One or more `serverRootCertificate` blocks as defined below.
   final pulumi.Input<List<VpnServerConfigurationRadiusServerRootCertificate>>? serverRootCertificates;
   /// One or more `server` blocks as defined below.
   final pulumi.Input<List<VpnServerConfigurationRadiusServer>>? servers;
 
   /// Creates a new [VpnServerConfigurationRadius].
-  /// [clientRootCertificates] One or more `client_root_certificate` blocks as defined below.
-  /// [serverRootCertificates] One or more `server_root_certificate` blocks as defined below.
+  /// [clientRootCertificates] One or more `clientRootCertificate` blocks as defined below.
+  /// [serverRootCertificates] One or more `serverRootCertificate` blocks as defined below.
   /// [servers] One or more `server` blocks as defined below.
   const VpnServerConfigurationRadius({
     this.clientRootCertificates,
@@ -39,4 +39,3 @@ class VpnServerConfigurationRadius {
     );
   }
 }
-

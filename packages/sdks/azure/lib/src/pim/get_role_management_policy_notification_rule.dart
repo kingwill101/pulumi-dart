@@ -6,17 +6,17 @@ import 'get_role_management_policy_notification_rule_eligible_activation.dart';
 import 'get_role_management_policy_notification_rule_eligible_assignment.dart';
 
 class GetRoleManagementPolicyNotificationRule {
-  /// A `notification_target` block as defined below with the details of notfications on active role assignments.
+  /// A `notificationTarget` block as defined below with the details of notfications on active role assignments.
   final pulumi.Input<List<GetRoleManagementPolicyNotificationRuleActiveAssignment>> activeAssignments;
-  /// A `notification_target` block as defined below with the details of notifications on activation of eligible role.
+  /// A `notificationTarget` block as defined below with the details of notifications on activation of eligible role.
   final pulumi.Input<List<GetRoleManagementPolicyNotificationRuleEligibleActivation>> eligibleActivations;
-  /// A `notification_target` block as defined below with the details of notifications on eligible role assignments.
+  /// A `notificationTarget` block as defined below with the details of notifications on eligible role assignments.
   final pulumi.Input<List<GetRoleManagementPolicyNotificationRuleEligibleAssignment>> eligibleAssignments;
 
   /// Creates a new [GetRoleManagementPolicyNotificationRule].
-  /// [activeAssignments] A `notification_target` block as defined below with the details of notfications on active role assignments.
-  /// [eligibleActivations] A `notification_target` block as defined below with the details of notifications on activation of eligible role.
-  /// [eligibleAssignments] A `notification_target` block as defined below with the details of notifications on eligible role assignments.
+  /// [activeAssignments] A `notificationTarget` block as defined below with the details of notfications on active role assignments.
+  /// [eligibleActivations] A `notificationTarget` block as defined below with the details of notifications on activation of eligible role.
+  /// [eligibleAssignments] A `notificationTarget` block as defined below with the details of notifications on eligible role assignments.
   const GetRoleManagementPolicyNotificationRule({
     required this.activeAssignments,
     required this.eligibleActivations,
@@ -39,4 +39,3 @@ class GetRoleManagementPolicyNotificationRule {
     );
   }
 }
-

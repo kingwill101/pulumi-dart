@@ -601,6 +601,125 @@ import 'network_connection_monitor_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-Watcher-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkwatcher" "example" {
+///   name                = "example-Watcher"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-Vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-Subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "example" {
+///   name                = "example-Nic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "testconfiguration1"
+///     subnet_id                     = azure_network_subnet.example.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_virtualmachine" "example" {
+///   name                  = "example-VM"
+///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   network_interface_ids = [azure_network_networkinterface.example.id]
+///   vm_size               = "Standard_D2s_v3"
+///   storage_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+///   storage_os_disk = {
+///     name              = "osdisk-example01"
+///     caching           = "ReadWrite"
+///     create_option     = "FromImage"
+///     managed_disk_type = "Standard_LRS"
+///   }
+///   os_profile = {
+///     computer_name  = "hostnametest01"
+///     admin_username = "testadmin"
+///     admin_password = "Password1234!"
+///   }
+///   os_profile_linux_config = {
+///     disable_password_authentication = false
+///   }
+/// }
+/// resource "azure_compute_extension" "example" {
+///   name                       = "example-VMExtension"
+///   virtual_machine_id         = azure_compute_virtualmachine.example.id
+///   publisher                  = "Microsoft.Azure.NetworkWatcher"
+///   type                       = "NetworkWatcherAgentLinux"
+///   type_handler_version       = "1.4"
+///   auto_upgrade_minor_version = true
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-Workspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_network_networkconnectionmonitor" "example" {
+///   depends_on         = [azure_compute_extension.example]
+///   name               = "example-Monitor"
+///   network_watcher_id = azure_network_networkwatcher.example.id
+///   location           = azure_network_networkwatcher.example.location
+///   endpoints {
+///     name               = "source"
+///     target_resource_id = azure_compute_virtualmachine.example.id
+///     filter = {
+///       items = [{
+///         "address" = azure_compute_virtualmachine.example.id
+///         "type"    = "AgentAddress"
+///       }]
+///       type = "Include"
+///     }
+///   }
+///   endpoints {
+///     name    = "destination"
+///     address = "mycompany.io"
+///   }
+///   test_configurations {
+///     name                      = "tcpName"
+///     protocol                  = "Tcp"
+///     test_frequency_in_seconds = 60
+///     tcp_configuration = {
+///       port = 80
+///     }
+///   }
+///   test_groups {
+///     name                     = "exampletg"
+///     destination_endpoints    = ["destination"]
+///     source_endpoints         = ["source"]
+///     test_configuration_names = ["tcpName"]
+///   }
+///   notes                         = "examplenote"
+///   output_workspace_resource_ids = [azure_operationalinsights_analyticsworkspace.example.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -632,12 +751,13 @@ import 'network_connection_monitor_state.dart';
 /// import com.pulumi.azure.network.NetworkConnectionMonitorArgs;
 /// import com.pulumi.azure.network.inputs.NetworkConnectionMonitorEndpointArgs;
 /// import com.pulumi.azure.network.inputs.NetworkConnectionMonitorEndpointFilterArgs;
+/// import com.pulumi.azure.network.inputs.NetworkConnectionMonitorEndpointFilterItemArgs;
 /// import com.pulumi.azure.network.inputs.NetworkConnectionMonitorTestConfigurationArgs;
 /// import com.pulumi.azure.network.inputs.NetworkConnectionMonitorTestConfigurationTcpConfigurationArgs;
 /// import com.pulumi.azure.network.inputs.NetworkConnectionMonitorTestGroupArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -928,9 +1048,9 @@ class NetworkConnectionMonitor extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> outputWorkspaceResourceIds;
   /// A mapping of tags which should be assigned to the Network Connection Monitor.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A `test_configuration` block as defined below.
+  /// A `testConfiguration` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> testConfigurations;
-  /// A `test_group` block as defined below.
+  /// A `testGroup` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> testGroups;
 
   /// Creates a new [NetworkConnectionMonitor].

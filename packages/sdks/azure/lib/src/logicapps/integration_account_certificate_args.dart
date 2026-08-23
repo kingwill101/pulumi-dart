@@ -10,7 +10,7 @@ import 'integration_account_certificate_key_vault_key.dart';
 class IntegrationAccountCertificateArgs {
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Certificate to be created.
   final pulumi.Input<String> integrationAccountName;
-  /// A `key_vault_key` block as documented below.
+  /// A `keyVaultKey` block as documented below.
   final pulumi.Input<IntegrationAccountCertificateKeyVaultKey>? keyVaultKey;
   /// A JSON mapping of any Metadata for this Logic App Integration Account Certificate.
   final pulumi.Input<String>? metadata;
@@ -23,7 +23,7 @@ class IntegrationAccountCertificateArgs {
 
   /// Creates a new [IntegrationAccountCertificateArgs].
   /// [integrationAccountName] The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Certificate to be created.
-  /// [keyVaultKey] A `key_vault_key` block as documented below.
+  /// [keyVaultKey] A `keyVaultKey` block as documented below.
   /// [metadata] A JSON mapping of any Metadata for this Logic App Integration Account Certificate.
   /// [name] The name which should be used for this Logic App Integration Account Certificate. Changing this forces a new Logic App Integration Account Certificate to be created.
   /// [publicCertificate] The public certificate for the Logic App Integration Account Certificate.
@@ -59,4 +59,3 @@ class IntegrationAccountCertificateArgs {
     );
   }
 }
-

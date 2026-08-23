@@ -12,6 +12,7 @@ class GetTableResult {
   final String name;
   /// The Resource Manager ID of this Storage Table.
   final String resourceManagerId;
+  final String storageAccountId;
   final String storageAccountName;
 
   /// Creates a new [GetTableResult].
@@ -19,12 +20,14 @@ class GetTableResult {
   /// [id] The ID of the Storage Table.
   /// [name] Required.
   /// [resourceManagerId] The Resource Manager ID of this Storage Table.
+  /// [storageAccountId] Required.
   /// [storageAccountName] Required.
   const GetTableResult({
     required this.acls,
     required this.id,
     required this.name,
     required this.resourceManagerId,
+    required this.storageAccountId,
     required this.storageAccountName,
   });
 
@@ -34,6 +37,7 @@ class GetTableResult {
       'id': id,
       'name': name,
       'resourceManagerId': resourceManagerId,
+      'storageAccountId': storageAccountId,
       'storageAccountName': storageAccountName,
     };
   }
@@ -44,8 +48,8 @@ class GetTableResult {
       id: map['id'] as String,
       name: map['name'] as String,
       resourceManagerId: map['resourceManagerId'] as String,
+      storageAccountId: map['storageAccountId'] as String,
       storageAccountName: map['storageAccountName'] as String,
     );
   }
 }
-

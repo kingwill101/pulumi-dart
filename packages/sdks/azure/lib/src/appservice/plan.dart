@@ -5,7 +5,7 @@ import 'plan_state.dart';
 
 /// Manages an App Service Plan component.
 ///
-/// !&gt; **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.ServicePlan` resource instead.
+/// &gt; **NOTE:** This resource has been deprecated and will be removed in version 6.0 of the provider. Please use `azure.appservice.ServicePlan` resource instead.
 ///
 /// ## Example Usage
 ///
@@ -108,6 +108,29 @@ import 'plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "api-rg-pro"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "api-appserviceplan-pro"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     tier = "Standard"
+///     size = "S1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +142,8 @@ import 'plan_state.dart';
 /// import com.pulumi.azure.appservice.Plan;
 /// import com.pulumi.azure.appservice.PlanArgs;
 /// import com.pulumi.azure.appservice.inputs.PlanSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -274,6 +297,30 @@ import 'plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "api-rg-pro"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "api-appserviceplan-pro"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   kind                = "FunctionApp"
+///   sku = {
+///     tier = "Dynamic"
+///     size = "Y1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -285,8 +332,8 @@ import 'plan_state.dart';
 /// import com.pulumi.azure.appservice.Plan;
 /// import com.pulumi.azure.appservice.PlanArgs;
 /// import com.pulumi.azure.appservice.inputs.PlanSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -446,6 +493,31 @@ import 'plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "api-rg-pro"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "api-appserviceplan-pro"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   kind                = "Linux"
+///   reserved            = true
+///   sku = {
+///     tier = "Standard"
+///     size = "S1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -457,8 +529,8 @@ import 'plan_state.dart';
 /// import com.pulumi.azure.appservice.Plan;
 /// import com.pulumi.azure.appservice.PlanArgs;
 /// import com.pulumi.azure.appservice.inputs.PlanSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -620,6 +692,31 @@ import 'plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "api-rg-pro"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "api-appserviceplan-pro"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   kind                = "xenon"
+///   is_xenon            = true
+///   sku = {
+///     tier = "PremiumContainer"
+///     size = "PC2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -631,8 +728,8 @@ import 'plan_state.dart';
 /// import com.pulumi.azure.appservice.Plan;
 /// import com.pulumi.azure.appservice.PlanArgs;
 /// import com.pulumi.azure.appservice.inputs.PlanSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

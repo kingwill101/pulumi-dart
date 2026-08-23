@@ -64,9 +64,27 @@ import 'get_public_configurations_result.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("id", existingAzurermMaintenanceConfiguration.Id)
+/// 		ctx.Export("id", pulumi.Any(existingAzurermMaintenanceConfiguration.Id))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_maintenance_getconfiguration" "existing" {
+///   name                = "example-mc"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "id" {
+///   value = existingAzurermMaintenanceConfiguration.id
 /// }
 /// ```
 /// ```java
@@ -77,8 +95,8 @@ import 'get_public_configurations_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.maintenance.MaintenanceFunctions;
 /// import com.pulumi.azure.maintenance.inputs.GetConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -202,6 +220,25 @@ Future<GetConfigurationResult> getConfiguration(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_maintenance_getpublicconfigurations" "existing" {
+///   location    = "West Europe"
+///   scope       = "SQLManagedInstance"
+///   recur_every = "Monday-Thursday"
+/// }
+///
+/// output "name" {
+///   value = data.azure_maintenance_getpublicconfigurations.existing.configs[0].name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -210,8 +247,8 @@ Future<GetConfigurationResult> getConfiguration(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.maintenance.MaintenanceFunctions;
 /// import com.pulumi.azure.maintenance.inputs.GetPublicConfigurationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

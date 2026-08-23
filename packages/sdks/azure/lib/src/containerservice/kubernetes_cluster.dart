@@ -176,11 +176,48 @@ import 'kubernetes_cluster_workload_autoscaler_profile.dart';
 /// 			return err
 /// 		}
 /// 		ctx.Export("clientCertificate", exampleKubernetesCluster.KubeConfigs.ApplyT(func(kubeConfigs []containerservice.KubernetesClusterKubeConfig) (*string, error) {
-/// 			return &kubeConfigs[0].ClientCertificate, nil
+/// 			return kubeConfigs[0].ClientCertificate, nil
 /// 		}).(pulumi.StringPtrOutput))
 /// 		ctx.Export("kubeConfig", exampleKubernetesCluster.KubeConfigRaw)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_containerservice_kubernetescluster" "example" {
+///   name                = "example-aks1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   dns_prefix          = "exampleaks1"
+///   default_node_pool = {
+///     name       = "default"
+///     node_count = 1
+///     vm_size    = "Standard_D2_v2"
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "Environment" = "Production"
+///   }
+/// }
+/// output "clientCertificate" {
+///   value = azure_containerservice_kubernetescluster.example.kube_configs[0].client_certificate
+/// }
+/// output "kubeConfig" {
+///   value = azure_containerservice_kubernetescluster.example.kube_config_raw
 /// }
 /// ```
 /// ```java
@@ -195,8 +232,8 @@ import 'kubernetes_cluster_workload_autoscaler_profile.dart';
 /// import com.pulumi.azure.containerservice.KubernetesClusterArgs;
 /// import com.pulumi.azure.containerservice.inputs.KubernetesClusterDefaultNodePoolArgs;
 /// import com.pulumi.azure.containerservice.inputs.KubernetesClusterIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -268,7 +305,7 @@ import 'kubernetes_cluster_workload_autoscaler_profile.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.ContainerService` - 2025-07-01
+/// * `Microsoft.ContainerService` - 2025-10-01
 ///
 /// ## Import
 ///
@@ -278,35 +315,35 @@ import 'kubernetes_cluster_workload_autoscaler_profile.dart';
 /// $ pulumi import azure:containerservice/kubernetesCluster:KubernetesCluster cluster1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.ContainerService/managedClusters/cluster1
 /// ```
 class KubernetesCluster extends pulumi.CustomResource {
-  /// A `aci_connector_linux` block as defined below. For more details, please visit [Create and configure an AKS cluster to use virtual nodes](https://docs.microsoft.com/azure/aks/virtual-nodes-portal).
+  /// A `aciConnectorLinux` block as defined below. For more details, please visit [Create and configure an AKS cluster to use virtual nodes](https://docs.microsoft.com/azure/aks/virtual-nodes-portal).
   late final pulumi.Output<KubernetesClusterAciConnectorLinux?> aciConnectorLinux;
   /// Specifies whether the AI Toolchain Operator should be enabled for the Cluster. Defaults to `false`.
   late final pulumi.Output<bool?> aiToolchainOperatorEnabled;
-  /// An `api_server_access_profile` block as defined below.
+  /// An `apiServerAccessProfile` block as defined below.
   late final pulumi.Output<KubernetesClusterApiServerAccessProfile?> apiServerAccessProfile;
-  /// A `auto_scaler_profile` block as defined below.
+  /// A `autoScalerProfile` block as defined below.
   late final pulumi.Output<KubernetesClusterAutoScalerProfile> autoScalerProfile;
   /// The upgrade channel for this Kubernetes Cluster. Possible values are `patch`, `rapid`, `node-image` and `stable`. Omitting this field sets this value to `none`.
   ///
-  /// !&gt; **Note:** Cluster Auto-Upgrade will update the Kubernetes Cluster (and its Node Pools) to the latest GA version of Kubernetes automatically - please [see the Azure documentation for more information](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
+  /// &gt; **Note:** Cluster Auto-Upgrade will update the Kubernetes Cluster (and its Node Pools) to the latest GA version of Kubernetes automatically - please [see the Azure documentation for more information](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
   ///
   /// &gt; **Note:** Cluster Auto-Upgrade only updates to GA versions of Kubernetes and will not update to Preview versions.
   late final pulumi.Output<String?> automaticUpgradeChannel;
-  /// A `azure_active_directory_role_based_access_control` block as defined below.
+  /// A `azureActiveDirectoryRoleBasedAccessControl` block as defined below.
   late final pulumi.Output<KubernetesClusterAzureActiveDirectoryRoleBasedAccessControl?> azureActiveDirectoryRoleBasedAccessControl;
   /// Should the Azure Policy Add-On be enabled? For more details please visit [Understand Azure Policy for Azure Kubernetes Service](https://docs.microsoft.com/en-ie/azure/governance/policy/concepts/rego-for-aks)
   late final pulumi.Output<bool?> azurePolicyEnabled;
-  /// A `bootstrap_profile` block as defined below.
+  /// A `bootstrapProfile` block as defined below.
   late final pulumi.Output<KubernetesClusterBootstrapProfile> bootstrapProfile;
-  /// A `confidential_computing` block as defined below. For more details please [the documentation](https://learn.microsoft.com/en-us/azure/confidential-computing/confidential-nodes-aks-overview)
+  /// A `confidentialComputing` block as defined below. For more details please [the documentation](https://learn.microsoft.com/en-us/azure/confidential-computing/confidential-nodes-aks-overview)
   late final pulumi.Output<KubernetesClusterConfidentialComputing?> confidentialComputing;
-  /// Should cost analysis be enabled for this Kubernetes Cluster? Defaults to `false`. The `sku_tier` must be set to `Standard` or `Premium` to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal.
+  /// Should cost analysis be enabled for this Kubernetes Cluster? Defaults to `false`. The `skuTier` must be set to `Standard` or `Premium` to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal.
   late final pulumi.Output<bool?> costAnalysisEnabled;
   /// The current version running on the Azure Kubernetes Managed Cluster.
   late final pulumi.Output<String> currentKubernetesVersion;
   /// A list of up to 10 base64 encoded CA certificates that will be added to the trust store on nodes.
   late final pulumi.Output<List<String>?> customCaTrustCertificatesBase64s;
-  /// Specifies configuration for "System" mode node pool. A `default_node_pool` block as defined below.
+  /// Specifies configuration for "System" mode node pool. A `defaultNodePool` block as defined below.
   late final pulumi.Output<KubernetesClusterDefaultNodePool> defaultNodePool;
   /// The ID of the Disk Encryption Set which should be used for the Nodes and Volumes. More information [can be found in the documentation](https://docs.microsoft.com/azure/aks/azure-disk-customer-managed-keys). Changing this forces a new resource to be created.
   late final pulumi.Output<String?> diskEncryptionSetId;
@@ -314,9 +351,9 @@ class KubernetesCluster extends pulumi.CustomResource {
   late final pulumi.Output<String?> dnsPrefix;
   /// Specifies the DNS prefix to use with private clusters. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** You must define either a `dns_prefix` or a `dns_prefix_private_cluster` field.
+  /// &gt; **Note:** You must define either a `dnsPrefix` or a `dnsPrefixPrivateCluster` field.
   ///
-  /// In addition, one of either `identity` or `service_principal` blocks must be specified.
+  /// In addition, one of either `identity` or `servicePrincipal` blocks must be specified.
   late final pulumi.Output<String?> dnsPrefixPrivateCluster;
   /// Specifies the Extended Zone (formerly called Edge Zone) within the Azure Region where this Managed Kubernetes Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> edgeZone;
@@ -328,69 +365,69 @@ class KubernetesCluster extends pulumi.CustomResource {
   late final pulumi.Output<bool?> httpApplicationRoutingEnabled;
   /// The Zone Name of the HTTP Application Routing.
   late final pulumi.Output<String> httpApplicationRoutingZoneName;
-  /// A `http_proxy_config` block as defined below.
+  /// A `httpProxyConfig` block as defined below.
   late final pulumi.Output<KubernetesClusterHttpProxyConfig?> httpProxyConfig;
-  /// An `identity` block as defined below. One of either `identity` or `service_principal` must be specified.
+  /// An `identity` block as defined below. One of either `identity` or `servicePrincipal` must be specified.
   ///
-  /// !&gt; **Note:** A migration scenario from `service_principal` to `identity` is supported. When upgrading `service_principal` to `identity`, your cluster's control plane and addon pods will switch to use managed identity, but the kubelets will keep using your configured `service_principal` until you upgrade your Node Pool.
+  /// &gt; **Note:** A migration scenario from `servicePrincipal` to `identity` is supported. When upgrading `servicePrincipal` to `identity`, your cluster's control plane and addon pods will switch to use managed identity, but the kubelets will keep using your configured `servicePrincipal` until you upgrade your Node Pool.
   late final pulumi.Output<KubernetesClusterIdentity?> identity;
   /// Specifies whether Image Cleaner is enabled.
   late final pulumi.Output<bool?> imageCleanerEnabled;
   /// Specifies the interval in hours when images should be cleaned up.
   late final pulumi.Output<int?> imageCleanerIntervalHours;
-  /// A `ingress_application_gateway` block as defined below.
+  /// A `ingressApplicationGateway` block as defined below.
   ///
   /// &gt; **Note:** Since the Application Gateway is deployed inside a Virtual Network, users (and Service Principals) that are operating the Application Gateway must have the `Microsoft.Network/virtualNetworks/subnets/join/action` permission on the Virtual Network or Subnet. For more details, please visit [Virtual Network Permission](https://learn.microsoft.com/en-us/azure/application-gateway/configuration-infrastructure#virtual-network-permission).
   late final pulumi.Output<KubernetesClusterIngressApplicationGateway?> ingressApplicationGateway;
-  /// A `key_management_service` block as defined below. For more details, please visit [Key Management Service (KMS) etcd encryption to an AKS cluster](https://learn.microsoft.com/en-us/azure/aks/use-kms-etcd-encryption).
+  /// A `keyManagementService` block as defined below. For more details, please visit [Key Management Service (KMS) etcd encryption to an AKS cluster](https://learn.microsoft.com/en-us/azure/aks/use-kms-etcd-encryption).
   late final pulumi.Output<KubernetesClusterKeyManagementService?> keyManagementService;
-  /// A `key_vault_secrets_provider` block as defined below. For more details, please visit [Azure Keyvault Secrets Provider for AKS](https://docs.microsoft.com/azure/aks/csi-secrets-store-driver).
+  /// A `keyVaultSecretsProvider` block as defined below. For more details, please visit [Azure Keyvault Secrets Provider for AKS](https://docs.microsoft.com/azure/aks/csi-secrets-store-driver).
   late final pulumi.Output<KubernetesClusterKeyVaultSecretsProvider?> keyVaultSecretsProvider;
   /// Raw Kubernetes config for the admin account to be used by [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) and other compatible tools. This is only available when Role Based Access Control with Azure Active Directory is enabled and local accounts enabled.
   late final pulumi.Output<String> kubeAdminConfigRaw;
-  /// A `kube_admin_config` block as defined below. This is only available when Role Based Access Control with Azure Active Directory is enabled and local accounts enabled.
+  /// A `kubeAdminConfig` block as defined below. This is only available when Role Based Access Control with Azure Active Directory is enabled and local accounts enabled.
   late final pulumi.Output<List<Map<String, dynamic>>> kubeAdminConfigs;
   /// Raw Kubernetes config to be used by [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) and other compatible tools.
   late final pulumi.Output<String> kubeConfigRaw;
-  /// A `kube_config` block as defined below.
+  /// A `kubeConfig` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> kubeConfigs;
-  /// A `kubelet_identity` block as defined below.
+  /// A `kubeletIdentity` block as defined below.
   late final pulumi.Output<KubernetesClusterKubeletIdentity> kubeletIdentity;
   /// Version of Kubernetes specified when creating the AKS managed cluster. If not specified, the latest recommended version will be used at provisioning time (but won't auto-upgrade). AKS does not require an exact patch version to be specified, minor version aliases such as `1.22` are also supported. - The minor version's latest GA patch is automatically chosen in that case. More details can be found in [the documentation](https://docs.microsoft.com/en-us/azure/aks/supported-kubernetes-versions?tabs=azure-cli#alias-minor-version).
   ///
   /// &gt; **Note:** Upgrading your cluster may take up to 10 minutes per node.
   late final pulumi.Output<String> kubernetesVersion;
-  /// A `linux_profile` block as defined below.
+  /// A `linuxProfile` block as defined below.
   late final pulumi.Output<KubernetesClusterLinuxProfile?> linuxProfile;
   /// If `true` local accounts will be disabled. See [the documentation](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts) for more information.
   ///
-  /// &gt; **Note:** If `local_account_disabled` is set to `true`, it is required to enable Kubernetes RBAC and AKS-managed Azure AD integration. See [the documentation](https://docs.microsoft.com/azure/aks/managed-aad#azure-ad-authentication-overview) for more information.
+  /// &gt; **Note:** If `localAccountDisabled` is set to `true`, it is required to enable Kubernetes RBAC and AKS-managed Azure AD integration. See [the documentation](https://docs.microsoft.com/azure/aks/managed-aad#azure-ad-authentication-overview) for more information.
   late final pulumi.Output<bool?> localAccountDisabled;
   /// The location where the Managed Kubernetes Cluster should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// A `maintenance_window` block as defined below.
+  /// A `maintenanceWindow` block as defined below.
   late final pulumi.Output<KubernetesClusterMaintenanceWindow?> maintenanceWindow;
-  /// A `maintenance_window_auto_upgrade` block as defined below.
+  /// A `maintenanceWindowAutoUpgrade` block as defined below.
   late final pulumi.Output<KubernetesClusterMaintenanceWindowAutoUpgrade?> maintenanceWindowAutoUpgrade;
-  /// A `maintenance_window_node_os` block as defined below.
+  /// A `maintenanceWindowNodeOs` block as defined below.
   late final pulumi.Output<KubernetesClusterMaintenanceWindowNodeOs?> maintenanceWindowNodeOs;
-  /// A `microsoft_defender` block as defined below.
+  /// A `microsoftDefender` block as defined below.
   late final pulumi.Output<KubernetesClusterMicrosoftDefender?> microsoftDefender;
-  /// Specifies a Prometheus add-on profile for the Kubernetes Cluster. A `monitor_metrics` block as defined below.
+  /// Specifies a Prometheus add-on profile for the Kubernetes Cluster. A `monitorMetrics` block as defined below.
   ///
-  /// &gt; **Note:** If deploying Managed Prometheus, the `monitor_metrics` properties are required to configure the cluster for metrics collection. If no value is needed, set properties to `null`.
+  /// &gt; **Note:** If deploying Managed Prometheus, the `monitorMetrics` properties are required to configure the cluster for metrics collection. If no value is needed, set properties to `null`.
   late final pulumi.Output<KubernetesClusterMonitorMetrics?> monitorMetrics;
   /// The name of the Managed Kubernetes Cluster to create. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A `network_profile` block as defined below. Changing this forces a new resource to be created.
+  /// A `networkProfile` block as defined below. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** If `network_profile` is not defined, `kubenet` profile will be used by default.
+  /// &gt; **Note:** If `networkProfile` is not defined, `kubenet` profile will be used by default.
   late final pulumi.Output<KubernetesClusterNetworkProfile> networkProfile;
   /// The upgrade channel for this Kubernetes Cluster Nodes' OS Image. Possible values are `Unmanaged`, `SecurityPatch`, `NodeImage` and `None`. Defaults to `NodeImage`.
   ///
-  /// &gt; **Note:** `node_os_upgrade_channel` must be set to `NodeImage` if `automatic_upgrade_channel` has been set to `node-image`
+  /// &gt; **Note:** `nodeOsUpgradeChannel` must be set to `NodeImage` if `automaticUpgradeChannel` has been set to `node-image`
   late final pulumi.Output<String?> nodeOsUpgradeChannel;
-  /// A `node_provisioning_profile` block as defined below.
+  /// A `nodeProvisioningProfile` block as defined below.
   late final pulumi.Output<KubernetesClusterNodeProvisioningProfile> nodeProvisioningProfile;
   /// The name of the Resource Group where the Kubernetes Nodes should exist. Changing this forces a new resource to be created.
   ///
@@ -398,11 +435,13 @@ class KubernetesCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> nodeResourceGroup;
   /// The ID of the Resource Group containing the resources for this Managed Kubernetes Cluster.
   late final pulumi.Output<String> nodeResourceGroupId;
-  /// Enable or Disable the [OIDC issuer URL](https://learn.microsoft.com/en-gb/azure/aks/use-oidc-issuer)
-  late final pulumi.Output<bool?> oidcIssuerEnabled;
+  /// Whether to enable the [OIDC issuer feature](https://learn.microsoft.com/en-gb/azure/aks/use-oidc-issuer).
+  ///
+  /// &gt; **Note:** Once enabled, this feature cannot be disabled, doing so forces a new resource to be created.
+  late final pulumi.Output<bool> oidcIssuerEnabled;
   /// The OIDC issuer URL that is associated with the cluster.
   late final pulumi.Output<String> oidcIssuerUrl;
-  /// A `oms_agent` block as defined below.
+  /// A `omsAgent` block as defined below.
   late final pulumi.Output<KubernetesClusterOmsAgent?> omsAgent;
   /// Is Open Service Mesh enabled? For more details, please visit [Open Service Mesh for AKS](https://docs.microsoft.com/azure/aks/open-service-mesh-about).
   late final pulumi.Output<bool?> openServiceMeshEnabled;
@@ -587,6 +626,43 @@ class KubernetesCluster extends pulumi.CustomResource {
   /// 	})
   /// }
   /// ```
+  /// ```hcl
+  /// pulumi {
+  ///   required_providers {
+  ///     azure = {
+  ///       source = "pulumi/azure"
+  ///     }
+  ///   }
+  /// }
+  ///
+  /// resource "azure_core_resourcegroup" "example" {
+  ///   name     = "example"
+  ///   location = "West Europe"
+  /// }
+  /// resource "azure_privatedns_zone" "example" {
+  ///   name                = "privatelink.eastus2.azmk8s.io"
+  ///   resource_group_name = azure_core_resourcegroup.example.name
+  /// }
+  /// resource "azure_authorization_userassignedidentity" "example" {
+  ///   name                = "aks-example-identity"
+  ///   resource_group_name = azure_core_resourcegroup.example.name
+  ///   location            = azure_core_resourcegroup.example.location
+  /// }
+  /// resource "azure_authorization_assignment" "example" {
+  ///   scope                = azure_privatedns_zone.example.id
+  ///   role_definition_name = "Private DNS Zone Contributor"
+  ///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+  /// }
+  /// resource "azure_containerservice_kubernetescluster" "example" {
+  ///   depends_on              = [azure_authorization_assignment.example]
+  ///   name                    = "aksexamplewithprivatednszone1"
+  ///   location                = azure_core_resourcegroup.example.location
+  ///   resource_group_name     = azure_core_resourcegroup.example.name
+  ///   dns_prefix              = "aksexamplednsprefix1"
+  ///   private_cluster_enabled = true
+  ///   private_dns_zone_id     = azure_privatedns_zone.example.id
+  /// }
+  /// ```
   /// ```java
   /// package generated_program;
   ///
@@ -604,8 +680,8 @@ class KubernetesCluster extends pulumi.CustomResource {
   /// import com.pulumi.azure.containerservice.KubernetesCluster;
   /// import com.pulumi.azure.containerservice.KubernetesClusterArgs;
   /// import com.pulumi.resources.CustomResourceOptions;
-  /// import java.util.List;
   /// import java.util.ArrayList;
+  /// import java.util.Arrays;
   /// import java.util.Map;
   /// import java.io.File;
   /// import java.nio.file.Files;
@@ -705,33 +781,33 @@ class KubernetesCluster extends pulumi.CustomResource {
   late final pulumi.Output<bool?> roleBasedAccessControlEnabled;
   /// Whether to enable run command for the cluster or not. Defaults to `true`.
   late final pulumi.Output<bool?> runCommandEnabled;
-  /// A `service_mesh_profile` block as defined below.
+  /// A `serviceMeshProfile` block as defined below.
   late final pulumi.Output<KubernetesClusterServiceMeshProfile?> serviceMeshProfile;
-  /// A `service_principal` block as documented below. One of either `identity` or `service_principal` must be specified.
+  /// A `servicePrincipal` block as documented below. One of either `identity` or `servicePrincipal` must be specified.
   ///
-  /// !&gt; **Note:** A migration scenario from `service_principal` to `identity` is supported. When upgrading `service_principal` to `identity`, your cluster's control plane and addon pods will switch to use managed identity, but the kubelets will keep using your configured `service_principal` until you upgrade your Node Pool.
+  /// &gt; **Note:** A migration scenario from `servicePrincipal` to `identity` is supported. When upgrading `servicePrincipal` to `identity`, your cluster's control plane and addon pods will switch to use managed identity, but the kubelets will keep using your configured `servicePrincipal` until you upgrade your Node Pool.
   late final pulumi.Output<KubernetesClusterServicePrincipal?> servicePrincipal;
   /// The SKU Tier that should be used for this Kubernetes Cluster. Possible values are `Free`, `Standard` (which includes the Uptime SLA) and `Premium`. Defaults to `Free`.
   ///
   /// &gt; **Note:** Whilst the AKS API previously supported the `Paid` SKU - the AKS API introduced a breaking change in API Version `2023-02-01` (used in v3.51.0 and later) where the value `Paid` must now be set to `Standard`.
   late final pulumi.Output<String?> skuTier;
-  /// A `storage_profile` block as defined below.
+  /// A `storageProfile` block as defined below.
   late final pulumi.Output<KubernetesClusterStorageProfile?> storageProfile;
   /// Specifies the support plan which should be used for this Kubernetes Cluster. Possible values are `KubernetesOfficial` and `AKSLongTermSupport`. Defaults to `KubernetesOfficial`.
   late final pulumi.Output<String?> supportPlan;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A `upgrade_override` block as defined below.
+  /// A `upgradeOverride` block as defined below.
   late final pulumi.Output<KubernetesClusterUpgradeOverride?> upgradeOverride;
-  /// A `web_app_routing` block as defined below.
+  /// A `webAppRouting` block as defined below.
   late final pulumi.Output<KubernetesClusterWebAppRouting?> webAppRouting;
-  /// A `windows_profile` block as defined below.
+  /// A `windowsProfile` block as defined below.
   late final pulumi.Output<KubernetesClusterWindowsProfile> windowsProfile;
-  /// A `workload_autoscaler_profile` block defined below.
+  /// A `workloadAutoscalerProfile` block defined below.
   late final pulumi.Output<KubernetesClusterWorkloadAutoscalerProfile?> workloadAutoscalerProfile;
   /// Specifies whether Azure AD Workload Identity should be enabled for the Cluster. Defaults to `false`.
   ///
-  /// &gt; **Note:** To enable Azure AD Workload Identity `oidc_issuer_enabled` must be set to `true`.
+  /// &gt; **Note:** To enable Azure AD Workload Identity `oidcIssuerEnabled` must be set to `true`.
   ///
   /// &gt; **Note:** Enabling this option will allocate Workload Identity resources to the `kube-system` namespace in Kubernetes. If you wish to customize the deployment of Workload Identity, you can refer to [the documentation on Azure AD Workload Identity.](https://azure.github.io/azure-workload-identity/docs/installation/mutating-admission-webhook.html) The documentation provides guidance on how to install the mutating admission webhook, which allows for the customization of Workload Identity deployment.
   late final pulumi.Output<bool?> workloadIdentityEnabled;
@@ -797,7 +873,7 @@ class KubernetesCluster extends pulumi.CustomResource {
     nodeProvisioningProfile = registerOutput<KubernetesClusterNodeProvisioningProfile>('nodeProvisioningProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodeProvisioningProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeResourceGroup = registerOutput<String>('nodeResourceGroup');
     nodeResourceGroupId = registerOutput<String>('nodeResourceGroupId');
-    oidcIssuerEnabled = registerOutput<bool?>('oidcIssuerEnabled');
+    oidcIssuerEnabled = registerOutput<bool>('oidcIssuerEnabled');
     oidcIssuerUrl = registerOutput<String>('oidcIssuerUrl');
     omsAgent = registerOutput<KubernetesClusterOmsAgent?>('omsAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterOmsAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     openServiceMeshEnabled = registerOutput<bool?>('openServiceMeshEnabled');
@@ -892,7 +968,7 @@ class KubernetesCluster extends pulumi.CustomResource {
     nodeProvisioningProfile = registerOutput<KubernetesClusterNodeProvisioningProfile>('nodeProvisioningProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodeProvisioningProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeResourceGroup = registerOutput<String>('nodeResourceGroup');
     nodeResourceGroupId = registerOutput<String>('nodeResourceGroupId');
-    oidcIssuerEnabled = registerOutput<bool?>('oidcIssuerEnabled');
+    oidcIssuerEnabled = registerOutput<bool>('oidcIssuerEnabled');
     oidcIssuerUrl = registerOutput<String>('oidcIssuerUrl');
     omsAgent = registerOutput<KubernetesClusterOmsAgent?>('omsAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterOmsAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     openServiceMeshEnabled = registerOutput<bool?>('openServiceMeshEnabled');

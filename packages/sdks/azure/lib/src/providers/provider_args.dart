@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import '../index/provider_enhanced_validation.dart';
 import '../index/provider_features.dart';
 
 /// {@template pulumi_providers_provider_args_doc}
@@ -27,9 +28,10 @@ class ProviderArgs {
   final pulumi.Input<String>? clientSecretFilePath;
   /// This will disable the x-ms-correlation-request-id header.
   final pulumi.Input<bool>? disableCorrelationRequestId;
-  /// This will disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+  /// This will disable the Terraform Partner ID which is used if a custom `partnerId` isn't specified.
   final pulumi.Input<bool>? disableTerraformPartnerId;
-  /// The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public. Not used and should not be specified when `metadata_host` is specified.
+  final pulumi.Input<ProviderEnhancedValidation>? enhancedValidation;
+  /// The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public. Not used and should not be specified when `metadataHost` is specified.
   final pulumi.Input<String>? environment;
   final pulumi.Input<ProviderFeatures>? features;
   /// The Hostname which should be used for the Azure Metadata Service.
@@ -50,7 +52,7 @@ class ProviderArgs {
   final pulumi.Input<String>? partnerId;
   /// The set of Resource Providers which should be automatically registered for the subscription.
   final pulumi.Input<String>? resourceProviderRegistrations;
-  /// A list of Resource Providers to explicitly register for the subscription, in addition to those specified by the `resource_provider_registrations` property.
+  /// A list of Resource Providers to explicitly register for the subscription, in addition to those specified by the `resourceProviderRegistrations` property.
   final pulumi.Input<List<String>>? resourceProvidersToRegisters;
   /// Should the AzureRM Provider skip registering all of the Resource Providers that it supports, if they're not already registered?
   final pulumi.Input<bool>? skipProviderRegistration;
@@ -80,8 +82,9 @@ class ProviderArgs {
   /// [clientSecret] The Client Secret which should be used. For use When authenticating as a Service Principal using a Client Secret.
   /// [clientSecretFilePath] The path to a file containing the Client Secret which should be used. For use When authenticating as a Service Principal using a Client Secret.
   /// [disableCorrelationRequestId] This will disable the x-ms-correlation-request-id header.
-  /// [disableTerraformPartnerId] This will disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
-  /// [environment] The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public. Not used and should not be specified when `metadata_host` is specified.
+  /// [disableTerraformPartnerId] This will disable the Terraform Partner ID which is used if a custom `partnerId` isn't specified.
+  /// [enhancedValidation] Optional.
+  /// [environment] The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public. Not used and should not be specified when `metadataHost` is specified.
   /// [features] Optional.
   /// [metadataHost] The Hostname which should be used for the Azure Metadata Service.
   /// [msiApiVersion] The API version to use for Managed Service Identity (IMDS) - for cases where the default API version is not supported by the endpoint. e.g. for Azure Container Apps.
@@ -92,7 +95,7 @@ class ProviderArgs {
   /// [oidcTokenFilePath] The path to a file containing an OIDC ID token for use when authenticating as a Service Principal using OpenID Connect.
   /// [partnerId] A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
   /// [resourceProviderRegistrations] The set of Resource Providers which should be automatically registered for the subscription.
-  /// [resourceProvidersToRegisters] A list of Resource Providers to explicitly register for the subscription, in addition to those specified by the `resource_provider_registrations` property.
+  /// [resourceProvidersToRegisters] A list of Resource Providers to explicitly register for the subscription, in addition to those specified by the `resourceProviderRegistrations` property.
   /// [skipProviderRegistration] Should the AzureRM Provider skip registering all of the Resource Providers that it supports, if they're not already registered?
   /// [storageUseAzuread] Should the AzureRM Provider use Azure AD Authentication when accessing the Storage Data Plane APIs?
   /// [subscriptionId] The Subscription ID which should be used.
@@ -113,6 +116,7 @@ class ProviderArgs {
     this.clientSecretFilePath,
     this.disableCorrelationRequestId,
     this.disableTerraformPartnerId,
+    this.enhancedValidation,
     this.environment,
     this.features,
     this.metadataHost,
@@ -148,6 +152,7 @@ class ProviderArgs {
       'clientSecretFilePath': ?clientSecretFilePath,
       'disableCorrelationRequestId': ?disableCorrelationRequestId,
       'disableTerraformPartnerId': ?disableTerraformPartnerId,
+      'enhancedValidation': ?pulumi.Input.mapOptionalInputValue<ProviderEnhancedValidation, Map<String, dynamic>>(enhancedValidation, (value) => value.toMap()),
       'environment': ?environment,
       'features': ?pulumi.Input.mapOptionalInputValue<ProviderFeatures, Map<String, dynamic>>(features, (value) => value.toMap()),
       'metadataHost': ?metadataHost,
@@ -184,6 +189,7 @@ class ProviderArgs {
       clientSecretFilePath: (() { final guardedValue = map['clientSecretFilePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disableCorrelationRequestId: (() { final guardedValue = map['disableCorrelationRequestId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       disableTerraformPartnerId: (() { final guardedValue = map['disableTerraformPartnerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enhancedValidation: (() { final guardedValue = map['enhancedValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProviderEnhancedValidation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       features: (() { final guardedValue = map['features']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProviderFeatures.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       metadataHost: (() { final guardedValue = map['metadataHost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -207,4 +213,3 @@ class ProviderArgs {
     );
   }
 }
-

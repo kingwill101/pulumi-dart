@@ -6,23 +6,23 @@ import 'fleet_update_run_stage.dart';
 
 /// Input properties used for looking up and filtering FleetUpdateRun resources.
 class FleetUpdateRunState {
-  /// The ID of the Fleet Update Strategy. Only one of `fleet_update_strategy_id` or `stage` can be specified.
+  /// The ID of the Fleet Update Strategy. Only one of `fleetUpdateStrategyId` or `stage` can be specified.
   final pulumi.Input<String>? fleetUpdateStrategyId;
   /// The ID of the Fleet Manager. Changing this forces a new Kubernetes Fleet Update Run to be created.
   final pulumi.Input<String>? kubernetesFleetManagerId;
-  /// A `managed_cluster_update` block as defined below.
+  /// A `managedClusterUpdate` block as defined below.
   final pulumi.Input<FleetUpdateRunManagedClusterUpdate>? managedClusterUpdate;
   /// The name which should be used for this Kubernetes Fleet Update Run. Changing this forces a new Kubernetes Fleet Update Run to be created.
   final pulumi.Input<String>? name;
-  /// One or more `stage` blocks as defined below. Only one of `stage` or `fleet_update_strategy_id` can be specified.
+  /// One or more `stage` blocks as defined below. Only one of `stage` or `fleetUpdateStrategyId` can be specified.
   final pulumi.Input<List<FleetUpdateRunStage>>? stages;
 
   /// Creates a new [FleetUpdateRunState].
-  /// [fleetUpdateStrategyId] The ID of the Fleet Update Strategy. Only one of `fleet_update_strategy_id` or `stage` can be specified.
+  /// [fleetUpdateStrategyId] The ID of the Fleet Update Strategy. Only one of `fleetUpdateStrategyId` or `stage` can be specified.
   /// [kubernetesFleetManagerId] The ID of the Fleet Manager. Changing this forces a new Kubernetes Fleet Update Run to be created.
-  /// [managedClusterUpdate] A `managed_cluster_update` block as defined below.
+  /// [managedClusterUpdate] A `managedClusterUpdate` block as defined below.
   /// [name] The name which should be used for this Kubernetes Fleet Update Run. Changing this forces a new Kubernetes Fleet Update Run to be created.
-  /// [stages] One or more `stage` blocks as defined below. Only one of `stage` or `fleet_update_strategy_id` can be specified.
+  /// [stages] One or more `stage` blocks as defined below. Only one of `stage` or `fleetUpdateStrategyId` can be specified.
   const FleetUpdateRunState({
     this.fleetUpdateStrategyId,
     this.kubernetesFleetManagerId,
@@ -51,4 +51,3 @@ class FleetUpdateRunState {
     );
   }
 }
-

@@ -7,7 +7,7 @@ class KubernetesClusterMonitorMetrics {
   final pulumi.Input<String>? annotationsAllowed;
   /// Specifies a Comma-separated list of additional Kubernetes label keys that will be used in the resource's labels metric.
   ///
-  /// &gt; **Note:** Both properties `annotations_allowed` and `labels_allowed` are required if you are enabling Managed Prometheus with an existing Azure Monitor Workspace.
+  /// &gt; **Note:** Both properties `annotationsAllowed` and `labelsAllowed` are required if you are enabling Managed Prometheus with an existing Azure Monitor Workspace.
   final pulumi.Input<String>? labelsAllowed;
 
   /// Creates a new [KubernetesClusterMonitorMetrics].
@@ -32,4 +32,3 @@ class KubernetesClusterMonitorMetrics {
     );
   }
 }
-

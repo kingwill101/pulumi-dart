@@ -5,7 +5,7 @@ import 'custom_https_configuration_custom_https_configuration.dart';
 
 /// Input properties used for looking up and filtering CustomHttpsConfiguration resources.
 class CustomHttpsConfigurationState {
-  /// A `custom_https_configuration` block as defined above.
+  /// A `customHttpsConfiguration` block as defined above.
   final pulumi.Input<CustomHttpsConfigurationCustomHttpsConfiguration>? customHttpsConfiguration;
   /// Should the HTTPS protocol be enabled for this custom domain associated with the Front Door?
   final pulumi.Input<bool>? customHttpsProvisioningEnabled;
@@ -13,7 +13,7 @@ class CustomHttpsConfigurationState {
   final pulumi.Input<String>? frontendEndpointId;
 
   /// Creates a new [CustomHttpsConfigurationState].
-  /// [customHttpsConfiguration] A `custom_https_configuration` block as defined above.
+  /// [customHttpsConfiguration] A `customHttpsConfiguration` block as defined above.
   /// [customHttpsProvisioningEnabled] Should the HTTPS protocol be enabled for this custom domain associated with the Front Door?
   /// [frontendEndpointId] The ID of the Front Door Frontend Endpoint which this configuration refers to. Changing this forces a new resource to be created.
   const CustomHttpsConfigurationState({
@@ -38,4 +38,3 @@ class CustomHttpsConfigurationState {
     );
   }
 }
-

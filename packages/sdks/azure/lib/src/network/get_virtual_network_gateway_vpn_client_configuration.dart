@@ -8,15 +8,15 @@ class GetVirtualNetworkGatewayVpnClientConfiguration {
   /// The client id of the Azure VPN application.
   /// See [Create an Active Directory (AD) tenant for P2S OpenVPN protocol connections](https://docs.microsoft.com/en-gb/azure/vpn-gateway/openvpn-azure-ad-tenant-multi-app) for values
   /// This setting is incompatible with the use of
-  /// `root_certificate` and `revoked_certificate`, `radius_server_address`, and `radius_server_secret`.
+  /// `rootCertificate` and `revokedCertificate`, `radiusServerAddress`, and `radiusServerSecret`.
   final pulumi.Input<String> aadAudience;
   /// The STS url for your tenant
   /// This setting is incompatible with the use of
-  /// `root_certificate` and `revoked_certificate`, `radius_server_address`, and `radius_server_secret`.
+  /// `rootCertificate` and `revokedCertificate`, `radiusServerAddress`, and `radiusServerSecret`.
   final pulumi.Input<String> aadIssuer;
   /// AzureAD Tenant URL
   /// This setting is incompatible with the use of
-  /// `root_certificate` and `revoked_certificate`, `radius_server_address`, and `radius_server_secret`.
+  /// `rootCertificate` and `revokedCertificate`, `radiusServerAddress`, and `radiusServerSecret`.
   final pulumi.Input<String> aadTenant;
   /// The address space out of which IP addresses for
   /// vpn clients will be taken. You can provide more than one address space, e.g.
@@ -24,22 +24,22 @@ class GetVirtualNetworkGatewayVpnClientConfiguration {
   final pulumi.Input<List<String>> addressSpaces;
   /// The address of the Radius server.
   /// This setting is incompatible with the use of
-  /// `aad_tenant`, `aad_audience`, `aad_issuer`, `root_certificate` and `revoked_certificate`.
+  /// `aadTenant`, `aadAudience`, `aadIssuer`, `rootCertificate` and `revokedCertificate`.
   final pulumi.Input<String> radiusServerAddress;
   /// The secret used by the Radius server.
   /// This setting is incompatible with the use of
-  /// `aad_tenant`, `aad_audience`, `aad_issuer`, `root_certificate` and `revoked_certificate`.
+  /// `aadTenant`, `aadAudience`, `aadIssuer`, `rootCertificate` and `revokedCertificate`.
   final pulumi.Input<String> radiusServerSecret;
-  /// One or more `revoked_certificate` blocks which
+  /// One or more `revokedCertificate` blocks which
   /// are defined below.
   /// This setting is incompatible with the use of
-  /// `aad_tenant`, `aad_audience`, `aad_issuer`, `radius_server_address`, and `radius_server_secret`.
+  /// `aadTenant`, `aadAudience`, `aadIssuer`, `radiusServerAddress`, and `radiusServerSecret`.
   final pulumi.Input<List<GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate>> revokedCertificates;
-  /// One or more `root_certificate` blocks which are
+  /// One or more `rootCertificate` blocks which are
   /// defined below. These root certificates are used to sign the client certificate
   /// used by the VPN clients to connect to the gateway.
   /// This setting is incompatible with the use of
-  /// `aad_tenant`, `aad_audience`, `aad_issuer`, `radius_server_address`, and `radius_server_secret`.
+  /// `aadTenant`, `aadAudience`, `aadIssuer`, `radiusServerAddress`, and `radiusServerSecret`.
   final pulumi.Input<List<GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate>> rootCertificates;
   /// List of the protocols supported by the vpn client.
   /// The supported values are `SSTP`, `IkeV2` and `OpenVPN`.
@@ -52,8 +52,8 @@ class GetVirtualNetworkGatewayVpnClientConfiguration {
   /// [addressSpaces] The address space out of which IP addresses for
   /// [radiusServerAddress] The address of the Radius server.
   /// [radiusServerSecret] The secret used by the Radius server.
-  /// [revokedCertificates] One or more `revoked_certificate` blocks which
-  /// [rootCertificates] One or more `root_certificate` blocks which are
+  /// [revokedCertificates] One or more `revokedCertificate` blocks which
+  /// [rootCertificates] One or more `rootCertificate` blocks which are
   /// [vpnClientProtocols] List of the protocols supported by the vpn client.
   const GetVirtualNetworkGatewayVpnClientConfiguration({
     required this.aadAudience,
@@ -95,4 +95,3 @@ class GetVirtualNetworkGatewayVpnClientConfiguration {
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'source_code_token_state.dart';
 
 /// Manages an App Service source control token.
 ///
-/// !&gt; **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.ServicePlan` resource instead.
+/// &gt; **NOTE:** This resource has been deprecated and will be removed in version 6.0 of the provider. Please use `azure.appservice.ServicePlan` resource instead.
 ///
 /// &gt; **NOTE:** Source Control Tokens are configured at the subscription level, not on each App Service - as such this can only be configured Subscription-wide
 ///
@@ -65,6 +65,20 @@ import 'source_code_token_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_appservice_sourcecodetoken" "example" {
+///   type  = "GitHub"
+///   token = "7e57735e77e577e57"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'source_code_token_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.SourceCodeToken;
 /// import com.pulumi.azure.appservice.SourceCodeTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

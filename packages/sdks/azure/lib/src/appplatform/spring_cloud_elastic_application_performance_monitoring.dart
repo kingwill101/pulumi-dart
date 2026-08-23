@@ -6,7 +6,7 @@ import 'spring_cloud_elastic_application_performance_monitoring_state.dart';
 ///
 /// Manages a Spring Cloud Application Performance Monitoring resource for Elastic.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudElasticApplicationPerformanceMonitoring` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudElasticApplicationPerformanceMonitoring` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -143,6 +143,34 @@ import 'spring_cloud_elastic_application_performance_monitoring_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "E0"
+/// }
+/// resource "azure_appplatform_springcloudelasticapplicationperformancemonitoring" "example" {
+///   name                    = "example"
+///   spring_cloud_service_id = azure_appplatform_springcloudservice.example.id
+///   globally_enabled        = true
+///   application_packages    = ["org.example", "org.another.example"]
+///   service_name            = "example-service-name"
+///   server_url              = "http://127.0.0.1:8200"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -155,8 +183,8 @@ import 'spring_cloud_elastic_application_performance_monitoring_state.dart';
 /// import com.pulumi.azure.appplatform.SpringCloudServiceArgs;
 /// import com.pulumi.azure.appplatform.SpringCloudElasticApplicationPerformanceMonitoring;
 /// import com.pulumi.azure.appplatform.SpringCloudElasticApplicationPerformanceMonitoringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

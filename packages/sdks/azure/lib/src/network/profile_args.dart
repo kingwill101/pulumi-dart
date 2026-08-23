@@ -8,7 +8,7 @@ import 'profile_container_network_interface.dart';
 /// {@endtemplate}
 /// {@macro pulumi_network_profile_profile_args_doc}
 class ProfileArgs {
-  /// A `container_network_interface` block as documented below.
+  /// A `containerNetworkInterface` block as documented below.
   final pulumi.Input<ProfileContainerNetworkInterface> containerNetworkInterface;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -20,7 +20,7 @@ class ProfileArgs {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ProfileArgs].
-  /// [containerNetworkInterface] A `container_network_interface` block as documented below.
+  /// [containerNetworkInterface] A `containerNetworkInterface` block as documented below.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Network Profile. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
@@ -53,4 +53,3 @@ class ProfileArgs {
     );
   }
 }
-

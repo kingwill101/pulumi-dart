@@ -19,11 +19,11 @@ class ApiVersionSetArgs {
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Header which should be read from Inbound Requests which defines the API Version.
   ///
-  /// &gt; **Note:** This must be specified when `versioning_scheme` is set to `Header`.
+  /// &gt; **Note:** This must be specified when `versioningScheme` is set to `Header`.
   final pulumi.Input<String>? versionHeaderName;
   /// The name of the Query String which should be read from Inbound Requests which defines the API Version.
   ///
-  /// &gt; **Note:** This must be specified when `versioning_scheme` is set to `Query`.
+  /// &gt; **Note:** This must be specified when `versioningScheme` is set to `Query`.
   final pulumi.Input<String>? versionQueryName;
   /// Specifies where in an Inbound HTTP Request that the API Version should be read from. Possible values are `Header`, `Query` and `Segment`.
   final pulumi.Input<String> versioningScheme;
@@ -74,4 +74,3 @@ class ApiVersionSetArgs {
     );
   }
 }
-

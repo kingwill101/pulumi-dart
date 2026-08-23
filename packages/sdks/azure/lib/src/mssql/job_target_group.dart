@@ -220,6 +220,53 @@ import 'job_target_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "westeurope"
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "example-server"
+///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   version                      = "12.0"
+///   administrator_login          = "4dm1n157r470r"
+///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
+/// }
+/// resource "azure_mssql_database" "example" {
+///   name      = "example-db"
+///   server_id = azure_mssql_server.example.id
+///   collation = "SQL_Latin1_General_CP1_CI_AS"
+///   sku_name  = "S1"
+/// }
+/// resource "azure_mssql_jobagent" "example" {
+///   name        = "example-job-agent"
+///   location    = azure_core_resourcegroup.example.location
+///   database_id = azure_mssql_database.example.id
+/// }
+/// resource "azure_mssql_jobcredential" "example" {
+///   name         = "example-job-credential"
+///   job_agent_id = azure_mssql_jobagent.example.id
+///   username     = "testusername"
+///   password     = "testpassword"
+/// }
+/// resource "azure_mssql_jobtargetgroup" "example" {
+///   name         = "example-target-group"
+///   job_agent_id = azure_mssql_jobagent.example.id
+///   job_targets {
+///     server_name       = azure_mssql_server.example.name
+///     job_credential_id = azure_mssql_jobcredential.example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -239,8 +286,8 @@ import 'job_target_group_state.dart';
 /// import com.pulumi.azure.mssql.JobTargetGroup;
 /// import com.pulumi.azure.mssql.JobTargetGroupArgs;
 /// import com.pulumi.azure.mssql.inputs.JobTargetGroupJobTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -367,7 +414,7 @@ import 'job_target_group_state.dart';
 class JobTargetGroup extends pulumi.CustomResource {
   /// The ID of the Elastic Job Agent. Changing this forces a new Job Target Group to be created.
   late final pulumi.Output<String> jobAgentId;
-  /// One or more `job_target` blocks as defined below.
+  /// One or more `jobTarget` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> jobTargets;
   /// The name which should be used for this Job Target Group. Changing this forces a new Job Target Group to be created.
   late final pulumi.Output<String> name;

@@ -18,9 +18,9 @@ class GetResult {
   final List<GetAgent> agents;
   /// Public Key that the client provides to be used during initial resource onboarding.
   final String clientPublicKey;
-  /// A `cloud_metadata` block as defined below.
+  /// A `cloudMetadata` block as defined below.
   final List<GetCloudMetadata> cloudMetadatas;
-  /// A `detected_properties` block as defined below.
+  /// A `detectedProperties` block as defined below.
   final Map<String, String> detectedProperties;
   /// Specifies the Azure Arc machine display name.
   final String displayName;
@@ -36,7 +36,7 @@ class GetResult {
   final String lastStatusChangeTime;
   /// The Azure Region where the Azure Arc machine exists.
   final String location;
-  /// A `location_data` block as defined below.
+  /// A `locationData` block as defined below.
   final List<GetLocationData> locationDatas;
   /// Specifies the Azure Arc machine fully qualified display name.
   final String machineFqdn;
@@ -46,7 +46,7 @@ class GetResult {
   final String name;
   /// The Operating System running on the Azure Arc machine.
   final String osName;
-  /// A `os_profile` block as defined below.
+  /// A `osProfile` block as defined below.
   final List<GetOsProfile> osProfiles;
   /// Specifies the Operating System product SKU.
   final String osSku;
@@ -59,7 +59,7 @@ class GetResult {
   /// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
   final String privateLinkScopeResourceId;
   final String resourceGroupName;
-  /// A `service_status` block as defined below.
+  /// A `serviceStatus` block as defined below.
   final List<GetServiceStatus> serviceStatuses;
   /// The current status of the service.
   final String status;
@@ -75,8 +75,8 @@ class GetResult {
   /// [agentVersion] The Azure Arc machine agent full version.
   /// [agents] A `agent` block as defined below.
   /// [clientPublicKey] Public Key that the client provides to be used during initial resource onboarding.
-  /// [cloudMetadatas] A `cloud_metadata` block as defined below.
-  /// [detectedProperties] A `detected_properties` block as defined below.
+  /// [cloudMetadatas] A `cloudMetadata` block as defined below.
+  /// [detectedProperties] A `detectedProperties` block as defined below.
   /// [displayName] Specifies the Azure Arc machine display name.
   /// [dnsFqdn] Specifies the DNS fully qualified display name.
   /// [domainName] Specifies the Windows domain name.
@@ -84,19 +84,19 @@ class GetResult {
   /// [identities] A `identity` block as defined below.
   /// [lastStatusChangeTime] The time of the last status change.
   /// [location] The Azure Region where the Azure Arc machine exists.
-  /// [locationDatas] A `location_data` block as defined below.
+  /// [locationDatas] A `locationData` block as defined below.
   /// [machineFqdn] Specifies the Azure Arc machine fully qualified display name.
   /// [mssqlDiscovered] Specifies whether any MS SQL instance is discovered on the machine.
   /// [name] A canonical name for the geographic or physical location.
   /// [osName] The Operating System running on the Azure Arc machine.
-  /// [osProfiles] A `os_profile` block as defined below.
+  /// [osProfiles] A `osProfile` block as defined below.
   /// [osSku] Specifies the Operating System product SKU.
   /// [osType] The type of Operating System. Possible values are `windows` and `linux`.
   /// [osVersion] The version of Operating System running on the Azure Arc machine.
   /// [parentClusterResourceId] The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
   /// [privateLinkScopeResourceId] The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
   /// [resourceGroupName] Required.
-  /// [serviceStatuses] A `service_status` block as defined below.
+  /// [serviceStatuses] A `serviceStatus` block as defined below.
   /// [status] The current status of the service.
   /// [tags] A mapping of tags assigned to the Hybrid Compute.
   /// [vmId] Specifies the Azure Arc machine unique ID.
@@ -204,4 +204,3 @@ class GetResult {
     );
   }
 }
-

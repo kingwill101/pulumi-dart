@@ -72,7 +72,7 @@ import 'autonomous_database_clone_from_database_state.dart';
 ///     admin_password="BEstrO0ng_#11",
 ///     backup_retention_period_in_days=7,
 ///     character_set="AL32UTF8",
-///     compute_count=2,
+///     compute_count=float(2),
 ///     compute_model="ECPU",
 ///     data_storage_size_in_tbs=1,
 ///     db_version="19c",
@@ -93,7 +93,7 @@ import 'autonomous_database_clone_from_database_state.dart';
 ///     admin_password="BEstrO0ng_#11",
 ///     backup_retention_period_in_days=7,
 ///     character_set="AL32UTF8",
-///     compute_count=2,
+///     compute_count=float(2),
 ///     compute_model="ECPU",
 ///     data_storage_size_in_tb=1,
 ///     database_version="19c",
@@ -238,6 +238,62 @@ import 'autonomous_database_clone_from_database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "eastus"
+/// }
+/// resource "azure_oracle_autonomousdatabase" "example" {
+///   name                             = "example"
+///   resource_group_name              = azure_core_resourcegroup.example.name
+///   location                         = azure_core_resourcegroup.example.location
+///   admin_password                   = "BEstrO0ng_#11"
+///   backup_retention_period_in_days  = 7
+///   character_set                    = "AL32UTF8"
+///   compute_count                    = 2
+///   compute_model                    = "ECPU"
+///   data_storage_size_in_tbs         = 1
+///   db_version                       = "19c"
+///   db_workload                      = "OLTP"
+///   display_name                     = "Example"
+///   license_model                    = "LicenseIncluded"
+///   auto_scaling_enabled             = false
+///   auto_scaling_for_storage_enabled = true
+///   mtls_connection_required         = true
+///   national_character_set           = "AL16UTF16"
+///   allowed_ips                      = []
+/// }
+/// resource "azure_oracle_autonomousdatabaseclonefromdatabase" "example" {
+///   name                             = "example"
+///   resource_group_name              = azure_oracle_autonomousdatabase.example.resource_group_name
+///   location                         = azure_oracle_autonomousdatabase.example.location
+///   source_autonomous_database_id    = azure_oracle_autonomousdatabase.example.id
+///   clone_type                       = "Full"
+///   admin_password                   = "BEstrO0ng_#11"
+///   backup_retention_period_in_days  = 7
+///   character_set                    = "AL32UTF8"
+///   compute_count                    = 2
+///   compute_model                    = "ECPU"
+///   data_storage_size_in_tb          = 1
+///   database_version                 = "19c"
+///   database_workload                = "OLTP"
+///   display_name                     = "ExampleClone"
+///   license_model                    = "LicenseIncluded"
+///   auto_scaling_enabled             = false
+///   auto_scaling_for_storage_enabled = true
+///   mtls_connection_required         = true
+///   national_character_set           = "AL16UTF16"
+///   allowed_ip_addresses             = []
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -250,8 +306,8 @@ import 'autonomous_database_clone_from_database_state.dart';
 /// import com.pulumi.azure.oracle.AutonomousDatabaseArgs;
 /// import com.pulumi.azure.oracle.AutonomousDatabaseCloneFromDatabase;
 /// import com.pulumi.azure.oracle.AutonomousDatabaseCloneFromDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -418,7 +474,7 @@ class AutonomousDatabaseCloneFromDatabase extends pulumi.CustomResource {
   /// * AJD - indicates an Autonomous JSON Database
   /// * APEX - indicates an Autonomous Database with the Oracle APEX Application Development workload type.
   ///
-  /// &gt; **Note:** To clone the database with a different `database_workload` type, please refer to the documentation [here](https://docs.public.oneportal.content.oci.oraclecloud.com/iaas/autonomous-database-serverless/doc/autonomous-clone-cross-workload-type.html#GUID-527A712D-FF82-498B-AB35-8A1623E36EDD) for correct configuration steps.
+  /// &gt; **Note:** To clone the database with a different `databaseWorkload` type, please refer to the documentation [here](https://docs.public.oneportal.content.oci.oraclecloud.com/iaas/autonomous-database-serverless/doc/autonomous-clone-cross-workload-type.html#GUID-527A712D-FF82-498B-AB35-8A1623E36EDD) for correct configuration steps.
   late final pulumi.Output<String> databaseWorkload;
   /// The user-friendly name for the Autonomous Database. Changing this forces a new Autonomous Database Clone to be created.
   late final pulumi.Output<String> displayName;

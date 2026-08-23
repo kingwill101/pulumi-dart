@@ -14,11 +14,11 @@ class GetDomainResult {
   final String id;
   /// An `identity` block as documented below.
   final List<GetDomainIdentity> identities;
-  /// One or more `inbound_ip_rule` blocks as defined below.
+  /// One or more `inboundIpRule` blocks as defined below.
   final List<GetDomainInboundIpRule> inboundIpRules;
-  /// A `input_mapping_default_values` block as defined below.
+  /// A `inputMappingDefaultValues` block as defined below.
   final List<GetDomainInputMappingDefaultValue> inputMappingDefaultValues;
-  /// A `input_mapping_fields` block as defined below.
+  /// A `inputMappingFields` block as defined below.
   final List<GetDomainInputMappingField> inputMappingFields;
   /// The schema in which incoming events will be published to this domain. Possible values are `CloudEventSchemaV1_0`, `CustomEventSchema`, or `EventGridSchema`.
   final String inputSchema;
@@ -39,9 +39,9 @@ class GetDomainResult {
   /// [endpoint] The Endpoint associated with the EventGrid Domain.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] An `identity` block as documented below.
-  /// [inboundIpRules] One or more `inbound_ip_rule` blocks as defined below.
-  /// [inputMappingDefaultValues] A `input_mapping_default_values` block as defined below.
-  /// [inputMappingFields] A `input_mapping_fields` block as defined below.
+  /// [inboundIpRules] One or more `inboundIpRule` blocks as defined below.
+  /// [inputMappingDefaultValues] A `inputMappingDefaultValues` block as defined below.
+  /// [inputMappingFields] A `inputMappingFields` block as defined below.
   /// [inputSchema] The schema in which incoming events will be published to this domain. Possible values are `CloudEventSchemaV1_0`, `CustomEventSchema`, or `EventGridSchema`.
   /// [location] The Azure Region in which this EventGrid Domain exists.
   /// [name] Required.
@@ -105,4 +105,3 @@ class GetDomainResult {
     );
   }
 }
-

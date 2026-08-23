@@ -100,7 +100,7 @@ import 'extension_state.dart';
 /// 			Name:     pulumi.String("example"),
 /// 			Location: pulumi.String("West Europe"),
 /// 			ArcMachineId: pulumi.String(example.ApplyT(func(example arcmachine.GetResult) (*string, error) {
-/// 				return &example.Id, nil
+/// 				return example.Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Publisher: pulumi.String("Microsoft.Azure.Monitor"),
 /// 			Type:      pulumi.String("AzureMonitorLinuxAgent"),
@@ -110,6 +110,32 @@ import 'extension_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_arcmachine_get" "example" {
+///   name                = "existing-hcmachine"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_arcmachine_extension" "example" {
+///   name           = "example"
+///   location       = "West Europe"
+///   arc_machine_id = data.azure_arcmachine_get.example.id
+///   publisher      = "Microsoft.Azure.Monitor"
+///   type           = "AzureMonitorLinuxAgent"
 /// }
 /// ```
 /// ```java
@@ -124,8 +150,8 @@ import 'extension_state.dart';
 /// import com.pulumi.azure.arcmachine.inputs.GetArgs;
 /// import com.pulumi.azure.arcmachine.Extension;
 /// import com.pulumi.azure.arcmachine.ExtensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -204,9 +230,9 @@ class Extension extends pulumi.CustomResource {
   late final pulumi.Output<String> arcMachineId;
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available. Supported values are `true` and `false`. Defaults to `true`.
   ///
-  /// &gt; **Note:** When `automatic_upgrade_enabled` can only be set during creation. Any later change will be ignored.
+  /// &gt; **Note:** When `automaticUpgradeEnabled` can only be set during creation. Any later change will be ignored.
   ///
-  /// &gt; **Note:** When `automatic_upgrade_enabled` is set to `true`, the `type_handler_version` is automatically updated by the Azure platform when a new version is available and any change in `type_handler_version` will be automatically ignored.
+  /// &gt; **Note:** When `automaticUpgradeEnabled` is set to `true`, the `typeHandlerVersion` is automatically updated by the Azure platform when a new version is available and any change in `typeHandlerVersion` will be automatically ignored.
   late final pulumi.Output<bool?> automaticUpgradeEnabled;
   /// How the extension handler should be forced to update even if the extension configuration has not changed.
   late final pulumi.Output<String?> forceUpdateTag;
@@ -226,7 +252,7 @@ class Extension extends pulumi.CustomResource {
   late final pulumi.Output<String> type;
   /// Specifies the version of the script handler.
   ///
-  /// &gt; **Note:** 1. When `automatic_upgrade_enabled` is set to `false` and no `type_handler_version` is specified, the `type_handler_version` change should be manually ignored by `ignore_changes` lifecycle block. This is because the `type_handler_version` is set by the Azure platform when the extension is created. 2. When `automatic_upgrade_enabled` is set to `false` and `type_handler_version` is specified, the provider will check whether the version prefix is aligned with user input. For example, if user specifies `1.24` in `type_handler_version`, `1.24.1` will be considered as no diff.
+  /// &gt; **Note:** 1. When `automaticUpgradeEnabled` is set to `false` and no `typeHandlerVersion` is specified, the `typeHandlerVersion` change should be manually ignored by `ignoreChanges` lifecycle block. This is because the `typeHandlerVersion` is set by the Azure platform when the extension is created. 2. When `automaticUpgradeEnabled` is set to `false` and `typeHandlerVersion` is specified, the provider will check whether the version prefix is aligned with user input. For example, if user specifies `1.24` in `typeHandlerVersion`, `1.24.1` will be considered as no diff.
   late final pulumi.Output<String?> typeHandlerVersion;
 
   /// Creates a new [Extension].

@@ -24,7 +24,7 @@ class ScalingPlan extends pulumi.CustomResource {
   late final pulumi.Output<String?> exclusionTag;
   /// Friendly name of the Scaling Plan.
   late final pulumi.Output<String?> friendlyName;
-  /// One or more `host_pool` blocks as defined below.
+  /// One or more `hostPool` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> hostPools;
   /// The Azure Region where the Virtual Desktop Scaling Plan should exist. Changing this forces a new Virtual Desktop Scaling Plan to be created.
   late final pulumi.Output<String> location;

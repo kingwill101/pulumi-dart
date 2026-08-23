@@ -186,6 +186,43 @@ import 'network_manager_ipam_pool_static_cidr_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-nm"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///   }
+/// }
+/// resource "azure_network_networkmanageripampool" "example" {
+///   name               = "example-ipampool"
+///   network_manager_id = azure_network_networkmanager.example.id
+///   location           = azure_core_resourcegroup.example.location
+///   display_name       = "ipampool1"
+///   address_prefixes   = ["10.0.0.0/24"]
+/// }
+/// resource "azure_network_networkmanageripampoolstaticcidr" "example" {
+///   name             = "example-ipsc"
+///   ipam_pool_id     = azure_network_networkmanageripampool.example.id
+///   address_prefixes = ["10.0.0.0/26", "10.0.0.128/27"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -203,8 +240,8 @@ import 'network_manager_ipam_pool_static_cidr_state.dart';
 /// import com.pulumi.azure.network.NetworkManagerIpamPoolArgs;
 /// import com.pulumi.azure.network.NetworkManagerIpamPoolStaticCidr;
 /// import com.pulumi.azure.network.NetworkManagerIpamPoolStaticCidrArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -313,7 +350,7 @@ import 'network_manager_ipam_pool_static_cidr_state.dart';
 class NetworkManagerIpamPoolStaticCidr extends pulumi.CustomResource {
   /// Specifies a list of IPv4 or IPv6 IP address prefixes which will be allocated to the Static CIDR.
   ///
-  /// &gt; **Note:** Exactly one of `address_prefixes` or `number_of_ip_addresses_to_allocate` must be specified.
+  /// &gt; **Note:** Exactly one of `addressPrefixes` or `numberOfIpAddressesToAllocate` must be specified.
   late final pulumi.Output<List<String>?> addressPrefixes;
   /// The ID of the Network Manager IP Address Management (IPAM) Pool. Changing this forces a new Network Manager IPAM Pool Static CIDR to be created.
   late final pulumi.Output<String> ipamPoolId;
@@ -321,7 +358,7 @@ class NetworkManagerIpamPoolStaticCidr extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The number of IP addresses to allocate to the Static CIDR. The value must be a string representing a positive integer which is a positive power of 2, e.g., `"16"`.
   ///
-  /// &gt; **Note:** Exactly one of `address_prefixes` or `number_of_ip_addresses_to_allocate` must be specified.
+  /// &gt; **Note:** Exactly one of `addressPrefixes` or `numberOfIpAddressesToAllocate` must be specified.
   late final pulumi.Output<String?> numberOfIpAddressesToAllocate;
 
   /// Creates a new [NetworkManagerIpamPoolStaticCidr].

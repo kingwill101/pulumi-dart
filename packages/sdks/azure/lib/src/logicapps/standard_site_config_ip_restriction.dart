@@ -8,7 +8,7 @@ class StandardSiteConfigIpRestriction {
   final pulumi.Input<String>? action;
   /// The Description of this IP Restriction.
   final pulumi.Input<String>? description;
-  /// The `headers` block for this specific as a `ip_restriction` block as defined below.
+  /// The `headers` block for this specific as a `ipRestriction` block as defined below.
   final pulumi.Input<StandardSiteConfigIpRestrictionHeaders>? headers;
   /// The IP Address used for this IP Restriction in CIDR notation.
   final pulumi.Input<String>? ipAddress;
@@ -20,13 +20,13 @@ class StandardSiteConfigIpRestriction {
   final pulumi.Input<String>? serviceTag;
   /// The Virtual Network Subnet ID used for this IP Restriction.
   ///
-  /// &gt; **Note:** One of either `ip_address`, `service_tag` or `virtual_network_subnet_id` must be specified
+  /// &gt; **Note:** One of either `ipAddress`, `serviceTag` or `virtualNetworkSubnetId` must be specified
   final pulumi.Input<String>? virtualNetworkSubnetId;
 
   /// Creates a new [StandardSiteConfigIpRestriction].
   /// [action] Does this restriction `Allow` or `Deny` access for this IP range. Defaults to `Allow`.
   /// [description] The Description of this IP Restriction.
-  /// [headers] The `headers` block for this specific as a `ip_restriction` block as defined below.
+  /// [headers] The `headers` block for this specific as a `ipRestriction` block as defined below.
   /// [ipAddress] The IP Address used for this IP Restriction in CIDR notation.
   /// [name] The name for this IP Restriction.
   /// [priority] The priority for this IP Restriction. Restrictions are enforced in priority order. By default, the priority is set to 65000 if not specified.
@@ -69,4 +69,3 @@ class StandardSiteConfigIpRestriction {
     );
   }
 }
-

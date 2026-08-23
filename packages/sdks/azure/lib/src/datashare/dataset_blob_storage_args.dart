@@ -18,7 +18,7 @@ class DatasetBlobStorageArgs {
   final pulumi.Input<String>? folderPath;
   /// The name which should be used for this Data Share Blob Storage Dataset. Changing this forces a new Data Share Blob Storage Dataset to be created.
   final pulumi.Input<String>? name;
-  /// A `storage_account` block as defined below. Changing this forces a new resource to be created.
+  /// A `storageAccount` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<DatasetBlobStorageStorageAccount> storageAccount;
 
   /// Creates a new [DatasetBlobStorageArgs].
@@ -27,7 +27,7 @@ class DatasetBlobStorageArgs {
   /// [filePath] The path of the file in the storage container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
   /// [folderPath] The path of the folder in the storage container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
   /// [name] The name which should be used for this Data Share Blob Storage Dataset. Changing this forces a new Data Share Blob Storage Dataset to be created.
-  /// [storageAccount] A `storage_account` block as defined below. Changing this forces a new resource to be created.
+  /// [storageAccount] A `storageAccount` block as defined below. Changing this forces a new resource to be created.
   const DatasetBlobStorageArgs({
     required this.containerName,
     required this.dataShareId,
@@ -59,4 +59,3 @@ class DatasetBlobStorageArgs {
     );
   }
 }
-

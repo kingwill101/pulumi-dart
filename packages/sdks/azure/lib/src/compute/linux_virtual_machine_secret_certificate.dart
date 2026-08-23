@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxVirtualMachineSecretCertificate {
   /// The Secret URL of a Key Vault Certificate.
   ///
-  /// &gt; **NOTE:** This can be sourced from the `secret_id` field within the `azure.keyvault.Certificate` Resource.
+  /// &gt; **NOTE:** This can be sourced from the `secretId` field within the `azure.keyvault.Certificate` Resource.
   final pulumi.Input<String> url;
 
   /// Creates a new [LinuxVirtualMachineSecretCertificate].
@@ -26,4 +26,3 @@ class LinuxVirtualMachineSecretCertificate {
     );
   }
 }
-

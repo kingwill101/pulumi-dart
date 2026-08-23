@@ -145,6 +145,37 @@ import 'network_manager_routing_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-network-manager"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///   }
+///   scope_accesses = ["Routing"]
+/// }
+/// resource "azure_network_networkmanagerroutingconfiguration" "example" {
+///   name               = "example-routing-configuration"
+///   network_manager_id = azure_network_networkmanager.example.id
+///   description        = "example routing configuration"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -160,8 +191,8 @@ import 'network_manager_routing_configuration_state.dart';
 /// import com.pulumi.azure.network.inputs.NetworkManagerScopeArgs;
 /// import com.pulumi.azure.network.NetworkManagerRoutingConfiguration;
 /// import com.pulumi.azure.network.NetworkManagerRoutingConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

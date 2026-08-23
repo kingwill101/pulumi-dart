@@ -10,7 +10,7 @@ class GetRoleAssignmentsResult {
   final bool? limitAtScope;
   /// The principal ID.
   final String? principalId;
-  /// A `role_assignments` block as defined below.
+  /// A `roleAssignments` block as defined below.
   final List<GetRoleAssignmentsRoleAssignment> roleAssignments;
   final String scope;
   final String? tenantId;
@@ -19,7 +19,7 @@ class GetRoleAssignmentsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [limitAtScope] Optional.
   /// [principalId] The principal ID.
-  /// [roleAssignments] A `role_assignments` block as defined below.
+  /// [roleAssignments] A `roleAssignments` block as defined below.
   /// [scope] Required.
   /// [tenantId] Optional.
   const GetRoleAssignmentsResult({
@@ -53,4 +53,3 @@ class GetRoleAssignmentsResult {
     );
   }
 }
-

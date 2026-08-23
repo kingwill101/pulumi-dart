@@ -7,13 +7,13 @@ import 'replicated_vmunmanaged_disk.dart';
 
 /// Input properties used for looking up and filtering ReplicatedVM resources.
 class ReplicatedVMState {
-  /// One or more `managed_disk` block as defined below. Changing this forces a new resource to be created.
+  /// One or more `managedDisk` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<ReplicatedVMManagedDisk>>? managedDisks;
   /// Name of group in which all machines will replicate together and have shared crash consistent and app-consistent recovery points when failed over.
   final pulumi.Input<String>? multiVmGroupName;
   /// The name of the replication for the replicated VM. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// One or more `network_interface` block as defined below.
+  /// One or more `networkInterface` block as defined below.
   final pulumi.Input<List<ReplicatedVMNetworkInterface>>? networkInterfaces;
   /// Id of the policy to use for this replicated vm. Changing this forces a new resource to be created.
   final pulumi.Input<String>? recoveryReplicationPolicyId;
@@ -35,7 +35,7 @@ class ReplicatedVMState {
   final pulumi.Input<String>? targetCapacityReservationGroupId;
   /// Specifies the Edge Zone within the Azure Region where this Managed Kubernetes Cluster should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? targetEdgeZone;
-  /// Network to use when a failover is done (recommended to set if any network_interface is configured for failover).
+  /// Network to use when a failover is done (recommended to set if any networkInterface is configured for failover).
   final pulumi.Input<String>? targetNetworkId;
   /// Id of Proximity Placement Group the new VM should belong to when a failover is done.
   final pulumi.Input<String>? targetProximityPlacementGroupId;
@@ -53,14 +53,14 @@ class ReplicatedVMState {
   final pulumi.Input<String>? targetZone;
   /// Network to use when a test failover is done.
   final pulumi.Input<String>? testNetworkId;
-  /// One or more `unmanaged_disk` block as defined below. Changing this forces a new resource to be created.
+  /// One or more `unmanagedDisk` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<ReplicatedVMUnmanagedDisk>>? unmanagedDisks;
 
   /// Creates a new [ReplicatedVMState].
-  /// [managedDisks] One or more `managed_disk` block as defined below. Changing this forces a new resource to be created.
+  /// [managedDisks] One or more `managedDisk` block as defined below. Changing this forces a new resource to be created.
   /// [multiVmGroupName] Name of group in which all machines will replicate together and have shared crash consistent and app-consistent recovery points when failed over.
   /// [name] The name of the replication for the replicated VM. Changing this forces a new resource to be created.
-  /// [networkInterfaces] One or more `network_interface` block as defined below.
+  /// [networkInterfaces] One or more `networkInterface` block as defined below.
   /// [recoveryReplicationPolicyId] Id of the policy to use for this replicated vm. Changing this forces a new resource to be created.
   /// [recoveryVaultName] The name of the vault that should be updated. Changing this forces a new resource to be created.
   /// [resourceGroupName] Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
@@ -71,7 +71,7 @@ class ReplicatedVMState {
   /// [targetBootDiagnosticStorageAccountId] Id of the storage account which the new VM should used for boot diagnostic when a failover is done.
   /// [targetCapacityReservationGroupId] Id of the Capacity reservation group where the new VM should belong to when a failover is done.
   /// [targetEdgeZone] Specifies the Edge Zone within the Azure Region where this Managed Kubernetes Cluster should exist. Changing this forces a new resource to be created.
-  /// [targetNetworkId] Network to use when a failover is done (recommended to set if any network_interface is configured for failover).
+  /// [targetNetworkId] Network to use when a failover is done (recommended to set if any networkInterface is configured for failover).
   /// [targetProximityPlacementGroupId] Id of Proximity Placement Group the new VM should belong to when a failover is done.
   /// [targetRecoveryFabricId] Id of fabric where the VM replication should be handled when a failover is done. Changing this forces a new resource to be created.
   /// [targetRecoveryProtectionContainerId] Id of protection container where the VM replication should be created when a failover is done. Changing this forces a new resource to be created.
@@ -80,7 +80,7 @@ class ReplicatedVMState {
   /// [targetVirtualMachineSize] Specifies the size the Virtual Machine should have.
   /// [targetZone] Specifies the Availability Zone where the Failover VM should exist. Changing this forces a new resource to be created.
   /// [testNetworkId] Network to use when a test failover is done.
-  /// [unmanagedDisks] One or more `unmanaged_disk` block as defined below. Changing this forces a new resource to be created.
+  /// [unmanagedDisks] One or more `unmanagedDisk` block as defined below. Changing this forces a new resource to be created.
   const ReplicatedVMState({
     this.managedDisks,
     this.multiVmGroupName,
@@ -166,4 +166,3 @@ class ReplicatedVMState {
     );
   }
 }
-

@@ -19,7 +19,7 @@ class ChannelDirectLineSite {
   final pulumi.Input<String> name;
   /// Is the storage site enabled for detailed logging? Defaults to `true`.
   final pulumi.Input<bool>? storageEnabled;
-  /// This field is required when `is_secure_site_enabled` is enabled. Determines which origins can establish a Directline conversation for this site.
+  /// This field is required when `isSecureSiteEnabled` is enabled. Determines which origins can establish a Directline conversation for this site.
   final pulumi.Input<List<String>>? trustedOrigins;
   /// Is the user upload enabled for this site? Defaults to `true`.
   final pulumi.Input<bool>? userUploadEnabled;
@@ -37,7 +37,7 @@ class ChannelDirectLineSite {
   /// [key2] Secondary key for accessing this site
   /// [name] The name of the site
   /// [storageEnabled] Is the storage site enabled for detailed logging? Defaults to `true`.
-  /// [trustedOrigins] This field is required when `is_secure_site_enabled` is enabled. Determines which origins can establish a Directline conversation for this site.
+  /// [trustedOrigins] This field is required when `isSecureSiteEnabled` is enabled. Determines which origins can establish a Directline conversation for this site.
   /// [userUploadEnabled] Is the user upload enabled for this site? Defaults to `true`.
   /// [v1Allowed] Enables v1 of the Directline protocol for this site. Defaults to `true`.
   /// [v3Allowed] Enables v3 of the Directline protocol for this site. Defaults to `true`.
@@ -90,4 +90,3 @@ class ChannelDirectLineSite {
     );
   }
 }
-

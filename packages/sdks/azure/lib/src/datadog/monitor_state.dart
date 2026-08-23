@@ -7,7 +7,7 @@ import 'monitor_user.dart';
 
 /// Input properties used for looking up and filtering Monitor resources.
 class MonitorState {
-  /// A `datadog_organization` block as defined below.
+  /// A `datadogOrganization` block as defined below.
   final pulumi.Input<MonitorDatadogOrganization>? datadogOrganization;
   /// A `identity` block as defined below.
   final pulumi.Input<MonitorIdentity>? identity;
@@ -29,7 +29,7 @@ class MonitorState {
   final pulumi.Input<MonitorUser>? user;
 
   /// Creates a new [MonitorState].
-  /// [datadogOrganization] A `datadog_organization` block as defined below.
+  /// [datadogOrganization] A `datadogOrganization` block as defined below.
   /// [identity] A `identity` block as defined below.
   /// [location] The Azure Region where the Datadog Monitor should exist. Changing this forces a new Datadog Monitor to be created.
   /// [marketplaceSubscriptionStatus] Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state.
@@ -82,4 +82,3 @@ class MonitorState {
     );
   }
 }
-

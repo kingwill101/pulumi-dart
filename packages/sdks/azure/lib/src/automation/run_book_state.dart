@@ -11,15 +11,15 @@ class RunBookState {
   final pulumi.Input<String>? automationAccountName;
   /// The desired content of the runbook.
   ///
-  /// &gt; **Note:** The Azure API requires a `publish_content_link` to be supplied even when specifying your own `content`.
+  /// &gt; **Note:** The Azure API requires a `publishContentLink` to be supplied even when specifying your own `content`.
   final pulumi.Input<String>? content;
   /// A description for the runbook.
   final pulumi.Input<String>? description;
   /// A `draft` block as defined below.
   final pulumi.Input<RunBookDraft>? draft;
-  /// One or more `job_schedule` block as defined below.
+  /// One or more `jobSchedule` block as defined below.
   ///
-  /// &gt; **Note:** AzureRM provides a stand-alone azure.automation.JobSchedule and this inlined `job_schedule` property to manage the job schedules. At this time you should choose one of them to manage the job schedule resources.
+  /// &gt; **Note:** AzureRM provides a stand-alone azure.automation.JobSchedule and this inlined `jobSchedule` property to manage the job schedules. At this time you should choose one of them to manage the job schedule resources.
   final pulumi.Input<List<RunBookJobSchedule>>? jobSchedules;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -31,7 +31,7 @@ class RunBookState {
   final pulumi.Input<bool>? logVerbose;
   /// Specifies the name of the Runbook. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// One `publish_content_link` block as defined below.
+  /// One `publishContentLink` block as defined below.
   final pulumi.Input<RunBookPublishContentLink>? publishContentLink;
   /// The name of the resource group in which the Runbook is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
@@ -39,7 +39,7 @@ class RunBookState {
   final pulumi.Input<String>? runbookType;
   /// The runtime environment name for the runbook.
   ///
-  /// &gt; **Note:** The `runbook_type` must be set to a value that supports runtime environments, such as `PowerShell` or `Python`.
+  /// &gt; **Note:** The `runbookType` must be set to a value that supports runtime environments, such as `PowerShell` or `Python`.
   final pulumi.Input<String>? runtimeEnvironmentName;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
@@ -49,13 +49,13 @@ class RunBookState {
   /// [content] The desired content of the runbook.
   /// [description] A description for the runbook.
   /// [draft] A `draft` block as defined below.
-  /// [jobSchedules] One or more `job_schedule` block as defined below.
+  /// [jobSchedules] One or more `jobSchedule` block as defined below.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [logActivityTraceLevel] Specifies the activity-level tracing options of the runbook, available only for Graphical runbooks. Possible values are `0` for None, `9` for Basic, and `15` for Detailed. Must turn on Verbose logging in order to see the tracing.
   /// [logProgress] Progress log option.
   /// [logVerbose] Verbose log option.
   /// [name] Specifies the name of the Runbook. Changing this forces a new resource to be created.
-  /// [publishContentLink] One `publish_content_link` block as defined below.
+  /// [publishContentLink] One `publishContentLink` block as defined below.
   /// [resourceGroupName] The name of the resource group in which the Runbook is created. Changing this forces a new resource to be created.
   /// [runbookType] The type of the runbook - can be either `Graph`, `GraphPowerShell`, `GraphPowerShellWorkflow`, `PowerShellWorkflow`, `PowerShell`, `PowerShell72`, `Python`, `Python3`, `Python2` or `Script`. Changing this forces a new resource to be created.
   /// [runtimeEnvironmentName] The runtime environment name for the runbook.
@@ -118,4 +118,3 @@ class RunBookState {
     );
   }
 }
-

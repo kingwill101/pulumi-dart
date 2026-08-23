@@ -20,7 +20,7 @@ class ScheduleArgs {
   final pulumi.Input<int>? interval;
   /// List of days of the month that the job should execute on. Must be between `1` and `31`. `-1` for last day of the month. Only valid when frequency is `Month`.
   final pulumi.Input<List<int>>? monthDays;
-  /// One `monthly_occurrence` blocks as defined below to specifies occurrences of days within a month. Only valid when frequency is `Month`. The `monthly_occurrence` block supports fields documented below.
+  /// One `monthlyOccurrence` blocks as defined below to specifies occurrences of days within a month. Only valid when frequency is `Month`. The `monthlyOccurrence` block supports fields documented below.
   final pulumi.Input<ScheduleMonthlyOccurrence>? monthlyOccurrence;
   /// Specifies the name of the Schedule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -40,7 +40,7 @@ class ScheduleArgs {
   /// [frequency] The frequency of the schedule. - can be either `OneTime`, `Day`, `Hour`, `Week`, or `Month`.
   /// [interval] The number of `frequency`s between runs. Only valid when frequency is `Day`, `Hour`, `Week`, or `Month` and defaults to `1`.
   /// [monthDays] List of days of the month that the job should execute on. Must be between `1` and `31`. `-1` for last day of the month. Only valid when frequency is `Month`.
-  /// [monthlyOccurrence] One `monthly_occurrence` blocks as defined below to specifies occurrences of days within a month. Only valid when frequency is `Month`. The `monthly_occurrence` block supports fields documented below.
+  /// [monthlyOccurrence] One `monthlyOccurrence` blocks as defined below to specifies occurrences of days within a month. Only valid when frequency is `Month`. The `monthlyOccurrence` block supports fields documented below.
   /// [name] Specifies the name of the Schedule. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Schedule is created. Changing this forces a new resource to be created.
   /// [startTime] Start time of the schedule. Must be at least five minutes in the future. Defaults to seven minutes in the future from the time the resource is created.
@@ -95,4 +95,3 @@ class ScheduleArgs {
     );
   }
 }
-

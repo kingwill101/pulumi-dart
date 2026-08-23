@@ -62,4 +62,3 @@ class DataLakeGen2PathState {
     );
   }
 }
-

@@ -440,6 +440,93 @@ import 'network_manager_verifier_workspace_reachability_analysis_intent_state.da
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-nm"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///   }
+///   scope_accesses = ["Connectivity"]
+/// }
+/// resource "azure_network_networkmanagerverifierworkspace" "example" {
+///   name               = "example"
+///   network_manager_id = azure_network_networkmanager.example.id
+///   location           = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-network"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "internal"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "example" {
+///   name                = "example-nic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "internal"
+///     subnet_id                     = azure_network_subnet.example.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_linuxvirtualmachine" "example" {
+///   name                            = "example-machine"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resourcegroup.example.location
+///   size                            = "Standard_B1ls"
+///   admin_username                  = "adminuser"
+///   admin_password                  = "P@ssw0rd1234!"
+///   disable_password_authentication = false
+///   network_interface_ids           = [azure_network_networkinterface.example.id]
+///   os_disk = {
+///     caching              = "ReadWrite"
+///     storage_account_type = "Standard_LRS"
+///   }
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+/// }
+/// resource "azure_network_networkmanagerverifierworkspacereachabilityanalysisintent" "example" {
+///   name                    = "example-intent"
+///   verifier_workspace_id   = azure_network_networkmanagerverifierworkspace.example.id
+///   source_resource_id      = azure_compute_linuxvirtualmachine.example.id
+///   destination_resource_id = azure_compute_linuxvirtualmachine.example.id
+///   description             = "example"
+///   ip_traffic = {
+///     source_ips        = ["10.0.2.1"]
+///     source_ports      = ["80"]
+///     destination_ips   = ["10.0.2.2"]
+///     destination_ports = ["*"]
+///     protocols         = ["Any"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -469,8 +556,8 @@ import 'network_manager_verifier_workspace_reachability_analysis_intent_state.da
 /// import com.pulumi.azure.network.NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent;
 /// import com.pulumi.azure.network.NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentArgs;
 /// import com.pulumi.azure.network.inputs.NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTrafficArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -693,7 +780,7 @@ class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent extends pulumi.C
   late final pulumi.Output<String?> description;
   /// The ID of the destination resource. The value can be the ID of either Public internet, Cosmos DB, Storage Account, SQL Server, Virtual machines, or Subnet. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
   late final pulumi.Output<String> destinationResourceId;
-  /// An `ip_traffic` block as defined below. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
+  /// An `ipTraffic` block as defined below. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
   late final pulumi.Output<NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic> ipTraffic;
   /// The name which should be used for this Network Manager Verifier Workspace Reachability Analysis Intent. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
   late final pulumi.Output<String> name;

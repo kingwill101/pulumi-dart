@@ -8,7 +8,7 @@ class RoleAssignmentState {
   final pulumi.Input<String>? principalId;
   /// The Type of the Principal. One of `User`, `Group` or `ServicePrincipal`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **NOTE:** While `principal_type` is optional, it's still recommended to set this value, as some Synapse use-cases may not work correctly if this is not specified. Service Principals for example can't run SQL statements using `Entra ID` authentication if `principal_type` is not set to `ServicePrincipal`.
+  /// &gt; **NOTE:** While `principalType` is optional, it's still recommended to set this value, as some Synapse use-cases may not work correctly if this is not specified. Service Principals for example can't run SQL statements using `Entra ID` authentication if `principalType` is not set to `ServicePrincipal`.
   final pulumi.Input<String>? principalType;
   /// The Role Name of the Synapse Built-In Role. Possible values are `Apache Spark Administrator`, `Synapse Administrator`, `Synapse Artifact Publisher`, `Synapse Artifact User`, `Synapse Compute Operator`, `Synapse Contributor`, `Synapse Credential User`, `Synapse Linked Data Manager`, `Synapse Monitoring Operator`, `Synapse SQL Administrator` and `Synapse User`. Changing this forces a new resource to be created.
   ///
@@ -18,7 +18,7 @@ class RoleAssignmentState {
   final pulumi.Input<String>? roleName;
   /// The Synapse Spark Pool which the Synapse Role Assignment applies to. Changing this forces a new resource to be created.
   ///
-  /// &gt; **NOTE:** A Synapse firewall rule including local IP is needed to allow access. Only one of `synapse_workspace_id`, `synapse_spark_pool_id` must be set.
+  /// &gt; **NOTE:** A Synapse firewall rule including local IP is needed to allow access. Only one of `synapseWorkspaceId`, `synapseSparkPoolId` must be set.
   final pulumi.Input<String>? synapseSparkPoolId;
   /// The Synapse Workspace which the Synapse Role Assignment applies to. Changing this forces a new resource to be created.
   final pulumi.Input<String>? synapseWorkspaceId;
@@ -57,4 +57,3 @@ class RoleAssignmentState {
     );
   }
 }
-

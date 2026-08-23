@@ -201,6 +201,47 @@ import 'sql_role_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_cosmosdb_account" "example" {
+///   name                = "example-cosmosdb"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   offer_type          = "Standard"
+///   kind                = "GlobalDocumentDB"
+///   consistency_policy = {
+///     consistency_level = "Strong"
+///   }
+///   geo_locations {
+///     location          = azure_core_resourcegroup.example.location
+///     failover_priority = 0
+///   }
+/// }
+/// resource "azure_cosmosdb_sqlroledefinition" "example" {
+///   role_definition_id  = "84cf3a8b-4122-4448-bce2-fa423cfe0a15"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   account_name        = azure_cosmosdb_account.example.name
+///   name                = "acctestsqlrole"
+///   assignable_scopes   = ["${azure_cosmosdb_account.example.id}/dbs/sales"]
+///   permissions {
+///     data_actions = ["Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -217,8 +258,8 @@ import 'sql_role_definition_state.dart';
 /// import com.pulumi.azure.cosmosdb.SqlRoleDefinition;
 /// import com.pulumi.azure.cosmosdb.SqlRoleDefinitionArgs;
 /// import com.pulumi.azure.cosmosdb.inputs.SqlRoleDefinitionPermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -307,6 +348,13 @@ import 'sql_role_definition_state.dart';
 ///       arguments: {}
 /// ```
 ///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.DocumentDB` - 2024-08-15
 ///
 /// ## Import
 ///

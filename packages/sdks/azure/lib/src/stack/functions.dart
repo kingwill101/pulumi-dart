@@ -77,6 +77,30 @@ import 'get_hci_storage_path_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_stack_gethcicluster" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_stack_gethcicluster.example.id
+/// }
+/// output "location" {
+///   value = data.azure_stack_gethcicluster.example.location
+/// }
+/// output "clientId" {
+///   value = data.azure_stack_gethcicluster.example.client_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +109,8 @@ import 'get_hci_storage_path_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.stack.StackFunctions;
 /// import com.pulumi.azure.stack.inputs.GetHciClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -210,6 +234,24 @@ Future<GetHciClusterResult> getHciCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_stack_gethcistoragepath" "example" {
+///   name                = "example-hci-storage-path-name"
+///   resource_group_name = "example-rg"
+/// }
+///
+/// output "id" {
+///   value = data.azure_stack_gethcistoragepath.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -218,8 +260,8 @@ Future<GetHciClusterResult> getHciCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.stack.StackFunctions;
 /// import com.pulumi.azure.stack.inputs.GetHciStoragePathArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

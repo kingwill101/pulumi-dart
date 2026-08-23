@@ -175,7 +175,7 @@ import 'volume_group_oracle_state.dart';
 ///             "zone": "1",
 ///             "volume_spec_name": "ora-data1",
 ///             "storage_quota_in_gb": 1024,
-///             "throughput_in_mibps": 24,
+///             "throughput_in_mibps": float(24),
 ///             "protocols": "NFSv4.1",
 ///             "security_style": "unix",
 ///             "snapshot_directory_visible": False,
@@ -198,7 +198,7 @@ import 'volume_group_oracle_state.dart';
 ///             "zone": "1",
 ///             "volume_spec_name": "ora-log",
 ///             "storage_quota_in_gb": 1024,
-///             "throughput_in_mibps": 24,
+///             "throughput_in_mibps": float(24),
 ///             "protocols": "NFSv4.1",
 ///             "security_style": "unix",
 ///             "snapshot_directory_visible": False,
@@ -510,6 +510,111 @@ import 'volume_group_oracle_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     ="${prefix}-resources"
+///   location = location
+///   tags = {
+///     "SkipNRMSNSG" = "true"
+///   }
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                ="${prefix}-vnet"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.88.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 ="${prefix}-delegated-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.88.2.0/24"]
+///   delegations {
+///     name = "exampledelegation"
+///     service_delegation = {
+///       name    = "Microsoft.Netapp/volumes"
+///       actions = ["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"]
+///     }
+///   }
+/// }
+/// resource "azure_netapp_account" "example" {
+///   depends_on          = [azure_network_subnet.example]
+///   name                ="${prefix}-netapp-account"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_netapp_pool" "example" {
+///   name                ="${prefix}-netapp-pool"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   account_name        = azure_netapp_account.example.name
+///   service_level       = "Standard"
+///   size_in_tb          = 4
+///   qos_type            = "Manual"
+/// }
+/// resource "azure_netapp_volumegrouporacle" "example" {
+///   name                   ="${prefix}-NetAppVolumeGroupOracle"
+///   location               = azure_core_resourcegroup.example.location
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   account_name           = azure_netapp_account.example.name
+///   group_description      = "Example volume group for Oracle"
+///   application_identifier = "TST"
+///   volumes {
+///     name                       ="${prefix}-volume-ora1"
+///     volume_path                ="${prefix}-my-unique-file-ora-path-1"
+///     service_level              = "Standard"
+///     capacity_pool_id           = azure_netapp_pool.example.id
+///     subnet_id                  = azure_network_subnet.example.id
+///     zone                       = "1"
+///     volume_spec_name           = "ora-data1"
+///     storage_quota_in_gb        = 1024
+///     throughput_in_mibps        = 24
+///     protocols                  = "NFSv4.1"
+///     security_style             = "unix"
+///     snapshot_directory_visible = false
+///     export_policy_rules {
+///       rule_index          = 1
+///       allowed_clients     = "0.0.0.0/0"
+///       nfsv3_enabled       = false
+///       nfsv41_enabled      = true
+///       unix_read_only      = false
+///       unix_read_write     = true
+///       root_access_enabled = false
+///     }
+///   }
+///   volumes {
+///     name                       ="${prefix}-volume-oraLog"
+///     volume_path                ="${prefix}-my-unique-file-oralog-path"
+///     service_level              = "Standard"
+///     capacity_pool_id           = azure_netapp_pool.example.id
+///     subnet_id                  = azure_network_subnet.example.id
+///     zone                       = "1"
+///     volume_spec_name           = "ora-log"
+///     storage_quota_in_gb        = 1024
+///     throughput_in_mibps        = 24
+///     protocols                  = "NFSv4.1"
+///     security_style             = "unix"
+///     snapshot_directory_visible = false
+///     export_policy_rules {
+///       rule_index          = 1
+///       allowed_clients     = "0.0.0.0/0"
+///       nfsv3_enabled       = false
+///       nfsv41_enabled      = true
+///       unix_read_only      = false
+///       unix_read_write     = true
+///       root_access_enabled = false
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -531,9 +636,10 @@ import 'volume_group_oracle_state.dart';
 /// import com.pulumi.azure.netapp.VolumeGroupOracle;
 /// import com.pulumi.azure.netapp.VolumeGroupOracleArgs;
 /// import com.pulumi.azure.netapp.inputs.VolumeGroupOracleVolumeArgs;
+/// import com.pulumi.azure.netapp.inputs.VolumeGroupOracleVolumeExportPolicyRuleArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1021,7 +1127,7 @@ import 'volume_group_oracle_state.dart';
 ///         "subnet_id": example_primary_subnet.id,
 ///         "volume_spec_name": "ora-data1",
 ///         "storage_quota_in_gb": 1024,
-///         "throughput_in_mibps": 24,
+///         "throughput_in_mibps": float(24),
 ///         "protocols": "NFSv4.1",
 ///         "security_style": "unix",
 ///         "snapshot_directory_visible": False,
@@ -1051,7 +1157,7 @@ import 'volume_group_oracle_state.dart';
 ///         "subnet_id": example_secondary_subnet.id,
 ///         "volume_spec_name": "ora-data1",
 ///         "storage_quota_in_gb": 1024,
-///         "throughput_in_mibps": 24,
+///         "throughput_in_mibps": float(24),
 ///         "protocols": "NFSv4.1",
 ///         "security_style": "unix",
 ///         "snapshot_directory_visible": False,
@@ -1528,7 +1634,7 @@ import 'volume_group_oracle_state.dart';
 /// 						EndpointType:         pulumi.String("dst"),
 /// 						RemoteVolumeLocation: example.Location,
 /// 						RemoteVolumeResourceId: examplePrimaryVolumeGroupOracle.Volumes.ApplyT(func(volumes []netapp.VolumeGroupOracleVolume) (*string, error) {
-/// 							return &volumes[0].Id, nil
+/// 							return volumes[0].Id, nil
 /// 						}).(pulumi.StringPtrOutput),
 /// 						ReplicationFrequency: pulumi.String("10minutes"),
 /// 					},
@@ -1542,6 +1648,164 @@ import 'volume_group_oracle_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     ="${prefix}-resources"
+///   location = location
+///   tags = {
+///     "SkipNRMSNSG" = "true"
+///   }
+/// }
+/// # Primary region networking
+/// resource "azure_network_virtualnetwork" "example_primary" {
+///   name                ="${prefix}-vnet-primary"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.47.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example_primary" {
+///   name                 ="${prefix}-delegated-subnet-primary"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example_primary.name
+///   address_prefixes     = ["10.47.2.0/24"]
+///   delegations {
+///     name = "exampledelegation"
+///     service_delegation = {
+///       name    = "Microsoft.Netapp/volumes"
+///       actions = ["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"]
+///     }
+///   }
+/// }
+/// # Secondary region networking
+/// resource "azure_network_virtualnetwork" "example_secondary" {
+///   name                ="${prefix}-vnet-secondary"
+///   location            = altLocation
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.48.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example_secondary" {
+///   name                 ="${prefix}-delegated-subnet-secondary"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example_secondary.name
+///   address_prefixes     = ["10.48.2.0/24"]
+///   delegations {
+///     name = "exampledelegation"
+///     service_delegation = {
+///       name    = "Microsoft.Netapp/volumes"
+///       actions = ["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"]
+///     }
+///   }
+/// }
+/// # Primary region NetApp infrastructure
+/// resource "azure_netapp_account" "example_primary" {
+///   depends_on          = [azure_network_subnet.example_primary]
+///   name                ="${prefix}-netapp-account-primary"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_netapp_pool" "example_primary" {
+///   name                ="${prefix}-netapp-pool-primary"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   account_name        = azure_netapp_account.example_primary.name
+///   service_level       = "Standard"
+///   size_in_tb          = 4
+///   qos_type            = "Manual"
+/// }
+/// # Secondary region NetApp infrastructure
+/// resource "azure_netapp_account" "example_secondary" {
+///   depends_on          = [azure_network_subnet.example_secondary]
+///   name                ="${prefix}-netapp-account-secondary"
+///   location            = altLocation
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_netapp_pool" "example_secondary" {
+///   name                ="${prefix}-netapp-pool-secondary"
+///   location            = altLocation
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   account_name        = azure_netapp_account.example_secondary.name
+///   service_level       = "Standard"
+///   size_in_tb          = 4
+///   qos_type            = "Manual"
+/// }
+/// # Primary Oracle volume group
+/// resource "azure_netapp_volumegrouporacle" "example_primary" {
+///   name                   ="${prefix}-NetAppVolumeGroupOracle-primary"
+///   location               = azure_core_resourcegroup.example.location
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   account_name           = azure_netapp_account.example_primary.name
+///   group_description      = "Primary Oracle volume group for CRR"
+///   application_identifier = "TST"
+///   volumes {
+///     name                       ="${prefix}-volume-ora1-primary"
+///     volume_path                ="${prefix}-my-unique-file-ora-path-1-primary"
+///     service_level              = "Standard"
+///     capacity_pool_id           = azure_netapp_pool.example_primary.id
+///     subnet_id                  = azure_network_subnet.example_primary.id
+///     volume_spec_name           = "ora-data1"
+///     storage_quota_in_gb        = 1024
+///     throughput_in_mibps        = 24
+///     protocols                  = "NFSv4.1"
+///     security_style             = "unix"
+///     snapshot_directory_visible = false
+///     export_policy_rules {
+///       rule_index          = 1
+///       allowed_clients     = "0.0.0.0/0"
+///       nfsv3_enabled       = false
+///       nfsv41_enabled      = true
+///       unix_read_only      = false
+///       unix_read_write     = true
+///       root_access_enabled = false
+///     }
+///   }
+/// }
+/// # Secondary Oracle volume group with CRR
+/// resource "azure_netapp_volumegrouporacle" "example_secondary" {
+///   depends_on             = [azure_netapp_volumegrouporacle.example_primary]
+///   name                   ="${prefix}-NetAppVolumeGroupOracle-secondary"
+///   location               = altLocation
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   account_name           = azure_netapp_account.example_secondary.name
+///   group_description      = "Secondary Oracle volume group for CRR"
+///   application_identifier = "TST"
+///   volumes {
+///     name                       ="${prefix}-volume-ora1-secondary"
+///     volume_path                ="${prefix}-my-unique-file-ora-path-1-secondary"
+///     service_level              = "Standard"
+///     capacity_pool_id           = azure_netapp_pool.example_secondary.id
+///     subnet_id                  = azure_network_subnet.example_secondary.id
+///     volume_spec_name           = "ora-data1"
+///     storage_quota_in_gb        = 1024
+///     throughput_in_mibps        = 24
+///     protocols                  = "NFSv4.1"
+///     security_style             = "unix"
+///     snapshot_directory_visible = false
+///     export_policy_rules {
+///       rule_index          = 1
+///       allowed_clients     = "0.0.0.0/0"
+///       nfsv3_enabled       = false
+///       nfsv41_enabled      = true
+///       unix_read_only      = false
+///       unix_read_write     = true
+///       root_access_enabled = false
+///     }
+///     data_protection_replication = {
+///       endpoint_type             = "dst"
+///       remote_volume_location    = azure_core_resourcegroup.example.location
+///       remote_volume_resource_id = azure_netapp_volumegrouporacle.example_primary.volumes[0].id
+///       replication_frequency     = "10minutes"
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -1565,10 +1829,11 @@ import 'volume_group_oracle_state.dart';
 /// import com.pulumi.azure.netapp.VolumeGroupOracle;
 /// import com.pulumi.azure.netapp.VolumeGroupOracleArgs;
 /// import com.pulumi.azure.netapp.inputs.VolumeGroupOracleVolumeArgs;
+/// import com.pulumi.azure.netapp.inputs.VolumeGroupOracleVolumeExportPolicyRuleArgs;
 /// import com.pulumi.azure.netapp.inputs.VolumeGroupOracleVolumeDataProtectionReplicationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1930,7 +2195,7 @@ import 'volume_group_oracle_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 ///
 /// ## Import
 ///
@@ -1942,7 +2207,7 @@ import 'volume_group_oracle_state.dart';
 class VolumeGroupOracle extends pulumi.CustomResource {
   /// Name of the account where the application volume group belong to. Changing this forces a new Application Volume Group to be created and data will be lost.
   late final pulumi.Output<String> accountName;
-  /// The SAP System ID, maximum 3 characters, e.g. `OR1`. Changing this forces a new Application Volume Group to be created and data will be lost.
+  /// The Oracle System ID. Changing this forces a new Application Volume Group to be created and data will be lost.
   late final pulumi.Output<String> applicationIdentifier;
   /// Volume group description. Changing this forces a new Application Volume Group to be created and data will be lost.
   late final pulumi.Output<String> groupDescription;

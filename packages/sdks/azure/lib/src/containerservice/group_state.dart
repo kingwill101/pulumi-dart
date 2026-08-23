@@ -15,7 +15,7 @@ class GroupState {
   final pulumi.Input<List<GroupContainer>>? containers;
   /// A `diagnostics` block as documented below. Changing this forces a new resource to be created.
   final pulumi.Input<GroupDiagnostics>? diagnostics;
-  /// A `dns_config` block as documented below. Changing this forces a new resource to be created.
+  /// A `dnsConfig` block as documented below. Changing this forces a new resource to be created.
   final pulumi.Input<GroupDnsConfig>? dnsConfig;
   /// The DNS label/name for the container group's IP. Changing this forces a new resource to be created.
   ///
@@ -23,27 +23,27 @@ class GroupState {
   final pulumi.Input<String>? dnsNameLabel;
   /// The value representing the security enum. `Noreuse`, `ResourceGroupReuse`, `SubscriptionReuse`, `TenantReuse` or `Unsecure`. Defaults to `Unsecure`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? dnsNameLabelReusePolicy;
-  /// Zero or more `exposed_port` blocks as defined below. Changing this forces a new resource to be created.
+  /// Zero or more `exposedPort` blocks as defined below. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The `exposed_port` can only contain ports that are also exposed on one or more containers in the group.
+  /// &gt; **Note:** The `exposedPort` can only contain ports that are also exposed on one or more containers in the group.
   final pulumi.Input<List<GroupExposedPort>>? exposedPorts;
-  /// The FQDN of the container group derived from `dns_name_label`.
+  /// The FQDN of the container group derived from `dnsNameLabel`.
   final pulumi.Input<String>? fqdn;
   /// An `identity` block as defined below.
   final pulumi.Input<GroupIdentity>? identity;
-  /// An `image_registry_credential` block as documented below. Changing this forces a new resource to be created.
+  /// An `imageRegistryCredential` block as documented below. Changing this forces a new resource to be created.
   final pulumi.Input<List<GroupImageRegistryCredential>>? imageRegistryCredentials;
-  /// The definition of an init container that is part of the group as documented in the `init_container` block below. Changing this forces a new resource to be created.
+  /// The definition of an init container that is part of the group as documented in the `initContainer` block below. Changing this forces a new resource to be created.
   final pulumi.Input<List<GroupInitContainer>>? initContainers;
   /// The IP address allocated to the container group.
   final pulumi.Input<String>? ipAddress;
-  /// Specifies the IP address type of the container. `Public`, `Private` or `None`. Changing this forces a new resource to be created. If set to `Private`, `subnet_ids` also needs to be set. Defaults to `Public`.
+  /// Specifies the IP address type of the container. `Public`, `Private` or `None`. Changing this forces a new resource to be created. If set to `Private`, `subnetIds` also needs to be set. Defaults to `Public`.
   ///
-  /// &gt; **Note:** `dns_name_label` and `os_type` set to `windows` are not compatible with `Private` `ip_address_type`
+  /// &gt; **Note:** `dnsNameLabel` and `osType` set to `windows` are not compatible with `Private` `ipAddressType`
   final pulumi.Input<String>? ipAddressType;
   /// The Key Vault key URI for CMK encryption. Changing this forces a new resource to be created.
   final pulumi.Input<String>? keyVaultKeyId;
-  /// The user assigned identity that has access to the Key Vault Key. If not specified, the RP principal named "Azure Container Instance Service" will be used instead. Make sure the identity has the proper `key_permissions` set, at least with `Get`, `UnwrapKey`, `WrapKey` and `GetRotationPolicy`.
+  /// The user assigned identity that has access to the Key Vault Key. If not specified, the RP principal named "Azure Container Instance Service" will be used instead. Make sure the identity has the proper `keyPermissions` set, at least with `Get`, `UnwrapKey`, `WrapKey` and `GetRotationPolicy`.
   final pulumi.Input<String>? keyVaultUserAssignedIdentityId;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -52,11 +52,11 @@ class GroupState {
   final pulumi.Input<String>? networkProfileId;
   /// The OS for the container group. Allowed values are `Linux` and `Windows`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** if `os_type` is set to `Windows` currently only a single `container` block is supported. Windows containers are not supported in virtual networks.
+  /// &gt; **Note:** if `osType` is set to `Windows` currently only a single `container` block is supported. Windows containers are not supported in virtual networks.
   final pulumi.Input<String>? osType;
   /// The priority of the Container Group. Possible values are `Regular` and `Spot`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** When `priority` is set to `Spot`, the `ip_address_type` has to be `None`.
+  /// &gt; **Note:** When `priority` is set to `Spot`, the `ipAddressType` has to be `None`.
   final pulumi.Input<String>? priority;
   /// The name of the resource group in which to create the Container Group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
@@ -74,18 +74,18 @@ class GroupState {
   /// Creates a new [GroupState].
   /// [containers] The definition of a container that is part of the group as documented in the `container` block below. Changing this forces a new resource to be created.
   /// [diagnostics] A `diagnostics` block as documented below. Changing this forces a new resource to be created.
-  /// [dnsConfig] A `dns_config` block as documented below. Changing this forces a new resource to be created.
+  /// [dnsConfig] A `dnsConfig` block as documented below. Changing this forces a new resource to be created.
   /// [dnsNameLabel] The DNS label/name for the container group's IP. Changing this forces a new resource to be created.
   /// [dnsNameLabelReusePolicy] The value representing the security enum. `Noreuse`, `ResourceGroupReuse`, `SubscriptionReuse`, `TenantReuse` or `Unsecure`. Defaults to `Unsecure`. Changing this forces a new resource to be created.
-  /// [exposedPorts] Zero or more `exposed_port` blocks as defined below. Changing this forces a new resource to be created.
-  /// [fqdn] The FQDN of the container group derived from `dns_name_label`.
+  /// [exposedPorts] Zero or more `exposedPort` blocks as defined below. Changing this forces a new resource to be created.
+  /// [fqdn] The FQDN of the container group derived from `dnsNameLabel`.
   /// [identity] An `identity` block as defined below.
-  /// [imageRegistryCredentials] An `image_registry_credential` block as documented below. Changing this forces a new resource to be created.
-  /// [initContainers] The definition of an init container that is part of the group as documented in the `init_container` block below. Changing this forces a new resource to be created.
+  /// [imageRegistryCredentials] An `imageRegistryCredential` block as documented below. Changing this forces a new resource to be created.
+  /// [initContainers] The definition of an init container that is part of the group as documented in the `initContainer` block below. Changing this forces a new resource to be created.
   /// [ipAddress] The IP address allocated to the container group.
-  /// [ipAddressType] Specifies the IP address type of the container. `Public`, `Private` or `None`. Changing this forces a new resource to be created. If set to `Private`, `subnet_ids` also needs to be set. Defaults to `Public`.
+  /// [ipAddressType] Specifies the IP address type of the container. `Public`, `Private` or `None`. Changing this forces a new resource to be created. If set to `Private`, `subnetIds` also needs to be set. Defaults to `Public`.
   /// [keyVaultKeyId] The Key Vault key URI for CMK encryption. Changing this forces a new resource to be created.
-  /// [keyVaultUserAssignedIdentityId] The user assigned identity that has access to the Key Vault Key. If not specified, the RP principal named "Azure Container Instance Service" will be used instead. Make sure the identity has the proper `key_permissions` set, at least with `Get`, `UnwrapKey`, `WrapKey` and `GetRotationPolicy`.
+  /// [keyVaultUserAssignedIdentityId] The user assigned identity that has access to the Key Vault Key. If not specified, the RP principal named "Azure Container Instance Service" will be used instead. Make sure the identity has the proper `keyPermissions` set, at least with `Get`, `UnwrapKey`, `WrapKey` and `GetRotationPolicy`.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Container Group. Changing this forces a new resource to be created.
   /// [networkProfileId] Optional.
@@ -185,4 +185,3 @@ class GroupState {
     );
   }
 }
-

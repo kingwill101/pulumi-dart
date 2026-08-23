@@ -93,7 +93,7 @@ import 'custom_certificate_state.dart';
 /// example = azure.core.ResourceGroup("example",
 ///     name="example-resources",
 ///     location="West Europe")
-/// example_web_pubsub_service = azurerm.index.WebPubsubService("example",
+/// example_web_pubsub_service = azurerm.WebPubsubService("example",
 ///     name=example-webpubsub,
 ///     location=test_azurerm_resource_group.location,
 ///     resource_group_name=test_azurerm_resource_group.name,
@@ -169,7 +169,7 @@ import 'custom_certificate_state.dart';
 ///         Location = "West Europe",
 ///     });
 ///
-///     var exampleWebPubsubService = new Azurerm.Index.WebPubsubService("example", new()
+///     var exampleWebPubsubService = new Azurerm.WebPubsubService("example", new()
 ///     {
 ///         Name = "example-webpubsub",
 ///         Location = testAzurermResourceGroup.Location,
@@ -377,6 +377,71 @@ import 'custom_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azurerm_webpubsubservice" "example" {
+///   name                = "example-webpubsub"
+///   location            = testAzurermResourceGroup.location
+///   resource_group_name = testAzurermResourceGroup.name
+///   sku = [{
+///     "name"     = "Premium_P1"
+///     "capacity" = 1
+///   }]
+///   identity = [{
+///     "type" = "SystemAssigned"
+///   }]
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "examplekeyvault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name            = "premium"
+///   access_policies {
+///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
+///     object_id               = data.azure_core_getclientconfig.current.object_id
+///     certificate_permissions = ["Create", "Get", "List"]
+///     secret_permissions      = ["Get", "List"]
+///   }
+///   access_policies {
+///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
+///     object_id               = testAzurermWebPubsubService.identity[0].principalId
+///     certificate_permissions = ["Create", "Get", "List"]
+///     secret_permissions      = ["Get", "List"]
+///   }
+/// }
+/// resource "azure_keyvault_certificate" "example" {
+///   name         = "imported-cert"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   certificate = {
+///     contents = filebase64("certificate-to-import.pfx")
+///     password = ""
+///   }
+/// }
+/// resource "azure_webpubsub_customcertificate" "test" {
+///   depends_on            = [exampleAzurermKeyVaultAccessPolicy]
+///   name                  = "example-cert"
+///   web_pubsub_id         = azurerm_webpubsubservice.example.id
+///   custom_certificate_id = azure_keyvault_certificate.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -399,8 +464,8 @@ import 'custom_certificate_state.dart';
 /// import com.pulumi.azure.webpubsub.CustomCertificate;
 /// import com.pulumi.azure.webpubsub.CustomCertificateArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -423,11 +488,11 @@ import 'custom_certificate_state.dart';
 ///             .name("example-webpubsub")
 ///             .location(testAzurermResourceGroup.location())
 ///             .resourceGroupName(testAzurermResourceGroup.name())
-///             .sku(List.of(Map.ofEntries(
+///             .sku(Arrays.asList(Map.ofEntries(
 ///                 Map.entry("name", "Premium_P1"),
 ///                 Map.entry("capacity", 1)
 ///             )))
-///             .identity(List.of(Map.of("type", "SystemAssigned")))
+///             .identity(Arrays.asList(Map.of("type", "SystemAssigned")))
 ///             .build());
 ///
 ///         var exampleKeyVault = new KeyVault("exampleKeyVault", KeyVaultArgs.builder()

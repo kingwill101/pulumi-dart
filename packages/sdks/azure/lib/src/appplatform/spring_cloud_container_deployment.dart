@@ -5,7 +5,7 @@ import 'spring_cloud_container_deployment_state.dart';
 
 /// Manages a Spring Cloud Container Deployment.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudContainerDeployment` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudContainerDeployment` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -200,6 +200,45 @@ import 'spring_cloud_container_deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "E0"
+/// }
+/// resource "azure_appplatform_springcloudapp" "example" {
+///   name                = "example"
+///   resource_group_name = azure_appplatform_springcloudservice.example.resource_group_name
+///   service_name        = azure_appplatform_springcloudservice.example.name
+/// }
+/// resource "azure_appplatform_springcloudcontainerdeployment" "example" {
+///   name                = "example"
+///   spring_cloud_app_id = azure_appplatform_springcloudapp.example.id
+///   instance_count      = 2
+///   arguments           = ["-cp", "/app/resources:/app/classes:/app/libs/*", "hello.Application"]
+///   commands            = ["java"]
+///   environment_variables = {
+///     "Foo" = "Bar"
+///     "Env" = "Staging"
+///   }
+///   server             = "docker.io"
+///   image              = "springio/gs-spring-boot-docker"
+///   language_framework = "springboot"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +253,8 @@ import 'spring_cloud_container_deployment_state.dart';
 /// import com.pulumi.azure.appplatform.SpringCloudAppArgs;
 /// import com.pulumi.azure.appplatform.SpringCloudContainerDeployment;
 /// import com.pulumi.azure.appplatform.SpringCloudContainerDeploymentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

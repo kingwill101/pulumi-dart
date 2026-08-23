@@ -9,12 +9,12 @@ import 'private_cloud_management_cluster.dart';
 /// {@macro pulumi_avs_private_cloud_private_cloud_args_doc}
 class PrivateCloudArgs {
   /// Is the Azure VMware Solution Private Cloud connected to the internet? This field can not be updated with `management_cluster[0].size` together.
-  /// &gt; **Note:** `internet_connection_enabled` and `management_cluster[0].size` cannot be updated at the same time.
+  /// &gt; **Note:** `internetConnectionEnabled` and `management_cluster[0].size` cannot be updated at the same time.
   final pulumi.Input<bool>? internetConnectionEnabled;
   /// The Azure Region where the Azure VMware Solution Private Cloud should exist. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   final pulumi.Input<String>? location;
-  /// A `management_cluster` block as defined below.
-  /// &gt; **Note:** `internet_connection_enabled` and `management_cluster[0].size` cannot be updated at the same time.
+  /// A `managementCluster` block as defined below.
+  /// &gt; **Note:** `internetConnectionEnabled` and `management_cluster[0].size` cannot be updated at the same time.
   final pulumi.Input<PrivateCloudManagementCluster> managementCluster;
   /// The name which should be used for this Azure VMware Solution Private Cloud. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   final pulumi.Input<String>? name;
@@ -34,7 +34,7 @@ class PrivateCloudArgs {
   /// Creates a new [PrivateCloudArgs].
   /// [internetConnectionEnabled] Is the Azure VMware Solution Private Cloud connected to the internet? This field can not be updated with `management_cluster[0].size` together.
   /// [location] The Azure Region where the Azure VMware Solution Private Cloud should exist. Changing this forces a new Azure VMware Solution Private Cloud to be created.
-  /// [managementCluster] A `management_cluster` block as defined below.
+  /// [managementCluster] A `managementCluster` block as defined below.
   /// [name] The name which should be used for this Azure VMware Solution Private Cloud. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   /// [networkSubnetCidr] The subnet which should be unique across virtual network in your subscription as well as on-premise. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   /// [nsxtPassword] The password of the VMware NSX Manager cloudadmin. Changing this forces a new Azure VMware Solution Private Cloud to be created.
@@ -85,4 +85,3 @@ class PrivateCloudArgs {
     );
   }
 }
-

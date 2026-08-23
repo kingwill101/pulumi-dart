@@ -36,4 +36,3 @@ class GetLinuxWebAppAuthSettingsV2AppleV2 {
     );
   }
 }
-

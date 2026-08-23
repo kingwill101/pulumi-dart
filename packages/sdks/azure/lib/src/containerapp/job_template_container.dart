@@ -20,11 +20,11 @@ class JobTemplateContainer {
   final pulumi.Input<List<JobTemplateContainerEnv>>? envs;
   /// The amount of ephemeral storage available to the Container App.
   ///
-  /// &gt; **Note:** `ephemeral_storage` is currently in preview and not configurable at this time.
+  /// &gt; **Note:** `ephemeralStorage` is currently in preview and not configurable at this time.
   final pulumi.Input<String>? ephemeralStorage;
   /// The image to use to create the container.
   final pulumi.Input<String> image;
-  /// A `liveness_probe` block as detailed below.
+  /// A `livenessProbe` block as detailed below.
   final pulumi.Input<List<JobTemplateContainerLivenessProbe>>? livenessProbes;
   /// The amount of memory to allocate to the container.
   ///
@@ -32,11 +32,11 @@ class JobTemplateContainer {
   final pulumi.Input<String> memory;
   /// The name of the container.
   final pulumi.Input<String> name;
-  /// A `readiness_probe` block as detailed below.
+  /// A `readinessProbe` block as detailed below.
   final pulumi.Input<List<JobTemplateContainerReadinessProbe>>? readinessProbes;
-  /// A `startup_probe` block as detailed below.
+  /// A `startupProbe` block as detailed below.
   final pulumi.Input<List<JobTemplateContainerStartupProbe>>? startupProbes;
-  /// A `volume_mounts` block as detailed below.
+  /// A `volumeMounts` block as detailed below.
   final pulumi.Input<List<JobTemplateContainerVolumeMount>>? volumeMounts;
 
   /// Creates a new [JobTemplateContainer].
@@ -46,12 +46,12 @@ class JobTemplateContainer {
   /// [envs] One or more `env` blocks as detailed below.
   /// [ephemeralStorage] The amount of ephemeral storage available to the Container App.
   /// [image] The image to use to create the container.
-  /// [livenessProbes] A `liveness_probe` block as detailed below.
+  /// [livenessProbes] A `livenessProbe` block as detailed below.
   /// [memory] The amount of memory to allocate to the container.
   /// [name] The name of the container.
-  /// [readinessProbes] A `readiness_probe` block as detailed below.
-  /// [startupProbes] A `startup_probe` block as detailed below.
-  /// [volumeMounts] A `volume_mounts` block as detailed below.
+  /// [readinessProbes] A `readinessProbe` block as detailed below.
+  /// [startupProbes] A `startupProbe` block as detailed below.
+  /// [volumeMounts] A `volumeMounts` block as detailed below.
   const JobTemplateContainer({
     this.args,
     this.commands,
@@ -101,4 +101,3 @@ class JobTemplateContainer {
     );
   }
 }
-

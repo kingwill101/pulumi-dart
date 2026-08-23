@@ -250,6 +250,59 @@ import 'next_generation_firewall_virtual_hub_strata_cloud_manager_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "example-public-ip"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   allocation_method   = "Static"
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// resource "azure_network_virtualwan" "example" {
+///   name                = "example-virtualwan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_virtualhub" "example" {
+///   name                = "example-virtualhub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   address_prefix      = "10.0.0.0/23"
+///   tags = {
+///     "hubSaaSPreview" = "true"
+///   }
+/// }
+/// resource "azure_paloalto_virtualnetworkappliance" "example" {
+///   name           = "example-appliance"
+///   virtual_hub_id = azure_network_virtualhub.example.id
+/// }
+/// resource "azure_paloalto_nextgenerationfirewallvirtualhubstratacloudmanager" "example" {
+///   name                             = "example"
+///   resource_group_name              = "example"
+///   location                         = "West Europe"
+///   strata_cloud_manager_tenant_name = "example"
+///   network_profile = {
+///     public_ip_address_ids        = [azure_network_publicip.example.id]
+///     virtual_hub_id               = azure_network_virtualhub.example.id
+///     network_virtual_appliance_id = azure_paloalto_virtualnetworkappliance.example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -269,8 +322,8 @@ import 'next_generation_firewall_virtual_hub_strata_cloud_manager_state.dart';
 /// import com.pulumi.azure.paloalto.NextGenerationFirewallVirtualHubStrataCloudManager;
 /// import com.pulumi.azure.paloalto.NextGenerationFirewallVirtualHubStrataCloudManagerArgs;
 /// import com.pulumi.azure.paloalto.inputs.NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -392,7 +445,7 @@ import 'next_generation_firewall_virtual_hub_strata_cloud_manager_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `PaloAltoNetworks.Cloudngfw` - 2025-05-23
+/// * `PaloAltoNetworks.Cloudngfw` - 2025-10-08
 ///
 /// ## Import
 ///
@@ -402,19 +455,19 @@ import 'next_generation_firewall_virtual_hub_strata_cloud_manager_state.dart';
 /// $ pulumi import azure:paloalto/nextGenerationFirewallVirtualHubStrataCloudManager:NextGenerationFirewallVirtualHubStrataCloudManager example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/PaloAltoNetworks.Cloudngfw/firewalls/myVNetStrataCloudManagerFW
 /// ```
 class NextGenerationFirewallVirtualHubStrataCloudManager extends pulumi.CustomResource {
-  /// One or more `destination_nat` blocks as defined below.
+  /// One or more `destinationNat` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> destinationNats;
-  /// A `dns_settings` block as defined below.
+  /// A `dnsSettings` block as defined below.
   late final pulumi.Output<NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings?> dnsSettings;
   /// A `identity` block as defined below.
   late final pulumi.Output<NextGenerationFirewallVirtualHubStrataCloudManagerIdentity?> identity;
   /// The Azure Region where the Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
   late final pulumi.Output<String> location;
-  /// The ID of the marketplace offer. Defaults to `pan_swfw_cloud_ngfw`. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
+  /// The ID of the marketplace offer. Defaults to `panSwfwCloudNgfw`. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
   late final pulumi.Output<String?> marketplaceOfferId;
   /// The name which should be used for this Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
   late final pulumi.Output<String> name;
-  /// A `network_profile` block as defined below.
+  /// A `networkProfile` block as defined below.
   late final pulumi.Output<NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile> networkProfile;
   /// The ID of the billing plan. Defaults to `panw-cngfw-payg`.
   late final pulumi.Output<String?> planId;

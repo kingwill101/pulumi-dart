@@ -121,6 +121,31 @@ import 'aaaa_record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dns_zone" "example" {
+///   name                = "mydomain.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_dns_aaaarecord" "example" {
+///   name                = "test"
+///   zone_name           = azure_dns_zone.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ttl                 = 300
+///   records             = ["2001:db8::1:0:0:1"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -133,8 +158,8 @@ import 'aaaa_record_state.dart';
 /// import com.pulumi.azure.dns.ZoneArgs;
 /// import com.pulumi.azure.dns.AaaaRecord;
 /// import com.pulumi.azure.dns.AaaaRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -337,6 +362,38 @@ import 'aaaa_record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dns_zone" "example" {
+///   name                = "mydomain.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "mypublicip"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Dynamic"
+///   ip_version          = "IPv6"
+/// }
+/// resource "azure_dns_aaaarecord" "example" {
+///   name                = "test"
+///   zone_name           = azure_dns_zone.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ttl                 = 300
+///   target_resource_id  = azure_network_publicip.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -351,8 +408,8 @@ import 'aaaa_record_state.dart';
 /// import com.pulumi.azure.network.PublicIpArgs;
 /// import com.pulumi.azure.dns.AaaaRecord;
 /// import com.pulumi.azure.dns.AaaaRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -446,13 +503,13 @@ class AaaaRecord extends pulumi.CustomResource {
   late final pulumi.Output<String> fqdn;
   /// The name of the DNS AAAA Record. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// List of IPv6 Addresses. Conflicts with `target_resource_id`.
+  /// List of IPv6 Addresses. Conflicts with `targetResourceId`.
   late final pulumi.Output<List<String>?> records;
   /// Specifies the resource group where the DNS Zone (parent resource) exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
   ///
-  /// &gt; **Note:** either `records` OR `target_resource_id` must be specified, but not both.
+  /// &gt; **Note:** either `records` OR `targetResourceId` must be specified, but not both.
   late final pulumi.Output<Map<String, String>?> tags;
   /// The Azure resource id of the target object. Conflicts with `records`.
   late final pulumi.Output<String?> targetResourceId;

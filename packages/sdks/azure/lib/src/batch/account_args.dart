@@ -17,19 +17,19 @@ class AccountArgs {
   final pulumi.Input<AccountEncryption>? encryption;
   /// An `identity` block as defined below.
   final pulumi.Input<AccountIdentity>? identity;
-  /// A `key_vault_reference` block, as defined below, that describes the Azure KeyVault reference to use when deploying the Azure Batch account using the `UserSubscription` pool allocation mode.
+  /// A `keyVaultReference` block, as defined below, that describes the Azure KeyVault reference to use when deploying the Azure Batch account using the `UserSubscription` pool allocation mode.
   final pulumi.Input<AccountKeyVaultReference>? keyVaultReference;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
   /// Specifies the name of the Batch account. Only lowercase Alphanumeric characters allowed. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// A `network_profile` block as defined below.
+  /// A `networkProfile` block as defined below.
   final pulumi.Input<AccountNetworkProfile>? networkProfile;
   /// Specifies the mode to use for pool allocation. Possible values are `BatchService` or `UserSubscription`. Defaults to `BatchService`.
   final pulumi.Input<String>? poolAllocationMode;
   /// Whether public network access is allowed for this server. Defaults to `true`.
   ///
-  /// &gt; **NOTE:** When using `UserSubscription` mode, an Azure KeyVault reference has to be specified. See `key_vault_reference` below.
+  /// &gt; **NOTE:** When using `UserSubscription` mode, an Azure KeyVault reference has to be specified. See `keyVaultReference` below.
   ///
   /// &gt; **NOTE:** When using `UserSubscription` mode, the `Microsoft Azure Batch` service principal has to have `Contributor` role on your subscription scope, as documented [here](https://docs.microsoft.com/azure/batch/batch-account-create-portal#additional-configuration-for-user-subscription-mode).
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
@@ -43,7 +43,7 @@ class AccountArgs {
   final pulumi.Input<String>? storageAccountAuthenticationMode;
   /// Specifies the storage account to use for the Batch account. If not specified, Azure Batch will manage the storage.
   ///
-  /// &gt; **NOTE:** When using `storage_account_id`, the `storage_account_authentication_mode` must be specified as well.
+  /// &gt; **NOTE:** When using `storageAccountId`, the `storageAccountAuthenticationMode` must be specified as well.
   final pulumi.Input<String>? storageAccountId;
   /// Specifies the user assigned identity for the storage account.
   final pulumi.Input<String>? storageAccountNodeIdentity;
@@ -54,10 +54,10 @@ class AccountArgs {
   /// [allowedAuthenticationModes] Specifies the allowed authentication mode for the Batch account. Possible values include `AAD`, `SharedKey` or `TaskAuthenticationToken`.
   /// [encryption] Specifies if customer managed key encryption should be used to encrypt batch account data. One `encryption` block as defined below.
   /// [identity] An `identity` block as defined below.
-  /// [keyVaultReference] A `key_vault_reference` block, as defined below, that describes the Azure KeyVault reference to use when deploying the Azure Batch account using the `UserSubscription` pool allocation mode.
+  /// [keyVaultReference] A `keyVaultReference` block, as defined below, that describes the Azure KeyVault reference to use when deploying the Azure Batch account using the `UserSubscription` pool allocation mode.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Batch account. Only lowercase Alphanumeric characters allowed. Changing this forces a new resource to be created.
-  /// [networkProfile] A `network_profile` block as defined below.
+  /// [networkProfile] A `networkProfile` block as defined below.
   /// [poolAllocationMode] Specifies the mode to use for pool allocation. Possible values are `BatchService` or `UserSubscription`. Defaults to `BatchService`.
   /// [publicNetworkAccessEnabled] Whether public network access is allowed for this server. Defaults to `true`.
   /// [resourceGroupName] The name of the resource group in which to create the Batch account. Changing this forces a new resource to be created.
@@ -120,4 +120,3 @@ class AccountArgs {
     );
   }
 }
-

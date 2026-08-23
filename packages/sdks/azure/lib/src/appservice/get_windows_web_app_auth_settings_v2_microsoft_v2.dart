@@ -42,4 +42,3 @@ class GetWindowsWebAppAuthSettingsV2MicrosoftV2 {
     );
   }
 }
-

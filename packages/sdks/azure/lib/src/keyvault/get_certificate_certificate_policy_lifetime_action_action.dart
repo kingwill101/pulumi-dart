@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCertificateCertificatePolicyLifetimeActionAction {
-  /// The Type of action to be performed when the lifetime trigger is triggerec.
+  /// The Type of action to be performed when the lifetime trigger is triggered.
   final pulumi.Input<String> actionType;
 
   /// Creates a new [GetCertificateCertificatePolicyLifetimeActionAction].
-  /// [actionType] The Type of action to be performed when the lifetime trigger is triggerec.
+  /// [actionType] The Type of action to be performed when the lifetime trigger is triggered.
   const GetCertificateCertificatePolicyLifetimeActionAction({
     required this.actionType,
   });
@@ -24,4 +24,3 @@ class GetCertificateCertificatePolicyLifetimeActionAction {
     );
   }
 }
-

@@ -7,7 +7,7 @@ class CertificateCertificate {
   final pulumi.Input<String> contents;
   /// The password associated with the certificate.
   ///
-  /// &gt; **NOTE:** A PEM certificate is already base64 encoded. To successfully import, the `contents` property should include a PEM encoded X509 certificate and a private_key in pkcs8 format. There should only be linux style `\n` line endings and the whole block should have the PEM begin/end blocks around the certificate data and the private key data.
+  /// &gt; **NOTE:** A PEM certificate is already base64 encoded. To successfully import, the `contents` property should include a PEM encoded X509 certificate and a privateKey in pkcs8 format. There should only be linux style `\n` line endings and the whole block should have the PEM begin/end blocks around the certificate data and the private key data.
   ///
   /// To convert a private key to pkcs8 format with openssl use:
   /// ```shell
@@ -51,4 +51,3 @@ class CertificateCertificate {
     );
   }
 }
-

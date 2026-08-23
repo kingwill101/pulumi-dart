@@ -17,6 +17,7 @@ class GetBlobResult {
   final Map<String, String> metadata;
   final String name;
   final String storageAccountName;
+  final String storageContainerId;
   final String storageContainerName;
   /// The type of the storage blob
   final String type;
@@ -32,6 +33,7 @@ class GetBlobResult {
   /// [metadata] A map of custom blob metadata.
   /// [name] Required.
   /// [storageAccountName] Required.
+  /// [storageContainerId] Required.
   /// [storageContainerName] Required.
   /// [type] The type of the storage blob
   /// [url] The URL of the storage blob.
@@ -44,6 +46,7 @@ class GetBlobResult {
     required this.metadata,
     required this.name,
     required this.storageAccountName,
+    required this.storageContainerId,
     required this.storageContainerName,
     required this.type,
     required this.url,
@@ -59,6 +62,7 @@ class GetBlobResult {
       'metadata': metadata,
       'name': name,
       'storageAccountName': storageAccountName,
+      'storageContainerId': storageContainerId,
       'storageContainerName': storageContainerName,
       'type': type,
       'url': url,
@@ -75,10 +79,10 @@ class GetBlobResult {
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
       storageAccountName: map['storageAccountName'] as String,
+      storageContainerId: map['storageContainerId'] as String,
       storageContainerName: map['storageContainerName'] as String,
       type: map['type'] as String,
       url: map['url'] as String,
     );
   }
 }
-

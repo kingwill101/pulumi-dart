@@ -10,14 +10,14 @@ class FirewallPolicyRuleCollectionGroupApplicationRuleCollection {
   final pulumi.Input<String> name;
   /// The priority of the application rule collection. The range is `100` - `65000`.
   final pulumi.Input<int> priority;
-  /// One or more `application_rule` blocks as defined below.
+  /// One or more `applicationRule` blocks as defined below.
   final pulumi.Input<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule>> rules;
 
   /// Creates a new [FirewallPolicyRuleCollectionGroupApplicationRuleCollection].
   /// [action] The action to take for the application rules in this collection. Possible values are `Allow` and `Deny`.
   /// [name] The name which should be used for this application rule collection.
   /// [priority] The priority of the application rule collection. The range is `100` - `65000`.
-  /// [rules] One or more `application_rule` blocks as defined below.
+  /// [rules] One or more `applicationRule` blocks as defined below.
   const FirewallPolicyRuleCollectionGroupApplicationRuleCollection({
     required this.action,
     required this.name,
@@ -43,4 +43,3 @@ class FirewallPolicyRuleCollectionGroupApplicationRuleCollection {
     );
   }
 }
-

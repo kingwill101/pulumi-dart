@@ -15,7 +15,7 @@ class NamespaceSchemaGroupArgs {
   final pulumi.Input<String> schemaCompatibility;
   /// Specifies the Type of this schema group. Possible values are `Avro`, `Unknown` and `Json`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** When `schema_type` is specified as `Json`, `schema_compatibility` must be set to `None`.
+  /// &gt; **Note:** When `schemaType` is specified as `Json`, `schemaCompatibility` must be set to `None`.
   final pulumi.Input<String> schemaType;
 
   /// Creates a new [NamespaceSchemaGroupArgs].
@@ -48,4 +48,3 @@ class NamespaceSchemaGroupArgs {
     );
   }
 }
-

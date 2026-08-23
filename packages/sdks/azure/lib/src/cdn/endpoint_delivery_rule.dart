@@ -23,74 +23,74 @@ import 'endpoint_delivery_rule_url_redirect_action.dart';
 import 'endpoint_delivery_rule_url_rewrite_action.dart';
 
 class EndpointDeliveryRule {
-  /// A `cache_expiration_action` block as defined above.
+  /// A `cacheExpirationAction` block as defined above.
   final pulumi.Input<EndpointDeliveryRuleCacheExpirationAction>? cacheExpirationAction;
-  /// A `cache_key_query_string_action` block as defined above.
+  /// A `cacheKeyQueryStringAction` block as defined above.
   final pulumi.Input<EndpointDeliveryRuleCacheKeyQueryStringAction>? cacheKeyQueryStringAction;
-  /// A `cookies_condition` block as defined above.
+  /// A `cookiesCondition` block as defined above.
   final pulumi.Input<List<EndpointDeliveryRuleCookiesCondition>>? cookiesConditions;
-  /// A `device_condition` block as defined below.
+  /// A `deviceCondition` block as defined below.
   final pulumi.Input<EndpointDeliveryRuleDeviceCondition>? deviceCondition;
-  /// A `http_version_condition` block as defined below.
+  /// A `httpVersionCondition` block as defined below.
   final pulumi.Input<List<EndpointDeliveryRuleHttpVersionCondition>>? httpVersionConditions;
-  /// A `modify_request_header_action` block as defined below.
+  /// A `modifyRequestHeaderAction` block as defined below.
   final pulumi.Input<List<EndpointDeliveryRuleModifyRequestHeaderAction>>? modifyRequestHeaderActions;
-  /// A `modify_response_header_action` block as defined below.
+  /// A `modifyResponseHeaderAction` block as defined below.
   final pulumi.Input<List<EndpointDeliveryRuleModifyResponseHeaderAction>>? modifyResponseHeaderActions;
   /// The Name which should be used for this Delivery Rule.
   final pulumi.Input<String> name;
   /// The order used for this rule. The order values should be sequential and begin at `1`.
   final pulumi.Input<int> order;
-  /// A `post_arg_condition` block as defined below.
+  /// A `postArgCondition` block as defined below.
   final pulumi.Input<List<EndpointDeliveryRulePostArgCondition>>? postArgConditions;
-  /// A `query_string_condition` block as defined below.
+  /// A `queryStringCondition` block as defined below.
   final pulumi.Input<List<EndpointDeliveryRuleQueryStringCondition>>? queryStringConditions;
-  /// A `remote_address_condition` block as defined below.
+  /// A `remoteAddressCondition` block as defined below.
   final pulumi.Input<List<EndpointDeliveryRuleRemoteAddressCondition>>? remoteAddressConditions;
-  /// A `request_body_condition` block as defined below.
+  /// A `requestBodyCondition` block as defined below.
   final pulumi.Input<List<EndpointDeliveryRuleRequestBodyCondition>>? requestBodyConditions;
-  /// A `request_header_condition` block as defined below.
+  /// A `requestHeaderCondition` block as defined below.
   final pulumi.Input<List<EndpointDeliveryRuleRequestHeaderCondition>>? requestHeaderConditions;
-  /// A `request_method_condition` block as defined below.
+  /// A `requestMethodCondition` block as defined below.
   final pulumi.Input<EndpointDeliveryRuleRequestMethodCondition>? requestMethodCondition;
-  /// A `request_scheme_condition` block as defined below.
+  /// A `requestSchemeCondition` block as defined below.
   final pulumi.Input<EndpointDeliveryRuleRequestSchemeCondition>? requestSchemeCondition;
-  /// A `request_uri_condition` block as defined below.
+  /// A `requestUriCondition` block as defined below.
   final pulumi.Input<List<EndpointDeliveryRuleRequestUriCondition>>? requestUriConditions;
-  /// A `url_file_extension_condition` block as defined below.
+  /// A `urlFileExtensionCondition` block as defined below.
   final pulumi.Input<List<EndpointDeliveryRuleUrlFileExtensionCondition>>? urlFileExtensionConditions;
-  /// A `url_file_name_condition` block as defined below.
+  /// A `urlFileNameCondition` block as defined below.
   final pulumi.Input<List<EndpointDeliveryRuleUrlFileNameCondition>>? urlFileNameConditions;
-  /// A `url_path_condition` block as defined below.
+  /// A `urlPathCondition` block as defined below.
   final pulumi.Input<List<EndpointDeliveryRuleUrlPathCondition>>? urlPathConditions;
-  /// A `url_redirect_action` block as defined below.
+  /// A `urlRedirectAction` block as defined below.
   final pulumi.Input<EndpointDeliveryRuleUrlRedirectAction>? urlRedirectAction;
-  /// A `url_rewrite_action` block as defined below.
+  /// A `urlRewriteAction` block as defined below.
   final pulumi.Input<EndpointDeliveryRuleUrlRewriteAction>? urlRewriteAction;
 
   /// Creates a new [EndpointDeliveryRule].
-  /// [cacheExpirationAction] A `cache_expiration_action` block as defined above.
-  /// [cacheKeyQueryStringAction] A `cache_key_query_string_action` block as defined above.
-  /// [cookiesConditions] A `cookies_condition` block as defined above.
-  /// [deviceCondition] A `device_condition` block as defined below.
-  /// [httpVersionConditions] A `http_version_condition` block as defined below.
-  /// [modifyRequestHeaderActions] A `modify_request_header_action` block as defined below.
-  /// [modifyResponseHeaderActions] A `modify_response_header_action` block as defined below.
+  /// [cacheExpirationAction] A `cacheExpirationAction` block as defined above.
+  /// [cacheKeyQueryStringAction] A `cacheKeyQueryStringAction` block as defined above.
+  /// [cookiesConditions] A `cookiesCondition` block as defined above.
+  /// [deviceCondition] A `deviceCondition` block as defined below.
+  /// [httpVersionConditions] A `httpVersionCondition` block as defined below.
+  /// [modifyRequestHeaderActions] A `modifyRequestHeaderAction` block as defined below.
+  /// [modifyResponseHeaderActions] A `modifyResponseHeaderAction` block as defined below.
   /// [name] The Name which should be used for this Delivery Rule.
   /// [order] The order used for this rule. The order values should be sequential and begin at `1`.
-  /// [postArgConditions] A `post_arg_condition` block as defined below.
-  /// [queryStringConditions] A `query_string_condition` block as defined below.
-  /// [remoteAddressConditions] A `remote_address_condition` block as defined below.
-  /// [requestBodyConditions] A `request_body_condition` block as defined below.
-  /// [requestHeaderConditions] A `request_header_condition` block as defined below.
-  /// [requestMethodCondition] A `request_method_condition` block as defined below.
-  /// [requestSchemeCondition] A `request_scheme_condition` block as defined below.
-  /// [requestUriConditions] A `request_uri_condition` block as defined below.
-  /// [urlFileExtensionConditions] A `url_file_extension_condition` block as defined below.
-  /// [urlFileNameConditions] A `url_file_name_condition` block as defined below.
-  /// [urlPathConditions] A `url_path_condition` block as defined below.
-  /// [urlRedirectAction] A `url_redirect_action` block as defined below.
-  /// [urlRewriteAction] A `url_rewrite_action` block as defined below.
+  /// [postArgConditions] A `postArgCondition` block as defined below.
+  /// [queryStringConditions] A `queryStringCondition` block as defined below.
+  /// [remoteAddressConditions] A `remoteAddressCondition` block as defined below.
+  /// [requestBodyConditions] A `requestBodyCondition` block as defined below.
+  /// [requestHeaderConditions] A `requestHeaderCondition` block as defined below.
+  /// [requestMethodCondition] A `requestMethodCondition` block as defined below.
+  /// [requestSchemeCondition] A `requestSchemeCondition` block as defined below.
+  /// [requestUriConditions] A `requestUriCondition` block as defined below.
+  /// [urlFileExtensionConditions] A `urlFileExtensionCondition` block as defined below.
+  /// [urlFileNameConditions] A `urlFileNameCondition` block as defined below.
+  /// [urlPathConditions] A `urlPathCondition` block as defined below.
+  /// [urlRedirectAction] A `urlRedirectAction` block as defined below.
+  /// [urlRewriteAction] A `urlRewriteAction` block as defined below.
   const EndpointDeliveryRule({
     this.cacheExpirationAction,
     this.cacheKeyQueryStringAction,
@@ -170,4 +170,3 @@ class EndpointDeliveryRule {
     );
   }
 }
-

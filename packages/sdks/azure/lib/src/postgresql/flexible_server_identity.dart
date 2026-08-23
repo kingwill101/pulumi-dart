@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleServerIdentity {
-  /// A list of User Assigned Managed Identity IDs to be assigned to this PostgreSQL Flexible Server. Required if used together with `customer_managed_key` block.
+  /// A list of User Assigned Managed Identity IDs to be assigned to this PostgreSQL Flexible Server. Required if used together with `customerManagedKey` block.
   ///
-  /// &gt; **Note:** `identity_ids` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
+  /// &gt; **Note:** `identityIds` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
   final pulumi.Input<List<String>>? identityIds;
   /// The Principal ID associated with this Managed Service Identity.
   final pulumi.Input<String>? principalId;
@@ -17,7 +17,7 @@ class FlexibleServerIdentity {
   final pulumi.Input<String> type;
 
   /// Creates a new [FlexibleServerIdentity].
-  /// [identityIds] A list of User Assigned Managed Identity IDs to be assigned to this PostgreSQL Flexible Server. Required if used together with `customer_managed_key` block.
+  /// [identityIds] A list of User Assigned Managed Identity IDs to be assigned to this PostgreSQL Flexible Server. Required if used together with `customerManagedKey` block.
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this PostgreSQL Flexible Server. Possible values are `UserAssigned`, `SystemAssigned` and `SystemAssigned, UserAssigned`.
@@ -46,4 +46,3 @@ class FlexibleServerIdentity {
     );
   }
 }
-

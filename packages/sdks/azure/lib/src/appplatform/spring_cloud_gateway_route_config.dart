@@ -7,7 +7,7 @@ import 'spring_cloud_gateway_route_config_state.dart';
 ///
 /// &gt; **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudGatewayRouteConfig` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudGatewayRouteConfig` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -248,6 +248,52 @@ import 'spring_cloud_gateway_route_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "E0"
+/// }
+/// resource "azure_appplatform_springcloudapp" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   service_name        = azure_appplatform_springcloudservice.example.name
+/// }
+/// resource "azure_appplatform_springcloudgateway" "example" {
+///   name                    = "default"
+///   spring_cloud_service_id = azure_appplatform_springcloudservice.example.id
+/// }
+/// resource "azure_appplatform_springcloudgatewayrouteconfig" "example" {
+///   name                    = "example"
+///   spring_cloud_gateway_id = azure_appplatform_springcloudgateway.example.id
+///   spring_cloud_app_id     = azure_appplatform_springcloudapp.example.id
+///   protocol                = "HTTPS"
+///   routes {
+///     description            = "example description"
+///     filters                = ["StripPrefix=2", "RateLimit=1,1s"]
+///     order                  = 1
+///     predicates             = ["Path=/api5/customer/**"]
+///     sso_validation_enabled = true
+///     title                  = "myApp route config"
+///     token_relay            = true
+///     uri                    = "https://www.example.com"
+///     classification_tags    = ["tag1", "tag2"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -265,8 +311,8 @@ import 'spring_cloud_gateway_route_config_state.dart';
 /// import com.pulumi.azure.appplatform.SpringCloudGatewayRouteConfig;
 /// import com.pulumi.azure.appplatform.SpringCloudGatewayRouteConfigArgs;
 /// import com.pulumi.azure.appplatform.inputs.SpringCloudGatewayRouteConfigRouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -392,7 +438,7 @@ class SpringCloudGatewayRouteConfig extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> filters;
   /// The name which should be used for this Spring Cloud Gateway Route Config. Changing this forces a new Spring Cloud Gateway Route Config to be created.
   late final pulumi.Output<String> name;
-  /// One or more `open_api` blocks as defined below.
+  /// One or more `openApi` blocks as defined below.
   late final pulumi.Output<SpringCloudGatewayRouteConfigOpenApi?> openApi;
   /// Specifies a list of conditions to evaluate a route for each request in app level. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request.
   late final pulumi.Output<List<String>?> predicates;

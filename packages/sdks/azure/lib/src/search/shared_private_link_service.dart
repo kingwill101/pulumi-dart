@@ -155,6 +155,40 @@ import 'shared_private_link_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "test" {
+///   name     = "example-resourceGroup"
+///   location = "east us"
+/// }
+/// resource "azure_search_service" "test" {
+///   name                = "example-search"
+///   resource_group_name = azure_core_resourcegroup.test.name
+///   location            = azure_core_resourcegroup.test.location
+///   sku                 = "standard"
+/// }
+/// resource "azure_storage_account" "test" {
+///   name                     = "example"
+///   resource_group_name      = azure_core_resourcegroup.test.name
+///   location                 = azure_core_resourcegroup.test.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_search_sharedprivatelinkservice" "test" {
+///   name               = "example-spl"
+///   search_service_id  = azure_search_service.test.id
+///   subresource_name   = "blob"
+///   target_resource_id = azure_storage_account.test.id
+///   request_message    = "please approve"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +203,8 @@ import 'shared_private_link_service_state.dart';
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.search.SharedPrivateLinkService;
 /// import com.pulumi.azure.search.SharedPrivateLinkServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

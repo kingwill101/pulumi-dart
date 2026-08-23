@@ -281,6 +281,54 @@ import 'policy_vmtiering_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tfex-recovery_vault"
+///   location = "West Europe"
+/// }
+/// resource "azure_recoveryservices_vault" "example" {
+///   name                = "tfex-recovery-vault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_backup_policyvm" "example" {
+///   name                = "tfex-recovery-vault-policy"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   recovery_vault_name = azure_recoveryservices_vault.example.name
+///   timezone            = "UTC"
+///   backup = {
+///     frequency = "Daily"
+///     time      = "23:00"
+///   }
+///   retention_daily = {
+///     count = 10
+///   }
+///   retention_weekly = {
+///     count    = 42
+///     weekdays = ["Sunday", "Wednesday", "Friday", "Saturday"]
+///   }
+///   retention_monthly = {
+///     count    = 7
+///     weekdays = ["Sunday", "Wednesday"]
+///     weeks    = ["First", "Last"]
+///   }
+///   retention_yearly = {
+///     count    = 77
+///     weekdays = ["Sunday"]
+///     weeks    = ["Last"]
+///     months   = ["January"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -298,8 +346,8 @@ import 'policy_vmtiering_policy.dart';
 /// import com.pulumi.azure.backup.inputs.PolicyVMRetentionWeeklyArgs;
 /// import com.pulumi.azure.backup.inputs.PolicyVMRetentionMonthlyArgs;
 /// import com.pulumi.azure.backup.inputs.PolicyVMRetentionYearlyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -427,11 +475,15 @@ import 'policy_vmtiering_policy.dart';
 class PolicyVM extends pulumi.CustomResource {
   /// Configures the Policy backup frequency, times & days as documented in the `backup` block below.
   late final pulumi.Output<PolicyVMBackup> backup;
-  /// Specifies the instant restore resource group name as documented in the `instant_restore_resource_group` block below.
-  late final pulumi.Output<PolicyVMInstantRestoreResourceGroup?> instantRestoreResourceGroup;
-  /// Specifies the instant restore retention range in days. Possible values are between `1` and `5` when `policy_type` is `V1`, and `1` to `30` when `policy_type` is `V2`.
+  /// The consistency type for the backup policy. The only possible value is `OnlyCrashConsistent`.
   ///
-  /// &gt; **Note:** `instant_restore_retention_days` **must** be set to `5` if the backup frequency is set to `Weekly`.
+  /// &gt; **Note:** `consistencyType` can only be specified when `policyType` is `V2`.
+  late final pulumi.Output<String?> consistencyType;
+  /// Specifies the instant restore resource group name as documented in the `instantRestoreResourceGroup` block below.
+  late final pulumi.Output<PolicyVMInstantRestoreResourceGroup?> instantRestoreResourceGroup;
+  /// Specifies the instant restore retention range in days. Possible values are between `1` and `5` when `policyType` is `V1`, and `1` to `30` when `policyType` is `V2`.
+  ///
+  /// &gt; **Note:** `instantRestoreRetentionDays` **must** be set to `5` if the backup frequency is set to `Weekly`.
   late final pulumi.Output<int> instantRestoreRetentionDays;
   /// Specifies the name of the Backup Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
@@ -441,15 +493,15 @@ class PolicyVM extends pulumi.CustomResource {
   late final pulumi.Output<String> recoveryVaultName;
   /// The name of the resource group in which to create the policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// Configures the policy daily retention as documented in the `retention_daily` block below. Required when backup frequency is `Daily`.
+  /// Configures the policy daily retention as documented in the `retentionDaily` block below. Required when backup frequency is `Daily`.
   late final pulumi.Output<PolicyVMRetentionDaily?> retentionDaily;
-  /// Configures the policy monthly retention as documented in the `retention_monthly` block below.
+  /// Configures the policy monthly retention as documented in the `retentionMonthly` block below.
   late final pulumi.Output<PolicyVMRetentionMonthly?> retentionMonthly;
-  /// Configures the policy weekly retention as documented in the `retention_weekly` block below. Required when backup frequency is `Weekly`.
+  /// Configures the policy weekly retention as documented in the `retentionWeekly` block below. Required when backup frequency is `Weekly`.
   late final pulumi.Output<PolicyVMRetentionWeekly?> retentionWeekly;
-  /// Configures the policy yearly retention as documented in the `retention_yearly` block below.
+  /// Configures the policy yearly retention as documented in the `retentionYearly` block below.
   late final pulumi.Output<PolicyVMRetentionYearly?> retentionYearly;
-  /// A `tiering_policy` block as defined below.
+  /// A `tieringPolicy` block as defined below.
   late final pulumi.Output<PolicyVMTieringPolicy?> tieringPolicy;
   /// Specifies the timezone. [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/). Defaults to `UTC`
   late final pulumi.Output<String?> timezone;
@@ -469,6 +521,7 @@ class PolicyVM extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     backup = registerOutput<PolicyVMBackup>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    consistencyType = registerOutput<String?>('consistencyType');
     instantRestoreResourceGroup = registerOutput<PolicyVMInstantRestoreResourceGroup?>('instantRestoreResourceGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMInstantRestoreResourceGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instantRestoreRetentionDays = registerOutput<int>('instantRestoreRetentionDays');
     this.name = registerOutput<String>('name');
@@ -507,6 +560,7 @@ class PolicyVM extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     backup = registerOutput<PolicyVMBackup>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    consistencyType = registerOutput<String?>('consistencyType');
     instantRestoreResourceGroup = registerOutput<PolicyVMInstantRestoreResourceGroup?>('instantRestoreResourceGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMInstantRestoreResourceGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instantRestoreRetentionDays = registerOutput<int>('instantRestoreRetentionDays');
     this.name = registerOutput<String>('name');

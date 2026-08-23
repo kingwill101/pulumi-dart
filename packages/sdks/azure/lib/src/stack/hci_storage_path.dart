@@ -107,6 +107,30 @@ import 'hci_storage_path_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_stack_hcistoragepath" "example" {
+///   name                = "example-sp"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   custom_location_id  = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ExtendedLocation/customLocations/cl1"
+///   path                = "C:\\ClusterStorage\\UserStorage_2\\sp-example"
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +141,8 @@ import 'hci_storage_path_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.stack.HciStoragePath;
 /// import com.pulumi.azure.stack.HciStoragePathArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

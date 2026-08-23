@@ -84,6 +84,22 @@ import 'get_service_bus_namespace_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_eventhub_getauthorizationrule" "test" {
+///   name                = "test"
+///   namespace_name      = testAzurermEventhubNamespace.name
+///   eventhub_name       = testAzurermEventhub.name
+///   resource_group_name = testAzurermResourceGroup.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +108,8 @@ import 'get_service_bus_namespace_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.eventhub.EventhubFunctions;
 /// import com.pulumi.azure.eventhub.inputs.GetAuthorizationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,6 +230,24 @@ Future<GetAuthorizationRuleResult> getAuthorizationRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_eventhub_getcluster" "example" {
+///   name                = "search-eventhub"
+///   resource_group_name = "search-service"
+/// }
+///
+/// output "eventhubId" {
+///   value = data.azure_eventhub_getcluster.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -222,8 +256,8 @@ Future<GetAuthorizationRuleResult> getAuthorizationRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.eventhub.EventhubFunctions;
 /// import com.pulumi.azure.eventhub.inputs.GetClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -344,6 +378,22 @@ Future<GetClusterResult> getCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_eventhub_getconsumegroup" "test" {
+///   name                = testAzurermEventhubConsumerGroup.name
+///   namespace_name      = testAzurermEventhubNamespace.name
+///   eventhub_name       = testAzurermEventhub.name
+///   resource_group_name = testAzurermResourceGroup.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -352,8 +402,8 @@ Future<GetClusterResult> getCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.eventhub.EventhubFunctions;
 /// import com.pulumi.azure.eventhub.inputs.GetConsumeGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -478,6 +528,25 @@ Future<GetConsumeGroupResult> getConsumeGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_eventhub_geteventhub" "example" {
+///   name                = "search-eventhub"
+///   resource_group_name = "search-service"
+///   namespace_name      = "search-eventhubns"
+/// }
+///
+/// output "eventhubId" {
+///   value = data.azure_eventhub_geteventhub.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -486,8 +555,8 @@ Future<GetConsumeGroupResult> getConsumeGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.eventhub.EventhubFunctions;
 /// import com.pulumi.azure.eventhub.inputs.GetEventHubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -609,6 +678,24 @@ Future<GetEventHubResult> getEventHub(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_eventhub_getnamespace" "example" {
+///   name                = "search-eventhubns"
+///   resource_group_name = "search-service"
+/// }
+///
+/// output "eventhubNamespaceId" {
+///   value = data.azure_eventhub_getnamespace.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -617,8 +704,8 @@ Future<GetEventHubResult> getEventHub(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.eventhub.EventhubFunctions;
 /// import com.pulumi.azure.eventhub.inputs.GetNamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -738,6 +825,24 @@ Future<GetEventhubNamespaceResult> getEventhubNamespace(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_eventhub_getnamespace" "example" {
+///   name                = "search-eventhubns"
+///   resource_group_name = "search-service"
+/// }
+///
+/// output "eventhubNamespaceId" {
+///   value = data.azure_eventhub_getnamespace.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -746,8 +851,8 @@ Future<GetEventhubNamespaceResult> getEventhubNamespace(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.eventhub.EventhubFunctions;
 /// import com.pulumi.azure.eventhub.inputs.GetNamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -871,6 +976,25 @@ Future<GetNamespaceResult> getNamespace(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_eventhub_getnamespaceauthorizationrule" "example" {
+///   name                = "navi"
+///   resource_group_name = "example-resources"
+///   namespace_name      = "example-ns"
+/// }
+///
+/// output "eventhubAuthorizationRuleId" {
+///   value = data.azure_eventhub_getnamespaceauthorizationrule.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -879,8 +1003,8 @@ Future<GetNamespaceResult> getNamespace(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.eventhub.EventhubFunctions;
 /// import com.pulumi.azure.eventhub.inputs.GetNamespaceAuthorizationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -978,10 +1102,10 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
 ///     eventhubName: exampleEventHub.name,
 ///     resourceGroupName: exampleResourceGroup.name,
 /// });
-/// const exampleGetSas = example.apply(example => azure.eventhub.getSasOutput({
-///     connectionString: example.primaryConnectionString,
+/// const exampleGetSas = azure.eventhub.getSasOutput({
+///     connectionString: example.apply(example => example.primaryConnectionString),
 ///     expiry: "2023-06-23T00:00:00Z",
-/// }));
+/// });
 /// ```
 /// ```python
 /// import pulumi
@@ -1013,8 +1137,8 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
 ///     namespace_name=example_event_hub_namespace.name,
 ///     eventhub_name=example_event_hub.name,
 ///     resource_group_name=example_resource_group.name)
-/// example_get_sas = example.apply(lambda example: azure.eventhub.get_sas_output(connection_string=example.primary_connection_string,
-///     expiry="2023-06-23T00:00:00Z"))
+/// example_get_sas = azure.eventhub.get_sas_output(connection_string=example.primary_connection_string,
+///     expiry="2023-06-23T00:00:00Z")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1129,14 +1253,61 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
 /// 			EventhubName:      exampleEventHub.Name,
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 		}, nil)
-/// 		_ = example.ApplyT(func(example eventhub.GetAuthorizationRuleResult) (eventhub.GetSasResult, error) {
-/// 			return eventhub.GetSasResult(interface{}(eventhub.GetSas(ctx, &eventhub.GetSasArgs{
-/// 				ConnectionString: example.PrimaryConnectionString,
-/// 				Expiry:           "2023-06-23T00:00:00Z",
-/// 			}, nil))), nil
-/// 		}).(eventhub.GetSasResultOutput)
+/// 		_ = eventhub.GetSasOutput(ctx, eventhub.GetSasOutputArgs{
+/// 			ConnectionString: example.ApplyT(func(example eventhub.GetAuthorizationRuleResult) (*string, error) {
+/// 				return example.PrimaryConnectionString, nil
+/// 			}).(pulumi.StringPtrOutput),
+/// 			Expiry: pulumi.String("2023-06-23T00:00:00Z"),
+/// 		}, nil)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_eventhub_getauthorizationrule" "example" {
+///   name                = azure_eventhub_authorizationrule.example.name
+///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
+///   eventhub_name       = azure_eventhub_eventhub.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// data "azure_eventhub_getsas" "exampleGetSas" {
+///   connection_string = data.azure_eventhub_getauthorizationrule.example.primary_connection_string
+///   expiry            = "2023-06-23T00:00:00Z"
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "example" {
+///   name                = "example-ehn"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Basic"
+/// }
+/// resource "azure_eventhub_eventhub" "example" {
+///   name                = "example-eh"
+///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   partition_count     = 1
+///   message_retention   = 1
+/// }
+/// resource "azure_eventhub_authorizationrule" "example" {
+///   name                = "example-ehar"
+///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
+///   eventhub_name       = azure_eventhub_eventhub.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   listen              = true
+///   send                = true
+///   manage              = true
 /// }
 /// ```
 /// ```java
@@ -1156,8 +1327,8 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
 /// import com.pulumi.azure.eventhub.EventhubFunctions;
 /// import com.pulumi.azure.eventhub.inputs.GetAuthorizationRuleArgs;
 /// import com.pulumi.azure.eventhub.inputs.GetSasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1206,10 +1377,10 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
 ///             .resourceGroupName(exampleResourceGroup.name())
 ///             .build());
 ///
-///         final var exampleGetSas = example.applyValue(_example -> EventhubFunctions.getSas(GetSasArgs.builder()
-///             .connectionString(_example.primaryConnectionString())
+///         final var exampleGetSas = EventhubFunctions.getSas(GetSasArgs.builder()
+///             .connectionString(example.applyValue(_example -> _example.primaryConnectionString()))
 ///             .expiry("2023-06-23T00:00:00Z")
-///             .build()));
+///             .build());
 ///
 ///     }
 /// }
@@ -1346,6 +1517,24 @@ Future<GetSasResult> getSas(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_servicebus_getnamespace" "example" {
+///   name                = "examplenamespace"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "location" {
+///   value = data.azure_servicebus_getnamespace.example.location
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1354,8 +1543,8 @@ Future<GetSasResult> getSas(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.servicebus.ServicebusFunctions;
 /// import com.pulumi.azure.servicebus.inputs.GetNamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

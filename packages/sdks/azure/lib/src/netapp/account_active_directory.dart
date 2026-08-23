@@ -13,7 +13,7 @@ class AccountActiveDirectory {
   final pulumi.Input<String>? kerberosAdName;
   /// kdc server IP addresses for the active directory machine.
   ///
-  /// &gt; **Note:** If you plan on using **Kerberos** volumes, both `ad_name` and `kdc_ip` are required in order to create the volume.
+  /// &gt; **Note:** If you plan on using **Kerberos** volumes, both `adName` and `kdcIp` are required in order to create the volume.
   final pulumi.Input<String>? kerberosKdcIp;
   /// Specifies whether or not the LDAP traffic needs to be secured via TLS. Defaults to `false`.
   final pulumi.Input<bool>? ldapOverTlsEnabled;
@@ -25,7 +25,7 @@ class AccountActiveDirectory {
   final pulumi.Input<String>? organizationalUnit;
   /// The password associated with the `username`.
   final pulumi.Input<String> password;
-  /// When LDAP over SSL/TLS is enabled, the LDAP client is required to have a *base64 encoded Active Directory Certificate Service's self-signed root CA certificate*, this optional parameter is used only for dual protocol with LDAP user-mapping volumes. Required if `ldap_over_tls_enabled` is set to `true`.
+  /// When LDAP over SSL/TLS is enabled, the LDAP client is required to have a *base64 encoded Active Directory Certificate Service's self-signed root CA certificate*, this optional parameter is used only for dual protocol with LDAP user-mapping volumes. Required if `ldapOverTlsEnabled` is set to `true`.
   final pulumi.Input<String>? serverRootCaCertificate;
   /// The Active Directory site the service will limit Domain Controller discovery to. If blank, defaults to `Default-First-Site-Name`.
   final pulumi.Input<String>? siteName;
@@ -45,7 +45,7 @@ class AccountActiveDirectory {
   /// [localNfsUsersWithLdapAllowed] If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes. Defaults to `false`.
   /// [organizationalUnit] The Organizational Unit (OU) within Active Directory where machines will be created. If blank, defaults to `CN=Computers`.
   /// [password] The password associated with the `username`.
-  /// [serverRootCaCertificate] When LDAP over SSL/TLS is enabled, the LDAP client is required to have a *base64 encoded Active Directory Certificate Service's self-signed root CA certificate*, this optional parameter is used only for dual protocol with LDAP user-mapping volumes. Required if `ldap_over_tls_enabled` is set to `true`.
+  /// [serverRootCaCertificate] When LDAP over SSL/TLS is enabled, the LDAP client is required to have a *base64 encoded Active Directory Certificate Service's self-signed root CA certificate*, this optional parameter is used only for dual protocol with LDAP user-mapping volumes. Required if `ldapOverTlsEnabled` is set to `true`.
   /// [siteName] The Active Directory site the service will limit Domain Controller discovery to. If blank, defaults to `Default-First-Site-Name`.
   /// [smbServerName] The NetBIOS name which should be used for the NetApp SMB Server, which will be registered as a computer account in the AD and used to mount volumes.
   /// [username] The Username of Active Directory Domain Administrator.
@@ -104,4 +104,3 @@ class AccountActiveDirectory {
     );
   }
 }
-

@@ -15,7 +15,7 @@ class GetFlexibleServerResult {
   final String delegatedSubnetId;
   /// The FQDN of the PostgreSQL Flexible Server.
   final String fqdn;
-  /// A `high_availability` block for this PostgreSQL Flexible Server as defined below.
+  /// A `highAvailability` block for this PostgreSQL Flexible Server as defined below.
   final List<GetFlexibleServerHighAvailability> highAvailabilities;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -42,7 +42,7 @@ class GetFlexibleServerResult {
   /// [backupRetentionDays] The backup retention days for the PostgreSQL Flexible Server.
   /// [delegatedSubnetId] The ID of the virtual network subnet to create the PostgreSQL Flexible Server.
   /// [fqdn] The FQDN of the PostgreSQL Flexible Server.
-  /// [highAvailabilities] A `high_availability` block for this PostgreSQL Flexible Server as defined below.
+  /// [highAvailabilities] A `highAvailability` block for this PostgreSQL Flexible Server as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] The Azure Region where the PostgreSQL Flexible Server exists.
   /// [name] Required.
@@ -114,4 +114,3 @@ class GetFlexibleServerResult {
     );
   }
 }
-

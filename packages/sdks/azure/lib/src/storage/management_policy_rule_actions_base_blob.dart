@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagementPolicyRuleActionsBaseBlob {
   /// Whether a blob should automatically be tiered from cool back to hot if it's accessed again after being tiered to cool. Defaults to `false`.
   ///
-  /// &gt; **Note:** The `auto_tier_to_hot_from_cool_enabled` must be used together with `tier_to_cool_after_days_since_last_access_time_greater_than`.
+  /// &gt; **Note:** The `autoTierToHotFromCoolEnabled` must be used together with `tierToCoolAfterDaysSinceLastAccessTimeGreaterThan`.
   final pulumi.Input<bool>? autoTierToHotFromCoolEnabled;
   /// The age in days after creation to delete the blob. Must be between `0` and `99999`. Defaults to `-1`.
   ///
-  /// &gt; **Note:** The `delete_after_days_since_modification_greater_than`, `delete_after_days_since_last_access_time_greater_than` and `delete_after_days_since_creation_greater_than` can not be set at the same time.
+  /// &gt; **Note:** The `deleteAfterDaysSinceModificationGreaterThan`, `deleteAfterDaysSinceLastAccessTimeGreaterThan` and `deleteAfterDaysSinceCreationGreaterThan` can not be set at the same time.
   ///
-  /// &gt; **Note:** The `last_access_time_enabled` must be set to `true` in the `azure.storage.Account` in order to use `tier_to_cool_after_days_since_last_access_time_greater_than`, `tier_to_archive_after_days_since_last_access_time_greater_than` and `delete_after_days_since_last_access_time_greater_than`.
+  /// &gt; **Note:** The `lastAccessTimeEnabled` must be set to `true` in the `azure.storage.Account` in order to use `tierToCoolAfterDaysSinceLastAccessTimeGreaterThan`, `tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan` and `deleteAfterDaysSinceLastAccessTimeGreaterThan`.
   final pulumi.Input<int>? deleteAfterDaysSinceCreationGreaterThan;
   /// The age in days after last access time to delete the blob. Must be between `0` and `99999`. Defaults to `-1`.
   final pulumi.Input<int>? deleteAfterDaysSinceLastAccessTimeGreaterThan;
@@ -19,7 +19,7 @@ class ManagementPolicyRuleActionsBaseBlob {
   final pulumi.Input<int>? deleteAfterDaysSinceModificationGreaterThan;
   /// The age in days after creation to archive storage. Supports blob currently at Hot or Cool tier. Must be between `0` and `99999`. Defaults to `-1`.
   ///
-  /// &gt; **Note:** The `tier_to_archive_after_days_since_modification_greater_than`, `tier_to_archive_after_days_since_last_access_time_greater_than` and `tier_to_archive_after_days_since_creation_greater_than` can not be set at the same time.
+  /// &gt; **Note:** The `tierToArchiveAfterDaysSinceModificationGreaterThan`, `tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan` and `tierToArchiveAfterDaysSinceCreationGreaterThan` can not be set at the same time.
   final pulumi.Input<int>? tierToArchiveAfterDaysSinceCreationGreaterThan;
   /// The age in days after last access time to tier blobs to archive storage. Supports blob currently at Hot or Cool tier. Must be between `0` and `99999`. Defaults to `-1`.
   final pulumi.Input<int>? tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan;
@@ -29,7 +29,7 @@ class ManagementPolicyRuleActionsBaseBlob {
   final pulumi.Input<int>? tierToArchiveAfterDaysSinceModificationGreaterThan;
   /// The age in days after creation to cold storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
   ///
-  /// &gt; **Note:** The `tier_to_cool_after_days_since_modification_greater_than`, `tier_to_cool_after_days_since_last_access_time_greater_than` and `tier_to_cool_after_days_since_creation_greater_than` can not be set at the same time.
+  /// &gt; **Note:** The `tierToCoolAfterDaysSinceModificationGreaterThan`, `tierToCoolAfterDaysSinceLastAccessTimeGreaterThan` and `tierToCoolAfterDaysSinceCreationGreaterThan` can not be set at the same time.
   final pulumi.Input<int>? tierToColdAfterDaysSinceCreationGreaterThan;
   /// The age in days after last access time to tier blobs to cold storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
   final pulumi.Input<int>? tierToColdAfterDaysSinceLastAccessTimeGreaterThan;
@@ -37,7 +37,7 @@ class ManagementPolicyRuleActionsBaseBlob {
   final pulumi.Input<int>? tierToColdAfterDaysSinceModificationGreaterThan;
   /// The age in days after creation to cool storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
   ///
-  /// &gt; **Note:** The `tier_to_cool_after_days_since_modification_greater_than`, `tier_to_cool_after_days_since_last_access_time_greater_than` and `tier_to_cool_after_days_since_creation_greater_than` can not be set at the same time.
+  /// &gt; **Note:** The `tierToCoolAfterDaysSinceModificationGreaterThan`, `tierToCoolAfterDaysSinceLastAccessTimeGreaterThan` and `tierToCoolAfterDaysSinceCreationGreaterThan` can not be set at the same time.
   final pulumi.Input<int>? tierToCoolAfterDaysSinceCreationGreaterThan;
   /// The age in days after last access time to tier blobs to cool storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
   final pulumi.Input<int>? tierToCoolAfterDaysSinceLastAccessTimeGreaterThan;
@@ -114,4 +114,3 @@ class ManagementPolicyRuleActionsBaseBlob {
     );
   }
 }
-

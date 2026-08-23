@@ -7,12 +7,12 @@ import 'kubernetes_cluster_maintenance_window_not_allowed.dart';
 class KubernetesClusterMaintenanceWindow {
   /// One or more `allowed` blocks as defined below.
   final pulumi.Input<List<KubernetesClusterMaintenanceWindowAllowed>>? alloweds;
-  /// One or more `not_allowed` block as defined below.
+  /// One or more `notAllowed` block as defined below.
   final pulumi.Input<List<KubernetesClusterMaintenanceWindowNotAllowed>>? notAlloweds;
 
   /// Creates a new [KubernetesClusterMaintenanceWindow].
   /// [alloweds] One or more `allowed` blocks as defined below.
-  /// [notAlloweds] One or more `not_allowed` block as defined below.
+  /// [notAlloweds] One or more `notAllowed` block as defined below.
   const KubernetesClusterMaintenanceWindow({
     this.alloweds,
     this.notAlloweds,
@@ -32,4 +32,3 @@ class KubernetesClusterMaintenanceWindow {
     );
   }
 }
-

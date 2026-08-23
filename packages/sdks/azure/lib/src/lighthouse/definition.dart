@@ -112,6 +112,31 @@ import 'definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_authorization_getroledefinition" "contributor" {
+///   role_definition_id = "b24988ac-6180-42a0-ab88-20f7382dd24c"
+/// }
+///
+/// resource "azure_lighthouse_definition" "example" {
+///   name               = "Sample definition"
+///   description        = "This is a lighthouse definition created IaC"
+///   managing_tenant_id = "00000000-0000-0000-0000-000000000000"
+///   scope              = "/subscriptions/00000000-0000-0000-0000-000000000000"
+///   authorizations {
+///     principal_id           = "00000000-0000-0000-0000-000000000000"
+///     role_definition_id     = data.azure_authorization_getroledefinition.contributor.role_definition_id
+///     principal_display_name = "Tier 1 Support"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +148,8 @@ import 'definition_state.dart';
 /// import com.pulumi.azure.lighthouse.Definition;
 /// import com.pulumi.azure.lighthouse.DefinitionArgs;
 /// import com.pulumi.azure.lighthouse.inputs.DefinitionAuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,7 +221,7 @@ class Definition extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> authorizations;
   /// A description of the Lighthouse Definition.
   late final pulumi.Output<String?> description;
-  /// An `eligible_authorization` block as defined below.
+  /// An `eligibleAuthorization` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> eligibleAuthorizations;
   /// A unique UUID/GUID which identifies this lighthouse definition - one will be generated if not specified. Changing this forces a new resource to be created.
   late final pulumi.Output<String> lighthouseDefinitionId;

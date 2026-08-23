@@ -7,7 +7,7 @@ class GetLinuxWebAppAuthSettingFacebook {
   final pulumi.Input<String> appId;
   /// The App Secret of the Facebook app used for Facebook login.
   final pulumi.Input<String> appSecret;
-  /// The app setting name that contains the `app_secret` value used for Facebook login.
+  /// The app setting name that contains the `appSecret` value used for Facebook login.
   final pulumi.Input<String> appSecretSettingName;
   /// A list of OAuth 2.0 scopes requested as part of Microsoft Account authentication.
   final pulumi.Input<List<String>> oauthScopes;
@@ -15,7 +15,7 @@ class GetLinuxWebAppAuthSettingFacebook {
   /// Creates a new [GetLinuxWebAppAuthSettingFacebook].
   /// [appId] The App ID of the Facebook app used for login.
   /// [appSecret] The App Secret of the Facebook app used for Facebook login.
-  /// [appSecretSettingName] The app setting name that contains the `app_secret` value used for Facebook login.
+  /// [appSecretSettingName] The app setting name that contains the `appSecret` value used for Facebook login.
   /// [oauthScopes] A list of OAuth 2.0 scopes requested as part of Microsoft Account authentication.
   const GetLinuxWebAppAuthSettingFacebook({
     required this.appId,
@@ -42,4 +42,3 @@ class GetLinuxWebAppAuthSettingFacebook {
     );
   }
 }
-

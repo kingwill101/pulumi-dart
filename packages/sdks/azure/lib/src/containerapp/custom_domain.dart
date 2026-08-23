@@ -401,6 +401,85 @@ import 'custom_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dns_zone" "example" {
+///   name                = "contoso.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_dns_txtrecord" "example" {
+///   name                = "asuid.example"
+///   resource_group_name = azure_dns_zone.example.resource_group_name
+///   zone_name           = azure_dns_zone.example.name
+///   ttl                 = 300
+///   records {
+///     value = azure_containerapp_app.example.custom_domain_verification_id
+///   }
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+///   retention_in_days   = 30
+/// }
+/// resource "azure_containerapp_environment" "example" {
+///   name                       = "Example-Environment"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// resource "azure_containerapp_environmentcertificate" "example" {
+///   name                         = "myfriendlyname"
+///   container_app_environment_id = azure_containerapp_environment.example.id
+///   certificate_blob             = filebase64("path/to/certificate_file.pfx")
+///   certificate_password         = "$3cretSqu1rreL"
+/// }
+/// resource "azure_containerapp_app" "example" {
+///   name                         = "example-app"
+///   container_app_environment_id = azure_containerapp_environment.example.id
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   revision_mode                = "Single"
+///   template = {
+///     containers = [{
+///       "name"   = "examplecontainerapp"
+///       "image"  = "mcr.microsoft.com/k8se/quickstart:latest"
+///       "cpu"    = 0.25
+///       "memory" = "0.5Gi"
+///     }]
+///   }
+///   ingress = {
+///     allow_insecure_connections = false
+///     external_enabled           = true
+///     target_port                = 5000
+///     transport                  = "http"
+///     traffic_weights = [{
+///       "latestRevision" = true
+///       "percentage"     = 100
+///     }]
+///   }
+/// }
+/// resource "azure_containerapp_customdomain" "example" {
+///   name                                     = trimsuffix(trimprefix(api.fqdn, "asuid."), ".")
+///   container_app_id                         = azure_containerapp_app.example.id
+///   container_app_environment_certificate_id = azure_containerapp_environmentcertificate.example.id
+///   certificate_binding_type                 = "SniEnabled"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -418,7 +497,9 @@ import 'custom_domain_state.dart';
 /// import com.pulumi.azure.containerapp.App;
 /// import com.pulumi.azure.containerapp.AppArgs;
 /// import com.pulumi.azure.containerapp.inputs.AppTemplateArgs;
+/// import com.pulumi.azure.containerapp.inputs.AppTemplateContainerArgs;
 /// import com.pulumi.azure.containerapp.inputs.AppIngressArgs;
+/// import com.pulumi.azure.containerapp.inputs.AppIngressTrafficWeightArgs;
 /// import com.pulumi.azure.dns.TxtRecord;
 /// import com.pulumi.azure.dns.TxtRecordArgs;
 /// import com.pulumi.azure.dns.inputs.TxtRecordRecordArgs;
@@ -430,8 +511,8 @@ import 'custom_domain_state.dart';
 /// import com.pulumi.azure.containerapp.CustomDomainArgs;
 /// import com.pulumi.std.inputs.TrimprefixArgs;
 /// import com.pulumi.std.inputs.TrimsuffixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -713,6 +794,23 @@ import 'custom_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_containerapp_customdomain" "example" {
+///   name             = trimsuffix(trimprefix(api.fqdn, "asuid."), ".")
+///   container_app_id = exampleAzurermContainerApp.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -724,8 +822,8 @@ import 'custom_domain_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.TrimprefixArgs;
 /// import com.pulumi.std.inputs.TrimsuffixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -788,9 +886,9 @@ import 'custom_domain_state.dart';
 /// $ pulumi import azure:containerapp/customDomain:CustomDomain example "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resGroup1/providers/Microsoft.App/containerApps/myContainerApp/customDomainName/mycustomdomain.example.com"
 /// ```
 class CustomDomain extends pulumi.CustomResource {
-  /// The Certificate Binding type. Possible values are `Auto`, `Disabled` and `SniEnabled`. Required with `container_app_environment_certificate_id`. Changing this forces a new resource to be created.
+  /// The Certificate Binding type. Possible values are `Auto`, `Disabled` and `SniEnabled`. Required with `containerAppEnvironmentCertificateId`. Changing this forces a new resource to be created.
   ///
-  /// !&gt; **Note:** If using an Azure Managed Certificate `container_app_environment_certificate_id` and `certificate_binding_type` should be added to `ignore_changes` to prevent resource recreation due to these values being modified asynchronously outside of Terraform.
+  /// &gt; **Note:** If using an Azure Managed Certificate `containerAppEnvironmentCertificateId` and `certificateBindingType` should be added to `ignoreChanges` to prevent resource recreation due to these values being modified asynchronously outside of Terraform.
   late final pulumi.Output<String?> certificateBindingType;
   /// The ID of the Container App Environment Certificate to use. Changing this forces a new resource to be created.
   ///
@@ -800,7 +898,7 @@ class CustomDomain extends pulumi.CustomResource {
   late final pulumi.Output<String> containerAppEnvironmentManagedCertificateId;
   /// The ID of the Container App to which this Custom Domain should be bound. Changing this forces a new resource to be created.
   late final pulumi.Output<String> containerAppId;
-  /// The fully qualified name of the Custom Domain. Must be the CN or a named SAN in the certificate specified by the `container_app_environment_certificate_id`. Changing this forces a new resource to be created.
+  /// The fully qualified name of the Custom Domain. Must be the CN or a named SAN in the certificate specified by the `containerAppEnvironmentCertificateId`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The Custom Domain verification TXT record requires a prefix of `asuid.`, however, this must be trimmed from the `name` property here. See the [official docs](https://learn.microsoft.com/en-us/azure/container-apps/custom-domains-certificates) for more information.
   late final pulumi.Output<String> name;

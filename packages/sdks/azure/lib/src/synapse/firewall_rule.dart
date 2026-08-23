@@ -200,6 +200,50 @@ import 'firewall_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   account_kind             = "StorageV2"
+///   is_hns_enabled           = "true"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// resource "azure_synapse_workspace" "example" {
+///   name                                 = "example"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   location                             = azure_core_resourcegroup.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   sql_administrator_login              = "sqladminuser"
+///   sql_administrator_login_password     = "H@Sh1CoR3!"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_synapse_firewallrule" "example" {
+///   name                 = "AllowAll"
+///   synapse_workspace_id = azure_synapse_workspace.example.id
+///   start_ip_address     = "0.0.0.0"
+///   end_ip_address       = "255.255.255.255"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -217,8 +261,8 @@ import 'firewall_rule_state.dart';
 /// import com.pulumi.azure.synapse.inputs.WorkspaceIdentityArgs;
 /// import com.pulumi.azure.synapse.FirewallRule;
 /// import com.pulumi.azure.synapse.FirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -329,7 +373,7 @@ import 'firewall_rule_state.dart';
 class FirewallRule extends pulumi.CustomResource {
   /// The ending IP address to allow through the firewall for this rule.
   ///
-  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0`.
+  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `startIpAddress` and `endIpAddress` to `0.0.0.0`.
   ///
   /// &gt; **Note:** The Azure feature `Allow access to Azure services` requires the `name` to be `AllowAllWindowsAzureIps`.
   late final pulumi.Output<String> endIpAddress;

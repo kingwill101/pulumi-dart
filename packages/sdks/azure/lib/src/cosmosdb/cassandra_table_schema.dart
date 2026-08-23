@@ -6,17 +6,17 @@ import 'cassandra_table_schema_column.dart';
 import 'cassandra_table_schema_partition_key.dart';
 
 class CassandraTableSchema {
-  /// One or more `cluster_key` blocks as defined below.
+  /// One or more `clusterKey` blocks as defined below.
   final pulumi.Input<List<CassandraTableSchemaClusterKey>>? clusterKeys;
   /// One or more `column` blocks as defined below.
   final pulumi.Input<List<CassandraTableSchemaColumn>> columns;
-  /// One or more `partition_key` blocks as defined below.
+  /// One or more `partitionKey` blocks as defined below.
   final pulumi.Input<List<CassandraTableSchemaPartitionKey>> partitionKeys;
 
   /// Creates a new [CassandraTableSchema].
-  /// [clusterKeys] One or more `cluster_key` blocks as defined below.
+  /// [clusterKeys] One or more `clusterKey` blocks as defined below.
   /// [columns] One or more `column` blocks as defined below.
-  /// [partitionKeys] One or more `partition_key` blocks as defined below.
+  /// [partitionKeys] One or more `partitionKey` blocks as defined below.
   const CassandraTableSchema({
     this.clusterKeys,
     required this.columns,
@@ -39,4 +39,3 @@ class CassandraTableSchema {
     );
   }
 }
-

@@ -958,6 +958,203 @@ import 'run_command_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getaccountsas" "example" {
+///   connection_string = azure_storage_account.example.primary_connection_string
+///   https_only        = true
+///   signed_version    = "2019-10-10"
+///   start             = "2023-04-01T00:00:00Z"
+///   expiry            = "2024-04-01T00:00:00Z"
+///   resource_types = {
+///     service   = false
+///     container = false
+///     object    = true
+///   }
+///   services = {
+///     blob  = true
+///     queue = false
+///     table = false
+///     file  = false
+///   }
+///   permissions = {
+///     read    = true
+///     write   = true
+///     delete  = false
+///     list    = false
+///     add     = true
+///     create  = true
+///     update  = false
+///     process = false
+///     tag     = false
+///     filter  = false
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "internal"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "example" {
+///   name                = "example-nic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "internal"
+///     subnet_id                     = azure_network_subnet.example.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "example-uai"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_compute_linuxvirtualmachine" "example" {
+///   name                            = "example-VM"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resourcegroup.example.location
+///   size                            = "Standard_B2s"
+///   admin_username                  = "adminuser"
+///   admin_password                  = "P@$$w0rd1234!"
+///   disable_password_authentication = false
+///   network_interface_ids           = [azure_network_networkinterface.example.id]
+///   os_disk = {
+///     caching              = "ReadWrite"
+///     storage_account_type = "Premium_LRS"
+///   }
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+///   identity = {
+///     type         = "SystemAssigned, UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+/// }
+/// resource "azure_authorization_assignment" "example" {
+///   scope                = azure_storage_account.example.id
+///   role_definition_name = "Storage Blob Data Contributor"
+///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "exampleaccount"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "example-sc"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "blob"
+/// }
+/// resource "azure_storage_blob" "example1" {
+///   name                   = "script1"
+///   storage_account_name   = azure_storage_account.example.name
+///   storage_container_name = azure_storage_container.example.name
+///   type                   = "Block"
+///   source_content         = "echo 'hello world'"
+/// }
+/// resource "azure_storage_blob" "example2" {
+///   name                   = "output"
+///   storage_account_name   = azure_storage_account.example.name
+///   storage_container_name = azure_storage_container.example.name
+///   type                   = "Append"
+/// }
+/// resource "azure_storage_blob" "example3" {
+///   name                   = "error"
+///   storage_account_name   = azure_storage_account.example.name
+///   storage_container_name = azure_storage_container.example.name
+///   type                   = "Append"
+/// }
+/// # basic example
+/// resource "azure_compute_runcommand" "example" {
+///   name               = "example-vmrc"
+///   location           = azure_core_resourcegroup.example.location
+///   virtual_machine_id = azure_compute_linuxvirtualmachine.example.id
+///   source = {
+///     script = "echo 'hello world'"
+///   }
+/// }
+/// # authorize to storage blob using user assigned identity
+/// resource "azure_compute_runcommand" "example2" {
+///   depends_on         = [azure_authorization_assignment.example]
+///   location           = azure_core_resourcegroup.example.location
+///   name               = "example2-vmrc"
+///   virtual_machine_id = azure_compute_linuxvirtualmachine.example.id
+///   output_blob_uri    = azure_storage_blob.example2.id
+///   error_blob_uri     = azure_storage_blob.example3.id
+///   run_as_password    = "P@$$w0rd1234!"
+///   run_as_user        = "adminuser"
+///   source = {
+///     script_uri = azure_storage_blob.example1.id
+///     script_uri_managed_identity = {
+///       client_id = azure_authorization_userassignedidentity.example.client_id
+///     }
+///   }
+///   error_blob_managed_identity = {
+///     client_id = azure_authorization_userassignedidentity.example.client_id
+///   }
+///   output_blob_managed_identity = {
+///     client_id = azure_authorization_userassignedidentity.example.client_id
+///   }
+///   parameters {
+///     name  = "examplev1"
+///     value = "val1"
+///   }
+///   protected_parameters {
+///     name  = "examplev2"
+///     value = "val2"
+///   }
+///   tags = {
+///     "environment" = "terraform-examples"
+///     "some_key"    = "some-value"
+///   }
+/// }
+/// # authorize to storage blob using SAS token
+/// resource "azure_compute_runcommand" "example3" {
+///   location           = azure_core_resourcegroup.example.location
+///   name               = "example3-vmrc"
+///   virtual_machine_id = azure_compute_linuxvirtualmachine.example.id
+///   run_as_password    = "P@$$w0rd1234!"
+///   run_as_user        = "adminuser"
+///   error_blob_uri     ="${azure_storage_blob.example3.id}${data.azure_storage_getaccountsas.example.sas}"
+///   output_blob_uri    ="${azure_storage_blob.example2.id}${data.azure_storage_getaccountsas.example.sas}"
+///   source = {
+///     script_uri ="${azure_storage_blob.example1.id}${data.azure_storage_getaccountsas.example.sas}"
+///   }
+///   parameters {
+///     name  = "example-vm1"
+///     value = "val1"
+///   }
+///   tags = {
+///     "environment" = "terraform-example-s"
+///     "some_key"    = "some-value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1002,8 +1199,8 @@ import 'run_command_state.dart';
 /// import com.pulumi.azure.compute.inputs.RunCommandParameterArgs;
 /// import com.pulumi.azure.compute.inputs.RunCommandProtectedParameterArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1457,7 +1654,7 @@ import 'run_command_state.dart';
 /// $ pulumi import azure:compute/runCommand:RunCommand example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Compute/virtualMachines/vm1/runCommands/rc1
 /// ```
 class RunCommand extends pulumi.CustomResource {
-  /// An `error_blob_managed_identity` block as defined below. User-assigned managed Identity that has access to errorBlobUri storage blob.
+  /// An `errorBlobManagedIdentity` block as defined below. User-assigned managed Identity that has access to errorBlobUri storage blob.
   late final pulumi.Output<RunCommandErrorBlobManagedIdentity?> errorBlobManagedIdentity;
   /// Specifies the Azure storage blob where script error stream will be uploaded.
   late final pulumi.Output<String?> errorBlobUri;
@@ -1466,13 +1663,13 @@ class RunCommand extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// Specifies the name of this Virtual Machine Run Command. Changing this forces a new Virtual Machine Run Command to be created.
   late final pulumi.Output<String> name;
-  /// An `output_blob_managed_identity` block as defined below. User-assigned managed Identity that has access to outputBlobUri storage blob.
+  /// An `outputBlobManagedIdentity` block as defined below. User-assigned managed Identity that has access to outputBlobUri storage blob.
   late final pulumi.Output<RunCommandOutputBlobManagedIdentity?> outputBlobManagedIdentity;
   /// Specifies the Azure storage blob where script output stream will be uploaded. It can be basic blob URI with SAS token.
   late final pulumi.Output<String?> outputBlobUri;
   /// A list of `parameter` blocks as defined below. The parameters used by the script.
   late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
-  /// A list of `protected_parameter` blocks as defined below. The protected parameters used by the script.
+  /// A list of `protectedParameter` blocks as defined below. The protected parameters used by the script.
   late final pulumi.Output<List<Map<String, dynamic>>?> protectedParameters;
   /// Specifies the user account password on the VM when executing the Virtual Machine Run Command.
   late final pulumi.Output<String?> runAsPassword;

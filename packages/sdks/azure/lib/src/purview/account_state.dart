@@ -22,13 +22,13 @@ class AccountState {
   final pulumi.Input<String>? location;
   /// Whether the Purview Account should create a managed Event Hub Namespace. Defaults to `true`.
   ///
-  /// &gt; **Note:** `managed_event_hub_enabled` must be `false` in order to use a Kafka Configuration with the Purview Account.
+  /// &gt; **Note:** `managedEventHubEnabled` must be `false` in order to use a Kafka Configuration with the Purview Account.
   final pulumi.Input<bool>? managedEventHubEnabled;
   /// The name which should be used for the new Resource Group where Purview Account creates the managed resources. Changing this forces a new Purview Account to be created.
   ///
-  /// &gt; **Note:** `managed_resource_group_name` must be a new Resource Group.
+  /// &gt; **Note:** `managedResourceGroupName` must be a new Resource Group.
   final pulumi.Input<String>? managedResourceGroupName;
-  /// A `managed_resources` block as defined below.
+  /// A `managedResources` block as defined below.
   final pulumi.Input<List<AccountManagedResource>>? managedResources;
   /// The name which should be used for this Purview Account. Changing this forces a new Purview Account to be created.
   final pulumi.Input<String>? name;
@@ -51,7 +51,7 @@ class AccountState {
   /// [location] The Azure Region where the Purview Account should exist. Changing this forces a new Purview Account to be created.
   /// [managedEventHubEnabled] Whether the Purview Account should create a managed Event Hub Namespace. Defaults to `true`.
   /// [managedResourceGroupName] The name which should be used for the new Resource Group where Purview Account creates the managed resources. Changing this forces a new Purview Account to be created.
-  /// [managedResources] A `managed_resources` block as defined below.
+  /// [managedResources] A `managedResources` block as defined below.
   /// [name] The name which should be used for this Purview Account. Changing this forces a new Purview Account to be created.
   /// [publicNetworkEnabled] Should the Purview Account be visible to the public network? Defaults to `true`.
   /// [resourceGroupName] The name of the Resource Group where the Purview Account should exist. Changing this forces a new Purview Account to be created.
@@ -115,4 +115,3 @@ class AccountState {
     );
   }
 }
-

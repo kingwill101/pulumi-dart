@@ -16,13 +16,13 @@ class AccountArgs {
   final pulumi.Input<String>? customQuestionAnsweringSearchServiceId;
   /// If `kind` is `TextAnalytics` this specifies the key of the Search service.
   ///
-  /// &gt; **Note:** `custom_question_answering_search_service_id` and `custom_question_answering_search_service_key` are used for [Custom Question Answering, the renamed version of QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/custom-question-answering), while `qna_runtime_endpoint` is used for [the old version of QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview)
+  /// &gt; **Note:** `customQuestionAnsweringSearchServiceId` and `customQuestionAnsweringSearchServiceKey` are used for [Custom Question Answering, the renamed version of QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/custom-question-answering), while `qnaRuntimeEndpoint` is used for [the old version of QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview)
   final pulumi.Input<String>? customQuestionAnsweringSearchServiceKey;
-  /// The subdomain name used for Entra ID token-based authentication. This attribute is required when `network_acls` is specified. This attribute is also required when using the OpenAI service with libraries which assume the Azure OpenAI endpoint is a subdomain on `https://openai.azure.com/`, eg. `https://&lt;custom_subdomain_name&gt;.openai.azure.com/`. This can be specified during creation or added later, but once set changing this forces a new resource to be created.
+  /// The subdomain name used for Entra ID token-based authentication. This attribute is required when `networkAcls` is specified. This attribute is also required when using the OpenAI service with libraries which assume the Azure OpenAI endpoint is a subdomain on `https://openai.azure.com/`, eg. `https://&lt;custom_subdomain_name&gt;.openai.azure.com/`. This can be specified during creation or added later, but once set changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** If you do not specify a `custom_subdomain_name` then you will not be able to attach a Private Endpoint to the resource. Moreover, functionality that requires Entra ID authentication, including Agent service, will not be accessible.
+  /// &gt; **Note:** If you do not specify a `customSubdomainName` then you will not be able to attach a Private Endpoint to the resource. Moreover, functionality that requires Entra ID authentication, including Agent service, will not be accessible.
   final pulumi.Input<String>? customSubdomainName;
-  /// A `customer_managed_key` block as documented below.
+  /// A `customerManagedKey` block as documented below.
   final pulumi.Input<AccountCustomerManagedKey>? customerManagedKey;
   /// Whether to enable the dynamic throttling for this Cognitive Service Account. This attribute cannot be set when the `kind` is `OpenAI` or `AIServices`.
   final pulumi.Input<bool>? dynamicThrottlingEnabled;
@@ -52,13 +52,13 @@ class AccountArgs {
   final pulumi.Input<String>? metricsAdvisorWebsiteName;
   /// Specifies the name of the Cognitive Service Account. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// A `network_acls` block as defined below. When this property is specified, `custom_subdomain_name` is also required to be set.
+  /// A `networkAcls` block as defined below. When this property is specified, `customSubdomainName` is also required to be set.
   final pulumi.Input<AccountNetworkAcls>? networkAcls;
-  /// A `network_injection` block as defined below. Only applicable if the `kind` is set to `AIServices`.
+  /// A `networkInjection` block as defined below. Only applicable if the `kind` is set to `AIServices`.
   final pulumi.Input<AccountNetworkInjection>? networkInjection;
   /// Whether outbound network access is restricted for the Cognitive Account. Defaults to `false`.
   final pulumi.Input<bool>? outboundNetworkAccessRestricted;
-  /// Whether project management is enabled. Can only be set to `true` when `kind` is set to `AIServices`. Once enabled, disabling `project_management_enabled` forces a new resource to be created unless `kind` is set to `OpenAI`. Defaults to `false`.
+  /// Whether project management is enabled. Can only be set to `true` when `kind` is set to `AIServices`. Once enabled, disabling `projectManagementEnabled` forces a new resource to be created unless `kind` is set to `OpenAI`. Defaults to `false`.
   final pulumi.Input<bool>? projectManagementEnabled;
   /// Whether public network access is allowed for the Cognitive Account. Defaults to `true`.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
@@ -78,8 +78,8 @@ class AccountArgs {
   /// Creates a new [AccountArgs].
   /// [customQuestionAnsweringSearchServiceId] If `kind` is `TextAnalytics` this specifies the ID of the Search service.
   /// [customQuestionAnsweringSearchServiceKey] If `kind` is `TextAnalytics` this specifies the key of the Search service.
-  /// [customSubdomainName] The subdomain name used for Entra ID token-based authentication. This attribute is required when `network_acls` is specified. This attribute is also required when using the OpenAI service with libraries which assume the Azure OpenAI endpoint is a subdomain on `https://openai.azure.com/`, eg. `https://&lt;custom_subdomain_name&gt;.openai.azure.com/`. This can be specified during creation or added later, but once set changing this forces a new resource to be created.
-  /// [customerManagedKey] A `customer_managed_key` block as documented below.
+  /// [customSubdomainName] The subdomain name used for Entra ID token-based authentication. This attribute is required when `networkAcls` is specified. This attribute is also required when using the OpenAI service with libraries which assume the Azure OpenAI endpoint is a subdomain on `https://openai.azure.com/`, eg. `https://&lt;custom_subdomain_name&gt;.openai.azure.com/`. This can be specified during creation or added later, but once set changing this forces a new resource to be created.
+  /// [customerManagedKey] A `customerManagedKey` block as documented below.
   /// [dynamicThrottlingEnabled] Whether to enable the dynamic throttling for this Cognitive Service Account. This attribute cannot be set when the `kind` is `OpenAI` or `AIServices`.
   /// [fqdns] List of FQDNs allowed for the Cognitive Account.
   /// [identity] An `identity` block as defined below.
@@ -91,10 +91,10 @@ class AccountArgs {
   /// [metricsAdvisorSuperUserName] The super user of Metrics Advisor. This attribute is only set when kind is `MetricsAdvisor`. Changing this forces a new resource to be created.
   /// [metricsAdvisorWebsiteName] The website name of Metrics Advisor. This attribute is only set when kind is `MetricsAdvisor`. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Cognitive Service Account. Changing this forces a new resource to be created.
-  /// [networkAcls] A `network_acls` block as defined below. When this property is specified, `custom_subdomain_name` is also required to be set.
-  /// [networkInjection] A `network_injection` block as defined below. Only applicable if the `kind` is set to `AIServices`.
+  /// [networkAcls] A `networkAcls` block as defined below. When this property is specified, `customSubdomainName` is also required to be set.
+  /// [networkInjection] A `networkInjection` block as defined below. Only applicable if the `kind` is set to `AIServices`.
   /// [outboundNetworkAccessRestricted] Whether outbound network access is restricted for the Cognitive Account. Defaults to `false`.
-  /// [projectManagementEnabled] Whether project management is enabled. Can only be set to `true` when `kind` is set to `AIServices`. Once enabled, disabling `project_management_enabled` forces a new resource to be created unless `kind` is set to `OpenAI`. Defaults to `false`.
+  /// [projectManagementEnabled] Whether project management is enabled. Can only be set to `true` when `kind` is set to `AIServices`. Once enabled, disabling `projectManagementEnabled` forces a new resource to be created unless `kind` is set to `OpenAI`. Defaults to `false`.
   /// [publicNetworkAccessEnabled] Whether public network access is allowed for the Cognitive Account. Defaults to `true`.
   /// [qnaRuntimeEndpoint] A URL to link a QnAMaker cognitive account to a QnA runtime.
   /// [resourceGroupName] The name of the resource group in which the Cognitive Service Account is created. Changing this forces a new resource to be created.
@@ -189,4 +189,3 @@ class AccountArgs {
     );
   }
 }
-

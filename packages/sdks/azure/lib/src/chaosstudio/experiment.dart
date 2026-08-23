@@ -484,6 +484,103 @@ import 'experiment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "westeurope"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   name                = "example"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "internal"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "example"
+///     subnet_id                     = azure_network_subnet.example.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_linuxvirtualmachine" "example" {
+///   name                            = "example"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resourcegroup.example.location
+///   size                            = "Standard_F2"
+///   admin_username                  = "adminuser"
+///   admin_password                  = "example"
+///   disable_password_authentication = false
+///   network_interface_ids           = [azure_network_networkinterface.example.id]
+///   os_disk = {
+///     caching              = "ReadWrite"
+///     storage_account_type = "Standard_LRS"
+///   }
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+/// }
+/// resource "azure_chaosstudio_target" "example" {
+///   location           = azure_core_resourcegroup.example.location
+///   target_resource_id = azure_compute_linuxvirtualmachine.example.id
+///   target_type        = "Microsoft-VirtualMachine"
+/// }
+/// resource "azure_chaosstudio_capability" "example" {
+///   chaos_studio_target_id = azure_chaosstudio_target.example.id
+///   capability_type        = "Shutdown-1.0"
+/// }
+/// resource "azure_chaosstudio_experiment" "example" {
+///   location            = azure_core_resourcegroup.example.location
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   selectors {
+///     name                    = "Selector1"
+///     chaos_studio_target_ids = [azure_chaosstudio_target.example.id]
+///   }
+///   steps {
+///     name = "example"
+///     branches {
+///       name = "example"
+///       actions {
+///         urn           = azure_chaosstudio_capability.example.capability_urn
+///         selector_name = "Selector1"
+///         parameters = {
+///           "abruptShutdown" = "false"
+///         }
+///         action_type = "continuous"
+///         duration    = "PT10M"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -514,8 +611,10 @@ import 'experiment_state.dart';
 /// import com.pulumi.azure.chaosstudio.inputs.ExperimentIdentityArgs;
 /// import com.pulumi.azure.chaosstudio.inputs.ExperimentSelectorArgs;
 /// import com.pulumi.azure.chaosstudio.inputs.ExperimentStepArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.chaosstudio.inputs.ExperimentStepBranchArgs;
+/// import com.pulumi.azure.chaosstudio.inputs.ExperimentStepBranchActionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -6,14 +6,14 @@ import 'get_application_gateway_private_link_configuration_ip_configuration.dart
 class GetApplicationGatewayPrivateLinkConfiguration {
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String> id;
-  /// One or more `ip_configuration` blocks as defined below.
+  /// One or more `ipConfiguration` blocks as defined below.
   final pulumi.Input<List<GetApplicationGatewayPrivateLinkConfigurationIpConfiguration>> ipConfigurations;
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetApplicationGatewayPrivateLinkConfiguration].
   /// [id] The ID of the Rewrite Rule Set
-  /// [ipConfigurations] One or more `ip_configuration` blocks as defined below.
+  /// [ipConfigurations] One or more `ipConfiguration` blocks as defined below.
   /// [name] The name of this Application Gateway.
   const GetApplicationGatewayPrivateLinkConfiguration({
     required this.id,
@@ -37,4 +37,3 @@ class GetApplicationGatewayPrivateLinkConfiguration {
     );
   }
 }
-

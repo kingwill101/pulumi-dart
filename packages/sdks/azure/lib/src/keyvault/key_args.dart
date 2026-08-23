@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'key_release_policy.dart';
 import 'key_rotation_policy.dart';
 
 /// {@template pulumi_keyvault_key_key_args_doc}
@@ -8,15 +9,15 @@ import 'key_rotation_policy.dart';
 /// {@endtemplate}
 /// {@macro pulumi_keyvault_key_key_args_doc}
 class KeyArgs {
-  /// Specifies the curve to use when creating an `EC` key. Possible values are `P-256`, `P-256K`, `P-384`, and `P-521`. This field will be required in a future release if `key_type` is `EC` or `EC-HSM`. The API will default to `P-256` if nothing is specified. Changing this forces a new resource to be created.
+  /// Specifies the curve to use when creating an `EC` key. Possible values are `P-256`, `P-256K`, `P-384`, and `P-521`. This field will be required in a future release if `keyType` is `EC` or `EC-HSM`. The API will default to `P-256` if nothing is specified. Changing this forces a new resource to be created.
   final pulumi.Input<String>? curve;
   /// Expiration UTC datetime (Y-m-d'T'H:M:S'Z').
   ///
   /// &gt; **Note:** Removing this field from the config forces a new resource to be created.
   final pulumi.Input<String>? expirationDate;
-  /// A list of JSON web key operations. Possible values include: `decrypt`, `encrypt`, `sign`, `unwrapKey`, `verify` and `wrapKey`. Please note these values are case sensitive.
+  /// A list of JSON web key operations. Possible values include: `decrypt`, `encrypt`, `sign`, `unwrapKey`, `verify` and `wrapKey`. Please note these values are case-sensitive.
   final pulumi.Input<List<String>> keyOpts;
-  /// Specifies the Size of the RSA key to create in bytes. For example, 1024 or 2048. *Note*: This field is required if `key_type` is `RSA` or `RSA-HSM`. Changing this forces a new resource to be created.
+  /// Specifies the Size of the RSA key to create in bytes. For example, 1024 or 2048. *Note*: This field is required if `keyType` is `RSA` or `RSA-HSM`. Changing this forces a new resource to be created.
   final pulumi.Input<int>? keySize;
   /// Specifies the Key Type to use for this Key Vault Key. Possible values are `EC` (Elliptic Curve), `EC-HSM`, `RSA` and `RSA-HSM`. Changing this forces a new resource to be created.
   final pulumi.Input<String> keyType;
@@ -26,23 +27,28 @@ class KeyArgs {
   final pulumi.Input<String>? name;
   /// Key not usable before the provided UTC datetime (Y-m-d'T'H:M:S'Z').
   ///
-  /// &gt; **Note:** Once `expiration_date` is set, it's not possible to unset the key even if it is deleted & recreated as underlying Azure API uses the restore of the purged key.
+  /// &gt; **Note:** Once `expirationDate` is set, it's not possible to unset the key even if it is deleted & recreated as underlying Azure API uses the restore of the purged key.
   final pulumi.Input<String>? notBeforeDate;
-  /// A `rotation_policy` block as defined below.
+  /// A `releasePolicy` block as defined below. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** When `releasePolicy` is set, the key is automatically set as exportable by the provider as this is an API requirement.
+  final pulumi.Input<KeyReleasePolicy>? releasePolicy;
+  /// A `rotationPolicy` block as defined below.
   final pulumi.Input<KeyRotationPolicy>? rotationPolicy;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [KeyArgs].
-  /// [curve] Specifies the curve to use when creating an `EC` key. Possible values are `P-256`, `P-256K`, `P-384`, and `P-521`. This field will be required in a future release if `key_type` is `EC` or `EC-HSM`. The API will default to `P-256` if nothing is specified. Changing this forces a new resource to be created.
+  /// [curve] Specifies the curve to use when creating an `EC` key. Possible values are `P-256`, `P-256K`, `P-384`, and `P-521`. This field will be required in a future release if `keyType` is `EC` or `EC-HSM`. The API will default to `P-256` if nothing is specified. Changing this forces a new resource to be created.
   /// [expirationDate] Expiration UTC datetime (Y-m-d'T'H:M:S'Z').
-  /// [keyOpts] A list of JSON web key operations. Possible values include: `decrypt`, `encrypt`, `sign`, `unwrapKey`, `verify` and `wrapKey`. Please note these values are case sensitive.
-  /// [keySize] Specifies the Size of the RSA key to create in bytes. For example, 1024 or 2048. *Note*: This field is required if `key_type` is `RSA` or `RSA-HSM`. Changing this forces a new resource to be created.
+  /// [keyOpts] A list of JSON web key operations. Possible values include: `decrypt`, `encrypt`, `sign`, `unwrapKey`, `verify` and `wrapKey`. Please note these values are case-sensitive.
+  /// [keySize] Specifies the Size of the RSA key to create in bytes. For example, 1024 or 2048. *Note*: This field is required if `keyType` is `RSA` or `RSA-HSM`. Changing this forces a new resource to be created.
   /// [keyType] Specifies the Key Type to use for this Key Vault Key. Possible values are `EC` (Elliptic Curve), `EC-HSM`, `RSA` and `RSA-HSM`. Changing this forces a new resource to be created.
   /// [keyVaultId] The ID of the Key Vault where the Key should be created. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Key Vault Key. Changing this forces a new resource to be created.
   /// [notBeforeDate] Key not usable before the provided UTC datetime (Y-m-d'T'H:M:S'Z').
-  /// [rotationPolicy] A `rotation_policy` block as defined below.
+  /// [releasePolicy] A `releasePolicy` block as defined below. Changing this forces a new resource to be created.
+  /// [rotationPolicy] A `rotationPolicy` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   const KeyArgs({
     this.curve,
@@ -53,6 +59,7 @@ class KeyArgs {
     required this.keyVaultId,
     this.name,
     this.notBeforeDate,
+    this.releasePolicy,
     this.rotationPolicy,
     this.tags,
   });
@@ -67,6 +74,7 @@ class KeyArgs {
       'keyVaultId': keyVaultId,
       'name': ?name,
       'notBeforeDate': ?notBeforeDate,
+      'releasePolicy': ?pulumi.Input.mapOptionalInputValue<KeyReleasePolicy, Map<String, dynamic>>(releasePolicy, (value) => value.toMap()),
       'rotationPolicy': ?pulumi.Input.mapOptionalInputValue<KeyRotationPolicy, Map<String, dynamic>>(rotationPolicy, (value) => value.toMap()),
       'tags': ?tags,
     };
@@ -82,9 +90,9 @@ class KeyArgs {
       keyVaultId: pulumi.Input.fromValue(map['keyVaultId'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notBeforeDate: (() { final guardedValue = map['notBeforeDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      releasePolicy: (() { final guardedValue = map['releasePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyReleasePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rotationPolicy: (() { final guardedValue = map['rotationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyRotationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
-

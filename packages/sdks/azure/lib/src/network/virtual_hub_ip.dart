@@ -226,6 +226,53 @@ import 'virtual_hub_ip_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualhub" "example" {
+///   name                = "example-vhub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Standard"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "example-pip"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+///   sku                 = "Standard"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.5.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "RouteServerSubnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.5.1.0/24"]
+/// }
+/// resource "azure_network_virtualhubip" "example" {
+///   name                         = "example-vhubipconfig"
+///   virtual_hub_id               = azure_network_virtualhub.example.id
+///   private_ip_address           = "10.5.1.18"
+///   private_ip_allocation_method = "Static"
+///   public_ip_address_id         = azure_network_publicip.example.id
+///   subnet_id                    = azure_network_subnet.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -244,8 +291,8 @@ import 'virtual_hub_ip_state.dart';
 /// import com.pulumi.azure.network.SubnetArgs;
 /// import com.pulumi.azure.network.VirtualHubIp;
 /// import com.pulumi.azure.network.VirtualHubIpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

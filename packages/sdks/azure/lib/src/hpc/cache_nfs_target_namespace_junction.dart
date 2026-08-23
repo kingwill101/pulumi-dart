@@ -9,14 +9,14 @@ class CacheNfsTargetNamespaceJunction {
   final pulumi.Input<String> namespacePath;
   /// The NFS export of this NFS target within the HPC Cache NFS Target.
   final pulumi.Input<String> nfsExport;
-  /// The relative subdirectory path from the `nfs_export` to map to the `namespace_path`. Defaults to `""`, in which case the whole `nfs_export` is exported.
+  /// The relative subdirectory path from the `nfsExport` to map to the `namespacePath`. Defaults to `""`, in which case the whole `nfsExport` is exported.
   final pulumi.Input<String>? targetPath;
 
   /// Creates a new [CacheNfsTargetNamespaceJunction].
   /// [accessPolicyName] The name of the access policy applied to this target. Defaults to `default`.
   /// [namespacePath] The client-facing file path of this NFS target within the HPC Cache NFS Target.
   /// [nfsExport] The NFS export of this NFS target within the HPC Cache NFS Target.
-  /// [targetPath] The relative subdirectory path from the `nfs_export` to map to the `namespace_path`. Defaults to `""`, in which case the whole `nfs_export` is exported.
+  /// [targetPath] The relative subdirectory path from the `nfsExport` to map to the `namespacePath`. Defaults to `""`, in which case the whole `nfsExport` is exported.
   const CacheNfsTargetNamespaceJunction({
     this.accessPolicyName,
     required this.namespacePath,
@@ -42,4 +42,3 @@ class CacheNfsTargetNamespaceJunction {
     );
   }
 }
-

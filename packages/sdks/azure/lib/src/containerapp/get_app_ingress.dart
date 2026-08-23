@@ -13,7 +13,7 @@ class GetAppIngress {
   final pulumi.Input<String> clientCertificateMode;
   /// A `cors` block as detailed below.
   final pulumi.Input<List<GetAppIngressCor>> cors;
-  /// One or more `custom_domain` block as detailed below.
+  /// One or more `customDomain` block as detailed below.
   final pulumi.Input<List<GetAppIngressCustomDomain>> customDomains;
   /// The exposed port on the container for the Ingress traffic.
   final pulumi.Input<int> exposedPort;
@@ -21,11 +21,11 @@ class GetAppIngress {
   final pulumi.Input<bool> externalEnabled;
   /// The FQDN of the ingress.
   final pulumi.Input<String> fqdn;
-  /// One or more `ip_security_restriction` blocks for IP-filtering rules as defined below.
+  /// One or more `ipSecurityRestriction` blocks for IP-filtering rules as defined below.
   final pulumi.Input<List<GetAppIngressIpSecurityRestriction>> ipSecurityRestrictions;
   /// The target port on the container for the Ingress traffic.
   final pulumi.Input<int> targetPort;
-  /// A `traffic_weight` block as detailed below.
+  /// A `trafficWeight` block as detailed below.
   final pulumi.Input<List<GetAppIngressTrafficWeight>> trafficWeights;
   /// The transport method for the Ingress.
   final pulumi.Input<String> transport;
@@ -34,13 +34,13 @@ class GetAppIngress {
   /// [allowInsecureConnections] Should this ingress allow insecure connections?
   /// [clientCertificateMode] The client certificate mode for the Ingress.
   /// [cors] A `cors` block as detailed below.
-  /// [customDomains] One or more `custom_domain` block as detailed below.
+  /// [customDomains] One or more `customDomain` block as detailed below.
   /// [exposedPort] The exposed port on the container for the Ingress traffic.
   /// [externalEnabled] Is this an external Ingress.
   /// [fqdn] The FQDN of the ingress.
-  /// [ipSecurityRestrictions] One or more `ip_security_restriction` blocks for IP-filtering rules as defined below.
+  /// [ipSecurityRestrictions] One or more `ipSecurityRestriction` blocks for IP-filtering rules as defined below.
   /// [targetPort] The target port on the container for the Ingress traffic.
-  /// [trafficWeights] A `traffic_weight` block as detailed below.
+  /// [trafficWeights] A `trafficWeight` block as detailed below.
   /// [transport] The transport method for the Ingress.
   const GetAppIngress({
     required this.allowInsecureConnections,
@@ -88,4 +88,3 @@ class GetAppIngress {
     );
   }
 }
-

@@ -202,6 +202,50 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resource-group"
+///   location = "East US"
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "example-server"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "4dm1n157r470r"
+///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
+/// }
+/// resource "azure_mssql_database" "example" {
+///   name      = "example-db"
+///   server_id = azure_mssql_server.example.id
+///   collation = "SQL_Latin1_General_CP1_CI_AS"
+///   sku_name  = "S1"
+/// }
+/// resource "azure_mssql_jobagent" "example" {
+///   name        = "example-job-agent"
+///   location    = azure_core_resourcegroup.example.location
+///   database_id = azure_mssql_database.example.id
+/// }
+/// resource "azure_mssql_jobcredential" "example" {
+///   name         = "example-job-credential"
+///   job_agent_id = azure_mssql_jobagent.example.id
+///   username     = "my-username"
+///   password     = "MyP4ssw0rd!!!"
+/// }
+/// resource "azure_mssql_job" "example" {
+///   name         = "example-job"
+///   job_agent_id = azure_mssql_jobagent.example.id
+///   description  = "example description"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -220,8 +264,8 @@ import 'job_state.dart';
 /// import com.pulumi.azure.mssql.JobCredentialArgs;
 /// import com.pulumi.azure.mssql.Job;
 /// import com.pulumi.azure.mssql.JobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

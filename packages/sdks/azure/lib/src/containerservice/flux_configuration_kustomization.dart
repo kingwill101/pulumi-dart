@@ -12,7 +12,7 @@ class FluxConfigurationKustomization {
   final pulumi.Input<String> name;
   /// Specifies the path in the source reference to reconcile on the cluster.
   final pulumi.Input<String>? path;
-  /// A `post_build` block as defined below.
+  /// A `postBuild` block as defined below.
   final pulumi.Input<FluxConfigurationKustomizationPostBuild>? postBuild;
   /// Whether re-creating Kubernetes resources on the cluster is enabled when patching fails due to an immutable field change. Defaults to `false`.
   final pulumi.Input<bool>? recreatingEnabled;
@@ -30,7 +30,7 @@ class FluxConfigurationKustomization {
   /// [garbageCollectionEnabled] Whether garbage collections of Kubernetes objects created by this kustomization is enabled. Defaults to `false`.
   /// [name] Specifies the name of the kustomization.
   /// [path] Specifies the path in the source reference to reconcile on the cluster.
-  /// [postBuild] A `post_build` block as defined below.
+  /// [postBuild] A `postBuild` block as defined below.
   /// [recreatingEnabled] Whether re-creating Kubernetes resources on the cluster is enabled when patching fails due to an immutable field change. Defaults to `false`.
   /// [retryIntervalInSeconds] The interval at which to re-reconcile the kustomization on the cluster in the event of failure on reconciliation. Defaults to `600`.
   /// [syncIntervalInSeconds] The interval at which to re-reconcile the kustomization on the cluster. Defaults to `600`.
@@ -79,4 +79,3 @@ class FluxConfigurationKustomization {
     );
   }
 }
-

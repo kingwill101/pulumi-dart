@@ -137,6 +137,36 @@ import 'linked_service_azure_function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appservice_getfunctionapp" "example" {
+///   name                = "test-azure-functions"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedserviceazurefunction" "example" {
+///   name            = "example"
+///   data_factory_id = azure_datafactory_factory.example.id
+///   url             ="https://${data.azure_appservice_getfunctionapp.example.default_hostname}"
+///   key             = "foo"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +181,8 @@ import 'linked_service_azure_function_state.dart';
 /// import com.pulumi.azure.datafactory.FactoryArgs;
 /// import com.pulumi.azure.datafactory.LinkedServiceAzureFunction;
 /// import com.pulumi.azure.datafactory.LinkedServiceAzureFunctionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -243,9 +273,9 @@ class LinkedServiceAzureFunction extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   late final pulumi.Output<String?> integrationRuntimeName;
-  /// The system key of the Azure Function. Exactly one of either `key` or `key_vault_key` is required
+  /// The system key of the Azure Function. Exactly one of either `key` or `keyVaultKey` is required
   late final pulumi.Output<String?> key;
-  /// A `key_vault_key` block as defined below. Use this Argument to store the system key of the Azure Function in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `key` or `key_vault_key` is required.
+  /// A `keyVaultKey` block as defined below. Use this Argument to store the system key of the Azure Function in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `key` or `keyVaultKey` is required.
   late final pulumi.Output<LinkedServiceAzureFunctionKeyVaultKey?> keyVaultKey;
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;

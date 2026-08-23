@@ -13,7 +13,7 @@ class IntegrationRuntimeSelfHostedState {
   final pulumi.Input<String>? name;
   /// The primary integration runtime authentication key.
   final pulumi.Input<String>? primaryAuthorizationKey;
-  /// A `rbac_authorization` block as defined below. Changing this forces a new resource to be created.
+  /// A `rbacAuthorization` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<IntegrationRuntimeSelfHostedRbacAuthorization>>? rbacAuthorizations;
   /// The secondary integration runtime authentication key.
   final pulumi.Input<String>? secondaryAuthorizationKey;
@@ -25,7 +25,7 @@ class IntegrationRuntimeSelfHostedState {
   /// [description] Integration runtime description.
   /// [name] The name which should be used for this Data Factory. Changing this forces a new Data Factory Self-hosted Integration Runtime to be created.
   /// [primaryAuthorizationKey] The primary integration runtime authentication key.
-  /// [rbacAuthorizations] A `rbac_authorization` block as defined below. Changing this forces a new resource to be created.
+  /// [rbacAuthorizations] A `rbacAuthorization` block as defined below. Changing this forces a new resource to be created.
   /// [secondaryAuthorizationKey] The secondary integration runtime authentication key.
   /// [selfContainedInteractiveAuthoringEnabled] Specifies whether enable interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
   const IntegrationRuntimeSelfHostedState({
@@ -62,4 +62,3 @@ class IntegrationRuntimeSelfHostedState {
     );
   }
 }
-

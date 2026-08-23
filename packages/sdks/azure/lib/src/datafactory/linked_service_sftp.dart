@@ -129,6 +129,34 @@ import 'linked_service_sftp_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedservicesftp" "example" {
+///   name                = "example"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   authentication_type = "Basic"
+///   host                = "http://www.bing.com"
+///   port                = 22
+///   username            = "foo"
+///   password            = "bar"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +169,8 @@ import 'linked_service_sftp_state.dart';
 /// import com.pulumi.azure.datafactory.FactoryArgs;
 /// import com.pulumi.azure.datafactory.LinkedServiceSftp;
 /// import com.pulumi.azure.datafactory.LinkedServiceSftpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,15 +260,15 @@ class LinkedServiceSftp extends pulumi.CustomResource {
   late final pulumi.Output<String?> hostKeyFingerprint;
   /// The name of the integration runtime to associate with the Data Factory Linked Service.
   late final pulumi.Output<String?> integrationRuntimeName;
-  /// A `key_vault_password` block as defined below.
+  /// A `keyVaultPassword` block as defined below.
   ///
-  /// &gt; **Note:** Either `password` or `key_vault_password` is required when `authentication_type` is set to `Basic`.
+  /// &gt; **Note:** Either `password` or `keyVaultPassword` is required when `authenticationType` is set to `Basic`.
   late final pulumi.Output<List<Map<String, dynamic>>?> keyVaultPasswords;
-  /// A `key_vault_private_key_content_base64` block as defined below.
+  /// A `keyVaultPrivateKeyContentBase64` block as defined below.
   late final pulumi.Output<LinkedServiceSftpKeyVaultPrivateKeyContentBase64?> keyVaultPrivateKeyContentBase64;
-  /// A `key_vault_private_key_passphrase` block as defined below.
+  /// A `keyVaultPrivateKeyPassphrase` block as defined below.
   ///
-  /// &gt; **Note:** One of `private_key_content_base64` or `private_key_path` (or their Key Vault equivalent) is required when `authentication_type` is set to `SshPublicKey`.
+  /// &gt; **Note:** One of `privateKeyContentBase64` or `privateKeyPath` (or their Key Vault equivalent) is required when `authenticationType` is set to `SshPublicKey`.
   late final pulumi.Output<LinkedServiceSftpKeyVaultPrivateKeyPassphrase?> keyVaultPrivateKeyPassphrase;
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
@@ -256,9 +284,9 @@ class LinkedServiceSftp extends pulumi.CustomResource {
   late final pulumi.Output<String?> privateKeyPassphrase;
   /// The absolute path to the private key file that the self-hosted integration runtime can access.
   ///
-  /// &gt; **Note:** `private_key_path` only applies when using a self-hosted integration runtime (instead of the default Azure provided runtime), as indicated by supplying a value for `integration_runtime_name`.
+  /// &gt; **Note:** `privateKeyPath` only applies when using a self-hosted integration runtime (instead of the default Azure provided runtime), as indicated by supplying a value for `integrationRuntimeName`.
   late final pulumi.Output<String?> privateKeyPath;
-  /// Whether to validate host key fingerprint while connecting. If set to `false`, `host_key_fingerprint` must also be set.
+  /// Whether to validate host key fingerprint while connecting. If set to `false`, `hostKeyFingerprint` must also be set.
   late final pulumi.Output<bool?> skipHostKeyValidation;
   /// The username used to log on to the SFTP server.
   late final pulumi.Output<String> username;

@@ -18,7 +18,7 @@ class GroupContainer {
   final pulumi.Input<Map<String, String>>? environmentVariables;
   /// The container image name. Changing this forces a new resource to be created.
   final pulumi.Input<String> image;
-  /// The definition of a readiness probe for this container as documented in the `liveness_probe` block below. Changing this forces a new resource to be created.
+  /// The definition of a readiness probe for this container as documented in the `livenessProbe` block below. Changing this forces a new resource to be created.
   final pulumi.Input<GroupContainerLivenessProbe>? livenessProbe;
   /// The required memory of the containers in GB. Changing this forces a new resource to be created.
   final pulumi.Input<double> memory;
@@ -28,7 +28,7 @@ class GroupContainer {
   final pulumi.Input<String> name;
   /// A set of public ports for the container. Changing this forces a new resource to be created. Set as documented in the `ports` block below.
   final pulumi.Input<List<GroupContainerPort>>? ports;
-  /// The definition of a readiness probe for this container as documented in the `readiness_probe` block below. Changing this forces a new resource to be created.
+  /// The definition of a readiness probe for this container as documented in the `readinessProbe` block below. Changing this forces a new resource to be created.
   final pulumi.Input<GroupContainerReadinessProbe>? readinessProbe;
   /// A list of sensitive environment variables to be set on the container. Specified as a map of name/value pairs. Changing this forces a new resource to be created.
   final pulumi.Input<Map<String, String>>? secureEnvironmentVariables;
@@ -43,12 +43,12 @@ class GroupContainer {
   /// [cpuLimit] The upper limit of the number of CPU cores of the containers.
   /// [environmentVariables] A list of environment variables to be set on the container. Specified as a map of name/value pairs. Changing this forces a new resource to be created.
   /// [image] The container image name. Changing this forces a new resource to be created.
-  /// [livenessProbe] The definition of a readiness probe for this container as documented in the `liveness_probe` block below. Changing this forces a new resource to be created.
+  /// [livenessProbe] The definition of a readiness probe for this container as documented in the `livenessProbe` block below. Changing this forces a new resource to be created.
   /// [memory] The required memory of the containers in GB. Changing this forces a new resource to be created.
   /// [memoryLimit] The upper limit of the memory of the containers in GB.
   /// [name] Specifies the name of the Container. Changing this forces a new resource to be created.
   /// [ports] A set of public ports for the container. Changing this forces a new resource to be created. Set as documented in the `ports` block below.
-  /// [readinessProbe] The definition of a readiness probe for this container as documented in the `readiness_probe` block below. Changing this forces a new resource to be created.
+  /// [readinessProbe] The definition of a readiness probe for this container as documented in the `readinessProbe` block below. Changing this forces a new resource to be created.
   /// [secureEnvironmentVariables] A list of sensitive environment variables to be set on the container. Specified as a map of name/value pairs. Changing this forces a new resource to be created.
   /// [securities] The definition of the security context for this container as documented in the `security` block below. Changing this forces a new resource to be created.
   /// [volumes] The definition of a volume mount for this container as documented in the `volume` block below. Changing this forces a new resource to be created.
@@ -107,4 +107,3 @@ class GroupContainer {
     );
   }
 }
-

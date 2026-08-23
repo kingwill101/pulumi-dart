@@ -220,6 +220,50 @@ import 'security_device_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_iot_iothub" "example" {
+///   name                = "example-IoTHub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku = {
+///     name     = "S1"
+///     capacity = "1"
+///   }
+/// }
+/// resource "azure_iot_securitysolution" "example" {
+///   name                = "example-Iot-Security-Solution"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   display_name        = "Iot Security Solution"
+///   iothub_ids          = [azure_iot_iothub.example.id]
+/// }
+/// resource "azure_iot_securitydevicegroup" "example" {
+///   depends_on = [azure_iot_securitysolution.example]
+///   name       = "example-device-security-group"
+///   iothub_id  = azure_iot_iothub.example.id
+///   allow_rule = {
+///     connection_to_ips_not_alloweds = ["10.0.0.0/24"]
+///   }
+///   range_rules {
+///     type     = "ActiveConnectionsNotInAllowedRange"
+///     min      = 0
+///     max      = 30
+///     duration = "PT5M"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -238,8 +282,8 @@ import 'security_device_group_state.dart';
 /// import com.pulumi.azure.iot.inputs.SecurityDeviceGroupAllowRuleArgs;
 /// import com.pulumi.azure.iot.inputs.SecurityDeviceGroupRangeRuleArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -348,13 +392,13 @@ import 'security_device_group_state.dart';
 /// $ pulumi import azure:iot/securityDeviceGroup:SecurityDeviceGroup example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resGroup1/providers/Microsoft.Devices/iotHubs/hub1/providers/Microsoft.Security/deviceSecurityGroups/group1
 /// ```
 class SecurityDeviceGroup extends pulumi.CustomResource {
-  /// an `allow_rule` blocks as defined below.
+  /// an `allowRule` blocks as defined below.
   late final pulumi.Output<SecurityDeviceGroupAllowRule?> allowRule;
   /// The ID of the IoT Hub which to link the Security Device Group to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubId;
   /// Specifies the name of the Device Security Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// One or more `range_rule` blocks as defined below.
+  /// One or more `rangeRule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> rangeRules;
 
   /// Creates a new [SecurityDeviceGroup].

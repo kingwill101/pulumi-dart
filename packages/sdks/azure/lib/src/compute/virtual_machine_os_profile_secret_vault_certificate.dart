@@ -15,7 +15,7 @@ class VirtualMachineOsProfileSecretVaultCertificate {
   /// }
   /// ```
   ///
-  /// &gt; **NOTE:** If your certificate is stored in Azure Key Vault - this can be sourced from the `secret_id` property on the `azure.keyvault.Certificate` resource.
+  /// &gt; **NOTE:** If your certificate is stored in Azure Key Vault - this can be sourced from the `secretId` property on the `azure.keyvault.Certificate` resource.
   final pulumi.Input<String> certificateUrl;
 
   /// Creates a new [VirtualMachineOsProfileSecretVaultCertificate].
@@ -40,4 +40,3 @@ class VirtualMachineOsProfileSecretVaultCertificate {
     );
   }
 }
-

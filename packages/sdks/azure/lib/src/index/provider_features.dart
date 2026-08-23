@@ -32,10 +32,14 @@ class ProviderFeatures {
   final pulumi.Input<ProviderFeaturesMachineLearning>? machineLearning;
   final pulumi.Input<ProviderFeaturesManagedDisk>? managedDisk;
   final pulumi.Input<ProviderFeaturesNetapp>? netapp;
+  /// Whether to set the resource ID into state before polling asynchronous operations for completion. Defaults to `false`.
+  final pulumi.Input<bool>? persistIdOnCreateBeforePollingForCompletion;
   final pulumi.Input<ProviderFeaturesPostgresqlFlexibleServer>? postgresqlFlexibleServer;
   final pulumi.Input<ProviderFeaturesRecoveryService>? recoveryService;
   final pulumi.Input<ProviderFeaturesRecoveryServicesVaults>? recoveryServicesVaults;
   final pulumi.Input<ProviderFeaturesResourceGroup>? resourceGroup;
+  /// Whether to skip the import check and allow the provider to overwrite existing remote resources if present. Defaults to `false`.
+  final pulumi.Input<bool>? skipImportCheckOnCreateAndAllowOverwritingExistingResources;
   final pulumi.Input<ProviderFeaturesStorage>? storage;
   final pulumi.Input<ProviderFeaturesSubscription>? subscription;
   final pulumi.Input<ProviderFeaturesTemplateDeployment>? templateDeployment;
@@ -53,10 +57,12 @@ class ProviderFeatures {
   /// [machineLearning] Optional.
   /// [managedDisk] Optional.
   /// [netapp] Optional.
+  /// [persistIdOnCreateBeforePollingForCompletion] Whether to set the resource ID into state before polling asynchronous operations for completion. Defaults to `false`.
   /// [postgresqlFlexibleServer] Optional.
   /// [recoveryService] Optional.
   /// [recoveryServicesVaults] Optional.
   /// [resourceGroup] Optional.
+  /// [skipImportCheckOnCreateAndAllowOverwritingExistingResources] Whether to skip the import check and allow the provider to overwrite existing remote resources if present. Defaults to `false`.
   /// [storage] Optional.
   /// [subscription] Optional.
   /// [templateDeployment] Optional.
@@ -73,10 +79,12 @@ class ProviderFeatures {
     this.machineLearning,
     this.managedDisk,
     this.netapp,
+    this.persistIdOnCreateBeforePollingForCompletion,
     this.postgresqlFlexibleServer,
     this.recoveryService,
     this.recoveryServicesVaults,
     this.resourceGroup,
+    this.skipImportCheckOnCreateAndAllowOverwritingExistingResources,
     this.storage,
     this.subscription,
     this.templateDeployment,
@@ -96,10 +104,12 @@ class ProviderFeatures {
       'machineLearning': ?pulumi.Input.mapOptionalInputValue<ProviderFeaturesMachineLearning, Map<String, dynamic>>(machineLearning, (value) => value.toMap()),
       'managedDisk': ?pulumi.Input.mapOptionalInputValue<ProviderFeaturesManagedDisk, Map<String, dynamic>>(managedDisk, (value) => value.toMap()),
       'netapp': ?pulumi.Input.mapOptionalInputValue<ProviderFeaturesNetapp, Map<String, dynamic>>(netapp, (value) => value.toMap()),
+      'persistIdOnCreateBeforePollingForCompletion': ?persistIdOnCreateBeforePollingForCompletion,
       'postgresqlFlexibleServer': ?pulumi.Input.mapOptionalInputValue<ProviderFeaturesPostgresqlFlexibleServer, Map<String, dynamic>>(postgresqlFlexibleServer, (value) => value.toMap()),
       'recoveryService': ?pulumi.Input.mapOptionalInputValue<ProviderFeaturesRecoveryService, Map<String, dynamic>>(recoveryService, (value) => value.toMap()),
       'recoveryServicesVaults': ?pulumi.Input.mapOptionalInputValue<ProviderFeaturesRecoveryServicesVaults, Map<String, dynamic>>(recoveryServicesVaults, (value) => value.toMap()),
       'resourceGroup': ?pulumi.Input.mapOptionalInputValue<ProviderFeaturesResourceGroup, Map<String, dynamic>>(resourceGroup, (value) => value.toMap()),
+      'skipImportCheckOnCreateAndAllowOverwritingExistingResources': ?skipImportCheckOnCreateAndAllowOverwritingExistingResources,
       'storage': ?pulumi.Input.mapOptionalInputValue<ProviderFeaturesStorage, Map<String, dynamic>>(storage, (value) => value.toMap()),
       'subscription': ?pulumi.Input.mapOptionalInputValue<ProviderFeaturesSubscription, Map<String, dynamic>>(subscription, (value) => value.toMap()),
       'templateDeployment': ?pulumi.Input.mapOptionalInputValue<ProviderFeaturesTemplateDeployment, Map<String, dynamic>>(templateDeployment, (value) => value.toMap()),
@@ -120,10 +130,12 @@ class ProviderFeatures {
       machineLearning: (() { final guardedValue = map['machineLearning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProviderFeaturesMachineLearning.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       managedDisk: (() { final guardedValue = map['managedDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProviderFeaturesManagedDisk.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       netapp: (() { final guardedValue = map['netapp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProviderFeaturesNetapp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      persistIdOnCreateBeforePollingForCompletion: (() { final guardedValue = map['persistIdOnCreateBeforePollingForCompletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       postgresqlFlexibleServer: (() { final guardedValue = map['postgresqlFlexibleServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProviderFeaturesPostgresqlFlexibleServer.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       recoveryService: (() { final guardedValue = map['recoveryService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProviderFeaturesRecoveryService.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       recoveryServicesVaults: (() { final guardedValue = map['recoveryServicesVaults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProviderFeaturesRecoveryServicesVaults.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroup: (() { final guardedValue = map['resourceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProviderFeaturesResourceGroup.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      skipImportCheckOnCreateAndAllowOverwritingExistingResources: (() { final guardedValue = map['skipImportCheckOnCreateAndAllowOverwritingExistingResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProviderFeaturesStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       subscription: (() { final guardedValue = map['subscription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProviderFeaturesSubscription.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       templateDeployment: (() { final guardedValue = map['templateDeployment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProviderFeaturesTemplateDeployment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -132,4 +144,3 @@ class ProviderFeatures {
     );
   }
 }
-

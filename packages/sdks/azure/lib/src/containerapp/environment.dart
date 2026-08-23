@@ -128,6 +128,34 @@ import 'environment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-workspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+///   retention_in_days   = 30
+/// }
+/// resource "azure_containerapp_environment" "example" {
+///   name                       = "my-environment"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   logs_destination           = "log-analytics"
+///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +168,8 @@ import 'environment_state.dart';
 /// import com.pulumi.azure.operationalinsights.AnalyticsWorkspaceArgs;
 /// import com.pulumi.azure.containerapp.Environment;
 /// import com.pulumi.azure.containerapp.EnvironmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,21 +262,21 @@ class Environment extends pulumi.CustomResource {
   late final pulumi.Output<EnvironmentIdentity?> identity;
   /// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Only valid if a `workload_profile` is specified. If `infrastructure_subnet_id` is specified, this resource group will be created in the same subscription as `infrastructure_subnet_id`.
+  /// &gt; **Note:** Only valid if a `workloadProfile` is specified. If `infrastructureSubnetId` is specified, this resource group will be created in the same subscription as `infrastructureSubnetId`.
   late final pulumi.Output<String?> infrastructureResourceGroupName;
   /// The existing Subnet to use for the Container Apps Control Plane. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The Subnet must have a `/21` or larger address space.
+  /// &gt; **Note:** The minimum required subnet size is /23 for Consumption only environment type and /27 for Workload profiles environment type.
   late final pulumi.Output<String?> infrastructureSubnetId;
   /// Should the Container Environment operate in Internal Load Balancing Mode? Defaults to `false`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** can only be set to `true` if `infrastructure_subnet_id` is specified.
+  /// &gt; **Note:** can only be set to `true` if `infrastructureSubnetId` is specified.
   late final pulumi.Output<bool?> internalLoadBalancerEnabled;
   /// Specifies the supported Azure location where the Container App Environment is to exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// The ID for the Log Analytics Workspace to link this Container Apps Managed Environment to.
   ///
-  /// &gt; **Note:** required if `logs_destination` is set to `log-analytics`. Cannot be set if `logs_destination` is set to `azure-monitor`.
+  /// &gt; **Note:** required if `logsDestination` is set to `log-analytics`. Cannot be set if `logsDestination` is set to `azure-monitor`.
   late final pulumi.Output<String?> logAnalyticsWorkspaceId;
   /// Where the application logs will be saved for this Container Apps Managed Environment. Possible values include `log-analytics` and `azure-monitor`. Omitting this value will result in logs being streamed only.
   late final pulumi.Output<String> logsDestination;
@@ -260,7 +288,7 @@ class Environment extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The IP range, in CIDR notation, that is reserved for environment infrastructure IP addresses.
   late final pulumi.Output<String> platformReservedCidr;
-  /// The IP address from the IP range defined by `platform_reserved_cidr` that is reserved for the internal DNS server.
+  /// The IP address from the IP range defined by `platformReservedCidr` that is reserved for the internal DNS server.
   late final pulumi.Output<String> platformReservedDnsIpAddress;
   /// The public network access setting for the Container App Environment. Possible values are `Enabled` and `Disabled`.
   late final pulumi.Output<String> publicNetworkAccess;
@@ -270,11 +298,11 @@ class Environment extends pulumi.CustomResource {
   late final pulumi.Output<String> staticIpAddress;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// One or more `workload_profile` blocks as defined below.
+  /// One or more `workloadProfile` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> workloadProfiles;
   /// Should the Container App Environment be created with Zone Redundancy enabled? Defaults to `false`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** can only be set to `true` if `infrastructure_subnet_id` is specified.
+  /// &gt; **Note:** can only be set to `true` if `infrastructureSubnetId` is specified.
   late final pulumi.Output<bool?> zoneRedundancyEnabled;
 
   /// Creates a new [Environment].

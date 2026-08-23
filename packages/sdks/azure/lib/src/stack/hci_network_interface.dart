@@ -234,6 +234,55 @@ import 'hci_network_interface_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_stack_hcilogicalnetwork" "example" {
+///   name                = "example-hci-ln"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   custom_location_id  = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ExtendedLocation/customLocations/cl1"
+///   virtual_switch_name = "ConvergedSwitch(managementcompute)"
+///   dns_servers         = ["10.0.0.7", "10.0.0.8"]
+///   subnet = {
+///     ip_allocation_method = "Static"
+///     address_prefix       = "10.0.0.0/24"
+///     route = {
+///       "name"             = "example-route"
+///       "addressPrefix"    = "0.0.0.0/0"
+///       "nextHopIpAddress" = "10.0.20.1"
+///     }
+///     vlan_id = 123
+///   }
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "azure_stack_hcinetworkinterface" "example" {
+///   name                = "example-ni"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   custom_location_id  = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ExtendedLocation/customLocations/cl1"
+///   dns_servers         = ["10.0.0.8"]
+///   ip_configuration = {
+///     private_ip_address = "10.0.0.2"
+///     subnet_id          = test.id
+///   }
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -248,8 +297,8 @@ import 'hci_network_interface_state.dart';
 /// import com.pulumi.azure.stack.HciNetworkInterface;
 /// import com.pulumi.azure.stack.HciNetworkInterfaceArgs;
 /// import com.pulumi.azure.stack.inputs.HciNetworkInterfaceIpConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -370,13 +419,13 @@ class HciNetworkInterface extends pulumi.CustomResource {
   late final pulumi.Output<String> customLocationId;
   /// A list of IPv4 addresses of DNS servers available to VMs deployed in the Network Interface. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>?> dnsServers;
-  /// An `ip_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// An `ipConfiguration` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<HciNetworkInterfaceIpConfiguration> ipConfiguration;
   /// The Azure Region where the Azure Stack HCI Network Interface should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// The MAC address of the Network Interface. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** If `mac_address` is not specified, it will be assigned by the server. If you experience a diff you may need to add this to `ignore_changes`.
+  /// &gt; **Note:** If `macAddress` is not specified, it will be assigned by the server. If you experience a diff you may need to add this to `ignoreChanges`.
   late final pulumi.Output<String?> macAddress;
   /// The name which should be used for this Azure Stack HCI Network Interface. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;

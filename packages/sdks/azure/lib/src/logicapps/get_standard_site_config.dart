@@ -24,7 +24,9 @@ class GetStandardSiteConfig {
   final pulumi.Input<String> healthCheckPath;
   /// Specifies whether the HTTP2 protocol should be enabled.
   final pulumi.Input<bool> http2Enabled;
-  /// A list of `ip_restriction` objects representing IP restrictions as defined below.
+  /// The default action taken when no `ipRestriction` rules match.
+  final pulumi.Input<String> ipRestrictionDefaultAction;
+  /// A list of `ipRestriction` objects representing IP restrictions as defined below.
   final pulumi.Input<List<GetStandardSiteConfigIpRestriction>> ipRestrictions;
   /// Linux App Framework and version for the Logic App.
   final pulumi.Input<String> linuxFxVersion;
@@ -35,13 +37,15 @@ class GetStandardSiteConfig {
   final pulumi.Input<bool> publicNetworkAccessEnabled;
   /// Should Runtime Scale Monitoring be enabled?. Only applicable to apps on the Premium plan.
   final pulumi.Input<bool> runtimeScaleMonitoringEnabled;
-  /// A list of `scm_ip_restriction` objects representing SCM IP restrictions as defined below.
+  /// The default action taken when no `scmIpRestriction` rules match.
+  final pulumi.Input<String> scmIpRestrictionDefaultAction;
+  /// A list of `scmIpRestriction` objects representing SCM IP restrictions as defined below.
   final pulumi.Input<List<GetStandardSiteConfigScmIpRestriction>> scmIpRestrictions;
   /// The minimum version of TLS required for SSL requests to the SCM site.
   final pulumi.Input<String> scmMinTlsVersion;
   /// The type of Source Control used by the Logic App in use by the Windows Function App.
   final pulumi.Input<String> scmType;
-  /// Should the Logic App `ip_restriction` configuration be used for the SCM too.
+  /// Should the Logic App `ipRestriction` configuration be used for the SCM too.
   final pulumi.Input<bool> scmUseMainIpRestriction;
   /// Should the Logic App run in 32 bit mode, rather than 64 bit mode?
   final pulumi.Input<bool> use32BitWorkerProcess;
@@ -60,16 +64,18 @@ class GetStandardSiteConfig {
   /// [ftpsState] The state of FTP / FTPS service for this Logic App.
   /// [healthCheckPath] Path which will be checked for this Logic App health.
   /// [http2Enabled] Specifies whether the HTTP2 protocol should be enabled.
-  /// [ipRestrictions] A list of `ip_restriction` objects representing IP restrictions as defined below.
+  /// [ipRestrictionDefaultAction] The default action taken when no `ipRestriction` rules match.
+  /// [ipRestrictions] A list of `ipRestriction` objects representing IP restrictions as defined below.
   /// [linuxFxVersion] Linux App Framework and version for the Logic App.
   /// [minTlsVersion] The minimum supported TLS version for the Logic App.
   /// [preWarmedInstanceCount] The number of pre-warmed instances for this Logic App Only affects apps on the Premium plan.
   /// [publicNetworkAccessEnabled] Required.
   /// [runtimeScaleMonitoringEnabled] Should Runtime Scale Monitoring be enabled?. Only applicable to apps on the Premium plan.
-  /// [scmIpRestrictions] A list of `scm_ip_restriction` objects representing SCM IP restrictions as defined below.
+  /// [scmIpRestrictionDefaultAction] The default action taken when no `scmIpRestriction` rules match.
+  /// [scmIpRestrictions] A list of `scmIpRestriction` objects representing SCM IP restrictions as defined below.
   /// [scmMinTlsVersion] The minimum version of TLS required for SSL requests to the SCM site.
   /// [scmType] The type of Source Control used by the Logic App in use by the Windows Function App.
-  /// [scmUseMainIpRestriction] Should the Logic App `ip_restriction` configuration be used for the SCM too.
+  /// [scmUseMainIpRestriction] Should the Logic App `ipRestriction` configuration be used for the SCM too.
   /// [use32BitWorkerProcess] Should the Logic App run in 32 bit mode, rather than 64 bit mode?
   /// [vnetRouteAllEnabled] Should all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
   /// [websocketsEnabled] Should WebSockets be enabled?
@@ -83,12 +89,14 @@ class GetStandardSiteConfig {
     required this.ftpsState,
     required this.healthCheckPath,
     required this.http2Enabled,
+    required this.ipRestrictionDefaultAction,
     required this.ipRestrictions,
     required this.linuxFxVersion,
     required this.minTlsVersion,
     required this.preWarmedInstanceCount,
     required this.publicNetworkAccessEnabled,
     required this.runtimeScaleMonitoringEnabled,
+    required this.scmIpRestrictionDefaultAction,
     required this.scmIpRestrictions,
     required this.scmMinTlsVersion,
     required this.scmType,
@@ -109,12 +117,14 @@ class GetStandardSiteConfig {
       'ftpsState': ftpsState,
       'healthCheckPath': healthCheckPath,
       'http2Enabled': http2Enabled,
+      'ipRestrictionDefaultAction': ipRestrictionDefaultAction,
       'ipRestrictions': pulumi.Input.mapInputValue<List<GetStandardSiteConfigIpRestriction>, List<Map<String, dynamic>>>(ipRestrictions, (value) => pulumi.Input.encodeList<GetStandardSiteConfigIpRestriction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'linuxFxVersion': linuxFxVersion,
       'minTlsVersion': minTlsVersion,
       'preWarmedInstanceCount': preWarmedInstanceCount,
       'publicNetworkAccessEnabled': publicNetworkAccessEnabled,
       'runtimeScaleMonitoringEnabled': runtimeScaleMonitoringEnabled,
+      'scmIpRestrictionDefaultAction': scmIpRestrictionDefaultAction,
       'scmIpRestrictions': pulumi.Input.mapInputValue<List<GetStandardSiteConfigScmIpRestriction>, List<Map<String, dynamic>>>(scmIpRestrictions, (value) => pulumi.Input.encodeList<GetStandardSiteConfigScmIpRestriction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scmMinTlsVersion': scmMinTlsVersion,
       'scmType': scmType,
@@ -136,12 +146,14 @@ class GetStandardSiteConfig {
       ftpsState: pulumi.Input.fromValue(map['ftpsState'] as String),
       healthCheckPath: pulumi.Input.fromValue(map['healthCheckPath'] as String),
       http2Enabled: pulumi.Input.fromValue(map['http2Enabled'] as bool),
+      ipRestrictionDefaultAction: pulumi.Input.fromValue(map['ipRestrictionDefaultAction'] as String),
       ipRestrictions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetStandardSiteConfigIpRestriction>(map['ipRestrictions']!, (value) => GetStandardSiteConfigIpRestriction.fromMap((value as Map).cast<String, dynamic>()))),
       linuxFxVersion: pulumi.Input.fromValue(map['linuxFxVersion'] as String),
       minTlsVersion: pulumi.Input.fromValue(map['minTlsVersion'] as String),
       preWarmedInstanceCount: pulumi.Input.fromValue(map['preWarmedInstanceCount'] as int),
       publicNetworkAccessEnabled: pulumi.Input.fromValue(map['publicNetworkAccessEnabled'] as bool),
       runtimeScaleMonitoringEnabled: pulumi.Input.fromValue(map['runtimeScaleMonitoringEnabled'] as bool),
+      scmIpRestrictionDefaultAction: pulumi.Input.fromValue(map['scmIpRestrictionDefaultAction'] as String),
       scmIpRestrictions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetStandardSiteConfigScmIpRestriction>(map['scmIpRestrictions']!, (value) => GetStandardSiteConfigScmIpRestriction.fromMap((value as Map).cast<String, dynamic>()))),
       scmMinTlsVersion: pulumi.Input.fromValue(map['scmMinTlsVersion'] as String),
       scmType: pulumi.Input.fromValue(map['scmType'] as String),
@@ -152,4 +164,3 @@ class GetStandardSiteConfig {
     );
   }
 }
-

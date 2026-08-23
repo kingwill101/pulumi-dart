@@ -183,6 +183,46 @@ import 'database_extended_auditing_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "example-sqlserver"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "missadministrator"
+///   administrator_login_password = "AdminPassword123!"
+/// }
+/// resource "azure_mssql_database" "example" {
+///   name      = "example-db"
+///   server_id = azure_mssql_server.example.id
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplesa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_mssql_databaseextendedauditingpolicy" "example" {
+///   database_id                             = azure_mssql_database.example.id
+///   storage_endpoint                        = azure_storage_account.example.primary_blob_endpoint
+///   storage_account_access_key              = azure_storage_account.example.primary_access_key
+///   storage_account_access_key_is_secondary = false
+///   retention_in_days                       = 6
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -199,8 +239,8 @@ import 'database_extended_auditing_policy_state.dart';
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.mssql.DatabaseExtendedAuditingPolicy;
 /// import com.pulumi.azure.mssql.DatabaseExtendedAuditingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -313,7 +353,7 @@ class DatabaseExtendedAuditingPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> databaseId;
   /// Whether to enable the extended auditing policy. Possible values are `true` and `false`. Defaults to `true`.
   ///
-  /// &gt; **Note:** If `enabled` is `true`, `storage_endpoint` or `log_monitoring_enabled` are required.
+  /// &gt; **Note:** If `enabled` is `true`, `storageEndpoint` or `logMonitoringEnabled` are required.
   late final pulumi.Output<bool?> enabled;
   /// Enable audit events to Azure Monitor? Defaults to `true`.
   ///
@@ -324,7 +364,7 @@ class DatabaseExtendedAuditingPolicy extends pulumi.CustomResource {
   late final pulumi.Output<int?> retentionInDays;
   /// The access key to use for the auditing storage account.
   late final pulumi.Output<String?> storageAccountAccessKey;
-  /// Is `storage_account_access_key` value the storage's secondary key?
+  /// Is `storageAccountAccessKey` value the storage's secondary key?
   late final pulumi.Output<bool?> storageAccountAccessKeyIsSecondary;
   /// The blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all extended auditing logs.
   late final pulumi.Output<String?> storageEndpoint;

@@ -137,6 +137,36 @@ import 'data_lake_gen2_filesystem_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   account_kind             = "StorageV2"
+///   is_hns_enabled           = "true"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+///   properties = {
+///     "hello" = "aGVsbG8="
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -149,8 +179,8 @@ import 'data_lake_gen2_filesystem_state.dart';
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.storage.DataLakeGen2Filesystem;
 /// import com.pulumi.azure.storage.DataLakeGen2FilesystemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -229,7 +259,7 @@ class DataLakeGen2Filesystem extends pulumi.CustomResource {
   late final pulumi.Output<String> defaultEncryptionScope;
   /// Specifies the Object ID of the Azure Active Directory Group to make the owning group of the root path (i.e. `/`). Possible values also include `$superuser`.
   ///
-  /// &gt; **Note:** The Storage Account requires `account_kind` to be either `StorageV2` or `BlobStorage`. In addition, `is_hns_enabled` has to be set to `true`.
+  /// &gt; **Note:** The Storage Account requires `accountKind` to be either `StorageV2` or `BlobStorage`. In addition, `isHnsEnabled` has to be set to `true`.
   late final pulumi.Output<String> group;
   /// The name of the Data Lake Gen2 File System which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;

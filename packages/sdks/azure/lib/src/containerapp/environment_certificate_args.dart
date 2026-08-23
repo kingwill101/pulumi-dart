@@ -10,15 +10,15 @@ import 'environment_certificate_certificate_key_vault.dart';
 class EnvironmentCertificateArgs {
   /// The Certificate Private Key as a base64 encoded PFX or PEM. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** One of `certificate_blob_base64` and `certificate_key_vault` must be set.
+  /// &gt; **Note:** One of `certificateBlobBase64` and `certificateKeyVault` must be set.
   final pulumi.Input<String>? certificateBlobBase64;
-  /// A `certificate_key_vault` block as defined below. Changing this forces a new resource to be created.
+  /// A `certificateKeyVault` block as defined below. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** one of `certificate_blob_base64` and `certificate_key_vault` must be set.
+  /// &gt; **Note:** one of `certificateBlobBase64` and `certificateKeyVault` must be set.
   final pulumi.Input<EnvironmentCertificateCertificateKeyVault>? certificateKeyVault;
   /// The password for the Certificate. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** required if `certificate_blob_base64` is specified.
+  /// &gt; **Note:** required if `certificateBlobBase64` is specified.
   final pulumi.Input<String>? certificatePassword;
   /// The Container App Managed Environment ID to configure this Certificate on. Changing this forces a new resource to be created.
   final pulumi.Input<String> containerAppEnvironmentId;
@@ -29,7 +29,7 @@ class EnvironmentCertificateArgs {
 
   /// Creates a new [EnvironmentCertificateArgs].
   /// [certificateBlobBase64] The Certificate Private Key as a base64 encoded PFX or PEM. Changing this forces a new resource to be created.
-  /// [certificateKeyVault] A `certificate_key_vault` block as defined below. Changing this forces a new resource to be created.
+  /// [certificateKeyVault] A `certificateKeyVault` block as defined below. Changing this forces a new resource to be created.
   /// [certificatePassword] The password for the Certificate. Changing this forces a new resource to be created.
   /// [containerAppEnvironmentId] The Container App Managed Environment ID to configure this Certificate on. Changing this forces a new resource to be created.
   /// [name] The name of the Container Apps Environment Certificate. Changing this forces a new resource to be created.
@@ -65,4 +65,3 @@ class EnvironmentCertificateArgs {
     );
   }
 }
-

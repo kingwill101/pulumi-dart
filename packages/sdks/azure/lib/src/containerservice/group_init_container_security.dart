@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupInitContainerSecurity {
   /// Whether the container's permission is elevated to privileged? Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Currently, this only applies when the `os_type` is `Linux` and the `sku` is `Confidential`.
+  /// &gt; **Note:** Currently, this only applies when the `osType` is `Linux` and the `sku` is `Confidential`.
   final pulumi.Input<bool> privilegeEnabled;
 
   /// Creates a new [GroupInitContainerSecurity].
@@ -26,4 +26,3 @@ class GroupInitContainerSecurity {
     );
   }
 }
-

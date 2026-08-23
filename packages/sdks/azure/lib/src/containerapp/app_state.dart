@@ -36,7 +36,7 @@ class AppState {
   final pulumi.Input<List<AppRegistry>>? registries;
   /// The name of the resource group in which the Container App Environment is to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-  /// The revisions operational mode for the Container App. Possible values include `Single` and `Multiple`. In `Single` mode, a single revision is in operation at any given time. In `Multiple` mode, more than one revision can be active at a time and can be configured with load distribution via the `traffic_weight` block in the `ingress` configuration.
+  /// The revisions operational mode for the Container App. Possible values include `Single` and `Multiple`. In `Single` mode, a single revision is in operation at any given time. In `Multiple` mode, more than one revision can be active at a time and can be configured with load distribution via the `trafficWeight` block in the `ingress` configuration.
   final pulumi.Input<String>? revisionMode;
   /// One or more `secret` block as detailed below.
   final pulumi.Input<List<AppSecret>>? secrets;
@@ -63,7 +63,7 @@ class AppState {
   /// [outboundIpAddresses] A list of the Public IP Addresses which the Container App uses for outbound network access.
   /// [registries] A `registry` block as detailed below.
   /// [resourceGroupName] The name of the resource group in which the Container App Environment is to be created. Changing this forces a new resource to be created.
-  /// [revisionMode] The revisions operational mode for the Container App. Possible values include `Single` and `Multiple`. In `Single` mode, a single revision is in operation at any given time. In `Multiple` mode, more than one revision can be active at a time and can be configured with load distribution via the `traffic_weight` block in the `ingress` configuration.
+  /// [revisionMode] The revisions operational mode for the Container App. Possible values include `Single` and `Multiple`. In `Single` mode, a single revision is in operation at any given time. In `Multiple` mode, more than one revision can be active at a time and can be configured with load distribution via the `trafficWeight` block in the `ingress` configuration.
   /// [secrets] One or more `secret` block as detailed below.
   /// [tags] A mapping of tags to assign to the Container App.
   /// [template] A `template` block as detailed below.
@@ -135,4 +135,3 @@ class AppState {
     );
   }
 }
-

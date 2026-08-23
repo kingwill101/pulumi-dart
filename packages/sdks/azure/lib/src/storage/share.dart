@@ -166,6 +166,40 @@ import 'share_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "azuretest"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "azureteststorage"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_share" "example" {
+///   name               = "sharename"
+///   storage_account_id = azure_storage_account.example.id
+///   quota              = 50
+///   acls {
+///     id = "MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI"
+///     access_policies {
+///       permissions = "rwdl"
+///       start       = "2019-07-02T09:38:21Z"
+///       expiry      = "2019-07-02T10:38:21Z"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +213,9 @@ import 'share_state.dart';
 /// import com.pulumi.azure.storage.Share;
 /// import com.pulumi.azure.storage.ShareArgs;
 /// import com.pulumi.azure.storage.inputs.ShareAclArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.storage.inputs.ShareAclAccessPolicyArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -259,7 +294,7 @@ import 'share_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Storage` - 2023-05-01
+/// * `Microsoft.Storage` - 2025-08-01
 ///
 /// ## Import
 ///
@@ -271,13 +306,13 @@ import 'share_state.dart';
 class Share extends pulumi.CustomResource {
   /// The access tier of the File Share. Possible values are `Hot`, `Cool` and `TransactionOptimized`, `Premium`.
   ///
-  /// &gt; **Note:** The `FileStorage` `account_kind` of the `azure.storage.Account` requires `Premium` `access_tier`.
+  /// &gt; **Note:** The `FileStorage` `accountKind` of the `azure.storage.Account` requires `Premium` `accessTier`.
   late final pulumi.Output<String> accessTier;
   /// One or more `acl` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> acls;
   /// The protocol used for the share. Possible values are `SMB` and `NFS`. The `SMB` indicates the share can be accessed by SMBv3.0, SMBv2.1 and REST. The `NFS` indicates the share can be accessed by NFSv4.1. Defaults to `SMB`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The `FileStorage` `account_kind` of the `azure.storage.Account` is required for the `NFS` protocol.
+  /// &gt; **Note:** The `FileStorage` `accountKind` of the `azure.storage.Account` is required for the `NFS` protocol.
   late final pulumi.Output<String?> enabledProtocol;
   /// A mapping of MetaData for this File Share.
   late final pulumi.Output<Map<String, String>> metadata;
@@ -285,19 +320,21 @@ class Share extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The maximum size of the share, in gigabytes.
   ///
-  /// &gt; **Note:** For Standard storage accounts, by default this must be `1` GB (or higher) and at most `5120` GB (`5` TB). This can be set to a value larger than `5120` GB if `large_file_share_enabled` is set to `true` in the parent `azure.storage.Account`.
+  /// &gt; **Note:** For Standard storage accounts, by default this must be `1` GB (or higher) and at most `5120` GB (`5` TB). This can be set to a value larger than `5120` GB if `largeFileShareEnabled` is set to `true` in the parent `azure.storage.Account`.
   ///
   /// &gt; **Note:** For Premium FileStorage storage accounts, this must be greater than `100` GB and at most `102400` GB (`100` TB).
   late final pulumi.Output<int> quota;
+  /// The ID that is supposed to be used as the `scope` of an `azurermRoleAssignmet` for this File Share.
+  late final pulumi.Output<String> rbacScopeId;
   /// The Resource Manager ID of this File Share.
   late final pulumi.Output<String> resourceManagerId;
   /// Specifies the storage account in which to create the share.
   ///
-  /// &gt; **Note:** One of `storage_account_name` or `storage_account_id` must be specified. When specifying `storage_account_id` the resource will use the Resource Manager API, rather than the Data Plane API.
+  /// &gt; **Note:** One of `storageAccountName` or `storageAccountId` must be specified. When specifying `storageAccountId` the resource will use the Resource Manager API, rather than the Data Plane API.
   late final pulumi.Output<String?> storageAccountId;
-  /// Specifies the storage account in which to create the share. This property is deprecated in favour of `storage_account_id`.
+  /// Specifies the storage account in which to create the share. This property is deprecated in favour of `storageAccountId`.
   ///
-  /// &gt; **Note:** Migrating from the deprecated `storage_account_name` to `storage_account_id` is supported without recreation. Any other change to either property will result in the resource being recreated.
+  /// &gt; **Note:** Migrating from the deprecated `storageAccountName` to `storageAccountId` is supported without recreation. Any other change to either property will result in the resource being recreated.
   late final pulumi.Output<String?> storageAccountName;
   /// The URL of the File Share
   late final pulumi.Output<String> url;
@@ -322,6 +359,7 @@ class Share extends pulumi.CustomResource {
     metadata = registerOutput<Map<String, String>>('metadata');
     this.name = registerOutput<String>('name');
     quota = registerOutput<int>('quota');
+    rbacScopeId = registerOutput<String>('rbacScopeId');
     resourceManagerId = registerOutput<String>('resourceManagerId');
     storageAccountId = registerOutput<String?>('storageAccountId');
     storageAccountName = registerOutput<String?>('storageAccountName');
@@ -357,6 +395,7 @@ class Share extends pulumi.CustomResource {
     metadata = registerOutput<Map<String, String>>('metadata');
     this.name = registerOutput<String>('name');
     quota = registerOutput<int>('quota');
+    rbacScopeId = registerOutput<String>('rbacScopeId');
     resourceManagerId = registerOutput<String>('resourceManagerId');
     storageAccountId = registerOutput<String?>('storageAccountId');
     storageAccountName = registerOutput<String?>('storageAccountName');

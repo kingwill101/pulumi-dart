@@ -6,16 +6,16 @@ import 'registry_network_rule_set_ip_rule.dart';
 class RegistryNetworkRuleSet {
   /// The behaviour for requests matching no rules. Either `Allow` or `Deny`. Defaults to `Allow`
   final pulumi.Input<String>? defaultAction;
-  /// One or more `ip_rule` blocks as defined below.
+  /// One or more `ipRule` blocks as defined below.
   ///
-  /// &gt; **Note:** `network_rule_set` is only supported with the `Premium` SKU at this time.
+  /// &gt; **Note:** `networkRuleSet` is only supported with the `Premium` SKU at this time.
   ///
-  /// &gt; **Note:** Azure automatically configures Network Rules - to remove these, you'll need to specify an `network_rule_set` block with `default_action` set to `Deny`.
+  /// &gt; **Note:** Azure automatically configures Network Rules - to remove these, you'll need to specify an `networkRuleSet` block with `defaultAction` set to `Deny`.
   final pulumi.Input<List<RegistryNetworkRuleSetIpRule>>? ipRules;
 
   /// Creates a new [RegistryNetworkRuleSet].
   /// [defaultAction] The behaviour for requests matching no rules. Either `Allow` or `Deny`. Defaults to `Allow`
-  /// [ipRules] One or more `ip_rule` blocks as defined below.
+  /// [ipRules] One or more `ipRule` blocks as defined below.
   const RegistryNetworkRuleSet({
     this.defaultAction,
     this.ipRules,
@@ -35,4 +35,3 @@ class RegistryNetworkRuleSet {
     );
   }
 }
-

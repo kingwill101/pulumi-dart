@@ -191,6 +191,50 @@ import 'database_principal_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "KustoRG"
+///   location = "West Europe"
+/// }
+/// resource "azure_kusto_cluster" "example" {
+///   name                = "kustocluster"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Standard_D13_v2"
+///     capacity = 2
+///   }
+/// }
+/// resource "azure_kusto_database" "example" {
+///   name                = "KustoDatabase"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cluster_name        = azure_kusto_cluster.example.name
+///   hot_cache_period    = "P7D"
+///   soft_delete_period  = "P31D"
+/// }
+/// resource "azure_kusto_databaseprincipalassignment" "example" {
+///   name                = "KustoPrincipalAssignment"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   cluster_name        = azure_kusto_cluster.example.name
+///   database_name       = azure_kusto_database.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   principal_id        = data.azure_core_getclientconfig.current.client_id
+///   principal_type      = "App"
+///   role                = "Viewer"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +251,8 @@ import 'database_principal_assignment_state.dart';
 /// import com.pulumi.azure.kusto.DatabaseArgs;
 /// import com.pulumi.azure.kusto.DatabasePrincipalAssignment;
 /// import com.pulumi.azure.kusto.DatabasePrincipalAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

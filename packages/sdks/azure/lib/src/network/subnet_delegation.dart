@@ -6,12 +6,12 @@ import 'subnet_delegation_service_delegation.dart';
 class SubnetDelegation {
   /// A name for this delegation.
   final pulumi.Input<String> name;
-  /// A `service_delegation` block as defined below.
+  /// A `serviceDelegation` block as defined below.
   final pulumi.Input<SubnetDelegationServiceDelegation> serviceDelegation;
 
   /// Creates a new [SubnetDelegation].
   /// [name] A name for this delegation.
-  /// [serviceDelegation] A `service_delegation` block as defined below.
+  /// [serviceDelegation] A `serviceDelegation` block as defined below.
   const SubnetDelegation({
     required this.name,
     required this.serviceDelegation,
@@ -31,4 +31,3 @@ class SubnetDelegation {
     );
   }
 }
-

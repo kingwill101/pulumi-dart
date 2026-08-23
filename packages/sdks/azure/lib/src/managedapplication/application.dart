@@ -83,7 +83,7 @@ import 'application_state.dart';
 ///         "service_principal_id": current.object_id,
 ///         "role_definition_id": len(std.split(separator="/",
 ///             text=builtin.id).result).apply(lambda length: std.split(separator="/",
-///             text=builtin.id).result[length - 1]),
+///             text=builtin.id).result[int(length - 1)]),
 ///     }])
 /// example_application = azure.managedapplication.Application("example",
 ///     name="example-managedapplication",
@@ -149,7 +149,7 @@ import 'application_state.dart';
 ///                 {
 ///                     Separator = "/",
 ///                     Text = builtin.Apply(getRoleDefinitionResult => getRoleDefinitionResult.Id),
-///                 }).Apply(invoke => invoke.Result).Length).Apply(values =>
+///                 }).Apply(invoke => invoke.Result).Length()).Apply(values =>
 ///                 {
 ///                     var invoke = values.Item1;
 ///                     var length = values.Item2;
@@ -285,6 +285,61 @@ import 'application_state.dart';
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+/// data "azure_authorization_getroledefinition" "builtin" {
+///   name = "Contributor"
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_managedapplication_definition" "example" {
+///   name                = "examplemanagedapplicationdefinition"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   lock_level          = "ReadOnly"
+///   package_file_uri    = "https://github.com/Azure/azure-managedapp-samples/raw/master/Managed Application Sample Packages/201-managed-storage-account/managedstorage.zip"
+///   display_name        = "TestManagedAppDefinition"
+///   description         = "Test Managed App Definition"
+///   authorizations {
+///     service_principal_id = data.azure_core_getclientconfig.current.object_id
+///     role_definition_id   = split("/", data.azure_authorization_getroledefinition.builtin.id)[length(split("/", data.azure_authorization_getroledefinition.builtin.id)) - 1]
+///   }
+/// }
+/// resource "azure_managedapplication_application" "example" {
+///   name                        = "example-managedapplication"
+///   location                    = azure_core_resourcegroup.example.location
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   kind                        = "ServiceCatalog"
+///   managed_resource_group_name = "infrastructureGroup"
+///   application_definition_id   = azure_managedapplication_definition.example.id
+///   parameter_values = jsonencode({
+///     "location" = {
+///       "value" = azure_core_resourcegroup.example.location
+///     }
+///     "storageAccountNamePrefix" = {
+///       "value" = "storeNamePrefix"
+///     }
+///     "storageAccountType" = {
+///       "value" = "Standard_LRS"
+///     }
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -304,8 +359,8 @@ import 'application_state.dart';
 /// import com.pulumi.azure.managedapplication.Application;
 /// import com.pulumi.azure.managedapplication.ApplicationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -341,10 +396,10 @@ import 'application_state.dart';
 ///                 .roleDefinitionId(StdFunctions.split(SplitArgs.builder()
 ///                     .separator("/")
 ///                     .text(builtin.id())
-///                     .build()).result().length().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
+///                     .build()).result().size().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
 ///                     .separator("/")
 ///                     .text(builtin.id())
-///                     .build()).result()[_length.applyValue(___convert -> ___convert - 1)]))
+///                     .build()).result()[_length - 1]))
 ///                 .build())
 ///             .build());
 ///

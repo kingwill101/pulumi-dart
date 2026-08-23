@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering WorkspaceRootDbfsCustomerManagedKey resources.
 class WorkspaceRootDbfsCustomerManagedKeyState {
-  /// Specifies the Resource ID of the Key Vault which contains the `key_vault_key_id`.
+  /// Specifies the Resource ID of the Key Vault which contains the `keyVaultKeyId`.
   ///
-  /// &gt; **Note:** The `key_vault_id` field only needs to be specified if the Key Vault which contains the `key_vault_key_id` exists in a different subscription than the Databricks Workspace. If the `key_vault_id` field is not specified it is assumed that the `key_vault_key_id` is hosted in the same subscription as the Databricks Workspace. Does not apply to managed HSM vaults.
+  /// &gt; **Note:** The `keyVaultId` field only needs to be specified if the Key Vault which contains the `keyVaultKeyId` exists in a different subscription than the Databricks Workspace. If the `keyVaultId` field is not specified it is assumed that the `keyVaultKeyId` is hosted in the same subscription as the Databricks Workspace. Does not apply to managed HSM vaults.
   ///
   /// &gt; **Note:** If you are using multiple service principals to execute Terraform across subscriptions you will need to add an additional `azure.keyvault.AccessPolicy` resource granting the service principal access to the key vault in that subscription.
   final pulumi.Input<String>? keyVaultId;
@@ -16,7 +16,7 @@ class WorkspaceRootDbfsCustomerManagedKeyState {
   final pulumi.Input<String>? workspaceId;
 
   /// Creates a new [WorkspaceRootDbfsCustomerManagedKeyState].
-  /// [keyVaultId] Specifies the Resource ID of the Key Vault which contains the `key_vault_key_id`.
+  /// [keyVaultId] Specifies the Resource ID of the Key Vault which contains the `keyVaultKeyId`.
   /// [keyVaultKeyId] The ID of the Key Vault Key to be used.
   /// [workspaceId] The Resource ID of the Databricks Workspace.
   const WorkspaceRootDbfsCustomerManagedKeyState({
@@ -41,4 +41,3 @@ class WorkspaceRootDbfsCustomerManagedKeyState {
     );
   }
 }
-

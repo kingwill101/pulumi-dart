@@ -17,11 +17,11 @@ class GetCloudVmClusterResult {
   final String compartmentId;
   /// The compute model of the Exadata Infrastructure.
   final String computeModel;
-  /// A `compute_nodes` block as defined below.
+  /// A `computeNodes` block as defined below.
   final List<String> computeNodes;
   /// The number of CPU cores enabled on the Cloud VM Cluster.
   final int cpuCoreCount;
-  /// A `data_collection_options` block as defined below.
+  /// A `dataCollectionOptions` block as defined below.
   final List<GetCloudVmClusterDataCollectionOption> dataCollectionOptions;
   /// The percentage assigned to DATA storage (user data and database files). The remaining percentage is assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). Accepted values are `35`, `40`, `60`, and 80. The default is `80` percent assigned to DATA storage. See [Storage Configuration](https://docs.oracle.com/en-us/iaas/exadatacloud/index.html#Exadata) in the Exadata documentation for details on the impact of the configuration settings on storage.
   final int dataStoragePercentage;
@@ -29,7 +29,7 @@ class GetCloudVmClusterResult {
   final double dataStorageSizeInTbs;
   /// The local node storage to be allocated in GBs.
   final int dbNodeStorageSizeInGbs;
-  /// A `db_servers` block as defined below.
+  /// A `dbServers` block as defined below.
   final List<String> dbServers;
   /// The type of redundancy configured for the Cloud Vm Cluster. `NORMAL` is 2-way redundancy. `HIGH` is 3-way redundancy.
   final String diskRedundancy;
@@ -37,7 +37,7 @@ class GetCloudVmClusterResult {
   final String displayName;
   /// The domain name for the Cloud VM Cluster.
   final String domain;
-  /// A `file_system_configuration` block as defined below.
+  /// A `fileSystemConfiguration` block as defined below.
   final List<GetCloudVmClusterFileSystemConfiguration> fileSystemConfigurations;
   /// A valid Oracle Grid Infrastructure (GI) software version.
   final String giVersion;
@@ -47,7 +47,7 @@ class GetCloudVmClusterResult {
   final String hostnameActual;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// A `iorm_config_cache` block as defined below.
+  /// A `iormConfigCache` block as defined below.
   final List<GetCloudVmClusterIormConfigCache> iormConfigCaches;
   /// The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the last maintenance update history entry. This value is updated when a maintenance update starts.
   final String lastUpdateHistoryEntryId;
@@ -82,7 +82,7 @@ class GetCloudVmClusterResult {
   final String scanDnsName;
   /// The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the DNS record for the SCAN IP addresses that are associated with the Cloud VM Cluster.
   final String scanDnsRecordId;
-  /// A `scan_ip_ids` block as defined below.
+  /// A `scanIpIds` block as defined below.
   final List<String> scanIpIds;
   /// The TCP Single Client Access Name (SCAN) port. The default port is 1521.
   final int scanListenerPortTcp;
@@ -121,22 +121,22 @@ class GetCloudVmClusterResult {
   /// [clusterName] The cluster name for Cloud VM Cluster.
   /// [compartmentId] The OCID of the compartment.
   /// [computeModel] The compute model of the Exadata Infrastructure.
-  /// [computeNodes] A `compute_nodes` block as defined below.
+  /// [computeNodes] A `computeNodes` block as defined below.
   /// [cpuCoreCount] The number of CPU cores enabled on the Cloud VM Cluster.
-  /// [dataCollectionOptions] A `data_collection_options` block as defined below.
+  /// [dataCollectionOptions] A `dataCollectionOptions` block as defined below.
   /// [dataStoragePercentage] The percentage assigned to DATA storage (user data and database files). The remaining percentage is assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). Accepted values are `35`, `40`, `60`, and 80. The default is `80` percent assigned to DATA storage. See [Storage Configuration](https://docs.oracle.com/en-us/iaas/exadatacloud/index.html#Exadata) in the Exadata documentation for details on the impact of the configuration settings on storage.
   /// [dataStorageSizeInTbs] The data disk group size to be allocated in TBs.
   /// [dbNodeStorageSizeInGbs] The local node storage to be allocated in GBs.
-  /// [dbServers] A `db_servers` block as defined below.
+  /// [dbServers] A `dbServers` block as defined below.
   /// [diskRedundancy] The type of redundancy configured for the Cloud Vm Cluster. `NORMAL` is 2-way redundancy. `HIGH` is 3-way redundancy.
   /// [displayName] The user-friendly name for the Cloud VM Cluster. The name does not need to be unique.
   /// [domain] The domain name for the Cloud VM Cluster.
-  /// [fileSystemConfigurations] A `file_system_configuration` block as defined below.
+  /// [fileSystemConfigurations] A `fileSystemConfiguration` block as defined below.
   /// [giVersion] A valid Oracle Grid Infrastructure (GI) software version.
   /// [hostname] The hostname for the Cloud VM Cluster without suffix.
   /// [hostnameActual] The hostname for the Cloud VM Cluster with suffix.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [iormConfigCaches] A `iorm_config_cache` block as defined below.
+  /// [iormConfigCaches] A `iormConfigCache` block as defined below.
   /// [lastUpdateHistoryEntryId] The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the last maintenance update history entry. This value is updated when a maintenance update starts.
   /// [licenseModel] The Oracle license model that applies to the Cloud VM Cluster.
   /// [lifecycleDetails] Additional information about the current `lifecycleState`.
@@ -154,7 +154,7 @@ class GetCloudVmClusterResult {
   /// [resourceGroupName] Required.
   /// [scanDnsName] The FQDN of the DNS record for the SCAN IP addresses that are associated with the Cloud VM Cluster.
   /// [scanDnsRecordId] The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the DNS record for the SCAN IP addresses that are associated with the Cloud VM Cluster.
-  /// [scanIpIds] A `scan_ip_ids` block as defined below.
+  /// [scanIpIds] A `scanIpIds` block as defined below.
   /// [scanListenerPortTcp] The TCP Single Client Access Name (SCAN) port. The default port is 1521.
   /// [scanListenerPortTcpSsl] The TCPS Single Client Access Name (SCAN) port. The default port is 2484.
   /// [shape] The model name of the Exadata hardware running the Cloud VM Cluster.
@@ -345,4 +345,3 @@ class GetCloudVmClusterResult {
     );
   }
 }
-

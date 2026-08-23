@@ -17,7 +17,7 @@ class GetVolumeGroupResult {
   /// An `identity` block as defined below.
   final List<GetVolumeGroupIdentity> identities;
   final String name;
-  /// One or more `network_rule` blocks as defined below.
+  /// One or more `networkRule` blocks as defined below.
   final List<GetVolumeGroupNetworkRule> networkRules;
   /// The type of the storage target.
   final String protocolType;
@@ -29,7 +29,7 @@ class GetVolumeGroupResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] An `identity` block as defined below.
   /// [name] Required.
-  /// [networkRules] One or more `network_rule` blocks as defined below.
+  /// [networkRules] One or more `networkRule` blocks as defined below.
   /// [protocolType] The type of the storage target.
   const GetVolumeGroupResult({
     required this.elasticSanId,
@@ -68,4 +68,3 @@ class GetVolumeGroupResult {
     );
   }
 }
-

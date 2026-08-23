@@ -4,7 +4,7 @@ import 'spring_cloud_storage_state.dart';
 
 /// Manages a Spring Cloud Storage.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudStorage` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudStorage` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -149,6 +149,38 @@ import 'spring_cloud_storage_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_appplatform_springcloudstorage" "example" {
+///   name                    = "example"
+///   spring_cloud_service_id = azure_appplatform_springcloudservice.example.id
+///   storage_account_name    = azure_storage_account.example.name
+///   storage_account_key     = azure_storage_account.example.primary_access_key
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -163,8 +195,8 @@ import 'spring_cloud_storage_state.dart';
 /// import com.pulumi.azure.appplatform.SpringCloudServiceArgs;
 /// import com.pulumi.azure.appplatform.SpringCloudStorage;
 /// import com.pulumi.azure.appplatform.SpringCloudStorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

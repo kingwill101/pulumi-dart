@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'windows_web_app_logs_application_logs_azure_blob_storage.dart';
 
 class WindowsWebAppLogsApplicationLogs {
-  /// An `azure_blob_storage` block as defined below.
+  /// An `azureBlobStorage` block as defined below.
   final pulumi.Input<WindowsWebAppLogsApplicationLogsAzureBlobStorage>? azureBlobStorage;
   /// Log level. Possible values include: `Off`, `Verbose`, `Information`, `Warning`, and `Error`.
   final pulumi.Input<String> fileSystemLevel;
 
   /// Creates a new [WindowsWebAppLogsApplicationLogs].
-  /// [azureBlobStorage] An `azure_blob_storage` block as defined below.
+  /// [azureBlobStorage] An `azureBlobStorage` block as defined below.
   /// [fileSystemLevel] Log level. Possible values include: `Off`, `Verbose`, `Information`, `Warning`, and `Error`.
   const WindowsWebAppLogsApplicationLogs({
     this.azureBlobStorage,
@@ -31,4 +31,3 @@ class WindowsWebAppLogsApplicationLogs {
     );
   }
 }
-

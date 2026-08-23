@@ -138,6 +138,37 @@ import 'open_id_connect_provider_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "My Company"
+///   publisher_email     = "company@exmaple.com"
+///   sku_name            = "Developer_1"
+/// }
+/// resource "azure_apimanagement_openidconnectprovider" "example" {
+///   name                = "example-provider"
+///   api_management_name = azure_apimanagement_service.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   client_id           = "00001111-2222-3333-4444-555566667777"
+///   client_secret       = "00001111-423egvwdcsjx-00001111"
+///   display_name        = "Example Provider"
+///   metadata_endpoint   = "https://example.com/example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +181,8 @@ import 'open_id_connect_provider_state.dart';
 /// import com.pulumi.azure.apimanagement.ServiceArgs;
 /// import com.pulumi.azure.apimanagement.OpenIdConnectProvider;
 /// import com.pulumi.azure.apimanagement.OpenIdConnectProviderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

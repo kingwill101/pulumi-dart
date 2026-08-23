@@ -14,14 +14,14 @@ class ApplicationNetworkRuleSetArgs {
   final pulumi.Input<String>? defaultAction;
   /// The ID of the IoT Central Application. Changing this forces a new resource to be created.
   final pulumi.Input<String> iotcentralApplicationId;
-  /// One or more `ip_rule` blocks as defined below.
+  /// One or more `ipRule` blocks as defined below.
   final pulumi.Input<List<ApplicationNetworkRuleSetIpRule>>? ipRules;
 
   /// Creates a new [ApplicationNetworkRuleSetArgs].
   /// [applyToDevice] Whether these IP Rules apply for device connectivity to IoT Hub and Device Provisioning Service associated with this IoT Central Application. Possible values are `true`, `false`. Defaults to `true`
   /// [defaultAction] Specifies the default action for the IoT Central Application Network Rule Set. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
   /// [iotcentralApplicationId] The ID of the IoT Central Application. Changing this forces a new resource to be created.
-  /// [ipRules] One or more `ip_rule` blocks as defined below.
+  /// [ipRules] One or more `ipRule` blocks as defined below.
   const ApplicationNetworkRuleSetArgs({
     this.applyToDevice,
     this.defaultAction,
@@ -47,4 +47,3 @@ class ApplicationNetworkRuleSetArgs {
     );
   }
 }
-

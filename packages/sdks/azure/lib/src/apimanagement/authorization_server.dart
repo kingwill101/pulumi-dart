@@ -118,6 +118,32 @@ import 'authorization_server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getservice" "example" {
+///   name                = "search-api"
+///   resource_group_name = "search-service"
+/// }
+///
+/// resource "azure_apimanagement_authorizationserver" "example" {
+///   name                         = "test-server"
+///   api_management_name          = data.azure_apimanagement_getservice.example.name
+///   resource_group_name          = data.azure_apimanagement_getservice.example.resource_group_name
+///   display_name                 = "Test Server"
+///   authorization_endpoint       = "https://example.mydomain.com/client/authorize"
+///   client_id                    = "42424242-4242-4242-4242-424242424242"
+///   client_registration_endpoint = "https://example.mydomain.com/client/register"
+///   grant_types                  = ["authorizationCode"]
+///   authorization_methods        = ["GET"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +154,8 @@ import 'authorization_server_state.dart';
 /// import com.pulumi.azure.apimanagement.inputs.GetServiceArgs;
 /// import com.pulumi.azure.apimanagement.AuthorizationServer;
 /// import com.pulumi.azure.apimanagement.AuthorizationServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,15 +261,15 @@ class AuthorizationServer extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// The password associated with the Resource Owner.
   ///
-  /// &gt; **Note:** This can only be specified when `grant_type` includes `resourceOwnerPassword`.
+  /// &gt; **Note:** This can only be specified when `grantType` includes `resourceOwnerPassword`.
   late final pulumi.Output<String?> resourceOwnerPassword;
   /// The username associated with the Resource Owner.
   ///
-  /// &gt; **Note:** This can only be specified when `grant_type` includes `resourceOwnerPassword`.
+  /// &gt; **Note:** This can only be specified when `grantType` includes `resourceOwnerPassword`.
   late final pulumi.Output<String?> resourceOwnerUsername;
   /// Does this Authorization Server support State? If this is set to `true` the client may use the state parameter to raise protocol security.
   late final pulumi.Output<bool?> supportState;
-  /// A `token_body_parameter` block as defined below.
+  /// A `tokenBodyParameter` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> tokenBodyParameters;
   /// The OAUTH Token Endpoint.
   late final pulumi.Output<String?> tokenEndpoint;

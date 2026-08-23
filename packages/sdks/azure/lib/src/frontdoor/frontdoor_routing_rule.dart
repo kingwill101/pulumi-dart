@@ -9,9 +9,9 @@ class FrontdoorRoutingRule {
   final pulumi.Input<List<String>> acceptedProtocols;
   /// `Enable` or `Disable` use of this Backend Routing Rule. Permitted values are `true` or `false`. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-  /// A `forwarding_configuration` block as defined below.
+  /// A `forwardingConfiguration` block as defined below.
   final pulumi.Input<FrontdoorRoutingRuleForwardingConfiguration>? forwardingConfiguration;
-  /// The names of the `frontend_endpoint` blocks within this resource to associate with this `routing_rule`.
+  /// The names of the `frontendEndpoint` blocks within this resource to associate with this `routingRule`.
   final pulumi.Input<List<String>> frontendEndpoints;
   /// The ID of the FrontDoor.
   final pulumi.Input<String>? id;
@@ -19,18 +19,18 @@ class FrontdoorRoutingRule {
   final pulumi.Input<String> name;
   /// The route patterns for the Backend Routing Rule.
   final pulumi.Input<List<String>> patternsToMatches;
-  /// A `redirect_configuration` block as defined below.
+  /// A `redirectConfiguration` block as defined below.
   final pulumi.Input<FrontdoorRoutingRuleRedirectConfiguration>? redirectConfiguration;
 
   /// Creates a new [FrontdoorRoutingRule].
   /// [acceptedProtocols] Protocol schemes to match for the Backend Routing Rule. Possible values are `Http` and `Https`.
   /// [enabled] `Enable` or `Disable` use of this Backend Routing Rule. Permitted values are `true` or `false`. Defaults to `true`.
-  /// [forwardingConfiguration] A `forwarding_configuration` block as defined below.
-  /// [frontendEndpoints] The names of the `frontend_endpoint` blocks within this resource to associate with this `routing_rule`.
+  /// [forwardingConfiguration] A `forwardingConfiguration` block as defined below.
+  /// [frontendEndpoints] The names of the `frontendEndpoint` blocks within this resource to associate with this `routingRule`.
   /// [id] The ID of the FrontDoor.
   /// [name] Specifies the name of the Routing Rule.
   /// [patternsToMatches] The route patterns for the Backend Routing Rule.
-  /// [redirectConfiguration] A `redirect_configuration` block as defined below.
+  /// [redirectConfiguration] A `redirectConfiguration` block as defined below.
   const FrontdoorRoutingRule({
     required this.acceptedProtocols,
     this.enabled,
@@ -68,4 +68,3 @@ class FrontdoorRoutingRule {
     );
   }
 }
-

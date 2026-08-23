@@ -112,6 +112,30 @@ import 'linked_service_synapse_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedservicesynapse" "example" {
+///   name              = "example"
+///   data_factory_id   = azure_datafactory_factory.example.id
+///   connection_string = "Integrated Security=False;Data Source=test;Initial Catalog=test;User ID=test;Password=test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -124,8 +148,8 @@ import 'linked_service_synapse_state.dart';
 /// import com.pulumi.azure.datafactory.FactoryArgs;
 /// import com.pulumi.azure.datafactory.LinkedServiceSynapse;
 /// import com.pulumi.azure.datafactory.LinkedServiceSynapseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -370,6 +394,49 @@ import 'linked_service_synapse_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name            = "standard"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedservicekeyvault" "example" {
+///   name            = "kvlink"
+///   data_factory_id = azure_datafactory_factory.example.id
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+/// }
+/// resource "azure_datafactory_linkedservicesynapse" "example" {
+///   name              = "example"
+///   data_factory_id   = azure_datafactory_factory.example.id
+///   connection_string = "Integrated Security=False;Data Source=test;Initial Catalog=test;User ID=test;"
+///   key_vault_password = {
+///     linked_service_name = azure_datafactory_linkedservicekeyvault.example.name
+///     secret_name         = "secret"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -388,8 +455,8 @@ import 'linked_service_synapse_state.dart';
 /// import com.pulumi.azure.datafactory.LinkedServiceSynapse;
 /// import com.pulumi.azure.datafactory.LinkedServiceSynapseArgs;
 /// import com.pulumi.azure.datafactory.inputs.LinkedServiceSynapseKeyVaultPasswordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -511,7 +578,7 @@ class LinkedServiceSynapse extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The integration runtime reference to associate with the Data Factory Linked Service Synapse.
   late final pulumi.Output<String?> integrationRuntimeName;
-  /// A `key_vault_password` block as defined below. Use this argument to store Synapse password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
+  /// A `keyVaultPassword` block as defined below. Use this argument to store Synapse password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
   late final pulumi.Output<LinkedServiceSynapseKeyVaultPassword?> keyVaultPassword;
   /// Specifies the name of the Data Factory Linked Service Synapse. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;

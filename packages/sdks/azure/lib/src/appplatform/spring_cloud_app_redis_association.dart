@@ -4,7 +4,7 @@ import 'spring_cloud_app_redis_association_state.dart';
 
 /// Associates a Spring Cloud Application with a Redis Cache.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudAppRedisAssociation` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudAppRedisAssociation` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -185,6 +185,46 @@ import 'spring_cloud_app_redis_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example-springcloud"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_appplatform_springcloudapp" "example" {
+///   name                = "example-springcloudapp"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   service_name        = azure_appplatform_springcloudservice.example.name
+/// }
+/// resource "azure_redis_cache" "example" {
+///   name                = "example-cache"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   capacity            = 0
+///   family              = "C"
+///   sku_name            = "Basic"
+///   enable_non_ssl_port = true
+/// }
+/// resource "azure_appplatform_springcloudappredisassociation" "example" {
+///   name                = "example-bind"
+///   spring_cloud_app_id = azure_appplatform_springcloudapp.example.id
+///   redis_cache_id      = azure_redis_cache.example.id
+///   redis_access_key    = azure_redis_cache.example.primary_access_key
+///   ssl_enabled         = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -201,8 +241,8 @@ import 'spring_cloud_app_redis_association_state.dart';
 /// import com.pulumi.azure.redis.CacheArgs;
 /// import com.pulumi.azure.appplatform.SpringCloudAppRedisAssociation;
 /// import com.pulumi.azure.appplatform.SpringCloudAppRedisAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

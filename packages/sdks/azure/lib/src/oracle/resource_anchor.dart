@@ -82,6 +82,24 @@ import 'resource_anchor_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "eastus"
+/// }
+/// resource "azure_oracle_resourceanchor" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +110,8 @@ import 'resource_anchor_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.oracle.ResourceAnchor;
 /// import com.pulumi.azure.oracle.ResourceAnchorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

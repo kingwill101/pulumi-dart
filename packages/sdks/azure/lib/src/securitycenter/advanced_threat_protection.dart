@@ -128,6 +128,34 @@ import 'advanced_threat_protection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "atp-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorage"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   tags = {
+///     "environment" = "example"
+///   }
+/// }
+/// resource "azure_securitycenter_advancedthreatprotection" "example" {
+///   target_resource_id = azure_storage_account.example.id
+///   enabled            = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +168,8 @@ import 'advanced_threat_protection_state.dart';
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.securitycenter.AdvancedThreatProtection;
 /// import com.pulumi.azure.securitycenter.AdvancedThreatProtectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

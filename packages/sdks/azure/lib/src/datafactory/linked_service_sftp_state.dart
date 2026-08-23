@@ -25,15 +25,15 @@ class LinkedServiceSftpState {
   final pulumi.Input<String>? hostKeyFingerprint;
   /// The name of the integration runtime to associate with the Data Factory Linked Service.
   final pulumi.Input<String>? integrationRuntimeName;
-  /// A `key_vault_password` block as defined below.
+  /// A `keyVaultPassword` block as defined below.
   ///
-  /// &gt; **Note:** Either `password` or `key_vault_password` is required when `authentication_type` is set to `Basic`.
+  /// &gt; **Note:** Either `password` or `keyVaultPassword` is required when `authenticationType` is set to `Basic`.
   final pulumi.Input<List<LinkedServiceSftpKeyVaultPassword>>? keyVaultPasswords;
-  /// A `key_vault_private_key_content_base64` block as defined below.
+  /// A `keyVaultPrivateKeyContentBase64` block as defined below.
   final pulumi.Input<LinkedServiceSftpKeyVaultPrivateKeyContentBase64>? keyVaultPrivateKeyContentBase64;
-  /// A `key_vault_private_key_passphrase` block as defined below.
+  /// A `keyVaultPrivateKeyPassphrase` block as defined below.
   ///
-  /// &gt; **Note:** One of `private_key_content_base64` or `private_key_path` (or their Key Vault equivalent) is required when `authentication_type` is set to `SshPublicKey`.
+  /// &gt; **Note:** One of `privateKeyContentBase64` or `privateKeyPath` (or their Key Vault equivalent) is required when `authenticationType` is set to `SshPublicKey`.
   final pulumi.Input<LinkedServiceSftpKeyVaultPrivateKeyPassphrase>? keyVaultPrivateKeyPassphrase;
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
@@ -49,9 +49,9 @@ class LinkedServiceSftpState {
   final pulumi.Input<String>? privateKeyPassphrase;
   /// The absolute path to the private key file that the self-hosted integration runtime can access.
   ///
-  /// &gt; **Note:** `private_key_path` only applies when using a self-hosted integration runtime (instead of the default Azure provided runtime), as indicated by supplying a value for `integration_runtime_name`.
+  /// &gt; **Note:** `privateKeyPath` only applies when using a self-hosted integration runtime (instead of the default Azure provided runtime), as indicated by supplying a value for `integrationRuntimeName`.
   final pulumi.Input<String>? privateKeyPath;
-  /// Whether to validate host key fingerprint while connecting. If set to `false`, `host_key_fingerprint` must also be set.
+  /// Whether to validate host key fingerprint while connecting. If set to `false`, `hostKeyFingerprint` must also be set.
   final pulumi.Input<bool>? skipHostKeyValidation;
   /// The username used to log on to the SFTP server.
   final pulumi.Input<String>? username;
@@ -65,9 +65,9 @@ class LinkedServiceSftpState {
   /// [host] The SFTP server hostname.
   /// [hostKeyFingerprint] The host key fingerprint of the SFTP server.
   /// [integrationRuntimeName] The name of the integration runtime to associate with the Data Factory Linked Service.
-  /// [keyVaultPasswords] A `key_vault_password` block as defined below.
-  /// [keyVaultPrivateKeyContentBase64] A `key_vault_private_key_content_base64` block as defined below.
-  /// [keyVaultPrivateKeyPassphrase] A `key_vault_private_key_passphrase` block as defined below.
+  /// [keyVaultPasswords] A `keyVaultPassword` block as defined below.
+  /// [keyVaultPrivateKeyContentBase64] A `keyVaultPrivateKeyContentBase64` block as defined below.
+  /// [keyVaultPrivateKeyPassphrase] A `keyVaultPrivateKeyPassphrase` block as defined below.
   /// [name] Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
   /// [password] Password to log on to the SFTP Server for Basic Authentication.
@@ -75,7 +75,7 @@ class LinkedServiceSftpState {
   /// [privateKeyContentBase64] The Base64 encoded private key content in OpenSSH format used to log on to the SFTP server.
   /// [privateKeyPassphrase] The passphrase for the private key if the key is encrypted.
   /// [privateKeyPath] The absolute path to the private key file that the self-hosted integration runtime can access.
-  /// [skipHostKeyValidation] Whether to validate host key fingerprint while connecting. If set to `false`, `host_key_fingerprint` must also be set.
+  /// [skipHostKeyValidation] Whether to validate host key fingerprint while connecting. If set to `false`, `hostKeyFingerprint` must also be set.
   /// [username] The username used to log on to the SFTP server.
   const LinkedServiceSftpState({
     this.additionalProperties,
@@ -150,4 +150,3 @@ class LinkedServiceSftpState {
     );
   }
 }
-

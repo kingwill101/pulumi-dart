@@ -11,14 +11,14 @@ class PointToPointVpnGatewayConnectionConfiguration {
   final pulumi.Input<String> name;
   /// A `route` block as defined below.
   final pulumi.Input<PointToPointVpnGatewayConnectionConfigurationRoute>? route;
-  /// A `vpn_client_address_pool` block as defined below.
+  /// A `vpnClientAddressPool` block as defined below.
   final pulumi.Input<PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool> vpnClientAddressPool;
 
   /// Creates a new [PointToPointVpnGatewayConnectionConfiguration].
   /// [internetSecurityEnabled] Should Internet Security be enabled to secure internet traffic? Defaults to `false`.
   /// [name] The Name which should be used for this Connection Configuration.
   /// [route] A `route` block as defined below.
-  /// [vpnClientAddressPool] A `vpn_client_address_pool` block as defined below.
+  /// [vpnClientAddressPool] A `vpnClientAddressPool` block as defined below.
   const PointToPointVpnGatewayConnectionConfiguration({
     this.internetSecurityEnabled,
     required this.name,
@@ -44,4 +44,3 @@ class PointToPointVpnGatewayConnectionConfiguration {
     );
   }
 }
-

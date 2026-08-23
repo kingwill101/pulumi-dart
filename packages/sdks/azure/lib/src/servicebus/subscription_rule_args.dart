@@ -10,23 +10,23 @@ import 'subscription_rule_correlation_filter.dart';
 class SubscriptionRuleArgs {
   /// Represents set of actions written in SQL language-based syntax that is performed against a BrokeredMessage.
   final pulumi.Input<String>? action;
-  /// A `correlation_filter` block as documented below to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `CorrelationFilter`.
+  /// A `correlationFilter` block as documented below to be evaluated against a BrokeredMessage. Required when `filterType` is set to `CorrelationFilter`.
   final pulumi.Input<SubscriptionRuleCorrelationFilter>? correlationFilter;
   /// Type of filter to be applied to a BrokeredMessage. Possible values are `SqlFilter` and `CorrelationFilter`.
   final pulumi.Input<String> filterType;
   /// Specifies the name of the ServiceBus Subscription Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// Represents a filter written in SQL language-based syntax that to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `SqlFilter`.
+  /// Represents a filter written in SQL language-based syntax that to be evaluated against a BrokeredMessage. Required when `filterType` is set to `SqlFilter`.
   final pulumi.Input<String>? sqlFilter;
   /// The ID of the ServiceBus Subscription in which this Rule should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> subscriptionId;
 
   /// Creates a new [SubscriptionRuleArgs].
   /// [action] Represents set of actions written in SQL language-based syntax that is performed against a BrokeredMessage.
-  /// [correlationFilter] A `correlation_filter` block as documented below to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `CorrelationFilter`.
+  /// [correlationFilter] A `correlationFilter` block as documented below to be evaluated against a BrokeredMessage. Required when `filterType` is set to `CorrelationFilter`.
   /// [filterType] Type of filter to be applied to a BrokeredMessage. Possible values are `SqlFilter` and `CorrelationFilter`.
   /// [name] Specifies the name of the ServiceBus Subscription Rule. Changing this forces a new resource to be created.
-  /// [sqlFilter] Represents a filter written in SQL language-based syntax that to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `SqlFilter`.
+  /// [sqlFilter] Represents a filter written in SQL language-based syntax that to be evaluated against a BrokeredMessage. Required when `filterType` is set to `SqlFilter`.
   /// [subscriptionId] The ID of the ServiceBus Subscription in which this Rule should be created. Changing this forces a new resource to be created.
   const SubscriptionRuleArgs({
     this.action,
@@ -59,4 +59,3 @@ class SubscriptionRuleArgs {
     );
   }
 }
-

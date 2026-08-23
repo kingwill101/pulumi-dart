@@ -39,4 +39,3 @@ class DataConnectorOffice365ProjectState {
     );
   }
 }
-

@@ -24,7 +24,7 @@ import 'job_state.dart';
 ///     name: "examplepool",
 ///     resourceGroupName: example.name,
 ///     accountName: exampleAccount.name,
-///     nodeAgentSkuId: "batch.node.ubuntu 16.04",
+///     nodeAgentSkuId: "batch.node.ubuntu 22.04",
 ///     vmSize: "STANDARD_A1_V2",
 ///     fixedScale: {
 ///         targetDedicatedNodes: 1,
@@ -56,7 +56,7 @@ import 'job_state.dart';
 ///     name="examplepool",
 ///     resource_group_name=example.name,
 ///     account_name=example_account.name,
-///     node_agent_sku_id="batch.node.ubuntu 16.04",
+///     node_agent_sku_id="batch.node.ubuntu 22.04",
 ///     vm_size="STANDARD_A1_V2",
 ///     fixed_scale={
 ///         "target_dedicated_nodes": 1,
@@ -97,7 +97,7 @@ import 'job_state.dart';
 ///         Name = "examplepool",
 ///         ResourceGroupName = example.Name,
 ///         AccountName = exampleAccount.Name,
-///         NodeAgentSkuId = "batch.node.ubuntu 16.04",
+///         NodeAgentSkuId = "batch.node.ubuntu 22.04",
 ///         VmSize = "STANDARD_A1_V2",
 ///         FixedScale = new Azure.Batch.Inputs.PoolFixedScaleArgs
 ///         {
@@ -150,7 +150,7 @@ import 'job_state.dart';
 /// 			Name:              pulumi.String("examplepool"),
 /// 			ResourceGroupName: example.Name,
 /// 			AccountName:       exampleAccount.Name,
-/// 			NodeAgentSkuId:    pulumi.String("batch.node.ubuntu 16.04"),
+/// 			NodeAgentSkuId:    pulumi.String("batch.node.ubuntu 22.04"),
 /// 			VmSize:            pulumi.String("STANDARD_A1_V2"),
 /// 			FixedScale: &batch.PoolFixedScaleArgs{
 /// 				TargetDedicatedNodes: pulumi.Int(1),
@@ -176,6 +176,45 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "west europe"
+/// }
+/// resource "azure_batch_account" "example" {
+///   name                = "exampleaccount"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_batch_pool" "example" {
+///   name                = "examplepool"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   account_name        = azure_batch_account.example.name
+///   node_agent_sku_id   = "batch.node.ubuntu 22.04"
+///   vm_size             = "STANDARD_A1_V2"
+///   fixed_scale = {
+///     target_dedicated_nodes = 1
+///   }
+///   storage_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+/// }
+/// resource "azure_batch_job" "example" {
+///   name          = "examplejob"
+///   batch_pool_id = azure_batch_pool.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -192,8 +231,8 @@ import 'job_state.dart';
 /// import com.pulumi.azure.batch.inputs.PoolStorageImageReferenceArgs;
 /// import com.pulumi.azure.batch.Job;
 /// import com.pulumi.azure.batch.JobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,7 +259,7 @@ import 'job_state.dart';
 ///             .name("examplepool")
 ///             .resourceGroupName(example.name())
 ///             .accountName(exampleAccount.name())
-///             .nodeAgentSkuId("batch.node.ubuntu 16.04")
+///             .nodeAgentSkuId("batch.node.ubuntu 22.04")
 ///             .vmSize("STANDARD_A1_V2")
 ///             .fixedScale(PoolFixedScaleArgs.builder()
 ///                 .targetDedicatedNodes(1)
@@ -262,7 +301,7 @@ import 'job_state.dart';
 ///       name: examplepool
 ///       resourceGroupName: ${example.name}
 ///       accountName: ${exampleAccount.name}
-///       nodeAgentSkuId: batch.node.ubuntu 16.04
+///       nodeAgentSkuId: batch.node.ubuntu 22.04
 ///       vmSize: STANDARD_A1_V2
 ///       fixedScale:
 ///         targetDedicatedNodes: 1
@@ -279,6 +318,13 @@ import 'job_state.dart';
 ///       batchPoolId: ${examplePool.id}
 /// ```
 ///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.Batch` - 2024-07-01
 ///
 /// ## Import
 ///

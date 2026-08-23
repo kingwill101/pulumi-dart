@@ -11,16 +11,16 @@ class AppRegistry {
   final pulumi.Input<String>? passwordSecretName;
   /// The hostname for the Container Registry.
   ///
-  /// The authentication details must also be supplied, `identity` and `username`/`password_secret_name` are mutually exclusive.
+  /// The authentication details must also be supplied, `identity` and `username`/`passwordSecretName` are mutually exclusive.
   final pulumi.Input<String> server;
-  /// The username to use for this Container Registry, `password_secret_name` must also be supplied..
+  /// The username to use for this Container Registry, `passwordSecretName` must also be supplied..
   final pulumi.Input<String>? username;
 
   /// Creates a new [AppRegistry].
   /// [identity] Resource ID for the User Assigned Managed identity to use when pulling from the Container Registry.
   /// [passwordSecretName] The name of the Secret Reference containing the password value for this user on the Container Registry, `username` must also be supplied.
   /// [server] The hostname for the Container Registry.
-  /// [username] The username to use for this Container Registry, `password_secret_name` must also be supplied..
+  /// [username] The username to use for this Container Registry, `passwordSecretName` must also be supplied..
   const AppRegistry({
     this.identity,
     this.passwordSecretName,
@@ -46,4 +46,3 @@ class AppRegistry {
     );
   }
 }
-

@@ -8,24 +8,24 @@ import 'account_queue_properties_minute_metrics.dart';
 
 /// Input properties used for looking up and filtering AccountQueueProperties resources.
 class AccountQueuePropertiesState {
-  /// A `cors_rule` block as defined above.
+  /// A `corsRule` block as defined above.
   final pulumi.Input<List<AccountQueuePropertiesCorsRule>>? corsRules;
-  /// A `hour_metrics` block as defined below.
+  /// A `hourMetrics` block as defined below.
   ///
-  /// &gt; **Note:** At least one of `cors_rule`, `logging`, `minute_metrics`, or `hour_metrics` must be specified.
+  /// &gt; **Note:** At least one of `corsRule`, `logging`, `minuteMetrics`, or `hourMetrics` must be specified.
   final pulumi.Input<AccountQueuePropertiesHourMetrics>? hourMetrics;
   /// A `logging` block as defined below.
   final pulumi.Input<AccountQueuePropertiesLogging>? logging;
-  /// A `minute_metrics` block as defined below.
+  /// A `minuteMetrics` block as defined below.
   final pulumi.Input<AccountQueuePropertiesMinuteMetrics>? minuteMetrics;
   /// The ID of the Storage Account to set Queue Properties on. Changing this forces a new resource to be created.
   final pulumi.Input<String>? storageAccountId;
 
   /// Creates a new [AccountQueuePropertiesState].
-  /// [corsRules] A `cors_rule` block as defined above.
-  /// [hourMetrics] A `hour_metrics` block as defined below.
+  /// [corsRules] A `corsRule` block as defined above.
+  /// [hourMetrics] A `hourMetrics` block as defined below.
   /// [logging] A `logging` block as defined below.
-  /// [minuteMetrics] A `minute_metrics` block as defined below.
+  /// [minuteMetrics] A `minuteMetrics` block as defined below.
   /// [storageAccountId] The ID of the Storage Account to set Queue Properties on. Changing this forces a new resource to be created.
   const AccountQueuePropertiesState({
     this.corsRules,
@@ -55,4 +55,3 @@ class AccountQueuePropertiesState {
     );
   }
 }
-

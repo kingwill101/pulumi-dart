@@ -69,6 +69,24 @@ import 'get_server_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_postgresql_getflexibleserver" "example" {
+///   name                = "existing-postgresql-fs"
+///   resource_group_name = "existing-postgresql-resgroup"
+/// }
+///
+/// output "id" {
+///   value = data.azure_postgresql_getflexibleserver.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +95,8 @@ import 'get_server_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.postgresql.PostgresqlFunctions;
 /// import com.pulumi.azure.postgresql.inputs.GetFlexibleServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,6 +218,24 @@ Future<GetFlexibleServerResult> getFlexibleServer(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_postgresql_getserver" "example" {
+///   name                = "postgresql-server-1"
+///   resource_group_name = "api-rg-pro"
+/// }
+///
+/// output "postgresqlServerId" {
+///   value = data.azure_postgresql_getserver.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -208,8 +244,8 @@ Future<GetFlexibleServerResult> getFlexibleServer(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.postgresql.PostgresqlFunctions;
 /// import com.pulumi.azure.postgresql.inputs.GetServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

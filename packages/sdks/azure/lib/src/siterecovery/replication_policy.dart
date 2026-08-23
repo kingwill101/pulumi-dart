@@ -45,8 +45,8 @@ import 'replication_policy_state.dart';
 ///     name="policy",
 ///     resource_group_name=example.name,
 ///     recovery_vault_name=vault.name,
-///     recovery_point_retention_in_minutes=24 * 60,
-///     application_consistent_snapshot_frequency_in_minutes=4 * 60)
+///     recovery_point_retention_in_minutes=int(24 * 60),
+///     application_consistent_snapshot_frequency_in_minutes=int(4 * 60))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -123,6 +123,33 @@ import 'replication_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tfex-network-mapping-secondary"
+///   location = "East US"
+/// }
+/// resource "azure_recoveryservices_vault" "vault" {
+///   name                = "example-recovery-vault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_siterecovery_replicationpolicy" "policy" {
+///   name                                                 = "policy"
+///   resource_group_name                                  = azure_core_resourcegroup.example.name
+///   recovery_vault_name                                  = azure_recoveryservices_vault.vault.name
+///   recovery_point_retention_in_minutes                  = 24 * 60
+///   application_consistent_snapshot_frequency_in_minutes = 4 * 60
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -135,8 +162,8 @@ import 'replication_policy_state.dart';
 /// import com.pulumi.azure.recoveryservices.VaultArgs;
 /// import com.pulumi.azure.siterecovery.ReplicationPolicy;
 /// import com.pulumi.azure.siterecovery.ReplicationPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,7 +217,7 @@ import 'replication_policy_state.dart';
 class ReplicationPolicy extends pulumi.CustomResource {
   /// Specifies the frequency(in minutes) at which to create application consistent recovery points.
   ///
-  /// &gt; **Note:** The value of `application_consistent_snapshot_frequency_in_minutes` must be less than or equal to the value of `recovery_point_retention_in_minutes`.
+  /// &gt; **Note:** The value of `applicationConsistentSnapshotFrequencyInMinutes` must be less than or equal to the value of `recoveryPointRetentionInMinutes`.
   late final pulumi.Output<int> applicationConsistentSnapshotFrequencyInMinutes;
   /// The name of the replication policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;

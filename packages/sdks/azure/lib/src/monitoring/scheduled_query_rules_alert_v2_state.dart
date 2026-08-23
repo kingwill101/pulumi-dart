@@ -23,9 +23,9 @@ class ScheduledQueryRulesAlertV2State {
   final pulumi.Input<bool>? enabled;
   /// How often the scheduled query rule is evaluated, represented in ISO 8601 duration format. Possible values are `PT1M`, `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D`.
   ///
-  /// &gt; **Note:** `evaluation_frequency` cannot be greater than the query look back which is `window_duration`*`number_of_evaluation_periods`.
+  /// &gt; **Note:** `evaluationFrequency` cannot be greater than the query look back which is `windowDuration`*`numberOfEvaluationPeriods`.
   ///
-  /// &gt; **Note:** `evaluation_frequency` cannot be greater than the `mute_actions_after_alert_duration`.
+  /// &gt; **Note:** `evaluationFrequency` cannot be greater than the `muteActionsAfterAlertDuration`.
   final pulumi.Input<String>? evaluationFrequency;
   /// An `identity` block as defined below.
   final pulumi.Input<ScheduledQueryRulesAlertV2Identity>? identity;
@@ -37,13 +37,13 @@ class ScheduledQueryRulesAlertV2State {
   final pulumi.Input<String>? location;
   /// Mute actions for the chosen period of time in ISO 8601 duration format after the alert is fired. Possible values are `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D` and `P2D`.
   ///
-  /// &gt; **Note:** `auto_mitigation_enabled` and `mute_actions_after_alert_duration` are mutually exclusive and cannot both be set.
+  /// &gt; **Note:** `autoMitigationEnabled` and `muteActionsAfterAlertDuration` are mutually exclusive and cannot both be set.
   final pulumi.Input<String>? muteActionsAfterAlertDuration;
   /// Specifies the name which should be used for this Monitor Scheduled Query Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// Set this if the alert evaluation period is different from the query time range. If not specified, the value is `window_duration`*`number_of_evaluation_periods`. Possible values are `PT5M`, `PT10M`, `PT15M`, `PT20M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D` and `P2D`.
+  /// Set this if the alert evaluation period is different from the query time range. If not specified, the value is `windowDuration`*`numberOfEvaluationPeriods`. Possible values are `PT5M`, `PT10M`, `PT15M`, `PT20M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D` and `P2D`.
   ///
-  /// &gt; **Note:** `query_time_range_override` cannot be less than the query look back which is `window_duration`*`number_of_evaluation_periods`.
+  /// &gt; **Note:** `queryTimeRangeOverride` cannot be less than the query look back which is `windowDuration`*`numberOfEvaluationPeriods`.
   final pulumi.Input<String>? queryTimeRangeOverride;
   /// Specifies the name of the Resource Group where the Monitor Scheduled Query Rule should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
@@ -57,7 +57,7 @@ class ScheduledQueryRulesAlertV2State {
   final pulumi.Input<Map<String, String>>? tags;
   /// List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is `Microsoft.Compute/virtualMachines`, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria.
   final pulumi.Input<List<String>>? targetResourceTypes;
-  /// Specifies the period of time in ISO 8601 duration format on which the Scheduled Query Rule will be executed (bin size). If `evaluation_frequency` is `PT1M`, possible values are `PT1M`, `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, and `PT6H`. Otherwise, possible values are `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D`, and `P2D`.
+  /// Specifies the period of time in ISO 8601 duration format on which the Scheduled Query Rule will be executed (bin size). If `evaluationFrequency` is `PT1M`, possible values are `PT1M`, `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, and `PT6H`. Otherwise, possible values are `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D`, and `P2D`.
   final pulumi.Input<String>? windowDuration;
   /// Specifies the flag which indicates whether this scheduled query rule check if storage is configured. Value should be `true` or `false`. The default is `false`.
   final pulumi.Input<bool>? workspaceAlertsStorageEnabled;
@@ -77,14 +77,14 @@ class ScheduledQueryRulesAlertV2State {
   /// [location] Specifies the Azure Region where the Monitor Scheduled Query Rule should exist. Changing this forces a new resource to be created.
   /// [muteActionsAfterAlertDuration] Mute actions for the chosen period of time in ISO 8601 duration format after the alert is fired. Possible values are `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D` and `P2D`.
   /// [name] Specifies the name which should be used for this Monitor Scheduled Query Rule. Changing this forces a new resource to be created.
-  /// [queryTimeRangeOverride] Set this if the alert evaluation period is different from the query time range. If not specified, the value is `window_duration`*`number_of_evaluation_periods`. Possible values are `PT5M`, `PT10M`, `PT15M`, `PT20M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D` and `P2D`.
+  /// [queryTimeRangeOverride] Set this if the alert evaluation period is different from the query time range. If not specified, the value is `windowDuration`*`numberOfEvaluationPeriods`. Possible values are `PT5M`, `PT10M`, `PT15M`, `PT20M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D` and `P2D`.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Monitor Scheduled Query Rule should exist. Changing this forces a new resource to be created.
   /// [scopes] Specifies the list of resource IDs that this scheduled query rule is scoped to. Changing this forces a new resource to be created. Currently, the API supports exactly 1 resource ID in the scopes list.
   /// [severity] Severity of the alert. Should be an integer between 0 and 4. Value of 0 is severest.
   /// [skipQueryValidation] Specifies the flag which indicates whether the provided query should be validated or not. The default is false.
   /// [tags] A mapping of tags which should be assigned to the Monitor Scheduled Query Rule.
   /// [targetResourceTypes] List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is `Microsoft.Compute/virtualMachines`, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria.
-  /// [windowDuration] Specifies the period of time in ISO 8601 duration format on which the Scheduled Query Rule will be executed (bin size). If `evaluation_frequency` is `PT1M`, possible values are `PT1M`, `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, and `PT6H`. Otherwise, possible values are `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D`, and `P2D`.
+  /// [windowDuration] Specifies the period of time in ISO 8601 duration format on which the Scheduled Query Rule will be executed (bin size). If `evaluationFrequency` is `PT1M`, possible values are `PT1M`, `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, and `PT6H`. Otherwise, possible values are `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D`, and `P2D`.
   /// [workspaceAlertsStorageEnabled] Specifies the flag which indicates whether this scheduled query rule check if storage is configured. Value should be `true` or `false`. The default is `false`.
   const ScheduledQueryRulesAlertV2State({
     this.action,
@@ -168,4 +168,3 @@ class ScheduledQueryRulesAlertV2State {
     );
   }
 }
-

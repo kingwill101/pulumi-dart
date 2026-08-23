@@ -245,6 +245,40 @@ import 'dsc_node_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "account1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_automation_dscconfiguration" "example" {
+///   name                    = "test"
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   automation_account_name = azure_automation_account.example.name
+///   location                = azure_core_resourcegroup.example.location
+///   content_embedded        = "configuration test {}"
+/// }
+/// resource "azure_automation_dscnodeconfiguration" "example" {
+///   depends_on              = [azure_automation_dscconfiguration.example]
+///   name                    = "test.localhost"
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   automation_account_name = azure_automation_account.example.name
+///   content_embedded        = "instance of MSFT_FileDirectoryConfiguration as $MSFT_FileDirectoryConfiguration1ref\n{\n  ResourceID = \\\"[File]bla\\\";\n  Ensure = \\\"Present\\\";\n  Contents = \\\"bogus Content\\\";\n  DestinationPath = \\\"c:\\\\\\\\bogus.txt\\\";\n  ModuleName = \\\"PSDesiredStateConfiguration\\\";\n  SourceInfo = \\\"::3::9::file\\\";\n  ModuleVersion = \\\"1.0\\\";\n  ConfigurationName = \\\"bla\\\";\n};\ninstance of OMI_ConfigurationDocument\n{\n  Version=\\\"2.0.0\\\";\n  MinimumCompatibleVersion = \\\"1.0.0\\\";\n  CompatibleVersionAdditionalProperties= {\\\"Omi_BaseResource:ConfigurationName\\\"};\n  Author=\\\"bogusAuthor\\\";\n  GenerationDate=\\\"06/15/2018 14:06:24\\\";\n  GenerationHost=\\\"bogusComputer\\\";\n  Name=\\\"test\\\";\n};\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -260,8 +294,8 @@ import 'dsc_node_configuration_state.dart';
 /// import com.pulumi.azure.automation.DscNodeConfiguration;
 /// import com.pulumi.azure.automation.DscNodeConfigurationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

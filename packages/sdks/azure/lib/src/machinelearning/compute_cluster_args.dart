@@ -24,7 +24,7 @@ class ComputeClusterArgs {
   final pulumi.Input<String>? name;
   /// Whether the compute cluster will have a public ip. Defaults to `true`. Changing this forces a new Machine Learning Compute Cluster to be created.
   final pulumi.Input<bool>? nodePublicIpEnabled;
-  /// A `scale_settings` block as defined below.
+  /// A `scaleSettings` block as defined below.
   final pulumi.Input<ComputeClusterScaleSettings> scaleSettings;
   /// Credentials for an administrator user account that will be created on each compute node. A `ssh` block as defined below. Changing this forces a new Machine Learning Compute Cluster to be created.
   final pulumi.Input<ComputeClusterSsh>? ssh;
@@ -47,7 +47,7 @@ class ComputeClusterArgs {
   /// [machineLearningWorkspaceId] The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning Compute Cluster to be created.
   /// [name] The name which should be used for this Machine Learning Compute Cluster. Changing this forces a new Machine Learning Compute Cluster to be created.
   /// [nodePublicIpEnabled] Whether the compute cluster will have a public ip. Defaults to `true`. Changing this forces a new Machine Learning Compute Cluster to be created.
-  /// [scaleSettings] A `scale_settings` block as defined below.
+  /// [scaleSettings] A `scaleSettings` block as defined below.
   /// [ssh] Credentials for an administrator user account that will be created on each compute node. A `ssh` block as defined below. Changing this forces a new Machine Learning Compute Cluster to be created.
   /// [sshPublicAccessEnabled] A boolean value indicating whether enable the public SSH port. Defaults to `false`. Changing this forces a new Machine Learning Compute Cluster to be created.
   /// [subnetResourceId] The ID of the Subnet that the Compute Cluster should reside in. Changing this forces a new Machine Learning Compute Cluster to be created.
@@ -109,4 +109,3 @@ class ComputeClusterArgs {
     );
   }
 }
-

@@ -163,6 +163,33 @@ import 'resource_policy_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_getvirtualnetwork" "example" {
+///   name                = "production"
+///   resource_group_name = "networking"
+/// }
+///
+/// resource "azure_policy_definition" "example" {
+///   name         = "only-deploy-in-westeurope"
+///   policy_type  = "Custom"
+///   mode         = "All"
+///   display_name = "my-policy-definition"
+///   policy_rule  = " {\n    \"if\": {\n      \"not\": {\n        \"field\": \"location\",\n        \"equals\": \"westeurope\"\n      }\n    },\n    \"then\": {\n      \"effect\": \"Deny\"\n    }\n  }\n"
+/// }
+/// resource "azure_core_resourcepolicyassignment" "example" {
+///   name                 = "example-policy-assignment"
+///   resource_id          = data.azure_network_getvirtualnetwork.example.id
+///   policy_definition_id = azure_policy_definition.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +202,8 @@ import 'resource_policy_assignment_state.dart';
 /// import com.pulumi.azure.policy.DefinitionArgs;
 /// import com.pulumi.azure.core.ResourcePolicyAssignment;
 /// import com.pulumi.azure.core.ResourcePolicyAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -294,11 +321,11 @@ class ResourcePolicyAssignment extends pulumi.CustomResource {
   late final pulumi.Output<String> metadata;
   /// The name which should be used for this Policy Assignment. Changing this forces a new Resource Policy Assignment to be created. Cannot exceed 64 characters in length.
   late final pulumi.Output<String> name;
-  /// One or more `non_compliance_message` blocks as defined below.
+  /// One or more `nonComplianceMessage` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> nonComplianceMessages;
   /// Specifies a list of Resource Scopes (for example a Subscription, or a Resource Group) within this Management Group which are excluded from this Policy.
   late final pulumi.Output<List<String>?> notScopes;
-  /// One or more `overrides` blocks as defined below. More detail about `overrides` and `resource_selectors` see [policy assignment structure](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure)
+  /// One or more `overrides` blocks as defined below. More detail about `overrides` and `resourceSelectors` see [policy assignment structure](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure)
   late final pulumi.Output<List<Map<String, dynamic>>?> overrides;
   /// A JSON mapping of any Parameters for this Policy.
   late final pulumi.Output<String?> parameters;
@@ -308,7 +335,7 @@ class ResourcePolicyAssignment extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** To create a Policy Assignment at a Management Group use the `azure.management.GroupPolicyAssignment` resource, for a Resource Group use the `azure.core.ResourceGroupPolicyAssignment` and for a Subscription use the `azure.core.SubscriptionPolicyAssignment` resource.
   late final pulumi.Output<String> resourceId;
-  /// One or more `resource_selectors` blocks as defined below to filter polices by resource properties.
+  /// One or more `resourceSelectors` blocks as defined below to filter polices by resource properties.
   late final pulumi.Output<List<Map<String, dynamic>>?> resourceSelectors;
 
   /// Creates a new [ResourcePolicyAssignment].

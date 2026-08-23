@@ -36,4 +36,3 @@ class ScheduledQueryRulesAlertV2CriteriaDimension {
     );
   }
 }
-

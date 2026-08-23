@@ -180,6 +180,45 @@ import 'resource_policy_exemption_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_policy_getpolicysetdefinition" "example" {
+///   display_name = "Audit machines with insecure password security settings"
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "group1"
+///   location = "westus"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "network1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_core_resourcepolicyassignment" "example" {
+///   name                 = "assignment1"
+///   resource_id          = azure_network_virtualnetwork.example.id
+///   policy_definition_id = data.azure_policy_getpolicysetdefinition.example.id
+///   location             = azure_core_resourcegroup.example.location
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_core_resourcepolicyexemption" "example" {
+///   name                 = "exemption1"
+///   resource_id          = azure_core_resourcepolicyassignment.example.resource_id
+///   policy_assignment_id = azure_core_resourcepolicyassignment.example.id
+///   exemption_category   = "Mitigated"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +236,8 @@ import 'resource_policy_exemption_state.dart';
 /// import com.pulumi.azure.core.inputs.ResourcePolicyAssignmentIdentityArgs;
 /// import com.pulumi.azure.core.ResourcePolicyExemption;
 /// import com.pulumi.azure.core.ResourcePolicyExemptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

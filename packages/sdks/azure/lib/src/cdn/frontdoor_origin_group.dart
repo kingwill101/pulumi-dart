@@ -162,6 +162,42 @@ import 'frontdoor_origin_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-cdn-frontdoor"
+///   location = "West Europe"
+/// }
+/// resource "azure_cdn_frontdoorprofile" "example" {
+///   name                = "example-profile"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Standard_AzureFrontDoor"
+/// }
+/// resource "azure_cdn_frontdoororigingroup" "example" {
+///   name                                                      = "example-origin-group"
+///   cdn_frontdoor_profile_id                                  = azure_cdn_frontdoorprofile.example.id
+///   session_affinity_enabled                                  = true
+///   restore_traffic_time_to_healed_or_new_endpoint_in_minutes = 10
+///   health_probe = {
+///     interval_in_seconds = 240
+///     path                = "/healthProbe"
+///     protocol            = "Https"
+///     request_type        = "HEAD"
+///   }
+///   load_balancing = {
+///     additional_latency_in_milliseconds = 0
+///     sample_size                        = 16
+///     successful_samples_required        = 3
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -176,8 +212,8 @@ import 'frontdoor_origin_group_state.dart';
 /// import com.pulumi.azure.cdn.FrontdoorOriginGroupArgs;
 /// import com.pulumi.azure.cdn.inputs.FrontdoorOriginGroupHealthProbeArgs;
 /// import com.pulumi.azure.cdn.inputs.FrontdoorOriginGroupLoadBalancingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -265,9 +301,9 @@ import 'frontdoor_origin_group_state.dart';
 class FrontdoorOriginGroup extends pulumi.CustomResource {
   /// The ID of the Front Door Profile within which this Front Door Origin Group should exist. Changing this forces a new Front Door Origin Group to be created.
   late final pulumi.Output<String> cdnFrontdoorProfileId;
-  /// A `health_probe` block as defined below.
+  /// A `healthProbe` block as defined below.
   late final pulumi.Output<FrontdoorOriginGroupHealthProbe?> healthProbe;
-  /// A `load_balancing` block as defined below.
+  /// A `loadBalancing` block as defined below.
   late final pulumi.Output<FrontdoorOriginGroupLoadBalancing> loadBalancing;
   /// The name which should be used for this Front Door Origin Group. Changing this forces a new Front Door Origin Group to be created.
   late final pulumi.Output<String> name;

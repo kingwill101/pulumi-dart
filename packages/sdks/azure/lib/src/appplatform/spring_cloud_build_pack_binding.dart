@@ -7,7 +7,7 @@ import 'spring_cloud_build_pack_binding_state.dart';
 ///
 /// &gt; **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudBuildPackBinding` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudBuildPackBinding` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -226,6 +226,53 @@ import 'spring_cloud_build_pack_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example-springcloud"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku_name            = "E0"
+/// }
+/// resource "azure_appplatform_springcloudbuilder" "example" {
+///   name                    = "example"
+///   spring_cloud_service_id = azure_appplatform_springcloudservice.example.id
+///   build_pack_groups {
+///     name           = "mix"
+///     build_pack_ids = ["tanzu-Build Packs/java-azure"]
+///   }
+///   stack = {
+///     id      = "io.Build Packs.stacks.bionic"
+///     version = "base"
+///   }
+/// }
+/// resource "azure_appplatform_springcloudbuildpackbinding" "example" {
+///   name                    = "example"
+///   spring_cloud_builder_id = azure_appplatform_springcloudbuilder.example.id
+///   binding_type            = "ApplicationInsights"
+///   launch = {
+///     properties = {
+///       "abc"           = "def"
+///       "any-string"    = "any-string"
+///       "sampling-rate" = "12.0"
+///     }
+///     secrets = {
+///       "connection-string" = "XXXXXXXXXXXXXXXXX=XXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXX;XXXXXXXXXXXXXXXXX=XXXXXXXXXXXXXXXXXXX"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -243,8 +290,8 @@ import 'spring_cloud_build_pack_binding_state.dart';
 /// import com.pulumi.azure.appplatform.SpringCloudBuildPackBinding;
 /// import com.pulumi.azure.appplatform.SpringCloudBuildPackBindingArgs;
 /// import com.pulumi.azure.appplatform.inputs.SpringCloudBuildPackBindingLaunchArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

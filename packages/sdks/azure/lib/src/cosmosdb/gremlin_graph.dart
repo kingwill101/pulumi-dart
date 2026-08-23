@@ -206,6 +206,47 @@ import 'gremlin_graph_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cosmosdb_getaccount" "example" {
+///   name                = "tfex-cosmosdb-account"
+///   resource_group_name = "tfex-cosmosdb-account-rg"
+/// }
+///
+/// resource "azure_cosmosdb_gremlindatabase" "example" {
+///   name                = "tfex-cosmos-gremlin-db"
+///   resource_group_name = data.azure_cosmosdb_getaccount.example.resource_group_name
+///   account_name        = data.azure_cosmosdb_getaccount.example.name
+/// }
+/// resource "azure_cosmosdb_gremlingraph" "example" {
+///   name                = "tfex-cosmos-gremlin-graph"
+///   resource_group_name = data.azure_cosmosdb_getaccount.example.resource_group_name
+///   account_name        = data.azure_cosmosdb_getaccount.example.name
+///   database_name       = azure_cosmosdb_gremlindatabase.example.name
+///   partition_key_path  = "/Example"
+///   throughput          = 400
+///   index_policy = {
+///     automatic      = true
+///     indexing_mode  = "consistent"
+///     included_paths = ["/*"]
+///     excluded_paths = ["/\"_etag\"/?"]
+///   }
+///   conflict_resolution_policy = {
+///     mode                     = "LastWriterWins"
+///     conflict_resolution_path = "/_ts"
+///   }
+///   unique_keys {
+///     paths = ["/definition/id1", "/definition/id2"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -221,8 +262,8 @@ import 'gremlin_graph_state.dart';
 /// import com.pulumi.azure.cosmosdb.inputs.GremlinGraphIndexPolicyArgs;
 /// import com.pulumi.azure.cosmosdb.inputs.GremlinGraphConflictResolutionPolicyArgs;
 /// import com.pulumi.azure.cosmosdb.inputs.GremlinGraphUniqueKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,19 +377,19 @@ class GremlinGraph extends pulumi.CustomResource {
   late final pulumi.Output<String> accountName;
   /// The time to live of Analytical Storage for this Cosmos DB Gremlin Graph. Possible values are between `-1` to `2147483647` not including `0`. If present and the value is set to `-1`, it means never expire.
   ///
-  /// &gt; **Note:** Disabling `analytical_storage_ttl` will force a new resource to be created since it can't be disabled once it's enabled.
+  /// &gt; **Note:** Disabling `analyticalStorageTtl` will force a new resource to be created since it can't be disabled once it's enabled.
   late final pulumi.Output<int?> analyticalStorageTtl;
-  /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply. Requires `partition_key_path` to be set.
+  /// An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply. Requires `partitionKeyPath` to be set.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   late final pulumi.Output<GremlinGraphAutoscaleSettings?> autoscaleSettings;
-  /// A `conflict_resolution_policy` blocks as defined below. Changing this forces a new resource to be created.
+  /// A `conflictResolutionPolicy` blocks as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<GremlinGraphConflictResolutionPolicy> conflictResolutionPolicy;
   /// The name of the Cosmos DB Graph Database in which the Cosmos DB Gremlin Graph is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> databaseName;
   /// The default time to live (TTL) of the Gremlin graph. If the value is missing or set to "-1", items don’t expire.
   late final pulumi.Output<int?> defaultTtl;
-  /// The configuration of the indexing policy. One or more `index_policy` blocks as defined below.
+  /// The configuration of the indexing policy. One or more `indexPolicy` blocks as defined below.
   late final pulumi.Output<GremlinGraphIndexPolicy> indexPolicy;
   /// Specifies the name of the Cosmos DB Gremlin Graph. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
@@ -360,7 +401,7 @@ class GremlinGraph extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// The throughput of the Gremlin graph (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   late final pulumi.Output<int> throughput;
-  /// One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `uniqueKey` blocks as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> uniqueKeys;
 
   /// Creates a new [GremlinGraph].

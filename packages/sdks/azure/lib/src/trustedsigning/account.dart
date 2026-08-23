@@ -90,6 +90,26 @@ import 'account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_trustedsigning_account" "example" {
+///   name                = "example-account"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = "West Europe"
+///   sku_name            = "Basic"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +120,8 @@ import 'account_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.trustedsigning.Account;
 /// import com.pulumi.azure.trustedsigning.AccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

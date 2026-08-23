@@ -5,17 +5,17 @@ import 'configuration_backup_retention_policy_daily_schedule.dart';
 import 'configuration_backup_retention_policy_weekly_schedule.dart';
 
 class ConfigurationBackupRetentionPolicy {
-  /// A `daily_schedule` block as defined below.
+  /// A `dailySchedule` block as defined below.
   final pulumi.Input<ConfigurationBackupRetentionPolicyDailySchedule>? dailySchedule;
   /// The retention policy type of the backup policy. Possible value is `LongTermRetentionPolicy`. Defaults to `LongTermRetentionPolicy`.
   final pulumi.Input<String>? retentionPolicyType;
-  /// A `weekly_schedule` block as defined below.
+  /// A `weeklySchedule` block as defined below.
   final pulumi.Input<ConfigurationBackupRetentionPolicyWeeklySchedule>? weeklySchedule;
 
   /// Creates a new [ConfigurationBackupRetentionPolicy].
-  /// [dailySchedule] A `daily_schedule` block as defined below.
+  /// [dailySchedule] A `dailySchedule` block as defined below.
   /// [retentionPolicyType] The retention policy type of the backup policy. Possible value is `LongTermRetentionPolicy`. Defaults to `LongTermRetentionPolicy`.
-  /// [weeklySchedule] A `weekly_schedule` block as defined below.
+  /// [weeklySchedule] A `weeklySchedule` block as defined below.
   const ConfigurationBackupRetentionPolicy({
     this.dailySchedule,
     this.retentionPolicyType,
@@ -38,4 +38,3 @@ class ConfigurationBackupRetentionPolicy {
     );
   }
 }
-

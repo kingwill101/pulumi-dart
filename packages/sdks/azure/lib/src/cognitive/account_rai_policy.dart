@@ -152,6 +152,39 @@ import 'account_rai_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "East US"
+/// }
+/// resource "azure_cognitive_account" "example" {
+///   name                = "example-account"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   kind                = "OpenAI"
+///   sku_name            = "S0"
+/// }
+/// resource "azure_cognitive_accountraipolicy" "example" {
+///   name                 = "example-rai-policy"
+///   cognitive_account_id = azure_cognitive_account.example.id
+///   base_policy_name     = "Microsoft.Default"
+///   content_filters {
+///     name               = "Hate"
+///     filter_enabled     = true
+///     block_enabled      = true
+///     severity_threshold = "High"
+///     source             = "Prompt"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -165,8 +198,8 @@ import 'account_rai_policy_state.dart';
 /// import com.pulumi.azure.cognitive.AccountRaiPolicy;
 /// import com.pulumi.azure.cognitive.AccountRaiPolicyArgs;
 /// import com.pulumi.azure.cognitive.inputs.AccountRaiPolicyContentFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -244,7 +277,7 @@ import 'account_rai_policy_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.CognitiveServices` - 2025-06-01
+/// * `Microsoft.CognitiveServices` - 2026-03-01
 ///
 /// ## Import
 ///
@@ -258,7 +291,7 @@ class AccountRaiPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> basePolicyName;
   /// The ID of the Cognitive Service Account to which this RAI Policy should be associated. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cognitiveAccountId;
-  /// A `content_filter` block as defined below.
+  /// A `contentFilter` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> contentFilters;
   /// The mode of the RAI Policy. Possible values are `Default`, `Deferred`, `Blocking` or `Asynchronous_filter`.
   late final pulumi.Output<String?> mode;

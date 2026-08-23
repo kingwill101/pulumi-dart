@@ -196,6 +196,44 @@ import 'resource_deployment_script_power_shell_storage_account.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "example-uai"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_core_resourcedeploymentscriptpowershell" "example" {
+///   name                = "example-rdsaps"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = "West Europe"
+///   version             = "8.3"
+///   retention_interval  = "P1D"
+///   command_line        = "-name \"John Dole\""
+///   cleanup_preference  = "OnSuccess"
+///   force_update_tag    = "1"
+///   timeout             = "PT30M"
+///   script_content      = "          param([string] $name)\n            $output = 'Hello {0}.' -f $name\n            Write-Output $output\n            $DeploymentScriptOutputs = @{}\n            $DeploymentScriptOutputs['text'] = $output\n"
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -209,8 +247,8 @@ import 'resource_deployment_script_power_shell_storage_account.dart';
 /// import com.pulumi.azure.core.ResourceDeploymentScriptPowerShell;
 /// import com.pulumi.azure.core.ResourceDeploymentScriptPowerShellArgs;
 /// import com.pulumi.azure.core.inputs.ResourceDeploymentScriptPowerShellIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -323,7 +361,7 @@ class ResourceDeploymentScriptPowerShell extends pulumi.CustomResource {
   late final pulumi.Output<String?> commandLine;
   /// A `container` block as defined below. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<ResourceDeploymentScriptPowerShellContainer?> container;
-  /// An `environment_variable` block as defined below. Changing this forces a new Resource Deployment Script to be created.
+  /// An `environmentVariable` block as defined below. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> environmentVariables;
   /// Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> forceUpdateTag;
@@ -343,7 +381,7 @@ class ResourceDeploymentScriptPowerShell extends pulumi.CustomResource {
   late final pulumi.Output<String> retentionInterval;
   /// Script body. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<String?> scriptContent;
-  /// A `storage_account` block as defined below. Changing this forces a new Resource Deployment Script to be created.
+  /// A `storageAccount` block as defined below. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<ResourceDeploymentScriptPowerShellStorageAccount?> storageAccount;
   /// Supporting files for the external script. Changing this forces a new Resource Deployment Script to be created.
   late final pulumi.Output<List<String>?> supportingScriptUris;

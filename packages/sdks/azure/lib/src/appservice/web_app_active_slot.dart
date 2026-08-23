@@ -165,6 +165,42 @@ import 'web_app_active_slot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   name                = "example-plan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   os_type             = "Windows"
+///   sku_name            = "P1v2"
+/// }
+/// resource "azure_appservice_windowswebapp" "example" {
+///   name                = "example-windows-web-app"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_appservice_serviceplan.example.location
+///   service_plan_id     = azure_appservice_serviceplan.example.id
+///   site_config         = {}
+/// }
+/// resource "azure_appservice_windowswebappslot" "example" {
+///   name           = "example-windows-web-app-slot"
+///   app_service_id = azure_appservice_windowswebapp.example.name
+///   site_config    = {}
+/// }
+/// resource "azure_appservice_webappactiveslot" "example" {
+///   slot_id = azure_appservice_windowswebappslot.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +219,8 @@ import 'web_app_active_slot_state.dart';
 /// import com.pulumi.azure.appservice.inputs.WindowsWebAppSlotSiteConfigArgs;
 /// import com.pulumi.azure.appservice.WebAppActiveSlot;
 /// import com.pulumi.azure.appservice.WebAppActiveSlotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -439,6 +475,44 @@ import 'web_app_active_slot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   name                = "example-plan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   os_type             = "Linux"
+///   sku_name            = "P1v2"
+/// }
+/// resource "azure_appservice_linuxwebapp" "example" {
+///   name                = "example-linux-web-app"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_appservice_serviceplan.example.location
+///   service_plan_id     = azure_appservice_serviceplan.example.id
+///   site_config         = {}
+/// }
+/// resource "azure_appservice_linuxwebappslot" "example" {
+///   name             = "example-linux-web-app-slot"
+///   app_service_name = azure_appservice_linuxwebapp.example.name
+///   location         = azure_appservice_serviceplan.example.location
+///   service_plan_id  = azure_appservice_serviceplan.example.id
+///   site_config      = {}
+/// }
+/// resource "azure_appservice_webappactiveslot" "example" {
+///   slot_id = azure_appservice_linuxwebappslot.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -457,8 +531,8 @@ import 'web_app_active_slot_state.dart';
 /// import com.pulumi.azure.appservice.inputs.LinuxWebAppSlotSiteConfigArgs;
 /// import com.pulumi.azure.appservice.WebAppActiveSlot;
 /// import com.pulumi.azure.appservice.WebAppActiveSlotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

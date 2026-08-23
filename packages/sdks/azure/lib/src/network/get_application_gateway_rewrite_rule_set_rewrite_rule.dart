@@ -11,9 +11,9 @@ class GetApplicationGatewayRewriteRuleSetRewriteRule {
   final pulumi.Input<List<GetApplicationGatewayRewriteRuleSetRewriteRuleCondition>> conditions;
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
-  /// One or more `request_header_configuration` blocks as defined above.
+  /// One or more `requestHeaderConfiguration` blocks as defined above.
   final pulumi.Input<List<GetApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration>> requestHeaderConfigurations;
-  /// One or more `response_header_configuration` blocks as defined above.
+  /// One or more `responseHeaderConfiguration` blocks as defined above.
   final pulumi.Input<List<GetApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration>> responseHeaderConfigurations;
   /// Rule sequence of the Rewrite Rule that determines the order of execution in a set.
   final pulumi.Input<int> ruleSequence;
@@ -23,8 +23,8 @@ class GetApplicationGatewayRewriteRuleSetRewriteRule {
   /// Creates a new [GetApplicationGatewayRewriteRuleSetRewriteRule].
   /// [conditions] One or more `condition` blocks as defined above.
   /// [name] The name of this Application Gateway.
-  /// [requestHeaderConfigurations] One or more `request_header_configuration` blocks as defined above.
-  /// [responseHeaderConfigurations] One or more `response_header_configuration` blocks as defined above.
+  /// [requestHeaderConfigurations] One or more `requestHeaderConfiguration` blocks as defined above.
+  /// [responseHeaderConfigurations] One or more `responseHeaderConfiguration` blocks as defined above.
   /// [ruleSequence] Rule sequence of the Rewrite Rule that determines the order of execution in a set.
   /// [urls] One `url` block as defined below
   const GetApplicationGatewayRewriteRuleSetRewriteRule({
@@ -58,4 +58,3 @@ class GetApplicationGatewayRewriteRuleSetRewriteRule {
     );
   }
 }
-

@@ -116,6 +116,32 @@ import 'namespace_schema_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "exampleRG-ehn-schemaGroup"
+///   location = "East US"
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "test" {
+///   name                = "example-ehn-schemaGroup"
+///   location            = testAzurermResourceGroup.location
+///   resource_group_name = testAzurermResourceGroup.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_eventhub_namespaceschemagroup" "test" {
+///   name                 = "example-schemaGroup"
+///   namespace_id         = azure_eventhub_eventhubnamespace.test.id
+///   schema_compatibility = "Forward"
+///   schema_type          = "Avro"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +154,8 @@ import 'namespace_schema_group_state.dart';
 /// import com.pulumi.azure.eventhub.EventHubNamespaceArgs;
 /// import com.pulumi.azure.eventhub.NamespaceSchemaGroup;
 /// import com.pulumi.azure.eventhub.NamespaceSchemaGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -211,7 +237,7 @@ class NamespaceSchemaGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> schemaCompatibility;
   /// Specifies the Type of this schema group. Possible values are `Avro`, `Unknown` and `Json`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** When `schema_type` is specified as `Json`, `schema_compatibility` must be set to `None`.
+  /// &gt; **Note:** When `schemaType` is specified as `Json`, `schemaCompatibility` must be set to `None`.
   late final pulumi.Output<String> schemaType;
 
   /// Creates a new [NamespaceSchemaGroup].

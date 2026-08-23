@@ -236,6 +236,59 @@ import 'linked_server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example-primary" {
+///   name     = "example-resources-primary"
+///   location = "East US"
+/// }
+/// resource "azure_redis_cache" "example-primary" {
+///   name                = "example-cache1"
+///   location            = azure_core_resourcegroup.example-primary.location
+///   resource_group_name = azure_core_resourcegroup.example-primary.name
+///   capacity            = 1
+///   family              = "P"
+///   sku_name            = "Premium"
+///   enable_non_ssl_port = false
+///   redis_configuration = {
+///     maxmemory_reserved = 2
+///     maxmemory_delta    = 2
+///     maxmemory_policy   = "allkeys-lru"
+///   }
+/// }
+/// resource "azure_core_resourcegroup" "example-secondary" {
+///   name     = "example-resources-secondary"
+///   location = "West US"
+/// }
+/// resource "azure_redis_cache" "example-secondary" {
+///   name                = "example-cache2"
+///   location            = azure_core_resourcegroup.example-secondary.location
+///   resource_group_name = azure_core_resourcegroup.example-secondary.name
+///   capacity            = 1
+///   family              = "P"
+///   sku_name            = "Premium"
+///   enable_non_ssl_port = false
+///   redis_configuration = {
+///     maxmemory_reserved = 2
+///     maxmemory_delta    = 2
+///     maxmemory_policy   = "allkeys-lru"
+///   }
+/// }
+/// resource "azure_redis_linkedserver" "example-link" {
+///   target_redis_cache_name     = azure_redis_cache.example-primary.name
+///   resource_group_name         = azure_redis_cache.example-primary.resource_group_name
+///   linked_redis_cache_id       = azure_redis_cache.example-secondary.id
+///   linked_redis_cache_location = azure_redis_cache.example-secondary.location
+///   server_role                 = "Secondary"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -249,8 +302,8 @@ import 'linked_server_state.dart';
 /// import com.pulumi.azure.redis.inputs.CacheRedisConfigurationArgs;
 /// import com.pulumi.azure.redis.LinkedServer;
 /// import com.pulumi.azure.redis.LinkedServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

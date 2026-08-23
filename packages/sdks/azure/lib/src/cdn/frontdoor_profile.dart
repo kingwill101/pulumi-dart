@@ -169,6 +169,41 @@ import 'frontdoor_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   location            = azure_core_resourcegroup.example.location
+///   name                = "example-identity"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_cdn_frontdoorprofile" "example" {
+///   name                     = "example-cdn-profile"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   sku_name                 = "Premium_AzureFrontDoor"
+///   response_timeout_seconds = 120
+///   identity = {
+///     type         = "SystemAssigned, UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+///   log_scrubbing_rules {
+///     match_variable = "RequestIPAddress"
+///   }
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +218,8 @@ import 'frontdoor_profile_state.dart';
 /// import com.pulumi.azure.cdn.FrontdoorProfileArgs;
 /// import com.pulumi.azure.cdn.inputs.FrontdoorProfileIdentityArgs;
 /// import com.pulumi.azure.cdn.inputs.FrontdoorProfileLogScrubbingRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -275,9 +310,9 @@ import 'frontdoor_profile_state.dart';
 class FrontdoorProfile extends pulumi.CustomResource {
   /// An `identity` block as defined below.
   late final pulumi.Output<FrontdoorProfileIdentity?> identity;
-  /// One or more `log_scrubbing_rule` blocks as defined below.
+  /// One or more `logScrubbingRule` blocks as defined below.
   ///
-  /// &gt; **Note:** When no `log_scrubbing_rule` blocks are defined, log scrubbing will be automatically `disabled`. When one or more `log_scrubbing_rule` blocks are present, log scrubbing will be `enabled`.
+  /// &gt; **Note:** When no `logScrubbingRule` blocks are defined, log scrubbing will be automatically `disabled`. When one or more `logScrubbingRule` blocks are present, log scrubbing will be `enabled`.
   late final pulumi.Output<List<Map<String, dynamic>>?> logScrubbingRules;
   /// Specifies the name of the Front Door Profile. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;

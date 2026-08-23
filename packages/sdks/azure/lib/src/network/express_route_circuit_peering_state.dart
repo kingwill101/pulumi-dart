@@ -15,7 +15,7 @@ class ExpressRouteCircuitPeeringState {
   final pulumi.Input<bool>? ipv4Enabled;
   /// A `ipv6` block as defined below.
   final pulumi.Input<ExpressRouteCircuitPeeringIpv6>? ipv6;
-  /// A `microsoft_peering_config` block as defined below. Required when `peering_type` is set to `MicrosoftPeering` and config for IPv4.
+  /// A `microsoftPeeringConfig` block as defined below. Required when `peeringType` is set to `MicrosoftPeering` and config for IPv4.
   final pulumi.Input<ExpressRouteCircuitPeeringMicrosoftPeeringConfig>? microsoftPeeringConfig;
   /// The Either a 16-bit or a 32-bit ASN. Can either be public or private.
   final pulumi.Input<int>? peerAsn;
@@ -29,9 +29,9 @@ class ExpressRouteCircuitPeeringState {
   final pulumi.Input<String>? primaryPeerAddressPrefix;
   /// The name of the resource group in which to create the Express Route Circuit Peering. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-  /// The ID of the Route Filter. Only available when `peering_type` is set to `MicrosoftPeering`.
+  /// The ID of the Route Filter. Only available when `peeringType` is set to `MicrosoftPeering`.
   ///
-  /// &gt; **Note:** `ipv6` can be specified when `peering_type` is `MicrosoftPeering` or `AzurePrivatePeering`
+  /// &gt; **Note:** `ipv6` can be specified when `peeringType` is `MicrosoftPeering` or `AzurePrivatePeering`
   final pulumi.Input<String>? routeFilterId;
   /// The Secondary Port used by Azure for this Peering.
   final pulumi.Input<String>? secondaryAzurePort;
@@ -48,13 +48,13 @@ class ExpressRouteCircuitPeeringState {
   /// [gatewayManagerEtag] Optional.
   /// [ipv4Enabled] A boolean value indicating whether the IPv4 peering is enabled. Defaults to `true`.
   /// [ipv6] A `ipv6` block as defined below.
-  /// [microsoftPeeringConfig] A `microsoft_peering_config` block as defined below. Required when `peering_type` is set to `MicrosoftPeering` and config for IPv4.
+  /// [microsoftPeeringConfig] A `microsoftPeeringConfig` block as defined below. Required when `peeringType` is set to `MicrosoftPeering` and config for IPv4.
   /// [peerAsn] The Either a 16-bit or a 32-bit ASN. Can either be public or private.
   /// [peeringType] The type of the ExpressRoute Circuit Peering. Acceptable values include `AzurePrivatePeering`, `AzurePublicPeering` and `MicrosoftPeering`.
   /// [primaryAzurePort] The Primary Port used by Azure for this Peering.
   /// [primaryPeerAddressPrefix] A subnet for the primary link.
   /// [resourceGroupName] The name of the resource group in which to create the Express Route Circuit Peering. Changing this forces a new resource to be created.
-  /// [routeFilterId] The ID of the Route Filter. Only available when `peering_type` is set to `MicrosoftPeering`.
+  /// [routeFilterId] The ID of the Route Filter. Only available when `peeringType` is set to `MicrosoftPeering`.
   /// [secondaryAzurePort] The Secondary Port used by Azure for this Peering.
   /// [secondaryPeerAddressPrefix] A subnet for the secondary link.
   /// [sharedKey] The shared key. Can be a maximum of 25 characters.
@@ -120,4 +120,3 @@ class ExpressRouteCircuitPeeringState {
     );
   }
 }
-

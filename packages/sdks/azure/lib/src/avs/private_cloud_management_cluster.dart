@@ -7,13 +7,13 @@ class PrivateCloudManagementCluster {
   final pulumi.Input<List<String>>? hosts;
   /// The ID of the management cluster.
   final pulumi.Input<int>? id;
-  /// The size of the management cluster. This field can not updated with `internet_connection_enabled` together.
+  /// The size of the management cluster. This field can not updated with `internetConnectionEnabled` together.
   final pulumi.Input<int> size;
 
   /// Creates a new [PrivateCloudManagementCluster].
   /// [hosts] A list of hosts in the management cluster.
   /// [id] The ID of the management cluster.
-  /// [size] The size of the management cluster. This field can not updated with `internet_connection_enabled` together.
+  /// [size] The size of the management cluster. This field can not updated with `internetConnectionEnabled` together.
   const PrivateCloudManagementCluster({
     this.hosts,
     this.id,
@@ -36,4 +36,3 @@ class PrivateCloudManagementCluster {
     );
   }
 }
-

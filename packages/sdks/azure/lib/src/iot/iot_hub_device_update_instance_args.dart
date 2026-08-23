@@ -12,7 +12,7 @@ class IotHubDeviceUpdateInstanceArgs {
   final pulumi.Input<String> deviceUpdateAccountId;
   /// Whether the diagnostic log collection is enabled. Possible values are `true` and `false`. Defaults to `false`.
   final pulumi.Input<bool>? diagnosticEnabled;
-  /// A `diagnostic_storage_account` block as defined below.
+  /// A `diagnosticStorageAccount` block as defined below.
   final pulumi.Input<IotHubDeviceUpdateInstanceDiagnosticStorageAccount>? diagnosticStorageAccount;
   /// Specifies the ID of the IoT Hub associated with the IoT Hub Device Update Instance. Changing this forces a new resource to be created.
   final pulumi.Input<String> iothubId;
@@ -24,7 +24,7 @@ class IotHubDeviceUpdateInstanceArgs {
   /// Creates a new [IotHubDeviceUpdateInstanceArgs].
   /// [deviceUpdateAccountId] Specifies the ID of the IoT Hub Device Update Account where the IoT Hub Device Update Instance exists. Changing this forces a new resource to be created.
   /// [diagnosticEnabled] Whether the diagnostic log collection is enabled. Possible values are `true` and `false`. Defaults to `false`.
-  /// [diagnosticStorageAccount] A `diagnostic_storage_account` block as defined below.
+  /// [diagnosticStorageAccount] A `diagnosticStorageAccount` block as defined below.
   /// [iothubId] Specifies the ID of the IoT Hub associated with the IoT Hub Device Update Instance. Changing this forces a new resource to be created.
   /// [name] Specifies the name which should be used for this IoT Hub Device Update Instance. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the IoT Hub Device Update Instance.
@@ -59,4 +59,3 @@ class IotHubDeviceUpdateInstanceArgs {
     );
   }
 }
-

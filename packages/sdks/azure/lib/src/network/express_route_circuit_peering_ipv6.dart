@@ -6,22 +6,22 @@ import 'express_route_circuit_peering_ipv6_microsoft_peering.dart';
 class ExpressRouteCircuitPeeringIpv6 {
   /// A boolean value indicating whether the IPv6 peering is enabled. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-  /// A `microsoft_peering` block as defined below.
+  /// A `microsoftPeering` block as defined below.
   final pulumi.Input<ExpressRouteCircuitPeeringIpv6MicrosoftPeering>? microsoftPeering;
   /// A subnet for the primary link.
   final pulumi.Input<String> primaryPeerAddressPrefix;
-  /// The ID of the Route Filter. Only available when `peering_type` is set to `MicrosoftPeering`.
+  /// The ID of the Route Filter. Only available when `peeringType` is set to `MicrosoftPeering`.
   ///
-  /// &gt; **Note:** `ipv6` can be specified when `peering_type` is `MicrosoftPeering` or `AzurePrivatePeering`
+  /// &gt; **Note:** `ipv6` can be specified when `peeringType` is `MicrosoftPeering` or `AzurePrivatePeering`
   final pulumi.Input<String>? routeFilterId;
   /// A subnet for the secondary link.
   final pulumi.Input<String> secondaryPeerAddressPrefix;
 
   /// Creates a new [ExpressRouteCircuitPeeringIpv6].
   /// [enabled] A boolean value indicating whether the IPv6 peering is enabled. Defaults to `true`.
-  /// [microsoftPeering] A `microsoft_peering` block as defined below.
+  /// [microsoftPeering] A `microsoftPeering` block as defined below.
   /// [primaryPeerAddressPrefix] A subnet for the primary link.
-  /// [routeFilterId] The ID of the Route Filter. Only available when `peering_type` is set to `MicrosoftPeering`.
+  /// [routeFilterId] The ID of the Route Filter. Only available when `peeringType` is set to `MicrosoftPeering`.
   /// [secondaryPeerAddressPrefix] A subnet for the secondary link.
   const ExpressRouteCircuitPeeringIpv6({
     this.enabled,
@@ -51,4 +51,3 @@ class ExpressRouteCircuitPeeringIpv6 {
     );
   }
 }
-

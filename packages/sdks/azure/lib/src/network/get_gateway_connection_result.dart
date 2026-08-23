@@ -25,7 +25,7 @@ class GetGatewayConnectionResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final int ingressBytesTransferred;
-  /// (Optional) A `ipsec_policy` block which is documented below.
+  /// (Optional) A `ipsecPolicy` block which is documented below.
   /// Only a single policy can be defined for a connection. For details on
   /// custom policies refer to [the relevant section in the Azure documentation](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell).
   final List<GetGatewayConnectionIpsecPolicy> ipsecPolicies;
@@ -53,8 +53,8 @@ class GetGatewayConnectionResult {
   final String sharedKey;
   /// A mapping of tags to assign to the resource.
   final Map<String, String> tags;
-  /// One or more `traffic_selector_policy` blocks which are documented below.
-  /// A `traffic_selector_policy` allows to specify a traffic selector policy proposal to be used in a virtual network gateway connection.
+  /// One or more `trafficSelectorPolicy` blocks which are documented below.
+  /// A `trafficSelectorPolicy` allows to specify a traffic selector policy proposal to be used in a virtual network gateway connection.
   /// For details about traffic selectors refer to [the relevant section in the Azure documentation](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps).
   final List<GetGatewayConnectionTrafficSelectorPolicy> trafficSelectorPolicies;
   /// The type of connection. Valid options are `IPsec`
@@ -62,7 +62,7 @@ class GetGatewayConnectionResult {
   final String type;
   /// If `true`, policy-based traffic
   /// selectors are enabled for this connection. Enabling policy-based traffic
-  /// selectors requires an `ipsec_policy` block.
+  /// selectors requires an `ipsecPolicy` block.
   final bool usePolicyBasedTrafficSelectors;
   /// The ID of the Virtual Network Gateway
   /// in which the connection is created.
@@ -78,7 +78,7 @@ class GetGatewayConnectionResult {
   /// [expressRouteGatewayBypass] If `true`, data packets will bypass ExpressRoute Gateway for data forwarding. This is only valid for ExpressRoute connections.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ingressBytesTransferred] Required.
-  /// [ipsecPolicies] (Optional) A `ipsec_policy` block which is documented below.
+  /// [ipsecPolicies] (Optional) A `ipsecPolicy` block which is documented below.
   /// [localAzureIpAddressEnabled] Use private local Azure IP for the connection.
   /// [localNetworkGatewayId] The ID of the local network gateway
   /// [location] The location/region where the connection is
@@ -90,7 +90,7 @@ class GetGatewayConnectionResult {
   /// [routingWeight] The routing weight.
   /// [sharedKey] The shared IPSec key.
   /// [tags] A mapping of tags to assign to the resource.
-  /// [trafficSelectorPolicies] One or more `traffic_selector_policy` blocks which are documented below.
+  /// [trafficSelectorPolicies] One or more `trafficSelectorPolicy` blocks which are documented below.
   /// [type] The type of connection. Valid options are `IPsec`
   /// [usePolicyBasedTrafficSelectors] If `true`, policy-based traffic
   /// [virtualNetworkGatewayId] The ID of the Virtual Network Gateway
@@ -182,4 +182,3 @@ class GetGatewayConnectionResult {
     );
   }
 }
-

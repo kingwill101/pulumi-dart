@@ -17,11 +17,11 @@ class SlotState {
   final pulumi.Input<String>? appServicePlanId;
   /// A key-value pair of App Settings.
   final pulumi.Input<Map<String, String>>? appSettings;
-  /// A `auth_settings` block as defined below.
+  /// A `authSettings` block as defined below.
   final pulumi.Input<SlotAuthSettings>? authSettings;
   /// Should the App Service Slot send session affinity cookies, which route client requests in the same session to the same instance?
   final pulumi.Input<bool>? clientAffinityEnabled;
-  /// An `connection_string` block as defined below.
+  /// An `connectionString` block as defined below.
   final pulumi.Input<List<SlotConnectionString>>? connectionStrings;
   /// The Default Hostname associated with the App Service Slot - such as `mysite.azurewebsites.net`
   final pulumi.Input<String>? defaultSiteHostname;
@@ -41,11 +41,11 @@ class SlotState {
   final pulumi.Input<String>? name;
   /// The name of the resource group in which to create the App Service Slot component. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-  /// A `site_config` object as defined below.
+  /// A `siteConfig` object as defined below.
   final pulumi.Input<SlotSiteConfig>? siteConfig;
-  /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service slot.
+  /// A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service slot.
   final pulumi.Input<List<SlotSiteCredential>>? siteCredentials;
-  /// One or more `storage_account` blocks as defined below.
+  /// One or more `storageAccount` blocks as defined below.
   final pulumi.Input<List<SlotStorageAccount>>? storageAccounts;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
@@ -54,9 +54,9 @@ class SlotState {
   /// [appServiceName] The name of the App Service within which to create the App Service Slot. Changing this forces a new resource to be created.
   /// [appServicePlanId] The ID of the App Service Plan within which to create this App Service Slot. Changing this forces a new resource to be created.
   /// [appSettings] A key-value pair of App Settings.
-  /// [authSettings] A `auth_settings` block as defined below.
+  /// [authSettings] A `authSettings` block as defined below.
   /// [clientAffinityEnabled] Should the App Service Slot send session affinity cookies, which route client requests in the same session to the same instance?
-  /// [connectionStrings] An `connection_string` block as defined below.
+  /// [connectionStrings] An `connectionString` block as defined below.
   /// [defaultSiteHostname] The Default Hostname associated with the App Service Slot - such as `mysite.azurewebsites.net`
   /// [enabled] Is the App Service Slot Enabled? Defaults to `true`.
   /// [httpsOnly] Can the App Service Slot only be accessed via HTTPS? Defaults to `false`.
@@ -66,9 +66,9 @@ class SlotState {
   /// [logs] A `logs` block as defined below.
   /// [name] Specifies the name of the App Service Slot component. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the App Service Slot component. Changing this forces a new resource to be created.
-  /// [siteConfig] A `site_config` object as defined below.
-  /// [siteCredentials] A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service slot.
-  /// [storageAccounts] One or more `storage_account` blocks as defined below.
+  /// [siteConfig] A `siteConfig` object as defined below.
+  /// [siteCredentials] A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service slot.
+  /// [storageAccounts] One or more `storageAccount` blocks as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   const SlotState({
     this.appServiceName,
@@ -140,4 +140,3 @@ class SlotState {
     );
   }
 }
-

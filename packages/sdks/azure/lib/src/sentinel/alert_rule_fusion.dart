@@ -124,6 +124,33 @@ import 'alert_rule_fusion_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-workspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
+///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// resource "azure_sentinel_alertrulefusion" "example" {
+///   log_analytics_workspace_id = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+///   alert_rule_template_guid   = "f71aba3d-28fb-450b-b192-4e76a83015c8"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +165,8 @@ import 'alert_rule_fusion_state.dart';
 /// import com.pulumi.azure.sentinel.LogAnalyticsWorkspaceOnboardingArgs;
 /// import com.pulumi.azure.sentinel.AlertRuleFusion;
 /// import com.pulumi.azure.sentinel.AlertRuleFusionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

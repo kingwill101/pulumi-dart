@@ -12,11 +12,11 @@ class TopicState {
   final pulumi.Input<String>? endpoint;
   /// An `identity` block as defined below.
   final pulumi.Input<TopicIdentity>? identity;
-  /// One or more `inbound_ip_rule` blocks as defined below.
+  /// One or more `inboundIpRule` blocks as defined below.
   final pulumi.Input<List<TopicInboundIpRule>>? inboundIpRules;
-  /// A `input_mapping_default_values` block as defined below. Changing this forces a new resource to be created.
+  /// A `inputMappingDefaultValues` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<TopicInputMappingDefaultValues>? inputMappingDefaultValues;
-  /// A `input_mapping_fields` block as defined below. Changing this forces a new resource to be created.
+  /// A `inputMappingFields` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<TopicInputMappingFields>? inputMappingFields;
   /// Specifies the schema in which incoming events will be published to this domain. Allowed values are `CloudEventSchemaV1_0`, `CustomEventSchema`, or `EventGridSchema`. Defaults to `EventGridSchema`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? inputSchema;
@@ -40,9 +40,9 @@ class TopicState {
   /// Creates a new [TopicState].
   /// [endpoint] The Endpoint associated with the EventGrid Topic.
   /// [identity] An `identity` block as defined below.
-  /// [inboundIpRules] One or more `inbound_ip_rule` blocks as defined below.
-  /// [inputMappingDefaultValues] A `input_mapping_default_values` block as defined below. Changing this forces a new resource to be created.
-  /// [inputMappingFields] A `input_mapping_fields` block as defined below. Changing this forces a new resource to be created.
+  /// [inboundIpRules] One or more `inboundIpRule` blocks as defined below.
+  /// [inputMappingDefaultValues] A `inputMappingDefaultValues` block as defined below. Changing this forces a new resource to be created.
+  /// [inputMappingFields] A `inputMappingFields` block as defined below. Changing this forces a new resource to be created.
   /// [inputSchema] Specifies the schema in which incoming events will be published to this domain. Allowed values are `CloudEventSchemaV1_0`, `CustomEventSchema`, or `EventGridSchema`. Defaults to `EventGridSchema`. Changing this forces a new resource to be created.
   /// [localAuthEnabled] Whether local authentication methods is enabled for the EventGrid Topic. Defaults to `true`.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
@@ -107,4 +107,3 @@ class TopicState {
     );
   }
 }
-

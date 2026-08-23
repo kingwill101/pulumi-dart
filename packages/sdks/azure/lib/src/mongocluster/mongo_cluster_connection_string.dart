@@ -7,13 +7,13 @@ class MongoClusterConnectionString {
   final pulumi.Input<String>? description;
   /// The name which should be used for the MongoDB Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// The value of the Mongo Cluster connection string. The `&lt;user&gt;:&lt;password&gt;` placeholder returned from API will be replaced by the real `administrator_username` and `administrator_password` if available in the state.
+  /// The value of the Mongo Cluster connection string. The `&lt;user&gt;:&lt;password&gt;` placeholder returned from API will be replaced by the real `administratorUsername` and `administratorPassword` if available in the state.
   final pulumi.Input<String>? value;
 
   /// Creates a new [MongoClusterConnectionString].
   /// [description] The description of the connection string.
   /// [name] The name which should be used for the MongoDB Cluster. Changing this forces a new resource to be created.
-  /// [value] The value of the Mongo Cluster connection string. The `&lt;user&gt;:&lt;password&gt;` placeholder returned from API will be replaced by the real `administrator_username` and `administrator_password` if available in the state.
+  /// [value] The value of the Mongo Cluster connection string. The `&lt;user&gt;:&lt;password&gt;` placeholder returned from API will be replaced by the real `administratorUsername` and `administratorPassword` if available in the state.
   const MongoClusterConnectionString({
     this.description,
     this.name,
@@ -36,4 +36,3 @@ class MongoClusterConnectionString {
     );
   }
 }
-

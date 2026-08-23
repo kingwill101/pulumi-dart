@@ -5,13 +5,13 @@ import 'volume_create_source.dart';
 
 /// Input properties used for looking up and filtering Volume resources.
 class VolumeState {
-  /// A `create_source` block as defined below. Changing this forces a new resource to be created.
+  /// A `createSource` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<VolumeCreateSource>? createSource;
   /// Specifies the name of this Elastic SAN Volume. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
   /// Specifies the size of the Elastic SAN Volume in GiB. The size should be within the remaining capacity of the parent Elastic SAN. Possible values are between `1` and `65536` (16 TiB).
   ///
-  /// &gt; **Note:** The size can only be increased. If `create_source` is specified, then the size must be equal to or greater than the source's size.
+  /// &gt; **Note:** The size can only be increased. If `createSource` is specified, then the size must be equal to or greater than the source's size.
   final pulumi.Input<int>? sizeInGib;
   /// The iSCSI Target IQN of the Elastic SAN Volume.
   final pulumi.Input<String>? targetIqn;
@@ -25,7 +25,7 @@ class VolumeState {
   final pulumi.Input<String>? volumeId;
 
   /// Creates a new [VolumeState].
-  /// [createSource] A `create_source` block as defined below. Changing this forces a new resource to be created.
+  /// [createSource] A `createSource` block as defined below. Changing this forces a new resource to be created.
   /// [name] Specifies the name of this Elastic SAN Volume. Changing this forces a new resource to be created.
   /// [sizeInGib] Specifies the size of the Elastic SAN Volume in GiB. The size should be within the remaining capacity of the parent Elastic SAN. Possible values are between `1` and `65536` (16 TiB).
   /// [targetIqn] The iSCSI Target IQN of the Elastic SAN Volume.
@@ -70,4 +70,3 @@ class VolumeState {
     );
   }
 }
-

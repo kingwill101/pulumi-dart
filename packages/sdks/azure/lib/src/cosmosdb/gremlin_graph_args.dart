@@ -15,19 +15,19 @@ class GremlinGraphArgs {
   final pulumi.Input<String> accountName;
   /// The time to live of Analytical Storage for this Cosmos DB Gremlin Graph. Possible values are between `-1` to `2147483647` not including `0`. If present and the value is set to `-1`, it means never expire.
   ///
-  /// &gt; **Note:** Disabling `analytical_storage_ttl` will force a new resource to be created since it can't be disabled once it's enabled.
+  /// &gt; **Note:** Disabling `analyticalStorageTtl` will force a new resource to be created since it can't be disabled once it's enabled.
   final pulumi.Input<int>? analyticalStorageTtl;
-  /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply. Requires `partition_key_path` to be set.
+  /// An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply. Requires `partitionKeyPath` to be set.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   final pulumi.Input<GremlinGraphAutoscaleSettings>? autoscaleSettings;
-  /// A `conflict_resolution_policy` blocks as defined below. Changing this forces a new resource to be created.
+  /// A `conflictResolutionPolicy` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<GremlinGraphConflictResolutionPolicy>? conflictResolutionPolicy;
   /// The name of the Cosmos DB Graph Database in which the Cosmos DB Gremlin Graph is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> databaseName;
   /// The default time to live (TTL) of the Gremlin graph. If the value is missing or set to "-1", items don’t expire.
   final pulumi.Input<int>? defaultTtl;
-  /// The configuration of the indexing policy. One or more `index_policy` blocks as defined below.
+  /// The configuration of the indexing policy. One or more `indexPolicy` blocks as defined below.
   final pulumi.Input<GremlinGraphIndexPolicy>? indexPolicy;
   /// Specifies the name of the Cosmos DB Gremlin Graph. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -39,23 +39,23 @@ class GremlinGraphArgs {
   final pulumi.Input<String> resourceGroupName;
   /// The throughput of the Gremlin graph (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   final pulumi.Input<int>? throughput;
-  /// One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `uniqueKey` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<GremlinGraphUniqueKey>>? uniqueKeys;
 
   /// Creates a new [GremlinGraphArgs].
   /// [accountName] The name of the CosmosDB Account to create the Gremlin Graph within. Changing this forces a new resource to be created.
   /// [analyticalStorageTtl] The time to live of Analytical Storage for this Cosmos DB Gremlin Graph. Possible values are between `-1` to `2147483647` not including `0`. If present and the value is set to `-1`, it means never expire.
-  /// [autoscaleSettings] An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply. Requires `partition_key_path` to be set.
-  /// [conflictResolutionPolicy] A `conflict_resolution_policy` blocks as defined below. Changing this forces a new resource to be created.
+  /// [autoscaleSettings] An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply. Requires `partitionKeyPath` to be set.
+  /// [conflictResolutionPolicy] A `conflictResolutionPolicy` blocks as defined below. Changing this forces a new resource to be created.
   /// [databaseName] The name of the Cosmos DB Graph Database in which the Cosmos DB Gremlin Graph is created. Changing this forces a new resource to be created.
   /// [defaultTtl] The default time to live (TTL) of the Gremlin graph. If the value is missing or set to "-1", items don’t expire.
-  /// [indexPolicy] The configuration of the indexing policy. One or more `index_policy` blocks as defined below.
+  /// [indexPolicy] The configuration of the indexing policy. One or more `indexPolicy` blocks as defined below.
   /// [name] Specifies the name of the Cosmos DB Gremlin Graph. Changing this forces a new resource to be created.
   /// [partitionKeyPath] Define a partition key. Changing this forces a new resource to be created.
   /// [partitionKeyVersion] Define a partition key version. Changing this forces a new resource to be created. Possible values are `1`and `2`. This should be set to `2` in order to use large partition keys.
   /// [resourceGroupName] The name of the resource group in which the Cosmos DB Gremlin Graph is created. Changing this forces a new resource to be created.
   /// [throughput] The throughput of the Gremlin graph (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
-  /// [uniqueKeys] One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
+  /// [uniqueKeys] One or more `uniqueKey` blocks as defined below. Changing this forces a new resource to be created.
   const GremlinGraphArgs({
     required this.accountName,
     this.analyticalStorageTtl,
@@ -108,4 +108,3 @@ class GremlinGraphArgs {
     );
   }
 }
-

@@ -89,7 +89,7 @@ import 'collector_policy_state.dart';
 ///     location=example.location,
 ///     resource_group_name=example.name,
 ///     express_route_port_id=example_express_route_port.id,
-///     bandwidth_in_gbps=1,
+///     bandwidth_in_gbps=float(1),
 ///     sku={
 ///         "tier": "Standard",
 ///         "family": "MeteredData",
@@ -311,6 +311,71 @@ import 'collector_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West US 2"
+/// }
+/// resource "azure_network_expressrouteport" "example" {
+///   name                = "example-erp"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   peering_location    = "Equinix-Seattle-SE2"
+///   bandwidth_in_gbps   = 10
+///   encapsulation       = "Dot1Q"
+/// }
+/// resource "azure_network_expressroutecircuit" "example" {
+///   name                  = "example-erc"
+///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   express_route_port_id = azure_network_expressrouteport.example.id
+///   bandwidth_in_gbps     = 1
+///   sku = {
+///     tier   = "Standard"
+///     family = "MeteredData"
+///   }
+/// }
+/// resource "azure_network_expressroutecircuitpeering" "example" {
+///   peering_type                  = "MicrosoftPeering"
+///   express_route_circuit_name    = azure_network_expressroutecircuit.example.name
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   peer_asn                      = 100
+///   primary_peer_address_prefix   = "192.168.199.0/30"
+///   secondary_peer_address_prefix = "192.168.200.0/30"
+///   vlan_id                       = 300
+///   microsoft_peering_config = {
+///     advertised_public_prefixes = ["123.6.0.0/24"]
+///   }
+/// }
+/// resource "azure_networkfunction_azuretrafficcollector" "example" {
+///   depends_on          = [azure_network_expressroutecircuitpeering.example]
+///   name                = "example-nfatc"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_networkfunction_collectorpolicy" "example" {
+///   name                 = "example-nfcp"
+///   traffic_collector_id = azure_networkfunction_azuretrafficcollector.example.id
+///   location             = azure_core_resourcegroup.example.location
+///   ipfx_emission = {
+///     destination_types = "AzureMonitor"
+///   }
+///   ipfx_ingestion = {
+///     source_resource_ids = [azure_network_expressroutecircuit.example.id]
+///   }
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -334,8 +399,8 @@ import 'collector_policy_state.dart';
 /// import com.pulumi.azure.networkfunction.inputs.CollectorPolicyIpfxEmissionArgs;
 /// import com.pulumi.azure.networkfunction.inputs.CollectorPolicyIpfxIngestionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -495,9 +560,9 @@ import 'collector_policy_state.dart';
 /// $ pulumi import azure:networkfunction/collectorPolicy:CollectorPolicy example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1/providers/Microsoft.NetworkFunction/azureTrafficCollectors/azureTrafficCollector1/collectorPolicies/collectorPolicy1
 /// ```
 class CollectorPolicy extends pulumi.CustomResource {
-  /// An `ipfx_emission` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
+  /// An `ipfxEmission` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
   late final pulumi.Output<CollectorPolicyIpfxEmission> ipfxEmission;
-  /// An `ipfx_ingestion` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
+  /// An `ipfxIngestion` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
   late final pulumi.Output<CollectorPolicyIpfxIngestion> ipfxIngestion;
   /// Specifies the Azure Region where the Network Function Collector Policy should exist. Changing this forces a new Network Function Collector Policy to be created.
   late final pulumi.Output<String> location;

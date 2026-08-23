@@ -19,7 +19,7 @@ class AutonomousDatabaseCloneFromBackupArgs {
   final pulumi.Input<int> backupRetentionPeriodInDays;
   /// The autonomous database backup time stamp to be used for a cloning autonomous database. Changing this forces a new Autonomous Database Clone to be created.
   ///
-  /// &gt; **Note:** If `backup_timestamp` is not provided latest backup timestamp will be used.
+  /// &gt; **Note:** If `backupTimestamp` is not provided latest backup timestamp will be used.
   final pulumi.Input<String>? backupTimestamp;
   /// The character set for the autonomous database. Changing this forces a new Autonomous Database Clone to be created.
   final pulumi.Input<String> characterSet;
@@ -181,4 +181,3 @@ class AutonomousDatabaseCloneFromBackupArgs {
     );
   }
 }
-

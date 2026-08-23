@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NatGatewayPublicIpAssociationState {
   /// The ID of the NAT Gateway. Changing this forces a new resource to be created.
   final pulumi.Input<String>? natGatewayId;
-  /// The ID of the Public IP which this NAT Gateway which should be connected to. Changing this forces a new resource to be created.
+  /// The ID of the Public IP Address which this NAT Gateway should be connected to. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** When `natGatewayId` references a NAT Gateway with SKU `Standard`, `publicIpAddressId` must reference a Public IP Address with SKU `Standard`. When `natGatewayId` references a NAT Gateway with SKU `StandardV2`, `publicIpAddressId` must reference a Public IP Address with SKU `StandardV2`.
+  ///
+  /// &gt; **Note:** When `publicIpAddressId` references an `IPv6` Public IP Address, `natGatewayId` must reference a NAT Gateway with SKU `StandardV2`, and `publicIpAddressId` must reference an `IPv6` Public IP Address with SKU `StandardV2`.
   final pulumi.Input<String>? publicIpAddressId;
 
   /// Creates a new [NatGatewayPublicIpAssociationState].
   /// [natGatewayId] The ID of the NAT Gateway. Changing this forces a new resource to be created.
-  /// [publicIpAddressId] The ID of the Public IP which this NAT Gateway which should be connected to. Changing this forces a new resource to be created.
+  /// [publicIpAddressId] The ID of the Public IP Address which this NAT Gateway should be connected to. Changing this forces a new resource to be created.
   const NatGatewayPublicIpAssociationState({
     this.natGatewayId,
     this.publicIpAddressId,
@@ -31,4 +35,3 @@ class NatGatewayPublicIpAssociationState {
     );
   }
 }
-

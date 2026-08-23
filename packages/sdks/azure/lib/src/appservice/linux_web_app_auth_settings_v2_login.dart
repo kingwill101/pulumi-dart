@@ -86,4 +86,3 @@ class LinuxWebAppAuthSettingsV2Login {
     );
   }
 }
-

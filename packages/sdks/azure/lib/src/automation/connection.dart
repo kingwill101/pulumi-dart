@@ -151,6 +151,41 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "example" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "resourceGroup-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "account-example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_automation_connection" "example" {
+///   name                    = "connection-example"
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   automation_account_name = azure_automation_account.example.name
+///   type                    = "AzureServicePrincipal"
+///   values = {
+///     "ApplicationId"         = "00000000-0000-0000-0000-000000000000"
+///     "TenantId"              = data.azure_core_getclientconfig.example.tenant_id
+///     "SubscriptionId"        = data.azure_core_getclientconfig.example.subscription_id
+///     "CertificateThumbprint" = "sample-certificate-thumbprint"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +199,8 @@ import 'connection_state.dart';
 /// import com.pulumi.azure.automation.AccountArgs;
 /// import com.pulumi.azure.automation.Connection;
 /// import com.pulumi.azure.automation.ConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

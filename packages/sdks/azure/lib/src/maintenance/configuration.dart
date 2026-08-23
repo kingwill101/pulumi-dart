@@ -105,6 +105,29 @@ import 'configuration_window.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_maintenance_configuration" "example" {
+///   name                = "example-mc"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   scope               = "SQLDB"
+///   tags = {
+///     "Env" = "prod"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +138,8 @@ import 'configuration_window.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.maintenance.Configuration;
 /// import com.pulumi.azure.maintenance.ConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,9 +204,9 @@ import 'configuration_window.dart';
 class Configuration extends pulumi.CustomResource {
   /// The in guest user patch mode. Possible values are `Platform` or `User`. Must be specified when `scope` is `InGuestPatch`.
   late final pulumi.Output<String?> inGuestUserPatchMode;
-  /// An `install_patches` block as defined below.
+  /// An `installPatches` block as defined below.
   ///
-  /// &gt; **Note:** `install_patches` must be specified when `scope` is `InGuestPatch`.
+  /// &gt; **Note:** `installPatches` must be specified when `scope` is `InGuestPatch`.
   late final pulumi.Output<ConfigurationInstallPatches?> installPatches;
   /// Specified the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;

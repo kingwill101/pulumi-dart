@@ -9,7 +9,7 @@ class AccountBackup {
   final pulumi.Input<int>? retentionInHours;
   /// The storage redundancy is used to indicate the type of backup residency. Possible values are `Geo`, `Local` and `Zone`. Defaults to `Geo`.
   ///
-  /// &gt; **Note:** You can only configure `interval_in_minutes`, `retention_in_hours` and `storage_redundancy` when the `type` field is set to `Periodic`.
+  /// &gt; **Note:** You can only configure `intervalInMinutes`, `retentionInHours` and `storageRedundancy` when the `type` field is set to `Periodic`.
   final pulumi.Input<String>? storageRedundancy;
   /// The continuous backup tier. Possible values are `Continuous7Days` and `Continuous30Days`.
   final pulumi.Input<String>? tier;
@@ -52,4 +52,3 @@ class AccountBackup {
     );
   }
 }
-

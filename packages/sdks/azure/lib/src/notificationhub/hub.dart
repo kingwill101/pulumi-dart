@@ -125,6 +125,33 @@ import 'hub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "notificationhub-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_notificationhub_namespace" "example" {
+///   name                = "myappnamespace"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   namespace_type      = "NotificationHub"
+///   sku_name            = "Free"
+/// }
+/// resource "azure_notificationhub_hub" "example" {
+///   name                = "mynotificationhub"
+///   namespace_name      = azure_notificationhub_namespace.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +164,8 @@ import 'hub_state.dart';
 /// import com.pulumi.azure.notificationhub.NamespaceArgs;
 /// import com.pulumi.azure.notificationhub.Hub;
 /// import com.pulumi.azure.notificationhub.HubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -215,15 +242,15 @@ import 'hub_state.dart';
 /// $ pulumi import azure:notificationhub/hub:Hub hub1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.NotificationHubs/namespaces/namespace1/notificationHubs/hub1
 /// ```
 class Hub extends pulumi.CustomResource {
-  /// A `apns_credential` block as defined below.
+  /// A `apnsCredential` block as defined below.
   ///
-  /// &gt; **Note:** Removing the `apns_credential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
+  /// &gt; **Note:** Removing the `apnsCredential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
   late final pulumi.Output<HubApnsCredential?> apnsCredential;
-  /// A `browser_credential` block as defined below. Changing this forces a new resource to be created.
+  /// A `browserCredential` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<HubBrowserCredential?> browserCredential;
-  /// A `gcm_credential` block as defined below.
+  /// A `gcmCredential` block as defined below.
   ///
-  /// &gt; **Note:** Removing the `gcm_credential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
+  /// &gt; **Note:** Removing the `gcmCredential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
   late final pulumi.Output<HubGcmCredential?> gcmCredential;
   /// The Azure Region in which this Notification Hub Namespace exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;

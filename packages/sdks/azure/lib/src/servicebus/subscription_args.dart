@@ -12,7 +12,7 @@ class SubscriptionArgs {
   final pulumi.Input<String>? autoDeleteOnIdle;
   /// Boolean flag which controls whether the Subscription supports batched operations.
   final pulumi.Input<bool>? batchedOperationsEnabled;
-  /// A `client_scoped_subscription` block as defined below.
+  /// A `clientScopedSubscription` block as defined below.
   final pulumi.Input<SubscriptionClientScopedSubscription>? clientScopedSubscription;
   /// whether the subscription is scoped to a client id. Defaults to `false`.
   ///
@@ -44,7 +44,7 @@ class SubscriptionArgs {
   /// Creates a new [SubscriptionArgs].
   /// [autoDeleteOnIdle] The idle interval after which the topic is automatically deleted as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). The minimum duration is `5` minutes or `PT5M`. Defaults to `P10675199DT2H48M5.4775807S`.
   /// [batchedOperationsEnabled] Boolean flag which controls whether the Subscription supports batched operations.
-  /// [clientScopedSubscription] A `client_scoped_subscription` block as defined below.
+  /// [clientScopedSubscription] A `clientScopedSubscription` block as defined below.
   /// [clientScopedSubscriptionEnabled] whether the subscription is scoped to a client id. Defaults to `false`.
   /// [deadLetteringOnFilterEvaluationError] Boolean flag which controls whether the Subscription has dead letter support on filter evaluation exceptions. Defaults to `true`.
   /// [deadLetteringOnMessageExpiration] Boolean flag which controls whether the Subscription has dead letter support when a message expires.
@@ -115,4 +115,3 @@ class SubscriptionArgs {
     );
   }
 }
-

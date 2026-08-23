@@ -137,6 +137,35 @@ import 'load_balancer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "LoadBalancerRG"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "PublicIPForLB"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+/// }
+/// resource "azure_lb_loadbalancer" "example" {
+///   name                = "TestLoadBalancer"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   frontend_ip_configurations {
+///     name                 = "PublicIPAddress"
+///     public_ip_address_id = azure_network_publicip.example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +179,8 @@ import 'load_balancer_state.dart';
 /// import com.pulumi.azure.lb.LoadBalancer;
 /// import com.pulumi.azure.lb.LoadBalancerArgs;
 /// import com.pulumi.azure.lb.inputs.LoadBalancerFrontendIpConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -233,9 +262,9 @@ import 'load_balancer_state.dart';
 class LoadBalancer extends pulumi.CustomResource {
   /// Specifies the Edge Zone within the Azure Region where this Load Balancer should exist. Changing this forces a new Load Balancer to be created.
   late final pulumi.Output<String?> edgeZone;
-  /// One or more `frontend_ip_configuration` blocks as documented below.
+  /// One or more `frontendIpConfiguration` blocks as documented below.
   ///
-  /// &gt; **Note:** Azure Load Balancer does not allow the complete removal of all previously attached frontend configurations. If you have previously applied with one or more `frontend_ip_configuration` arguments, the removal of them all will result in a replacement  (destroy/create) of the Load Balancer.
+  /// &gt; **Note:** Azure Load Balancer does not allow the complete removal of all previously attached frontend configurations. If you have previously applied with one or more `frontendIpConfiguration` arguments, the removal of them all will result in a replacement  (destroy/create) of the Load Balancer.
   late final pulumi.Output<List<Map<String, dynamic>>?> frontendIpConfigurations;
   /// Specifies the supported Azure Region where the Load Balancer should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
@@ -243,7 +272,7 @@ class LoadBalancer extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Private IP Address to assign to the Load Balancer.
   late final pulumi.Output<String> privateIpAddress;
-  /// The list of private IP address assigned to the load balancer in `frontend_ip_configuration` blocks, if any.
+  /// The list of private IP address assigned to the load balancer in `frontendIpConfiguration` blocks, if any.
   late final pulumi.Output<List<String>> privateIpAddresses;
   /// The ID of a Public IP Address which is associated with this Load Balancer.
   late final pulumi.Output<String> publicIpAddressId;
@@ -253,7 +282,7 @@ class LoadBalancer extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** The `Microsoft.Network/AllowGatewayLoadBalancer` feature is required to be registered in order to use the `Gateway` SKU. The feature can only be registered by the Azure service team, please submit an [Azure support ticket](https://azure.microsoft.com/en-us/support/create-ticket/) for that.
   late final pulumi.Output<String?> sku;
-  /// `sku_tier` - (Optional) The SKU tier of this Load Balancer. Possible values are `Global` and `Regional`. Defaults to `Regional`. Changing this forces a new resource to be created.
+  /// `skuTier` - (Optional) The SKU tier of this Load Balancer. Possible values are `Global` and `Regional`. Defaults to `Regional`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> skuTier;
   /// The ID of the Subnet which is associated with the IP Configuration.
   late final pulumi.Output<String> subnetId;

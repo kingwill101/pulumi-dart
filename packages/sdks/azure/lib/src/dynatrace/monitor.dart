@@ -164,6 +164,43 @@ import 'monitor_user.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dynatrace_monitor" "example" {
+///   name                            = "exmpledynatracemonitor"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = test.location
+///   monitoring_enabled              = true
+///   marketplace_subscription_status = "Active"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   user = {
+///     first_name   = "Alice"
+///     last_name    = "Bobab"
+///     email        = "alice@microsoft.com"
+///     phone_number = "123456"
+///     country      = "westus"
+///   }
+///   plan = {
+///     usage_type     = "COMMITTED"
+///     billing_cycle  = "MONTHLY"
+///     plan           = "azureportalintegration_privatepreview@TIDhjdtn7tfnxcy"
+///     effective_date = "2019-08-30T15:14:33Z"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +214,8 @@ import 'monitor_user.dart';
 /// import com.pulumi.azure.dynatrace.inputs.MonitorIdentityArgs;
 /// import com.pulumi.azure.dynatrace.inputs.MonitorUserArgs;
 /// import com.pulumi.azure.dynatrace.inputs.MonitorPlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,7 +306,7 @@ import 'monitor_user.dart';
 /// $ pulumi import azure:dynatrace/monitor:Monitor example /subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/resGroup1/providers/Dynatrace.Observability/monitors/monitor1
 /// ```
 class Monitor extends pulumi.CustomResource {
-  /// Properties of the Dynatrace environment. An `environment_properties` block as defined below.
+  /// Properties of the Dynatrace environment. An `environmentProperties` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> environmentProperties;
   /// The kind of managed identity assigned to this resource. A `identity` block as defined below.
   late final pulumi.Output<MonitorIdentity> identity;

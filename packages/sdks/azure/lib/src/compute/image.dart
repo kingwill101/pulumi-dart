@@ -91,6 +91,27 @@ import 'image_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getvirtualmachine" "example" {
+///   name                = "examplevm"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// resource "azure_compute_image" "example" {
+///   name                      = "exampleimage"
+///   location                  = data.azure_compute_getvirtualmachine.example.location
+///   resource_group_name       = data.azure_compute_getvirtualmachine.example.name
+///   source_virtual_machine_id = data.azure_compute_getvirtualmachine.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +122,8 @@ import 'image_state.dart';
 /// import com.pulumi.azure.compute.inputs.GetVirtualMachineArgs;
 /// import com.pulumi.azure.compute.Image;
 /// import com.pulumi.azure.compute.ImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -164,9 +185,9 @@ import 'image_state.dart';
 /// $ pulumi import azure:compute/image:Image example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Compute/images/image1
 /// ```
 class Image extends pulumi.CustomResource {
-  /// One or more `data_disk` blocks as defined below.
+  /// One or more `dataDisk` blocks as defined below.
   ///
-  /// &gt; **Note:** `data_disk` cannot be set together with `source_virtual_machine_id`.
+  /// &gt; **Note:** `dataDisk` cannot be set together with `sourceVirtualMachineId`.
   late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
   /// The Hyper-V Generation Type of the Virtual Machine created from the image as `V1`, `V2`. Defaults to `V1`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> hyperVGeneration;
@@ -174,9 +195,9 @@ class Image extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// Specifies the name of the image. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// One or more `os_disk` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `osDisk` blocks as defined below. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `os_disk` cannot be set together with `source_virtual_machine_id`.
+  /// &gt; **Note:** `osDisk` cannot be set together with `sourceVirtualMachineId`.
   late final pulumi.Output<ImageOsDisk?> osDisk;
   /// The name of the resource group in which to create the image. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
@@ -186,9 +207,9 @@ class Image extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// Is zone resiliency enabled? Defaults to `false`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `zone_resilient` can only be set to `true` if the image is stored in a region that supports availability zones.
+  /// &gt; **Note:** `zoneResilient` can only be set to `true` if the image is stored in a region that supports availability zones.
   ///
-  /// &gt; **Note:** `zone_resilient` cannot be set together with `source_virtual_machine_id`.
+  /// &gt; **Note:** `zoneResilient` cannot be set together with `sourceVirtualMachineId`.
   late final pulumi.Output<bool?> zoneResilient;
 
   /// Creates a new [Image].

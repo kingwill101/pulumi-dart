@@ -73,7 +73,7 @@ import 'account_state.dart';
 /// rg = azure.core.ResourceGroup("rg",
 ///     name="sample-rg",
 ///     location="westus")
-/// ri = random.index.Integer("ri",
+/// ri = random.Integer("ri",
 ///     min=10000,
 ///     max=99999)
 /// db = azure.cosmosdb.Account("db",
@@ -128,7 +128,7 @@ import 'account_state.dart';
 ///         Location = "westus",
 ///     });
 ///
-///     var ri = new Random.Index.Integer("ri", new()
+///     var ri = new Random.Integer("ri", new()
 ///     {
 ///         Min = 10000,
 ///         Max = 99999,
@@ -254,6 +254,60 @@ import 'account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "rg" {
+///   name     = "sample-rg"
+///   location = "westus"
+/// }
+/// resource "random_integer" "ri" {
+///   min = 10000
+///   max = 99999
+/// }
+/// resource "azure_cosmosdb_account" "db" {
+///   name                       ="tfex-cosmos-db-${random_integer.ri.result}"
+///   location                   = example.location
+///   resource_group_name        = example.name
+///   offer_type                 = "Standard"
+///   kind                       = "MongoDB"
+///   automatic_failover_enabled = true
+///   capabilities {
+///     name = "EnableAggregationPipeline"
+///   }
+///   capabilities {
+///     name = "mongoEnableDocLevelTTL"
+///   }
+///   capabilities {
+///     name = "MongoDBv3.4"
+///   }
+///   capabilities {
+///     name = "EnableMongo"
+///   }
+///   consistency_policy = {
+///     consistency_level       = "BoundedStaleness"
+///     max_interval_in_seconds = 300
+///     max_staleness_prefix    = 100000
+///   }
+///   geo_locations {
+///     location          = "eastus"
+///     failover_priority = 1
+///   }
+///   geo_locations {
+///     location          = "westus"
+///     failover_priority = 0
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -269,8 +323,8 @@ import 'account_state.dart';
 /// import com.pulumi.azure.cosmosdb.inputs.AccountCapabilityArgs;
 /// import com.pulumi.azure.cosmosdb.inputs.AccountConsistencyPolicyArgs;
 /// import com.pulumi.azure.cosmosdb.inputs.AccountGeoLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -540,7 +594,8 @@ import 'account_state.dart';
 /// 					example.ID(),
 /// 				},
 /// 			}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// 				return invoke.Result, nil
+/// 				val := invoke.Result
+/// 				return &val, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			OfferType: pulumi.String("Standard"),
 /// 			Kind:      pulumi.String("MongoDB"),
@@ -572,6 +627,46 @@ import 'account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   resource_group_name = exampleAzurermResourceGroup.name
+///   location            = exampleAzurermResourceGroup.location
+///   name                = "example-resource"
+/// }
+/// resource "azure_cosmosdb_account" "example" {
+///   name                  = "example-resource"
+///   location              = exampleAzurermResourceGroup.location
+///   resource_group_name   = exampleAzurermResourceGroup.name
+///   default_identity_type = join("=", ["UserAssignedIdentity", azure_authorization_userassignedidentity.example.id])
+///   offer_type            = "Standard"
+///   kind                  = "MongoDB"
+///   capabilities {
+///     name = "EnableMongo"
+///   }
+///   consistency_policy = {
+///     consistency_level = "Strong"
+///   }
+///   geo_locations {
+///     location          = "westus"
+///     failover_priority = 0
+///   }
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -588,8 +683,8 @@ import 'account_state.dart';
 /// import com.pulumi.azure.cosmosdb.inputs.AccountIdentityArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JoinArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -693,7 +788,7 @@ import 'account_state.dart';
 /// ```
 class Account extends pulumi.CustomResource {
   late final pulumi.Output<bool?> accessKeyMetadataWritesEnabled;
-  /// An `analytical_storage` block as defined below.
+  /// An `analyticalStorage` block as defined below.
   late final pulumi.Output<AccountAnalyticalStorage> analyticalStorage;
   late final pulumi.Output<bool?> analyticalStorageEnabled;
   late final pulumi.Output<bool?> automaticFailoverEnabled;
@@ -706,7 +801,7 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<AccountCorsRule?> corsRule;
   /// The creation mode for the CosmosDB Account. Possible values are `Default` and `Restore`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `create_mode` can only be defined when the `backup.type` is set to `Continuous`.
+  /// &gt; **Note:** `createMode` can only be defined when the `backup.type` is set to `Continuous`.
   late final pulumi.Output<String> createMode;
   /// The default identity for accessing Key Vault. Possible values are `FirstPartyIdentity`, `SystemAssignedIdentity` or `UserAssignedIdentity`. Defaults to `FirstPartyIdentity`.
   late final pulumi.Output<String?> defaultIdentityType;
@@ -719,7 +814,8 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<bool?> isVirtualNetworkFilterEnabled;
   late final pulumi.Output<String?> keyVaultKeyId;
   late final pulumi.Output<String?> kind;
-  late final pulumi.Output<bool?> localAuthenticationDisabled;
+  late final pulumi.Output<bool> localAuthenticationDisabled;
+  late final pulumi.Output<bool> localAuthenticationEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   late final pulumi.Output<String?> managedHsmKeyId;
@@ -806,7 +902,8 @@ class Account extends pulumi.CustomResource {
     isVirtualNetworkFilterEnabled = registerOutput<bool?>('isVirtualNetworkFilterEnabled');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     kind = registerOutput<String?>('kind');
-    localAuthenticationDisabled = registerOutput<bool?>('localAuthenticationDisabled');
+    localAuthenticationDisabled = registerOutput<bool>('localAuthenticationDisabled');
+    localAuthenticationEnabled = registerOutput<bool>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
     minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
@@ -881,7 +978,8 @@ class Account extends pulumi.CustomResource {
     isVirtualNetworkFilterEnabled = registerOutput<bool?>('isVirtualNetworkFilterEnabled');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     kind = registerOutput<String?>('kind');
-    localAuthenticationDisabled = registerOutput<bool?>('localAuthenticationDisabled');
+    localAuthenticationDisabled = registerOutput<bool>('localAuthenticationDisabled');
+    localAuthenticationEnabled = registerOutput<bool>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
     minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');

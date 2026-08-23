@@ -21,15 +21,15 @@ class AlertRuleAnomalyDuplicateArgs {
   final pulumi.Input<String> logAnalyticsWorkspaceId;
   /// mode of the Duplicated Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
   final pulumi.Input<String> mode;
-  /// A list of `multi_select_observation` blocks as defined below.
+  /// A list of `multiSelectObservation` blocks as defined below.
   final pulumi.Input<List<AlertRuleAnomalyDuplicateMultiSelectObservation>>? multiSelectObservations;
-  /// A list of `prioritized_exclude_observation` blocks as defined below.
+  /// A list of `prioritizedExcludeObservation` blocks as defined below.
   final pulumi.Input<List<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>>? prioritizedExcludeObservations;
-  /// A list of `single_select_observation` blocks as defined below.
+  /// A list of `singleSelectObservation` blocks as defined below.
   final pulumi.Input<List<AlertRuleAnomalyDuplicateSingleSelectObservation>>? singleSelectObservations;
-  /// A list of `threshold_observation` blocks as defined below.
+  /// A list of `thresholdObservation` blocks as defined below.
   ///
-  /// &gt; **Note:** un-specified `multi_select_observation`, `single_select_observation`, `prioritized_exclude_observation` and `threshold_observation` will be inherited from the built-in Anomaly Alert Rule.
+  /// &gt; **Note:** un-specified `multiSelectObservation`, `singleSelectObservation`, `prioritizedExcludeObservation` and `thresholdObservation` will be inherited from the built-in Anomaly Alert Rule.
   final pulumi.Input<List<AlertRuleAnomalyDuplicateThresholdObservation>>? thresholdObservations;
 
   /// Creates a new [AlertRuleAnomalyDuplicateArgs].
@@ -38,10 +38,10 @@ class AlertRuleAnomalyDuplicateArgs {
   /// [enabled] Should the Duplicated Anomaly Alert Rule be enabled?
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace. Changing this forces a new Duplicated Anomaly Alert Rule to be created.
   /// [mode] mode of the Duplicated Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
-  /// [multiSelectObservations] A list of `multi_select_observation` blocks as defined below.
-  /// [prioritizedExcludeObservations] A list of `prioritized_exclude_observation` blocks as defined below.
-  /// [singleSelectObservations] A list of `single_select_observation` blocks as defined below.
-  /// [thresholdObservations] A list of `threshold_observation` blocks as defined below.
+  /// [multiSelectObservations] A list of `multiSelectObservation` blocks as defined below.
+  /// [prioritizedExcludeObservations] A list of `prioritizedExcludeObservation` blocks as defined below.
+  /// [singleSelectObservations] A list of `singleSelectObservation` blocks as defined below.
+  /// [thresholdObservations] A list of `thresholdObservation` blocks as defined below.
   const AlertRuleAnomalyDuplicateArgs({
     required this.builtInRuleId,
     required this.displayName,
@@ -82,4 +82,3 @@ class AlertRuleAnomalyDuplicateArgs {
     );
   }
 }
-

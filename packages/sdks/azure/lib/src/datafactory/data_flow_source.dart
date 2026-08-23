@@ -14,23 +14,23 @@ class DataFlowSource {
   final pulumi.Input<String>? description;
   /// A `flowlet` block as defined below.
   final pulumi.Input<DataFlowSourceFlowlet>? flowlet;
-  /// A `linked_service` block as defined below.
+  /// A `linkedService` block as defined below.
   final pulumi.Input<DataFlowSourceLinkedService>? linkedService;
   /// The name for the Data Flow Source.
   final pulumi.Input<String> name;
-  /// A `rejected_linked_service` block as defined below.
+  /// A `rejectedLinkedService` block as defined below.
   final pulumi.Input<DataFlowSourceRejectedLinkedService>? rejectedLinkedService;
-  /// A `schema_linked_service` block as defined below.
+  /// A `schemaLinkedService` block as defined below.
   final pulumi.Input<DataFlowSourceSchemaLinkedService>? schemaLinkedService;
 
   /// Creates a new [DataFlowSource].
   /// [dataset] A `dataset` block as defined below.
   /// [description] The description for the Data Flow Source.
   /// [flowlet] A `flowlet` block as defined below.
-  /// [linkedService] A `linked_service` block as defined below.
+  /// [linkedService] A `linkedService` block as defined below.
   /// [name] The name for the Data Flow Source.
-  /// [rejectedLinkedService] A `rejected_linked_service` block as defined below.
-  /// [schemaLinkedService] A `schema_linked_service` block as defined below.
+  /// [rejectedLinkedService] A `rejectedLinkedService` block as defined below.
+  /// [schemaLinkedService] A `schemaLinkedService` block as defined below.
   const DataFlowSource({
     this.dataset,
     this.description,
@@ -65,4 +65,3 @@ class DataFlowSource {
     );
   }
 }
-

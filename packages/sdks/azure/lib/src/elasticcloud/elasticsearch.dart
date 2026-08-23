@@ -95,6 +95,27 @@ import 'elasticsearch_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "test" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_elasticcloud_elasticsearch" "test" {
+///   name                        = "example-elasticsearch"
+///   resource_group_name         = azure_core_resourcegroup.test.name
+///   location                    = azure_core_resourcegroup.test.location
+///   sku_name                    = "ess-consumption-2024_Monthly"
+///   elastic_cloud_email_address = "user@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +126,8 @@ import 'elasticsearch_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.elasticcloud.Elasticsearch;
 /// import com.pulumi.azure.elasticcloud.ElasticsearchArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

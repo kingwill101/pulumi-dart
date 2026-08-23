@@ -143,6 +143,37 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "My Company"
+///   publisher_email     = "company@exmaple.com"
+///   sku_name            = "Developer_1"
+/// }
+/// resource "azure_apimanagement_certificate" "example" {
+///   name                = "example-cert"
+///   api_management_name = azure_apimanagement_service.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   data                = filebase64("example.pfx")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -157,8 +188,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.azure.apimanagement.CertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -505,10 +536,10 @@ import 'certificate_state.dart';
 /// 		_, err = keyvault.NewAccessPolicy(ctx, "example", &keyvault.AccessPolicyArgs{
 /// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			TenantId: pulumi.String(exampleService.Identity.ApplyT(func(identity apimanagement.ServiceIdentity) (*string, error) {
-/// 				return &identity.TenantId, nil
+/// 				return identity.TenantId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ObjectId: pulumi.String(exampleService.Identity.ApplyT(func(identity apimanagement.ServiceIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			SecretPermissions: pulumi.StringArray{
 /// 				pulumi.String("Get"),
@@ -564,6 +595,79 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "My Company"
+///   publisher_email     = "company@terraform.io"
+///   sku_name            = "Developer_1"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "examplekeyvault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name            = "standard"
+/// }
+/// resource "azure_keyvault_accesspolicy" "example" {
+///   key_vault_id            = azure_keyvault_keyvault.example.id
+///   tenant_id               = azure_apimanagement_service.example.identity.tenant_id
+///   object_id               = azure_apimanagement_service.example.identity.principal_id
+///   secret_permissions      = ["Get"]
+///   certificate_permissions = ["Get"]
+/// }
+/// resource "azure_keyvault_certificate" "example" {
+///   name         = "example-cert"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   certificate = {
+///     contents = filebase64("example_cert.pfx")
+///     password = "terraform"
+///   }
+///   certificate_policy = {
+///     issuer_parameters = {
+///       name = "Self"
+///     }
+///     key_properties = {
+///       exportable = true
+///       key_size   = 2048
+///       key_type   = "RSA"
+///       reuse_key  = false
+///     }
+///     secret_properties = {
+///       content_type = "application/x-pkcs12"
+///     }
+///   }
+/// }
+/// resource "azure_apimanagement_certificate" "example" {
+///   name                = "example-cert"
+///   api_management_name = azure_apimanagement_service.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   key_vault_secret_id = azure_keyvault_certificate.example.secret_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -587,8 +691,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicySecretPropertiesArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -784,7 +888,7 @@ class Certificate extends pulumi.CustomResource {
   late final pulumi.Output<String?> password;
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Either `data` or `key_vault_secret_id` must be specified - but not both.
+  /// &gt; **Note:** Either `data` or `keyVaultSecretId` must be specified - but not both.
   late final pulumi.Output<String> resourceGroupName;
   /// The Subject of this Certificate.
   late final pulumi.Output<String> subject;

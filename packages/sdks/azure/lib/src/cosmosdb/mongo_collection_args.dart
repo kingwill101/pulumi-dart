@@ -13,7 +13,7 @@ class MongoCollectionArgs {
   final pulumi.Input<String> accountName;
   /// The default time to live of Analytical Storage for this Mongo Collection. If present and the value is set to `-1`, it is equal to infinity, and items don’t expire by default. If present and the value is set to some number `n` – items will expire `n` seconds after their last modified time.
   final pulumi.Input<int>? analyticalStorageTtl;
-  /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
+  /// An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   final pulumi.Input<MongoCollectionAutoscaleSettings>? autoscaleSettings;
@@ -35,7 +35,7 @@ class MongoCollectionArgs {
   /// Creates a new [MongoCollectionArgs].
   /// [accountName] The name of the Cosmos DB Account in which the Cosmos DB Mongo Collection is created. Changing this forces a new resource to be created.
   /// [analyticalStorageTtl] The default time to live of Analytical Storage for this Mongo Collection. If present and the value is set to `-1`, it is equal to infinity, and items don’t expire by default. If present and the value is set to some number `n` – items will expire `n` seconds after their last modified time.
-  /// [autoscaleSettings] An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
+  /// [autoscaleSettings] An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
   /// [databaseName] The name of the Cosmos DB Mongo Database in which the Cosmos DB Mongo Collection is created. Changing this forces a new resource to be created.
   /// [defaultTtlSeconds] The default Time To Live in seconds. If the value is `-1`, items are not automatically expired.
   /// [indices] One or more `index` blocks as defined below.
@@ -86,4 +86,3 @@ class MongoCollectionArgs {
     );
   }
 }
-

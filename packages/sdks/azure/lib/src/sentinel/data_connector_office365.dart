@@ -124,6 +124,33 @@ import 'data_connector_office365_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-workspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
+///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// resource "azure_sentinel_dataconnectoroffice365" "example" {
+///   name                       = "example"
+///   log_analytics_workspace_id = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +165,8 @@ import 'data_connector_office365_state.dart';
 /// import com.pulumi.azure.sentinel.LogAnalyticsWorkspaceOnboardingArgs;
 /// import com.pulumi.azure.sentinel.DataConnectorOffice365;
 /// import com.pulumi.azure.sentinel.DataConnectorOffice365Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -222,7 +249,7 @@ class DataConnectorOffice365 extends pulumi.CustomResource {
   late final pulumi.Output<bool?> sharepointEnabled;
   /// Should the Microsoft Teams data connector be enabled? Defaults to `true`.
   ///
-  /// &gt; **Note:** At least one of `exchange_enabled`, `sharedpoint_enabled` and `teams_enabled` has to be specified.
+  /// &gt; **Note:** At least one of `exchangeEnabled`, `sharedpointEnabled` and `teamsEnabled` has to be specified.
   late final pulumi.Output<bool?> teamsEnabled;
   /// The ID of the Tenant that this Office 365 Data Connector connects to. Changing this forces a new Office 365 Data Connector to be created.
   ///

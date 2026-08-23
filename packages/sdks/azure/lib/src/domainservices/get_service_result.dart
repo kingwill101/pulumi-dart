@@ -23,11 +23,11 @@ class GetServiceResult {
   final String name;
   /// A `notifications` block as defined below.
   final List<GetServiceNotification> notifications;
-  /// One or more `replica_set` blocks as defined below.
+  /// One or more `replicaSet` blocks as defined below.
   final List<GetServiceReplicaSet> replicaSets;
   final String resourceGroupName;
   final String resourceId;
-  /// A `secure_ldap` block as defined below.
+  /// A `secureLdap` block as defined below.
   final List<GetServiceSecureLdap> secureLdaps;
   /// A `security` block as defined below.
   final List<GetServiceSecurity> securities;
@@ -48,10 +48,10 @@ class GetServiceResult {
   /// [location] The Azure location in which the replica set resides.
   /// [name] Required.
   /// [notifications] A `notifications` block as defined below.
-  /// [replicaSets] One or more `replica_set` blocks as defined below.
+  /// [replicaSets] One or more `replicaSet` blocks as defined below.
   /// [resourceGroupName] Required.
   /// [resourceId] Required.
-  /// [secureLdaps] A `secure_ldap` block as defined below.
+  /// [secureLdaps] A `secureLdap` block as defined below.
   /// [securities] A `security` block as defined below.
   /// [sku] The SKU of the Domain Service resource. One of `Standard`, `Enterprise` or `Premium`.
   /// [syncOwner] Required.
@@ -125,4 +125,3 @@ class GetServiceResult {
     );
   }
 }
-

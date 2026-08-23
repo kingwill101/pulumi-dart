@@ -11,7 +11,7 @@ class BudgetSubscriptionNotification {
   final pulumi.Input<List<String>>? contactRoles;
   /// Should the notification be enabled? Defaults to `true`.
   ///
-  /// &gt; **Note:** A `notification` block cannot have all of `contact_emails`, `contact_roles`, and `contact_groups` empty. This means that at least one of the three must be specified.
+  /// &gt; **Note:** A `notification` block cannot have all of `contactEmails`, `contactRoles`, and `contactGroups` empty. This means that at least one of the three must be specified.
   final pulumi.Input<bool>? enabled;
   /// The comparison operator for the notification. Must be one of `EqualTo`, `GreaterThan`, or `GreaterThanOrEqualTo`.
   final pulumi.Input<String> operator;
@@ -62,4 +62,3 @@ class BudgetSubscriptionNotification {
     );
   }
 }
-

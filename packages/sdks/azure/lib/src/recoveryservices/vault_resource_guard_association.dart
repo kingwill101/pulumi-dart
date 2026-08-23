@@ -139,6 +139,36 @@ import 'vault_resource_guard_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dataprotection_resourceguard" "example" {
+///   name                = "example-resourceguard"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_recoveryservices_vault" "vault" {
+///   name                = "example-recovery-vault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+///   soft_delete_enabled = true
+/// }
+/// resource "azure_recoveryservices_vaultresourceguardassociation" "test" {
+///   vault_id          = testAzurermRecoveryServicesVault.id
+///   resource_guard_id = testAzurermDataProtectionResourceGuard.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -153,8 +183,8 @@ import 'vault_resource_guard_association_state.dart';
 /// import com.pulumi.azure.recoveryservices.VaultArgs;
 /// import com.pulumi.azure.recoveryservices.VaultResourceGuardAssociation;
 /// import com.pulumi.azure.recoveryservices.VaultResourceGuardAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

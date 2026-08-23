@@ -8,7 +8,7 @@ class AccountCustomerManagedKey {
   final pulumi.Input<String>? managedHsmKeyId;
   /// The ID of a user assigned identity.
   ///
-  /// &gt; **Note:** `customer_managed_key` can only be set when the `account_kind` is set to `StorageV2` or `account_tier` set to `Premium`, and the identity type is `UserAssigned`.
+  /// &gt; **Note:** `customerManagedKey` can only be set when the `accountKind` is set to `StorageV2` or `accountTier` set to `Premium`, and the identity type is `UserAssigned`.
   final pulumi.Input<String> userAssignedIdentityId;
 
   /// Creates a new [AccountCustomerManagedKey].
@@ -37,4 +37,3 @@ class AccountCustomerManagedKey {
     );
   }
 }
-

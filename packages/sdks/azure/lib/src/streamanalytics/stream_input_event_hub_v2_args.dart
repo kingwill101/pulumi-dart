@@ -83,4 +83,3 @@ class StreamInputEventHubV2Args {
     );
   }
 }
-

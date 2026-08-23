@@ -120,6 +120,29 @@ import 'ipgroup_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_ipgroup" "example" {
+///   name                = "example1-ipgroup"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   cidrs               = ["192.168.0.1", "172.16.240.0/20", "10.48.0.0/12"]
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +153,8 @@ import 'ipgroup_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.network.IPGroup;
 /// import com.pulumi.azure.network.IPGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -202,7 +225,7 @@ import 'ipgroup_state.dart';
 class IPGroup extends pulumi.CustomResource {
   /// A list of CIDRs or IP addresses.
   ///
-  /// &gt; **Note:** The AzureRM Terraform provider provides cidr support via the standalone resource azure.network.IPGroupCIDR and in-line within this resource using the `cidrs` property. You cannot use both methods simultaneously. If cidrs are set via the resource `azure.network.IPGroupCIDR` then `ignore_changes` should be used in the ip group configuration.
+  /// &gt; **Note:** The AzureRM Terraform provider provides cidr support via the standalone resource azure.network.IPGroupCIDR and in-line within this resource using the `cidrs` property. You cannot use both methods simultaneously. If cidrs are set via the resource `azure.network.IPGroupCIDR` then `ignoreChanges` should be used in the ip group configuration.
   late final pulumi.Output<List<String>?> cidrs;
   /// A list of ID of Firewall.
   late final pulumi.Output<List<String>> firewallIds;

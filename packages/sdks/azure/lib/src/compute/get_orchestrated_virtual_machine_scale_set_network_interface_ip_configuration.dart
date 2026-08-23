@@ -14,9 +14,9 @@ class GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
   final pulumi.Input<List<String>> loadBalancerInboundNatRulesIds;
   /// The name of this Orchestrated Virtual Machine Scale Set.
   final pulumi.Input<String> name;
-  /// If this ip_configuration is the primary one.
+  /// If this ipConfiguration is the primary one.
   final pulumi.Input<bool> primary;
-  /// The virtual machines scale set IP Configuration's PublicIPAddress configuration. The `public_ip_address` is documented below.
+  /// The virtual machines scale set IP Configuration's PublicIPAddress configuration. The `publicIpAddress` is documented below.
   final pulumi.Input<List<GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress>> publicIpAddresses;
   /// The identifier of the subnet.
   final pulumi.Input<String> subnetId;
@@ -29,8 +29,8 @@ class GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
   /// [loadBalancerBackendAddressPoolIds] An array of references to backend address pools of load balancers.
   /// [loadBalancerInboundNatRulesIds] An array of references to inbound NAT pools for load balancers.
   /// [name] The name of this Orchestrated Virtual Machine Scale Set.
-  /// [primary] If this ip_configuration is the primary one.
-  /// [publicIpAddresses] The virtual machines scale set IP Configuration's PublicIPAddress configuration. The `public_ip_address` is documented below.
+  /// [primary] If this ipConfiguration is the primary one.
+  /// [publicIpAddresses] The virtual machines scale set IP Configuration's PublicIPAddress configuration. The `publicIpAddress` is documented below.
   /// [subnetId] The identifier of the subnet.
   /// [version] The Internet Protocol Version of the public IP address.
   const GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration({
@@ -73,4 +73,3 @@ class GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
     );
   }
 }
-

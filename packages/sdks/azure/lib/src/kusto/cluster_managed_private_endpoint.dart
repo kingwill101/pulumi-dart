@@ -184,6 +184,48 @@ import 'cluster_managed_private_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_kusto_cluster" "example" {
+///   name                = "examplekc"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Dev(No SLA)_Standard_D11_v2"
+///     capacity = 1
+///   }
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplesa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_kusto_clustermanagedprivateendpoint" "example" {
+///   name                         = "examplempe"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   cluster_name                 = azure_kusto_cluster.example.name
+///   private_link_resource_id     = azure_storage_account.example.id
+///   private_link_resource_region = azure_storage_account.example.location
+///   group_id                     = "blob"
+///   request_message              = "Please Approve"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +242,8 @@ import 'cluster_managed_private_endpoint_state.dart';
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.kusto.ClusterManagedPrivateEndpoint;
 /// import com.pulumi.azure.kusto.ClusterManagedPrivateEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

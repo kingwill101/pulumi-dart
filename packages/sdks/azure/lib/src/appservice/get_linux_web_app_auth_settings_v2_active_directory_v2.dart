@@ -90,4 +90,3 @@ class GetLinuxWebAppAuthSettingsV2ActiveDirectoryV2 {
     );
   }
 }
-

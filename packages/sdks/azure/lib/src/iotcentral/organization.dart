@@ -167,6 +167,43 @@ import 'organization_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resource"
+///   location = "West Europe"
+/// }
+/// resource "azure_iotcentral_application" "example" {
+///   name                = "example-iotcentral-app"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sub_domain          = "example-iotcentral-app-subdomain"
+///   display_name        = "example-iotcentral-app-display-name"
+///   sku                 = "ST1"
+///   template            = "iotc-default@1.0.0"
+///   tags = {
+///     "Foo" = "Bar"
+///   }
+/// }
+/// resource "azure_iotcentral_organization" "example_parent" {
+///   iotcentral_application_id = azure_iotcentral_application.example.id
+///   organization_id           = "example-parent-organization-id"
+///   display_name              = "Org example parent"
+/// }
+/// resource "azure_iotcentral_organization" "example" {
+///   iotcentral_application_id = azure_iotcentral_application.example.id
+///   organization_id           = "example-child-organization-id"
+///   display_name              = "Org example"
+///   parent_organization_id    = azure_iotcentral_organization.example_parent.organization_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +216,8 @@ import 'organization_state.dart';
 /// import com.pulumi.azure.iotcentral.ApplicationArgs;
 /// import com.pulumi.azure.iotcentral.Organization;
 /// import com.pulumi.azure.iotcentral.OrganizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -270,13 +307,13 @@ import 'organization_state.dart';
 /// $ pulumi import azure:iotcentral/organization:Organization example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.IoTCentral/iotApps/example/organizations/example
 /// ```
 class Organization extends pulumi.CustomResource {
-  /// Custom `display_name` for the organization.
+  /// Custom `displayName` for the organization.
   late final pulumi.Output<String> displayName;
   /// The application `id`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iotcentralApplicationId;
   /// The ID of the organization. Changing this forces a new resource to be created.
   late final pulumi.Output<String> organizationId;
-  /// The `organization_id` of the parent organization. Changing this forces a new resource to be created.
+  /// The `organizationId` of the parent organization. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> parentOrganizationId;
 
   /// Creates a new [Organization].

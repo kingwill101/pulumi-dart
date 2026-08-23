@@ -176,6 +176,42 @@ import 'vpn_server_configuration_policy_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_vpnserverconfiguration" "example" {
+///   name                     = "example-VPNSC"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   vpn_authentication_types = ["Radius"]
+///   radius = {
+///     servers = [{
+///       "address" = "10.105.1.1"
+///       "secret"  = "vindicators-the-return-of-worldender"
+///       "score"   = 15
+///     }]
+///   }
+/// }
+/// resource "azure_network_vpnserverconfigurationpolicygroup" "example" {
+///   name                        = "example-VPNSCPG"
+///   vpn_server_configuration_id = azure_network_vpnserverconfiguration.example.id
+///   policies {
+///     name  = "policy1"
+///     type  = "RadiusAzureGroupId"
+///     value = "6ad1bd08"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,11 +223,12 @@ import 'vpn_server_configuration_policy_group_state.dart';
 /// import com.pulumi.azure.network.VpnServerConfiguration;
 /// import com.pulumi.azure.network.VpnServerConfigurationArgs;
 /// import com.pulumi.azure.network.inputs.VpnServerConfigurationRadiusArgs;
+/// import com.pulumi.azure.network.inputs.VpnServerConfigurationRadiusServerArgs;
 /// import com.pulumi.azure.network.VpnServerConfigurationPolicyGroup;
 /// import com.pulumi.azure.network.VpnServerConfigurationPolicyGroupArgs;
 /// import com.pulumi.azure.network.inputs.VpnServerConfigurationPolicyGroupPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

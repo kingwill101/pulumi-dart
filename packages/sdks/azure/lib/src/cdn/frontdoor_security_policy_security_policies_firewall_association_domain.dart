@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain {
-  /// Is the Front Door Custom Domain/Endpoint activated?
+  /// Whether the Front Door Custom Domain or Front Door Endpoint is active.
   final pulumi.Input<bool>? active;
   /// The Resource Id of the **Front Door Custom Domain** or **Front Door Endpoint** that should be bound to this Front Door Security Policy.
   final pulumi.Input<String> cdnFrontdoorDomainId;
 
   /// Creates a new [FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain].
-  /// [active] Is the Front Door Custom Domain/Endpoint activated?
+  /// [active] Whether the Front Door Custom Domain or Front Door Endpoint is active.
   /// [cdnFrontdoorDomainId] The Resource Id of the **Front Door Custom Domain** or **Front Door Endpoint** that should be bound to this Front Door Security Policy.
   const FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain({
     this.active,
@@ -30,4 +30,3 @@ class FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain {
     );
   }
 }
-

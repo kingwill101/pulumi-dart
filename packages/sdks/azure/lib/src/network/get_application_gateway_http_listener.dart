@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_application_gateway_http_listener_custom_error_configuration.dart';
 
 class GetApplicationGatewayHttpListener {
-  /// One or more `custom_error_configuration` blocks as defined below.
+  /// One or more `customErrorConfiguration` blocks as defined below.
   final pulumi.Input<List<GetApplicationGatewayHttpListenerCustomErrorConfiguration>> customErrorConfigurations;
   /// The ID of the Web Application Firewall Policy which is used as an HTTP Listener for this Path Rule.
   final pulumi.Input<String> firewallPolicyId;
   /// The ID of the associated Frontend Configuration.
   final pulumi.Input<String> frontendIpConfigurationId;
-  /// The Name of the Frontend IP Configuration used for this HTTP Listener.
+  /// The Name of the Frontend IP Configuration used for this Listener.
   final pulumi.Input<String> frontendIpConfigurationName;
   /// The ID of the associated Frontend Port.
   final pulumi.Input<String> frontendPortId;
-  /// The Name of the Frontend Port used for this HTTP Listener.
+  /// The Name of the Frontend Port used for this Listener.
   final pulumi.Input<String> frontendPortName;
   /// The Hostname which is used for this HTTP Listener.
   final pulumi.Input<String> hostName;
-  /// A list of Hostname(s) used for this HTTP Listener. It allows special wildcard characters.
+  /// A list of Hostname(s) used for this Listener.
   final pulumi.Input<List<String>> hostNames;
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String> id;
@@ -30,30 +30,30 @@ class GetApplicationGatewayHttpListener {
   final pulumi.Input<bool> requireSni;
   /// The ID of the associated SSL Certificate.
   final pulumi.Input<String> sslCertificateId;
-  /// The name of the associated SSL Certificate which is used for this HTTP Listener.
+  /// The name of the associated SSL Certificate which is used for this Listener.
   final pulumi.Input<String> sslCertificateName;
   /// The ID of the associated SSL Profile.
   final pulumi.Input<String> sslProfileId;
-  /// The name of the associated SSL Profile which is used for this HTTP Listener.
+  /// The name of the associated SSL Profile which is used for this Listener.
   final pulumi.Input<String> sslProfileName;
 
   /// Creates a new [GetApplicationGatewayHttpListener].
-  /// [customErrorConfigurations] One or more `custom_error_configuration` blocks as defined below.
+  /// [customErrorConfigurations] One or more `customErrorConfiguration` blocks as defined below.
   /// [firewallPolicyId] The ID of the Web Application Firewall Policy which is used as an HTTP Listener for this Path Rule.
   /// [frontendIpConfigurationId] The ID of the associated Frontend Configuration.
-  /// [frontendIpConfigurationName] The Name of the Frontend IP Configuration used for this HTTP Listener.
+  /// [frontendIpConfigurationName] The Name of the Frontend IP Configuration used for this Listener.
   /// [frontendPortId] The ID of the associated Frontend Port.
-  /// [frontendPortName] The Name of the Frontend Port used for this HTTP Listener.
+  /// [frontendPortName] The Name of the Frontend Port used for this Listener.
   /// [hostName] The Hostname which is used for this HTTP Listener.
-  /// [hostNames] A list of Hostname(s) used for this HTTP Listener. It allows special wildcard characters.
+  /// [hostNames] A list of Hostname(s) used for this Listener.
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The name of this Application Gateway.
   /// [protocol] The Protocol used for this Probe.
   /// [requireSni] Is Server Name Indication required?
   /// [sslCertificateId] The ID of the associated SSL Certificate.
-  /// [sslCertificateName] The name of the associated SSL Certificate which is used for this HTTP Listener.
+  /// [sslCertificateName] The name of the associated SSL Certificate which is used for this Listener.
   /// [sslProfileId] The ID of the associated SSL Profile.
-  /// [sslProfileName] The name of the associated SSL Profile which is used for this HTTP Listener.
+  /// [sslProfileName] The name of the associated SSL Profile which is used for this Listener.
   const GetApplicationGatewayHttpListener({
     required this.customErrorConfigurations,
     required this.firewallPolicyId,
@@ -115,4 +115,3 @@ class GetApplicationGatewayHttpListener {
     );
   }
 }
-

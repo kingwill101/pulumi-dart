@@ -73,6 +73,24 @@ import 'get_deployment_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_nginx_getapikey" "example" {
+///   name                = "existing"
+///   nginx_deployment_id = exampleAzurermNginxDeployment.id
+/// }
+///
+/// output "id" {
+///   value = data.azure_nginx_getapikey.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +99,8 @@ import 'get_deployment_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.nginx.NginxFunctions;
 /// import com.pulumi.azure.nginx.inputs.GetApiKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -202,6 +220,24 @@ Future<GetApiKeyResult> getApiKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_nginx_getcertificate" "example" {
+///   name                = "existing"
+///   nginx_deployment_id = exampleAzurermNginxDeployment.id
+/// }
+///
+/// output "id" {
+///   value = data.azure_nginx_getcertificate.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -210,8 +246,8 @@ Future<GetApiKeyResult> getApiKey(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.nginx.NginxFunctions;
 /// import com.pulumi.azure.nginx.inputs.GetCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -327,6 +363,23 @@ Future<GetCertificateResult> getCertificate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_nginx_getconfiguration" "example" {
+///   nginx_deployment_id = exampleAzurermNginxDeployment.id
+/// }
+///
+/// output "id" {
+///   value = data.azure_nginx_getconfiguration.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -335,8 +388,8 @@ Future<GetCertificateResult> getCertificate(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.nginx.NginxFunctions;
 /// import com.pulumi.azure.nginx.inputs.GetConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -454,6 +507,24 @@ Future<GetConfigurationResult> getConfiguration(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_nginx_getdeployment" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_nginx_getdeployment.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -462,8 +533,8 @@ Future<GetConfigurationResult> getConfiguration(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.nginx.NginxFunctions;
 /// import com.pulumi.azure.nginx.inputs.GetDeploymentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

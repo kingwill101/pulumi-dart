@@ -4,9 +4,9 @@ import 'active_slot_state.dart';
 
 /// Promotes an App Service Slot to Production within an App Service.
 ///
-/// !&gt; **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.WebAppActiveSlot` resource instead.
+/// &gt; **NOTE:** This resource has been deprecated and will be removed in version 6.0 of the provider. Please use `azure.appservice.WebAppActiveSlot` resource instead.
 ///
-/// &gt; **Note:** When using Slots - the `app_settings`, `connection_string` and `site_config` blocks on the `azure.appservice.AppService` resource will be overwritten when promoting a Slot using the `azure.appservice.ActiveSlot` resource.
+/// &gt; **Note:** When using Slots - the `appSettings`, `connectionString` and `siteConfig` blocks on the `azure.appservice.AppService` resource will be overwritten when promoting a Slot using the `azure.appservice.ActiveSlot` resource.
 ///
 /// ## Example Usage
 ///
@@ -32,7 +32,7 @@ import 'active_slot_state.dart';
 /// import pulumi_azure as azure
 /// import pulumi_random as random
 ///
-/// server = random.index.Id("server")
+/// server = random.Id("server")
 /// example = azure.core.ResourceGroup("example")
 /// example_plan = azure.appservice.Plan("example")
 /// example_app_service = azure.appservice.AppService("example")
@@ -51,7 +51,7 @@ import 'active_slot_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var server = new Random.Index.Id("server");
+///     var server = new Random.Id("server");
 ///
 ///     var example = new Azure.Core.ResourceGroup("example");
 ///
@@ -114,6 +114,34 @@ import 'active_slot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_id" "server" {
+/// }
+/// resource "azure_core_resourcegroup" "example" {
+/// }
+/// resource "azure_appservice_plan" "example" {
+/// }
+/// resource "azure_appservice_appservice" "example" {
+/// }
+/// resource "azure_appservice_slot" "example" {
+/// }
+/// resource "azure_appservice_activeslot" "example" {
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   app_service_name      = azure_appservice_appservice.example.name
+///   app_service_slot_name = azure_appservice_slot.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +155,8 @@ import 'active_slot_state.dart';
 /// import com.pulumi.azure.appservice.Slot;
 /// import com.pulumi.azure.appservice.ActiveSlot;
 /// import com.pulumi.azure.appservice.ActiveSlotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

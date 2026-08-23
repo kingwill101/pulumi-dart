@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kubernetes_cluster_service_mesh_profile_certificate_authority.dart';
 
 class KubernetesClusterServiceMeshProfile {
-  /// A `certificate_authority` block as defined below. When this property is specified, `key_vault_secrets_provider` is also required to be set. This configuration allows you to bring your own root certificate and keys for Istio CA in the Istio-based service mesh add-on for Azure Kubernetes Service.
+  /// A `certificateAuthority` block as defined below. When this property is specified, `keyVaultSecretsProvider` is also required to be set. This configuration allows you to bring your own root certificate and keys for Istio CA in the Istio-based service mesh add-on for Azure Kubernetes Service.
   final pulumi.Input<KubernetesClusterServiceMeshProfileCertificateAuthority>? certificateAuthority;
   /// Is Istio External Ingress Gateway enabled?
   ///
@@ -14,17 +14,17 @@ class KubernetesClusterServiceMeshProfile {
   final pulumi.Input<bool>? internalIngressGatewayEnabled;
   /// The mode of the service mesh. Possible value is `Istio`.
   final pulumi.Input<String> mode;
-  /// Specify 1 or 2 Istio control plane revisions for managing minor upgrades using the canary upgrade process. For example, create the resource with `revisions` set to `["asm-1-25"]`, or leave it empty (the `revisions` will only be known after apply). To start the canary upgrade, change `revisions` to `["asm-1-25", "asm-1-26"]`. To roll back the canary upgrade, revert to `["asm-1-25"]`. To confirm the upgrade, change to `["asm-1-26"]`.
+  /// Specify 1 or 2 Istio control plane revisions for managing minor upgrades using the canary upgrade process. For example, create the resource with `revisions` set to `["asm-1-27"]`, or leave it empty (the `revisions` will only be known after apply). To start the canary upgrade, change `revisions` to `["asm-1-27", "asm-1-28"]`. To roll back the canary upgrade, revert to `["asm-1-27"]`. To confirm the upgrade, change to `["asm-1-28"]`.
   ///
   /// &gt; **NOTE:** Upgrading to a new (canary) revision does not affect existing sidecar proxies. You need to apply the canary revision label to selected namespaces and restart pods with kubectl to inject the new sidecar proxy. [Learn more](https://istio.io/latest/docs/setup/upgrade/canary/#data-plane).
   final pulumi.Input<List<String>> revisions;
 
   /// Creates a new [KubernetesClusterServiceMeshProfile].
-  /// [certificateAuthority] A `certificate_authority` block as defined below. When this property is specified, `key_vault_secrets_provider` is also required to be set. This configuration allows you to bring your own root certificate and keys for Istio CA in the Istio-based service mesh add-on for Azure Kubernetes Service.
+  /// [certificateAuthority] A `certificateAuthority` block as defined below. When this property is specified, `keyVaultSecretsProvider` is also required to be set. This configuration allows you to bring your own root certificate and keys for Istio CA in the Istio-based service mesh add-on for Azure Kubernetes Service.
   /// [externalIngressGatewayEnabled] Is Istio External Ingress Gateway enabled?
   /// [internalIngressGatewayEnabled] Is Istio Internal Ingress Gateway enabled?
   /// [mode] The mode of the service mesh. Possible value is `Istio`.
-  /// [revisions] Specify 1 or 2 Istio control plane revisions for managing minor upgrades using the canary upgrade process. For example, create the resource with `revisions` set to `["asm-1-25"]`, or leave it empty (the `revisions` will only be known after apply). To start the canary upgrade, change `revisions` to `["asm-1-25", "asm-1-26"]`. To roll back the canary upgrade, revert to `["asm-1-25"]`. To confirm the upgrade, change to `["asm-1-26"]`.
+  /// [revisions] Specify 1 or 2 Istio control plane revisions for managing minor upgrades using the canary upgrade process. For example, create the resource with `revisions` set to `["asm-1-27"]`, or leave it empty (the `revisions` will only be known after apply). To start the canary upgrade, change `revisions` to `["asm-1-27", "asm-1-28"]`. To roll back the canary upgrade, revert to `["asm-1-27"]`. To confirm the upgrade, change to `["asm-1-28"]`.
   const KubernetesClusterServiceMeshProfile({
     this.certificateAuthority,
     this.externalIngressGatewayEnabled,
@@ -53,4 +53,3 @@ class KubernetesClusterServiceMeshProfile {
     );
   }
 }
-

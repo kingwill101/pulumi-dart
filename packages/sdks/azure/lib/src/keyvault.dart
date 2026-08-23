@@ -81,6 +81,7 @@ export 'keyvault/get_secrets_result.dart';
 export 'keyvault/get_secrets_secret.dart';
 export 'keyvault/key.dart';
 export 'keyvault/key_args.dart';
+export 'keyvault/key_release_policy.dart';
 export 'keyvault/key_rotation_policy.dart';
 export 'keyvault/key_rotation_policy_automatic.dart';
 export 'keyvault/key_state.dart';

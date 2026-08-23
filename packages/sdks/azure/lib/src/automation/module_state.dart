@@ -7,7 +7,7 @@ import 'module_module_link.dart';
 class ModuleState {
   /// The name of the automation account in which the Module is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? automationAccountName;
-  /// A `module_link` block as defined below.
+  /// A `moduleLink` block as defined below.
   final pulumi.Input<ModuleModuleLink>? moduleLink;
   /// Specifies the name of the Module. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -16,7 +16,7 @@ class ModuleState {
 
   /// Creates a new [ModuleState].
   /// [automationAccountName] The name of the automation account in which the Module is created. Changing this forces a new resource to be created.
-  /// [moduleLink] A `module_link` block as defined below.
+  /// [moduleLink] A `moduleLink` block as defined below.
   /// [name] Specifies the name of the Module. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Module is created. Changing this forces a new resource to be created.
   const ModuleState({
@@ -44,4 +44,3 @@ class ModuleState {
     );
   }
 }
-

@@ -23,7 +23,7 @@ class ServiceState {
   final pulumi.Input<ServiceIdentity>? identity;
   /// The publicly accessible IP of the SignalR service.
   final pulumi.Input<String>? ipAddress;
-  /// A `live_trace` block as defined below.
+  /// A `liveTrace` block as defined below.
   final pulumi.Input<ServiceLiveTrace>? liveTrace;
   final pulumi.Input<bool>? liveTraceEnabled;
   /// Whether to enable local auth? Defaults to `true`.
@@ -40,7 +40,7 @@ class ServiceState {
   final pulumi.Input<String>? primaryConnectionString;
   /// Whether to enable public network access? Defaults to `true`.
   ///
-  /// &gt; **Note:** `public_network_access_enabled` cannot be set to `false` in `Free` sku tier.
+  /// &gt; **Note:** `publicNetworkAccessEnabled` cannot be set to `false` in `Free` sku tier.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
   /// The publicly accessible port of the SignalR service which is designed for browser/client use.
   final pulumi.Input<int>? publicPort;
@@ -62,9 +62,9 @@ class ServiceState {
   final pulumi.Input<Map<String, String>>? tags;
   /// Whether to request client certificate during TLS handshake? Defaults to `false`.
   ///
-  /// &gt; **Note:** `tls_client_cert_enabled` cannot be set to `true` in `Free` sku tier.
+  /// &gt; **Note:** `tlsClientCertEnabled` cannot be set to `true` in `Free` sku tier.
   final pulumi.Input<bool>? tlsClientCertEnabled;
-  /// An `upstream_endpoint` block as documented below. Using this block requires the SignalR service to be Serverless. When creating multiple blocks they will be processed in the order they are defined in.
+  /// An `upstreamEndpoint` block as documented below. Using this block requires the SignalR service to be Serverless. When creating multiple blocks they will be processed in the order they are defined in.
   final pulumi.Input<List<ServiceUpstreamEndpoint>>? upstreamEndpoints;
 
   /// Creates a new [ServiceState].
@@ -75,7 +75,7 @@ class ServiceState {
   /// [httpRequestLogsEnabled] Specifies if Http Request Logs are enabled or not. Defaults to `false`.
   /// [identity] An `identity` block as defined below.
   /// [ipAddress] The publicly accessible IP of the SignalR service.
-  /// [liveTrace] A `live_trace` block as defined below.
+  /// [liveTrace] A `liveTrace` block as defined below.
   /// [liveTraceEnabled] Optional.
   /// [localAuthEnabled] Whether to enable local auth? Defaults to `true`.
   /// [location] Specifies the supported Azure location where the SignalR service exists. Changing this forces a new resource to be created.
@@ -94,7 +94,7 @@ class ServiceState {
   /// [sku] A `sku` block as documented below.
   /// [tags] A mapping of tags to assign to the resource.
   /// [tlsClientCertEnabled] Whether to request client certificate during TLS handshake? Defaults to `false`.
-  /// [upstreamEndpoints] An `upstream_endpoint` block as documented below. Using this block requires the SignalR service to be Serverless. When creating multiple blocks they will be processed in the order they are defined in.
+  /// [upstreamEndpoints] An `upstreamEndpoint` block as documented below. Using this block requires the SignalR service to be Serverless. When creating multiple blocks they will be processed in the order they are defined in.
   const ServiceState({
     this.aadAuthEnabled,
     this.connectivityLogsEnabled,
@@ -189,4 +189,3 @@ class ServiceState {
     );
   }
 }
-

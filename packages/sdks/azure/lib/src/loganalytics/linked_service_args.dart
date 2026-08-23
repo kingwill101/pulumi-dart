@@ -15,7 +15,7 @@ class LinkedServiceArgs {
   final pulumi.Input<String> workspaceId;
   /// The ID of the writable Resource that will be linked to the workspace. This should be used for linking to a Log Analytics Cluster resource.
   ///
-  /// &gt; **Note:** You must define at least one of the above access resource id attributes (e.g. `read_access_id` or `write_access_id`).
+  /// &gt; **Note:** You must define at least one of the above access resource id attributes (e.g. `readAccessId` or `writeAccessId`).
   final pulumi.Input<String>? writeAccessId;
 
   /// Creates a new [LinkedServiceArgs].
@@ -48,4 +48,3 @@ class LinkedServiceArgs {
     );
   }
 }
-

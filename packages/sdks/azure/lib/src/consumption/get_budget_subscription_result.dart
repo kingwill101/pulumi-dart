@@ -20,7 +20,7 @@ class GetBudgetSubscriptionResult {
   final String subscriptionId;
   /// The time covered by a budget.
   final String timeGrain;
-  /// A `time_period` block as defined below.
+  /// A `timePeriod` block as defined below.
   final List<GetBudgetSubscriptionTimePeriod> timePeriods;
 
   /// Creates a new [GetBudgetSubscriptionResult].
@@ -31,7 +31,7 @@ class GetBudgetSubscriptionResult {
   /// [notifications] A `notification` block as defined below.
   /// [subscriptionId] Required.
   /// [timeGrain] The time covered by a budget.
-  /// [timePeriods] A `time_period` block as defined below.
+  /// [timePeriods] A `timePeriod` block as defined below.
   const GetBudgetSubscriptionResult({
     required this.amount,
     required this.filters,
@@ -69,4 +69,3 @@ class GetBudgetSubscriptionResult {
     );
   }
 }
-

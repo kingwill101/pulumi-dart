@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedAccessPolicyState {
   /// Adds `DeviceConnect` permission to this Shared Access Account. It allows sending and receiving on the device-side endpoints.
   ///
-  /// &gt; **Note:** At least one of `registry_read`, `registry_write`, `service_connect`, `device_connect` permissions must be set to `true`.
+  /// &gt; **Note:** At least one of `registryRead`, `registryWrite`, `serviceConnect`, `deviceConnect` permissions must be set to `true`.
   final pulumi.Input<bool>? deviceConnect;
   /// The name of the IoTHub to which this Shared Access Policy belongs. Changing this forces a new resource to be created.
   final pulumi.Input<String>? iothubName;
@@ -20,7 +20,7 @@ class SharedAccessPolicyState {
   final pulumi.Input<bool>? registryRead;
   /// Adds `RegistryWrite` permission to this Shared Access Account. It allows write access to the identity registry.
   ///
-  /// &gt; **Note:** When `registry_write` is set to `true`, `registry_read` must also be set to true. This is a limitation of the Azure REST API
+  /// &gt; **Note:** When `registryWrite` is set to `true`, `registryRead` must also be set to true. This is a limitation of the Azure REST API
   final pulumi.Input<bool>? registryWrite;
   /// The name of the resource group under which the IotHub Shared Access Policy resource has to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
@@ -89,4 +89,3 @@ class SharedAccessPolicyState {
     );
   }
 }
-

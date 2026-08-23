@@ -5,7 +5,7 @@ import 'linked_service_odata_state.dart';
 
 /// Manages a Linked Service (connection) between a Database and Azure Data Factory through OData protocol.
 ///
-/// &gt; **Note:** All arguments including the connection_string will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+/// &gt; **Note:** All arguments including the connectionString will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 ///
 /// ## Example Usage
 ///
@@ -154,6 +154,39 @@ import 'linked_service_odata_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedserviceodata" "anonymous" {
+///   name            = "anonymous"
+///   data_factory_id = azure_datafactory_factory.example.id
+///   url             = "https://services.odata.org/v4/TripPinServiceRW/People"
+/// }
+/// resource "azure_datafactory_linkedserviceodata" "basic_auth" {
+///   name            = "basic_auth"
+///   data_factory_id = azure_datafactory_factory.example.id
+///   url             = "https://services.odata.org/v4/TripPinServiceRW/People"
+///   basic_authentication = {
+///     username = "emma"
+///     password = "Ch4ngeM3!"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -167,8 +200,8 @@ import 'linked_service_odata_state.dart';
 /// import com.pulumi.azure.datafactory.LinkedServiceOdata;
 /// import com.pulumi.azure.datafactory.LinkedServiceOdataArgs;
 /// import com.pulumi.azure.datafactory.inputs.LinkedServiceOdataBasicAuthenticationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -255,7 +288,7 @@ class LinkedServiceOdata extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service OData.
   late final pulumi.Output<List<String>?> annotations;
-  /// A `basic_authentication` block as defined below.
+  /// A `basicAuthentication` block as defined below.
   late final pulumi.Output<LinkedServiceOdataBasicAuthentication?> basicAuthentication;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;

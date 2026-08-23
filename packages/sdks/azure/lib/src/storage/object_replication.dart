@@ -270,6 +270,64 @@ import 'object_replication_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "src" {
+///   name     = "srcResourceGroupName"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "src" {
+///   name                     = "srcstorageaccount"
+///   resource_group_name      = azure_core_resourcegroup.src.name
+///   location                 = azure_core_resourcegroup.src.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   blob_properties = {
+///     versioning_enabled  = true
+///     change_feed_enabled = true
+///   }
+/// }
+/// resource "azure_storage_container" "src" {
+///   name                  = "srcstrcontainer"
+///   storage_account_name  = azure_storage_account.src.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_core_resourcegroup" "dst" {
+///   name     = "dstResourceGroupName"
+///   location = "East US"
+/// }
+/// resource "azure_storage_account" "dst" {
+///   name                     = "dststorageaccount"
+///   resource_group_name      = azure_core_resourcegroup.dst.name
+///   location                 = azure_core_resourcegroup.dst.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   blob_properties = {
+///     versioning_enabled  = true
+///     change_feed_enabled = true
+///   }
+/// }
+/// resource "azure_storage_container" "dst" {
+///   name                  = "dststrcontainer"
+///   storage_account_name  = azure_storage_account.dst.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_storage_objectreplication" "example" {
+///   source_storage_account_id      = azure_storage_account.src.id
+///   destination_storage_account_id = azure_storage_account.dst.id
+///   rules {
+///     source_container_name      = azure_storage_container.src.name
+///     destination_container_name = azure_storage_container.dst.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -286,8 +344,8 @@ import 'object_replication_state.dart';
 /// import com.pulumi.azure.storage.ObjectReplication;
 /// import com.pulumi.azure.storage.ObjectReplicationArgs;
 /// import com.pulumi.azure.storage.inputs.ObjectReplicationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -423,7 +481,7 @@ import 'object_replication_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Storage` - 2023-05-01
+/// * `Microsoft.Storage` - 2025-08-01
 ///
 /// ## Import
 ///
@@ -437,6 +495,8 @@ class ObjectReplication extends pulumi.CustomResource {
   late final pulumi.Output<String> destinationObjectReplicationId;
   /// The ID of the destination storage account. Changing this forces a new Storage Object Replication to be created.
   late final pulumi.Output<String> destinationStorageAccountId;
+  /// Whether metrics are enabled for this object replication. Defaults to `false`.
+  late final pulumi.Output<bool?> metricsEnabled;
   /// One or more `rules` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
   /// The ID of the Object Replication in the source storage account.
@@ -460,6 +520,7 @@ class ObjectReplication extends pulumi.CustomResource {
         ) {
     destinationObjectReplicationId = registerOutput<String>('destinationObjectReplicationId');
     destinationStorageAccountId = registerOutput<String>('destinationStorageAccountId');
+    metricsEnabled = registerOutput<bool?>('metricsEnabled');
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
     sourceObjectReplicationId = registerOutput<String>('sourceObjectReplicationId');
     sourceStorageAccountId = registerOutput<String>('sourceStorageAccountId');
@@ -490,6 +551,7 @@ class ObjectReplication extends pulumi.CustomResource {
         ) {
     destinationObjectReplicationId = registerOutput<String>('destinationObjectReplicationId');
     destinationStorageAccountId = registerOutput<String>('destinationStorageAccountId');
+    metricsEnabled = registerOutput<bool?>('metricsEnabled');
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
     sourceObjectReplicationId = registerOutput<String>('sourceObjectReplicationId');
     sourceStorageAccountId = registerOutput<String>('sourceStorageAccountId');

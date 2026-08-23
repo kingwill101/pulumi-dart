@@ -4,7 +4,7 @@ import 'spring_cloud_custom_domain_state.dart';
 
 /// Manages an Azure Spring Cloud Custom Domain.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudCustomDomain` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudCustomDomain` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -185,10 +185,10 @@ import 'spring_cloud_custom_domain_state.dart';
 /// 		exampleCNameRecord, err := dns.NewCNameRecord(ctx, "example", &dns.CNameRecordArgs{
 /// 			Name: pulumi.String("record1"),
 /// 			ZoneName: pulumi.String(example.ApplyT(func(example dns.GetZoneResult) (*string, error) {
-/// 				return &example.Name, nil
+/// 				return example.Name, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example dns.GetZoneResult) (*string, error) {
-/// 				return &example.ResourceGroupName, nil
+/// 				return example.ResourceGroupName, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Ttl:    pulumi.Int(300),
 /// 			Record: exampleSpringCloudApp.Fqdn,
@@ -204,7 +204,8 @@ import 'spring_cloud_custom_domain_state.dart';
 /// 					exampleCNameRecord.ZoneName,
 /// 				},
 /// 			}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// 				return invoke.Result, nil
+/// 				val := invoke.Result
+/// 				return &val, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			SpringCloudAppId: exampleSpringCloudApp.ID(),
 /// 		})
@@ -213,6 +214,49 @@ import 'spring_cloud_custom_domain_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_dns_getzone" "example" {
+///   name                = "mydomain.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example-springcloud"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_appplatform_springcloudapp" "example" {
+///   name                = "example-springcloudapp"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   service_name        = azure_appplatform_springcloudservice.example.name
+/// }
+/// resource "azure_dns_cnamerecord" "example" {
+///   name                = "record1"
+///   zone_name           = data.azure_dns_getzone.example.name
+///   resource_group_name = data.azure_dns_getzone.example.resource_group_name
+///   ttl                 = 300
+///   record              = azure_appplatform_springcloudapp.example.fqdn
+/// }
+/// resource "azure_appplatform_springcloudcustomdomain" "example" {
+///   name                = join(".", [azure_dns_cnamerecord.example.name, azure_dns_cnamerecord.example.zone_name])
+///   spring_cloud_app_id = azure_appplatform_springcloudapp.example.id
 /// }
 /// ```
 /// ```java
@@ -235,8 +279,8 @@ import 'spring_cloud_custom_domain_state.dart';
 /// import com.pulumi.azure.appplatform.SpringCloudCustomDomainArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JoinArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -360,7 +404,7 @@ class SpringCloudCustomDomain extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Specifies the resource ID of the Spring Cloud Application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> springCloudAppId;
-  /// Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud Custom Domain. Required when `certificate_name` is specified. Changing this forces a new resource to be created.
+  /// Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud Custom Domain. Required when `certificateName` is specified. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> thumbprint;
 
   /// Creates a new [SpringCloudCustomDomain].

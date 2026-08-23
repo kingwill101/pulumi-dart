@@ -299,6 +299,70 @@ import 'kafka_cluster_storage_account_gen2.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "hdinsightstor"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "hdinsight"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_hdinsight_kafkacluster" "example" {
+///   name                = "example-hdicluster"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cluster_version     = "4.0"
+///   tier                = "Standard"
+///   component_version = {
+///     kafka = "2.1"
+///   }
+///   gateway = {
+///     username = "acctestusrgw"
+///     password = "Password123!"
+///   }
+///   storage_accounts {
+///     storage_container_id = azure_storage_container.example.id
+///     storage_account_key  = azure_storage_account.example.primary_access_key
+///     is_default           = true
+///   }
+///   roles = {
+///     head_node = {
+///       vm_size  = "Standard_D3_V2"
+///       username = "acctestusrvm"
+///       password = "AccTestvdSC4daf986!"
+///     }
+///     worker_node = {
+///       vm_size                  = "Standard_D3_V2"
+///       username                 = "acctestusrvm"
+///       password                 = "AccTestvdSC4daf986!"
+///       number_of_disks_per_node = 3
+///       target_instance_count    = 3
+///     }
+///     zookeeper_node = {
+///       vm_size  = "Standard_D3_V2"
+///       username = "acctestusrvm"
+///       password = "AccTestvdSC4daf986!"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -320,8 +384,8 @@ import 'kafka_cluster_storage_account_gen2.dart';
 /// import com.pulumi.azure.hdinsight.inputs.KafkaClusterRolesHeadNodeArgs;
 /// import com.pulumi.azure.hdinsight.inputs.KafkaClusterRolesWorkerNodeArgs;
 /// import com.pulumi.azure.hdinsight.inputs.KafkaClusterRolesZookeeperNodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -470,11 +534,11 @@ import 'kafka_cluster_storage_account_gen2.dart';
 class KafkaCluster extends pulumi.CustomResource {
   /// Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterVersion;
-  /// A `component_version` block as defined below.
+  /// A `componentVersion` block as defined below.
   late final pulumi.Output<KafkaClusterComponentVersion> componentVersion;
-  /// A `compute_isolation` block as defined below.
+  /// A `computeIsolation` block as defined below.
   late final pulumi.Output<KafkaClusterComputeIsolation?> computeIsolation;
-  /// One or more `disk_encryption` block as defined below.
+  /// One or more `diskEncryption` block as defined below.
   ///
   /// &gt; **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
   late final pulumi.Output<List<Map<String, dynamic>>?> diskEncryptions;
@@ -498,21 +562,21 @@ class KafkaCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A `network` block as defined below.
   late final pulumi.Output<KafkaClusterNetwork?> network;
-  /// A `private_link_configuration` block as defined below.
+  /// A `privateLinkConfiguration` block as defined below.
   late final pulumi.Output<KafkaClusterPrivateLinkConfiguration?> privateLinkConfiguration;
   /// Specifies the name of the Resource Group in which this HDInsight Kafka Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `rest_proxy` block as defined below.
+  /// A `restProxy` block as defined below.
   late final pulumi.Output<KafkaClusterRestProxy?> restProxy;
   /// A `roles` block as defined below.
   late final pulumi.Output<KafkaClusterRoles> roles;
-  /// A `security_profile` block as defined below. Changing this forces a new resource to be created.
+  /// A `securityProfile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<KafkaClusterSecurityProfile?> securityProfile;
   /// The SSH Connectivity Endpoint for this HDInsight Kafka Cluster.
   late final pulumi.Output<String> sshEndpoint;
-  /// A `storage_account_gen2` block as defined below.
+  /// A `storageAccountGen2` block as defined below.
   late final pulumi.Output<KafkaClusterStorageAccountGen2?> storageAccountGen2;
-  /// One or more `storage_account` block as defined below.
+  /// One or more `storageAccount` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
   /// A map of Tags which should be assigned to this HDInsight Kafka Cluster.
   late final pulumi.Output<Map<String, String>?> tags;

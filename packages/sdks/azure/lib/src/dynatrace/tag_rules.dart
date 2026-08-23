@@ -265,6 +265,64 @@ import 'tag_rules_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dynatrace_monitor" "example" {
+///   name                            = "exmpledynatracemonitor"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = test.location
+///   monitoring_enabled              = true
+///   marketplace_subscription_status = "Active"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   user = {
+///     first_name   = "Alice"
+///     last_name    = "Bobab"
+///     email        = "alice@microsoft.com"
+///     phone_number = "123456"
+///     country      = "westus"
+///   }
+///   plan = {
+///     usage_type     = "COMMITTED"
+///     billing_cycle  = "MONTHLY"
+///     plan           = "azureportalintegration_privatepreview@TIDhjdtn7tfnxcy"
+///     effective_date = "2019-08-30T15:14:33Z"
+///   }
+/// }
+/// resource "azure_dynatrace_tagrules" "example" {
+///   name       = "default"
+///   monitor_id = testAzurermDynatraceMonitors.id
+///   log_rule = {
+///     filtering_tags = [{
+///       "name"   = "Environment"
+///       "value"  = "Prod"
+///       "action" = "Include"
+///     }]
+///     send_azure_active_directory_logs_enabled = true
+///     send_activity_logs_enabled               = true
+///     send_subscription_logs_enabled           = true
+///   }
+///   metric_rule = {
+///     filtering_tags = [{
+///       "name"   = "Environment"
+///       "value"  = "Prod"
+///       "action" = "Include"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -281,9 +339,11 @@ import 'tag_rules_state.dart';
 /// import com.pulumi.azure.dynatrace.TagRules;
 /// import com.pulumi.azure.dynatrace.TagRulesArgs;
 /// import com.pulumi.azure.dynatrace.inputs.TagRulesLogRuleArgs;
+/// import com.pulumi.azure.dynatrace.inputs.TagRulesLogRuleFilteringTagArgs;
 /// import com.pulumi.azure.dynatrace.inputs.TagRulesMetricRuleArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.dynatrace.inputs.TagRulesMetricRuleFilteringTagArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -415,9 +475,9 @@ import 'tag_rules_state.dart';
 /// $ pulumi import azure:dynatrace/tagRules:TagRules example /subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/resGroup1/providers/Dynatrace.Observability/monitors/monitor1/tagRules/tagRules1
 /// ```
 class TagRules extends pulumi.CustomResource {
-  /// Set of rules for sending logs for the Monitor resource. A `log_rule` block as defined below.
+  /// Set of rules for sending logs for the Monitor resource. A `logRule` block as defined below.
   late final pulumi.Output<TagRulesLogRule?> logRule;
-  /// Set of rules for sending metrics for the Monitor resource. A `metric_rule` block as defined below.
+  /// Set of rules for sending metrics for the Monitor resource. A `metricRule` block as defined below.
   late final pulumi.Output<TagRulesMetricRule?> metricRule;
   /// Name of the Dynatrace monitor. Changing this forces a new resource to be created.
   late final pulumi.Output<String> monitorId;

@@ -7,14 +7,14 @@ import 'job_target_group_job_target.dart';
 class JobTargetGroupState {
   /// The ID of the Elastic Job Agent. Changing this forces a new Job Target Group to be created.
   final pulumi.Input<String>? jobAgentId;
-  /// One or more `job_target` blocks as defined below.
+  /// One or more `jobTarget` blocks as defined below.
   final pulumi.Input<List<JobTargetGroupJobTarget>>? jobTargets;
   /// The name which should be used for this Job Target Group. Changing this forces a new Job Target Group to be created.
   final pulumi.Input<String>? name;
 
   /// Creates a new [JobTargetGroupState].
   /// [jobAgentId] The ID of the Elastic Job Agent. Changing this forces a new Job Target Group to be created.
-  /// [jobTargets] One or more `job_target` blocks as defined below.
+  /// [jobTargets] One or more `jobTarget` blocks as defined below.
   /// [name] The name which should be used for this Job Target Group. Changing this forces a new Job Target Group to be created.
   const JobTargetGroupState({
     this.jobAgentId,
@@ -38,4 +38,3 @@ class JobTargetGroupState {
     );
   }
 }
-

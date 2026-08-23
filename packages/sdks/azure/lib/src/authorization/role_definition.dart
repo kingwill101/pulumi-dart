@@ -110,6 +110,29 @@ import 'role_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "primary" {
+/// }
+///
+/// resource "azure_authorization_roledefinition" "example" {
+///   name        = "my-custom-role"
+///   scope       = data.azure_core_getsubscription.primary.id
+///   description = "This is a custom role created"
+///   permissions {
+///     actions     = ["*"]
+///     not_actions = []
+///   }
+///   assignable_scopes = [data.azure_core_getsubscription.primary.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +144,8 @@ import 'role_definition_state.dart';
 /// import com.pulumi.azure.authorization.RoleDefinition;
 /// import com.pulumi.azure.authorization.RoleDefinitionArgs;
 /// import com.pulumi.azure.authorization.inputs.RoleDefinitionPermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -305,6 +328,33 @@ import 'role_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_management_group" "example" {
+///   display_name     = "ParentGroup"
+///   subscription_ids = [data.azure_core_getsubscription.current.subscription_id]
+/// }
+/// resource "azure_authorization_roledefinition" "example" {
+///   name        = "example-mg-role"
+///   scope       = azure_management_group.example.id
+///   description = "Example custom role scoped to a management group."
+///   permissions {
+///     actions     = ["Microsoft.Insights/alertRules/*"]
+///     not_actions = []
+///   }
+///   assignable_scopes = [azure_management_group.example.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -318,8 +368,8 @@ import 'role_definition_state.dart';
 /// import com.pulumi.azure.authorization.RoleDefinition;
 /// import com.pulumi.azure.authorization.RoleDefinitionArgs;
 /// import com.pulumi.azure.authorization.inputs.RoleDefinitionPermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -413,7 +463,7 @@ class RoleDefinition extends pulumi.CustomResource {
   late final pulumi.Output<String> roleDefinitionId;
   /// The Azure Resource Manager ID for the resource.
   late final pulumi.Output<String> roleDefinitionResourceId;
-  /// The scope at which the Role Definition applies to, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, `/providers/Microsoft.Management/managementGroups/0b1f6471-1bf0-4dda-aec3-111122223333`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`. It is recommended to use the first entry of the `assignable_scopes`. Changing this forces a new resource to be created.
+  /// The scope at which the Role Definition applies to, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, `/providers/Microsoft.Management/managementGroups/0b1f6471-1bf0-4dda-aec3-111122223333`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`. It is recommended to use the first entry of the `assignableScopes`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scope;
 
   /// Creates a new [RoleDefinition].

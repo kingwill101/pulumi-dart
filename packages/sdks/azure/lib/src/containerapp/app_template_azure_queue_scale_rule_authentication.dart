@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppTemplateAzureQueueScaleRuleAuthentication {
   /// The name of the Container App Secret to use for this Scale Rule Authentication.
   final pulumi.Input<String> secretName;
-  /// The Trigger Parameter name to use the supply the value retrieved from the `secret_name`.
+  /// The Trigger Parameter name to use the supply the value retrieved from the `secretName`.
   final pulumi.Input<String> triggerParameter;
 
   /// Creates a new [AppTemplateAzureQueueScaleRuleAuthentication].
   /// [secretName] The name of the Container App Secret to use for this Scale Rule Authentication.
-  /// [triggerParameter] The Trigger Parameter name to use the supply the value retrieved from the `secret_name`.
+  /// [triggerParameter] The Trigger Parameter name to use the supply the value retrieved from the `secretName`.
   const AppTemplateAzureQueueScaleRuleAuthentication({
     required this.secretName,
     required this.triggerParameter,
@@ -30,4 +30,3 @@ class AppTemplateAzureQueueScaleRuleAuthentication {
     );
   }
 }
-

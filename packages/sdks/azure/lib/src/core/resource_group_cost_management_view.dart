@@ -197,6 +197,48 @@ import 'resource_group_cost_management_view_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_core_resourcegroupcostmanagementview" "example" {
+///   name              = "example"
+///   display_name      = "Cost View per Month"
+///   chart_type        = "StackedColumn"
+///   accumulated       = false
+///   resource_group_id = azure_core_resourcegroup.example.id
+///   report_type       = "Usage"
+///   timeframe         = "MonthToDate"
+///   dataset = {
+///     granularity = "Monthly"
+///     aggregations = [{
+///       "name"       = "totalCost"
+///       "columnName" = "Cost"
+///     }]
+///   }
+///   pivots {
+///     type = "Dimension"
+///     name = "ServiceName"
+///   }
+///   pivots {
+///     type = "Dimension"
+///     name = "ResourceLocation"
+///   }
+///   pivots {
+///     type = "Dimension"
+///     name = "ResourceGroupName"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -208,9 +250,10 @@ import 'resource_group_cost_management_view_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupCostManagementView;
 /// import com.pulumi.azure.core.ResourceGroupCostManagementViewArgs;
 /// import com.pulumi.azure.core.inputs.ResourceGroupCostManagementViewDatasetArgs;
+/// import com.pulumi.azure.core.inputs.ResourceGroupCostManagementViewDatasetAggregationArgs;
 /// import com.pulumi.azure.core.inputs.ResourceGroupCostManagementViewPivotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

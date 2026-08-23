@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertRuleAnomalyBuiltInArgs {
   /// The Display Name of the built-in Anomaly Alert Rule.
   ///
-  /// &gt; **Note:** One of `name` or `display_name` block must be specified.
+  /// &gt; **Note:** One of `name` or `displayName` block must be specified.
   final pulumi.Input<String>? displayName;
   /// Should the Built-in Anomaly Alert Rule be enabled?
   final pulumi.Input<bool> enabled;
@@ -54,4 +54,3 @@ class AlertRuleAnomalyBuiltInArgs {
     );
   }
 }
-

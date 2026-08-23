@@ -5,9 +5,9 @@ import 'source_control_github_action_configuration_code_configuration.dart';
 import 'source_control_github_action_configuration_container_configuration.dart';
 
 class SourceControlGithubActionConfiguration {
-  /// A `code_configuration` block as defined above. Changing this forces a new resource to be created.
+  /// A `codeConfiguration` block as defined above. Changing this forces a new resource to be created.
   final pulumi.Input<SourceControlGithubActionConfigurationCodeConfiguration>? codeConfiguration;
-  /// A `container_configuration` block as defined above.
+  /// A `containerConfiguration` block as defined above.
   final pulumi.Input<SourceControlGithubActionConfigurationContainerConfiguration>? containerConfiguration;
   /// Whether to generate the GitHub work flow file. Defaults to `true`. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? generateWorkflowFile;
@@ -15,8 +15,8 @@ class SourceControlGithubActionConfiguration {
   final pulumi.Input<bool>? linuxAction;
 
   /// Creates a new [SourceControlGithubActionConfiguration].
-  /// [codeConfiguration] A `code_configuration` block as defined above. Changing this forces a new resource to be created.
-  /// [containerConfiguration] A `container_configuration` block as defined above.
+  /// [codeConfiguration] A `codeConfiguration` block as defined above. Changing this forces a new resource to be created.
+  /// [containerConfiguration] A `containerConfiguration` block as defined above.
   /// [generateWorkflowFile] Whether to generate the GitHub work flow file. Defaults to `true`. Changing this forces a new resource to be created.
   /// [linuxAction] Denotes this action uses a Linux base image.
   const SourceControlGithubActionConfiguration({
@@ -44,4 +44,3 @@ class SourceControlGithubActionConfiguration {
     );
   }
 }
-

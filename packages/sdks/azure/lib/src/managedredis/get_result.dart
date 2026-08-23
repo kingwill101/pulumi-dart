@@ -7,9 +7,9 @@ import 'get_identity.dart';
 
 /// Result data returned by get.
 class GetResult {
-  /// A `customer_managed_key` block as defined below.
+  /// A `customerManagedKey` block as defined below.
   final List<GetCustomerManagedKey> customerManagedKeys;
-  /// A `default_database` block as defined below.
+  /// A `defaultDatabase` block as defined below.
   final List<GetDefaultDatabase> defaultDatabases;
   /// Whether high availability is enabled for the Managed Redis instance.
   final bool highAvailabilityEnabled;
@@ -32,8 +32,8 @@ class GetResult {
   final Map<String, String> tags;
 
   /// Creates a new [GetResult].
-  /// [customerManagedKeys] A `customer_managed_key` block as defined below.
-  /// [defaultDatabases] A `default_database` block as defined below.
+  /// [customerManagedKeys] A `customerManagedKey` block as defined below.
+  /// [defaultDatabases] A `defaultDatabase` block as defined below.
   /// [highAvailabilityEnabled] Whether high availability is enabled for the Managed Redis instance.
   /// [hostname] The DNS hostname of the Managed Redis instance.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -93,4 +93,3 @@ class GetResult {
     );
   }
 }
-

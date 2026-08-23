@@ -10,7 +10,7 @@ class GetFrontdoorProfileResult {
   final String id;
   /// An `identity` block as defined below.
   final GetFrontdoorProfileIdentity identity;
-  /// One or more `log_scrubbing_rule` blocks as defined below.
+  /// One or more `logScrubbingRule` blocks as defined below.
   final List<GetFrontdoorProfileLogScrubbingRule> logScrubbingRules;
   final String name;
   final String resourceGroupName;
@@ -26,7 +26,7 @@ class GetFrontdoorProfileResult {
   /// Creates a new [GetFrontdoorProfileResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identity] An `identity` block as defined below.
-  /// [logScrubbingRules] One or more `log_scrubbing_rule` blocks as defined below.
+  /// [logScrubbingRules] One or more `logScrubbingRule` blocks as defined below.
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [resourceGuid] The UUID of the Front Door Profile which will be sent in the HTTP Header as the `X-Azure-FDID` attribute.
@@ -73,4 +73,3 @@ class GetFrontdoorProfileResult {
     );
   }
 }
-

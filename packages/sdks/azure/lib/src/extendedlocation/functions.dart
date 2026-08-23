@@ -67,6 +67,24 @@ import 'get_custom_location_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_extendedlocation_getcustomlocation" "example" {
+///   name                = exampleAzurermExtendedLocationCustomLocation.name
+///   resource_group_name = exampleAzurermResourceGroup.name
+/// }
+///
+/// output "customLocationId" {
+///   value = data.azure_extendedlocation_getcustomlocation.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +93,8 @@ import 'get_custom_location_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.extendedlocation.ExtendedlocationFunctions;
 /// import com.pulumi.azure.extendedlocation.inputs.GetCustomLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

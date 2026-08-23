@@ -13,7 +13,7 @@ class AppFlexConsumptionSiteConfig {
   final pulumi.Input<String>? apiManagementApiId;
   /// The App command line to launch.
   final pulumi.Input<String>? appCommandLine;
-  /// An `app_service_logs` block as defined above.
+  /// An `appServiceLogs` block as defined above.
   final pulumi.Input<AppFlexConsumptionSiteConfigAppServiceLogs>? appServiceLogs;
   /// The Connection String for linking the Linux Function App to Application Insights.
   final pulumi.Input<String>? applicationInsightsConnectionString;
@@ -31,15 +31,15 @@ class AppFlexConsumptionSiteConfig {
   final pulumi.Input<bool>? detailedErrorLoggingEnabled;
   /// The number of minimum instances for this Linux Function App. Only affects apps on Elastic Premium plans.
   final pulumi.Input<int>? elasticInstanceMinimum;
-  /// The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `health_check_path`.
+  /// The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `healthCheckPath`.
   final pulumi.Input<int>? healthCheckEvictionTimeInMin;
   /// The path to be checked for this function app health.
   final pulumi.Input<String>? healthCheckPath;
   /// Specifies if the HTTP2 protocol should be enabled. Defaults to `false`.
   final pulumi.Input<bool>? http2Enabled;
-  /// The Default action for traffic that does not match any `ip_restriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
+  /// The Default action for traffic that does not match any `ipRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
   final pulumi.Input<String>? ipRestrictionDefaultAction;
-  /// One or more `ip_restriction` blocks as defined above.
+  /// One or more `ipRestriction` blocks as defined above.
   final pulumi.Input<List<AppFlexConsumptionSiteConfigIpRestriction>>? ipRestrictions;
   /// The Site load balancing mode. Possible values include: `WeightedRoundRobin`, `LeastRequests`, `LeastResponseTime`, `WeightedTotalTraffic`, `RequestHash`, `PerSiteRoundRobin`. Defaults to `LeastRequests` if omitted.
   final pulumi.Input<String>? loadBalancingMode;
@@ -55,15 +55,15 @@ class AppFlexConsumptionSiteConfig {
   ///
   /// &gt; **Note:** Functions runtime scale monitoring can only be enabled for Elastic Premium Function Apps or Workflow Standard Logic Apps and requires a minimum prewarmed instance count of 1.
   final pulumi.Input<bool>? runtimeScaleMonitoringEnabled;
-  /// The Default action for traffic that does not match any `scm_ip_restriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
+  /// The Default action for traffic that does not match any `scmIpRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
   final pulumi.Input<String>? scmIpRestrictionDefaultAction;
-  /// One or more `scm_ip_restriction` blocks as defined above.
+  /// One or more `scmIpRestriction` blocks as defined above.
   final pulumi.Input<List<AppFlexConsumptionSiteConfigScmIpRestriction>>? scmIpRestrictions;
   /// The minimum version of TLS required for SSL requests to the SCM site. Possible values include `1.0`, `1.1`, `1.2` and `1.3`. Defaults to `1.2`.
   final pulumi.Input<String>? scmMinimumTlsVersion;
   /// The SCM Type in use by the Linux Function App.
   final pulumi.Input<String>? scmType;
-  /// Should the Linux Function App `ip_restriction` configuration be used for the SCM also.
+  /// Should the Linux Function App `ipRestriction` configuration be used for the SCM also.
   final pulumi.Input<bool>? scmUseMainIpRestriction;
   /// Should the Linux Web App Linux Function App use a 32-bit worker. Defaults to `false`.
   final pulumi.Input<bool>? use32BitWorker;
@@ -78,7 +78,7 @@ class AppFlexConsumptionSiteConfig {
   /// [apiDefinitionUrl] The URL of the API definition that describes this Linux Function App.
   /// [apiManagementApiId] The ID of the API Management API for this Linux Function App.
   /// [appCommandLine] The App command line to launch.
-  /// [appServiceLogs] An `app_service_logs` block as defined above.
+  /// [appServiceLogs] An `appServiceLogs` block as defined above.
   /// [applicationInsightsConnectionString] The Connection String for linking the Linux Function App to Application Insights.
   /// [applicationInsightsKey] The Instrumentation Key for connecting the Linux Function App to Application Insights.
   /// [containerRegistryManagedIdentityClientId] The Client ID of the Managed Service Identity to use for connections to the Azure Container Registry.
@@ -87,22 +87,22 @@ class AppFlexConsumptionSiteConfig {
   /// [defaultDocuments] Specifies a list of Default Documents for the Linux Web App.
   /// [detailedErrorLoggingEnabled] Is detailed error logging enabled
   /// [elasticInstanceMinimum] The number of minimum instances for this Linux Function App. Only affects apps on Elastic Premium plans.
-  /// [healthCheckEvictionTimeInMin] The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `health_check_path`.
+  /// [healthCheckEvictionTimeInMin] The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `healthCheckPath`.
   /// [healthCheckPath] The path to be checked for this function app health.
   /// [http2Enabled] Specifies if the HTTP2 protocol should be enabled. Defaults to `false`.
-  /// [ipRestrictionDefaultAction] The Default action for traffic that does not match any `ip_restriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
-  /// [ipRestrictions] One or more `ip_restriction` blocks as defined above.
+  /// [ipRestrictionDefaultAction] The Default action for traffic that does not match any `ipRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
+  /// [ipRestrictions] One or more `ipRestriction` blocks as defined above.
   /// [loadBalancingMode] The Site load balancing mode. Possible values include: `WeightedRoundRobin`, `LeastRequests`, `LeastResponseTime`, `WeightedTotalTraffic`, `RequestHash`, `PerSiteRoundRobin`. Defaults to `LeastRequests` if omitted.
   /// [managedPipelineMode] Managed pipeline mode. Possible values include: `Integrated`, `Classic`. Defaults to `Integrated`.
   /// [minimumTlsVersion] The configures the minimum version of TLS required for SSL requests. Possible values include: `1.0`, `1.1`, `1.2` and `1.3`. Defaults to `1.2`.
   /// [remoteDebuggingEnabled] Should Remote Debugging be enabled. Defaults to `false`.
   /// [remoteDebuggingVersion] The Remote Debugging Version. Possible values include `VS2017`, `VS2019`, and `VS2022`.
   /// [runtimeScaleMonitoringEnabled] Should Scale Monitoring of the Functions Runtime be enabled?
-  /// [scmIpRestrictionDefaultAction] The Default action for traffic that does not match any `scm_ip_restriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
-  /// [scmIpRestrictions] One or more `scm_ip_restriction` blocks as defined above.
+  /// [scmIpRestrictionDefaultAction] The Default action for traffic that does not match any `scmIpRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
+  /// [scmIpRestrictions] One or more `scmIpRestriction` blocks as defined above.
   /// [scmMinimumTlsVersion] The minimum version of TLS required for SSL requests to the SCM site. Possible values include `1.0`, `1.1`, `1.2` and `1.3`. Defaults to `1.2`.
   /// [scmType] The SCM Type in use by the Linux Function App.
-  /// [scmUseMainIpRestriction] Should the Linux Function App `ip_restriction` configuration be used for the SCM also.
+  /// [scmUseMainIpRestriction] Should the Linux Function App `ipRestriction` configuration be used for the SCM also.
   /// [use32BitWorker] Should the Linux Web App Linux Function App use a 32-bit worker. Defaults to `false`.
   /// [vnetRouteAllEnabled] Should the Linux Function App route all traffic through the virtual network. Defaults to `false`.
   /// [websocketsEnabled] Should Web Sockets be enabled. Defaults to `false`.
@@ -216,4 +216,3 @@ class AppFlexConsumptionSiteConfig {
     );
   }
 }
-

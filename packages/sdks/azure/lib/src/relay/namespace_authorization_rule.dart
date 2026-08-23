@@ -139,6 +139,37 @@ import 'namespace_authorization_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_relay_namespace" "example" {
+///   name                = "example-relay"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Standard"
+///   tags = {
+///     "source" = "terraform"
+///   }
+/// }
+/// resource "azure_relay_namespaceauthorizationrule" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   namespace_name      = azure_relay_namespace.example.name
+///   listen              = true
+///   send                = true
+///   manage              = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +182,8 @@ import 'namespace_authorization_rule_state.dart';
 /// import com.pulumi.azure.relay.NamespaceArgs;
 /// import com.pulumi.azure.relay.NamespaceAuthorizationRule;
 /// import com.pulumi.azure.relay.NamespaceAuthorizationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

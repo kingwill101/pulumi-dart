@@ -154,6 +154,40 @@ import 'workspace_api_version_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "Example Publisher"
+///   publisher_email     = "publisher@example.com"
+///   sku_name            = "Premium_1"
+/// }
+/// resource "azure_apimanagement_workspace" "example" {
+///   name              = "example-workspace"
+///   api_management_id = azure_apimanagement_service.example.id
+///   display_name      = "Example Workspace"
+///   description       = "Example workspace for development"
+/// }
+/// resource "azure_apimanagement_workspaceapiversionset" "example" {
+///   name                        = "example-version-set"
+///   api_management_workspace_id = azure_apimanagement_workspace.example.id
+///   display_name                = "Example API Version Set"
+///   versioning_scheme           = "Segment"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +202,8 @@ import 'workspace_api_version_set_state.dart';
 /// import com.pulumi.azure.apimanagement.WorkspaceArgs;
 /// import com.pulumi.azure.apimanagement.WorkspaceApiVersionSet;
 /// import com.pulumi.azure.apimanagement.WorkspaceApiVersionSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

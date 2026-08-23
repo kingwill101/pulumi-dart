@@ -36,4 +36,3 @@ class GetWindowsWebAppAuthSettingsV2GithubV2 {
     );
   }
 }
-

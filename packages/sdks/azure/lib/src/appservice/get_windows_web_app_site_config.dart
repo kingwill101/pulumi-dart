@@ -18,9 +18,9 @@ class GetWindowsWebAppSiteConfig {
   final pulumi.Input<String> apiManagementApiId;
   /// The command line used to launch this app.
   final pulumi.Input<String> appCommandLine;
-  /// A `application_stack` block as defined above.
+  /// A `applicationStack` block as defined above.
   final pulumi.Input<List<GetWindowsWebAppSiteConfigApplicationStack>> applicationStacks;
-  /// A `auto_heal_setting` block as defined above.
+  /// A `autoHealSetting` block as defined above.
   final pulumi.Input<List<GetWindowsWebAppSiteConfigAutoHealSetting>> autoHealSettings;
   /// The Client ID of the Managed Service Identity used for connections to the Azure Container Registry.
   final pulumi.Input<String> containerRegistryManagedIdentityClientId;
@@ -34,17 +34,17 @@ class GetWindowsWebAppSiteConfig {
   final pulumi.Input<bool> detailedErrorLoggingEnabled;
   /// The State of FTP / FTPS service.
   final pulumi.Input<String> ftpsState;
-  /// A `handler_mapping` block as defined below.
+  /// A `handlerMapping` block as defined below.
   final pulumi.Input<List<GetWindowsWebAppSiteConfigHandlerMapping>> handlerMappings;
-  /// (Optional) The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `health_check_path`.
+  /// (Optional) The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `healthCheckPath`.
   final pulumi.Input<int> healthCheckEvictionTimeInMin;
   /// The path to the Health Check endpoint.
   final pulumi.Input<String> healthCheckPath;
   /// Is HTTP2.0 enabled.
   final pulumi.Input<bool> http2Enabled;
-  /// The Default action for traffic that does not match any `ip_restriction` rule.
+  /// The Default action for traffic that does not match any `ipRestriction` rule.
   final pulumi.Input<String> ipRestrictionDefaultAction;
-  /// A `ip_restriction` block as defined above.
+  /// A `ipRestriction` block as defined above.
   final pulumi.Input<List<GetWindowsWebAppSiteConfigIpRestriction>> ipRestrictions;
   /// The site Load Balancing Mode.
   final pulumi.Input<String> loadBalancingMode;
@@ -52,24 +52,25 @@ class GetWindowsWebAppSiteConfig {
   final pulumi.Input<bool> localMysqlEnabled;
   /// The Managed Pipeline Mode.
   final pulumi.Input<String> managedPipelineMode;
+  final pulumi.Input<String> minimumTlsCipherSuite;
   /// The Minimum version of TLS for requests.
   final pulumi.Input<String> minimumTlsVersion;
   final pulumi.Input<bool> remoteDebuggingEnabled;
   /// The Remote Debugging Version.
   final pulumi.Input<String> remoteDebuggingVersion;
-  /// The Default action for traffic that does not match any `scm_ip_restriction` rule.
+  /// The Default action for traffic that does not match any `scmIpRestriction` rule.
   final pulumi.Input<String> scmIpRestrictionDefaultAction;
-  /// A `scm_ip_restriction` block as defined above.
+  /// A `scmIpRestriction` block as defined above.
   final pulumi.Input<List<GetWindowsWebAppSiteConfigScmIpRestriction>> scmIpRestrictions;
   /// The Minimum version of TLS for requests to SCM.
   final pulumi.Input<String> scmMinimumTlsVersion;
   /// The Source Control Management Type in use.
   final pulumi.Input<String> scmType;
-  /// Is the Windows Web App `ip_restriction` configuration used for the SCM also.
+  /// Is the Windows Web App `ipRestriction` configuration used for the SCM also.
   final pulumi.Input<bool> scmUseMainIpRestriction;
   /// Does the Windows Web App use a 32-bit worker.
   final pulumi.Input<bool> use32BitWorker;
-  /// A `virtual_application` block as defined below.
+  /// A `virtualApplication` block as defined below.
   final pulumi.Input<List<GetWindowsWebAppSiteConfigVirtualApplication>> virtualApplications;
   /// Are all outbound traffic to NAT Gateways, Network Security Groups and User Defined Routes applied?
   final pulumi.Input<bool> vnetRouteAllEnabled;
@@ -85,33 +86,34 @@ class GetWindowsWebAppSiteConfig {
   /// [apiDefinitionUrl] The ID of the APIM configuration for this Windows Web App.
   /// [apiManagementApiId] The ID of the API Management setting linked to the Windows Web App.
   /// [appCommandLine] The command line used to launch this app.
-  /// [applicationStacks] A `application_stack` block as defined above.
-  /// [autoHealSettings] A `auto_heal_setting` block as defined above.
+  /// [applicationStacks] A `applicationStack` block as defined above.
+  /// [autoHealSettings] A `autoHealSetting` block as defined above.
   /// [containerRegistryManagedIdentityClientId] The Client ID of the Managed Service Identity used for connections to the Azure Container Registry.
   /// [containerRegistryUseManagedIdentity] Do connections for Azure Container Registry use Managed Identity.
   /// [cors] A `cors` block as defined above.
   /// [defaultDocuments] The list of Default Documents for the Windows Web App.
   /// [detailedErrorLoggingEnabled] Is Detailed Error Logging enabled.
   /// [ftpsState] The State of FTP / FTPS service.
-  /// [handlerMappings] A `handler_mapping` block as defined below.
-  /// [healthCheckEvictionTimeInMin] (Optional) The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `health_check_path`.
+  /// [handlerMappings] A `handlerMapping` block as defined below.
+  /// [healthCheckEvictionTimeInMin] (Optional) The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `healthCheckPath`.
   /// [healthCheckPath] The path to the Health Check endpoint.
   /// [http2Enabled] Is HTTP2.0 enabled.
-  /// [ipRestrictionDefaultAction] The Default action for traffic that does not match any `ip_restriction` rule.
-  /// [ipRestrictions] A `ip_restriction` block as defined above.
+  /// [ipRestrictionDefaultAction] The Default action for traffic that does not match any `ipRestriction` rule.
+  /// [ipRestrictions] A `ipRestriction` block as defined above.
   /// [loadBalancingMode] The site Load Balancing Mode.
   /// [localMysqlEnabled] Is the Local MySQL enabled.
   /// [managedPipelineMode] The Managed Pipeline Mode.
+  /// [minimumTlsCipherSuite] Required.
   /// [minimumTlsVersion] The Minimum version of TLS for requests.
   /// [remoteDebuggingEnabled] Required.
   /// [remoteDebuggingVersion] The Remote Debugging Version.
-  /// [scmIpRestrictionDefaultAction] The Default action for traffic that does not match any `scm_ip_restriction` rule.
-  /// [scmIpRestrictions] A `scm_ip_restriction` block as defined above.
+  /// [scmIpRestrictionDefaultAction] The Default action for traffic that does not match any `scmIpRestriction` rule.
+  /// [scmIpRestrictions] A `scmIpRestriction` block as defined above.
   /// [scmMinimumTlsVersion] The Minimum version of TLS for requests to SCM.
   /// [scmType] The Source Control Management Type in use.
-  /// [scmUseMainIpRestriction] Is the Windows Web App `ip_restriction` configuration used for the SCM also.
+  /// [scmUseMainIpRestriction] Is the Windows Web App `ipRestriction` configuration used for the SCM also.
   /// [use32BitWorker] Does the Windows Web App use a 32-bit worker.
-  /// [virtualApplications] A `virtual_application` block as defined below.
+  /// [virtualApplications] A `virtualApplication` block as defined below.
   /// [vnetRouteAllEnabled] Are all outbound traffic to NAT Gateways, Network Security Groups and User Defined Routes applied?
   /// [websocketsEnabled] Are Web Sockets enabled?
   /// [windowsFxVersion] The string representation of the Windows FX Version.
@@ -138,6 +140,7 @@ class GetWindowsWebAppSiteConfig {
     required this.loadBalancingMode,
     required this.localMysqlEnabled,
     required this.managedPipelineMode,
+    required this.minimumTlsCipherSuite,
     required this.minimumTlsVersion,
     required this.remoteDebuggingEnabled,
     required this.remoteDebuggingVersion,
@@ -177,6 +180,7 @@ class GetWindowsWebAppSiteConfig {
       'loadBalancingMode': loadBalancingMode,
       'localMysqlEnabled': localMysqlEnabled,
       'managedPipelineMode': managedPipelineMode,
+      'minimumTlsCipherSuite': minimumTlsCipherSuite,
       'minimumTlsVersion': minimumTlsVersion,
       'remoteDebuggingEnabled': remoteDebuggingEnabled,
       'remoteDebuggingVersion': remoteDebuggingVersion,
@@ -217,6 +221,7 @@ class GetWindowsWebAppSiteConfig {
       loadBalancingMode: pulumi.Input.fromValue(map['loadBalancingMode'] as String),
       localMysqlEnabled: pulumi.Input.fromValue(map['localMysqlEnabled'] as bool),
       managedPipelineMode: pulumi.Input.fromValue(map['managedPipelineMode'] as String),
+      minimumTlsCipherSuite: pulumi.Input.fromValue(map['minimumTlsCipherSuite'] as String),
       minimumTlsVersion: pulumi.Input.fromValue(map['minimumTlsVersion'] as String),
       remoteDebuggingEnabled: pulumi.Input.fromValue(map['remoteDebuggingEnabled'] as bool),
       remoteDebuggingVersion: pulumi.Input.fromValue(map['remoteDebuggingVersion'] as String),
@@ -234,4 +239,3 @@ class GetWindowsWebAppSiteConfig {
     );
   }
 }
-

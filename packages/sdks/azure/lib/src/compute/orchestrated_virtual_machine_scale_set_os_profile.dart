@@ -9,15 +9,15 @@ class OrchestratedVirtualMachineScaleSetOsProfile {
   ///
   /// &gt; **Note:** When Custom Data has been configured, it's not possible to remove it without tainting the Virtual Machine Scale Set, due to a limitation of the Azure API.
   final pulumi.Input<String>? customData;
-  /// A `linux_configuration` block as documented below.
+  /// A `linuxConfiguration` block as defined above.
   final pulumi.Input<OrchestratedVirtualMachineScaleSetOsProfileLinuxConfiguration>? linuxConfiguration;
-  /// A `windows_configuration` block as documented below.
+  /// A `windowsConfiguration` block as defined below.
   final pulumi.Input<OrchestratedVirtualMachineScaleSetOsProfileWindowsConfiguration>? windowsConfiguration;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetOsProfile].
   /// [customData] The Base64-Encoded Custom Data which should be used for this Virtual Machine Scale Set.
-  /// [linuxConfiguration] A `linux_configuration` block as documented below.
-  /// [windowsConfiguration] A `windows_configuration` block as documented below.
+  /// [linuxConfiguration] A `linuxConfiguration` block as defined above.
+  /// [windowsConfiguration] A `windowsConfiguration` block as defined below.
   const OrchestratedVirtualMachineScaleSetOsProfile({
     this.customData,
     this.linuxConfiguration,
@@ -40,4 +40,3 @@ class OrchestratedVirtualMachineScaleSetOsProfile {
     );
   }
 }
-

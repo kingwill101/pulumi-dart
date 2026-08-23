@@ -75,6 +75,24 @@ import 'get_workspace_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_healthcare_getdicomservice" "example" {
+///   name         = "example-healthcare_dicom_service"
+///   workspace_id = exampleAzurermHealthcareWorkspace.id
+/// }
+///
+/// output "azurermHealthcareDicomService" {
+///   value = data.azure_healthcare_getdicomservice.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +101,8 @@ import 'get_workspace_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.healthcare.HealthcareFunctions;
 /// import com.pulumi.azure.healthcare.inputs.GetDicomServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,6 +238,24 @@ Future<GetFhirServiceResult> getFhirService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_healthcare_getmedtechservice" "example" {
+///   name         = "tfexmedtech"
+///   workspace_id = "tfexwks"
+/// }
+///
+/// output "azurermHealthcareMedtechServiceId" {
+///   value = data.azure_healthcare_getmedtechservice.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +264,8 @@ Future<GetFhirServiceResult> getFhirService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.healthcare.HealthcareFunctions;
 /// import com.pulumi.azure.healthcare.inputs.GetMedtechServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -353,6 +389,25 @@ Future<GetMedtechServiceResult> getMedtechService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_healthcare_getservice" "example" {
+///   name                = "example-healthcare_service"
+///   resource_group_name = "example-resources"
+///   location            = "westus2"
+/// }
+///
+/// output "healthcareServiceId" {
+///   value = data.azure_healthcare_getservice.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -361,8 +416,8 @@ Future<GetMedtechServiceResult> getMedtechService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.healthcare.HealthcareFunctions;
 /// import com.pulumi.azure.healthcare.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -484,6 +539,24 @@ Future<GetServiceResult> getService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_healthcare_getworkspace" "example" {
+///   name                = "example-healthcare_service"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "healthcareWorkspaceId" {
+///   value = data.azure_healthcare_getworkspace.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -492,8 +565,8 @@ Future<GetServiceResult> getService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.healthcare.HealthcareFunctions;
 /// import com.pulumi.azure.healthcare.inputs.GetWorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

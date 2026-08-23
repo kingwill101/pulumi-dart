@@ -8,13 +8,13 @@ class AlertRuleFusionSource {
   final pulumi.Input<bool>? enabled;
   /// The name of the Fusion source signal. Refer to Fusion alert rule template for supported values.
   final pulumi.Input<String> name;
-  /// One or more `sub_type` blocks as defined below.
+  /// One or more `subType` blocks as defined below.
   final pulumi.Input<List<AlertRuleFusionSourceSubType>>? subTypes;
 
   /// Creates a new [AlertRuleFusionSource].
   /// [enabled] Whether this source signal is enabled or disabled in Fusion detection? Defaults to `true`.
   /// [name] The name of the Fusion source signal. Refer to Fusion alert rule template for supported values.
-  /// [subTypes] One or more `sub_type` blocks as defined below.
+  /// [subTypes] One or more `subType` blocks as defined below.
   const AlertRuleFusionSource({
     this.enabled,
     required this.name,
@@ -37,4 +37,3 @@ class AlertRuleFusionSource {
     );
   }
 }
-

@@ -214,6 +214,49 @@ import 'network_manager_static_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-network-manager"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///   }
+///   scope_accesses = ["Connectivity", "SecurityAdmin"]
+///   description    = "example network manager"
+/// }
+/// resource "azure_network_networkmanagernetworkgroup" "example" {
+///   name               = "example-group"
+///   network_manager_id = azure_network_networkmanager.example.id
+///   description        = "example network group"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["192.168.1.0/24"]
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_networkmanagerstaticmember" "example" {
+///   name                      = "example-nmsm"
+///   network_group_id          = azure_network_networkmanagernetworkgroup.example.id
+///   target_virtual_network_id = azure_network_virtualnetwork.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -233,8 +276,8 @@ import 'network_manager_static_member_state.dart';
 /// import com.pulumi.azure.network.VirtualNetworkArgs;
 /// import com.pulumi.azure.network.NetworkManagerStaticMember;
 /// import com.pulumi.azure.network.NetworkManagerStaticMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -364,7 +407,7 @@ class NetworkManagerStaticMember extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Specifies the Resource ID of the Virtual Network or Subnet used as the Static Member. Changing this forces a new Network Manager Static Member to be created.
   ///
-  /// &gt; **Note:** Subnet is supported only if the Network Manager has added `Routing` to `scope_accesses` and the Network Group has set `Subnet` as the `member_type` value.
+  /// &gt; **Note:** Subnet is supported only if the Network Manager has added `Routing` to `scopeAccesses` and the Network Group has set `Subnet` as the `memberType` value.
   late final pulumi.Output<String> targetVirtualNetworkId;
 
   /// Creates a new [NetworkManagerStaticMember].

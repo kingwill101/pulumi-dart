@@ -22,11 +22,11 @@ class LinkedServiceWebState {
   final pulumi.Input<String>? name;
   /// A map of parameters to associate with the Data Factory Linked Service.
   final pulumi.Input<Map<String, String>>? parameters;
-  /// The password for Basic authentication. Required if `authentication_type` sets to `Basic`.
+  /// The password for Basic authentication. Required if `authenticationType` sets to `Basic`.
   final pulumi.Input<String>? password;
   /// The URL of the web service endpoint (e.g. &lt;https://www.microsoft.com&gt;).
   final pulumi.Input<String>? url;
-  /// The username for Basic authentication. Required if `authentication_type` sets to `Basic`.
+  /// The username for Basic authentication. Required if `authenticationType` sets to `Basic`.
   final pulumi.Input<String>? username;
 
   /// Creates a new [LinkedServiceWebState].
@@ -38,9 +38,9 @@ class LinkedServiceWebState {
   /// [integrationRuntimeName] The integration runtime reference to associate with the Data Factory Linked Service.
   /// [name] Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
-  /// [password] The password for Basic authentication. Required if `authentication_type` sets to `Basic`.
+  /// [password] The password for Basic authentication. Required if `authenticationType` sets to `Basic`.
   /// [url] The URL of the web service endpoint (e.g. &lt;https://www.microsoft.com&gt;).
-  /// [username] The username for Basic authentication. Required if `authentication_type` sets to `Basic`.
+  /// [username] The username for Basic authentication. Required if `authenticationType` sets to `Basic`.
   const LinkedServiceWebState({
     this.additionalProperties,
     this.annotations,
@@ -87,4 +87,3 @@ class LinkedServiceWebState {
     );
   }
 }
-

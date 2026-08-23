@@ -222,6 +222,52 @@ import 'subnet_network_security_group_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-network"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "frontend"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networksecuritygroup" "example" {
+///   name                = "example-nsg"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   security_rules {
+///     name                       = "test123"
+///     priority                   = 100
+///     direction                  = "Inbound"
+///     access                     = "Allow"
+///     protocol                   = "Tcp"
+///     source_port_range          = "*"
+///     destination_port_range     = "*"
+///     source_address_prefix      = "*"
+///     destination_address_prefix = "*"
+///   }
+/// }
+/// resource "azure_network_subnetnetworksecuritygroupassociation" "example" {
+///   subnet_id                 = azure_network_subnet.example.id
+///   network_security_group_id = azure_network_networksecuritygroup.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -239,8 +285,8 @@ import 'subnet_network_security_group_association_state.dart';
 /// import com.pulumi.azure.network.inputs.NetworkSecurityGroupSecurityRuleArgs;
 /// import com.pulumi.azure.network.SubnetNetworkSecurityGroupAssociation;
 /// import com.pulumi.azure.network.SubnetNetworkSecurityGroupAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -5,16 +5,16 @@ import 'account_network_profile_account_access.dart';
 import 'account_network_profile_node_management_access.dart';
 
 class AccountNetworkProfile {
-  /// An `account_access` block as defined below.
+  /// An `accountAccess` block as defined below.
   final pulumi.Input<AccountNetworkProfileAccountAccess>? accountAccess;
-  /// A `node_management_access` block as defined below.
+  /// A `nodeManagementAccess` block as defined below.
   ///
-  /// &gt; **NOTE:** At least one of `account_access` or `node_management_access` must be specified.
+  /// &gt; **NOTE:** At least one of `accountAccess` or `nodeManagementAccess` must be specified.
   final pulumi.Input<AccountNetworkProfileNodeManagementAccess>? nodeManagementAccess;
 
   /// Creates a new [AccountNetworkProfile].
-  /// [accountAccess] An `account_access` block as defined below.
-  /// [nodeManagementAccess] A `node_management_access` block as defined below.
+  /// [accountAccess] An `accountAccess` block as defined below.
+  /// [nodeManagementAccess] A `nodeManagementAccess` block as defined below.
   const AccountNetworkProfile({
     this.accountAccess,
     this.nodeManagementAccess,
@@ -34,4 +34,3 @@ class AccountNetworkProfile {
     );
   }
 }
-

@@ -143,6 +143,37 @@ import 'endpoint_event_grid_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example_resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_digitaltwins_instance" "example" {
+///   name                = "example-DT"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_eventgrid_topic" "example" {
+///   name                = "example-topic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_digitaltwins_endpointeventgrid" "example" {
+///   name                                 = "example-EG"
+///   digital_twins_id                     = azure_digitaltwins_instance.example.id
+///   eventgrid_topic_endpoint             = azure_eventgrid_topic.example.endpoint
+///   eventgrid_topic_primary_access_key   = azure_eventgrid_topic.example.primary_access_key
+///   eventgrid_topic_secondary_access_key = azure_eventgrid_topic.example.secondary_access_key
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -157,8 +188,8 @@ import 'endpoint_event_grid_state.dart';
 /// import com.pulumi.azure.eventgrid.TopicArgs;
 /// import com.pulumi.azure.digitaltwins.EndpointEventGrid;
 /// import com.pulumi.azure.digitaltwins.EndpointEventGridArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -13,7 +13,7 @@ class ProvisionedClusterArgs {
   final pulumi.Input<bool>? arcAgentAutoUpgradeEnabled;
   /// The version of the Arc agents to be installed on the cluster.
   final pulumi.Input<String>? arcAgentDesiredVersion;
-  /// An `azure_active_directory` block as defined below.
+  /// An `azureActiveDirectory` block as defined below.
   final pulumi.Input<ProvisionedClusterAzureActiveDirectory>? azureActiveDirectory;
   /// An `identity` block as defined below. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   final pulumi.Input<ProvisionedClusterIdentity> identity;
@@ -29,7 +29,7 @@ class ProvisionedClusterArgs {
   /// Creates a new [ProvisionedClusterArgs].
   /// [arcAgentAutoUpgradeEnabled] Whether the Arc agents will be upgraded automatically to the latest version. Defaults to `true`.
   /// [arcAgentDesiredVersion] The version of the Arc agents to be installed on the cluster.
-  /// [azureActiveDirectory] An `azure_active_directory` block as defined below.
+  /// [azureActiveDirectory] An `azureActiveDirectory` block as defined below.
   /// [identity] An `identity` block as defined below. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   /// [location] The Azure Region where the Arc Kubernetes Provisioned Cluster should exist. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   /// [name] The name which should be used for this Arc Kubernetes Provisioned Cluster. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
@@ -72,4 +72,3 @@ class ProvisionedClusterArgs {
     );
   }
 }
-

@@ -123,7 +123,7 @@ import 'api_tag_state.dart';
 /// 			Name:              pulumi.String("example-api"),
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 			ApiManagementName: pulumi.String(example.ApplyT(func(example apimanagement.GetServiceResult) (*string, error) {
-/// 				return &example.Name, nil
+/// 				return example.Name, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Revision: pulumi.String("1"),
 /// 		})
@@ -132,7 +132,7 @@ import 'api_tag_state.dart';
 /// 		}
 /// 		exampleTag, err := apimanagement.NewTag(ctx, "example", &apimanagement.TagArgs{
 /// 			ApiManagementId: pulumi.String(example.ApplyT(func(example apimanagement.GetServiceResult) (*string, error) {
-/// 				return &example.Id, nil
+/// 				return example.Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Name: pulumi.String("example-tag"),
 /// 		})
@@ -148,6 +148,39 @@ import 'api_tag_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getservice" "example" {
+///   name                = "example-apim"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_api" "example" {
+///   name                = "example-api"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   api_management_name = data.azure_apimanagement_getservice.example.name
+///   revision            = "1"
+/// }
+/// resource "azure_apimanagement_tag" "example" {
+///   api_management_id = data.azure_apimanagement_getservice.example.id
+///   name              = "example-tag"
+/// }
+/// resource "azure_apimanagement_apitag" "example" {
+///   api_id = azure_apimanagement_api.example.id
+///   name   = azure_apimanagement_tag.example.name
 /// }
 /// ```
 /// ```java
@@ -166,8 +199,8 @@ import 'api_tag_state.dart';
 /// import com.pulumi.azure.apimanagement.TagArgs;
 /// import com.pulumi.azure.apimanagement.ApiTag;
 /// import com.pulumi.azure.apimanagement.ApiTagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

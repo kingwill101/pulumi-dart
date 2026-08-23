@@ -97,6 +97,23 @@ import 'get_resource_anchor_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getadbscharactersets" "example" {
+///   location = "West Europe"
+/// }
+///
+/// output "example" {
+///   value = data.azure_oracle_getadbscharactersets.example
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +122,8 @@ import 'get_resource_anchor_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetAdbsCharacterSetsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,9 +236,26 @@ Future<GetAdbsCharacterSetsResult> getAdbsCharacterSets(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("example", exampleAzurermOracleAdbsNationalCharacterSets)
+/// 		ctx.Export("example", pulumi.Any(exampleAzurermOracleAdbsNationalCharacterSets))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getadbscharactersets" "example" {
+///   location = "West Europe"
+/// }
+///
+/// output "example" {
+///   value = exampleAzurermOracleAdbsNationalCharacterSets
 /// }
 /// ```
 /// ```java
@@ -232,8 +266,8 @@ Future<GetAdbsCharacterSetsResult> getAdbsCharacterSets(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetAdbsCharacterSetsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -351,6 +385,24 @@ Future<GetAdbsNationalCharacterSetsResult> getAdbsNationalCharacterSets(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getautonomousdatabase" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_oracle_getautonomousdatabase.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -359,8 +411,8 @@ Future<GetAdbsNationalCharacterSetsResult> getAdbsNationalCharacterSets(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetAutonomousDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -469,6 +521,19 @@ Future<GetAutonomousDatabaseResult> getAutonomousDatabase(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getautonomousdatabasebackup" "example" {
+///   autonomous_database_id = exampleAzurermOracleAutonomousDatabase.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -477,8 +542,8 @@ Future<GetAutonomousDatabaseResult> getAutonomousDatabase(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetAutonomousDatabaseBackupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -582,6 +647,19 @@ Future<GetAutonomousDatabaseBackupResult> getAutonomousDatabaseBackup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getautonomousdatabasebackups" "example" {
+///   autonomous_database_id = exampleAzurermOracleAutonomousDatabase.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -590,8 +668,8 @@ Future<GetAutonomousDatabaseBackupResult> getAutonomousDatabaseBackup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetAutonomousDatabaseBackupsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -706,6 +784,24 @@ Future<GetAutonomousDatabaseBackupsResult> getAutonomousDatabaseBackups(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getautonomousdatabaseclonefrombackup" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_oracle_getautonomousdatabaseclonefrombackup.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -714,8 +810,8 @@ Future<GetAutonomousDatabaseBackupsResult> getAutonomousDatabaseBackups(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetAutonomousDatabaseCloneFromBackupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -835,6 +931,24 @@ Future<GetAutonomousDatabaseCloneFromBackupResult> getAutonomousDatabaseCloneFro
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getautonomousdatabaseclonefromdatabase" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_oracle_getautonomousdatabaseclonefromdatabase.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -843,8 +957,8 @@ Future<GetAutonomousDatabaseCloneFromBackupResult> getAutonomousDatabaseCloneFro
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetAutonomousDatabaseCloneFromDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -964,6 +1078,24 @@ Future<GetAutonomousDatabaseCloneFromDatabaseResult> getAutonomousDatabaseCloneF
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getcloudvmcluster" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_oracle_getcloudvmcluster.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -972,8 +1104,8 @@ Future<GetAutonomousDatabaseCloneFromDatabaseResult> getAutonomousDatabaseCloneF
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetCloudVmClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1089,6 +1221,23 @@ Future<GetCloudVmClusterResult> getCloudVmCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getdatabasesystemversions" "example" {
+///   location = "eastus"
+/// }
+///
+/// output "id" {
+///   value = data.azure_oracle_getdatabasesystemversions.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1097,8 +1246,8 @@ Future<GetCloudVmClusterResult> getCloudVmCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetDatabaseSystemVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1216,6 +1365,23 @@ Future<GetDatabaseSystemVersionsResult> getDatabaseSystemVersions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getdbnodes" "example" {
+///   cloud_vm_cluster_id = "existing"
+/// }
+///
+/// output "example" {
+///   value = data.azure_oracle_getdbnodes.example
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1224,8 +1390,8 @@ Future<GetDatabaseSystemVersionsResult> getDatabaseSystemVersions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetDbNodesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1343,6 +1509,24 @@ Future<GetDbNodesResult> getDbNodes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getdbservers" "example" {
+///   resource_group_name               = "existing"
+///   cloud_exadata_infrastructure_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_oracle_getdbservers.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1351,8 +1535,8 @@ Future<GetDbNodesResult> getDbNodes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetDbServersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1478,6 +1662,24 @@ Future<GetDbServersResult> getDbServers(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getdbsystemshapes" "example" {
+///   location = "eastus"
+///   zone     = "2"
+/// }
+///
+/// output "example" {
+///   value = data.azure_oracle_getdbsystemshapes.example
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1486,8 +1688,8 @@ Future<GetDbServersResult> getDbServers(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetDbSystemShapesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1607,6 +1809,24 @@ Future<GetDbSystemShapesResult> getDbSystemShapes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getexadatainfrastructure" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_oracle_getexadatainfrastructure.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1615,8 +1835,8 @@ Future<GetDbSystemShapesResult> getDbSystemShapes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetExadataInfrastructureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1736,6 +1956,24 @@ Future<GetExadataInfrastructureResult> getExadataInfrastructure(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getexascaledatabasestoragevault" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_oracle_getexascaledatabasestoragevault.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1744,8 +1982,8 @@ Future<GetExadataInfrastructureResult> getExadataInfrastructure(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetExascaleDatabaseStorageVaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1875,6 +2113,25 @@ Future<GetExascaleDatabaseStorageVaultResult> getExascaleDatabaseStorageVault(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getgiversions" "example" {
+///   location = "eastus"
+///   zone     = "2"
+///   shape    = "Exadata.X9M"
+/// }
+///
+/// output "example" {
+///   value = data.azure_oracle_getgiversions.example
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1883,8 +2140,8 @@ Future<GetExascaleDatabaseStorageVaultResult> getExascaleDatabaseStorageVault(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetGiVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2006,6 +2263,24 @@ Future<GetGiVersionsResult> getGiVersions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getresourceanchor" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_oracle_getresourceanchor.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2014,8 +2289,8 @@ Future<GetGiVersionsResult> getGiVersions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.oracle.OracleFunctions;
 /// import com.pulumi.azure.oracle.inputs.GetResourceAnchorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

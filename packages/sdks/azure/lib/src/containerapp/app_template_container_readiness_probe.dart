@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_template_container_readiness_probe_header.dart';
 
 class AppTemplateContainerReadinessProbe {
-  /// The number of consecutive failures required to consider this probe as failed. Possible values are between `1` and `30`. Defaults to `3`.
+  /// The number of consecutive failures required to consider this probe as failed. Possible values are between `1` and `48`. Defaults to `3`.
   final pulumi.Input<int>? failureCountThreshold;
   /// A `header` block as detailed below.
   final pulumi.Input<List<AppTemplateContainerReadinessProbeHeader>>? headers;
@@ -26,7 +26,7 @@ class AppTemplateContainerReadinessProbe {
   final pulumi.Input<String> transport;
 
   /// Creates a new [AppTemplateContainerReadinessProbe].
-  /// [failureCountThreshold] The number of consecutive failures required to consider this probe as failed. Possible values are between `1` and `30`. Defaults to `3`.
+  /// [failureCountThreshold] The number of consecutive failures required to consider this probe as failed. Possible values are between `1` and `48`. Defaults to `3`.
   /// [headers] A `header` block as detailed below.
   /// [host] The probe hostname. Defaults to the pod IP address. Setting a value for `Host` in `headers` can be used to override this for `HTTP` and `HTTPS` type probes.
   /// [initialDelay] The number of seconds elapsed after the container has started before the probe is initiated. Possible values are between `0` and `60`. Defaults to `0` seconds.
@@ -79,4 +79,3 @@ class AppTemplateContainerReadinessProbe {
     );
   }
 }
-

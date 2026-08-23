@@ -67,6 +67,24 @@ import 'get_insights_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appinsights_getinsights" "example" {
+///   name                = "production"
+///   resource_group_name = "networking"
+/// }
+///
+/// output "applicationInsightsInstrumentationKey" {
+///   value = data.azure_appinsights_getinsights.example.instrumentation_key
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +93,8 @@ import 'get_insights_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appinsights.AppinsightsFunctions;
 /// import com.pulumi.azure.appinsights.inputs.GetInsightsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

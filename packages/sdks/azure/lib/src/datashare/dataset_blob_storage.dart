@@ -25,7 +25,7 @@ class DatasetBlobStorage extends pulumi.CustomResource {
   late final pulumi.Output<String?> folderPath;
   /// The name which should be used for this Data Share Blob Storage Dataset. Changing this forces a new Data Share Blob Storage Dataset to be created.
   late final pulumi.Output<String> name;
-  /// A `storage_account` block as defined below. Changing this forces a new resource to be created.
+  /// A `storageAccount` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<DatasetBlobStorageStorageAccount> storageAccount;
 
   /// Creates a new [DatasetBlobStorage].

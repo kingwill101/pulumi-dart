@@ -237,6 +237,59 @@ import 'watcher_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "example-account"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_automation_hybridrunbookworkergroup" "example" {
+///   name                    = "example"
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   automation_account_name = azure_automation_account.example.name
+/// }
+/// resource "azure_automation_runbook" "example" {
+///   name                    = "Get-AzureVMTutorial"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   automation_account_name = azure_automation_account.example.name
+///   log_verbose             = "true"
+///   log_progress            = "true"
+///   description             = "This is an example runbook"
+///   runbook_type            = "PowerShellWorkflow"
+///   publish_content_link = {
+///     uri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/c4935ffb69246a6058eb24f54640f53f69d3ac9f/101-automation-runbook-getvms/Runbooks/Get-AzureVMTutorial.ps1"
+///   }
+/// }
+/// resource "azure_automation_watcher" "example" {
+///   name                           = "example"
+///   automation_account_id          = azure_automation_account.example.id
+///   location                       = "West Europe"
+///   script_name                    = azure_automation_runbook.example.name
+///   script_run_on                  = azure_automation_hybridrunbookworkergroup.example.name
+///   description                    = "example-watcher desc"
+///   execution_frequency_in_seconds = 42
+///   tags = {
+///     "foo" = "bar"
+///   }
+///   script_parameters = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -254,8 +307,8 @@ import 'watcher_state.dart';
 /// import com.pulumi.azure.automation.inputs.RunBookPublishContentLinkArgs;
 /// import com.pulumi.azure.automation.Watcher;
 /// import com.pulumi.azure.automation.WatcherArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

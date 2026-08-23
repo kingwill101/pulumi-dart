@@ -128,6 +128,33 @@ import 'txt_record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_privatedns_zone" "example" {
+///   name                = "contoso.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_privatedns_txtrecord" "example" {
+///   name                = "test"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   zone_name           = azure_privatedns_zone.example.name
+///   ttl                 = 300
+///   records {
+///     value = "v=spf1 mx ~all"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +168,8 @@ import 'txt_record_state.dart';
 /// import com.pulumi.azure.privatedns.TxtRecord;
 /// import com.pulumi.azure.privatedns.TxtRecordArgs;
 /// import com.pulumi.azure.privatedns.inputs.TxtRecordRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

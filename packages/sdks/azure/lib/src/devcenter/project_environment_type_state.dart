@@ -20,7 +20,7 @@ class ProjectEnvironmentTypeState {
   final pulumi.Input<String>? name;
   /// A mapping of tags which should be assigned to the Dev Center Project Environment Type.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A `user_role_assignment` block as defined below.
+  /// A `userRoleAssignment` block as defined below.
   final pulumi.Input<List<ProjectEnvironmentTypeUserRoleAssignment>>? userRoleAssignments;
 
   /// Creates a new [ProjectEnvironmentTypeState].
@@ -31,7 +31,7 @@ class ProjectEnvironmentTypeState {
   /// [location] The Azure Region where the Dev Center Project Environment Type should exist. Changing this forces a new resource to be created.
   /// [name] Specifies the name of this Dev Center Project Environment Type. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Dev Center Project Environment Type.
-  /// [userRoleAssignments] A `user_role_assignment` block as defined below.
+  /// [userRoleAssignments] A `userRoleAssignment` block as defined below.
   const ProjectEnvironmentTypeState({
     this.creatorRoleAssignmentRoles,
     this.deploymentTargetId,
@@ -69,4 +69,3 @@ class ProjectEnvironmentTypeState {
     );
   }
 }
-

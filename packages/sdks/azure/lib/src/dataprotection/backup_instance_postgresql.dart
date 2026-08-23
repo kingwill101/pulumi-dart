@@ -490,10 +490,10 @@ import 'backup_instance_postgresql_state.dart';
 /// 				},
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 						return &identity.TenantId, nil
+/// 						return identity.TenantId, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 					ObjectId: exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 						return &identity.PrincipalId, nil
+/// 						return identity.PrincipalId, nil
 /// 					}).(pulumi.StringPtrOutput),
 /// 					KeyPermissions: pulumi.StringArray{
 /// 						pulumi.String("Create"),
@@ -541,7 +541,7 @@ import 'backup_instance_postgresql_state.dart';
 /// 			Scope:              exampleServer.ID(),
 /// 			RoleDefinitionName: pulumi.String("Reader"),
 /// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -560,6 +560,106 @@ import 'backup_instance_postgresql_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_postgresql_server" "example" {
+///   name                         = "example"
+///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   sku_name                     = "B_Gen5_2"
+///   storage_mb                   = 5120
+///   backup_retention_days        = 7
+///   geo_redundant_backup_enabled = false
+///   auto_grow_enabled            = true
+///   administrator_login          = "psqladmin"
+///   administrator_login_password = "H@Sh1CoR3!"
+///   version                      = "9.5"
+///   ssl_enforcement_enabled      = true
+/// }
+/// resource "azure_postgresql_firewallrule" "example" {
+///   name                = "AllowAllWindowsAzureIps"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   server_name         = azure_postgresql_server.example.name
+///   start_ip_address    = "0.0.0.0"
+///   end_ip_address      = "0.0.0.0"
+/// }
+/// resource "azure_postgresql_database" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   server_name         = azure_postgresql_server.example.name
+///   charset             = "UTF8"
+///   collation           = "English_United States.1252"
+/// }
+/// resource "azure_dataprotection_backupvault" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   datastore_type      = "VaultStore"
+///   redundancy          = "LocallyRedundant"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                       = "example"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
+///   soft_delete_retention_days = 7
+///   access_policies {
+///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     key_permissions    = ["Create", "Get"]
+///     secret_permissions = ["Set", "Get", "Delete", "Purge", "Recover"]
+///   }
+///   access_policies {
+///     tenant_id          = azure_dataprotection_backupvault.example.identity.tenant_id
+///     object_id          = azure_dataprotection_backupvault.example.identity.principal_id
+///     key_permissions    = ["Create", "Get"]
+///     secret_permissions = ["Set", "Get", "Delete", "Purge", "Recover"]
+///   }
+/// }
+/// resource "azure_keyvault_secret" "example" {
+///   name         = "example"
+///   value        ="Server=${azure_postgresql_server.example.name}.postgres.database.azure.com;Database=${azure_postgresql_database.example.name};Port=5432;User Id=psqladmin@${azure_postgresql_server.example.name};Password=H@Sh1CoR3!;Ssl Mode=Require;"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+/// }
+/// resource "azure_dataprotection_backuppolicypostgresql" "example" {
+///   name                            = "example"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   vault_name                      = azure_dataprotection_backupvault.example.name
+///   backup_repeating_time_intervals = ["R/2021-05-23T02:30:00+00:00/P1W"]
+///   default_retention_duration      = "P4M"
+/// }
+/// resource "azure_authorization_assignment" "example" {
+///   scope                = azure_postgresql_server.example.id
+///   role_definition_name = "Reader"
+///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+/// }
+/// resource "azure_dataprotection_backupinstancepostgresql" "example" {
+///   name                                    = "example"
+///   location                                = azure_core_resourcegroup.example.location
+///   vault_id                                = azure_dataprotection_backupvault.example.id
+///   database_id                             = azure_postgresql_database.example.id
+///   backup_policy_id                        = azure_dataprotection_backuppolicypostgresql.example.id
+///   database_credential_key_vault_secret_id = azure_keyvault_secret.example.versionless_id
 /// }
 /// ```
 /// ```java
@@ -591,8 +691,8 @@ import 'backup_instance_postgresql_state.dart';
 /// import com.pulumi.azure.authorization.AssignmentArgs;
 /// import com.pulumi.azure.dataprotection.BackupInstancePostgresql;
 /// import com.pulumi.azure.dataprotection.BackupInstancePostgresqlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -858,7 +958,7 @@ import 'backup_instance_postgresql_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.DataProtection` - 2024-04-01
+/// * `Microsoft.DataProtection` - 2025-07-01
 ///
 /// ## Import
 ///

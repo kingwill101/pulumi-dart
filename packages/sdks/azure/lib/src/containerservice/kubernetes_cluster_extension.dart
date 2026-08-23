@@ -149,6 +149,39 @@ import 'kubernetes_cluster_extension_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_containerservice_kubernetescluster" "example" {
+///   name                = "example-aks"
+///   location            = "West Europe"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   dns_prefix          = "example-aks"
+///   default_node_pool = {
+///     name       = "default"
+///     node_count = 1
+///     vm_size    = "Standard_DS2_v2"
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_containerservice_kubernetesclusterextension" "example" {
+///   name           = "example-ext"
+///   cluster_id     = azure_containerservice_kubernetescluster.example.id
+///   extension_type = "microsoft.flux"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -163,8 +196,8 @@ import 'kubernetes_cluster_extension_state.dart';
 /// import com.pulumi.azure.containerservice.inputs.KubernetesClusterIdentityArgs;
 /// import com.pulumi.azure.containerservice.KubernetesClusterExtension;
 /// import com.pulumi.azure.containerservice.KubernetesClusterExtensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -245,13 +278,13 @@ import 'kubernetes_cluster_extension_state.dart';
 ///
 /// ## Import
 ///
-/// Kubernetes Cluster Extension can be imported using the `resource id` for different `cluster_resource_name`, e.g.
+/// Kubernetes Cluster Extension can be imported using the `resource id` for different `clusterResourceName`, e.g.
 ///
 /// ```sh
 /// $ pulumi import azure:containerservice/kubernetesClusterExtension:KubernetesClusterExtension example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1/providers/Microsoft.ContainerService/managedClusters/cluster1/providers/Microsoft.KubernetesConfiguration/extensions/extension1
 /// ```
 class KubernetesClusterExtension extends pulumi.CustomResource {
-  /// An `aks_assigned_identity` block as defined below.
+  /// An `aksAssignedIdentity` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> aksAssignedIdentities;
   /// Specifies the Cluster ID. Changing this forces a new Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> clusterId;

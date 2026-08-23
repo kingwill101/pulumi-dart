@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HubEventHandlerAuth {
   /// Specify the identity ID of the target resource.
   ///
-  /// &gt; **Note:** `managed_identity_id` is required if the auth block is defined
+  /// &gt; **Note:** `managedIdentityId` is required if the auth block is defined
   final pulumi.Input<String> managedIdentityId;
 
   /// Creates a new [HubEventHandlerAuth].
@@ -26,4 +26,3 @@ class HubEventHandlerAuth {
     );
   }
 }
-

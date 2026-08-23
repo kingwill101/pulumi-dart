@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlacementGroupArgs {
   /// Specifies the supported sizes of Virtual Machines that can be created in the Proximity Placement Group.
   ///
-  /// &gt; **Note:** Removing `allowed_vm_sizes` after it is set forces a new resource to be created.
+  /// &gt; **Note:** Removing `allowedVmSizes` after it is set forces a new resource to be created.
   final pulumi.Input<List<String>>? allowedVmSizes;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -21,7 +21,7 @@ class PlacementGroupArgs {
   final pulumi.Input<Map<String, String>>? tags;
   /// Specifies the supported zone of the Proximity Placement Group. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `allowed_vm_sizes` must be set when `zone` is specified.
+  /// &gt; **Note:** `allowedVmSizes` must be set when `zone` is specified.
   final pulumi.Input<String>? zone;
 
   /// Creates a new [PlacementGroupArgs].
@@ -62,4 +62,3 @@ class PlacementGroupArgs {
     );
   }
 }
-

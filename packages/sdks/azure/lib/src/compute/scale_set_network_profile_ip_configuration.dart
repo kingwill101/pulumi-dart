@@ -10,17 +10,17 @@ class ScaleSetNetworkProfileIpConfiguration {
   final pulumi.Input<List<String>>? applicationSecurityGroupIds;
   /// Specifies an array of references to backend address pools of load balancers. A scale set can reference backend address pools of one public and one internal load balancer. Multiple scale sets cannot use the same load balancer.
   ///
-  /// &gt; **NOTE:** When using this field you'll also need to configure a Rule for the Load Balancer, and use a `depends_on` between this resource and the Load Balancer Rule.
+  /// &gt; **NOTE:** When using this field you'll also need to configure a Rule for the Load Balancer, and use a `dependsOn` between this resource and the Load Balancer Rule.
   final pulumi.Input<List<String>>? loadBalancerBackendAddressPoolIds;
   /// Specifies an array of references to inbound NAT pools for load balancers. A scale set can reference inbound NAT pools of one public and one internal load balancer. Multiple scale sets cannot use the same load balancer.
   ///
-  /// &gt; **NOTE:** When using this field you'll also need to configure a Rule for the Load Balancer, and use a `depends_on` between this resource and the Load Balancer Rule.
+  /// &gt; **NOTE:** When using this field you'll also need to configure a Rule for the Load Balancer, and use a `dependsOn` between this resource and the Load Balancer Rule.
   final pulumi.Input<List<String>>? loadBalancerInboundNatRulesIds;
   /// Specifies name of the IP configuration.
   final pulumi.Input<String> name;
-  /// Specifies if this ip_configuration is the primary one.
+  /// Specifies if this ipConfiguration is the primary one.
   final pulumi.Input<bool> primary;
-  /// Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration. The `public_ip_address_configuration` block is documented below.
+  /// Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration. The `publicIpAddressConfiguration` block is documented below.
   final pulumi.Input<ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration>? publicIpAddressConfiguration;
   /// Specifies the identifier of the subnet.
   final pulumi.Input<String> subnetId;
@@ -31,8 +31,8 @@ class ScaleSetNetworkProfileIpConfiguration {
   /// [loadBalancerBackendAddressPoolIds] Specifies an array of references to backend address pools of load balancers. A scale set can reference backend address pools of one public and one internal load balancer. Multiple scale sets cannot use the same load balancer.
   /// [loadBalancerInboundNatRulesIds] Specifies an array of references to inbound NAT pools for load balancers. A scale set can reference inbound NAT pools of one public and one internal load balancer. Multiple scale sets cannot use the same load balancer.
   /// [name] Specifies name of the IP configuration.
-  /// [primary] Specifies if this ip_configuration is the primary one.
-  /// [publicIpAddressConfiguration] Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration. The `public_ip_address_configuration` block is documented below.
+  /// [primary] Specifies if this ipConfiguration is the primary one.
+  /// [publicIpAddressConfiguration] Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration. The `publicIpAddressConfiguration` block is documented below.
   /// [subnetId] Specifies the identifier of the subnet.
   const ScaleSetNetworkProfileIpConfiguration({
     this.applicationGatewayBackendAddressPoolIds,
@@ -71,4 +71,3 @@ class ScaleSetNetworkProfileIpConfiguration {
     );
   }
 }
-

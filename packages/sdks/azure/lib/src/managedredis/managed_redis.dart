@@ -106,6 +106,29 @@ import 'managed_redis_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_managedredis_managedredis" "example" {
+///   name                = "example-managed-redis"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku_name            = "Balanced_B3"
+///   default_database = {
+///     geo_replication_group_name = "myGeoGroup"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +140,8 @@ import 'managed_redis_state.dart';
 /// import com.pulumi.azure.managedredis.ManagedRedis;
 /// import com.pulumi.azure.managedredis.ManagedRedisArgs;
 /// import com.pulumi.azure.managedredis.inputs.ManagedRedisDefaultDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -531,6 +554,70 @@ import 'managed_redis_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                     = "example"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                 = "standard"
+///   purge_protection_enabled = true
+///   access_policies {
+///     tenant_id       = data.azure_core_getclientconfig.current.tenant_id
+///     object_id       = data.azure_core_getclientconfig.current.object_id
+///     key_permissions = ["Create", "Delete", "Get", "List", "Purge", "Recover", "Update", "GetRotationPolicy", "SetRotationPolicy"]
+///   }
+///   access_policies {
+///     tenant_id       = data.azure_core_getclientconfig.current.tenant_id
+///     object_id       = azure_authorization_userassignedidentity.example.principal_id
+///     key_permissions = ["Get", "WrapKey", "UnwrapKey"]
+///   }
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   name         = "managedrediscmk"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["unwrapKey", "wrapKey"]
+/// }
+/// resource "azure_managedredis_managedredis" "example" {
+///   name                = "example-managed-redis"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku_name            = "Balanced_B3"
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+///   customer_managed_key = {
+///     key_vault_key_id          = azure_keyvault_key.example.id
+///     user_assigned_identity_id = azure_authorization_userassignedidentity.example.id
+///   }
+///   default_database = {
+///     geo_replication_group_name = "myGeoGroup"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -552,8 +639,8 @@ import 'managed_redis_state.dart';
 /// import com.pulumi.azure.managedredis.inputs.ManagedRedisIdentityArgs;
 /// import com.pulumi.azure.managedredis.inputs.ManagedRedisCustomerManagedKeyArgs;
 /// import com.pulumi.azure.managedredis.inputs.ManagedRedisDefaultDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -735,13 +822,13 @@ import 'managed_redis_state.dart';
 /// $ pulumi import azure:managedredis/managedRedis:ManagedRedis example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Cache/redisEnterprise/cluster1
 /// ```
 class ManagedRedis extends pulumi.CustomResource {
-  /// A `customer_managed_key` block as defined below.
+  /// A `customerManagedKey` block as defined below.
   late final pulumi.Output<ManagedRedisCustomerManagedKey?> customerManagedKey;
-  /// A `default_database` block as defined below.
+  /// A `defaultDatabase` block as defined below.
   ///
-  /// &gt; **Note:** `default_database` is Required when creating a new Managed Redis.
+  /// &gt; **Note:** `defaultDatabase` is Required when creating a new Managed Redis.
   ///
-  /// &gt; **Note:** A `default_database` can be deleted or recreated in-place but most properties will trigger an entire cluster replacement if changed. Data will be lost and Managed Redis will be unavailable during recreation.
+  /// &gt; **Note:** A `defaultDatabase` can be deleted or recreated in-place but most properties will trigger an entire cluster replacement if changed. Data will be lost and Managed Redis will be unavailable during recreation.
   late final pulumi.Output<ManagedRedisDefaultDatabase?> defaultDatabase;
   /// Whether to enable high availability for the Managed Redis instance. Defaults to `true`. Changing this forces a new Managed Redis instance to be created.
   late final pulumi.Output<bool?> highAvailabilityEnabled;
@@ -761,7 +848,7 @@ class ManagedRedis extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** `Enterprise_` and `EnterpriseFlash_` prefixed SKUs were previously used by Redis Enterprise, and [not supported by Managed Redis](https://learn.microsoft.com/azure/redis/migrate/migrate-overview).
   ///
-  /// &gt; **Note:** Changing `sku_name` to a lower tier is restricted by Azure under certain conditions, in which case the resource will be marked for recreation. Validation for this is on a best-effort basis, if the provider is unable to determine whether it can change the SKU in-place, it will attempt to do regardless and this request may fail. Please refer to the [Azure documentation](https://learn.microsoft.com/en-us/azure/redis/how-to-scale) for more information.
+  /// &gt; **Note:** Changing `skuName` to a lower tier is restricted by Azure under certain conditions, in which case the resource will be marked for recreation. Validation for this is on a best-effort basis, if the provider is unable to determine whether it can change the SKU in-place, it will attempt to do regardless and this request may fail. Please refer to the [Azure documentation](https://learn.microsoft.com/en-us/azure/redis/how-to-scale) for more information.
   late final pulumi.Output<String> skuName;
   /// A mapping of tags which should be assigned to the Managed Redis instance.
   late final pulumi.Output<Map<String, String>?> tags;

@@ -12,11 +12,11 @@ import 'service_identity.dart';
 class ServiceArgs {
   /// A set of Azure object IDs that are allowed to access the Service. If not configured, the default value is the object id of the service principal or user that is running Terraform.
   final pulumi.Input<List<String>>? accessPolicyObjectIds;
-  /// An `authentication_configuration` block as defined below.
+  /// An `authenticationConfiguration` block as defined below.
   final pulumi.Input<ServiceAuthenticationConfiguration>? authenticationConfiguration;
   /// Specifies the name of the storage account which the operation configuration information is exported to.
   final pulumi.Input<String>? configurationExportStorageAccountName;
-  /// A `cors_configuration` block as defined below.
+  /// A `corsConfiguration` block as defined below.
   final pulumi.Input<ServiceCorsConfiguration>? corsConfiguration;
   /// A versionless Key Vault Key ID for CMK encryption of the backing database. Changing this forces a new resource to be created.
   ///
@@ -43,9 +43,9 @@ class ServiceArgs {
 
   /// Creates a new [ServiceArgs].
   /// [accessPolicyObjectIds] A set of Azure object IDs that are allowed to access the Service. If not configured, the default value is the object id of the service principal or user that is running Terraform.
-  /// [authenticationConfiguration] An `authentication_configuration` block as defined below.
+  /// [authenticationConfiguration] An `authenticationConfiguration` block as defined below.
   /// [configurationExportStorageAccountName] Specifies the name of the storage account which the operation configuration information is exported to.
-  /// [corsConfiguration] A `cors_configuration` block as defined below.
+  /// [corsConfiguration] A `corsConfiguration` block as defined below.
   /// [cosmosdbKeyVaultKeyVersionlessId] A versionless Key Vault Key ID for CMK encryption of the backing database. Changing this forces a new resource to be created.
   /// [cosmosdbThroughput] The provisioned throughput for the backing database. Range of `400`-`100000`. Defaults to `1000`.
   /// [identity] An `identity` block as defined below.
@@ -107,4 +107,3 @@ class ServiceArgs {
     );
   }
 }
-

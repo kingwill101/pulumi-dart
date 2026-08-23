@@ -8,13 +8,13 @@ import 'get_managed_database_point_in_time_restore.dart';
 class GetManagedDatabaseResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// A `long_term_retention_policy` block as defined below.
+  /// A `longTermRetentionPolicy` block as defined below.
   final List<GetManagedDatabaseLongTermRetentionPolicy> longTermRetentionPolicies;
   final String managedInstanceId;
   /// The name of the Managed Instance.
   final String managedInstanceName;
   final String name;
-  /// A `point_in_time_restore` block as defined below.
+  /// A `pointInTimeRestore` block as defined below.
   final List<GetManagedDatabasePointInTimeRestore> pointInTimeRestores;
   /// The name of the Resource Group where the Azure SQL Azure Managed Instance exists.
   final String resourceGroupName;
@@ -23,11 +23,11 @@ class GetManagedDatabaseResult {
 
   /// Creates a new [GetManagedDatabaseResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [longTermRetentionPolicies] A `long_term_retention_policy` block as defined below.
+  /// [longTermRetentionPolicies] A `longTermRetentionPolicy` block as defined below.
   /// [managedInstanceId] Required.
   /// [managedInstanceName] The name of the Managed Instance.
   /// [name] Required.
-  /// [pointInTimeRestores] A `point_in_time_restore` block as defined below.
+  /// [pointInTimeRestores] A `pointInTimeRestore` block as defined below.
   /// [resourceGroupName] The name of the Resource Group where the Azure SQL Azure Managed Instance exists.
   /// [shortTermRetentionDays] The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
   const GetManagedDatabaseResult({
@@ -67,4 +67,3 @@ class GetManagedDatabaseResult {
     );
   }
 }
-

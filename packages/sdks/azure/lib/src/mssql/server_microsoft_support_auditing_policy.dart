@@ -156,6 +156,40 @@ import 'server_microsoft_support_auditing_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "example-sqlserver"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "missadministrator"
+///   administrator_login_password = "AdminPassword123!"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplesa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_mssql_servermicrosoftsupportauditingpolicy" "example" {
+///   server_id                  = azure_mssql_server.example.id
+///   blob_storage_endpoint      = azure_storage_account.example.primary_blob_endpoint
+///   storage_account_access_key = azure_storage_account.example.primary_access_key
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -170,8 +204,8 @@ import 'server_microsoft_support_auditing_policy_state.dart';
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.mssql.ServerMicrosoftSupportAuditingPolicy;
 /// import com.pulumi.azure.mssql.ServerMicrosoftSupportAuditingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -381,12 +415,12 @@ import 'server_microsoft_support_auditing_policy_state.dart';
 ///     scope=primary.id,
 ///     role_definition_name="Storage Blob Data Contributor",
 ///     principal_id=example_server.identity.principal_id)
-/// sqlvnetrule = azurerm.index.SqlVirtualNetworkRule("sqlvnetrule",
+/// sqlvnetrule = azurerm.SqlVirtualNetworkRule("sqlvnetrule",
 ///     name=sql-vnet-rule,
 ///     resource_group_name=example_resource_group.name,
 ///     server_name=example_server.name,
 ///     subnet_id=example_subnet.id)
-/// example_sql_firewall_rule = azurerm.index.SqlFirewallRule("example",
+/// example_sql_firewall_rule = azurerm.SqlFirewallRule("example",
 ///     name=FirewallRule1,
 ///     resource_group_name=example_resource_group.name,
 ///     server_name=example_server.name,
@@ -488,7 +522,7 @@ import 'server_microsoft_support_auditing_policy_state.dart';
 ///         PrincipalId = exampleServer.Identity.Apply(identity => identity?.PrincipalId),
 ///     });
 ///
-///     var sqlvnetrule = new Azurerm.Index.SqlVirtualNetworkRule("sqlvnetrule", new()
+///     var sqlvnetrule = new Azurerm.SqlVirtualNetworkRule("sqlvnetrule", new()
 ///     {
 ///         Name = "sql-vnet-rule",
 ///         ResourceGroupName = exampleResourceGroup.Name,
@@ -496,7 +530,7 @@ import 'server_microsoft_support_auditing_policy_state.dart';
 ///         SubnetId = exampleSubnet.Id,
 ///     });
 ///
-///     var exampleSqlFirewallRule = new Azurerm.Index.SqlFirewallRule("example", new()
+///     var exampleSqlFirewallRule = new Azurerm.SqlFirewallRule("example", new()
 ///     {
 ///         Name = "FirewallRule1",
 ///         ResourceGroupName = exampleResourceGroup.Name,
@@ -629,7 +663,7 @@ import 'server_microsoft_support_auditing_policy_state.dart';
 /// 			Scope:              pulumi.String(primary.Id),
 /// 			RoleDefinitionName: pulumi.String("Storage Blob Data Contributor"),
 /// 			PrincipalId: pulumi.String(exampleServer.Identity.ApplyT(func(identity mssql.ServerIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -697,6 +731,94 @@ import 'server_microsoft_support_auditing_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "primary" {
+/// }
+/// data "azure_core_getclientconfig" "example" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "virtnetname-1"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                                           = "subnetname-1"
+///   resource_group_name                            = azure_core_resourcegroup.example.name
+///   virtual_network_name                           = azure_network_virtualnetwork.example.name
+///   address_prefixes                               = ["10.0.2.0/24"]
+///   service_endpoints                              = ["Microsoft.Sql", "Microsoft.Storage"]
+///   enforce_private_link_endpoint_network_policies = true
+/// }
+/// resource "azure_authorization_assignment" "example" {
+///   scope                = data.azure_core_getsubscription.primary.id
+///   role_definition_name = "Storage Blob Data Contributor"
+///   principal_id         = azure_mssql_server.example.identity.principal_id
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "example-sqlserver"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "missadministrator"
+///   administrator_login_password = "AdminPassword123!"
+///   minimum_tls_version          = "1.2"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azurerm_sqlvirtualnetworkrule" "sqlvnetrule" {
+///   name                = "sql-vnet-rule"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   server_name         = azure_mssql_server.example.name
+///   subnet_id           = azure_network_subnet.example.id
+/// }
+/// resource "azurerm_sqlfirewallrule" "example" {
+///   name                = "FirewallRule1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   server_name         = azure_mssql_server.example.name
+///   start_ip_address    = "0.0.0.0"
+///   end_ip_address      = "0.0.0.0"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                            = "examplesa"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resourcegroup.example.location
+///   account_tier                    = "Standard"
+///   account_replication_type        = "LRS"
+///   account_kind                    = "StorageV2"
+///   allow_nested_items_to_be_public = false
+///   network_rules = {
+///     default_action             = "Deny"
+///     ip_rules                   = ["127.0.0.1"]
+///     virtual_network_subnet_ids = [azure_network_subnet.example.id]
+///     bypasses                   = ["AzureServices"]
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_mssql_servermicrosoftsupportauditingpolicy" "example" {
+///   depends_on                      = [azure_authorization_assignment.example, azure_storage_account.example]
+///   blob_storage_endpoint           = azure_storage_account.example.primary_blob_endpoint
+///   server_id                       = azure_mssql_server.example.id
+///   log_monitoring_enabled          = false
+///   storage_account_subscription_id = primaryAzurermSubscription.subscriptionId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -727,8 +849,8 @@ import 'server_microsoft_support_auditing_policy_state.dart';
 /// import com.pulumi.azure.mssql.ServerMicrosoftSupportAuditingPolicy;
 /// import com.pulumi.azure.mssql.ServerMicrosoftSupportAuditingPolicyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -965,7 +1087,7 @@ class ServerMicrosoftSupportAuditingPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String?> blobStorageEndpoint;
   /// Whether to enable the extended auditing policy. Possible values are `true` and `false`. Defaults to `true`.
   ///
-  /// &gt; **Note:** If `enabled` is `true`, `blob_storage_endpoint` or `log_monitoring_enabled` are required.
+  /// &gt; **Note:** If `enabled` is `true`, `blobStorageEndpoint` or `logMonitoringEnabled` are required.
   late final pulumi.Output<bool?> enabled;
   /// Enable audit events to Azure Monitor? To enable server audit events to Azure Monitor, please enable its main database audit events to Azure Monitor. Defaults to `true`.
   late final pulumi.Output<bool?> logMonitoringEnabled;

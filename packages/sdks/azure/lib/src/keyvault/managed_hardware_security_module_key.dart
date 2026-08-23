@@ -4,7 +4,7 @@ import 'managed_hardware_security_module_key_state.dart';
 
 /// Manages a Key Vault Managed Hardware Security Module Key.
 ///
-/// &gt; **Note:** The Azure Provider includes a Feature Toggle which will purge a Key Vault Managed Hardware Security Module Key resource on destroy, rather than the default soft-delete. See `purge_soft_deleted_hardware_security_modules_on_destroy` for more information.
+/// &gt; **Note:** The Azure Provider includes a Feature Toggle which will purge a Key Vault Managed Hardware Security Module Key resource on destroy, rather than the default soft-delete. See `purgeSoftDeletedHardwareSecurityModulesOnDestroy` for more information.
 ///
 /// ## Example Usage
 ///
@@ -22,14 +22,12 @@ import 'managed_hardware_security_module_key_state.dart';
 ///     tenantId: current.then(current => current.tenantId),
 ///     adminObjectIds: [current.then(current => current.objectId)],
 ///     purgeProtectionEnabled: false,
-///     activeConfig: [{
-///         securityDomainCertificate: [
-///             cert[0].id,
-///             cert[1].id,
-///             cert[2].id,
-///         ],
-///         securityDomainQuorum: 2,
-///     }],
+///     securityDomainKeyVaultCertificateIds: [
+///         cers["1"].id,
+///         cers["2"].id,
+///         cers["3"].id,
+///     ],
+///     securityDomainQuorum: 2,
 /// });
 /// // this gives your service principal the HSM Crypto User role which lets you create and destroy hsm keys
 /// const hsm_crypto_user = new azure.keyvault.ManagedHardwareSecurityModuleRoleAssignment("hsm-crypto-user", {
@@ -73,14 +71,12 @@ import 'managed_hardware_security_module_key_state.dart';
 ///     tenant_id=current.tenant_id,
 ///     admin_object_ids=[current.object_id],
 ///     purge_protection_enabled=False,
-///     active_config=[{
-///         "securityDomainCertificate": [
-///             cert[0]["id"],
-///             cert[1]["id"],
-///             cert[2]["id"],
-///         ],
-///         "securityDomainQuorum": 2,
-///     }])
+///     security_domain_key_vault_certificate_ids=[
+///         cers["1"]["id"],
+///         cers["2"]["id"],
+///         cers["3"]["id"],
+///     ],
+///     security_domain_quorum=2)
 /// # this gives your service principal the HSM Crypto User role which lets you create and destroy hsm keys
 /// hsm_crypto_user = azure.keyvault.ManagedHardwareSecurityModuleRoleAssignment("hsm-crypto-user",
 ///     managed_hsm_id=test["id"],
@@ -128,19 +124,13 @@ import 'managed_hardware_security_module_key_state.dart';
 ///             current.Apply(getClientConfigResult => getClientConfigResult.ObjectId),
 ///         },
 ///         PurgeProtectionEnabled = false,
-///         ActiveConfig = new[]
+///         SecurityDomainKeyVaultCertificateIds = new[]
 ///         {
-///
-///             {
-///                 { "securityDomainCertificate", new[]
-///                 {
-///                     cert[0].Id,
-///                     cert[1].Id,
-///                     cert[2].Id,
-///                 } },
-///                 { "securityDomainQuorum", 2 },
-///             },
+///             cers._1.Id,
+///             cers._2.Id,
+///             cers._3.Id,
 ///         },
+///         SecurityDomainQuorum = 2,
 ///     });
 ///
 ///     // this gives your service principal the HSM Crypto User role which lets you create and destroy hsm keys
@@ -209,16 +199,12 @@ import 'managed_hardware_security_module_key_state.dart';
 /// 				pulumi.String(current.ObjectId),
 /// 			},
 /// 			PurgeProtectionEnabled: pulumi.Bool(false),
-/// 			ActiveConfig: []map[string]interface{}{
-/// 				map[string]interface{}{
-/// 					"securityDomainCertificate": []interface{}{
-/// 						cert[0].Id,
-/// 						cert[1].Id,
-/// 						cert[2].Id,
-/// 					},
-/// 					"securityDomainQuorum": 2,
-/// 				},
+/// 			SecurityDomainKeyVaultCertificateIds: pulumi.StringArray{
+/// 				cers._1.Id,
+/// 				cers._2.Id,
+/// 				cers._3.Id,
 /// 			},
+/// 			SecurityDomainQuorum: pulumi.Int(2),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -264,6 +250,54 @@ import 'managed_hardware_security_module_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_keyvault_managedhardwaresecuritymodule" "example" {
+///   name                                      = "example"
+///   resource_group_name                       = exampleAzurermResourceGroup.name
+///   location                                  = exampleAzurermResourceGroup.location
+///   sku_name                                  = "Standard_B1"
+///   tenant_id                                 = data.azure_core_getclientconfig.current.tenant_id
+///   admin_object_ids                          = [data.azure_core_getclientconfig.current.object_id]
+///   purge_protection_enabled                  = false
+///   security_domain_key_vault_certificate_ids = [cers["1"].id, cers["2"].id, cers["3"].id]
+///   security_domain_quorum                    = 2
+/// }
+/// // this gives your service principal the HSM Crypto User role which lets you create and destroy hsm keys
+/// resource "azure_keyvault_managedhardwaresecuritymoduleroleassignment" "hsm-crypto-user" {
+///   managed_hsm_id     = test.id
+///   name               = "1e243909-064c-6ac3-84e9-1c8bf8d6ad22"
+///   scope              = "/keys"
+///   role_definition_id = "/Microsoft.KeyVault/providers/Microsoft.Authorization/roleDefinitions/21dbd100-6940-42c2-9190-5d6cb909625b"
+///   principal_id       = data.azure_core_getclientconfig.current.object_id
+/// }
+/// // this gives your service principal the HSM Crypto Officer role which lets you purge hsm keys
+/// resource "azure_keyvault_managedhardwaresecuritymoduleroleassignment" "hsm-crypto-officer" {
+///   managed_hsm_id     = test.id
+///   name               = "1e243909-064c-6ac3-84e9-1c8bf8d6ad23"
+///   scope              = "/keys"
+///   role_definition_id = "/Microsoft.KeyVault/providers/Microsoft.Authorization/roleDefinitions/515eb02d-2335-4d2d-92f2-b1cbdf9c3778"
+///   principal_id       = data.azure_core_getclientconfig.current.object_id
+/// }
+/// resource "azure_keyvault_managedhardwaresecuritymodulekey" "example" {
+///   depends_on     = [testAzurermKeyVaultManagedHardwareSecurityModuleRoleAssignment, test1]
+///   name           = "example"
+///   managed_hsm_id = test.id
+///   key_type       = "EC-HSM"
+///   curve          = "P-521"
+///   key_opts       = ["sign"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -278,8 +312,8 @@ import 'managed_hardware_security_module_key_state.dart';
 /// import com.pulumi.azure.keyvault.ManagedHardwareSecurityModuleKey;
 /// import com.pulumi.azure.keyvault.ManagedHardwareSecurityModuleKeyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -301,13 +335,11 @@ import 'managed_hardware_security_module_key_state.dart';
 ///             .tenantId(current.tenantId())
 ///             .adminObjectIds(current.objectId())
 ///             .purgeProtectionEnabled(false)
-///             .activeConfig(List.of(Map.ofEntries(
-///                 Map.entry("securityDomainCertificate", List.of(
-///                     cert[0].id(),
-///                     cert[1].id(),
-///                     cert[2].id())),
-///                 Map.entry("securityDomainQuorum", 2)
-///             )))
+///             .securityDomainKeyVaultCertificateIds(
+///                 cers.1().id(),
+///                 cers.2().id(),
+///                 cers.3().id())
+///             .securityDomainQuorum(2)
 ///             .build());
 ///
 ///         // this gives your service principal the HSM Crypto User role which lets you create and destroy hsm keys
@@ -356,12 +388,11 @@ import 'managed_hardware_security_module_key_state.dart';
 ///       adminObjectIds:
 ///         - ${current.objectId}
 ///       purgeProtectionEnabled: false
-///       activeConfig:
-///         - securityDomainCertificate:
-///             - ${cert[0].id}
-///             - ${cert[1].id}
-///             - ${cert[2].id}
-///           securityDomainQuorum: 2
+///       securityDomainKeyVaultCertificateIds:
+///         - ${cers["1"].id}
+///         - ${cers["2"].id}
+///         - ${cers["3"].id}
+///       securityDomainQuorum: 2
 ///   # this gives your service principal the HSM Crypto User role which lets you create and destroy hsm keys
 ///   hsm-crypto-user:
 ///     type: azure:keyvault:ManagedHardwareSecurityModuleRoleAssignment
@@ -407,7 +438,7 @@ import 'managed_hardware_security_module_key_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.KeyVault` - 2023-07-01
+/// * `Microsoft.KeyVault` - 2026-02-01
 ///
 /// ## Import
 ///
@@ -417,13 +448,13 @@ import 'managed_hardware_security_module_key_state.dart';
 /// $ pulumi import azure:keyvault/managedHardwareSecurityModuleKey:ManagedHardwareSecurityModuleKey example https://exampleHSM.managedhsm.azure.net/keys/exampleKey
 /// ```
 class ManagedHardwareSecurityModuleKey extends pulumi.CustomResource {
-  /// Specifies the curve to use when creating an `EC-HSM` key. Possible values are `P-256`, `P-256K`, `P-384`, and `P-521`. This field is required if `key_type` is `EC-HSM`. Changing this forces a new resource to be created.
+  /// Specifies the curve to use when creating an `EC-HSM` key. Possible values are `P-256`, `P-256K`, `P-384`, and `P-521`. This field is required if `keyType` is `EC-HSM`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> curve;
   /// Expiration UTC datetime (Y-m-d'T'H:M:S'Z'). When this parameter gets changed on reruns, if newer date is ahead of current date, an update is performed. If the newer date is before the current date, resource will be force created.
   late final pulumi.Output<String?> expirationDate;
   /// A list of JSON web key operations. Possible values include: `decrypt`, `encrypt`, `sign`, `unwrapKey`, `verify`, `wrapKey` and `import`. Please note these values are case-sensitive.
   late final pulumi.Output<List<String>> keyOpts;
-  /// Specifies the Size of the RSA key to create in bytes. For example, 1024 or 2048. *Note*: This field is required if `key_type` is `RSA-HSM` or `oct-HSM`. Changing this forces a new resource to be created.
+  /// Specifies the Size of the RSA key to create in bytes. For example, 1024 or 2048. *Note*: This field is required if `keyType` is `RSA-HSM` or `oct-HSM`. Changing this forces a new resource to be created.
   late final pulumi.Output<int?> keySize;
   /// Specifies the Key Type to use for this Key Vault Managed Hardware Security Module Key. Possible values are `EC-HSM`, `oct-HSM` and `RSA-HSM`. More details see [HSM-protected keys](https://learn.microsoft.com/en-us/azure/key-vault/keys/about-keys#hsm-protected-keys). Changing this forces a new resource to be created.
   late final pulumi.Output<String> keyType;
@@ -433,7 +464,7 @@ class ManagedHardwareSecurityModuleKey extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Key not usable before the provided UTC datetime (Y-m-d'T'H:M:S'Z').
   ///
-  /// &gt; **Note:** Once `expiration_date` is set, it's not possible to unset the key even if it is deleted & recreated as underlying Azure API uses the restore of the purged key.
+  /// &gt; **Note:** Once `expirationDate` is set, it's not possible to unset the key even if it is deleted & recreated as underlying Azure API uses the restore of the purged key.
   late final pulumi.Output<String?> notBeforeDate;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;

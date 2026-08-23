@@ -26,9 +26,9 @@ class VirtualNetworkPeeringState {
   final pulumi.Input<String>? resourceGroupName;
   /// A mapping of key values pairs that can be used to sync network routes from the remote virtual network to the local virtual network. See the trigger example for an example on how to set it up.
   final pulumi.Input<Map<String, String>>? triggers;
-  /// Controls if remote gateways can be used on the local virtual network. If the flag is set to `true`, and `allow_gateway_transit` on the remote peering is also `true`, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to `true`. This flag cannot be set if virtual network already has a gateway. Defaults to `false`.
+  /// Controls if remote gateways can be used on the local virtual network. If the flag is set to `true`, and `allowGatewayTransit` on the remote peering is also `true`, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to `true`. This flag cannot be set if virtual network already has a gateway. Defaults to `false`.
   ///
-  /// &gt; **Note:** `use_remote_gateways` must be set to `false` if using Global Virtual Network Peerings.
+  /// &gt; **Note:** `useRemoteGateways` must be set to `false` if using Global Virtual Network Peerings.
   final pulumi.Input<bool>? useRemoteGateways;
   /// The name of the virtual network. Changing this forces a new resource to be created.
   final pulumi.Input<String>? virtualNetworkName;
@@ -45,7 +45,7 @@ class VirtualNetworkPeeringState {
   /// [remoteVirtualNetworkId] The full Azure resource ID of the remote virtual network. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the virtual network peering. Changing this forces a new resource to be created.
   /// [triggers] A mapping of key values pairs that can be used to sync network routes from the remote virtual network to the local virtual network. See the trigger example for an example on how to set it up.
-  /// [useRemoteGateways] Controls if remote gateways can be used on the local virtual network. If the flag is set to `true`, and `allow_gateway_transit` on the remote peering is also `true`, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to `true`. This flag cannot be set if virtual network already has a gateway. Defaults to `false`.
+  /// [useRemoteGateways] Controls if remote gateways can be used on the local virtual network. If the flag is set to `true`, and `allowGatewayTransit` on the remote peering is also `true`, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to `true`. This flag cannot be set if virtual network already has a gateway. Defaults to `false`.
   /// [virtualNetworkName] The name of the virtual network. Changing this forces a new resource to be created.
   const VirtualNetworkPeeringState({
     this.allowForwardedTraffic,
@@ -99,4 +99,3 @@ class VirtualNetworkPeeringState {
     );
   }
 }
-

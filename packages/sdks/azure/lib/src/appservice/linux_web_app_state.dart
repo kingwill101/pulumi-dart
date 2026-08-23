@@ -16,9 +16,9 @@ import 'linux_web_app_storage_account.dart';
 class LinuxWebAppState {
   /// A map of key-value pairs of App Settings.
   final pulumi.Input<Map<String, String>>? appSettings;
-  /// A `auth_settings` block as defined below.
+  /// A `authSettings` block as defined below.
   final pulumi.Input<LinuxWebAppAuthSettings>? authSettings;
-  /// An `auth_settings_v2` block as defined below.
+  /// An `authSettingsV2` block as defined below.
   final pulumi.Input<LinuxWebAppAuthSettingsV2>? authSettingsV2;
   /// A `backup` block as defined below.
   final pulumi.Input<LinuxWebAppBackup>? backup;
@@ -27,10 +27,12 @@ class LinuxWebAppState {
   /// Should Client Certificates be enabled?
   final pulumi.Input<bool>? clientCertificateEnabled;
   /// Paths to exclude when using client certificates, separated by ;
+  ///
+  /// &gt; **Note:** TLS 1.3 and HTTP 2.0 don't support TLS renegotiation. These protocols will not work if your app is configured with client certificate settings that use TLS renegotiation. Either set `clientCertificateEnabled` to `false`, or set `clientCertificateMode` to `Optional` or `Required` and remove all `clientCertificateExclusionPaths`.
   final pulumi.Input<String>? clientCertificateExclusionPaths;
-  /// The Client Certificate mode. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. This property has no effect when `client_certificate_enabled` is `false`. Defaults to `Required`.
+  /// The Client Certificate mode. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. This property has no effect when `clientCertificateEnabled` is `false`. Defaults to `Required`.
   final pulumi.Input<String>? clientCertificateMode;
-  /// One or more `connection_string` blocks as defined below.
+  /// One or more `connectionString` blocks as defined below.
   final pulumi.Input<List<LinuxWebAppConnectionString>>? connectionStrings;
   /// The identifier used by App Service to perform domain ownership verification via DNS TXT record.
   final pulumi.Input<String>? customDomainVerificationId;
@@ -64,7 +66,7 @@ class LinuxWebAppState {
   final pulumi.Input<String>? outboundIpAddresses;
   /// A list of possible outbound ip address.
   final pulumi.Input<List<String>>? possibleOutboundIpAddressLists;
-  /// A comma-separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// A comma-separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   final pulumi.Input<String>? possibleOutboundIpAddresses;
   /// Should public network access be enabled for the Web App. Defaults to `true`.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
@@ -72,13 +74,13 @@ class LinuxWebAppState {
   final pulumi.Input<String>? resourceGroupName;
   /// The ID of the Service Plan that this Linux App Service will be created in.
   final pulumi.Input<String>? servicePlanId;
-  /// A `site_config` block as defined below.
+  /// A `siteConfig` block as defined below.
   final pulumi.Input<LinuxWebAppSiteConfig>? siteConfig;
-  /// A `site_credential` block as defined below.
+  /// A `siteCredential` block as defined below.
   final pulumi.Input<List<LinuxWebAppSiteCredential>>? siteCredentials;
-  /// A `sticky_settings` block as defined below.
+  /// A `stickySettings` block as defined below.
   final pulumi.Input<LinuxWebAppStickySettings>? stickySettings;
-  /// One or more `storage_account` blocks as defined below.
+  /// One or more `storageAccount` blocks as defined below.
   final pulumi.Input<List<LinuxWebAppStorageAccount>>? storageAccounts;
   /// A mapping of tags which should be assigned to the Linux Web App.
   final pulumi.Input<Map<String, String>>? tags;
@@ -86,9 +88,9 @@ class LinuxWebAppState {
   final pulumi.Input<bool>? virtualNetworkBackupRestoreEnabled;
   /// The subnet id which will be used by this Web App for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   ///
-  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource app_service_virtual_network_swift_connection and in-line within this resource using the `virtual_network_subnet_id` property. You cannot use both methods simultaneously. If the virtual network is set via the resource `app_service_virtual_network_swift_connection` then `ignore_changes` should be used in the web app configuration.
+  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource appServiceVirtualNetworkSwiftConnection and in-line within this resource using the `virtualNetworkSubnetId` property. You cannot use both methods simultaneously. If the virtual network is set via the resource `appServiceVirtualNetworkSwiftConnection` then `ignoreChanges` should be used in the web app configuration.
   ///
-  /// &gt; **Note:** Assigning the `virtual_network_subnet_id` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
+  /// &gt; **Note:** Assigning the `virtualNetworkSubnetId` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
   final pulumi.Input<String>? virtualNetworkSubnetId;
   /// Should the traffic for the image pull be routed over virtual network enabled. Defaults to `false`.
   ///
@@ -96,23 +98,23 @@ class LinuxWebAppState {
   final pulumi.Input<bool>? vnetImagePullEnabled;
   /// Should the default WebDeploy Basic Authentication publishing credentials enabled. Defaults to `true`.
   ///
-  /// &gt; **Note:** Setting this value to true will disable the ability to use `zip_deploy_file` which currently relies on the default publishing profile.
+  /// &gt; **Note:** Setting this value to true will disable the ability to use `zipDeployFile` which currently relies on the default publishing profile.
   final pulumi.Input<bool>? webdeployPublishBasicAuthenticationEnabled;
   /// The local path and filename of the Zip packaged application to deploy to this Linux Web App.
   ///
-  /// &gt; **Note:** Using this value requires either `WEBSITE_RUN_FROM_PACKAGE=1` or `SCM_DO_BUILD_DURING_DEPLOYMENT=true` to be set on the App in `app_settings`. Refer to the Azure docs on [running the Web App directly from the Zip package](https://learn.microsoft.com/en-us/azure/app-service/deploy-run-package), or [automating the build for Zip deploy](https://learn.microsoft.com/en-us/azure/app-service/deploy-zip#enable-build-automation-for-zip-deploy) for further details.
+  /// &gt; **Note:** Using this value requires either `WEBSITE_RUN_FROM_PACKAGE=1` or `SCM_DO_BUILD_DURING_DEPLOYMENT=true` to be set on the App in `appSettings`. Refer to the Azure docs on [running the Web App directly from the Zip package](https://learn.microsoft.com/en-us/azure/app-service/deploy-run-package), or [automating the build for Zip deploy](https://learn.microsoft.com/en-us/azure/app-service/deploy-zip#enable-build-automation-for-zip-deploy) for further details.
   final pulumi.Input<String>? zipDeployFile;
 
   /// Creates a new [LinuxWebAppState].
   /// [appSettings] A map of key-value pairs of App Settings.
-  /// [authSettings] A `auth_settings` block as defined below.
-  /// [authSettingsV2] An `auth_settings_v2` block as defined below.
+  /// [authSettings] A `authSettings` block as defined below.
+  /// [authSettingsV2] An `authSettingsV2` block as defined below.
   /// [backup] A `backup` block as defined below.
   /// [clientAffinityEnabled] Should Client Affinity be enabled?
   /// [clientCertificateEnabled] Should Client Certificates be enabled?
   /// [clientCertificateExclusionPaths] Paths to exclude when using client certificates, separated by ;
-  /// [clientCertificateMode] The Client Certificate mode. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. This property has no effect when `client_certificate_enabled` is `false`. Defaults to `Required`.
-  /// [connectionStrings] One or more `connection_string` blocks as defined below.
+  /// [clientCertificateMode] The Client Certificate mode. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. This property has no effect when `clientCertificateEnabled` is `false`. Defaults to `Required`.
+  /// [connectionStrings] One or more `connectionString` blocks as defined below.
   /// [customDomainVerificationId] The identifier used by App Service to perform domain ownership verification via DNS TXT record.
   /// [defaultHostname] The default hostname of the Linux Web App.
   /// [enabled] Should the Linux Web App be enabled? Defaults to `true`.
@@ -128,14 +130,14 @@ class LinuxWebAppState {
   /// [outboundIpAddressLists] A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12"]`
   /// [outboundIpAddresses] A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`.
   /// [possibleOutboundIpAddressLists] A list of possible outbound ip address.
-  /// [possibleOutboundIpAddresses] A comma-separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// [possibleOutboundIpAddresses] A comma-separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   /// [publicNetworkAccessEnabled] Should public network access be enabled for the Web App. Defaults to `true`.
   /// [resourceGroupName] The name of the Resource Group where the Linux Web App should exist. Changing this forces a new Linux Web App to be created.
   /// [servicePlanId] The ID of the Service Plan that this Linux App Service will be created in.
-  /// [siteConfig] A `site_config` block as defined below.
-  /// [siteCredentials] A `site_credential` block as defined below.
-  /// [stickySettings] A `sticky_settings` block as defined below.
-  /// [storageAccounts] One or more `storage_account` blocks as defined below.
+  /// [siteConfig] A `siteConfig` block as defined below.
+  /// [siteCredentials] A `siteCredential` block as defined below.
+  /// [stickySettings] A `stickySettings` block as defined below.
+  /// [storageAccounts] One or more `storageAccount` blocks as defined below.
   /// [tags] A mapping of tags which should be assigned to the Linux Web App.
   /// [virtualNetworkBackupRestoreEnabled] Whether backup and restore operations over the linked virtual network are enabled. Defaults to `false`.
   /// [virtualNetworkSubnetId] The subnet id which will be used by this Web App for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
@@ -269,4 +271,3 @@ class LinuxWebAppState {
     );
   }
 }
-

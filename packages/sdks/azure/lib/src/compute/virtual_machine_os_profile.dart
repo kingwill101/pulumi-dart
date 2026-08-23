@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineOsProfile {
   /// (Optional for Windows, Optional for Linux) The password associated with the local administrator account.
   ///
-  /// &gt; **NOTE:** If using Linux, it may be preferable to use SSH Key authentication (available in the `os_profile_linux_config` block) instead of password authentication.
+  /// &gt; **NOTE:** If using Linux, it may be preferable to use SSH Key authentication (available in the `osProfileLinuxConfig` block) instead of password authentication.
   final pulumi.Input<String>? adminPassword;
   /// Specifies the name of the local administrator account.
   final pulumi.Input<String> adminUsername;
@@ -44,4 +44,3 @@ class VirtualMachineOsProfile {
     );
   }
 }
-

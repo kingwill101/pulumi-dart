@@ -14,7 +14,7 @@ class CloudVmClusterState {
   final pulumi.Input<String>? clusterName;
   /// The number of CPU cores enabled on the Cloud VM Cluster. Changing this forces a new Cloud VM Cluster to be created.
   final pulumi.Input<int>? cpuCoreCount;
-  /// A `data_collection_options` block as defined below. Changing this forces a new Cloud VM Cluster to be created.
+  /// A `dataCollectionOptions` block as defined below. Changing this forces a new Cloud VM Cluster to be created.
   final pulumi.Input<CloudVmClusterDataCollectionOptions>? dataCollectionOptions;
   /// The percentage assigned to DATA storage (user data and database files). Changing this forces a new Cloud VM Cluster to be created. The remaining percentage is assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). Accepted values are `35`, `40`, `60` and `80`.
   final pulumi.Input<int>? dataStoragePercentage;
@@ -28,7 +28,7 @@ class CloudVmClusterState {
   final pulumi.Input<String>? displayName;
   /// The name of the OCI Private DNS Zone to be associated with the Cloud VM Cluster. This is required for specifying your own private domain name. Changing this forces a new Cloud VM Cluster to be created.
   final pulumi.Input<String>? domain;
-  /// A `file_system_configuration` block as defined below.
+  /// A `fileSystemConfiguration` block as defined below.
   final pulumi.Input<List<CloudVmClusterFileSystemConfiguration>>? fileSystemConfigurations;
   /// A valid Oracle Grid Infrastructure (GI) software version. Changing this forces a new Cloud VM Cluster to be created.
   final pulumi.Input<String>? giVersion;
@@ -76,14 +76,14 @@ class CloudVmClusterState {
   /// [cloudExadataInfrastructureId] The [OCID](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the Cloud Exadata infrastructure. Changing this forces a new Cloud VM Cluster to be created.
   /// [clusterName] The cluster name for Cloud VM Cluster. Changing this forces a new Cloud VM Cluster to be created.
   /// [cpuCoreCount] The number of CPU cores enabled on the Cloud VM Cluster. Changing this forces a new Cloud VM Cluster to be created.
-  /// [dataCollectionOptions] A `data_collection_options` block as defined below. Changing this forces a new Cloud VM Cluster to be created.
+  /// [dataCollectionOptions] A `dataCollectionOptions` block as defined below. Changing this forces a new Cloud VM Cluster to be created.
   /// [dataStoragePercentage] The percentage assigned to DATA storage (user data and database files). Changing this forces a new Cloud VM Cluster to be created. The remaining percentage is assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). Accepted values are `35`, `40`, `60` and `80`.
   /// [dataStorageSizeInTbs] The data disk group size to be allocated in TBs. Changing this forces a new Cloud VM Cluster to be created.
   /// [dbNodeStorageSizeInGbs] The local node storage to be allocated in GBs. Changing this forces a new Cloud VM Cluster to be created.
   /// [dbServers] The list of DB servers. Changing this forces a new Cloud VM Cluster to be created.
   /// [displayName] The user-friendly name for the Cloud VM Cluster. Changing this forces a new Cloud VM Cluster to be created. The name does not need to be unique.
   /// [domain] The name of the OCI Private DNS Zone to be associated with the Cloud VM Cluster. This is required for specifying your own private domain name. Changing this forces a new Cloud VM Cluster to be created.
-  /// [fileSystemConfigurations] A `file_system_configuration` block as defined below.
+  /// [fileSystemConfigurations] A `fileSystemConfiguration` block as defined below.
   /// [giVersion] A valid Oracle Grid Infrastructure (GI) software version. Changing this forces a new Cloud VM Cluster to be created.
   /// [hostname] The hostname for the Cloud VM Cluster without suffix. Changing this forces a new Cloud VM Cluster to be created.
   /// [hostnameActual] The hostname for the Cloud VM Cluster with suffix.
@@ -213,4 +213,3 @@ class CloudVmClusterState {
     );
   }
 }
-

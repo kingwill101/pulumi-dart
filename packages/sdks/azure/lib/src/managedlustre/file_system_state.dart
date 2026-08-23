@@ -9,17 +9,17 @@ import 'file_system_root_squash.dart';
 
 /// Input properties used for looking up and filtering FileSystem resources.
 class FileSystemState {
-  /// An `encryption_key` block as defined below.
+  /// An `encryptionKey` block as defined below.
   ///
-  /// &gt; **Note:** Removing `encryption_key` forces a new resource to be created.
+  /// &gt; **Note:** Removing `encryptionKey` forces a new resource to be created.
   final pulumi.Input<FileSystemEncryptionKey>? encryptionKey;
-  /// A `hsm_setting` block as defined below. Changing this forces a new resource to be created.
+  /// A `hsmSetting` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<FileSystemHsmSetting>? hsmSetting;
   /// An `identity` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<FileSystemIdentity>? identity;
   /// The Azure Region where the Azure Managed Lustre File System should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-  /// A `maintenance_window` block as defined below.
+  /// A `maintenanceWindow` block as defined below.
   final pulumi.Input<FileSystemMaintenanceWindow>? maintenanceWindow;
   /// IP Address of Managed Lustre File System Services.
   final pulumi.Input<String>? mgsAddress;
@@ -27,11 +27,11 @@ class FileSystemState {
   final pulumi.Input<String>? name;
   /// The name of the Resource Group where the Azure Managed Lustre File System should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-  /// A `root_squash` block as defined below.
+  /// A `rootSquash` block as defined below.
   final pulumi.Input<FileSystemRootSquash>? rootSquash;
   /// The SKU name for the Azure Managed Lustre File System. Possible values are `AMLFS-Durable-Premium-40`, `AMLFS-Durable-Premium-125`, `AMLFS-Durable-Premium-250` and `AMLFS-Durable-Premium-500`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? skuName;
-  /// The size of the Azure Managed Lustre File System in TiB. The valid values for this field are dependant on which `sku_name` has been defined in the configuration file. For more information on the valid values for this field please see the [product documentation](https://learn.microsoft.com/azure/azure-managed-lustre/create-file-system-resource-manager#file-system-type-and-size-options). Changing this forces a new resource to be created.
+  /// The size of the Azure Managed Lustre File System in TiB. The valid values for this field are dependant on which `skuName` has been defined in the configuration file. For more information on the valid values for this field please see the [product documentation](https://learn.microsoft.com/azure/azure-managed-lustre/create-file-system-resource-manager#file-system-type-and-size-options). Changing this forces a new resource to be created.
   final pulumi.Input<int>? storageCapacityInTb;
   /// The resource ID of the Subnet that is used for managing the Azure Managed Lustre file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the Virtual Network's address space. Changing this forces a new resource to be created.
   final pulumi.Input<String>? subnetId;
@@ -41,17 +41,17 @@ class FileSystemState {
   final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [FileSystemState].
-  /// [encryptionKey] An `encryption_key` block as defined below.
-  /// [hsmSetting] A `hsm_setting` block as defined below. Changing this forces a new resource to be created.
+  /// [encryptionKey] An `encryptionKey` block as defined below.
+  /// [hsmSetting] A `hsmSetting` block as defined below. Changing this forces a new resource to be created.
   /// [identity] An `identity` block as defined below. Changing this forces a new resource to be created.
   /// [location] The Azure Region where the Azure Managed Lustre File System should exist. Changing this forces a new resource to be created.
-  /// [maintenanceWindow] A `maintenance_window` block as defined below.
+  /// [maintenanceWindow] A `maintenanceWindow` block as defined below.
   /// [mgsAddress] IP Address of Managed Lustre File System Services.
   /// [name] The name which should be used for this Azure Managed Lustre File System. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Azure Managed Lustre File System should exist. Changing this forces a new resource to be created.
-  /// [rootSquash] A `root_squash` block as defined below.
+  /// [rootSquash] A `rootSquash` block as defined below.
   /// [skuName] The SKU name for the Azure Managed Lustre File System. Possible values are `AMLFS-Durable-Premium-40`, `AMLFS-Durable-Premium-125`, `AMLFS-Durable-Premium-250` and `AMLFS-Durable-Premium-500`. Changing this forces a new resource to be created.
-  /// [storageCapacityInTb] The size of the Azure Managed Lustre File System in TiB. The valid values for this field are dependant on which `sku_name` has been defined in the configuration file. For more information on the valid values for this field please see the [product documentation](https://learn.microsoft.com/azure/azure-managed-lustre/create-file-system-resource-manager#file-system-type-and-size-options). Changing this forces a new resource to be created.
+  /// [storageCapacityInTb] The size of the Azure Managed Lustre File System in TiB. The valid values for this field are dependant on which `skuName` has been defined in the configuration file. For more information on the valid values for this field please see the [product documentation](https://learn.microsoft.com/azure/azure-managed-lustre/create-file-system-resource-manager#file-system-type-and-size-options). Changing this forces a new resource to be created.
   /// [subnetId] The resource ID of the Subnet that is used for managing the Azure Managed Lustre file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the Virtual Network's address space. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Managed Lustre File System.
   /// [zones] A list of availability zones for the Azure Managed Lustre File System. Changing this forces a new resource to be created.
@@ -110,4 +110,3 @@ class FileSystemState {
     );
   }
 }
-

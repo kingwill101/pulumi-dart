@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_policy_assignment_override_selector.dart';
 
 class GroupPolicyAssignmentOverride {
-  /// One or more `override_selector` block as defined below.
+  /// One or more `overrideSelector` block as defined below.
   final pulumi.Input<List<GroupPolicyAssignmentOverrideSelector>>? selectors;
   /// Specifies the value to override the policy property. Possible values for `policyEffect` override listed [policy effects](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects).
   final pulumi.Input<String> value;
 
   /// Creates a new [GroupPolicyAssignmentOverride].
-  /// [selectors] One or more `override_selector` block as defined below.
+  /// [selectors] One or more `overrideSelector` block as defined below.
   /// [value] Specifies the value to override the policy property. Possible values for `policyEffect` override listed [policy effects](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects).
   const GroupPolicyAssignmentOverride({
     this.selectors,
@@ -31,4 +31,3 @@ class GroupPolicyAssignmentOverride {
     );
   }
 }
-

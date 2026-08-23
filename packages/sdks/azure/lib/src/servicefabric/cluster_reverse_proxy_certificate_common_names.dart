@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_reverse_proxy_certificate_common_names_common_name.dart';
 
 class ClusterReverseProxyCertificateCommonNames {
-  /// A `common_names` block as defined below.
+  /// A `commonNames` block as defined below.
   final pulumi.Input<List<ClusterReverseProxyCertificateCommonNamesCommonName>> commonNames;
   /// The X509 Store where the Certificate Exists, such as `My`.
   final pulumi.Input<String> x509StoreName;
 
   /// Creates a new [ClusterReverseProxyCertificateCommonNames].
-  /// [commonNames] A `common_names` block as defined below.
+  /// [commonNames] A `commonNames` block as defined below.
   /// [x509StoreName] The X509 Store where the Certificate Exists, such as `My`.
   const ClusterReverseProxyCertificateCommonNames({
     required this.commonNames,
@@ -31,4 +31,3 @@ class ClusterReverseProxyCertificateCommonNames {
     );
   }
 }
-

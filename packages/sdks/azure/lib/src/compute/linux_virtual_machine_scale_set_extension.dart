@@ -14,11 +14,11 @@ class LinuxVirtualMachineScaleSetExtension {
   final pulumi.Input<String> name;
   /// A JSON String which specifies Sensitive Settings (such as Passwords) for the Extension.
   ///
-  /// &gt; **Note:** Keys within the `protected_settings` block are notoriously case-sensitive, where the casing required (e.g. TitleCase vs snakeCase) depends on the Extension being used. Please refer to the documentation for the specific Virtual Machine Extension you're looking to use for more information.
+  /// &gt; **Note:** Keys within the `protectedSettings` block are notoriously case-sensitive, where the casing required (e.g. TitleCase vs snakeCase) depends on the Extension being used. Please refer to the documentation for the specific Virtual Machine Extension you're looking to use for more information.
   final pulumi.Input<String>? protectedSettings;
-  /// A `protected_settings_from_key_vault` block as defined below.
+  /// A `protectedSettingsFromKeyVault` block as defined below.
   ///
-  /// &gt; **Note:** `protected_settings_from_key_vault` cannot be used with `protected_settings`
+  /// &gt; **Note:** `protectedSettingsFromKeyVault` cannot be used with `protectedSettings`
   final pulumi.Input<LinuxVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault>? protectedSettingsFromKeyVault;
   /// An ordered list of Extension names which this should be provisioned after.
   final pulumi.Input<List<String>>? provisionAfterExtensions;
@@ -39,7 +39,7 @@ class LinuxVirtualMachineScaleSetExtension {
   /// [forceUpdateTag] A value which, when different to the previous value can be used to force-run the Extension even if the Extension Configuration hasn't changed.
   /// [name] The name for the Virtual Machine Scale Set Extension.
   /// [protectedSettings] A JSON String which specifies Sensitive Settings (such as Passwords) for the Extension.
-  /// [protectedSettingsFromKeyVault] A `protected_settings_from_key_vault` block as defined below.
+  /// [protectedSettingsFromKeyVault] A `protectedSettingsFromKeyVault` block as defined below.
   /// [provisionAfterExtensions] An ordered list of Extension names which this should be provisioned after.
   /// [publisher] Specifies the Publisher of the Extension.
   /// [settings] A JSON String which specifies Settings for the Extension.
@@ -91,4 +91,3 @@ class LinuxVirtualMachineScaleSetExtension {
     );
   }
 }
-

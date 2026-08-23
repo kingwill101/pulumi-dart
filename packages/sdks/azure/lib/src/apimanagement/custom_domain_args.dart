@@ -14,7 +14,7 @@ import 'custom_domain_scm.dart';
 class CustomDomainArgs {
   /// The ID of the API Management service for which to configure Custom Domains. Changing this forces a new API Management Custom Domain resource to be created.
   final pulumi.Input<String> apiManagementId;
-  /// One or more `developer_portal` blocks as defined below.
+  /// One or more `developerPortal` blocks as defined below.
   final pulumi.Input<List<CustomDomainDeveloperPortal>>? developerPortals;
   /// One or more `gateway` blocks as defined below.
   final pulumi.Input<List<CustomDomainGateway>>? gateways;
@@ -27,7 +27,7 @@ class CustomDomainArgs {
 
   /// Creates a new [CustomDomainArgs].
   /// [apiManagementId] The ID of the API Management service for which to configure Custom Domains. Changing this forces a new API Management Custom Domain resource to be created.
-  /// [developerPortals] One or more `developer_portal` blocks as defined below.
+  /// [developerPortals] One or more `developerPortal` blocks as defined below.
   /// [gateways] One or more `gateway` blocks as defined below.
   /// [managements] One or more `management` blocks as defined below.
   /// [portals] One or more `portal` blocks as defined below.
@@ -63,4 +63,3 @@ class CustomDomainArgs {
     );
   }
 }
-

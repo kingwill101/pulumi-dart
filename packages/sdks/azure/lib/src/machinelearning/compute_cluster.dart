@@ -371,6 +371,86 @@ import 'compute_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "west europe"
+///   tags = {
+///     "stage" = "example"
+///   }
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "example-ai"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                     = "example-kv"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                 = "standard"
+///   purge_protection_enabled = true
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplesa"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_machinelearning_workspace" "example" {
+///   name                    = "example-mlw"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   application_insights_id = azure_appinsights_insights.example.id
+///   key_vault_id            = azure_keyvault_keyvault.example.id
+///   storage_account_id      = azure_storage_account.example.id
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.1.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.1.0.0/24"]
+/// }
+/// resource "azure_machinelearning_computecluster" "test" {
+///   name                          = "example"
+///   location                      = azure_core_resourcegroup.example.location
+///   vm_priority                   = "LowPriority"
+///   vm_size                       = "Standard_DS2_v2"
+///   machine_learning_workspace_id = azure_machinelearning_workspace.example.id
+///   subnet_resource_id            = azure_network_subnet.example.id
+///   scale_settings = {
+///     min_node_count                       = 0
+///     max_node_count                       = 1
+///     scale_down_nodes_after_idle_duration = "PT30S"
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -397,8 +477,8 @@ import 'compute_cluster_state.dart';
 /// import com.pulumi.azure.machinelearning.ComputeClusterArgs;
 /// import com.pulumi.azure.machinelearning.inputs.ComputeClusterScaleSettingsArgs;
 /// import com.pulumi.azure.machinelearning.inputs.ComputeClusterIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -606,7 +686,7 @@ class ComputeCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Whether the compute cluster will have a public ip. Defaults to `true`. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<bool?> nodePublicIpEnabled;
-  /// A `scale_settings` block as defined below.
+  /// A `scaleSettings` block as defined below.
   late final pulumi.Output<ComputeClusterScaleSettings> scaleSettings;
   /// Credentials for an administrator user account that will be created on each compute node. A `ssh` block as defined below. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<ComputeClusterSsh?> ssh;

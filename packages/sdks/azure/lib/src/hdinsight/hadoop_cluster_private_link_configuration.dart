@@ -6,14 +6,14 @@ import 'hadoop_cluster_private_link_configuration_ip_configuration.dart';
 class HadoopClusterPrivateLinkConfiguration {
   /// The ID of the private link service group.
   final pulumi.Input<String> groupId;
-  /// An `ip_configuration` block as defined below.
+  /// An `ipConfiguration` block as defined below.
   final pulumi.Input<HadoopClusterPrivateLinkConfigurationIpConfiguration> ipConfiguration;
   /// The name of the private link configuration.
   final pulumi.Input<String> name;
 
   /// Creates a new [HadoopClusterPrivateLinkConfiguration].
   /// [groupId] The ID of the private link service group.
-  /// [ipConfiguration] An `ip_configuration` block as defined below.
+  /// [ipConfiguration] An `ipConfiguration` block as defined below.
   /// [name] The name of the private link configuration.
   const HadoopClusterPrivateLinkConfiguration({
     required this.groupId,
@@ -37,4 +37,3 @@ class HadoopClusterPrivateLinkConfiguration {
     );
   }
 }
-

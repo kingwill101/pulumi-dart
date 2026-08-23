@@ -7,9 +7,9 @@ class LinuxWebAppSlotSiteConfigApplicationStack {
   final pulumi.Input<String>? dockerImageName;
   /// The User Name to use for authentication against the registry to pull the image.
   ///
-  /// &gt; **Note:** `docker_registry_url`, `docker_registry_username`, and `docker_registry_password` replace the use of the `app_settings` values of `DOCKER_REGISTRY_SERVER_URL`, `DOCKER_REGISTRY_SERVER_USERNAME` and `DOCKER_REGISTRY_SERVER_PASSWORD` respectively, these values will be managed by the provider and should not be specified in the `app_settings` map.
+  /// &gt; **Note:** `dockerRegistryUrl`, `dockerRegistryUsername`, and `dockerRegistryPassword` replace the use of the `appSettings` values of `DOCKER_REGISTRY_SERVER_URL`, `DOCKER_REGISTRY_SERVER_USERNAME` and `DOCKER_REGISTRY_SERVER_PASSWORD` respectively, these values will be managed by the provider and should not be specified in the `appSettings` map.
   final pulumi.Input<String>? dockerRegistryPassword;
-  /// The URL of the container registry where the `docker_image_name` is located. e.g. `https://index.docker.io` or `https://mcr.microsoft.com`. This value is required with `docker_image_name`.
+  /// The URL of the container registry where the `dockerImageName` is located. e.g. `https://index.docker.io` or `https://mcr.microsoft.com`. This value is required with `dockerImageName`.
   final pulumi.Input<String>? dockerRegistryUrl;
   /// The User Name to use for authentication against the registry to pull the image.
   final pulumi.Input<String>? dockerRegistryUsername;
@@ -21,13 +21,13 @@ class LinuxWebAppSlotSiteConfigApplicationStack {
   ///
   /// &gt; **Note:** `JBOSSEAP` requires a Premium Service Plan SKU to be a valid option.
   final pulumi.Input<String>? javaServer;
-  /// The Version of the `java_server` to use.
+  /// The Version of the `javaServer` to use.
   final pulumi.Input<String>? javaServerVersion;
   /// The Version of Java to use. Possible values are `8`, `11`, `17` and `21`.
   ///
-  /// &gt; **Note:** The valid version combinations for `java_version`, `java_server` and `java_server_version` can be checked from the command line via `az webapp list-runtimes --os-type linux`.
+  /// &gt; **Note:** The valid version combinations for `javaVersion`, `javaServer` and `javaServerVersion` can be checked from the command line via `az webapp list-runtimes --os-type linux`.
   final pulumi.Input<String>? javaVersion;
-  /// The version of Node to run. Possible values are `12-lts`, `14-lts`, `16-lts`, `18-lts`, `20-lts`, `22-lts` and `24-lts`. This property conflicts with `java_version`.
+  /// The version of Node to run. Possible values are `12-lts`, `14-lts`, `16-lts`, `18-lts`, `20-lts`, `22-lts` and `24-lts`. This property conflicts with `javaVersion`.
   ///
   /// &gt; **Note:** 10.x versions have been/are being deprecated so may cease to work for new resources in the future and may be removed from the provider.
   final pulumi.Input<String>? nodeVersion;
@@ -35,7 +35,7 @@ class LinuxWebAppSlotSiteConfigApplicationStack {
   ///
   /// &gt; **Note:** version `7.4` is deprecated and will be removed from the provider in a future version.
   final pulumi.Input<String>? phpVersion;
-  /// The version of Python to run. Possible values include `3.13`, `3.12`, `3.11`, `3.10`, `3.9`, `3.8` and `3.7`.
+  /// The version of Python to run. Possible values include `3.14`, `3.13`, `3.12`, `3.11`, `3.10`, `3.9`, `3.8` and `3.7`.
   final pulumi.Input<String>? pythonVersion;
   /// The version of Ruby to run. Possible values include `2.6` and `2.7`.
   final pulumi.Input<String>? rubyVersion;
@@ -43,16 +43,16 @@ class LinuxWebAppSlotSiteConfigApplicationStack {
   /// Creates a new [LinuxWebAppSlotSiteConfigApplicationStack].
   /// [dockerImageName] The docker image, including tag, to be used. e.g. `appsvc/staticsite:latest`.
   /// [dockerRegistryPassword] The User Name to use for authentication against the registry to pull the image.
-  /// [dockerRegistryUrl] The URL of the container registry where the `docker_image_name` is located. e.g. `https://index.docker.io` or `https://mcr.microsoft.com`. This value is required with `docker_image_name`.
+  /// [dockerRegistryUrl] The URL of the container registry where the `dockerImageName` is located. e.g. `https://index.docker.io` or `https://mcr.microsoft.com`. This value is required with `dockerImageName`.
   /// [dockerRegistryUsername] The User Name to use for authentication against the registry to pull the image.
   /// [dotnetVersion] The version of .NET to use. Possible values include `3.1`, `5.0`, `6.0`, `7.0`, `8.0`, `9.0` and `10.0`.
   /// [goVersion] The version of Go to use. Possible values include `1.18`, and `1.19`.
   /// [javaServer] The Java server type. Possible values include `JAVA`, `TOMCAT`, and `JBOSSEAP`.
-  /// [javaServerVersion] The Version of the `java_server` to use.
+  /// [javaServerVersion] The Version of the `javaServer` to use.
   /// [javaVersion] The Version of Java to use. Possible values are `8`, `11`, `17` and `21`.
-  /// [nodeVersion] The version of Node to run. Possible values are `12-lts`, `14-lts`, `16-lts`, `18-lts`, `20-lts`, `22-lts` and `24-lts`. This property conflicts with `java_version`.
+  /// [nodeVersion] The version of Node to run. Possible values are `12-lts`, `14-lts`, `16-lts`, `18-lts`, `20-lts`, `22-lts` and `24-lts`. This property conflicts with `javaVersion`.
   /// [phpVersion] The version of PHP to run. Possible values are `7.4`, `8.0`, `8.1`, `8.2`, `8.3` and `8.4`.
-  /// [pythonVersion] The version of Python to run. Possible values include `3.13`, `3.12`, `3.11`, `3.10`, `3.9`, `3.8` and `3.7`.
+  /// [pythonVersion] The version of Python to run. Possible values include `3.14`, `3.13`, `3.12`, `3.11`, `3.10`, `3.9`, `3.8` and `3.7`.
   /// [rubyVersion] The version of Ruby to run. Possible values include `2.6` and `2.7`.
   const LinuxWebAppSlotSiteConfigApplicationStack({
     this.dockerImageName,
@@ -106,4 +106,3 @@ class LinuxWebAppSlotSiteConfigApplicationStack {
     );
   }
 }
-

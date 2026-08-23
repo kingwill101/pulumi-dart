@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'slot_logs_application_logs_azure_blob_storage.dart';
 
 class SlotLogsApplicationLogs {
-  /// An `azure_blob_storage` block as defined below.
+  /// An `azureBlobStorage` block as defined below.
   final pulumi.Input<SlotLogsApplicationLogsAzureBlobStorage>? azureBlobStorage;
   /// The file system log level. Possible values are `Off`, `Error`, `Warning`, `Information`, and `Verbose`. Defaults to `Off`.
   final pulumi.Input<String>? fileSystemLevel;
 
   /// Creates a new [SlotLogsApplicationLogs].
-  /// [azureBlobStorage] An `azure_blob_storage` block as defined below.
+  /// [azureBlobStorage] An `azureBlobStorage` block as defined below.
   /// [fileSystemLevel] The file system log level. Possible values are `Off`, `Error`, `Warning`, `Information`, and `Verbose`. Defaults to `Off`.
   const SlotLogsApplicationLogs({
     this.azureBlobStorage,
@@ -31,4 +31,3 @@ class SlotLogsApplicationLogs {
     );
   }
 }
-

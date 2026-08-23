@@ -175,6 +175,43 @@ import 'rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "LoadBalancerRG"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "PublicIPForLB"
+///   location            = "West US"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+/// }
+/// resource "azure_lb_loadbalancer" "example" {
+///   name                = "TestLoadBalancer"
+///   location            = "West US"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   frontend_ip_configurations {
+///     name                 = "PublicIPAddress"
+///     public_ip_address_id = azure_network_publicip.example.id
+///   }
+/// }
+/// resource "azure_lb_rule" "example" {
+///   loadbalancer_id                = azure_lb_loadbalancer.example.id
+///   name                           = "LBRule"
+///   protocol                       = "Tcp"
+///   frontend_port                  = 3389
+///   backend_port                   = 3389
+///   frontend_ip_configuration_name = "PublicIPAddress"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -190,8 +227,8 @@ import 'rule_state.dart';
 /// import com.pulumi.azure.lb.inputs.LoadBalancerFrontendIpConfigurationArgs;
 /// import com.pulumi.azure.lb.Rule;
 /// import com.pulumi.azure.lb.RuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -292,7 +329,7 @@ import 'rule_state.dart';
 class Rule extends pulumi.CustomResource {
   /// A list of reference to a Backend Address Pool over which this Load Balancing Rule operates.
   ///
-  /// &gt; **Note:** In most cases users can only set one Backend Address Pool ID in the `backend_address_pool_ids`. Especially, when the sku of the LB is `Gateway`, users can set up to two IDs in the `backend_address_pool_ids`.
+  /// &gt; **Note:** In most cases users can only set one Backend Address Pool ID in the `backendAddressPoolIds`. Especially, when the sku of the LB is `Gateway`, users can set up to two IDs in the `backendAddressPoolIds`.
   late final pulumi.Output<List<String>?> backendAddressPoolIds;
   /// The port used for internal connections on the endpoint. Possible values range between 0 and 65535, inclusive. A port of `0` means "Any Port".
   late final pulumi.Output<int> backendPort;

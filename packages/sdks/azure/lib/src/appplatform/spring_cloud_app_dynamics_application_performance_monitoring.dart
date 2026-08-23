@@ -6,7 +6,7 @@ import 'spring_cloud_app_dynamics_application_performance_monitoring_state.dart'
 ///
 /// Manages a Spring Cloud Application Performance Monitoring resource for App Dynamics.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudAppDynamicsApplicationPerformanceMonitoring` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudAppDynamicsApplicationPerformanceMonitoring` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -154,6 +154,40 @@ import 'spring_cloud_app_dynamics_application_performance_monitoring_state.dart'
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "E0"
+/// }
+/// resource "azure_appplatform_springcloudappdynamicsapplicationperformancemonitoring" "example" {
+///   name                     = "example"
+///   spring_cloud_service_id  = azure_appplatform_springcloudservice.example.id
+///   agent_account_name       = "example-agent-account-name"
+///   agent_account_access_key = "example-agent-account-access-key"
+///   controller_host_name     = "example-controller-host-name"
+///   agent_application_name   = "example-agent-application-name"
+///   agent_tier_name          = "example-agent-tier-name"
+///   agent_node_name          = "example-agent-node-name"
+///   agent_unique_host_id     = "example-agent-unique-host-id"
+///   controller_ssl_enabled   = true
+///   controller_port          = 8080
+///   globally_enabled         = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,8 +200,8 @@ import 'spring_cloud_app_dynamics_application_performance_monitoring_state.dart'
 /// import com.pulumi.azure.appplatform.SpringCloudServiceArgs;
 /// import com.pulumi.azure.appplatform.SpringCloudAppDynamicsApplicationPerformanceMonitoring;
 /// import com.pulumi.azure.appplatform.SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

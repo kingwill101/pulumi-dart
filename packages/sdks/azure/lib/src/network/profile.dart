@@ -228,6 +228,51 @@ import 'profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "examplegroup"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "examplevnet"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.1.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "examplesubnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.1.0.0/24"]
+///   delegations {
+///     name = "delegation"
+///     service_delegation = {
+///       name    = "Microsoft.ContainerInstance/containerGroups"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
+///     }
+///   }
+/// }
+/// resource "azure_network_profile" "example" {
+///   name                = "examplenetprofile"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   container_network_interface = {
+///     name = "examplecnic"
+///     ip_configurations = [{
+///       "name"     = "exampleipconfig"
+///       "subnetId" = azure_network_subnet.example.id
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +290,9 @@ import 'profile_state.dart';
 /// import com.pulumi.azure.network.Profile;
 /// import com.pulumi.azure.network.ProfileArgs;
 /// import com.pulumi.azure.network.inputs.ProfileContainerNetworkInterfaceArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.network.inputs.ProfileContainerNetworkInterfaceIpConfigurationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -361,7 +407,7 @@ import 'profile_state.dart';
 /// $ pulumi import azure:network/profile:Profile example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/networkProfiles/examplenetprofile
 /// ```
 class Profile extends pulumi.CustomResource {
-  /// A `container_network_interface` block as documented below.
+  /// A `containerNetworkInterface` block as documented below.
   late final pulumi.Output<ProfileContainerNetworkInterface> containerNetworkInterface;
   /// A list of Container Network Interface IDs.
   late final pulumi.Output<List<String>> containerNetworkInterfaceIds;

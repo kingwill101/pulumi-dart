@@ -69,6 +69,24 @@ import 'get_account_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cognitive_getaccount" "test" {
+///   name                = "example-account"
+///   resource_group_name = "cognitive_account_rg"
+/// }
+///
+/// output "primaryAccessKey" {
+///   value = data.azure_cognitive_getaccount.test.primary_access_key
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +95,8 @@ import 'get_account_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.cognitive.CognitiveFunctions;
 /// import com.pulumi.azure.cognitive.inputs.GetAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -117,7 +135,7 @@ import 'get_account_result.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.CognitiveServices` - 2025-06-01
+/// * `Microsoft.CognitiveServices` - 2026-03-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitive_get_account_get_account_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAccountResult> getAccount(
@@ -206,6 +224,28 @@ Future<GetAccountResult> getAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cognitive_getaccountproject" "example" {
+///   name                   = "example-project"
+///   cognitive_account_name = "example-account"
+///   resource_group_name    = "example-resources"
+/// }
+///
+/// output "id" {
+///   value = data.azure_cognitive_getaccountproject.example.id
+/// }
+/// output "location" {
+///   value = data.azure_cognitive_getaccountproject.example.location
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +254,8 @@ Future<GetAccountResult> getAccount(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.cognitive.CognitiveFunctions;
 /// import com.pulumi.azure.cognitive.inputs.GetAccountProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -258,7 +298,7 @@ Future<GetAccountResult> getAccount(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.CognitiveServices` - 2025-06-01
+/// * `Microsoft.CognitiveServices` - 2026-03-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_cognitive_get_account_project_get_account_project_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAccountProjectResult> getAccountProject(

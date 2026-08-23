@@ -130,6 +130,35 @@ import 'api_version_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "pub1"
+///   publisher_email     = "pub1@email.com"
+///   sku_name            = "Developer_1"
+/// }
+/// resource "azure_apimanagement_apiversionset" "example" {
+///   name                = "example-apimapi-1_0_0"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   api_management_name = azure_apimanagement_service.example.name
+///   display_name        = "ExampleAPIVersionSet"
+///   versioning_scheme   = "Segment"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +171,8 @@ import 'api_version_set_state.dart';
 /// import com.pulumi.azure.apimanagement.ServiceArgs;
 /// import com.pulumi.azure.apimanagement.ApiVersionSet;
 /// import com.pulumi.azure.apimanagement.ApiVersionSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -236,11 +265,11 @@ class ApiVersionSet extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// The name of the Header which should be read from Inbound Requests which defines the API Version.
   ///
-  /// &gt; **Note:** This must be specified when `versioning_scheme` is set to `Header`.
+  /// &gt; **Note:** This must be specified when `versioningScheme` is set to `Header`.
   late final pulumi.Output<String?> versionHeaderName;
   /// The name of the Query String which should be read from Inbound Requests which defines the API Version.
   ///
-  /// &gt; **Note:** This must be specified when `versioning_scheme` is set to `Query`.
+  /// &gt; **Note:** This must be specified when `versioningScheme` is set to `Query`.
   late final pulumi.Output<String?> versionQueryName;
   /// Specifies where in an Inbound HTTP Request that the API Version should be read from. Possible values are `Header`, `Query` and `Segment`.
   late final pulumi.Output<String> versioningScheme;

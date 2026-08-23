@@ -8,24 +8,24 @@ import 'volume_group_sap_hana_volume_export_policy_rule.dart';
 class VolumeGroupSapHanaVolume {
   /// The ID of the Capacity Pool. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> capacityPoolId;
-  /// A `data_protection_replication` block as defined below. Changing this forces a new Application Volume Group to be created and data will be lost.
+  /// A `dataProtectionReplication` block as defined below. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<VolumeGroupSapHanaVolumeDataProtectionReplication>? dataProtectionReplication;
-  /// A `data_protection_snapshot_policy` block as defined below.
+  /// A `dataProtectionSnapshotPolicy` block as defined below.
   final pulumi.Input<VolumeGroupSapHanaVolumeDataProtectionSnapshotPolicy>? dataProtectionSnapshotPolicy;
-  /// The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys. This is required with `key_vault_private_endpoint_id`. Changing this forces a new Application Volume Group to be created and data will be lost.
+  /// The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys. This is required with `keyVaultPrivateEndpointId`. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String>? encryptionKeySource;
-  /// One or more `export_policy_rule` blocks as defined below.
+  /// One or more `exportPolicyRule` blocks as defined below.
   final pulumi.Input<List<VolumeGroupSapHanaVolumeExportPolicyRule>> exportPolicyRules;
   /// The ID of the Application Volume Group.
   final pulumi.Input<String>? id;
-  /// The Private Endpoint ID for Key Vault, which is required when using customer-managed keys. This is required with `encryption_key_source`. Changing this forces a new Application Volume Group to be created and data will be lost.
+  /// The Private Endpoint ID for Key Vault, which is required when using customer-managed keys. This is required with `encryptionKeySource`. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String>? keyVaultPrivateEndpointId;
   final pulumi.Input<List<String>>? mountIpAddresses;
   /// The name which should be used for this volume. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> name;
   /// Network features of the volume. Possible values are `Basic` or `Standard`. Default value is `Basic`. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String>? networkFeatures;
-  /// The target volume protocol expressed as a list. Protocol conversion between `NFSv3` and `NFSv4.1` and vice-versa is supported without recreating the volume group, however export policy rules must be updated accordingly to avoid configuration drift (e.g., when converting from `NFSv3` to `NFSv4.1`, set `nfsv3_enabled = false` and `nfsv41_enabled = true` in export policy rules). Supported values include `NFSv3` or `NFSv4.1`, multi-protocol is not supported. Please check [Configure application volume groups for the SAP HANA REST API](https://learn.microsoft.com/en-us/azure/azure-netapp-files/configure-application-volume-group-sap-hana-api) document for details.
+  /// The target volume protocol expressed as a list. Protocol conversion between `NFSv3` and `NFSv4.1` and vice-versa is supported without recreating the volume group, however export policy rules must be updated accordingly to avoid configuration drift (e.g., when converting from `NFSv3` to `NFSv4.1`, set `nfsv3Enabled = false` and `nfsv41Enabled = true` in export policy rules). Supported values include `NFSv3` or `NFSv4.1`, multi-protocol is not supported. Please check [Configure application volume groups for the SAP HANA REST API](https://learn.microsoft.com/en-us/azure/azure-netapp-files/configure-application-volume-group-sap-hana-api) document for details.
   ///
   /// &gt; **Note:** NFSv3 protocol is only supported for backup volumes (`data-backup`, `log-backup`) in SAP HANA volume groups. Critical volumes (`data`, `log`, `shared`) must use NFSv4.1. When converting protocols on backup volumes, ensure export policy rules are updated accordingly to avoid configuration drift.
   final pulumi.Input<String> protocols;
@@ -54,16 +54,16 @@ class VolumeGroupSapHanaVolume {
 
   /// Creates a new [VolumeGroupSapHanaVolume].
   /// [capacityPoolId] The ID of the Capacity Pool. Changing this forces a new Application Volume Group to be created and data will be lost.
-  /// [dataProtectionReplication] A `data_protection_replication` block as defined below. Changing this forces a new Application Volume Group to be created and data will be lost.
-  /// [dataProtectionSnapshotPolicy] A `data_protection_snapshot_policy` block as defined below.
-  /// [encryptionKeySource] The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys. This is required with `key_vault_private_endpoint_id`. Changing this forces a new Application Volume Group to be created and data will be lost.
-  /// [exportPolicyRules] One or more `export_policy_rule` blocks as defined below.
+  /// [dataProtectionReplication] A `dataProtectionReplication` block as defined below. Changing this forces a new Application Volume Group to be created and data will be lost.
+  /// [dataProtectionSnapshotPolicy] A `dataProtectionSnapshotPolicy` block as defined below.
+  /// [encryptionKeySource] The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys. This is required with `keyVaultPrivateEndpointId`. Changing this forces a new Application Volume Group to be created and data will be lost.
+  /// [exportPolicyRules] One or more `exportPolicyRule` blocks as defined below.
   /// [id] The ID of the Application Volume Group.
-  /// [keyVaultPrivateEndpointId] The Private Endpoint ID for Key Vault, which is required when using customer-managed keys. This is required with `encryption_key_source`. Changing this forces a new Application Volume Group to be created and data will be lost.
+  /// [keyVaultPrivateEndpointId] The Private Endpoint ID for Key Vault, which is required when using customer-managed keys. This is required with `encryptionKeySource`. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [mountIpAddresses] Optional.
   /// [name] The name which should be used for this volume. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [networkFeatures] Network features of the volume. Possible values are `Basic` or `Standard`. Default value is `Basic`. Changing this forces a new Application Volume Group to be created and data will be lost.
-  /// [protocols] The target volume protocol expressed as a list. Protocol conversion between `NFSv3` and `NFSv4.1` and vice-versa is supported without recreating the volume group, however export policy rules must be updated accordingly to avoid configuration drift (e.g., when converting from `NFSv3` to `NFSv4.1`, set `nfsv3_enabled = false` and `nfsv41_enabled = true` in export policy rules). Supported values include `NFSv3` or `NFSv4.1`, multi-protocol is not supported. Please check [Configure application volume groups for the SAP HANA REST API](https://learn.microsoft.com/en-us/azure/azure-netapp-files/configure-application-volume-group-sap-hana-api) document for details.
+  /// [protocols] The target volume protocol expressed as a list. Protocol conversion between `NFSv3` and `NFSv4.1` and vice-versa is supported without recreating the volume group, however export policy rules must be updated accordingly to avoid configuration drift (e.g., when converting from `NFSv3` to `NFSv4.1`, set `nfsv3Enabled = false` and `nfsv41Enabled = true` in export policy rules). Supported values include `NFSv3` or `NFSv4.1`, multi-protocol is not supported. Please check [Configure application volume groups for the SAP HANA REST API](https://learn.microsoft.com/en-us/azure/azure-netapp-files/configure-application-volume-group-sap-hana-api) document for details.
   /// [proximityPlacementGroupId] The ID of the proximity placement group. Changing this forces a new Application Volume Group to be created and data will be lost. For SAP-HANA application, it is required to have PPG enabled so Azure NetApp Files can pin the volumes next to your compute resources, please check [Requirements and considerations for application volume group for SAP HANA](https://learn.microsoft.com/en-us/azure/azure-netapp-files/application-volume-group-considerations) for details and other requirements.
   /// [securityStyle] Volume security style. Possible values are `ntfs` and `unix`. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [serviceLevel] Volume security style. Possible values are `Premium`, `Standard`, `Ultra` and `Flexible`. Changing this forces a new Application Volume Group to be created and data will be lost.
@@ -154,4 +154,3 @@ class VolumeGroupSapHanaVolume {
     );
   }
 }
-

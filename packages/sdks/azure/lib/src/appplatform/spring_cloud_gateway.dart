@@ -13,7 +13,7 @@ import 'spring_cloud_gateway_state.dart';
 ///
 /// Manages a Spring Cloud Gateway.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudGateway` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudGateway` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -279,6 +279,62 @@ import 'spring_cloud_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "E0"
+/// }
+/// resource "azure_appplatform_springcloudgateway" "example" {
+///   name                          = "default"
+///   spring_cloud_service_id       = azure_appplatform_springcloudservice.example.id
+///   https_only                    = false
+///   public_network_access_enabled = true
+///   instance_count                = 2
+///   api_metadata = {
+///     description       = "example description"
+///     documentation_url = "https://www.example.com/docs"
+///     server_url        = "https://wwww.example.com"
+///     title             = "example title"
+///     version           = "1.0"
+///   }
+///   cors = {
+///     credentials_allowed = false
+///     allowed_headers     = ["*"]
+///     allowed_methods     = ["PUT"]
+///     allowed_origins     = ["example.com"]
+///     exposed_headers     = ["x-example-header"]
+///     max_age_seconds     = 86400
+///   }
+///   quota = {
+///     cpu    = "1"
+///     memory = "2Gi"
+///   }
+///   sso = {
+///     client_id     = "example id"
+///     client_secret = "example secret"
+///     issuer_uri    = "https://www.test.com/issueToken"
+///     scopes        = ["read"]
+///   }
+///   local_response_cache_per_instance = {
+///     size         = "100MB"
+///     time_to_live = "30s"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -296,8 +352,8 @@ import 'spring_cloud_gateway_state.dart';
 /// import com.pulumi.azure.appplatform.inputs.SpringCloudGatewayQuotaArgs;
 /// import com.pulumi.azure.appplatform.inputs.SpringCloudGatewaySsoArgs;
 /// import com.pulumi.azure.appplatform.inputs.SpringCloudGatewayLocalResponseCachePerInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -432,13 +488,13 @@ import 'spring_cloud_gateway_state.dart';
 /// $ pulumi import azure:appplatform/springCloudGateway:SpringCloudGateway example /subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/resourceGroup1/providers/Microsoft.AppPlatform/spring/service1/gateways/gateway1
 /// ```
 class SpringCloudGateway extends pulumi.CustomResource {
-  /// A `api_metadata` block as defined below.
+  /// A `apiMetadata` block as defined below.
   late final pulumi.Output<SpringCloudGatewayApiMetadata?> apiMetadata;
   /// Specifies a list of Spring Cloud Application Performance Monitoring IDs.
   late final pulumi.Output<List<String>?> applicationPerformanceMonitoringIds;
   /// Specifies a list of application performance monitoring types used in the Spring Cloud Gateway. The allowed values are `AppDynamics`, `ApplicationInsights`, `Dynatrace`, `ElasticAPM` and `NewRelic`.
   late final pulumi.Output<List<String>?> applicationPerformanceMonitoringTypes;
-  /// A `client_authorization` block as defined below.
+  /// A `clientAuthorization` block as defined below.
   late final pulumi.Output<SpringCloudGatewayClientAuthorization?> clientAuthorization;
   /// A `cors` block as defined below.
   late final pulumi.Output<SpringCloudGatewayCors?> cors;
@@ -448,9 +504,9 @@ class SpringCloudGateway extends pulumi.CustomResource {
   late final pulumi.Output<bool?> httpsOnly;
   /// Specifies the required instance count of the Spring Cloud Gateway. Possible Values are between `1` and `500`. Defaults to `1` if not specified.
   late final pulumi.Output<int?> instanceCount;
-  /// A `local_response_cache_per_instance` block as defined below. Only one of `local_response_cache_per_instance` or `local_response_cache_per_route` can be specified.
+  /// A `localResponseCachePerInstance` block as defined below. Only one of `localResponseCachePerInstance` or `localResponseCachePerRoute` can be specified.
   late final pulumi.Output<SpringCloudGatewayLocalResponseCachePerInstance?> localResponseCachePerInstance;
-  /// A `local_response_cache_per_route` block as defined below. Only one of `local_response_cache_per_instance` or `local_response_cache_per_route` can be specified.
+  /// A `localResponseCachePerRoute` block as defined below. Only one of `localResponseCachePerInstance` or `localResponseCachePerRoute` can be specified.
   late final pulumi.Output<SpringCloudGatewayLocalResponseCachePerRoute?> localResponseCachePerRoute;
   /// The name which should be used for this Spring Cloud Gateway. Changing this forces a new Spring Cloud Gateway to be created. The only possible value is `default`.
   late final pulumi.Output<String> name;

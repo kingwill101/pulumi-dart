@@ -8,7 +8,7 @@ import 'get_service_tenant_access.dart';
 
 /// Result data returned by getService.
 class GetServiceResult {
-  /// Zero or more `additional_location` blocks as defined below
+  /// Zero or more `additionalLocation` blocks as defined below
   final List<GetServiceAdditionalLocation> additionalLocations;
   /// The URL for the Developer Portal associated with this API Management service.
   final String developerPortalUrl;
@@ -16,7 +16,7 @@ class GetServiceResult {
   final String gatewayRegionalUrl;
   /// The URL for the API Management Service's Gateway.
   final String gatewayUrl;
-  /// A `hostname_configuration` block as defined below.
+  /// A `hostnameConfiguration` block as defined below.
   final List<GetServiceHostnameConfiguration> hostnameConfigurations;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -48,15 +48,15 @@ class GetServiceResult {
   final String skuName;
   /// A mapping of tags assigned to the resource.
   final Map<String, String>? tags;
-  /// A `tenant_access` block as defined below.
+  /// A `tenantAccess` block as defined below.
   final List<GetServiceTenantAccess> tenantAccesses;
 
   /// Creates a new [GetServiceResult].
-  /// [additionalLocations] Zero or more `additional_location` blocks as defined below
+  /// [additionalLocations] Zero or more `additionalLocation` blocks as defined below
   /// [developerPortalUrl] The URL for the Developer Portal associated with this API Management service.
   /// [gatewayRegionalUrl] Gateway URL of the API Management service in the Region.
   /// [gatewayUrl] The URL for the API Management Service's Gateway.
-  /// [hostnameConfigurations] A `hostname_configuration` block as defined below.
+  /// [hostnameConfigurations] A `hostnameConfiguration` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] An `identity` block as defined below.
   /// [location] The location name of the additional region among Azure Data center regions.
@@ -73,7 +73,7 @@ class GetServiceResult {
   /// [scmUrl] The SCM (Source Code Management) endpoint.
   /// [skuName] The SKU of the API Management Service consisting of the name and capacity, separated by an underscore.
   /// [tags] A mapping of tags assigned to the resource.
-  /// [tenantAccesses] A `tenant_access` block as defined below.
+  /// [tenantAccesses] A `tenantAccess` block as defined below.
   const GetServiceResult({
     required this.additionalLocations,
     required this.developerPortalUrl,
@@ -153,4 +153,3 @@ class GetServiceResult {
     );
   }
 }
-

@@ -14,9 +14,9 @@ class DatasetDelimitedTextState {
   final pulumi.Input<Map<String, String>>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Dataset.
   final pulumi.Input<List<String>>? annotations;
-  /// An `azure_blob_fs_location` block as defined below.
+  /// An `azureBlobFsLocation` block as defined below.
   final pulumi.Input<DatasetDelimitedTextAzureBlobFsLocation>? azureBlobFsLocation;
-  /// An `azure_blob_storage_location` block as defined below.
+  /// An `azureBlobStorageLocation` block as defined below.
   final pulumi.Input<DatasetDelimitedTextAzureBlobStorageLocation>? azureBlobStorageLocation;
   /// The column delimiter. Defaults to `,`.
   final pulumi.Input<String>? columnDelimiter;
@@ -36,7 +36,7 @@ class DatasetDelimitedTextState {
   final pulumi.Input<bool>? firstRowAsHeader;
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   final pulumi.Input<String>? folder;
-  /// A `http_server_location` block as defined below.
+  /// A `httpServerLocation` block as defined below.
   ///
   /// The following supported arguments are specific to Delimited Text Dataset:
   final pulumi.Input<DatasetDelimitedTextHttpServerLocation>? httpServerLocation;
@@ -52,14 +52,14 @@ class DatasetDelimitedTextState {
   final pulumi.Input<String>? quoteCharacter;
   /// The row delimiter. Defaults to any of the following values on read: `\r\n`, `\r`, `\n`, and `\n` or `\r\n` on write by mapping data flow and Copy activity respectively.
   final pulumi.Input<String>? rowDelimiter;
-  /// A `schema_column` block as defined below.
+  /// A `schemaColumn` block as defined below.
   final pulumi.Input<List<DatasetDelimitedTextSchemaColumn>>? schemaColumns;
 
   /// Creates a new [DatasetDelimitedTextState].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Dataset.
   /// [annotations] List of tags that can be used for describing the Data Factory Dataset.
-  /// [azureBlobFsLocation] An `azure_blob_fs_location` block as defined below.
-  /// [azureBlobStorageLocation] An `azure_blob_storage_location` block as defined below.
+  /// [azureBlobFsLocation] An `azureBlobFsLocation` block as defined below.
+  /// [azureBlobStorageLocation] An `azureBlobStorageLocation` block as defined below.
   /// [columnDelimiter] The column delimiter. Defaults to `,`.
   /// [compressionCodec] The compression codec used to read/write text files. Valid values are `None`, `bzip2`, `gzip`, `deflate`, `ZipDeflate`, `TarGzip`, `Tar`, `snappy` and `lz4`. Please note these values are case sensitive.
   /// [compressionLevel] The compression ratio for the Data Factory Dataset. Valid values are `Fastest` or `Optimal`. Please note these values are case sensitive.
@@ -69,14 +69,14 @@ class DatasetDelimitedTextState {
   /// [escapeCharacter] The escape character. Defaults to `\`.
   /// [firstRowAsHeader] When used as input, treat the first row of data as headers. When used as output, write the headers into the output as the first row of data. Defaults to `false`.
   /// [folder] The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
-  /// [httpServerLocation] A `http_server_location` block as defined below.
+  /// [httpServerLocation] A `httpServerLocation` block as defined below.
   /// [linkedServiceName] The Data Factory Linked Service name in which to associate the Dataset with.
   /// [name] Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [nullValue] The null value string. Defaults to `""`.
   /// [parameters] A map of parameters to associate with the Data Factory Dataset.
   /// [quoteCharacter] The quote character. Defaults to `"`.
   /// [rowDelimiter] The row delimiter. Defaults to any of the following values on read: `\r\n`, `\r`, `\n`, and `\n` or `\r\n` on write by mapping data flow and Copy activity respectively.
-  /// [schemaColumns] A `schema_column` block as defined below.
+  /// [schemaColumns] A `schemaColumn` block as defined below.
   const DatasetDelimitedTextState({
     this.additionalProperties,
     this.annotations,
@@ -153,4 +153,3 @@ class DatasetDelimitedTextState {
     );
   }
 }
-

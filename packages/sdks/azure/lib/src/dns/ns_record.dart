@@ -142,6 +142,34 @@ import 'ns_record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dns_zone" "example" {
+///   name                = "mydomain.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_dns_nsrecord" "example" {
+///   name                = "test"
+///   zone_name           = azure_dns_zone.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ttl                 = 300
+///   records             = ["ns1.contoso.com.", "ns2.contoso.com."]
+///   tags = {
+///     "Environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +182,8 @@ import 'ns_record_state.dart';
 /// import com.pulumi.azure.dns.ZoneArgs;
 /// import com.pulumi.azure.dns.NsRecord;
 /// import com.pulumi.azure.dns.NsRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

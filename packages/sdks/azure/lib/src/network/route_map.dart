@@ -228,6 +228,50 @@ import 'route_map_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualwan" "example" {
+///   name                = "example-vwan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_virtualhub" "example" {
+///   name                = "example-vhub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   address_prefix      = "10.0.1.0/24"
+/// }
+/// resource "azure_network_routemap" "example" {
+///   name           = "example-rm"
+///   virtual_hub_id = azure_network_virtualhub.example.id
+///   rules {
+///     name                 = "rule1"
+///     next_step_if_matched = "Continue"
+///     actions {
+///       type = "Add"
+///       parameters {
+///         as_paths = ["22334"]
+///       }
+///     }
+///     match_criterions {
+///       match_condition = "Contains"
+///       route_prefixes  = ["10.0.0.0/8"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -243,8 +287,11 @@ import 'route_map_state.dart';
 /// import com.pulumi.azure.network.RouteMap;
 /// import com.pulumi.azure.network.RouteMapArgs;
 /// import com.pulumi.azure.network.inputs.RouteMapRuleArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.network.inputs.RouteMapRuleActionArgs;
+/// import com.pulumi.azure.network.inputs.RouteMapRuleActionParameterArgs;
+/// import com.pulumi.azure.network.inputs.RouteMapRuleMatchCriterionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

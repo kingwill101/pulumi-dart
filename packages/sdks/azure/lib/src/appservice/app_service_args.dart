@@ -19,7 +19,7 @@ class AppServiceArgs {
   final pulumi.Input<String> appServicePlanId;
   /// A key-value pair of App Settings.
   final pulumi.Input<Map<String, String>>? appSettings;
-  /// A `auth_settings` block as defined below.
+  /// A `authSettings` block as defined below.
   final pulumi.Input<AppServiceAuthSettings>? authSettings;
   /// A `backup` block as defined below.
   final pulumi.Input<AppServiceBackup>? backup;
@@ -27,9 +27,9 @@ class AppServiceArgs {
   final pulumi.Input<bool>? clientAffinityEnabled;
   /// Does the App Service require client certificates for incoming requests? Defaults to `false`.
   final pulumi.Input<bool>? clientCertEnabled;
-  /// Mode of client certificates for this App Service. Possible values are `Required`, `Optional` and `OptionalInteractiveUser`. If this parameter is set, `client_cert_enabled` must be set to `true`, otherwise this parameter is ignored.
+  /// Mode of client certificates for this App Service. Possible values are `Required`, `Optional` and `OptionalInteractiveUser`. If this parameter is set, `clientCertEnabled` must be set to `true`, otherwise this parameter is ignored.
   final pulumi.Input<String>? clientCertMode;
-  /// One or more `connection_string` blocks as defined below.
+  /// One or more `connectionString` blocks as defined below.
   final pulumi.Input<List<AppServiceConnectionString>>? connectionStrings;
   /// Is the App Service Enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
@@ -47,11 +47,11 @@ class AppServiceArgs {
   final pulumi.Input<String>? name;
   /// The name of the resource group in which to create the App Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-  /// A `site_config` block as defined below.
+  /// A `siteConfig` block as defined below.
   final pulumi.Input<AppServiceSiteConfig>? siteConfig;
-  /// A `source_control` block as defined below.
+  /// A `sourceControl` block as defined below.
   final pulumi.Input<AppServiceSourceControl>? sourceControl;
-  /// One or more `storage_account` blocks as defined below.
+  /// One or more `storageAccount` blocks as defined below.
   final pulumi.Input<List<AppServiceStorageAccount>>? storageAccounts;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
@@ -59,12 +59,12 @@ class AppServiceArgs {
   /// Creates a new [AppServiceArgs].
   /// [appServicePlanId] The ID of the App Service Plan within which to create this App Service.
   /// [appSettings] A key-value pair of App Settings.
-  /// [authSettings] A `auth_settings` block as defined below.
+  /// [authSettings] A `authSettings` block as defined below.
   /// [backup] A `backup` block as defined below.
   /// [clientAffinityEnabled] Should the App Service send session affinity cookies, which route client requests in the same session to the same instance?
   /// [clientCertEnabled] Does the App Service require client certificates for incoming requests? Defaults to `false`.
-  /// [clientCertMode] Mode of client certificates for this App Service. Possible values are `Required`, `Optional` and `OptionalInteractiveUser`. If this parameter is set, `client_cert_enabled` must be set to `true`, otherwise this parameter is ignored.
-  /// [connectionStrings] One or more `connection_string` blocks as defined below.
+  /// [clientCertMode] Mode of client certificates for this App Service. Possible values are `Required`, `Optional` and `OptionalInteractiveUser`. If this parameter is set, `clientCertEnabled` must be set to `true`, otherwise this parameter is ignored.
+  /// [connectionStrings] One or more `connectionString` blocks as defined below.
   /// [enabled] Is the App Service Enabled? Defaults to `true`.
   /// [httpsOnly] Can the App Service only be accessed via HTTPS? Defaults to `false`.
   /// [identity] An `identity` block as defined below.
@@ -73,9 +73,9 @@ class AppServiceArgs {
   /// [logs] A `logs` block as defined below.
   /// [name] Specifies the name of the App Service. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the App Service. Changing this forces a new resource to be created.
-  /// [siteConfig] A `site_config` block as defined below.
-  /// [sourceControl] A `source_control` block as defined below.
-  /// [storageAccounts] One or more `storage_account` blocks as defined below.
+  /// [siteConfig] A `siteConfig` block as defined below.
+  /// [sourceControl] A `sourceControl` block as defined below.
+  /// [storageAccounts] One or more `storageAccount` blocks as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   const AppServiceArgs({
     required this.appServicePlanId,
@@ -150,4 +150,3 @@ class AppServiceArgs {
     );
   }
 }
-

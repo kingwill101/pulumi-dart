@@ -26,22 +26,22 @@ import 'pool_window.dart';
 class PoolArgs {
   /// Specifies the name of the Batch account in which the pool will be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> accountName;
-  /// A `auto_scale` block that describes the scale settings when using auto scale as defined below.
+  /// A `autoScale` block that describes the scale settings when using auto scale as defined below.
   ///
-  /// &gt; **Note:** `fixed_scale` and `auto_scale` blocks cannot be used both at the same time.
+  /// &gt; **Note:** `fixedScale` and `autoScale` blocks cannot be used both at the same time.
   final pulumi.Input<PoolAutoScale>? autoScale;
   final pulumi.Input<List<PoolCertificate>>? certificates;
-  /// The container configuration used in the pool's VMs. One `container_configuration` block as defined below.
+  /// The container configuration used in the pool's VMs. One `containerConfiguration` block as defined below.
   final pulumi.Input<PoolContainerConfiguration>? containerConfiguration;
-  /// A `data_disks` block describes the data disk settings as defined below.
+  /// A `dataDisks` block describes the data disk settings as defined below.
   final pulumi.Input<List<PoolDataDisk>>? dataDisks;
-  /// A `disk_encryption` block, as defined below, describes the disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image Gallery Image.
+  /// A `diskEncryption` block, as defined below, describes the disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image Gallery Image.
   final pulumi.Input<List<PoolDiskEncryption>>? diskEncryptions;
   /// Specifies the display name of the Batch pool. Changing this forces a new resource to be created.
   final pulumi.Input<String>? displayName;
   /// An `extensions` block as defined below.
   final pulumi.Input<List<PoolExtension>>? extensions;
-  /// A `fixed_scale` block that describes the scale settings when using fixed scale as defined below.
+  /// A `fixedScale` block that describes the scale settings when using fixed scale as defined below.
   final pulumi.Input<PoolFixedScale>? fixedScale;
   /// An `identity` block as defined below.
   final pulumi.Input<PoolIdentity>? identity;
@@ -57,29 +57,29 @@ class PoolArgs {
   final pulumi.Input<List<PoolMount>>? mounts;
   /// Specifies the name of the Batch pool. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// A `network_configuration` block that describes the network configurations for the Batch pool as defined below. Changing this forces a new resource to be created.
+  /// A `networkConfiguration` block that describes the network configurations for the Batch pool as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<PoolNetworkConfiguration>? networkConfiguration;
   /// Specifies the SKU of the node agents that will be created in the Batch pool. Changing this forces a new resource to be created.
   final pulumi.Input<String> nodeAgentSkuId;
-  /// A `node_placement` block that describes the placement policy for allocating nodes in the pool as defined below.
+  /// A `nodePlacement` block that describes the placement policy for allocating nodes in the pool as defined below.
   final pulumi.Input<List<PoolNodePlacement>>? nodePlacements;
   /// Specifies the ephemeral disk placement for operating system disk for all VMs in the pool. This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements&gt; and Linux VMs at &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements&gt;. The only possible value is `CacheDisk`.
   final pulumi.Input<String>? osDiskPlacement;
   /// The name of the resource group in which to create the Batch pool. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-  /// A `security_profile` block that describes the security settings for the Batch pool as defined below. Changing this forces a new resource to be created.
+  /// A `securityProfile` block that describes the security settings for the Batch pool as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<PoolSecurityProfile>? securityProfile;
-  /// A `start_task` block that describes the start task settings for the Batch pool as defined below.
+  /// A `startTask` block that describes the start task settings for the Batch pool as defined below.
   final pulumi.Input<PoolStartTask>? startTask;
   /// Whether to stop if there is a pending resize operation on this pool.
   final pulumi.Input<bool>? stopPendingResizeOperation;
-  /// A `storage_image_reference` block for the virtual machines that will compose the Batch pool as defined below. Changing this forces a new resource to be created.
+  /// A `storageImageReference` block for the virtual machines that will compose the Batch pool as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<PoolStorageImageReference> storageImageReference;
   /// The desired node communication mode for the pool. Possible values are `Classic`, `Default` and `Simplified`.
   final pulumi.Input<String>? targetNodeCommunicationMode;
-  /// A `task_scheduling_policy` block that describes how tasks are distributed across compute nodes in a pool as defined below. If not specified, the default is spread as defined below.
+  /// A `taskSchedulingPolicy` block that describes how tasks are distributed across compute nodes in a pool as defined below. If not specified, the default is spread as defined below.
   final pulumi.Input<List<PoolTaskSchedulingPolicy>>? taskSchedulingPolicies;
-  /// A `user_accounts` block that describes the list of user accounts to be created on each node in the pool as defined below.
+  /// A `userAccounts` block that describes the list of user accounts to be created on each node in the pool as defined below.
   final pulumi.Input<List<PoolUserAccount>>? userAccounts;
   /// Specifies the size of the VM created in the Batch pool. Changing this forces a new resource to be created.
   final pulumi.Input<String> vmSize;
@@ -88,14 +88,14 @@ class PoolArgs {
 
   /// Creates a new [PoolArgs].
   /// [accountName] Specifies the name of the Batch account in which the pool will be created. Changing this forces a new resource to be created.
-  /// [autoScale] A `auto_scale` block that describes the scale settings when using auto scale as defined below.
+  /// [autoScale] A `autoScale` block that describes the scale settings when using auto scale as defined below.
   /// [certificates] Optional.
-  /// [containerConfiguration] The container configuration used in the pool's VMs. One `container_configuration` block as defined below.
-  /// [dataDisks] A `data_disks` block describes the data disk settings as defined below.
-  /// [diskEncryptions] A `disk_encryption` block, as defined below, describes the disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image Gallery Image.
+  /// [containerConfiguration] The container configuration used in the pool's VMs. One `containerConfiguration` block as defined below.
+  /// [dataDisks] A `dataDisks` block describes the data disk settings as defined below.
+  /// [diskEncryptions] A `diskEncryption` block, as defined below, describes the disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image Gallery Image.
   /// [displayName] Specifies the display name of the Batch pool. Changing this forces a new resource to be created.
   /// [extensions] An `extensions` block as defined below.
-  /// [fixedScale] A `fixed_scale` block that describes the scale settings when using fixed scale as defined below.
+  /// [fixedScale] A `fixedScale` block that describes the scale settings when using fixed scale as defined below.
   /// [identity] An `identity` block as defined below.
   /// [interNodeCommunication] Whether the pool permits direct communication between nodes. This imposes restrictions on which nodes can be assigned to the pool. Enabling this value can reduce the chance of the requested number of nodes to be allocated in the pool. Values allowed are `Disabled` and `Enabled`. Defaults to `Enabled`.
   /// [licenseType] The type of on-premises license to be used when deploying the operating system. This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are: "Windows_Server" - The on-premises license is for Windows Server. "Windows_Client" - The on-premises license is for Windows Client.
@@ -103,18 +103,18 @@ class PoolArgs {
   /// [metadata] A map of custom batch pool metadata.
   /// [mounts] A `mount` block defined as below.
   /// [name] Specifies the name of the Batch pool. Changing this forces a new resource to be created.
-  /// [networkConfiguration] A `network_configuration` block that describes the network configurations for the Batch pool as defined below. Changing this forces a new resource to be created.
+  /// [networkConfiguration] A `networkConfiguration` block that describes the network configurations for the Batch pool as defined below. Changing this forces a new resource to be created.
   /// [nodeAgentSkuId] Specifies the SKU of the node agents that will be created in the Batch pool. Changing this forces a new resource to be created.
-  /// [nodePlacements] A `node_placement` block that describes the placement policy for allocating nodes in the pool as defined below.
+  /// [nodePlacements] A `nodePlacement` block that describes the placement policy for allocating nodes in the pool as defined below.
   /// [osDiskPlacement] Specifies the ephemeral disk placement for operating system disk for all VMs in the pool. This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements&gt; and Linux VMs at &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements&gt;. The only possible value is `CacheDisk`.
   /// [resourceGroupName] The name of the resource group in which to create the Batch pool. Changing this forces a new resource to be created.
-  /// [securityProfile] A `security_profile` block that describes the security settings for the Batch pool as defined below. Changing this forces a new resource to be created.
-  /// [startTask] A `start_task` block that describes the start task settings for the Batch pool as defined below.
+  /// [securityProfile] A `securityProfile` block that describes the security settings for the Batch pool as defined below. Changing this forces a new resource to be created.
+  /// [startTask] A `startTask` block that describes the start task settings for the Batch pool as defined below.
   /// [stopPendingResizeOperation] Whether to stop if there is a pending resize operation on this pool.
-  /// [storageImageReference] A `storage_image_reference` block for the virtual machines that will compose the Batch pool as defined below. Changing this forces a new resource to be created.
+  /// [storageImageReference] A `storageImageReference` block for the virtual machines that will compose the Batch pool as defined below. Changing this forces a new resource to be created.
   /// [targetNodeCommunicationMode] The desired node communication mode for the pool. Possible values are `Classic`, `Default` and `Simplified`.
-  /// [taskSchedulingPolicies] A `task_scheduling_policy` block that describes how tasks are distributed across compute nodes in a pool as defined below. If not specified, the default is spread as defined below.
-  /// [userAccounts] A `user_accounts` block that describes the list of user accounts to be created on each node in the pool as defined below.
+  /// [taskSchedulingPolicies] A `taskSchedulingPolicy` block that describes how tasks are distributed across compute nodes in a pool as defined below. If not specified, the default is spread as defined below.
+  /// [userAccounts] A `userAccounts` block that describes the list of user accounts to be created on each node in the pool as defined below.
   /// [vmSize] Specifies the size of the VM created in the Batch pool. Changing this forces a new resource to be created.
   /// [windows] A `windows` block that describes the Windows configuration in the pool as defined below.
   const PoolArgs({
@@ -220,4 +220,3 @@ class PoolArgs {
     );
   }
 }
-

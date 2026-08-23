@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scheduled_query_rules_alert_trigger_metric_trigger.dart';
 
 class ScheduledQueryRulesAlertTrigger {
-  /// A `metric_trigger` block as defined above. Trigger condition for metric query rule.
+  /// A `metricTrigger` block as defined above. Trigger condition for metric query rule.
   final pulumi.Input<ScheduledQueryRulesAlertTriggerMetricTrigger>? metricTrigger;
   /// Evaluation operation for rule - 'GreaterThan', GreaterThanOrEqual', 'LessThan', or 'LessThanOrEqual'.
   final pulumi.Input<String> operator;
@@ -12,7 +12,7 @@ class ScheduledQueryRulesAlertTrigger {
   final pulumi.Input<double> threshold;
 
   /// Creates a new [ScheduledQueryRulesAlertTrigger].
-  /// [metricTrigger] A `metric_trigger` block as defined above. Trigger condition for metric query rule.
+  /// [metricTrigger] A `metricTrigger` block as defined above. Trigger condition for metric query rule.
   /// [operator] Evaluation operation for rule - 'GreaterThan', GreaterThanOrEqual', 'LessThan', or 'LessThanOrEqual'.
   /// [threshold] Result or count threshold based on which rule should be triggered. Values must be between 0 and 10000 inclusive.
   const ScheduledQueryRulesAlertTrigger({
@@ -37,4 +37,3 @@ class ScheduledQueryRulesAlertTrigger {
     );
   }
 }
-

@@ -42,4 +42,3 @@ class GetLinuxWebAppAuthSettingsV2GoogleV2 {
     );
   }
 }
-

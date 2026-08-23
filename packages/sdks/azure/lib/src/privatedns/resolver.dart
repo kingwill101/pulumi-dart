@@ -124,6 +124,32 @@ import 'resolver_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_privatedns_resolver" "test" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_network_id  = azure_network_virtualnetwork.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -136,8 +162,8 @@ import 'resolver_state.dart';
 /// import com.pulumi.azure.network.VirtualNetworkArgs;
 /// import com.pulumi.azure.privatedns.Resolver;
 /// import com.pulumi.azure.privatedns.ResolverArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -14,7 +14,7 @@ class GetShareResult {
   final String kind;
   /// The name of the snapshot schedule.
   final String name;
-  /// A `snapshot_schedule` block as defined below.
+  /// A `snapshotSchedule` block as defined below.
   final List<GetShareSnapshotSchedule> snapshotSchedules;
   /// The terms of the Data Share.
   final String terms;
@@ -25,7 +25,7 @@ class GetShareResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [kind] The kind of the Data Share.
   /// [name] The name of the snapshot schedule.
-  /// [snapshotSchedules] A `snapshot_schedule` block as defined below.
+  /// [snapshotSchedules] A `snapshotSchedule` block as defined below.
   /// [terms] The terms of the Data Share.
   const GetShareResult({
     required this.accountId,
@@ -61,4 +61,3 @@ class GetShareResult {
     );
   }
 }
-

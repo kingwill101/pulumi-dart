@@ -6,7 +6,7 @@ import 'spring_cloud_service_config_server_git_setting_repository.dart';
 import 'spring_cloud_service_config_server_git_setting_ssh_auth.dart';
 
 class SpringCloudServiceConfigServerGitSetting {
-  /// A `http_basic_auth` block as defined below.
+  /// A `httpBasicAuth` block as defined below.
   final pulumi.Input<SpringCloudServiceConfigServerGitSettingHttpBasicAuth>? httpBasicAuth;
   /// The default label of the Git repository, should be the branch name, tag name, or commit-id of the repository.
   final pulumi.Input<String>? label;
@@ -14,17 +14,17 @@ class SpringCloudServiceConfigServerGitSetting {
   final pulumi.Input<List<SpringCloudServiceConfigServerGitSettingRepository>>? repositories;
   /// An array of strings used to search subdirectories of the Git repository.
   final pulumi.Input<List<String>>? searchPaths;
-  /// A `ssh_auth` block as defined below.
+  /// A `sshAuth` block as defined below.
   final pulumi.Input<SpringCloudServiceConfigServerGitSettingSshAuth>? sshAuth;
   /// The URI of the default Git repository used as the Config Server back end, should be started with `http://`, `https://`, `git@`, or `ssh://`.
   final pulumi.Input<String> uri;
 
   /// Creates a new [SpringCloudServiceConfigServerGitSetting].
-  /// [httpBasicAuth] A `http_basic_auth` block as defined below.
+  /// [httpBasicAuth] A `httpBasicAuth` block as defined below.
   /// [label] The default label of the Git repository, should be the branch name, tag name, or commit-id of the repository.
   /// [repositories] One or more `repository` blocks as defined below.
   /// [searchPaths] An array of strings used to search subdirectories of the Git repository.
-  /// [sshAuth] A `ssh_auth` block as defined below.
+  /// [sshAuth] A `sshAuth` block as defined below.
   /// [uri] The URI of the default Git repository used as the Config Server back end, should be started with `http://`, `https://`, `git@`, or `ssh://`.
   const SpringCloudServiceConfigServerGitSetting({
     this.httpBasicAuth,
@@ -57,4 +57,3 @@ class SpringCloudServiceConfigServerGitSetting {
     );
   }
 }
-

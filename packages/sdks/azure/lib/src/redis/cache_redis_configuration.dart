@@ -7,7 +7,7 @@ class CacheRedisConfiguration {
   final pulumi.Input<bool>? activeDirectoryAuthenticationEnabled;
   /// Enable or disable AOF persistence for this Redis Cache. Defaults to `false`.
   ///
-  /// &gt; **NOTE:** `aof_backup_enabled` can only be set when SKU is `Premium`.
+  /// &gt; **NOTE:** `aofBackupEnabled` can only be set when SKU is `Premium`.
   final pulumi.Input<bool>? aofBackupEnabled;
   /// First Storage Account connection string for AOF persistence.
   final pulumi.Input<String>? aofStorageConnectionString0;
@@ -17,7 +17,7 @@ class CacheRedisConfiguration {
   final pulumi.Input<String>? aofStorageConnectionString1;
   /// If set to `false`, the Redis instance will be accessible without authentication. Defaults to `true`.
   ///
-  /// &gt; **NOTE:** `authentication_enabled` can only be set to `false` if a `subnet_id` is specified; and only works if there aren't existing instances within the subnet with `authentication_enabled` set to `true`.
+  /// &gt; **NOTE:** `authenticationEnabled` can only be set to `false` if a `subnetId` is specified; and only works if there aren't existing instances within the subnet with `authenticationEnabled` set to `true`.
   final pulumi.Input<bool>? authenticationEnabled;
   /// Preferred auth method to communicate to storage account used for data persistence. Possible values are `SAS` and `ManagedIdentity`.
   final pulumi.Input<String>? dataPersistenceAuthenticationMethod;
@@ -35,7 +35,7 @@ class CacheRedisConfiguration {
   final pulumi.Input<String>? notifyKeyspaceEvents;
   /// Is Backup Enabled? Only supported on Premium SKUs. Defaults to `false`.
   ///
-  /// &gt; **NOTE:** If `rdb_backup_enabled` set to `true`, `rdb_storage_connection_string` must also be set.
+  /// &gt; **NOTE:** If `rdbBackupEnabled` set to `true`, `rdbStorageConnectionString` must also be set.
   final pulumi.Input<bool>? rdbBackupEnabled;
   /// The Backup Frequency in Minutes. Only supported on Premium SKUs. Possible values are: `15`, `30`, `60`, `360`, `720` and `1440`.
   final pulumi.Input<int>? rdbBackupFrequency;
@@ -130,4 +130,3 @@ class CacheRedisConfiguration {
     );
   }
 }
-

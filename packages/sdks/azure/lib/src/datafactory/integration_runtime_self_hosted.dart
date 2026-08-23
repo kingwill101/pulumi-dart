@@ -106,6 +106,29 @@ import 'integration_runtime_self_hosted_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_integrationruntimeselfhosted" "example" {
+///   name            = "example"
+///   data_factory_id = azure_datafactory_factory.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +141,8 @@ import 'integration_runtime_self_hosted_state.dart';
 /// import com.pulumi.azure.datafactory.FactoryArgs;
 /// import com.pulumi.azure.datafactory.IntegrationRuntimeSelfHosted;
 /// import com.pulumi.azure.datafactory.IntegrationRuntimeSelfHostedArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,7 +219,7 @@ class IntegrationRuntimeSelfHosted extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The primary integration runtime authentication key.
   late final pulumi.Output<String> primaryAuthorizationKey;
-  /// A `rbac_authorization` block as defined below. Changing this forces a new resource to be created.
+  /// A `rbacAuthorization` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> rbacAuthorizations;
   /// The secondary integration runtime authentication key.
   late final pulumi.Output<String> secondaryAuthorizationKey;

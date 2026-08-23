@@ -7,9 +7,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_datafactory_linked_service_cosmos_db_linked_service_cosmos_db_args_doc}
 class LinkedServiceCosmosDbArgs {
-  /// The endpoint of the Azure CosmosDB account. Required if `connection_string` is unspecified.
+  /// The endpoint of the Azure CosmosDB account. Required if `connectionString` is unspecified.
   final pulumi.Input<String>? accountEndpoint;
-  /// The account key of the Azure Cosmos DB account. Required if `connection_string` is unspecified.
+  /// The account key of the Azure Cosmos DB account. Required if `connectionString` is unspecified.
   final pulumi.Input<String>? accountKey;
   /// A map of additional properties to associate with the Data Factory Linked Service.
   ///
@@ -17,11 +17,11 @@ class LinkedServiceCosmosDbArgs {
   final pulumi.Input<Map<String, String>>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service.
   final pulumi.Input<List<String>>? annotations;
-  /// The connection string. Required if `account_endpoint`, `account_key`, and `database` are unspecified.
+  /// The connection string. Required if `accountEndpoint`, `accountKey`, and `database` are unspecified.
   final pulumi.Input<String>? connectionString;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
-  /// The name of the database. Required if `connection_string` is unspecified.
+  /// The name of the database. Required if `connectionString` is unspecified.
   final pulumi.Input<String>? database;
   /// The description for the Data Factory Linked Service.
   final pulumi.Input<String>? description;
@@ -33,13 +33,13 @@ class LinkedServiceCosmosDbArgs {
   final pulumi.Input<Map<String, String>>? parameters;
 
   /// Creates a new [LinkedServiceCosmosDbArgs].
-  /// [accountEndpoint] The endpoint of the Azure CosmosDB account. Required if `connection_string` is unspecified.
-  /// [accountKey] The account key of the Azure Cosmos DB account. Required if `connection_string` is unspecified.
+  /// [accountEndpoint] The endpoint of the Azure CosmosDB account. Required if `connectionString` is unspecified.
+  /// [accountKey] The account key of the Azure Cosmos DB account. Required if `connectionString` is unspecified.
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Linked Service.
   /// [annotations] List of tags that can be used for describing the Data Factory Linked Service.
-  /// [connectionString] The connection string. Required if `account_endpoint`, `account_key`, and `database` are unspecified.
+  /// [connectionString] The connection string. Required if `accountEndpoint`, `accountKey`, and `database` are unspecified.
   /// [dataFactoryId] The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
-  /// [database] The name of the database. Required if `connection_string` is unspecified.
+  /// [database] The name of the database. Required if `connectionString` is unspecified.
   /// [description] The description for the Data Factory Linked Service.
   /// [integrationRuntimeName] The integration runtime reference to associate with the Data Factory Linked Service.
   /// [name] Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
@@ -90,4 +90,3 @@ class LinkedServiceCosmosDbArgs {
     );
   }
 }
-

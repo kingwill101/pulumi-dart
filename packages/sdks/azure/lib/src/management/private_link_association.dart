@@ -47,7 +47,7 @@ import 'private_link_association_state.dart';
 ///     name="example",
 ///     resource_group_name=example_resource_group.name,
 ///     location=example_resource_group.location)
-/// example_uuid = random.index.Uuid("example")
+/// example_uuid = random.Uuid("example")
 /// example_private_link_association = azure.management.PrivateLinkAssociation("example",
 ///     name=example_uuid["result"],
 ///     management_group_id=example_azurerm_management_group["id"],
@@ -83,7 +83,7 @@ import 'private_link_association_state.dart';
 ///         Location = exampleResourceGroup.Location,
 ///     });
 ///
-///     var exampleUuid = new Random.Index.Uuid("example");
+///     var exampleUuid = new Random.Uuid("example");
 ///
 ///     var examplePrivateLinkAssociation = new Azure.Management.PrivateLinkAssociation("example", new()
 ///     {
@@ -149,6 +149,42 @@ import 'private_link_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "example" {
+/// }
+/// data "azure_management_getgroup" "exampleGetGroup" {
+///   name = data.azure_core_getclientconfig.example.tenant_id
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_management_privatelink" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "random_uuid" "example" {
+/// }
+/// resource "azure_management_privatelinkassociation" "example" {
+///   name                                = random_uuid.example.result
+///   management_group_id                 = exampleAzurermManagementGroup.id
+///   resource_management_private_link_id = azure_management_privatelink.example.id
+///   public_network_access_enabled       = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -165,8 +201,8 @@ import 'private_link_association_state.dart';
 /// import com.pulumi.random.Uuid;
 /// import com.pulumi.azure.management.PrivateLinkAssociation;
 /// import com.pulumi.azure.management.PrivateLinkAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -263,9 +299,9 @@ import 'private_link_association_state.dart';
 class PrivateLinkAssociation extends pulumi.CustomResource {
   /// Specifies the Management Group ID within which this Private Link Association should exist. Changing this forces a new Private Link Association to be created.
   ///
-  /// &gt; **Note:** For now, `management_group_id` must be the ID of [Root Management Group](https://learn.microsoft.com/en-us/azure/governance/management-groups/overview#root-management-group-for-each-directory).
+  /// &gt; **Note:** For now, `managementGroupId` must be the ID of [Root Management Group](https://learn.microsoft.com/en-us/azure/governance/management-groups/overview#root-management-group-for-each-directory).
   late final pulumi.Output<String> managementGroupId;
-  /// Specifies the name of this Private Link Association, which should be a UUID. If `name` is not provided, a UUID will be generated, you should use the `ignore_changes` attribute to ignore changes to this field. Changing this forces a new Private Link Association to be created.
+  /// Specifies the name of this Private Link Association, which should be a UUID. If `name` is not provided, a UUID will be generated, you should use the `ignoreChanges` attribute to ignore changes to this field. Changing this forces a new Private Link Association to be created.
   late final pulumi.Output<String> name;
   /// Whether public network access is allowed. Changing this forces a new Private Link Association to be created.
   late final pulumi.Output<bool> publicNetworkAccessEnabled;

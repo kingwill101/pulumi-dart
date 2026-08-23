@@ -132,6 +132,36 @@ import 'channel_alexa_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_bot_channelsregistration" "example" {
+///   name                = "example-bcr"
+///   location            = "global"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "F0"
+///   microsoft_app_id    = data.azure_core_getclientconfig.current.client_id
+/// }
+/// resource "azure_bot_channelalexa" "example" {
+///   bot_name            = azure_bot_channelsregistration.example.name
+///   location            = azure_bot_channelsregistration.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   skill_id            = "amzn1.ask.skill.00000000-0000-0000-0000-000000000000"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -145,8 +175,8 @@ import 'channel_alexa_state.dart';
 /// import com.pulumi.azure.bot.ChannelsRegistrationArgs;
 /// import com.pulumi.azure.bot.ChannelAlexa;
 /// import com.pulumi.azure.bot.ChannelAlexaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

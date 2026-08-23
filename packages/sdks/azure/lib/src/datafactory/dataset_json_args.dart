@@ -16,7 +16,7 @@ class DatasetJsonArgs {
   final pulumi.Input<Map<String, String>>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Dataset.
   final pulumi.Input<List<String>>? annotations;
-  /// A `azure_blob_storage_location` block as defined below.
+  /// A `azureBlobStorageLocation` block as defined below.
   ///
   /// The following supported arguments are specific to Delimited Text Dataset:
   final pulumi.Input<DatasetJsonAzureBlobStorageLocation>? azureBlobStorageLocation;
@@ -28,7 +28,7 @@ class DatasetJsonArgs {
   final pulumi.Input<String>? encoding;
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   final pulumi.Input<String>? folder;
-  /// A `http_server_location` block as defined below.
+  /// A `httpServerLocation` block as defined below.
   final pulumi.Input<DatasetJsonHttpServerLocation>? httpServerLocation;
   /// The Data Factory Linked Service name in which to associate the Dataset with.
   final pulumi.Input<String> linkedServiceName;
@@ -36,22 +36,22 @@ class DatasetJsonArgs {
   final pulumi.Input<String>? name;
   /// A map of parameters to associate with the Data Factory Dataset.
   final pulumi.Input<Map<String, String>>? parameters;
-  /// A `schema_column` block as defined below.
+  /// A `schemaColumn` block as defined below.
   final pulumi.Input<List<DatasetJsonSchemaColumn>>? schemaColumns;
 
   /// Creates a new [DatasetJsonArgs].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Dataset.
   /// [annotations] List of tags that can be used for describing the Data Factory Dataset.
-  /// [azureBlobStorageLocation] A `azure_blob_storage_location` block as defined below.
+  /// [azureBlobStorageLocation] A `azureBlobStorageLocation` block as defined below.
   /// [dataFactoryId] The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   /// [description] The description for the Data Factory Dataset.
   /// [encoding] The encoding format for the file.
   /// [folder] The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
-  /// [httpServerLocation] A `http_server_location` block as defined below.
+  /// [httpServerLocation] A `httpServerLocation` block as defined below.
   /// [linkedServiceName] The Data Factory Linked Service name in which to associate the Dataset with.
   /// [name] Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Dataset.
-  /// [schemaColumns] A `schema_column` block as defined below.
+  /// [schemaColumns] A `schemaColumn` block as defined below.
   const DatasetJsonArgs({
     this.additionalProperties,
     this.annotations,
@@ -101,4 +101,3 @@ class DatasetJsonArgs {
     );
   }
 }
-

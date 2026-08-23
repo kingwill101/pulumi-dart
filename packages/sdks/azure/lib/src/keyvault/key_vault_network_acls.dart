@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultNetworkAcls {
   /// Specifies which traffic can bypass the network rules. Possible values are `AzureServices` and `None`.
   final pulumi.Input<String> bypass;
-  /// The Default Action to use when no rules match from `ip_rules` / `virtual_network_subnet_ids`. Possible values are `Allow` and `Deny`.
+  /// The Default Action to use when no rules match from `ipRules` / `virtualNetworkSubnetIds`. Possible values are `Allow` and `Deny`.
   final pulumi.Input<String> defaultAction;
   /// One or more IP Addresses, or CIDR Blocks which should be able to access the Key Vault.
   final pulumi.Input<List<String>>? ipRules;
@@ -14,7 +14,7 @@ class KeyVaultNetworkAcls {
 
   /// Creates a new [KeyVaultNetworkAcls].
   /// [bypass] Specifies which traffic can bypass the network rules. Possible values are `AzureServices` and `None`.
-  /// [defaultAction] The Default Action to use when no rules match from `ip_rules` / `virtual_network_subnet_ids`. Possible values are `Allow` and `Deny`.
+  /// [defaultAction] The Default Action to use when no rules match from `ipRules` / `virtualNetworkSubnetIds`. Possible values are `Allow` and `Deny`.
   /// [ipRules] One or more IP Addresses, or CIDR Blocks which should be able to access the Key Vault.
   /// [virtualNetworkSubnetIds] One or more Subnet IDs which should be able to access this Key Vault.
   const KeyVaultNetworkAcls({
@@ -42,4 +42,3 @@ class KeyVaultNetworkAcls {
     );
   }
 }
-

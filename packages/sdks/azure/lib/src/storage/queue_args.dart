@@ -13,18 +13,18 @@ class QueueArgs {
   final pulumi.Input<String>? name;
   /// The name of the Storage Account where the Storage Queue should be created.
   ///
-  /// &gt; **Note:** One of `storage_account_name` or `storage_account_id` must be specified. When specifying `storage_account_id` the resource will use the Resource Manager API, rather than the Data Plane API.
+  /// &gt; **Note:** One of `storageAccountName` or `storageAccountId` must be specified. When specifying `storageAccountId` the resource will use the Resource Manager API, rather than the Data Plane API.
   final pulumi.Input<String>? storageAccountId;
-  /// The name of the Storage Account where the Storage Queue should be created. This property is deprecated in favour of `storage_account_id`.
+  /// The name of the Storage Account where the Storage Queue should be created. This property is deprecated in favour of `storageAccountId`.
   ///
-  /// &gt; **Note:** Migrating from the deprecated `storage_account_name` to `storage_account_id` is supported without recreation. Any other change to either property will result in the resource being recreated.
+  /// &gt; **Note:** Migrating from the deprecated `storageAccountName` to `storageAccountId` is supported without recreation. Any other change to either property will result in the resource being recreated.
   final pulumi.Input<String>? storageAccountName;
 
   /// Creates a new [QueueArgs].
   /// [metadata] A mapping of MetaData which should be assigned to this Storage Queue.
   /// [name] The name of the Queue which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.
   /// [storageAccountId] The name of the Storage Account where the Storage Queue should be created.
-  /// [storageAccountName] The name of the Storage Account where the Storage Queue should be created. This property is deprecated in favour of `storage_account_id`.
+  /// [storageAccountName] The name of the Storage Account where the Storage Queue should be created. This property is deprecated in favour of `storageAccountId`.
   const QueueArgs({
     this.metadata,
     this.name,
@@ -50,4 +50,3 @@ class QueueArgs {
     );
   }
 }
-

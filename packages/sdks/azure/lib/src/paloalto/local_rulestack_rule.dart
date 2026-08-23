@@ -166,6 +166,39 @@ import 'local_rulestack_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_paloalto_localrulestack" "example" {
+///   name                = "lrs-example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_paloalto_localrulestackrule" "example" {
+///   name         = "example-rule"
+///   rulestack_id = azure_paloalto_localrulestack.example.id
+///   priority     = 1000
+///   action       = "Allow"
+///   protocol     = "application-default"
+///   applications = ["any"]
+///   source = {
+///     cidrs = ["10.0.0.0/8"]
+///   }
+///   destination = {
+///     cidrs = ["192.168.16.0/24"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -180,8 +213,8 @@ import 'local_rulestack_rule_state.dart';
 /// import com.pulumi.azure.paloalto.LocalRulestackRuleArgs;
 /// import com.pulumi.azure.paloalto.inputs.LocalRulestackRuleSourceArgs;
 /// import com.pulumi.azure.paloalto.inputs.LocalRulestackRuleDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -261,7 +294,7 @@ import 'local_rulestack_rule_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `PaloAltoNetworks.Cloudngfw` - 2022-08-29
+/// * `PaloAltoNetworks.Cloudngfw` - 2025-10-08
 ///
 /// ## Import
 ///
@@ -287,7 +320,7 @@ class LocalRulestackRule extends pulumi.CustomResource {
   late final pulumi.Output<LocalRulestackRuleDestination> destination;
   /// Should this Rule be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-  /// The ID of the certificate for inbound inspection. Only valid when `decryption_rule_type` is set to `SSLInboundInspection`.
+  /// The ID of the certificate for inbound inspection. Only valid when `decryptionRuleType` is set to `SSLInboundInspection`.
   late final pulumi.Output<String?> inspectionCertificateId;
   /// Should Logging be enabled? Defaults to `false`.
   late final pulumi.Output<bool?> loggingEnabled;
@@ -301,9 +334,9 @@ class LocalRulestackRule extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** This is the primary identifier of a rule, as such it is not possible to change the Priority of a rule once created.
   late final pulumi.Output<int> priority;
-  /// The Protocol and port to use in the form `[protocol]:[port_number]` e.g. `TCP:8080` or `UDP:53`. Conflicts with `protocol_ports`.
+  /// The Protocol and port to use in the form `[protocol]:[portNumber]` e.g. `TCP:8080` or `UDP:53`. Conflicts with `protocolPorts`.
   ///
-  /// &gt; **Note:** In 4.0 or later versions, the default of `protocol` will no longer be set by provider, exactly one of `protocol` and `protocol_ports` must be specified. You need to explicitly specify `protocol="application-default"` to keep the the current default of the `protocol`.
+  /// &gt; **Note:** In 4.0 or later versions, the default of `protocol` will no longer be set by provider, exactly one of `protocol` and `protocolPorts` must be specified. You need to explicitly specify `protocol="application-default"` to keep the the current default of the `protocol`.
   late final pulumi.Output<String?> protocol;
   /// Specifies a list of Protocol:Port entries. E.g. `[ "TCP:80", "UDP:5431" ]`. Conflicts with `protocol`.
   late final pulumi.Output<List<String>?> protocolPorts;

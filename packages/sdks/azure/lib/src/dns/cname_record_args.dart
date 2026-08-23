@@ -15,7 +15,7 @@ class CNameRecordArgs {
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
   ///
-  /// &gt; **Note:** either `record` OR `target_resource_id` must be specified, but not both.
+  /// &gt; **Note:** either `record` OR `targetResourceId` must be specified, but not both.
   final pulumi.Input<Map<String, String>>? tags;
   /// The Azure resource id of the target object. Conflicts with `record`.
   final pulumi.Input<String>? targetResourceId;
@@ -66,4 +66,3 @@ class CNameRecordArgs {
     );
   }
 }
-

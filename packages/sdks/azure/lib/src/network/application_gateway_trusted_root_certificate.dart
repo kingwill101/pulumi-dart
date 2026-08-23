@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayTrustedRootCertificate {
-  /// The contents of the Trusted Root Certificate which should be used. Required if `key_vault_secret_id` is not set.
+  /// The contents of the Trusted Root Certificate which should be used. Required if `keyVaultSecretId` is not set.
   final pulumi.Input<String>? data;
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String>? id;
   /// The Secret ID of the (base-64 encoded unencrypted pfx) `Secret` or `Certificate` object stored in Azure KeyVault. You need to enable soft delete for the Key Vault to use this feature. Required if `data` is not set.
   ///
-  /// &gt; **Note:** To implement certificate rotation, `versionless_secret_id` should be used, although `secret_id` is also supported.
+  /// &gt; **Note:** To implement certificate rotation, `versionlessSecretId` should be used, although `secretId` is also supported.
   ///
   /// &gt; **Note:** TLS termination with Key Vault certificates is limited to the [v2 SKUs](https://docs.microsoft.com/azure/application-gateway/key-vault-certs).
   ///
@@ -19,7 +19,7 @@ class ApplicationGatewayTrustedRootCertificate {
   final pulumi.Input<String> name;
 
   /// Creates a new [ApplicationGatewayTrustedRootCertificate].
-  /// [data] The contents of the Trusted Root Certificate which should be used. Required if `key_vault_secret_id` is not set.
+  /// [data] The contents of the Trusted Root Certificate which should be used. Required if `keyVaultSecretId` is not set.
   /// [id] The ID of the Rewrite Rule Set
   /// [keyVaultSecretId] The Secret ID of the (base-64 encoded unencrypted pfx) `Secret` or `Certificate` object stored in Azure KeyVault. You need to enable soft delete for the Key Vault to use this feature. Required if `data` is not set.
   /// [name] The Name of the Trusted Root Certificate to use.
@@ -48,4 +48,3 @@ class ApplicationGatewayTrustedRootCertificate {
     );
   }
 }
-

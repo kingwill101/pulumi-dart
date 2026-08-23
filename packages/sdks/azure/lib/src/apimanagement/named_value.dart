@@ -131,6 +131,35 @@ import 'named_value_value_from_key_vault.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "pub1"
+///   publisher_email     = "pub1@email.com"
+///   sku_name            = "Developer_1"
+/// }
+/// resource "azure_apimanagement_namedvalue" "example" {
+///   name                = "example-apimg"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   api_management_name = azure_apimanagement_service.example.name
+///   display_name        = "ExampleProperty"
+///   value               = "Example Value"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +172,8 @@ import 'named_value_value_from_key_vault.dart';
 /// import com.pulumi.azure.apimanagement.ServiceArgs;
 /// import com.pulumi.azure.apimanagement.NamedValue;
 /// import com.pulumi.azure.apimanagement.NamedValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -241,7 +270,7 @@ class NamedValue extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> tags;
   /// The value of this API Management Named Value.
   late final pulumi.Output<String?> value;
-  /// A `value_from_key_vault` block as defined below. If specified, `secret` must also be set to `true`.
+  /// A `valueFromKeyVault` block as defined below. If specified, `secret` must also be set to `true`.
   late final pulumi.Output<NamedValueValueFromKeyVault?> valueFromKeyVault;
 
   /// Creates a new [NamedValue].

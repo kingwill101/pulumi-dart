@@ -6,7 +6,7 @@ import 'vpn_site_link_bgp.dart';
 class VpnSiteLink {
   /// A `bgp` block as defined above.
   ///
-  /// &gt; **Note:** The `link.bgp` has to be set when the `address_cidrs` isn't specified.
+  /// &gt; **Note:** The `link.bgp` has to be set when the `addressCidrs` isn't specified.
   final pulumi.Input<VpnSiteLinkBgp>? bgp;
   /// The FQDN of this VPN Site Link.
   final pulumi.Input<String>? fqdn;
@@ -14,7 +14,7 @@ class VpnSiteLink {
   final pulumi.Input<String>? id;
   /// The IP address of this VPN Site Link.
   ///
-  /// &gt; **Note:** Either `fqdn` or `ip_address` should be specified.
+  /// &gt; **Note:** Either `fqdn` or `ipAddress` should be specified.
   final pulumi.Input<String>? ipAddress;
   /// The name which should be used for this VPN Site Link.
   final pulumi.Input<String> name;
@@ -65,4 +65,3 @@ class VpnSiteLink {
     );
   }
 }
-

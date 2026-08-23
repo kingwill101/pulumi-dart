@@ -139,6 +139,36 @@ import 'trigger_schedule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_pipeline" "example" {
+///   name            = "example"
+///   data_factory_id = azure_datafactory_factory.example.id
+/// }
+/// resource "azure_datafactory_triggerschedule" "example" {
+///   name            = "example"
+///   data_factory_id = azure_datafactory_factory.example.id
+///   pipeline_name   = azure_datafactory_pipeline.example.name
+///   interval        = 5
+///   frequency       = "Day"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -153,8 +183,8 @@ import 'trigger_schedule_state.dart';
 /// import com.pulumi.azure.datafactory.PipelineArgs;
 /// import com.pulumi.azure.datafactory.TriggerSchedule;
 /// import com.pulumi.azure.datafactory.TriggerScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

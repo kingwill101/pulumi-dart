@@ -152,6 +152,39 @@ import 'mongo_collection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cosmosdb_getaccount" "example" {
+///   name                = "tfex-cosmosdb-account"
+///   resource_group_name = "tfex-cosmosdb-account-rg"
+/// }
+///
+/// resource "azure_cosmosdb_mongodatabase" "example" {
+///   name                = "tfex-cosmos-mongo-db"
+///   resource_group_name = data.azure_cosmosdb_getaccount.example.resource_group_name
+///   account_name        = data.azure_cosmosdb_getaccount.example.name
+/// }
+/// resource "azure_cosmosdb_mongocollection" "example" {
+///   name                = "tfex-cosmos-mongo-db"
+///   resource_group_name = data.azure_cosmosdb_getaccount.example.resource_group_name
+///   account_name        = data.azure_cosmosdb_getaccount.example.name
+///   database_name       = azure_cosmosdb_mongodatabase.example.name
+///   default_ttl_seconds = "777"
+///   shard_key           = "uniqueKey"
+///   throughput          = 400
+///   indices {
+///     keys   = ["_id"]
+///     unique = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -165,8 +198,8 @@ import 'mongo_collection_state.dart';
 /// import com.pulumi.azure.cosmosdb.MongoCollection;
 /// import com.pulumi.azure.cosmosdb.MongoCollectionArgs;
 /// import com.pulumi.azure.cosmosdb.inputs.MongoCollectionIndexArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -240,6 +273,13 @@ import 'mongo_collection_state.dart';
 /// ```
 ///
 ///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.DocumentDB` - 2024-08-15
+///
 /// ## Import
 ///
 /// CosmosDB Mongo Collection can be imported using the `resource id`, e.g.
@@ -252,7 +292,7 @@ class MongoCollection extends pulumi.CustomResource {
   late final pulumi.Output<String> accountName;
   /// The default time to live of Analytical Storage for this Mongo Collection. If present and the value is set to `-1`, it is equal to infinity, and items don’t expire by default. If present and the value is set to some number `n` – items will expire `n` seconds after their last modified time.
   late final pulumi.Output<int?> analyticalStorageTtl;
-  /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
+  /// An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   late final pulumi.Output<MongoCollectionAutoscaleSettings?> autoscaleSettings;
@@ -268,7 +308,7 @@ class MongoCollection extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// The name of the key to partition on for sharding. There must not be any other unique index keys. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> shardKey;
-  /// One or more `system_indexes` blocks as defined below.
+  /// One or more `systemIndexes` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> systemIndexes;
   /// The throughput of the MongoDB collection (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
   late final pulumi.Output<int> throughput;

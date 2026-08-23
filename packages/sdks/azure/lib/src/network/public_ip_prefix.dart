@@ -103,6 +103,29 @@ import 'public_ip_prefix_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicipprefix" "example" {
+///   name                = "acceptanceTestPublicIpPrefix1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   prefix_length       = 31
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +136,8 @@ import 'public_ip_prefix_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.network.PublicIpPrefix;
 /// import com.pulumi.azure.network.PublicIpPrefixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -179,7 +202,7 @@ import 'public_ip_prefix_state.dart';
 class PublicIpPrefix extends pulumi.CustomResource {
   /// The Custom IP Prefix ID associated with the Public IP Prefix. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** When `ip_version` is set to `IPv6`, `custom_ip_prefix_id` must reference a regional (child) range rather than a global (parent) range. For more details on creating a Public IP Prefix from a custom IP prefix, see [here](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/manage-custom-ip-address-prefix#create-a-public-ip-prefix-from-a-custom-ip-prefix).
+  /// &gt; **Note:** When `ipVersion` is set to `IPv6`, `customIpPrefixId` must reference a regional (child) range rather than a global (parent) range. For more details on creating a Public IP Prefix from a custom IP prefix, see [here](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/manage-custom-ip-address-prefix#create-a-public-ip-prefix-from-a-custom-ip-prefix).
   late final pulumi.Output<String?> customIpPrefixId;
   /// The IP address prefix value that was allocated.
   late final pulumi.Output<String> ipPrefix;
@@ -195,11 +218,11 @@ class PublicIpPrefix extends pulumi.CustomResource {
   late final pulumi.Output<int?> prefixLength;
   /// The name of the resource group in which to create the Public IP Prefix. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// The SKU of the Public IP Prefix. Accepted values are `Standard`. Defaults to `Standard`. Changing this forces a new resource to be created.
-  ///
-  /// &gt; **Note:** Public IP Prefix can only be created with Standard SKUs at this time.
+  /// The SKU of the Public IP Prefix. Possible values are `Standard` and `StandardV2`. Defaults to `Standard`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sku;
-  /// The SKU Tier that should be used for the Public IP. Possible values are `Regional` and `Global`. Defaults to `Regional`. Changing this forces a new resource to be created.
+  /// The SKU Tier that should be used for the Public IP Prefix. Possible values are `Regional` and `Global`. Defaults to `Regional`. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** When `skuTier` is set to `Global`, `sku` must be set to `Standard`.
   late final pulumi.Output<String?> skuTier;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;

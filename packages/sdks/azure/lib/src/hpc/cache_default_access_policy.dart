@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cache_default_access_policy_access_rule.dart';
 
 class CacheDefaultAccessPolicy {
-  /// One or more `access_rule` blocks (up to three) as defined above.
+  /// One or more `accessRule` blocks (up to three) as defined above.
   final pulumi.Input<List<CacheDefaultAccessPolicyAccessRule>> accessRules;
 
   /// Creates a new [CacheDefaultAccessPolicy].
-  /// [accessRules] One or more `access_rule` blocks (up to three) as defined above.
+  /// [accessRules] One or more `accessRule` blocks (up to three) as defined above.
   const CacheDefaultAccessPolicy({
     required this.accessRules,
   });
@@ -25,4 +25,3 @@ class CacheDefaultAccessPolicy {
     );
   }
 }
-

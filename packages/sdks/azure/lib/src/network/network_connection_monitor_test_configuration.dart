@@ -7,9 +7,9 @@ import 'network_connection_monitor_test_configuration_success_threshold.dart';
 import 'network_connection_monitor_test_configuration_tcp_configuration.dart';
 
 class NetworkConnectionMonitorTestConfiguration {
-  /// A `http_configuration` block as defined below.
+  /// A `httpConfiguration` block as defined below.
   final pulumi.Input<NetworkConnectionMonitorTestConfigurationHttpConfiguration>? httpConfiguration;
-  /// A `icmp_configuration` block as defined below.
+  /// A `icmpConfiguration` block as defined below.
   final pulumi.Input<NetworkConnectionMonitorTestConfigurationIcmpConfiguration>? icmpConfiguration;
   /// The name of test configuration for the Network Connection Monitor.
   final pulumi.Input<String> name;
@@ -17,21 +17,21 @@ class NetworkConnectionMonitorTestConfiguration {
   final pulumi.Input<String>? preferredIpVersion;
   /// The protocol used to evaluate tests. Possible values are `Tcp`, `Http` and `Icmp`.
   final pulumi.Input<String> protocol;
-  /// A `success_threshold` block as defined below.
+  /// A `successThreshold` block as defined below.
   final pulumi.Input<NetworkConnectionMonitorTestConfigurationSuccessThreshold>? successThreshold;
-  /// A `tcp_configuration` block as defined below.
+  /// A `tcpConfiguration` block as defined below.
   final pulumi.Input<NetworkConnectionMonitorTestConfigurationTcpConfiguration>? tcpConfiguration;
   /// The time interval in seconds at which the test evaluation will happen. Defaults to `60`.
   final pulumi.Input<int>? testFrequencyInSeconds;
 
   /// Creates a new [NetworkConnectionMonitorTestConfiguration].
-  /// [httpConfiguration] A `http_configuration` block as defined below.
-  /// [icmpConfiguration] A `icmp_configuration` block as defined below.
+  /// [httpConfiguration] A `httpConfiguration` block as defined below.
+  /// [icmpConfiguration] A `icmpConfiguration` block as defined below.
   /// [name] The name of test configuration for the Network Connection Monitor.
   /// [preferredIpVersion] The preferred IP version which is used in the test evaluation. Possible values are `IPv4` and `IPv6`.
   /// [protocol] The protocol used to evaluate tests. Possible values are `Tcp`, `Http` and `Icmp`.
-  /// [successThreshold] A `success_threshold` block as defined below.
-  /// [tcpConfiguration] A `tcp_configuration` block as defined below.
+  /// [successThreshold] A `successThreshold` block as defined below.
+  /// [tcpConfiguration] A `tcpConfiguration` block as defined below.
   /// [testFrequencyInSeconds] The time interval in seconds at which the test evaluation will happen. Defaults to `60`.
   const NetworkConnectionMonitorTestConfiguration({
     this.httpConfiguration,
@@ -70,4 +70,3 @@ class NetworkConnectionMonitorTestConfiguration {
     );
   }
 }
-

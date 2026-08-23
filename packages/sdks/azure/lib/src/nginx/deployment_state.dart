@@ -11,7 +11,7 @@ import 'deployment_web_application_firewall.dart';
 
 /// Input properties used for looking up and filtering Deployment resources.
 class DeploymentState {
-  /// An `auto_scale_profile` block as defined below.
+  /// An `autoScaleProfile` block as defined below.
   final pulumi.Input<List<DeploymentAutoScaleProfile>>? autoScaleProfiles;
   /// Specify the automatic upgrade channel for the NGINX deployment. Defaults to `stable`. The possible values are `stable` and `preview`.
   final pulumi.Input<String>? automaticUpgradeChannel;
@@ -21,13 +21,12 @@ class DeploymentState {
   final pulumi.Input<int>? capacity;
   /// The dataplane API endpoint of the NGINX Deployment.
   final pulumi.Input<String>? dataplaneApiEndpoint;
-  /// Should the metrics be exported to Azure Monitor?
   final pulumi.Input<bool>? diagnoseSupportEnabled;
   /// Specify the preferred support contact email address for receiving alerts and notifications.
   final pulumi.Input<String>? email;
-  /// One or more `frontend_private` blocks as defined below.
+  /// One or more `frontendPrivate` blocks as defined below.
   final pulumi.Input<List<DeploymentFrontendPrivate>>? frontendPrivates;
-  /// A `frontend_public` block as defined below.
+  /// A `frontendPublic` block as defined below.
   final pulumi.Input<DeploymentFrontendPublic>? frontendPublic;
   /// An `identity` block as defined below.
   final pulumi.Input<DeploymentIdentity>? identity;
@@ -39,7 +38,7 @@ class DeploymentState {
   final pulumi.Input<String>? managedResourceGroup;
   /// The name which should be used for this NGINX Deployment. Changing this forces a new NGINX Deployment to be created.
   final pulumi.Input<String>? name;
-  /// One or more `network_interface` blocks as defined below.
+  /// One or more `networkInterface` blocks as defined below.
   final pulumi.Input<List<DeploymentNetworkInterface>>? networkInterfaces;
   /// The version of the NGINX Deployment.
   final pulumi.Input<String>? nginxVersion;
@@ -49,34 +48,34 @@ class DeploymentState {
   ///
   /// &gt; **Note:** For a list of available SKUs, please reference the [NGINXaaS for Azure documentation](https://docs.nginx.com/nginxaas/azure/billing/overview)
   ///
-  /// &gt; **Note:** If you are setting the `sku` to `basic_Monthly`, you cannot specify a `capacity` or `auto_scale_profile`; basic plans do not support scaling. Other `sku`s require either `capacity` or `auto_scale_profile`. If you're using `basic_Monthly` with deployments created before v4.0, you may need to use Terraform's `ignore_changes` functionality to ignore changes to the `capacity` field.
+  /// &gt; **Note:** If you are setting the `sku` to `basic_Monthly`, you cannot specify a `capacity` or `autoScaleProfile`; basic plans do not support scaling. Other `sku`s require either `capacity` or `autoScaleProfile`. If you're using `basic_Monthly` with deployments created before v4.0, you may need to use Terraform's `ignoreChanges` functionality to ignore changes to the `capacity` field.
   final pulumi.Input<String>? sku;
   /// A mapping of tags which should be assigned to the NGINX Deployment.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A `web_application_firewall` blocks as defined below.
+  /// A `webApplicationFirewall` blocks as defined below.
   final pulumi.Input<DeploymentWebApplicationFirewall>? webApplicationFirewall;
 
   /// Creates a new [DeploymentState].
-  /// [autoScaleProfiles] An `auto_scale_profile` block as defined below.
+  /// [autoScaleProfiles] An `autoScaleProfile` block as defined below.
   /// [automaticUpgradeChannel] Specify the automatic upgrade channel for the NGINX deployment. Defaults to `stable`. The possible values are `stable` and `preview`.
   /// [capacity] Specify the number of NGINX capacity units for this NGINX deployment.
   /// [dataplaneApiEndpoint] The dataplane API endpoint of the NGINX Deployment.
-  /// [diagnoseSupportEnabled] Should the metrics be exported to Azure Monitor?
+  /// [diagnoseSupportEnabled] Optional.
   /// [email] Specify the preferred support contact email address for receiving alerts and notifications.
-  /// [frontendPrivates] One or more `frontend_private` blocks as defined below.
-  /// [frontendPublic] A `frontend_public` block as defined below.
+  /// [frontendPrivates] One or more `frontendPrivate` blocks as defined below.
+  /// [frontendPublic] A `frontendPublic` block as defined below.
   /// [identity] An `identity` block as defined below.
   /// [ipAddress] The IP address of the NGINX Deployment.
   /// [location] The Azure Region where the NGINX Deployment should exist. Changing this forces a new NGINX Deployment to be created.
   /// [loggingStorageAccounts] Optional.
   /// [managedResourceGroup] Optional.
   /// [name] The name which should be used for this NGINX Deployment. Changing this forces a new NGINX Deployment to be created.
-  /// [networkInterfaces] One or more `network_interface` blocks as defined below.
+  /// [networkInterfaces] One or more `networkInterface` blocks as defined below.
   /// [nginxVersion] The version of the NGINX Deployment.
   /// [resourceGroupName] The name of the Resource Group where the NGINX Deployment should exist. Changing this forces a new NGINX Deployment to be created.
   /// [sku] Specifies the NGINX Deployment SKU.
   /// [tags] A mapping of tags which should be assigned to the NGINX Deployment.
-  /// [webApplicationFirewall] A `web_application_firewall` blocks as defined below.
+  /// [webApplicationFirewall] A `webApplicationFirewall` blocks as defined below.
   const DeploymentState({
     this.autoScaleProfiles,
     this.automaticUpgradeChannel,
@@ -150,4 +149,3 @@ class DeploymentState {
     );
   }
 }
-

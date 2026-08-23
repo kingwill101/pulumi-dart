@@ -20,7 +20,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///     algorithm: "RSA",
 ///     rsaBits: 4096,
 /// });
-/// const example = tls.index.PublicKey({
+/// const example = tls.PublicKey({
 ///     privateKeyPem: examplePrivateKey.privateKeyPem,
 /// });
 /// const current = azure.core.getSubscription({});
@@ -83,7 +83,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///                 image: {
 ///                     offer: "RHEL-SAP-HA",
 ///                     publisher: "RedHat",
-///                     sku: "82sapha-gen2",
+///                     sku: "86sapha-gen2",
 ///                     version: "latest",
 ///                 },
 ///                 osProfile: {
@@ -101,7 +101,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///                 image: {
 ///                     offer: "RHEL-SAP-HA",
 ///                     publisher: "RedHat",
-///                     sku: "82sapha-gen2",
+///                     sku: "86sapha-gen2",
 ///                     version: "latest",
 ///                 },
 ///                 osProfile: {
@@ -120,7 +120,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///                 image: {
 ///                     offer: "RHEL-SAP-HA",
 ///                     publisher: "RedHat",
-///                     sku: "82sapha-gen2",
+///                     sku: "86sapha-gen2",
 ///                     version: "latest",
 ///                 },
 ///                 osProfile: {
@@ -270,10 +270,10 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 /// import pulumi_azure as azure
 /// import pulumi_tls as tls
 ///
-/// example_private_key = tls.index.PrivateKey("example",
+/// example_private_key = tls.PrivateKey("example",
 ///     algorithm=RSA,
 ///     rsa_bits=4096)
-/// example = tls.index.public_key(private_key_pem=example_private_key["privateKeyPem"])
+/// example = tls.public_key(private_key_pem=example_private_key["privateKeyPem"])
 /// current = azure.core.get_subscription()
 /// example_resource_group = azure.core.ResourceGroup("example",
 ///     name="example-resources",
@@ -326,7 +326,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///                 "image": {
 ///                     "offer": "RHEL-SAP-HA",
 ///                     "publisher": "RedHat",
-///                     "sku": "82sapha-gen2",
+///                     "sku": "86sapha-gen2",
 ///                     "version": "latest",
 ///                 },
 ///                 "os_profile": {
@@ -344,7 +344,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///                 "image": {
 ///                     "offer": "RHEL-SAP-HA",
 ///                     "publisher": "RedHat",
-///                     "sku": "82sapha-gen2",
+///                     "sku": "86sapha-gen2",
 ///                     "version": "latest",
 ///                 },
 ///                 "os_profile": {
@@ -363,7 +363,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///                 "image": {
 ///                     "offer": "RHEL-SAP-HA",
 ///                     "publisher": "RedHat",
-///                     "sku": "82sapha-gen2",
+///                     "sku": "86sapha-gen2",
 ///                     "version": "latest",
 ///                 },
 ///                 "os_profile": {
@@ -515,13 +515,13 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var examplePrivateKey = new Tls.Index.PrivateKey("example", new()
+///     var examplePrivateKey = new Tls.PrivateKey("example", new()
 ///     {
 ///         Algorithm = "RSA",
 ///         RsaBits = 4096,
 ///     });
 ///
-///     var example = Tls.Index.PublicKey.Invoke(new()
+///     var example = Tls.PublicKey.Invoke(new()
 ///     {
 ///         PrivateKeyPem = examplePrivateKey.PrivateKeyPem,
 ///     });
@@ -616,7 +616,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///                     {
 ///                         Offer = "RHEL-SAP-HA",
 ///                         Publisher = "RedHat",
-///                         Sku = "82sapha-gen2",
+///                         Sku = "86sapha-gen2",
 ///                         Version = "latest",
 ///                     },
 ///                     OsProfile = new Azure.WorkloadsSAP.Inputs.ThreeTierVirtualInstanceThreeTierConfigurationApplicationServerConfigurationVirtualMachineConfigurationOsProfileArgs
@@ -638,7 +638,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///                     {
 ///                         Offer = "RHEL-SAP-HA",
 ///                         Publisher = "RedHat",
-///                         Sku = "82sapha-gen2",
+///                         Sku = "86sapha-gen2",
 ///                         Version = "latest",
 ///                     },
 ///                     OsProfile = new Azure.WorkloadsSAP.Inputs.ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfigurationOsProfileArgs
@@ -661,7 +661,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///                     {
 ///                         Offer = "RHEL-SAP-HA",
 ///                         Publisher = "RedHat",
-///                         Sku = "82sapha-gen2",
+///                         Sku = "86sapha-gen2",
 ///                         Version = "latest",
 ///                     },
 ///                     OsProfile = new Azure.WorkloadsSAP.Inputs.ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationOsProfileArgs
@@ -1013,7 +1013,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 /// 						Image: &workloadssap.ThreeTierVirtualInstanceThreeTierConfigurationApplicationServerConfigurationVirtualMachineConfigurationImageArgs{
 /// 							Offer:     pulumi.String("RHEL-SAP-HA"),
 /// 							Publisher: pulumi.String("RedHat"),
-/// 							Sku:       pulumi.String("82sapha-gen2"),
+/// 							Sku:       pulumi.String("86sapha-gen2"),
 /// 							Version:   pulumi.String("latest"),
 /// 						},
 /// 						OsProfile: &workloadssap.ThreeTierVirtualInstanceThreeTierConfigurationApplicationServerConfigurationVirtualMachineConfigurationOsProfileArgs{
@@ -1031,7 +1031,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 /// 						Image: &workloadssap.ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfigurationImageArgs{
 /// 							Offer:     pulumi.String("RHEL-SAP-HA"),
 /// 							Publisher: pulumi.String("RedHat"),
-/// 							Sku:       pulumi.String("82sapha-gen2"),
+/// 							Sku:       pulumi.String("86sapha-gen2"),
 /// 							Version:   pulumi.String("latest"),
 /// 						},
 /// 						OsProfile: &workloadssap.ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfigurationOsProfileArgs{
@@ -1050,7 +1050,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 /// 						Image: &workloadssap.ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationImageArgs{
 /// 							Offer:     pulumi.String("RHEL-SAP-HA"),
 /// 							Publisher: pulumi.String("RedHat"),
-/// 							Sku:       pulumi.String("82sapha-gen2"),
+/// 							Sku:       pulumi.String("86sapha-gen2"),
 /// 							Version:   pulumi.String("latest"),
 /// 						},
 /// 						OsProfile: &workloadssap.ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationOsProfileArgs{
@@ -1237,6 +1237,242 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "tls_publickey" "example" {
+///   private_key_pem = tls_privatekey.example.privateKeyPem
+/// }
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "tls_privatekey" "example" {
+///   algorithm = "RSA"
+///   rsa_bits  = 4096
+/// }
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "example-uai"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_authorization_assignment" "example" {
+///   scope                = data.azure_core_getsubscription.current.id
+///   role_definition_name = "Azure Center for SAP solutions service role"
+///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_core_resourcegroup" "app" {
+///   depends_on = [azure_network_subnet.example]
+///   name       = "example-sapapp"
+///   location   = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplesa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_workloadssap_threetiervirtualinstance" "example" {
+///   depends_on                  = [azure_authorization_assignment.example]
+///   name                        = "X05"
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   location                    = azure_core_resourcegroup.example.location
+///   environment                 = "NonProd"
+///   sap_product                 = "S4HANA"
+///   managed_resource_group_name = "exampleManagedRG"
+///   app_location                = azure_core_resourcegroup.app.location
+///   sap_fqdn                    = "sap.bpaas.com"
+///   three_tier_configuration = {
+///     app_resource_group_name = azure_core_resourcegroup.app.name
+///     secondary_ip_enabled    = true
+///     application_server_configuration = {
+///       instance_count = 1
+///       subnet_id      = azure_network_subnet.example.id
+///       virtual_machine_configuration = {
+///         virtual_machine_size = "Standard_D16ds_v4"
+///         image = {
+///           offer     = "RHEL-SAP-HA"
+///           publisher = "RedHat"
+///           sku       = "86sapha-gen2"
+///           version   = "latest"
+///         }
+///         os_profile = {
+///           admin_username  = "testAdmin"
+///           ssh_private_key = tls_privatekey.example.privateKeyPem
+///           ssh_public_key  = data.tls_publickey.example.public_key_openssh
+///         }
+///       }
+///     }
+///     central_server_configuration = {
+///       instance_count = 1
+///       subnet_id      = azure_network_subnet.example.id
+///       virtual_machine_configuration = {
+///         virtual_machine_size = "Standard_D16ds_v4"
+///         image = {
+///           offer     = "RHEL-SAP-HA"
+///           publisher = "RedHat"
+///           sku       = "86sapha-gen2"
+///           version   = "latest"
+///         }
+///         os_profile = {
+///           admin_username  = "testAdmin"
+///           ssh_private_key = tls_privatekey.example.privateKeyPem
+///           ssh_public_key  = data.tls_publickey.example.public_key_openssh
+///         }
+///       }
+///     }
+///     database_server_configuration = {
+///       instance_count = 1
+///       subnet_id      = azure_network_subnet.example.id
+///       database_type  = "HANA"
+///       virtual_machine_configuration = {
+///         virtual_machine_size = "Standard_E16ds_v4"
+///         image = {
+///           offer     = "RHEL-SAP-HA"
+///           publisher = "RedHat"
+///           sku       = "86sapha-gen2"
+///           version   = "latest"
+///         }
+///         os_profile = {
+///           admin_username  = "testAdmin"
+///           ssh_private_key = tls_privatekey.example.privateKeyPem
+///           ssh_public_key  = data.tls_publickey.example.public_key_openssh
+///         }
+///       }
+///       disk_volume_configurations = [{
+///         "volumeName"    = "hana/data"
+///         "numberOfDisks" = 3
+///         "sizeInGb"      = 128
+///         "skuName"       = "Premium_LRS"
+///         }, {
+///         "volumeName"    = "hana/log"
+///         "numberOfDisks" = 3
+///         "sizeInGb"      = 128
+///         "skuName"       = "Premium_LRS"
+///         }, {
+///         "volumeName"    = "hana/shared"
+///         "numberOfDisks" = 1
+///         "sizeInGb"      = 256
+///         "skuName"       = "Premium_LRS"
+///         }, {
+///         "volumeName"    = "usr/sap"
+///         "numberOfDisks" = 1
+///         "sizeInGb"      = 128
+///         "skuName"       = "Premium_LRS"
+///         }, {
+///         "volumeName"    = "backup"
+///         "numberOfDisks" = 2
+///         "sizeInGb"      = 256
+///         "skuName"       = "StandardSSD_LRS"
+///         }, {
+///         "volumeName"    = "os"
+///         "numberOfDisks" = 1
+///         "sizeInGb"      = 64
+///         "skuName"       = "StandardSSD_LRS"
+///       }]
+///     }
+///     resource_names = {
+///       application_server = {
+///         availability_set_name = "appAvSet"
+///         virtual_machines = [{
+///           "hostName"              = "apphostName0"
+///           "osDiskName"            = "app0osdisk"
+///           "virtualMachineName"    = "appvm0"
+///           "networkInterfaceNames" = ["appnic0"]
+///           "dataDisks" = [{
+///             "volumeName" = "default"
+///             "names"      = ["app0disk0"]
+///           }]
+///         }]
+///       }
+///       central_server = {
+///         availability_set_name = "csAvSet"
+///         load_balancer = {
+///           name                            = "ascslb"
+///           backend_pool_names              = ["ascsBackendPool"]
+///           frontend_ip_configuration_names = ["ascsip0"]
+///           health_probe_names              = ["ascsHealthProbe"]
+///         }
+///         virtual_machines = [{
+///           "hostName"              = "ascshostName"
+///           "osDiskName"            = "ascsosdisk"
+///           "virtualMachineName"    = "ascsvm"
+///           "networkInterfaceNames" = ["ascsnic"]
+///           "dataDisks" = [{
+///             "volumeName" = "default"
+///             "names"      = ["ascsdisk"]
+///           }]
+///         }]
+///       }
+///       database_server = {
+///         availability_set_name = "dbAvSet"
+///         load_balancer = {
+///           name                            = "dblb"
+///           backend_pool_names              = ["dbBackendPool"]
+///           frontend_ip_configuration_names = ["dbip"]
+///           health_probe_names              = ["dbHealthProbe"]
+///         }
+///         virtual_machines = [{
+///           "hostName"              = "dbprhost"
+///           "osDiskName"            = "dbprosdisk"
+///           "virtualMachineName"    = "dbvmpr"
+///           "networkInterfaceNames" = ["dbprnic"]
+///           "dataDisks" = [{
+///             "volumeName" = "hanaData"
+///             "names"      = ["hanadatapr0", "hanadatapr1"]
+///             }, {
+///             "volumeName" = "hanaLog"
+///             "names"      = ["hanalogpr0", "hanalogpr1", "hanalogpr2"]
+///             }, {
+///             "volumeName" = "usrSap"
+///             "names"      = ["usrsappr0"]
+///             }, {
+///             "volumeName" = "hanaShared"
+///             "names"      = ["hanasharedpr0", "hanasharedpr1"]
+///           }]
+///         }]
+///       }
+///       shared_storage = {
+///         account_name          = "sharedexamplesa"
+///         private_endpoint_name = "examplePE"
+///       }
+///     }
+///     transport_create_and_mount = {
+///       resource_group_id    = azure_core_resourcegroup.app.id
+///       storage_account_name = "exampletranssa"
+///     }
+///   }
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+///   tags = {
+///     "Env" = "Test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1275,18 +1511,25 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 /// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationArgs;
 /// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationImageArgs;
 /// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationOsProfileArgs;
+/// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfigurationArgs;
 /// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesArgs;
 /// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerArgs;
+/// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineArgs;
+/// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineDataDiskArgs;
 /// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerArgs;
 /// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerLoadBalancerArgs;
+/// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachineArgs;
+/// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachineDataDiskArgs;
 /// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerArgs;
 /// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerLoadBalancerArgs;
+/// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerVirtualMachineArgs;
+/// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerVirtualMachineDataDiskArgs;
 /// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorageArgs;
 /// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMountArgs;
 /// import com.pulumi.azure.workloadssap.inputs.ThreeTierVirtualInstanceIdentityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1374,7 +1617,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///                         .image(ThreeTierVirtualInstanceThreeTierConfigurationApplicationServerConfigurationVirtualMachineConfigurationImageArgs.builder()
 ///                             .offer("RHEL-SAP-HA")
 ///                             .publisher("RedHat")
-///                             .sku("82sapha-gen2")
+///                             .sku("86sapha-gen2")
 ///                             .version("latest")
 ///                             .build())
 ///                         .osProfile(ThreeTierVirtualInstanceThreeTierConfigurationApplicationServerConfigurationVirtualMachineConfigurationOsProfileArgs.builder()
@@ -1392,7 +1635,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///                         .image(ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfigurationImageArgs.builder()
 ///                             .offer("RHEL-SAP-HA")
 ///                             .publisher("RedHat")
-///                             .sku("82sapha-gen2")
+///                             .sku("86sapha-gen2")
 ///                             .version("latest")
 ///                             .build())
 ///                         .osProfile(ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfigurationOsProfileArgs.builder()
@@ -1411,7 +1654,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///                         .image(ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationImageArgs.builder()
 ///                             .offer("RHEL-SAP-HA")
 ///                             .publisher("RedHat")
-///                             .sku("82sapha-gen2")
+///                             .sku("86sapha-gen2")
 ///                             .version("latest")
 ///                             .build())
 ///                         .osProfile(ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationOsProfileArgs.builder()
@@ -1638,7 +1881,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///             image:
 ///               offer: RHEL-SAP-HA
 ///               publisher: RedHat
-///               sku: 82sapha-gen2
+///               sku: 86sapha-gen2
 ///               version: latest
 ///             osProfile:
 ///               adminUsername: testAdmin
@@ -1652,7 +1895,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///             image:
 ///               offer: RHEL-SAP-HA
 ///               publisher: RedHat
-///               sku: 82sapha-gen2
+///               sku: 86sapha-gen2
 ///               version: latest
 ///             osProfile:
 ///               adminUsername: testAdmin
@@ -1667,7 +1910,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///             image:
 ///               offer: RHEL-SAP-HA
 ///               publisher: RedHat
-///               sku: 82sapha-gen2
+///               sku: 86sapha-gen2
 ///               version: latest
 ///             osProfile:
 ///               adminUsername: testAdmin
@@ -1829,7 +2072,7 @@ class ThreeTierVirtualInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> sapProduct;
   /// A mapping of tags which should be assigned to the SAP Three Tier Virtual Instance.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A `three_tier_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// A `threeTierConfiguration` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ThreeTierVirtualInstanceThreeTierConfiguration> threeTierConfiguration;
 
   /// Creates a new [ThreeTierVirtualInstance].

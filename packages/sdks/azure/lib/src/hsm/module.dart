@@ -439,6 +439,89 @@ import 'module_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.2.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-compute"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.2.0.0/24"]
+/// }
+/// resource "azure_network_subnet" "example2" {
+///   name                 = "example-hsmsubnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.2.1.0/24"]
+///   delegations {
+///     name = "first"
+///     service_delegation = {
+///       name    = "Microsoft.HardwareSecurityModules/dedicatedHSMs"
+///       actions = ["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"]
+///     }
+///   }
+/// }
+/// resource "azure_network_subnet" "example3" {
+///   name                 = "gatewaysubnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.2.255.0/26"]
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "example-pip"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+/// }
+/// resource "azure_network_virtualnetworkgateway" "example" {
+///   name                = "example-vnetgateway"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   type                = "ExpressRoute"
+///   vpn_type            = "PolicyBased"
+///   sku                 = "Standard"
+///   ip_configurations {
+///     public_ip_address_id          = azure_network_publicip.example.id
+///     private_ip_address_allocation = "Dynamic"
+///     subnet_id                     = azure_network_subnet.example3.id
+///   }
+/// }
+/// resource "azure_hsm_module" "example" {
+///   depends_on          = [azure_network_virtualnetworkgateway.example]
+///   name                = "example-hsm"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "payShield10K_LMK1_CPS60"
+///   management_network_profile = {
+///     network_interface_private_ip_addresses = ["10.2.1.7"]
+///     subnet_id                              = azure_network_subnet.example2.id
+///   }
+///   network_profile = {
+///     network_interface_private_ip_addresses = ["10.2.1.8"]
+///     subnet_id                              = azure_network_subnet.example2.id
+///   }
+///   stamp_id = "stamp2"
+///   tags = {
+///     "env" = "Test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -463,8 +546,8 @@ import 'module_state.dart';
 /// import com.pulumi.azure.hsm.inputs.ModuleManagementNetworkProfileArgs;
 /// import com.pulumi.azure.hsm.inputs.ModuleNetworkProfileArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -673,13 +756,13 @@ import 'module_state.dart';
 class Module extends pulumi.CustomResource {
   /// The Azure Region where the Dedicated Hardware Security Module should exist. Changing this forces a new Dedicated Hardware Security Module to be created.
   late final pulumi.Output<String> location;
-  /// A `management_network_profile` block as defined below.
+  /// A `managementNetworkProfile` block as defined below.
   ///
-  /// &gt; **Note:** The `management_network_profile` should not be specified when `sku_name` is `SafeNet Luna Network HSM A790`.
+  /// &gt; **Note:** The `managementNetworkProfile` should not be specified when `skuName` is `SafeNet Luna Network HSM A790`.
   late final pulumi.Output<ModuleManagementNetworkProfile?> managementNetworkProfile;
   /// The name which should be used for this Dedicated Hardware Security Module. Changing this forces a new Dedicated Hardware Security Module to be created.
   late final pulumi.Output<String> name;
-  /// A `network_profile` block as defined below.
+  /// A `networkProfile` block as defined below.
   late final pulumi.Output<ModuleNetworkProfile> networkProfile;
   /// The name of the Resource Group where the Dedicated Hardware Security Module should exist. Changing this forces a new Dedicated Hardware Security Module to be created.
   late final pulumi.Output<String> resourceGroupName;

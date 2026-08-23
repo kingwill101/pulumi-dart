@@ -26,7 +26,7 @@ class DatasetAzureSqlTableArgs {
   final pulumi.Input<Map<String, String>>? parameters;
   /// The schema name of the table in the Azure SQL Database.
   final pulumi.Input<String>? schema;
-  /// A `schema_column` block as defined below.
+  /// A `schemaColumn` block as defined below.
   final pulumi.Input<List<DatasetAzureSqlTableSchemaColumn>>? schemaColumns;
   /// The table name of the table in the Azure SQL Database.
   final pulumi.Input<String>? table;
@@ -41,7 +41,7 @@ class DatasetAzureSqlTableArgs {
   /// [name] Specifies the name of the Data Factory Dataset Azure SQL Table. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Dataset Azure SQL Table.
   /// [schema] The schema name of the table in the Azure SQL Database.
-  /// [schemaColumns] A `schema_column` block as defined below.
+  /// [schemaColumns] A `schemaColumn` block as defined below.
   /// [table] The table name of the table in the Azure SQL Database.
   const DatasetAzureSqlTableArgs({
     this.additionalProperties,
@@ -89,4 +89,3 @@ class DatasetAzureSqlTableArgs {
     );
   }
 }
-

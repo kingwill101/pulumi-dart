@@ -185,10 +185,10 @@ import 'output_servicebus_topic_state.dart';
 /// 		_, err = streamanalytics.NewOutputServicebusTopic(ctx, "example", &streamanalytics.OutputServicebusTopicArgs{
 /// 			Name: pulumi.String("service-bus-topic-output"),
 /// 			StreamAnalyticsJobName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return &example.Name, nil
+/// 				return example.Name, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return &example.ResourceGroupName, nil
+/// 				return example.ResourceGroupName, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			TopicName:              exampleTopic.Name,
 /// 			ServicebusNamespace:    exampleNamespace.Name,
@@ -210,6 +210,50 @@ import 'output_servicebus_topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_streamanalytics_getjob" "example" {
+///   name                = "example-job"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_servicebus_namespace" "example" {
+///   name                = "example-namespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_servicebus_topic" "example" {
+///   name                = "example-topic"
+///   namespace_id        = azure_servicebus_namespace.example.id
+///   enable_partitioning = true
+/// }
+/// resource "azure_streamanalytics_outputservicebustopic" "example" {
+///   name                      = "service-bus-topic-output"
+///   stream_analytics_job_name = data.azure_streamanalytics_getjob.example.name
+///   resource_group_name       = data.azure_streamanalytics_getjob.example.resource_group_name
+///   topic_name                = azure_servicebus_topic.example.name
+///   servicebus_namespace      = azure_servicebus_namespace.example.name
+///   shared_access_policy_key  = azure_servicebus_namespace.example.default_primary_key
+///   shared_access_policy_name = "RootManageSharedAccessKey"
+///   property_columns          = ["col1", "col2"]
+///   serialization = {
+///     type   = "Csv"
+///     format = "Array"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -227,8 +271,8 @@ import 'output_servicebus_topic_state.dart';
 /// import com.pulumi.azure.streamanalytics.OutputServicebusTopic;
 /// import com.pulumi.azure.streamanalytics.OutputServicebusTopicArgs;
 /// import com.pulumi.azure.streamanalytics.inputs.OutputServicebusTopicSerializationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -360,9 +404,9 @@ class OutputServicebusTopic extends pulumi.CustomResource {
   late final pulumi.Output<OutputServicebusTopicSerialization> serialization;
   /// The namespace that is associated with the desired Event Hub, Service Bus Topic, Service Bus Topic, etc.
   late final pulumi.Output<String> servicebusNamespace;
-  /// The shared access policy key for the specified shared access policy. Required if `authentication_mode` is `ConnectionString`.
+  /// The shared access policy key for the specified shared access policy. Required if `authenticationMode` is `ConnectionString`.
   late final pulumi.Output<String?> sharedAccessPolicyKey;
-  /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required if `authentication_mode` is `ConnectionString`.
+  /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required if `authenticationMode` is `ConnectionString`.
   late final pulumi.Output<String?> sharedAccessPolicyName;
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobName;

@@ -190,6 +190,48 @@ import 'dataset_delimited_text_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedserviceweb" "example" {
+///   name                = "example"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   authentication_type = "Anonymous"
+///   url                 = "https://www.bing.com"
+/// }
+/// resource "azure_datafactory_datasetdelimitedtext" "example" {
+///   name                = "example"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   linked_service_name = azure_datafactory_linkedserviceweb.example.name
+///   http_server_location = {
+///     relative_url = "http://www.bing.com"
+///     path         = "foo/bar/"
+///     filename     = "fizz.txt"
+///   }
+///   column_delimiter    = ","
+///   row_delimiter       = "NEW"
+///   encoding            = "UTF-8"
+///   quote_character     = "x"
+///   escape_character    = "f"
+///   first_row_as_header = true
+///   null_value          = "NULL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -205,8 +247,8 @@ import 'dataset_delimited_text_state.dart';
 /// import com.pulumi.azure.datafactory.DatasetDelimitedText;
 /// import com.pulumi.azure.datafactory.DatasetDelimitedTextArgs;
 /// import com.pulumi.azure.datafactory.inputs.DatasetDelimitedTextHttpServerLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -314,9 +356,9 @@ class DatasetDelimitedText extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> additionalProperties;
   /// List of tags that can be used for describing the Data Factory Dataset.
   late final pulumi.Output<List<String>?> annotations;
-  /// An `azure_blob_fs_location` block as defined below.
+  /// An `azureBlobFsLocation` block as defined below.
   late final pulumi.Output<DatasetDelimitedTextAzureBlobFsLocation?> azureBlobFsLocation;
-  /// An `azure_blob_storage_location` block as defined below.
+  /// An `azureBlobStorageLocation` block as defined below.
   late final pulumi.Output<DatasetDelimitedTextAzureBlobStorageLocation?> azureBlobStorageLocation;
   /// The column delimiter. Defaults to `,`.
   late final pulumi.Output<String?> columnDelimiter;
@@ -336,7 +378,7 @@ class DatasetDelimitedText extends pulumi.CustomResource {
   late final pulumi.Output<bool?> firstRowAsHeader;
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   late final pulumi.Output<String?> folder;
-  /// A `http_server_location` block as defined below.
+  /// A `httpServerLocation` block as defined below.
   ///
   /// The following supported arguments are specific to Delimited Text Dataset:
   late final pulumi.Output<DatasetDelimitedTextHttpServerLocation?> httpServerLocation;
@@ -352,7 +394,7 @@ class DatasetDelimitedText extends pulumi.CustomResource {
   late final pulumi.Output<String?> quoteCharacter;
   /// The row delimiter. Defaults to any of the following values on read: `\r\n`, `\r`, `\n`, and `\n` or `\r\n` on write by mapping data flow and Copy activity respectively.
   late final pulumi.Output<String?> rowDelimiter;
-  /// A `schema_column` block as defined below.
+  /// A `schemaColumn` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
 
   /// Creates a new [DatasetDelimitedText].

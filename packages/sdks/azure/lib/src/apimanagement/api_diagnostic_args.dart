@@ -19,13 +19,13 @@ class ApiDiagnosticArgs {
   final pulumi.Input<String> apiManagementName;
   /// The name of the API on which to configure the Diagnostics Logs. Changing this forces a new API Management Service API Diagnostics Logs to be created.
   final pulumi.Input<String> apiName;
-  /// A `backend_request` block as defined below.
+  /// A `backendRequest` block as defined below.
   final pulumi.Input<ApiDiagnosticBackendRequest>? backendRequest;
-  /// A `backend_response` block as defined below.
+  /// A `backendResponse` block as defined below.
   final pulumi.Input<ApiDiagnosticBackendResponse>? backendResponse;
-  /// A `frontend_request` block as defined below.
+  /// A `frontendRequest` block as defined below.
   final pulumi.Input<ApiDiagnosticFrontendRequest>? frontendRequest;
-  /// A `frontend_response` block as defined below.
+  /// A `frontendResponse` block as defined below.
   final pulumi.Input<ApiDiagnosticFrontendResponse>? frontendResponse;
   /// The HTTP Correlation Protocol to use. Possible values are `None`, `Legacy` or `W3C`.
   final pulumi.Input<String>? httpCorrelationProtocol;
@@ -47,10 +47,10 @@ class ApiDiagnosticArgs {
   /// [apiManagementLoggerId] The ID (name) of the Diagnostics Logger.
   /// [apiManagementName] The name of the API Management Service instance. Changing this forces a new API Management Service API Diagnostics Logs to be created.
   /// [apiName] The name of the API on which to configure the Diagnostics Logs. Changing this forces a new API Management Service API Diagnostics Logs to be created.
-  /// [backendRequest] A `backend_request` block as defined below.
-  /// [backendResponse] A `backend_response` block as defined below.
-  /// [frontendRequest] A `frontend_request` block as defined below.
-  /// [frontendResponse] A `frontend_response` block as defined below.
+  /// [backendRequest] A `backendRequest` block as defined below.
+  /// [backendResponse] A `backendResponse` block as defined below.
+  /// [frontendRequest] A `frontendRequest` block as defined below.
+  /// [frontendResponse] A `frontendResponse` block as defined below.
   /// [httpCorrelationProtocol] The HTTP Correlation Protocol to use. Possible values are `None`, `Legacy` or `W3C`.
   /// [identifier] Identifier of the Diagnostics Logs. Possible values are `applicationinsights` and `azuremonitor`. Changing this forces a new API Management Service API Diagnostics Logs to be created.
   /// [logClientIp] Log client IP address.
@@ -116,4 +116,3 @@ class ApiDiagnosticArgs {
     );
   }
 }
-

@@ -188,6 +188,47 @@ import 'namespace_disaster_recovery_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "servicebus-replication"
+///   location = "West Europe"
+/// }
+/// resource "azure_servicebus_namespace" "primary" {
+///   name                = "servicebus-primary"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Premium"
+///   capacity            = "1"
+/// }
+/// resource "azure_servicebus_namespace" "secondary" {
+///   name                = "servicebus-secondary"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Premium"
+///   capacity            = "1"
+/// }
+/// resource "azure_servicebus_namespaceauthorizationrule" "example" {
+///   name         = "examplerule"
+///   namespace_id = exampleAzurermServicebusNamespace.id
+///   listen       = true
+///   send         = true
+///   manage       = false
+/// }
+/// resource "azure_servicebus_namespacedisasterrecoveryconfig" "example" {
+///   name                        = "servicebus-alias-name"
+///   primary_namespace_id        = azure_servicebus_namespace.primary.id
+///   partner_namespace_id        = azure_servicebus_namespace.secondary.id
+///   alias_authorization_rule_id = azure_servicebus_namespaceauthorizationrule.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -202,8 +243,8 @@ import 'namespace_disaster_recovery_config_state.dart';
 /// import com.pulumi.azure.servicebus.NamespaceAuthorizationRuleArgs;
 /// import com.pulumi.azure.servicebus.NamespaceDisasterRecoveryConfig;
 /// import com.pulumi.azure.servicebus.NamespaceDisasterRecoveryConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

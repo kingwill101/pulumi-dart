@@ -16,7 +16,7 @@ class IntegrationAccountBatchConfigurationArgs {
   final pulumi.Input<Map<String, String>>? metadata;
   /// The name which should be used for this Logic App Integration Account Batch Configuration. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// A `release_criteria` block as documented below, which is used to select the criteria to meet before processing each batch.
+  /// A `releaseCriteria` block as documented below, which is used to select the criteria to meet before processing each batch.
   final pulumi.Input<IntegrationAccountBatchConfigurationReleaseCriteria> releaseCriteria;
   /// The name of the Resource Group where the Logic App Integration Account Batch Configuration should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
@@ -26,7 +26,7 @@ class IntegrationAccountBatchConfigurationArgs {
   /// [integrationAccountName] The name of the Logic App Integration Account. Changing this forces a new resource to be created.
   /// [metadata] A JSON mapping of any Metadata for this Logic App Integration Account Batch Configuration.
   /// [name] The name which should be used for this Logic App Integration Account Batch Configuration. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
-  /// [releaseCriteria] A `release_criteria` block as documented below, which is used to select the criteria to meet before processing each batch.
+  /// [releaseCriteria] A `releaseCriteria` block as documented below, which is used to select the criteria to meet before processing each batch.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account Batch Configuration should exist. Changing this forces a new resource to be created.
   const IntegrationAccountBatchConfigurationArgs({
     required this.batchGroupName,
@@ -59,4 +59,3 @@ class IntegrationAccountBatchConfigurationArgs {
     );
   }
 }
-

@@ -50,7 +50,6 @@ import 'configuration_state.dart';
 ///     resourceGroupName: example.name,
 ///     sku: "publicpreview_Monthly_gmz7xq9ge3py",
 ///     location: example.location,
-///     diagnoseSupportEnabled: true,
 ///     frontendPublic: {
 ///         ipAddresses: [examplePublicIp.id],
 ///     },
@@ -136,7 +135,6 @@ import 'configuration_state.dart';
 ///     resource_group_name=example.name,
 ///     sku="publicpreview_Monthly_gmz7xq9ge3py",
 ///     location=example.location,
-///     diagnose_support_enabled=True,
 ///     frontend_public={
 ///         "ip_addresses": [example_public_ip.id],
 ///     },
@@ -248,7 +246,6 @@ import 'configuration_state.dart';
 ///         ResourceGroupName = example.Name,
 ///         Sku = "publicpreview_Monthly_gmz7xq9ge3py",
 ///         Location = example.Location,
-///         DiagnoseSupportEnabled = true,
 ///         FrontendPublic = new Azure.Nginx.Inputs.DeploymentFrontendPublicArgs
 ///         {
 ///             IpAddresses = new[]
@@ -379,11 +376,10 @@ import 'configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleDeployment, err := nginx.NewDeployment(ctx, "example", &nginx.DeploymentArgs{
-/// 			Name:                   pulumi.String("example-nginx"),
-/// 			ResourceGroupName:      example.Name,
-/// 			Sku:                    pulumi.String("publicpreview_Monthly_gmz7xq9ge3py"),
-/// 			Location:               example.Location,
-/// 			DiagnoseSupportEnabled: pulumi.Bool(true),
+/// 			Name:              pulumi.String("example-nginx"),
+/// 			ResourceGroupName: example.Name,
+/// 			Sku:               pulumi.String("publicpreview_Monthly_gmz7xq9ge3py"),
+/// 			Location:          example.Location,
 /// 			FrontendPublic: &nginx.DeploymentFrontendPublicArgs{
 /// 				IpAddresses: pulumi.StringArray{
 /// 					examplePublicIp.ID(),
@@ -451,6 +447,76 @@ import 'configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   allocation_method   = "Static"
+///   sku                 = "Standard"
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+///   delegations {
+///     name = "delegation"
+///     service_delegation = {
+///       name    = "NGINX.NGINXPLUS/nginxDeployments"
+///       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+///     }
+///   }
+/// }
+/// resource "azure_nginx_deployment" "example" {
+///   name                = "example-nginx"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "publicpreview_Monthly_gmz7xq9ge3py"
+///   location            = azure_core_resourcegroup.example.location
+///   frontend_public = {
+///     ip_addresses = [azure_network_publicip.example.id]
+///   }
+///   network_interfaces {
+///     subnet_id = azure_network_subnet.example.id
+///   }
+/// }
+/// resource "azure_nginx_configuration" "example" {
+///   nginx_deployment_id = azure_nginx_deployment.example.id
+///   root_file           = "/etc/nginx/nginx.conf"
+///   config_files {
+///     content      = base64encode("http {\n    server {\n        listen 80;\n        location / {\n            default_type text/html;\n            return 200 '<!doctype html><html lang=\\\"en\\\"><head></head><body>\n                <div>this one will be updated</div>\n                <div>at 10:38 am</div>\n            </body></html>';\n        }\n        include site/*.conf;\n    }\n}\n")
+///     virtual_path = "/etc/nginx/nginx.conf"
+///   }
+///   config_files {
+///     content      = base64encode("location /bbb {\n default_type text/html;\n return 200 '<!doctype html><html lang=\\\"en\\\"><head></head><body>\n  <div>this one will be updated</div>\n  <div>at 10:38 am</div>\n </body></html>';\n}\n")
+///     virtual_path = "/etc/nginx/site/b.conf"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -476,8 +542,8 @@ import 'configuration_state.dart';
 /// import com.pulumi.azure.nginx.inputs.ConfigurationConfigFileArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -529,7 +595,6 @@ import 'configuration_state.dart';
 ///             .resourceGroupName(example.name())
 ///             .sku("publicpreview_Monthly_gmz7xq9ge3py")
 ///             .location(example.location())
-///             .diagnoseSupportEnabled(true)
 ///             .frontendPublic(DeploymentFrontendPublicArgs.builder()
 ///                 .ipAddresses(examplePublicIp.id())
 ///                 .build())
@@ -631,7 +696,6 @@ import 'configuration_state.dart';
 ///       resourceGroupName: ${example.name}
 ///       sku: publicpreview_Monthly_gmz7xq9ge3py
 ///       location: ${example.location}
-///       diagnoseSupportEnabled: true
 ///       frontendPublic:
 ///         ipAddresses:
 ///           - ${examplePublicIp.id}
@@ -696,13 +760,13 @@ import 'configuration_state.dart';
 /// $ pulumi import azure:nginx/configuration:Configuration example /subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/group1/providers/Nginx.NginxPlus/nginxDeployments/dep1/configurations/default
 /// ```
 class Configuration extends pulumi.CustomResource {
-  /// One or more `config_file` blocks as defined below.
+  /// One or more `configFile` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> configFiles;
   /// The ID of the Nginx Deployment. Changing this forces a new Nginx Configuration to be created.
   late final pulumi.Output<String> nginxDeploymentId;
   /// Specifies the package data for this configuration.
   late final pulumi.Output<String?> packageData;
-  /// One or more `protected_file` blocks with sensitive information as defined below. If specified `config_file` must also be specified.
+  /// One or more `protectedFile` blocks with sensitive information as defined below. If specified `configFile` must also be specified.
   late final pulumi.Output<List<Map<String, dynamic>>?> protectedFiles;
   /// Specifies the root file path of this Nginx Configuration.
   late final pulumi.Output<String> rootFile;

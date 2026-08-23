@@ -120,6 +120,32 @@ import 'flexible_server_firewall_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "api-rg-pro"
+///   location = "West Europe"
+/// }
+/// resource "azure_mysql_flexibleserver" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_mysql_flexibleserverfirewallrule" "example" {
+///   name                = "office"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   server_name         = azure_mysql_flexibleserver.example.name
+///   start_ip_address    = "40.112.8.12"
+///   end_ip_address      = "40.112.8.12"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -132,8 +158,8 @@ import 'flexible_server_firewall_rule_state.dart';
 /// import com.pulumi.azure.mysql.FlexibleServerArgs;
 /// import com.pulumi.azure.mysql.FlexibleServerFirewallRule;
 /// import com.pulumi.azure.mysql.FlexibleServerFirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -308,6 +334,32 @@ import 'flexible_server_firewall_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "api-rg-pro"
+///   location = "West Europe"
+/// }
+/// resource "azure_mysql_flexibleserver" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_mysql_flexibleserverfirewallrule" "example" {
+///   name                = "office"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   server_name         = azure_mysql_flexibleserver.example.name
+///   start_ip_address    = "40.112.0.0"
+///   end_ip_address      = "40.112.255.255"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -320,8 +372,8 @@ import 'flexible_server_firewall_rule_state.dart';
 /// import com.pulumi.azure.mysql.FlexibleServerArgs;
 /// import com.pulumi.azure.mysql.FlexibleServerFirewallRule;
 /// import com.pulumi.azure.mysql.FlexibleServerFirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -496,6 +548,32 @@ import 'flexible_server_firewall_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "api-rg-pro"
+///   location = "West Europe"
+/// }
+/// resource "azure_mysql_flexibleserver" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_mysql_flexibleserverfirewallrule" "example" {
+///   name                = "office"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   server_name         = azure_mysql_flexibleserver.example.name
+///   start_ip_address    = "0.0.0.0"
+///   end_ip_address      = "0.0.0.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -508,8 +586,8 @@ import 'flexible_server_firewall_rule_state.dart';
 /// import com.pulumi.azure.mysql.FlexibleServerArgs;
 /// import com.pulumi.azure.mysql.FlexibleServerFirewallRule;
 /// import com.pulumi.azure.mysql.FlexibleServerFirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -586,7 +664,7 @@ import 'flexible_server_firewall_rule_state.dart';
 class FlexibleServerFirewallRule extends pulumi.CustomResource {
   /// Specifies the End IP Address associated with this Firewall Rule.
   ///
-  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
+  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `startIpAddress` and `endIpAddress` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
   late final pulumi.Output<String> endIpAddress;
   /// Specifies the name of the MySQL Firewall Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;

@@ -219,13 +219,13 @@ import 'output_synapse_state.dart';
 /// 		_, err = streamanalytics.NewOutputSynapse(ctx, "example", &streamanalytics.OutputSynapseArgs{
 /// 			Name: pulumi.String("example-output-synapse"),
 /// 			StreamAnalyticsJobName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return &example.Name, nil
+/// 				return example.Name, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return &example.ResourceGroupName, nil
+/// 				return example.ResourceGroupName, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Server: exampleWorkspace.ConnectivityEndpoints.ApplyT(func(connectivityEndpoints map[string]string) (string, error) {
-/// 				return connectivityEndpoints.SqlOnDemand, nil
+/// 				return connectivityEndpoints["sqlOnDemand"], nil
 /// 			}).(pulumi.StringOutput),
 /// 			User:     exampleWorkspace.SqlAdministratorLogin,
 /// 			Password: exampleWorkspace.SqlAdministratorLoginPassword,
@@ -237,6 +237,59 @@ import 'output_synapse_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_streamanalytics_getjob" "example" {
+///   name                = "example-job"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   account_kind             = "StorageV2"
+///   is_hns_enabled           = "true"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// resource "azure_synapse_workspace" "example" {
+///   name                                 = "example"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   location                             = azure_core_resourcegroup.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   sql_administrator_login              = "sqladminuser"
+///   sql_administrator_login_password     = "H@Sh1CoR3!"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_streamanalytics_outputsynapse" "example" {
+///   name                      = "example-output-synapse"
+///   stream_analytics_job_name = data.azure_streamanalytics_getjob.example.name
+///   resource_group_name       = data.azure_streamanalytics_getjob.example.resource_group_name
+///   server                    = azure_synapse_workspace.example.connectivity_endpoints["sqlOnDemand"]
+///   user                      = azure_synapse_workspace.example.sql_administrator_login
+///   password                  = azure_synapse_workspace.example.sql_administrator_login_password
+///   database                  = "master"
+///   table                     = "ExampleTable"
 /// }
 /// ```
 /// ```java
@@ -258,8 +311,8 @@ import 'output_synapse_state.dart';
 /// import com.pulumi.azure.synapse.inputs.WorkspaceIdentityArgs;
 /// import com.pulumi.azure.streamanalytics.OutputSynapse;
 /// import com.pulumi.azure.streamanalytics.OutputSynapseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

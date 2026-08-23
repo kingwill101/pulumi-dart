@@ -32,7 +32,7 @@ class DatasetHttpArgs {
   final pulumi.Input<String>? requestBody;
   /// The HTTP method for the HTTP request. (e.g. GET, POST)
   final pulumi.Input<String>? requestMethod;
-  /// A `schema_column` block as defined below.
+  /// A `schemaColumn` block as defined below.
   final pulumi.Input<List<DatasetHttpSchemaColumn>>? schemaColumns;
 
   /// Creates a new [DatasetHttpArgs].
@@ -47,7 +47,7 @@ class DatasetHttpArgs {
   /// [relativeUrl] The relative URL based on the URL in the HTTP Linked Service.
   /// [requestBody] The body for the HTTP request.
   /// [requestMethod] The HTTP method for the HTTP request. (e.g. GET, POST)
-  /// [schemaColumns] A `schema_column` block as defined below.
+  /// [schemaColumns] A `schemaColumn` block as defined below.
   const DatasetHttpArgs({
     this.additionalProperties,
     this.annotations,
@@ -97,4 +97,3 @@ class DatasetHttpArgs {
     );
   }
 }
-

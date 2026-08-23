@@ -17,7 +17,7 @@ class VolumeExportPolicyRule {
   final pulumi.Input<bool>? kerberos5pReadOnlyEnabled;
   /// Is Kerberos 5p read/write permitted to this volume?
   final pulumi.Input<bool>? kerberos5pReadWriteEnabled;
-  /// A list of allowed protocols. Valid values include `CIFS`, `NFSv3`, or `NFSv4.1`. Only a single element is supported at this time. This replaces the previous arguments: `cifs_enabled`, `nfsv3_enabled` and `nfsv4_enabled`.
+  /// A list of allowed protocols. Valid values include `CIFS`, `NFSv3`, or `NFSv4.1`. Only a single element is supported at this time. This replaces the previous arguments: `cifsEnabled`, `nfsv3Enabled` and `nfsv4Enabled`.
   final pulumi.Input<String>? protocol;
   final pulumi.Input<String>? protocolsEnabled;
   /// Is root access permitted to this volume?
@@ -37,7 +37,7 @@ class VolumeExportPolicyRule {
   /// [kerberos5iReadWriteEnabled] Is Kerberos 5i read/write permitted to this volume?
   /// [kerberos5pReadOnlyEnabled] Is Kerberos 5p read-only permitted to this volume?
   /// [kerberos5pReadWriteEnabled] Is Kerberos 5p read/write permitted to this volume?
-  /// [protocol] A list of allowed protocols. Valid values include `CIFS`, `NFSv3`, or `NFSv4.1`. Only a single element is supported at this time. This replaces the previous arguments: `cifs_enabled`, `nfsv3_enabled` and `nfsv4_enabled`.
+  /// [protocol] A list of allowed protocols. Valid values include `CIFS`, `NFSv3`, or `NFSv4.1`. Only a single element is supported at this time. This replaces the previous arguments: `cifsEnabled`, `nfsv3Enabled` and `nfsv4Enabled`.
   /// [protocolsEnabled] Optional.
   /// [rootAccessEnabled] Is root access permitted to this volume?
   /// [ruleIndex] The index number of the rule.
@@ -95,4 +95,3 @@ class VolumeExportPolicyRule {
     );
   }
 }
-

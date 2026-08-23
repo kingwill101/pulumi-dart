@@ -34,7 +34,7 @@ class GetSharedImageResult {
   final String osType;
   /// The URI containing the Privacy Statement for this Shared Image.
   final String privacyStatementUri;
-  /// (Optional) A `purchase_plan` block as defined below.
+  /// (Optional) A `purchasePlan` block as defined below.
   final List<GetSharedImagePurchasePlan> purchasePlans;
   /// The URI containing the Release Notes for this Shared Image.
   final String releaseNoteUri;
@@ -64,7 +64,7 @@ class GetSharedImageResult {
   /// [name] (Required) The Purchase Plan Name for this Shared Image.
   /// [osType] The type of Operating System present in this Shared Image.
   /// [privacyStatementUri] The URI containing the Privacy Statement for this Shared Image.
-  /// [purchasePlans] (Optional) A `purchase_plan` block as defined below.
+  /// [purchasePlans] (Optional) A `purchasePlan` block as defined below.
   /// [releaseNoteUri] The URI containing the Release Notes for this Shared Image.
   /// [resourceGroupName] Required.
   /// [specialized] Specifies that the Operating System used inside this Image has not been Generalized (for example, `sysprep` on Windows has not been run).
@@ -150,4 +150,3 @@ class GetSharedImageResult {
     );
   }
 }
-

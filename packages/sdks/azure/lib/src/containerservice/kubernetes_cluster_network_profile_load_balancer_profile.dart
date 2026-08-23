@@ -13,15 +13,15 @@ class KubernetesClusterNetworkProfileLoadBalancerProfile {
   final pulumi.Input<int>? managedOutboundIpCount;
   /// The desired number of IPv6 outbound IPs created and managed by Azure for the cluster load balancer. Must be in the range of 1 to 100 (inclusive). The default value is 0 for single-stack and 1 for dual-stack.
   ///
-  /// &gt; **Note:** `managed_outbound_ipv6_count` requires dual-stack networking. To enable dual-stack networking the Preview Feature `Microsoft.ContainerService/AKS-EnableDualStack` needs to be enabled and the Resource Provider re-registered, see [the documentation](https://docs.microsoft.com/azure/aks/configure-kubenet-dual-stack?tabs=azure-cli%2Ckubectl#register-the-aks-enabledualstack-preview-feature) for more information.
+  /// &gt; **Note:** `managedOutboundIpv6Count` requires dual-stack networking. To enable dual-stack networking the Preview Feature `Microsoft.ContainerService/AKS-EnableDualStack` needs to be enabled and the Resource Provider re-registered, see [the documentation](https://docs.microsoft.com/azure/aks/configure-kubenet-dual-stack?tabs=azure-cli%2Ckubectl#register-the-aks-enabledualstack-preview-feature) for more information.
   final pulumi.Input<int>? managedOutboundIpv6Count;
   /// The ID of the Public IP Addresses which should be used for outbound communication for the cluster load balancer.
   ///
-  /// &gt; **Note:** Set `outbound_ip_address_ids` to an empty slice `[]` in order to unlink it from the cluster. Unlinking a `outbound_ip_address_ids` will revert the load balancing for the cluster back to a managed one.
+  /// &gt; **Note:** Set `outboundIpAddressIds` to an empty slice `[]` in order to unlink it from the cluster. Unlinking a `outboundIpAddressIds` will revert the load balancing for the cluster back to a managed one.
   final pulumi.Input<List<String>>? outboundIpAddressIds;
   /// The ID of the outbound Public IP Address Prefixes which should be used for the cluster load balancer.
   ///
-  /// &gt; **Note:** Set `outbound_ip_prefix_ids` to an empty slice `[]` in order to unlink it from the cluster. Unlinking a `outbound_ip_prefix_ids` will revert the load balancing for the cluster back to a managed one.
+  /// &gt; **Note:** Set `outboundIpPrefixIds` to an empty slice `[]` in order to unlink it from the cluster. Unlinking a `outboundIpPrefixIds` will revert the load balancing for the cluster back to a managed one.
   final pulumi.Input<List<String>>? outboundIpPrefixIds;
   /// Number of desired SNAT port for each VM in the clusters load balancer. Must be between `0` and `64000` inclusive. Defaults to `0`.
   final pulumi.Input<int>? outboundPortsAllocated;
@@ -72,4 +72,3 @@ class KubernetesClusterNetworkProfileLoadBalancerProfile {
     );
   }
 }
-

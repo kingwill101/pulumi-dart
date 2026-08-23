@@ -6,9 +6,9 @@ import 'get_hub_gcm_credential.dart';
 
 /// Result data returned by getHub.
 class GetHubResult {
-  /// A `apns_credential` block as defined below.
+  /// A `apnsCredential` block as defined below.
   final List<GetHubApnsCredential> apnsCredentials;
-  /// A `gcm_credential` block as defined below.
+  /// A `gcmCredential` block as defined below.
   final List<GetHubGcmCredential> gcmCredentials;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -21,8 +21,8 @@ class GetHubResult {
   final Map<String, String> tags;
 
   /// Creates a new [GetHubResult].
-  /// [apnsCredentials] A `apns_credential` block as defined below.
-  /// [gcmCredentials] A `gcm_credential` block as defined below.
+  /// [apnsCredentials] A `apnsCredential` block as defined below.
+  /// [gcmCredentials] A `gcmCredential` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] The Azure Region in which this Notification Hub exists.
   /// [name] Required.
@@ -66,4 +66,3 @@ class GetHubResult {
     );
   }
 }
-

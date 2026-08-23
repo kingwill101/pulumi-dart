@@ -6,13 +6,13 @@ import 'policy_custom_rule_match_condition.dart';
 class PolicyCustomRule {
   /// Type of action. Possible values are `Allow`, `Block`, `JSChallenge` and `Log`.
   ///
-  /// &gt; **Note:** If the `rule_type` is specified as `RateLimitRule`, the `Allow` is not supported.
+  /// &gt; **Note:** If the `ruleType` is specified as `RateLimitRule`, the `Allow` is not supported.
   final pulumi.Input<String> action;
   /// Describes if the policy is in enabled state or disabled state. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
   /// Specifies what grouping the rate limit will count requests by. Possible values are `ClientAddr`, `ClientAddrXFFHeader`, `GeoLocation`, `GeoLocationXFFHeader` and `None`.
   final pulumi.Input<String>? groupRateLimitBy;
-  /// One or more `match_conditions` blocks as defined below.
+  /// One or more `matchConditions` blocks as defined below.
   final pulumi.Input<List<PolicyCustomRuleMatchCondition>> matchConditions;
   /// Gets name of the resource that is unique within a policy. This name can be used to access the resource.
   final pulumi.Input<String>? name;
@@ -29,7 +29,7 @@ class PolicyCustomRule {
   /// [action] Type of action. Possible values are `Allow`, `Block`, `JSChallenge` and `Log`.
   /// [enabled] Describes if the policy is in enabled state or disabled state. Defaults to `true`.
   /// [groupRateLimitBy] Specifies what grouping the rate limit will count requests by. Possible values are `ClientAddr`, `ClientAddrXFFHeader`, `GeoLocation`, `GeoLocationXFFHeader` and `None`.
-  /// [matchConditions] One or more `match_conditions` blocks as defined below.
+  /// [matchConditions] One or more `matchConditions` blocks as defined below.
   /// [name] Gets name of the resource that is unique within a policy. This name can be used to access the resource.
   /// [priority] Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
   /// [rateLimitDuration] Specifies the duration at which the rate limit policy will be applied. Should be used with `RateLimitRule` rule type. Possible values are `FiveMins` and `OneMin`.
@@ -75,4 +75,3 @@ class PolicyCustomRule {
     );
   }
 }
-

@@ -9,7 +9,7 @@ import 'spring_cloud_builder_stack.dart';
 /// {@endtemplate}
 /// {@macro pulumi_appplatform_spring_cloud_builder_spring_cloud_builder_args_doc}
 class SpringCloudBuilderArgs {
-  /// One or more `build_pack_group` blocks as defined below.
+  /// One or more `buildPackGroup` blocks as defined below.
   final pulumi.Input<List<SpringCloudBuilderBuildPackGroup>> buildPackGroups;
   /// The name which should be used for this Spring Cloud Builder. Changing this forces a new Spring Cloud Builder to be created.
   final pulumi.Input<String>? name;
@@ -19,7 +19,7 @@ class SpringCloudBuilderArgs {
   final pulumi.Input<SpringCloudBuilderStack> stack;
 
   /// Creates a new [SpringCloudBuilderArgs].
-  /// [buildPackGroups] One or more `build_pack_group` blocks as defined below.
+  /// [buildPackGroups] One or more `buildPackGroup` blocks as defined below.
   /// [name] The name which should be used for this Spring Cloud Builder. Changing this forces a new Spring Cloud Builder to be created.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Builder to be created.
   /// [stack] A `stack` block as defined below.
@@ -48,4 +48,3 @@ class SpringCloudBuilderArgs {
     );
   }
 }
-

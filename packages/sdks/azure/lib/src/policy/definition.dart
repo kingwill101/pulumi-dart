@@ -179,6 +179,25 @@ import 'definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_policy_definition" "policy" {
+///   name         = "accTestPolicy"
+///   policy_type  = "Custom"
+///   mode         = "Indexed"
+///   display_name = "acceptance test policy definition"
+///   metadata     = "    {\n    \\\"category\\\": \\\"General\\\"\n    }\n\n"
+///   policy_rule  = " {\n    \"if\": {\n      \"not\": {\n        \"field\": \"location\",\n        \"in\": \"[parameters('allowedLocations')]\"\n      }\n    },\n    \"then\": {\n      \"effect\": \"audit\"\n    }\n  }\n"
+///   parameters   = " {\n    \\\"allowedLocations\\\": {\n      \\\"type\\\": \\\"Array\\\",\n      \\\"metadata\\\": {\n        \\\"description\\\": \\\"The list of allowed locations for resources.\\\",\n        \\\"displayName\\\": \\\"Allowed locations\\\",\n        \\\"strongType\\\": \\\"location\\\"\n      }\n    }\n  }\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,8 +206,8 @@ import 'definition_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.policy.Definition;
 /// import com.pulumi.azure.policy.DefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -315,7 +334,7 @@ class Definition extends pulumi.CustomResource {
   late final pulumi.Output<String?> policyRule;
   /// The policy type. Possible values are `BuiltIn`, `Custom`, `NotSpecified` and `Static`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> policyType;
-  /// A list of role definition id extracted from `policy_rule` required for remediation.
+  /// A list of role definition id extracted from `policyRule` required for remediation.
   late final pulumi.Output<List<String>> roleDefinitionIds;
 
   /// Creates a new [Definition].

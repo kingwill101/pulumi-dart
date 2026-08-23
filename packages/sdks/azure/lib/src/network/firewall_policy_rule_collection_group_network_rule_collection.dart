@@ -10,14 +10,14 @@ class FirewallPolicyRuleCollectionGroupNetworkRuleCollection {
   final pulumi.Input<String> name;
   /// The priority of the network rule collection. The range is `100` - `65000`.
   final pulumi.Input<int> priority;
-  /// One or more `network_rule` blocks as defined below.
+  /// One or more `networkRule` blocks as defined below.
   final pulumi.Input<List<FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule>> rules;
 
   /// Creates a new [FirewallPolicyRuleCollectionGroupNetworkRuleCollection].
   /// [action] The action to take for the network rules in this collection. Possible values are `Allow` and `Deny`.
   /// [name] The name which should be used for this network rule collection.
   /// [priority] The priority of the network rule collection. The range is `100` - `65000`.
-  /// [rules] One or more `network_rule` blocks as defined below.
+  /// [rules] One or more `networkRule` blocks as defined below.
   const FirewallPolicyRuleCollectionGroupNetworkRuleCollection({
     required this.action,
     required this.name,
@@ -43,4 +43,3 @@ class FirewallPolicyRuleCollectionGroupNetworkRuleCollection {
     );
   }
 }
-

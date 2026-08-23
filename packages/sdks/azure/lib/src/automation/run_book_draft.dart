@@ -5,7 +5,7 @@ import 'run_book_draft_content_link.dart';
 import 'run_book_draft_parameter.dart';
 
 class RunBookDraft {
-  /// A `publish_content_link` block as defined above.
+  /// A `publishContentLink` block as defined above.
   final pulumi.Input<RunBookDraftContentLink>? contentLink;
   final pulumi.Input<String>? creationTime;
   /// Whether the draft in edit mode.
@@ -17,7 +17,7 @@ class RunBookDraft {
   final pulumi.Input<List<RunBookDraftParameter>>? parameters;
 
   /// Creates a new [RunBookDraft].
-  /// [contentLink] A `publish_content_link` block as defined above.
+  /// [contentLink] A `publishContentLink` block as defined above.
   /// [creationTime] Optional.
   /// [editModeEnabled] Whether the draft in edit mode.
   /// [lastModifiedTime] Optional.
@@ -54,4 +54,3 @@ class RunBookDraft {
     );
   }
 }
-

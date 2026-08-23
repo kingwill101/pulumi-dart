@@ -201,6 +201,50 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "testbatch"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "teststorage"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_batch_account" "example" {
+///   name                                = "testbatchaccount"
+///   resource_group_name                 = azure_core_resourcegroup.example.name
+///   location                            = azure_core_resourcegroup.example.location
+///   pool_allocation_mode                = "BatchService"
+///   storage_account_id                  = azure_storage_account.example.id
+///   storage_account_authentication_mode = "StorageKeys"
+///   tags = {
+///     "env" = "test"
+///   }
+/// }
+/// resource "azure_batch_certificate" "example" {
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   account_name         = azure_batch_account.example.name
+///   certificate          = filebase64("certificate.pfx")
+///   format               = "Pfx"
+///   password             = "password"
+///   thumbprint           = "42C107874FD0E4A9583292A2F1098E8FE4B2EDDA"
+///   thumbprint_algorithm = "SHA1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -213,8 +257,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.azure.batch.CertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

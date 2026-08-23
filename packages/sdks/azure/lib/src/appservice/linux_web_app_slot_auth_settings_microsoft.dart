@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxWebAppSlotAuthSettingsMicrosoft {
   /// The OAuth 2.0 client ID that was created for the app used for authentication.
   final pulumi.Input<String> clientId;
-  /// The OAuth 2.0 client secret that was created for the app used for authentication. Cannot be specified with `client_secret_setting_name`.
+  /// The OAuth 2.0 client secret that was created for the app used for authentication. Cannot be specified with `clientSecretSettingName`.
   final pulumi.Input<String>? clientSecret;
-  /// The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication. Cannot be specified with `client_secret`.
+  /// The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication. Cannot be specified with `clientSecret`.
   final pulumi.Input<String>? clientSecretSettingName;
   /// Specifies a list of OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. If not specified, "wl.basic" is used as the default scope.
   final pulumi.Input<List<String>>? oauthScopes;
 
   /// Creates a new [LinuxWebAppSlotAuthSettingsMicrosoft].
   /// [clientId] The OAuth 2.0 client ID that was created for the app used for authentication.
-  /// [clientSecret] The OAuth 2.0 client secret that was created for the app used for authentication. Cannot be specified with `client_secret_setting_name`.
-  /// [clientSecretSettingName] The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication. Cannot be specified with `client_secret`.
+  /// [clientSecret] The OAuth 2.0 client secret that was created for the app used for authentication. Cannot be specified with `clientSecretSettingName`.
+  /// [clientSecretSettingName] The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication. Cannot be specified with `clientSecret`.
   /// [oauthScopes] Specifies a list of OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. If not specified, "wl.basic" is used as the default scope.
   const LinuxWebAppSlotAuthSettingsMicrosoft({
     required this.clientId,
@@ -42,4 +42,3 @@ class LinuxWebAppSlotAuthSettingsMicrosoft {
     );
   }
 }
-

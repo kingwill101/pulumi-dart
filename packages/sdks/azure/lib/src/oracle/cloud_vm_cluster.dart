@@ -246,6 +246,77 @@ import 'cloud_vm_cluster_state.dart';
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_oracle_getdbservers" "example" {
+///   resource_group_name               = azure_core_resourcegroup.example.name
+///   cloud_exadata_infrastructure_name = azure_oracle_exadatainfrastructure.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_oracle_exadatainfrastructure" "example" {
+///   name                = "example-exadata-infrastructure"
+///   display_name        = "example-exadata-infrastructure"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   shape               = "Exadata.X9M"
+///   storage_count       = "3"
+///   compute_count       = "2"
+///   zones               = ["3"]
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-virtual-network"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+///   delegations {
+///     name = "delegation"
+///     service_delegation = {
+///       actions = ["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"]
+///       name    = "Oracle.Database/networkAttachments"
+///     }
+///   }
+/// }
+/// resource "azure_oracle_cloudvmcluster" "example" {
+///   name                            = "example-cloud-vm-cluster"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resourcegroup.example.location
+///   gi_version                      = "23.0.0.0"
+///   virtual_network_id              = azure_network_virtualnetwork.example.id
+///   license_model                   = "BringYourOwnLicense"
+///   db_servers                      = [for obj in data.azure_oracle_getdbservers.example.db_servers : obj.ocid]
+///   ssh_public_keys                 = [file("~/.ssh/id_rsa.pub")]
+///   display_name                    = "example-cloud-vm-cluster"
+///   cloud_exadata_infrastructure_id = azure_oracle_exadatainfrastructure.example.id
+///   cpu_core_count                  = 2
+///   hostname                        = "hostname"
+///   subnet_id                       = azure_network_subnet.example.id
+///   system_version                  = "23.1.19.0.0.241015"
+///   file_system_configurations {
+///     mount_point = "/var"
+///     size_in_gb  = 32
+///   }
+/// }
+/// ```
 ///
 ///
 /// ## API Providers
@@ -271,7 +342,7 @@ class CloudVmCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> clusterName;
   /// The number of CPU cores enabled on the Cloud VM Cluster. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<int> cpuCoreCount;
-  /// A `data_collection_options` block as defined below. Changing this forces a new Cloud VM Cluster to be created.
+  /// A `dataCollectionOptions` block as defined below. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<CloudVmClusterDataCollectionOptions> dataCollectionOptions;
   /// The percentage assigned to DATA storage (user data and database files). Changing this forces a new Cloud VM Cluster to be created. The remaining percentage is assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). Accepted values are `35`, `40`, `60` and `80`.
   late final pulumi.Output<int> dataStoragePercentage;
@@ -285,7 +356,7 @@ class CloudVmCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> displayName;
   /// The name of the OCI Private DNS Zone to be associated with the Cloud VM Cluster. This is required for specifying your own private domain name. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> domain;
-  /// A `file_system_configuration` block as defined below.
+  /// A `fileSystemConfiguration` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> fileSystemConfigurations;
   /// A valid Oracle Grid Infrastructure (GI) software version. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> giVersion;

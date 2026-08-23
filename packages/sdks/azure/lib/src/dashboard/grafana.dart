@@ -21,10 +21,12 @@ import 'grafana_state.dart';
 ///     name: "example-dg",
 ///     resourceGroupName: example.name,
 ///     location: "West Europe",
-///     grafanaMajorVersion: "11",
+///     grafanaMajorVersion: "12",
 ///     apiKeyEnabled: true,
 ///     deterministicOutboundIpEnabled: true,
 ///     publicNetworkAccessEnabled: false,
+///     sku: "Standard",
+///     skuSize: "X1",
 ///     identity: {
 ///         type: "SystemAssigned",
 ///     },
@@ -44,10 +46,12 @@ import 'grafana_state.dart';
 ///     name="example-dg",
 ///     resource_group_name=example.name,
 ///     location="West Europe",
-///     grafana_major_version="11",
+///     grafana_major_version="12",
 ///     api_key_enabled=True,
 ///     deterministic_outbound_ip_enabled=True,
 ///     public_network_access_enabled=False,
+///     sku="Standard",
+///     sku_size="X1",
 ///     identity={
 ///         "type": "SystemAssigned",
 ///     },
@@ -74,10 +78,12 @@ import 'grafana_state.dart';
 ///         Name = "example-dg",
 ///         ResourceGroupName = example.Name,
 ///         Location = "West Europe",
-///         GrafanaMajorVersion = "11",
+///         GrafanaMajorVersion = "12",
 ///         ApiKeyEnabled = true,
 ///         DeterministicOutboundIpEnabled = true,
 ///         PublicNetworkAccessEnabled = false,
+///         Sku = "Standard",
+///         SkuSize = "X1",
 ///         Identity = new Azure.Dashboard.Inputs.GrafanaIdentityArgs
 ///         {
 ///             Type = "SystemAssigned",
@@ -112,10 +118,12 @@ import 'grafana_state.dart';
 /// 			Name:                           pulumi.String("example-dg"),
 /// 			ResourceGroupName:              example.Name,
 /// 			Location:                       pulumi.String("West Europe"),
-/// 			GrafanaMajorVersion:            pulumi.String("11"),
+/// 			GrafanaMajorVersion:            pulumi.String("12"),
 /// 			ApiKeyEnabled:                  pulumi.Bool(true),
 /// 			DeterministicOutboundIpEnabled: pulumi.Bool(true),
 /// 			PublicNetworkAccessEnabled:     pulumi.Bool(false),
+/// 			Sku:                            pulumi.String("Standard"),
+/// 			SkuSize:                        pulumi.String("X1"),
 /// 			Identity: &dashboard.GrafanaIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
 /// 			},
@@ -130,6 +138,37 @@ import 'grafana_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dashboard_grafana" "example" {
+///   name                              = "example-dg"
+///   resource_group_name               = azure_core_resourcegroup.example.name
+///   location                          = "West Europe"
+///   grafana_major_version             = 12
+///   api_key_enabled                   = true
+///   deterministic_outbound_ip_enabled = true
+///   public_network_access_enabled     = false
+///   sku                               = "Standard"
+///   sku_size                          = "X1"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +180,8 @@ import 'grafana_state.dart';
 /// import com.pulumi.azure.dashboard.Grafana;
 /// import com.pulumi.azure.dashboard.GrafanaArgs;
 /// import com.pulumi.azure.dashboard.inputs.GrafanaIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -163,10 +202,12 @@ import 'grafana_state.dart';
 ///             .name("example-dg")
 ///             .resourceGroupName(example.name())
 ///             .location("West Europe")
-///             .grafanaMajorVersion("11")
+///             .grafanaMajorVersion("12")
 ///             .apiKeyEnabled(true)
 ///             .deterministicOutboundIpEnabled(true)
 ///             .publicNetworkAccessEnabled(false)
+///             .sku("Standard")
+///             .skuSize("X1")
 ///             .identity(GrafanaIdentityArgs.builder()
 ///                 .type("SystemAssigned")
 ///                 .build())
@@ -190,10 +231,12 @@ import 'grafana_state.dart';
 ///       name: example-dg
 ///       resourceGroupName: ${example.name}
 ///       location: West Europe
-///       grafanaMajorVersion: 11
+///       grafanaMajorVersion: 12
 ///       apiKeyEnabled: true
 ///       deterministicOutboundIpEnabled: true
 ///       publicNetworkAccessEnabled: false
+///       sku: Standard
+///       skuSize: X1
 ///       identity:
 ///         type: SystemAssigned
 ///       tags:
@@ -220,13 +263,13 @@ class Grafana extends pulumi.CustomResource {
   late final pulumi.Output<bool?> apiKeyEnabled;
   /// Scope for dns deterministic name hash calculation. The only possible value is `TenantReuse`. Defaults to `TenantReuse`.
   late final pulumi.Output<String?> autoGeneratedDomainNameLabelScope;
-  /// A `azure_monitor_workspace_integrations` block as defined below.
+  /// A `azureMonitorWorkspaceIntegrations` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> azureMonitorWorkspaceIntegrations;
   /// Whether to enable the Grafana instance to use deterministic outbound IPs. Defaults to `false`.
   late final pulumi.Output<bool?> deterministicOutboundIpEnabled;
   /// The endpoint of the Grafana instance.
   late final pulumi.Output<String> endpoint;
-  /// Which major version of Grafana to deploy. Possible values are `10`, `11`.
+  /// Which major version of Grafana to deploy. Possible values are `11`, `12`.
   late final pulumi.Output<String> grafanaMajorVersion;
   /// The full Grafana software semantic version deployed.
   late final pulumi.Output<String> grafanaVersion;
@@ -242,8 +285,10 @@ class Grafana extends pulumi.CustomResource {
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
   /// Specifies the name of the Resource Group where the Dashboard Grafana should exist. Changing this forces a new Dashboard Grafana to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// The name of the SKU used for the Grafana instance. Possible values are `Standard` and `Essential`. Defaults to `Standard`. Changing this forces a new Dashboard Grafana to be created.
+  /// The name of the SKU used for the Grafana instance. The only possible value is `Standard`. Defaults to `Standard`. Changing this forces a new Dashboard Grafana to be created.
   late final pulumi.Output<String?> sku;
+  /// The size of the SKU used for the Grafana instance. Possible values are `X1` and `X2`. Defaults to `X1`. Changing this forces a new Dashboard Grafana to be created.
+  late final pulumi.Output<String?> skuSize;
   /// A `smtp` block as defined below.
   late final pulumi.Output<GrafanaSmtp?> smtp;
   /// A mapping of tags which should be assigned to the Dashboard Grafana.
@@ -279,6 +324,7 @@ class Grafana extends pulumi.CustomResource {
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String?>('sku');
+    skuSize = registerOutput<String?>('skuSize');
     smtp = registerOutput<GrafanaSmtp?>('smtp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GrafanaSmtp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     zoneRedundancyEnabled = registerOutput<bool?>('zoneRedundancyEnabled');
@@ -321,6 +367,7 @@ class Grafana extends pulumi.CustomResource {
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String?>('sku');
+    skuSize = registerOutput<String?>('skuSize');
     smtp = registerOutput<GrafanaSmtp?>('smtp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GrafanaSmtp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     zoneRedundancyEnabled = registerOutput<bool?>('zoneRedundancyEnabled');

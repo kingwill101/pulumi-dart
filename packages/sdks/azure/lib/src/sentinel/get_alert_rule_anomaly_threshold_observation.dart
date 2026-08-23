@@ -9,7 +9,7 @@ class GetAlertRuleAnomalyThresholdObservation {
   final pulumi.Input<String> max;
   /// The min value of the threshold observation.
   final pulumi.Input<String> min;
-  /// The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
+  /// The guid of this Sentinel Alert Rule Template. Either `displayName` or `name` have to be specified.
   final pulumi.Input<String> name;
   /// The value of the threshold observation.
   final pulumi.Input<String> value;
@@ -18,7 +18,7 @@ class GetAlertRuleAnomalyThresholdObservation {
   /// [description] The description of the threshold observation.
   /// [max] The max value of the threshold observation.
   /// [min] The min value of the threshold observation.
-  /// [name] The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
+  /// [name] The guid of this Sentinel Alert Rule Template. Either `displayName` or `name` have to be specified.
   /// [value] The value of the threshold observation.
   const GetAlertRuleAnomalyThresholdObservation({
     required this.description,
@@ -48,4 +48,3 @@ class GetAlertRuleAnomalyThresholdObservation {
     );
   }
 }
-

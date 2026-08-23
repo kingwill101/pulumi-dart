@@ -15,11 +15,11 @@ class NetworkInterfaceState {
   final pulumi.Input<List<String>>? appliedDnsServers;
   /// Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). This feature offers competitive performance in Connections Per Second (CPS) optimization, along with improvements to handling large amounts of simultaneous connections. Possible values are `AcceleratedConnections`, `Floating`, `MaxConnections` and `None`.
   ///
-  /// &gt; **Note:** `auxiliary_mode` is in **Preview** and requires that the preview is enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
+  /// &gt; **Note:** `auxiliaryMode` is in **Preview** and requires that the preview is enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
   final pulumi.Input<String>? auxiliaryMode;
   /// Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are `A8`, `A4`, `A1`, `A2` and `None`.
   ///
-  /// &gt; **Note:** `auxiliary_sku` is in **Preview** and requires that the preview is enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
+  /// &gt; **Note:** `auxiliarySku` is in **Preview** and requires that the preview is enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
   final pulumi.Input<String>? auxiliarySku;
   /// A list of IP Addresses defining the DNS Servers which should be used for this Network Interface.
   ///
@@ -29,9 +29,9 @@ class NetworkInterfaceState {
   final pulumi.Input<String>? edgeZone;
   /// The (relative) DNS Name used for internal communications between Virtual Machines in the same Virtual Network.
   final pulumi.Input<String>? internalDnsNameLabel;
-  /// Even if `internal_dns_name_label` is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of `internal_domain_name_suffix`.
+  /// Even if `internalDnsNameLabel` is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of `internalDomainNameSuffix`.
   final pulumi.Input<String>? internalDomainNameSuffix;
-  /// One or more `ip_configuration` blocks as defined below.
+  /// One or more `ipConfiguration` blocks as defined below.
   final pulumi.Input<List<NetworkInterfaceIpConfiguration>>? ipConfigurations;
   /// Should IP Forwarding be enabled? Defaults to `false`.
   final pulumi.Input<bool>? ipForwardingEnabled;
@@ -60,8 +60,8 @@ class NetworkInterfaceState {
   /// [dnsServers] A list of IP Addresses defining the DNS Servers which should be used for this Network Interface.
   /// [edgeZone] Specifies the Edge Zone within the Azure Region where this Network Interface should exist. Changing this forces a new Network Interface to be created.
   /// [internalDnsNameLabel] The (relative) DNS Name used for internal communications between Virtual Machines in the same Virtual Network.
-  /// [internalDomainNameSuffix] Even if `internal_dns_name_label` is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of `internal_domain_name_suffix`.
-  /// [ipConfigurations] One or more `ip_configuration` blocks as defined below.
+  /// [internalDomainNameSuffix] Even if `internalDnsNameLabel` is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of `internalDomainNameSuffix`.
+  /// [ipConfigurations] One or more `ipConfiguration` blocks as defined below.
   /// [ipForwardingEnabled] Should IP Forwarding be enabled? Defaults to `false`.
   /// [location] The location where the Network Interface should exist. Changing this forces a new resource to be created.
   /// [macAddress] The Media Access Control (MAC) Address of the Network Interface.
@@ -138,4 +138,3 @@ class NetworkInterfaceState {
     );
   }
 }
-

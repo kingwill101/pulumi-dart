@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppSiteConfigCor {
-  /// A `allowed_origins` block as defined above.
+  /// A `allowedOrigins` block as defined above.
   final pulumi.Input<List<String>> allowedOrigins;
   /// Whether CORS requests with credentials are allowed.
   final pulumi.Input<bool> supportCredentials;
 
   /// Creates a new [GetWindowsWebAppSiteConfigCor].
-  /// [allowedOrigins] A `allowed_origins` block as defined above.
+  /// [allowedOrigins] A `allowedOrigins` block as defined above.
   /// [supportCredentials] Whether CORS requests with credentials are allowed.
   const GetWindowsWebAppSiteConfigCor({
     required this.allowedOrigins,
@@ -30,4 +30,3 @@ class GetWindowsWebAppSiteConfigCor {
     );
   }
 }
-

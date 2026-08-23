@@ -114,6 +114,31 @@ import 'backup_vault_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_netapp_account" "example" {
+///   name                = "example-netappaccount"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_netapp_backupvault" "example" {
+///   name                = "example-netappbackupvault"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   account_name        = azure_netapp_account.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +151,8 @@ import 'backup_vault_state.dart';
 /// import com.pulumi.azure.netapp.AccountArgs;
 /// import com.pulumi.azure.netapp.BackupVault;
 /// import com.pulumi.azure.netapp.BackupVaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,7 +215,7 @@ import 'backup_vault_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.NetApp` - 2025-06-01
+/// * `Microsoft.NetApp` - 2026-01-01
 ///
 /// ## Import
 ///

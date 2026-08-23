@@ -8,23 +8,23 @@ import 'get_certificate_certificate_policy_secret_property.dart';
 import 'get_certificate_certificate_policy_x509_certificate_property.dart';
 
 class GetCertificateCertificatePolicy {
-  /// A `issuer_parameters` block as defined below.
+  /// A `issuerParameters` block as defined below.
   final pulumi.Input<List<GetCertificateCertificatePolicyIssuerParameter>> issuerParameters;
-  /// A `key_properties` block as defined below.
+  /// A `keyProperties` block as defined below.
   final pulumi.Input<List<GetCertificateCertificatePolicyKeyProperty>> keyProperties;
-  /// A `lifetime_action` block as defined below.
+  /// A `lifetimeAction` block as defined below.
   final pulumi.Input<List<GetCertificateCertificatePolicyLifetimeAction>> lifetimeActions;
-  /// A `secret_properties` block as defined below.
+  /// A `secretProperties` block as defined below.
   final pulumi.Input<List<GetCertificateCertificatePolicySecretProperty>> secretProperties;
-  /// An `x509_certificate_properties` block as defined below.
+  /// An `x509CertificateProperties` block as defined below.
   final pulumi.Input<List<GetCertificateCertificatePolicyX509CertificateProperty>> x509CertificateProperties;
 
   /// Creates a new [GetCertificateCertificatePolicy].
-  /// [issuerParameters] A `issuer_parameters` block as defined below.
-  /// [keyProperties] A `key_properties` block as defined below.
-  /// [lifetimeActions] A `lifetime_action` block as defined below.
-  /// [secretProperties] A `secret_properties` block as defined below.
-  /// [x509CertificateProperties] An `x509_certificate_properties` block as defined below.
+  /// [issuerParameters] A `issuerParameters` block as defined below.
+  /// [keyProperties] A `keyProperties` block as defined below.
+  /// [lifetimeActions] A `lifetimeAction` block as defined below.
+  /// [secretProperties] A `secretProperties` block as defined below.
+  /// [x509CertificateProperties] An `x509CertificateProperties` block as defined below.
   const GetCertificateCertificatePolicy({
     required this.issuerParameters,
     required this.keyProperties,
@@ -53,4 +53,3 @@ class GetCertificateCertificatePolicy {
     );
   }
 }
-

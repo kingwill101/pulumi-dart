@@ -9,7 +9,7 @@ class SubnetIpAddressPool {
   final pulumi.Input<String> id;
   /// The number of IP addresses to allocated to the subnet. The value must be a string that represents a positive number, e.g., `"100"`.
   ///
-  /// &gt; **Note:** `number_of_ip_addresses` cannot be decreased.
+  /// &gt; **Note:** `numberOfIpAddresses` cannot be decreased.
   final pulumi.Input<String> numberOfIpAddresses;
 
   /// Creates a new [SubnetIpAddressPool].
@@ -38,4 +38,3 @@ class SubnetIpAddressPool {
     );
   }
 }
-

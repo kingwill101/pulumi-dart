@@ -5,7 +5,7 @@ import 'static_site_state.dart';
 
 /// Manages an App Service Static Site.
 ///
-/// &gt; **Note:** The `azure.appservice.StaticSite` resource is deprecated in favour of `azure.appservice.StaticWebApp` and will be removed in a future major release.
+/// &gt; **Note:** This resource has been superseded by `azure.appservice.StaticWebApp` and will be removed in version 5.0 of the AzureRM provider.
 ///
 /// &gt; **Note:** After the Static Site is provisioned, you'll need to associate your target repository, which contains your web app, to the Static Site, by following the [Azure Static Site document](https://docs.microsoft.com/azure/static-web-apps/github-actions-workflow).
 ///
@@ -91,6 +91,25 @@ import 'static_site_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_staticsite" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +120,8 @@ import 'static_site_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.appservice.StaticSite;
 /// import com.pulumi.azure.appservice.StaticSiteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -18,8 +18,10 @@ class FrontdoorRouteArgs {
   final pulumi.Input<String> cdnFrontdoorEndpointId;
   /// The resource ID of the Front Door Origin Group where this Front Door Route should be created.
   final pulumi.Input<String> cdnFrontdoorOriginGroupId;
-  /// One or more Front Door Origin resource IDs that this Front Door Route will link to.
-  final pulumi.Input<List<String>> cdnFrontdoorOriginIds;
+  /// One or more Front Door Origin resource IDs for this Front Door Route.
+  ///
+  /// &gt; **Note:** The `cdnFrontdoorOriginIds` field is not transmitted to the Azure API; it is used exclusively by Terraform to determine correct resource provisioning and destruction order. If this field is omitted, a `dependsOn` meta-argument referencing the corresponding `azure.cdn.FrontdoorOrigin` resource(s) is required. When importing an existing `azure.cdn.FrontdoorRoute resource`, you must manually add either the `cdnFrontdoorOriginIds` field or the `dependsOn` meta-argument to the configuration post-import.
+  final pulumi.Input<List<String>>? cdnFrontdoorOriginIds;
   /// A directory path on the Front Door Origin that can be used to retrieve content (e.g. `contoso.cloudapp.net/originpath`).
   final pulumi.Input<String>? cdnFrontdoorOriginPath;
   /// A list of the Front Door Rule Set IDs which should be assigned to this Front Door Route.
@@ -30,7 +32,7 @@ class FrontdoorRouteArgs {
   final pulumi.Input<String>? forwardingProtocol;
   /// Automatically redirect HTTP traffic to HTTPS traffic? Possible values are `true` or `false`. Defaults to `true`.
   ///
-  /// &gt; **Note:** The `https_redirect_enabled` rule is the first rule that will be executed.
+  /// &gt; **Note:** The `httpsRedirectEnabled` rule is the first rule that will be executed.
   final pulumi.Input<bool>? httpsRedirectEnabled;
   /// Should this Front Door Route be linked to the default endpoint? Possible values include `true` or `false`. Defaults to `true`.
   final pulumi.Input<bool>? linkToDefaultDomain;
@@ -40,7 +42,7 @@ class FrontdoorRouteArgs {
   final pulumi.Input<List<String>> patternsToMatches;
   /// One or more Protocols supported by this Front Door Route. Possible values are `Http` or `Https`.
   ///
-  /// &gt; **Note:** If `https_redirect_enabled` is set to `true` the `supported_protocols` field must contain both `Http` and `Https` values.
+  /// &gt; **Note:** If `httpsRedirectEnabled` is set to `true` the `supportedProtocols` field must contain both `Http` and `Https` values.
   final pulumi.Input<List<String>> supportedProtocols;
 
   /// Creates a new [FrontdoorRouteArgs].
@@ -48,7 +50,7 @@ class FrontdoorRouteArgs {
   /// [cdnFrontdoorCustomDomainIds] The IDs of the Front Door Custom Domains which are associated with this Front Door Route.
   /// [cdnFrontdoorEndpointId] The resource ID of the Front Door Endpoint where this Front Door Route should exist. Changing this forces a new Front Door Route to be created.
   /// [cdnFrontdoorOriginGroupId] The resource ID of the Front Door Origin Group where this Front Door Route should be created.
-  /// [cdnFrontdoorOriginIds] One or more Front Door Origin resource IDs that this Front Door Route will link to.
+  /// [cdnFrontdoorOriginIds] One or more Front Door Origin resource IDs for this Front Door Route.
   /// [cdnFrontdoorOriginPath] A directory path on the Front Door Origin that can be used to retrieve content (e.g. `contoso.cloudapp.net/originpath`).
   /// [cdnFrontdoorRuleSetIds] A list of the Front Door Rule Set IDs which should be assigned to this Front Door Route.
   /// [enabled] Is this Front Door Route enabled? Possible values are `true` or `false`. Defaults to `true`.
@@ -63,7 +65,7 @@ class FrontdoorRouteArgs {
     this.cdnFrontdoorCustomDomainIds,
     required this.cdnFrontdoorEndpointId,
     required this.cdnFrontdoorOriginGroupId,
-    required this.cdnFrontdoorOriginIds,
+    this.cdnFrontdoorOriginIds,
     this.cdnFrontdoorOriginPath,
     this.cdnFrontdoorRuleSetIds,
     this.enabled,
@@ -81,7 +83,7 @@ class FrontdoorRouteArgs {
       'cdnFrontdoorCustomDomainIds': ?cdnFrontdoorCustomDomainIds,
       'cdnFrontdoorEndpointId': cdnFrontdoorEndpointId,
       'cdnFrontdoorOriginGroupId': cdnFrontdoorOriginGroupId,
-      'cdnFrontdoorOriginIds': cdnFrontdoorOriginIds,
+      'cdnFrontdoorOriginIds': ?cdnFrontdoorOriginIds,
       'cdnFrontdoorOriginPath': ?cdnFrontdoorOriginPath,
       'cdnFrontdoorRuleSetIds': ?cdnFrontdoorRuleSetIds,
       'enabled': ?enabled,
@@ -100,7 +102,7 @@ class FrontdoorRouteArgs {
       cdnFrontdoorCustomDomainIds: (() { final guardedValue = map['cdnFrontdoorCustomDomainIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       cdnFrontdoorEndpointId: pulumi.Input.fromValue(map['cdnFrontdoorEndpointId'] as String),
       cdnFrontdoorOriginGroupId: pulumi.Input.fromValue(map['cdnFrontdoorOriginGroupId'] as String),
-      cdnFrontdoorOriginIds: pulumi.Input.fromValue((map['cdnFrontdoorOriginIds'] as List).cast<String>()),
+      cdnFrontdoorOriginIds: (() { final guardedValue = map['cdnFrontdoorOriginIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       cdnFrontdoorOriginPath: (() { final guardedValue = map['cdnFrontdoorOriginPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cdnFrontdoorRuleSetIds: (() { final guardedValue = map['cdnFrontdoorRuleSetIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -113,4 +115,3 @@ class FrontdoorRouteArgs {
     );
   }
 }
-

@@ -42,4 +42,3 @@ class DataConnectorDynamics365Args {
     );
   }
 }
-

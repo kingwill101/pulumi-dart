@@ -6,7 +6,7 @@ import 'get_policy_rule_action_snapshot.dart';
 import 'get_policy_rule_action_version.dart';
 
 class GetPolicyRuleAction {
-  /// A `base_blob` block as documented below.
+  /// A `baseBlob` block as documented below.
   final pulumi.Input<List<GetPolicyRuleActionBaseBlob>> baseBlobs;
   /// A `snapshot` block as documented below.
   final pulumi.Input<List<GetPolicyRuleActionSnapshot>> snapshots;
@@ -14,7 +14,7 @@ class GetPolicyRuleAction {
   final pulumi.Input<List<GetPolicyRuleActionVersion>> versions;
 
   /// Creates a new [GetPolicyRuleAction].
-  /// [baseBlobs] A `base_blob` block as documented below.
+  /// [baseBlobs] A `baseBlob` block as documented below.
   /// [snapshots] A `snapshot` block as documented below.
   /// [versions] A `version` block as documented below.
   const GetPolicyRuleAction({
@@ -39,4 +39,3 @@ class GetPolicyRuleAction {
     );
   }
 }
-

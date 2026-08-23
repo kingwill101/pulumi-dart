@@ -69,6 +69,24 @@ import 'get_private_cloud_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_avs_getprivatecloud" "example" {
+///   name                = "existing-vmware-private-cloud"
+///   resource_group_name = "existing-resgroup"
+/// }
+///
+/// output "id" {
+///   value = data.azure_avs_getprivatecloud.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +95,8 @@ import 'get_private_cloud_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.avs.AvsFunctions;
 /// import com.pulumi.azure.avs.inputs.GetPrivateCloudArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

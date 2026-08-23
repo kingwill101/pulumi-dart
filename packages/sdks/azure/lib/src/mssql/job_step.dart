@@ -305,6 +305,67 @@ import 'job_step_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "westeurope"
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "example-server"
+///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   version                      = "12.0"
+///   administrator_login          = "4dm1n157r470r"
+///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
+/// }
+/// resource "azure_mssql_database" "example" {
+///   name      = "example-db"
+///   server_id = azure_mssql_server.example.id
+///   collation = "SQL_Latin1_General_CP1_CI_AS"
+///   sku_name  = "S1"
+/// }
+/// resource "azure_mssql_jobagent" "example" {
+///   name        = "example-job-agent"
+///   location    = azure_core_resourcegroup.example.location
+///   database_id = azure_mssql_database.example.id
+/// }
+/// resource "azure_mssql_jobcredential" "example" {
+///   name         = "example-job-credential"
+///   job_agent_id = azure_mssql_jobagent.example.id
+///   username     = "exampleusername"
+///   password     = "examplepassword"
+/// }
+/// resource "azure_mssql_jobtargetgroup" "example" {
+///   name         = "example-target-group"
+///   job_agent_id = azure_mssql_jobagent.example.id
+///   job_targets {
+///     server_name       = azure_mssql_server.example.name
+///     database_name     = azure_mssql_database.example.name
+///     job_credential_id = azure_mssql_jobcredential.example.id
+///   }
+/// }
+/// resource "azure_mssql_job" "example" {
+///   name         = "example-job"
+///   job_agent_id = azure_mssql_jobagent.example.id
+///   description  = "example description"
+/// }
+/// resource "azure_mssql_jobstep" "test" {
+///   name                = "example-job-step"
+///   job_id              = azure_mssql_job.example.id
+///   job_credential_id   = azure_mssql_jobcredential.example.id
+///   job_target_group_id = azure_mssql_jobtargetgroup.example.id
+///   job_step_index      = 1
+///   sql_script          = "IF NOT EXISTS (SELECT * FROM sys.objects WHERE [name] = N'Pets')\n  CREATE TABLE Pets (\n    Animal NVARCHAR(50),\n    Name NVARCHAR(50),\n  );\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -328,8 +389,8 @@ import 'job_step_state.dart';
 /// import com.pulumi.azure.mssql.JobArgs;
 /// import com.pulumi.azure.mssql.JobStep;
 /// import com.pulumi.azure.mssql.JobStepArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -502,7 +563,7 @@ class JobStep extends pulumi.CustomResource {
   late final pulumi.Output<int?> initialRetryIntervalSeconds;
   /// The ID of the Elastic Job Credential to use when executing this Elastic Job Step. Omit this argument to run the step under the Job Agent's managed identity (user-assigned).
   ///
-  /// !&gt; **Note:** Once set, `job_credential_id` cannot be removed. Removing the credential will force a new resource to be created.
+  /// &gt; **Note:** Once set, `jobCredentialId` cannot be removed. Removing the credential will force a new resource to be created.
   late final pulumi.Output<String?> jobCredentialId;
   /// The ID of the Elastic Job. Changing this forces a new Elastic Job Step to be created.
   late final pulumi.Output<String> jobId;
@@ -514,11 +575,11 @@ class JobStep extends pulumi.CustomResource {
   late final pulumi.Output<String> jobTargetGroupId;
   /// The maximum retry interval in seconds. Defaults to `120`.
   ///
-  /// &gt; **Note:** `maximum_retry_interval_seconds` must be greater than `initial_retry_interval_seconds`.
+  /// &gt; **Note:** `maximumRetryIntervalSeconds` must be greater than `initialRetryIntervalSeconds`.
   late final pulumi.Output<int?> maximumRetryIntervalSeconds;
   /// The name which should be used for this Elastic Job Step. Changing this forces a new Elastic Job Step to be created.
   late final pulumi.Output<String> name;
-  /// An `output_target` block as defined below.
+  /// An `outputTarget` block as defined below.
   late final pulumi.Output<JobStepOutputTarget?> outputTarget;
   /// The number of retry attempts. Defaults to `10`.
   late final pulumi.Output<int?> retryAttempts;

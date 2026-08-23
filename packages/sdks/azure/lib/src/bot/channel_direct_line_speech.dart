@@ -167,6 +167,44 @@ import 'channel_direct_line_speech_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_cognitive_account" "example" {
+///   name                = "example-cogacct"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   kind                = "SpeechServices"
+///   sku_name            = "S0"
+/// }
+/// resource "azure_bot_channelsregistration" "example" {
+///   name                = "example-bcr"
+///   location            = "global"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "F0"
+///   microsoft_app_id    = data.azure_core_getclientconfig.current.client_id
+/// }
+/// resource "azure_bot_channeldirectlinespeech" "example" {
+///   bot_name                     = azure_bot_channelsregistration.example.name
+///   location                     = azure_bot_channelsregistration.example.location
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   cognitive_service_location   = azure_cognitive_account.example.location
+///   cognitive_service_access_key = azure_cognitive_account.example.primary_access_key
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +220,8 @@ import 'channel_direct_line_speech_state.dart';
 /// import com.pulumi.azure.bot.ChannelsRegistrationArgs;
 /// import com.pulumi.azure.bot.ChannelDirectLineSpeech;
 /// import com.pulumi.azure.bot.ChannelDirectLineSpeechArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -281,12 +319,14 @@ import 'channel_direct_line_speech_state.dart';
 class ChannelDirectLineSpeech extends pulumi.CustomResource {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
-  /// The ID of the Cognitive Account this Bot Channel should be associated with.
+  /// The ID of the Cognitive Account this Bot Channel should be associated with. Either `cognitiveAccountId` or both `cognitiveServiceAccessKey` and `cognitiveServiceLocation` must be specified.
+  ///
+  /// &gt; **Note:** Once added, `cognitiveAccountId` cannot be removed, doing so forces a new resource to be created.
   late final pulumi.Output<String?> cognitiveAccountId;
-  /// The access key to access the Cognitive Service.
-  late final pulumi.Output<String> cognitiveServiceAccessKey;
-  /// Specifies the supported Azure location where the Cognitive Service resource exists.
-  late final pulumi.Output<String> cognitiveServiceLocation;
+  /// The access key to access the Cognitive Service. Either `cognitiveAccountId` or both `cognitiveServiceAccessKey` and `cognitiveServiceLocation` must be specified.
+  late final pulumi.Output<String?> cognitiveServiceAccessKey;
+  /// Specifies the supported Azure location where the Cognitive Service resource exists. Either `cognitiveAccountId` or both `cognitiveServiceAccessKey` and `cognitiveServiceLocation` must be specified.
+  late final pulumi.Output<String?> cognitiveServiceLocation;
   /// The custom speech model id for the Direct Line Speech Channel.
   late final pulumi.Output<String?> customSpeechModelId;
   /// The custom voice deployment id for the Direct Line Speech Channel.
@@ -312,8 +352,8 @@ class ChannelDirectLineSpeech extends pulumi.CustomResource {
         ) {
     botName = registerOutput<String>('botName');
     cognitiveAccountId = registerOutput<String?>('cognitiveAccountId');
-    cognitiveServiceAccessKey = registerOutput<String>('cognitiveServiceAccessKey');
-    cognitiveServiceLocation = registerOutput<String>('cognitiveServiceLocation');
+    cognitiveServiceAccessKey = registerOutput<String?>('cognitiveServiceAccessKey');
+    cognitiveServiceLocation = registerOutput<String?>('cognitiveServiceLocation');
     customSpeechModelId = registerOutput<String?>('customSpeechModelId');
     customVoiceDeploymentId = registerOutput<String?>('customVoiceDeploymentId');
     location = registerOutput<String>('location');
@@ -345,8 +385,8 @@ class ChannelDirectLineSpeech extends pulumi.CustomResource {
         ) {
     botName = registerOutput<String>('botName');
     cognitiveAccountId = registerOutput<String?>('cognitiveAccountId');
-    cognitiveServiceAccessKey = registerOutput<String>('cognitiveServiceAccessKey');
-    cognitiveServiceLocation = registerOutput<String>('cognitiveServiceLocation');
+    cognitiveServiceAccessKey = registerOutput<String?>('cognitiveServiceAccessKey');
+    cognitiveServiceLocation = registerOutput<String?>('cognitiveServiceLocation');
     customSpeechModelId = registerOutput<String?>('customSpeechModelId');
     customVoiceDeploymentId = registerOutput<String?>('customVoiceDeploymentId');
     location = registerOutput<String>('location');

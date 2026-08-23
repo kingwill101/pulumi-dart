@@ -10,9 +10,9 @@ class StaticWebAppState {
   final pulumi.Input<String>? apiKey;
   /// A key-value pair of App Settings.
   ///
-  /// &gt; **Note:** If using the `api_key` to deploy a Static Web App from a CI/CD pipeline or other source, `repository_branch` and `repository_url` will get updated in Azure, but it is not possible to set `repository_token` in that case. Use a `lifecycle` block to `ignore_changes` for `repository_branch` and`repository_url` if that is your deployment scenario.
+  /// &gt; **Note:** If using the `apiKey` to deploy a Static Web App from a CI/CD pipeline or other source, `repositoryBranch` and `repositoryUrl` will get updated in Azure, but it is not possible to set `repositoryToken` in that case. Use a `lifecycle` block to `ignoreChanges` for `repositoryBranch` and`repositoryUrl` if that is your deployment scenario.
   final pulumi.Input<Map<String, String>>? appSettings;
-  /// A `basic_auth` block as defined below.
+  /// A `basicAuth` block as defined below.
   final pulumi.Input<StaticWebAppBasicAuth>? basicAuth;
   /// Should changes to the configuration file be permitted. Defaults to `true`.
   final pulumi.Input<bool>? configurationFileChangesEnabled;
@@ -28,11 +28,11 @@ class StaticWebAppState {
   final pulumi.Input<bool>? previewEnvironmentsEnabled;
   /// Should public network access be enabled for the Static Web App. Defaults to `true`.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
-  /// Repository branch to use for the Static Web App. `repository_url` and `repository_token` must also be set.
+  /// Repository branch to use for the Static Web App. `repositoryUrl` and `repositoryToken` must also be set.
   final pulumi.Input<String>? repositoryBranch;
-  /// Repository Token with `admin` privileges to use for the Static Web App. `repository_branch` and `repository_url` must also be set.
+  /// Repository Token with `admin` privileges to use for the Static Web App. `repositoryBranch` and `repositoryUrl` must also be set.
   final pulumi.Input<String>? repositoryToken;
-  /// Repository URL to use for the Static Web App. `repository_branch` and `repository_token` must also be set.
+  /// Repository URL to use for the Static Web App. `repositoryBranch` and `repositoryToken` must also be set.
   final pulumi.Input<String>? repositoryUrl;
   /// The name of the Resource Group where the Static Web App should exist. Changing this forces a new Static Web App to be created.
   final pulumi.Input<String>? resourceGroupName;
@@ -46,7 +46,7 @@ class StaticWebAppState {
   /// Creates a new [StaticWebAppState].
   /// [apiKey] The API key of this Static Web App, which is used for later interacting with this Static Web App from other clients, e.g. GitHub Action.
   /// [appSettings] A key-value pair of App Settings.
-  /// [basicAuth] A `basic_auth` block as defined below.
+  /// [basicAuth] A `basicAuth` block as defined below.
   /// [configurationFileChangesEnabled] Should changes to the configuration file be permitted. Defaults to `true`.
   /// [defaultHostName] The default host name of the Static Web App.
   /// [identity] An `identity` block as defined below.
@@ -54,9 +54,9 @@ class StaticWebAppState {
   /// [name] The name which should be used for this Static Web App. Changing this forces a new Static Web App to be created.
   /// [previewEnvironmentsEnabled] Are Preview (Staging) environments enabled. Defaults to `true`.
   /// [publicNetworkAccessEnabled] Should public network access be enabled for the Static Web App. Defaults to `true`.
-  /// [repositoryBranch] Repository branch to use for the Static Web App. `repository_url` and `repository_token` must also be set.
-  /// [repositoryToken] Repository Token with `admin` privileges to use for the Static Web App. `repository_branch` and `repository_url` must also be set.
-  /// [repositoryUrl] Repository URL to use for the Static Web App. `repository_branch` and `repository_token` must also be set.
+  /// [repositoryBranch] Repository branch to use for the Static Web App. `repositoryUrl` and `repositoryToken` must also be set.
+  /// [repositoryToken] Repository Token with `admin` privileges to use for the Static Web App. `repositoryBranch` and `repositoryUrl` must also be set.
+  /// [repositoryUrl] Repository URL to use for the Static Web App. `repositoryBranch` and `repositoryToken` must also be set.
   /// [resourceGroupName] The name of the Resource Group where the Static Web App should exist. Changing this forces a new Static Web App to be created.
   /// [skuSize] Specifies the SKU size of the Static Web App. Possible values are `Free` or `Standard`. Defaults to `Free`.
   /// [skuTier] Specifies the SKU tier of the Static Web App. Possible values are `Free` or `Standard`. Defaults to `Free`.
@@ -125,4 +125,3 @@ class StaticWebAppState {
     );
   }
 }
-

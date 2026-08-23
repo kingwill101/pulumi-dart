@@ -152,6 +152,39 @@ import 'data_lake_gen2_path_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   account_kind             = "StorageV2"
+///   is_hns_enabled           = "true"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// resource "azure_storage_datalakegen2path" "example" {
+///   path               = "example"
+///   filesystem_name    = azure_storage_datalakegen2filesystem.example.name
+///   storage_account_id = azure_storage_account.example.id
+///   resource           = "directory"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,8 +199,8 @@ import 'data_lake_gen2_path_state.dart';
 /// import com.pulumi.azure.storage.DataLakeGen2FilesystemArgs;
 /// import com.pulumi.azure.storage.DataLakeGen2Path;
 /// import com.pulumi.azure.storage.DataLakeGen2PathArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

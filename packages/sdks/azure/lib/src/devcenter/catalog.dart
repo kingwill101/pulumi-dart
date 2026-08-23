@@ -150,6 +150,39 @@ import 'catalog_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_devcenter_devcenter" "example" {
+///   location            = azure_core_resourcegroup.example.location
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_devcenter_catalog" "example" {
+///   name                = "example"
+///   resource_group_name = testAzurermResourceGroup.name
+///   dev_center_id       = test.id
+///   catalog_github = {
+///     branch            = "foo"
+///     path              = ""
+///     uri               = "example URI"
+///     key_vault_key_url = "secret"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +197,8 @@ import 'catalog_state.dart';
 /// import com.pulumi.azure.devcenter.Catalog;
 /// import com.pulumi.azure.devcenter.CatalogArgs;
 /// import com.pulumi.azure.devcenter.inputs.CatalogCatalogGithubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -257,9 +290,9 @@ import 'catalog_state.dart';
 /// * Where `{devCenterName}` is the name of the Dev Center. For example `devCenterValue`.
 /// * Where `{catalogName}` is the name of the Dev Center Catalog. For example `catalogValue`.
 class Catalog extends pulumi.CustomResource {
-  /// A `catalog_adogit` block as defined below.
+  /// A `catalogAdogit` block as defined below.
   late final pulumi.Output<CatalogCatalogAdogit?> catalogAdogit;
-  /// A `catalog_github` block as defined below.
+  /// A `catalogGithub` block as defined below.
   late final pulumi.Output<CatalogCatalogGithub?> catalogGithub;
   /// Specifies the Dev Center Id within which this Dev Center Catalog should exist. Changing this forces a new Dev Center Catalog to be created.
   late final pulumi.Output<String> devCenterId;

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_kubernetes_cluster_service_mesh_profile_certificate_authority.dart';
 
 class GetKubernetesClusterServiceMeshProfile {
-  /// A `certificate_authority` block as documented below.
+  /// A `certificateAuthority` block as documented below.
   final pulumi.Input<List<GetKubernetesClusterServiceMeshProfileCertificateAuthority>> certificateAuthorities;
   /// Is Istio External Ingress Gateway enabled?
   final pulumi.Input<bool> externalIngressGatewayEnabled;
@@ -16,7 +16,7 @@ class GetKubernetesClusterServiceMeshProfile {
   final pulumi.Input<List<String>> revisions;
 
   /// Creates a new [GetKubernetesClusterServiceMeshProfile].
-  /// [certificateAuthorities] A `certificate_authority` block as documented below.
+  /// [certificateAuthorities] A `certificateAuthority` block as documented below.
   /// [externalIngressGatewayEnabled] Is Istio External Ingress Gateway enabled?
   /// [internalIngressGatewayEnabled] Is Istio Internal Ingress Gateway enabled?
   /// [mode] The mode of the service mesh.
@@ -49,4 +49,3 @@ class GetKubernetesClusterServiceMeshProfile {
     );
   }
 }
-

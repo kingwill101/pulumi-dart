@@ -11,18 +11,24 @@ class TableState {
   final pulumi.Input<String>? name;
   /// The Resource Manager ID of this Storage Table.
   final pulumi.Input<String>? resourceManagerId;
+  /// Specifies the ID of the storage account in which to create the storage table. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? storageAccountId;
   /// Specifies the storage account in which to create the storage table. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** This property is deprecated in favour of `storageAccountId` and will be removed in version 5.0 of the AzureRM Provider.
   final pulumi.Input<String>? storageAccountName;
 
   /// Creates a new [TableState].
   /// [acls] One or more `acl` blocks as defined below.
   /// [name] The name of the storage table. Only Alphanumeric characters allowed, starting with a letter. Must be unique within the storage account the table is located. Changing this forces a new resource to be created.
   /// [resourceManagerId] The Resource Manager ID of this Storage Table.
+  /// [storageAccountId] Specifies the ID of the storage account in which to create the storage table. Changing this forces a new resource to be created.
   /// [storageAccountName] Specifies the storage account in which to create the storage table. Changing this forces a new resource to be created.
   const TableState({
     this.acls,
     this.name,
     this.resourceManagerId,
+    this.storageAccountId,
     this.storageAccountName,
   });
 
@@ -31,6 +37,7 @@ class TableState {
       'acls': ?pulumi.Input.mapOptionalInputValue<List<TableAcl>, List<Map<String, dynamic>>>(acls, (value) => pulumi.Input.encodeList<TableAcl, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'resourceManagerId': ?resourceManagerId,
+      'storageAccountId': ?storageAccountId,
       'storageAccountName': ?storageAccountName,
     };
   }
@@ -40,8 +47,8 @@ class TableState {
       acls: (() { final guardedValue = map['acls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TableAcl>(guardedValue, (value) => TableAcl.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceManagerId: (() { final guardedValue = map['resourceManagerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

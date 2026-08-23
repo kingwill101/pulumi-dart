@@ -282,6 +282,59 @@ import 'api_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tf-test"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "tf-test-appinsights"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_appinsights_apikey" "read_telemetry" {
+///   name                    = "tf-test-appinsights-read-telemetry-api-key"
+///   application_insights_id = azure_appinsights_insights.example.id
+///   read_permissions        = ["aggregate", "api", "draft", "extendqueries", "search"]
+/// }
+/// resource "azure_appinsights_apikey" "write_annotations" {
+///   name                    = "tf-test-appinsights-write-annotations-api-key"
+///   application_insights_id = azure_appinsights_insights.example.id
+///   write_permissions       = ["annotations"]
+/// }
+/// resource "azure_appinsights_apikey" "authenticate_sdk_control_channel" {
+///   name                    = "tf-test-appinsights-authenticate-sdk-control-channel-api-key"
+///   application_insights_id = azure_appinsights_insights.example.id
+///   read_permissions        = ["agentconfig"]
+/// }
+/// resource "azure_appinsights_apikey" "full_permissions" {
+///   name                    = "tf-test-appinsights-full-permissions-api-key"
+///   application_insights_id = azure_appinsights_insights.example.id
+///   read_permissions        = ["agentconfig", "aggregate", "api", "draft", "extendqueries", "search"]
+///   write_permissions       = ["annotations"]
+/// }
+/// output "readTelemetryApiKey" {
+///   value = azure_appinsights_apikey.read_telemetry.api_key
+/// }
+/// output "writeAnnotationsApiKey" {
+///   value = azure_appinsights_apikey.write_annotations.api_key
+/// }
+/// output "authenticateSdkControlChannel" {
+///   value = azure_appinsights_apikey.authenticate_sdk_control_channel.api_key
+/// }
+/// output "fullPermissionsApiKey" {
+///   value = azure_appinsights_apikey.full_permissions.api_key
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -294,8 +347,8 @@ import 'api_key_state.dart';
 /// import com.pulumi.azure.appinsights.InsightsArgs;
 /// import com.pulumi.azure.appinsights.ApiKey;
 /// import com.pulumi.azure.appinsights.ApiKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -443,7 +496,7 @@ import 'api_key_state.dart';
 /// $ pulumi import azure:appinsights/apiKey:ApiKey my_key /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Insights/components/instance1/apiKeys/00000000-0000-0000-0000-000000000000
 /// ```
 ///
-/// &gt; **Note:** The secret `api_key` cannot be retrieved during an import. You will need to edit the state by hand to set the secret value if you happen to have it backed up somewhere.
+/// &gt; **Note:** The secret `apiKey` cannot be retrieved during an import. You will need to edit the state by hand to set the secret value if you happen to have it backed up somewhere.
 class ApiKey extends pulumi.CustomResource {
   /// The API Key secret (Sensitive).
   late final pulumi.Output<String> apiKey;

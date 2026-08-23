@@ -99,6 +99,28 @@ import 'workspace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_monitoring_workspace" "example" {
+///   name                = "example-mamw"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = "West Europe"
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +131,8 @@ import 'workspace_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.monitoring.Workspace;
 /// import com.pulumi.azure.monitoring.WorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

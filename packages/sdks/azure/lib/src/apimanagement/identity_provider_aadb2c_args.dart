@@ -94,4 +94,3 @@ class IdentityProviderAadb2cArgs {
     );
   }
 }
-

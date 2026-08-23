@@ -15,7 +15,7 @@ class GetNetworkInterfaceResult {
   final String id;
   /// The internal DNS name label of the specified Network Interface.
   final String internalDnsNameLabel;
-  /// One or more `ip_configuration` blocks as defined below.
+  /// One or more `ipConfiguration` blocks as defined below.
   final List<GetNetworkInterfaceIpConfiguration> ipConfigurations;
   /// Indicate if IP forwarding is set on the specified Network Interface.
   final bool ipForwardingEnabled;
@@ -43,7 +43,7 @@ class GetNetworkInterfaceResult {
   /// [dnsServers] The list of DNS servers used by the specified Network Interface.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [internalDnsNameLabel] The internal DNS name label of the specified Network Interface.
-  /// [ipConfigurations] One or more `ip_configuration` blocks as defined below.
+  /// [ipConfigurations] One or more `ipConfiguration` blocks as defined below.
   /// [ipForwardingEnabled] Indicate if IP forwarding is set on the specified Network Interface.
   /// [location] The location of the specified Network Interface.
   /// [macAddress] The MAC address used by the specified Network Interface.
@@ -115,4 +115,3 @@ class GetNetworkInterfaceResult {
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'linked_service_sql_managed_instance_state.dart';
 
 /// Manages a Linked Service (connection) between Azure SQL Managed Instance and Azure Data Factory.
 ///
-/// &gt; **Note:** All arguments including the connection_string will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+/// &gt; **Note:** All arguments including the connectionString will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 ///
 /// ## Example Usage
 ///
@@ -114,6 +114,30 @@ import 'linked_service_sql_managed_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedservicesqlmanagedinstance" "example" {
+///   name              = "example"
+///   data_factory_id   = azure_datafactory_factory.example.id
+///   connection_string = "Server=myserver.database.windows.net;Database=mydatabase;User ID=myuser;Password=mypassword;"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +150,8 @@ import 'linked_service_sql_managed_instance_state.dart';
 /// import com.pulumi.azure.datafactory.FactoryArgs;
 /// import com.pulumi.azure.datafactory.LinkedServiceSqlManagedInstance;
 /// import com.pulumi.azure.datafactory.LinkedServiceSqlManagedInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,7 +224,7 @@ import 'linked_service_sql_managed_instance_state.dart';
 class LinkedServiceSqlManagedInstance extends pulumi.CustomResource {
   /// List of tags that can be used for describing the Data Factory Linked Service SQL Managed Instance.
   late final pulumi.Output<List<String>?> annotations;
-  /// The connection string in which to authenticate with the SQL Managed Instance. Exactly one of either `connection_string` or `key_vault_connection_string` is required.
+  /// The connection string in which to authenticate with the SQL Managed Instance. Exactly one of either `connectionString` or `keyVaultConnectionString` is required.
   ///
   /// &gt; **Note:** When using service principal authentication, the connection string must not contain authentication values like `User Id`.
   late final pulumi.Output<String?> connectionString;
@@ -210,9 +234,9 @@ class LinkedServiceSqlManagedInstance extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The integration runtime reference to associate with the Data Factory Linked Service SQL Managed Instance.
   late final pulumi.Output<String?> integrationRuntimeName;
-  /// A `key_vault_connection_string` block as defined below. Use this argument to store SQL Managed Instance connection string in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `connection_string` or `key_vault_connection_string` is required.
+  /// A `keyVaultConnectionString` block as defined below. Use this argument to store SQL Managed Instance connection string in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `connectionString` or `keyVaultConnectionString` is required.
   late final pulumi.Output<LinkedServiceSqlManagedInstanceKeyVaultConnectionString?> keyVaultConnectionString;
-  /// A `key_vault_password` block as defined below. Use this argument to store SQL Managed Instance password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
+  /// A `keyVaultPassword` block as defined below. Use this argument to store SQL Managed Instance password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
   late final pulumi.Output<LinkedServiceSqlManagedInstanceKeyVaultPassword?> keyVaultPassword;
   /// Specifies the name of the Data Factory Linked Service SQL Managed Instance. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;

@@ -11,13 +11,13 @@ class SourceControlState {
   final pulumi.Input<String>? appId;
   /// The branch name to use for deployments. Changing this forces a new resource to be created.
   final pulumi.Input<String>? branch;
-  /// A `github_action_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// A `githubActionConfiguration` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<SourceControlGithubActionConfiguration>? githubActionConfiguration;
   /// The URL for the repository. Changing this forces a new resource to be created.
   final pulumi.Input<String>? repoUrl;
   /// Should the Deployment Rollback be enabled? Defaults to `false`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Azure can typically set this value automatically based on the `repo_url` value.
+  /// &gt; **Note:** Azure can typically set this value automatically based on the `repoUrl` value.
   final pulumi.Input<bool>? rollbackEnabled;
   /// The SCM Type in use. This value is decoded by the service from the repository information supplied.
   final pulumi.Input<String>? scmType;
@@ -33,7 +33,7 @@ class SourceControlState {
   /// Creates a new [SourceControlState].
   /// [appId] The ID of the Windows or Linux Web App. Changing this forces a new resource to be created.
   /// [branch] The branch name to use for deployments. Changing this forces a new resource to be created.
-  /// [githubActionConfiguration] A `github_action_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// [githubActionConfiguration] A `githubActionConfiguration` block as defined below. Changing this forces a new resource to be created.
   /// [repoUrl] The URL for the repository. Changing this forces a new resource to be created.
   /// [rollbackEnabled] Should the Deployment Rollback be enabled? Defaults to `false`. Changing this forces a new resource to be created.
   /// [scmType] The SCM Type in use. This value is decoded by the service from the repository information supplied.
@@ -84,4 +84,3 @@ class SourceControlState {
     );
   }
 }
-

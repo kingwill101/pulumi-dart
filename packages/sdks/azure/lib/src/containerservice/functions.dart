@@ -89,6 +89,25 @@ import 'get_registry_token_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_containerservice_getclusternodepool" "example" {
+///   name                    = "existing"
+///   kubernetes_cluster_name = "existing-cluster"
+///   resource_group_name     = "existing-resource-group"
+/// }
+///
+/// output "id" {
+///   value = data.azure_containerservice_getclusternodepool.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +116,8 @@ import 'get_registry_token_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.containerservice.ContainerserviceFunctions;
 /// import com.pulumi.azure.containerservice.inputs.GetClusterNodePoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -139,7 +158,7 @@ import 'get_registry_token_result.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.ContainerService` - 2025-07-01
+/// * `Microsoft.ContainerService` - 2025-10-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_containerservice_get_cluster_node_pool_get_cluster_node_pool_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetClusterNodePoolResult> getClusterNodePool(
@@ -220,6 +239,24 @@ Future<GetClusterNodePoolResult> getClusterNodePool(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_containerservice_getfleetmanager" "example" {
+///   name                = "example"
+///   resource_group_name = "example-resource-group"
+/// }
+///
+/// output "id" {
+///   value = data.azure_containerservice_getfleetmanager.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +265,8 @@ Future<GetClusterNodePoolResult> getClusterNodePool(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.containerservice.ContainerserviceFunctions;
 /// import com.pulumi.azure.containerservice.inputs.GetFleetManagerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -357,6 +394,30 @@ Future<GetFleetManagerResult> getFleetManager(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_containerservice_getgroup" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_containerservice_getgroup.example.id
+/// }
+/// output "ipAddress" {
+///   value = data.azure_containerservice_getgroup.example.ip_address
+/// }
+/// output "fqdn" {
+///   value = data.azure_containerservice_getgroup.example.fqdn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -365,8 +426,8 @@ Future<GetFleetManagerResult> getFleetManager(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.containerservice.ContainerserviceFunctions;
 /// import com.pulumi.azure.containerservice.inputs.GetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -483,6 +544,20 @@ Future<GetGroupResult> getGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_containerservice_getkubernetescluster" "example" {
+///   name                = "myakscluster"
+///   resource_group_name = "my-example-resource-group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -491,8 +566,8 @@ Future<GetGroupResult> getGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.containerservice.ContainerserviceFunctions;
 /// import com.pulumi.azure.containerservice.inputs.GetKubernetesClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -528,7 +603,7 @@ Future<GetGroupResult> getGroup(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.ContainerService` - 2025-07-01
+/// * `Microsoft.ContainerService` - 2025-10-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_containerservice_get_kubernetes_cluster_get_kubernetes_cluster_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetKubernetesClusterResult> getKubernetesCluster(
@@ -602,6 +677,20 @@ Future<GetKubernetesClusterResult> getKubernetesCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_containerservice_getkubernetesnodepoolsnapshot" "example" {
+///   name                = "example"
+///   resource_group_name = "example-resources"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -610,8 +699,8 @@ Future<GetKubernetesClusterResult> getKubernetesCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.containerservice.ContainerserviceFunctions;
 /// import com.pulumi.azure.containerservice.inputs.GetKubernetesNodePoolSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -647,7 +736,7 @@ Future<GetKubernetesClusterResult> getKubernetesCluster(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.ContainerService` - 2025-07-01
+/// * `Microsoft.ContainerService` - 2025-10-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_containerservice_get_kubernetes_node_pool_snapshot_get_kubernetes_node_pool_snapshot_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetKubernetesNodePoolSnapshotResult> getKubernetesNodePoolSnapshot(
@@ -728,6 +817,26 @@ Future<GetKubernetesNodePoolSnapshotResult> getKubernetesNodePoolSnapshot(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_containerservice_getkubernetesserviceversions" "current" {
+///   location = "West Europe"
+/// }
+///
+/// output "versions" {
+///   value = data.azure_containerservice_getkubernetesserviceversions.current.versions
+/// }
+/// output "latestVersion" {
+///   value = data.azure_containerservice_getkubernetesserviceversions.current.latest_version
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -736,8 +845,8 @@ Future<GetKubernetesNodePoolSnapshotResult> getKubernetesNodePoolSnapshot(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.containerservice.ContainerserviceFunctions;
 /// import com.pulumi.azure.containerservice.inputs.GetKubernetesServiceVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -857,6 +966,24 @@ Future<GetKubernetesServiceVersionsResult> getKubernetesServiceVersions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_containerservice_getregistry" "example" {
+///   name                = "testacr"
+///   resource_group_name = "test"
+/// }
+///
+/// output "loginServer" {
+///   value = data.azure_containerservice_getregistry.example.login_server
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -865,8 +992,8 @@ Future<GetKubernetesServiceVersionsResult> getKubernetesServiceVersions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.containerservice.ContainerserviceFunctions;
 /// import com.pulumi.azure.containerservice.inputs.GetRegistryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -926,6 +1053,24 @@ Future<GetRegistryResult> getRegistry(
 /// ## Example Usage
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_containerservice_getregistry" "example" {
+///   name                  = "testacr"
+///   container_registry_id = "test"
+/// }
+///
+/// output "cacheRuleSourceRepo" {
+///   value = exampleAzurermContainerRegistryCacheRule.sourceRepo
+/// }
+/// ```
 /// ```yaml
 /// variables:
 ///   example:
@@ -1029,6 +1174,25 @@ Future<GetRegistryCacheRuleResult> getRegistryCacheRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_containerservice_getregistryscopemap" "example" {
+///   name                    = "example-scope-map"
+///   resource_group_name     = "example-resource-group"
+///   container_registry_name = "example-registry"
+/// }
+///
+/// output "actions" {
+///   value = data.azure_containerservice_getregistryscopemap.example.actions
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1037,8 +1201,8 @@ Future<GetRegistryCacheRuleResult> getRegistryCacheRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.containerservice.ContainerserviceFunctions;
 /// import com.pulumi.azure.containerservice.inputs.GetRegistryScopeMapArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1164,6 +1328,25 @@ Future<GetRegistryScopeMapResult> getRegistryScopeMap(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_containerservice_getregistrytoken" "example" {
+///   name                    = "exampletoken"
+///   resource_group_name     = "example-resource-group"
+///   container_registry_name = "example-registry"
+/// }
+///
+/// output "scopeMapId" {
+///   value = data.azure_containerservice_getregistrytoken.example.scope_map_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1172,8 +1355,8 @@ Future<GetRegistryScopeMapResult> getRegistryScopeMap(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.containerservice.ContainerserviceFunctions;
 /// import com.pulumi.azure.containerservice.inputs.GetRegistryTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

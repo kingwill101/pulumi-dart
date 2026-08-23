@@ -7,15 +7,15 @@ class NetworkSecurityGroupSecurityRule {
   final pulumi.Input<String> access;
   /// A description for this rule. Restricted to 140 characters.
   final pulumi.Input<String>? description;
-  /// CIDR or destination IP range or * to match any IP. Tags such as `VirtualNetwork`, `AzureLoadBalancer` and `Internet` can also be used. This is required if `destination_address_prefixes` is not specified.
+  /// CIDR or destination IP range or * to match any IP. Tags such as `VirtualNetwork`, `AzureLoadBalancer` and `Internet` can also be used. This is required if `destinationAddressPrefixes` is not specified.
   final pulumi.Input<String>? destinationAddressPrefix;
-  /// List of destination address prefixes. Tags may not be used. This is required if `destination_address_prefix` is not specified.
+  /// List of destination address prefixes. Tags may not be used. This is required if `destinationAddressPrefix` is not specified.
   final pulumi.Input<List<String>>? destinationAddressPrefixes;
   /// A List of destination Application Security Group IDs
   final pulumi.Input<List<String>>? destinationApplicationSecurityGroupIds;
-  /// Destination Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `destination_port_ranges` is not specified.
+  /// Destination Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `destinationPortRanges` is not specified.
   final pulumi.Input<String>? destinationPortRange;
-  /// List of destination ports or port ranges. This is required if `destination_port_range` is not specified.
+  /// List of destination ports or port ranges. This is required if `destinationPortRange` is not specified.
   final pulumi.Input<List<String>>? destinationPortRanges;
   /// The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are `Inbound` and `Outbound`.
   final pulumi.Input<String> direction;
@@ -25,34 +25,34 @@ class NetworkSecurityGroupSecurityRule {
   final pulumi.Input<int> priority;
   /// Network protocol this rule applies to. Possible values include `Tcp`, `Udp`, `Icmp`, `Esp`, `Ah` or `*` (which matches all).
   final pulumi.Input<String> protocol;
-  /// CIDR or source IP range or * to match any IP. Tags such as `VirtualNetwork`, `AzureLoadBalancer` and `Internet` can also be used. This is required if `source_address_prefixes` is not specified.
+  /// CIDR or source IP range or * to match any IP. Tags such as `VirtualNetwork`, `AzureLoadBalancer` and `Internet` can also be used. This is required if `sourceAddressPrefixes` is not specified.
   final pulumi.Input<String>? sourceAddressPrefix;
-  /// List of source address prefixes. Tags may not be used. This is required if `source_address_prefix` is not specified.
+  /// List of source address prefixes. Tags may not be used. This is required if `sourceAddressPrefix` is not specified.
   final pulumi.Input<List<String>>? sourceAddressPrefixes;
   /// A List of source Application Security Group IDs
   final pulumi.Input<List<String>>? sourceApplicationSecurityGroupIds;
-  /// Source Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `source_port_ranges` is not specified.
+  /// Source Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `sourcePortRanges` is not specified.
   final pulumi.Input<String>? sourcePortRange;
-  /// List of source ports or port ranges. This is required if `source_port_range` is not specified.
+  /// List of source ports or port ranges. This is required if `sourcePortRange` is not specified.
   final pulumi.Input<List<String>>? sourcePortRanges;
 
   /// Creates a new [NetworkSecurityGroupSecurityRule].
   /// [access] Specifies whether network traffic is allowed or denied. Possible values are `Allow` and `Deny`.
   /// [description] A description for this rule. Restricted to 140 characters.
-  /// [destinationAddressPrefix] CIDR or destination IP range or * to match any IP. Tags such as `VirtualNetwork`, `AzureLoadBalancer` and `Internet` can also be used. This is required if `destination_address_prefixes` is not specified.
-  /// [destinationAddressPrefixes] List of destination address prefixes. Tags may not be used. This is required if `destination_address_prefix` is not specified.
+  /// [destinationAddressPrefix] CIDR or destination IP range or * to match any IP. Tags such as `VirtualNetwork`, `AzureLoadBalancer` and `Internet` can also be used. This is required if `destinationAddressPrefixes` is not specified.
+  /// [destinationAddressPrefixes] List of destination address prefixes. Tags may not be used. This is required if `destinationAddressPrefix` is not specified.
   /// [destinationApplicationSecurityGroupIds] A List of destination Application Security Group IDs
-  /// [destinationPortRange] Destination Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `destination_port_ranges` is not specified.
-  /// [destinationPortRanges] List of destination ports or port ranges. This is required if `destination_port_range` is not specified.
+  /// [destinationPortRange] Destination Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `destinationPortRanges` is not specified.
+  /// [destinationPortRanges] List of destination ports or port ranges. This is required if `destinationPortRange` is not specified.
   /// [direction] The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are `Inbound` and `Outbound`.
   /// [name] The name of the security rule.
   /// [priority] Specifies the priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
   /// [protocol] Network protocol this rule applies to. Possible values include `Tcp`, `Udp`, `Icmp`, `Esp`, `Ah` or `*` (which matches all).
-  /// [sourceAddressPrefix] CIDR or source IP range or * to match any IP. Tags such as `VirtualNetwork`, `AzureLoadBalancer` and `Internet` can also be used. This is required if `source_address_prefixes` is not specified.
-  /// [sourceAddressPrefixes] List of source address prefixes. Tags may not be used. This is required if `source_address_prefix` is not specified.
+  /// [sourceAddressPrefix] CIDR or source IP range or * to match any IP. Tags such as `VirtualNetwork`, `AzureLoadBalancer` and `Internet` can also be used. This is required if `sourceAddressPrefixes` is not specified.
+  /// [sourceAddressPrefixes] List of source address prefixes. Tags may not be used. This is required if `sourceAddressPrefix` is not specified.
   /// [sourceApplicationSecurityGroupIds] A List of source Application Security Group IDs
-  /// [sourcePortRange] Source Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `source_port_ranges` is not specified.
-  /// [sourcePortRanges] List of source ports or port ranges. This is required if `source_port_range` is not specified.
+  /// [sourcePortRange] Source Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `sourcePortRanges` is not specified.
+  /// [sourcePortRanges] List of source ports or port ranges. This is required if `sourcePortRange` is not specified.
   const NetworkSecurityGroupSecurityRule({
     required this.access,
     this.description,
@@ -114,4 +114,3 @@ class NetworkSecurityGroupSecurityRule {
     );
   }
 }
-

@@ -185,6 +185,46 @@ import 'standard_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageaccount"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   name                = "example-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   os_type             = "Windows"
+///   sku_name            = "WS1"
+/// }
+/// resource "azure_logicapps_standard" "example" {
+///   name                       = "example-logic-app"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   app_service_plan_id        = exampleAzurermAppServicePlan.id
+///   storage_account_name       = azure_storage_account.example.name
+///   storage_account_access_key = azure_storage_account.example.primary_access_key
+///   app_settings = {
+///     "FUNCTIONS_WORKER_RUNTIME"     = "node"
+///     "WEBSITE_NODE_DEFAULT_VERSION" = "~18"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -199,8 +239,8 @@ import 'standard_state.dart';
 /// import com.pulumi.azure.appservice.ServicePlanArgs;
 /// import com.pulumi.azure.logicapps.Standard;
 /// import com.pulumi.azure.logicapps.StandardArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,22 +349,18 @@ import 'standard_state.dart';
 ///     accountTier: "Standard",
 ///     accountReplicationType: "LRS",
 /// });
-/// const examplePlan = new azure.appservice.Plan("example", {
+/// const exampleServicePlan = new azure.appservice.ServicePlan("example", {
 ///     name: "example-service-plan",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
-///     kind: "Linux",
-///     reserved: true,
-///     sku: {
-///         tier: "WorkflowStandard",
-///         size: "WS1",
-///     },
+///     osType: "Linux",
+///     skuName: "WS1",
 /// });
 /// const exampleStandard = new azure.logicapps.Standard("example", {
 ///     name: "example-logic-app",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
-///     appServicePlanId: examplePlan.id,
+///     appServicePlanId: exampleServicePlan.id,
 ///     storageAccountName: exampleAccount.name,
 ///     storageAccountAccessKey: exampleAccount.primaryAccessKey,
 ///     siteConfig: {
@@ -350,21 +386,17 @@ import 'standard_state.dart';
 ///     location=example.location,
 ///     account_tier="Standard",
 ///     account_replication_type="LRS")
-/// example_plan = azure.appservice.Plan("example",
+/// example_service_plan = azure.appservice.ServicePlan("example",
 ///     name="example-service-plan",
 ///     location=example.location,
 ///     resource_group_name=example.name,
-///     kind="Linux",
-///     reserved=True,
-///     sku={
-///         "tier": "WorkflowStandard",
-///         "size": "WS1",
-///     })
+///     os_type="Linux",
+///     sku_name="WS1")
 /// example_standard = azure.logicapps.Standard("example",
 ///     name="example-logic-app",
 ///     location=example.location,
 ///     resource_group_name=example.name,
-///     app_service_plan_id=example_plan.id,
+///     app_service_plan_id=example_service_plan.id,
 ///     storage_account_name=example_account.name,
 ///     storage_account_access_key=example_account.primary_access_key,
 ///     site_config={
@@ -399,18 +431,13 @@ import 'standard_state.dart';
 ///         AccountReplicationType = "LRS",
 ///     });
 ///
-///     var examplePlan = new Azure.AppService.Plan("example", new()
+///     var exampleServicePlan = new Azure.AppService.ServicePlan("example", new()
 ///     {
 ///         Name = "example-service-plan",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
-///         Kind = "Linux",
-///         Reserved = true,
-///         Sku = new Azure.AppService.Inputs.PlanSkuArgs
-///         {
-///             Tier = "WorkflowStandard",
-///             Size = "WS1",
-///         },
+///         OsType = "Linux",
+///         SkuName = "WS1",
 ///     });
 ///
 ///     var exampleStandard = new Azure.LogicApps.Standard("example", new()
@@ -418,7 +445,7 @@ import 'standard_state.dart';
 ///         Name = "example-logic-app",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
-///         AppServicePlanId = examplePlan.Id,
+///         AppServicePlanId = exampleServicePlan.Id,
 ///         StorageAccountName = exampleAccount.Name,
 ///         StorageAccountAccessKey = exampleAccount.PrimaryAccessKey,
 ///         SiteConfig = new Azure.LogicApps.Inputs.StandardSiteConfigArgs
@@ -465,16 +492,12 @@ import 'standard_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		examplePlan, err := appservice.NewPlan(ctx, "example", &appservice.PlanArgs{
+/// 		exampleServicePlan, err := appservice.NewServicePlan(ctx, "example", &appservice.ServicePlanArgs{
 /// 			Name:              pulumi.String("example-service-plan"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			Kind:              pulumi.Any("Linux"),
-/// 			Reserved:          pulumi.Bool(true),
-/// 			Sku: &appservice.PlanSkuArgs{
-/// 				Tier: pulumi.String("WorkflowStandard"),
-/// 				Size: pulumi.String("WS1"),
-/// 			},
+/// 			OsType:            pulumi.String("Linux"),
+/// 			SkuName:           pulumi.String("WS1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -483,7 +506,7 @@ import 'standard_state.dart';
 /// 			Name:                    pulumi.String("example-logic-app"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			AppServicePlanId:        examplePlan.ID(),
+/// 			AppServicePlanId:        exampleServicePlan.ID(),
 /// 			StorageAccountName:      exampleAccount.Name,
 /// 			StorageAccountAccessKey: exampleAccount.PrimaryAccessKey,
 /// 			SiteConfig: &logicapps.StandardSiteConfigArgs{
@@ -502,6 +525,50 @@ import 'standard_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageaccount"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   name                = "example-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   os_type             = "Linux"
+///   sku_name            = "WS1"
+/// }
+/// resource "azure_logicapps_standard" "example" {
+///   name                       = "example-logic-app"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   app_service_plan_id        = azure_appservice_serviceplan.example.id
+///   storage_account_name       = azure_storage_account.example.name
+///   storage_account_access_key = azure_storage_account.example.primary_access_key
+///   site_config = {
+///     linux_fx_version = "DOCKER|mcr.microsoft.com/azure-functions/dotnet:3.0-appservice"
+///   }
+///   app_settings = {
+///     "DOCKER_REGISTRY_SERVER_URL"      = "https://<server-name>.azurecr.io"
+///     "DOCKER_REGISTRY_SERVER_USERNAME" = "username"
+///     "DOCKER_REGISTRY_SERVER_PASSWORD" = "password"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -512,14 +579,13 @@ import 'standard_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.storage.Account;
 /// import com.pulumi.azure.storage.AccountArgs;
-/// import com.pulumi.azure.appservice.Plan;
-/// import com.pulumi.azure.appservice.PlanArgs;
-/// import com.pulumi.azure.appservice.inputs.PlanSkuArgs;
+/// import com.pulumi.azure.appservice.ServicePlan;
+/// import com.pulumi.azure.appservice.ServicePlanArgs;
 /// import com.pulumi.azure.logicapps.Standard;
 /// import com.pulumi.azure.logicapps.StandardArgs;
 /// import com.pulumi.azure.logicapps.inputs.StandardSiteConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -544,23 +610,19 @@ import 'standard_state.dart';
 ///             .accountReplicationType("LRS")
 ///             .build());
 ///
-///         var examplePlan = new Plan("examplePlan", PlanArgs.builder()
+///         var exampleServicePlan = new ServicePlan("exampleServicePlan", ServicePlanArgs.builder()
 ///             .name("example-service-plan")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
-///             .kind("Linux")
-///             .reserved(true)
-///             .sku(PlanSkuArgs.builder()
-///                 .tier("WorkflowStandard")
-///                 .size("WS1")
-///                 .build())
+///             .osType("Linux")
+///             .skuName("WS1")
 ///             .build());
 ///
 ///         var exampleStandard = new Standard("exampleStandard", StandardArgs.builder()
 ///             .name("example-logic-app")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
-///             .appServicePlanId(examplePlan.id())
+///             .appServicePlanId(exampleServicePlan.id())
 ///             .storageAccountName(exampleAccount.name())
 ///             .storageAccountAccessKey(exampleAccount.primaryAccessKey())
 ///             .siteConfig(StandardSiteConfigArgs.builder()
@@ -592,18 +654,15 @@ import 'standard_state.dart';
 ///       location: ${example.location}
 ///       accountTier: Standard
 ///       accountReplicationType: LRS
-///   examplePlan:
-///     type: azure:appservice:Plan
+///   exampleServicePlan:
+///     type: azure:appservice:ServicePlan
 ///     name: example
 ///     properties:
 ///       name: example-service-plan
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
-///       kind: Linux
-///       reserved: true
-///       sku:
-///         tier: WorkflowStandard
-///         size: WS1
+///       osType: Linux
+///       skuName: WS1
 ///   exampleStandard:
 ///     type: azure:logicapps:Standard
 ///     name: example
@@ -611,7 +670,7 @@ import 'standard_state.dart';
 ///       name: example-logic-app
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
-///       appServicePlanId: ${examplePlan.id}
+///       appServicePlanId: ${exampleServicePlan.id}
 ///       storageAccountName: ${exampleAccount.name}
 ///       storageAccountAccessKey: ${exampleAccount.primaryAccessKey}
 ///       siteConfig:
@@ -642,15 +701,15 @@ class Standard extends pulumi.CustomResource {
   late final pulumi.Output<String> appServicePlanId;
   /// A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
   ///
-  /// &gt; **Note:** There are a number of application settings that will be managed for you by this resource type and *shouldn't* be configured separately as part of the app_settings you specify.  `AzureWebJobsStorage` is filled based on `storage_account_name` and `storage_account_access_key`. `WEBSITE_CONTENTSHARE` is detailed below. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`. `APP_KIND` is set to workflowApp and `AzureFunctionsJobHost__extensionBundle__id` and `AzureFunctionsJobHost__extensionBundle__version` are set as detailed below.
+  /// &gt; **Note:** There are a number of application settings that will be managed for you by this resource type and *shouldn't* be configured separately as part of the appSettings you specify.  `AzureWebJobsStorage` is filled based on `storageAccountName` and `storageAccountAccessKey`. `WEBSITE_CONTENTSHARE` is detailed below. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`. `APP_KIND` is set to workflowApp and `AzureFunctionsJobHost__extensionBundle__id` and `AzureFunctionsJobHost__extensionBundle__version` are set as detailed below.
   late final pulumi.Output<Map<String, String>> appSettings;
-  /// If `use_extension_bundle` is set to `true` this controls the allowed range for bundle versions. Defaults to `[1.*, 2.0.0)`.
+  /// If `useExtensionBundle` is set to `true` this controls the allowed range for bundle versions. Defaults to `[1.*, 2.0.0)`.
   late final pulumi.Output<String?> bundleVersion;
   /// Should the Logic App send session affinity cookies, which route client requests in the same session to the same instance?
   late final pulumi.Output<bool> clientAffinityEnabled;
   /// The mode of the Logic App's client certificates requirement for incoming requests. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`.
   late final pulumi.Output<String?> clientCertificateMode;
-  /// A `connection_string` block as defined below.
+  /// A `connectionString` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
   /// An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   late final pulumi.Output<String> customDomainVerificationId;
@@ -664,6 +723,10 @@ class Standard extends pulumi.CustomResource {
   late final pulumi.Output<bool?> httpsOnly;
   /// An `identity` block as defined below.
   late final pulumi.Output<StandardIdentity?> identity;
+  /// The User Assigned Identity ID used for accessing KeyVault secrets.
+  ///
+  /// &gt; **Note:** The identity must be assigned to the Logic App in the `identity` block. [For more information see - Access vaults with a user-assigned identity](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#access-vaults-with-a-user-assigned-identity)
+  late final pulumi.Output<String?> keyVaultReferenceIdentityId;
   /// The Logic App kind.
   late final pulumi.Output<String> kind;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
@@ -672,7 +735,7 @@ class Standard extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`.
   late final pulumi.Output<String> outboundIpAddresses;
-  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
+  /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   late final pulumi.Output<String> possibleOutboundIpAddresses;
   /// Whether Public Network Access should be enabled or not. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
   ///
@@ -682,9 +745,9 @@ class Standard extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// Whether the default SCM basic authentication publishing profile is enabled. Defaults to `true`.
   late final pulumi.Output<bool?> scmPublishBasicAuthenticationEnabled;
-  /// A `site_config` object as defined below.
+  /// A `siteConfig` object as defined below.
   late final pulumi.Output<StandardSiteConfig> siteConfig;
-  /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service.
+  /// A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service.
   late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
   /// The access key which will be used to access the backend storage account for the Logic App.
   late final pulumi.Output<String> storageAccountAccessKey;
@@ -694,7 +757,7 @@ class Standard extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** When integrating a `CI/CD pipeline` and expecting to run from a deployed package in `Azure` you must seed your `app settings` as part of terraform code for Logic App to be successfully deployed. `Important Default key pairs`: (`"WEBSITE_RUN_FROM_PACKAGE" = ""`, `"FUNCTIONS_WORKER_RUNTIME" = "node"` (or Python, etc.), `"WEBSITE_NODE_DEFAULT_VERSION" = "10.14.1"`, `"APPINSIGHTS_INSTRUMENTATIONKEY" = ""`).
   ///
-  /// &gt; **Note:** When using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
+  /// &gt; **Note:** When using an App Service Plan in the `Free` or `Shared` Tiers `use32BitWorkerProcess` must be set to `true`.
   late final pulumi.Output<String> storageAccountShareName;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -704,9 +767,9 @@ class Standard extends pulumi.CustomResource {
   late final pulumi.Output<String?> version;
   /// The subnet ID which will be used by this resource for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   ///
-  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource app_service_virtual_network_swift_connection and in-line within this resource using the `virtual_network_subnet_id` property. You cannot use both methods simultaneously.
+  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource appServiceVirtualNetworkSwiftConnection and in-line within this resource using the `virtualNetworkSubnetId` property. You cannot use both methods simultaneously.
   ///
-  /// &gt; **Note:** Assigning the `virtual_network_subnet_id` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
+  /// &gt; **Note:** Assigning the `virtualNetworkSubnetId` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
   late final pulumi.Output<String?> virtualNetworkSubnetId;
   /// Specifies whether allow routing traffic between the Logic App and Storage Account content share through a virtual network. Defaults to `false`.
   late final pulumi.Output<bool?> vnetContentShareEnabled;
@@ -737,6 +800,7 @@ class Standard extends pulumi.CustomResource {
     ftpPublishBasicAuthenticationEnabled = registerOutput<bool?>('ftpPublishBasicAuthenticationEnabled');
     httpsOnly = registerOutput<bool?>('httpsOnly');
     identity = registerOutput<StandardIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultReferenceIdentityId = registerOutput<String?>('keyVaultReferenceIdentityId');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -792,6 +856,7 @@ class Standard extends pulumi.CustomResource {
     ftpPublishBasicAuthenticationEnabled = registerOutput<bool?>('ftpPublishBasicAuthenticationEnabled');
     httpsOnly = registerOutput<bool?>('httpsOnly');
     identity = registerOutput<StandardIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultReferenceIdentityId = registerOutput<String?>('keyVaultReferenceIdentityId');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

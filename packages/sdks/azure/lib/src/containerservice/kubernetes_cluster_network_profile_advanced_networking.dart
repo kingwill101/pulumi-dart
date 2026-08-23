@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesClusterNetworkProfileAdvancedNetworking {
   /// Is observability enabled? Defaults to `false`.
   final pulumi.Input<bool>? observabilityEnabled;
-  /// Is security enabled? Defaults to `false`.
+  /// Is security enabled? Defaults to `false`. This can only be enabled (set to `true`) when `networkPlugin` is set to `azure` and `networkDataPlane` is set to `cilium`.
   final pulumi.Input<bool>? securityEnabled;
 
   /// Creates a new [KubernetesClusterNetworkProfileAdvancedNetworking].
   /// [observabilityEnabled] Is observability enabled? Defaults to `false`.
-  /// [securityEnabled] Is security enabled? Defaults to `false`.
+  /// [securityEnabled] Is security enabled? Defaults to `false`. This can only be enabled (set to `true`) when `networkPlugin` is set to `azure` and `networkDataPlane` is set to `cilium`.
   const KubernetesClusterNetworkProfileAdvancedNetworking({
     this.observabilityEnabled,
     this.securityEnabled,
@@ -30,4 +30,3 @@ class KubernetesClusterNetworkProfileAdvancedNetworking {
     );
   }
 }
-

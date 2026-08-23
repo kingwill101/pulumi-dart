@@ -65,6 +65,20 @@ import 'resource_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'resource_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.core.ResourceGroup;
 /// import com.pulumi.azure.core.ResourceGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

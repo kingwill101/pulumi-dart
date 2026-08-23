@@ -35,7 +35,7 @@ class TriggerTumblingWindowState {
   final pulumi.Input<TriggerTumblingWindowRetry>? retry;
   /// Specifies the start time of Tumbling Window, formatted as an RFC3339 string. Changing this forces a new resource.
   final pulumi.Input<String>? startTime;
-  /// One or more `trigger_dependency` block as defined below.
+  /// One or more `triggerDependency` block as defined below.
   final pulumi.Input<List<TriggerTumblingWindowTriggerDependency>>? triggerDependencies;
 
   /// Creates a new [TriggerTumblingWindowState].
@@ -53,7 +53,7 @@ class TriggerTumblingWindowState {
   /// [pipeline] A `pipeline` block as defined below.
   /// [retry] A `retry` block as defined below.
   /// [startTime] Specifies the start time of Tumbling Window, formatted as an RFC3339 string. Changing this forces a new resource.
-  /// [triggerDependencies] One or more `trigger_dependency` block as defined below.
+  /// [triggerDependencies] One or more `triggerDependency` block as defined below.
   const TriggerTumblingWindowState({
     this.activated,
     this.additionalProperties,
@@ -112,4 +112,3 @@ class TriggerTumblingWindowState {
     );
   }
 }
-

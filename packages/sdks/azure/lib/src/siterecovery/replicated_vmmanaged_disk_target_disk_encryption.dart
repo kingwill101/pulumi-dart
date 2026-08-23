@@ -5,14 +5,14 @@ import 'replicated_vmmanaged_disk_target_disk_encryption_disk_encryption_key.dar
 import 'replicated_vmmanaged_disk_target_disk_encryption_key_encryption_key.dart';
 
 class ReplicatedVMManagedDiskTargetDiskEncryption {
-  /// A `disk_encryption_key` block as defined below.
+  /// A `diskEncryptionKey` block as defined below.
   final pulumi.Input<ReplicatedVMManagedDiskTargetDiskEncryptionDiskEncryptionKey> diskEncryptionKey;
-  /// A `key_encryption_key` block as defined below.
+  /// A `keyEncryptionKey` block as defined below.
   final pulumi.Input<ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey>? keyEncryptionKey;
 
   /// Creates a new [ReplicatedVMManagedDiskTargetDiskEncryption].
-  /// [diskEncryptionKey] A `disk_encryption_key` block as defined below.
-  /// [keyEncryptionKey] A `key_encryption_key` block as defined below.
+  /// [diskEncryptionKey] A `diskEncryptionKey` block as defined below.
+  /// [keyEncryptionKey] A `keyEncryptionKey` block as defined below.
   const ReplicatedVMManagedDiskTargetDiskEncryption({
     required this.diskEncryptionKey,
     this.keyEncryptionKey,
@@ -32,4 +32,3 @@ class ReplicatedVMManagedDiskTargetDiskEncryption {
     );
   }
 }
-

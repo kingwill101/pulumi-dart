@@ -30,4 +30,3 @@ class ApiOauth2Authorization {
     );
   }
 }
-

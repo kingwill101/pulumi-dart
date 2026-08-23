@@ -7,22 +7,22 @@ import 'kafka_cluster_roles_worker_node.dart';
 import 'kafka_cluster_roles_zookeeper_node.dart';
 
 class KafkaClusterRoles {
-  /// A `head_node` block as defined above.
+  /// A `headNode` block as defined above.
   final pulumi.Input<KafkaClusterRolesHeadNode> headNode;
-  /// A `kafka_management_node` block as defined below.
+  /// A `kafkaManagementNode` block as defined below.
   ///
   /// &gt; **Note:** This property has been deprecated and will be removed in version 4.0.
   final pulumi.Input<KafkaClusterRolesKafkaManagementNode>? kafkaManagementNode;
-  /// A `worker_node` block as defined below.
+  /// A `workerNode` block as defined below.
   final pulumi.Input<KafkaClusterRolesWorkerNode> workerNode;
-  /// A `zookeeper_node` block as defined below.
+  /// A `zookeeperNode` block as defined below.
   final pulumi.Input<KafkaClusterRolesZookeeperNode> zookeeperNode;
 
   /// Creates a new [KafkaClusterRoles].
-  /// [headNode] A `head_node` block as defined above.
-  /// [kafkaManagementNode] A `kafka_management_node` block as defined below.
-  /// [workerNode] A `worker_node` block as defined below.
-  /// [zookeeperNode] A `zookeeper_node` block as defined below.
+  /// [headNode] A `headNode` block as defined above.
+  /// [kafkaManagementNode] A `kafkaManagementNode` block as defined below.
+  /// [workerNode] A `workerNode` block as defined below.
+  /// [zookeeperNode] A `zookeeperNode` block as defined below.
   const KafkaClusterRoles({
     required this.headNode,
     this.kafkaManagementNode,
@@ -48,4 +48,3 @@ class KafkaClusterRoles {
     );
   }
 }
-

@@ -80,9 +80,30 @@ import 'get_role_management_policy_result.dart';
 /// 		}, nil)
 /// 		ctx.Export("id", example.ApplyT(func(example pim.GetRoleAssignmentsResult) ([]pim.GetRoleAssignmentsRoleAssignment, error) {
 /// 			return []pim.GetRoleAssignmentsRoleAssignment(example.RoleAssignments), nil
-/// 		}).([]pim.GetRoleAssignmentsRoleAssignmentOutput))
+/// 		}).(pulumi.ArrayOutput))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_pim_getroleassignments" "example" {
+///   scope = azure_core_resourcegroup.example.id
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// output "id" {
+///   value = data.azure_pim_getroleassignments.example.role_assignments
 /// }
 /// ```
 /// ```java
@@ -95,8 +116,8 @@ import 'get_role_management_policy_result.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.pim.PimFunctions;
 /// import com.pulumi.azure.pim.inputs.GetRoleAssignmentsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -257,6 +278,27 @@ Future<GetRoleAssignmentsResult> getRoleAssignments(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getresourcegroup" "example" {
+///   name = "example-rg"
+/// }
+/// data "azure_authorization_getroledefinition" "rgContributor" {
+///   name  = "Contributor"
+///   scope = data.azure_core_getresourcegroup.example.id
+/// }
+/// data "azure_pim_getrolemanagementpolicy" "exampleGetRoleManagementPolicy" {
+///   scope              = test.id
+///   role_definition_id = contributor.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -269,8 +311,8 @@ Future<GetRoleAssignmentsResult> getRoleAssignments(
 /// import com.pulumi.azure.authorization.inputs.GetRoleDefinitionArgs;
 /// import com.pulumi.azure.pim.PimFunctions;
 /// import com.pulumi.azure.pim.inputs.GetRoleManagementPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -413,6 +455,27 @@ Future<GetRoleAssignmentsResult> getRoleAssignments(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_management_getgroup" "example" {
+///   name = "example-group"
+/// }
+/// data "azure_authorization_getroledefinition" "mgContributor" {
+///   name  = "Contributor"
+///   scope = exampleAzurermManagementGroup.id
+/// }
+/// data "azure_pim_getrolemanagementpolicy" "exampleGetRoleManagementPolicy" {
+///   scope              = data.azure_management_getgroup.example.id
+///   role_definition_id = data.azure_authorization_getroledefinition.mgContributor.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -425,8 +488,8 @@ Future<GetRoleAssignmentsResult> getRoleAssignments(
 /// import com.pulumi.azure.authorization.inputs.GetRoleDefinitionArgs;
 /// import com.pulumi.azure.pim.PimFunctions;
 /// import com.pulumi.azure.pim.inputs.GetRoleManagementPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

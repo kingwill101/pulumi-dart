@@ -9,9 +9,9 @@ import 'collector_policy_ipfx_ingestion.dart';
 /// {@endtemplate}
 /// {@macro pulumi_networkfunction_collector_policy_collector_policy_args_doc}
 class CollectorPolicyArgs {
-  /// An `ipfx_emission` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
+  /// An `ipfxEmission` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
   final pulumi.Input<CollectorPolicyIpfxEmission> ipfxEmission;
-  /// An `ipfx_ingestion` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
+  /// An `ipfxIngestion` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
   final pulumi.Input<CollectorPolicyIpfxIngestion> ipfxIngestion;
   /// Specifies the Azure Region where the Network Function Collector Policy should exist. Changing this forces a new Network Function Collector Policy to be created.
   final pulumi.Input<String>? location;
@@ -23,8 +23,8 @@ class CollectorPolicyArgs {
   final pulumi.Input<String> trafficCollectorId;
 
   /// Creates a new [CollectorPolicyArgs].
-  /// [ipfxEmission] An `ipfx_emission` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
-  /// [ipfxIngestion] An `ipfx_ingestion` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
+  /// [ipfxEmission] An `ipfxEmission` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
+  /// [ipfxIngestion] An `ipfxIngestion` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
   /// [location] Specifies the Azure Region where the Network Function Collector Policy should exist. Changing this forces a new Network Function Collector Policy to be created.
   /// [name] Specifies the name which should be used for this Network Function Collector Policy. Changing this forces a new Network Function Collector Policy to be created.
   /// [tags] A mapping of tags which should be assigned to the Network Function Collector Policy.
@@ -60,4 +60,3 @@ class CollectorPolicyArgs {
     );
   }
 }
-

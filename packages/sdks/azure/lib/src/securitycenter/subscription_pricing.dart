@@ -65,6 +65,20 @@ import 'subscription_pricing_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_securitycenter_subscriptionpricing" "example" {
+///   tier          = "Standard"
+///   resource_type = "VirtualMachines"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'subscription_pricing_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.securitycenter.SubscriptionPricing;
 /// import com.pulumi.azure.securitycenter.SubscriptionPricingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,6 +249,35 @@ import 'subscription_pricing_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_securitycenter_subscriptionpricing" "example1" {
+///   tier          = "Standard"
+///   resource_type = "CloudPosture"
+///   extensions {
+///     name = "ContainerRegistriesVulnerabilityAssessments"
+///   }
+///   extensions {
+///     name = "AgentlessVmScanning"
+///     additional_extension_properties = {
+///       "ExclusionTags" = "[]"
+///     }
+///   }
+///   extensions {
+///     name = "AgentlessDiscoveryForKubernetes"
+///   }
+///   extensions {
+///     name = "SensitiveDataDiscovery"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -244,8 +287,8 @@ import 'subscription_pricing_state.dart';
 /// import com.pulumi.azure.securitycenter.SubscriptionPricing;
 /// import com.pulumi.azure.securitycenter.SubscriptionPricingArgs;
 /// import com.pulumi.azure.securitycenter.inputs.SubscriptionPricingExtensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

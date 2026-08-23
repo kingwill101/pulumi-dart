@@ -4,7 +4,7 @@ import 'group_state.dart';
 
 /// Manages a Management Group.
 ///
-/// !&gt; **Note:** Configuring `subscription_ids` is not supported when using the `azure.management.GroupSubscriptionAssociation` resource, results will be unpredictable.
+/// &gt; **Note:** Configuring `subscriptionIds` is not supported when using the `azure.management.GroupSubscriptionAssociation` resource, results will be unpredictable.
 ///
 /// ## Example Usage
 ///
@@ -106,6 +106,28 @@ import 'group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_management_group" "example_parent" {
+///   display_name     = "ParentGroup"
+///   subscription_ids = [data.azure_core_getsubscription.current.subscription_id]
+/// }
+/// resource "azure_management_group" "example_child" {
+///   display_name               = "ChildGroup"
+///   parent_management_group_id = azure_management_group.example_parent.id
+///   subscription_ids           = [data.azure_core_getsubscription.current.subscription_id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +138,8 @@ import 'group_state.dart';
 /// import com.pulumi.azure.core.inputs.GetSubscriptionArgs;
 /// import com.pulumi.azure.management.Group;
 /// import com.pulumi.azure.management.GroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -194,7 +216,7 @@ class Group extends pulumi.CustomResource {
   late final pulumi.Output<String> parentManagementGroupId;
   /// A list of Subscription GUIDs which should be assigned to the Management Group.
   ///
-  /// &gt; **Note:** To clear all Subscriptions from the Management Group set `subscription_ids` to an empty list
+  /// &gt; **Note:** To clear all Subscriptions from the Management Group set `subscriptionIds` to an empty list
   late final pulumi.Output<List<String>> subscriptionIds;
   /// The Management Group ID with the Tenant ID prefix.
   late final pulumi.Output<String> tenantScopedId;

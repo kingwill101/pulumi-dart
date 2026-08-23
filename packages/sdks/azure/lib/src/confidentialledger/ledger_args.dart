@@ -9,9 +9,9 @@ import 'ledger_certificate_based_security_principal.dart';
 /// {@endtemplate}
 /// {@macro pulumi_confidentialledger_ledger_ledger_args_doc}
 class LedgerArgs {
-  /// A list of `azuread_based_service_principal` blocks as defined below.
+  /// A list of `azureadBasedServicePrincipal` blocks as defined below.
   final pulumi.Input<List<LedgerAzureadBasedServicePrincipal>> azureadBasedServicePrincipals;
-  /// A list of `certificate_based_security_principal` blocks as defined below.
+  /// A list of `certificateBasedSecurityPrincipal` blocks as defined below.
   final pulumi.Input<List<LedgerCertificateBasedSecurityPrincipal>>? certificateBasedSecurityPrincipals;
   /// Specifies the type of Confidential Ledger. Possible values are `Private` and `Public`. Changing this forces a new resource to be created.
   final pulumi.Input<String> ledgerType;
@@ -25,8 +25,8 @@ class LedgerArgs {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [LedgerArgs].
-  /// [azureadBasedServicePrincipals] A list of `azuread_based_service_principal` blocks as defined below.
-  /// [certificateBasedSecurityPrincipals] A list of `certificate_based_security_principal` blocks as defined below.
+  /// [azureadBasedServicePrincipals] A list of `azureadBasedServicePrincipal` blocks as defined below.
+  /// [certificateBasedSecurityPrincipals] A list of `certificateBasedSecurityPrincipal` blocks as defined below.
   /// [ledgerType] Specifies the type of Confidential Ledger. Possible values are `Private` and `Public`. Changing this forces a new resource to be created.
   /// [location] Specifies the supported Azure location where the Confidential Ledger exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Confidential Ledger. Changing this forces a new resource to be created.
@@ -66,4 +66,3 @@ class LedgerArgs {
     );
   }
 }
-

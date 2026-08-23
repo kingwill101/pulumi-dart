@@ -13,9 +13,9 @@ class LocalUserArgs {
   final pulumi.Input<String>? homeDirectory;
   /// The name which should be used for this Storage Account Local User. Changing this forces a new Storage Account Local User to be created.
   final pulumi.Input<String>? name;
-  /// One or more `permission_scope` blocks as defined below.
+  /// One or more `permissionScope` blocks as defined below.
   final pulumi.Input<List<LocalUserPermissionScope>>? permissionScopes;
-  /// One or more `ssh_authorized_key` blocks as defined below.
+  /// One or more `sshAuthorizedKey` blocks as defined below.
   final pulumi.Input<List<LocalUserSshAuthorizedKey>>? sshAuthorizedKeys;
   /// Specifies whether SSH Key Authentication is enabled. Defaults to `false`.
   final pulumi.Input<bool>? sshKeyEnabled;
@@ -27,8 +27,8 @@ class LocalUserArgs {
   /// Creates a new [LocalUserArgs].
   /// [homeDirectory] The home directory of the Storage Account Local User.
   /// [name] The name which should be used for this Storage Account Local User. Changing this forces a new Storage Account Local User to be created.
-  /// [permissionScopes] One or more `permission_scope` blocks as defined below.
-  /// [sshAuthorizedKeys] One or more `ssh_authorized_key` blocks as defined below.
+  /// [permissionScopes] One or more `permissionScope` blocks as defined below.
+  /// [sshAuthorizedKeys] One or more `sshAuthorizedKey` blocks as defined below.
   /// [sshKeyEnabled] Specifies whether SSH Key Authentication is enabled. Defaults to `false`.
   /// [sshPasswordEnabled] Specifies whether SSH Password Authentication is enabled. Defaults to `false`.
   /// [storageAccountId] The ID of the Storage Account that this Storage Account Local User resides in. Changing this forces a new Storage Account Local User to be created.
@@ -66,4 +66,3 @@ class LocalUserArgs {
     );
   }
 }
-

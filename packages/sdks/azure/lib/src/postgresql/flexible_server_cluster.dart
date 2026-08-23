@@ -9,7 +9,7 @@ class FlexibleServerCluster {
   ///
   /// &gt; **Note:** The maximum supported cluster size is currently 20 nodes. Support for up to 32 nodes will be available in the near future.
   ///
-  /// &gt; **Note:** Cluster support is only available for PostgreSQL version 17 and above, and is not supported when `create_mode` is set to anything other than `Default`.
+  /// &gt; **Note:** Cluster support is only available for PostgreSQL version 17 and above, and is not supported when `createMode` is set to anything other than `Default`.
   ///
   /// &gt; **Note:** The cluster `size` can only be increased, not decreased. Attempting to reduce the cluster size will result in an error.
   final pulumi.Input<int> size;
@@ -36,4 +36,3 @@ class FlexibleServerCluster {
     );
   }
 }
-

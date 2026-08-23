@@ -6,12 +6,12 @@ import 'three_tier_virtual_instance_three_tier_configuration_resource_names_appl
 class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServer {
   /// The full name for the availability set. Changing this forces a new resource to be created.
   final pulumi.Input<String>? availabilitySetName;
-  /// One or more `virtual_machine` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `virtualMachine` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachine>>? virtualMachines;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServer].
   /// [availabilitySetName] The full name for the availability set. Changing this forces a new resource to be created.
-  /// [virtualMachines] One or more `virtual_machine` blocks as defined below. Changing this forces a new resource to be created.
+  /// [virtualMachines] One or more `virtualMachine` blocks as defined below. Changing this forces a new resource to be created.
   const ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServer({
     this.availabilitySetName,
     this.virtualMachines,
@@ -31,4 +31,3 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServ
     );
   }
 }
-

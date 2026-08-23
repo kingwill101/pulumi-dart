@@ -139,6 +139,37 @@ import 'linked_service_cosmos_db_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cosmosdb_getaccount" "example" {
+///   name                = "tfex-cosmosdb-account"
+///   resource_group_name = "tfex-cosmosdb-account-rg"
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedservicecosmosdb" "example" {
+///   name             = "example"
+///   data_factory_id  = azure_datafactory_factory.example.id
+///   account_endpoint = data.azure_cosmosdb_getaccount.example.endpoint
+///   account_key      = data.azure_cosmosdb_getaccount.example.primary_key
+///   database         = "foo"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -153,8 +184,8 @@ import 'linked_service_cosmos_db_state.dart';
 /// import com.pulumi.azure.datafactory.FactoryArgs;
 /// import com.pulumi.azure.datafactory.LinkedServiceCosmosDb;
 /// import com.pulumi.azure.datafactory.LinkedServiceCosmosDbArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,9 +266,9 @@ import 'linked_service_cosmos_db_state.dart';
 /// $ pulumi import azure:datafactory/linkedServiceCosmosDb:LinkedServiceCosmosDb example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.DataFactory/factories/example/linkedservices/example
 /// ```
 class LinkedServiceCosmosDb extends pulumi.CustomResource {
-  /// The endpoint of the Azure CosmosDB account. Required if `connection_string` is unspecified.
+  /// The endpoint of the Azure CosmosDB account. Required if `connectionString` is unspecified.
   late final pulumi.Output<String?> accountEndpoint;
-  /// The account key of the Azure Cosmos DB account. Required if `connection_string` is unspecified.
+  /// The account key of the Azure Cosmos DB account. Required if `connectionString` is unspecified.
   late final pulumi.Output<String?> accountKey;
   /// A map of additional properties to associate with the Data Factory Linked Service.
   ///
@@ -245,11 +276,11 @@ class LinkedServiceCosmosDb extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service.
   late final pulumi.Output<List<String>?> annotations;
-  /// The connection string. Required if `account_endpoint`, `account_key`, and `database` are unspecified.
+  /// The connection string. Required if `accountEndpoint`, `accountKey`, and `database` are unspecified.
   late final pulumi.Output<String?> connectionString;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
-  /// The name of the database. Required if `connection_string` is unspecified.
+  /// The name of the database. Required if `connectionString` is unspecified.
   late final pulumi.Output<String?> database;
   /// The description for the Data Factory Linked Service.
   late final pulumi.Output<String?> description;

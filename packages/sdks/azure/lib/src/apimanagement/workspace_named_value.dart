@@ -172,6 +172,40 @@ import 'workspace_named_value_value_from_key_vault.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "My Company"
+///   publisher_email     = "company@terraform.io"
+///   sku_name            = "Premium_1"
+/// }
+/// resource "azure_apimanagement_workspace" "example" {
+///   name              = "example-workspace"
+///   api_management_id = azure_apimanagement_service.example.id
+///   display_name      = "ExampleWorkspace"
+/// }
+/// resource "azure_apimanagement_workspacenamedvalue" "example" {
+///   name                        = "example-named-value"
+///   api_management_workspace_id = azure_apimanagement_workspace.example.id
+///   display_name                = "ExampleProperty"
+///   value                       = "Example Value"
+///   tags                        = ["tag1", "tag2", "tag3"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -186,8 +220,8 @@ import 'workspace_named_value_value_from_key_vault.dart';
 /// import com.pulumi.azure.apimanagement.WorkspaceArgs;
 /// import com.pulumi.azure.apimanagement.WorkspaceNamedValue;
 /// import com.pulumi.azure.apimanagement.WorkspaceNamedValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -301,11 +335,11 @@ class WorkspaceNamedValue extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> tags;
   /// The value of this API Management Workspace Named Value.
   ///
-  /// &gt; **Note:** Exactly one of `value` or `value_from_key_vault` must be specified.
+  /// &gt; **Note:** Exactly one of `value` or `valueFromKeyVault` must be specified.
   late final pulumi.Output<String?> value;
-  /// A `value_from_key_vault` block as defined below.
+  /// A `valueFromKeyVault` block as defined below.
   ///
-  /// &gt; **Note:** Exactly one of `value` or `value_from_key_vault` must be specified. If `value_from_key_vault` is specified, `secret` must also be set to `true`.
+  /// &gt; **Note:** Exactly one of `value` or `valueFromKeyVault` must be specified. If `valueFromKeyVault` is specified, `secret` must also be set to `true`.
   late final pulumi.Output<WorkspaceNamedValueValueFromKeyVault?> valueFromKeyVault;
 
   /// Creates a new [WorkspaceNamedValue].

@@ -18,7 +18,7 @@ class GetStandardResult {
   final bool clientAffinityEnabled;
   /// The mode of the Logic App's client certificates requirement for incoming requests.
   final String clientCertificateMode;
-  /// A `connection_string` block as defined below.
+  /// A `connectionString` block as defined below.
   final List<GetStandardConnectionString> connectionStrings;
   /// The custom domain verification of the Logic App.
   final String customDomainVerificationId;
@@ -49,9 +49,9 @@ class GetStandardResult {
   final String resourceGroupName;
   /// Whether the default SCM basic authentication publishing profile is enabled.
   final bool scmPublishBasicAuthenticationEnabled;
-  /// A `site_config` object as defined below.
+  /// A `siteConfig` object as defined below.
   final GetStandardSiteConfig siteConfig;
-  /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this Logic App.
+  /// A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this Logic App.
   final List<GetStandardSiteCredential> siteCredentials;
   /// The access key which will be used to access the backend storage account for the Logic App.
   final String storageAccountAccessKey;
@@ -74,7 +74,7 @@ class GetStandardResult {
   /// [bundleVersion] Controls the allowed range for bundle versions.
   /// [clientAffinityEnabled] Should the Logic App send session affinity cookies, which route client requests in the same session to the same instance.
   /// [clientCertificateMode] The mode of the Logic App's client certificates requirement for incoming requests.
-  /// [connectionStrings] A `connection_string` block as defined below.
+  /// [connectionStrings] A `connectionString` block as defined below.
   /// [customDomainVerificationId] The custom domain verification of the Logic App.
   /// [defaultHostname] The default hostname of the Logic App.
   /// [enabled] Whether the Logic App is enabled.
@@ -90,8 +90,8 @@ class GetStandardResult {
   /// [publicNetworkAccess] Whether Public Network Access should be enabled or not.
   /// [resourceGroupName] Required.
   /// [scmPublishBasicAuthenticationEnabled] Whether the default SCM basic authentication publishing profile is enabled.
-  /// [siteConfig] A `site_config` object as defined below.
-  /// [siteCredentials] A `site_credential` block as defined below, which contains the site-level credentials used to publish to this Logic App.
+  /// [siteConfig] A `siteConfig` object as defined below.
+  /// [siteCredentials] A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this Logic App.
   /// [storageAccountAccessKey] The access key which will be used to access the backend storage account for the Logic App.
   /// [storageAccountName] The backend storage account name which will be used by this Logic App (e.g. for Stateful workflows data).
   /// [storageAccountShareName] The name of the share used by the logic app.
@@ -202,4 +202,3 @@ class GetStandardResult {
     );
   }
 }
-

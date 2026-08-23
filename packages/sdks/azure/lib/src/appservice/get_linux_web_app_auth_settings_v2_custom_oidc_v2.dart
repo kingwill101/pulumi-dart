@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLinuxWebAppAuthSettingsV2CustomOidcV2 {
-  /// The endpoint to make the Authorisation Request as supplied by `openid_configuration_endpoint` response.
+  /// The endpoint to make the Authorisation Request as supplied by `openidConfigurationEndpoint` response.
   final pulumi.Input<String> authorisationEndpoint;
-  /// The endpoint that provides the keys necessary to validate the token as supplied by `openid_configuration_endpoint` response.
+  /// The endpoint that provides the keys necessary to validate the token as supplied by `openidConfigurationEndpoint` response.
   final pulumi.Input<String> certificationUri;
   /// The Client Credential Method used.
   final pulumi.Input<String> clientCredentialMethod;
@@ -13,7 +13,7 @@ class GetLinuxWebAppAuthSettingsV2CustomOidcV2 {
   final pulumi.Input<String> clientId;
   /// The app setting name containing the OAuth 2.0 client secret used by the app for authentication.
   final pulumi.Input<String> clientSecretSettingName;
-  /// The endpoint that issued the Token as supplied by `openid_configuration_endpoint` response.
+  /// The endpoint that issued the Token as supplied by `openidConfigurationEndpoint` response.
   final pulumi.Input<String> issuerEndpoint;
   /// The name of this Linux Web App.
   final pulumi.Input<String> name;
@@ -23,21 +23,21 @@ class GetLinuxWebAppAuthSettingsV2CustomOidcV2 {
   final pulumi.Input<String> openidConfigurationEndpoint;
   /// The list of the scopes that are requested while authenticating.
   final pulumi.Input<List<String>> scopes;
-  /// The endpoint used to request a Token as supplied by `openid_configuration_endpoint` response.
+  /// The endpoint used to request a Token as supplied by `openidConfigurationEndpoint` response.
   final pulumi.Input<String> tokenEndpoint;
 
   /// Creates a new [GetLinuxWebAppAuthSettingsV2CustomOidcV2].
-  /// [authorisationEndpoint] The endpoint to make the Authorisation Request as supplied by `openid_configuration_endpoint` response.
-  /// [certificationUri] The endpoint that provides the keys necessary to validate the token as supplied by `openid_configuration_endpoint` response.
+  /// [authorisationEndpoint] The endpoint to make the Authorisation Request as supplied by `openidConfigurationEndpoint` response.
+  /// [certificationUri] The endpoint that provides the keys necessary to validate the token as supplied by `openidConfigurationEndpoint` response.
   /// [clientCredentialMethod] The Client Credential Method used.
   /// [clientId] The OAuth 2.0 client ID used by the app for authentication.
   /// [clientSecretSettingName] The app setting name containing the OAuth 2.0 client secret used by the app for authentication.
-  /// [issuerEndpoint] The endpoint that issued the Token as supplied by `openid_configuration_endpoint` response.
+  /// [issuerEndpoint] The endpoint that issued the Token as supplied by `openidConfigurationEndpoint` response.
   /// [name] The name of this Linux Web App.
   /// [nameClaimType] The name of the claim that contains the users name.
   /// [openidConfigurationEndpoint] The endpoint used for OpenID Connect Discovery. For example `https://example.com/.well-known/openid-configuration`.
   /// [scopes] The list of the scopes that are requested while authenticating.
-  /// [tokenEndpoint] The endpoint used to request a Token as supplied by `openid_configuration_endpoint` response.
+  /// [tokenEndpoint] The endpoint used to request a Token as supplied by `openidConfigurationEndpoint` response.
   const GetLinuxWebAppAuthSettingsV2CustomOidcV2({
     required this.authorisationEndpoint,
     required this.certificationUri,
@@ -84,4 +84,3 @@ class GetLinuxWebAppAuthSettingsV2CustomOidcV2 {
     );
   }
 }
-

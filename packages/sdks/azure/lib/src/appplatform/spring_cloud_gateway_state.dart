@@ -11,13 +11,13 @@ import 'spring_cloud_gateway_sso.dart';
 
 /// Input properties used for looking up and filtering SpringCloudGateway resources.
 class SpringCloudGatewayState {
-  /// A `api_metadata` block as defined below.
+  /// A `apiMetadata` block as defined below.
   final pulumi.Input<SpringCloudGatewayApiMetadata>? apiMetadata;
   /// Specifies a list of Spring Cloud Application Performance Monitoring IDs.
   final pulumi.Input<List<String>>? applicationPerformanceMonitoringIds;
   /// Specifies a list of application performance monitoring types used in the Spring Cloud Gateway. The allowed values are `AppDynamics`, `ApplicationInsights`, `Dynatrace`, `ElasticAPM` and `NewRelic`.
   final pulumi.Input<List<String>>? applicationPerformanceMonitoringTypes;
-  /// A `client_authorization` block as defined below.
+  /// A `clientAuthorization` block as defined below.
   final pulumi.Input<SpringCloudGatewayClientAuthorization>? clientAuthorization;
   /// A `cors` block as defined below.
   final pulumi.Input<SpringCloudGatewayCors>? cors;
@@ -27,9 +27,9 @@ class SpringCloudGatewayState {
   final pulumi.Input<bool>? httpsOnly;
   /// Specifies the required instance count of the Spring Cloud Gateway. Possible Values are between `1` and `500`. Defaults to `1` if not specified.
   final pulumi.Input<int>? instanceCount;
-  /// A `local_response_cache_per_instance` block as defined below. Only one of `local_response_cache_per_instance` or `local_response_cache_per_route` can be specified.
+  /// A `localResponseCachePerInstance` block as defined below. Only one of `localResponseCachePerInstance` or `localResponseCachePerRoute` can be specified.
   final pulumi.Input<SpringCloudGatewayLocalResponseCachePerInstance>? localResponseCachePerInstance;
-  /// A `local_response_cache_per_route` block as defined below. Only one of `local_response_cache_per_instance` or `local_response_cache_per_route` can be specified.
+  /// A `localResponseCachePerRoute` block as defined below. Only one of `localResponseCachePerInstance` or `localResponseCachePerRoute` can be specified.
   final pulumi.Input<SpringCloudGatewayLocalResponseCachePerRoute>? localResponseCachePerRoute;
   /// The name which should be used for this Spring Cloud Gateway. Changing this forces a new Spring Cloud Gateway to be created. The only possible value is `default`.
   final pulumi.Input<String>? name;
@@ -47,16 +47,16 @@ class SpringCloudGatewayState {
   final pulumi.Input<String>? url;
 
   /// Creates a new [SpringCloudGatewayState].
-  /// [apiMetadata] A `api_metadata` block as defined below.
+  /// [apiMetadata] A `apiMetadata` block as defined below.
   /// [applicationPerformanceMonitoringIds] Specifies a list of Spring Cloud Application Performance Monitoring IDs.
   /// [applicationPerformanceMonitoringTypes] Specifies a list of application performance monitoring types used in the Spring Cloud Gateway. The allowed values are `AppDynamics`, `ApplicationInsights`, `Dynatrace`, `ElasticAPM` and `NewRelic`.
-  /// [clientAuthorization] A `client_authorization` block as defined below.
+  /// [clientAuthorization] A `clientAuthorization` block as defined below.
   /// [cors] A `cors` block as defined below.
   /// [environmentVariables] Specifies the environment variables of the Spring Cloud Gateway as a map of key-value pairs.
   /// [httpsOnly] is only https is allowed?
   /// [instanceCount] Specifies the required instance count of the Spring Cloud Gateway. Possible Values are between `1` and `500`. Defaults to `1` if not specified.
-  /// [localResponseCachePerInstance] A `local_response_cache_per_instance` block as defined below. Only one of `local_response_cache_per_instance` or `local_response_cache_per_route` can be specified.
-  /// [localResponseCachePerRoute] A `local_response_cache_per_route` block as defined below. Only one of `local_response_cache_per_instance` or `local_response_cache_per_route` can be specified.
+  /// [localResponseCachePerInstance] A `localResponseCachePerInstance` block as defined below. Only one of `localResponseCachePerInstance` or `localResponseCachePerRoute` can be specified.
+  /// [localResponseCachePerRoute] A `localResponseCachePerRoute` block as defined below. Only one of `localResponseCachePerInstance` or `localResponseCachePerRoute` can be specified.
   /// [name] The name which should be used for this Spring Cloud Gateway. Changing this forces a new Spring Cloud Gateway to be created. The only possible value is `default`.
   /// [publicNetworkAccessEnabled] Indicates whether the Spring Cloud Gateway exposes endpoint.
   /// [quota] A `quota` block as defined below.
@@ -128,4 +128,3 @@ class SpringCloudGatewayState {
     );
   }
 }
-

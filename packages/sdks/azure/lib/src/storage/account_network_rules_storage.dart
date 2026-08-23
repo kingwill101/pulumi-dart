@@ -236,6 +236,50 @@ import 'account_network_rules_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+///   service_endpoints    = ["Microsoft.Storage"]
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "storageaccountname"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+///   tags = {
+///     "environment" = "staging"
+///   }
+/// }
+/// resource "azure_storage_accountnetworkrules" "example" {
+///   storage_account_id         = azure_storage_account.example.id
+///   default_action             = "Allow"
+///   ip_rules                   = ["127.0.0.1"]
+///   virtual_network_subnet_ids = [azure_network_subnet.example.id]
+///   bypasses                   = ["Metrics"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -252,8 +296,8 @@ import 'account_network_rules_state.dart';
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.storage.AccountNetworkRules;
 /// import com.pulumi.azure.storage.AccountNetworkRulesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -363,7 +407,7 @@ import 'account_network_rules_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Storage` - 2023-05-01
+/// * `Microsoft.Storage` - 2025-08-01
 ///
 /// ## Import
 ///
@@ -385,15 +429,15 @@ class AccountNetworkRulesStorage extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** IP network rules have no effect on requests originating from the same Azure region as the storage account. Use Virtual network rules to allow same-region requests. Services deployed in the same region as the storage account use private Azure IP addresses for communication. Thus, you cannot restrict access to specific Azure services based on their public outbound IP address range.
   ///
-  /// &gt; **Note:** User has to explicitly set `ip_rules` to empty slice (`[]`) to remove it.
+  /// &gt; **Note:** User has to explicitly set `ipRules` to empty slice (`[]`) to remove it.
   late final pulumi.Output<List<String>?> ipRules;
-  /// One or more `private_link_access` block as defined below.
+  /// One or more `privateLinkAccess` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> privateLinkAccessRules;
   /// Specifies the ID of the storage account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
   /// A list of virtual network subnet ids to secure the storage account.
   ///
-  /// &gt; **Note:** User has to explicitly set `virtual_network_subnet_ids` to empty slice (`[]`) to remove it.
+  /// &gt; **Note:** User has to explicitly set `virtualNetworkSubnetIds` to empty slice (`[]`) to remove it.
   late final pulumi.Output<List<String>?> virtualNetworkSubnetIds;
 
   /// Creates a new [AccountNetworkRulesStorage].

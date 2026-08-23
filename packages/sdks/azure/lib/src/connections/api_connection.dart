@@ -146,7 +146,7 @@ import 'api_connection_state.dart';
 /// 			Name:              pulumi.String("example-connection"),
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 			ManagedApiId: pulumi.String(example.ApplyT(func(example connections.GetManagedApiResult) (*string, error) {
-/// 				return &example.Id, nil
+/// 				return example.Id, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			DisplayName: pulumi.String("Example 1"),
 /// 			ParameterValues: pulumi.StringMap{
@@ -163,6 +163,43 @@ import 'api_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_connections_getmanagedapi" "example" {
+///   name     = "servicebus"
+///   location = azure_core_resourcegroup.example.location
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_servicebus_namespace" "example" {
+///   name                = "example-namespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Basic"
+/// }
+/// resource "azure_connections_apiconnection" "example" {
+///   name                = "example-connection"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   managed_api_id      = data.azure_connections_getmanagedapi.example.id
+///   display_name        = "Example 1"
+///   parameter_values = {
+///     "connectionString" = azure_servicebus_namespace.example.default_primary_connection_string
+///   }
+///   tags = {
+///     "Hello" = "World"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +214,8 @@ import 'api_connection_state.dart';
 /// import com.pulumi.azure.servicebus.NamespaceArgs;
 /// import com.pulumi.azure.connections.ApiConnection;
 /// import com.pulumi.azure.connections.ApiConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,7 +317,7 @@ class ApiConnection extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A map of parameter values associated with this API Connection.
   ///
-  /// &gt; **Note:** The Azure API doesn't return sensitive parameters in the API response which can lead to a diff, as such you may need to use Terraform's `ignore_changes` functionality on this field as shown in the Example Usage above.
+  /// &gt; **Note:** The Azure API doesn't return sensitive parameters in the API response which can lead to a diff, as such you may need to use Terraform's `ignoreChanges` functionality on this field as shown in the Example Usage above.
   late final pulumi.Output<Map<String, String>?> parameterValues;
   /// The name of the Resource Group where this API Connection should exist. Changing this forces a new API Connection to be created.
   late final pulumi.Output<String> resourceGroupName;

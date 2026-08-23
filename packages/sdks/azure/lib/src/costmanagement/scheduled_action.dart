@@ -98,6 +98,28 @@ import 'scheduled_action_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_costmanagement_scheduledaction" "example" {
+///   name                 = "examplescheduledaction"
+///   display_name         = "Report Last 6 Months"
+///   view_id              = "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CostManagement/views/ms:CostByService"
+///   email_address_sender = "platformteam@test.com"
+///   email_subject        = "Cost Management Report"
+///   email_addresses      = ["example@example.com"]
+///   message              = "Hi all, take a look at last 6 months spending!"
+///   frequency            = "Daily"
+///   start_date           = "2023-01-02T00:00:00Z"
+///   end_date             = "2023-02-02T00:00:00Z"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +128,8 @@ import 'scheduled_action_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.costmanagement.ScheduledAction;
 /// import com.pulumi.azure.costmanagement.ScheduledActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -179,11 +201,11 @@ class ScheduledAction extends pulumi.CustomResource {
   late final pulumi.Output<String> emailAddressSender;
   /// Specifies a list of email addresses that will receive the Scheduled Action.
   late final pulumi.Output<List<String>> emailAddresses;
-  /// Subject of the email. Length is limited to 70 characters.
+  /// Subject of the email. Length is limited to 50 characters.
   late final pulumi.Output<String> emailSubject;
   /// The end date and time of the Scheduled Action (UTC).
   late final pulumi.Output<String> endDate;
-  /// Frequency of the schedule. Possible values are `Daily`, `Monthly` and `Weekly`. Value `Monthly` requires either `weeks_of_month` and `days_of_week` or `day_of_month` to be specified. Value `Weekly` requires `days_of_week` to be specified.
+  /// Frequency of the schedule. Possible values are `Daily`, `Monthly` and `Weekly`. Value `Monthly` requires either `weeksOfMonth` and `daysOfWeek` or `dayOfMonth` to be specified. Value `Weekly` requires `daysOfWeek` to be specified.
   late final pulumi.Output<String> frequency;
   /// UTC time at which cost analysis data will be emailed. Must be between `0` and `23`.
   late final pulumi.Output<int?> hourOfDay;
@@ -195,7 +217,7 @@ class ScheduledAction extends pulumi.CustomResource {
   late final pulumi.Output<String> startDate;
   /// The ID of the Cost Management View that is used by the Scheduled Action. Changing this forces a new resource to be created.
   late final pulumi.Output<String> viewId;
-  /// Specifies a list of weeks in which cost analysis data will be emailed. This property is applicable when `frequency` is `Monthly` and used in combination with `days_of_week`. Possible values are `First`, `Fourth`, `Last`, `Second` and `Third`.
+  /// Specifies a list of weeks in which cost analysis data will be emailed. This property is applicable when `frequency` is `Monthly` and used in combination with `daysOfWeek`. Possible values are `First`, `Fourth`, `Last`, `Second` and `Third`.
   late final pulumi.Output<List<String>?> weeksOfMonths;
 
   /// Creates a new [ScheduledAction].

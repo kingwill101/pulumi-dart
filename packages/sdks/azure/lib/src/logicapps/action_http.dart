@@ -114,6 +114,31 @@ import 'action_http_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "workflow-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_logicapps_workflow" "example" {
+///   name                = "workflow1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_logicapps_actionhttp" "example" {
+///   name         = "webhook"
+///   logic_app_id = azure_logicapps_workflow.example.id
+///   method       = "GET"
+///   uri          = "http://example.com/some-webhook"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +151,8 @@ import 'action_http_state.dart';
 /// import com.pulumi.azure.logicapps.WorkflowArgs;
 /// import com.pulumi.azure.logicapps.ActionHttp;
 /// import com.pulumi.azure.logicapps.ActionHttpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -209,7 +234,7 @@ class ActionHttp extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Specifies a Map of Key-Value Pairs that should be sent to the `uri` when this HTTP Action is triggered.
   late final pulumi.Output<Map<String, String>?> queries;
-  /// Specifies the place of the HTTP Action in the Logic App Workflow. If not specified, the HTTP Action is right after the Trigger. A `run_after` block is as defined below.
+  /// Specifies the place of the HTTP Action in the Logic App Workflow. If not specified, the HTTP Action is right after the Trigger. A `runAfter` block is as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> runAfters;
   /// Specifies the URI which will be called when this HTTP Action is triggered.
   late final pulumi.Output<String> uri;

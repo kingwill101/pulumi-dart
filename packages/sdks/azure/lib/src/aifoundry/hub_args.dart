@@ -22,7 +22,7 @@ class HubArgs {
   final pulumi.Input<String>? friendlyName;
   /// Whether High Business Impact (HBI) should be enabled or not. Enabling this setting will reduce diagnostic data collected by the service. Changing this forces a new AI Foundry Hub to be created. Defaults to `false`.
   ///
-  /// &gt; **Note:** `high_business_impact_enabled` will be enabled by default when creating an AI Foundry Hub with `encryption` enabled.
+  /// &gt; **Note:** `highBusinessImpactEnabled` will be enabled by default when creating an AI Foundry Hub with `encryption` enabled.
   final pulumi.Input<bool>? highBusinessImpactEnabled;
   /// A `identity` block as defined below.
   final pulumi.Input<HubIdentity> identity;
@@ -30,7 +30,7 @@ class HubArgs {
   final pulumi.Input<String> keyVaultId;
   /// The Azure Region where the AI Foundry Hub should exist. Changing this forces a new AI Foundry Hub to be created.
   final pulumi.Input<String>? location;
-  /// A `managed_network` block as defined below.
+  /// A `managedNetwork` block as defined below.
   final pulumi.Input<HubManagedNetwork>? managedNetwork;
   /// The name which should be used for this AI Foundry Hub. Changing this forces a new AI Foundry Hub to be created.
   final pulumi.Input<String>? name;
@@ -55,7 +55,7 @@ class HubArgs {
   /// [identity] A `identity` block as defined below.
   /// [keyVaultId] The Key Vault ID that should be used by this AI Foundry Hub. Changing this forces a new AI Foundry Hub to be created.
   /// [location] The Azure Region where the AI Foundry Hub should exist. Changing this forces a new AI Foundry Hub to be created.
-  /// [managedNetwork] A `managed_network` block as defined below.
+  /// [managedNetwork] A `managedNetwork` block as defined below.
   /// [name] The name which should be used for this AI Foundry Hub. Changing this forces a new AI Foundry Hub to be created.
   /// [primaryUserAssignedIdentity] The user assigned identity ID that represents the AI Foundry Hub identity. This must be set when enabling encryption with a user assigned identity.
   /// [publicNetworkAccess] Whether public network access for this AI Service Hub should be enabled. Possible values include `Enabled` and `Disabled`. Defaults to `Enabled`.
@@ -123,4 +123,3 @@ class HubArgs {
     );
   }
 }
-

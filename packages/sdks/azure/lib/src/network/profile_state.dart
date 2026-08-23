@@ -5,7 +5,7 @@ import 'profile_container_network_interface.dart';
 
 /// Input properties used for looking up and filtering Profile resources.
 class ProfileState {
-  /// A `container_network_interface` block as documented below.
+  /// A `containerNetworkInterface` block as documented below.
   final pulumi.Input<ProfileContainerNetworkInterface>? containerNetworkInterface;
   /// A list of Container Network Interface IDs.
   final pulumi.Input<List<String>>? containerNetworkInterfaceIds;
@@ -19,7 +19,7 @@ class ProfileState {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ProfileState].
-  /// [containerNetworkInterface] A `container_network_interface` block as documented below.
+  /// [containerNetworkInterface] A `containerNetworkInterface` block as documented below.
   /// [containerNetworkInterfaceIds] A list of Container Network Interface IDs.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Network Profile. Changing this forces a new resource to be created.
@@ -56,4 +56,3 @@ class ProfileState {
     );
   }
 }
-

@@ -9,7 +9,7 @@ class WorkspaceFeatureStore {
   final pulumi.Input<String>? offlineConnectionName;
   /// The name of online store connection.
   ///
-  /// &gt; **Note:** `feature_store` must be set when`kind` is `FeatureStore`
+  /// &gt; **Note:** `featureStore` must be set when`kind` is `FeatureStore`
   final pulumi.Input<String>? onlineConnectionName;
 
   /// Creates a new [WorkspaceFeatureStore].
@@ -38,4 +38,3 @@ class WorkspaceFeatureStore {
     );
   }
 }
-

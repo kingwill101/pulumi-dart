@@ -4,7 +4,7 @@ import 'spring_cloud_app_cosmos_dbassociation_state.dart';
 
 /// Associates a Spring Cloud Application with a CosmosDB Account.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudAppCosmosDBAssociation` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudAppCosmosDBAssociation` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -212,6 +212,51 @@ import 'spring_cloud_app_cosmos_dbassociation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example-springcloud"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_appplatform_springcloudapp" "example" {
+///   name                = "example-springcloudapp"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   service_name        = azure_appplatform_springcloudservice.example.name
+/// }
+/// resource "azure_cosmosdb_account" "example" {
+///   name                = "example-cosmosdb-account"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   offer_type          = "Standard"
+///   kind                = "GlobalDocumentDB"
+///   consistency_policy = {
+///     consistency_level = "Strong"
+///   }
+///   geo_locations {
+///     location          = azure_core_resourcegroup.example.location
+///     failover_priority = 0
+///   }
+/// }
+/// resource "azure_appplatform_springcloudappcosmosdbassociation" "example" {
+///   name                = "example-bind"
+///   spring_cloud_app_id = azure_appplatform_springcloudapp.example.id
+///   cosmosdb_account_id = azure_cosmosdb_account.example.id
+///   api_type            = "table"
+///   cosmosdb_access_key = azure_cosmosdb_account.example.primary_key
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -230,8 +275,8 @@ import 'spring_cloud_app_cosmos_dbassociation_state.dart';
 /// import com.pulumi.azure.cosmosdb.inputs.AccountGeoLocationArgs;
 /// import com.pulumi.azure.appplatform.SpringCloudAppCosmosDBAssociation;
 /// import com.pulumi.azure.appplatform.SpringCloudAppCosmosDBAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -347,15 +392,15 @@ class SpringCloudAppCosmosDBAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> cosmosdbAccessKey;
   /// Specifies the ID of the CosmosDB Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cosmosdbAccountId;
-  /// Specifies the name of the Cassandra Keyspace which the Spring Cloud App should be associated with. Should only be set when `api_type` is `cassandra`.
+  /// Specifies the name of the Cassandra Keyspace which the Spring Cloud App should be associated with. Should only be set when `apiType` is `cassandra`.
   late final pulumi.Output<String?> cosmosdbCassandraKeyspaceName;
-  /// Specifies the name of the Gremlin Database which the Spring Cloud App should be associated with. Should only be set when `api_type` is `gremlin`.
+  /// Specifies the name of the Gremlin Database which the Spring Cloud App should be associated with. Should only be set when `apiType` is `gremlin`.
   late final pulumi.Output<String?> cosmosdbGremlinDatabaseName;
-  /// Specifies the name of the Gremlin Graph which the Spring Cloud App should be associated with. Should only be set when `api_type` is `gremlin`.
+  /// Specifies the name of the Gremlin Graph which the Spring Cloud App should be associated with. Should only be set when `apiType` is `gremlin`.
   late final pulumi.Output<String?> cosmosdbGremlinGraphName;
-  /// Specifies the name of the Mongo Database which the Spring Cloud App should be associated with. Should only be set when `api_type` is `mongo`.
+  /// Specifies the name of the Mongo Database which the Spring Cloud App should be associated with. Should only be set when `apiType` is `mongo`.
   late final pulumi.Output<String?> cosmosdbMongoDatabaseName;
-  /// Specifies the name of the SQL Database which the Spring Cloud App should be associated with. Should only be set when `api_type` is `sql`.
+  /// Specifies the name of the SQL Database which the Spring Cloud App should be associated with. Should only be set when `apiType` is `sql`.
   late final pulumi.Output<String?> cosmosdbSqlDatabaseName;
   /// Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;

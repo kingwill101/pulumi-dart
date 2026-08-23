@@ -7,9 +7,9 @@ class LinuxWebAppSlotAuthSettingsV2GoogleV2 {
   final pulumi.Input<List<String>>? allowedAudiences;
   /// The OpenID Connect Client ID for the Google web application.
   final pulumi.Input<String> clientId;
-  /// The app setting name that contains the `client_secret` value used for Google Login.
+  /// The app setting name that contains the `clientSecret` value used for Google Login.
   ///
-  /// !&gt; **Note:** A setting with this name must exist in `app_settings` to function correctly.
+  /// &gt; **Note:** A setting with this name must exist in `appSettings` to function correctly.
   final pulumi.Input<String> clientSecretSettingName;
   /// The list of OAuth 2.0 scopes that should be requested as part of Google Sign-In authentication.
   final pulumi.Input<List<String>>? loginScopes;
@@ -17,7 +17,7 @@ class LinuxWebAppSlotAuthSettingsV2GoogleV2 {
   /// Creates a new [LinuxWebAppSlotAuthSettingsV2GoogleV2].
   /// [allowedAudiences] Specifies a list of Allowed Audiences that should be requested as part of Google Sign-In authentication.
   /// [clientId] The OpenID Connect Client ID for the Google web application.
-  /// [clientSecretSettingName] The app setting name that contains the `client_secret` value used for Google Login.
+  /// [clientSecretSettingName] The app setting name that contains the `clientSecret` value used for Google Login.
   /// [loginScopes] The list of OAuth 2.0 scopes that should be requested as part of Google Sign-In authentication.
   const LinuxWebAppSlotAuthSettingsV2GoogleV2({
     this.allowedAudiences,
@@ -44,4 +44,3 @@ class LinuxWebAppSlotAuthSettingsV2GoogleV2 {
     );
   }
 }
-

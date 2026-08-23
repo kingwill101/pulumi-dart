@@ -14,7 +14,7 @@ class ProviderState {
   final pulumi.Input<String>? openEnclavePolicyBase64;
   /// A valid X.509 certificate (Section 4 of [RFC4648](https://tools.ietf.org/html/rfc4648)). Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** If the `policy_signing_certificate_data` argument contains more than one valid X.509 certificate only the first certificate will be used.
+  /// &gt; **Note:** If the `policySigningCertificateData` argument contains more than one valid X.509 certificate only the first certificate will be used.
   final pulumi.Input<String>? policySigningCertificateData;
   /// The name of the Resource Group where the attestation provider should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
@@ -89,4 +89,3 @@ class ProviderState {
     );
   }
 }
-

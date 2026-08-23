@@ -166,6 +166,41 @@ import 'mx_record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_privatedns_zone" "example" {
+///   name                = "contoso.com"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_privatedns_mxrecord" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   zone_name           = azure_privatedns_zone.example.name
+///   ttl                 = 300
+///   records {
+///     preference = 10
+///     exchange   = "mx1.contoso.com"
+///   }
+///   records {
+///     preference = 20
+///     exchange   = "backupmx.contoso.com"
+///   }
+///   tags = {
+///     "Environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +214,8 @@ import 'mx_record_state.dart';
 /// import com.pulumi.azure.privatedns.MxRecord;
 /// import com.pulumi.azure.privatedns.MxRecordArgs;
 /// import com.pulumi.azure.privatedns.inputs.MxRecordRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

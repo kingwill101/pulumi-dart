@@ -90,4 +90,3 @@ class GetWindowsFunctionAppAuthSettingsV2ActiveDirectoryV2 {
     );
   }
 }
-

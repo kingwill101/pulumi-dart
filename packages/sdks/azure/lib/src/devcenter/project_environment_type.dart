@@ -208,6 +208,51 @@ import 'project_environment_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_devcenter_devcenter" "example" {
+///   name                = "example-dc"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_devcenter_environmenttype" "example" {
+///   name          = "example-et"
+///   dev_center_id = azure_devcenter_devcenter.example.id
+/// }
+/// resource "azure_devcenter_project" "example" {
+///   depends_on          = [azure_devcenter_environmenttype.example]
+///   name                = "example-dcp"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   dev_center_id       = azure_devcenter_devcenter.example.id
+/// }
+/// resource "azure_devcenter_projectenvironmenttype" "example" {
+///   name                  = "example-et"
+///   location              = azure_core_resourcegroup.example.location
+///   dev_center_project_id = azure_devcenter_project.example.id
+///   deployment_target_id  ="/subscriptions/${data.azure_core_getclientconfig.current.subscription_id}"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +273,8 @@ import 'project_environment_type_state.dart';
 /// import com.pulumi.azure.devcenter.ProjectEnvironmentTypeArgs;
 /// import com.pulumi.azure.devcenter.inputs.ProjectEnvironmentTypeIdentityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -364,7 +409,7 @@ class ProjectEnvironmentType extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A mapping of tags which should be assigned to the Dev Center Project Environment Type.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A `user_role_assignment` block as defined below.
+  /// A `userRoleAssignment` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> userRoleAssignments;
 
   /// Creates a new [ProjectEnvironmentType].

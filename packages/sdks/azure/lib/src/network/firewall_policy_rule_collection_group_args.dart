@@ -10,25 +10,25 @@ import 'firewall_policy_rule_collection_group_network_rule_collection.dart';
 /// {@endtemplate}
 /// {@macro pulumi_network_firewall_policy_rule_collection_group_firewall_policy_rule_collection_group_args_doc}
 class FirewallPolicyRuleCollectionGroupArgs {
-  /// One or more `application_rule_collection` blocks as defined below.
+  /// One or more `applicationRuleCollection` blocks as defined below.
   final pulumi.Input<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>>? applicationRuleCollections;
   /// The ID of the Firewall Policy where the Firewall Policy Rule Collection Group should exist. Changing this forces a new Firewall Policy Rule Collection Group to be created.
   final pulumi.Input<String> firewallPolicyId;
   /// The name which should be used for this Firewall Policy Rule Collection Group. Changing this forces a new Firewall Policy Rule Collection Group to be created.
   final pulumi.Input<String>? name;
-  /// One or more `nat_rule_collection` blocks as defined below.
+  /// One or more `natRuleCollection` blocks as defined below.
   final pulumi.Input<List<FirewallPolicyRuleCollectionGroupNatRuleCollection>>? natRuleCollections;
-  /// One or more `network_rule_collection` blocks as defined below.
+  /// One or more `networkRuleCollection` blocks as defined below.
   final pulumi.Input<List<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>>? networkRuleCollections;
   /// The priority of the Firewall Policy Rule Collection Group. The range is 100-65000.
   final pulumi.Input<int> priority;
 
   /// Creates a new [FirewallPolicyRuleCollectionGroupArgs].
-  /// [applicationRuleCollections] One or more `application_rule_collection` blocks as defined below.
+  /// [applicationRuleCollections] One or more `applicationRuleCollection` blocks as defined below.
   /// [firewallPolicyId] The ID of the Firewall Policy where the Firewall Policy Rule Collection Group should exist. Changing this forces a new Firewall Policy Rule Collection Group to be created.
   /// [name] The name which should be used for this Firewall Policy Rule Collection Group. Changing this forces a new Firewall Policy Rule Collection Group to be created.
-  /// [natRuleCollections] One or more `nat_rule_collection` blocks as defined below.
-  /// [networkRuleCollections] One or more `network_rule_collection` blocks as defined below.
+  /// [natRuleCollections] One or more `natRuleCollection` blocks as defined below.
+  /// [networkRuleCollections] One or more `networkRuleCollection` blocks as defined below.
   /// [priority] The priority of the Firewall Policy Rule Collection Group. The range is 100-65000.
   const FirewallPolicyRuleCollectionGroupArgs({
     this.applicationRuleCollections,
@@ -61,4 +61,3 @@ class FirewallPolicyRuleCollectionGroupArgs {
     );
   }
 }
-

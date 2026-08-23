@@ -8,13 +8,13 @@ class ThreeTierVirtualInstanceThreeTierConfigurationApplicationServerConfigurati
   final pulumi.Input<int> instanceCount;
   /// The resource ID of the Subnet for the Application Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
-  /// A `virtual_machine_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// A `virtualMachineConfiguration` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationApplicationServerConfigurationVirtualMachineConfiguration> virtualMachineConfiguration;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationApplicationServerConfiguration].
   /// [instanceCount] The number of instances for the Application Server. Possible values are at least `1`. Changing this forces a new resource to be created.
   /// [subnetId] The resource ID of the Subnet for the Application Server. Changing this forces a new resource to be created.
-  /// [virtualMachineConfiguration] A `virtual_machine_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// [virtualMachineConfiguration] A `virtualMachineConfiguration` block as defined below. Changing this forces a new resource to be created.
   const ThreeTierVirtualInstanceThreeTierConfigurationApplicationServerConfiguration({
     required this.instanceCount,
     required this.subnetId,
@@ -37,4 +37,3 @@ class ThreeTierVirtualInstanceThreeTierConfigurationApplicationServerConfigurati
     );
   }
 }
-

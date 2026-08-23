@@ -12,7 +12,7 @@ class NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile {
   final pulumi.Input<List<String>>? publicIpAddresses;
   /// Specifies a list of trusted ranges to use for the Network.
   final pulumi.Input<List<String>>? trustedAddressRanges;
-  /// A `vnet_configuration` block as defined below.
+  /// A `vnetConfiguration` block as defined below.
   final pulumi.Input<NextGenerationFirewallVirtualNetworkPanoramaNetworkProfileVnetConfiguration> vnetConfiguration;
 
   /// Creates a new [NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile].
@@ -21,7 +21,7 @@ class NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile {
   /// [publicIpAddressIds] Specifies a list of Azure Public IP Address IDs.
   /// [publicIpAddresses] Optional.
   /// [trustedAddressRanges] Specifies a list of trusted ranges to use for the Network.
-  /// [vnetConfiguration] A `vnet_configuration` block as defined below.
+  /// [vnetConfiguration] A `vnetConfiguration` block as defined below.
   const NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile({
     this.egressNatIpAddressIds,
     this.egressNatIpAddresses,
@@ -53,4 +53,3 @@ class NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile {
     );
   }
 }
-

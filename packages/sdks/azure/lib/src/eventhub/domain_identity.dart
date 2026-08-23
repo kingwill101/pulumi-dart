@@ -7,7 +7,7 @@ class DomainIdentity {
   ///
   /// &gt; **Note:** This is required when `type` is set to `UserAssigned`
   ///
-  /// &gt; **Note:** When `type` is set to `SystemAssigned`, The assigned `principal_id` and `tenant_id` can be retrieved after the Event Grid Domain has been created. More details are available below.
+  /// &gt; **Note:** When `type` is set to `SystemAssigned`, The assigned `principalId` and `tenantId` can be retrieved after the Event Grid Domain has been created. More details are available below.
   final pulumi.Input<List<String>>? identityIds;
   /// The Principal ID associated with this Managed Service Identity.
   final pulumi.Input<String>? principalId;
@@ -46,4 +46,3 @@ class DomainIdentity {
     );
   }
 }
-

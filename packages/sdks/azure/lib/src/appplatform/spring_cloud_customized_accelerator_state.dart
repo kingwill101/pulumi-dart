@@ -13,7 +13,7 @@ class SpringCloudCustomizedAcceleratorState {
   final pulumi.Input<String>? description;
   /// Specifies the display name of the Spring Cloud Customized Accelerator..
   final pulumi.Input<String>? displayName;
-  /// A `git_repository` block as defined below.
+  /// A `gitRepository` block as defined below.
   final pulumi.Input<SpringCloudCustomizedAcceleratorGitRepository>? gitRepository;
   /// Specifies the icon URL of the Spring Cloud Customized Accelerator..
   final pulumi.Input<String>? iconUrl;
@@ -27,7 +27,7 @@ class SpringCloudCustomizedAcceleratorState {
   /// [acceleratorType] Specifies the type of the Spring Cloud Customized Accelerator. Possible values are `Accelerator` and `Fragment`. Defaults to `Accelerator`.
   /// [description] Specifies the description of the Spring Cloud Customized Accelerator.
   /// [displayName] Specifies the display name of the Spring Cloud Customized Accelerator..
-  /// [gitRepository] A `git_repository` block as defined below.
+  /// [gitRepository] A `gitRepository` block as defined below.
   /// [iconUrl] Specifies the icon URL of the Spring Cloud Customized Accelerator..
   /// [name] The name which should be used for this Spring Cloud Customized Accelerator. Changing this forces a new Spring Cloud Customized Accelerator to be created.
   /// [springCloudAcceleratorId] The ID of the Spring Cloud Accelerator. Changing this forces a new Spring Cloud Customized Accelerator to be created.
@@ -68,4 +68,3 @@ class SpringCloudCustomizedAcceleratorState {
     );
   }
 }
-

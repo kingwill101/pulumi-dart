@@ -137,6 +137,36 @@ import 'event_hub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "example" {
+///   name                = "acceptanceTestEventHubNamespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+///   capacity            = 1
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// resource "azure_eventhub_eventhub" "example" {
+///   name              = "acceptanceTestEventHub"
+///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   partition_count   = 2
+///   message_retention = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -149,8 +179,8 @@ import 'event_hub_state.dart';
 /// import com.pulumi.azure.eventhub.EventHubNamespaceArgs;
 /// import com.pulumi.azure.eventhub.EventHub;
 /// import com.pulumi.azure.eventhub.EventHubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -230,11 +260,11 @@ import 'event_hub_state.dart';
 /// $ pulumi import azure:eventhub/eventHub:EventHub eventhub1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.EventHub/namespaces/namespace1/eventhubs/eventhub1
 /// ```
 class EventHub extends pulumi.CustomResource {
-  /// A `capture_description` block as defined below.
+  /// A `captureDescription` block as defined below.
   late final pulumi.Output<EventHubCaptureDescription?> captureDescription;
   /// Specifies the number of days to retain the events for this Event Hub.
   ///
-  /// &gt; **Note:** When using a dedicated Event Hubs cluster, maximum value of `message_retention` is 90 days. When using a shared parent EventHub Namespace, maximum value is 7 days; or 1 day when using a Basic SKU for the shared parent EventHub Namespace.
+  /// &gt; **Note:** When using a dedicated Event Hubs cluster, maximum value of `messageRetention` is 90 days. When using a shared parent EventHub Namespace, maximum value is 7 days; or 1 day when using a Basic SKU for the shared parent EventHub Namespace.
   late final pulumi.Output<int> messageRetention;
   /// Specifies the name of the EventHub resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
@@ -243,14 +273,14 @@ class EventHub extends pulumi.CustomResource {
   late final pulumi.Output<String> namespaceName;
   /// Specifies the current number of shards on the Event Hub.
   ///
-  /// &gt; **Note:** When using a shared parent EventHub Namespace, `partition_count` cannot be changed unless the Eventhub Namespace SKU is `Premium`. When using a dedicated Event Hubs cluster, this restriction doesn't apply. In either case though, the `partition_count` cannot be decreased.
+  /// &gt; **Note:** When using a shared parent EventHub Namespace, `partitionCount` cannot be changed unless the Eventhub Namespace SKU is `Premium`. When using a dedicated Event Hubs cluster, this restriction doesn't apply. In either case though, the `partitionCount` cannot be decreased.
   ///
-  /// &gt; **Note:** When using a dedicated Event Hubs cluster, maximum value of `partition_count` is 1024. When using a shared parent EventHub Namespace, maximum value is 32.
+  /// &gt; **Note:** When using a dedicated Event Hubs cluster, maximum value of `partitionCount` is 1024. When using a shared parent EventHub Namespace, maximum value is 32.
   late final pulumi.Output<int> partitionCount;
   /// The identifiers for partitions created for Event Hubs.
   late final pulumi.Output<List<String>> partitionIds;
   late final pulumi.Output<String> resourceGroupName;
-  /// A `retention_description` block as defined below.
+  /// A `retentionDescription` block as defined below.
   late final pulumi.Output<EventHubRetentionDescription> retentionDescription;
   /// Specifies the status of the Event Hub resource. Possible values are `Active`, `Disabled` and `SendDisabled`. Defaults to `Active`.
   late final pulumi.Output<String?> status;

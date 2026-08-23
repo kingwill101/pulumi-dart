@@ -413,6 +413,74 @@ import 'firewall_policy_rule_collection_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_firewallpolicy" "example" {
+///   name                = "example-fwpolicy"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_firewallpolicyrulecollectiongroup" "example" {
+///   name               = "example-fwpolicy-rcg"
+///   firewall_policy_id = azure_network_firewallpolicy.example.id
+///   priority           = 500
+///   application_rule_collections {
+///     name     = "app_rule_collection1"
+///     priority = 500
+///     action   = "Deny"
+///     rules {
+///       name = "app_rule_collection1_rule1"
+///       protocols {
+///         type = "Http"
+///         port = 80
+///       }
+///       protocols {
+///         type = "Https"
+///         port = 443
+///       }
+///       source_addresses  = ["10.0.0.1"]
+///       destination_fqdns = ["*.microsoft.com"]
+///     }
+///   }
+///   network_rule_collections {
+///     name     = "network_rule_collection1"
+///     priority = 400
+///     action   = "Deny"
+///     rules {
+///       name                  = "network_rule_collection1_rule1"
+///       protocols             = ["TCP", "UDP"]
+///       source_addresses      = ["10.0.0.1"]
+///       destination_addresses = ["192.168.1.1", "192.168.1.2"]
+///       destination_ports     = ["80", "1000-2000"]
+///     }
+///   }
+///   nat_rule_collections {
+///     name     = "nat_rule_collection1"
+///     priority = 300
+///     action   = "Dnat"
+///     rules {
+///       name                = "nat_rule_collection1_rule1"
+///       protocols           = ["TCP", "UDP"]
+///       source_addresses    = ["10.0.0.1", "10.0.0.2"]
+///       destination_address = "192.168.1.1"
+///       destination_ports   = "80"
+///       translated_address  = "192.168.0.1"
+///       translated_port     = "8080"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -426,10 +494,14 @@ import 'firewall_policy_rule_collection_group_state.dart';
 /// import com.pulumi.azure.network.FirewallPolicyRuleCollectionGroup;
 /// import com.pulumi.azure.network.FirewallPolicyRuleCollectionGroupArgs;
 /// import com.pulumi.azure.network.inputs.FirewallPolicyRuleCollectionGroupApplicationRuleCollectionArgs;
+/// import com.pulumi.azure.network.inputs.FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleArgs;
+/// import com.pulumi.azure.network.inputs.FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocolArgs;
 /// import com.pulumi.azure.network.inputs.FirewallPolicyRuleCollectionGroupNetworkRuleCollectionArgs;
+/// import com.pulumi.azure.network.inputs.FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRuleArgs;
 /// import com.pulumi.azure.network.inputs.FirewallPolicyRuleCollectionGroupNatRuleCollectionArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.network.inputs.FirewallPolicyRuleCollectionGroupNatRuleCollectionRuleArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -603,15 +675,15 @@ import 'firewall_policy_rule_collection_group_state.dart';
 /// $ pulumi import azure:network/firewallPolicyRuleCollectionGroup:FirewallPolicyRuleCollectionGroup example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/firewallPolicies/policy1/ruleCollectionGroups/gruop1
 /// ```
 class FirewallPolicyRuleCollectionGroup extends pulumi.CustomResource {
-  /// One or more `application_rule_collection` blocks as defined below.
+  /// One or more `applicationRuleCollection` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> applicationRuleCollections;
   /// The ID of the Firewall Policy where the Firewall Policy Rule Collection Group should exist. Changing this forces a new Firewall Policy Rule Collection Group to be created.
   late final pulumi.Output<String> firewallPolicyId;
   /// The name which should be used for this Firewall Policy Rule Collection Group. Changing this forces a new Firewall Policy Rule Collection Group to be created.
   late final pulumi.Output<String> name;
-  /// One or more `nat_rule_collection` blocks as defined below.
+  /// One or more `natRuleCollection` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> natRuleCollections;
-  /// One or more `network_rule_collection` blocks as defined below.
+  /// One or more `networkRuleCollection` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> networkRuleCollections;
   /// The priority of the Firewall Policy Rule Collection Group. The range is 100-65000.
   late final pulumi.Output<int> priority;

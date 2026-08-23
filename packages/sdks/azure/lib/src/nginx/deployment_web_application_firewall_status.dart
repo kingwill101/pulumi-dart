@@ -7,20 +7,20 @@ import 'deployment_web_application_firewall_status_component_version.dart';
 import 'deployment_web_application_firewall_status_threat_campaigns_package.dart';
 
 class DeploymentWebApplicationFirewallStatus {
-  /// One or more `attack_signatures_package` blocks as defined below.
+  /// One or more `attackSignaturesPackage` blocks as defined below.
   final pulumi.Input<List<DeploymentWebApplicationFirewallStatusAttackSignaturesPackage>>? attackSignaturesPackages;
-  /// One or more `bot_signatures_package` blocks as defined below.
+  /// One or more `botSignaturesPackage` blocks as defined below.
   final pulumi.Input<List<DeploymentWebApplicationFirewallStatusBotSignaturesPackage>>? botSignaturesPackages;
-  /// One or more `component_versions` blocks as defined below.
+  /// One or more `componentVersions` blocks as defined below.
   final pulumi.Input<List<DeploymentWebApplicationFirewallStatusComponentVersion>>? componentVersions;
-  /// One or more `threat_campaigns_package` blocks as defined below.
+  /// One or more `threatCampaignsPackage` blocks as defined below.
   final pulumi.Input<List<DeploymentWebApplicationFirewallStatusThreatCampaignsPackage>>? threatCampaignsPackages;
 
   /// Creates a new [DeploymentWebApplicationFirewallStatus].
-  /// [attackSignaturesPackages] One or more `attack_signatures_package` blocks as defined below.
-  /// [botSignaturesPackages] One or more `bot_signatures_package` blocks as defined below.
-  /// [componentVersions] One or more `component_versions` blocks as defined below.
-  /// [threatCampaignsPackages] One or more `threat_campaigns_package` blocks as defined below.
+  /// [attackSignaturesPackages] One or more `attackSignaturesPackage` blocks as defined below.
+  /// [botSignaturesPackages] One or more `botSignaturesPackage` blocks as defined below.
+  /// [componentVersions] One or more `componentVersions` blocks as defined below.
+  /// [threatCampaignsPackages] One or more `threatCampaignsPackage` blocks as defined below.
   const DeploymentWebApplicationFirewallStatus({
     this.attackSignaturesPackages,
     this.botSignaturesPackages,
@@ -46,4 +46,3 @@ class DeploymentWebApplicationFirewallStatus {
     );
   }
 }
-

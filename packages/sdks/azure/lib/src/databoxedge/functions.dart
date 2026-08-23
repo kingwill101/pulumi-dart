@@ -60,6 +60,20 @@ import 'get_device_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_databoxedge_getdevice" "example" {
+///   name                = "example-device"
+///   resource_group_name = "example-rg"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +82,8 @@ import 'get_device_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.databoxedge.DataboxedgeFunctions;
 /// import com.pulumi.azure.databoxedge.inputs.GetDeviceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

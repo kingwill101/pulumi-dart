@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_policy_assignment_override_selector.dart';
 
 class ResourcePolicyAssignmentOverride {
-  /// One or more `override_selector` block as defined below.
+  /// One or more `overrideSelector` block as defined below.
   final pulumi.Input<List<ResourcePolicyAssignmentOverrideSelector>>? selectors;
   /// Specifies the value to override the policy property. Possible values for `policyEffect` override listed [policy effects](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects).
   final pulumi.Input<String> value;
 
   /// Creates a new [ResourcePolicyAssignmentOverride].
-  /// [selectors] One or more `override_selector` block as defined below.
+  /// [selectors] One or more `overrideSelector` block as defined below.
   /// [value] Specifies the value to override the policy property. Possible values for `policyEffect` override listed [policy effects](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects).
   const ResourcePolicyAssignmentOverride({
     this.selectors,
@@ -31,4 +31,3 @@ class ResourcePolicyAssignmentOverride {
     );
   }
 }
-

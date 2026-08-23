@@ -166,6 +166,42 @@ import 'registry_task_schedule_run_now_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_containerservice_registry" "example" {
+///   name                = "example-acr"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Basic"
+/// }
+/// resource "azure_containerservice_registrytask" "example" {
+///   name                  = "example-task"
+///   container_registry_id = azure_containerservice_registry.example.id
+///   platform = {
+///     os = "Linux"
+///   }
+///   docker_step = {
+///     dockerfile_path      = "Dockerfile"
+///     context_path         = "https://github.com/<user name>/acr-build-helloworld-node#main"
+///     context_access_token = "<github personal access token>"
+///     image_names          = ["helloworld:{{.Run.ID}}"]
+///   }
+/// }
+/// resource "azure_containerservice_registrytaskschedulerunnow" "example" {
+///   container_registry_task_id = azure_containerservice_registrytask.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +218,8 @@ import 'registry_task_schedule_run_now_state.dart';
 /// import com.pulumi.azure.containerservice.inputs.RegistryTaskDockerStepArgs;
 /// import com.pulumi.azure.containerservice.RegistryTaskScheduleRunNow;
 /// import com.pulumi.azure.containerservice.RegistryTaskScheduleRunNowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

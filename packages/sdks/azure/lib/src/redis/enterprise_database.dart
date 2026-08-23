@@ -183,6 +183,42 @@ import 'enterprise_database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-redisenterprise"
+///   location = "West Europe"
+/// }
+/// resource "azure_redis_enterprisecluster" "example" {
+///   name                = "example-redisenterprise"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku_name            = "Enterprise_E20-4"
+/// }
+/// resource "azure_redis_enterprisecluster" "example1" {
+///   name                = "example-redisenterprise1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku_name            = "Enterprise_E20-4"
+/// }
+/// resource "azure_redis_enterprisedatabase" "example" {
+///   name                           = "default"
+///   cluster_id                     = azure_redis_enterprisecluster.example.id
+///   client_protocol                = "Encrypted"
+///   clustering_policy              = "EnterpriseCluster"
+///   eviction_policy                = "NoEviction"
+///   port                           = 10000
+///   linked_database_ids            = ["${azure_redis_enterprisecluster.example.id}/databases/default", "${azure_redis_enterprisecluster.example1.id}/databases/default"]
+///   linked_database_group_nickname = "tftestGeoGroup"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +231,8 @@ import 'enterprise_database_state.dart';
 /// import com.pulumi.azure.redis.EnterpriseClusterArgs;
 /// import com.pulumi.azure.redis.EnterpriseDatabase;
 /// import com.pulumi.azure.redis.EnterpriseDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

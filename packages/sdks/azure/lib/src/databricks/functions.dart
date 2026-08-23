@@ -71,6 +71,24 @@ import 'get_workspace_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_databricks_getaccessconnector" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_databricks_getaccessconnector.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +97,8 @@ import 'get_workspace_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.databricks.DatabricksFunctions;
 /// import com.pulumi.azure.databricks.inputs.GetAccessConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -119,7 +137,7 @@ import 'get_workspace_result.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Databricks` - 2022-10-01-preview
+/// * `Microsoft.Databricks` - 2026-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_databricks_get_access_connector_get_access_connector_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAccessConnectorResult> getAccessConnector(
@@ -200,6 +218,24 @@ Future<GetAccessConnectorResult> getAccessConnector(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_databricks_getworkspace" "example" {
+///   name                = "example-workspace"
+///   resource_group_name = "example-rg"
+/// }
+///
+/// output "databricksWorkspaceId" {
+///   value = data.azure_databricks_getworkspace.example.workspace_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -208,8 +244,8 @@ Future<GetAccessConnectorResult> getAccessConnector(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.databricks.DatabricksFunctions;
 /// import com.pulumi.azure.databricks.inputs.GetWorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -248,7 +284,7 @@ Future<GetAccessConnectorResult> getAccessConnector(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Databricks` - 2024-05-01
+/// * `Microsoft.Databricks` - 2026-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_databricks_get_workspace_get_workspace_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceResult> getWorkspace(
@@ -329,6 +365,24 @@ Future<GetWorkspaceResult> getWorkspace(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_databricks_getworkspaceprivateendpointconnection" "example" {
+///   workspace_id        = exampleAzurermDatabricksWorkspace.id
+///   private_endpoint_id = exampleAzurermPrivateEndpoint.id
+/// }
+///
+/// output "databricksWorkspacePrivateEndpointConnectionStatus" {
+///   value = data.azure_databricks_getworkspaceprivateendpointconnection.example.connections[0].status
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -337,8 +391,8 @@ Future<GetWorkspaceResult> getWorkspace(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.databricks.DatabricksFunctions;
 /// import com.pulumi.azure.databricks.inputs.GetWorkspacePrivateEndpointConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -377,7 +431,7 @@ Future<GetWorkspaceResult> getWorkspace(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Databricks` - 2024-05-01
+/// * `Microsoft.Databricks` - 2026-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_databricks_get_workspace_private_endpoint_connection_get_workspace_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspacePrivateEndpointConnectionResult> getWorkspacePrivateEndpointConnection(

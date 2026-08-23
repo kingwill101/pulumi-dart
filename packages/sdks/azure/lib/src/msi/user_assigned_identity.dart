@@ -88,6 +88,25 @@ import 'user_assigned_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   location            = azure_core_resourcegroup.example.location
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +117,8 @@ import 'user_assigned_identity_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.authorization.UserAssignedIdentity;
 /// import com.pulumi.azure.authorization.UserAssignedIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

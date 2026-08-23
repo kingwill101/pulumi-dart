@@ -194,6 +194,50 @@ import 'identity_provider_aadb2c_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "My Company"
+///   publisher_email     = "company@terraform.io"
+///   sku_name            = "Developer_1"
+/// }
+/// resource "azuread_application" "example" {
+///   display_name = "acctestam-example"
+/// }
+/// resource "azuread_applicationpassword" "example" {
+///   application_object_id = azuread_application.example.object_id
+///   end_date_relative     = "36h"
+/// }
+/// resource "azure_apimanagement_identityprovideraadb2c" "example" {
+///   depends_on          = [azuread_applicationpassword.example]
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   api_management_name = azure_apimanagement_service.example.name
+///   client_id           = azuread_application.example.applicationId
+///   client_secret       = "P@55w0rD!"
+///   allowed_tenant      = "myb2ctenant.onmicrosoft.com"
+///   signin_tenant       = "myb2ctenant.onmicrosoft.com"
+///   authority           = "myb2ctenant.b2clogin.com"
+///   signin_policy       = "B2C_1_Login"
+///   signup_policy       = "B2C_1_Signup"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -211,8 +255,8 @@ import 'identity_provider_aadb2c_state.dart';
 /// import com.pulumi.azure.apimanagement.IdentityProviderAadb2c;
 /// import com.pulumi.azure.apimanagement.IdentityProviderAadb2cArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

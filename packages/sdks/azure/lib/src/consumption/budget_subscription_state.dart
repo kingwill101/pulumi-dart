@@ -19,11 +19,11 @@ class BudgetSubscriptionState {
   final pulumi.Input<List<BudgetSubscriptionNotification>>? notifications;
   /// The ID of the Subscription for which to create a Consumption Budget. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The `subscription_id` property can accept a subscription ID e.g. `00000000-0000-0000-0000-000000000000` or the subscription resource ID e.g. `/subscriptions/00000000-0000-0000-0000-000000000000`. In version 3.0 this property will only accept the subscription resource ID.
+  /// &gt; **Note:** The `subscriptionId` property can accept a subscription ID e.g. `00000000-0000-0000-0000-000000000000` or the subscription resource ID e.g. `/subscriptions/00000000-0000-0000-0000-000000000000`. In version 3.0 this property will only accept the subscription resource ID.
   final pulumi.Input<String>? subscriptionId;
   /// The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? timeGrain;
-  /// A `time_period` block as defined below.
+  /// A `timePeriod` block as defined below.
   final pulumi.Input<BudgetSubscriptionTimePeriod>? timePeriod;
 
   /// Creates a new [BudgetSubscriptionState].
@@ -34,7 +34,7 @@ class BudgetSubscriptionState {
   /// [notifications] One or more `notification` blocks as defined below.
   /// [subscriptionId] The ID of the Subscription for which to create a Consumption Budget. Changing this forces a new resource to be created.
   /// [timeGrain] The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
-  /// [timePeriod] A `time_period` block as defined below.
+  /// [timePeriod] A `timePeriod` block as defined below.
   const BudgetSubscriptionState({
     this.amount,
     this.etag,
@@ -72,4 +72,3 @@ class BudgetSubscriptionState {
     );
   }
 }
-

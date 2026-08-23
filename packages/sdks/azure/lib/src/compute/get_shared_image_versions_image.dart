@@ -16,7 +16,7 @@ class GetSharedImageVersionsImage {
   final pulumi.Input<String> name;
   /// A mapping of tags assigned to the Shared Image.
   final pulumi.Input<Map<String, String>> tags;
-  /// One or more `target_region` blocks as documented below.
+  /// One or more `targetRegion` blocks as documented below.
   final pulumi.Input<List<GetSharedImageVersionsImageTargetRegion>> targetRegions;
 
   /// Creates a new [GetSharedImageVersionsImage].
@@ -26,7 +26,7 @@ class GetSharedImageVersionsImage {
   /// [managedImageId] The ID of the Managed Image which was the source of this Shared Image Version.
   /// [name] The Azure Region in which this Image Version exists.
   /// [tags] A mapping of tags assigned to the Shared Image.
-  /// [targetRegions] One or more `target_region` blocks as documented below.
+  /// [targetRegions] One or more `targetRegion` blocks as documented below.
   const GetSharedImageVersionsImage({
     required this.excludeFromLatest,
     required this.id,
@@ -61,4 +61,3 @@ class GetSharedImageVersionsImage {
     );
   }
 }
-

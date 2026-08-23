@@ -13,6 +13,8 @@ class GetWorkspaceResult {
   final String location;
   final String name;
   final String resourceGroupName;
+  /// The access type for the system storage account.
+  final String storageAccountAccessType;
   /// A mapping of tags assigned to the Machine Learning Workspace.
   final Map<String, String> tags;
 
@@ -22,6 +24,7 @@ class GetWorkspaceResult {
   /// [location] The location where the Machine Learning Workspace exists.
   /// [name] Required.
   /// [resourceGroupName] Required.
+  /// [storageAccountAccessType] The access type for the system storage account.
   /// [tags] A mapping of tags assigned to the Machine Learning Workspace.
   const GetWorkspaceResult({
     required this.id,
@@ -29,6 +32,7 @@ class GetWorkspaceResult {
     required this.location,
     required this.name,
     required this.resourceGroupName,
+    required this.storageAccountAccessType,
     required this.tags,
   });
 
@@ -39,6 +43,7 @@ class GetWorkspaceResult {
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
+      'storageAccountAccessType': storageAccountAccessType,
       'tags': tags,
     };
   }
@@ -50,8 +55,8 @@ class GetWorkspaceResult {
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
+      storageAccountAccessType: map['storageAccountAccessType'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

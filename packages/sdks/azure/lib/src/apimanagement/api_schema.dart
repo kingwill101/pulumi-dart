@@ -119,6 +119,34 @@ import 'api_schema_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getapi" "example" {
+///   name                = "search-api"
+///   api_management_name = "search-api-management"
+///   resource_group_name = "search-service"
+///   revision            = "2"
+/// }
+///
+/// resource "azure_apimanagement_apischema" "example" {
+///   api_name            = data.azure_apimanagement_getapi.example.name
+///   api_management_name = data.azure_apimanagement_getapi.example.api_management_name
+///   resource_group_name = data.azure_apimanagement_getapi.example.resource_group_name
+///   schema_id           = "example-schema"
+///   content_type        = "application/vnd.ms-azure-apim.xsd+xml"
+///   value               = file("api_management_api_schema.xml")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,8 +159,8 @@ import 'api_schema_state.dart';
 /// import com.pulumi.azure.apimanagement.ApiSchemaArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

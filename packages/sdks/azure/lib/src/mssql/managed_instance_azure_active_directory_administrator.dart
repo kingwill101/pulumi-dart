@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedInstanceAzureActiveDirectoryAdministrator {
-  /// Specifies whether only Azure AD authentication can be used to log in to this SQL Managed Instance. When `true`, the `administrator_login` and `administrator_login_password` properties can be omitted. Defaults to `false`.
+  /// Specifies whether only Azure AD authentication can be used to log in to this SQL Managed Instance. When `true`, the `administratorLogin` and `administratorLoginPassword` properties can be omitted. Defaults to `false`.
   final pulumi.Input<bool>? azureadAuthenticationOnlyEnabled;
   /// The login username of the Azure AD Administrator of this SQL Managed Instance.
   final pulumi.Input<String> loginUsername;
@@ -15,7 +15,7 @@ class ManagedInstanceAzureActiveDirectoryAdministrator {
   final pulumi.Input<String>? tenantId;
 
   /// Creates a new [ManagedInstanceAzureActiveDirectoryAdministrator].
-  /// [azureadAuthenticationOnlyEnabled] Specifies whether only Azure AD authentication can be used to log in to this SQL Managed Instance. When `true`, the `administrator_login` and `administrator_login_password` properties can be omitted. Defaults to `false`.
+  /// [azureadAuthenticationOnlyEnabled] Specifies whether only Azure AD authentication can be used to log in to this SQL Managed Instance. When `true`, the `administratorLogin` and `administratorLoginPassword` properties can be omitted. Defaults to `false`.
   /// [loginUsername] The login username of the Azure AD Administrator of this SQL Managed Instance.
   /// [objectId] The object id of the Azure AD Administrator of this SQL Managed Instance.
   /// [principalType] The principal type of the Azure AD Administrator of this SQL Managed Instance. Possible values are `Application`, `Group`, `User`.
@@ -48,4 +48,3 @@ class ManagedInstanceAzureActiveDirectoryAdministrator {
     );
   }
 }
-

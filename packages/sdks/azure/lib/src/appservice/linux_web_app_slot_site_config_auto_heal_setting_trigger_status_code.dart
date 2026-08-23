@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxWebAppSlotSiteConfigAutoHealSettingTriggerStatusCode {
-  /// The number of occurrences of the defined `status_code` in the specified `interval` on which to trigger this rule.
+  /// The number of occurrences of the defined `statusCode` in the specified `interval` on which to trigger this rule.
   final pulumi.Input<int> count;
   /// The time interval in the form `hh:mm:ss`.
   final pulumi.Input<String> interval;
@@ -17,7 +17,7 @@ class LinuxWebAppSlotSiteConfigAutoHealSettingTriggerStatusCode {
   final pulumi.Input<int>? win32StatusCode;
 
   /// Creates a new [LinuxWebAppSlotSiteConfigAutoHealSettingTriggerStatusCode].
-  /// [count] The number of occurrences of the defined `status_code` in the specified `interval` on which to trigger this rule.
+  /// [count] The number of occurrences of the defined `statusCode` in the specified `interval` on which to trigger this rule.
   /// [interval] The time interval in the form `hh:mm:ss`.
   /// [path] The path to which this rule status code applies.
   /// [statusCodeRange] The status code for this rule, accepts single status codes and status code ranges. e.g. `500` or `400-499`. Possible values are integers between `101` and `599`
@@ -54,4 +54,3 @@ class LinuxWebAppSlotSiteConfigAutoHealSettingTriggerStatusCode {
     );
   }
 }
-

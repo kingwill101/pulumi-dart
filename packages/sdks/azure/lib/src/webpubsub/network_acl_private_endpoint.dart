@@ -7,7 +7,7 @@ class NetworkAclPrivateEndpoint {
   final pulumi.Input<List<String>>? allowedRequestTypes;
   /// The denied request types for the Private Endpoint Connection. Possible values are `ClientConnection`, `ServerConnection`, `RESTAPI` and `Trace`.
   ///
-  /// &gt; **Note:** When `default_action` is `Allow`, `allowed_request_types`cannot be set. When `default_action` is `Deny`, `denied_request_types`cannot be set.
+  /// &gt; **Note:** When `defaultAction` is `Allow`, `allowedRequestTypes`cannot be set. When `defaultAction` is `Deny`, `deniedRequestTypes`cannot be set.
   final pulumi.Input<List<String>>? deniedRequestTypes;
   /// The ID of the Private Endpoint which is based on the Web Pubsub service.
   final pulumi.Input<String> id;
@@ -38,4 +38,3 @@ class NetworkAclPrivateEndpoint {
     );
   }
 }
-

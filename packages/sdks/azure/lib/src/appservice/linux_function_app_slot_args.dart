@@ -16,9 +16,9 @@ import 'linux_function_app_slot_storage_account.dart';
 class LinuxFunctionAppSlotArgs {
   /// A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
   final pulumi.Input<Map<String, String>>? appSettings;
-  /// an `auth_settings` block as detailed below.
+  /// an `authSettings` block as detailed below.
   final pulumi.Input<LinuxFunctionAppSlotAuthSettings>? authSettings;
-  /// an `auth_settings_v2` block as detailed below.
+  /// an `authSettingsV2` block as detailed below.
   final pulumi.Input<LinuxFunctionAppSlotAuthSettingsV2>? authSettingsV2;
   /// a `backup` block as detailed below.
   final pulumi.Input<LinuxFunctionAppSlotBackup>? backup;
@@ -27,10 +27,12 @@ class LinuxFunctionAppSlotArgs {
   /// Should the Function App Slot use Client Certificates.
   final pulumi.Input<bool>? clientCertificateEnabled;
   /// Paths to exclude when using client certificates, separated by ;
+  ///
+  /// &gt; **Note:** TLS 1.3 and HTTP 2.0 don't support TLS renegotiation. These protocols will not work if your app is configured with client certificate settings that use TLS renegotiation. Either set `clientCertificateEnabled` to `false`, or set `clientCertificateMode` to `Optional` or `Required` and remove all `clientCertificateExclusionPaths`.
   final pulumi.Input<String>? clientCertificateExclusionPaths;
   /// The mode of the Function App Slot's client certificates requirement for incoming requests. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. Defaults to `Optional`.
   final pulumi.Input<String>? clientCertificateMode;
-  /// a `connection_string` block as detailed below.
+  /// a `connectionString` block as detailed below.
   final pulumi.Input<List<LinuxFunctionAppSlotConnectionString>>? connectionStrings;
   /// Force disable the content share settings.
   final pulumi.Input<bool>? contentShareForceDisabled;
@@ -56,23 +58,23 @@ class LinuxFunctionAppSlotArgs {
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
   /// The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Linux Function App will be used.
   final pulumi.Input<String>? servicePlanId;
-  /// a `site_config` block as detailed below.
+  /// a `siteConfig` block as detailed below.
   final pulumi.Input<LinuxFunctionAppSlotSiteConfig> siteConfig;
   /// The access key which will be used to access the storage account for the Function App Slot.
   final pulumi.Input<String>? storageAccountAccessKey;
   /// The backend storage account name which will be used by this Function App Slot.
   final pulumi.Input<String>? storageAccountName;
-  /// One or more `storage_account` blocks as defined below.
+  /// One or more `storageAccount` blocks as defined below.
   final pulumi.Input<List<LinuxFunctionAppSlotStorageAccount>>? storageAccounts;
   /// The Key Vault Secret ID, optionally including version, that contains the Connection String to connect to the storage account for this Function App.
   ///
-  /// &gt; **Note:** `storage_key_vault_secret_id` cannot be used with `storage_account_name`.
+  /// &gt; **Note:** `storageKeyVaultSecretId` cannot be used with `storageAccountName`.
   ///
-  /// &gt; **Note:** `storage_key_vault_secret_id` used without a version will use the latest version of the secret, however, the service can take up to 24h to pick up a rotation of the latest version. See the [official docs](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#rotation) for more information.
+  /// &gt; **Note:** `storageKeyVaultSecretId` used without a version will use the latest version of the secret, however, the service can take up to 24h to pick up a rotation of the latest version. See the [official docs](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#rotation) for more information.
   final pulumi.Input<String>? storageKeyVaultSecretId;
   /// Should the Function App Slot use its Managed Identity to access storage.
   ///
-  /// &gt; **Note:** One of `storage_account_access_key` or `storage_uses_managed_identity` must be specified when using `storage_account_name`.
+  /// &gt; **Note:** One of `storageAccountAccessKey` or `storageUsesManagedIdentity` must be specified when using `storageAccountName`.
   final pulumi.Input<bool>? storageUsesManagedIdentity;
   /// A mapping of tags which should be assigned to the Linux Function App.
   final pulumi.Input<Map<String, String>>? tags;
@@ -80,9 +82,9 @@ class LinuxFunctionAppSlotArgs {
   final pulumi.Input<bool>? virtualNetworkBackupRestoreEnabled;
   /// The subnet id which will be used by this Function App Slot for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   ///
-  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource app_service_virtual_network_swift_connection and in-line within this resource using the `virtual_network_subnet_id` property. You cannot use both methods simultaneously. If the virtual network is set via the resource `app_service_virtual_network_swift_connection` then `ignore_changes` should be used in the function app slot configuration.
+  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource appServiceVirtualNetworkSwiftConnection and in-line within this resource using the `virtualNetworkSubnetId` property. You cannot use both methods simultaneously. If the virtual network is set via the resource `appServiceVirtualNetworkSwiftConnection` then `ignoreChanges` should be used in the function app slot configuration.
   ///
-  /// &gt; **Note:** Assigning the `virtual_network_subnet_id` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
+  /// &gt; **Note:** Assigning the `virtualNetworkSubnetId` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
   final pulumi.Input<String>? virtualNetworkSubnetId;
   /// Specifies whether traffic for the image pull should be routed over virtual network. Defaults to `false`.
   ///
@@ -93,14 +95,14 @@ class LinuxFunctionAppSlotArgs {
 
   /// Creates a new [LinuxFunctionAppSlotArgs].
   /// [appSettings] A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
-  /// [authSettings] an `auth_settings` block as detailed below.
-  /// [authSettingsV2] an `auth_settings_v2` block as detailed below.
+  /// [authSettings] an `authSettings` block as detailed below.
+  /// [authSettingsV2] an `authSettingsV2` block as detailed below.
   /// [backup] a `backup` block as detailed below.
   /// [builtinLoggingEnabled] Should built in logging be enabled. Configures `AzureWebJobsDashboard` app setting based on the configured storage setting. Defaults to `true`.
   /// [clientCertificateEnabled] Should the Function App Slot use Client Certificates.
   /// [clientCertificateExclusionPaths] Paths to exclude when using client certificates, separated by ;
   /// [clientCertificateMode] The mode of the Function App Slot's client certificates requirement for incoming requests. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. Defaults to `Optional`.
-  /// [connectionStrings] a `connection_string` block as detailed below.
+  /// [connectionStrings] a `connectionString` block as detailed below.
   /// [contentShareForceDisabled] Force disable the content share settings.
   /// [dailyMemoryTimeQuota] The amount of memory in gigabyte-seconds that your application is allowed to consume per day. Setting this value only affects function apps in Consumption Plans. Defaults to `0`.
   /// [enabled] Is the Linux Function App Slot enabled. Defaults to `true`.
@@ -113,10 +115,10 @@ class LinuxFunctionAppSlotArgs {
   /// [name] Specifies the name of the Function App Slot. Changing this forces a new resource to be created.
   /// [publicNetworkAccessEnabled] Should public network access be enabled for the Function App. Defaults to `true`.
   /// [servicePlanId] The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Linux Function App will be used.
-  /// [siteConfig] a `site_config` block as detailed below.
+  /// [siteConfig] a `siteConfig` block as detailed below.
   /// [storageAccountAccessKey] The access key which will be used to access the storage account for the Function App Slot.
   /// [storageAccountName] The backend storage account name which will be used by this Function App Slot.
-  /// [storageAccounts] One or more `storage_account` blocks as defined below.
+  /// [storageAccounts] One or more `storageAccount` blocks as defined below.
   /// [storageKeyVaultSecretId] The Key Vault Secret ID, optionally including version, that contains the Connection String to connect to the storage account for this Function App.
   /// [storageUsesManagedIdentity] Should the Function App Slot use its Managed Identity to access storage.
   /// [tags] A mapping of tags which should be assigned to the Linux Function App.
@@ -233,4 +235,3 @@ class LinuxFunctionAppSlotArgs {
     );
   }
 }
-

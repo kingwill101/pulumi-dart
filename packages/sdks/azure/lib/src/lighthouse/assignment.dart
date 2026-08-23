@@ -70,6 +70,23 @@ import 'assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "primary" {
+/// }
+///
+/// resource "azure_lighthouse_assignment" "example" {
+///   scope                    = data.azure_core_getsubscription.primary.id
+///   lighthouse_definition_id = "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ManagedServices/registrationDefinitions/00000000-0000-0000-0000-000000000000"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +97,8 @@ import 'assignment_state.dart';
 /// import com.pulumi.azure.core.inputs.GetSubscriptionArgs;
 /// import com.pulumi.azure.lighthouse.Assignment;
 /// import com.pulumi.azure.lighthouse.AssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

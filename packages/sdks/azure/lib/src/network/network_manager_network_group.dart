@@ -153,6 +153,37 @@ import 'network_manager_network_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-network-manager"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///   }
+///   scope_accesses = ["Connectivity", "SecurityAdmin"]
+///   description    = "example network manager"
+/// }
+/// resource "azure_network_networkmanagernetworkgroup" "example" {
+///   name               = "example-group"
+///   network_manager_id = azure_network_networkmanager.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +199,8 @@ import 'network_manager_network_group_state.dart';
 /// import com.pulumi.azure.network.inputs.NetworkManagerScopeArgs;
 /// import com.pulumi.azure.network.NetworkManagerNetworkGroup;
 /// import com.pulumi.azure.network.NetworkManagerNetworkGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -264,7 +295,7 @@ class NetworkManagerNetworkGroup extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The member type for the network group. Possible values are `Subnet` and `VirtualNetwork`. Defaults to `VirtualNetwork`.
   ///
-  /// &gt; **Note:** `member_type` can be set to `Subnet` only if the parent Network Manager has `Routing` included in its `scope_accesses`.
+  /// &gt; **Note:** `memberType` can be set to `Subnet` only if the parent Network Manager has `Routing` included in its `scopeAccesses`.
   late final pulumi.Output<String?> memberType;
   /// Specifies the name which should be used for this Network Manager Network Group. Changing this forces a new Network Manager Network Group to be created.
   late final pulumi.Output<String> name;

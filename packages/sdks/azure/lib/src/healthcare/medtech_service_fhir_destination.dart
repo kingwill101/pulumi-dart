@@ -29,8 +29,7 @@ import 'medtech_service_fhir_destination_state.dart';
 /// });
 /// const exampleEventHub = new azure.eventhub.EventHub("example", {
 ///     name: "example-eh",
-///     namespaceName: exampleEventHubNamespace.name,
-///     resourceGroupName: example.name,
+///     namespaceId: exampleEventHubNamespace.id,
 ///     partitionCount: 1,
 ///     messageRetention: 1,
 /// });
@@ -112,8 +111,7 @@ import 'medtech_service_fhir_destination_state.dart';
 ///     sku="Standard")
 /// example_event_hub = azure.eventhub.EventHub("example",
 ///     name="example-eh",
-///     namespace_name=example_event_hub_namespace.name,
-///     resource_group_name=example.name,
+///     namespace_id=example_event_hub_namespace.id,
 ///     partition_count=1,
 ///     message_retention=1)
 /// example_consumer_group = azure.eventhub.ConsumerGroup("example",
@@ -205,8 +203,7 @@ import 'medtech_service_fhir_destination_state.dart';
 ///     var exampleEventHub = new Azure.EventHub.EventHub("example", new()
 ///     {
 ///         Name = "example-eh",
-///         NamespaceName = exampleEventHubNamespace.Name,
-///         ResourceGroupName = example.Name,
+///         NamespaceId = exampleEventHubNamespace.Id,
 ///         PartitionCount = 1,
 ///         MessageRetention = 1,
 ///     });
@@ -336,11 +333,10 @@ import 'medtech_service_fhir_destination_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
-/// 			Name:              pulumi.String("example-eh"),
-/// 			NamespaceName:     exampleEventHubNamespace.Name,
-/// 			ResourceGroupName: example.Name,
-/// 			PartitionCount:    pulumi.Int(1),
-/// 			MessageRetention:  pulumi.Int(1),
+/// 			Name:             pulumi.String("example-eh"),
+/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			PartitionCount:   pulumi.Int(1),
+/// 			MessageRetention: pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -432,6 +428,97 @@ import 'medtech_service_fhir_destination_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_healthcare_workspace" "example" {
+///   name                = "exampleworkspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "example" {
+///   name                = "example-ehn"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_eventhub_eventhub" "example" {
+///   name              = "example-eh"
+///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   partition_count   = 1
+///   message_retention = 1
+/// }
+/// resource "azure_eventhub_consumergroup" "example" {
+///   name                = "$default"
+///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
+///   eventhub_name       = azure_eventhub_eventhub.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_healthcare_fhirservice" "example" {
+///   name                = "examplefhir"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   workspace_id        = azure_healthcare_workspace.example.id
+///   kind                = "fhir-R4"
+///   authentication = {
+///     authority = "https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+///     audience  = "https://examplefhir.fhir.azurehealthcareapis.com"
+///   }
+/// }
+/// resource "azure_healthcare_medtechservice" "example" {
+///   name                         = "examplemt"
+///   workspace_id                 = azure_healthcare_workspace.example.id
+///   location                     = azure_core_resourcegroup.example.location
+///   eventhub_namespace_name      = azure_eventhub_eventhubnamespace.example.name
+///   eventhub_name                = azure_eventhub_eventhub.example.name
+///   eventhub_consumer_group_name = azure_eventhub_consumergroup.example.name
+///   device_mapping_json = jsonencode({
+///     "templateType" = "CollectionContent"
+///     "template"     = []
+///   })
+/// }
+/// resource "azure_healthcare_medtechservicefhirdestination" "example" {
+///   name                                 = "examplemtdes"
+///   location                             = "east us"
+///   medtech_service_id                   = azure_healthcare_medtechservice.example.id
+///   destination_fhir_service_id          = azure_healthcare_fhirservice.example.id
+///   destination_identity_resolution_type = "Create"
+///   destination_fhir_mapping_json = jsonencode({
+///     "templateType" = "CollectionFhirTemplate"
+///     "template" = [{
+///       "templateType" = "CodeValueFhir"
+///       "template" = {
+///         "codes" = [{
+///           "code"    = "8867-4"
+///           "system"  = "http://loinc.org"
+///           "display" = "Heart rate"
+///         }]
+///         "periodInterval" = 60
+///         "typeName"       = "heartrate"
+///         "value" = {
+///           "defaultPeriod" = 5000
+///           "unit"          = "count/min"
+///           "valueName"     = "hr"
+///           "valueType"     = "SampledData"
+///         }
+///       }
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -457,8 +544,8 @@ import 'medtech_service_fhir_destination_state.dart';
 /// import com.pulumi.azure.healthcare.MedtechServiceFhirDestination;
 /// import com.pulumi.azure.healthcare.MedtechServiceFhirDestinationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -492,8 +579,7 @@ import 'medtech_service_fhir_destination_state.dart';
 ///
 ///         var exampleEventHub = new EventHub("exampleEventHub", EventHubArgs.builder()
 ///             .name("example-eh")
-///             .namespaceName(exampleEventHubNamespace.name())
-///             .resourceGroupName(example.name())
+///             .namespaceId(exampleEventHubNamespace.id())
 ///             .partitionCount(1)
 ///             .messageRetention(1)
 ///             .build());
@@ -592,8 +678,7 @@ import 'medtech_service_fhir_destination_state.dart';
 ///     name: example
 ///     properties:
 ///       name: example-eh
-///       namespaceName: ${exampleEventHubNamespace.name}
-///       resourceGroupName: ${example.name}
+///       namespaceId: ${exampleEventHubNamespace.id}
 ///       partitionCount: 1
 ///       messageRetention: 1
 ///   exampleConsumerGroup:

@@ -258,6 +258,62 @@ import 'protected_file_share_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tfex-recovery_vault"
+///   location = "West Europe"
+/// }
+/// resource "azure_recoveryservices_vault" "vault" {
+///   name                = "tfex-recovery-vault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_storage_account" "sa" {
+///   name                     = "examplesa"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_share" "example" {
+///   name                 = "example-share"
+///   storage_account_name = azure_storage_account.sa.name
+///   quota                = 1
+/// }
+/// resource "azure_backup_containerstorageaccount" "protection-container" {
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   recovery_vault_name = azure_recoveryservices_vault.vault.name
+///   storage_account_id  = azure_storage_account.sa.id
+/// }
+/// resource "azure_backup_policyfileshare" "example" {
+///   name                = "tfex-recovery-vault-policy"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   recovery_vault_name = azure_recoveryservices_vault.vault.name
+///   backup = {
+///     frequency = "Daily"
+///     time      = "23:00"
+///   }
+///   retention_daily = {
+///     count = 10
+///   }
+/// }
+/// resource "azure_backup_protectedfileshare" "share1" {
+///   resource_group_name       = azure_core_resourcegroup.example.name
+///   recovery_vault_name       = azure_recoveryservices_vault.vault.name
+///   source_storage_account_id = azure_backup_containerstorageaccount.protection-container.storage_account_id
+///   source_file_share_name    = azure_storage_share.example.name
+///   backup_policy_id          = azure_backup_policyfileshare.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -280,8 +336,8 @@ import 'protected_file_share_state.dart';
 /// import com.pulumi.azure.backup.inputs.PolicyFileShareRetentionDailyArgs;
 /// import com.pulumi.azure.backup.ProtectedFileShare;
 /// import com.pulumi.azure.backup.ProtectedFileShareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -427,7 +483,7 @@ class ProtectedFileShare extends pulumi.CustomResource {
   late final pulumi.Output<String> sourceFileShareName;
   /// Specifies the ID of the storage account of the file share to backup. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The storage account must already be registered with the recovery vault in order to backup shares within the account. You can use the `azure.backup.ContainerStorageAccount` resource or the [Register-AzRecoveryServicesBackupContainer PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-3.2.0) to register a storage account with a vault. When using the `azure.backup.ContainerStorageAccount` resource to register, you can use `depends_on` to explicitly declare the dependency. It will make sure that the registration is completed before creating the `azure.backup.ProtectedFileShare` resource.
+  /// &gt; **Note:** The storage account must already be registered with the recovery vault in order to backup shares within the account. You can use the `azure.backup.ContainerStorageAccount` resource or the [Register-AzRecoveryServicesBackupContainer PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-3.2.0) to register a storage account with a vault. When using the `azure.backup.ContainerStorageAccount` resource to register, you can use `dependsOn` to explicitly declare the dependency. It will make sure that the registration is completed before creating the `azure.backup.ProtectedFileShare` resource.
   late final pulumi.Output<String> sourceStorageAccountId;
 
   /// Creates a new [ProtectedFileShare].

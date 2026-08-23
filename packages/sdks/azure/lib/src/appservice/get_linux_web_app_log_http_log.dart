@@ -5,14 +5,14 @@ import 'get_linux_web_app_log_http_log_azure_blob_storage.dart';
 import 'get_linux_web_app_log_http_log_file_system.dart';
 
 class GetLinuxWebAppLogHttpLog {
-  /// A `azure_blob_storage` block as defined above.
+  /// A `azureBlobStorage` block as defined above.
   final pulumi.Input<List<GetLinuxWebAppLogHttpLogAzureBlobStorage>> azureBlobStorages;
-  /// A `file_system` block as defined above.
+  /// A `fileSystem` block as defined above.
   final pulumi.Input<List<GetLinuxWebAppLogHttpLogFileSystem>> fileSystems;
 
   /// Creates a new [GetLinuxWebAppLogHttpLog].
-  /// [azureBlobStorages] A `azure_blob_storage` block as defined above.
-  /// [fileSystems] A `file_system` block as defined above.
+  /// [azureBlobStorages] A `azureBlobStorage` block as defined above.
+  /// [fileSystems] A `fileSystem` block as defined above.
   const GetLinuxWebAppLogHttpLog({
     required this.azureBlobStorages,
     required this.fileSystems,
@@ -32,4 +32,3 @@ class GetLinuxWebAppLogHttpLog {
     );
   }
 }
-

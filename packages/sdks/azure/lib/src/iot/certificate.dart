@@ -150,6 +150,39 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_iot_iothub" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku = {
+///     name     = "B1"
+///     capacity = "1"
+///   }
+/// }
+/// resource "azure_iot_certificate" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   iothub_name         = azure_iot_iothub.example.name
+///   is_verified         = true
+///   certificate_content = filebase64("example.cer")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -165,8 +198,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.azure.iot.CertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

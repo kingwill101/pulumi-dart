@@ -11,7 +11,7 @@ class MongoUserDefinitionArgs {
   final pulumi.Input<String> cosmosMongoDatabaseId;
   /// A list of Mongo Roles that are inherited to the Mongo User Definition.
   ///
-  /// &gt; **Note:** The role that needs to be inherited should exist in the Mongo DB of `cosmos_mongo_database_id`.
+  /// &gt; **Note:** The role that needs to be inherited should exist in the Mongo DB of `cosmosMongoDatabaseId`.
   final pulumi.Input<List<String>>? inheritedRoleNames;
   /// The password for the Mongo User Definition.
   final pulumi.Input<String> password;
@@ -48,4 +48,3 @@ class MongoUserDefinitionArgs {
     );
   }
 }
-

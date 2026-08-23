@@ -23,7 +23,7 @@ class LinkedServiceAzureFileStorageState {
   final pulumi.Input<String>? host;
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   final pulumi.Input<String>? integrationRuntimeName;
-  /// A `key_vault_password` block as defined below. Use this argument to store Azure File Storage password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
+  /// A `keyVaultPassword` block as defined below. Use this argument to store Azure File Storage password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
   final pulumi.Input<LinkedServiceAzureFileStorageKeyVaultPassword>? keyVaultPassword;
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
@@ -43,7 +43,7 @@ class LinkedServiceAzureFileStorageState {
   /// [fileShare] The name of the file share.
   /// [host] The Host name of the server.
   /// [integrationRuntimeName] The integration runtime reference to associate with the Data Factory Linked Service.
-  /// [keyVaultPassword] A `key_vault_password` block as defined below. Use this argument to store Azure File Storage password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
+  /// [keyVaultPassword] A `keyVaultPassword` block as defined below. Use this argument to store Azure File Storage password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
   /// [name] Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
   /// [password] The password to log in the server.
@@ -100,4 +100,3 @@ class LinkedServiceAzureFileStorageState {
     );
   }
 }
-

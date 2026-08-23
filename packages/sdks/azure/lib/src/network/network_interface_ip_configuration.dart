@@ -7,7 +7,7 @@ class NetworkInterfaceIpConfiguration {
   final pulumi.Input<String>? gatewayLoadBalancerFrontendIpConfigurationId;
   /// A name used for this IP Configuration.
   final pulumi.Input<String> name;
-  /// Is this the Primary IP Configuration? Must be `true` for the first `ip_configuration` when multiple are specified. Defaults to `false`.
+  /// Is this the Primary IP Configuration? Must be `true` for the first `ipConfiguration` when multiple are specified. Defaults to `false`.
   final pulumi.Input<bool>? primary;
   /// The first private IP address of the network interface.
   final pulumi.Input<String>? privateIpAddress;
@@ -21,13 +21,13 @@ class NetworkInterfaceIpConfiguration {
   final pulumi.Input<String>? publicIpAddressId;
   /// The ID of the Subnet where this Network Interface should be located in.
   ///
-  /// &gt; **Note:** This is required when `private_ip_address_version` is set to `IPv4`.
+  /// &gt; **Note:** This is required when `privateIpAddressVersion` is set to `IPv4`.
   final pulumi.Input<String>? subnetId;
 
   /// Creates a new [NetworkInterfaceIpConfiguration].
   /// [gatewayLoadBalancerFrontendIpConfigurationId] The Frontend IP Configuration ID of a Gateway SKU Load Balancer.
   /// [name] A name used for this IP Configuration.
-  /// [primary] Is this the Primary IP Configuration? Must be `true` for the first `ip_configuration` when multiple are specified. Defaults to `false`.
+  /// [primary] Is this the Primary IP Configuration? Must be `true` for the first `ipConfiguration` when multiple are specified. Defaults to `false`.
   /// [privateIpAddress] The first private IP address of the network interface.
   /// [privateIpAddressAllocation] The allocation method used for the Private IP Address. Possible values are `Dynamic` and `Static`.
   /// [privateIpAddressVersion] The IP Version to use. Possible values are `IPv4` or `IPv6`. Defaults to `IPv4`.
@@ -70,4 +70,3 @@ class NetworkInterfaceIpConfiguration {
     );
   }
 }
-

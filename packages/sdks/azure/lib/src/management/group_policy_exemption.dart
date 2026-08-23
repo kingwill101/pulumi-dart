@@ -139,6 +139,38 @@ import 'group_policy_exemption_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_policy_getpolicysetdefinition" "example" {
+///   display_name = "Audit machines with insecure password security settings"
+/// }
+///
+/// resource "azure_management_group" "example" {
+///   display_name = "Example MgmtGroup"
+/// }
+/// resource "azure_management_grouppolicyassignment" "example" {
+///   name                 = "assignment1"
+///   management_group_id  = azure_management_group.example.id
+///   policy_definition_id = data.azure_policy_getpolicysetdefinition.example.id
+///   location             = "westus"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_management_grouppolicyexemption" "example" {
+///   name                 = "exemption1"
+///   management_group_id  = azure_management_group.example.id
+///   policy_assignment_id = azure_management_grouppolicyassignment.example.id
+///   exemption_category   = "Mitigated"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +186,8 @@ import 'group_policy_exemption_state.dart';
 /// import com.pulumi.azure.management.inputs.GroupPolicyAssignmentIdentityArgs;
 /// import com.pulumi.azure.management.GroupPolicyExemption;
 /// import com.pulumi.azure.management.GroupPolicyExemptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

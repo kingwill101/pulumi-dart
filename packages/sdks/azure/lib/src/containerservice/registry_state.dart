@@ -22,9 +22,9 @@ class RegistryState {
   final pulumi.Input<List<String>>? dataEndpointHostNames;
   /// An `encryption` block as documented below.
   final pulumi.Input<RegistryEncryption>? encryption;
-  /// Boolean value that indicates whether export policy is enabled. Defaults to `true`. In order to set it to `false`, make sure the `public_network_access_enabled` is also set to `false`.
+  /// Boolean value that indicates whether export policy is enabled. Defaults to `true`. In order to set it to `false`, make sure the `publicNetworkAccessEnabled` is also set to `false`.
   ///
-  /// &gt; **Note:** `quarantine_policy_enabled`, `retention_policy_in_days`, `trust_policy_enabled`, `export_policy_enabled` and `zone_redundancy_enabled` are only supported on resources with the `Premium` SKU.
+  /// &gt; **Note:** `quarantinePolicyEnabled`, `retentionPolicyInDays`, `trustPolicyEnabled`, `exportPolicyEnabled` and `zoneRedundancyEnabled` are only supported on resources with the `Premium` SKU.
   final pulumi.Input<bool>? exportPolicyEnabled;
   /// One or more `georeplications` blocks as documented below.
   ///
@@ -44,7 +44,7 @@ class RegistryState {
   final pulumi.Input<String>? name;
   /// Whether to allow trusted Azure services to access a network-restricted Container Registry? Possible values are `None` and `AzureServices`. Defaults to `AzureServices`.
   final pulumi.Input<String>? networkRuleBypassOption;
-  /// A `network_rule_set` block as documented below.
+  /// A `networkRuleSet` block as documented below.
   final pulumi.Input<RegistryNetworkRuleSet>? networkRuleSet;
   /// Whether public network access is allowed for the container registry. Defaults to `true`.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
@@ -71,14 +71,14 @@ class RegistryState {
   /// [dataEndpointEnabled] Whether to enable dedicated data endpoints for this Container Registry? This is only supported on resources with the `Premium` SKU.
   /// [dataEndpointHostNames] A set of data endpoint hostnames associated with the container registry if data endpoints are enabled.
   /// [encryption] An `encryption` block as documented below.
-  /// [exportPolicyEnabled] Boolean value that indicates whether export policy is enabled. Defaults to `true`. In order to set it to `false`, make sure the `public_network_access_enabled` is also set to `false`.
+  /// [exportPolicyEnabled] Boolean value that indicates whether export policy is enabled. Defaults to `true`. In order to set it to `false`, make sure the `publicNetworkAccessEnabled` is also set to `false`.
   /// [georeplications] One or more `georeplications` blocks as documented below.
   /// [identity] An `identity` block as defined below.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [loginServer] The URL that can be used to log into the container registry.
   /// [name] Specifies the name of the Container Registry. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
   /// [networkRuleBypassOption] Whether to allow trusted Azure services to access a network-restricted Container Registry? Possible values are `None` and `AzureServices`. Defaults to `AzureServices`.
-  /// [networkRuleSet] A `network_rule_set` block as documented below.
+  /// [networkRuleSet] A `networkRuleSet` block as documented below.
   /// [publicNetworkAccessEnabled] Whether public network access is allowed for the container registry. Defaults to `true`.
   /// [quarantinePolicyEnabled] Boolean value that indicates whether quarantine policy is enabled.
   /// [resourceGroupName] The name of the resource group in which to create the Container Registry. Changing this forces a new resource to be created.
@@ -169,4 +169,3 @@ class RegistryState {
     );
   }
 }
-

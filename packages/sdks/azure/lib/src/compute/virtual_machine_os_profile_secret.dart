@@ -6,12 +6,12 @@ import 'virtual_machine_os_profile_secret_vault_certificate.dart';
 class VirtualMachineOsProfileSecret {
   /// Specifies the ID of the Key Vault to use.
   final pulumi.Input<String> sourceVaultId;
-  /// One or more `vault_certificates` blocks as defined below.
+  /// One or more `vaultCertificates` blocks as defined below.
   final pulumi.Input<List<VirtualMachineOsProfileSecretVaultCertificate>>? vaultCertificates;
 
   /// Creates a new [VirtualMachineOsProfileSecret].
   /// [sourceVaultId] Specifies the ID of the Key Vault to use.
-  /// [vaultCertificates] One or more `vault_certificates` blocks as defined below.
+  /// [vaultCertificates] One or more `vaultCertificates` blocks as defined below.
   const VirtualMachineOsProfileSecret({
     required this.sourceVaultId,
     this.vaultCertificates,
@@ -31,4 +31,3 @@ class VirtualMachineOsProfileSecret {
     );
   }
 }
-

@@ -30,4 +30,3 @@ class GetLinuxWebAppAuthSettingsV2TwitterV2 {
     );
   }
 }
-

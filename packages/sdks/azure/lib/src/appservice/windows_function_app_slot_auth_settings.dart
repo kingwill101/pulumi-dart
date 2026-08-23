@@ -9,7 +9,7 @@ import 'windows_function_app_slot_auth_settings_microsoft.dart';
 import 'windows_function_app_slot_auth_settings_twitter.dart';
 
 class WindowsFunctionAppSlotAuthSettings {
-  /// an `active_directory` block as detailed below.
+  /// an `activeDirectory` block as detailed below.
   final pulumi.Input<WindowsFunctionAppSlotAuthSettingsActiveDirectory>? activeDirectory;
   /// Specifies a map of login Parameters to send to the OpenID Connect authorization endpoint when a user logs in.
   final pulumi.Input<Map<String, String>>? additionalLoginParameters;
@@ -17,7 +17,7 @@ class WindowsFunctionAppSlotAuthSettings {
   final pulumi.Input<List<String>>? allowedExternalRedirectUrls;
   /// The default authentication provider to use when multiple providers are configured. Possible values include: `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount`, `Twitter`, `Github`.
   ///
-  /// &gt; **Note:** This setting is only needed if multiple providers are configured, and the `unauthenticated_client_action` is set to "RedirectToLoginPage".
+  /// &gt; **Note:** This setting is only needed if multiple providers are configured, and the `unauthenticatedClientAction` is set to "RedirectToLoginPage".
   final pulumi.Input<String>? defaultProvider;
   /// Should the Authentication / Authorization feature be enabled?
   final pulumi.Input<bool> enabled;
@@ -45,7 +45,7 @@ class WindowsFunctionAppSlotAuthSettings {
   final pulumi.Input<String>? unauthenticatedClientAction;
 
   /// Creates a new [WindowsFunctionAppSlotAuthSettings].
-  /// [activeDirectory] an `active_directory` block as detailed below.
+  /// [activeDirectory] an `activeDirectory` block as detailed below.
   /// [additionalLoginParameters] Specifies a map of login Parameters to send to the OpenID Connect authorization endpoint when a user logs in.
   /// [allowedExternalRedirectUrls] Specifies a list of External URLs that can be redirected to as part of logging in or logging out of the Windows Web App.
   /// [defaultProvider] The default authentication provider to use when multiple providers are configured. Possible values include: `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount`, `Twitter`, `Github`.
@@ -118,4 +118,3 @@ class WindowsFunctionAppSlotAuthSettings {
     );
   }
 }
-

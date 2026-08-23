@@ -8,7 +8,7 @@ class FirewallPolicyCustomRule {
   final pulumi.Input<String> action;
   /// Is the rule is enabled or disabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-  /// One or more `match_condition` block defined below. Can support up to `10` `match_condition` blocks.
+  /// One or more `matchCondition` block defined below. Can support up to `10` `matchCondition` blocks.
   final pulumi.Input<List<FirewallPolicyCustomRuleMatchCondition>>? matchConditions;
   /// Gets name of the resource that is unique within a policy. This name can be used to access the resource.
   final pulumi.Input<String> name;
@@ -24,7 +24,7 @@ class FirewallPolicyCustomRule {
   /// Creates a new [FirewallPolicyCustomRule].
   /// [action] The action to perform when the rule is matched. Possible values are `Allow`, `Block`, `Log`, or `Redirect`.
   /// [enabled] Is the rule is enabled or disabled? Defaults to `true`.
-  /// [matchConditions] One or more `match_condition` block defined below. Can support up to `10` `match_condition` blocks.
+  /// [matchConditions] One or more `matchCondition` block defined below. Can support up to `10` `matchCondition` blocks.
   /// [name] Gets name of the resource that is unique within a policy. This name can be used to access the resource.
   /// [priority] The priority of the rule. Rules with a lower value will be evaluated before rules with a higher value. Defaults to `1`.
   /// [rateLimitDurationInMinutes] The rate limit duration in minutes. Defaults to `1`.
@@ -67,4 +67,3 @@ class FirewallPolicyCustomRule {
     );
   }
 }
-

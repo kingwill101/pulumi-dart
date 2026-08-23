@@ -9,9 +9,9 @@ class HciLogicalNetworkSubnet {
   final pulumi.Input<String>? addressPrefix;
   /// The IP address allocation method for the subnet. Possible values are `Dynamic` and `Static`. Changing this forces a new resource to be created.
   final pulumi.Input<String> ipAllocationMethod;
-  /// One or more `ip_pool` block as defined above. Changing this forces a new resource to be created.
+  /// One or more `ipPool` block as defined above. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** If `ip_pool` is not specified, it will be assigned by the server. If you experience a diff you may need to add this to `ignore_changes`.
+  /// &gt; **Note:** If `ipPool` is not specified, it will be assigned by the server. If you experience a diff you may need to add this to `ignoreChanges`.
   final pulumi.Input<List<HciLogicalNetworkSubnetIpPool>>? ipPools;
   /// A `route` block as defined above. Changing this forces a new resource to be created.
   final pulumi.Input<List<HciLogicalNetworkSubnetRoute>>? routes;
@@ -21,7 +21,7 @@ class HciLogicalNetworkSubnet {
   /// Creates a new [HciLogicalNetworkSubnet].
   /// [addressPrefix] The address prefix in CIDR notation. Changing this forces a new resource to be created.
   /// [ipAllocationMethod] The IP address allocation method for the subnet. Possible values are `Dynamic` and `Static`. Changing this forces a new resource to be created.
-  /// [ipPools] One or more `ip_pool` block as defined above. Changing this forces a new resource to be created.
+  /// [ipPools] One or more `ipPool` block as defined above. Changing this forces a new resource to be created.
   /// [routes] A `route` block as defined above. Changing this forces a new resource to be created.
   /// [vlanId] The VLAN ID for the Logical Network. Changing this forces a new resource to be created.
   const HciLogicalNetworkSubnet({
@@ -52,4 +52,3 @@ class HciLogicalNetworkSubnet {
     );
   }
 }
-

@@ -288,6 +288,63 @@ import 'network_manager_deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-network-manager"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///   }
+///   scope_accesses = ["Connectivity", "SecurityAdmin"]
+///   description    = "example network manager"
+/// }
+/// resource "azure_network_networkmanagernetworkgroup" "example" {
+///   name               = "example-group"
+///   network_manager_id = azure_network_networkmanager.example.id
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                    = "example-net"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   address_spaces          = ["10.0.0.0/16"]
+///   flow_timeout_in_minutes = 10
+/// }
+/// resource "azure_network_networkmanagerconnectivityconfiguration" "example" {
+///   name                  = "example-connectivity-conf"
+///   network_manager_id    = azure_network_networkmanager.example.id
+///   connectivity_topology = "HubAndSpoke"
+///   applies_to_groups {
+///     group_connectivity = "None"
+///     network_group_id   = azure_network_networkmanagernetworkgroup.example.id
+///   }
+///   hub = {
+///     resource_id   = azure_network_virtualnetwork.example.id
+///     resource_type = "Microsoft.Network/virtualNetworks"
+///   }
+/// }
+/// resource "azure_network_networkmanagerdeployment" "example" {
+///   network_manager_id = azure_network_networkmanager.example.id
+///   location           = "eastus"
+///   scope_access       = "Connectivity"
+///   configuration_ids  = [azure_network_networkmanagerconnectivityconfiguration.example.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -311,8 +368,8 @@ import 'network_manager_deployment_state.dart';
 /// import com.pulumi.azure.network.inputs.NetworkManagerConnectivityConfigurationHubArgs;
 /// import com.pulumi.azure.network.NetworkManagerDeployment;
 /// import com.pulumi.azure.network.NetworkManagerDeploymentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -521,10 +578,10 @@ import 'network_manager_deployment_state.dart';
 ///     scopeAccess: "SecurityAdmin",
 ///     configurationIds: [exampleNetworkManagerSecurityAdminConfiguration.id],
 ///     triggers: {
-///         source_port_ranges: exampleNetworkManagerAdminRule.sourcePortRanges.apply(sourcePortRanges => std.joinOutput({
+///         source_port_ranges: std.joinOutput({
 ///             separator: ",",
-///             input: sourcePortRanges,
-///         })).apply(invoke => invoke.result),
+///             input: exampleNetworkManagerAdminRule.sourcePortRanges,
+///         }).apply(invoke => invoke.result),
 ///     },
 /// }, {
 ///     dependsOn: [exampleNetworkManagerAdminRule],
@@ -591,8 +648,8 @@ import 'network_manager_deployment_state.dart';
 ///     scope_access="SecurityAdmin",
 ///     configuration_ids=[example_network_manager_security_admin_configuration.id],
 ///     triggers={
-///         "source_port_ranges": example_network_manager_admin_rule.source_port_ranges.apply(lambda source_port_ranges: std.join_output(separator=",",
-///             input=source_port_ranges)).apply(lambda invoke: invoke.result),
+///         "source_port_ranges": std.join_output(separator=",",
+///             input=example_network_manager_admin_rule.source_port_ranges).apply(lambda invoke: invoke.result),
 ///     },
 ///     opts = pulumi.ResourceOptions(depends_on=[example_network_manager_admin_rule]))
 /// ```
@@ -713,11 +770,11 @@ import 'network_manager_deployment_state.dart';
 ///         },
 ///         Triggers =
 ///         {
-///             { "source_port_ranges", exampleNetworkManagerAdminRule.SourcePortRanges.Apply(sourcePortRanges => Std.Join.Invoke(new()
+///             { "source_port_ranges", Std.Join.Invoke(new()
 ///             {
 ///                 Separator = ",",
-///                 Input = sourcePortRanges,
-///             })).Apply(invoke => invoke.Result) },
+///                 Input = exampleNetworkManagerAdminRule.SourcePortRanges,
+///             }).Apply(invoke => invoke.Result) },
 ///         },
 ///     }, new CustomResourceOptions
 ///     {
@@ -738,132 +795,207 @@ import 'network_manager_deployment_state.dart';
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// example, err := core.NewResourceGroup(ctx, "example", &core.ResourceGroupArgs{
-/// Name: pulumi.String("example-resources"),
-/// Location: pulumi.String("West Europe"),
-/// })
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := core.NewResourceGroup(ctx, "example", &core.ResourceGroupArgs{
+/// 			Name:     pulumi.String("example-resources"),
+/// 			Location: pulumi.String("West Europe"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		current, err := core.LookupSubscription(ctx, &core.LookupSubscriptionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleNetworkManager, err := network.NewNetworkManager(ctx, "example", &network.NetworkManagerArgs{
+/// 			Name:              pulumi.String("example-network-manager"),
+/// 			Location:          example.Location,
+/// 			ResourceGroupName: example.Name,
+/// 			Scope: &network.NetworkManagerScopeArgs{
+/// 				SubscriptionIds: pulumi.StringArray{
+/// 					pulumi.String(current.Id),
+/// 				},
+/// 			},
+/// 			ScopeAccesses: pulumi.StringArray{
+/// 				pulumi.String("Connectivity"),
+/// 				pulumi.String("SecurityAdmin"),
+/// 			},
+/// 			Description: pulumi.String("example network manager"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleNetworkManagerNetworkGroup, err := network.NewNetworkManagerNetworkGroup(ctx, "example", &network.NetworkManagerNetworkGroupArgs{
+/// 			Name:             pulumi.String("example-group"),
+/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = network.NewVirtualNetwork(ctx, "example", &network.VirtualNetworkArgs{
+/// 			Name:              pulumi.String("example-net"),
+/// 			Location:          example.Location,
+/// 			ResourceGroupName: example.Name,
+/// 			AddressSpaces: pulumi.StringArray{
+/// 				pulumi.String("10.0.0.0/16"),
+/// 			},
+/// 			FlowTimeoutInMinutes: pulumi.Int(10),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleNetworkManagerSecurityAdminConfiguration, err := network.NewNetworkManagerSecurityAdminConfiguration(ctx, "example", &network.NetworkManagerSecurityAdminConfigurationArgs{
+/// 			Name:             pulumi.String("example-nmsac"),
+/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleNetworkManagerAdminRuleCollection, err := network.NewNetworkManagerAdminRuleCollection(ctx, "example", &network.NetworkManagerAdminRuleCollectionArgs{
+/// 			Name:                         pulumi.String("example-nmarc"),
+/// 			SecurityAdminConfigurationId: exampleNetworkManagerSecurityAdminConfiguration.ID(),
+/// 			NetworkGroupIds: pulumi.StringArray{
+/// 				exampleNetworkManagerNetworkGroup.ID(),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleNetworkManagerAdminRule, err := network.NewNetworkManagerAdminRule(ctx, "example", &network.NetworkManagerAdminRuleArgs{
+/// 			Name:                  pulumi.String("example-nmar"),
+/// 			AdminRuleCollectionId: exampleNetworkManagerAdminRuleCollection.ID(),
+/// 			Action:                pulumi.String("Deny"),
+/// 			Description:           pulumi.String("example"),
+/// 			Direction:             pulumi.String("Inbound"),
+/// 			Priority:              pulumi.Int(1),
+/// 			Protocol:              pulumi.String("Tcp"),
+/// 			SourcePortRanges: pulumi.StringArray{
+/// 				pulumi.String("80"),
+/// 			},
+/// 			DestinationPortRanges: pulumi.StringArray{
+/// 				pulumi.String("80"),
+/// 			},
+/// 			Sources: network.NetworkManagerAdminRuleSourceArray{
+/// 				&network.NetworkManagerAdminRuleSourceArgs{
+/// 					AddressPrefixType: pulumi.String("ServiceTag"),
+/// 					AddressPrefix:     pulumi.String("Internet"),
+/// 				},
+/// 			},
+/// 			Destinations: network.NetworkManagerAdminRuleDestinationArray{
+/// 				&network.NetworkManagerAdminRuleDestinationArgs{
+/// 					AddressPrefixType: pulumi.String("IPPrefix"),
+/// 					AddressPrefix:     pulumi.String("*"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = network.NewNetworkManagerDeployment(ctx, "example", &network.NetworkManagerDeploymentArgs{
+/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			Location:         pulumi.String("eastus"),
+/// 			ScopeAccess:      pulumi.String("SecurityAdmin"),
+/// 			ConfigurationIds: pulumi.StringArray{
+/// 				exampleNetworkManagerSecurityAdminConfiguration.ID(),
+/// 			},
+/// 			Triggers: pulumi.StringMap{
+/// 				"source_port_ranges": pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+/// 					Separator: pulumi.String(","),
+/// 					Input:     exampleNetworkManagerAdminRule.SourcePortRanges,
+/// 				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
+/// 					val := invoke.Result
+/// 					return &val, nil
+/// 				}).(pulumi.StringPtrOutput)),
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			exampleNetworkManagerAdminRule,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// current, err := core.LookupSubscription(ctx, &core.LookupSubscriptionArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
 /// }
-/// exampleNetworkManager, err := network.NewNetworkManager(ctx, "example", &network.NetworkManagerArgs{
-/// Name: pulumi.String("example-network-manager"),
-/// Location: example.Location,
-/// ResourceGroupName: example.Name,
-/// Scope: &network.NetworkManagerScopeArgs{
-/// SubscriptionIds: pulumi.StringArray{
-/// pulumi.String(current.Id),
-/// },
-/// },
-/// ScopeAccesses: pulumi.StringArray{
-/// pulumi.String("Connectivity"),
-/// pulumi.String("SecurityAdmin"),
-/// },
-/// Description: pulumi.String("example network manager"),
-/// })
-/// if err != nil {
-/// return err
+///
+/// data "azure_core_getsubscription" "current" {
 /// }
-/// exampleNetworkManagerNetworkGroup, err := network.NewNetworkManagerNetworkGroup(ctx, "example", &network.NetworkManagerNetworkGroupArgs{
-/// Name: pulumi.String("example-group"),
-/// NetworkManagerId: exampleNetworkManager.ID(),
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
 /// }
-/// _, err = network.NewVirtualNetwork(ctx, "example", &network.VirtualNetworkArgs{
-/// Name: pulumi.String("example-net"),
-/// Location: example.Location,
-/// ResourceGroupName: example.Name,
-/// AddressSpaces: pulumi.StringArray{
-/// pulumi.String("10.0.0.0/16"),
-/// },
-/// FlowTimeoutInMinutes: pulumi.Int(10),
-/// })
-/// if err != nil {
-/// return err
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-network-manager"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///   }
+///   scope_accesses = ["Connectivity", "SecurityAdmin"]
+///   description    = "example network manager"
 /// }
-/// exampleNetworkManagerSecurityAdminConfiguration, err := network.NewNetworkManagerSecurityAdminConfiguration(ctx, "example", &network.NetworkManagerSecurityAdminConfigurationArgs{
-/// Name: pulumi.String("example-nmsac"),
-/// NetworkManagerId: exampleNetworkManager.ID(),
-/// })
-/// if err != nil {
-/// return err
+/// resource "azure_network_networkmanagernetworkgroup" "example" {
+///   name               = "example-group"
+///   network_manager_id = azure_network_networkmanager.example.id
 /// }
-/// exampleNetworkManagerAdminRuleCollection, err := network.NewNetworkManagerAdminRuleCollection(ctx, "example", &network.NetworkManagerAdminRuleCollectionArgs{
-/// Name: pulumi.String("example-nmarc"),
-/// SecurityAdminConfigurationId: exampleNetworkManagerSecurityAdminConfiguration.ID(),
-/// NetworkGroupIds: pulumi.StringArray{
-/// exampleNetworkManagerNetworkGroup.ID(),
-/// },
-/// })
-/// if err != nil {
-/// return err
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                    = "example-net"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   address_spaces          = ["10.0.0.0/16"]
+///   flow_timeout_in_minutes = 10
 /// }
-/// exampleNetworkManagerAdminRule, err := network.NewNetworkManagerAdminRule(ctx, "example", &network.NetworkManagerAdminRuleArgs{
-/// Name: pulumi.String("example-nmar"),
-/// AdminRuleCollectionId: exampleNetworkManagerAdminRuleCollection.ID(),
-/// Action: pulumi.String("Deny"),
-/// Description: pulumi.String("example"),
-/// Direction: pulumi.String("Inbound"),
-/// Priority: pulumi.Int(1),
-/// Protocol: pulumi.String("Tcp"),
-/// SourcePortRanges: pulumi.StringArray{
-/// pulumi.String("80"),
-/// },
-/// DestinationPortRanges: pulumi.StringArray{
-/// pulumi.String("80"),
-/// },
-/// Sources: network.NetworkManagerAdminRuleSourceArray{
-/// &network.NetworkManagerAdminRuleSourceArgs{
-/// AddressPrefixType: pulumi.String("ServiceTag"),
-/// AddressPrefix: pulumi.String("Internet"),
-/// },
-/// },
-/// Destinations: network.NetworkManagerAdminRuleDestinationArray{
-/// &network.NetworkManagerAdminRuleDestinationArgs{
-/// AddressPrefixType: pulumi.String("IPPrefix"),
-/// AddressPrefix: pulumi.String("*"),
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
+/// resource "azure_network_networkmanagersecurityadminconfiguration" "example" {
+///   name               = "example-nmsac"
+///   network_manager_id = azure_network_networkmanager.example.id
 /// }
-/// invokeJoin, err := std.Join(ctx, &std.JoinArgs{
-/// Separator: ",",
-/// Input: sourcePortRanges,
-/// }, nil)
-/// if err != nil {
-/// return err
+/// resource "azure_network_networkmanageradminrulecollection" "example" {
+///   name                            = "example-nmarc"
+///   security_admin_configuration_id = azure_network_networkmanagersecurityadminconfiguration.example.id
+///   network_group_ids               = [azure_network_networkmanagernetworkgroup.example.id]
 /// }
-/// _, err = network.NewNetworkManagerDeployment(ctx, "example", &network.NetworkManagerDeploymentArgs{
-/// NetworkManagerId: exampleNetworkManager.ID(),
-/// Location: pulumi.String("eastus"),
-/// ScopeAccess: pulumi.String("SecurityAdmin"),
-/// ConfigurationIds: pulumi.StringArray{
-/// exampleNetworkManagerSecurityAdminConfiguration.ID(),
-/// },
-/// Triggers: pulumi.StringMap{
-/// "source_port_ranges": pulumi.String(exampleNetworkManagerAdminRule.SourcePortRanges.ApplyT(func(sourcePortRanges interface{}) (std.JoinResult, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.JoinResultOutput).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// return invoke.Result, nil
-/// }).(pulumi.StringPtrOutput)),
-/// },
-/// }, pulumi.DependsOn([]pulumi.Resource{
-/// exampleNetworkManagerAdminRule,
-/// }))
-/// if err != nil {
-/// return err
+/// resource "azure_network_networkmanageradminrule" "example" {
+///   name                     = "example-nmar"
+///   admin_rule_collection_id = azure_network_networkmanageradminrulecollection.example.id
+///   action                   = "Deny"
+///   description              = "example"
+///   direction                = "Inbound"
+///   priority                 = 1
+///   protocol                 = "Tcp"
+///   source_port_ranges       = ["80"]
+///   destination_port_ranges  = ["80"]
+///   sources {
+///     address_prefix_type = "ServiceTag"
+///     address_prefix      = "Internet"
+///   }
+///   destinations {
+///     address_prefix_type = "IPPrefix"
+///     address_prefix      = "*"
+///   }
 /// }
-/// return nil
-/// })
+/// resource "azure_network_networkmanagerdeployment" "example" {
+///   depends_on         = [azure_network_networkmanageradminrule.example]
+///   network_manager_id = azure_network_networkmanager.example.id
+///   location           = "eastus"
+///   scope_access       = "SecurityAdmin"
+///   configuration_ids  = [azure_network_networkmanagersecurityadminconfiguration.example.id]
+///   triggers = {
+///     "source_port_ranges" = join(",", azure_network_networkmanageradminrule.example.source_port_ranges)
+///   }
 /// }
 /// ```
 /// ```java
@@ -896,8 +1028,8 @@ import 'network_manager_deployment_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JoinArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -979,10 +1111,10 @@ import 'network_manager_deployment_state.dart';
 ///             .location("eastus")
 ///             .scopeAccess("SecurityAdmin")
 ///             .configurationIds(exampleNetworkManagerSecurityAdminConfiguration.id())
-///             .triggers(Map.of("source_port_ranges", exampleNetworkManagerAdminRule.sourcePortRanges().applyValue(_sourcePortRanges -> StdFunctions.join(JoinArgs.builder()
+///             .triggers(Map.of("source_port_ranges", StdFunctions.join(JoinArgs.builder()
 ///                 .separator(",")
-///                 .input(_sourcePortRanges)
-///                 .build())).applyValue(_invoke -> _invoke.result())))
+///                 .input(exampleNetworkManagerAdminRule.sourcePortRanges())
+///                 .build()).applyValue(_invoke -> _invoke.result())))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleNetworkManagerAdminRule)
 ///                 .build());
@@ -1105,7 +1237,7 @@ import 'network_manager_deployment_state.dart';
 /// $ pulumi import azure:network/networkManagerDeployment:NetworkManagerDeployment example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1/providers/Microsoft.Network/networkManagers/networkManager1/commit|eastus|Connectivity
 /// ```
 class NetworkManagerDeployment extends pulumi.CustomResource {
-  /// A list of Network Manager Configuration IDs which should be aligned with `scope_access`.
+  /// A list of Network Manager Configuration IDs which should be aligned with `scopeAccess`.
   late final pulumi.Output<List<String>> configurationIds;
   /// Specifies the location which the configurations will be deployed to. Changing this forces a new Network Manager Deployment to be created.
   late final pulumi.Output<String> location;

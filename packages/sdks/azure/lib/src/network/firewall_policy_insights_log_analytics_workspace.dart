@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallPolicyInsightsLogAnalyticsWorkspace {
   /// The location of the Firewalls, that when matches this Log Analytics Workspace will be used to consume their logs.
   final pulumi.Input<String> firewallLocation;
-  /// The ID of the Log Analytics Workspace that the Firewalls associated with this Firewall Policy will send their logs to when their locations match the `firewall_location`.
+  /// The ID of the Log Analytics Workspace that the Firewalls associated with this Firewall Policy will send their logs to when their locations match the `firewallLocation`.
   final pulumi.Input<String> id;
 
   /// Creates a new [FirewallPolicyInsightsLogAnalyticsWorkspace].
   /// [firewallLocation] The location of the Firewalls, that when matches this Log Analytics Workspace will be used to consume their logs.
-  /// [id] The ID of the Log Analytics Workspace that the Firewalls associated with this Firewall Policy will send their logs to when their locations match the `firewall_location`.
+  /// [id] The ID of the Log Analytics Workspace that the Firewalls associated with this Firewall Policy will send their logs to when their locations match the `firewallLocation`.
   const FirewallPolicyInsightsLogAnalyticsWorkspace({
     required this.firewallLocation,
     required this.id,
@@ -30,4 +30,3 @@ class FirewallPolicyInsightsLogAnalyticsWorkspace {
     );
   }
 }
-

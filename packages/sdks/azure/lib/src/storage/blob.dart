@@ -29,8 +29,7 @@ import 'blob_state.dart';
 /// });
 /// const exampleBlob = new azure.storage.Blob("example", {
 ///     name: "my-awesome-content.zip",
-///     storageAccountName: exampleAccount.name,
-///     storageContainerName: exampleContainer.name,
+///     storageContainerId: exampleContainer.id,
 ///     type: "Block",
 ///     source: new pulumi.asset.FileAsset("some-local-file.zip"),
 /// });
@@ -54,8 +53,7 @@ import 'blob_state.dart';
 ///     container_access_type="private")
 /// example_blob = azure.storage.Blob("example",
 ///     name="my-awesome-content.zip",
-///     storage_account_name=example_account.name,
-///     storage_container_name=example_container.name,
+///     storage_container_id=example_container.id,
 ///     type="Block",
 ///     source=pulumi.FileAsset("some-local-file.zip"))
 /// ```
@@ -92,8 +90,7 @@ import 'blob_state.dart';
 ///     var exampleBlob = new Azure.Storage.Blob("example", new()
 ///     {
 ///         Name = "my-awesome-content.zip",
-///         StorageAccountName = exampleAccount.Name,
-///         StorageContainerName = exampleContainer.Name,
+///         StorageContainerId = exampleContainer.Id,
 ///         Type = "Block",
 ///         Source = new FileAsset("some-local-file.zip"),
 ///     });
@@ -137,17 +134,48 @@ import 'blob_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = storage.NewBlob(ctx, "example", &storage.BlobArgs{
-/// 			Name:                 pulumi.String("my-awesome-content.zip"),
-/// 			StorageAccountName:   exampleAccount.Name,
-/// 			StorageContainerName: exampleContainer.Name,
-/// 			Type:                 pulumi.String("Block"),
-/// 			Source:               pulumi.NewFileAsset("some-local-file.zip"),
+/// 			Name:               pulumi.String("my-awesome-content.zip"),
+/// 			StorageContainerId: exampleContainer.ID(),
+/// 			Type:               pulumi.String("Block"),
+/// 			Source:             pulumi.NewFileAsset("some-local-file.zip"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestoracc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "content"
+///   storage_account_id    = azure_storage_account.example.id
+///   container_access_type = "private"
+/// }
+/// resource "azure_storage_blob" "example" {
+///   name                 = "my-awesome-content.zip"
+///   storage_container_id = azure_storage_container.example.id
+///   type                 = "Block"
+///   source               = fileAsset("some-local-file.zip")
 /// }
 /// ```
 /// ```java
@@ -165,8 +193,8 @@ import 'blob_state.dart';
 /// import com.pulumi.azure.storage.Blob;
 /// import com.pulumi.azure.storage.BlobArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -199,8 +227,7 @@ import 'blob_state.dart';
 ///
 ///         var exampleBlob = new Blob("exampleBlob", BlobArgs.builder()
 ///             .name("my-awesome-content.zip")
-///             .storageAccountName(exampleAccount.name())
-///             .storageContainerName(exampleContainer.name())
+///             .storageContainerId(exampleContainer.id())
 ///             .type("Block")
 ///             .source(new FileAsset("some-local-file.zip"))
 ///             .build());
@@ -236,11 +263,10 @@ import 'blob_state.dart';
 ///     name: example
 ///     properties:
 ///       name: my-awesome-content.zip
-///       storageAccountName: ${exampleAccount.name}
-///       storageContainerName: ${exampleContainer.name}
+///       storageContainerId: ${exampleContainer.id}
 ///       type: Block
 ///       source:
-///         fn::FileAsset: some-local-file.zip
+///         fn::fileAsset: some-local-file.zip
 /// ```
 ///
 ///
@@ -256,9 +282,9 @@ class Blob extends pulumi.CustomResource {
   late final pulumi.Output<String> accessTier;
   /// Controls the [cache control header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) content of the response when blob is requested .
   late final pulumi.Output<String?> cacheControl;
-  /// The MD5 sum of the blob contents. Cannot be defined if `source_uri` is defined, or if blob type is Append or Page. Changing this forces a new resource to be created.
+  /// The MD5 sum of the blob contents. Cannot be defined if `sourceUri` is defined, or if blob type is Append or Page. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> contentMd5;
-  /// The content type of the storage blob. Cannot be defined if `source_uri` is defined. Defaults to `application/octet-stream`.
+  /// The content type of the storage blob. Cannot be defined if `sourceUri` is defined. Defaults to `application/octet-stream`.
   late final pulumi.Output<String?> contentType;
   /// The encryption scope to use for this blob.
   late final pulumi.Output<String?> encryptionScope;
@@ -272,17 +298,23 @@ class Blob extends pulumi.CustomResource {
   late final pulumi.Output<int?> parallelism;
   /// Used only for `page` blobs to specify the size in bytes of the blob to be created. Must be a multiple of 512. Defaults to `0`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `size` is required if `source_uri` is not set.
+  /// &gt; **Note:** `size` is required if `sourceUri` is not set.
   late final pulumi.Output<int?> size;
-  /// An absolute path to a file on the local system. This field cannot be specified for Append blobs and cannot be specified if `source_content` or `source_uri` is specified. Changing this forces a new resource to be created.
+  /// An absolute path to a file on the local system. This field cannot be specified for Append blobs and cannot be specified if `sourceContent` or `sourceUri` is specified. Changing this forces a new resource to be created.
   late final pulumi.Output<dynamic> source;
-  /// The content for this blob which should be defined inline. This field can only be specified for Block blobs and cannot be specified if `source` or `source_uri` is specified. Changing this forces a new resource to be created.
+  /// The content for this blob which should be defined inline. This field can only be specified for Block blobs and cannot be specified if `source` or `sourceUri` is specified. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sourceContent;
-  /// The URI of an existing blob, or a file in the Azure File service, to use as the source contents for the blob to be created. Changing this forces a new resource to be created. This field cannot be specified for Append blobs and cannot be specified if `source` or `source_content` is specified.
+  /// The URI of an existing blob, or a file in the Azure File service, to use as the source contents for the blob to be created. Changing this forces a new resource to be created. This field cannot be specified for Append blobs and cannot be specified if `source` or `sourceContent` is specified.
   late final pulumi.Output<String?> sourceUri;
   /// Specifies the storage account in which to create the storage container. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** This property is deprecated in favour of `storageContainerId` and will be removed in version 5.0 of the AzureRM Provider.
   late final pulumi.Output<String> storageAccountName;
+  /// The ID of the storage container in which this blob should be created. Changing this forces a new resource to be created.
+  late final pulumi.Output<String> storageContainerId;
   /// The name of the storage container in which this blob should be created. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** This property is deprecated in favour of `storageContainerId` and will be removed in version 5.0 of the AzureRM Provider.
   late final pulumi.Output<String> storageContainerName;
   /// The type of the storage blob to be created. Possible values are `Append`, `Block` or `Page`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> type;
@@ -316,6 +348,7 @@ class Blob extends pulumi.CustomResource {
     sourceContent = registerOutput<String?>('sourceContent');
     sourceUri = registerOutput<String?>('sourceUri');
     storageAccountName = registerOutput<String>('storageAccountName');
+    storageContainerId = registerOutput<String>('storageContainerId');
     storageContainerName = registerOutput<String>('storageContainerName');
     type = registerOutput<String>('type');
     url = registerOutput<String>('url');
@@ -357,6 +390,7 @@ class Blob extends pulumi.CustomResource {
     sourceContent = registerOutput<String?>('sourceContent');
     sourceUri = registerOutput<String?>('sourceUri');
     storageAccountName = registerOutput<String>('storageAccountName');
+    storageContainerId = registerOutput<String>('storageContainerId');
     storageContainerName = registerOutput<String>('storageContainerName');
     type = registerOutput<String>('type');
     url = registerOutput<String>('url');

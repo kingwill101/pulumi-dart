@@ -9,7 +9,7 @@ class GetCertificateResult {
   final String certificateData;
   /// The raw Key Vault Certificate data represented as a base64 string.
   final String certificateDataBase64;
-  /// A `certificate_policy` block as defined below.
+  /// A `certificatePolicy` block as defined below.
   final List<GetCertificateCertificatePolicy> certificatePolicies;
   /// Expiry date of certificate in RFC3339 format.
   final String expires;
@@ -40,7 +40,7 @@ class GetCertificateResult {
   /// Creates a new [GetCertificateResult].
   /// [certificateData] The raw Key Vault Certificate data represented as a hexadecimal string.
   /// [certificateDataBase64] The raw Key Vault Certificate data represented as a base64 string.
-  /// [certificatePolicies] A `certificate_policy` block as defined below.
+  /// [certificatePolicies] A `certificatePolicy` block as defined below.
   /// [expires] Expiry date of certificate in RFC3339 format.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [keyVaultId] Required.
@@ -115,4 +115,3 @@ class GetCertificateResult {
     );
   }
 }
-

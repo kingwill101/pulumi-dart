@@ -38,7 +38,7 @@ import 'scale_set_packet_capture_storage_location.dart';
 ///     name: "example-vmss",
 ///     resourceGroupName: example.name,
 ///     location: example.location,
-///     sku: "Standard_F2",
+///     sku: "Standard_D4_v5",
 ///     instances: 4,
 ///     adminUsername: "adminuser",
 ///     adminPassword: "P@ssword1234!",
@@ -114,7 +114,7 @@ import 'scale_set_packet_capture_storage_location.dart';
 ///     name="example-vmss",
 ///     resource_group_name=example.name,
 ///     location=example.location,
-///     sku="Standard_F2",
+///     sku="Standard_D4_v5",
 ///     instances=4,
 ///     admin_username="adminuser",
 ///     admin_password="P@ssword1234!",
@@ -209,7 +209,7 @@ import 'scale_set_packet_capture_storage_location.dart';
 ///         Name = "example-vmss",
 ///         ResourceGroupName = example.Name,
 ///         Location = example.Location,
-///         Sku = "Standard_F2",
+///         Sku = "Standard_D4_v5",
 ///         Instances = 4,
 ///         AdminUsername = "adminuser",
 ///         AdminPassword = "P@ssword1234!",
@@ -341,7 +341,7 @@ import 'scale_set_packet_capture_storage_location.dart';
 /// 			Name:                          pulumi.String("example-vmss"),
 /// 			ResourceGroupName:             example.Name,
 /// 			Location:                      example.Location,
-/// 			Sku:                           pulumi.String("Standard_F2"),
+/// 			Sku:                           pulumi.String("Standard_D4_v5"),
 /// 			Instances:                     pulumi.Int(4),
 /// 			AdminUsername:                 pulumi.String("adminuser"),
 /// 			AdminPassword:                 pulumi.String("P@ssword1234!"),
@@ -412,6 +412,90 @@ import 'scale_set_packet_capture_storage_location.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkwatcher" "example" {
+///   name                = "example-nw"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vn"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "internal"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_compute_linuxvirtualmachinescaleset" "example" {
+///   name                            = "example-vmss"
+///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resourcegroup.example.location
+///   sku                             = "Standard_D4_v5"
+///   instances                       = 4
+///   admin_username                  = "adminuser"
+///   admin_password                  = "P@ssword1234!"
+///   computer_name_prefix            = "my-linux-computer-name-prefix"
+///   upgrade_mode                    = "Automatic"
+///   disable_password_authentication = false
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+///   os_disk = {
+///     storage_account_type = "Standard_LRS"
+///     caching              = "ReadWrite"
+///   }
+///   network_interfaces {
+///     name    = "example"
+///     primary = true
+///     ip_configurations {
+///       name      = "internal"
+///       primary   = true
+///       subnet_id = azure_network_subnet.example.id
+///     }
+///   }
+/// }
+/// resource "azure_compute_virtualmachinescalesetextension" "example" {
+///   name                         = "network-watcher"
+///   virtual_machine_scale_set_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///   publisher                    = "Microsoft.Azure.NetworkWatcher"
+///   type                         = "NetworkWatcherAgentLinux"
+///   type_handler_version         = "1.4"
+///   auto_upgrade_minor_version   = true
+///   automatic_upgrade_enabled    = true
+/// }
+/// resource "azure_compute_scalesetpacketcapture" "example" {
+///   depends_on                   = [azure_compute_virtualmachinescalesetextension.example]
+///   name                         = "example-pc"
+///   network_watcher_id           = azure_network_networkwatcher.example.id
+///   virtual_machine_scale_set_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///   storage_location = {
+///     file_path = "/var/captures/packet.cap"
+///   }
+///   machine_scope = {
+///     include_instance_ids = ["0"]
+///     exclude_instance_ids = ["1"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -431,6 +515,7 @@ import 'scale_set_packet_capture_storage_location.dart';
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetSourceImageReferenceArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetOsDiskArgs;
 /// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetNetworkInterfaceArgs;
+/// import com.pulumi.azure.compute.inputs.LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs;
 /// import com.pulumi.azure.compute.VirtualMachineScaleSetExtension;
 /// import com.pulumi.azure.compute.VirtualMachineScaleSetExtensionArgs;
 /// import com.pulumi.azure.compute.ScaleSetPacketCapture;
@@ -438,8 +523,8 @@ import 'scale_set_packet_capture_storage_location.dart';
 /// import com.pulumi.azure.compute.inputs.ScaleSetPacketCaptureStorageLocationArgs;
 /// import com.pulumi.azure.compute.inputs.ScaleSetPacketCaptureMachineScopeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -480,7 +565,7 @@ import 'scale_set_packet_capture_storage_location.dart';
 ///             .name("example-vmss")
 ///             .resourceGroupName(example.name())
 ///             .location(example.location())
-///             .sku("Standard_F2")
+///             .sku("Standard_D4_v5")
 ///             .instances(4)
 ///             .adminUsername("adminuser")
 ///             .adminPassword("P@ssword1234!")
@@ -575,7 +660,7 @@ import 'scale_set_packet_capture_storage_location.dart';
 ///       name: example-vmss
 ///       resourceGroupName: ${example.name}
 ///       location: ${example.location}
-///       sku: Standard_F2
+///       sku: Standard_D4_v5
 ///       instances: 4
 ///       adminUsername: adminuser
 ///       adminPassword: P@ssword1234!
@@ -647,7 +732,7 @@ import 'scale_set_packet_capture_storage_location.dart';
 class ScaleSetPacketCapture extends pulumi.CustomResource {
   /// One or more `filter` blocks as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> filters;
-  /// A `machine_scope` block as defined below. Changing this forces a new resource to be created.
+  /// A `machineScope` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ScaleSetPacketCaptureMachineScope?> machineScope;
   /// The number of bytes captured per packet. The remaining bytes are truncated. Defaults to `0` (Entire Packet Captured). Changing this forces a new resource to be created.
   late final pulumi.Output<int?> maximumBytesPerPacket;
@@ -659,7 +744,7 @@ class ScaleSetPacketCapture extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The resource ID of the Network Watcher. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkWatcherId;
-  /// A `storage_location` block as defined below. Changing this forces a new resource to be created.
+  /// A `storageLocation` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ScaleSetPacketCaptureStorageLocation> storageLocation;
   /// The resource ID of the Virtual Machine Scale Set to capture packets from. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineScaleSetId;

@@ -19,7 +19,7 @@ class ScriptArgs {
   final pulumi.Input<String>? principalPermissionsAction;
   /// The SAS token used to access the script. Must be provided when using scriptUrl property. Changing this forces a new resource to be created.
   final pulumi.Input<String>? sasToken;
-  /// The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with `url` and `sas_token` properties. Changing this forces a new resource to be created.
+  /// The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with `url` and `sasToken` properties. Changing this forces a new resource to be created.
   final pulumi.Input<String>? scriptContent;
   /// The type of script commands. Possible values are `Database` or `Cluster`. Defaults to `Database`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? scriptLevel;
@@ -33,7 +33,7 @@ class ScriptArgs {
   /// [name] The name which should be used for this Kusto Script. Changing this forces a new Kusto Script to be created.
   /// [principalPermissionsAction] Whether the script caller’s permissions remain in effect after the script has finished running? Possible values are `RemovePermissionOnScriptCompletion` and `RetainPermissionOnScriptCompletion`.
   /// [sasToken] The SAS token used to access the script. Must be provided when using scriptUrl property. Changing this forces a new resource to be created.
-  /// [scriptContent] The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with `url` and `sas_token` properties. Changing this forces a new resource to be created.
+  /// [scriptContent] The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with `url` and `sasToken` properties. Changing this forces a new resource to be created.
   /// [scriptLevel] The type of script commands. Possible values are `Database` or `Cluster`. Defaults to `Database`. Changing this forces a new resource to be created.
   /// [url] The url to the KQL script blob file. Must not be used together with scriptContent property. Please reference [this documentation](https://docs.microsoft.com/azure/data-explorer/database-script) that describes the commands that are allowed in the script.
   const ScriptArgs({
@@ -76,4 +76,3 @@ class ScriptArgs {
     );
   }
 }
-

@@ -155,6 +155,40 @@ import 'topic_authorization_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tfex-servicebus"
+///   location = "West Europe"
+/// }
+/// resource "azure_servicebus_namespace" "example" {
+///   name                = "tfex-servicebus-namespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+///   tags = {
+///     "source" = "example"
+///   }
+/// }
+/// resource "azure_servicebus_topic" "example" {
+///   name         = "tfex_servicebus_topic"
+///   namespace_id = azure_servicebus_namespace.example.id
+/// }
+/// resource "azure_servicebus_topicauthorizationrule" "example" {
+///   name     = "tfex_servicebus_topic_sasPolicy"
+///   topic_id = azure_servicebus_topic.example.id
+///   listen   = true
+///   send     = false
+///   manage   = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +203,8 @@ import 'topic_authorization_rule_state.dart';
 /// import com.pulumi.azure.servicebus.TopicArgs;
 /// import com.pulumi.azure.servicebus.TopicAuthorizationRule;
 /// import com.pulumi.azure.servicebus.TopicAuthorizationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

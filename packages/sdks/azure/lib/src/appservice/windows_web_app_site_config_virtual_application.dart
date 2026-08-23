@@ -8,7 +8,7 @@ class WindowsWebAppSiteConfigVirtualApplication {
   final pulumi.Input<String> physicalPath;
   /// Should pre-loading be enabled.
   final pulumi.Input<bool> preload;
-  /// One or more `virtual_directory` blocks as defined below.
+  /// One or more `virtualDirectory` blocks as defined below.
   final pulumi.Input<List<WindowsWebAppSiteConfigVirtualApplicationVirtualDirectory>>? virtualDirectories;
   /// The Virtual Path for the Virtual Application.
   final pulumi.Input<String> virtualPath;
@@ -16,7 +16,7 @@ class WindowsWebAppSiteConfigVirtualApplication {
   /// Creates a new [WindowsWebAppSiteConfigVirtualApplication].
   /// [physicalPath] The physical path for the Virtual Application.
   /// [preload] Should pre-loading be enabled.
-  /// [virtualDirectories] One or more `virtual_directory` blocks as defined below.
+  /// [virtualDirectories] One or more `virtualDirectory` blocks as defined below.
   /// [virtualPath] The Virtual Path for the Virtual Application.
   const WindowsWebAppSiteConfigVirtualApplication({
     required this.physicalPath,
@@ -43,4 +43,3 @@ class WindowsWebAppSiteConfigVirtualApplication {
     );
   }
 }
-

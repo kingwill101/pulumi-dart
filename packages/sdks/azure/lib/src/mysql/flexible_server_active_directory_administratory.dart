@@ -189,6 +189,48 @@ import 'flexible_server_active_directory_administratory_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_mysql_flexibleserver" "example" {
+///   name                   = "example-mysqlfs"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resourcegroup.example.location
+///   administrator_login    = "_admin_Terraform_892123456789312"
+///   administrator_password = "QAZwsx123"
+///   sku_name               = "B_Standard_B1ms"
+///   zone                   = "2"
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "exampleUAI"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_mysql_flexibleserveractivedirectoryadministratory" "example" {
+///   server_id   = azure_mysql_flexibleserver.example.id
+///   identity_id = azure_authorization_userassignedidentity.example.id
+///   login       = "sqladmin"
+///   object_id   = data.azure_core_getclientconfig.current.client_id
+///   tenant_id   = data.azure_core_getclientconfig.current.tenant_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -205,8 +247,8 @@ import 'flexible_server_active_directory_administratory_state.dart';
 /// import com.pulumi.azure.mysql.inputs.FlexibleServerIdentityArgs;
 /// import com.pulumi.azure.mysql.FlexibleServerActiveDirectoryAdministratory;
 /// import com.pulumi.azure.mysql.FlexibleServerActiveDirectoryAdministratoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

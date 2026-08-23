@@ -156,6 +156,40 @@ import 'cluster_extension_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_arckubernetes_cluster" "example" {
+///   name                         = "example-akcc"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = "West Europe"
+///   agent_public_key_certificate = filebase64("testdata/public.cer")
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "ENV" = "Test"
+///   }
+/// }
+/// resource "azure_arckubernetes_clusterextension" "example" {
+///   name           = "example-ext"
+///   cluster_id     = azure_arckubernetes_cluster.example.id
+///   extension_type = "microsoft.flux"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,8 +205,8 @@ import 'cluster_extension_state.dart';
 /// import com.pulumi.std.inputs.Filebase64Args;
 /// import com.pulumi.azure.arckubernetes.ClusterExtension;
 /// import com.pulumi.azure.arckubernetes.ClusterExtensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -254,7 +288,7 @@ import 'cluster_extension_state.dart';
 ///
 /// ## Import
 ///
-/// Arc Kubernetes Cluster Extension can be imported using the `resource id` for different `cluster_resource_name`, e.g.
+/// Arc Kubernetes Cluster Extension can be imported using the `resource id` for different `clusterResourceName`, e.g.
 ///
 /// ```sh
 /// $ pulumi import azure:arckubernetes/clusterExtension:ClusterExtension example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1/providers/Microsoft.Kubernetes/connectedClusters/cluster1/providers/Microsoft.KubernetesConfiguration/extensions/extension1

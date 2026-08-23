@@ -44,4 +44,3 @@ class DataLakeGen2FilesystemAce {
     );
   }
 }
-

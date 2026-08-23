@@ -77,6 +77,24 @@ import 'directory_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_aadb2c_directory" "example" {
+///   country_code            = "US"
+///   data_residency_location = "United States"
+///   display_name            = "example-b2c-tenant"
+///   domain_name             = "exampleb2ctenant.onmicrosoft.com"
+///   resource_group_name     = "example-rg"
+///   sku_name                = "PremiumP1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +103,8 @@ import 'directory_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.aadb2c.Directory;
 /// import com.pulumi.azure.aadb2c.DirectoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -141,9 +159,9 @@ import 'directory_state.dart';
 class Directory extends pulumi.CustomResource {
   /// The type of billing for the AAD B2C tenant. Possible values include: `MAU` or `Auths`.
   late final pulumi.Output<String> billingType;
-  /// Country code of the B2C tenant. The `country_code` should be valid for the specified `data_residency_location`. See [official docs](https://aka.ms/B2CDataResidency) for valid country codes. Required when creating a new resource. Changing this forces a new AAD B2C Directory to be created.
+  /// Country code of the B2C tenant. The `countryCode` should be valid for the specified `dataResidencyLocation`. See [official docs](https://aka.ms/B2CDataResidency) for valid country codes. Required when creating a new resource. Changing this forces a new AAD B2C Directory to be created.
   late final pulumi.Output<String> countryCode;
-  /// Location in which the B2C tenant is hosted and data resides. The `data_residency_location` should be valid for the specified `country_code`. See [official docs](https://aka.ms/B2CDataResidenc) for more information. Changing this forces a new AAD B2C Directory to be created. Possible values are `Asia Pacific`, `Australia`, `Europe`, `Global` and `United States`.
+  /// Location in which the B2C tenant is hosted and data resides. The `dataResidencyLocation` should be valid for the specified `countryCode`. See [official docs](https://aka.ms/B2CDataResidenc) for more information. Changing this forces a new AAD B2C Directory to be created. Possible values are `Asia Pacific`, `Australia`, `Europe`, `Global` and `United States`.
   late final pulumi.Output<String> dataResidencyLocation;
   /// The initial display name of the B2C tenant. Required when creating a new resource. Changing this forces a new AAD B2C Directory to be created.
   late final pulumi.Output<String> displayName;

@@ -10,14 +10,14 @@ class EndpointPrivateDnsZoneConfig {
   final pulumi.Input<String>? name;
   /// The ID of the Private DNS Zone that the config belongs to.
   final pulumi.Input<String>? privateDnsZoneId;
-  /// A `record_sets` block as defined below.
+  /// A `recordSets` block as defined below.
   final pulumi.Input<List<EndpointPrivateDnsZoneConfigRecordSet>>? recordSets;
 
   /// Creates a new [EndpointPrivateDnsZoneConfig].
   /// [id] The ID of the Private DNS Zone Config.
   /// [name] Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
   /// [privateDnsZoneId] The ID of the Private DNS Zone that the config belongs to.
-  /// [recordSets] A `record_sets` block as defined below.
+  /// [recordSets] A `recordSets` block as defined below.
   const EndpointPrivateDnsZoneConfig({
     this.id,
     this.name,
@@ -43,4 +43,3 @@ class EndpointPrivateDnsZoneConfig {
     );
   }
 }
-

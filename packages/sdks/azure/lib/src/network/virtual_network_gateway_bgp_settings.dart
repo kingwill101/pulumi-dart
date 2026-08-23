@@ -8,13 +8,13 @@ class VirtualNetworkGatewayBgpSettings {
   final pulumi.Input<int>? asn;
   /// The weight added to routes which have been learned through BGP peering. Valid values can be between `0` and `100`.
   final pulumi.Input<int>? peerWeight;
-  /// A list of `peering_addresses` blocks as defined below. Only one `peering_addresses` block can be specified except when `active_active` of this Virtual Network Gateway is `true`.
+  /// A list of `peeringAddresses` blocks as defined below. Only one `peeringAddresses` block can be specified except when `activeActive` of this Virtual Network Gateway is `true`.
   final pulumi.Input<List<VirtualNetworkGatewayBgpSettingsPeeringAddress>>? peeringAddresses;
 
   /// Creates a new [VirtualNetworkGatewayBgpSettings].
   /// [asn] The Autonomous System Number (ASN) to use as part of the BGP.
   /// [peerWeight] The weight added to routes which have been learned through BGP peering. Valid values can be between `0` and `100`.
-  /// [peeringAddresses] A list of `peering_addresses` blocks as defined below. Only one `peering_addresses` block can be specified except when `active_active` of this Virtual Network Gateway is `true`.
+  /// [peeringAddresses] A list of `peeringAddresses` blocks as defined below. Only one `peeringAddresses` block can be specified except when `activeActive` of this Virtual Network Gateway is `true`.
   const VirtualNetworkGatewayBgpSettings({
     this.asn,
     this.peerWeight,
@@ -37,4 +37,3 @@ class VirtualNetworkGatewayBgpSettings {
     );
   }
 }
-

@@ -11,7 +11,7 @@ class EmailServiceDomainArgs {
   final pulumi.Input<String> domainManagement;
   /// The resource ID of the Email Communication Service where the Domain belongs to. Changing this forces a new Email Communication Service to be created.
   final pulumi.Input<String> emailServiceId;
-  /// The name of the Email Communication Service resource. If `domain_management` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
+  /// The name of the Email Communication Service resource. If `domainManagement` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
   final pulumi.Input<String>? name;
   /// A mapping of tags which should be assigned to the Email Communication Service.
   final pulumi.Input<Map<String, String>>? tags;
@@ -21,7 +21,7 @@ class EmailServiceDomainArgs {
   /// Creates a new [EmailServiceDomainArgs].
   /// [domainManagement] Describes how a Domains resource is being managed. Possible values are `AzureManaged`, `CustomerManaged`, `CustomerManagedInExchangeOnline`. Changing this forces a new Email Communication Service to be created.
   /// [emailServiceId] The resource ID of the Email Communication Service where the Domain belongs to. Changing this forces a new Email Communication Service to be created.
-  /// [name] The name of the Email Communication Service resource. If `domain_management` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
+  /// [name] The name of the Email Communication Service resource. If `domainManagement` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
   /// [tags] A mapping of tags which should be assigned to the Email Communication Service.
   /// [userEngagementTrackingEnabled] Describes user engagement tracking is enabled or disabled. Defaults to `false`.
   const EmailServiceDomainArgs({
@@ -52,4 +52,3 @@ class EmailServiceDomainArgs {
     );
   }
 }
-

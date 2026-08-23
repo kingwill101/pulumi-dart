@@ -86,6 +86,25 @@ import 'email_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_communication_emailservice" "example" {
+///   name                = "example-emailcommunicationservice"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   data_location       = "United States"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +115,8 @@ import 'email_service_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.communication.EmailService;
 /// import com.pulumi.azure.communication.EmailServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

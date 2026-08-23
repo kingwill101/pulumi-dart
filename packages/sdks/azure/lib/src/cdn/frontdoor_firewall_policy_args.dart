@@ -12,29 +12,29 @@ import 'frontdoor_firewall_policy_managed_rule.dart';
 class FrontdoorFirewallPolicyArgs {
   /// Specifies the Captcha cookie lifetime in minutes. Possible values are between `5` and `1440`. Defaults to`30` minutes.
   ///
-  /// &gt; **Note:** The `captcha_cookie_expiration_in_minutes` field can only be set on `Premium_AzureFrontDoor` sku's. Please see the [Product Documentation](https://learn.microsoft.com/azure/web-application-firewall/afds/captcha-challenge) for more information.
+  /// &gt; **Note:** The `captchaCookieExpirationInMinutes` field can only be set on `Premium_AzureFrontDoor` sku's. Please see the [Product Documentation](https://learn.microsoft.com/azure/web-application-firewall/afds/captcha-challenge) for more information.
   ///
-  /// &gt; **Note:** When you remove the `captcha_cookie_expiration_in_minutes` field from your configuration, the value will revert to the default of `30` minutes in the Terraform state. This is because Azure manages this setting and Terraform will reflect the actual Azure configuration, which defaults to `30` minutes when not explicitly specified.
+  /// &gt; **Note:** When you remove the `captchaCookieExpirationInMinutes` field from your configuration, the value will revert to the default of `30` minutes in the Terraform state. This is because Azure manages this setting and Terraform will reflect the actual Azure configuration, which defaults to `30` minutes when not explicitly specified.
   final pulumi.Input<int>? captchaCookieExpirationInMinutes;
-  /// If a `custom_rule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
+  /// If a `customRule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
   final pulumi.Input<String>? customBlockResponseBody;
-  /// If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
+  /// If a `customRule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, `429`, `990`, `991`, `992`, `993`, `994`, `995`, `996`, `997`, `998`, or `999`.
   final pulumi.Input<int>? customBlockResponseStatusCode;
-  /// One or more `custom_rule` blocks as defined below.
+  /// One or more `customRule` blocks as defined below.
   final pulumi.Input<List<FrontdoorFirewallPolicyCustomRule>>? customRules;
   /// Is the Front Door Firewall Policy enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
   /// Specifies the JavaScript challenge cookie lifetime in minutes, after which the user will be revalidated. Possible values are between `5` to `1440` minutes. Defaults to `30` minutes.
   ///
-  /// &gt; **Note:** The `js_challenge_cookie_expiration_in_minutes` field can only be set on `Premium_AzureFrontDoor` sku's. Please see the [Product Documentation](https://learn.microsoft.com/azure/web-application-firewall/waf-javascript-challenge) for more information.
+  /// &gt; **Note:** The `jsChallengeCookieExpirationInMinutes` field can only be set on `Premium_AzureFrontDoor` sku's. Please see the [Product Documentation](https://learn.microsoft.com/azure/web-application-firewall/waf-javascript-challenge) for more information.
   ///
-  /// &gt; **Note:** When you remove the `js_challenge_cookie_expiration_in_minutes` field from your configuration, the value will revert to the default of `30` minutes in the Terraform state. This is because Azure manages this setting and Terraform will reflect the actual Azure configuration, which defaults to `30` minutes when not explicitly specified.
+  /// &gt; **Note:** When you remove the `jsChallengeCookieExpirationInMinutes` field from your configuration, the value will revert to the default of `30` minutes in the Terraform state. This is because Azure manages this setting and Terraform will reflect the actual Azure configuration, which defaults to `30` minutes when not explicitly specified.
   final pulumi.Input<int>? jsChallengeCookieExpirationInMinutes;
-  /// A `log_scrubbing` block as defined below.
+  /// A `logScrubbing` block as defined below.
   ///
-  /// !&gt; **Note:** Setting the`log_scrubbing` block is currently in **PREVIEW**. Please see the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+  /// &gt; **Note:** Setting the`logScrubbing` block is currently in **PREVIEW**. Please see the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
   final pulumi.Input<FrontdoorFirewallPolicyLogScrubbing>? logScrubbing;
-  /// One or more `managed_rule` blocks as defined below.
+  /// One or more `managedRule` blocks as defined below.
   final pulumi.Input<List<FrontdoorFirewallPolicyManagedRule>>? managedRules;
   /// The Front Door Firewall Policy mode. Possible values are `Detection`, `Prevention`.
   final pulumi.Input<String> mode;
@@ -57,13 +57,13 @@ class FrontdoorFirewallPolicyArgs {
 
   /// Creates a new [FrontdoorFirewallPolicyArgs].
   /// [captchaCookieExpirationInMinutes] Specifies the Captcha cookie lifetime in minutes. Possible values are between `5` and `1440`. Defaults to`30` minutes.
-  /// [customBlockResponseBody] If a `custom_rule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
-  /// [customBlockResponseStatusCode] If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
-  /// [customRules] One or more `custom_rule` blocks as defined below.
+  /// [customBlockResponseBody] If a `customRule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
+  /// [customBlockResponseStatusCode] If a `customRule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, `429`, `990`, `991`, `992`, `993`, `994`, `995`, `996`, `997`, `998`, or `999`.
+  /// [customRules] One or more `customRule` blocks as defined below.
   /// [enabled] Is the Front Door Firewall Policy enabled? Defaults to `true`.
   /// [jsChallengeCookieExpirationInMinutes] Specifies the JavaScript challenge cookie lifetime in minutes, after which the user will be revalidated. Possible values are between `5` to `1440` minutes. Defaults to `30` minutes.
-  /// [logScrubbing] A `log_scrubbing` block as defined below.
-  /// [managedRules] One or more `managed_rule` blocks as defined below.
+  /// [logScrubbing] A `logScrubbing` block as defined below.
+  /// [managedRules] One or more `managedRule` blocks as defined below.
   /// [mode] The Front Door Firewall Policy mode. Possible values are `Detection`, `Prevention`.
   /// [name] The name of the policy. Changing this forces a new resource to be created.
   /// [redirectUrl] If action type is redirect, this field represents redirect URL for the client.
@@ -129,4 +129,3 @@ class FrontdoorFirewallPolicyArgs {
     );
   }
 }
-

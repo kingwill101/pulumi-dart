@@ -8,7 +8,7 @@ class WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddres
   final pulumi.Input<String>? domainNameLabel;
   /// The Idle Timeout in Minutes for the Public IP Address. Possible values are in the range `4` to `32`.
   final pulumi.Input<int>? idleTimeoutInMinutes;
-  /// One or more `ip_tag` blocks as defined above. Changing this forces a new resource to be created.
+  /// One or more `ipTag` blocks as defined above. Changing this forces a new resource to be created.
   final pulumi.Input<List<WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>>? ipTags;
   /// The Name of the Public IP Address Configuration.
   final pulumi.Input<String> name;
@@ -22,7 +22,7 @@ class WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddres
   /// Creates a new [WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress].
   /// [domainNameLabel] The Prefix which should be used for the Domain Name Label for each Virtual Machine Instance. Azure concatenates the Domain Name Label and Virtual Machine Index to create a unique Domain Name Label for each Virtual Machine.
   /// [idleTimeoutInMinutes] The Idle Timeout in Minutes for the Public IP Address. Possible values are in the range `4` to `32`.
-  /// [ipTags] One or more `ip_tag` blocks as defined above. Changing this forces a new resource to be created.
+  /// [ipTags] One or more `ipTag` blocks as defined above. Changing this forces a new resource to be created.
   /// [name] The Name of the Public IP Address Configuration.
   /// [publicIpPrefixId] The ID of the Public IP Address Prefix from where Public IP Addresses should be allocated. Changing this forces a new resource to be created.
   /// [version] The Internet Protocol Version which should be used for this public IP address. Possible values are `IPv4` and `IPv6`. Defaults to `IPv4`. Changing this forces a new resource to be created.
@@ -57,4 +57,3 @@ class WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddres
     );
   }
 }
-

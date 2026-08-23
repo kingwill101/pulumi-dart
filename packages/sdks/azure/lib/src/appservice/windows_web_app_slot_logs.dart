@@ -5,20 +5,20 @@ import 'windows_web_app_slot_logs_application_logs.dart';
 import 'windows_web_app_slot_logs_http_logs.dart';
 
 class WindowsWebAppSlotLogs {
-  /// A `application_logs` block as defined above.
+  /// A `applicationLogs` block as defined above.
   final pulumi.Input<WindowsWebAppSlotLogsApplicationLogs>? applicationLogs;
   /// Should detailed error messages be enabled.
   final pulumi.Input<bool>? detailedErrorMessages;
   /// Should failed request tracing be enabled.
   final pulumi.Input<bool>? failedRequestTracing;
-  /// An `http_logs` block as defined above.
+  /// An `httpLogs` block as defined above.
   final pulumi.Input<WindowsWebAppSlotLogsHttpLogs>? httpLogs;
 
   /// Creates a new [WindowsWebAppSlotLogs].
-  /// [applicationLogs] A `application_logs` block as defined above.
+  /// [applicationLogs] A `applicationLogs` block as defined above.
   /// [detailedErrorMessages] Should detailed error messages be enabled.
   /// [failedRequestTracing] Should failed request tracing be enabled.
-  /// [httpLogs] An `http_logs` block as defined above.
+  /// [httpLogs] An `httpLogs` block as defined above.
   const WindowsWebAppSlotLogs({
     this.applicationLogs,
     this.detailedErrorMessages,
@@ -44,4 +44,3 @@ class WindowsWebAppSlotLogs {
     );
   }
 }
-

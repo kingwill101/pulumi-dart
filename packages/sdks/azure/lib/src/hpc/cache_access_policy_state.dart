@@ -5,7 +5,7 @@ import 'cache_access_policy_access_rule.dart';
 
 /// Input properties used for looking up and filtering CacheAccessPolicy resources.
 class CacheAccessPolicyState {
-  /// One or more `access_rule` blocks (up to three) as defined below.
+  /// One or more `accessRule` blocks (up to three) as defined below.
   final pulumi.Input<List<CacheAccessPolicyAccessRule>>? accessRules;
   /// The ID of the HPC Cache that this HPC Cache Access Policy resides in. Changing this forces a new HPC Cache Access Policy to be created.
   final pulumi.Input<String>? hpcCacheId;
@@ -13,7 +13,7 @@ class CacheAccessPolicyState {
   final pulumi.Input<String>? name;
 
   /// Creates a new [CacheAccessPolicyState].
-  /// [accessRules] One or more `access_rule` blocks (up to three) as defined below.
+  /// [accessRules] One or more `accessRule` blocks (up to three) as defined below.
   /// [hpcCacheId] The ID of the HPC Cache that this HPC Cache Access Policy resides in. Changing this forces a new HPC Cache Access Policy to be created.
   /// [name] The name which should be used for this HPC Cache Access Policy. Changing this forces a new HPC Cache Access Policy to be created.
   const CacheAccessPolicyState({
@@ -38,4 +38,3 @@ class CacheAccessPolicyState {
     );
   }
 }
-

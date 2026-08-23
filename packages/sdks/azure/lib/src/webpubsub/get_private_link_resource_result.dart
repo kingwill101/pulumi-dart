@@ -7,13 +7,13 @@ import 'get_private_link_resource_shared_private_link_resource_type.dart';
 class GetPrivateLinkResourceResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// A `shared_private_link_resource_types` block as defined below.
+  /// A `sharedPrivateLinkResourceTypes` block as defined below.
   final List<GetPrivateLinkResourceSharedPrivateLinkResourceType> sharedPrivateLinkResourceTypes;
   final String webPubsubId;
 
   /// Creates a new [GetPrivateLinkResourceResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [sharedPrivateLinkResourceTypes] A `shared_private_link_resource_types` block as defined below.
+  /// [sharedPrivateLinkResourceTypes] A `sharedPrivateLinkResourceTypes` block as defined below.
   /// [webPubsubId] Required.
   const GetPrivateLinkResourceResult({
     required this.id,
@@ -37,4 +37,3 @@ class GetPrivateLinkResourceResult {
     );
   }
 }
-

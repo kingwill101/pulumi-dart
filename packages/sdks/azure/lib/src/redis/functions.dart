@@ -73,6 +73,27 @@ import 'get_enterprise_database_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_redis_getcache" "example" {
+///   name                = "myrediscache"
+///   resource_group_name = "redis-cache"
+/// }
+///
+/// output "primaryAccessKey" {
+///   value = data.azure_redis_getcache.example.primary_access_key
+/// }
+/// output "hostname" {
+///   value = data.azure_redis_getcache.example.hostname
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +102,8 @@ import 'get_enterprise_database_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.redis.RedisFunctions;
 /// import com.pulumi.azure.redis.inputs.GetCacheArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -146,6 +167,28 @@ Future<GetCacheResult> getCache(
 /// ## Example Usage
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_redis_getenterprisedatabase" "example" {
+///   name                = "default"
+///   resource_group_name = exampleAzurermResourceGroup.name
+///   cluster_id          = exampleAzurermRedisEnterpriseCluster.id
+/// }
+///
+/// output "redisEnterpriseDatabasePrimaryKey" {
+///   value = data.azure_redis_getenterprisedatabase.example.primary_access_key
+/// }
+/// output "redisEnterpriseDatabaseSecondaryKey" {
+///   value = data.azure_redis_getenterprisedatabase.example.secondary_access_key
+/// }
+/// ```
 /// ```yaml
 /// variables:
 ///   example:

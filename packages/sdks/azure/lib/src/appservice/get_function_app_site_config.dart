@@ -22,7 +22,7 @@ class GetFunctionAppSiteConfig {
   final pulumi.Input<String> healthCheckPath;
   /// Is HTTP2 Enabled on this App Service?
   final pulumi.Input<bool> http2Enabled;
-  /// One or more `ip_restriction` blocks as defined above.
+  /// One or more `ipRestriction` blocks as defined above.
   final pulumi.Input<List<GetFunctionAppSiteConfigIpRestriction>> ipRestrictions;
   /// Java version hosted by the function app in Azure.
   final pulumi.Input<String> javaVersion;
@@ -34,7 +34,7 @@ class GetFunctionAppSiteConfig {
   final pulumi.Input<int> preWarmedInstanceCount;
   /// Is Runtime Scale Monitoring Enabled on this function app?
   final pulumi.Input<bool> runtimeScaleMonitoringEnabled;
-  /// One or more `scm_ip_restriction` blocks as defined above.
+  /// One or more `scmIpRestriction` blocks as defined above.
   final pulumi.Input<List<GetFunctionAppSiteConfigScmIpRestriction>> scmIpRestrictions;
   /// The type of Source Control enabled for this App Service.
   final pulumi.Input<String> scmType;
@@ -57,13 +57,13 @@ class GetFunctionAppSiteConfig {
   /// [ftpsState] State of FTP / FTPS service for this AppService.
   /// [healthCheckPath] Required.
   /// [http2Enabled] Is HTTP2 Enabled on this App Service?
-  /// [ipRestrictions] One or more `ip_restriction` blocks as defined above.
+  /// [ipRestrictions] One or more `ipRestriction` blocks as defined above.
   /// [javaVersion] Java version hosted by the function app in Azure.
   /// [linuxFxVersion] Linux App Framework and version for the AppService.
   /// [minTlsVersion] The minimum supported TLS version for this App Service.
   /// [preWarmedInstanceCount] The number of pre-warmed instances for this function app. Only applicable to apps on the Premium plan.
   /// [runtimeScaleMonitoringEnabled] Is Runtime Scale Monitoring Enabled on this function app?
-  /// [scmIpRestrictions] One or more `scm_ip_restriction` blocks as defined above.
+  /// [scmIpRestrictions] One or more `scmIpRestriction` blocks as defined above.
   /// [scmType] The type of Source Control enabled for this App Service.
   /// [scmUseMainIpRestriction] IP security restrictions for scm to use main.
   /// [use32BitWorkerProcess] Does the App Service run in 32 bit mode, rather than 64 bit mode?
@@ -145,4 +145,3 @@ class GetFunctionAppSiteConfig {
     );
   }
 }
-

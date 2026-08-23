@@ -67,6 +67,24 @@ import 'get_service_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_communication_getservice" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_communication_getservice.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +93,8 @@ import 'get_service_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.communication.CommunicationFunctions;
 /// import com.pulumi.azure.communication.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

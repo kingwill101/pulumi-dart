@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction {
-  /// The command run when this `auto_heal` action is triggered.
+  /// The command run when this `autoHeal` action is triggered.
   final pulumi.Input<String> executable;
   /// The parameters passed to the `executable`.
   final pulumi.Input<String> parameters;
 
   /// Creates a new [GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction].
-  /// [executable] The command run when this `auto_heal` action is triggered.
+  /// [executable] The command run when this `autoHeal` action is triggered.
   /// [parameters] The parameters passed to the `executable`.
   const GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction({
     required this.executable,
@@ -30,4 +30,3 @@ class GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction {
     );
   }
 }
-

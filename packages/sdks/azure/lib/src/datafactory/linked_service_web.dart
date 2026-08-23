@@ -115,6 +115,31 @@ import 'linked_service_web_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedserviceweb" "example" {
+///   name                = "example"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   authentication_type = "Anonymous"
+///   url                 = "http://www.bing.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +152,8 @@ import 'linked_service_web_state.dart';
 /// import com.pulumi.azure.datafactory.FactoryArgs;
 /// import com.pulumi.azure.datafactory.LinkedServiceWeb;
 /// import com.pulumi.azure.datafactory.LinkedServiceWebArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -212,11 +237,11 @@ class LinkedServiceWeb extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A map of parameters to associate with the Data Factory Linked Service.
   late final pulumi.Output<Map<String, String>?> parameters;
-  /// The password for Basic authentication. Required if `authentication_type` sets to `Basic`.
+  /// The password for Basic authentication. Required if `authenticationType` sets to `Basic`.
   late final pulumi.Output<String?> password;
   /// The URL of the web service endpoint (e.g. &lt;https://www.microsoft.com&gt;).
   late final pulumi.Output<String> url;
-  /// The username for Basic authentication. Required if `authentication_type` sets to `Basic`.
+  /// The username for Basic authentication. Required if `authenticationType` sets to `Basic`.
   late final pulumi.Output<String?> username;
 
   /// Creates a new [LinkedServiceWeb].

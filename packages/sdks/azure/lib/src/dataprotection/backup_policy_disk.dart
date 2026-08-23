@@ -208,6 +208,50 @@ import 'backup_policy_disk_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dataprotection_backupvault" "example" {
+///   name                = "example-backup-vault"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   datastore_type      = "VaultStore"
+///   redundancy          = "LocallyRedundant"
+/// }
+/// resource "azure_dataprotection_backuppolicydisk" "example" {
+///   name                            = "example-backup-policy"
+///   vault_id                        = azure_dataprotection_backupvault.example.id
+///   backup_repeating_time_intervals = ["R/2021-05-19T06:33:16+00:00/PT4H"]
+///   default_retention_duration      = "P7D"
+///   time_zone                       = "W. Europe Standard Time"
+///   retention_rules {
+///     name     = "Daily"
+///     duration = "P7D"
+///     priority = 25
+///     criteria = {
+///       absolute_criteria = "FirstOfDay"
+///     }
+///   }
+///   retention_rules {
+///     name     = "Weekly"
+///     duration = "P7D"
+///     priority = 20
+///     criteria = {
+///       absolute_criteria = "FirstOfWeek"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -222,8 +266,8 @@ import 'backup_policy_disk_state.dart';
 /// import com.pulumi.azure.dataprotection.BackupPolicyDiskArgs;
 /// import com.pulumi.azure.dataprotection.inputs.BackupPolicyDiskRetentionRuleArgs;
 /// import com.pulumi.azure.dataprotection.inputs.BackupPolicyDiskRetentionRuleCriteriaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -321,7 +365,7 @@ import 'backup_policy_disk_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.DataProtection` - 2024-04-01
+/// * `Microsoft.DataProtection` - 2025-07-01
 ///
 /// ## Import
 ///
@@ -337,7 +381,7 @@ class BackupPolicyDisk extends pulumi.CustomResource {
   late final pulumi.Output<String> defaultRetentionDuration;
   /// The name which should be used for this Backup Policy Disk. Changing this forces a new Backup Policy Disk to be created.
   late final pulumi.Output<String> name;
-  /// One or more `retention_rule` blocks as defined below. Changing this forces a new Backup Policy Disk to be created.
+  /// One or more `retentionRule` blocks as defined below. Changing this forces a new Backup Policy Disk to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy Disk to be created.
   late final pulumi.Output<String?> timeZone;

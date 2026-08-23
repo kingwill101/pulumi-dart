@@ -19,7 +19,7 @@ import 'service_virtual_network_configuration.dart';
 ///
 /// &gt; **Note:** Version 2.77 and later of the Azure Provider include a Feature Toggle which will purge an API Management resource on destroy, rather than the default soft-delete. See the Features block documentation for more information on Feature Toggles within Terraform.
 ///
-/// &gt; **Note:** It's possible to define Custom Domains both within the `azure.apimanagement.Service` resource via the `hostname_configurations` block and by using the `azure.apimanagement.CustomDomain` resource. However it's not possible to use both methods to manage Custom Domains within an API Management Service, since there'll be conflicts.
+/// &gt; **Note:** It's possible to define Custom Domains both within the `azure.apimanagement.Service` resource via the `hostnameConfigurations` block and by using the `azure.apimanagement.CustomDomain` resource. However it's not possible to use both methods to manage Custom Domains within an API Management Service, since there'll be conflicts.
 ///
 /// ## Example Usage
 ///
@@ -115,6 +115,28 @@ import 'service_virtual_network_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "My Company"
+///   publisher_email     = "company@exmaple.com"
+///   sku_name            = "Developer_1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -125,8 +147,8 @@ import 'service_virtual_network_configuration.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.apimanagement.Service;
 /// import com.pulumi.azure.apimanagement.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,7 +212,7 @@ import 'service_virtual_network_configuration.dart';
 /// $ pulumi import azure:apimanagement/service:Service example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.ApiManagement/service/instance1
 /// ```
 class Service extends pulumi.CustomResource {
-  /// One or more `additional_location` blocks as defined below.
+  /// One or more `additionalLocation` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> additionalLocations;
   /// One or more `certificate` blocks (up to 10) as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
@@ -200,13 +222,13 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<ServiceDelegation> delegation;
   /// The URL for the Developer Portal associated with this API Management service.
   late final pulumi.Output<String> developerPortalUrl;
-  /// Disable the gateway in main region? This is only supported when `additional_location` is set.
+  /// Disable the gateway in main region? This is only supported when `additionalLocation` is set.
   late final pulumi.Output<bool?> gatewayDisabled;
   /// The URL of the Regional Gateway for the API Management Service in the specified region.
   late final pulumi.Output<String> gatewayRegionalUrl;
   /// The URL of the Gateway for the API Management Service.
   late final pulumi.Output<String> gatewayUrl;
-  /// A `hostname_configuration` block as defined below.
+  /// A `hostnameConfiguration` block as defined below.
   late final pulumi.Output<ServiceHostnameConfiguration> hostnameConfiguration;
   /// An `identity` block as defined below.
   late final pulumi.Output<ServiceIdentity?> identity;
@@ -246,11 +268,11 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> scmUrl;
   /// A `security` block as defined below.
   late final pulumi.Output<ServiceSecurity> security;
-  /// A `sign_in` block as defined below.
+  /// A `signIn` block as defined below.
   late final pulumi.Output<ServiceSignIn> signIn;
-  /// A `sign_up` block as defined below.
+  /// A `signUp` block as defined below.
   late final pulumi.Output<ServiceSignUp> signUp;
-  /// `sku_name` is a string consisting of two parts separated by an underscore(\_). The first part is the `name`, valid values include: `Consumption`, `Developer`, `Basic`, `BasicV2`, `Standard`, `StandardV2`, `Premium` and `PremiumV2`. The second part is the `capacity` (e.g. the number of deployed units of the `sku`), which must be a positive `integer` (e.g. `Developer_1`).
+  /// `skuName` is a string consisting of two parts separated by an underscore(\_). The first part is the `name`, valid values include: `Consumption`, `Developer`, `Basic`, `BasicV2`, `Standard`, `StandardV2`, `Premium` and `PremiumV2`. The second part is the `capacity` (e.g. the number of deployed units of the `sku`), which must be a positive `integer` (e.g. `Developer_1`).
   ///
   /// &gt; **Note:** Premium SKUs are limited to a default maximum of 12 (i.e. `Premium_12`), this can, however, be increased via support request.
   ///
@@ -258,13 +280,13 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> skuName;
   /// A mapping of tags assigned to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A `tenant_access` block as defined below.
+  /// A `tenantAccess` block as defined below.
   late final pulumi.Output<ServiceTenantAccess> tenantAccess;
-  /// A `virtual_network_configuration` block as defined below. Required when `virtual_network_type` is `External` or `Internal`.
+  /// A `virtualNetworkConfiguration` block as defined below. Required when `virtualNetworkType` is `External` or `Internal`.
   late final pulumi.Output<ServiceVirtualNetworkConfiguration?> virtualNetworkConfiguration;
   /// The type of virtual network you want to use, valid values include: `None`, `External`, `Internal`. Defaults to `None`.
   ///
-  /// &gt; **Note:** Please ensure that in the subnet, inbound port 3443 is open when `virtual_network_type` is `Internal` or `External`. Additionally, please ensure other necessary ports are open according to [api management network configuration](https://learn.microsoft.com/azure/api-management/virtual-network-reference).
+  /// &gt; **Note:** Please ensure that in the subnet, inbound port 3443 is open when `virtualNetworkType` is `Internal` or `External`. Additionally, please ensure other necessary ports are open according to [api management network configuration](https://learn.microsoft.com/azure/api-management/virtual-network-reference).
   late final pulumi.Output<String?> virtualNetworkType;
   /// Specifies a list of Availability Zones in which this API Management service should be located.
   ///

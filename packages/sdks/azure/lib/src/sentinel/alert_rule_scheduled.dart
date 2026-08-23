@@ -150,6 +150,36 @@ import 'alert_rule_scheduled_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-workspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
+///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// resource "azure_sentinel_alertrulescheduled" "example" {
+///   name                       = "example"
+///   log_analytics_workspace_id = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+///   display_name               = "example"
+///   severity                   = "High"
+///   query                      = "AzureActivity |\n  where OperationName == \\\"Create or Update Virtual Machine\\\" or OperationName ==\\\"Create Deployment\\\" |\n  where ActivityStatus == \\\"Succeeded\\\" |\n  make-series dcount(ResourceId) default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +194,8 @@ import 'alert_rule_scheduled_state.dart';
 /// import com.pulumi.azure.sentinel.LogAnalyticsWorkspaceOnboardingArgs;
 /// import com.pulumi.azure.sentinel.AlertRuleScheduled;
 /// import com.pulumi.azure.sentinel.AlertRuleScheduledArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,7 +290,7 @@ import 'alert_rule_scheduled_state.dart';
 /// $ pulumi import azure:sentinel/alertRuleScheduled:AlertRuleScheduled example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.OperationalInsights/workspaces/workspace1/providers/Microsoft.SecurityInsights/alertRules/rule1
 /// ```
 class AlertRuleScheduled extends pulumi.CustomResource {
-  /// An `alert_details_override` block as defined below.
+  /// An `alertDetailsOverride` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> alertDetailsOverrides;
   /// The GUID of the alert rule template which is used for this Sentinel Scheduled Alert Rule. Changing this forces a new Sentinel Scheduled Alert Rule to be created.
   late final pulumi.Output<String?> alertRuleTemplateGuid;
@@ -274,9 +304,9 @@ class AlertRuleScheduled extends pulumi.CustomResource {
   late final pulumi.Output<String> displayName;
   /// Should the Sentinel Scheduled Alert Rule be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-  /// A list of `entity_mapping` blocks as defined below.
+  /// A list of `entityMapping` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> entityMappings;
-  /// A `event_grouping` block as defined below.
+  /// A `eventGrouping` block as defined below.
   late final pulumi.Output<AlertRuleScheduledEventGrouping?> eventGrouping;
   /// A `incident` block as defined below.
   late final pulumi.Output<AlertRuleScheduledIncident> incident;
@@ -290,17 +320,17 @@ class AlertRuleScheduled extends pulumi.CustomResource {
   late final pulumi.Output<String?> queryFrequency;
   /// The ISO 8601 timespan duration, which determine the time period of the data covered by the query. For example, it can query the past 10 minutes of data, or the past 6 hours of data. Defaults to `PT5H`.
   ///
-  /// &gt; **Note:** `query_period` must larger than or equal to `query_frequency`, which ensures there is no gaps in the overall query coverage.
+  /// &gt; **Note:** `queryPeriod` must larger than or equal to `queryFrequency`, which ensures there is no gaps in the overall query coverage.
   late final pulumi.Output<String?> queryPeriod;
-  /// A list of `sentinel_entity_mapping` blocks as defined below.
+  /// A list of `sentinelEntityMapping` blocks as defined below.
   ///
-  /// &gt; **Note:** `entity_mapping` and `sentinel_entity_mapping` together can't exceed 10.
+  /// &gt; **Note:** `entityMapping` and `sentinelEntityMapping` together can't exceed 10.
   late final pulumi.Output<List<Map<String, dynamic>>?> sentinelEntityMappings;
   /// The alert severity of this Sentinel Scheduled Alert Rule. Possible values are `High`, `Medium`, `Low` and `Informational`.
   late final pulumi.Output<String> severity;
-  /// If `suppression_enabled` is `true`, this is ISO 8601 timespan duration, which specifies the amount of time the query should stop running after alert is generated. Defaults to `PT5H`.
+  /// If `suppressionEnabled` is `true`, this is ISO 8601 timespan duration, which specifies the amount of time the query should stop running after alert is generated. Defaults to `PT5H`.
   ///
-  /// &gt; **Note:** `suppression_duration` must larger than or equal to `query_frequency`, otherwise the suppression has no actual effect since no query will happen during the suppression duration.
+  /// &gt; **Note:** `suppressionDuration` must larger than or equal to `queryFrequency`, otherwise the suppression has no actual effect since no query will happen during the suppression duration.
   late final pulumi.Output<String?> suppressionDuration;
   /// Should the Sentinel Scheduled Alert Rulea stop running query after alert is generated? Defaults to `false`.
   late final pulumi.Output<bool?> suppressionEnabled;
@@ -308,9 +338,9 @@ class AlertRuleScheduled extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> tactics;
   /// A list of techniques of attacks by which to classify the rule.
   late final pulumi.Output<List<String>?> techniques;
-  /// The alert trigger operator, combined with `trigger_threshold`, setting alert threshold of this Sentinel Scheduled Alert Rule. Possible values are `Equal`, `GreaterThan`, `LessThan`, `NotEqual`. Defaults to `GreaterThan`.
+  /// The alert trigger operator, combined with `triggerThreshold`, setting alert threshold of this Sentinel Scheduled Alert Rule. Possible values are `Equal`, `GreaterThan`, `LessThan`, `NotEqual`. Defaults to `GreaterThan`.
   late final pulumi.Output<String?> triggerOperator;
-  /// The baseline number of query results generated, combined with `trigger_operator`, setting alert threshold of this Sentinel Scheduled Alert Rule. Defaults to `0`.
+  /// The baseline number of query results generated, combined with `triggerOperator`, setting alert threshold of this Sentinel Scheduled Alert Rule. Defaults to `0`.
   late final pulumi.Output<int?> triggerThreshold;
 
   /// Creates a new [AlertRuleScheduled].

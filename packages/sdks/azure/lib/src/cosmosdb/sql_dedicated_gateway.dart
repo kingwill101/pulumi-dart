@@ -153,6 +153,39 @@ import 'sql_dedicated_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resource-group"
+///   location = "West Europe"
+/// }
+/// resource "azure_cosmosdb_account" "example" {
+///   name                = "example-ca"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   offer_type          = "Standard"
+///   kind                = "GlobalDocumentDB"
+///   consistency_policy = {
+///     consistency_level = "BoundedStaleness"
+///   }
+///   geo_locations {
+///     location          = azure_core_resourcegroup.example.location
+///     failover_priority = 0
+///   }
+/// }
+/// resource "azure_cosmosdb_sqldedicatedgateway" "example" {
+///   cosmosdb_account_id = azure_cosmosdb_account.example.id
+///   instance_count      = 1
+///   instance_size       = "Cosmos.D4s"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -167,8 +200,8 @@ import 'sql_dedicated_gateway_state.dart';
 /// import com.pulumi.azure.cosmosdb.inputs.AccountGeoLocationArgs;
 /// import com.pulumi.azure.cosmosdb.SqlDedicatedGateway;
 /// import com.pulumi.azure.cosmosdb.SqlDedicatedGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

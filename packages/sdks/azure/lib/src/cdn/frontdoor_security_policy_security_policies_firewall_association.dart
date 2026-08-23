@@ -5,13 +5,15 @@ import 'frontdoor_security_policy_security_policies_firewall_association_domain.
 
 class FrontdoorSecurityPolicySecurityPoliciesFirewallAssociation {
   /// One or more `domain` blocks as defined below.
+  ///
+  /// &gt; **Note:** The number of `domain` blocks that may be included in the configuration varies depending on the `skuName` field of the linked Front Door Profile. The `Standard_AzureFrontDoor` sku may contain up to 100 `domain` blocks and a `Premium_AzureFrontDoor` sku may contain up to 500 `domain` blocks.
   final pulumi.Input<List<FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain>> domains;
-  /// The list of paths to match for this firewall policy. Possible value includes `/*`. Changing this forces a new Front Door Security Policy to be created.
+  /// The list of paths to match for this firewall policy. The only possible value is `/*`. Changing this forces a new resource to be created.
   final pulumi.Input<String> patternsToMatch;
 
   /// Creates a new [FrontdoorSecurityPolicySecurityPoliciesFirewallAssociation].
   /// [domains] One or more `domain` blocks as defined below.
-  /// [patternsToMatch] The list of paths to match for this firewall policy. Possible value includes `/*`. Changing this forces a new Front Door Security Policy to be created.
+  /// [patternsToMatch] The list of paths to match for this firewall policy. The only possible value is `/*`. Changing this forces a new resource to be created.
   const FrontdoorSecurityPolicySecurityPoliciesFirewallAssociation({
     required this.domains,
     required this.patternsToMatch,
@@ -31,4 +33,3 @@ class FrontdoorSecurityPolicySecurityPoliciesFirewallAssociation {
     );
   }
 }
-

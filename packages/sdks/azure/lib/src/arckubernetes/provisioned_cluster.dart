@@ -168,6 +168,44 @@ import 'provisioned_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azuread_group" "example" {
+///   display_name     = "example-adg"
+///   owners           = [data.azure_core_getclientconfig.current.object_id]
+///   security_enabled = true
+/// }
+/// resource "azure_arckubernetes_provisionedcluster" "example" {
+///   name                = "example-akpc"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   azure_active_directory = {
+///     azure_rbac_enabled     = true
+///     admin_group_object_ids = [azuread_group.example.id]
+///     tenant_id              = data.azure_core_getclientconfig.current.tenant_id
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +221,8 @@ import 'provisioned_cluster_state.dart';
 /// import com.pulumi.azure.arckubernetes.ProvisionedClusterArgs;
 /// import com.pulumi.azure.arckubernetes.inputs.ProvisionedClusterAzureActiveDirectoryArgs;
 /// import com.pulumi.azure.arckubernetes.inputs.ProvisionedClusterIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -284,7 +322,7 @@ class ProvisionedCluster extends pulumi.CustomResource {
   late final pulumi.Output<bool?> arcAgentAutoUpgradeEnabled;
   /// The version of the Arc agents to be installed on the cluster.
   late final pulumi.Output<String?> arcAgentDesiredVersion;
-  /// An `azure_active_directory` block as defined below.
+  /// An `azureActiveDirectory` block as defined below.
   late final pulumi.Output<ProvisionedClusterAzureActiveDirectory?> azureActiveDirectory;
   /// The distribution running on this Arc Kubernetes Provisioned Cluster.
   late final pulumi.Output<String> distribution;

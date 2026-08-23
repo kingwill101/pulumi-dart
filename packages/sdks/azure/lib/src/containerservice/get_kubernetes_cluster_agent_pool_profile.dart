@@ -32,7 +32,7 @@ class GetKubernetesClusterAgentPoolProfile {
   final pulumi.Input<Map<String, String>> tags;
   /// The type of Managed Service Identity that is configured on this Kubernetes Cluster.
   final pulumi.Input<String> type;
-  /// A `upgrade_settings` block as documented below.
+  /// A `upgradeSettings` block as documented below.
   final pulumi.Input<List<GetKubernetesClusterAgentPoolProfileUpgradeSetting>> upgradeSettings;
   /// The size of each VM in the Agent Pool (e.g. `Standard_F1`).
   final pulumi.Input<String> vmSize;
@@ -57,7 +57,7 @@ class GetKubernetesClusterAgentPoolProfile {
   /// [osType] The Operating System used for the Agents.
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] The type of Managed Service Identity that is configured on this Kubernetes Cluster.
-  /// [upgradeSettings] A `upgrade_settings` block as documented below.
+  /// [upgradeSettings] A `upgradeSettings` block as documented below.
   /// [vmSize] The size of each VM in the Agent Pool (e.g. `Standard_F1`).
   /// [vnetSubnetId] The ID of the Subnet where the Agents in the Pool are provisioned.
   /// [zones] A list of Availability Zones in which this Kubernetes Cluster is located.
@@ -131,4 +131,3 @@ class GetKubernetesClusterAgentPoolProfile {
     );
   }
 }
-

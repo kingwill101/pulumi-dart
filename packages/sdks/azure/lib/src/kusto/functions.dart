@@ -62,6 +62,20 @@ import 'get_database_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_kusto_getcluster" "example" {
+///   name                = "kustocluster"
+///   resource_group_name = "test_resource_group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +84,8 @@ import 'get_database_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.kusto.KustoFunctions;
 /// import com.pulumi.azure.kusto.inputs.GetClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,6 +199,21 @@ Future<GetClusterResult> getCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_kusto_getdatabase" "example" {
+///   name                = "my-kusto-database"
+///   resource_group_name = "test_resource_group"
+///   cluster_name        = "test_cluster"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +222,8 @@ Future<GetClusterResult> getCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.kusto.KustoFunctions;
 /// import com.pulumi.azure.kusto.inputs.GetDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

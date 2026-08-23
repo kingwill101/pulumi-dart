@@ -10,6 +10,8 @@ import 'get_virtual_network_gateway_vpn_client_configuration.dart';
 class GetVirtualNetworkGatewayResult {
   /// Is this an Active-Active Gateway?
   final bool activeActive;
+  /// Will BGP (Border Gateway Protocol) will be enabled for this Virtual Network Gateway.
+  final bool bgpEnabled;
   final List<GetVirtualNetworkGatewayBgpSetting> bgpSettings;
   final List<GetVirtualNetworkGatewayCustomRoute> customRoutes;
   /// The ID of the local network gateway
@@ -17,20 +19,18 @@ class GetVirtualNetworkGatewayResult {
   /// gateway is created will be routed (*forced tunneling*). Refer to the
   /// [Azure documentation on forced tunneling](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm).
   final String defaultLocalNetworkGatewayId;
-  /// Will BGP (Border Gateway Protocol) will be enabled
-  /// for this Virtual Network Gateway.
   final bool enableBgp;
   /// The Generation of the Virtual Network Gateway.
   final String generation;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// One or two `ip_configuration` blocks documented below.
+  /// One or two `ipConfiguration` blocks documented below.
   final List<GetVirtualNetworkGatewayIpConfiguration> ipConfigurations;
   /// The location/region where the Virtual Network Gateway is located.
   final String location;
   /// The user-defined name of the root certificate.
   final String name;
-  /// Whether a private IP will be used for this  gateway for connections.
+  /// Whether a private IP will be used for this gateway for connections.
   final bool privateIpAddressEnabled;
   final String resourceGroupName;
   /// Configuration of the size and capacity of the Virtual Network Gateway.
@@ -39,31 +39,33 @@ class GetVirtualNetworkGatewayResult {
   final Map<String, String> tags;
   /// The type of the Virtual Network Gateway.
   final String type;
-  /// A `vpn_client_configuration` block which is documented below.
+  /// A `vpnClientConfiguration` block which is documented below.
   final List<GetVirtualNetworkGatewayVpnClientConfiguration> vpnClientConfigurations;
   /// The routing type of the Virtual Network Gateway.
   final String vpnType;
 
   /// Creates a new [GetVirtualNetworkGatewayResult].
   /// [activeActive] Is this an Active-Active Gateway?
+  /// [bgpEnabled] Will BGP (Border Gateway Protocol) will be enabled for this Virtual Network Gateway.
   /// [bgpSettings] Required.
   /// [customRoutes] Required.
   /// [defaultLocalNetworkGatewayId] The ID of the local network gateway
-  /// [enableBgp] Will BGP (Border Gateway Protocol) will be enabled
+  /// [enableBgp] Required.
   /// [generation] The Generation of the Virtual Network Gateway.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ipConfigurations] One or two `ip_configuration` blocks documented below.
+  /// [ipConfigurations] One or two `ipConfiguration` blocks documented below.
   /// [location] The location/region where the Virtual Network Gateway is located.
   /// [name] The user-defined name of the root certificate.
-  /// [privateIpAddressEnabled] Whether a private IP will be used for this  gateway for connections.
+  /// [privateIpAddressEnabled] Whether a private IP will be used for this gateway for connections.
   /// [resourceGroupName] Required.
   /// [sku] Configuration of the size and capacity of the Virtual Network Gateway.
   /// [tags] A mapping of tags assigned to the resource.
   /// [type] The type of the Virtual Network Gateway.
-  /// [vpnClientConfigurations] A `vpn_client_configuration` block which is documented below.
+  /// [vpnClientConfigurations] A `vpnClientConfiguration` block which is documented below.
   /// [vpnType] The routing type of the Virtual Network Gateway.
   const GetVirtualNetworkGatewayResult({
     required this.activeActive,
+    required this.bgpEnabled,
     required this.bgpSettings,
     required this.customRoutes,
     required this.defaultLocalNetworkGatewayId,
@@ -85,6 +87,7 @@ class GetVirtualNetworkGatewayResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'activeActive': activeActive,
+      'bgpEnabled': bgpEnabled,
       'bgpSettings': pulumi.Input.encodeList<GetVirtualNetworkGatewayBgpSetting, Map<String, dynamic>>(bgpSettings, (value) => value.toMap()),
       'customRoutes': pulumi.Input.encodeList<GetVirtualNetworkGatewayCustomRoute, Map<String, dynamic>>(customRoutes, (value) => value.toMap()),
       'defaultLocalNetworkGatewayId': defaultLocalNetworkGatewayId,
@@ -107,6 +110,7 @@ class GetVirtualNetworkGatewayResult {
   factory GetVirtualNetworkGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayResult(
       activeActive: map['activeActive'] as bool,
+      bgpEnabled: map['bgpEnabled'] as bool,
       bgpSettings: pulumi.Input.decodeList<GetVirtualNetworkGatewayBgpSetting>(map['bgpSettings']!, (value) => GetVirtualNetworkGatewayBgpSetting.fromMap((value as Map).cast<String, dynamic>())),
       customRoutes: pulumi.Input.decodeList<GetVirtualNetworkGatewayCustomRoute>(map['customRoutes']!, (value) => GetVirtualNetworkGatewayCustomRoute.fromMap((value as Map).cast<String, dynamic>())),
       defaultLocalNetworkGatewayId: map['defaultLocalNetworkGatewayId'] as String,
@@ -126,4 +130,3 @@ class GetVirtualNetworkGatewayResult {
     );
   }
 }
-

@@ -406,6 +406,91 @@ import 'job_schedule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "example"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_storage_blob" "example" {
+///   name                   = "example"
+///   storage_account_name   = azure_storage_account.example.name
+///   storage_container_name = azure_storage_container.example.name
+///   type                   = "Block"
+///   source                 = fileAsset("example.csv")
+/// }
+/// resource "azure_streamanalytics_job" "example" {
+///   name                                     = "example-job"
+///   resource_group_name                      = azure_core_resourcegroup.example.name
+///   location                                 = azure_core_resourcegroup.example.location
+///   compatibility_level                      = "1.2"
+///   data_locale                              = "en-GB"
+///   events_late_arrival_max_delay_in_seconds = 60
+///   events_out_of_order_max_delay_in_seconds = 50
+///   events_out_of_order_policy               = "Adjust"
+///   output_error_policy                      = "Drop"
+///   streaming_units                          = 3
+///   tags = {
+///     "environment" = "Example"
+///   }
+///   transformation_query = "    SELECT *\n    INTO [exampleoutput]\n    FROM [exampleinput]\n"
+/// }
+/// resource "azure_streamanalytics_streaminputblob" "example" {
+///   name                      = "exampleinput"
+///   stream_analytics_job_name = azure_streamanalytics_job.example.name
+///   resource_group_name       = azure_streamanalytics_job.example.resource_group_name
+///   storage_account_name      = azure_storage_account.example.name
+///   storage_account_key       = azure_storage_account.example.primary_access_key
+///   storage_container_name    = azure_storage_container.example.name
+///   path_pattern              = ""
+///   date_format               = "yyyy/MM/dd"
+///   time_format               = "HH"
+///   serialization = {
+///     type            = "Csv"
+///     encoding        = "UTF8"
+///     field_delimiter = ","
+///   }
+/// }
+/// resource "azure_streamanalytics_outputblob" "example" {
+///   name                      = "exampleoutput"
+///   stream_analytics_job_name = azure_streamanalytics_job.example.name
+///   resource_group_name       = azure_streamanalytics_job.example.resource_group_name
+///   storage_account_name      = azure_storage_account.example.name
+///   storage_account_key       = azure_storage_account.example.primary_access_key
+///   storage_container_name    = azure_storage_container.example.name
+///   path_pattern              = "example-{date}-{time}"
+///   date_format               = "yyyy-MM-dd"
+///   time_format               = "HH"
+///   serialization = {
+///     type = "Avro"
+///   }
+/// }
+/// resource "azure_streamanalytics_jobschedule" "example" {
+///   depends_on              = [azure_streamanalytics_job.example, azure_streamanalytics_streaminputblob.example, azure_streamanalytics_outputblob.example]
+///   stream_analytics_job_id = azure_streamanalytics_job.example.id
+///   start_mode              = "CustomTime"
+///   start_time              = "2022-09-21T00:00:00Z"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -432,8 +517,8 @@ import 'job_schedule_state.dart';
 /// import com.pulumi.azure.streamanalytics.JobScheduleArgs;
 /// import com.pulumi.asset.FileAsset;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -569,7 +654,7 @@ import 'job_schedule_state.dart';
 ///       storageContainerName: ${exampleContainer.name}
 ///       type: Block
 ///       source:
-///         fn::FileAsset: example.csv
+///         fn::fileAsset: example.csv
 ///   exampleJob:
 ///     type: azure:streamanalytics:Job
 ///     name: example
@@ -656,9 +741,9 @@ class JobSchedule extends pulumi.CustomResource {
   late final pulumi.Output<String> lastOutputTime;
   /// The starting mode of the Stream Analytics Job. Possible values are `JobStartTime`, `CustomTime` and `LastOutputEventTime`.
   ///
-  /// &gt; **Note:** Setting `start_mode` to `LastOutputEventTime` is only possible if the job had been previously started and produced output.
+  /// &gt; **Note:** Setting `startMode` to `LastOutputEventTime` is only possible if the job had been previously started and produced output.
   late final pulumi.Output<String> startMode;
-  /// The time in ISO8601 format at which the Stream Analytics Job should be started e.g. `2022-04-01T00:00:00Z`. This property can only be specified if `start_mode` is set to `CustomTime`
+  /// The time in ISO8601 format at which the Stream Analytics Job should be started e.g. `2022-04-01T00:00:00Z`. This property can only be specified if `startMode` is set to `CustomTime`
   late final pulumi.Output<String> startTime;
   /// The ID of the Stream Analytics Job that should be scheduled or started. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobId;

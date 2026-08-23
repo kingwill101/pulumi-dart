@@ -21,7 +21,7 @@ class DatasetSqlServerTableState {
   final pulumi.Input<String>? name;
   /// A map of parameters to associate with the Data Factory Dataset SQL Server Table.
   final pulumi.Input<Map<String, String>>? parameters;
-  /// A `schema_column` block as defined below.
+  /// A `schemaColumn` block as defined below.
   final pulumi.Input<List<DatasetSqlServerTableSchemaColumn>>? schemaColumns;
   /// The table name of the Data Factory Dataset SQL Server Table.
   final pulumi.Input<String>? tableName;
@@ -35,7 +35,7 @@ class DatasetSqlServerTableState {
   /// [linkedServiceName] The Data Factory Linked Service name in which to associate the Dataset with.
   /// [name] Specifies the name of the Data Factory Dataset SQL Server Table. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Dataset SQL Server Table.
-  /// [schemaColumns] A `schema_column` block as defined below.
+  /// [schemaColumns] A `schemaColumn` block as defined below.
   /// [tableName] The table name of the Data Factory Dataset SQL Server Table.
   const DatasetSqlServerTableState({
     this.additionalProperties,
@@ -80,4 +80,3 @@ class DatasetSqlServerTableState {
     );
   }
 }
-

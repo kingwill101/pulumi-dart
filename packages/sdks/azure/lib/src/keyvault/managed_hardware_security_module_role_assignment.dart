@@ -18,7 +18,7 @@ import 'managed_hardware_security_module_role_assignment_state.dart';
 /// const example = new azure.keyvault.ManagedHardwareSecurityModuleRoleAssignment("example", {
 ///     name: "a9dbe818-56e7-5878-c0ce-a1477692c1d6",
 ///     managedHsmId: exampleAzurermKeyVaultManagedHardwareSecurityModule.id,
-///     scope: user.then(user => user.scope),
+///     scope: output(user.then(user => user.scope)).apply(x =>String(x)),
 ///     roleDefinitionId: user.then(user => user.resourceManagerId),
 ///     principalId: current.objectId,
 /// });
@@ -32,7 +32,7 @@ import 'managed_hardware_security_module_role_assignment_state.dart';
 /// example = azure.keyvault.ManagedHardwareSecurityModuleRoleAssignment("example",
 ///     name="a9dbe818-56e7-5878-c0ce-a1477692c1d6",
 ///     managed_hsm_id=example_azurerm_key_vault_managed_hardware_security_module["id"],
-///     scope=user.scope,
+///     scope=output(user.scope).apply(lambda x: str(x)),
 ///     role_definition_id=user.resource_manager_id,
 ///     principal_id=current["objectId"])
 /// ```
@@ -92,6 +92,28 @@ import 'managed_hardware_security_module_role_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getmanagedhardwaresecuritymoduleroledefinition" "user" {
+///   managed_hsm_id = exampleAzurermKeyVaultManagedHardwareSecurityModule.id
+///   name           = "21dbd100-6940-42c2-9190-5d6cb909625b"
+/// }
+///
+/// resource "azure_keyvault_managedhardwaresecuritymoduleroleassignment" "example" {
+///   name               = "a9dbe818-56e7-5878-c0ce-a1477692c1d6"
+///   managed_hsm_id     = exampleAzurermKeyVaultManagedHardwareSecurityModule.id
+///   scope              = data.azure_keyvault_getmanagedhardwaresecuritymoduleroledefinition.user.scope
+///   role_definition_id = data.azure_keyvault_getmanagedhardwaresecuritymoduleroledefinition.user.resource_manager_id
+///   principal_id       = current.objectId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +124,8 @@ import 'managed_hardware_security_module_role_assignment_state.dart';
 /// import com.pulumi.azure.keyvault.inputs.GetManagedHardwareSecurityModuleRoleDefinitionArgs;
 /// import com.pulumi.azure.keyvault.ManagedHardwareSecurityModuleRoleAssignment;
 /// import com.pulumi.azure.keyvault.ManagedHardwareSecurityModuleRoleAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

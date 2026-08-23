@@ -19,8 +19,9 @@ class ZipBlobArgs {
   final pulumi.Input<int>? size;
   final pulumi.Input<String>? sourceContent;
   final pulumi.Input<String>? sourceUri;
-  final pulumi.Input<String> storageAccountName;
-  final pulumi.Input<String> storageContainerName;
+  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String>? storageContainerId;
+  final pulumi.Input<String>? storageContainerName;
   final pulumi.Input<String> type;
 
   /// Creates a new [ZipBlobArgs].
@@ -36,8 +37,9 @@ class ZipBlobArgs {
   /// [size] Optional.
   /// [sourceContent] Optional.
   /// [sourceUri] Optional.
-  /// [storageAccountName] Required.
-  /// [storageContainerName] Required.
+  /// [storageAccountName] Optional.
+  /// [storageContainerId] Optional.
+  /// [storageContainerName] Optional.
   /// [type] Required.
   const ZipBlobArgs({
     this.accessTier,
@@ -52,8 +54,9 @@ class ZipBlobArgs {
     this.size,
     this.sourceContent,
     this.sourceUri,
-    required this.storageAccountName,
-    required this.storageContainerName,
+    this.storageAccountName,
+    this.storageContainerId,
+    this.storageContainerName,
     required this.type,
   });
 
@@ -71,8 +74,9 @@ class ZipBlobArgs {
       'size': ?size,
       'sourceContent': ?sourceContent,
       'sourceUri': ?sourceUri,
-      'storageAccountName': storageAccountName,
-      'storageContainerName': storageContainerName,
+      'storageAccountName': ?storageAccountName,
+      'storageContainerId': ?storageContainerId,
+      'storageContainerName': ?storageContainerName,
       'type': type,
     };
   }
@@ -91,10 +95,10 @@ class ZipBlobArgs {
       size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       sourceContent: (() { final guardedValue = map['sourceContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceUri: (() { final guardedValue = map['sourceUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageAccountName: pulumi.Input.fromValue(map['storageAccountName'] as String),
-      storageContainerName: pulumi.Input.fromValue(map['storageContainerName'] as String),
+      storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageContainerId: (() { final guardedValue = map['storageContainerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageContainerName: (() { final guardedValue = map['storageContainerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

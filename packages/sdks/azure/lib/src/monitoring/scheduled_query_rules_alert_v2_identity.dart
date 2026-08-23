@@ -44,4 +44,3 @@ class ScheduledQueryRulesAlertV2Identity {
     );
   }
 }
-

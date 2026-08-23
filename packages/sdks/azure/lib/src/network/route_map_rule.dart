@@ -7,7 +7,7 @@ import 'route_map_rule_match_criterion.dart';
 class RouteMapRule {
   /// An `action` block as defined below.
   final pulumi.Input<List<RouteMapRuleAction>>? actions;
-  /// A `match_criterion` block as defined below.
+  /// A `matchCriterion` block as defined below.
   final pulumi.Input<List<RouteMapRuleMatchCriterion>>? matchCriterions;
   /// The unique name for the rule.
   final pulumi.Input<String> name;
@@ -16,7 +16,7 @@ class RouteMapRule {
 
   /// Creates a new [RouteMapRule].
   /// [actions] An `action` block as defined below.
-  /// [matchCriterions] A `match_criterion` block as defined below.
+  /// [matchCriterions] A `matchCriterion` block as defined below.
   /// [name] The unique name for the rule.
   /// [nextStepIfMatched] The next step after the rule is evaluated. Possible values are `Continue`, `Terminate` and `Unknown`. Defaults to `Unknown`.
   const RouteMapRule({
@@ -44,4 +44,3 @@ class RouteMapRule {
     );
   }
 }
-

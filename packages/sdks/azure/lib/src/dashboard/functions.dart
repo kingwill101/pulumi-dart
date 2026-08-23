@@ -4,7 +4,7 @@ import 'azurerm_portal_dashboard_result.dart';
 import 'get_grafana_args.dart';
 import 'get_grafana_result.dart';
 
-/// Use this data source to access information about an existing shared dashboard in the Azure Portal. This is the data source of the `azurerm_dashboard` resource.
+/// Use this data source to access information about an existing shared dashboard in the Azure Portal. This is the data source of the `azurermDashboard` resource.
 ///
 /// ## Example Usage
 ///
@@ -64,9 +64,27 @@ import 'get_grafana_result.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("id", exampleAzurermDashboard.Id)
+/// 		ctx.Export("id", pulumi.Any(exampleAzurermDashboard.Id))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_portal_azurerm_portal_dashboard" "example" {
+///   name                = "existing-dashboard"
+///   resource_group_name = "dashboard-rg"
+/// }
+///
+/// output "id" {
+///   value = exampleAzurermDashboard.id
 /// }
 /// ```
 /// ```java
@@ -77,8 +95,8 @@ import 'get_grafana_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.portal.PortalFunctions;
 /// import com.pulumi.azure.portal.inputs.Azurerm_portal_dashboardArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -198,6 +216,24 @@ Future<AzurermPortalDashboardResult> azurermPortalDashboard(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_dashboard_getgrafana" "example" {
+///   name                = "example-grafana-dashboard"
+///   resource_group_name = "example-rg"
+/// }
+///
+/// output "name" {
+///   value = data.azure_dashboard_getgrafana.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -206,8 +242,8 @@ Future<AzurermPortalDashboardResult> azurermPortalDashboard(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.dashboard.DashboardFunctions;
 /// import com.pulumi.azure.dashboard.inputs.GetGrafanaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

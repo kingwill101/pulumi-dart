@@ -49,4 +49,3 @@ class GetDataCollectionRuleDataSourceLogFile {
     );
   }
 }
-

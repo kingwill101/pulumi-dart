@@ -243,6 +243,52 @@ import 'resource_policy_remediation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "resourcegroup1"
+///   location = "West US"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "vnet1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_policy_definition" "example" {
+///   name         = "only-deploy-in-westeurope"
+///   policy_type  = "Custom"
+///   mode         = "All"
+///   display_name = "my-policy-definition"
+/// }
+/// resource "azure_core_resourcepolicyassignment" "example" {
+///   name                 = "assignment1"
+///   resource_id          = azure_network_virtualnetwork.example.id
+///   policy_definition_id = azure_policy_definition.example.id
+///   parameters = jsonencode({
+///     "listOfAllowedLocations" = {
+///       "value" = [azure_core_resourcegroup.example.location, "East US"]
+///     }
+///   })
+/// }
+/// resource "azure_core_resourcegrouppolicyassignment" "example" {
+///   name                 = "example"
+///   resource_group_id    = azure_core_resourcegroup.example.id
+///   policy_definition_id = azure_policy_definition.example.id
+/// }
+/// resource "azure_core_resourcepolicyremediation" "example" {
+///   name                 = "remediation1"
+///   resource_id          = azure_network_virtualnetwork.example.id
+///   policy_assignment_id = azure_core_resourcegrouppolicyassignment.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -262,8 +308,8 @@ import 'resource_policy_remediation_state.dart';
 /// import com.pulumi.azure.core.ResourcePolicyRemediation;
 /// import com.pulumi.azure.core.ResourcePolicyRemediationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

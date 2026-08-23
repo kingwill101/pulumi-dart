@@ -12,7 +12,7 @@ class VpnServerConfigurationState {
   final pulumi.Input<List<VpnServerConfigurationAzureActiveDirectoryAuthentication>>? azureActiveDirectoryAuthentications;
   final pulumi.Input<List<VpnServerConfigurationClientRevokedCertificate>>? clientRevokedCertificates;
   final pulumi.Input<List<VpnServerConfigurationClientRootCertificate>>? clientRootCertificates;
-  /// A `ipsec_policy` block as defined below.
+  /// A `ipsecPolicy` block as defined below.
   final pulumi.Input<VpnServerConfigurationIpsecPolicy>? ipsecPolicy;
   /// The Azure location where this VPN Server Configuration should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -32,7 +32,7 @@ class VpnServerConfigurationState {
   /// [azureActiveDirectoryAuthentications] Optional.
   /// [clientRevokedCertificates] Optional.
   /// [clientRootCertificates] Optional.
-  /// [ipsecPolicy] A `ipsec_policy` block as defined below.
+  /// [ipsecPolicy] A `ipsecPolicy` block as defined below.
   /// [location] The Azure location where this VPN Server Configuration should be created. Changing this forces a new resource to be created.
   /// [name] The Name which should be used for this VPN Server Configuration. Changing this forces a new resource to be created.
   /// [radius] Optional.
@@ -86,4 +86,3 @@ class VpnServerConfigurationState {
     );
   }
 }
-

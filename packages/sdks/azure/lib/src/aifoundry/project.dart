@@ -3,7 +3,10 @@ import 'project_args.dart';
 import 'project_identity.dart';
 import 'project_state.dart';
 
-/// Manages an AI Foundry Project.
+/// Manages a Microsoft Foundry Hub (classic) Project resource.
+///
+/// &gt; **Note:** Hub‑based projects are considered legacy and are not compatible with the new Foundry experience. Microsoft recommends using the new Microsoft Foundry project resource, which should be provisioned using
+/// `azure.cognitive.Account` and `azure.cognitive.AccountProject`.
 ///
 /// ## Example Usage
 ///
@@ -44,15 +47,9 @@ import 'project_state.dart';
 ///     accountTier: "Standard",
 ///     accountReplicationType: "LRS",
 /// });
-/// const exampleAIServices = new azure.cognitive.AIServices("example", {
-///     name: "exampleaiservices",
-///     location: example.location,
-///     resourceGroupName: example.name,
-///     skuName: "S0",
-/// });
 /// const exampleHub = new azure.aifoundry.Hub("example", {
 ///     name: "exampleaihub",
-///     location: exampleAIServices.location,
+///     location: example.location,
 ///     resourceGroupName: example.name,
 ///     storageAccountId: exampleAccount.id,
 ///     keyVaultId: exampleKeyVault.id,
@@ -98,14 +95,9 @@ import 'project_state.dart';
 ///     resource_group_name=example.name,
 ///     account_tier="Standard",
 ///     account_replication_type="LRS")
-/// example_ai_services = azure.cognitive.AIServices("example",
-///     name="exampleaiservices",
-///     location=example.location,
-///     resource_group_name=example.name,
-///     sku_name="S0")
 /// example_hub = azure.aifoundry.Hub("example",
 ///     name="exampleaihub",
-///     location=example_ai_services.location,
+///     location=example.location,
 ///     resource_group_name=example.name,
 ///     storage_account_id=example_account.id,
 ///     key_vault_id=example_key_vault.id,
@@ -167,18 +159,10 @@ import 'project_state.dart';
 ///         AccountReplicationType = "LRS",
 ///     });
 ///
-///     var exampleAIServices = new Azure.Cognitive.AIServices("example", new()
-///     {
-///         Name = "exampleaiservices",
-///         Location = example.Location,
-///         ResourceGroupName = example.Name,
-///         SkuName = "S0",
-///     });
-///
 ///     var exampleHub = new Azure.AIFoundry.Hub("example", new()
 ///     {
 ///         Name = "exampleaihub",
-///         Location = exampleAIServices.Location,
+///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
 ///         StorageAccountId = exampleAccount.Id,
 ///         KeyVaultId = exampleKeyVault.Id,
@@ -202,7 +186,6 @@ import 'project_state.dart';
 ///
 /// import (
 /// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/aifoundry"
-/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/cognitive"
 /// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/core"
 /// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/keyvault"
 /// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/storage"
@@ -258,18 +241,9 @@ import 'project_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		exampleAIServices, err := cognitive.NewAIServices(ctx, "example", &cognitive.AIServicesArgs{
-/// 			Name:              pulumi.String("exampleaiservices"),
-/// 			Location:          example.Location,
-/// 			ResourceGroupName: example.Name,
-/// 			SkuName:           pulumi.String("S0"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		exampleHub, err := aifoundry.NewHub(ctx, "example", &aifoundry.HubArgs{
 /// 			Name:              pulumi.String("exampleaihub"),
-/// 			Location:          exampleAIServices.Location,
+/// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			StorageAccountId:  exampleAccount.ID(),
 /// 			KeyVaultId:        exampleKeyVault.ID(),
@@ -292,6 +266,59 @@ import 'project_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "westeurope"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                     = "examplekv"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                 = "standard"
+///   purge_protection_enabled = true
+/// }
+/// resource "azure_keyvault_accesspolicy" "example" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
+///   object_id       = data.azure_core_getclientconfig.current.object_id
+///   key_permissions = ["Create", "Get", "Delete", "Purge", "GetRotationPolicy"]
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplesa"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_aifoundry_hub" "example" {
+///   name                = "exampleaihub"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   storage_account_id  = azure_storage_account.example.id
+///   key_vault_id        = azure_keyvault_keyvault.example.id
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_aifoundry_project" "example" {
+///   name               = "example"
+///   location           = azure_aifoundry_hub.example.location
+///   ai_services_hub_id = azure_aifoundry_hub.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -307,15 +334,13 @@ import 'project_state.dart';
 /// import com.pulumi.azure.keyvault.AccessPolicyArgs;
 /// import com.pulumi.azure.storage.Account;
 /// import com.pulumi.azure.storage.AccountArgs;
-/// import com.pulumi.azure.cognitive.AIServices;
-/// import com.pulumi.azure.cognitive.AIServicesArgs;
 /// import com.pulumi.azure.aifoundry.Hub;
 /// import com.pulumi.azure.aifoundry.HubArgs;
 /// import com.pulumi.azure.aifoundry.inputs.HubIdentityArgs;
 /// import com.pulumi.azure.aifoundry.Project;
 /// import com.pulumi.azure.aifoundry.ProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -363,16 +388,9 @@ import 'project_state.dart';
 ///             .accountReplicationType("LRS")
 ///             .build());
 ///
-///         var exampleAIServices = new AIServices("exampleAIServices", AIServicesArgs.builder()
-///             .name("exampleaiservices")
-///             .location(example.location())
-///             .resourceGroupName(example.name())
-///             .skuName("S0")
-///             .build());
-///
 ///         var exampleHub = new Hub("exampleHub", HubArgs.builder()
 ///             .name("exampleaihub")
-///             .location(exampleAIServices.location())
+///             .location(example.location())
 ///             .resourceGroupName(example.name())
 ///             .storageAccountId(exampleAccount.id())
 ///             .keyVaultId(exampleKeyVault.id())
@@ -429,20 +447,12 @@ import 'project_state.dart';
 ///       resourceGroupName: ${example.name}
 ///       accountTier: Standard
 ///       accountReplicationType: LRS
-///   exampleAIServices:
-///     type: azure:cognitive:AIServices
-///     name: example
-///     properties:
-///       name: exampleaiservices
-///       location: ${example.location}
-///       resourceGroupName: ${example.name}
-///       skuName: S0
 ///   exampleHub:
 ///     type: azure:aifoundry:Hub
 ///     name: example
 ///     properties:
 ///       name: exampleaihub
-///       location: ${exampleAIServices.location}
+///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
 ///       storageAccountId: ${exampleAccount.id}
 ///       keyVaultId: ${exampleKeyVault.id}

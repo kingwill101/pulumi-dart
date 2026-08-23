@@ -17,7 +17,7 @@ class GetSpringCloudAppResult {
   /// Does the Spring Cloud Application have public endpoint?
   final bool isPublic;
   final String name;
-  /// A `persistent_disk` block as defined below.
+  /// A `persistentDisk` block as defined below.
   final List<GetSpringCloudAppPersistentDisk> persistentDisks;
   final String resourceGroupName;
   final String serviceName;
@@ -33,7 +33,7 @@ class GetSpringCloudAppResult {
   /// [identities] An `identity` block as defined below.
   /// [isPublic] Does the Spring Cloud Application have public endpoint?
   /// [name] Required.
-  /// [persistentDisks] A `persistent_disk` block as defined below.
+  /// [persistentDisks] A `persistentDisk` block as defined below.
   /// [resourceGroupName] Required.
   /// [serviceName] Required.
   /// [tlsEnabled] Is End to End TLS Enabled?
@@ -84,4 +84,3 @@ class GetSpringCloudAppResult {
     );
   }
 }
-

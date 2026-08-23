@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_gateway_http_listener_custom_error_configuration.dart';
 
 class ApplicationGatewayHttpListener {
-  /// One or more `custom_error_configuration` blocks as defined below.
+  /// One or more `customErrorConfiguration` blocks as defined below.
   final pulumi.Input<List<ApplicationGatewayHttpListenerCustomErrorConfiguration>>? customErrorConfigurations;
   /// The ID of the Web Application Firewall Policy which should be used for this HTTP Listener.
   final pulumi.Input<String>? firewallPolicyId;
@@ -20,7 +20,7 @@ class ApplicationGatewayHttpListener {
   final pulumi.Input<String>? hostName;
   /// A list of Hostname(s) should be used for this HTTP Listener. It allows special wildcard characters.
   ///
-  /// &gt; **Note:** The `host_names` and `host_name` are mutually exclusive and cannot both be set.
+  /// &gt; **Note:** The `hostNames` and `hostName` are mutually exclusive and cannot both be set.
   final pulumi.Input<List<String>>? hostNames;
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String>? id;
@@ -40,7 +40,7 @@ class ApplicationGatewayHttpListener {
   final pulumi.Input<String>? sslProfileName;
 
   /// Creates a new [ApplicationGatewayHttpListener].
-  /// [customErrorConfigurations] One or more `custom_error_configuration` blocks as defined below.
+  /// [customErrorConfigurations] One or more `customErrorConfiguration` blocks as defined below.
   /// [firewallPolicyId] The ID of the Web Application Firewall Policy which should be used for this HTTP Listener.
   /// [frontendIpConfigurationId] The ID of the associated Frontend Configuration.
   /// [frontendIpConfigurationName] The Name of the Frontend IP Configuration used for this HTTP Listener.
@@ -117,4 +117,3 @@ class ApplicationGatewayHttpListener {
     );
   }
 }
-

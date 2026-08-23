@@ -176,6 +176,44 @@ import 'network_manager_scope_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+/// data "azure_core_getsubscription" "currentGetSubscription" {
+/// }
+/// data "azure_core_getsubscription" "alt" {
+///   subscription_id = "00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-networkmanager"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.currentGetSubscription.id]
+///   }
+///   scope_accesses = ["SecurityAdmin"]
+/// }
+/// resource "azure_network_networkmanagerscopeconnection" "example" {
+///   name               = "example-nsc"
+///   network_manager_id = azure_network_networkmanager.example.id
+///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///   target_scope_id    = data.azure_core_getsubscription.alt.id
+///   description        = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -191,8 +229,8 @@ import 'network_manager_scope_connection_state.dart';
 /// import com.pulumi.azure.network.inputs.NetworkManagerScopeArgs;
 /// import com.pulumi.azure.network.NetworkManagerScopeConnection;
 /// import com.pulumi.azure.network.NetworkManagerScopeConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -9,9 +9,9 @@ class ConfigurationBackup {
   final pulumi.Input<int>? instantRpRetentionRangeInDays;
   /// The name of the backup policy.
   final pulumi.Input<String>? policyName;
-  /// A `retention_policy` block as defined below.
+  /// A `retentionPolicy` block as defined below.
   final pulumi.Input<ConfigurationBackupRetentionPolicy>? retentionPolicy;
-  /// A `schedule_policy` block as defined below.
+  /// A `schedulePolicy` block as defined below.
   final pulumi.Input<ConfigurationBackupSchedulePolicy>? schedulePolicy;
   /// The timezone of the backup policy. Defaults to `UTC`.
   final pulumi.Input<String>? timeZone;
@@ -19,8 +19,8 @@ class ConfigurationBackup {
   /// Creates a new [ConfigurationBackup].
   /// [instantRpRetentionRangeInDays] The retention range in days of the backup policy. Defaults to `5`.
   /// [policyName] The name of the backup policy.
-  /// [retentionPolicy] A `retention_policy` block as defined below.
-  /// [schedulePolicy] A `schedule_policy` block as defined below.
+  /// [retentionPolicy] A `retentionPolicy` block as defined below.
+  /// [schedulePolicy] A `schedulePolicy` block as defined below.
   /// [timeZone] The timezone of the backup policy. Defaults to `UTC`.
   const ConfigurationBackup({
     this.instantRpRetentionRangeInDays,
@@ -50,4 +50,3 @@ class ConfigurationBackup {
     );
   }
 }
-

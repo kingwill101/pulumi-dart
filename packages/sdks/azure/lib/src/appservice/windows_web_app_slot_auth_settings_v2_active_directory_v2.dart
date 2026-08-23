@@ -17,11 +17,11 @@ class WindowsWebAppSlotAuthSettingsV2ActiveDirectoryV2 {
   final pulumi.Input<String> clientId;
   /// The thumbprint of the certificate used for signing purposes.
   ///
-  /// !&gt; **Note:** If one `client_secret_setting_name` or `client_secret_certificate_thumbprint` is specified, terraform won't write the client secret or secret certificate thumbprint back to `app_setting`, so make sure they are existed in `app_settings` to function correctly.
+  /// &gt; **Note:** If one `clientSecretSettingName` or `clientSecretCertificateThumbprint` is specified, terraform won't write the client secret or secret certificate thumbprint back to `appSetting`, so make sure they are existed in `appSettings` to function correctly.
   final pulumi.Input<String>? clientSecretCertificateThumbprint;
   /// The App Setting name that contains the client secret of the Client.
   ///
-  /// !&gt; **Note:** A setting with this name must exist in `app_settings` to function correctly.
+  /// &gt; **Note:** A setting with this name must exist in `appSettings` to function correctly.
   final pulumi.Input<String>? clientSecretSettingName;
   /// A list of Allowed Client Applications in the JWT Claim.
   final pulumi.Input<List<String>>? jwtAllowedClientApplications;
@@ -98,4 +98,3 @@ class WindowsWebAppSlotAuthSettingsV2ActiveDirectoryV2 {
     );
   }
 }
-

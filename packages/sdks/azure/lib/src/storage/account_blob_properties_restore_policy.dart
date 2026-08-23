@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountBlobPropertiesRestorePolicy {
-  /// Specifies the number of days that the blob can be restored, between `1` and `365` days. This must be less than the `days` specified for `delete_retention_policy`.
+  /// Specifies the number of days that the blob can be restored, between `1` and `365` days. This must be less than the `days` specified for `deleteRetentionPolicy`.
   final pulumi.Input<int> days;
 
   /// Creates a new [AccountBlobPropertiesRestorePolicy].
-  /// [days] Specifies the number of days that the blob can be restored, between `1` and `365` days. This must be less than the `days` specified for `delete_retention_policy`.
+  /// [days] Specifies the number of days that the blob can be restored, between `1` and `365` days. This must be less than the `days` specified for `deleteRetentionPolicy`.
   const AccountBlobPropertiesRestorePolicy({
     required this.days,
   });
@@ -24,4 +24,3 @@ class AccountBlobPropertiesRestorePolicy {
     );
   }
 }
-

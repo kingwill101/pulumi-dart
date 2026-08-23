@@ -9,7 +9,7 @@ class DatabaseImport {
   final pulumi.Input<String> administratorLoginPassword;
   /// Specifies the type of authentication used to access the server. Valid values are `SQL` or `ADPassword`.
   final pulumi.Input<String> authenticationType;
-  /// The resource id for the storage account used to store BACPAC file. If set, private endpoint connection will be created for the storage account. Must match storage account used for storage_uri parameter.
+  /// The resource id for the storage account used to store BACPAC file. If set, private endpoint connection will be created for the storage account. Must match storage account used for storageUri parameter.
   final pulumi.Input<String>? storageAccountId;
   /// Specifies the access key for the storage account.
   final pulumi.Input<String> storageKey;
@@ -22,7 +22,7 @@ class DatabaseImport {
   /// [administratorLogin] Specifies the name of the SQL administrator.
   /// [administratorLoginPassword] Specifies the password of the SQL administrator.
   /// [authenticationType] Specifies the type of authentication used to access the server. Valid values are `SQL` or `ADPassword`.
-  /// [storageAccountId] The resource id for the storage account used to store BACPAC file. If set, private endpoint connection will be created for the storage account. Must match storage account used for storage_uri parameter.
+  /// [storageAccountId] The resource id for the storage account used to store BACPAC file. If set, private endpoint connection will be created for the storage account. Must match storage account used for storageUri parameter.
   /// [storageKey] Specifies the access key for the storage account.
   /// [storageKeyType] Specifies the type of access key for the storage account. Valid values are `StorageAccessKey` or `SharedAccessKey`.
   /// [storageUri] Specifies the blob URI of the .bacpac file.
@@ -60,4 +60,3 @@ class DatabaseImport {
     );
   }
 }
-

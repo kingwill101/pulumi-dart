@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_traffic_manager_profile_monitor_config_custom_header.dart';
 
 class GetTrafficManagerProfileMonitorConfig {
-  /// One or more `custom_header` blocks as defined below.
+  /// One or more `customHeader` blocks as defined below.
   final pulumi.Input<List<GetTrafficManagerProfileMonitorConfigCustomHeader>> customHeaders;
   /// A list of status code ranges.
   final pulumi.Input<List<String>> expectedStatusCodeRanges;
@@ -22,7 +22,7 @@ class GetTrafficManagerProfileMonitorConfig {
   final pulumi.Input<int> toleratedNumberOfFailures;
 
   /// Creates a new [GetTrafficManagerProfileMonitorConfig].
-  /// [customHeaders] One or more `custom_header` blocks as defined below.
+  /// [customHeaders] One or more `customHeader` blocks as defined below.
   /// [expectedStatusCodeRanges] A list of status code ranges.
   /// [intervalInSeconds] The interval used to check the endpoint health from a Traffic Manager probing agent.
   /// [path] The path used by the monitoring checks.
@@ -67,4 +67,3 @@ class GetTrafficManagerProfileMonitorConfig {
     );
   }
 }
-

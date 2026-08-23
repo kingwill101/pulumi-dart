@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_rai_blocklist_args.dart';
 import 'account_rai_blocklist_state.dart';
 
-/// Manages a Cognitive Account Rai Blocklist.
+/// Manages a Microsoft Foundry "Guardrails + Controls" blocklist. Microsoft Foundry was previously known as "Cognitive Account".
 ///
 /// ## Example Usage
 ///
@@ -118,6 +118,32 @@ import 'account_rai_blocklist_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "Brazil South"
+/// }
+/// resource "azure_cognitive_account" "example" {
+///   name                = "example-ca"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   kind                = "OpenAI"
+///   sku_name            = "S0"
+/// }
+/// resource "azure_cognitive_accountraiblocklist" "example" {
+///   name                 = "example-crb"
+///   cognitive_account_id = azure_cognitive_account.example.id
+///   description          = "Azure OpenAI Rai Blocklist"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +156,8 @@ import 'account_rai_blocklist_state.dart';
 /// import com.pulumi.azure.cognitive.AccountArgs;
 /// import com.pulumi.azure.cognitive.AccountRaiBlocklist;
 /// import com.pulumi.azure.cognitive.AccountRaiBlocklistArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,7 +222,7 @@ import 'account_rai_blocklist_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.CognitiveServices` - 2025-06-01
+/// * `Microsoft.CognitiveServices` - 2026-03-01
 ///
 /// ## Import
 ///
@@ -212,6 +238,8 @@ class AccountRaiBlocklist extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The name of the Cognitive Account Rai Blocklist. Changing this forces a new Cognitive Account Rai Blocklist to be created.
   late final pulumi.Output<String> name;
+  /// A mapping of tags assigned to the resource.
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Creates a new [AccountRaiBlocklist].
   /// [name] The Pulumi resource name.
@@ -230,6 +258,7 @@ class AccountRaiBlocklist extends pulumi.CustomResource {
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [AccountRaiBlocklist] resource's state with the given [name] and [id].
@@ -258,5 +287,6 @@ class AccountRaiBlocklist extends pulumi.CustomResource {
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

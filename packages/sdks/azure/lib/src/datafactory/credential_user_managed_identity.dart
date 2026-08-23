@@ -178,6 +178,41 @@ import 'credential_user_managed_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "westus"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   location            = azure_core_resourcegroup.example.location
+///   name                = "my-user"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_credentialusermanagedidentity" "test" {
+///   name            = azure_authorization_userassignedidentity.example.name
+///   description     = "Short description of this credential"
+///   data_factory_id = azure_datafactory_factory.example.id
+///   identity_id     = azure_authorization_userassignedidentity.example.id
+///   annotations     = ["example", "example2"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +228,8 @@ import 'credential_user_managed_identity_state.dart';
 /// import com.pulumi.azure.datafactory.inputs.FactoryIdentityArgs;
 /// import com.pulumi.azure.datafactory.CredentialUserManagedIdentity;
 /// import com.pulumi.azure.datafactory.CredentialUserManagedIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

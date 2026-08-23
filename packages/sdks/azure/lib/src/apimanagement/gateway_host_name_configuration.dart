@@ -238,6 +238,59 @@ import 'gateway_host_name_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_apimanagement_service" "example" {
+///   name                = "example-apim"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   publisher_name      = "pub1"
+///   publisher_email     = "pub1@email.com"
+///   sku_name            = "Consumption_0"
+/// }
+/// resource "azure_apimanagement_gateway" "example" {
+///   name              = "example-gateway"
+///   api_management_id = azure_apimanagement_service.example.id
+///   description       = "Example API Management gateway"
+///   location_data = {
+///     name     = "example name"
+///     city     = "example city"
+///     district = "example district"
+///     region   = "example region"
+///   }
+/// }
+/// resource "azure_apimanagement_certificate" "example" {
+///   name                = "example-cert"
+///   api_management_name = azure_apimanagement_service.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   data                = filebase64("example.pfx")
+/// }
+/// resource "azure_apimanagement_gatewayhostnameconfiguration" "example" {
+///   name                               = "example-host-name-configuration"
+///   api_management_id                  = azure_apimanagement_service.example.id
+///   gateway_name                       = azure_apimanagement_gateway.example.name
+///   certificate_id                     = azure_apimanagement_certificate.example.id
+///   host_name                          = "example-host-name"
+///   request_client_certificate_enabled = true
+///   http2_enabled                      = true
+///   tls10_enabled                      = true
+///   tls11_enabled                      = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -257,8 +310,8 @@ import 'gateway_host_name_configuration_state.dart';
 /// import com.pulumi.std.inputs.Filebase64Args;
 /// import com.pulumi.azure.apimanagement.GatewayHostNameConfiguration;
 /// import com.pulumi.azure.apimanagement.GatewayHostNameConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

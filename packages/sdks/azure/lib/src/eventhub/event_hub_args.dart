@@ -9,11 +9,11 @@ import 'event_hub_retention_description.dart';
 /// {@endtemplate}
 /// {@macro pulumi_eventhub_event_hub_event_hub_args_doc}
 class EventHubArgs {
-  /// A `capture_description` block as defined below.
+  /// A `captureDescription` block as defined below.
   final pulumi.Input<EventHubCaptureDescription>? captureDescription;
   /// Specifies the number of days to retain the events for this Event Hub.
   ///
-  /// &gt; **Note:** When using a dedicated Event Hubs cluster, maximum value of `message_retention` is 90 days. When using a shared parent EventHub Namespace, maximum value is 7 days; or 1 day when using a Basic SKU for the shared parent EventHub Namespace.
+  /// &gt; **Note:** When using a dedicated Event Hubs cluster, maximum value of `messageRetention` is 90 days. When using a shared parent EventHub Namespace, maximum value is 7 days; or 1 day when using a Basic SKU for the shared parent EventHub Namespace.
   final pulumi.Input<int>? messageRetention;
   /// Specifies the name of the EventHub resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -22,25 +22,25 @@ class EventHubArgs {
   final pulumi.Input<String>? namespaceName;
   /// Specifies the current number of shards on the Event Hub.
   ///
-  /// &gt; **Note:** When using a shared parent EventHub Namespace, `partition_count` cannot be changed unless the Eventhub Namespace SKU is `Premium`. When using a dedicated Event Hubs cluster, this restriction doesn't apply. In either case though, the `partition_count` cannot be decreased.
+  /// &gt; **Note:** When using a shared parent EventHub Namespace, `partitionCount` cannot be changed unless the Eventhub Namespace SKU is `Premium`. When using a dedicated Event Hubs cluster, this restriction doesn't apply. In either case though, the `partitionCount` cannot be decreased.
   ///
-  /// &gt; **Note:** When using a dedicated Event Hubs cluster, maximum value of `partition_count` is 1024. When using a shared parent EventHub Namespace, maximum value is 32.
+  /// &gt; **Note:** When using a dedicated Event Hubs cluster, maximum value of `partitionCount` is 1024. When using a shared parent EventHub Namespace, maximum value is 32.
   final pulumi.Input<int> partitionCount;
   final pulumi.Input<String>? resourceGroupName;
-  /// A `retention_description` block as defined below.
+  /// A `retentionDescription` block as defined below.
   final pulumi.Input<EventHubRetentionDescription>? retentionDescription;
   /// Specifies the status of the Event Hub resource. Possible values are `Active`, `Disabled` and `SendDisabled`. Defaults to `Active`.
   final pulumi.Input<String>? status;
 
   /// Creates a new [EventHubArgs].
-  /// [captureDescription] A `capture_description` block as defined below.
+  /// [captureDescription] A `captureDescription` block as defined below.
   /// [messageRetention] Specifies the number of days to retain the events for this Event Hub.
   /// [name] Specifies the name of the EventHub resource. Changing this forces a new resource to be created.
   /// [namespaceId] Specifies the ID of the EventHub Namespace.
   /// [namespaceName] Optional.
   /// [partitionCount] Specifies the current number of shards on the Event Hub.
   /// [resourceGroupName] Optional.
-  /// [retentionDescription] A `retention_description` block as defined below.
+  /// [retentionDescription] A `retentionDescription` block as defined below.
   /// [status] Specifies the status of the Event Hub resource. Possible values are `Active`, `Disabled` and `SendDisabled`. Defaults to `Active`.
   const EventHubArgs({
     this.captureDescription,
@@ -82,4 +82,3 @@ class EventHubArgs {
     );
   }
 }
-

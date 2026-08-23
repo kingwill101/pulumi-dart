@@ -14,11 +14,11 @@ class ScheduledActionState {
   final pulumi.Input<String>? emailAddressSender;
   /// Specifies a list of email addresses that will receive the Scheduled Action.
   final pulumi.Input<List<String>>? emailAddresses;
-  /// Subject of the email. Length is limited to 70 characters.
+  /// Subject of the email. Length is limited to 50 characters.
   final pulumi.Input<String>? emailSubject;
   /// The end date and time of the Scheduled Action (UTC).
   final pulumi.Input<String>? endDate;
-  /// Frequency of the schedule. Possible values are `Daily`, `Monthly` and `Weekly`. Value `Monthly` requires either `weeks_of_month` and `days_of_week` or `day_of_month` to be specified. Value `Weekly` requires `days_of_week` to be specified.
+  /// Frequency of the schedule. Possible values are `Daily`, `Monthly` and `Weekly`. Value `Monthly` requires either `weeksOfMonth` and `daysOfWeek` or `dayOfMonth` to be specified. Value `Weekly` requires `daysOfWeek` to be specified.
   final pulumi.Input<String>? frequency;
   /// UTC time at which cost analysis data will be emailed. Must be between `0` and `23`.
   final pulumi.Input<int>? hourOfDay;
@@ -30,7 +30,7 @@ class ScheduledActionState {
   final pulumi.Input<String>? startDate;
   /// The ID of the Cost Management View that is used by the Scheduled Action. Changing this forces a new resource to be created.
   final pulumi.Input<String>? viewId;
-  /// Specifies a list of weeks in which cost analysis data will be emailed. This property is applicable when `frequency` is `Monthly` and used in combination with `days_of_week`. Possible values are `First`, `Fourth`, `Last`, `Second` and `Third`.
+  /// Specifies a list of weeks in which cost analysis data will be emailed. This property is applicable when `frequency` is `Monthly` and used in combination with `daysOfWeek`. Possible values are `First`, `Fourth`, `Last`, `Second` and `Third`.
   final pulumi.Input<List<String>>? weeksOfMonths;
 
   /// Creates a new [ScheduledActionState].
@@ -39,15 +39,15 @@ class ScheduledActionState {
   /// [displayName] User visible input name of the Cost Management Scheduled Action.
   /// [emailAddressSender] Email address of the point of contact that should get the unsubscribe requests of Scheduled Action notification emails.
   /// [emailAddresses] Specifies a list of email addresses that will receive the Scheduled Action.
-  /// [emailSubject] Subject of the email. Length is limited to 70 characters.
+  /// [emailSubject] Subject of the email. Length is limited to 50 characters.
   /// [endDate] The end date and time of the Scheduled Action (UTC).
-  /// [frequency] Frequency of the schedule. Possible values are `Daily`, `Monthly` and `Weekly`. Value `Monthly` requires either `weeks_of_month` and `days_of_week` or `day_of_month` to be specified. Value `Weekly` requires `days_of_week` to be specified.
+  /// [frequency] Frequency of the schedule. Possible values are `Daily`, `Monthly` and `Weekly`. Value `Monthly` requires either `weeksOfMonth` and `daysOfWeek` or `dayOfMonth` to be specified. Value `Weekly` requires `daysOfWeek` to be specified.
   /// [hourOfDay] UTC time at which cost analysis data will be emailed. Must be between `0` and `23`.
   /// [message] Message to be added in the email. Length is limited to 250 characters.
   /// [name] The name which should be used for this Azure Cost Management Scheduled Action. Changing this forces a new Azure Cost Management Scheduled Action to be created.
   /// [startDate] The start date and time of the Scheduled Action (UTC).
   /// [viewId] The ID of the Cost Management View that is used by the Scheduled Action. Changing this forces a new resource to be created.
-  /// [weeksOfMonths] Specifies a list of weeks in which cost analysis data will be emailed. This property is applicable when `frequency` is `Monthly` and used in combination with `days_of_week`. Possible values are `First`, `Fourth`, `Last`, `Second` and `Third`.
+  /// [weeksOfMonths] Specifies a list of weeks in which cost analysis data will be emailed. This property is applicable when `frequency` is `Monthly` and used in combination with `daysOfWeek`. Possible values are `First`, `Fourth`, `Last`, `Second` and `Third`.
   const ScheduledActionState({
     this.dayOfMonth,
     this.daysOfWeeks,
@@ -103,4 +103,3 @@ class ScheduledActionState {
     );
   }
 }
-

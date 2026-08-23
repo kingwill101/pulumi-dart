@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IPGroupState {
   /// A list of CIDRs or IP addresses.
   ///
-  /// &gt; **Note:** The AzureRM Terraform provider provides cidr support via the standalone resource azure.network.IPGroupCIDR and in-line within this resource using the `cidrs` property. You cannot use both methods simultaneously. If cidrs are set via the resource `azure.network.IPGroupCIDR` then `ignore_changes` should be used in the ip group configuration.
+  /// &gt; **Note:** The AzureRM Terraform provider provides cidr support via the standalone resource azure.network.IPGroupCIDR and in-line within this resource using the `cidrs` property. You cannot use both methods simultaneously. If cidrs are set via the resource `azure.network.IPGroupCIDR` then `ignoreChanges` should be used in the ip group configuration.
   final pulumi.Input<List<String>>? cidrs;
   /// A list of ID of Firewall.
   final pulumi.Input<List<String>>? firewallIds;
@@ -63,4 +63,3 @@ class IPGroupState {
     );
   }
 }
-

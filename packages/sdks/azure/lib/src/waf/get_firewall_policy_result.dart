@@ -44,4 +44,3 @@ class GetFirewallPolicyResult {
     );
   }
 }
-

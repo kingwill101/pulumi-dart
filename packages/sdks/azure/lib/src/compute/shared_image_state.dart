@@ -12,7 +12,7 @@ class SharedImageState {
   final pulumi.Input<String>? architecture;
   /// Specifies if Confidential Virtual Machines enabled. It will enable all the features of trusted, with higher confidentiality features for isolate machines or encrypted data. Available for Gen2 machines. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Only one of `trusted_launch_supported`, `trusted_launch_enabled`, `confidential_vm_supported` and `confidential_vm_enabled` can be specified.
+  /// &gt; **Note:** Only one of `trustedLaunchSupported`, `trustedLaunchEnabled`, `confidentialVmSupported` and `confidentialVmEnabled` can be specified.
   final pulumi.Input<bool>? confidentialVmEnabled;
   /// Specifies if supports creation of both Confidential virtual machines and Gen2 virtual machines with standard security from a compatible Gen2 OS disk VHD or Gen2 Managed image. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? confidentialVmSupported;
@@ -50,7 +50,7 @@ class SharedImageState {
   final pulumi.Input<String>? osType;
   /// The URI containing the Privacy Statement associated with this Shared Image. Changing this forces a new resource to be created.
   final pulumi.Input<String>? privacyStatementUri;
-  /// A `purchase_plan` block as defined below.
+  /// A `purchasePlan` block as defined below.
   final pulumi.Input<SharedImagePurchasePlan>? purchasePlan;
   /// The URI containing the Release Notes associated with this Shared Image.
   final pulumi.Input<String>? releaseNoteUri;
@@ -58,7 +58,7 @@ class SharedImageState {
   final pulumi.Input<String>? resourceGroupName;
   /// Specifies that the Operating System used inside this Image has not been Generalized (for example, `sysprep` on Windows has not been run). Changing this forces a new resource to be created.
   ///
-  /// !&gt; **Note:** It's recommended to Generalize images where possible - Specialized Images reuse the same UUID internally within each Virtual Machine, which can have unintended side-effects.
+  /// &gt; **Note:** It's recommended to Generalize images where possible - Specialized Images reuse the same UUID internally within each Virtual Machine, which can have unintended side-effects.
   final pulumi.Input<bool>? specialized;
   /// A mapping of tags to assign to the Shared Image.
   final pulumi.Input<Map<String, String>>? tags;
@@ -89,7 +89,7 @@ class SharedImageState {
   /// [name] Specifies the name of the Shared Image. Changing this forces a new resource to be created.
   /// [osType] The type of Operating System present in this Shared Image. Possible values are `Linux` and `Windows`. Changing this forces a new resource to be created.
   /// [privacyStatementUri] The URI containing the Privacy Statement associated with this Shared Image. Changing this forces a new resource to be created.
-  /// [purchasePlan] A `purchase_plan` block as defined below.
+  /// [purchasePlan] A `purchasePlan` block as defined below.
   /// [releaseNoteUri] The URI containing the Release Notes associated with this Shared Image.
   /// [resourceGroupName] The name of the resource group in which the Shared Image Gallery exists. Changing this forces a new resource to be created.
   /// [specialized] Specifies that the Operating System used inside this Image has not been Generalized (for example, `sysprep` on Windows has not been run). Changing this forces a new resource to be created.
@@ -193,4 +193,3 @@ class SharedImageState {
     );
   }
 }
-

@@ -8,7 +8,7 @@ class NetworkManagerNetworkGroupState {
   final pulumi.Input<String>? description;
   /// The member type for the network group. Possible values are `Subnet` and `VirtualNetwork`. Defaults to `VirtualNetwork`.
   ///
-  /// &gt; **Note:** `member_type` can be set to `Subnet` only if the parent Network Manager has `Routing` included in its `scope_accesses`.
+  /// &gt; **Note:** `memberType` can be set to `Subnet` only if the parent Network Manager has `Routing` included in its `scopeAccesses`.
   final pulumi.Input<String>? memberType;
   /// Specifies the name which should be used for this Network Manager Network Group. Changing this forces a new Network Manager Network Group to be created.
   final pulumi.Input<String>? name;
@@ -45,4 +45,3 @@ class NetworkManagerNetworkGroupState {
     );
   }
 }
-

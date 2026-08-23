@@ -7,9 +7,9 @@ import 'shared_image_version_target_region.dart';
 class SharedImageVersionState {
   /// URI of the Azure Storage Blob used to create the Image Version. Changing this forces a new resource to be created.
   ///
-  /// &gt; **NOTE:** You must specify exact one of `blob_uri`, `managed_image_id` and `os_disk_snapshot_id`.
+  /// &gt; **NOTE:** You must specify exact one of `blobUri`, `managedImageId` and `osDiskSnapshotId`.
   ///
-  /// &gt; **NOTE:** `blob_uri` and `storage_account_id` must be specified together
+  /// &gt; **NOTE:** `blobUri` and `storageAccountId` must be specified together
   final pulumi.Input<String>? blobUri;
   /// Specifies whether this Shared Image Version can be deleted from the Azure Regions this is replicated to. Defaults to `false`. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? deletionOfReplicatedLocationsEnabled;
@@ -27,13 +27,13 @@ class SharedImageVersionState {
   ///
   /// &gt; **NOTE:** The ID can be sourced from the `azure.compute.Image` data source or resource
   ///
-  /// &gt; **NOTE:** You must specify exact one of `blob_uri`, `managed_image_id` and `os_disk_snapshot_id`.
+  /// &gt; **NOTE:** You must specify exact one of `blobUri`, `managedImageId` and `osDiskSnapshotId`.
   final pulumi.Input<String>? managedImageId;
   /// The version number for this Image Version, such as `1.0.0`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
   /// The ID of the OS disk snapshot which should be used for this Shared Image Version. Changing this forces a new resource to be created.
   ///
-  /// &gt; **NOTE:** You must specify exact one of `blob_uri`, `managed_image_id` and `os_disk_snapshot_id`.
+  /// &gt; **NOTE:** You must specify exact one of `blobUri`, `managedImageId` and `osDiskSnapshotId`.
   final pulumi.Input<String>? osDiskSnapshotId;
   /// Mode to be used for replication. Possible values are `Full` and `Shallow`. Defaults to `Full`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? replicationMode;
@@ -41,11 +41,11 @@ class SharedImageVersionState {
   final pulumi.Input<String>? resourceGroupName;
   /// The ID of the Storage Account where the Blob exists. Changing this forces a new resource to be created.
   ///
-  /// &gt; **NOTE:** `blob_uri` and `storage_account_id` must be specified together
+  /// &gt; **NOTE:** `blobUri` and `storageAccountId` must be specified together
   final pulumi.Input<String>? storageAccountId;
   /// A collection of tags which should be applied to this resource.
   final pulumi.Input<Map<String, String>>? tags;
-  /// One or more `target_region` blocks as documented below.
+  /// One or more `targetRegion` blocks as documented below.
   final pulumi.Input<List<SharedImageVersionTargetRegion>>? targetRegions;
 
   /// Creates a new [SharedImageVersionState].
@@ -63,7 +63,7 @@ class SharedImageVersionState {
   /// [resourceGroupName] The name of the Resource Group in which the Shared Image Gallery exists. Changing this forces a new resource to be created.
   /// [storageAccountId] The ID of the Storage Account where the Blob exists. Changing this forces a new resource to be created.
   /// [tags] A collection of tags which should be applied to this resource.
-  /// [targetRegions] One or more `target_region` blocks as documented below.
+  /// [targetRegions] One or more `targetRegion` blocks as documented below.
   const SharedImageVersionState({
     this.blobUri,
     this.deletionOfReplicatedLocationsEnabled,
@@ -122,4 +122,3 @@ class SharedImageVersionState {
     );
   }
 }
-

@@ -51,7 +51,7 @@ class GetAutonomousDatabaseResult {
   final bool localDataGuardEnabled;
   /// The Azure Region where the Autonomous Database exists.
   final String location;
-  /// A `long_term_backup_schedule` block as defined below
+  /// A `longTermBackupSchedule` block as defined below
   final List<GetAutonomousDatabaseLongTermBackupSchedule> longTermBackupSchedules;
   /// The amount of memory (in GBs) enabled per ECPU or OCPU.
   final int memoryPerOracleComputeUnitInGbs;
@@ -147,7 +147,7 @@ class GetAutonomousDatabaseResult {
   /// [localAdgAutoFailoverMaxDataLossLimit] Parameter that allows users to select an acceptable maximum data loss limit in seconds, up to which Automatic Failover will be triggered when necessary for a Local Autonomous Data Guard
   /// [localDataGuardEnabled] Indicates whether the Autonomous Database has local (in-region) Data Guard enabled. Not applicable to cross-region Autonomous Data Guard associations, or to Autonomous Databases using dedicated Exadata infrastructure or Exadata Cloud@Customer infrastructure.
   /// [location] The Azure Region where the Autonomous Database exists.
-  /// [longTermBackupSchedules] A `long_term_backup_schedule` block as defined below
+  /// [longTermBackupSchedules] A `longTermBackupSchedule` block as defined below
   /// [memoryPerOracleComputeUnitInGbs] The amount of memory (in GBs) enabled per ECPU or OCPU.
   /// [mtlsConnectionRequired] Specifies if the Autonomous Database requires mTLS connections.
   /// [name] Required.
@@ -377,4 +377,3 @@ class GetAutonomousDatabaseResult {
     );
   }
 }
-

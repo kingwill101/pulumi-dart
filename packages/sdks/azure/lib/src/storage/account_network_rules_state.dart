@@ -17,22 +17,22 @@ class AccountNetworkRulesState {
   ///
   /// &gt; **Note:** IP network rules have no effect on requests originating from the same Azure region as the storage account. Use Virtual network rules to allow same-region requests. Services deployed in the same region as the storage account use private Azure IP addresses for communication. Thus, you cannot restrict access to specific Azure services based on their public outbound IP address range.
   ///
-  /// &gt; **Note:** User has to explicitly set `ip_rules` to empty slice (`[]`) to remove it.
+  /// &gt; **Note:** User has to explicitly set `ipRules` to empty slice (`[]`) to remove it.
   final pulumi.Input<List<String>>? ipRules;
-  /// One or more `private_link_access` block as defined below.
+  /// One or more `privateLinkAccess` block as defined below.
   final pulumi.Input<List<AccountNetworkRulesPrivateLinkAccessRule>>? privateLinkAccessRules;
   /// Specifies the ID of the storage account. Changing this forces a new resource to be created.
   final pulumi.Input<String>? storageAccountId;
   /// A list of virtual network subnet ids to secure the storage account.
   ///
-  /// &gt; **Note:** User has to explicitly set `virtual_network_subnet_ids` to empty slice (`[]`) to remove it.
+  /// &gt; **Note:** User has to explicitly set `virtualNetworkSubnetIds` to empty slice (`[]`) to remove it.
   final pulumi.Input<List<String>>? virtualNetworkSubnetIds;
 
   /// Creates a new [AccountNetworkRulesState].
   /// [bypasses] Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of `Logging`, `Metrics`, `AzureServices`, or `None`. Defaults to `["AzureServices"]`.
   /// [defaultAction] Specifies the default action of allow or deny when no other rules match. Valid options are `Deny` or `Allow`.
   /// [ipRules] List of public IP or IP ranges in CIDR Format. Only IPv4 addresses are allowed. Private IP address ranges (as defined in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) are not allowed.
-  /// [privateLinkAccessRules] One or more `private_link_access` block as defined below.
+  /// [privateLinkAccessRules] One or more `privateLinkAccess` block as defined below.
   /// [storageAccountId] Specifies the ID of the storage account. Changing this forces a new resource to be created.
   /// [virtualNetworkSubnetIds] A list of virtual network subnet ids to secure the storage account.
   const AccountNetworkRulesState({
@@ -66,4 +66,3 @@ class AccountNetworkRulesState {
     );
   }
 }
-

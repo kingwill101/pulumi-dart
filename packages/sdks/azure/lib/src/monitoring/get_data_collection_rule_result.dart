@@ -11,45 +11,45 @@ import 'get_data_collection_rule_stream_declaration.dart';
 class GetDataCollectionRuleResult {
   /// The resource ID of the Data Collection Endpoint that this rule can be used with.
   final String dataCollectionEndpointId;
-  /// One or more `data_flow` blocks as defined below.
+  /// One or more `dataFlow` blocks as defined below.
   final List<GetDataCollectionRuleDataFlow> dataFlows;
-  /// A `data_sources` block as defined below. This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
+  /// A `dataSources` block as defined below. This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
   final List<GetDataCollectionRuleDataSource> dataSources;
   /// The description of the Data Collection Rule.
   final String description;
-  /// Specifies a list of destination names. A `azure_monitor_metrics` data source only allows for stream of kind `Microsoft-InsightsMetrics`.
+  /// Specifies a list of destination names. A `azureMonitorMetrics` data source only allows for stream of kind `Microsoft-InsightsMetrics`.
   final List<GetDataCollectionRuleDestination> destinations;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   /// An `identity` block as defined below.
   final List<GetDataCollectionRuleIdentity> identities;
   final String immutableId;
-  /// The kind of the Data Collection Rule. Possible values are `Linux`, `Windows`,and `AgentDirectToStore`. A rule of kind `Linux` does not allow for `windows_event_log` data sources. And a rule of kind `Windows` does not allow for `syslog` data sources. If kind is not specified, all kinds of data sources are allowed.
+  /// The kind of the Data Collection Rule. Possible values are `Linux`, `Windows`,and `AgentDirectToStore`. A rule of kind `Linux` does not allow for `windowsEventLog` data sources. And a rule of kind `Windows` does not allow for `syslog` data sources. If kind is not specified, all kinds of data sources are allowed.
   final String kind;
   /// The Azure Region where the Data Collection Rule should exist. Changing this forces a new Data Collection Rule to be created.
   final String location;
   /// The name which should be used for this data source. This name should be unique across all data sources regardless of type within the Data Collection Rule.
   final String name;
   final String resourceGroupName;
-  /// A `stream_declaration` block as defined below.
+  /// A `streamDeclaration` block as defined below.
   final List<GetDataCollectionRuleStreamDeclaration> streamDeclarations;
   /// A mapping of tags which should be assigned to the Data Collection Rule.
   final Map<String, String> tags;
 
   /// Creates a new [GetDataCollectionRuleResult].
   /// [dataCollectionEndpointId] The resource ID of the Data Collection Endpoint that this rule can be used with.
-  /// [dataFlows] One or more `data_flow` blocks as defined below.
-  /// [dataSources] A `data_sources` block as defined below. This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
+  /// [dataFlows] One or more `dataFlow` blocks as defined below.
+  /// [dataSources] A `dataSources` block as defined below. This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
   /// [description] The description of the Data Collection Rule.
-  /// [destinations] Specifies a list of destination names. A `azure_monitor_metrics` data source only allows for stream of kind `Microsoft-InsightsMetrics`.
+  /// [destinations] Specifies a list of destination names. A `azureMonitorMetrics` data source only allows for stream of kind `Microsoft-InsightsMetrics`.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] An `identity` block as defined below.
   /// [immutableId] Required.
-  /// [kind] The kind of the Data Collection Rule. Possible values are `Linux`, `Windows`,and `AgentDirectToStore`. A rule of kind `Linux` does not allow for `windows_event_log` data sources. And a rule of kind `Windows` does not allow for `syslog` data sources. If kind is not specified, all kinds of data sources are allowed.
+  /// [kind] The kind of the Data Collection Rule. Possible values are `Linux`, `Windows`,and `AgentDirectToStore`. A rule of kind `Linux` does not allow for `windowsEventLog` data sources. And a rule of kind `Windows` does not allow for `syslog` data sources. If kind is not specified, all kinds of data sources are allowed.
   /// [location] The Azure Region where the Data Collection Rule should exist. Changing this forces a new Data Collection Rule to be created.
   /// [name] The name which should be used for this data source. This name should be unique across all data sources regardless of type within the Data Collection Rule.
   /// [resourceGroupName] Required.
-  /// [streamDeclarations] A `stream_declaration` block as defined below.
+  /// [streamDeclarations] A `streamDeclaration` block as defined below.
   /// [tags] A mapping of tags which should be assigned to the Data Collection Rule.
   const GetDataCollectionRuleResult({
     required this.dataCollectionEndpointId,
@@ -106,4 +106,3 @@ class GetDataCollectionRuleResult {
     );
   }
 }
-

@@ -16,9 +16,9 @@ class GetShareArgs {
   final pulumi.Input<String> name;
   /// The ID of the storage account in which the share exists.
   ///
-  /// &gt; **Note:** One of `storage_account_name` or `storage_account_id` must be specified. When specifying `storage_account_id` the resource will use the Resource Manager API, rather than the Data Plane API.
+  /// &gt; **Note:** One of `storageAccountName` or `storageAccountId` must be specified. When specifying `storageAccountId` the resource will use the Resource Manager API, rather than the Data Plane API.
   final pulumi.Input<String>? storageAccountId;
-  /// The name of the storage account in which the share exists. This property is deprecated in favour of `storage_account_id`.
+  /// The name of the storage account in which the share exists. This property is deprecated in favour of `storageAccountId`.
   final pulumi.Input<String>? storageAccountName;
 
   /// Creates a new [GetShareArgs].
@@ -26,7 +26,7 @@ class GetShareArgs {
   /// [metadata] A map of custom file share metadata.
   /// [name] The name of the share.
   /// [storageAccountId] The ID of the storage account in which the share exists.
-  /// [storageAccountName] The name of the storage account in which the share exists. This property is deprecated in favour of `storage_account_id`.
+  /// [storageAccountName] The name of the storage account in which the share exists. This property is deprecated in favour of `storageAccountId`.
   const GetShareArgs({
     this.acls,
     this.metadata,
@@ -55,4 +55,3 @@ class GetShareArgs {
     );
   }
 }
-

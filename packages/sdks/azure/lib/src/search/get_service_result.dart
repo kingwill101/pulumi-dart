@@ -8,6 +8,8 @@ import 'get_service_query_key.dart';
 class GetServiceResult {
   /// Describes whether the search service is compliant or not with respect to having non-customer encrypted resources. If a service has more than one non-customer encrypted resource and `Enforcement` is `enabled` then the service will be marked as `NonCompliant`. If all the resources are customer encrypted, then the service will be marked as `Compliant`.
   final String customerManagedKeyEncryptionComplianceStatus;
+  /// The endpoint used to connect to this Search Service.
+  final String endpoint;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   /// An `identity` block as defined below.
@@ -20,7 +22,7 @@ class GetServiceResult {
   final String primaryKey;
   /// Whether or not public network access is enabled for this resource.
   final bool publicNetworkAccessEnabled;
-  /// A `query_keys` block as defined below.
+  /// A `queryKeys` block as defined below.
   final List<GetServiceQueryKey> queryKeys;
   /// The number of replica's which have been created.
   final int replicaCount;
@@ -32,19 +34,21 @@ class GetServiceResult {
 
   /// Creates a new [GetServiceResult].
   /// [customerManagedKeyEncryptionComplianceStatus] Describes whether the search service is compliant or not with respect to having non-customer encrypted resources. If a service has more than one non-customer encrypted resource and `Enforcement` is `enabled` then the service will be marked as `NonCompliant`. If all the resources are customer encrypted, then the service will be marked as `Compliant`.
+  /// [endpoint] The endpoint used to connect to this Search Service.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] An `identity` block as defined below.
   /// [name] The name of this Query Key.
   /// [partitionCount] The number of partitions which have been created.
   /// [primaryKey] The Primary Key used for Search Service Administration.
   /// [publicNetworkAccessEnabled] Whether or not public network access is enabled for this resource.
-  /// [queryKeys] A `query_keys` block as defined below.
+  /// [queryKeys] A `queryKeys` block as defined below.
   /// [replicaCount] The number of replica's which have been created.
   /// [resourceGroupName] Required.
   /// [secondaryKey] The Secondary Key used for Search Service Administration.
   /// [tags] A mapping of tags assigned to the resource.
   const GetServiceResult({
     required this.customerManagedKeyEncryptionComplianceStatus,
+    required this.endpoint,
     required this.id,
     required this.identities,
     required this.name,
@@ -61,6 +65,7 @@ class GetServiceResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customerManagedKeyEncryptionComplianceStatus': customerManagedKeyEncryptionComplianceStatus,
+      'endpoint': endpoint,
       'id': id,
       'identities': pulumi.Input.encodeList<GetServiceIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'name': name,
@@ -78,6 +83,7 @@ class GetServiceResult {
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
       customerManagedKeyEncryptionComplianceStatus: map['customerManagedKeyEncryptionComplianceStatus'] as String,
+      endpoint: map['endpoint'] as String,
       id: map['id'] as String,
       identities: pulumi.Input.decodeList<GetServiceIdentity>(map['identities']!, (value) => GetServiceIdentity.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
@@ -92,4 +98,3 @@ class GetServiceResult {
     );
   }
 }
-

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_backup_retention_policy_daily_schedule_retention_duration.dart';
 
 class ConfigurationBackupRetentionPolicyDailySchedule {
-  /// A `retention_duration` block as defined below.
+  /// A `retentionDuration` block as defined below.
   final pulumi.Input<ConfigurationBackupRetentionPolicyDailyScheduleRetentionDuration>? retentionDuration;
   /// The retention times of the backup policy.
   final pulumi.Input<List<String>>? retentionTimes;
 
   /// Creates a new [ConfigurationBackupRetentionPolicyDailySchedule].
-  /// [retentionDuration] A `retention_duration` block as defined below.
+  /// [retentionDuration] A `retentionDuration` block as defined below.
   /// [retentionTimes] The retention times of the backup policy.
   const ConfigurationBackupRetentionPolicyDailySchedule({
     this.retentionDuration,
@@ -31,4 +31,3 @@ class ConfigurationBackupRetentionPolicyDailySchedule {
     );
   }
 }
-

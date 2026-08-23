@@ -4,7 +4,7 @@ import 'spring_cloud_app_mysql_association_state.dart';
 
 /// Associates a Spring Cloud Application with a MySQL Database.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudAppMysqlAssociation` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudAppMysqlAssociation` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -221,6 +221,54 @@ import 'spring_cloud_app_mysql_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example-springcloud"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_appplatform_springcloudapp" "example" {
+///   name                = "example-springcloudapp"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   service_name        = azure_appplatform_springcloudservice.example.name
+/// }
+/// resource "azure_mysql_flexibleserver" "example" {
+///   name                   = "example-fsserver"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resourcegroup.example.location
+///   administrator_login    = "adminTerraform"
+///   administrator_password = "QAZwsx123"
+///   sku_name               = "B_Standard_B1ms"
+///   zone                   = "2"
+/// }
+/// resource "azure_mysql_flexibledatabase" "example" {
+///   name                = "exampledb"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   server_name         = azure_mysql_flexibleserver.example.name
+///   charset             = "utf8"
+///   collation           = "utf8_unicode_ci"
+/// }
+/// resource "azure_appplatform_springcloudappmysqlassociation" "example" {
+///   name                = "example-bind"
+///   spring_cloud_app_id = azure_appplatform_springcloudapp.example.id
+///   mysql_server_id     = azure_mysql_flexibleserver.example.id
+///   database_name       = azure_mysql_flexibledatabase.example.name
+///   username            = azure_mysql_flexibleserver.example.administrator_login
+///   password            = azure_mysql_flexibleserver.example.administratorLoginPassword
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -239,8 +287,8 @@ import 'spring_cloud_app_mysql_association_state.dart';
 /// import com.pulumi.azure.mysql.FlexibleDatabaseArgs;
 /// import com.pulumi.azure.appplatform.SpringCloudAppMysqlAssociation;
 /// import com.pulumi.azure.appplatform.SpringCloudAppMysqlAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -65,6 +65,21 @@ import 'private_link_hub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_synapse_privatelinkhub" "example" {
+///   name                = "example"
+///   resource_group_name = "example-rg"
+///   location            = "West Europe"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'private_link_hub_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.synapse.PrivateLinkHub;
 /// import com.pulumi.azure.synapse.PrivateLinkHubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

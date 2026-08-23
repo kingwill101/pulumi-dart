@@ -148,6 +148,37 @@ import 'registry_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_containerservice_registry" "acr" {
+///   name                = "containerRegistry1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Premium"
+///   admin_enabled       = false
+///   georeplications {
+///     location                = "East US"
+///     zone_redundancy_enabled = true
+///     tags                    = {}
+///   }
+///   georeplications {
+///     location                = "North Europe"
+///     zone_redundancy_enabled = true
+///     tags                    = {}
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -159,8 +190,8 @@ import 'registry_state.dart';
 /// import com.pulumi.azure.containerservice.Registry;
 /// import com.pulumi.azure.containerservice.RegistryArgs;
 /// import com.pulumi.azure.containerservice.inputs.RegistryGeoreplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -397,6 +428,44 @@ import 'registry_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getkey" "example" {
+///   name         = "super-secret"
+///   key_vault_id = existing.id
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_containerservice_registry" "acr" {
+///   name                = "containerRegistry1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Premium"
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+///   encryption = {
+///     key_vault_key_id   = data.azure_keyvault_getkey.example.id
+///     identity_client_id = azure_authorization_userassignedidentity.example.client_id
+///   }
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   name                = "registry-uai"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -413,8 +482,8 @@ import 'registry_state.dart';
 /// import com.pulumi.azure.containerservice.RegistryArgs;
 /// import com.pulumi.azure.containerservice.inputs.RegistryIdentityArgs;
 /// import com.pulumi.azure.containerservice.inputs.RegistryEncryptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -679,7 +748,7 @@ import 'registry_state.dart';
 /// 		}
 /// 		_, err = authorization.NewAssignment(ctx, "example", &authorization.AssignmentArgs{
 /// 			PrincipalId: pulumi.String(exampleKubernetesCluster.KubeletIdentity.ApplyT(func(kubeletIdentity containerservice.KubernetesClusterKubeletIdentity) (*string, error) {
-/// 				return &kubeletIdentity.ObjectId, nil
+/// 				return kubeletIdentity.ObjectId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			RoleDefinitionName:           pulumi.String("AcrPull"),
 /// 			Scope:                        exampleRegistry.ID(),
@@ -690,6 +759,49 @@ import 'registry_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_containerservice_registry" "example" {
+///   name                = "containerRegistry1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Premium"
+/// }
+/// resource "azure_containerservice_kubernetescluster" "example" {
+///   name                = "example-aks1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   dns_prefix          = "exampleaks1"
+///   default_node_pool = {
+///     name       = "default"
+///     node_count = 1
+///     vm_size    = "Standard_D2_v2"
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "Environment" = "Production"
+///   }
+/// }
+/// resource "azure_authorization_assignment" "example" {
+///   principal_id                     = azure_containerservice_kubernetescluster.example.kubelet_identity.object_id
+///   role_definition_name             = "AcrPull"
+///   scope                            = azure_containerservice_registry.example.id
+///   skip_service_principal_aad_check = true
 /// }
 /// ```
 /// ```java
@@ -708,8 +820,8 @@ import 'registry_state.dart';
 /// import com.pulumi.azure.containerservice.inputs.KubernetesClusterIdentityArgs;
 /// import com.pulumi.azure.authorization.Assignment;
 /// import com.pulumi.azure.authorization.AssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -830,9 +942,9 @@ class Registry extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> dataEndpointHostNames;
   /// An `encryption` block as documented below.
   late final pulumi.Output<RegistryEncryption> encryption;
-  /// Boolean value that indicates whether export policy is enabled. Defaults to `true`. In order to set it to `false`, make sure the `public_network_access_enabled` is also set to `false`.
+  /// Boolean value that indicates whether export policy is enabled. Defaults to `true`. In order to set it to `false`, make sure the `publicNetworkAccessEnabled` is also set to `false`.
   ///
-  /// &gt; **Note:** `quarantine_policy_enabled`, `retention_policy_in_days`, `trust_policy_enabled`, `export_policy_enabled` and `zone_redundancy_enabled` are only supported on resources with the `Premium` SKU.
+  /// &gt; **Note:** `quarantinePolicyEnabled`, `retentionPolicyInDays`, `trustPolicyEnabled`, `exportPolicyEnabled` and `zoneRedundancyEnabled` are only supported on resources with the `Premium` SKU.
   late final pulumi.Output<bool?> exportPolicyEnabled;
   /// One or more `georeplications` blocks as documented below.
   ///
@@ -852,7 +964,7 @@ class Registry extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Whether to allow trusted Azure services to access a network-restricted Container Registry? Possible values are `None` and `AzureServices`. Defaults to `AzureServices`.
   late final pulumi.Output<String?> networkRuleBypassOption;
-  /// A `network_rule_set` block as documented below.
+  /// A `networkRuleSet` block as documented below.
   late final pulumi.Output<RegistryNetworkRuleSet> networkRuleSet;
   /// Whether public network access is allowed for the container registry. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;

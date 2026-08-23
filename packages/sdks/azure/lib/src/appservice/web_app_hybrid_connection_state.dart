@@ -16,7 +16,7 @@ class WebAppHybridConnectionState {
   final pulumi.Input<String>? relayName;
   /// The name of the Relay key with `Send` permission to use. Defaults to `RootManageSharedAccessKey`
   final pulumi.Input<String>? sendKeyName;
-  /// The Primary Access Key for the `send_key_name`
+  /// The Primary Access Key for the `sendKeyName`
   final pulumi.Input<String>? sendKeyValue;
   /// The Service Bus Namespace.
   final pulumi.Input<String>? serviceBusNamespace;
@@ -32,7 +32,7 @@ class WebAppHybridConnectionState {
   /// [relayId] The ID of the Relay Hybrid Connection to use. Changing this forces a new resource to be created.
   /// [relayName] The name of the Relay in use.
   /// [sendKeyName] The name of the Relay key with `Send` permission to use. Defaults to `RootManageSharedAccessKey`
-  /// [sendKeyValue] The Primary Access Key for the `send_key_name`
+  /// [sendKeyValue] The Primary Access Key for the `sendKeyName`
   /// [serviceBusNamespace] The Service Bus Namespace.
   /// [serviceBusSuffix] The suffix for the endpoint.
   /// [webAppId] The ID of the Web App for this Hybrid Connection. Changing this forces a new resource to be created.
@@ -79,4 +79,3 @@ class WebAppHybridConnectionState {
     );
   }
 }
-

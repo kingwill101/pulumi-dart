@@ -66,6 +66,20 @@ import 'get_shared_access_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_iot_getdps" "example" {
+///   name                = "iot_hub_dps_test"
+///   resource_group_name = "iothub_dps_rg"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +88,8 @@ import 'get_shared_access_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.iot.IotFunctions;
 /// import com.pulumi.azure.iot.inputs.GetDpsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,6 +203,21 @@ Future<GetDpsResult> getDps(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_iot_getdpssharedaccesspolicy" "example" {
+///   name                = "example"
+///   resource_group_name = exampleAzurermResourceGroup.name
+///   iothub_dps_name     = exampleAzurermIothubDps.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +226,8 @@ Future<GetDpsResult> getDps(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.iot.IotFunctions;
 /// import com.pulumi.azure.iot.inputs.GetDpsSharedAccessPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -317,6 +346,24 @@ Future<GetDpsSharedAccessPolicyResult> getDpsSharedAccessPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_iot_getiothub" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_iot_getiothub.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -325,8 +372,8 @@ Future<GetDpsSharedAccessPolicyResult> getDpsSharedAccessPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.iot.IotFunctions;
 /// import com.pulumi.azure.iot.inputs.GetIotHubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -435,6 +482,21 @@ Future<GetIotHubResult> getIotHub(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_iot_getsharedaccesspolicy" "example" {
+///   name                = "example"
+///   resource_group_name = exampleAzurermResourceGroup.name
+///   iothub_name         = exampleAzurermIothub.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -443,8 +505,8 @@ Future<GetIotHubResult> getIotHub(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.iot.IotFunctions;
 /// import com.pulumi.azure.iot.inputs.GetSharedAccessPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

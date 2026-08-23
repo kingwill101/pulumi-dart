@@ -8,22 +8,22 @@ import 'get_workspace_storage_account_identity.dart';
 
 /// Result data returned by getWorkspace.
 class GetWorkspaceResult {
-  /// A `custom_parameters` block as documented below.
+  /// A `customParameters` block as documented below.
   /// *
   final List<GetWorkspaceCustomParameter> customParameters;
-  /// An `enhanced_security_compliance` block as documented below.
+  /// An `enhancedSecurityCompliance` block as documented below.
   final List<GetWorkspaceEnhancedSecurityCompliance> enhancedSecurityCompliances;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   /// The Azure location where the Databricks Workspace exists.
   final String location;
-  /// A `managed_disk_identity` block as documented below.
+  /// A `managedDiskIdentity` block as documented below.
   final List<GetWorkspaceManagedDiskIdentity> managedDiskIdentities;
   final String name;
   final String resourceGroupName;
   /// SKU of this Databricks Workspace.
   final String sku;
-  /// A `storage_account_identity` block as documented below.
+  /// A `storageAccountIdentity` block as documented below.
   final List<GetWorkspaceStorageAccountIdentity> storageAccountIdentities;
   /// A mapping of tags to assign to the Databricks Workspace.
   final Map<String, String>? tags;
@@ -33,15 +33,15 @@ class GetWorkspaceResult {
   final String workspaceUrl;
 
   /// Creates a new [GetWorkspaceResult].
-  /// [customParameters] A `custom_parameters` block as documented below.
-  /// [enhancedSecurityCompliances] An `enhanced_security_compliance` block as documented below.
+  /// [customParameters] A `customParameters` block as documented below.
+  /// [enhancedSecurityCompliances] An `enhancedSecurityCompliance` block as documented below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] The Azure location where the Databricks Workspace exists.
-  /// [managedDiskIdentities] A `managed_disk_identity` block as documented below.
+  /// [managedDiskIdentities] A `managedDiskIdentity` block as documented below.
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [sku] SKU of this Databricks Workspace.
-  /// [storageAccountIdentities] A `storage_account_identity` block as documented below.
+  /// [storageAccountIdentities] A `storageAccountIdentity` block as documented below.
   /// [tags] A mapping of tags to assign to the Databricks Workspace.
   /// [workspaceId] Unique ID of this Databricks Workspace in Databricks management plane.
   /// [workspaceUrl] URL this Databricks Workspace is accessible on.
@@ -94,4 +94,3 @@ class GetWorkspaceResult {
     );
   }
 }
-

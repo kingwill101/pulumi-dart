@@ -24,6 +24,8 @@ class GetApplicationGatewayProbe {
   final pulumi.Input<int> port;
   /// The Protocol used for this Probe.
   final pulumi.Input<String> protocol;
+  /// Whether the proxy protocol header is enabled for this Probe.
+  final pulumi.Input<bool> proxyProtocolHeaderEnabled;
   /// The Timeout used for this Probe, indicating when a probe becomes unhealthy.
   final pulumi.Input<int> timeout;
   /// The Unhealthy Threshold for this Probe, which indicates the amount of retries which will be attempted before a node is deemed unhealthy.
@@ -40,6 +42,7 @@ class GetApplicationGatewayProbe {
   /// [pickHostNameFromBackendHttpSettings] Whether the host header is picked from the backend HTTP settings.
   /// [port] Custom port which is used for probing the backend servers.
   /// [protocol] The Protocol used for this Probe.
+  /// [proxyProtocolHeaderEnabled] Whether the proxy protocol header is enabled for this Probe.
   /// [timeout] The Timeout used for this Probe, indicating when a probe becomes unhealthy.
   /// [unhealthyThreshold] The Unhealthy Threshold for this Probe, which indicates the amount of retries which will be attempted before a node is deemed unhealthy.
   const GetApplicationGatewayProbe({
@@ -53,6 +56,7 @@ class GetApplicationGatewayProbe {
     required this.pickHostNameFromBackendHttpSettings,
     required this.port,
     required this.protocol,
+    required this.proxyProtocolHeaderEnabled,
     required this.timeout,
     required this.unhealthyThreshold,
   });
@@ -69,6 +73,7 @@ class GetApplicationGatewayProbe {
       'pickHostNameFromBackendHttpSettings': pickHostNameFromBackendHttpSettings,
       'port': port,
       'protocol': protocol,
+      'proxyProtocolHeaderEnabled': proxyProtocolHeaderEnabled,
       'timeout': timeout,
       'unhealthyThreshold': unhealthyThreshold,
     };
@@ -86,9 +91,9 @@ class GetApplicationGatewayProbe {
       pickHostNameFromBackendHttpSettings: pulumi.Input.fromValue(map['pickHostNameFromBackendHttpSettings'] as bool),
       port: pulumi.Input.fromValue(map['port'] as int),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      proxyProtocolHeaderEnabled: pulumi.Input.fromValue(map['proxyProtocolHeaderEnabled'] as bool),
       timeout: pulumi.Input.fromValue(map['timeout'] as int),
       unhealthyThreshold: pulumi.Input.fromValue(map['unhealthyThreshold'] as int),
     );
   }
 }
-

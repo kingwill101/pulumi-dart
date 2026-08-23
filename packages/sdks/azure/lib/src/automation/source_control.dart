@@ -144,6 +144,38 @@ import 'source_control_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "example-account"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_automation_sourcecontrol" "example" {
+///   name                  = "example"
+///   automation_account_id = azure_automation_account.example.id
+///   folder_path           = "runbook"
+///   security = {
+///     token      = "ghp_xxx"
+///     token_type = "PersonalAccessToken"
+///   }
+///   repository_url      = "https://github.com/foo/bat.git"
+///   source_control_type = "GitHub"
+///   branch              = "main"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -157,8 +189,8 @@ import 'source_control_state.dart';
 /// import com.pulumi.azure.automation.SourceControl;
 /// import com.pulumi.azure.automation.SourceControlArgs;
 /// import com.pulumi.azure.automation.inputs.SourceControlSecurityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

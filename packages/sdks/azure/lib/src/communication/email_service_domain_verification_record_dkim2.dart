@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EmailServiceDomainVerificationRecordDkim2 {
-  /// The name of the Email Communication Service resource. If `domain_management` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
+  /// The name of the Email Communication Service resource. If `domainManagement` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
   final pulumi.Input<String>? name;
   /// Represents an expiry time in seconds to represent how long this entry can be cached by the resolver, default = 3600sec.
   final pulumi.Input<int>? ttl;
@@ -13,7 +13,7 @@ class EmailServiceDomainVerificationRecordDkim2 {
   final pulumi.Input<String>? value;
 
   /// Creates a new [EmailServiceDomainVerificationRecordDkim2].
-  /// [name] The name of the Email Communication Service resource. If `domain_management` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
+  /// [name] The name of the Email Communication Service resource. If `domainManagement` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
   /// [ttl] Represents an expiry time in seconds to represent how long this entry can be cached by the resolver, default = 3600sec.
   /// [type] Type of the DNS record. Example: TXT
   /// [value] Value of the DNS record.
@@ -42,4 +42,3 @@ class EmailServiceDomainVerificationRecordDkim2 {
     );
   }
 }
-

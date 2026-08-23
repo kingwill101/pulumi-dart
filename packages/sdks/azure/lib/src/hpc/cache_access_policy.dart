@@ -4,7 +4,7 @@ import 'cache_access_policy_state.dart';
 
 /// Manages a HPC Cache Access Policy.
 ///
-/// !&gt; **Note:** The `azure.hpc.CacheAccessPolicy` resource has been deprecated because the service is retiring on 2025-09-30. This resource will be removed in v5.0 of the AzureRM Provider. See https://aka.ms/hpccacheretirement for more information.
+/// &gt; **Note:** The `azure.hpc.CacheAccessPolicy` resource has been deprecated because the service is retiring on 2025-09-30. This resource will be removed in v5.0 of the AzureRM Provider. See https://aka.ms/hpccacheretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -209,6 +209,48 @@ import 'cache_access_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "examplevn"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "examplesubnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+/// }
+/// resource "azure_hpc_cache" "example" {
+///   name                = "examplehpccache"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cache_size_in_gb    = 3072
+///   subnet_id           = azure_network_subnet.example.id
+///   sku_name            = "Standard_2G"
+/// }
+/// resource "azure_hpc_cacheaccesspolicy" "example" {
+///   name         = "example"
+///   hpc_cache_id = azure_hpc_cache.example.id
+///   access_rules {
+///     scope  = "default"
+///     access = "rw"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -226,8 +268,8 @@ import 'cache_access_policy_state.dart';
 /// import com.pulumi.azure.hpc.CacheAccessPolicy;
 /// import com.pulumi.azure.hpc.CacheAccessPolicyArgs;
 /// import com.pulumi.azure.hpc.inputs.CacheAccessPolicyAccessRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -341,7 +383,7 @@ import 'cache_access_policy_state.dart';
 /// $ pulumi import azure:hpc/cacheAccessPolicy:CacheAccessPolicy example /subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/group1/providers/Microsoft.StorageCache/caches/cache1/cacheAccessPolicies/policy1
 /// ```
 class CacheAccessPolicy extends pulumi.CustomResource {
-  /// One or more `access_rule` blocks (up to three) as defined below.
+  /// One or more `accessRule` blocks (up to three) as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> accessRules;
   /// The ID of the HPC Cache that this HPC Cache Access Policy resides in. Changing this forces a new HPC Cache Access Policy to be created.
   late final pulumi.Output<String> hpcCacheId;

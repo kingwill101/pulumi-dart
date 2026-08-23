@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_data_collection_rule_data_source_prometheus_forwarder_label_include_filter.dart';
 
 class GetDataCollectionRuleDataSourcePrometheusForwarder {
-  /// One or more `label_include_filter` blocks as defined above.
+  /// One or more `labelIncludeFilter` blocks as defined above.
   final pulumi.Input<List<GetDataCollectionRuleDataSourcePrometheusForwarderLabelIncludeFilter>> labelIncludeFilters;
   /// Specifies the name of the Data Collection Rule.
   final pulumi.Input<String> name;
@@ -12,7 +12,7 @@ class GetDataCollectionRuleDataSourcePrometheusForwarder {
   final pulumi.Input<List<String>> streams;
 
   /// Creates a new [GetDataCollectionRuleDataSourcePrometheusForwarder].
-  /// [labelIncludeFilters] One or more `label_include_filter` blocks as defined above.
+  /// [labelIncludeFilters] One or more `labelIncludeFilter` blocks as defined above.
   /// [name] Specifies the name of the Data Collection Rule.
   /// [streams] Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
   const GetDataCollectionRuleDataSourcePrometheusForwarder({
@@ -37,4 +37,3 @@ class GetDataCollectionRuleDataSourcePrometheusForwarder {
     );
   }
 }
-

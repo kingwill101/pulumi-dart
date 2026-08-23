@@ -11,7 +11,7 @@ import 'get_provider_result.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as azurerm from "@pulumi/azurerm";
 ///
-/// const example = azurerm.index.Attestation({
+/// const example = azurerm.Attestation({
 ///     name: "example-attestationprovider",
 ///     resourceGroupName: "example-resource-group",
 /// });
@@ -21,7 +21,7 @@ import 'get_provider_result.dart';
 /// import pulumi
 /// import pulumi_azurerm as azurerm
 ///
-/// example = azurerm.index.attestation(name="example-attestationprovider",
+/// example = azurerm.attestation(name="example-attestationprovider",
 ///     resource_group_name="example-resource-group")
 /// pulumi.export("id", example["id"])
 /// ```
@@ -33,7 +33,7 @@ import 'get_provider_result.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var example = Azurerm.Index.Attestation.Invoke(new()
+///     var example = Azurerm.Attestation.Invoke(new()
 ///     {
 ///         Name = "example-attestationprovider",
 ///         ResourceGroupName = "example-resource-group",
@@ -62,9 +62,19 @@ import 'get_provider_result.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("id", example.Id)
+/// 		ctx.Export("id", pulumi.Any(example.Id))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// data "azurerm_attestation" "example" {
+///   name                = "example-attestationprovider"
+///   resource_group_name = "example-resource-group"
+/// }
+///
+/// output "id" {
+///   value = data.azurerm_attestation.example.id
 /// }
 /// ```
 /// ```java
@@ -74,8 +84,8 @@ import 'get_provider_result.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurerm.AzurermFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

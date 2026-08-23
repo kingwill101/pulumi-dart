@@ -14,6 +14,8 @@ class GetShareResult {
   final String name;
   /// The quota of the File Share in GB.
   final int quota;
+  /// The ID that is supposed to be used as the `scope` of an `azurermRoleAssignmet` for this File Share.
+  final String rbacScopeId;
   final String resourceManagerId;
   final String? storageAccountId;
   final String? storageAccountName;
@@ -24,6 +26,7 @@ class GetShareResult {
   /// [metadata] A map of custom file share metadata.
   /// [name] Required.
   /// [quota] The quota of the File Share in GB.
+  /// [rbacScopeId] The ID that is supposed to be used as the `scope` of an `azurermRoleAssignmet` for this File Share.
   /// [resourceManagerId] Required.
   /// [storageAccountId] Optional.
   /// [storageAccountName] Optional.
@@ -33,6 +36,7 @@ class GetShareResult {
     required this.metadata,
     required this.name,
     required this.quota,
+    required this.rbacScopeId,
     required this.resourceManagerId,
     this.storageAccountId,
     this.storageAccountName,
@@ -45,6 +49,7 @@ class GetShareResult {
       'metadata': metadata,
       'name': name,
       'quota': quota,
+      'rbacScopeId': rbacScopeId,
       'resourceManagerId': resourceManagerId,
       'storageAccountId': ?storageAccountId,
       'storageAccountName': ?storageAccountName,
@@ -58,10 +63,10 @@ class GetShareResult {
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
       quota: map['quota'] as int,
+      rbacScopeId: map['rbacScopeId'] as String,
       resourceManagerId: map['resourceManagerId'] as String,
       storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
-

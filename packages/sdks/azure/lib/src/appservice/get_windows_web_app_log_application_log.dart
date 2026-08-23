@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_windows_web_app_log_application_log_azure_blob_storage.dart';
 
 class GetWindowsWebAppLogApplicationLog {
-  /// A `azure_blob_storage` block as defined above.
+  /// A `azureBlobStorage` block as defined above.
   final pulumi.Input<List<GetWindowsWebAppLogApplicationLogAzureBlobStorage>> azureBlobStorages;
   /// The logging level.
   final pulumi.Input<String> fileSystemLevel;
 
   /// Creates a new [GetWindowsWebAppLogApplicationLog].
-  /// [azureBlobStorages] A `azure_blob_storage` block as defined above.
+  /// [azureBlobStorages] A `azureBlobStorage` block as defined above.
   /// [fileSystemLevel] The logging level.
   const GetWindowsWebAppLogApplicationLog({
     required this.azureBlobStorages,
@@ -31,4 +31,3 @@ class GetWindowsWebAppLogApplicationLog {
     );
   }
 }
-

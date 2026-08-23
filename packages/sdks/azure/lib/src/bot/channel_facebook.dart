@@ -158,6 +158,41 @@ import 'channel_facebook_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_bot_channelsregistration" "example" {
+///   name                = "example-bcr"
+///   location            = "global"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "F0"
+///   microsoft_app_id    = data.azure_core_getclientconfig.current.client_id
+/// }
+/// resource "azure_bot_channelfacebook" "example" {
+///   bot_name                    = azure_bot_channelsregistration.example.name
+///   location                    = azure_bot_channelsregistration.example.location
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   facebook_application_id     = "563490254873576"
+///   facebook_application_secret = "8976d2536445ad5b976dee8437b9beb0"
+///   pages {
+///     id           = "876248795081953"
+///     access_token = "CGGCec3UAFPMBAKwK3Ft8SEpO8ZCuvpNBI5DClaJCDfqJj2BgEHCKxcY0FDarmUQap6XxpZC9GWCW4nZCzjcKosAZAP7SO44X8Q8gAntbDIXgYUBGp9xtS8wUkwgKPobUePcOOVFkvClxvYZByuiQxoTiK9fQ9jZCPEorbmZCsKDZAx4VLnrNwCTZAPUwXxO61gfq4ZD"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -172,8 +207,8 @@ import 'channel_facebook_state.dart';
 /// import com.pulumi.azure.bot.ChannelFacebook;
 /// import com.pulumi.azure.bot.ChannelFacebookArgs;
 /// import com.pulumi.azure.bot.inputs.ChannelFacebookPageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -9,7 +9,7 @@ class KubernetesClusterNodePoolUpgradeSettings {
   final pulumi.Input<String>? maxSurge;
   /// The maximum number or percentage of nodes which can be unavailable during the upgrade.
   ///
-  /// &gt; **Note:** Exactly one of `max_surge` or `max_unavailable` must be specified.
+  /// &gt; **Note:** Exactly one of `maxSurge` or `maxUnavailable` must be specified, unless `priority` is set to `Spot`. Spot node pools do not support `maxSurge` or `maxUnavailable`.
   final pulumi.Input<String>? maxUnavailable;
   /// The amount of time in minutes to wait after draining a node and before reimaging and moving on to next node.
   final pulumi.Input<int>? nodeSoakDurationInMinutes;
@@ -50,4 +50,3 @@ class KubernetesClusterNodePoolUpgradeSettings {
     );
   }
 }
-

@@ -75,6 +75,24 @@ import 'get_sql_role_definition_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cosmosdb_getaccount" "example" {
+///   name                = "tfex-cosmosdb-account"
+///   resource_group_name = "tfex-cosmosdb-account-rg"
+/// }
+///
+/// output "cosmosdbAccountEndpoint" {
+///   value = data.azure_cosmosdb_getaccount.example.endpoint
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +101,8 @@ import 'get_sql_role_definition_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.cosmosdb.CosmosdbFunctions;
 /// import com.pulumi.azure.cosmosdb.inputs.GetAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,6 +226,25 @@ Future<GetAccountResult> getAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cosmosdb_getmongodatabase" "example" {
+///   name                = "test-cosmosdb-mongo-db"
+///   resource_group_name = "test-cosmosdb-account-rg"
+///   account_name        = "test-cosmosdb-account"
+/// }
+///
+/// output "id" {
+///   value = data.azure_cosmosdb_getmongodatabase.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -216,8 +253,8 @@ Future<GetAccountResult> getAccount(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.cosmosdb.CosmosdbFunctions;
 /// import com.pulumi.azure.cosmosdb.inputs.GetMongoDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -251,6 +288,14 @@ Future<GetAccountResult> getAccount(
 /// outputs:
 ///   id: ${example.id}
 /// ```
+///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This data source uses the following Azure API Providers:
+///
+/// * `Microsoft.DocumentDB` - 2024-08-15
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_mongo_database_get_mongo_database_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetMongoDatabaseResult> getMongoDatabase(
@@ -331,6 +376,24 @@ Future<GetMongoDatabaseResult> getMongoDatabase(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cosmosdb_getrestorabledatabaseaccounts" "example" {
+///   name     = "example-ca"
+///   location = "West Europe"
+/// }
+///
+/// output "id" {
+///   value = data.azure_cosmosdb_getrestorabledatabaseaccounts.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -339,8 +402,8 @@ Future<GetMongoDatabaseResult> getMongoDatabase(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.cosmosdb.CosmosdbFunctions;
 /// import com.pulumi.azure.cosmosdb.inputs.GetRestorableDatabaseAccountsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -372,6 +435,14 @@ Future<GetMongoDatabaseResult> getMongoDatabase(
 /// outputs:
 ///   id: ${example.id}
 /// ```
+///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This data source uses the following Azure API Providers:
+///
+/// * `Microsoft.DocumentDB` - 2024-08-15
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_restorable_database_accounts_get_restorable_database_accounts_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRestorableDatabaseAccountsResult> getRestorableDatabaseAccounts(
@@ -449,6 +520,21 @@ Future<GetRestorableDatabaseAccountsResult> getRestorableDatabaseAccounts(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cosmosdb_getsqldatabase" "example" {
+///   name                = "tfex-cosmosdb-sql-database"
+///   resource_group_name = "tfex-cosmosdb-sql-database-rg"
+///   account_name        = "tfex-cosmosdb-sql-database-account-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -457,8 +543,8 @@ Future<GetRestorableDatabaseAccountsResult> getRestorableDatabaseAccounts(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.cosmosdb.CosmosdbFunctions;
 /// import com.pulumi.azure.cosmosdb.inputs.GetSqlDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -489,6 +575,14 @@ Future<GetRestorableDatabaseAccountsResult> getRestorableDatabaseAccounts(
 ///         resourceGroupName: tfex-cosmosdb-sql-database-rg
 ///         accountName: tfex-cosmosdb-sql-database-account-name
 /// ```
+///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This data source uses the following Azure API Providers:
+///
+/// * `Microsoft.DocumentDB` - 2024-08-15
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_sql_database_get_sql_database_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSqlDatabaseResult> getSqlDatabase(
@@ -566,6 +660,21 @@ Future<GetSqlDatabaseResult> getSqlDatabase(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cosmosdb_getsqlroledefinition" "example" {
+///   resource_group_name = "tfex-cosmosdb-sql-role-definition-rg"
+///   account_name        = "tfex-cosmosdb-sql-role-definition-account-name"
+///   role_definition_id  = "00000000-0000-0000-0000-000000000000"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -574,8 +683,8 @@ Future<GetSqlDatabaseResult> getSqlDatabase(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.cosmosdb.CosmosdbFunctions;
 /// import com.pulumi.azure.cosmosdb.inputs.GetSqlRoleDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -606,6 +715,14 @@ Future<GetSqlDatabaseResult> getSqlDatabase(
 ///         accountName: tfex-cosmosdb-sql-role-definition-account-name
 ///         roleDefinitionId: 00000000-0000-0000-0000-000000000000
 /// ```
+///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This data source uses the following Azure API Providers:
+///
+/// * `Microsoft.DocumentDB` - 2024-08-15
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_sql_role_definition_get_sql_role_definition_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSqlRoleDefinitionResult> getSqlRoleDefinition(

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_azure_files_authentication_active_directory.dart';
 
 class AccountAzureFilesAuthentication {
-  /// A `active_directory` block as defined below. Required when `directory_type` is `AD`.
+  /// A `activeDirectory` block as defined below. Required when `directoryType` is `AD`.
   final pulumi.Input<AccountAzureFilesAuthenticationActiveDirectory>? activeDirectory;
   /// Specifies the default share level permissions applied to all users. Possible values are `StorageFileDataSmbShareReader`, `StorageFileDataSmbShareContributor`, `StorageFileDataSmbShareElevatedContributor`, or `None`. Defaults to `None`.
   final pulumi.Input<String>? defaultShareLevelPermission;
@@ -12,7 +12,7 @@ class AccountAzureFilesAuthentication {
   final pulumi.Input<String> directoryType;
 
   /// Creates a new [AccountAzureFilesAuthentication].
-  /// [activeDirectory] A `active_directory` block as defined below. Required when `directory_type` is `AD`.
+  /// [activeDirectory] A `activeDirectory` block as defined below. Required when `directoryType` is `AD`.
   /// [defaultShareLevelPermission] Specifies the default share level permissions applied to all users. Possible values are `StorageFileDataSmbShareReader`, `StorageFileDataSmbShareContributor`, `StorageFileDataSmbShareElevatedContributor`, or `None`. Defaults to `None`.
   /// [directoryType] Specifies the directory service used. Possible values are `AADDS`, `AD` and `AADKERB`.
   const AccountAzureFilesAuthentication({
@@ -37,4 +37,3 @@ class AccountAzureFilesAuthentication {
     );
   }
 }
-

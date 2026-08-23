@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_acl_access_policy.dart';
 
 class TableAcl {
-  /// An `access_policy` block as defined below.
+  /// An `accessPolicy` block as defined below.
   final pulumi.Input<List<TableAclAccessPolicy>>? accessPolicies;
   /// The ID which should be used for this Shared Identifier.
   final pulumi.Input<String> id;
 
   /// Creates a new [TableAcl].
-  /// [accessPolicies] An `access_policy` block as defined below.
+  /// [accessPolicies] An `accessPolicy` block as defined below.
   /// [id] The ID which should be used for this Shared Identifier.
   const TableAcl({
     this.accessPolicies,
@@ -31,4 +31,3 @@ class TableAcl {
     );
   }
 }
-

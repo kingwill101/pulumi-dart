@@ -123,6 +123,33 @@ import 'local_rulestack_outbound_untrust_certificate_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_paloalto_localrulestack" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_paloalto_localrulestackcertificate" "example" {
+///   name         = "example"
+///   rulestack_id = azure_paloalto_localrulestack.example.id
+///   self_signed  = true
+/// }
+/// resource "azure_paloalto_localrulestackoutbounduntrustcertificateassociation" "example" {
+///   certificate_id = azure_paloalto_localrulestackcertificate.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +164,8 @@ import 'local_rulestack_outbound_untrust_certificate_association_state.dart';
 /// import com.pulumi.azure.paloalto.LocalRulestackCertificateArgs;
 /// import com.pulumi.azure.paloalto.LocalRulestackOutboundUntrustCertificateAssociation;
 /// import com.pulumi.azure.paloalto.LocalRulestackOutboundUntrustCertificateAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,7 +235,7 @@ import 'local_rulestack_outbound_untrust_certificate_association_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `PaloAltoNetworks.Cloudngfw` - 2022-08-29
+/// * `PaloAltoNetworks.Cloudngfw` - 2025-10-08
 class LocalRulestackOutboundUntrustCertificateAssociation extends pulumi.CustomResource {
   /// The ID of the Certificate to use as the Outbound Untrust Certificate. Changing this forces a new Palo Alto Networks Rulestack Outbound Untrust Certificate Association to be created.
   late final pulumi.Output<String> certificateId;

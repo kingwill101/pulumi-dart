@@ -106,6 +106,29 @@ import 'namespace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "my-servicebus"
+///   location = "West Europe"
+/// }
+/// resource "azure_servicebus_namespace" "example" {
+///   name                = "tfex-servicebus-namespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+///   tags = {
+///     "source" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +139,8 @@ import 'namespace_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.servicebus.Namespace;
 /// import com.pulumi.azure.servicebus.NamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -182,7 +205,7 @@ import 'namespace_state.dart';
 class Namespace extends pulumi.CustomResource {
   /// Specifies the capacity. When `sku` is `Premium`, capacity can be `1`, `2`, `4`, `8` or `16`. When `sku` is `Basic` or `Standard`, capacity can be `0` only.
   late final pulumi.Output<int?> capacity;
-  /// An `customer_managed_key` block as defined below.
+  /// An `customerManagedKey` block as defined below.
   late final pulumi.Output<NamespaceCustomerManagedKey?> customerManagedKey;
   /// The primary connection string for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> defaultPrimaryConnectionString;
@@ -206,7 +229,7 @@ class Namespace extends pulumi.CustomResource {
   late final pulumi.Output<String?> minimumTlsVersion;
   /// Specifies the name of the Service Bus Namespace resource . Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// An `network_rule_set` block as defined below.
+  /// An `networkRuleSet` block as defined below.
   late final pulumi.Output<NamespaceNetworkRuleSet> networkRuleSet;
   /// Specifies the number messaging partitions. Only valid when `sku` is `Premium` and the minimum number is `1`. Possible values include `0`, `1`, `2`, and `4`. Defaults to `0` for Standard, Basic namespace. Changing this forces a new resource to be created.
   ///

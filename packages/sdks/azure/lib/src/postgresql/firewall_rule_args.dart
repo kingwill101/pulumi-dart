@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallRuleArgs {
   /// Specifies the End IP Address associated with this Firewall Rule. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
+  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `startIpAddress` and `endIpAddress` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
   final pulumi.Input<String> endIpAddress;
   /// Specifies the name of the PostgreSQL Firewall Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -54,4 +54,3 @@ class FirewallRuleArgs {
     );
   }
 }
-

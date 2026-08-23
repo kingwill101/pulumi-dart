@@ -21,7 +21,7 @@ class ActivityLogAlertCriteria {
   final pulumi.Input<String>? recommendationCategory;
   /// The recommendation impact of the event. Possible values are `High`, `Medium` and `Low`.
   ///
-  /// &gt; **Note:** The `recommendation_type`, `recommendation_category`, and `recommendation_impact` fields can only be defined if the `category` field has been set to `Recommendation`.
+  /// &gt; **Note:** The `recommendationType`, `recommendationCategory`, and `recommendationImpact` fields can only be defined if the `category` field has been set to `Recommendation`.
   final pulumi.Input<String>? recommendationImpact;
   /// The recommendation type of the event.
   final pulumi.Input<String>? recommendationType;
@@ -29,7 +29,7 @@ class ActivityLogAlertCriteria {
   final pulumi.Input<String>? resourceGroup;
   /// A list of names of resource groups monitored by the activity log alert.
   ///
-  /// &gt; **Note:** `resource_group` and `resource_groups` are mutually exclusive.
+  /// &gt; **Note:** `resourceGroup` and `resourceGroups` are mutually exclusive.
   final pulumi.Input<List<String>>? resourceGroups;
   /// A block to define fine grain resource health settings.
   final pulumi.Input<ActivityLogAlertCriteriaResourceHealth>? resourceHealth;
@@ -37,19 +37,19 @@ class ActivityLogAlertCriteria {
   final pulumi.Input<String>? resourceId;
   /// A list of specific resources monitored by the activity log alert. It should be within one of the `scopes`.
   ///
-  /// &gt; **Note:** `resource_id` and `resource_ids` are mutually exclusive.
+  /// &gt; **Note:** `resourceId` and `resourceIds` are mutually exclusive.
   final pulumi.Input<List<String>>? resourceIds;
   /// The name of the resource provider monitored by the activity log alert.
   final pulumi.Input<String>? resourceProvider;
   /// A list of names of resource providers monitored by the activity log alert.
   ///
-  /// &gt; **Note:** `resource_provider` and `resource_providers` are mutually exclusive.
+  /// &gt; **Note:** `resourceProvider` and `resourceProviders` are mutually exclusive.
   final pulumi.Input<List<String>>? resourceProviders;
   /// The resource type monitored by the activity log alert.
   final pulumi.Input<String>? resourceType;
   /// A list of resource types monitored by the activity log alert.
   ///
-  /// &gt; **Note:** `resource_type` and `resource_types` are mutually exclusive.
+  /// &gt; **Note:** `resourceType` and `resourceTypes` are mutually exclusive.
   final pulumi.Input<List<String>>? resourceTypes;
   /// A block to define fine grain service health settings.
   final pulumi.Input<ActivityLogAlertCriteriaServiceHealth>? serviceHealth;
@@ -63,7 +63,7 @@ class ActivityLogAlertCriteria {
   final pulumi.Input<String>? subStatus;
   /// A list of sub status of the event.
   ///
-  /// &gt; **Note:** `sub_status` and `sub_statuses` are mutually exclusive.
+  /// &gt; **Note:** `subStatus` and `subStatuses` are mutually exclusive.
   final pulumi.Input<List<String>>? subStatuses;
 
   /// Creates a new [ActivityLogAlertCriteria].
@@ -168,4 +168,3 @@ class ActivityLogAlertCriteria {
     );
   }
 }
-

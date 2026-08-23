@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationSourceRuleSetRule {
-  /// A value that will be compared with the value in `property_path`.
+  /// A value that will be compared with the value in `propertyPath`.
   final pulumi.Input<String> expectedValue;
   /// The comparison operator to use, must be one of: `Contains`, `EndsWith`, `Equals`, `GreaterThan`, `GreaterThanOrEqualTo`, `LesserThan`, `LesserThanOrEqualTo`, `NotEquals`, `StartsWith`
   final pulumi.Input<String> operator;
@@ -11,11 +11,11 @@ class AutomationSourceRuleSetRule {
   final pulumi.Input<String> propertyPath;
   /// The data type of the compared operands, must be one of: `Integer`, `String`, `Boolean` or `Number`.
   ///
-  /// &gt; **Note:** The schema for Security Center alerts (when `event_source` is "Alerts") [can be found here](https://docs.microsoft.com/azure/security-center/alerts-schemas?tabs=schema-continuousexport)
+  /// &gt; **Note:** The schema for Security Center alerts (when `eventSource` is "Alerts") [can be found here](https://docs.microsoft.com/azure/security-center/alerts-schemas?tabs=schema-continuousexport)
   final pulumi.Input<String> propertyType;
 
   /// Creates a new [AutomationSourceRuleSetRule].
-  /// [expectedValue] A value that will be compared with the value in `property_path`.
+  /// [expectedValue] A value that will be compared with the value in `propertyPath`.
   /// [operator] The comparison operator to use, must be one of: `Contains`, `EndsWith`, `Equals`, `GreaterThan`, `GreaterThanOrEqualTo`, `LesserThan`, `LesserThanOrEqualTo`, `NotEquals`, `StartsWith`
   /// [propertyPath] The JPath of the entity model property that should be checked.
   /// [propertyType] The data type of the compared operands, must be one of: `Integer`, `String`, `Boolean` or `Number`.
@@ -44,4 +44,3 @@ class AutomationSourceRuleSetRule {
     );
   }
 }
-

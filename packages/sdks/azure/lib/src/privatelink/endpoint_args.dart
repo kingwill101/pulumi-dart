@@ -12,15 +12,15 @@ import 'endpoint_private_service_connection.dart';
 class EndpointArgs {
   /// The custom name of the network interface attached to the private endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String>? customNetworkInterfaceName;
-  /// One or more `ip_configuration` blocks as defined below. This allows a static IP address to be set for this Private Endpoint, otherwise an address is dynamically allocated from the Subnet.
+  /// One or more `ipConfiguration` blocks as defined below. This allows a static IP address to be set for this Private Endpoint, otherwise an address is dynamically allocated from the Subnet.
   final pulumi.Input<List<EndpointIpConfiguration>>? ipConfigurations;
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
   /// Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// A `private_dns_zone_group` block as defined below.
+  /// A `privateDnsZoneGroup` block as defined below.
   final pulumi.Input<EndpointPrivateDnsZoneGroup>? privateDnsZoneGroup;
-  /// A `private_service_connection` block as defined below.
+  /// A `privateServiceConnection` block as defined below.
   final pulumi.Input<EndpointPrivateServiceConnection> privateServiceConnection;
   /// Specifies the Name of the Resource Group within which the Private Endpoint should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
@@ -31,11 +31,11 @@ class EndpointArgs {
 
   /// Creates a new [EndpointArgs].
   /// [customNetworkInterfaceName] The custom name of the network interface attached to the private endpoint. Changing this forces a new resource to be created.
-  /// [ipConfigurations] One or more `ip_configuration` blocks as defined below. This allows a static IP address to be set for this Private Endpoint, otherwise an address is dynamically allocated from the Subnet.
+  /// [ipConfigurations] One or more `ipConfiguration` blocks as defined below. This allows a static IP address to be set for this Private Endpoint, otherwise an address is dynamically allocated from the Subnet.
   /// [location] The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
-  /// [privateDnsZoneGroup] A `private_dns_zone_group` block as defined below.
-  /// [privateServiceConnection] A `private_service_connection` block as defined below.
+  /// [privateDnsZoneGroup] A `privateDnsZoneGroup` block as defined below.
+  /// [privateServiceConnection] A `privateServiceConnection` block as defined below.
   /// [resourceGroupName] Specifies the Name of the Resource Group within which the Private Endpoint should exist. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet from which Private IP Addresses will be allocated for this Private Endpoint. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
@@ -79,4 +79,3 @@ class EndpointArgs {
     );
   }
 }
-

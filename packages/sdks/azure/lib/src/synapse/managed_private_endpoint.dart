@@ -279,6 +279,66 @@ import 'managed_private_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   account_kind             = "StorageV2"
+///   is_hns_enabled           = "true"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// resource "azure_synapse_workspace" "example" {
+///   name                                 = "example"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   location                             = azure_core_resourcegroup.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   sql_administrator_login              = "sqladminuser"
+///   sql_administrator_login_password     = "H@Sh1CoR3!"
+///   managed_virtual_network_enabled      = true
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_synapse_firewallrule" "example" {
+///   name                 = "AllowAll"
+///   synapse_workspace_id = azure_synapse_workspace.example.id
+///   start_ip_address     = "0.0.0.0"
+///   end_ip_address       = "255.255.255.255"
+/// }
+/// resource "azure_storage_account" "example_connect" {
+///   name                     = "examplestorage2"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   account_kind             = "BlobStorage"
+/// }
+/// resource "azure_synapse_managedprivateendpoint" "example" {
+///   depends_on           = [azure_synapse_firewallrule.example]
+///   name                 = "example-endpoint"
+///   synapse_workspace_id = azure_synapse_workspace.example.id
+///   target_resource_id   = azure_storage_account.example_connect.id
+///   subresource_name     = "blob"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -299,8 +359,8 @@ import 'managed_private_endpoint_state.dart';
 /// import com.pulumi.azure.synapse.ManagedPrivateEndpoint;
 /// import com.pulumi.azure.synapse.ManagedPrivateEndpointArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -442,6 +502,13 @@ import 'managed_private_endpoint_state.dart';
 /// ```
 ///
 ///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.Synapse` - 2021-06-01
+///
 /// ## Import
 ///
 /// Synapse Managed Private Endpoint can be imported using the `resource id`, e.g.
@@ -450,6 +517,10 @@ import 'managed_private_endpoint_state.dart';
 /// $ pulumi import azure:synapse/managedPrivateEndpoint:ManagedPrivateEndpoint example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Synapse/workspaces/workspace1/managedVirtualNetworks/default/managedPrivateEndpoints/endpoint1
 /// ```
 class ManagedPrivateEndpoint extends pulumi.CustomResource {
+  /// A list of fully qualified domain names to assign to the Synapse Private Endpoint. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** `fullyQualifiedDomainNames` must be specified when the `targetResourceId` is a Private Link Service.
+  late final pulumi.Output<List<String>?> fullyQualifiedDomainNames;
   /// Specifies the name which should be used for this Managed Private Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// Specifies the sub resource name which the Synapse Private Endpoint is able to connect to. Changing this forces a new resource to be created.
@@ -477,6 +548,7 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    fullyQualifiedDomainNames = registerOutput<List<String>?>('fullyQualifiedDomainNames');
     this.name = registerOutput<String>('name');
     subresourceName = registerOutput<String>('subresourceName');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
@@ -506,6 +578,7 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    fullyQualifiedDomainNames = registerOutput<List<String>?>('fullyQualifiedDomainNames');
     this.name = registerOutput<String>('name');
     subresourceName = registerOutput<String>('subresourceName');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');

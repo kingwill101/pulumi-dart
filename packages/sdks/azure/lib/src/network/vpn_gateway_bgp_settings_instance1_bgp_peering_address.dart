@@ -42,4 +42,3 @@ class VpnGatewayBgpSettingsInstance1BgpPeeringAddress {
     );
   }
 }
-

@@ -27,7 +27,7 @@ class HostPoolArgs {
   final pulumi.Input<String>? name;
   /// `Automatic` assignment – The service will select an available host and assign it to an user. Possible values are `Automatic` and `Direct`. `Direct` Assignment – Admin selects a specific host to assign to an user. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `personal_desktop_assignment_type` is required if the `type` of your Virtual Desktop Host Pool is `Personal`
+  /// &gt; **Note:** `personalDesktopAssignmentType` is required if the `type` of your Virtual Desktop Host Pool is `Personal`
   final pulumi.Input<String>? personalDesktopAssignmentType;
   /// Option to specify the preferred Application Group type for the Virtual Desktop Host Pool. Valid options are `None`, `Desktop` or `RailApplications`. Default is `Desktop`.
   final pulumi.Input<String>? preferredAppGroupType;
@@ -35,7 +35,7 @@ class HostPoolArgs {
   final pulumi.Input<String>? publicNetworkAccess;
   /// The name of the resource group in which to create the Virtual Desktop Host Pool. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-  /// A `scheduled_agent_updates` block as defined below. This enables control of when Agent Updates will be applied to Session Hosts.
+  /// A `scheduledAgentUpdates` block as defined below. This enables control of when Agent Updates will be applied to Session Hosts.
   final pulumi.Input<HostPoolScheduledAgentUpdates>? scheduledAgentUpdates;
   /// Enables or disables the Start VM on Connection Feature. Defaults to `false`.
   final pulumi.Input<bool>? startVmOnConnect;
@@ -60,7 +60,7 @@ class HostPoolArgs {
   /// [preferredAppGroupType] Option to specify the preferred Application Group type for the Virtual Desktop Host Pool. Valid options are `None`, `Desktop` or `RailApplications`. Default is `Desktop`.
   /// [publicNetworkAccess] Whether public network access is allowed for the Virtual Desktop Host Pool. Possible values are `Enabled`, `Disabled`, `EnabledForClientsOnly` and `EnabledForSessionHostsOnly`. Defaults to `Enabled`.
   /// [resourceGroupName] The name of the resource group in which to create the Virtual Desktop Host Pool. Changing this forces a new resource to be created.
-  /// [scheduledAgentUpdates] A `scheduled_agent_updates` block as defined below. This enables control of when Agent Updates will be applied to Session Hosts.
+  /// [scheduledAgentUpdates] A `scheduledAgentUpdates` block as defined below. This enables control of when Agent Updates will be applied to Session Hosts.
   /// [startVmOnConnect] Enables or disables the Start VM on Connection Feature. Defaults to `false`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] The type of the Virtual Desktop Host Pool. Valid options are `Personal` or `Pooled`. Changing the type forces a new resource to be created.
@@ -130,4 +130,3 @@ class HostPoolArgs {
     );
   }
 }
-

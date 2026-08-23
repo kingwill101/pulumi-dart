@@ -18,7 +18,7 @@ class PacketCaptureState {
   final pulumi.Input<String>? name;
   /// The resource ID of the Network Watcher. Changing this forces a new resource to be created.
   final pulumi.Input<String>? networkWatcherId;
-  /// A `storage_location` block as defined below. Changing this forces a new resource to be created.
+  /// A `storageLocation` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<PacketCaptureStorageLocation>? storageLocation;
   /// The resource ID of the target Virtual Machine to capture packets from. Changing this forces a new resource to be created.
   final pulumi.Input<String>? virtualMachineId;
@@ -30,7 +30,7 @@ class PacketCaptureState {
   /// [maximumCaptureDurationInSeconds] The maximum duration of the capture session in seconds. Defaults to `18000` (5 hours). Changing this forces a new resource to be created.
   /// [name] The name to use for this Network Packet Capture. Changing this forces a new resource to be created.
   /// [networkWatcherId] The resource ID of the Network Watcher. Changing this forces a new resource to be created.
-  /// [storageLocation] A `storage_location` block as defined below. Changing this forces a new resource to be created.
+  /// [storageLocation] A `storageLocation` block as defined below. Changing this forces a new resource to be created.
   /// [virtualMachineId] The resource ID of the target Virtual Machine to capture packets from. Changing this forces a new resource to be created.
   const PacketCaptureState({
     this.filters,
@@ -69,4 +69,3 @@ class PacketCaptureState {
     );
   }
 }
-

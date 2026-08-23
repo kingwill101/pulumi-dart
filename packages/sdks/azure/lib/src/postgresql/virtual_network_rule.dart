@@ -226,6 +226,52 @@ import 'virtual_network_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.7.29.0/29"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "internal" {
+///   name                 = "internal"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.7.29.0/29"]
+///   service_endpoints    = ["Microsoft.Sql"]
+/// }
+/// resource "azure_postgresql_server" "example" {
+///   name                         = "postgresql-server-1"
+///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   sku_name                     = "GP_Gen5_2"
+///   storage_mb                   = 5120
+///   backup_retention_days        = 7
+///   administrator_login          = "psqladmin"
+///   administrator_login_password = "H@Sh1CoR3!"
+///   version                      = "9.5"
+///   ssl_enforcement_enabled      = true
+/// }
+/// resource "azure_postgresql_virtualnetworkrule" "example" {
+///   name                                 = "postgresql-vnet-rule"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   server_name                          = azure_postgresql_server.example.name
+///   subnet_id                            = azure_network_subnet.internal.id
+///   ignore_missing_vnet_service_endpoint = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -242,8 +288,8 @@ import 'virtual_network_rule_state.dart';
 /// import com.pulumi.azure.postgresql.ServerArgs;
 /// import com.pulumi.azure.postgresql.VirtualNetworkRule;
 /// import com.pulumi.azure.postgresql.VirtualNetworkRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

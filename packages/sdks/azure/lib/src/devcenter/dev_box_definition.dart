@@ -135,6 +135,35 @@ import 'dev_box_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_devcenter_devcenter" "example" {
+///   name                = "example-dc"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_devcenter_devboxdefinition" "example" {
+///   name               = "example-dcet"
+///   location           = azure_core_resourcegroup.example.location
+///   dev_center_id      = azure_devcenter_devcenter.example.id
+///   image_reference_id ="${azure_devcenter_devcenter.example.id}/galleries/default/images/microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win10-m365-gen2"
+///   sku_name           = "general_i_8c32gb256ssd_v2"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -148,8 +177,8 @@ import 'dev_box_definition_state.dart';
 /// import com.pulumi.azure.devcenter.inputs.DevCenterIdentityArgs;
 /// import com.pulumi.azure.devcenter.DevBoxDefinition;
 /// import com.pulumi.azure.devcenter.DevBoxDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -69,6 +69,24 @@ import 'get_virtual_network_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_devtest_getlab" "example" {
+///   name                = "example-lab"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "uniqueIdentifier" {
+///   value = data.azure_devtest_getlab.example.unique_identifier
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +95,8 @@ import 'get_virtual_network_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.devtest.DevtestFunctions;
 /// import com.pulumi.azure.devtest.inputs.GetLabArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -202,6 +220,25 @@ Future<GetLabResult> getLab(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_devtest_getvirtualnetwork" "example" {
+///   name                = "example-network"
+///   lab_name            = "examplelab"
+///   resource_group_name = "example-resource"
+/// }
+///
+/// output "labSubnetName" {
+///   value = data.azure_devtest_getvirtualnetwork.example.allowed_subnets[0].lab_subnet_name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -210,8 +247,8 @@ Future<GetLabResult> getLab(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.devtest.DevtestFunctions;
 /// import com.pulumi.azure.devtest.inputs.GetVirtualNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

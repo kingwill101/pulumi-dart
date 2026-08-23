@@ -40,7 +40,7 @@ import 'frontdoor_firewall_policy_state.dart';
 ///             type: "MatchRule",
 ///             action: "Block",
 ///             matchConditions: [{
-///                 matchVariable: "RemoteAddr",
+///                 matchVariable: "SocketAddr",
 ///                 operator: "IPMatch",
 ///                 negationCondition: false,
 ///                 matchValues: [
@@ -59,7 +59,7 @@ import 'frontdoor_firewall_policy_state.dart';
 ///             action: "Block",
 ///             matchConditions: [
 ///                 {
-///                     matchVariable: "RemoteAddr",
+///                     matchVariable: "SocketAddr",
 ///                     operator: "IPMatch",
 ///                     negationCondition: false,
 ///                     matchValues: ["192.168.1.0/24"],
@@ -154,7 +154,7 @@ import 'frontdoor_firewall_policy_state.dart';
 ///             "type": "MatchRule",
 ///             "action": "Block",
 ///             "match_conditions": [{
-///                 "match_variable": "RemoteAddr",
+///                 "match_variable": "SocketAddr",
 ///                 "operator": "IPMatch",
 ///                 "negation_condition": False,
 ///                 "match_values": [
@@ -173,7 +173,7 @@ import 'frontdoor_firewall_policy_state.dart';
 ///             "action": "Block",
 ///             "match_conditions": [
 ///                 {
-///                     "match_variable": "RemoteAddr",
+///                     "match_variable": "SocketAddr",
 ///                     "operator": "IPMatch",
 ///                     "negation_condition": False,
 ///                     "match_values": ["192.168.1.0/24"],
@@ -283,7 +283,7 @@ import 'frontdoor_firewall_policy_state.dart';
 ///                 {
 ///                     new Azure.Cdn.Inputs.FrontdoorFirewallPolicyCustomRuleMatchConditionArgs
 ///                     {
-///                         MatchVariable = "RemoteAddr",
+///                         MatchVariable = "SocketAddr",
 ///                         Operator = "IPMatch",
 ///                         NegationCondition = false,
 ///                         MatchValues = new[]
@@ -307,7 +307,7 @@ import 'frontdoor_firewall_policy_state.dart';
 ///                 {
 ///                     new Azure.Cdn.Inputs.FrontdoorFirewallPolicyCustomRuleMatchConditionArgs
 ///                     {
-///                         MatchVariable = "RemoteAddr",
+///                         MatchVariable = "SocketAddr",
 ///                         Operator = "IPMatch",
 ///                         NegationCondition = false,
 ///                         MatchValues = new[]
@@ -454,7 +454,7 @@ import 'frontdoor_firewall_policy_state.dart';
 /// 					Action:                     pulumi.String("Block"),
 /// 					MatchConditions: cdn.FrontdoorFirewallPolicyCustomRuleMatchConditionArray{
 /// 						&cdn.FrontdoorFirewallPolicyCustomRuleMatchConditionArgs{
-/// 							MatchVariable:     pulumi.String("RemoteAddr"),
+/// 							MatchVariable:     pulumi.String("SocketAddr"),
 /// 							Operator:          pulumi.String("IPMatch"),
 /// 							NegationCondition: pulumi.Bool(false),
 /// 							MatchValues: pulumi.StringArray{
@@ -474,7 +474,7 @@ import 'frontdoor_firewall_policy_state.dart';
 /// 					Action:                     pulumi.String("Block"),
 /// 					MatchConditions: cdn.FrontdoorFirewallPolicyCustomRuleMatchConditionArray{
 /// 						&cdn.FrontdoorFirewallPolicyCustomRuleMatchConditionArgs{
-/// 							MatchVariable:     pulumi.String("RemoteAddr"),
+/// 							MatchVariable:     pulumi.String("SocketAddr"),
 /// 							Operator:          pulumi.String("IPMatch"),
 /// 							NegationCondition: pulumi.Bool(false),
 /// 							MatchValues: pulumi.StringArray{
@@ -559,6 +559,113 @@ import 'frontdoor_firewall_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-cdn-frontdoor"
+///   location = "West Europe"
+/// }
+/// resource "azure_cdn_frontdoorprofile" "example" {
+///   name                = "example-profile"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Premium_AzureFrontDoor"
+/// }
+/// resource "azure_cdn_frontdoorfirewallpolicy" "example" {
+///   name                              = "examplecdnfdwafpolicy"
+///   resource_group_name               = azure_core_resourcegroup.example.name
+///   sku_name                          = azure_cdn_frontdoorprofile.example.sku_name
+///   enabled                           = true
+///   mode                              = "Prevention"
+///   redirect_url                      = "https://www.contoso.com"
+///   custom_block_response_status_code = 403
+///   custom_block_response_body        = "PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg=="
+///   custom_rules {
+///     name                           = "Rule1"
+///     enabled                        = true
+///     priority                       = 1
+///     rate_limit_duration_in_minutes = 1
+///     rate_limit_threshold           = 10
+///     type                           = "MatchRule"
+///     action                         = "Block"
+///     match_conditions {
+///       match_variable     = "SocketAddr"
+///       operator           = "IPMatch"
+///       negation_condition = false
+///       match_values       = ["10.0.1.0/24", "10.0.0.0/24"]
+///     }
+///   }
+///   custom_rules {
+///     name                           = "Rule2"
+///     enabled                        = true
+///     priority                       = 50
+///     rate_limit_duration_in_minutes = 1
+///     rate_limit_threshold           = 10
+///     type                           = "MatchRule"
+///     action                         = "Block"
+///     match_conditions {
+///       match_variable     = "SocketAddr"
+///       operator           = "IPMatch"
+///       negation_condition = false
+///       match_values       = ["192.168.1.0/24"]
+///     }
+///     match_conditions {
+///       match_variable     = "RequestHeader"
+///       selector           = "UserAgent"
+///       operator           = "Contains"
+///       negation_condition = false
+///       match_values       = ["windows"]
+///       transforms         = ["Lowercase", "Trim"]
+///     }
+///   }
+///   managed_rules {
+///     type    = "DefaultRuleSet"
+///     version = "1.0"
+///     action  = "Log"
+///     exclusions {
+///       match_variable = "QueryStringArgNames"
+///       operator       = "Equals"
+///       selector       = "not_suspicious"
+///     }
+///     overrides {
+///       rule_group_name = "PHP"
+///       rules {
+///         rule_id = "933100"
+///         enabled = false
+///         action  = "Block"
+///       }
+///     }
+///     overrides {
+///       rule_group_name = "SQLI"
+///       exclusions {
+///         match_variable = "QueryStringArgNames"
+///         operator       = "Equals"
+///         selector       = "really_not_suspicious"
+///       }
+///       rules {
+///         rule_id = "942200"
+///         action  = "Block"
+///         exclusions {
+///           match_variable = "QueryStringArgNames"
+///           operator       = "Equals"
+///           selector       = "innocent"
+///         }
+///       }
+///     }
+///   }
+///   managed_rules {
+///     type    = "Microsoft_BotManagerRuleSet"
+///     version = "1.1"
+///     action  = "Log"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -572,9 +679,15 @@ import 'frontdoor_firewall_policy_state.dart';
 /// import com.pulumi.azure.cdn.FrontdoorFirewallPolicy;
 /// import com.pulumi.azure.cdn.FrontdoorFirewallPolicyArgs;
 /// import com.pulumi.azure.cdn.inputs.FrontdoorFirewallPolicyCustomRuleArgs;
+/// import com.pulumi.azure.cdn.inputs.FrontdoorFirewallPolicyCustomRuleMatchConditionArgs;
 /// import com.pulumi.azure.cdn.inputs.FrontdoorFirewallPolicyManagedRuleArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.cdn.inputs.FrontdoorFirewallPolicyManagedRuleExclusionArgs;
+/// import com.pulumi.azure.cdn.inputs.FrontdoorFirewallPolicyManagedRuleOverrideArgs;
+/// import com.pulumi.azure.cdn.inputs.FrontdoorFirewallPolicyManagedRuleOverrideRuleArgs;
+/// import com.pulumi.azure.cdn.inputs.FrontdoorFirewallPolicyManagedRuleOverrideExclusionArgs;
+/// import com.pulumi.azure.cdn.inputs.FrontdoorFirewallPolicyManagedRuleOverrideRuleExclusionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -616,7 +729,7 @@ import 'frontdoor_firewall_policy_state.dart';
 ///                     .type("MatchRule")
 ///                     .action("Block")
 ///                     .matchConditions(FrontdoorFirewallPolicyCustomRuleMatchConditionArgs.builder()
-///                         .matchVariable("RemoteAddr")
+///                         .matchVariable("SocketAddr")
 ///                         .operator("IPMatch")
 ///                         .negationCondition(false)
 ///                         .matchValues(
@@ -634,7 +747,7 @@ import 'frontdoor_firewall_policy_state.dart';
 ///                     .action("Block")
 ///                     .matchConditions(
 ///                         FrontdoorFirewallPolicyCustomRuleMatchConditionArgs.builder()
-///                             .matchVariable("RemoteAddr")
+///                             .matchVariable("SocketAddr")
 ///                             .operator("IPMatch")
 ///                             .negationCondition(false)
 ///                             .matchValues("192.168.1.0/24")
@@ -732,7 +845,7 @@ import 'frontdoor_firewall_policy_state.dart';
 ///           type: MatchRule
 ///           action: Block
 ///           matchConditions:
-///             - matchVariable: RemoteAddr
+///             - matchVariable: SocketAddr
 ///               operator: IPMatch
 ///               negationCondition: false
 ///               matchValues:
@@ -746,7 +859,7 @@ import 'frontdoor_firewall_policy_state.dart';
 ///           type: MatchRule
 ///           action: Block
 ///           matchConditions:
-///             - matchVariable: RemoteAddr
+///             - matchVariable: SocketAddr
 ///               operator: IPMatch
 ///               negationCondition: false
 ///               matchValues:
@@ -792,9 +905,9 @@ import 'frontdoor_firewall_policy_state.dart';
 /// ```
 ///
 ///
-/// ## `scrubbing_rule` Examples:
+/// ## `scrubbingRule` Examples:
 ///
-/// The following table shows examples of `scrubbing_rule`'s that can be used to protect sensitive data:
+/// The following table shows examples of `scrubbingRule`'s that can be used to protect sensitive data:
 ///
 /// | Match Variable               | Operator       | Selector      | What Gets Scrubbed                                                            |
 /// | :--------------------------- | :------------- | :------------ | :---------------------------------------------------------------------------- |
@@ -818,15 +931,15 @@ import 'frontdoor_firewall_policy_state.dart';
 class FrontdoorFirewallPolicy extends pulumi.CustomResource {
   /// Specifies the Captcha cookie lifetime in minutes. Possible values are between `5` and `1440`. Defaults to`30` minutes.
   ///
-  /// &gt; **Note:** The `captcha_cookie_expiration_in_minutes` field can only be set on `Premium_AzureFrontDoor` sku's. Please see the [Product Documentation](https://learn.microsoft.com/azure/web-application-firewall/afds/captcha-challenge) for more information.
+  /// &gt; **Note:** The `captchaCookieExpirationInMinutes` field can only be set on `Premium_AzureFrontDoor` sku's. Please see the [Product Documentation](https://learn.microsoft.com/azure/web-application-firewall/afds/captcha-challenge) for more information.
   ///
-  /// &gt; **Note:** When you remove the `captcha_cookie_expiration_in_minutes` field from your configuration, the value will revert to the default of `30` minutes in the Terraform state. This is because Azure manages this setting and Terraform will reflect the actual Azure configuration, which defaults to `30` minutes when not explicitly specified.
+  /// &gt; **Note:** When you remove the `captchaCookieExpirationInMinutes` field from your configuration, the value will revert to the default of `30` minutes in the Terraform state. This is because Azure manages this setting and Terraform will reflect the actual Azure configuration, which defaults to `30` minutes when not explicitly specified.
   late final pulumi.Output<int> captchaCookieExpirationInMinutes;
-  /// If a `custom_rule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
+  /// If a `customRule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
   late final pulumi.Output<String?> customBlockResponseBody;
-  /// If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
+  /// If a `customRule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, `429`, `990`, `991`, `992`, `993`, `994`, `995`, `996`, `997`, `998`, or `999`.
   late final pulumi.Output<int?> customBlockResponseStatusCode;
-  /// One or more `custom_rule` blocks as defined below.
+  /// One or more `customRule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> customRules;
   /// Is the Front Door Firewall Policy enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
@@ -834,15 +947,15 @@ class FrontdoorFirewallPolicy extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> frontendEndpointIds;
   /// Specifies the JavaScript challenge cookie lifetime in minutes, after which the user will be revalidated. Possible values are between `5` to `1440` minutes. Defaults to `30` minutes.
   ///
-  /// &gt; **Note:** The `js_challenge_cookie_expiration_in_minutes` field can only be set on `Premium_AzureFrontDoor` sku's. Please see the [Product Documentation](https://learn.microsoft.com/azure/web-application-firewall/waf-javascript-challenge) for more information.
+  /// &gt; **Note:** The `jsChallengeCookieExpirationInMinutes` field can only be set on `Premium_AzureFrontDoor` sku's. Please see the [Product Documentation](https://learn.microsoft.com/azure/web-application-firewall/waf-javascript-challenge) for more information.
   ///
-  /// &gt; **Note:** When you remove the `js_challenge_cookie_expiration_in_minutes` field from your configuration, the value will revert to the default of `30` minutes in the Terraform state. This is because Azure manages this setting and Terraform will reflect the actual Azure configuration, which defaults to `30` minutes when not explicitly specified.
+  /// &gt; **Note:** When you remove the `jsChallengeCookieExpirationInMinutes` field from your configuration, the value will revert to the default of `30` minutes in the Terraform state. This is because Azure manages this setting and Terraform will reflect the actual Azure configuration, which defaults to `30` minutes when not explicitly specified.
   late final pulumi.Output<int> jsChallengeCookieExpirationInMinutes;
-  /// A `log_scrubbing` block as defined below.
+  /// A `logScrubbing` block as defined below.
   ///
-  /// !&gt; **Note:** Setting the`log_scrubbing` block is currently in **PREVIEW**. Please see the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+  /// &gt; **Note:** Setting the`logScrubbing` block is currently in **PREVIEW**. Please see the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
   late final pulumi.Output<FrontdoorFirewallPolicyLogScrubbing?> logScrubbing;
-  /// One or more `managed_rule` blocks as defined below.
+  /// One or more `managedRule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> managedRules;
   /// The Front Door Firewall Policy mode. Possible values are `Detection`, `Prevention`.
   late final pulumi.Output<String> mode;

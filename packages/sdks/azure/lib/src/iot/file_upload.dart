@@ -186,6 +186,46 @@ import 'file_upload_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorage"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "examplecontainer"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_iot_iothub" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku = {
+///     name     = "S1"
+///     capacity = "1"
+///   }
+/// }
+/// resource "azure_iot_fileupload" "example" {
+///   iothub_id         = azure_iot_iothub.example.id
+///   connection_string = azure_storage_account.example.primary_blob_connection_string
+///   container_name    = azure_storage_container.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -203,8 +243,8 @@ import 'file_upload_state.dart';
 /// import com.pulumi.azure.iot.inputs.IoTHubSkuArgs;
 /// import com.pulumi.azure.iot.FileUpload;
 /// import com.pulumi.azure.iot.FileUploadArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,13 +349,13 @@ class FileUpload extends pulumi.CustomResource {
   late final pulumi.Output<String?> authenticationType;
   /// The connection string for the Azure Storage account to which files are uploaded.
   late final pulumi.Output<String> connectionString;
-  /// The name of the root container where the files should be uploaded to. The container need not exist but should be creatable using the `connection_string` specified.
+  /// The name of the root container where the files should be uploaded to. The container need not exist but should be creatable using the `connectionString` specified.
   late final pulumi.Output<String> containerName;
   /// The period of time for which a file upload notification message is available to consume before it expires, specified as an [ISO 8601 timespan duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). This value must be between 1 minute and 48 hours. Defaults to `PT1H`.
   late final pulumi.Output<String?> defaultTtl;
   /// The ID of the User Managed Identity used to authenticate against the storage account.
   ///
-  /// &gt; **Note:** `identity_id` can only be specified when `authentication_type` is `identityBased`. It must be one of the `identity_ids` of the IoT Hub. If `identity_id` is omitted when `authentication_type` is `identityBased`, then the System-Assigned Managed Identity of the IoT Hub will be used.
+  /// &gt; **Note:** `identityId` can only be specified when `authenticationType` is `identityBased`. It must be one of the `identityIds` of the IoT Hub. If `identityId` is omitted when `authenticationType` is `identityBased`, then the System-Assigned Managed Identity of the IoT Hub will be used.
   late final pulumi.Output<String?> identityId;
   /// The ID of the IoT Hub. Changing this forces a new IoT Hub to be created.
   late final pulumi.Output<String> iothubId;

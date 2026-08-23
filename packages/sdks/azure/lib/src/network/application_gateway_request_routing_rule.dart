@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayRequestRoutingRule {
   /// The ID of the associated Backend Address Pool.
   final pulumi.Input<String>? backendAddressPoolId;
-  /// The Name of the Backend Address Pool which should be used for this Routing Rule. Cannot be set if `redirect_configuration_name` is set.
+  /// The Name of the Backend Address Pool which should be used for this Routing Rule. Cannot be set if `redirectConfigurationName` is set.
   final pulumi.Input<String>? backendAddressPoolName;
   /// The ID of the associated Backend HTTP Settings Configuration.
   final pulumi.Input<String>? backendHttpSettingsId;
-  /// The Name of the Backend HTTP Settings Collection which should be used for this Routing Rule. Cannot be set if `redirect_configuration_name` is set.
+  /// The Name of the Backend HTTP Settings Collection which should be used for this Routing Rule. Cannot be set if `redirectConfigurationName` is set.
   final pulumi.Input<String>? backendHttpSettingsName;
   /// The ID of the associated HTTP Listener.
   final pulumi.Input<String>? httpListenerId;
@@ -25,13 +25,13 @@ class ApplicationGatewayRequestRoutingRule {
   final pulumi.Input<int>? priority;
   /// The ID of the associated Redirect Configuration.
   final pulumi.Input<String>? redirectConfigurationId;
-  /// The Name of the Redirect Configuration which should be used for this Routing Rule. Cannot be set if either `backend_address_pool_name` or `backend_http_settings_name` is set.
+  /// The Name of the Redirect Configuration which should be used for this Routing Rule. Cannot be set if either `backendAddressPoolName` or `backendHttpSettingsName` is set.
   final pulumi.Input<String>? redirectConfigurationName;
   /// The ID of the associated Rewrite Rule Set.
   final pulumi.Input<String>? rewriteRuleSetId;
   /// The Name of the Rewrite Rule Set which should be used for this Routing Rule. Only valid for v2 SKUs.
   ///
-  /// &gt; **Note:** `backend_address_pool_name`, `backend_http_settings_name`, `redirect_configuration_name`, and `rewrite_rule_set_name` are applicable only when `rule_type` is `Basic`.
+  /// &gt; **Note:** `backendAddressPoolName`, `backendHttpSettingsName`, `redirectConfigurationName`, and `rewriteRuleSetName` are applicable only when `ruleType` is `Basic`.
   final pulumi.Input<String>? rewriteRuleSetName;
   /// The Type of Routing that should be used for this Rule. Possible values are `Basic` and `PathBasedRouting`.
   final pulumi.Input<String> ruleType;
@@ -42,16 +42,16 @@ class ApplicationGatewayRequestRoutingRule {
 
   /// Creates a new [ApplicationGatewayRequestRoutingRule].
   /// [backendAddressPoolId] The ID of the associated Backend Address Pool.
-  /// [backendAddressPoolName] The Name of the Backend Address Pool which should be used for this Routing Rule. Cannot be set if `redirect_configuration_name` is set.
+  /// [backendAddressPoolName] The Name of the Backend Address Pool which should be used for this Routing Rule. Cannot be set if `redirectConfigurationName` is set.
   /// [backendHttpSettingsId] The ID of the associated Backend HTTP Settings Configuration.
-  /// [backendHttpSettingsName] The Name of the Backend HTTP Settings Collection which should be used for this Routing Rule. Cannot be set if `redirect_configuration_name` is set.
+  /// [backendHttpSettingsName] The Name of the Backend HTTP Settings Collection which should be used for this Routing Rule. Cannot be set if `redirectConfigurationName` is set.
   /// [httpListenerId] The ID of the associated HTTP Listener.
   /// [httpListenerName] The Name of the HTTP Listener which should be used for this Routing Rule.
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The Name of this Request Routing Rule.
   /// [priority] Rule evaluation order can be dictated by specifying an integer value from `1` to `20000` with `1` being the highest priority and `20000` being the lowest priority.
   /// [redirectConfigurationId] The ID of the associated Redirect Configuration.
-  /// [redirectConfigurationName] The Name of the Redirect Configuration which should be used for this Routing Rule. Cannot be set if either `backend_address_pool_name` or `backend_http_settings_name` is set.
+  /// [redirectConfigurationName] The Name of the Redirect Configuration which should be used for this Routing Rule. Cannot be set if either `backendAddressPoolName` or `backendHttpSettingsName` is set.
   /// [rewriteRuleSetId] The ID of the associated Rewrite Rule Set.
   /// [rewriteRuleSetName] The Name of the Rewrite Rule Set which should be used for this Routing Rule. Only valid for v2 SKUs.
   /// [ruleType] The Type of Routing that should be used for this Rule. Possible values are `Basic` and `PathBasedRouting`.
@@ -118,4 +118,3 @@ class ApplicationGatewayRequestRoutingRule {
     );
   }
 }
-

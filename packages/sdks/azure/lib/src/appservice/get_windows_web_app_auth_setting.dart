@@ -9,13 +9,13 @@ import 'get_windows_web_app_auth_setting_microsoft.dart';
 import 'get_windows_web_app_auth_setting_twitter.dart';
 
 class GetWindowsWebAppAuthSetting {
-  /// A `active_directory` block as defined above.
+  /// A `activeDirectory` block as defined above.
   final pulumi.Input<List<GetWindowsWebAppAuthSettingActiveDirectory>> activeDirectories;
-  /// A `additional_login_parameters` block as defined above.
+  /// A `additionalLoginParameters` block as defined above.
   final pulumi.Input<Map<String, String>> additionalLoginParameters;
   /// External URLs that can be redirected to as part of logging in or logging out of the app.
   final pulumi.Input<List<String>> allowedExternalRedirectUrls;
-  /// The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticated_action` is set to `RedirectToLoginPage`.
+  /// The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticatedAction` is set to `RedirectToLoginPage`.
   final pulumi.Input<String> defaultProvider;
   /// Is the Backup enabled?
   final pulumi.Input<bool> enabled;
@@ -41,10 +41,10 @@ class GetWindowsWebAppAuthSetting {
   final pulumi.Input<String> unauthenticatedClientAction;
 
   /// Creates a new [GetWindowsWebAppAuthSetting].
-  /// [activeDirectories] A `active_directory` block as defined above.
-  /// [additionalLoginParameters] A `additional_login_parameters` block as defined above.
+  /// [activeDirectories] A `activeDirectory` block as defined above.
+  /// [additionalLoginParameters] A `additionalLoginParameters` block as defined above.
   /// [allowedExternalRedirectUrls] External URLs that can be redirected to as part of logging in or logging out of the app.
-  /// [defaultProvider] The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticated_action` is set to `RedirectToLoginPage`.
+  /// [defaultProvider] The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticatedAction` is set to `RedirectToLoginPage`.
   /// [enabled] Is the Backup enabled?
   /// [facebooks] A `facebook` block as defined below.
   /// [githubs] A `github` block as defined below.
@@ -114,4 +114,3 @@ class GetWindowsWebAppAuthSetting {
     );
   }
 }
-

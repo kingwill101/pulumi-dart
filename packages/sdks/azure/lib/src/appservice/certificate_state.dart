@@ -21,7 +21,7 @@ class CertificateState {
   final pulumi.Input<String>? keyVaultId;
   /// The ID of the Key Vault secret. Changing this forces a new resource to be created.
   ///
-  /// &gt; **NOTE:** Exactly one of `key_vault_secret_id` or `pfx_blob` must be specified.
+  /// &gt; **NOTE:** Exactly one of `keyVaultSecretId` or `pfxBlob` must be specified.
   final pulumi.Input<String>? keyVaultSecretId;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -31,7 +31,7 @@ class CertificateState {
   final pulumi.Input<String>? password;
   /// The base64-encoded contents of the certificate. Changing this forces a new resource to be created.
   ///
-  /// &gt; **NOTE:** Exactly one of `key_vault_secret_id` or `pfx_blob` must be specified.
+  /// &gt; **NOTE:** Exactly one of `keyVaultSecretId` or `pfxBlob` must be specified.
   final pulumi.Input<String>? pfxBlob;
   /// The name of the resource group in which to create the certificate. Changing this forces a new resource to be created.
   ///
@@ -125,4 +125,3 @@ class CertificateState {
     );
   }
 }
-

@@ -17,7 +17,7 @@ class SharedPrivateLinkResourceArgs {
   final pulumi.Input<String> subResourceName;
   /// The ID of the Shared Private Link Enabled Remote Resource which this Signalr Private Endpoint should be connected to. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The `sub_resource_name` should match with the type of the `target_resource_id` that's being specified.
+  /// &gt; **Note:** The `subResourceName` should match with the type of the `targetResourceId` that's being specified.
   final pulumi.Input<String> targetResourceId;
 
   /// Creates a new [SharedPrivateLinkResourceArgs].
@@ -54,4 +54,3 @@ class SharedPrivateLinkResourceArgs {
     );
   }
 }
-

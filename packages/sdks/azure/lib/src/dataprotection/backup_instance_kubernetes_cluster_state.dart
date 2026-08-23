@@ -5,7 +5,7 @@ import 'backup_instance_kubernetes_cluster_backup_datasource_parameters.dart';
 
 /// Input properties used for looking up and filtering BackupInstanceKubernetesCluster resources.
 class BackupInstanceKubernetesClusterState {
-  /// A `backup_datasource_parameters` block as defined below. Changing this forces a new resource to be created.
+  /// A `backupDatasourceParameters` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<BackupInstanceKubernetesClusterBackupDatasourceParameters>? backupDatasourceParameters;
   /// The ID of the Backup Policy. Changing this forces a new resource to be created.
   final pulumi.Input<String>? backupPolicyId;
@@ -23,7 +23,7 @@ class BackupInstanceKubernetesClusterState {
   final pulumi.Input<String>? vaultId;
 
   /// Creates a new [BackupInstanceKubernetesClusterState].
-  /// [backupDatasourceParameters] A `backup_datasource_parameters` block as defined below. Changing this forces a new resource to be created.
+  /// [backupDatasourceParameters] A `backupDatasourceParameters` block as defined below. Changing this forces a new resource to be created.
   /// [backupPolicyId] The ID of the Backup Policy. Changing this forces a new resource to be created.
   /// [kubernetesClusterId] The ID of the Kubernetes Cluster. Changing this forces a new resource to be created.
   /// [location] The location of the Backup Instance Kubernetes Cluster. Changing this forces a new resource to be created.
@@ -68,4 +68,3 @@ class BackupInstanceKubernetesClusterState {
     );
   }
 }
-

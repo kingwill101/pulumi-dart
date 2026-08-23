@@ -12,11 +12,11 @@ class BackendAddressPoolArgs {
   final pulumi.Input<String> loadbalancerId;
   /// Specifies the name of the Backend Address Pool. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// The backend address synchronous mode for the Backend Address Pool. Possible values are `Automatic` and `Manual`. This is required with `virtual_network_id`. Changing this forces a new resource to be created.
+  /// The backend address synchronous mode for the Backend Address Pool. Possible values are `Automatic` and `Manual`. This is required with `virtualNetworkId`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The `synchronous_mode` can set only for Load Balancer with `Standard` SKU.
+  /// &gt; **Note:** The `synchronousMode` can set only for Load Balancer with `Standard` SKU.
   final pulumi.Input<String>? synchronousMode;
-  /// One or more `tunnel_interface` blocks as defined below.
+  /// One or more `tunnelInterface` blocks as defined below.
   final pulumi.Input<List<BackendAddressPoolTunnelInterface>>? tunnelInterfaces;
   /// The ID of the Virtual Network within which the Backend Address Pool should exist.
   final pulumi.Input<String>? virtualNetworkId;
@@ -24,8 +24,8 @@ class BackendAddressPoolArgs {
   /// Creates a new [BackendAddressPoolArgs].
   /// [loadbalancerId] The ID of the Load Balancer in which to create the Backend Address Pool. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Backend Address Pool. Changing this forces a new resource to be created.
-  /// [synchronousMode] The backend address synchronous mode for the Backend Address Pool. Possible values are `Automatic` and `Manual`. This is required with `virtual_network_id`. Changing this forces a new resource to be created.
-  /// [tunnelInterfaces] One or more `tunnel_interface` blocks as defined below.
+  /// [synchronousMode] The backend address synchronous mode for the Backend Address Pool. Possible values are `Automatic` and `Manual`. This is required with `virtualNetworkId`. Changing this forces a new resource to be created.
+  /// [tunnelInterfaces] One or more `tunnelInterface` blocks as defined below.
   /// [virtualNetworkId] The ID of the Virtual Network within which the Backend Address Pool should exist.
   const BackendAddressPoolArgs({
     required this.loadbalancerId,
@@ -55,4 +55,3 @@ class BackendAddressPoolArgs {
     );
   }
 }
-

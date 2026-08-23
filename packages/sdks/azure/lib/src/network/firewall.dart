@@ -220,6 +220,51 @@ import 'firewall_virtual_hub.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "testvnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "AzureFirewallSubnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "testpip"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+///   sku                 = "Standard"
+/// }
+/// resource "azure_network_firewall" "example" {
+///   name                = "testfirewall"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "AZFW_VNet"
+///   sku_tier            = "Standard"
+///   ip_configurations {
+///     name                 = "configuration"
+///     subnet_id            = azure_network_subnet.example.id
+///     public_ip_address_id = azure_network_publicip.example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -237,8 +282,8 @@ import 'firewall_virtual_hub.dart';
 /// import com.pulumi.azure.network.Firewall;
 /// import com.pulumi.azure.network.FirewallArgs;
 /// import com.pulumi.azure.network.inputs.FirewallIpConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -358,17 +403,17 @@ import 'firewall_virtual_hub.dart';
 /// $ pulumi import azure:network/firewall:Firewall example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/azureFirewalls/testfirewall
 /// ```
 class Firewall extends pulumi.CustomResource {
-  /// Whether DNS proxy is enabled. It will forward DNS requests to the DNS servers when set to `true`. It will be set to `true` if `dns_servers` provided with a not empty list.
+  /// Whether DNS proxy is enabled. It will forward DNS requests to the DNS servers when set to `true`. It will be set to `true` if `dnsServers` provided with a not empty list.
   late final pulumi.Output<bool> dnsProxyEnabled;
   /// A list of DNS servers that the Azure Firewall will direct DNS traffic to the for name resolution.
   late final pulumi.Output<List<String>?> dnsServers;
   /// The ID of the Firewall Policy applied to this Firewall.
   late final pulumi.Output<String?> firewallPolicyId;
-  /// An `ip_configuration` block as documented below.
+  /// An `ipConfiguration` block as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// A `management_ip_configuration` block as documented below, which allows force-tunnelling of traffic to be performed by the firewall. Adding or removing this block or changing the `subnet_id` in an existing block forces a new resource to be created. Changing this forces a new resource to be created.
+  /// A `managementIpConfiguration` block as documented below, which allows force-tunnelling of traffic to be performed by the firewall. Adding or removing this block or changing the `subnetId` in an existing block forces a new resource to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<FirewallManagementIpConfiguration?> managementIpConfiguration;
   /// Specifies the name of the Firewall. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
@@ -384,7 +429,7 @@ class Firewall extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// The operation mode for threat intelligence-based filtering. Possible values are: `Off`, `Alert` and `Deny`. Defaults to `Alert`.
   late final pulumi.Output<String> threatIntelMode;
-  /// A `virtual_hub` block as documented below.
+  /// A `virtualHub` block as documented below.
   late final pulumi.Output<FirewallVirtualHub?> virtualHub;
   /// Specifies a list of Availability Zones in which this Azure Firewall should be located. Changing this forces a new Azure Firewall to be created.
   ///

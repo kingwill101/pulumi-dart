@@ -54,7 +54,7 @@ import 'server_security_alert_policy_state.dart';
 /// example = azure.core.ResourceGroup("example",
 ///     name="example-resources",
 ///     location="West Europe")
-/// example_sql_server = azurerm.index.SqlServer("example",
+/// example_sql_server = azurerm.SqlServer("example",
 ///     name=mysqlserver,
 ///     resource_group_name=example.name,
 ///     location=example.location,
@@ -94,7 +94,7 @@ import 'server_security_alert_policy_state.dart';
 ///         Location = "West Europe",
 ///     });
 ///
-///     var exampleSqlServer = new Azurerm.Index.SqlServer("example", new()
+///     var exampleSqlServer = new Azurerm.SqlServer("example", new()
 ///     {
 ///         Name = "mysqlserver",
 ///         ResourceGroupName = example.Name,
@@ -190,6 +190,44 @@ import 'server_security_alert_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azurerm_sqlserver" "example" {
+///   name                         = "mysqlserver"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "4dm1n157r470r"
+///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "accteststorageaccount"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+/// }
+/// resource "azure_mssql_serversecurityalertpolicy" "example" {
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   server_name                = azurerm_sqlserver.example.name
+///   state                      = "Enabled"
+///   storage_endpoint           = azure_storage_account.example.primary_blob_endpoint
+///   storage_account_access_key = azure_storage_account.example.primary_access_key
+///   retention_days             = 20
+///   disabled_alerts            = ["Sql_Injection", "Data_Exfiltration"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -204,8 +242,8 @@ import 'server_security_alert_policy_state.dart';
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.mssql.ServerSecurityAlertPolicy;
 /// import com.pulumi.azure.mssql.ServerSecurityAlertPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -327,13 +365,13 @@ class ServerSecurityAlertPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> state;
   /// Specifies the primary access key of the Threat Detection audit logs blob storage endpoint.
   ///
-  /// &gt; **Note:** The `storage_account_access_key` only applies if the storage account is not behind a virtual network or a firewall.
+  /// &gt; **Note:** The `storageAccountAccessKey` only applies if the storage account is not behind a virtual network or a firewall.
   late final pulumi.Output<String?> storageAccountAccessKey;
   /// Specifies the blob storage endpoint that will hold all Threat Detection audit logs (e.g., `https://example.blob.core.windows.net`).
   ///
-  /// &gt; **Note:** The `storage_account_access_key` field is required when the `storage_endpoint` field has been set.
+  /// &gt; **Note:** The `storageAccountAccessKey` field is required when the `storageEndpoint` field has been set.
   ///
-  /// &gt; **Note:** Storage accounts configured with `shared_access_key_enabled = false` cannot be used for the `storage_endpoint` field.
+  /// &gt; **Note:** Storage accounts configured with `sharedAccessKeyEnabled = false` cannot be used for the `storageEndpoint` field.
   late final pulumi.Output<String?> storageEndpoint;
 
   /// Creates a new [ServerSecurityAlertPolicy].

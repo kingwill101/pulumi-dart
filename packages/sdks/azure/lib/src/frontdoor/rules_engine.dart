@@ -2,9 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rules_engine_args.dart';
 import 'rules_engine_state.dart';
 
-/// !&gt; **Note:** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
+/// &gt; **Note:** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
 ///
-/// !&gt; **Note:** The creation of new Azure Front Door (classic) resources is no longer supported following its deprecation on `April 1, 2025`. However, modifications to existing Azure Front Door (classic) resources will continue to be supported until the API reaches full retirement on `March 31, 2027`.
+/// &gt; **Note:** The creation of new Azure Front Door (classic) resources is no longer supported following its deprecation on `April 1, 2025`. However, modifications to existing Azure Front Door (classic) resources will continue to be supported until the API reaches full retirement on `March 31, 2027`.
 ///
 /// Manages an Azure Front Door (classic) Rules Engine configuration and rules.
 ///
@@ -454,6 +454,87 @@ import 'rules_engine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_frontdoor_frontdoor" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   backend_pools {
+///     name                = "exampleBackendBing"
+///     load_balancing_name = "exampleLoadBalancingSettings1"
+///     health_probe_name   = "exampleHealthProbeSetting1"
+///     backends {
+///       host_header = "www.bing.com"
+///       address     = "www.bing.com"
+///       http_port   = 80
+///       https_port  = 443
+///     }
+///   }
+///   backend_pool_health_probes {
+///     name = "exampleHealthProbeSetting1"
+///   }
+///   backend_pool_load_balancings {
+///     name = "exampleLoadBalancingSettings1"
+///   }
+///   frontend_endpoints {
+///     name      = "exampleFrontendEndpoint1"
+///     host_name = "example-FrontDoor.azurefd.net"
+///   }
+///   routing_rules {
+///     name                = "exampleRoutingRule1"
+///     accepted_protocols  = ["Http", "Https"]
+///     patterns_to_matches = ["/*"]
+///     frontend_endpoints  = ["exampleFrontendEndpoint1"]
+///   }
+/// }
+/// resource "azure_frontdoor_rulesengine" "example_rules_engine" {
+///   name                = "exampleRulesEngineConfig1"
+///   frontdoor_name      = azure_frontdoor_frontdoor.example.name
+///   resource_group_name = azure_frontdoor_frontdoor.example.resource_group_name
+///   rules {
+///     name     = "debuggingoutput"
+///     priority = 1
+///     action = {
+///       response_headers = [{
+///         "headerActionType" = "Append"
+///         "headerName"       = "X-TEST-HEADER"
+///         "value"            = "Append Header Rule"
+///       }]
+///     }
+///   }
+///   rules {
+///     name     = "overwriteorigin"
+///     priority = 2
+///     match_conditions {
+///       variable = "RequestMethod"
+///       operator = "Equal"
+///       values   = ["GET", "POST"]
+///     }
+///     action = {
+///       response_headers = [{
+///         "headerActionType" = "Overwrite"
+///         "headerName"       = "Access-Control-Allow-Origin"
+///         "value"            = "*"
+///         }, {
+///         "headerActionType" = "Overwrite"
+///         "headerName"       = "Access-Control-Allow-Credentials"
+///         "value"            = "true"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -465,6 +546,7 @@ import 'rules_engine_state.dart';
 /// import com.pulumi.azure.frontdoor.Frontdoor;
 /// import com.pulumi.azure.frontdoor.FrontdoorArgs;
 /// import com.pulumi.azure.frontdoor.inputs.FrontdoorBackendPoolArgs;
+/// import com.pulumi.azure.frontdoor.inputs.FrontdoorBackendPoolBackendArgs;
 /// import com.pulumi.azure.frontdoor.inputs.FrontdoorBackendPoolHealthProbeArgs;
 /// import com.pulumi.azure.frontdoor.inputs.FrontdoorBackendPoolLoadBalancingArgs;
 /// import com.pulumi.azure.frontdoor.inputs.FrontdoorFrontendEndpointArgs;
@@ -473,8 +555,10 @@ import 'rules_engine_state.dart';
 /// import com.pulumi.azure.frontdoor.RulesEngineArgs;
 /// import com.pulumi.azure.frontdoor.inputs.RulesEngineRuleArgs;
 /// import com.pulumi.azure.frontdoor.inputs.RulesEngineRuleActionArgs;
-/// import java.util.List;
+/// import com.pulumi.azure.frontdoor.inputs.RulesEngineRuleActionResponseHeaderArgs;
+/// import com.pulumi.azure.frontdoor.inputs.RulesEngineRuleMatchConditionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

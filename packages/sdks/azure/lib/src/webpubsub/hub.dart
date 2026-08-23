@@ -358,6 +358,69 @@ import 'hub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "terraform-webpubsub"
+///   location = "east us"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "tfex-uai"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_webpubsub_service" "example" {
+///   name                = "tfex-webpubsub"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard_S1"
+///   capacity            = 1
+/// }
+/// resource "azure_webpubsub_hub" "example" {
+///   depends_on    = [azure_webpubsub_service.example]
+///   name          = "tfex_wpsh"
+///   web_pubsub_id = azure_webpubsub_service.example.id
+///   event_handlers {
+///     url_template       = "https://test.com/api/{hub}/{event}"
+///     user_event_pattern = "*"
+///     system_events      = ["connect", "connected"]
+///   }
+///   event_handlers {
+///     url_template       = "https://test.com/api/{hub}/{event}"
+///     user_event_pattern = "event1, event2"
+///     system_events      = ["connected"]
+///     auth = {
+///       managed_identity_id = azure_authorization_userassignedidentity.example.id
+///     }
+///   }
+///   event_listeners {
+///     system_event_name_filters = ["connected"]
+///     user_event_name_filters   = ["event1", "event2"]
+///     eventhub_namespace_name   = test.name
+///     eventhub_name             = test1.name
+///   }
+///   event_listeners {
+///     system_event_name_filters = ["connected"]
+///     user_event_name_filters   = ["*"]
+///     eventhub_namespace_name   = test.name
+///     eventhub_name             = test1.name
+///   }
+///   event_listeners {
+///     system_event_name_filters = ["connected"]
+///     user_event_name_filters   = ["event1"]
+///     eventhub_namespace_name   = test.name
+///     eventhub_name             = test1.name
+///   }
+///   anonymous_connections_enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -376,8 +439,8 @@ import 'hub_state.dart';
 /// import com.pulumi.azure.webpubsub.inputs.HubEventHandlerAuthArgs;
 /// import com.pulumi.azure.webpubsub.inputs.HubEventListenerArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -542,11 +605,11 @@ class Hub extends pulumi.CustomResource {
   /// Is anonymous connections are allowed for this hub? Defaults to `false`.
   /// Possible values are `true`, `false`.
   late final pulumi.Output<bool?> anonymousConnectionsEnabled;
-  /// An `event_handler` block as defined below.
+  /// An `eventHandler` block as defined below.
   ///
-  /// &gt; **Note:** User can change the order of `event_handler` to change the priority accordingly.
+  /// &gt; **Note:** User can change the order of `eventHandler` to change the priority accordingly.
   late final pulumi.Output<List<Map<String, dynamic>>?> eventHandlers;
-  /// An `event_listener` block as defined below.
+  /// An `eventListener` block as defined below.
   ///
   /// &gt; **Note:** The managed identity of Web PubSub service must be enabled and the identity must have the "Azure Event Hubs Data sender" role to access the Event Hub.
   late final pulumi.Output<List<Map<String, dynamic>>?> eventListeners;

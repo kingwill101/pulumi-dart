@@ -106,6 +106,29 @@ import 'pipeline_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_pipeline" "example" {
+///   name            = "example"
+///   data_factory_id = azure_datafactory_factory.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +141,8 @@ import 'pipeline_state.dart';
 /// import com.pulumi.azure.datafactory.FactoryArgs;
 /// import com.pulumi.azure.datafactory.Pipeline;
 /// import com.pulumi.azure.datafactory.PipelineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -296,6 +319,24 @@ import 'pipeline_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_datafactory_pipeline" "test" {
+///   name            = "example"
+///   data_factory_id = testAzurermDataFactory.id
+///   variables = {
+///     "bob" = "item1"
+///   }
+///   activities_json = "[\n    {\n        \\\"name\\\": \\\"Append variable1\\\",\n        \\\"type\\\": \\\"AppendVariable\\\",\n        \\\"dependsOn\\\": [],\n        \\\"userProperties\\\": [],\n        \\\"typeProperties\\\": {\n          \\\"variableName\\\": \\\"bob\\\",\n          \\\"value\\\": \\\"something\\\"\n        }\n    }\n]\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -304,8 +345,8 @@ import 'pipeline_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.datafactory.Pipeline;
 /// import com.pulumi.azure.datafactory.PipelineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

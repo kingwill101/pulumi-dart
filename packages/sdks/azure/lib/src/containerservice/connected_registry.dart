@@ -215,6 +215,44 @@ import 'connected_registry_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_containerservice_registry" "example" {
+///   name                  = "exampleacr"
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   location              = azure_core_resourcegroup.example.location
+///   sku                   = "Premium"
+///   data_endpoint_enabled = true
+/// }
+/// resource "azure_containerservice_registryscopemap" "example" {
+///   name                    = "examplescopemap"
+///   container_registry_name = azure_containerservice_registry.example.name
+///   resource_group_name     = azure_containerservice_registry.example.resource_group_name
+///   actions                 = ["repositories/hello-world/content/delete", "repositories/hello-world/content/read", "repositories/hello-world/content/write", "repositories/hello-world/metadata/read", "repositories/hello-world/metadata/write", "gateway/examplecr/config/read", "gateway/examplecr/config/write", "gateway/examplecr/message/read", "gateway/examplecr/message/write"]
+/// }
+/// resource "azure_containerservice_registrytoken" "example" {
+///   name                    = "exampletoken"
+///   container_registry_name = azure_containerservice_registry.example.name
+///   resource_group_name     = azure_containerservice_registry.example.resource_group_name
+///   scope_map_id            = azure_containerservice_registryscopemap.example.id
+/// }
+/// resource "azure_containerservice_connectedregistry" "example" {
+///   name                  = "examplecr"
+///   container_registry_id = azure_containerservice_registry.example.id
+///   sync_token_id         = azure_containerservice_registrytoken.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -231,8 +269,8 @@ import 'connected_registry_state.dart';
 /// import com.pulumi.azure.containerservice.RegistryTokenArgs;
 /// import com.pulumi.azure.containerservice.ConnectedRegistry;
 /// import com.pulumi.azure.containerservice.ConnectedRegistryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -361,7 +399,7 @@ class ConnectedRegistry extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> clientTokenIds;
   /// The ID of the Container Registry that this Connected Registry will reside in. Changing this forces a new Container Connected Registry to be created.
   ///
-  /// &gt; **Note:** If `parent_registry_id` is not specified, the Connected Registry will be connected to the Container Registry identified by `container_registry_id`.
+  /// &gt; **Note:** If `parentRegistryId` is not specified, the Connected Registry will be connected to the Container Registry identified by `containerRegistryId`.
   late final pulumi.Output<String> containerRegistryId;
   /// The verbosity of the logs. Possible values are `None`, `Debug`, `Information`, `Warning` and `Error`. Defaults to `None`.
   late final pulumi.Output<String?> logLevel;

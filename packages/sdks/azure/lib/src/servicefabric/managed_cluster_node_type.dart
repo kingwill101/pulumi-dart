@@ -12,7 +12,7 @@ class ManagedClusterNodeType {
   final pulumi.Input<int> dataDiskSizeGb;
   /// The type of the disk to use for storing data. It can be one of `Premium_LRS`, `Standard_LRS`, or `StandardSSD_LRS`. Defaults to `Standard_LRS`.
   final pulumi.Input<String>? dataDiskType;
-  /// Sets the port range available for the OS. Format is `&lt;from_port&gt;-&lt;to_port&gt;`, for example `10000-20000`. There has to be at least 255 ports available and cannot overlap with `application_port_range`..
+  /// Sets the port range available for the OS. Format is `&lt;from_port&gt;-&lt;to_port&gt;`, for example `10000-20000`. There has to be at least 255 ports available and cannot overlap with `applicationPortRange`..
   final pulumi.Input<String> ephemeralPortRange;
   /// The ID of the Resource Group.
   final pulumi.Input<String>? id;
@@ -36,7 +36,7 @@ class ManagedClusterNodeType {
   final pulumi.Input<String> vmImageVersion;
   /// The number of instances this node type will launch.
   final pulumi.Input<int> vmInstanceCount;
-  /// One or more `vm_secrets` blocks as defined below.
+  /// One or more `vmSecrets` blocks as defined below.
   final pulumi.Input<List<ManagedClusterNodeTypeVmSecret>>? vmSecrets;
   /// The size of the instances in this node type.
   final pulumi.Input<String> vmSize;
@@ -46,7 +46,7 @@ class ManagedClusterNodeType {
   /// [capacities] Specifies a list of key/value pairs used to set capacity tags for this node type.
   /// [dataDiskSizeGb] The size of the data disk in gigabytes..
   /// [dataDiskType] The type of the disk to use for storing data. It can be one of `Premium_LRS`, `Standard_LRS`, or `StandardSSD_LRS`. Defaults to `Standard_LRS`.
-  /// [ephemeralPortRange] Sets the port range available for the OS. Format is `&lt;from_port&gt;-&lt;to_port&gt;`, for example `10000-20000`. There has to be at least 255 ports available and cannot overlap with `application_port_range`..
+  /// [ephemeralPortRange] Sets the port range available for the OS. Format is `&lt;from_port&gt;-&lt;to_port&gt;`, for example `10000-20000`. There has to be at least 255 ports available and cannot overlap with `applicationPortRange`..
   /// [id] The ID of the Resource Group.
   /// [multiplePlacementGroupsEnabled] If set the node type can be composed of multiple placement groups.
   /// [name] The name which should be used for this node type.
@@ -58,7 +58,7 @@ class ManagedClusterNodeType {
   /// [vmImageSku] The SKU of the marketplace image cluster VMs will use.
   /// [vmImageVersion] The version of the marketplace image cluster VMs will use.
   /// [vmInstanceCount] The number of instances this node type will launch.
-  /// [vmSecrets] One or more `vm_secrets` blocks as defined below.
+  /// [vmSecrets] One or more `vmSecrets` blocks as defined below.
   /// [vmSize] The size of the instances in this node type.
   const ManagedClusterNodeType({
     required this.applicationPortRange,
@@ -127,4 +127,3 @@ class ManagedClusterNodeType {
     );
   }
 }
-

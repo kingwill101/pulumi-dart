@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsFunctionAppSlotAuthSettingsGithub {
   /// The ID of the GitHub app used for login.
   final pulumi.Input<String> clientId;
-  /// The Client Secret of the GitHub app used for GitHub login. Cannot be specified with `client_secret_setting_name`.
+  /// The Client Secret of the GitHub app used for GitHub login. Cannot be specified with `clientSecretSettingName`.
   final pulumi.Input<String>? clientSecret;
-  /// The app setting name that contains the `client_secret` value used for GitHub login. Cannot be specified with `client_secret`.
+  /// The app setting name that contains the `clientSecret` value used for GitHub login. Cannot be specified with `clientSecret`.
   final pulumi.Input<String>? clientSecretSettingName;
-  /// an `oauth_scopes`.
+  /// an `oauthScopes`.
   final pulumi.Input<List<String>>? oauthScopes;
 
   /// Creates a new [WindowsFunctionAppSlotAuthSettingsGithub].
   /// [clientId] The ID of the GitHub app used for login.
-  /// [clientSecret] The Client Secret of the GitHub app used for GitHub login. Cannot be specified with `client_secret_setting_name`.
-  /// [clientSecretSettingName] The app setting name that contains the `client_secret` value used for GitHub login. Cannot be specified with `client_secret`.
-  /// [oauthScopes] an `oauth_scopes`.
+  /// [clientSecret] The Client Secret of the GitHub app used for GitHub login. Cannot be specified with `clientSecretSettingName`.
+  /// [clientSecretSettingName] The app setting name that contains the `clientSecret` value used for GitHub login. Cannot be specified with `clientSecret`.
+  /// [oauthScopes] an `oauthScopes`.
   const WindowsFunctionAppSlotAuthSettingsGithub({
     required this.clientId,
     this.clientSecret,
@@ -42,4 +42,3 @@ class WindowsFunctionAppSlotAuthSettingsGithub {
     );
   }
 }
-

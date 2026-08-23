@@ -145,6 +145,39 @@ import 'shared_image_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_compute_getimage" "existing" {
+///   name                = "search-api"
+///   resource_group_name = "packerimages"
+/// }
+/// data "azure_compute_getsharedimage" "existingGetSharedImage" {
+///   name                = "existing-image"
+///   gallery_name        = "existing_gallery"
+///   resource_group_name = "existing-resources"
+/// }
+///
+/// resource "azure_compute_sharedimageversion" "example" {
+///   name                = "0.0.1"
+///   gallery_name        = data.azure_compute_getsharedimage.existingGetSharedImage.gallery_name
+///   image_name          = data.azure_compute_getsharedimage.existingGetSharedImage.name
+///   resource_group_name = data.azure_compute_getsharedimage.existingGetSharedImage.resource_group_name
+///   location            = data.azure_compute_getsharedimage.existingGetSharedImage.location
+///   managed_image_id    = data.azure_compute_getimage.existing.id
+///   target_regions {
+///     name                   = data.azure_compute_getsharedimage.existingGetSharedImage.location
+///     regional_replica_count = 5
+///     storage_account_type   = "Standard_LRS"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -157,8 +190,8 @@ import 'shared_image_version_state.dart';
 /// import com.pulumi.azure.compute.SharedImageVersion;
 /// import com.pulumi.azure.compute.SharedImageVersionArgs;
 /// import com.pulumi.azure.compute.inputs.SharedImageVersionTargetRegionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -247,9 +280,9 @@ import 'shared_image_version_state.dart';
 class SharedImageVersion extends pulumi.CustomResource {
   /// URI of the Azure Storage Blob used to create the Image Version. Changing this forces a new resource to be created.
   ///
-  /// &gt; **NOTE:** You must specify exact one of `blob_uri`, `managed_image_id` and `os_disk_snapshot_id`.
+  /// &gt; **NOTE:** You must specify exact one of `blobUri`, `managedImageId` and `osDiskSnapshotId`.
   ///
-  /// &gt; **NOTE:** `blob_uri` and `storage_account_id` must be specified together
+  /// &gt; **NOTE:** `blobUri` and `storageAccountId` must be specified together
   late final pulumi.Output<String?> blobUri;
   /// Specifies whether this Shared Image Version can be deleted from the Azure Regions this is replicated to. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> deletionOfReplicatedLocationsEnabled;
@@ -267,13 +300,13 @@ class SharedImageVersion extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** The ID can be sourced from the `azure.compute.Image` data source or resource
   ///
-  /// &gt; **NOTE:** You must specify exact one of `blob_uri`, `managed_image_id` and `os_disk_snapshot_id`.
+  /// &gt; **NOTE:** You must specify exact one of `blobUri`, `managedImageId` and `osDiskSnapshotId`.
   late final pulumi.Output<String?> managedImageId;
   /// The version number for this Image Version, such as `1.0.0`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// The ID of the OS disk snapshot which should be used for this Shared Image Version. Changing this forces a new resource to be created.
   ///
-  /// &gt; **NOTE:** You must specify exact one of `blob_uri`, `managed_image_id` and `os_disk_snapshot_id`.
+  /// &gt; **NOTE:** You must specify exact one of `blobUri`, `managedImageId` and `osDiskSnapshotId`.
   late final pulumi.Output<String?> osDiskSnapshotId;
   /// Mode to be used for replication. Possible values are `Full` and `Shallow`. Defaults to `Full`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> replicationMode;
@@ -281,11 +314,11 @@ class SharedImageVersion extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// The ID of the Storage Account where the Blob exists. Changing this forces a new resource to be created.
   ///
-  /// &gt; **NOTE:** `blob_uri` and `storage_account_id` must be specified together
+  /// &gt; **NOTE:** `blobUri` and `storageAccountId` must be specified together
   late final pulumi.Output<String?> storageAccountId;
   /// A collection of tags which should be applied to this resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// One or more `target_region` blocks as documented below.
+  /// One or more `targetRegion` blocks as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> targetRegions;
 
   /// Creates a new [SharedImageVersion].

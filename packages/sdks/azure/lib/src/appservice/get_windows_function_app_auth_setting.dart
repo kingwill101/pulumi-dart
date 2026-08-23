@@ -9,13 +9,13 @@ import 'get_windows_function_app_auth_setting_microsoft.dart';
 import 'get_windows_function_app_auth_setting_twitter.dart';
 
 class GetWindowsFunctionAppAuthSetting {
-  /// A `active_directory` block as defined above.
+  /// A `activeDirectory` block as defined above.
   final pulumi.Input<List<GetWindowsFunctionAppAuthSettingActiveDirectory>> activeDirectories;
   /// A map of Login Parameters to send to the OpenID Connect authorization endpoint when a user logs in.
   final pulumi.Input<Map<String, String>> additionalLoginParameters;
   /// External URLs that can be redirected to as part of logging in or logging out of the app.
   final pulumi.Input<List<String>> allowedExternalRedirectUrls;
-  /// The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticated_action` is set to `RedirectToLoginPage`.
+  /// The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticatedAction` is set to `RedirectToLoginPage`.
   final pulumi.Input<String> defaultProvider;
   /// Is the Backup Job enabled?
   final pulumi.Input<bool> enabled;
@@ -41,10 +41,10 @@ class GetWindowsFunctionAppAuthSetting {
   final pulumi.Input<String> unauthenticatedClientAction;
 
   /// Creates a new [GetWindowsFunctionAppAuthSetting].
-  /// [activeDirectories] A `active_directory` block as defined above.
+  /// [activeDirectories] A `activeDirectory` block as defined above.
   /// [additionalLoginParameters] A map of Login Parameters to send to the OpenID Connect authorization endpoint when a user logs in.
   /// [allowedExternalRedirectUrls] External URLs that can be redirected to as part of logging in or logging out of the app.
-  /// [defaultProvider] The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticated_action` is set to `RedirectToLoginPage`.
+  /// [defaultProvider] The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticatedAction` is set to `RedirectToLoginPage`.
   /// [enabled] Is the Backup Job enabled?
   /// [facebooks] A `facebook` block as defined below.
   /// [githubs] A `github` block as defined below.
@@ -114,4 +114,3 @@ class GetWindowsFunctionAppAuthSetting {
     );
   }
 }
-

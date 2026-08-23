@@ -101,6 +101,32 @@ import 'insights_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tf-test"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "tf-test-appinsights"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// output "instrumentationKey" {
+///   value = azure_appinsights_insights.example.instrumentation_key
+/// }
+/// output "appId" {
+///   value = azure_appinsights_insights.example.app_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +137,8 @@ import 'insights_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.appinsights.Insights;
 /// import com.pulumi.azure.appinsights.InsightsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -296,6 +322,40 @@ import 'insights_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tf-test"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "workspace-test"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+///   retention_in_days   = 30
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "tf-test-appinsights"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   workspace_id        = azure_operationalinsights_analyticsworkspace.example.id
+///   application_type    = "web"
+/// }
+/// output "instrumentationKey" {
+///   value = azure_appinsights_insights.example.instrumentation_key
+/// }
+/// output "appId" {
+///   value = azure_appinsights_insights.example.app_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -308,8 +368,8 @@ import 'insights_state.dart';
 /// import com.pulumi.azure.operationalinsights.AnalyticsWorkspaceArgs;
 /// import com.pulumi.azure.appinsights.Insights;
 /// import com.pulumi.azure.appinsights.InsightsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -403,10 +463,10 @@ class Insights extends pulumi.CustomResource {
   late final pulumi.Output<String> connectionString;
   /// Specifies the Application Insights component daily data volume cap in GB. Defaults to `100`.
   late final pulumi.Output<double?> dailyDataCapInGb;
-  /// Specifies if a notification email will be sent when the daily data volume cap is met. Defaults to `false`.
-  late final pulumi.Output<bool?> dailyDataCapNotificationsDisabled;
-  /// By default the real client IP is masked as `0.0.0.0` in the logs. Use this argument to disable masking and log the real client IP. Defaults to `false`.
-  late final pulumi.Output<bool?> disableIpMasking;
+  late final pulumi.Output<bool> dailyDataCapNotificationsDisabled;
+  /// Whether a notification email will be sent when the daily data volume cap is met. Defaults to `true`.
+  late final pulumi.Output<bool> dailyDataCapNotificationsEnabled;
+  late final pulumi.Output<bool> disableIpMasking;
   /// Should the Application Insights component force users to create their own storage account for profiling? Defaults to `false`.
   late final pulumi.Output<bool?> forceCustomerStorageForProfiler;
   /// The Instrumentation Key for this Application Insights component. (Sensitive)
@@ -415,8 +475,11 @@ class Insights extends pulumi.CustomResource {
   late final pulumi.Output<bool?> internetIngestionEnabled;
   /// Should the Application Insights component support querying over the Public Internet? Defaults to `true`.
   late final pulumi.Output<bool?> internetQueryEnabled;
-  /// Disable Non-Azure AD based Auth. Defaults to `false`.
-  late final pulumi.Output<bool?> localAuthenticationDisabled;
+  /// By default the real client IP is masked as `0.0.0.0` in the logs. Set this argument to `false` to disable masking and log the real client IP. Defaults to `true`.
+  late final pulumi.Output<bool> ipMaskingEnabled;
+  late final pulumi.Output<bool> localAuthenticationDisabled;
+  /// Whether Non-Azure AD based Auth is enabled. Defaults to `true`.
+  late final pulumi.Output<bool> localAuthenticationEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// Specifies the name of the Application Insights component. Changing this forces a new resource to be created.
@@ -431,7 +494,7 @@ class Insights extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// Specifies the id of a log analytics workspace resource.
   ///
-  /// &gt; **Note:** `workspace_id` cannot be removed after set. More details can be found at [Migrate to workspace-based Application Insights resources](https://docs.microsoft.com/azure/azure-monitor/app/convert-classic-resource#migration-process). If `workspace_id` is not specified but you encounter a diff, this might indicate a Microsoft initiated automatic migration from classic resources to workspace-based resources. If this is the case, please update `workspace_id` in the config file to the new value.
+  /// &gt; **Note:** `workspaceId` cannot be removed after set. More details can be found at [Migrate to workspace-based Application Insights resources](https://docs.microsoft.com/azure/azure-monitor/app/convert-classic-resource#migration-process). If `workspaceId` is not specified but you encounter a diff, this might indicate a Microsoft initiated automatic migration from classic resources to workspace-based resources. If this is the case, please update `workspaceId` in the config file to the new value.
   late final pulumi.Output<String> workspaceId;
 
   /// Creates a new [Insights].
@@ -452,13 +515,16 @@ class Insights extends pulumi.CustomResource {
     applicationType = registerOutput<String>('applicationType');
     connectionString = registerOutput<String>('connectionString');
     dailyDataCapInGb = registerOutput<double?>('dailyDataCapInGb');
-    dailyDataCapNotificationsDisabled = registerOutput<bool?>('dailyDataCapNotificationsDisabled');
-    disableIpMasking = registerOutput<bool?>('disableIpMasking');
+    dailyDataCapNotificationsDisabled = registerOutput<bool>('dailyDataCapNotificationsDisabled');
+    dailyDataCapNotificationsEnabled = registerOutput<bool>('dailyDataCapNotificationsEnabled');
+    disableIpMasking = registerOutput<bool>('disableIpMasking');
     forceCustomerStorageForProfiler = registerOutput<bool?>('forceCustomerStorageForProfiler');
     instrumentationKey = registerOutput<String>('instrumentationKey');
     internetIngestionEnabled = registerOutput<bool?>('internetIngestionEnabled');
     internetQueryEnabled = registerOutput<bool?>('internetQueryEnabled');
-    localAuthenticationDisabled = registerOutput<bool?>('localAuthenticationDisabled');
+    ipMaskingEnabled = registerOutput<bool>('ipMaskingEnabled');
+    localAuthenticationDisabled = registerOutput<bool>('localAuthenticationDisabled');
+    localAuthenticationEnabled = registerOutput<bool>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -495,13 +561,16 @@ class Insights extends pulumi.CustomResource {
     applicationType = registerOutput<String>('applicationType');
     connectionString = registerOutput<String>('connectionString');
     dailyDataCapInGb = registerOutput<double?>('dailyDataCapInGb');
-    dailyDataCapNotificationsDisabled = registerOutput<bool?>('dailyDataCapNotificationsDisabled');
-    disableIpMasking = registerOutput<bool?>('disableIpMasking');
+    dailyDataCapNotificationsDisabled = registerOutput<bool>('dailyDataCapNotificationsDisabled');
+    dailyDataCapNotificationsEnabled = registerOutput<bool>('dailyDataCapNotificationsEnabled');
+    disableIpMasking = registerOutput<bool>('disableIpMasking');
     forceCustomerStorageForProfiler = registerOutput<bool?>('forceCustomerStorageForProfiler');
     instrumentationKey = registerOutput<String>('instrumentationKey');
     internetIngestionEnabled = registerOutput<bool?>('internetIngestionEnabled');
     internetQueryEnabled = registerOutput<bool?>('internetQueryEnabled');
-    localAuthenticationDisabled = registerOutput<bool?>('localAuthenticationDisabled');
+    ipMaskingEnabled = registerOutput<bool>('ipMaskingEnabled');
+    localAuthenticationDisabled = registerOutput<bool>('localAuthenticationDisabled');
+    localAuthenticationEnabled = registerOutput<bool>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

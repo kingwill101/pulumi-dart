@@ -182,6 +182,44 @@ import 'aad_diagnostic_setting_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "west europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageaccount"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_kind             = "StorageV2"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_monitoring_aaddiagnosticsetting" "example" {
+///   name               = "setting1"
+///   storage_account_id = azure_storage_account.example.id
+///   enabled_logs {
+///     category = "SignInLogs"
+///   }
+///   enabled_logs {
+///     category = "AuditLogs"
+///   }
+///   enabled_logs {
+///     category = "NonInteractiveUserSignInLogs"
+///   }
+///   enabled_logs {
+///     category = "ServicePrincipalSignInLogs"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +233,8 @@ import 'aad_diagnostic_setting_state.dart';
 /// import com.pulumi.azure.monitoring.AadDiagnosticSetting;
 /// import com.pulumi.azure.monitoring.AadDiagnosticSettingArgs;
 /// import com.pulumi.azure.monitoring.inputs.AadDiagnosticSettingEnabledLogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -289,7 +327,7 @@ import 'aad_diagnostic_setting_state.dart';
 /// $ pulumi import azure:monitoring/aadDiagnosticSetting:AadDiagnosticSetting example /providers/Microsoft.AADIAM/diagnosticSettings/setting1
 /// ```
 class AadDiagnosticSetting extends pulumi.CustomResource {
-  /// One or more `enabled_log` blocks as defined below.
+  /// One or more `enabledLog` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> enabledLogs;
   /// Specifies the ID of an Event Hub Namespace Authorization Rule used to send Diagnostics Data. Changing this forces a new resource to be created.
   ///
@@ -303,7 +341,7 @@ class AadDiagnosticSetting extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The ID of the Storage Account where logs should be sent. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** One of `eventhub_authorization_rule_id`, `log_analytics_workspace_id` and `storage_account_id` must be specified.
+  /// &gt; **Note:** One of `eventhubAuthorizationRuleId`, `logAnalyticsWorkspaceId` and `storageAccountId` must be specified.
   late final pulumi.Output<String?> storageAccountId;
 
   /// Creates a new [AadDiagnosticSetting].

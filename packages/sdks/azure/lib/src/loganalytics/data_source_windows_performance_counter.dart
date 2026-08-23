@@ -131,6 +131,35 @@ import 'data_source_windows_performance_counter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-law"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_loganalytics_datasourcewindowsperformancecounter" "example" {
+///   name                = "example-lad-wpc"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   workspace_name      = azure_operationalinsights_analyticsworkspace.example.name
+///   object_name         = "CPU"
+///   instance_name       = "*"
+///   counter_name        = "CPU"
+///   interval_seconds    = 10
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +172,8 @@ import 'data_source_windows_performance_counter_state.dart';
 /// import com.pulumi.azure.operationalinsights.AnalyticsWorkspaceArgs;
 /// import com.pulumi.azure.loganalytics.DataSourceWindowsPerformanceCounter;
 /// import com.pulumi.azure.loganalytics.DataSourceWindowsPerformanceCounterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -81,6 +81,24 @@ import 'get_variables_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_automation_getaccount" "example" {
+///   name                = "example-account"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "automationAccountId" {
+///   value = data.azure_automation_getaccount.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +107,8 @@ import 'get_variables_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.automation.AutomationFunctions;
 /// import com.pulumi.azure.automation.inputs.GetAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,6 +232,25 @@ Future<GetAccountResult> getAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_automation_getboolvariable" "example" {
+///   name                    = "tfex-example-var"
+///   resource_group_name     = "tfex-example-rg"
+///   automation_account_name = "tfex-example-account"
+/// }
+///
+/// output "variableId" {
+///   value = data.azure_automation_getboolvariable.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -222,8 +259,8 @@ Future<GetAccountResult> getAccount(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.automation.AutomationFunctions;
 /// import com.pulumi.azure.automation.inputs.GetBoolVariableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -341,6 +378,25 @@ Future<GetBoolVariableResult> getBoolVariable(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_automation_getdatetimevariable" "example" {
+///   name                    = "tfex-example-var"
+///   resource_group_name     = "tfex-example-rg"
+///   automation_account_name = "tfex-example-account"
+/// }
+///
+/// output "variableId" {
+///   value = data.azure_automation_getdatetimevariable.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -349,8 +405,8 @@ Future<GetBoolVariableResult> getBoolVariable(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.automation.AutomationFunctions;
 /// import com.pulumi.azure.automation.inputs.GetDateTimeVariableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -468,6 +524,25 @@ Future<GetDateTimeVariableResult> getDateTimeVariable(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_automation_getintvariable" "example" {
+///   name                    = "tfex-example-var"
+///   resource_group_name     = "tfex-example-rg"
+///   automation_account_name = "tfex-example-account"
+/// }
+///
+/// output "variableId" {
+///   value = data.azure_automation_getintvariable.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -476,8 +551,8 @@ Future<GetDateTimeVariableResult> getDateTimeVariable(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.automation.AutomationFunctions;
 /// import com.pulumi.azure.automation.inputs.GetIntVariableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -595,6 +670,25 @@ Future<GetIntVariableResult> getIntVariable(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_automation_getrunbook" "example" {
+///   name                    = "existing-runbook"
+///   resource_group_name     = "existing"
+///   automation_account_name = "existing-automation"
+/// }
+///
+/// output "id" {
+///   value = data.azure_automation_getrunbook.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -603,8 +697,8 @@ Future<GetIntVariableResult> getIntVariable(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.automation.AutomationFunctions;
 /// import com.pulumi.azure.automation.inputs.GetRunbookArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -730,6 +824,25 @@ Future<GetRunbookResult> getRunbook(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_automation_getstringvariable" "example" {
+///   name                    = "tfex-example-var"
+///   resource_group_name     = "tfex-example-rg"
+///   automation_account_name = "tfex-example-account"
+/// }
+///
+/// output "variableId" {
+///   value = data.azure_automation_getstringvariable.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -738,8 +851,8 @@ Future<GetRunbookResult> getRunbook(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.automation.AutomationFunctions;
 /// import com.pulumi.azure.automation.inputs.GetStringVariableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -868,6 +981,28 @@ Future<GetStringVariableResult> getStringVariable(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_automation_getvariableobject" "example" {
+///   name                    = "tfex-example-var"
+///   resource_group_name     = "tfex-example-rg"
+///   automation_account_name = "tfex-example-account"
+/// }
+///
+/// output "variable" {
+///   value = jsondecode(data.azure_automation_getvariableobject.example.value)
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -878,8 +1013,8 @@ Future<GetStringVariableResult> getStringVariable(
 /// import com.pulumi.azure.automation.inputs.GetVariableObjectArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JsondecodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1010,9 +1145,30 @@ Future<GetVariableObjectResult> getVariableObject(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("stringVars", exampleAzurermAutomationVariableString.String)
+/// 		ctx.Export("stringVars", pulumi.Any(exampleAzurermAutomationVariableString.String))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_automation_getaccount" "example" {
+///   name                = "example-account"
+///   resource_group_name = "example-resources"
+/// }
+/// data "azure_automation_getvariables" "exampleGetVariables" {
+///   automation_account_id = data.azure_automation_getaccount.example.id
+/// }
+///
+/// output "stringVars" {
+///   value = exampleAzurermAutomationVariableString.string
 /// }
 /// ```
 /// ```java
@@ -1024,8 +1180,8 @@ Future<GetVariableObjectResult> getVariableObject(
 /// import com.pulumi.azure.automation.AutomationFunctions;
 /// import com.pulumi.azure.automation.inputs.GetAccountArgs;
 /// import com.pulumi.azure.automation.inputs.GetVariablesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

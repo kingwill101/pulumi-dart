@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppIngressIpSecurityRestriction {
   /// The IP-filter action. `Allow` or `Deny`.
   ///
-  /// &gt; **Note:** The `action` types in an all `ip_security_restriction` blocks must be the same for the `ingress`, mixing `Allow` and `Deny` rules is not currently supported by the service.
+  /// &gt; **Note:** The `action` types in an all `ipSecurityRestriction` blocks must be the same for the `ingress`, mixing `Allow` and `Deny` rules is not currently supported by the service.
   final pulumi.Input<String> action;
   /// Describe the IP restriction rule that is being sent to the container-app.
   final pulumi.Input<String>? description;
@@ -44,4 +44,3 @@ class AppIngressIpSecurityRestriction {
     );
   }
 }
-

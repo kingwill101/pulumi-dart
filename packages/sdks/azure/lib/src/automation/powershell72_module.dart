@@ -124,6 +124,33 @@ import 'powershell72_module_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "account1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_automation_powershell72module" "example" {
+///   name                  = "xActiveDirectory"
+///   automation_account_id = azure_automation_account.example.id
+///   module_link = {
+///     uri = "https://devopsgallerystorage.blob.core.windows.net/packages/xactivedirectory.2.19.0.nupkg"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +164,8 @@ import 'powershell72_module_state.dart';
 /// import com.pulumi.azure.automation.Powershell72Module;
 /// import com.pulumi.azure.automation.Powershell72ModuleArgs;
 /// import com.pulumi.azure.automation.inputs.Powershell72ModuleModuleLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -216,7 +243,7 @@ import 'powershell72_module_state.dart';
 class Powershell72Module extends pulumi.CustomResource {
   /// The ID of Automation Account to manage this Watcher. Changing this forces a new Watcher to be created.
   late final pulumi.Output<String> automationAccountId;
-  /// A `module_link` block as defined below.
+  /// A `moduleLink` block as defined below.
   late final pulumi.Output<Powershell72ModuleModuleLink> moduleLink;
   /// Specifies the name of the Module. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;

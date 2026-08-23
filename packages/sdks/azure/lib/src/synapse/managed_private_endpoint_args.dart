@@ -7,6 +7,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_synapse_managed_private_endpoint_managed_private_endpoint_args_doc}
 class ManagedPrivateEndpointArgs {
+  /// A list of fully qualified domain names to assign to the Synapse Private Endpoint. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** `fullyQualifiedDomainNames` must be specified when the `targetResourceId` is a Private Link Service.
+  final pulumi.Input<List<String>>? fullyQualifiedDomainNames;
   /// Specifies the name which should be used for this Managed Private Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
   /// Specifies the sub resource name which the Synapse Private Endpoint is able to connect to. Changing this forces a new resource to be created.
@@ -21,11 +25,13 @@ class ManagedPrivateEndpointArgs {
   final pulumi.Input<String> targetResourceId;
 
   /// Creates a new [ManagedPrivateEndpointArgs].
+  /// [fullyQualifiedDomainNames] A list of fully qualified domain names to assign to the Synapse Private Endpoint. Changing this forces a new resource to be created.
   /// [name] Specifies the name which should be used for this Managed Private Endpoint. Changing this forces a new resource to be created.
   /// [subresourceName] Specifies the sub resource name which the Synapse Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   /// [synapseWorkspaceId] The ID of the Synapse Workspace on which to create the Managed Private Endpoint. Changing this forces a new resource to be created.
   /// [targetResourceId] The ID of the Private Link Enabled Remote Resource which this Synapse Private Endpoint should be connected to. Changing this forces a new resource to be created.
   const ManagedPrivateEndpointArgs({
+    this.fullyQualifiedDomainNames,
     this.name,
     required this.subresourceName,
     required this.synapseWorkspaceId,
@@ -34,6 +40,7 @@ class ManagedPrivateEndpointArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'fullyQualifiedDomainNames': ?fullyQualifiedDomainNames,
       'name': ?name,
       'subresourceName': subresourceName,
       'synapseWorkspaceId': synapseWorkspaceId,
@@ -43,6 +50,7 @@ class ManagedPrivateEndpointArgs {
 
   factory ManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointArgs(
+      fullyQualifiedDomainNames: (() { final guardedValue = map['fullyQualifiedDomainNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subresourceName: pulumi.Input.fromValue(map['subresourceName'] as String),
       synapseWorkspaceId: pulumi.Input.fromValue(map['synapseWorkspaceId'] as String),
@@ -50,4 +58,3 @@ class ManagedPrivateEndpointArgs {
     );
   }
 }
-

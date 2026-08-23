@@ -14,41 +14,41 @@ import 'alert_processing_rule_suppression_condition_target_resource_group.dart';
 import 'alert_processing_rule_suppression_condition_target_resource_type.dart';
 
 class AlertProcessingRuleSuppressionCondition {
-  /// A `alert_context` block as defined above.
+  /// A `alertContext` block as defined above.
   final pulumi.Input<AlertProcessingRuleSuppressionConditionAlertContext>? alertContext;
-  /// A `alert_rule_id` block as defined above.
+  /// A `alertRuleId` block as defined above.
   final pulumi.Input<AlertProcessingRuleSuppressionConditionAlertRuleId>? alertRuleId;
-  /// A `alert_rule_name` block as defined above.
+  /// A `alertRuleName` block as defined above.
   final pulumi.Input<AlertProcessingRuleSuppressionConditionAlertRuleName>? alertRuleName;
   /// A `description` block as defined below.
   final pulumi.Input<AlertProcessingRuleSuppressionConditionDescription>? description;
-  /// A `monitor_condition` block as defined below.
+  /// A `monitorCondition` block as defined below.
   final pulumi.Input<AlertProcessingRuleSuppressionConditionMonitorCondition>? monitorCondition;
-  /// A `monitor_service` block as defined below.
+  /// A `monitorService` block as defined below.
   final pulumi.Input<AlertProcessingRuleSuppressionConditionMonitorService>? monitorService;
   /// A `severity` block as defined below.
   final pulumi.Input<AlertProcessingRuleSuppressionConditionSeverity>? severity;
-  /// A `signal_type` block as defined below.
+  /// A `signalType` block as defined below.
   final pulumi.Input<AlertProcessingRuleSuppressionConditionSignalType>? signalType;
-  /// A `target_resource` block as defined below.
+  /// A `targetResource` block as defined below.
   final pulumi.Input<AlertProcessingRuleSuppressionConditionTargetResource>? targetResource;
-  /// A `target_resource_group` block as defined below.
+  /// A `targetResourceGroup` block as defined below.
   final pulumi.Input<AlertProcessingRuleSuppressionConditionTargetResourceGroup>? targetResourceGroup;
-  /// A `target_resource_type` block as defined below.
+  /// A `targetResourceType` block as defined below.
   final pulumi.Input<AlertProcessingRuleSuppressionConditionTargetResourceType>? targetResourceType;
 
   /// Creates a new [AlertProcessingRuleSuppressionCondition].
-  /// [alertContext] A `alert_context` block as defined above.
-  /// [alertRuleId] A `alert_rule_id` block as defined above.
-  /// [alertRuleName] A `alert_rule_name` block as defined above.
+  /// [alertContext] A `alertContext` block as defined above.
+  /// [alertRuleId] A `alertRuleId` block as defined above.
+  /// [alertRuleName] A `alertRuleName` block as defined above.
   /// [description] A `description` block as defined below.
-  /// [monitorCondition] A `monitor_condition` block as defined below.
-  /// [monitorService] A `monitor_service` block as defined below.
+  /// [monitorCondition] A `monitorCondition` block as defined below.
+  /// [monitorService] A `monitorService` block as defined below.
   /// [severity] A `severity` block as defined below.
-  /// [signalType] A `signal_type` block as defined below.
-  /// [targetResource] A `target_resource` block as defined below.
-  /// [targetResourceGroup] A `target_resource_group` block as defined below.
-  /// [targetResourceType] A `target_resource_type` block as defined below.
+  /// [signalType] A `signalType` block as defined below.
+  /// [targetResource] A `targetResource` block as defined below.
+  /// [targetResourceGroup] A `targetResourceGroup` block as defined below.
+  /// [targetResourceType] A `targetResourceType` block as defined below.
   const AlertProcessingRuleSuppressionCondition({
     this.alertContext,
     this.alertRuleId,
@@ -95,4 +95,3 @@ class AlertProcessingRuleSuppressionCondition {
     );
   }
 }
-

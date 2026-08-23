@@ -116,6 +116,31 @@ import 'table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "azuretest"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "azureteststorage1"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_table" "example" {
+///   name                 = "mysampletable"
+///   storage_account_name = azure_storage_account.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +153,8 @@ import 'table_state.dart';
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.storage.Table;
 /// import com.pulumi.azure.storage.TableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -201,8 +226,12 @@ class Table extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The Resource Manager ID of this Storage Table.
   late final pulumi.Output<String> resourceManagerId;
+  /// Specifies the ID of the storage account in which to create the storage table. Changing this forces a new resource to be created.
+  late final pulumi.Output<String?> storageAccountId;
   /// Specifies the storage account in which to create the storage table. Changing this forces a new resource to be created.
-  late final pulumi.Output<String> storageAccountName;
+  ///
+  /// &gt; **Note:** This property is deprecated in favour of `storageAccountId` and will be removed in version 5.0 of the AzureRM Provider.
+  late final pulumi.Output<String?> storageAccountName;
 
   /// Creates a new [Table].
   /// [name] The Pulumi resource name.
@@ -221,7 +250,8 @@ class Table extends pulumi.CustomResource {
     acls = registerOutput<List<Map<String, dynamic>>?>('acls');
     this.name = registerOutput<String>('name');
     resourceManagerId = registerOutput<String>('resourceManagerId');
-    storageAccountName = registerOutput<String>('storageAccountName');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    storageAccountName = registerOutput<String?>('storageAccountName');
   }
 
   /// Gets an existing [Table] resource's state with the given [name] and [id].
@@ -250,6 +280,7 @@ class Table extends pulumi.CustomResource {
     acls = registerOutput<List<Map<String, dynamic>>?>('acls');
     this.name = registerOutput<String>('name');
     resourceManagerId = registerOutput<String>('resourceManagerId');
-    storageAccountName = registerOutput<String>('storageAccountName');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    storageAccountName = registerOutput<String?>('storageAccountName');
   }
 }

@@ -161,6 +161,31 @@ import 'group_policy_set_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_management_group" "example" {
+///   display_name = "Example"
+/// }
+/// resource "azure_management_grouppolicysetdefinition" "example" {
+///   name                = "example"
+///   policy_type         = "Custom"
+///   display_name        = "Example"
+///   management_group_id = azure_management_group.example.id
+///   parameters          = "   {\n       \\\"allowedLocations\\\": {\n           \\\"type\\\": \\\"Array\\\",\n           \\\"metadata\\\": {\n               \\\"description\\\": \\\"The list of allowed locations for resources.\\\",\n               \\\"displayName\\\": \\\"Allowed locations\\\",\n               \\\"strongType\\\": \\\"location\\\"\n           }\n       }\n   }\n"
+///   policy_definition_references {
+///     version              = "1.0.*"
+///     policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988"
+///     parameter_values     = "   {\n     \\\"listOfAllowedLocations\\\": {\\\"value\\\": \\\"[parameters('allowedLocations')]\\\"}\n   }\n"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -172,8 +197,8 @@ import 'group_policy_set_definition_state.dart';
 /// import com.pulumi.azure.management.GroupPolicySetDefinition;
 /// import com.pulumi.azure.management.GroupPolicySetDefinitionArgs;
 /// import com.pulumi.azure.management.inputs.GroupPolicySetDefinitionPolicyDefinitionReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -282,9 +307,9 @@ class GroupPolicySetDefinition extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The parameters for the Policy Set Definition in JSON format. Reducing the number of parameters forces a new resource to be created.
   late final pulumi.Output<String?> parameters;
-  /// One or more `policy_definition_group` blocks as defined below.
+  /// One or more `policyDefinitionGroup` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> policyDefinitionGroups;
-  /// One or more `policy_definition_reference` blocks as defined below.
+  /// One or more `policyDefinitionReference` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> policyDefinitionReferences;
   /// The Policy Set Definition type. Possible values are `BuiltIn`, `Custom`, `NotSpecified`, and `Static`. Changing this forces a new Policy Set Definition to be created.
   late final pulumi.Output<String> policyType;

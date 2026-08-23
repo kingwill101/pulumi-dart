@@ -269,7 +269,7 @@ import 'managed_instance_active_directory_administrator_state.dart';
 /// 		_, err = azuread.NewDirectoryRoleMember(ctx, "example", &azuread.DirectoryRoleMemberArgs{
 /// 			RoleObjectId: reader.ObjectId,
 /// 			MemberObjectId: pulumi.String(exampleManagedInstance.Identity.ApplyT(func(identity mssql.ManagedInstanceIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -297,6 +297,72 @@ import 'managed_instance_active_directory_administrator_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_mssql_managedinstance" "example" {
+///   name                         = "managedsqlinstance"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   license_type                 = "BasePrice"
+///   sku_name                     = "GP_Gen5"
+///   storage_size_in_gb           = 32
+///   subnet_id                    = azure_network_subnet.example.id
+///   vcores                       = 4
+///   administrator_login          = "msadministrator"
+///   administrator_login_password = "thisIsDog11"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azuread_directoryrole" "reader" {
+///   display_name = "Directory Readers"
+/// }
+/// resource "azuread_directoryrolemember" "example" {
+///   role_object_id   = azuread_directoryrole.reader.object_id
+///   member_object_id = azure_mssql_managedinstance.example.identity.principal_id
+/// }
+/// resource "azuread_user" "admin" {
+///   user_principal_name = "ms.admin@example.com"
+///   display_name        = "Ms Admin"
+///   mail_nickname       = "ms.admin"
+///   password            = "SecretP@sswd99!"
+/// }
+/// resource "azure_mssql_managedinstanceactivedirectoryadministrator" "example" {
+///   managed_instance_id = azure_mssql_managedinstance.example.id
+///   login_username      = "msadmin"
+///   object_id           = azuread_user.admin.object_id
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -321,8 +387,8 @@ import 'managed_instance_active_directory_administrator_state.dart';
 /// import com.pulumi.azuread.UserArgs;
 /// import com.pulumi.azure.mssql.ManagedInstanceActiveDirectoryAdministrator;
 /// import com.pulumi.azure.mssql.ManagedInstanceActiveDirectoryAdministratorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

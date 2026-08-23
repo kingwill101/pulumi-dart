@@ -6,7 +6,7 @@ import 'get_standard_site_config_ip_restriction_headers.dart';
 class GetStandardSiteConfigIpRestriction {
   /// Does this restriction `Allow` or `Deny` access for this IP range.
   final pulumi.Input<String> action;
-  /// The `headers` block for this specific `ip_restriction` as defined below.
+  /// The `headers` block for this specific `ipRestriction` as defined below.
   final pulumi.Input<GetStandardSiteConfigIpRestrictionHeaders> headers;
   /// The IP Address used for this IP Restriction in CIDR notation.
   final pulumi.Input<String> ipAddress;
@@ -21,7 +21,7 @@ class GetStandardSiteConfigIpRestriction {
 
   /// Creates a new [GetStandardSiteConfigIpRestriction].
   /// [action] Does this restriction `Allow` or `Deny` access for this IP range.
-  /// [headers] The `headers` block for this specific `ip_restriction` as defined below.
+  /// [headers] The `headers` block for this specific `ipRestriction` as defined below.
   /// [ipAddress] The IP Address used for this IP Restriction in CIDR notation.
   /// [name] The name of the Logic App.
   /// [priority] The priority for this IP Restriction. Restrictions are enforced in priority order.
@@ -61,4 +61,3 @@ class GetStandardSiteConfigIpRestriction {
     );
   }
 }
-

@@ -11,7 +11,7 @@ class DataConnectorMicrosoftCloudAppSecurityArgs {
   final pulumi.Input<bool>? alertsEnabled;
   /// Should the Discovery Logs be enabled? Defaults to `true`.
   ///
-  /// &gt; **Note:** One of either `alerts_enabled` or `discovery_logs_enabled` has to be specified.
+  /// &gt; **Note:** One of either `alertsEnabled` or `discoveryLogsEnabled` has to be specified.
   final pulumi.Input<bool>? discoveryLogsEnabled;
   /// The ID of the Log Analytics Workspace that this Microsoft Cloud App Security Data Connector resides in. Changing this forces a new Microsoft Cloud App Security Data Connector to be created.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
@@ -56,4 +56,3 @@ class DataConnectorMicrosoftCloudAppSecurityArgs {
     );
   }
 }
-

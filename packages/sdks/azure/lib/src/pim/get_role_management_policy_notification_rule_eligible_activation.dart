@@ -6,17 +6,17 @@ import 'get_role_management_policy_notification_rule_eligible_activation_approve
 import 'get_role_management_policy_notification_rule_eligible_activation_assignee_notification.dart';
 
 class GetRoleManagementPolicyNotificationRuleEligibleActivation {
-  /// A `notification_settings` block as defined above.
+  /// A `notificationSettings` block as defined above.
   final pulumi.Input<List<GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification>> adminNotifications;
-  /// A `notification_settings` block as defined above.
+  /// A `notificationSettings` block as defined above.
   final pulumi.Input<List<GetRoleManagementPolicyNotificationRuleEligibleActivationApproverNotification>> approverNotifications;
-  /// A `notification_settings` block as defined above.
+  /// A `notificationSettings` block as defined above.
   final pulumi.Input<List<GetRoleManagementPolicyNotificationRuleEligibleActivationAssigneeNotification>> assigneeNotifications;
 
   /// Creates a new [GetRoleManagementPolicyNotificationRuleEligibleActivation].
-  /// [adminNotifications] A `notification_settings` block as defined above.
-  /// [approverNotifications] A `notification_settings` block as defined above.
-  /// [assigneeNotifications] A `notification_settings` block as defined above.
+  /// [adminNotifications] A `notificationSettings` block as defined above.
+  /// [approverNotifications] A `notificationSettings` block as defined above.
+  /// [assigneeNotifications] A `notificationSettings` block as defined above.
   const GetRoleManagementPolicyNotificationRuleEligibleActivation({
     required this.adminNotifications,
     required this.approverNotifications,
@@ -39,4 +39,3 @@ class GetRoleManagementPolicyNotificationRuleEligibleActivation {
     );
   }
 }
-

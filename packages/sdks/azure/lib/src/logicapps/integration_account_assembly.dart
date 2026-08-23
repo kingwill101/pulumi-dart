@@ -137,6 +137,36 @@ import 'integration_account_assembly_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_logicapps_integrationaccount" "example" {
+///   name                = "example-ia"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_logicapps_integrationaccountassembly" "example" {
+///   name                     = "example-assembly"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   integration_account_name = azure_logicapps_integrationaccount.example.name
+///   assembly_name            = "TestAssembly"
+///   content                  = filebase64("testdata/log4net.dll")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +181,8 @@ import 'integration_account_assembly_state.dart';
 /// import com.pulumi.azure.logicapps.IntegrationAccountAssemblyArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

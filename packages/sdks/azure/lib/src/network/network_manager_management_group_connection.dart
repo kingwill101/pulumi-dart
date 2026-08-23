@@ -237,6 +237,55 @@ import 'network_manager_management_group_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "alt" {
+///   subscription_id = "00000000-0000-0000-0000-000000000000"
+/// }
+/// data "azure_core_getsubscription" "current" {
+/// }
+/// data "azure_core_getclientconfig" "currentGetClientConfig" {
+/// }
+///
+/// resource "azure_management_group" "example" {
+/// }
+/// resource "azure_management_groupsubscriptionassociation" "example" {
+///   management_group_id = azure_management_group.example.id
+///   subscription_id     = data.azure_core_getsubscription.alt.id
+/// }
+/// resource "azure_authorization_assignment" "network_contributor" {
+///   scope                = azure_management_group.example.id
+///   role_definition_name = "Network Contributor"
+///   principal_id         = data.azure_core_getclientconfig.currentGetClientConfig.object_id
+/// }
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-networkmanager"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///   }
+///   scope_accesses = ["SecurityAdmin"]
+/// }
+/// resource "azure_network_networkmanagermanagementgroupconnection" "example" {
+///   depends_on          = [azure_authorization_assignment.network_contributor]
+///   name                = "example-nmmgc"
+///   management_group_id = azure_management_group.example.id
+///   network_manager_id  = azure_network_networkmanager.example.id
+///   description         = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -258,8 +307,8 @@ import 'network_manager_management_group_connection_state.dart';
 /// import com.pulumi.azure.network.NetworkManagerManagementGroupConnection;
 /// import com.pulumi.azure.network.NetworkManagerManagementGroupConnectionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

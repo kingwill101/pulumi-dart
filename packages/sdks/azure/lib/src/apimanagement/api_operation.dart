@@ -157,6 +157,41 @@ import 'api_operation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getapi" "example" {
+///   name                = "search-api"
+///   api_management_name = "search-api-management"
+///   resource_group_name = "search-service"
+///   revision            = "2"
+/// }
+///
+/// resource "azure_apimanagement_apioperation" "example" {
+///   operation_id        = "user-delete"
+///   api_name            = data.azure_apimanagement_getapi.example.name
+///   api_management_name = data.azure_apimanagement_getapi.example.api_management_name
+///   resource_group_name = data.azure_apimanagement_getapi.example.resource_group_name
+///   display_name        = "Delete User Operation"
+///   method              = "DELETE"
+///   url_template        = "/users/{id}/delete"
+///   description         = "This can only be done by the logged in user."
+///   template_parameters {
+///     name     = "id"
+///     type     = "number"
+///     required = true
+///   }
+///   responses {
+///     status_code = 200
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +204,8 @@ import 'api_operation_state.dart';
 /// import com.pulumi.azure.apimanagement.ApiOperationArgs;
 /// import com.pulumi.azure.apimanagement.inputs.ApiOperationTemplateParameterArgs;
 /// import com.pulumi.azure.apimanagement.inputs.ApiOperationResponseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -276,7 +311,7 @@ class ApiOperation extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// One or more `response` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> responses;
-  /// One or more `template_parameter` blocks as defined below. Required if `url_template` contains one or more parameters.
+  /// One or more `templateParameter` blocks as defined below. Required if `urlTemplate` contains one or more parameters.
   late final pulumi.Output<List<Map<String, dynamic>>?> templateParameters;
   /// The relative URL Template identifying the target resource for this operation, which may include parameters.
   late final pulumi.Output<String> urlTemplate;

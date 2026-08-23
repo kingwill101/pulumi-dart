@@ -111,6 +111,31 @@ import 'data_collection_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_monitoring_datacollectionendpoint" "example" {
+///   name                          = "example-mdce"
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   location                      = azure_core_resourcegroup.example.location
+///   kind                          = "Windows"
+///   public_network_access_enabled = true
+///   description                   = "monitor_data_collection_endpoint example"
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +146,8 @@ import 'data_collection_endpoint_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.monitoring.DataCollectionEndpoint;
 /// import com.pulumi.azure.monitoring.DataCollectionEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

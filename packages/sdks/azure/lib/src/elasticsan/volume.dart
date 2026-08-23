@@ -155,6 +155,41 @@ import 'volume_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_elasticsan_elasticsan" "example" {
+///   name                = "example-es"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   base_size_in_tib    = 1
+///   sku = {
+///     name = "Premium_LRS"
+///   }
+/// }
+/// resource "azure_elasticsan_volumegroup" "example" {
+///   name           = "example-esvg"
+///   elastic_san_id = azure_elasticsan_elasticsan.example.id
+/// }
+/// resource "azure_elasticsan_volume" "example" {
+///   name            = "example-esv"
+///   volume_group_id = azure_elasticsan_volumegroup.example.id
+///   size_in_gib     = 1
+/// }
+/// output "targetIqn" {
+///   value = azure_elasticsan_volume.example.target_iqn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -170,8 +205,8 @@ import 'volume_state.dart';
 /// import com.pulumi.azure.elasticsan.VolumeGroupArgs;
 /// import com.pulumi.azure.elasticsan.Volume;
 /// import com.pulumi.azure.elasticsan.VolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -477,6 +512,57 @@ import 'volume_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_elasticsan_elasticsan" "example" {
+///   name                = "example-es"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   base_size_in_tib    = 1
+///   sku = {
+///     name = "Premium_LRS"
+///   }
+/// }
+/// resource "azure_elasticsan_volumegroup" "example" {
+///   name           = "example-esvg"
+///   elastic_san_id = azure_elasticsan_elasticsan.example.id
+/// }
+/// resource "azure_compute_manageddisk" "example" {
+///   name                 = "example-disk"
+///   location             = azure_core_resourcegroup.example.location
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   create_option        = "Empty"
+///   storage_account_type = "Standard_LRS"
+///   disk_size_gb         = 2
+/// }
+/// resource "azure_compute_snapshot" "example" {
+///   name                = "example-ss"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   create_option       = "Copy"
+///   source_uri          = azure_compute_manageddisk.example.id
+/// }
+/// resource "azure_elasticsan_volume" "example2" {
+///   name            = "example-esv2"
+///   volume_group_id = azure_elasticsan_volumegroup.example.id
+///   size_in_gib     = 2
+///   create_source = {
+///     source_type = "DiskSnapshot"
+///     source_id   = azure_compute_snapshot.example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -497,8 +583,8 @@ import 'volume_state.dart';
 /// import com.pulumi.azure.elasticsan.Volume;
 /// import com.pulumi.azure.elasticsan.VolumeArgs;
 /// import com.pulumi.azure.elasticsan.inputs.VolumeCreateSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -629,13 +715,13 @@ import 'volume_state.dart';
 /// $ pulumi import azure:elasticsan/volume:Volume example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ElasticSan/elasticSans/esan1/volumeGroups/vg1/volumes/vol1
 /// ```
 class Volume extends pulumi.CustomResource {
-  /// A `create_source` block as defined below. Changing this forces a new resource to be created.
+  /// A `createSource` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<VolumeCreateSource?> createSource;
   /// Specifies the name of this Elastic SAN Volume. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// Specifies the size of the Elastic SAN Volume in GiB. The size should be within the remaining capacity of the parent Elastic SAN. Possible values are between `1` and `65536` (16 TiB).
   ///
-  /// &gt; **Note:** The size can only be increased. If `create_source` is specified, then the size must be equal to or greater than the source's size.
+  /// &gt; **Note:** The size can only be increased. If `createSource` is specified, then the size must be equal to or greater than the source's size.
   late final pulumi.Output<int> sizeInGib;
   /// The iSCSI Target IQN of the Elastic SAN Volume.
   late final pulumi.Output<String> targetIqn;

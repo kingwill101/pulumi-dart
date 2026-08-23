@@ -120,7 +120,7 @@ import 'linked_service_azure_table_storage_state.dart';
 /// 			Name:          pulumi.String("example"),
 /// 			DataFactoryId: exampleFactory.ID(),
 /// 			ConnectionString: pulumi.String(example.ApplyT(func(example storage.GetAccountResult) (*string, error) {
-/// 				return &example.PrimaryConnectionString, nil
+/// 				return example.PrimaryConnectionString, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -128,6 +128,35 @@ import 'linked_service_azure_table_storage_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getaccount" "example" {
+///   name                = "storageaccountname"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedserviceazuretablestorage" "example" {
+///   name              = "example"
+///   data_factory_id   = azure_datafactory_factory.example.id
+///   connection_string = data.azure_storage_getaccount.example.primary_connection_string
 /// }
 /// ```
 /// ```java
@@ -144,8 +173,8 @@ import 'linked_service_azure_table_storage_state.dart';
 /// import com.pulumi.azure.datafactory.FactoryArgs;
 /// import com.pulumi.azure.datafactory.LinkedServiceAzureTableStorage;
 /// import com.pulumi.azure.datafactory.LinkedServiceAzureTableStorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

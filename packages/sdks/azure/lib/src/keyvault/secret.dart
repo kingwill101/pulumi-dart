@@ -198,6 +198,42 @@ import 'secret_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                       = "examplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
+///   soft_delete_retention_days = 7
+///   access_policies {
+///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     key_permissions    = ["Create", "Get"]
+///     secret_permissions = ["Set", "Get", "Delete", "Purge", "Recover"]
+///   }
+/// }
+/// resource "azure_keyvault_secret" "example" {
+///   name         = "secret-sauce"
+///   value        = "szechuan"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -212,8 +248,8 @@ import 'secret_state.dart';
 /// import com.pulumi.azure.keyvault.inputs.KeyVaultAccessPolicyArgs;
 /// import com.pulumi.azure.keyvault.Secret;
 /// import com.pulumi.azure.keyvault.SecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,11 +372,11 @@ class Secret extends pulumi.CustomResource {
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Specifies the value of the Key Vault Secret. Changing this will create a new version of the Key Vault Secret.
   ///
-  /// &gt; **Note:** One of `value` or `value_wo` must be specified.
+  /// &gt; **Note:** One of `value` or `valueWo` must be specified.
   late final pulumi.Output<String?> valueWo;
-  /// An integer value used to trigger an update for `value_wo`. This property should be incremented when updating `value_wo`.
+  /// An integer value used to trigger an update for `valueWo`. This property should be incremented when updating `valueWo`.
   ///
-  /// &gt; **Note:** Key Vault strips newlines. To preserve newlines in multi-line secrets try replacing them with `\n` or by base 64 encoding them with `replace(file("my_secret_file"), "/\n/", "\n")` or `base64encode(file("my_secret_file"))`, respectively.
+  /// &gt; **Note:** Key Vault strips newlines. To preserve newlines in multi-line secrets try replacing them with `\n` or by base 64 encoding them with `replace(file("mySecretFile"), "/\n/", "\n")` or `base64encode(file("mySecretFile"))`, respectively.
   late final pulumi.Output<int?> valueWoVersion;
   /// The current version of the Key Vault Secret.
   late final pulumi.Output<String> version;

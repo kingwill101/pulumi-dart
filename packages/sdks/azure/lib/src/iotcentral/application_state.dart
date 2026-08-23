@@ -5,9 +5,9 @@ import 'application_identity.dart';
 
 /// Input properties used for looking up and filtering Application resources.
 class ApplicationState {
-  /// A `display_name` name. Custom display name for the IoT Central application. Default is resource name.
+  /// A `displayName` name. Custom display name for the IoT Central application. Default is resource name.
   ///
-  /// &gt; **Note:** Due to a bug in the provider, the default value of `display_name` of a newly created IoT Central App will be the Resource Group Name, it will be fixed and use resource name in 4.0. For an existing IoT Central App, this could be fixed by specifying the `display_name` explicitly.
+  /// &gt; **Note:** Due to a bug in the provider, the default value of `displayName` of a newly created IoT Central App will be the Resource Group Name, it will be fixed and use resource name in 4.0. For an existing IoT Central App, this could be fixed by specifying the `displayName` explicitly.
   final pulumi.Input<String>? displayName;
   /// An `identity` block as defined below.
   final pulumi.Input<ApplicationIdentity>? identity;
@@ -21,7 +21,7 @@ class ApplicationState {
   final pulumi.Input<String>? resourceGroupName;
   /// A `sku` name. Possible values is `ST0`, `ST1`, `ST2`, Default value is `ST1`
   final pulumi.Input<String>? sku;
-  /// A `sub_domain` name. Subdomain for the IoT Central URL. Each application must have a unique subdomain.
+  /// A `subDomain` name. Subdomain for the IoT Central URL. Each application must have a unique subdomain.
   final pulumi.Input<String>? subDomain;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
@@ -29,14 +29,14 @@ class ApplicationState {
   final pulumi.Input<String>? template;
 
   /// Creates a new [ApplicationState].
-  /// [displayName] A `display_name` name. Custom display name for the IoT Central application. Default is resource name.
+  /// [displayName] A `displayName` name. Custom display name for the IoT Central application. Default is resource name.
   /// [identity] An `identity` block as defined below.
   /// [location] Specifies the supported Azure location where the resource has to be create. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the IotHub resource. Changing this forces a new resource to be created.
   /// [publicNetworkAccessEnabled] Whether public network access is allowed for the IoT Central Application. Defaults to `true`.
   /// [resourceGroupName] The name of the resource group under which the IotHub resource has to be created. Changing this forces a new resource to be created.
   /// [sku] A `sku` name. Possible values is `ST0`, `ST1`, `ST2`, Default value is `ST1`
-  /// [subDomain] A `sub_domain` name. Subdomain for the IoT Central URL. Each application must have a unique subdomain.
+  /// [subDomain] A `subDomain` name. Subdomain for the IoT Central URL. Each application must have a unique subdomain.
   /// [tags] A mapping of tags to assign to the resource.
   /// [template] A `template` name. IoT Central application template name. Defaults to `iotc-pnp-preview@1.0.0`. Changing this forces a new resource to be created.
   const ApplicationState({
@@ -82,4 +82,3 @@ class ApplicationState {
     );
   }
 }
-

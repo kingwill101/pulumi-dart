@@ -9,7 +9,7 @@ class AppTemplateInitContainerEnv {
   final pulumi.Input<String>? secretName;
   /// The value for this environment variable.
   ///
-  /// &gt; **Note:** This value is ignored if `secret_name` is used
+  /// &gt; **Note:** This value is ignored if `secretName` is used
   final pulumi.Input<String>? value;
 
   /// Creates a new [AppTemplateInitContainerEnv].
@@ -38,4 +38,3 @@ class AppTemplateInitContainerEnv {
     );
   }
 }
-

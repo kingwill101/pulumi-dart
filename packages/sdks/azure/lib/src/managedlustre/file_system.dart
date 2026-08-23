@@ -196,6 +196,45 @@ import 'file_system_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-vnet"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "example-subnet"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_managedlustre_filesystem" "example" {
+///   name                   = "example-amlfs"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resourcegroup.example.location
+///   sku_name               = "AMLFS-Durable-Premium-250"
+///   subnet_id              = azure_network_subnet.example.id
+///   storage_capacity_in_tb = 8
+///   zones                  = ["2"]
+///   maintenance_window = {
+///     day_of_week     = "Friday"
+///     time_of_day_utc = "22:00"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -211,8 +250,8 @@ import 'file_system_state.dart';
 /// import com.pulumi.azure.managedlustre.FileSystem;
 /// import com.pulumi.azure.managedlustre.FileSystemArgs;
 /// import com.pulumi.azure.managedlustre.inputs.FileSystemMaintenanceWindowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -318,17 +357,17 @@ import 'file_system_state.dart';
 /// $ pulumi import azure:managedlustre/fileSystem:FileSystem example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1/providers/Microsoft.StorageCache/amlFilesystems/amlFilesystem1
 /// ```
 class FileSystem extends pulumi.CustomResource {
-  /// An `encryption_key` block as defined below.
+  /// An `encryptionKey` block as defined below.
   ///
-  /// &gt; **Note:** Removing `encryption_key` forces a new resource to be created.
+  /// &gt; **Note:** Removing `encryptionKey` forces a new resource to be created.
   late final pulumi.Output<FileSystemEncryptionKey?> encryptionKey;
-  /// A `hsm_setting` block as defined below. Changing this forces a new resource to be created.
+  /// A `hsmSetting` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<FileSystemHsmSetting?> hsmSetting;
   /// An `identity` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<FileSystemIdentity?> identity;
   /// The Azure Region where the Azure Managed Lustre File System should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// A `maintenance_window` block as defined below.
+  /// A `maintenanceWindow` block as defined below.
   late final pulumi.Output<FileSystemMaintenanceWindow> maintenanceWindow;
   /// IP Address of Managed Lustre File System Services.
   late final pulumi.Output<String> mgsAddress;
@@ -336,11 +375,11 @@ class FileSystem extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The name of the Resource Group where the Azure Managed Lustre File System should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `root_squash` block as defined below.
+  /// A `rootSquash` block as defined below.
   late final pulumi.Output<FileSystemRootSquash?> rootSquash;
   /// The SKU name for the Azure Managed Lustre File System. Possible values are `AMLFS-Durable-Premium-40`, `AMLFS-Durable-Premium-125`, `AMLFS-Durable-Premium-250` and `AMLFS-Durable-Premium-500`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> skuName;
-  /// The size of the Azure Managed Lustre File System in TiB. The valid values for this field are dependant on which `sku_name` has been defined in the configuration file. For more information on the valid values for this field please see the [product documentation](https://learn.microsoft.com/azure/azure-managed-lustre/create-file-system-resource-manager#file-system-type-and-size-options). Changing this forces a new resource to be created.
+  /// The size of the Azure Managed Lustre File System in TiB. The valid values for this field are dependant on which `skuName` has been defined in the configuration file. For more information on the valid values for this field please see the [product documentation](https://learn.microsoft.com/azure/azure-managed-lustre/create-file-system-resource-manager#file-system-type-and-size-options). Changing this forces a new resource to be created.
   late final pulumi.Output<int> storageCapacityInTb;
   /// The resource ID of the Subnet that is used for managing the Azure Managed Lustre file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the Virtual Network's address space. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subnetId;

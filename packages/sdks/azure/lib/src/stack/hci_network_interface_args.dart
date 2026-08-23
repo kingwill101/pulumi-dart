@@ -12,13 +12,13 @@ class HciNetworkInterfaceArgs {
   final pulumi.Input<String> customLocationId;
   /// A list of IPv4 addresses of DNS servers available to VMs deployed in the Network Interface. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>>? dnsServers;
-  /// An `ip_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// An `ipConfiguration` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<HciNetworkInterfaceIpConfiguration> ipConfiguration;
   /// The Azure Region where the Azure Stack HCI Network Interface should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
   /// The MAC address of the Network Interface. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** If `mac_address` is not specified, it will be assigned by the server. If you experience a diff you may need to add this to `ignore_changes`.
+  /// &gt; **Note:** If `macAddress` is not specified, it will be assigned by the server. If you experience a diff you may need to add this to `ignoreChanges`.
   final pulumi.Input<String>? macAddress;
   /// The name which should be used for this Azure Stack HCI Network Interface. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -30,7 +30,7 @@ class HciNetworkInterfaceArgs {
   /// Creates a new [HciNetworkInterfaceArgs].
   /// [customLocationId] The ID of the Custom Location where the Azure Stack HCI Network Interface should exist. Changing this forces a new resource to be created.
   /// [dnsServers] A list of IPv4 addresses of DNS servers available to VMs deployed in the Network Interface. Changing this forces a new resource to be created.
-  /// [ipConfiguration] An `ip_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// [ipConfiguration] An `ipConfiguration` block as defined below. Changing this forces a new resource to be created.
   /// [location] The Azure Region where the Azure Stack HCI Network Interface should exist. Changing this forces a new resource to be created.
   /// [macAddress] The MAC address of the Network Interface. Changing this forces a new resource to be created.
   /// [name] The name which should be used for this Azure Stack HCI Network Interface. Changing this forces a new resource to be created.
@@ -73,4 +73,3 @@ class HciNetworkInterfaceArgs {
     );
   }
 }
-

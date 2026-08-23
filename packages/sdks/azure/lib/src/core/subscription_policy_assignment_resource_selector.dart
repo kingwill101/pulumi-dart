@@ -6,12 +6,12 @@ import 'subscription_policy_assignment_resource_selector_selector.dart';
 class SubscriptionPolicyAssignmentResourceSelector {
   /// Specifies a name for the resource selector.
   final pulumi.Input<String>? name;
-  /// One or more `resource_selector` block as defined below.
+  /// One or more `resourceSelector` block as defined below.
   final pulumi.Input<List<SubscriptionPolicyAssignmentResourceSelectorSelector>> selectors;
 
   /// Creates a new [SubscriptionPolicyAssignmentResourceSelector].
   /// [name] Specifies a name for the resource selector.
-  /// [selectors] One or more `resource_selector` block as defined below.
+  /// [selectors] One or more `resourceSelector` block as defined below.
   const SubscriptionPolicyAssignmentResourceSelector({
     this.name,
     required this.selectors,
@@ -31,4 +31,3 @@ class SubscriptionPolicyAssignmentResourceSelector {
     );
   }
 }
-

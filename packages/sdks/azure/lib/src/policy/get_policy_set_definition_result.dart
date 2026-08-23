@@ -19,9 +19,9 @@ class GetPolicySetDefinitionResult {
   final String name;
   /// The mapping of the parameter values for the referenced policy rule. The keys are the parameter names.
   final String parameters;
-  /// One or more `policy_definition_group` blocks as defined below.
+  /// One or more `policyDefinitionGroup` blocks as defined below.
   final List<GetPolicySetDefinitionPolicyDefinitionGroup> policyDefinitionGroups;
-  /// One or more `policy_definition_reference` blocks as defined below.
+  /// One or more `policyDefinitionReference` blocks as defined below.
   final List<GetPolicySetDefinitionPolicyDefinitionReference> policyDefinitionReferences;
   /// The policy definitions contained within the policy set definition.
   final String policyDefinitions;
@@ -36,8 +36,8 @@ class GetPolicySetDefinitionResult {
   /// [metadata] Any Metadata defined in the Policy Set Definition.
   /// [name] The name of this policy definition group.
   /// [parameters] The mapping of the parameter values for the referenced policy rule. The keys are the parameter names.
-  /// [policyDefinitionGroups] One or more `policy_definition_group` blocks as defined below.
-  /// [policyDefinitionReferences] One or more `policy_definition_reference` blocks as defined below.
+  /// [policyDefinitionGroups] One or more `policyDefinitionGroup` blocks as defined below.
+  /// [policyDefinitionReferences] One or more `policyDefinitionReference` blocks as defined below.
   /// [policyDefinitions] The policy definitions contained within the policy set definition.
   /// [policyType] The Type of the Policy Set Definition.
   const GetPolicySetDefinitionResult({
@@ -86,4 +86,3 @@ class GetPolicySetDefinitionResult {
     );
   }
 }
-

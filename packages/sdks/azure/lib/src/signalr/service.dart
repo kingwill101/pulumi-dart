@@ -198,6 +198,42 @@ import 'service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "my-signalr"
+///   location = "West US"
+/// }
+/// resource "azure_signalr_service" "example" {
+///   name                = "tfex-signalr"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Free_F1"
+///     capacity = 1
+///   }
+///   cors {
+///     allowed_origins = ["http://www.example.com"]
+///   }
+///   public_network_access_enabled = false
+///   connectivity_logs_enabled     = true
+///   messaging_logs_enabled        = true
+///   service_mode                  = "Default"
+///   upstream_endpoints {
+///     category_patterns = ["connections", "messages"]
+///     event_patterns    = ["*"]
+///     hub_patterns      = ["hub1"]
+///     url_template      = "http://foo.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -211,8 +247,8 @@ import 'service_state.dart';
 /// import com.pulumi.azure.signalr.inputs.ServiceSkuArgs;
 /// import com.pulumi.azure.signalr.inputs.ServiceCorArgs;
 /// import com.pulumi.azure.signalr.inputs.ServiceUpstreamEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -322,7 +358,7 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<ServiceIdentity?> identity;
   /// The publicly accessible IP of the SignalR service.
   late final pulumi.Output<String> ipAddress;
-  /// A `live_trace` block as defined below.
+  /// A `liveTrace` block as defined below.
   late final pulumi.Output<ServiceLiveTrace?> liveTrace;
   late final pulumi.Output<bool?> liveTraceEnabled;
   /// Whether to enable local auth? Defaults to `true`.
@@ -339,7 +375,7 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> primaryConnectionString;
   /// Whether to enable public network access? Defaults to `true`.
   ///
-  /// &gt; **Note:** `public_network_access_enabled` cannot be set to `false` in `Free` sku tier.
+  /// &gt; **Note:** `publicNetworkAccessEnabled` cannot be set to `false` in `Free` sku tier.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
   /// The publicly accessible port of the SignalR service which is designed for browser/client use.
   late final pulumi.Output<int> publicPort;
@@ -361,9 +397,9 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// Whether to request client certificate during TLS handshake? Defaults to `false`.
   ///
-  /// &gt; **Note:** `tls_client_cert_enabled` cannot be set to `true` in `Free` sku tier.
+  /// &gt; **Note:** `tlsClientCertEnabled` cannot be set to `true` in `Free` sku tier.
   late final pulumi.Output<bool?> tlsClientCertEnabled;
-  /// An `upstream_endpoint` block as documented below. Using this block requires the SignalR service to be Serverless. When creating multiple blocks they will be processed in the order they are defined in.
+  /// An `upstreamEndpoint` block as documented below. Using this block requires the SignalR service to be Serverless. When creating multiple blocks they will be processed in the order they are defined in.
   late final pulumi.Output<List<Map<String, dynamic>>?> upstreamEndpoints;
 
   /// Creates a new [Service].

@@ -147,6 +147,37 @@ import 'cluster_upgrade_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_servicefabric_cluster" "example" {
+///   name                 = "example-servicefabric"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resourcegroup.example.location
+///   reliability_level    = "Bronze"
+///   upgrade_mode         = "Manual"
+///   cluster_code_version = "7.1.456.959"
+///   vm_image             = "Windows"
+///   management_endpoint  = "https://example:80"
+///   node_types {
+///     name                 = "first"
+///     instance_count       = 3
+///     is_primary           = true
+///     client_endpoint_port = 2020
+///     http_endpoint_port   = 80
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -158,8 +189,8 @@ import 'cluster_upgrade_policy.dart';
 /// import com.pulumi.azure.servicefabric.Cluster;
 /// import com.pulumi.azure.servicefabric.ClusterArgs;
 /// import com.pulumi.azure.servicefabric.inputs.ClusterNodeTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -242,25 +273,25 @@ import 'cluster_upgrade_policy.dart';
 class Cluster extends pulumi.CustomResource {
   /// A List of one or more features which should be enabled, such as `DnsService`.
   late final pulumi.Output<List<String>?> addOnFeatures;
-  /// An `azure_active_directory` block as defined below.
+  /// An `azureActiveDirectory` block as defined below.
   late final pulumi.Output<ClusterAzureActiveDirectory?> azureActiveDirectory;
-  /// A `certificate` block as defined below. Conflicts with `certificate_common_names`.
+  /// A `certificate` block as defined below. Conflicts with `certificateCommonNames`.
   late final pulumi.Output<ClusterCertificate?> certificate;
-  /// A `certificate_common_names` block as defined below. Conflicts with `certificate`.
+  /// A `certificateCommonNames` block as defined below. Conflicts with `certificate`.
   late final pulumi.Output<ClusterCertificateCommonNames?> certificateCommonNames;
-  /// A `client_certificate_common_name` block as defined below.
+  /// A `clientCertificateCommonName` block as defined below.
   ///
   /// &gt; **Note:** If Client Certificates are enabled then at a Certificate must be configured on the cluster.
   late final pulumi.Output<List<Map<String, dynamic>>?> clientCertificateCommonNames;
-  /// One or more `client_certificate_thumbprint` blocks as defined below.
+  /// One or more `clientCertificateThumbprint` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> clientCertificateThumbprints;
   /// Required if Upgrade Mode set to `Manual`, Specifies the Version of the Cluster Code of the cluster.
   late final pulumi.Output<String> clusterCodeVersion;
   /// The Cluster Endpoint for this Service Fabric Cluster.
   late final pulumi.Output<String> clusterEndpoint;
-  /// A `diagnostics_config` block as defined below.
+  /// A `diagnosticsConfig` block as defined below.
   late final pulumi.Output<ClusterDiagnosticsConfig?> diagnosticsConfig;
-  /// One or more `fabric_settings` blocks as defined below.
+  /// One or more `fabricSettings` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> fabricSettings;
   /// Specifies the Azure Region where the Service Fabric Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
@@ -268,7 +299,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> managementEndpoint;
   /// The name of the Service Fabric Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// One or more `node_type` blocks as defined below.
+  /// One or more `nodeType` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> nodeTypes;
   /// Specifies the Reliability Level of the Cluster. Possible values include `None`, `Bronze`, `Silver`, `Gold` and `Platinum`.
   ///
@@ -276,9 +307,9 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> reliabilityLevel;
   /// The name of the Resource Group in which the Service Fabric Cluster exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `reverse_proxy_certificate` block as defined below. Conflicts with `reverse_proxy_certificate_common_names`.
+  /// A `reverseProxyCertificate` block as defined below. Conflicts with `reverseProxyCertificateCommonNames`.
   late final pulumi.Output<ClusterReverseProxyCertificate?> reverseProxyCertificate;
-  /// A `reverse_proxy_certificate_common_names` block as defined below. Conflicts with `reverse_proxy_certificate`.
+  /// A `reverseProxyCertificateCommonNames` block as defined below. Conflicts with `reverseProxyCertificate`.
   late final pulumi.Output<ClusterReverseProxyCertificateCommonNames?> reverseProxyCertificateCommonNames;
   /// Specifies the logical grouping of VMs in upgrade domains. Possible values are `Hierarchical` or `Parallel`.
   late final pulumi.Output<String?> serviceFabricZonalUpgradeMode;
@@ -286,7 +317,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// Specifies the Upgrade Mode of the cluster. Possible values are `Automatic` or `Manual`.
   late final pulumi.Output<String> upgradeMode;
-  /// A `upgrade_policy` block as defined below.
+  /// A `upgradePolicy` block as defined below.
   late final pulumi.Output<ClusterUpgradePolicy?> upgradePolicy;
   /// Specifies the Image expected for the Service Fabric Cluster, such as `Windows`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> vmImage;

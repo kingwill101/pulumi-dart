@@ -15,19 +15,19 @@ import 'windows_function_app_storage_account.dart';
 class WindowsFunctionAppState {
   /// A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
   ///
-  /// &gt; **Note:** For runtime related settings, please use `node_version` in `site_config` to set the node version and use `functions_extension_version` to set the function runtime version, terraform will assign the values to the key `WEBSITE_NODE_DEFAULT_VERSION` and `FUNCTIONS_EXTENSION_VERSION` in app setting.
+  /// &gt; **Note:** For runtime related settings, please use `nodeVersion` in `siteConfig` to set the node version and use `functionsExtensionVersion` to set the function runtime version, terraform will assign the values to the key `WEBSITE_NODE_DEFAULT_VERSION` and `FUNCTIONS_EXTENSION_VERSION` in app setting.
   ///
-  /// &gt; **Note:** For storage related settings, please use related properties that are available such as `storage_account_access_key`, terraform will assign the value to keys such as `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`, `AzureWebJobsStorage` in app_setting.
+  /// &gt; **Note:** For storage related settings, please use related properties that are available such as `storageAccountAccessKey`, terraform will assign the value to keys such as `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`, `AzureWebJobsStorage` in app_setting.
   ///
-  /// &gt; **Note:** For application insight related settings, please use `application_insights_connection_string` and `application_insights_key`, terraform will assign the value to the key `APPINSIGHTS_INSTRUMENTATIONKEY` and `APPLICATIONINSIGHTS_CONNECTION_STRING` in app setting.
+  /// &gt; **Note:** For application insight related settings, please use `applicationInsightsConnectionString` and `applicationInsightsKey`, terraform will assign the value to the key `APPINSIGHTS_INSTRUMENTATIONKEY` and `APPLICATIONINSIGHTS_CONNECTION_STRING` in app setting.
   ///
-  /// &gt; **Note:** For health check related settings, please use `health_check_eviction_time_in_min`, terraform will assign the value to the key `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` in app setting.
+  /// &gt; **Note:** For health check related settings, please use `healthCheckEvictionTimeInMin`, terraform will assign the value to the key `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` in app setting.
   ///
   /// &gt; **Note:** Please create a predefined share if you are restricting your storage account to a virtual network by setting `WEBSITE_CONTENTOVERVNET` to 1 in app_setting.
   final pulumi.Input<Map<String, String>>? appSettings;
-  /// A `auth_settings` block as defined below.
+  /// A `authSettings` block as defined below.
   final pulumi.Input<WindowsFunctionAppAuthSettings>? authSettings;
-  /// A `auth_settings_v2` block as defined below.
+  /// A `authSettingsV2` block as defined below.
   final pulumi.Input<WindowsFunctionAppAuthSettingsV2>? authSettingsV2;
   /// A `backup` block as defined below.
   final pulumi.Input<WindowsFunctionAppBackup>? backup;
@@ -36,10 +36,12 @@ class WindowsFunctionAppState {
   /// Should the function app use Client Certificates.
   final pulumi.Input<bool>? clientCertificateEnabled;
   /// Paths to exclude when using client certificates, separated by ;
+  ///
+  /// &gt; **Note:** TLS 1.3 and HTTP 2.0 don't support TLS renegotiation. These protocols will not work if your app is configured with client certificate settings that use TLS renegotiation. Either set `clientCertificateEnabled` to `false`, or set `clientCertificateMode` to `Optional` or `Required` and remove all `clientCertificateExclusionPaths`.
   final pulumi.Input<String>? clientCertificateExclusionPaths;
   /// The mode of the Function App's client certificates requirement for incoming requests. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. Defaults to `Optional`.
   final pulumi.Input<String>? clientCertificateMode;
-  /// One or more `connection_string` blocks as defined below.
+  /// One or more `connectionString` blocks as defined below.
   final pulumi.Input<List<WindowsFunctionAppConnectionString>>? connectionStrings;
   /// Should Content Share Settings be disabled. Defaults to `false`.
   final pulumi.Input<bool>? contentShareForceDisabled;
@@ -73,9 +75,9 @@ class WindowsFunctionAppState {
   final pulumi.Input<List<String>>? outboundIpAddressLists;
   /// A comma separated list of outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12`.
   final pulumi.Input<String>? outboundIpAddresses;
-  /// A list of possible outbound IP addresses, not all of which are necessarily in use. This is a superset of `outbound_ip_address_list`. For example `["52.23.25.3", "52.143.43.12"]`.
+  /// A list of possible outbound IP addresses, not all of which are necessarily in use. This is a superset of `outboundIpAddressList`. For example `["52.23.25.3", "52.143.43.12"]`.
   final pulumi.Input<List<String>>? possibleOutboundIpAddressLists;
-  /// A comma separated list of possible outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12,52.143.43.17`. This is a superset of `outbound_ip_addresses`.
+  /// A comma separated list of possible outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12,52.143.43.17`. This is a superset of `outboundIpAddresses`.
   final pulumi.Input<String>? possibleOutboundIpAddresses;
   /// Should public network access be enabled for the Function App. Defaults to `true`.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
@@ -83,27 +85,27 @@ class WindowsFunctionAppState {
   final pulumi.Input<String>? resourceGroupName;
   /// The ID of the App Service Plan within which to create this Function App.
   final pulumi.Input<String>? servicePlanId;
-  /// A `site_config` block as defined below.
+  /// A `siteConfig` block as defined below.
   final pulumi.Input<WindowsFunctionAppSiteConfig>? siteConfig;
-  /// A `site_credential` block as defined below.
+  /// A `siteCredential` block as defined below.
   final pulumi.Input<List<WindowsFunctionAppSiteCredential>>? siteCredentials;
-  /// A `sticky_settings` block as defined below.
+  /// A `stickySettings` block as defined below.
   final pulumi.Input<WindowsFunctionAppStickySettings>? stickySettings;
-  /// The access key which will be used to access the backend storage account for the Function App. Conflicts with `storage_uses_managed_identity`.
+  /// The access key which will be used to access the backend storage account for the Function App. Conflicts with `storageUsesManagedIdentity`.
   final pulumi.Input<String>? storageAccountAccessKey;
   /// The backend storage account name which will be used by this Function App.
   final pulumi.Input<String>? storageAccountName;
-  /// One or more `storage_account` blocks as defined below.
+  /// One or more `storageAccount` blocks as defined below.
   final pulumi.Input<List<WindowsFunctionAppStorageAccount>>? storageAccounts;
   /// The Key Vault Secret ID, optionally including version, that contains the Connection String to connect to the storage account for this Function App.
   ///
-  /// &gt; **Note:** `storage_key_vault_secret_id` cannot be used with `storage_account_name`.
+  /// &gt; **Note:** `storageKeyVaultSecretId` cannot be used with `storageAccountName`.
   ///
-  /// &gt; **Note:** `storage_key_vault_secret_id` used without a version will use the latest version of the secret, however, the service can take up to 24h to pick up a rotation of the latest version. See the [official docs](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#rotation) for more information.
+  /// &gt; **Note:** `storageKeyVaultSecretId` used without a version will use the latest version of the secret, however, the service can take up to 24h to pick up a rotation of the latest version. See the [official docs](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#rotation) for more information.
   final pulumi.Input<String>? storageKeyVaultSecretId;
-  /// Should the Function App use Managed Identity to access the storage account. Conflicts with `storage_account_access_key`.
+  /// Should the Function App use Managed Identity to access the storage account. Conflicts with `storageAccountAccessKey`.
   ///
-  /// &gt; **Note:** One of `storage_account_access_key` or `storage_uses_managed_identity` must be specified when using `storage_account_name`.
+  /// &gt; **Note:** One of `storageAccountAccessKey` or `storageUsesManagedIdentity` must be specified when using `storageAccountName`.
   final pulumi.Input<bool>? storageUsesManagedIdentity;
   /// A mapping of tags which should be assigned to the Windows Function App.
   final pulumi.Input<Map<String, String>>? tags;
@@ -111,9 +113,9 @@ class WindowsFunctionAppState {
   final pulumi.Input<bool>? virtualNetworkBackupRestoreEnabled;
   /// The subnet id which will be used by this Function App for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   ///
-  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource app_service_virtual_network_swift_connection and in-line within this resource using the `virtual_network_subnet_id` property. You cannot use both methods simultaneously. If the virtual network is set via the resource `app_service_virtual_network_swift_connection` then `ignore_changes` should be used in the function app configuration.
+  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource appServiceVirtualNetworkSwiftConnection and in-line within this resource using the `virtualNetworkSubnetId` property. You cannot use both methods simultaneously. If the virtual network is set via the resource `appServiceVirtualNetworkSwiftConnection` then `ignoreChanges` should be used in the function app configuration.
   ///
-  /// &gt; **Note:** Assigning the `virtual_network_subnet_id` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
+  /// &gt; **Note:** Assigning the `virtualNetworkSubnetId` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
   final pulumi.Input<String>? virtualNetworkSubnetId;
   /// Specifies whether traffic for the image pull should be routed over virtual network. Defaults to `false`.
   ///
@@ -121,23 +123,23 @@ class WindowsFunctionAppState {
   final pulumi.Input<bool>? vnetImagePullEnabled;
   /// Should the default WebDeploy Basic Authentication publishing credentials enabled. Defaults to `true`.
   ///
-  /// &gt; **Note:** Setting this value to true will disable the ability to use `zip_deploy_file` which currently relies on the default publishing profile.
+  /// &gt; **Note:** Setting this value to true will disable the ability to use `zipDeployFile` which currently relies on the default publishing profile.
   final pulumi.Input<bool>? webdeployPublishBasicAuthenticationEnabled;
   /// The local path and filename of the Zip packaged application to deploy to this Windows Function App.
   ///
-  /// &gt; **Note:** Using this value requires `WEBSITE_RUN_FROM_PACKAGE=1` to be set on the App in `app_settings`. Refer to the [Azure docs](https://learn.microsoft.com/en-us/azure/azure-functions/functions-deployment-technologies) for further details.
+  /// &gt; **Note:** Using this value requires `WEBSITE_RUN_FROM_PACKAGE=1` to be set on the App in `appSettings`. Refer to the [Azure docs](https://learn.microsoft.com/en-us/azure/azure-functions/functions-deployment-technologies) for further details.
   final pulumi.Input<String>? zipDeployFile;
 
   /// Creates a new [WindowsFunctionAppState].
   /// [appSettings] A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
-  /// [authSettings] A `auth_settings` block as defined below.
-  /// [authSettingsV2] A `auth_settings_v2` block as defined below.
+  /// [authSettings] A `authSettings` block as defined below.
+  /// [authSettingsV2] A `authSettingsV2` block as defined below.
   /// [backup] A `backup` block as defined below.
   /// [builtinLoggingEnabled] Should built in logging be enabled. Configures `AzureWebJobsDashboard` app setting based on the configured storage setting. Defaults to `true`.
   /// [clientCertificateEnabled] Should the function app use Client Certificates.
   /// [clientCertificateExclusionPaths] Paths to exclude when using client certificates, separated by ;
   /// [clientCertificateMode] The mode of the Function App's client certificates requirement for incoming requests. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. Defaults to `Optional`.
-  /// [connectionStrings] One or more `connection_string` blocks as defined below.
+  /// [connectionStrings] One or more `connectionString` blocks as defined below.
   /// [contentShareForceDisabled] Should Content Share Settings be disabled. Defaults to `false`.
   /// [customDomainVerificationId] The identifier used by App Service to perform domain ownership verification via DNS TXT record.
   /// [dailyMemoryTimeQuota] The amount of memory in gigabyte-seconds that your application is allowed to consume per day. Setting this value only affects function apps under the consumption plan. Defaults to `0`.
@@ -154,19 +156,19 @@ class WindowsFunctionAppState {
   /// [name] The name which should be used for this Windows Function App. Changing this forces a new Windows Function App to be created. Limit the function name to 32 characters to avoid naming collisions. For more information about [Function App naming rule](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftweb) and [Host ID Collisions](https://github.com/Azure/azure-functions-host/wiki/Host-IDs#host-id-collisions)
   /// [outboundIpAddressLists] A list of outbound IP addresses. For example `["52.23.25.3", "52.143.43.12"]`
   /// [outboundIpAddresses] A comma separated list of outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12`.
-  /// [possibleOutboundIpAddressLists] A list of possible outbound IP addresses, not all of which are necessarily in use. This is a superset of `outbound_ip_address_list`. For example `["52.23.25.3", "52.143.43.12"]`.
-  /// [possibleOutboundIpAddresses] A comma separated list of possible outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12,52.143.43.17`. This is a superset of `outbound_ip_addresses`.
+  /// [possibleOutboundIpAddressLists] A list of possible outbound IP addresses, not all of which are necessarily in use. This is a superset of `outboundIpAddressList`. For example `["52.23.25.3", "52.143.43.12"]`.
+  /// [possibleOutboundIpAddresses] A comma separated list of possible outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12,52.143.43.17`. This is a superset of `outboundIpAddresses`.
   /// [publicNetworkAccessEnabled] Should public network access be enabled for the Function App. Defaults to `true`.
   /// [resourceGroupName] The name of the Resource Group where the Windows Function App should exist. Changing this forces a new Windows Function App to be created.
   /// [servicePlanId] The ID of the App Service Plan within which to create this Function App.
-  /// [siteConfig] A `site_config` block as defined below.
-  /// [siteCredentials] A `site_credential` block as defined below.
-  /// [stickySettings] A `sticky_settings` block as defined below.
-  /// [storageAccountAccessKey] The access key which will be used to access the backend storage account for the Function App. Conflicts with `storage_uses_managed_identity`.
+  /// [siteConfig] A `siteConfig` block as defined below.
+  /// [siteCredentials] A `siteCredential` block as defined below.
+  /// [stickySettings] A `stickySettings` block as defined below.
+  /// [storageAccountAccessKey] The access key which will be used to access the backend storage account for the Function App. Conflicts with `storageUsesManagedIdentity`.
   /// [storageAccountName] The backend storage account name which will be used by this Function App.
-  /// [storageAccounts] One or more `storage_account` blocks as defined below.
+  /// [storageAccounts] One or more `storageAccount` blocks as defined below.
   /// [storageKeyVaultSecretId] The Key Vault Secret ID, optionally including version, that contains the Connection String to connect to the storage account for this Function App.
-  /// [storageUsesManagedIdentity] Should the Function App use Managed Identity to access the storage account. Conflicts with `storage_account_access_key`.
+  /// [storageUsesManagedIdentity] Should the Function App use Managed Identity to access the storage account. Conflicts with `storageAccountAccessKey`.
   /// [tags] A mapping of tags which should be assigned to the Windows Function App.
   /// [virtualNetworkBackupRestoreEnabled] Whether backup and restore operations over the linked virtual network are enabled. Defaults to `false`.
   /// [virtualNetworkSubnetId] The subnet id which will be used by this Function App for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
@@ -318,4 +320,3 @@ class WindowsFunctionAppState {
     );
   }
 }
-

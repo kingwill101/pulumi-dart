@@ -93,6 +93,26 @@ import 'service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_search_service" "example" {
+///   name                = "example-resource"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "standard"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +123,8 @@ import 'service_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.search.Service;
 /// import com.pulumi.azure.search.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -244,6 +264,28 @@ import 'service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_search_service" "example" {
+///   name                         = "example-resource"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   sku                          = "standard"
+///   local_authentication_enabled = true
+///   authentication_failure_mode  = "http403"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -254,8 +296,8 @@ import 'service_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.search.Service;
 /// import com.pulumi.azure.search.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -395,6 +437,27 @@ import 'service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_search_service" "example" {
+///   name                         = "example-resource"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   sku                          = "standard"
+///   local_authentication_enabled = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -405,8 +468,8 @@ import 'service_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.search.Service;
 /// import com.pulumi.azure.search.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -468,21 +531,23 @@ import 'service_state.dart';
 /// $ pulumi import azure:search/service:Service example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Search/searchServices/service1
 /// ```
 class Service extends pulumi.CustomResource {
-  /// Specifies a list of inbound IPv4 or CIDRs that are allowed to access the Search Service. If the incoming IP request is from an IP address which is not included in the `allowed_ips` it will be blocked by the Search Services firewall.
+  /// Specifies a list of inbound IPv4 or CIDRs that are allowed to access the Search Service. If the incoming IP request is from an IP address which is not included in the `allowedIps` it will be blocked by the Search Services firewall.
   ///
-  /// &gt; **Note:** The `allowed_ips` are only applied if the `public_network_access_enabled` field has been set to `true`, else all traffic over the public interface will be rejected, even if the `allowed_ips` field has been defined. When the `public_network_access_enabled` field has been set to `false` the private endpoint connections are the only allowed access point to the Search Service.
+  /// &gt; **Note:** The `allowedIps` are only applied if the `publicNetworkAccessEnabled` field has been set to `true`, else all traffic over the public interface will be rejected, even if the `allowedIps` field has been defined. When the `publicNetworkAccessEnabled` field has been set to `false` the private endpoint connections are the only allowed access point to the Search Service.
   late final pulumi.Output<List<String>?> allowedIps;
   /// Specifies the response that the Search Service should return for requests that fail authentication. Possible values include `http401WithBearerChallenge` or `http403`.
   ///
-  /// &gt; **Note:** `authentication_failure_mode` can only be configured when using `local_authentication_enabled` is set to `true` - which when set together specifies that both API Keys and AzureAD Authentication should be supported.
+  /// &gt; **Note:** `authenticationFailureMode` can only be configured when using `localAuthenticationEnabled` is set to `true` - which when set together specifies that both API Keys and AzureAD Authentication should be supported.
   late final pulumi.Output<String?> authenticationFailureMode;
   /// Describes whether the search service is compliant or not with respect to having non-customer encrypted resources. If a service has more than one non-customer encrypted resource and `Enforcement` is `enabled` then the service will be marked as `NonCompliant`. If all the resources are customer encrypted, then the service will be marked as `Compliant`.
   late final pulumi.Output<String> customerManagedKeyEncryptionComplianceStatus;
   /// Specifies whether the Search Service should enforce that non-customer resources are encrypted. Defaults to `false`.
   late final pulumi.Output<bool?> customerManagedKeyEnforcementEnabled;
+  /// The endpoint used to connect to this Search Service.
+  late final pulumi.Output<String> endpoint;
   /// Specifies the Hosting Mode, which allows for High Density partitions (that allow for up to 1000 indexes) should be supported. Possible values are `HighDensity` or `Default`. Defaults to `Default`. Changing this forces a new Search Service to be created.
   ///
-  /// &gt; **Note:** `hosting_mode` can only be configured when `sku` is set to `standard3`.
+  /// &gt; **Note:** `hostingMode` can only be configured when `sku` is set to `standard3`.
   late final pulumi.Output<String?> hostingMode;
   /// An `identity` block as defined below.
   late final pulumi.Output<ServiceIdentity?> identity;
@@ -496,13 +561,13 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String?> networkRuleBypassOption;
   /// Specifies the number of partitions which should be created. This field cannot be set when using a `free` sku ([see the Microsoft documentation](https://learn.microsoft.com/azure/search/search-sku-tier)). Possible values include `1`, `2`, `3`, `4`, `6`, or `12`. Defaults to `1`.
   ///
-  /// &gt; **Note:** when `hosting_mode` is set to `highDensity` the maximum number of partitions allowed is `3`.
+  /// &gt; **Note:** when `hostingMode` is set to `highDensity` the maximum number of partitions allowed is `3`.
   late final pulumi.Output<int?> partitionCount;
   /// The Primary Key used for Search Service Administration.
   late final pulumi.Output<String> primaryKey;
   /// Specifies whether Public Network Access is allowed for this resource. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-  /// A `query_keys` block as defined below.
+  /// A `queryKeys` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> queryKeys;
   /// Specifies the number of Replica's which should be created for this Search Service. This field cannot be set when using a `free` sku ([see the Microsoft documentation](https://learn.microsoft.com/azure/search/search-sku-tier)).
   late final pulumi.Output<int?> replicaCount;
@@ -512,13 +577,13 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> secondaryKey;
   /// Specifies the Semantic Search SKU which should be used for this Search Service. Possible values include `free` and `standard`.
   ///
-  /// &gt; **Note:** The `semantic_search_sku` cannot be defined if your Search Services `sku` is set to `free`. The Semantic Search feature is only available in certain regions, please see the [product documentation](https://learn.microsoft.com/azure/search/semantic-search-overview#availability-and-pricing) for more information.
+  /// &gt; **Note:** The `semanticSearchSku` cannot be defined if your Search Services `sku` is set to `free`. The Semantic Search feature is only available in certain regions, please see the [product documentation](https://learn.microsoft.com/azure/search/semantic-search-overview#availability-and-pricing) for more information.
   late final pulumi.Output<String?> semanticSearchSku;
-  /// The SKU which should be used for this Search Service. Possible values include `basic`, `free`, `standard`, `standard2`, `standard3`, `storage_optimized_l1` and `storage_optimized_l2`.
+  /// The SKU which should be used for this Search Service. Possible values include `basic`, `free`, `standard`, `standard2`, `standard3`, `storageOptimizedL1` and `storageOptimizedL2`.
   ///
   /// &gt; **Note:** The `basic` and `free` SKUs provision the Search Service in a Shared Cluster - the `standard` SKUs use a Dedicated Cluster.
   ///
-  /// &gt; **Note:** The SKUs `standard2`, `standard3`, `storage_optimized_l1` and `storage_optimized_l2` are only available by submitting a quota increase request to Microsoft. Please see the [product documentation](https://learn.microsoft.com/azure/azure-resource-manager/troubleshooting/error-resource-quota?tabs=azure-cli) on how to submit a quota increase request.
+  /// &gt; **Note:** The SKUs `standard2`, `standard3`, `storageOptimizedL1` and `storageOptimizedL2` are only available by submitting a quota increase request to Microsoft. Please see the [product documentation](https://learn.microsoft.com/azure/azure-resource-manager/troubleshooting/error-resource-quota?tabs=azure-cli) on how to submit a quota increase request.
   ///
   /// &gt; **Note:** SKU upgrades between Basic and Standard (S1, S2, S3) tiers from a lower tier to a higher tier (e.g., Basic → S1, S1 → S2, S2 → S3) are supported without recreating the resource. And your region must support the higher tier. All other SKU changes (downgrades, changes from/to Free tier, or changes to/from Storage Optimized tiers) will force creation of a new Search Service.
   late final pulumi.Output<String> sku;
@@ -543,6 +608,7 @@ class Service extends pulumi.CustomResource {
     authenticationFailureMode = registerOutput<String?>('authenticationFailureMode');
     customerManagedKeyEncryptionComplianceStatus = registerOutput<String>('customerManagedKeyEncryptionComplianceStatus');
     customerManagedKeyEnforcementEnabled = registerOutput<bool?>('customerManagedKeyEnforcementEnabled');
+    endpoint = registerOutput<String>('endpoint');
     hostingMode = registerOutput<String?>('hostingMode');
     identity = registerOutput<ServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
@@ -588,6 +654,7 @@ class Service extends pulumi.CustomResource {
     authenticationFailureMode = registerOutput<String?>('authenticationFailureMode');
     customerManagedKeyEncryptionComplianceStatus = registerOutput<String>('customerManagedKeyEncryptionComplianceStatus');
     customerManagedKeyEnforcementEnabled = registerOutput<bool?>('customerManagedKeyEnforcementEnabled');
+    endpoint = registerOutput<String>('endpoint');
     hostingMode = registerOutput<String?>('hostingMode');
     identity = registerOutput<ServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');

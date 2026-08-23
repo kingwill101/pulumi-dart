@@ -149,6 +149,39 @@ import 'run_book_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "account1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_automation_runbook" "example" {
+///   name                    = "Get-AzureVMTutorial"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   automation_account_name = azure_automation_account.example.name
+///   log_verbose             = "true"
+///   log_progress            = "true"
+///   description             = "This is an example runbook"
+///   runbook_type            = "PowerShellWorkflow"
+///   publish_content_link = {
+///     uri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/c4935ffb69246a6058eb24f54640f53f69d3ac9f/101-automation-runbook-getvms/Runbooks/Get-AzureVMTutorial.ps1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -162,8 +195,8 @@ import 'run_book_state.dart';
 /// import com.pulumi.azure.automation.RunBook;
 /// import com.pulumi.azure.automation.RunBookArgs;
 /// import com.pulumi.azure.automation.inputs.RunBookPublishContentLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -248,15 +281,15 @@ class RunBook extends pulumi.CustomResource {
   late final pulumi.Output<String> automationAccountName;
   /// The desired content of the runbook.
   ///
-  /// &gt; **Note:** The Azure API requires a `publish_content_link` to be supplied even when specifying your own `content`.
+  /// &gt; **Note:** The Azure API requires a `publishContentLink` to be supplied even when specifying your own `content`.
   late final pulumi.Output<String> content;
   /// A description for the runbook.
   late final pulumi.Output<String?> description;
   /// A `draft` block as defined below.
   late final pulumi.Output<RunBookDraft?> draft;
-  /// One or more `job_schedule` block as defined below.
+  /// One or more `jobSchedule` block as defined below.
   ///
-  /// &gt; **Note:** AzureRM provides a stand-alone azure.automation.JobSchedule and this inlined `job_schedule` property to manage the job schedules. At this time you should choose one of them to manage the job schedule resources.
+  /// &gt; **Note:** AzureRM provides a stand-alone azure.automation.JobSchedule and this inlined `jobSchedule` property to manage the job schedules. At this time you should choose one of them to manage the job schedule resources.
   late final pulumi.Output<List<Map<String, dynamic>>> jobSchedules;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
@@ -268,7 +301,7 @@ class RunBook extends pulumi.CustomResource {
   late final pulumi.Output<bool> logVerbose;
   /// Specifies the name of the Runbook. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// One `publish_content_link` block as defined below.
+  /// One `publishContentLink` block as defined below.
   late final pulumi.Output<RunBookPublishContentLink?> publishContentLink;
   /// The name of the resource group in which the Runbook is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
@@ -276,7 +309,7 @@ class RunBook extends pulumi.CustomResource {
   late final pulumi.Output<String> runbookType;
   /// The runtime environment name for the runbook.
   ///
-  /// &gt; **Note:** The `runbook_type` must be set to a value that supports runtime environments, such as `PowerShell` or `Python`.
+  /// &gt; **Note:** The `runbookType` must be set to a value that supports runtime environments, such as `PowerShell` or `Python`.
   late final pulumi.Output<String?> runtimeEnvironmentName;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;

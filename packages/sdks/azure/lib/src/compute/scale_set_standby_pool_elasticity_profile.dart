@@ -7,7 +7,7 @@ class ScaleSetStandbyPoolElasticityProfile {
   final pulumi.Input<int> maxReadyCapacity;
   /// Specifies the desired minimum number of virtual machines in the standby pool.
   ///
-  /// &gt; **Note:** `min_ready_capacity` cannot exceed `max_ready_capacity`.
+  /// &gt; **Note:** `minReadyCapacity` cannot exceed `maxReadyCapacity`.
   final pulumi.Input<int> minReadyCapacity;
 
   /// Creates a new [ScaleSetStandbyPoolElasticityProfile].
@@ -32,4 +32,3 @@ class ScaleSetStandbyPoolElasticityProfile {
     );
   }
 }
-

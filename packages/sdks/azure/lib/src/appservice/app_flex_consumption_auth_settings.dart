@@ -9,7 +9,7 @@ import 'app_flex_consumption_auth_settings_microsoft.dart';
 import 'app_flex_consumption_auth_settings_twitter.dart';
 
 class AppFlexConsumptionAuthSettings {
-  /// An `active_directory` block as defined above.
+  /// An `activeDirectory` block as defined above.
   final pulumi.Input<AppFlexConsumptionAuthSettingsActiveDirectory>? activeDirectory;
   /// Specifies a map of login Parameters to send to the OpenID Connect authorization endpoint when a user logs in.
   final pulumi.Input<Map<String, String>>? additionalLoginParameters;
@@ -17,7 +17,7 @@ class AppFlexConsumptionAuthSettings {
   final pulumi.Input<List<String>>? allowedExternalRedirectUrls;
   /// The default authentication provider to use when multiple providers are configured. Possible values include: `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount`, `Twitter`, `Github`
   ///
-  /// &gt; **Note:** This setting is only needed if multiple providers are configured, and the `unauthenticated_client_action` is set to "RedirectToLoginPage".
+  /// &gt; **Note:** This setting is only needed if multiple providers are configured, and the `unauthenticatedClientAction` is set to "RedirectToLoginPage".
   final pulumi.Input<String>? defaultProvider;
   /// Should the Authentication / Authorization feature be enabled for the Linux Web App?
   final pulumi.Input<bool> enabled;
@@ -45,7 +45,7 @@ class AppFlexConsumptionAuthSettings {
   final pulumi.Input<String>? unauthenticatedClientAction;
 
   /// Creates a new [AppFlexConsumptionAuthSettings].
-  /// [activeDirectory] An `active_directory` block as defined above.
+  /// [activeDirectory] An `activeDirectory` block as defined above.
   /// [additionalLoginParameters] Specifies a map of login Parameters to send to the OpenID Connect authorization endpoint when a user logs in.
   /// [allowedExternalRedirectUrls] Specifies a list of External URLs that can be redirected to as part of logging in or logging out of the Linux Web App.
   /// [defaultProvider] The default authentication provider to use when multiple providers are configured. Possible values include: `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount`, `Twitter`, `Github`
@@ -118,4 +118,3 @@ class AppFlexConsumptionAuthSettings {
     );
   }
 }
-

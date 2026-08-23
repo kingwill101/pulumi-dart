@@ -82,7 +82,7 @@ import 'failover_group_state.dart';
 ///     server_id=primary.id,
 ///     sku_name="S1",
 ///     collation="SQL_Latin1_General_CP1_CI_AS",
-///     max_size_gb=200)
+///     max_size_gb=float(200))
 /// example_failover_group = azure.mssql.FailoverGroup("example",
 ///     name="example",
 ///     server_id=primary.id,
@@ -248,6 +248,59 @@ import 'failover_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "database-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_mssql_server" "primary" {
+///   name                         = "mssqlserver-primary"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "missadministrator"
+///   administrator_login_password = "thisIsKat11"
+/// }
+/// resource "azure_mssql_server" "secondary" {
+///   name                         = "mssqlserver-secondary"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = "North Europe"
+///   version                      = "12.0"
+///   administrator_login          = "missadministrator"
+///   administrator_login_password = "thisIsKat12"
+/// }
+/// resource "azure_mssql_database" "example" {
+///   name        = "exampledb"
+///   server_id   = azure_mssql_server.primary.id
+///   sku_name    = "S1"
+///   collation   = "SQL_Latin1_General_CP1_CI_AS"
+///   max_size_gb = "200"
+/// }
+/// resource "azure_mssql_failovergroup" "example" {
+///   name      = "example"
+///   server_id = azure_mssql_server.primary.id
+///   databases = [azure_mssql_database.example.id]
+///   partner_servers {
+///     id = azure_mssql_server.secondary.id
+///   }
+///   read_write_endpoint_failover_policy = {
+///     mode          = "Automatic"
+///     grace_minutes = 80
+///   }
+///   tags = {
+///     "environment" = "prod"
+///     "database"    = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -264,8 +317,8 @@ import 'failover_group_state.dart';
 /// import com.pulumi.azure.mssql.FailoverGroupArgs;
 /// import com.pulumi.azure.mssql.inputs.FailoverGroupPartnerServerArgs;
 /// import com.pulumi.azure.mssql.inputs.FailoverGroupReadWriteEndpointFailoverPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -400,9 +453,9 @@ class FailoverGroup extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> databases;
   /// The name of the Failover Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// A `partner_server` block as defined below.
+  /// A `partnerServer` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> partnerServers;
-  /// A `read_write_endpoint_failover_policy` block as defined below.
+  /// A `readWriteEndpointFailoverPolicy` block as defined below.
   late final pulumi.Output<FailoverGroupReadWriteEndpointFailoverPolicy> readWriteEndpointFailoverPolicy;
   /// Whether failover is enabled for the readonly endpoint. Defaults to `false`.
   late final pulumi.Output<bool> readonlyEndpointFailoverPolicyEnabled;

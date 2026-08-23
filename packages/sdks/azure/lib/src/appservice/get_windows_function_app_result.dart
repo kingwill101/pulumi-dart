@@ -14,9 +14,9 @@ import 'get_windows_function_app_sticky_setting.dart';
 class GetWindowsFunctionAppResult {
   /// A `map of key-value pairs for App Settings and custom values.
   final Map<String, String> appSettings;
-  /// A `auth_settings` block as defined below.
+  /// A `authSettings` block as defined below.
   final List<GetWindowsFunctionAppAuthSetting> authSettings;
-  /// A `auth_settings_v2` block as defined below.
+  /// A `authSettingsV2` block as defined below.
   final List<GetWindowsFunctionAppAuthSettingsV2> authSettingsV2s;
   /// A `backup` block as defined below.
   final List<GetWindowsFunctionAppBackup> backups;
@@ -28,7 +28,7 @@ class GetWindowsFunctionAppResult {
   final String clientCertificateExclusionPaths;
   /// The mode of the Function App's client certificates requirement for incoming requests.
   final String clientCertificateMode;
-  /// One or more `connection_string` blocks as defined below.
+  /// One or more `connectionString` blocks as defined below.
   final List<GetWindowsFunctionAppConnectionString> connectionStrings;
   /// Are Content Share Settings disabled?
   final bool contentShareForceDisabled;
@@ -62,20 +62,20 @@ class GetWindowsFunctionAppResult {
   final List<String> outboundIpAddressLists;
   /// A comma separated list of outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12`.
   final String outboundIpAddresses;
-  /// A list of possible outbound IP addresses, not all of which are necessarily in use. This is a superset of `outbound_ip_address_list`. For example `["52.23.25.3", "52.143.43.12"]`.
+  /// A list of possible outbound IP addresses, not all of which are necessarily in use. This is a superset of `outboundIpAddressList`. For example `["52.23.25.3", "52.143.43.12"]`.
   final List<String> possibleOutboundIpAddressLists;
-  /// A comma separated list of possible outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12,52.143.43.17`. This is a superset of `outbound_ip_addresses`.
+  /// A comma separated list of possible outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12,52.143.43.17`. This is a superset of `outboundIpAddresses`.
   final String possibleOutboundIpAddresses;
   /// Is Public Network Access enabled for the Windows Function App.
   final bool publicNetworkAccessEnabled;
   final String resourceGroupName;
   /// The ID of the App Service Plan.
   final String servicePlanId;
-  /// A `site_config` block as defined below.
+  /// A `siteConfig` block as defined below.
   final List<GetWindowsFunctionAppSiteConfig> siteConfigs;
-  /// A `site_credential` block as defined below.
+  /// A `siteCredential` block as defined below.
   final List<GetWindowsFunctionAppSiteCredential> siteCredentials;
-  /// A `sticky_settings` block as defined below.
+  /// A `stickySettings` block as defined below.
   final List<GetWindowsFunctionAppStickySetting> stickySettings;
   /// The access key which is used to access the backend storage account for the Function App.
   final String storageAccountAccessKey;
@@ -96,14 +96,14 @@ class GetWindowsFunctionAppResult {
 
   /// Creates a new [GetWindowsFunctionAppResult].
   /// [appSettings] A `map of key-value pairs for App Settings and custom values.
-  /// [authSettings] A `auth_settings` block as defined below.
-  /// [authSettingsV2s] A `auth_settings_v2` block as defined below.
+  /// [authSettings] A `authSettings` block as defined below.
+  /// [authSettingsV2s] A `authSettingsV2` block as defined below.
   /// [backups] A `backup` block as defined below.
   /// [builtinLoggingEnabled] Is the built-in logging enabled?
   /// [clientCertificateEnabled] Is the use of Client Certificates enabled?
   /// [clientCertificateExclusionPaths] Paths to exclude when using client certificates, separated by ;
   /// [clientCertificateMode] The mode of the Function App's client certificates requirement for incoming requests.
-  /// [connectionStrings] One or more `connection_string` blocks as defined below.
+  /// [connectionStrings] One or more `connectionString` blocks as defined below.
   /// [contentShareForceDisabled] Are Content Share Settings disabled?
   /// [customDomainVerificationId] The identifier used by App Service to perform domain ownership verification via DNS TXT record.
   /// [dailyMemoryTimeQuota] The amount of memory in gigabyte-seconds that your application is allowed to consume per day.
@@ -120,14 +120,14 @@ class GetWindowsFunctionAppResult {
   /// [name] The Site Credentials Username used for publishing.
   /// [outboundIpAddressLists] A list of outbound IP addresses. For example `["52.23.25.3", "52.143.43.12"]`
   /// [outboundIpAddresses] A comma separated list of outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12`.
-  /// [possibleOutboundIpAddressLists] A list of possible outbound IP addresses, not all of which are necessarily in use. This is a superset of `outbound_ip_address_list`. For example `["52.23.25.3", "52.143.43.12"]`.
-  /// [possibleOutboundIpAddresses] A comma separated list of possible outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12,52.143.43.17`. This is a superset of `outbound_ip_addresses`.
+  /// [possibleOutboundIpAddressLists] A list of possible outbound IP addresses, not all of which are necessarily in use. This is a superset of `outboundIpAddressList`. For example `["52.23.25.3", "52.143.43.12"]`.
+  /// [possibleOutboundIpAddresses] A comma separated list of possible outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12,52.143.43.17`. This is a superset of `outboundIpAddresses`.
   /// [publicNetworkAccessEnabled] Is Public Network Access enabled for the Windows Function App.
   /// [resourceGroupName] Required.
   /// [servicePlanId] The ID of the App Service Plan.
-  /// [siteConfigs] A `site_config` block as defined below.
-  /// [siteCredentials] A `site_credential` block as defined below.
-  /// [stickySettings] A `sticky_settings` block as defined below.
+  /// [siteConfigs] A `siteConfig` block as defined below.
+  /// [siteCredentials] A `siteCredential` block as defined below.
+  /// [stickySettings] A `stickySettings` block as defined below.
   /// [storageAccountAccessKey] The access key which is used to access the backend storage account for the Function App.
   /// [storageAccountName] The backend storage account name which is used by this Function App.
   /// [storageKeyVaultSecretId] The Key Vault Secret ID, including version, that contains the Connection String used to connect to the storage account for this Function App.
@@ -272,4 +272,3 @@ class GetWindowsFunctionAppResult {
     );
   }
 }
-

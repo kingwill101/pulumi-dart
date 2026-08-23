@@ -4,7 +4,7 @@ import 'flexible_server_database_state.dart';
 
 /// Manages a PostgreSQL Flexible Server Database.
 ///
-/// !&gt; **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `prevent_destroy` lifecycle argument in your configuration file for this resource. For more information on the `prevent_destroy` lifecycle argument please see the terraform documentation.
+/// &gt; **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `preventDestroy` lifecycle argument in your configuration file for this resource. For more information on the `preventDestroy` lifecycle argument please see the terraform documentation.
 ///
 /// ## Example Usage
 ///
@@ -136,6 +136,36 @@ import 'flexible_server_database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_postgresql_flexibleserver" "example" {
+///   name                   = "example-psqlflexibleserver"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resourcegroup.example.location
+///   version                = "12"
+///   administrator_login    = "psqladmin"
+///   administrator_password = "H@Sh1CoR3!"
+///   storage_mb             = 32768
+///   sku_name               = "GP_Standard_D4s_v3"
+/// }
+/// resource "azure_postgresql_flexibleserverdatabase" "example" {
+///   name      = "exampledb"
+///   server_id = azure_postgresql_flexibleserver.example.id
+///   collation = "en_US.utf8"
+///   charset   = "UTF8"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -148,8 +178,8 @@ import 'flexible_server_database_state.dart';
 /// import com.pulumi.azure.postgresql.FlexibleServerArgs;
 /// import com.pulumi.azure.postgresql.FlexibleServerDatabase;
 /// import com.pulumi.azure.postgresql.FlexibleServerDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

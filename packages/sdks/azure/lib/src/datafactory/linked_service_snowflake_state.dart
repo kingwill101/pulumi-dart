@@ -17,7 +17,7 @@ class LinkedServiceSnowflakeState {
   final pulumi.Input<String>? description;
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   final pulumi.Input<String>? integrationRuntimeName;
-  /// A `key_vault_password` block as defined below. Use this argument to store Snowflake password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
+  /// A `keyVaultPassword` block as defined below. Use this argument to store Snowflake password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
   final pulumi.Input<LinkedServiceSnowflakeKeyVaultPassword>? keyVaultPassword;
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
@@ -31,7 +31,7 @@ class LinkedServiceSnowflakeState {
   /// [dataFactoryId] The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   /// [description] The description for the Data Factory Linked Service.
   /// [integrationRuntimeName] The integration runtime reference to associate with the Data Factory Linked Service.
-  /// [keyVaultPassword] A `key_vault_password` block as defined below. Use this argument to store Snowflake password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
+  /// [keyVaultPassword] A `keyVaultPassword` block as defined below. Use this argument to store Snowflake password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
   /// [name] Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
   const LinkedServiceSnowflakeState({
@@ -74,4 +74,3 @@ class LinkedServiceSnowflakeState {
     );
   }
 }
-

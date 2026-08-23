@@ -13,7 +13,7 @@ class WorkbookTemplateGallery {
   final pulumi.Input<String>? resourceType;
   /// Type of workbook supported by the workbook template. Defaults to `workbook`.
   ///
-  /// &gt; **Note:** See [documentation](https://docs.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-automate#galleries) for more information of `resource_type` and `type`.
+  /// &gt; **Note:** See [documentation](https://docs.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-automate#galleries) for more information of `resourceType` and `type`.
   final pulumi.Input<String>? type;
 
   /// Creates a new [WorkbookTemplateGallery].
@@ -50,4 +50,3 @@ class WorkbookTemplateGallery {
     );
   }
 }
-

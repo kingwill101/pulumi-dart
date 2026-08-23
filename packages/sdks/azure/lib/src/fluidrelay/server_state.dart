@@ -6,7 +6,7 @@ import 'server_identity.dart';
 
 /// Input properties used for looking up and filtering Server resources.
 class ServerState {
-  /// A `customer_managed_key` block as defined below. Changing this forces a new resource to be created.
+  /// A `customerManagedKey` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ServerCustomerManagedKey>? customerManagedKey;
   /// The Fluid tenantId for this server.
   final pulumi.Input<String>? frsTenantId;
@@ -34,7 +34,7 @@ class ServerState {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ServerState].
-  /// [customerManagedKey] A `customer_managed_key` block as defined below. Changing this forces a new resource to be created.
+  /// [customerManagedKey] A `customerManagedKey` block as defined below. Changing this forces a new resource to be created.
   /// [frsTenantId] The Fluid tenantId for this server.
   /// [identity] An `identity` block as defined below.
   /// [location] The Azure Region where the Fluid Relay Server should exist. Changing this forces a new Fluid Relay Server to be created.
@@ -99,4 +99,3 @@ class ServerState {
     );
   }
 }
-

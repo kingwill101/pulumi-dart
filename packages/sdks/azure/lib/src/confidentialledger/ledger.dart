@@ -124,6 +124,34 @@ import 'ledger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_confidentialledger_ledger" "ledger" {
+///   name                = "example-ledger"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   ledger_type         = "Private"
+///   azuread_based_service_principals {
+///     principal_id     = data.azure_core_getclientconfig.current.object_id
+///     tenant_id        = data.azure_core_getclientconfig.current.tenant_id
+///     ledger_role_name = "Administrator"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -136,8 +164,8 @@ import 'ledger_state.dart';
 /// import com.pulumi.azure.confidentialledger.Ledger;
 /// import com.pulumi.azure.confidentialledger.LedgerArgs;
 /// import com.pulumi.azure.confidentialledger.inputs.LedgerAzureadBasedServicePrincipalArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -212,9 +240,9 @@ import 'ledger_state.dart';
 /// $ pulumi import azure:confidentialledger/ledger:Ledger example /subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-group/providers/Microsoft.ConfidentialLedger/ledgers/example-ledger
 /// ```
 class Ledger extends pulumi.CustomResource {
-  /// A list of `azuread_based_service_principal` blocks as defined below.
+  /// A list of `azureadBasedServicePrincipal` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> azureadBasedServicePrincipals;
-  /// A list of `certificate_based_security_principal` blocks as defined below.
+  /// A list of `certificateBasedSecurityPrincipal` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> certificateBasedSecurityPrincipals;
   /// The Identity Service Endpoint for this Confidential Ledger.
   late final pulumi.Output<String> identityServiceEndpoint;

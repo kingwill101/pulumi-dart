@@ -24,23 +24,23 @@ class GetAlertRuleAnomalyResult {
   final String id;
   final String logAnalyticsWorkspaceId;
   final String mode;
-  /// A list of `multi_select_observation` blocks as defined below.
+  /// A list of `multiSelectObservation` blocks as defined below.
   final List<GetAlertRuleAnomalyMultiSelectObservation> multiSelectObservations;
   /// The name of the threshold observation.
   final String name;
-  /// A list of `prioritized_exclude_observation` blocks as defined below.
+  /// A list of `prioritizedExcludeObservation` blocks as defined below.
   final List<GetAlertRuleAnomalyPrioritizedExcludeObservation> prioritizedExcludeObservations;
-  /// A `required_data_connector` block as defined below.
+  /// A `requiredDataConnector` block as defined below.
   final List<GetAlertRuleAnomalyRequiredDataConnector> requiredDataConnectors;
   /// The ID of the anomaly settings definition Id.
   final String settingsDefinitionId;
-  /// A list of `single_select_observation` blocks as defined below.
+  /// A list of `singleSelectObservation` blocks as defined below.
   final List<GetAlertRuleAnomalySingleSelectObservation> singleSelectObservations;
   /// A list of categories of attacks by which to classify the rule.
   final List<String> tactics;
   /// A list of techniques of attacks by which to classify the rule.
   final List<String> techniques;
-  /// A list of `threshold_observation` blocks as defined below.
+  /// A list of `thresholdObservation` blocks as defined below.
   final List<GetAlertRuleAnomalyThresholdObservation> thresholdObservations;
 
   /// Creates a new [GetAlertRuleAnomalyResult].
@@ -53,15 +53,15 @@ class GetAlertRuleAnomalyResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [logAnalyticsWorkspaceId] Required.
   /// [mode] Required.
-  /// [multiSelectObservations] A list of `multi_select_observation` blocks as defined below.
+  /// [multiSelectObservations] A list of `multiSelectObservation` blocks as defined below.
   /// [name] The name of the threshold observation.
-  /// [prioritizedExcludeObservations] A list of `prioritized_exclude_observation` blocks as defined below.
-  /// [requiredDataConnectors] A `required_data_connector` block as defined below.
+  /// [prioritizedExcludeObservations] A list of `prioritizedExcludeObservation` blocks as defined below.
+  /// [requiredDataConnectors] A `requiredDataConnector` block as defined below.
   /// [settingsDefinitionId] The ID of the anomaly settings definition Id.
-  /// [singleSelectObservations] A list of `single_select_observation` blocks as defined below.
+  /// [singleSelectObservations] A list of `singleSelectObservation` blocks as defined below.
   /// [tactics] A list of categories of attacks by which to classify the rule.
   /// [techniques] A list of techniques of attacks by which to classify the rule.
-  /// [thresholdObservations] A list of `threshold_observation` blocks as defined below.
+  /// [thresholdObservations] A list of `thresholdObservation` blocks as defined below.
   const GetAlertRuleAnomalyResult({
     required this.anomalySettingsVersion,
     required this.anomalyVersion,
@@ -129,4 +129,3 @@ class GetAlertRuleAnomalyResult {
     );
   }
 }
-

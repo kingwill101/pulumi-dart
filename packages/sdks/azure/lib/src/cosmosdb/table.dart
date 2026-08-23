@@ -89,6 +89,27 @@ import 'table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cosmosdb_getaccount" "example" {
+///   name                = "tfex-cosmosdb-account"
+///   resource_group_name = "tfex-cosmosdb-account-rg"
+/// }
+///
+/// resource "azure_cosmosdb_table" "example" {
+///   name                = "tfex-cosmos-table"
+///   resource_group_name = data.azure_cosmosdb_getaccount.example.resource_group_name
+///   account_name        = data.azure_cosmosdb_getaccount.example.name
+///   throughput          = 400
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +120,8 @@ import 'table_state.dart';
 /// import com.pulumi.azure.cosmosdb.inputs.GetAccountArgs;
 /// import com.pulumi.azure.cosmosdb.Table;
 /// import com.pulumi.azure.cosmosdb.TableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -147,6 +168,13 @@ import 'table_state.dart';
 /// ```
 ///
 ///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.DocumentDB` - 2024-08-15
+///
 /// ## Import
 ///
 /// CosmosDB Tables can be imported using the `resource id`, e.g.
@@ -157,7 +185,7 @@ import 'table_state.dart';
 class Table extends pulumi.CustomResource {
   /// The name of the Cosmos DB Table to create the table within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-  /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
+  /// An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   late final pulumi.Output<TableAutoscaleSettings?> autoscaleSettings;

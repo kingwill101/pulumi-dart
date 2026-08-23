@@ -12,7 +12,7 @@ class NetworkManagerStaticMemberState {
   final pulumi.Input<String>? region;
   /// Specifies the Resource ID of the Virtual Network or Subnet used as the Static Member. Changing this forces a new Network Manager Static Member to be created.
   ///
-  /// &gt; **Note:** Subnet is supported only if the Network Manager has added `Routing` to `scope_accesses` and the Network Group has set `Subnet` as the `member_type` value.
+  /// &gt; **Note:** Subnet is supported only if the Network Manager has added `Routing` to `scopeAccesses` and the Network Group has set `Subnet` as the `memberType` value.
   final pulumi.Input<String>? targetVirtualNetworkId;
 
   /// Creates a new [NetworkManagerStaticMemberState].
@@ -45,4 +45,3 @@ class NetworkManagerStaticMemberState {
     );
   }
 }
-

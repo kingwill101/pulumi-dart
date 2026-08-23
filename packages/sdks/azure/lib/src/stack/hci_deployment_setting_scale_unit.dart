@@ -29,17 +29,17 @@ class HciDeploymentSettingScaleUnit {
   final pulumi.Input<bool>? episodicDataUploadEnabled;
   /// Whether to store data sent to Microsoft in EU. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to `false` results in all data sent to Microsoft to be stored outside of the EU. Possible values are `true` and `false`. Defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<bool>? euLocationEnabled;
-  /// A `host_network` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// A `hostNetwork` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<HciDeploymentSettingScaleUnitHostNetwork> hostNetwork;
   /// Whether to enable HVCI protection. Possible values are `true` and `false`. When set to `true`, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<bool>? hvciProtectionEnabled;
-  /// One or more `infrastructure_network` blocks as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// One or more `infrastructureNetwork` blocks as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<List<HciDeploymentSettingScaleUnitInfrastructureNetwork>> infrastructureNetworks;
   /// Specifies the name prefix to deploy cluster. It must be 1-8 characters long and contain only letters, numbers and hyphens Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String> namePrefix;
-  /// A `optional_service` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// A `optionalService` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<HciDeploymentSettingScaleUnitOptionalService> optionalService;
-  /// One or more `physical_node` blocks as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// One or more `physicalNode` blocks as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<List<HciDeploymentSettingScaleUnitPhysicalNode>> physicalNodes;
   /// The URI to the Key Vault or secret store. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String> secretsLocation;
@@ -67,12 +67,12 @@ class HciDeploymentSettingScaleUnit {
   /// [drtmProtectionEnabled] Whether to enable DRTM protection. Possible values are `true` and `false`. When set to `true`, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [episodicDataUploadEnabled] Whether to collect log data to facilitate quicker issue resolution. Possible values are `true` and `false`. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [euLocationEnabled] Whether to store data sent to Microsoft in EU. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to `false` results in all data sent to Microsoft to be stored outside of the EU. Possible values are `true` and `false`. Defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  /// [hostNetwork] A `host_network` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// [hostNetwork] A `hostNetwork` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [hvciProtectionEnabled] Whether to enable HVCI protection. Possible values are `true` and `false`. When set to `true`, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  /// [infrastructureNetworks] One or more `infrastructure_network` blocks as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// [infrastructureNetworks] One or more `infrastructureNetwork` blocks as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [namePrefix] Specifies the name prefix to deploy cluster. It must be 1-8 characters long and contain only letters, numbers and hyphens Changing this forces a new Stack HCI Deployment Setting to be created.
-  /// [optionalService] A `optional_service` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
-  /// [physicalNodes] One or more `physical_node` blocks as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// [optionalService] A `optionalService` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
+  /// [physicalNodes] One or more `physicalNode` blocks as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [secretsLocation] The URI to the Key Vault or secret store. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [sideChannelMitigationEnabled] Whether to enable side channel mitigation. Possible values are `true` and `false`. When set to `true`, all side channel mitigations are enabled on your Azure HCI cluster. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [smbClusterEncryptionEnabled] Whether to enable SMB cluster encryption. Possible values are `true` and `false`. When set to `true`, cluster east-west traffic is encrypted. Defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
@@ -162,4 +162,3 @@ class HciDeploymentSettingScaleUnit {
     );
   }
 }
-

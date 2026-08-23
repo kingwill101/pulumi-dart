@@ -67,6 +67,24 @@ import 'get_local_rulestack_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_paloalto_getlocalrulestack" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_paloalto_getlocalrulestack.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +93,8 @@ import 'get_local_rulestack_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.paloalto.PaloaltoFunctions;
 /// import com.pulumi.azure.paloalto.inputs.GetLocalRulestackArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -115,7 +133,7 @@ import 'get_local_rulestack_result.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `PaloAltoNetworks.Cloudngfw` - 2022-08-29
+/// * `PaloAltoNetworks.Cloudngfw` - 2025-10-08
 /// [args] Arguments passed to this invoke. {@macro pulumi_paloalto_get_local_rulestack_get_local_rulestack_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLocalRulestackResult> getLocalRulestack(

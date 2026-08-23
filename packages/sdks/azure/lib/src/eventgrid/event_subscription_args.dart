@@ -17,19 +17,19 @@ import 'event_subscription_webhook_endpoint.dart';
 /// {@endtemplate}
 /// {@macro pulumi_eventgrid_event_subscription_event_subscription_args_doc}
 class EventSubscriptionArgs {
-  /// A `advanced_filter` block as defined below.
+  /// A `advancedFilter` block as defined below.
   final pulumi.Input<EventSubscriptionAdvancedFilter>? advancedFilter;
   /// Specifies whether advanced filters should be evaluated against an array of values instead of expecting a singular value. Defaults to `false`.
   final pulumi.Input<bool>? advancedFilteringOnArraysEnabled;
-  /// An `azure_function_endpoint` block as defined below.
+  /// An `azureFunctionEndpoint` block as defined below.
   final pulumi.Input<EventSubscriptionAzureFunctionEndpoint>? azureFunctionEndpoint;
-  /// A `dead_letter_identity` block as defined below.
+  /// A `deadLetterIdentity` block as defined below.
   ///
-  /// &gt; **Note:** `storage_blob_dead_letter_destination` must be specified when a `dead_letter_identity` is specified
+  /// &gt; **Note:** `storageBlobDeadLetterDestination` must be specified when a `deadLetterIdentity` is specified
   final pulumi.Input<EventSubscriptionDeadLetterIdentity>? deadLetterIdentity;
-  /// A `delivery_identity` block as defined below.
+  /// A `deliveryIdentity` block as defined below.
   final pulumi.Input<EventSubscriptionDeliveryIdentity>? deliveryIdentity;
-  /// One or more `delivery_property` blocks as defined below.
+  /// One or more `deliveryProperty` blocks as defined below.
   final pulumi.Input<List<EventSubscriptionDeliveryProperty>>? deliveryProperties;
   /// Specifies the event delivery schema for the event subscription. Possible values include: `EventGridSchema`, `CloudEventSchemaV1_0`, `CustomInputSchema`. Defaults to `EventGridSchema`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? eventDeliverySchema;
@@ -45,7 +45,7 @@ class EventSubscriptionArgs {
   final pulumi.Input<List<String>>? labels;
   /// Specifies the name of the EventGrid Event Subscription resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// A `retry_policy` block as defined below.
+  /// A `retryPolicy` block as defined below.
   final pulumi.Input<EventSubscriptionRetryPolicy>? retryPolicy;
   /// Specifies the scope at which the EventGrid Event Subscription should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> scope;
@@ -53,24 +53,24 @@ class EventSubscriptionArgs {
   final pulumi.Input<String>? serviceBusQueueEndpointId;
   /// Specifies the id where the Service Bus Topic is located.
   final pulumi.Input<String>? serviceBusTopicEndpointId;
-  /// A `storage_blob_dead_letter_destination` block as defined below.
+  /// A `storageBlobDeadLetterDestination` block as defined below.
   final pulumi.Input<EventSubscriptionStorageBlobDeadLetterDestination>? storageBlobDeadLetterDestination;
-  /// A `storage_queue_endpoint` block as defined below.
+  /// A `storageQueueEndpoint` block as defined below.
   final pulumi.Input<EventSubscriptionStorageQueueEndpoint>? storageQueueEndpoint;
-  /// A `subject_filter` block as defined below.
+  /// A `subjectFilter` block as defined below.
   final pulumi.Input<EventSubscriptionSubjectFilter>? subjectFilter;
-  /// A `webhook_endpoint` block as defined below.
+  /// A `webhookEndpoint` block as defined below.
   ///
-  /// &gt; **Note:** One of `eventhub_endpoint_id`, `hybrid_connection_endpoint_id`, `service_bus_queue_endpoint_id`, `service_bus_topic_endpoint_id`, `storage_queue_endpoint`, `webhook_endpoint` or `azure_function_endpoint` must be specified.
+  /// &gt; **Note:** One of `eventhubEndpointId`, `hybridConnectionEndpointId`, `serviceBusQueueEndpointId`, `serviceBusTopicEndpointId`, `storageQueueEndpoint`, `webhookEndpoint` or `azureFunctionEndpoint` must be specified.
   final pulumi.Input<EventSubscriptionWebhookEndpoint>? webhookEndpoint;
 
   /// Creates a new [EventSubscriptionArgs].
-  /// [advancedFilter] A `advanced_filter` block as defined below.
+  /// [advancedFilter] A `advancedFilter` block as defined below.
   /// [advancedFilteringOnArraysEnabled] Specifies whether advanced filters should be evaluated against an array of values instead of expecting a singular value. Defaults to `false`.
-  /// [azureFunctionEndpoint] An `azure_function_endpoint` block as defined below.
-  /// [deadLetterIdentity] A `dead_letter_identity` block as defined below.
-  /// [deliveryIdentity] A `delivery_identity` block as defined below.
-  /// [deliveryProperties] One or more `delivery_property` blocks as defined below.
+  /// [azureFunctionEndpoint] An `azureFunctionEndpoint` block as defined below.
+  /// [deadLetterIdentity] A `deadLetterIdentity` block as defined below.
+  /// [deliveryIdentity] A `deliveryIdentity` block as defined below.
+  /// [deliveryProperties] One or more `deliveryProperty` blocks as defined below.
   /// [eventDeliverySchema] Specifies the event delivery schema for the event subscription. Possible values include: `EventGridSchema`, `CloudEventSchemaV1_0`, `CustomInputSchema`. Defaults to `EventGridSchema`. Changing this forces a new resource to be created.
   /// [eventhubEndpointId] Specifies the id where the Event Hub is located.
   /// [expirationTimeUtc] Specifies the expiration time of the event subscription (Datetime Format `RFC 3339`).
@@ -78,14 +78,14 @@ class EventSubscriptionArgs {
   /// [includedEventTypes] A list of applicable event types that need to be part of the event subscription.
   /// [labels] A list of labels to assign to the event subscription.
   /// [name] Specifies the name of the EventGrid Event Subscription resource. Changing this forces a new resource to be created.
-  /// [retryPolicy] A `retry_policy` block as defined below.
+  /// [retryPolicy] A `retryPolicy` block as defined below.
   /// [scope] Specifies the scope at which the EventGrid Event Subscription should be created. Changing this forces a new resource to be created.
   /// [serviceBusQueueEndpointId] Specifies the id where the Service Bus Queue is located.
   /// [serviceBusTopicEndpointId] Specifies the id where the Service Bus Topic is located.
-  /// [storageBlobDeadLetterDestination] A `storage_blob_dead_letter_destination` block as defined below.
-  /// [storageQueueEndpoint] A `storage_queue_endpoint` block as defined below.
-  /// [subjectFilter] A `subject_filter` block as defined below.
-  /// [webhookEndpoint] A `webhook_endpoint` block as defined below.
+  /// [storageBlobDeadLetterDestination] A `storageBlobDeadLetterDestination` block as defined below.
+  /// [storageQueueEndpoint] A `storageQueueEndpoint` block as defined below.
+  /// [subjectFilter] A `subjectFilter` block as defined below.
+  /// [webhookEndpoint] A `webhookEndpoint` block as defined below.
   const EventSubscriptionArgs({
     this.advancedFilter,
     this.advancedFilteringOnArraysEnabled,
@@ -162,4 +162,3 @@ class EventSubscriptionArgs {
     );
   }
 }
-

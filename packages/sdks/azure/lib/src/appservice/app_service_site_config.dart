@@ -14,7 +14,7 @@ class AppServiceSiteConfig {
   final pulumi.Input<String>? acrUserManagedIdentityClientId;
   /// Should the app be loaded at all times? Defaults to `false`.
   ///
-  /// &gt; **NOTE:** when using an App Service Plan in the `Free` or `Shared` Tiers `always_on` must be set to `false`.
+  /// &gt; **NOTE:** when using an App Service Plan in the `Free` or `Shared` Tiers `alwaysOn` must be set to `false`.
   final pulumi.Input<bool>? alwaysOn;
   /// App command line to launch, e.g. `/sbin/myserver -b 0.0.0.0`.
   final pulumi.Input<String>? appCommandLine;
@@ -34,13 +34,13 @@ class AppServiceSiteConfig {
   final pulumi.Input<bool>? http2Enabled;
   /// A list of objects representing ip restrictions as defined below.
   ///
-  /// &gt; **NOTE** User has to explicitly set `ip_restriction` to empty slice (`[]`) to remove it.
+  /// &gt; **NOTE** User has to explicitly set `ipRestriction` to empty slice (`[]`) to remove it.
   final pulumi.Input<List<AppServiceSiteConfigIpRestriction>>? ipRestrictions;
-  /// The Java Container to use. If specified `java_version` and `java_container_version` must also be specified. Possible values are `JAVA`, `JETTY`, and `TOMCAT`.
+  /// The Java Container to use. If specified `javaVersion` and `javaContainerVersion` must also be specified. Possible values are `JAVA`, `JETTY`, and `TOMCAT`.
   final pulumi.Input<String>? javaContainer;
-  /// The version of the Java Container to use. If specified `java_version` and `java_container` must also be specified.
+  /// The version of the Java Container to use. If specified `javaVersion` and `javaContainer` must also be specified.
   final pulumi.Input<String>? javaContainerVersion;
-  /// The version of Java to use. If specified `java_container` and `java_container_version` must also be specified. Possible values are `1.7`, `1.8` and `11` and their specific versions - except for Java 11 (e.g. `1.7.0_80`, `1.8.0_181`, `11`)
+  /// The version of Java to use. If specified `javaContainer` and `javaContainerVersion` must also be specified. Possible values are `1.7`, `1.8` and `11` and their specific versions - except for Java 11 (e.g. `1.7.0_80`, `1.8.0_181`, `11`)
   final pulumi.Input<String>? javaVersion;
   /// Linux App Framework and version for the App Service. Possible options are a Docker container (`DOCKER|&lt;user/image:tag&gt;`), a base-64 encoded Docker Compose file (`COMPOSE|${filebase64("compose.yml")}`) or a base-64 encoded Kubernetes Manifest (`KUBE|${filebase64("kubernetes.yml")}`).
   ///
@@ -54,7 +54,7 @@ class AppServiceSiteConfig {
   final pulumi.Input<String>? managedPipelineMode;
   /// The minimum supported TLS version for the app service. Possible values are `1.0`, `1.1`, and `1.2`. Defaults to `1.2` for new app services.
   final pulumi.Input<String>? minTlsVersion;
-  /// The scaled number of workers (for per site scaling) of this App Service. Requires that `per_site_scaling` is enabled on the `azure.appservice.Plan`. [For more information - please see Microsoft documentation on high-density hosting](https://docs.microsoft.com/azure/app-service/manage-scale-per-app).
+  /// The scaled number of workers (for per site scaling) of this App Service. Requires that `perSiteScaling` is enabled on the `azure.appservice.Plan`. [For more information - please see Microsoft documentation on high-density hosting](https://docs.microsoft.com/azure/app-service/manage-scale-per-app).
   final pulumi.Input<int>? numberOfWorkers;
   /// The version of PHP to use in this App Service. Possible values are `5.5`, `5.6`, `7.0`, `7.1`, `7.2`, `7.3` and `7.4`.
   final pulumi.Input<String>? phpVersion;
@@ -64,23 +64,23 @@ class AppServiceSiteConfig {
   final pulumi.Input<bool>? remoteDebuggingEnabled;
   /// Which version of Visual Studio should the Remote Debugger be compatible with? Currently only `VS2022` is supported.
   final pulumi.Input<String>? remoteDebuggingVersion;
-  /// A list of `scm_ip_restriction` objects representing IP restrictions as defined below.
+  /// A list of `scmIpRestriction` objects representing IP restrictions as defined below.
   ///
-  /// &gt; **NOTE** User has to explicitly set `scm_ip_restriction` to empty slice (`[]`) to remove it.
+  /// &gt; **NOTE** User has to explicitly set `scmIpRestriction` to empty slice (`[]`) to remove it.
   final pulumi.Input<List<AppServiceSiteConfigScmIpRestriction>>? scmIpRestrictions;
   /// The type of Source Control enabled for this App Service. Defaults to `None`. Possible values are: `BitbucketGit`, `BitbucketHg`, `CodePlexGit`, `CodePlexHg`, `Dropbox`, `ExternalGit`, `ExternalHg`, `GitHub`, `LocalGit`, `None`, `OneDrive`, `Tfs`, `VSO`, and `VSTSRM`
   final pulumi.Input<String>? scmType;
   /// IP security restrictions for scm to use main. Defaults to `false`.
   ///
-  /// &gt; **NOTE** Any `scm_ip_restriction` blocks configured are ignored by the service when `scm_use_main_ip_restriction` is set to `true`. Any scm restrictions will become active if this is subsequently set to `false` or removed.
+  /// &gt; **NOTE** Any `scmIpRestriction` blocks configured are ignored by the service when `scmUseMainIpRestriction` is set to `true`. Any scm restrictions will become active if this is subsequently set to `false` or removed.
   final pulumi.Input<bool>? scmUseMainIpRestriction;
   /// Should the App Service run in 32 bit mode, rather than 64 bit mode?
   ///
-  /// &gt; **NOTE:** when using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
+  /// &gt; **NOTE:** when using an App Service Plan in the `Free` or `Shared` Tiers `use32BitWorkerProcess` must be set to `true`.
   final pulumi.Input<bool>? use32BitWorkerProcess;
   /// Should all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied? Defaults to `false`.
   ///
-  /// &gt; **NOTE:** This setting supersedes the previous mechanism of setting the `app_settings` value of `WEBSITE_VNET_ROUTE_ALL`. However, to prevent older configurations breaking Terraform will update this value if it not explicitly set to the value in `app_settings.WEBSITE_VNET_ROUTE_ALL`.
+  /// &gt; **NOTE:** This setting supersedes the previous mechanism of setting the `appSettings` value of `WEBSITE_VNET_ROUTE_ALL`. However, to prevent older configurations breaking Terraform will update this value if it not explicitly set to the value in `app_settings.WEBSITE_VNET_ROUTE_ALL`.
   final pulumi.Input<bool>? vnetRouteAllEnabled;
   /// Should WebSockets be enabled?
   final pulumi.Input<bool>? websocketsEnabled;
@@ -100,19 +100,19 @@ class AppServiceSiteConfig {
   /// [healthCheckPath] The health check path to be pinged by App Service. [For more information - please see App Service health check announcement](https://azure.github.io/AppService/2020/08/24/healthcheck-on-app-service.html).
   /// [http2Enabled] Is HTTP2 Enabled on this App Service? Defaults to `false`.
   /// [ipRestrictions] A list of objects representing ip restrictions as defined below.
-  /// [javaContainer] The Java Container to use. If specified `java_version` and `java_container_version` must also be specified. Possible values are `JAVA`, `JETTY`, and `TOMCAT`.
-  /// [javaContainerVersion] The version of the Java Container to use. If specified `java_version` and `java_container` must also be specified.
-  /// [javaVersion] The version of Java to use. If specified `java_container` and `java_container_version` must also be specified. Possible values are `1.7`, `1.8` and `11` and their specific versions - except for Java 11 (e.g. `1.7.0_80`, `1.8.0_181`, `11`)
+  /// [javaContainer] The Java Container to use. If specified `javaVersion` and `javaContainerVersion` must also be specified. Possible values are `JAVA`, `JETTY`, and `TOMCAT`.
+  /// [javaContainerVersion] The version of the Java Container to use. If specified `javaVersion` and `javaContainer` must also be specified.
+  /// [javaVersion] The version of Java to use. If specified `javaContainer` and `javaContainerVersion` must also be specified. Possible values are `1.7`, `1.8` and `11` and their specific versions - except for Java 11 (e.g. `1.7.0_80`, `1.8.0_181`, `11`)
   /// [linuxFxVersion] Linux App Framework and version for the App Service. Possible options are a Docker container (`DOCKER|&lt;user/image:tag&gt;`), a base-64 encoded Docker Compose file (`COMPOSE|${filebase64("compose.yml")}`) or a base-64 encoded Kubernetes Manifest (`KUBE|${filebase64("kubernetes.yml")}`).
   /// [localMysqlEnabled] Is "MySQL In App" Enabled? This runs a local MySQL instance with your app and shares resources from the App Service plan.
   /// [managedPipelineMode] The Managed Pipeline Mode. Possible values are `Integrated` and `Classic`. Defaults to `Integrated`.
   /// [minTlsVersion] The minimum supported TLS version for the app service. Possible values are `1.0`, `1.1`, and `1.2`. Defaults to `1.2` for new app services.
-  /// [numberOfWorkers] The scaled number of workers (for per site scaling) of this App Service. Requires that `per_site_scaling` is enabled on the `azure.appservice.Plan`. [For more information - please see Microsoft documentation on high-density hosting](https://docs.microsoft.com/azure/app-service/manage-scale-per-app).
+  /// [numberOfWorkers] The scaled number of workers (for per site scaling) of this App Service. Requires that `perSiteScaling` is enabled on the `azure.appservice.Plan`. [For more information - please see Microsoft documentation on high-density hosting](https://docs.microsoft.com/azure/app-service/manage-scale-per-app).
   /// [phpVersion] The version of PHP to use in this App Service. Possible values are `5.5`, `5.6`, `7.0`, `7.1`, `7.2`, `7.3` and `7.4`.
   /// [pythonVersion] The version of Python to use in this App Service. Possible values are `2.7` and `3.4`.
   /// [remoteDebuggingEnabled] Is Remote Debugging Enabled? Defaults to `false`.
   /// [remoteDebuggingVersion] Which version of Visual Studio should the Remote Debugger be compatible with? Currently only `VS2022` is supported.
-  /// [scmIpRestrictions] A list of `scm_ip_restriction` objects representing IP restrictions as defined below.
+  /// [scmIpRestrictions] A list of `scmIpRestriction` objects representing IP restrictions as defined below.
   /// [scmType] The type of Source Control enabled for this App Service. Defaults to `None`. Possible values are: `BitbucketGit`, `BitbucketHg`, `CodePlexGit`, `CodePlexHg`, `Dropbox`, `ExternalGit`, `ExternalHg`, `GitHub`, `LocalGit`, `None`, `OneDrive`, `Tfs`, `VSO`, and `VSTSRM`
   /// [scmUseMainIpRestriction] IP security restrictions for scm to use main. Defaults to `false`.
   /// [use32BitWorkerProcess] Should the App Service run in 32 bit mode, rather than 64 bit mode?
@@ -225,4 +225,3 @@ class AppServiceSiteConfig {
     );
   }
 }
-

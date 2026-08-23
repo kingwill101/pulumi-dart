@@ -110,6 +110,30 @@ import 'linked_service_mysql_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedservicemysql" "example" {
+///   name              = "example"
+///   data_factory_id   = azure_datafactory_factory.example.id
+///   connection_string = "Server=test;Port=3306;Database=test;User=test;SSLMode=1;UseSystemTrustStore=0;Password=test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +146,8 @@ import 'linked_service_mysql_state.dart';
 /// import com.pulumi.azure.datafactory.FactoryArgs;
 /// import com.pulumi.azure.datafactory.LinkedServiceMysql;
 /// import com.pulumi.azure.datafactory.LinkedServiceMysqlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -197,6 +221,10 @@ class LinkedServiceMysql extends pulumi.CustomResource {
   late final pulumi.Output<String> dataFactoryId;
   /// The description for the Data Factory Linked Service MySQL.
   late final pulumi.Output<String?> description;
+  /// The version of the MySQL driver. Possible values are `V1` and `V2`. Defaults to `V1`.
+  ///
+  /// &gt; **Note:** New linked services must set `driverVersion` to `V2`.
+  late final pulumi.Output<String?> driverVersion;
   /// The integration runtime reference to associate with the Data Factory Linked Service MySQL.
   late final pulumi.Output<String?> integrationRuntimeName;
   /// Specifies the name of the Data Factory Linked Service MySQL. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
@@ -223,6 +251,7 @@ class LinkedServiceMysql extends pulumi.CustomResource {
     connectionString = registerOutput<String>('connectionString');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
+    driverVersion = registerOutput<String?>('driverVersion');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
@@ -256,6 +285,7 @@ class LinkedServiceMysql extends pulumi.CustomResource {
     connectionString = registerOutput<String>('connectionString');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
+    driverVersion = registerOutput<String?>('driverVersion');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');

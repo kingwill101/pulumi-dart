@@ -10,7 +10,7 @@ class GetCertificateCertificatePolicyX509CertificateProperty {
   final pulumi.Input<List<String>> keyUsages;
   /// The Certificate's Subject.
   final pulumi.Input<String> subject;
-  /// A `subject_alternative_names` block as defined below.
+  /// A `subjectAlternativeNames` block as defined below.
   final pulumi.Input<List<GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName>> subjectAlternativeNames;
   /// The Certificates Validity Period in Months.
   final pulumi.Input<int> validityInMonths;
@@ -19,7 +19,7 @@ class GetCertificateCertificatePolicyX509CertificateProperty {
   /// [extendedKeyUsages] A list of Extended/Enhanced Key Usages.
   /// [keyUsages] A list of uses associated with this Key.
   /// [subject] The Certificate's Subject.
-  /// [subjectAlternativeNames] A `subject_alternative_names` block as defined below.
+  /// [subjectAlternativeNames] A `subjectAlternativeNames` block as defined below.
   /// [validityInMonths] The Certificates Validity Period in Months.
   const GetCertificateCertificatePolicyX509CertificateProperty({
     required this.extendedKeyUsages,
@@ -49,4 +49,3 @@ class GetCertificateCertificatePolicyX509CertificateProperty {
     );
   }
 }
-

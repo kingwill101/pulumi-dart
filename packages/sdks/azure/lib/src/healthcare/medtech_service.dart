@@ -227,6 +227,53 @@ import 'medtech_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "east us"
+/// }
+/// resource "azure_healthcare_workspace" "example" {
+///   name                = "examplewkspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_healthcare_medtechservice" "example" {
+///   name         = "examplemed"
+///   workspace_id = azure_healthcare_workspace.example.id
+///   location     = "east us"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   eventhub_namespace_name      = "example-eventhub-namespace"
+///   eventhub_name                = "example-eventhub"
+///   eventhub_consumer_group_name = "$Default"
+///   device_mapping_json = jsonencode({
+///     "templateType" = "CollectionContent"
+///     "template" = [{
+///       "templateType" = "JsonPathContent"
+///       "template" = {
+///         "typeName"            = "heartrate"
+///         "typeMatchExpression" = "$..[?(@heartrate)]"
+///         "deviceIdExpression"  = "$.deviceid"
+///         "timestampExpression" = "$.measurementdatetime"
+///         "values" = [{
+///           "required"        = "true"
+///           "valueExpression" = "$.heartrate"
+///           "valueName"       = "hr"
+///         }]
+///       }
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -241,8 +288,8 @@ import 'medtech_service_state.dart';
 /// import com.pulumi.azure.healthcare.MedtechServiceArgs;
 /// import com.pulumi.azure.healthcare.inputs.MedtechServiceIdentityArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

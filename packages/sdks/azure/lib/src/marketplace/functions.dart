@@ -69,10 +69,32 @@ import 'get_agreement_result.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("azurermMarketplaceAgreementId", id)
-/// 		ctx.Export("azurermMarketplaceAgreementAccepted", accepted)
+/// 		ctx.Export("azurermMarketplaceAgreementId", pulumi.Any(id))
+/// 		ctx.Export("azurermMarketplaceAgreementAccepted", pulumi.Any(accepted))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_marketplace_getagreement" "barracuda" {
+///   publisher = "barracudanetworks"
+///   offer     = "waf"
+///   plan      = "hourly"
+/// }
+///
+/// output "azurermMarketplaceAgreementId" {
+///   value = id
+/// }
+/// output "azurermMarketplaceAgreementAccepted" {
+///   value = accepted
 /// }
 /// ```
 /// ```java
@@ -83,8 +105,8 @@ import 'get_agreement_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.marketplace.MarketplaceFunctions;
 /// import com.pulumi.azure.marketplace.inputs.GetAgreementArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

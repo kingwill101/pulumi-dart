@@ -119,6 +119,32 @@ import 'exadata_infrastructure_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_oracle_exadatainfrastructure" "example" {
+///   name                 = "example-exadata-infra"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resourcegroup.example.location
+///   zones                = ["1"]
+///   display_name         = "example-exadata-infra"
+///   storage_count        = 3
+///   compute_count        = 2
+///   shape                = "Exadata.X11M"
+///   database_server_type = "X11M"
+///   storage_server_type  = "X11M-HC"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -129,8 +155,8 @@ import 'exadata_infrastructure_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.oracle.ExadataInfrastructure;
 /// import com.pulumi.azure.oracle.ExadataInfrastructureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -213,7 +239,7 @@ class ExadataInfrastructure extends pulumi.CustomResource {
   late final pulumi.Output<String> displayName;
   /// The Azure Region where the Cloud Exadata Infrastructure should exist. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<String> location;
-  /// One or more `maintenance_window` blocks as defined below. Changing this forces a new Cloud Exadata Infrastructure to be created.
+  /// One or more `maintenanceWindow` blocks as defined below. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> maintenanceWindows;
   /// The name which should be used for this Cloud Exadata Infrastructure. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<String> name;

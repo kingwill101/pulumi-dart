@@ -184,6 +184,35 @@ import 'function_javascript_uda_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getresourcegroup" "example" {
+///   name = "example-resources"
+/// }
+/// data "azure_streamanalytics_getjob" "exampleGetJob" {
+///   name                = "example-job"
+///   resource_group_name = data.azure_core_getresourcegroup.example.name
+/// }
+///
+/// resource "azure_streamanalytics_functionjavascriptuda" "example" {
+///   name                    = "example-javascript-function"
+///   stream_analytics_job_id = data.azure_streamanalytics_getjob.exampleGetJob.id
+///   script                  = "function main() {\n    this.init = function () {\n        this.state = 0;\n    }\n\n    this.accumulate = function (value, timestamp) {\n        this.state += value;\n    }\n\n    this.computeResult = function () {\n        return this.state;\n    }\n}\n"
+///   inputs {
+///     type = "bigint"
+///   }
+///   output = {
+///     type = "bigint"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -198,8 +227,8 @@ import 'function_javascript_uda_state.dart';
 /// import com.pulumi.azure.streamanalytics.FunctionJavascriptUdaArgs;
 /// import com.pulumi.azure.streamanalytics.inputs.FunctionJavascriptUdaInputArgs;
 /// import com.pulumi.azure.streamanalytics.inputs.FunctionJavascriptUdaOutputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

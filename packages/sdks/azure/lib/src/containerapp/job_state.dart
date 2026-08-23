@@ -15,13 +15,13 @@ class JobState {
   final pulumi.Input<String>? containerAppEnvironmentId;
   /// The endpoint for the Container App Job event stream.
   final pulumi.Input<String>? eventStreamEndpoint;
-  /// A `event_trigger_config` block as defined below. Changing this forces a new resource to be created.
+  /// A `eventTriggerConfig` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<JobEventTriggerConfig>? eventTriggerConfig;
   /// A `identity` block as defined below.
   final pulumi.Input<JobIdentity>? identity;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-  /// A `manual_trigger_config` block as defined below. Changing this forces a new resource to be created.
+  /// A `manualTriggerConfig` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<JobManualTriggerConfig>? manualTriggerConfig;
   /// Specifies the name of the Container App Job resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -35,9 +35,9 @@ class JobState {
   final pulumi.Input<int>? replicaTimeoutInSeconds;
   /// The name of the resource group in which to create the Container App Job. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-  /// A `schedule_trigger_config` block as defined below. Changing this forces a new resource to be created.
+  /// A `scheduleTriggerConfig` block as defined below. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Only one of `manual_trigger_config`, `event_trigger_config` or `schedule_trigger_config` can be specified.
+  /// &gt; **Note:** Only one of `manualTriggerConfig`, `eventTriggerConfig` or `scheduleTriggerConfig` can be specified.
   final pulumi.Input<JobScheduleTriggerConfig>? scheduleTriggerConfig;
   /// One or more `secret` blocks as defined below.
   final pulumi.Input<List<JobSecret>>? secrets;
@@ -51,17 +51,17 @@ class JobState {
   /// Creates a new [JobState].
   /// [containerAppEnvironmentId] The ID of the Container App Environment in which to create the Container App Job. Changing this forces a new resource to be created.
   /// [eventStreamEndpoint] The endpoint for the Container App Job event stream.
-  /// [eventTriggerConfig] A `event_trigger_config` block as defined below. Changing this forces a new resource to be created.
+  /// [eventTriggerConfig] A `eventTriggerConfig` block as defined below. Changing this forces a new resource to be created.
   /// [identity] A `identity` block as defined below.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  /// [manualTriggerConfig] A `manual_trigger_config` block as defined below. Changing this forces a new resource to be created.
+  /// [manualTriggerConfig] A `manualTriggerConfig` block as defined below. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Container App Job resource. Changing this forces a new resource to be created.
   /// [outboundIpAddresses] A list of the Public IP Addresses which the Container App uses for outbound network access.
   /// [registries] One or more `registry` blocks as defined below.
   /// [replicaRetryLimit] The maximum number of times a replica is allowed to retry.
   /// [replicaTimeoutInSeconds] The maximum number of seconds a replica is allowed to run.
   /// [resourceGroupName] The name of the resource group in which to create the Container App Job. Changing this forces a new resource to be created.
-  /// [scheduleTriggerConfig] A `schedule_trigger_config` block as defined below. Changing this forces a new resource to be created.
+  /// [scheduleTriggerConfig] A `scheduleTriggerConfig` block as defined below. Changing this forces a new resource to be created.
   /// [secrets] One or more `secret` blocks as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   /// [template] A `template` block as defined below.
@@ -130,4 +130,3 @@ class JobState {
     );
   }
 }
-

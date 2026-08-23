@@ -17,17 +17,17 @@ class VirtualMachineManagerVirtualMachineInstanceState {
   final pulumi.Input<VirtualMachineManagerVirtualMachineInstanceHardware>? hardware;
   /// An `infrastructure` block as defined below.
   final pulumi.Input<VirtualMachineManagerVirtualMachineInstanceInfrastructure>? infrastructure;
-  /// A `network_interface` block as defined below.
+  /// A `networkInterface` block as defined below.
   ///
-  /// &gt; **Note:** This resource will be restarted while updating `network_interface`.
+  /// &gt; **Note:** This resource will be restarted while updating `networkInterface`.
   final pulumi.Input<List<VirtualMachineManagerVirtualMachineInstanceNetworkInterface>>? networkInterfaces;
-  /// An `operating_system` block as defined below. Changing this forces a new resource to be created.
+  /// An `operatingSystem` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<VirtualMachineManagerVirtualMachineInstanceOperatingSystem>? operatingSystem;
   /// The ID of the Hybrid Compute Machine where this System Center Virtual Machine Manager Virtual Machine Instance is stored. Changing this forces a new resource to be created.
   final pulumi.Input<String>? scopedResourceId;
-  /// A `storage_disk` block as defined below.
+  /// A `storageDisk` block as defined below.
   ///
-  /// &gt; **Note:** This resource will be restarted while updating `storage_disk`.
+  /// &gt; **Note:** This resource will be restarted while updating `storageDisk`.
   final pulumi.Input<List<VirtualMachineManagerVirtualMachineInstanceStorageDisk>>? storageDisks;
   /// A list of IDs of System Center Virtual Machine Manager Availability Set.
   final pulumi.Input<List<String>>? systemCenterVirtualMachineManagerAvailabilitySetIds;
@@ -36,10 +36,10 @@ class VirtualMachineManagerVirtualMachineInstanceState {
   /// [customLocationId] The ID of the Custom Location for the System Center Virtual Machine Manager Virtual Machine Instance. Changing this forces a new resource to be created.
   /// [hardware] A `hardware` block as defined below. Changing this forces a new resource to be created.
   /// [infrastructure] An `infrastructure` block as defined below.
-  /// [networkInterfaces] A `network_interface` block as defined below.
-  /// [operatingSystem] An `operating_system` block as defined below. Changing this forces a new resource to be created.
+  /// [networkInterfaces] A `networkInterface` block as defined below.
+  /// [operatingSystem] An `operatingSystem` block as defined below. Changing this forces a new resource to be created.
   /// [scopedResourceId] The ID of the Hybrid Compute Machine where this System Center Virtual Machine Manager Virtual Machine Instance is stored. Changing this forces a new resource to be created.
-  /// [storageDisks] A `storage_disk` block as defined below.
+  /// [storageDisks] A `storageDisk` block as defined below.
   /// [systemCenterVirtualMachineManagerAvailabilitySetIds] A list of IDs of System Center Virtual Machine Manager Availability Set.
   const VirtualMachineManagerVirtualMachineInstanceState({
     this.customLocationId,
@@ -78,4 +78,3 @@ class VirtualMachineManagerVirtualMachineInstanceState {
     );
   }
 }
-

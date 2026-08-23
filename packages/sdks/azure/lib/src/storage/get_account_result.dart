@@ -17,7 +17,7 @@ class GetAccountResult {
   final String accountTier;
   /// Can nested items in the storage account opt into allowing public access?
   final bool allowNestedItemsToBePublic;
-  /// A `azure_files_authentication` block as documented below.
+  /// A `azureFilesAuthentication` block as documented below.
   final List<GetAccountAzureFilesAuthentication> azureFilesAuthentications;
   /// supports the following:
   final List<GetAccountCustomDomain> customDomains;
@@ -200,7 +200,7 @@ class GetAccountResult {
   /// [accountReplicationType] The type of replication used for this storage account.
   /// [accountTier] The Tier of this storage account.
   /// [allowNestedItemsToBePublic] Can nested items in the storage account opt into allowing public access?
-  /// [azureFilesAuthentications] A `azure_files_authentication` block as documented below.
+  /// [azureFilesAuthentications] A `azureFilesAuthentication` block as documented below.
   /// [customDomains] supports the following:
   /// [dnsEndpointType] Which DNS endpoint type is used - either `Standard` or `AzureDnsZone`.
   /// [httpsTrafficOnlyEnabled] Is traffic only allowed via HTTPS? See [here](https://docs.microsoft.com/azure/storage/storage-require-secure-transfer/) for more information.
@@ -580,4 +580,3 @@ class GetAccountResult {
     );
   }
 }
-

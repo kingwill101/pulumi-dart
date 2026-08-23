@@ -163,6 +163,31 @@ import 'query_pack_query_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_loganalytics_querypack" "example" {
+///   name                = "example-laqp"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_operationalinsights_querypackquery" "example" {
+///   name          = "19952bc3-0bf9-49eb-b713-6b80e7a41847"
+///   query_pack_id = azure_loganalytics_querypack.example.id
+///   body          = "let newExceptionsTimeRange = 1d;\nlet timeRangeToCheckBefore = 7d;\nexceptions\n| where timestamp < ago(timeRangeToCheckBefore)\n| summarize count() by problemId\n| join kind= rightanti (\nexceptions\n| where timestamp >= ago(newExceptionsTimeRange)\n| extend stack = tostring(details[0].rawStack)\n| summarize count(), dcount(user_AuthenticatedId), min(timestamp), max(timestamp), any(stack) by problemId  \n) on problemId \n| order by  count_ desc\n"
+///   display_name  = "Exceptions - New in the last 24 hours"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +200,8 @@ import 'query_pack_query_state.dart';
 /// import com.pulumi.azure.loganalytics.QueryPackArgs;
 /// import com.pulumi.azure.operationalinsights.QueryPackQuery;
 /// import com.pulumi.azure.operationalinsights.QueryPackQueryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

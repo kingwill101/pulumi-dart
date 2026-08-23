@@ -152,6 +152,39 @@ import 'subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tfex-servicebus-subscription"
+///   location = "West Europe"
+/// }
+/// resource "azure_servicebus_namespace" "example" {
+///   name                = "tfex-servicebus-namespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+///   tags = {
+///     "source" = "example"
+///   }
+/// }
+/// resource "azure_servicebus_topic" "example" {
+///   name                 = "tfex_servicebus_topic"
+///   namespace_id         = azure_servicebus_namespace.example.id
+///   partitioning_enabled = true
+/// }
+/// resource "azure_servicebus_subscription" "example" {
+///   name               = "tfex_servicebus_subscription"
+///   topic_id           = azure_servicebus_topic.example.id
+///   max_delivery_count = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,8 +199,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.azure.servicebus.TopicArgs;
 /// import com.pulumi.azure.servicebus.Subscription;
 /// import com.pulumi.azure.servicebus.SubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,7 +293,7 @@ class Subscription extends pulumi.CustomResource {
   late final pulumi.Output<String?> autoDeleteOnIdle;
   /// Boolean flag which controls whether the Subscription supports batched operations.
   late final pulumi.Output<bool?> batchedOperationsEnabled;
-  /// A `client_scoped_subscription` block as defined below.
+  /// A `clientScopedSubscription` block as defined below.
   late final pulumi.Output<SubscriptionClientScopedSubscription?> clientScopedSubscription;
   /// whether the subscription is scoped to a client id. Defaults to `false`.
   ///

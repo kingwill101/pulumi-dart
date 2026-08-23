@@ -232,6 +232,56 @@ import 'policy_vmworkload_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-bpvmw"
+///   location = "West Europe"
+/// }
+/// resource "azure_recoveryservices_vault" "example" {
+///   name                = "example-rsv"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+///   soft_delete_enabled = false
+/// }
+/// resource "azure_backup_policyvmworkload" "example" {
+///   name                = "example-bpvmw"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   recovery_vault_name = azure_recoveryservices_vault.example.name
+///   workload_type       = "SQLDataBase"
+///   settings = {
+///     time_zone           = "UTC"
+///     compression_enabled = false
+///   }
+///   protection_policies {
+///     policy_type = "Full"
+///     backup = {
+///       frequency = "Daily"
+///       time      = "15:00"
+///     }
+///     retention_daily = {
+///       count = 8
+///     }
+///   }
+///   protection_policies {
+///     policy_type = "Log"
+///     backup = {
+///       frequency_in_minutes = 15
+///     }
+///     simple_retention = {
+///       count = 8
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -249,8 +299,8 @@ import 'policy_vmworkload_state.dart';
 /// import com.pulumi.azure.backup.inputs.PolicyVMWorkloadProtectionPolicyBackupArgs;
 /// import com.pulumi.azure.backup.inputs.PolicyVMWorkloadProtectionPolicyRetentionDailyArgs;
 /// import com.pulumi.azure.backup.inputs.PolicyVMWorkloadProtectionPolicySimpleRetentionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -361,7 +411,7 @@ import 'policy_vmworkload_state.dart';
 class PolicyVMWorkload extends pulumi.CustomResource {
   /// The name of the VM Workload Backup Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// One or more `protection_policy` blocks as defined below.
+  /// One or more `protectionPolicy` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> protectionPolicies;
   /// The name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultName;

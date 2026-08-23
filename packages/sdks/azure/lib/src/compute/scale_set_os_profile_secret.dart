@@ -6,12 +6,12 @@ import 'scale_set_os_profile_secret_vault_certificate.dart';
 class ScaleSetOsProfileSecret {
   /// Specifies the key vault to use.
   final pulumi.Input<String> sourceVaultId;
-  /// (Required, on Windows machines) One or more `vault_certificates` blocks as defined below.
+  /// (Required, on Windows machines) One or more `vaultCertificates` blocks as defined below.
   final pulumi.Input<List<ScaleSetOsProfileSecretVaultCertificate>>? vaultCertificates;
 
   /// Creates a new [ScaleSetOsProfileSecret].
   /// [sourceVaultId] Specifies the key vault to use.
-  /// [vaultCertificates] (Required, on Windows machines) One or more `vault_certificates` blocks as defined below.
+  /// [vaultCertificates] (Required, on Windows machines) One or more `vaultCertificates` blocks as defined below.
   const ScaleSetOsProfileSecret({
     required this.sourceVaultId,
     this.vaultCertificates,
@@ -31,4 +31,3 @@ class ScaleSetOsProfileSecret {
     );
   }
 }
-

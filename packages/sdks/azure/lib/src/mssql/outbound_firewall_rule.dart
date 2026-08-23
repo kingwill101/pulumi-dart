@@ -122,6 +122,33 @@ import 'outbound_firewall_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                                 = "mysqlserver"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   location                             = azure_core_resourcegroup.example.location
+///   version                              = "12.0"
+///   administrator_login                  = "4dm1n157r470r"
+///   administrator_login_password         = "4-v3ry-53cr37-p455w0rd"
+///   outbound_network_restriction_enabled = true
+/// }
+/// resource "azure_mssql_outboundfirewallrule" "example" {
+///   name      = "sqlexamplefdqn.database.windows.net"
+///   server_id = azure_mssql_server.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,8 +161,8 @@ import 'outbound_firewall_rule_state.dart';
 /// import com.pulumi.azure.mssql.ServerArgs;
 /// import com.pulumi.azure.mssql.OutboundFirewallRule;
 /// import com.pulumi.azure.mssql.OutboundFirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

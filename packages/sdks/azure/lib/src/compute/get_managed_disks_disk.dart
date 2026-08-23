@@ -15,7 +15,7 @@ class GetManagedDisksDisk {
   final pulumi.Input<int> diskMbpsReadWrite;
   /// The size of the Managed Disk in gigabytes.
   final pulumi.Input<int> diskSizeInGb;
-  /// An `encryption_settings` block as defined below.
+  /// An `encryptionSettings` block as defined below.
   final pulumi.Input<List<GetManagedDisksDiskEncryptionSetting>> encryptionSettings;
   final pulumi.Input<String> id;
   /// The ID of the source image used for creating this Managed Disk.
@@ -32,7 +32,7 @@ class GetManagedDisksDisk {
   final pulumi.Input<String> sourceResourceId;
   /// The Source URI for this Managed Disk.
   final pulumi.Input<String> sourceUri;
-  /// The ID of the Storage Account where the `source_uri` is located.
+  /// The ID of the Storage Account where the `sourceUri` is located.
   final pulumi.Input<String> storageAccountId;
   /// The storage account type for the Managed Disk.
   final pulumi.Input<String> storageAccountType;
@@ -48,7 +48,7 @@ class GetManagedDisksDisk {
   /// [diskIopsReadWrite] The number of IOPS allowed for this disk, where one operation can transfer between 4k and 256k bytes.
   /// [diskMbpsReadWrite] The bandwidth allowed for this disk.
   /// [diskSizeInGb] The size of the Managed Disk in gigabytes.
-  /// [encryptionSettings] An `encryption_settings` block as defined below.
+  /// [encryptionSettings] An `encryptionSettings` block as defined below.
   /// [id] Required.
   /// [imageReferenceId] The ID of the source image used for creating this Managed Disk.
   /// [location] The Azure location of the Managed Disk.
@@ -57,7 +57,7 @@ class GetManagedDisksDisk {
   /// [osType] The operating system used for this Managed Disk.
   /// [sourceResourceId] The ID of an existing Managed Disk which this Disk was created from.
   /// [sourceUri] The Source URI for this Managed Disk.
-  /// [storageAccountId] The ID of the Storage Account where the `source_uri` is located.
+  /// [storageAccountId] The ID of the Storage Account where the `sourceUri` is located.
   /// [storageAccountType] The storage account type for the Managed Disk.
   /// [tags] A mapping of tags assigned to the resource.
   /// [zones] A list of Availability Zones where the Managed Disk exists.
@@ -131,4 +131,3 @@ class GetManagedDisksDisk {
     );
   }
 }
-

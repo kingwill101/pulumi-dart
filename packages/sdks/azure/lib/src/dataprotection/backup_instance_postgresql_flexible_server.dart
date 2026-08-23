@@ -275,7 +275,7 @@ import 'backup_instance_postgresql_flexible_server_state.dart';
 /// 			Scope:              example.ID(),
 /// 			RoleDefinitionName: pulumi.String("Reader"),
 /// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -285,7 +285,7 @@ import 'backup_instance_postgresql_flexible_server_state.dart';
 /// 			Scope:              exampleFlexibleServer.ID(),
 /// 			RoleDefinitionName: pulumi.String("PostgreSQL Flexible Server Long Term Retention Backup Role"),
 /// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -326,6 +326,71 @@ import 'backup_instance_postgresql_flexible_server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_postgresql_flexibleserver" "example" {
+///   name                   = "example-postgresqlfs"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resourcegroup.example.location
+///   administrator_login    = "adminTerraform"
+///   administrator_password = "QAZwsx123"
+///   storage_mb             = 32768
+///   version                = "12"
+///   sku_name               = "GP_Standard_D4s_v3"
+///   zone                   = "2"
+/// }
+/// resource "azure_dataprotection_backupvault" "example" {
+///   name                = "example-backupvault"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   datastore_type      = "VaultStore"
+///   redundancy          = "LocallyRedundant"
+///   soft_delete         = "Off"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_authorization_assignment" "example" {
+///   scope                = azure_core_resourcegroup.example.id
+///   role_definition_name = "Reader"
+///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+/// }
+/// resource "azure_authorization_assignment" "example2" {
+///   scope                = azure_postgresql_flexibleserver.example.id
+///   role_definition_name = "PostgreSQL Flexible Server Long Term Retention Backup Role"
+///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+/// }
+/// resource "azure_dataprotection_backuppolicypostgresqlflexibleserver" "example" {
+///   depends_on                      = [azure_authorization_assignment.example, azure_authorization_assignment.example2]
+///   name                            = "example-dp"
+///   vault_id                        = azure_dataprotection_backupvault.example.id
+///   backup_repeating_time_intervals = ["R/2021-05-23T02:30:00+00:00/P1W"]
+///   default_retention_rule = {
+///     life_cycles = [{
+///       "duration"      = "P4M"
+///       "dataStoreType" = "VaultStore"
+///     }]
+///   }
+/// }
+/// resource "azure_dataprotection_backupinstancepostgresqlflexibleserver" "example" {
+///   name             = "example-dbi"
+///   location         = azure_core_resourcegroup.example.location
+///   vault_id         = azure_dataprotection_backupvault.example.id
+///   server_id        = azure_postgresql_flexibleserver.example.id
+///   backup_policy_id = azure_dataprotection_backuppolicypostgresqlflexibleserver.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -344,11 +409,12 @@ import 'backup_instance_postgresql_flexible_server_state.dart';
 /// import com.pulumi.azure.dataprotection.BackupPolicyPostgresqlFlexibleServer;
 /// import com.pulumi.azure.dataprotection.BackupPolicyPostgresqlFlexibleServerArgs;
 /// import com.pulumi.azure.dataprotection.inputs.BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleArgs;
+/// import com.pulumi.azure.dataprotection.inputs.BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycleArgs;
 /// import com.pulumi.azure.dataprotection.BackupInstancePostgresqlFlexibleServer;
 /// import com.pulumi.azure.dataprotection.BackupInstancePostgresqlFlexibleServerArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -506,7 +572,7 @@ import 'backup_instance_postgresql_flexible_server_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.DataProtection` - 2024-04-01
+/// * `Microsoft.DataProtection` - 2025-07-01
 ///
 /// ## Import
 ///

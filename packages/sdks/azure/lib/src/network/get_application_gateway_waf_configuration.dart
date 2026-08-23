@@ -5,7 +5,7 @@ import 'get_application_gateway_waf_configuration_disabled_rule_group.dart';
 import 'get_application_gateway_waf_configuration_exclusion.dart';
 
 class GetApplicationGatewayWafConfiguration {
-  /// One or more `disabled_rule_group` blocks as defined below.
+  /// One or more `disabledRuleGroup` blocks as defined below.
   final pulumi.Input<List<GetApplicationGatewayWafConfigurationDisabledRuleGroup>> disabledRuleGroups;
   /// Is the Web Application Firewall enabled?
   final pulumi.Input<bool> enabled;
@@ -25,7 +25,7 @@ class GetApplicationGatewayWafConfiguration {
   final pulumi.Input<String> ruleSetVersion;
 
   /// Creates a new [GetApplicationGatewayWafConfiguration].
-  /// [disabledRuleGroups] One or more `disabled_rule_group` blocks as defined below.
+  /// [disabledRuleGroups] One or more `disabledRuleGroup` blocks as defined below.
   /// [enabled] Is the Web Application Firewall enabled?
   /// [exclusions] One or more `exclusion` blocks as defined below.
   /// [fileUploadLimitMb] The File Upload Limit in MB.
@@ -74,4 +74,3 @@ class GetApplicationGatewayWafConfiguration {
     );
   }
 }
-

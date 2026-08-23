@@ -7,7 +7,7 @@ import 'spring_cloud_build_deployment_state.dart';
 ///
 /// &gt; **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudBuildDeployment` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudBuildDeployment` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -181,6 +181,45 @@ import 'spring_cloud_build_deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "E0"
+/// }
+/// resource "azure_appplatform_springcloudapp" "example" {
+///   name                = "example"
+///   resource_group_name = azure_appplatform_springcloudservice.example.resource_group_name
+///   service_name        = azure_appplatform_springcloudservice.example.name
+/// }
+/// resource "azure_appplatform_springcloudbuilddeployment" "example" {
+///   name                = "example"
+///   spring_cloud_app_id = azure_appplatform_springcloudapp.example.id
+///   build_result_id     = "<default>"
+///   instance_count      = 2
+///   environment_variables = {
+///     "Foo" = "Bar"
+///     "Env" = "Staging"
+///   }
+///   quota = {
+///     cpu    = "2"
+///     memory = "4Gi"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -196,8 +235,8 @@ import 'spring_cloud_build_deployment_state.dart';
 /// import com.pulumi.azure.appplatform.SpringCloudBuildDeployment;
 /// import com.pulumi.azure.appplatform.SpringCloudBuildDeploymentArgs;
 /// import com.pulumi.azure.appplatform.inputs.SpringCloudBuildDeploymentQuotaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

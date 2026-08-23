@@ -205,6 +205,48 @@ import 'outbound_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "LoadBalancerRG"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "PublicIPForLB"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+/// }
+/// resource "azure_lb_loadbalancer" "example" {
+///   name                = "TestLoadBalancer"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   frontend_ip_configurations {
+///     name                 = "PublicIPAddress"
+///     public_ip_address_id = azure_network_publicip.example.id
+///   }
+/// }
+/// resource "azure_lb_backendaddresspool" "example" {
+///   name            = "example"
+///   loadbalancer_id = azure_lb_loadbalancer.example.id
+/// }
+/// resource "azure_lb_outboundrule" "example" {
+///   name                    = "OutboundRule"
+///   loadbalancer_id         = azure_lb_loadbalancer.example.id
+///   protocol                = "Tcp"
+///   backend_address_pool_id = azure_lb_backendaddresspool.example.id
+///   frontend_ip_configurations {
+///     name = "PublicIPAddress"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -223,8 +265,8 @@ import 'outbound_rule_state.dart';
 /// import com.pulumi.azure.lb.OutboundRule;
 /// import com.pulumi.azure.lb.OutboundRuleArgs;
 /// import com.pulumi.azure.lb.inputs.OutboundRuleFrontendIpConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -340,7 +382,7 @@ class OutboundRule extends pulumi.CustomResource {
   /// The ID of the Backend Address Pool. Outbound traffic is randomly load balanced across IPs in the backend IPs.
   late final pulumi.Output<String> backendAddressPoolId;
   late final pulumi.Output<bool> enableTcpReset;
-  /// One or more `frontend_ip_configuration` blocks as defined below.
+  /// One or more `frontendIpConfiguration` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> frontendIpConfigurations;
   /// The timeout for the TCP idle connection Defaults to `4`.
   late final pulumi.Output<int?> idleTimeoutInMinutes;

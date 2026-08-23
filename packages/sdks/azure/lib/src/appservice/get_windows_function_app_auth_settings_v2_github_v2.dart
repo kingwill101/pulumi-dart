@@ -36,4 +36,3 @@ class GetWindowsFunctionAppAuthSettingsV2GithubV2 {
     );
   }
 }
-

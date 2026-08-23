@@ -7,11 +7,11 @@ import 'elastic_san_sku.dart';
 class ElasticSanState {
   /// Specifies the base size of the Elastic SAN resource in TiB. Possible values are between `1` and `100`.
   ///
-  /// &gt; **Note:** When updating `base_size_in_tib`, the new value should be greater than the existing one.
+  /// &gt; **Note:** When updating `baseSizeInTib`, the new value should be greater than the existing one.
   final pulumi.Input<int>? baseSizeInTib;
   /// Specifies the extended size of the Elastic SAN resource in TiB. Possible values are between `1` and `100`.
   ///
-  /// &gt; **Note:** `extended_size_in_tib` cannot be removed and when updating, the new value should be greater than the existing one.
+  /// &gt; **Note:** `extendedSizeInTib` cannot be removed and when updating, the new value should be greater than the existing one.
   final pulumi.Input<int>? extendedSizeInTib;
   /// The Azure Region where the Elastic SAN resource should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -104,4 +104,3 @@ class ElasticSanState {
     );
   }
 }
-

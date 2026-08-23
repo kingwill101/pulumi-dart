@@ -79,6 +79,24 @@ import 'get_workspace_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_monitoring_getactiongroup" "example" {
+///   resource_group_name = "example-rg"
+///   name                = "tfex-actiongroup"
+/// }
+///
+/// output "actionGroupId" {
+///   value = data.azure_monitoring_getactiongroup.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +105,8 @@ import 'get_workspace_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.monitoring.MonitoringFunctions;
 /// import com.pulumi.azure.monitoring.inputs.GetActionGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,6 +226,24 @@ Future<GetActionGroupResult> getActionGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_monitoring_getdatacollectionendpoint" "example" {
+///   name                = "example-mdce"
+///   resource_group_name = exampleAzurermResourceGroup.name
+/// }
+///
+/// output "endpointId" {
+///   value = data.azure_monitoring_getdatacollectionendpoint.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -216,8 +252,8 @@ Future<GetActionGroupResult> getActionGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.monitoring.MonitoringFunctions;
 /// import com.pulumi.azure.monitoring.inputs.GetDataCollectionEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -337,6 +373,24 @@ Future<GetDataCollectionEndpointResult> getDataCollectionEndpoint(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_monitoring_getdatacollectionrule" "example" {
+///   name                = "example-rule"
+///   resource_group_name = exampleAzurermResourceGroup.name
+/// }
+///
+/// output "ruleId" {
+///   value = data.azure_monitoring_getdatacollectionrule.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -345,8 +399,8 @@ Future<GetDataCollectionEndpointResult> getDataCollectionEndpoint(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.monitoring.MonitoringFunctions;
 /// import com.pulumi.azure.monitoring.inputs.GetDataCollectionRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -475,6 +529,23 @@ Future<GetDataCollectionRuleResult> getDataCollectionRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getkeyvault" "example" {
+///   name                = exampleAzurermKeyVault.name
+///   resource_group_name = exampleAzurermKeyVault.resourceGroupName
+/// }
+/// data "azure_monitoring_getdiagnosticcategories" "exampleGetDiagnosticCategories" {
+///   resource_id = data.azure_keyvault_getkeyvault.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -485,8 +556,8 @@ Future<GetDataCollectionRuleResult> getDataCollectionRule(
 /// import com.pulumi.azure.keyvault.inputs.GetKeyVaultArgs;
 /// import com.pulumi.azure.monitoring.MonitoringFunctions;
 /// import com.pulumi.azure.monitoring.inputs.GetDiagnosticCategoriesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -612,6 +683,24 @@ Future<GetDiagnosticCategoriesResult> getDiagnosticCategories(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_monitoring_getscheduledqueryrulesalert" "example" {
+///   resource_group_name = "example-rg"
+///   name                = "tfex-queryrule"
+/// }
+///
+/// output "queryRuleId" {
+///   value = data.azure_monitoring_getscheduledqueryrulesalert.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -620,8 +709,8 @@ Future<GetDiagnosticCategoriesResult> getDiagnosticCategories(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.monitoring.MonitoringFunctions;
 /// import com.pulumi.azure.monitoring.inputs.GetScheduledQueryRulesAlertArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -741,6 +830,24 @@ Future<GetScheduledQueryRulesAlertResult> getScheduledQueryRulesAlert(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_monitoring_getscheduledqueryruleslog" "example" {
+///   resource_group_name = "example-rg"
+///   name                = "tfex-queryrule"
+/// }
+///
+/// output "queryRuleId" {
+///   value = data.azure_monitoring_getscheduledqueryruleslog.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -749,8 +856,8 @@ Future<GetScheduledQueryRulesAlertResult> getScheduledQueryRulesAlert(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.monitoring.MonitoringFunctions;
 /// import com.pulumi.azure.monitoring.inputs.GetScheduledQueryRulesLogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -870,6 +977,24 @@ Future<GetScheduledQueryRulesLogResult> getScheduledQueryRulesLog(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_monitoring_getworkspace" "example" {
+///   name                = "example-workspace"
+///   resource_group_name = exampleAzurermResourceGroup.name
+/// }
+///
+/// output "queryEndpoint" {
+///   value = data.azure_monitoring_getworkspace.example.query_endpoint
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -878,8 +1003,8 @@ Future<GetScheduledQueryRulesLogResult> getScheduledQueryRulesLog(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.monitoring.MonitoringFunctions;
 /// import com.pulumi.azure.monitoring.inputs.GetWorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

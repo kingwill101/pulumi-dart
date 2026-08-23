@@ -86,6 +86,25 @@ import 'resource_guard_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_dataprotection_resourceguard" "example" {
+///   name                = "example-resourceguard"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +115,8 @@ import 'resource_guard_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.dataprotection.ResourceGuard;
 /// import com.pulumi.azure.dataprotection.ResourceGuardArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -145,7 +164,7 @@ import 'resource_guard_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.DataProtection` - 2024-04-01
+/// * `Microsoft.DataProtection` - 2025-07-01
 ///
 /// ## Import
 ///

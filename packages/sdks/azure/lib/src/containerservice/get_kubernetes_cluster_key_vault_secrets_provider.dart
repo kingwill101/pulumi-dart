@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_kubernetes_cluster_key_vault_secrets_provider_secret_identity.dart';
 
 class GetKubernetesClusterKeyVaultSecretsProvider {
-  /// A `secret_identity` block as documented below.
+  /// A `secretIdentity` block as documented below.
   final pulumi.Input<List<GetKubernetesClusterKeyVaultSecretsProviderSecretIdentity>> secretIdentities;
   /// Is secret rotation enabled?
   final pulumi.Input<bool> secretRotationEnabled;
@@ -12,7 +12,7 @@ class GetKubernetesClusterKeyVaultSecretsProvider {
   final pulumi.Input<String> secretRotationInterval;
 
   /// Creates a new [GetKubernetesClusterKeyVaultSecretsProvider].
-  /// [secretIdentities] A `secret_identity` block as documented below.
+  /// [secretIdentities] A `secretIdentity` block as documented below.
   /// [secretRotationEnabled] Is secret rotation enabled?
   /// [secretRotationInterval] The interval to poll for secret rotation.
   const GetKubernetesClusterKeyVaultSecretsProvider({
@@ -37,4 +37,3 @@ class GetKubernetesClusterKeyVaultSecretsProvider {
     );
   }
 }
-

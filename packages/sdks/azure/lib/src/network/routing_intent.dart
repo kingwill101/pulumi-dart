@@ -218,6 +218,52 @@ import 'routing_intent_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualwan" "example" {
+///   name                = "example-vwan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_virtualhub" "example" {
+///   name                = "example-vhub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   address_prefix      = "10.0.1.0/24"
+/// }
+/// resource "azure_network_firewall" "example" {
+///   name                = "example-fw"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "AZFW_Hub"
+///   sku_tier            = "Standard"
+///   virtual_hub = {
+///     virtual_hub_id  = azure_network_virtualhub.example.id
+///     public_ip_count = 1
+///   }
+/// }
+/// resource "azure_network_routingintent" "example" {
+///   name           = "example-routingintent"
+///   virtual_hub_id = azure_network_virtualhub.example.id
+///   routing_policies {
+///     name         = "InternetTrafficPolicy"
+///     destinations = ["Internet"]
+///     next_hop     = azure_network_firewall.example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -236,8 +282,8 @@ import 'routing_intent_state.dart';
 /// import com.pulumi.azure.network.RoutingIntent;
 /// import com.pulumi.azure.network.RoutingIntentArgs;
 /// import com.pulumi.azure.network.inputs.RoutingIntentRoutingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -359,7 +405,7 @@ import 'routing_intent_state.dart';
 class RoutingIntent extends pulumi.CustomResource {
   /// The name which should be used for this Virtual Hub Routing Intent. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// One or more `routing_policy` blocks as defined below.
+  /// One or more `routingPolicy` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> routingPolicies;
   /// The resource ID of the Virtual Hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualHubId;

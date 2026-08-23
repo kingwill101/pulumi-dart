@@ -167,6 +167,42 @@ import 'protection_container_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "primary" {
+///   name     = "tfex-network-mapping-primary"
+///   location = "West US"
+/// }
+/// resource "azure_core_resourcegroup" "secondary" {
+///   name     = "tfex-network-mapping-secondary"
+///   location = "East US"
+/// }
+/// resource "azure_recoveryservices_vault" "vault" {
+///   name                = "example-recovery-vault"
+///   location            = azure_core_resourcegroup.secondary.location
+///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_siterecovery_fabric" "fabric" {
+///   name                = "primary-fabric"
+///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   recovery_vault_name = azure_recoveryservices_vault.vault.name
+///   location            = azure_core_resourcegroup.primary.location
+/// }
+/// resource "azure_siterecovery_protectioncontainer" "protection-container" {
+///   name                 = "protection-container"
+///   resource_group_name  = azure_core_resourcegroup.secondary.name
+///   recovery_vault_name  = azure_recoveryservices_vault.vault.name
+///   recovery_fabric_name = azure_siterecovery_fabric.fabric.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +217,8 @@ import 'protection_container_state.dart';
 /// import com.pulumi.azure.siterecovery.FabricArgs;
 /// import com.pulumi.azure.siterecovery.ProtectionContainer;
 /// import com.pulumi.azure.siterecovery.ProtectionContainerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

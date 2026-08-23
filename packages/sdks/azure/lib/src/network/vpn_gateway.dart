@@ -180,6 +180,44 @@ import 'vpn_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-network"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+/// }
+/// resource "azure_network_virtualwan" "example" {
+///   name                = "example-vwan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_virtualhub" "example" {
+///   name                = "example-hub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   address_prefix      = "10.0.1.0/24"
+/// }
+/// resource "azure_network_vpngateway" "example" {
+///   name                = "example-vpng"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   virtual_hub_id      = azure_network_virtualhub.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -196,8 +234,8 @@ import 'vpn_gateway_state.dart';
 /// import com.pulumi.azure.network.VirtualHubArgs;
 /// import com.pulumi.azure.network.VpnGateway;
 /// import com.pulumi.azure.network.VpnGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -305,9 +343,9 @@ import 'vpn_gateway_state.dart';
 class VpnGateway extends pulumi.CustomResource {
   /// Is BGP route translation for NAT on this VPN Gateway enabled? Defaults to `false`.
   late final pulumi.Output<bool?> bgpRouteTranslationForNatEnabled;
-  /// A `bgp_settings` block as defined below.
+  /// A `bgpSettings` block as defined below.
   late final pulumi.Output<VpnGatewayBgpSettings> bgpSettings;
-  /// An `ip_configuration` block as defined below.
+  /// An `ipConfiguration` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> ipConfigurations;
   /// The Azure location where this VPN Gateway should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;

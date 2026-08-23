@@ -5,20 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountIdentity {
   /// Specifies a list of User Assigned Managed Identity IDs to be assigned to this Purview Account.
   ///
-  /// &gt; **Note:** This is required when `type` is set to `UserAssigned`.
+  /// &gt; **Note:** This is required when `type` is set to `SystemAssigned, UserAssigned`.
   final pulumi.Input<List<String>>? identityIds;
   /// The Principal ID associated with this Managed Service Identity.
   final pulumi.Input<String>? principalId;
   /// The Tenant ID associated with this Managed Service Identity.
   final pulumi.Input<String>? tenantId;
-  /// Specifies the type of Managed Service Identity that should be configured on this Purview Account. Possible values are `UserAssigned` and `SystemAssigned`.
+  /// Specifies the type of Managed Service Identity that should be configured on this Purview Account. Possible values are `SystemAssigned` and `SystemAssigned, UserAssigned`.
   final pulumi.Input<String> type;
 
   /// Creates a new [AccountIdentity].
   /// [identityIds] Specifies a list of User Assigned Managed Identity IDs to be assigned to this Purview Account.
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
-  /// [type] Specifies the type of Managed Service Identity that should be configured on this Purview Account. Possible values are `UserAssigned` and `SystemAssigned`.
+  /// [type] Specifies the type of Managed Service Identity that should be configured on this Purview Account. Possible values are `SystemAssigned` and `SystemAssigned, UserAssigned`.
   const AccountIdentity({
     this.identityIds,
     this.principalId,
@@ -44,4 +44,3 @@ class AccountIdentity {
     );
   }
 }
-

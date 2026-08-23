@@ -146,6 +146,38 @@ import 'network_security_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networksecuritygroup" "example" {
+///   name                = "acceptanceTestSecurityGroup1"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_networksecurityrule" "example" {
+///   name                        = "test123"
+///   priority                    = 100
+///   direction                   = "Outbound"
+///   access                      = "Allow"
+///   protocol                    = "Tcp"
+///   source_port_range           = "*"
+///   destination_port_range      = "*"
+///   source_address_prefix       = "*"
+///   destination_address_prefix  = "*"
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   network_security_group_name = azure_network_networksecuritygroup.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -158,8 +190,8 @@ import 'network_security_rule_state.dart';
 /// import com.pulumi.azure.network.NetworkSecurityGroupArgs;
 /// import com.pulumi.azure.network.NetworkSecurityRule;
 /// import com.pulumi.azure.network.NetworkSecurityRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -256,11 +288,11 @@ class NetworkSecurityRule extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> destinationAddressPrefixes;
   /// A List of destination Application Security Group IDs
   ///
-  /// &gt; **Note:** One of `destination_address_prefix`, `destination_address_prefixes` or `destination_application_security_group_ids` must be specified.
+  /// &gt; **Note:** One of `destinationAddressPrefix`, `destinationAddressPrefixes` or `destinationApplicationSecurityGroupIds` must be specified.
   late final pulumi.Output<String?> destinationApplicationSecurityGroupIds;
-  /// Destination Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `destination_port_ranges` is not specified.
+  /// Destination Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `destinationPortRanges` is not specified.
   late final pulumi.Output<String?> destinationPortRange;
-  /// List of destination ports or port ranges. This is required if `destination_port_range` is not specified.
+  /// List of destination ports or port ranges. This is required if `destinationPortRange` is not specified.
   late final pulumi.Output<List<String>?> destinationPortRanges;
   /// The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are `Inbound` and `Outbound`.
   late final pulumi.Output<String> direction;
@@ -280,11 +312,11 @@ class NetworkSecurityRule extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> sourceAddressPrefixes;
   /// A List of source Application Security Group IDs
   ///
-  /// &gt; **Note:** One of `source_address_prefix`, `source_address_prefixes` or `source_application_security_group_ids` must be specified.
+  /// &gt; **Note:** One of `sourceAddressPrefix`, `sourceAddressPrefixes` or `sourceApplicationSecurityGroupIds` must be specified.
   late final pulumi.Output<String?> sourceApplicationSecurityGroupIds;
-  /// Source Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `source_port_ranges` is not specified.
+  /// Source Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `sourcePortRanges` is not specified.
   late final pulumi.Output<String?> sourcePortRange;
-  /// List of source ports or port ranges. This is required if `source_port_range` is not specified.
+  /// List of source ports or port ranges. This is required if `sourcePortRange` is not specified.
   late final pulumi.Output<List<String>?> sourcePortRanges;
 
   /// Creates a new [NetworkSecurityRule].

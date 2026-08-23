@@ -206,6 +206,51 @@ import 'function_app_active_slot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "windowsfunctionappsa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   name                = "example-app-service-plan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   os_type             = "Windows"
+///   sku_name            = "Y1"
+/// }
+/// resource "azure_appservice_windowsfunctionapp" "example" {
+///   name                 = "example-windows-function-app"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resourcegroup.example.location
+///   storage_account_name = azure_storage_account.example.name
+///   service_plan_id      = azure_appservice_serviceplan.example.id
+///   site_config          = {}
+/// }
+/// resource "azure_appservice_windowsfunctionappslot" "example" {
+///   name                 = "example-windows-function-app-slot"
+///   function_app_id      = azure_appservice_windowsfunctionapp.example.id
+///   storage_account_name = azure_storage_account.example.name
+///   site_config          = {}
+/// }
+/// resource "azure_appservice_functionappactiveslot" "example" {
+///   slot_id = azure_appservice_windowsfunctionappslot.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -226,8 +271,8 @@ import 'function_app_active_slot_state.dart';
 /// import com.pulumi.azure.appservice.inputs.WindowsFunctionAppSlotSiteConfigArgs;
 /// import com.pulumi.azure.appservice.FunctionAppActiveSlot;
 /// import com.pulumi.azure.appservice.FunctionAppActiveSlotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -536,6 +581,51 @@ import 'function_app_active_slot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "linuxfunctionappsa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_appservice_serviceplan" "example" {
+///   name                = "example-app-service-plan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   os_type             = "Linux"
+///   sku_name            = "Y1"
+/// }
+/// resource "azure_appservice_linuxfunctionapp" "example" {
+///   name                 = "example-linux-function-app"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resourcegroup.example.location
+///   service_plan_id      = azure_appservice_serviceplan.example.id
+///   storage_account_name = azure_storage_account.example.name
+///   site_config          = {}
+/// }
+/// resource "azure_appservice_linuxfunctionappslot" "example" {
+///   name                 = "example-linux-function-app-slot"
+///   function_app_id      = azure_appservice_linuxfunctionapp.example.name
+///   storage_account_name = azure_storage_account.example.name
+///   site_config          = {}
+/// }
+/// resource "azure_appservice_functionappactiveslot" "example" {
+///   slot_id = azure_appservice_linuxfunctionappslot.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -556,8 +646,8 @@ import 'function_app_active_slot_state.dart';
 /// import com.pulumi.azure.appservice.inputs.LinuxFunctionAppSlotSiteConfigArgs;
 /// import com.pulumi.azure.appservice.FunctionAppActiveSlot;
 /// import com.pulumi.azure.appservice.FunctionAppActiveSlotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

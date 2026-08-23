@@ -94,6 +94,27 @@ import 'certificate_order_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_certificateorder" "example" {
+///   name                = "example-cert-order"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = "global"
+///   distinguished_name  = "CN=example.com"
+///   product_type        = "Standard"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +125,8 @@ import 'certificate_order_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.appservice.CertificateOrder;
 /// import com.pulumi.azure.appservice.CertificateOrderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -152,6 +173,13 @@ import 'certificate_order_state.dart';
 /// ```
 ///
 ///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.CertificateRegistration` - 2023-12-01
+///
 /// ## Import
 ///
 /// App Service Certificate Orders can be imported using the `resource id`, e.g.
@@ -170,7 +198,7 @@ class CertificateOrder extends pulumi.CustomResource {
   late final pulumi.Output<String> csr;
   /// The Distinguished Name for the App Service Certificate Order.
   ///
-  /// &gt; **Note:** Either `csr` or `distinguished_name` must be set - but not both.
+  /// &gt; **Note:** Either `csr` or `distinguishedName` must be set - but not both.
   late final pulumi.Output<String> distinguishedName;
   /// Domain verification token.
   late final pulumi.Output<String> domainVerificationToken;

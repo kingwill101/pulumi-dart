@@ -24,4 +24,3 @@ class GetLinuxFunctionAppAuthSettingsV2AzureStaticWebAppV2 {
     );
   }
 }
-

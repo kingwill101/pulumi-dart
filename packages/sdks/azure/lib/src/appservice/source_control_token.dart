@@ -63,6 +63,20 @@ import 'source_control_token_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_appservice_sourcecontroltoken" "example" {
+///   type  = "GitHub"
+///   token = "ghp_sometokenvaluesecretsauce"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'source_control_token_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.SourceControlToken;
 /// import com.pulumi.azure.appservice.SourceControlTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

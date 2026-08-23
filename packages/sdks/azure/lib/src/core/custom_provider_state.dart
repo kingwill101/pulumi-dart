@@ -7,7 +7,7 @@ import 'custom_provider_validation.dart';
 
 /// Input properties used for looking up and filtering CustomProvider resources.
 class CustomProviderState {
-  /// Any number of `action` block as defined below. One of `resource_type` or `action` must be specified.
+  /// Any number of `action` block as defined below. One of `resourceType` or `action` must be specified.
   final pulumi.Input<List<CustomProviderAction>>? actions;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -15,7 +15,7 @@ class CustomProviderState {
   final pulumi.Input<String>? name;
   /// The name of the resource group in which to create the Custom Provider. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-  /// Any number of `resource_type` block as defined below. One of `resource_type` or `action` must be specified.
+  /// Any number of `resourceType` block as defined below. One of `resourceType` or `action` must be specified.
   final pulumi.Input<List<CustomProviderResourceType>>? resourceTypes;
   /// A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
   final pulumi.Input<Map<String, String>>? tags;
@@ -23,11 +23,11 @@ class CustomProviderState {
   final pulumi.Input<List<CustomProviderValidation>>? validations;
 
   /// Creates a new [CustomProviderState].
-  /// [actions] Any number of `action` block as defined below. One of `resource_type` or `action` must be specified.
+  /// [actions] Any number of `action` block as defined below. One of `resourceType` or `action` must be specified.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Custom Provider. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the Custom Provider. Changing this forces a new resource to be created.
-  /// [resourceTypes] Any number of `resource_type` block as defined below. One of `resource_type` or `action` must be specified.
+  /// [resourceTypes] Any number of `resourceType` block as defined below. One of `resourceType` or `action` must be specified.
   /// [tags] A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
   /// [validations] Any number of `validation` block as defined below.
   const CustomProviderState({
@@ -64,4 +64,3 @@ class CustomProviderState {
     );
   }
 }
-

@@ -201,6 +201,50 @@ import 'sql_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   account_kind             = "BlobStorage"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// resource "azure_synapse_workspace" "example" {
+///   name                                 = "example"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   location                             = azure_core_resourcegroup.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   sql_administrator_login              = "sqladminuser"
+///   sql_administrator_login_password     = "H@Sh1CoR3!"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_synapse_sqlpool" "example" {
+///   name                 = "examplesqlpool"
+///   synapse_workspace_id = azure_synapse_workspace.example.id
+///   sku_name             = "DW100c"
+///   create_mode          = "Default"
+///   storage_account_type = "GRS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -218,8 +262,8 @@ import 'sql_pool_state.dart';
 /// import com.pulumi.azure.synapse.inputs.WorkspaceIdentityArgs;
 /// import com.pulumi.azure.synapse.SqlPool;
 /// import com.pulumi.azure.synapse.SqlPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -328,7 +372,7 @@ import 'sql_pool_state.dart';
 /// $ pulumi import azure:synapse/sqlPool:SqlPool example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Synapse/workspaces/workspace1/sqlPools/sqlPool1
 /// ```
 class SqlPool extends pulumi.CustomResource {
-  /// The name of the collation to use with this pool, only applicable when `create_mode` is set to `Default`. Azure default is `SQL_LATIN1_GENERAL_CP1_CI_AS`. Changing this forces a new Synapse SQL Pool to be created.
+  /// The name of the collation to use with this pool, only applicable when `createMode` is set to `Default`. Azure default is `SQL_LATIN1_GENERAL_CP1_CI_AS`. Changing this forces a new Synapse SQL Pool to be created.
   late final pulumi.Output<String> collation;
   /// Specifies how to create the SQL Pool. Valid values are: `Default`, `Recovery` or `PointInTimeRestore`. Must be `Default` to create a new database. Defaults to `Default`. Changing this forces a new Synapse SQL Pool to be created.
   late final pulumi.Output<String?> createMode;
@@ -338,9 +382,9 @@ class SqlPool extends pulumi.CustomResource {
   late final pulumi.Output<bool?> geoBackupPolicyEnabled;
   /// The name which should be used for this Synapse SQL Pool. Changing this forces a new Synapse SQL Pool to be created.
   late final pulumi.Output<String> name;
-  /// The ID of the Synapse SQL Pool or SQL Database which is to back up, only applicable when `create_mode` is set to `Recovery`. Changing this forces a new Synapse SQL Pool to be created.
+  /// The ID of the Synapse SQL Pool or SQL Database which is to back up, only applicable when `createMode` is set to `Recovery`. Changing this forces a new Synapse SQL Pool to be created.
   late final pulumi.Output<String?> recoveryDatabaseId;
-  /// A `restore` block as defined below. Only applicable when `create_mode` is set to `PointInTimeRestore`. Changing this forces a new Synapse SQL Pool to be created.
+  /// A `restore` block as defined below. Only applicable when `createMode` is set to `PointInTimeRestore`. Changing this forces a new Synapse SQL Pool to be created.
   late final pulumi.Output<SqlPoolRestore?> restore;
   /// Specifies the SKU Name for this Synapse SQL Pool. Possible values are `DW100c`, `DW200c`, `DW300c`, `DW400c`, `DW500c`, `DW1000c`, `DW1500c`, `DW2000c`, `DW2500c`, `DW3000c`, `DW5000c`, `DW6000c`, `DW7500c`, `DW10000c`, `DW15000c` or `DW30000c`.
   late final pulumi.Output<String> skuName;

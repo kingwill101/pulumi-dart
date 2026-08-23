@@ -95,6 +95,27 @@ import 'analytics_workspace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+///   retention_in_days   = 30
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +126,8 @@ import 'analytics_workspace_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.operationalinsights.AnalyticsWorkspace;
 /// import com.pulumi.azure.operationalinsights.AnalyticsWorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -158,7 +179,7 @@ import 'analytics_workspace_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.OperationalInsights` - 2022-10-01, 2020-08-01
+/// * `Microsoft.OperationalInsights` - 2023-09-01, 2020-08-01
 ///
 /// ## Import
 ///
@@ -193,9 +214,9 @@ class AnalyticsWorkspace extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The Primary shared key for the Log Analytics Workspace.
   late final pulumi.Output<String> primarySharedKey;
-  /// The capacity reservation level in GB for this workspace. Possible values are `100`, `200`, `300`, `400`, `500`, `1000`, `2000` and `5000`.
+  /// The capacity reservation level in GB for this workspace. Possible values are `100`, `200`, `300`, `400`, `500`, `1000`, `2000`, `5000`, `10000`, `25000`, and `50000`.
   ///
-  /// &gt; **Note:** `reservation_capacity_in_gb_per_day` can only be used when the `sku` is set to `CapacityReservation`.
+  /// &gt; **Note:** `reservationCapacityInGbPerDay` can only be used when the `sku` is set to `CapacityReservation`.
   late final pulumi.Output<int?> reservationCapacityInGbPerDay;
   /// The name of the resource group in which the Log Analytics workspace is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
@@ -207,7 +228,7 @@ class AnalyticsWorkspace extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** `sku` should only be set to `LACluster` when the Log Analytics Workspace is linked to a Log Analytics Cluster. Additionally, `sku` cannot be modified while linked.
   ///
-  /// &gt; **Note:** Changing `sku` forces a new Log Analytics Workspace to be created, except when changing between `PerGB2018` and `CapacityReservation`. Changing `sku` to `CapacityReservation` or changing `reservation_capacity_in_gb_per_day` to a higher tier will lead to a 31-days commitment period, during which the SKU cannot be changed to a lower one. Please refer to [official documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/cost-logs#commitment-tiers) for further information.
+  /// &gt; **Note:** Changing `sku` forces a new Log Analytics Workspace to be created, except when changing between `PerGB2018` and `CapacityReservation`. Changing `sku` to `CapacityReservation` or changing `reservationCapacityInGbPerDay` to a higher tier will lead to a 31-days commitment period, during which the SKU cannot be changed to a lower one. Please refer to [official documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/cost-logs#commitment-tiers) for further information.
   ///
   /// &gt; **Note:** A new pricing model took effect on `2018-04-03`, which requires the SKU `PerGB2018`. If you've provisioned resources before this date you have the option of remaining with the previous Pricing SKU and using the other SKUs defined above. More information about [the Pricing SKUs is available at the following URI](https://aka.ms/PricingTierWarning).
   late final pulumi.Output<String> sku;

@@ -7,14 +7,14 @@ import 'single_node_virtual_instance_single_server_configuration_virtual_machine
 class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfiguration {
   /// An `image` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage> image;
-  /// An `os_profile` block as defined below. Changing this forces a new resource to be created.
+  /// An `osProfile` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfile> osProfile;
   /// The size of the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualMachineSize;
 
   /// Creates a new [SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfiguration].
   /// [image] An `image` block as defined below. Changing this forces a new resource to be created.
-  /// [osProfile] An `os_profile` block as defined below. Changing this forces a new resource to be created.
+  /// [osProfile] An `osProfile` block as defined below. Changing this forces a new resource to be created.
   /// [virtualMachineSize] The size of the Virtual Machine. Changing this forces a new resource to be created.
   const SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfiguration({
     required this.image,
@@ -38,4 +38,3 @@ class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurat
     );
   }
 }
-

@@ -11,7 +11,7 @@ class ExascaleDatabaseStorageVaultState {
   final pulumi.Input<String>? description;
   /// The user-friendly name for the Exadata Database Storage Vault resource. The name does not need to be unique. Changing this forces a new Exadata Database Storage Vault to be created.
   final pulumi.Input<String>? displayName;
-  /// A `high_capacity_database_storage` block as defined below. Changing this forces a new Exadata Database Storage Vault to be created.
+  /// A `highCapacityDatabaseStorage` block as defined below. Changing this forces a new Exadata Database Storage Vault to be created.
   final pulumi.Input<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>? highCapacityDatabaseStorage;
   /// The Azure Region where the Exadata Database Storage Vault should exist. Changing this forces a new Exadata Database Storage Vault to be created.
   final pulumi.Input<String>? location;
@@ -30,7 +30,7 @@ class ExascaleDatabaseStorageVaultState {
   /// [additionalFlashCachePercentage] The size of additional Flash Cache in percentage of High Capacity database storage. Changing this forces a new Exadata Database Storage Vault to be created.
   /// [description] Exadata Database Storage Vault description. Changing this forces a new Exadata Database Storage Vault to be created.
   /// [displayName] The user-friendly name for the Exadata Database Storage Vault resource. The name does not need to be unique. Changing this forces a new Exadata Database Storage Vault to be created.
-  /// [highCapacityDatabaseStorage] A `high_capacity_database_storage` block as defined below. Changing this forces a new Exadata Database Storage Vault to be created.
+  /// [highCapacityDatabaseStorage] A `highCapacityDatabaseStorage` block as defined below. Changing this forces a new Exadata Database Storage Vault to be created.
   /// [location] The Azure Region where the Exadata Database Storage Vault should exist. Changing this forces a new Exadata Database Storage Vault to be created.
   /// [name] The name which should be used for this Exadata Database Storage Vault. Changing this forces a new Exadata Database Storage Vault to be created.
   /// [resourceGroupName] The name of the Resource Group where the Exadata Database Storage Vault should exist. Changing this forces a new Exadata Database Storage Vault to be created.
@@ -80,4 +80,3 @@ class ExascaleDatabaseStorageVaultState {
     );
   }
 }
-

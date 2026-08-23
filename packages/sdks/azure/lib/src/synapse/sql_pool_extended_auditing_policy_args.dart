@@ -15,7 +15,7 @@ class SqlPoolExtendedAuditingPolicyArgs {
   final pulumi.Input<String> sqlPoolId;
   /// The access key to use for the auditing storage account.
   final pulumi.Input<String>? storageAccountAccessKey;
-  /// Is `storage_account_access_key` value the storage's secondary key?
+  /// Is `storageAccountAccessKey` value the storage's secondary key?
   final pulumi.Input<bool>? storageAccountAccessKeyIsSecondary;
   /// The blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all extended auditing logs.
   final pulumi.Input<String>? storageEndpoint;
@@ -25,7 +25,7 @@ class SqlPoolExtendedAuditingPolicyArgs {
   /// [retentionInDays] The number of days to retain logs for in the storage account. Defaults to `0`.
   /// [sqlPoolId] The ID of the Synapse SQL pool to set the extended auditing policy. Changing this forces a new resource to be created.
   /// [storageAccountAccessKey] The access key to use for the auditing storage account.
-  /// [storageAccountAccessKeyIsSecondary] Is `storage_account_access_key` value the storage's secondary key?
+  /// [storageAccountAccessKeyIsSecondary] Is `storageAccountAccessKey` value the storage's secondary key?
   /// [storageEndpoint] The blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all extended auditing logs.
   const SqlPoolExtendedAuditingPolicyArgs({
     this.logMonitoringEnabled,
@@ -58,4 +58,3 @@ class SqlPoolExtendedAuditingPolicyArgs {
     );
   }
 }
-

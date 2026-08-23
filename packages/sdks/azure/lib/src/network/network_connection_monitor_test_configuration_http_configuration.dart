@@ -12,7 +12,7 @@ class NetworkConnectionMonitorTestConfigurationHttpConfiguration {
   final pulumi.Input<int>? port;
   /// Should HTTPS be preferred over HTTP in cases where the choice is not explicit? Defaults to `false`.
   final pulumi.Input<bool>? preferHttps;
-  /// A `request_header` block as defined below.
+  /// A `requestHeader` block as defined below.
   final pulumi.Input<List<NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader>>? requestHeaders;
   /// The HTTP status codes to consider successful. For instance, `2xx`, `301-304` and `418`.
   final pulumi.Input<List<String>>? validStatusCodeRanges;
@@ -22,7 +22,7 @@ class NetworkConnectionMonitorTestConfigurationHttpConfiguration {
   /// [path] The path component of the URI. It only accepts the absolute path.
   /// [port] The port for the HTTP connection.
   /// [preferHttps] Should HTTPS be preferred over HTTP in cases where the choice is not explicit? Defaults to `false`.
-  /// [requestHeaders] A `request_header` block as defined below.
+  /// [requestHeaders] A `requestHeader` block as defined below.
   /// [validStatusCodeRanges] The HTTP status codes to consider successful. For instance, `2xx`, `301-304` and `418`.
   const NetworkConnectionMonitorTestConfigurationHttpConfiguration({
     this.method,
@@ -55,4 +55,3 @@ class NetworkConnectionMonitorTestConfigurationHttpConfiguration {
     );
   }
 }
-

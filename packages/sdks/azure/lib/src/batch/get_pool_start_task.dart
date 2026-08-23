@@ -12,11 +12,11 @@ class GetPoolStartTask {
   final pulumi.Input<Map<String, String>>? commonEnvironmentProperties;
   /// The settings for the container under which the start task runs.
   final pulumi.Input<List<GetPoolStartTaskContainer>> containers;
-  /// One or more `resource_file` blocks that describe the files to be downloaded to a compute node.
+  /// One or more `resourceFile` blocks that describe the files to be downloaded to a compute node.
   final pulumi.Input<List<GetPoolStartTaskResourceFile>> resourceFiles;
   /// The number of retry count
   final pulumi.Input<int> taskRetryMaximum;
-  /// A `user_identity` block that describes the user identity under which the start task runs.
+  /// A `userIdentity` block that describes the user identity under which the start task runs.
   final pulumi.Input<List<GetPoolStartTaskUserIdentity>> userIdentities;
   /// A flag that indicates if the Batch pool should wait for the start task to be completed.
   final pulumi.Input<bool> waitForSuccess;
@@ -25,9 +25,9 @@ class GetPoolStartTask {
   /// [commandLine] The command line executed by the start task.
   /// [commonEnvironmentProperties] A map of strings (key,value) that represents the environment variables to set in the start task.
   /// [containers] The settings for the container under which the start task runs.
-  /// [resourceFiles] One or more `resource_file` blocks that describe the files to be downloaded to a compute node.
+  /// [resourceFiles] One or more `resourceFile` blocks that describe the files to be downloaded to a compute node.
   /// [taskRetryMaximum] The number of retry count
-  /// [userIdentities] A `user_identity` block that describes the user identity under which the start task runs.
+  /// [userIdentities] A `userIdentity` block that describes the user identity under which the start task runs.
   /// [waitForSuccess] A flag that indicates if the Batch pool should wait for the start task to be completed.
   const GetPoolStartTask({
     required this.commandLine,
@@ -63,4 +63,3 @@ class GetPoolStartTask {
     );
   }
 }
-

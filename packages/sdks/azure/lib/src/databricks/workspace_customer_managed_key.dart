@@ -103,6 +103,29 @@ import 'workspace_customer_managed_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_databricks_workspace" "example" {
+///   name                = "databricks-test"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "standard"
+///   tags = {
+///     "Environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +136,8 @@ import 'workspace_customer_managed_key_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.databricks.Workspace;
 /// import com.pulumi.azure.databricks.WorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -180,7 +203,7 @@ import 'workspace_customer_managed_key_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Databricks` - 2024-05-01, 2022-10-01-preview
+/// * `Microsoft.Databricks` - 2026-01-01
 ///
 /// * `Microsoft.Network` - 2025-01-01, 2023-09-01
 ///

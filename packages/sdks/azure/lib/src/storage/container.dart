@@ -131,6 +131,35 @@ import 'container_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestoraccount"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   tags = {
+///     "environment" = "staging"
+///   }
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "vhds"
+///   storage_account_id    = azure_storage_account.example.id
+///   container_access_type = "private"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +172,8 @@ import 'container_state.dart';
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.storage.Container;
 /// import com.pulumi.azure.storage.ContainerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -212,7 +241,7 @@ import 'container_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Storage` - 2023-05-01
+/// * `Microsoft.Storage` - 2025-08-01
 ///
 /// ## Import
 ///
@@ -224,11 +253,11 @@ import 'container_state.dart';
 class Container extends pulumi.CustomResource {
   /// The Access Level configured for this Container. Possible values are `blob`, `container` or `private`. Defaults to `private`.
   ///
-  /// &gt; **Note:** When updating `container_access_type` for an existing storage container resource, Shared Key authentication will always be used, as AzureAD authentication is not supported.
+  /// &gt; **Note:** When updating `containerAccessType` for an existing storage container resource, Shared Key authentication will always be used, as AzureAD authentication is not supported.
   late final pulumi.Output<String?> containerAccessType;
   /// The default encryption scope to use for blobs uploaded to this container. Changing this forces a new resource to be created.
   late final pulumi.Output<String> defaultEncryptionScope;
-  /// Whether to allow blobs to override the default encryption scope for this container. Can only be set when specifying `default_encryption_scope`. Defaults to `true`. Changing this forces a new resource to be created.
+  /// Whether to allow blobs to override the default encryption scope for this container. Can only be set when specifying `defaultEncryptionScope`. Defaults to `true`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> encryptionScopeOverrideEnabled;
   /// Is there an Immutability Policy configured on this Storage Container?
   late final pulumi.Output<bool> hasImmutabilityPolicy;
@@ -242,12 +271,14 @@ class Container extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceManagerId;
   /// The name of the Storage Account where the Container should be created.
   ///
-  /// &gt; **Note:** One of `storage_account_name` or `storage_account_id` must be specified. When specifying `storage_account_id` the resource will use the Resource Manager API, rather than the Data Plane API.
+  /// &gt; **Note:** One of `storageAccountName` or `storageAccountId` must be specified. When specifying `storageAccountId` the resource will use the Resource Manager API, rather than the Data Plane API.
   late final pulumi.Output<String?> storageAccountId;
-  /// The name of the Storage Account where the Container should be created. This property is deprecated in favour of `storage_account_id`.
+  /// The name of the Storage Account where the Container should be created. This property is deprecated in favour of `storageAccountId`.
   ///
-  /// &gt; **Note:** Migrating from the deprecated `storage_account_name` to `storage_account_id` is supported without recreation. Any other change to either property will result in the resource being recreated.
+  /// &gt; **Note:** Migrating from the deprecated `storageAccountName` to `storageAccountId` is supported without recreation. Any other change to either property will result in the resource being recreated.
   late final pulumi.Output<String?> storageAccountName;
+  /// The data plane URL of the Storage Container in the format of `&lt;storage blob endpoint&gt;/&lt;container name&gt;`. E.g. `https://example.blob.core.windows.net/mycontainer`.
+  late final pulumi.Output<String> url;
 
   /// Creates a new [Container].
   /// [name] The Pulumi resource name.
@@ -273,6 +304,7 @@ class Container extends pulumi.CustomResource {
     resourceManagerId = registerOutput<String>('resourceManagerId');
     storageAccountId = registerOutput<String?>('storageAccountId');
     storageAccountName = registerOutput<String?>('storageAccountName');
+    url = registerOutput<String>('url');
   }
 
   /// Gets an existing [Container] resource's state with the given [name] and [id].
@@ -308,5 +340,6 @@ class Container extends pulumi.CustomResource {
     resourceManagerId = registerOutput<String>('resourceManagerId');
     storageAccountId = registerOutput<String?>('storageAccountId');
     storageAccountName = registerOutput<String?>('storageAccountName');
+    url = registerOutput<String>('url');
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxFunctionAppAuthSettingsV2AppleV2 {
   /// The OpenID Connect Client ID for the Apple web application.
   final pulumi.Input<String> clientId;
-  /// The app setting name that contains the `client_secret` value used for Apple Login.
+  /// The app setting name that contains the `clientSecret` value used for Apple Login.
   ///
-  /// !&gt; **Note:** A setting with this name must exist in `app_settings` to function correctly.
+  /// &gt; **Note:** A setting with this name must exist in `appSettings` to function correctly.
   final pulumi.Input<String> clientSecretSettingName;
   /// A list of Login Scopes provided by this Authentication Provider.
   ///
@@ -16,7 +16,7 @@ class LinuxFunctionAppAuthSettingsV2AppleV2 {
 
   /// Creates a new [LinuxFunctionAppAuthSettingsV2AppleV2].
   /// [clientId] The OpenID Connect Client ID for the Apple web application.
-  /// [clientSecretSettingName] The app setting name that contains the `client_secret` value used for Apple Login.
+  /// [clientSecretSettingName] The app setting name that contains the `clientSecret` value used for Apple Login.
   /// [loginScopes] A list of Login Scopes provided by this Authentication Provider.
   const LinuxFunctionAppAuthSettingsV2AppleV2({
     required this.clientId,
@@ -40,4 +40,3 @@ class LinuxFunctionAppAuthSettingsV2AppleV2 {
     );
   }
 }
-

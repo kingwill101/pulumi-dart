@@ -15,7 +15,7 @@ import 'service_virtual_network_configuration.dart';
 
 /// Input properties used for looking up and filtering Service resources.
 class ServiceState {
-  /// One or more `additional_location` blocks as defined below.
+  /// One or more `additionalLocation` blocks as defined below.
   final pulumi.Input<List<ServiceAdditionalLocation>>? additionalLocations;
   /// One or more `certificate` blocks (up to 10) as defined below.
   final pulumi.Input<List<ServiceCertificate>>? certificates;
@@ -25,13 +25,13 @@ class ServiceState {
   final pulumi.Input<ServiceDelegation>? delegation;
   /// The URL for the Developer Portal associated with this API Management service.
   final pulumi.Input<String>? developerPortalUrl;
-  /// Disable the gateway in main region? This is only supported when `additional_location` is set.
+  /// Disable the gateway in main region? This is only supported when `additionalLocation` is set.
   final pulumi.Input<bool>? gatewayDisabled;
   /// The URL of the Regional Gateway for the API Management Service in the specified region.
   final pulumi.Input<String>? gatewayRegionalUrl;
   /// The URL of the Gateway for the API Management Service.
   final pulumi.Input<String>? gatewayUrl;
-  /// A `hostname_configuration` block as defined below.
+  /// A `hostnameConfiguration` block as defined below.
   final pulumi.Input<ServiceHostnameConfiguration>? hostnameConfiguration;
   /// An `identity` block as defined below.
   final pulumi.Input<ServiceIdentity>? identity;
@@ -71,11 +71,11 @@ class ServiceState {
   final pulumi.Input<String>? scmUrl;
   /// A `security` block as defined below.
   final pulumi.Input<ServiceSecurity>? security;
-  /// A `sign_in` block as defined below.
+  /// A `signIn` block as defined below.
   final pulumi.Input<ServiceSignIn>? signIn;
-  /// A `sign_up` block as defined below.
+  /// A `signUp` block as defined below.
   final pulumi.Input<ServiceSignUp>? signUp;
-  /// `sku_name` is a string consisting of two parts separated by an underscore(\_). The first part is the `name`, valid values include: `Consumption`, `Developer`, `Basic`, `BasicV2`, `Standard`, `StandardV2`, `Premium` and `PremiumV2`. The second part is the `capacity` (e.g. the number of deployed units of the `sku`), which must be a positive `integer` (e.g. `Developer_1`).
+  /// `skuName` is a string consisting of two parts separated by an underscore(\_). The first part is the `name`, valid values include: `Consumption`, `Developer`, `Basic`, `BasicV2`, `Standard`, `StandardV2`, `Premium` and `PremiumV2`. The second part is the `capacity` (e.g. the number of deployed units of the `sku`), which must be a positive `integer` (e.g. `Developer_1`).
   ///
   /// &gt; **Note:** Premium SKUs are limited to a default maximum of 12 (i.e. `Premium_12`), this can, however, be increased via support request.
   ///
@@ -83,13 +83,13 @@ class ServiceState {
   final pulumi.Input<String>? skuName;
   /// A mapping of tags assigned to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A `tenant_access` block as defined below.
+  /// A `tenantAccess` block as defined below.
   final pulumi.Input<ServiceTenantAccess>? tenantAccess;
-  /// A `virtual_network_configuration` block as defined below. Required when `virtual_network_type` is `External` or `Internal`.
+  /// A `virtualNetworkConfiguration` block as defined below. Required when `virtualNetworkType` is `External` or `Internal`.
   final pulumi.Input<ServiceVirtualNetworkConfiguration>? virtualNetworkConfiguration;
   /// The type of virtual network you want to use, valid values include: `None`, `External`, `Internal`. Defaults to `None`.
   ///
-  /// &gt; **Note:** Please ensure that in the subnet, inbound port 3443 is open when `virtual_network_type` is `Internal` or `External`. Additionally, please ensure other necessary ports are open according to [api management network configuration](https://learn.microsoft.com/azure/api-management/virtual-network-reference).
+  /// &gt; **Note:** Please ensure that in the subnet, inbound port 3443 is open when `virtualNetworkType` is `Internal` or `External`. Additionally, please ensure other necessary ports are open according to [api management network configuration](https://learn.microsoft.com/azure/api-management/virtual-network-reference).
   final pulumi.Input<String>? virtualNetworkType;
   /// Specifies a list of Availability Zones in which this API Management service should be located.
   ///
@@ -97,15 +97,15 @@ class ServiceState {
   final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [ServiceState].
-  /// [additionalLocations] One or more `additional_location` blocks as defined below.
+  /// [additionalLocations] One or more `additionalLocation` blocks as defined below.
   /// [certificates] One or more `certificate` blocks (up to 10) as defined below.
   /// [clientCertificateEnabled] Enforce a client certificate to be presented on each request to the gateway? This is only supported when SKU type is `Consumption`.
   /// [delegation] A `delegation` block as defined below.
   /// [developerPortalUrl] The URL for the Developer Portal associated with this API Management service.
-  /// [gatewayDisabled] Disable the gateway in main region? This is only supported when `additional_location` is set.
+  /// [gatewayDisabled] Disable the gateway in main region? This is only supported when `additionalLocation` is set.
   /// [gatewayRegionalUrl] The URL of the Regional Gateway for the API Management Service in the specified region.
   /// [gatewayUrl] The URL of the Gateway for the API Management Service.
-  /// [hostnameConfiguration] A `hostname_configuration` block as defined below.
+  /// [hostnameConfiguration] A `hostnameConfiguration` block as defined below.
   /// [identity] An `identity` block as defined below.
   /// [location] The Azure location where the API Management Service exists. Changing this forces a new resource to be created.
   /// [managementApiUrl] The URL for the Management API associated with this API Management service.
@@ -123,12 +123,12 @@ class ServiceState {
   /// [resourceGroupName] The name of the Resource Group in which the API Management Service should exist. Changing this forces a new resource to be created.
   /// [scmUrl] The URL for the SCM (Source Code Management) Endpoint associated with this API Management service.
   /// [security] A `security` block as defined below.
-  /// [signIn] A `sign_in` block as defined below.
-  /// [signUp] A `sign_up` block as defined below.
-  /// [skuName] `sku_name` is a string consisting of two parts separated by an underscore(\_). The first part is the `name`, valid values include: `Consumption`, `Developer`, `Basic`, `BasicV2`, `Standard`, `StandardV2`, `Premium` and `PremiumV2`. The second part is the `capacity` (e.g. the number of deployed units of the `sku`), which must be a positive `integer` (e.g. `Developer_1`).
+  /// [signIn] A `signIn` block as defined below.
+  /// [signUp] A `signUp` block as defined below.
+  /// [skuName] `skuName` is a string consisting of two parts separated by an underscore(\_). The first part is the `name`, valid values include: `Consumption`, `Developer`, `Basic`, `BasicV2`, `Standard`, `StandardV2`, `Premium` and `PremiumV2`. The second part is the `capacity` (e.g. the number of deployed units of the `sku`), which must be a positive `integer` (e.g. `Developer_1`).
   /// [tags] A mapping of tags assigned to the resource.
-  /// [tenantAccess] A `tenant_access` block as defined below.
-  /// [virtualNetworkConfiguration] A `virtual_network_configuration` block as defined below. Required when `virtual_network_type` is `External` or `Internal`.
+  /// [tenantAccess] A `tenantAccess` block as defined below.
+  /// [virtualNetworkConfiguration] A `virtualNetworkConfiguration` block as defined below. Required when `virtualNetworkType` is `External` or `Internal`.
   /// [virtualNetworkType] The type of virtual network you want to use, valid values include: `None`, `External`, `Internal`. Defaults to `None`.
   /// [zones] Specifies a list of Availability Zones in which this API Management service should be located.
   const ServiceState({
@@ -246,4 +246,3 @@ class ServiceState {
     );
   }
 }
-

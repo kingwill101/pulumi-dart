@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetParquetAzureBlobFsLocation {
-  /// Is the `file_system` using dynamic expression, function or system variables? Defaults to `false`.
+  /// Is the `fileSystem` using dynamic expression, function or system variables? Defaults to `false`.
   final pulumi.Input<bool>? dynamicFileSystemEnabled;
   /// Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
   final pulumi.Input<bool>? dynamicFilenameEnabled;
@@ -17,7 +17,7 @@ class DatasetParquetAzureBlobFsLocation {
   final pulumi.Input<String>? path;
 
   /// Creates a new [DatasetParquetAzureBlobFsLocation].
-  /// [dynamicFileSystemEnabled] Is the `file_system` using dynamic expression, function or system variables? Defaults to `false`.
+  /// [dynamicFileSystemEnabled] Is the `fileSystem` using dynamic expression, function or system variables? Defaults to `false`.
   /// [dynamicFilenameEnabled] Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
   /// [dynamicPathEnabled] Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
   /// [fileSystem] The container on the Azure Data Lake Storage Account hosting the file.
@@ -54,4 +54,3 @@ class DatasetParquetAzureBlobFsLocation {
     );
   }
 }
-

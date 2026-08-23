@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_frontdoor_secret_secret_customer_certificate.dart';
 
 class GetFrontdoorSecretSecret {
-  /// A `customer_certificate` block as defined below.
+  /// A `customerCertificate` block as defined below.
   final pulumi.Input<List<GetFrontdoorSecretSecretCustomerCertificate>> customerCertificates;
 
   /// Creates a new [GetFrontdoorSecretSecret].
-  /// [customerCertificates] A `customer_certificate` block as defined below.
+  /// [customerCertificates] A `customerCertificate` block as defined below.
   const GetFrontdoorSecretSecret({
     required this.customerCertificates,
   });
@@ -25,4 +25,3 @@ class GetFrontdoorSecretSecret {
     );
   }
 }
-

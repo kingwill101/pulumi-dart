@@ -9,11 +9,11 @@ class HubState {
   /// Is anonymous connections are allowed for this hub? Defaults to `false`.
   /// Possible values are `true`, `false`.
   final pulumi.Input<bool>? anonymousConnectionsEnabled;
-  /// An `event_handler` block as defined below.
+  /// An `eventHandler` block as defined below.
   ///
-  /// &gt; **Note:** User can change the order of `event_handler` to change the priority accordingly.
+  /// &gt; **Note:** User can change the order of `eventHandler` to change the priority accordingly.
   final pulumi.Input<List<HubEventHandler>>? eventHandlers;
-  /// An `event_listener` block as defined below.
+  /// An `eventListener` block as defined below.
   ///
   /// &gt; **Note:** The managed identity of Web PubSub service must be enabled and the identity must have the "Azure Event Hubs Data sender" role to access the Event Hub.
   final pulumi.Input<List<HubEventListener>>? eventListeners;
@@ -24,8 +24,8 @@ class HubState {
 
   /// Creates a new [HubState].
   /// [anonymousConnectionsEnabled] Is anonymous connections are allowed for this hub? Defaults to `false`.
-  /// [eventHandlers] An `event_handler` block as defined below.
-  /// [eventListeners] An `event_listener` block as defined below.
+  /// [eventHandlers] An `eventHandler` block as defined below.
+  /// [eventListeners] An `eventListener` block as defined below.
   /// [name] The name of the Web Pubsub hub service. Changing this forces a new resource to be created.
   /// [webPubsubId] Specifies the id of the Web Pubsub. Changing this forces a new resource to be created.
   const HubState({
@@ -56,4 +56,3 @@ class HubState {
     );
   }
 }
-

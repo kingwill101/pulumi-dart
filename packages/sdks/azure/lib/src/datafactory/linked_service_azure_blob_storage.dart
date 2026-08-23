@@ -122,7 +122,7 @@ import 'linked_service_azure_blob_storage_state.dart';
 /// 			Name:          pulumi.String("example"),
 /// 			DataFactoryId: exampleFactory.ID(),
 /// 			ConnectionString: pulumi.String(example.ApplyT(func(example storage.GetAccountResult) (*string, error) {
-/// 				return &example.PrimaryConnectionString, nil
+/// 				return example.PrimaryConnectionString, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -130,6 +130,35 @@ import 'linked_service_azure_blob_storage_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getaccount" "example" {
+///   name                = "storageaccountname"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedserviceazureblobstorage" "example" {
+///   name              = "example"
+///   data_factory_id   = azure_datafactory_factory.example.id
+///   connection_string = data.azure_storage_getaccount.example.primary_connection_string
 /// }
 /// ```
 /// ```java
@@ -146,8 +175,8 @@ import 'linked_service_azure_blob_storage_state.dart';
 /// import com.pulumi.azure.datafactory.FactoryArgs;
 /// import com.pulumi.azure.datafactory.LinkedServiceAzureBlobStorage;
 /// import com.pulumi.azure.datafactory.LinkedServiceAzureBlobStorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,11 +260,11 @@ class LinkedServiceAzureBlobStorage extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service.
   late final pulumi.Output<List<String>?> annotations;
-  /// The connection string. Conflicts with `connection_string_insecure`, `sas_uri` and `service_endpoint`.
+  /// The connection string. Conflicts with `connectionStringInsecure`, `sasUri` and `serviceEndpoint`.
   late final pulumi.Output<String?> connectionString;
-  /// The connection string sent insecurely. Conflicts with `connection_string`, `sas_uri` and `service_endpoint`.
+  /// The connection string sent insecurely. Conflicts with `connectionString`, `sasUri` and `serviceEndpoint`.
   ///
-  /// &gt; **Note:** `connection_string` uses the Azure [SecureString](https://learn.microsoft.com/en-us/dotnet/api/microsoft.azure.management.datafactory.models.securestring) to encrypt the contents within the REST payload sent to Azure whilst the `connection_string_insecure` is sent as a regular string. Both properties are still sent using SSL/HTTPS. At this time the portal will not decrypt Secure Strings so the `connection_string` property in the portal will show as `******` whilst `connection_string_insecure` will be viewable in the portal.
+  /// &gt; **Note:** `connectionString` uses the Azure [SecureString](https://learn.microsoft.com/en-us/dotnet/api/microsoft.azure.management.datafactory.models.securestring) to encrypt the contents within the REST payload sent to Azure whilst the `connectionStringInsecure` is sent as a regular string. Both properties are still sent using SSL/HTTPS. At this time the portal will not decrypt Secure Strings so the `connectionString` property in the portal will show as `******` whilst `connectionStringInsecure` will be viewable in the portal.
   late final pulumi.Output<String?> connectionStringInsecure;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
@@ -248,9 +277,9 @@ class LinkedServiceAzureBlobStorage extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A map of parameters to associate with the Data Factory Linked Service.
   late final pulumi.Output<Map<String, String>?> parameters;
-  /// A `sas_token_linked_key_vault_key` block as defined below. Use this argument to store SAS Token in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. A `sas_uri` is required.
+  /// A `sasTokenLinkedKeyVaultKey` block as defined below. Use this argument to store SAS Token in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. A `sasUri` is required.
   late final pulumi.Output<LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey> sasTokenLinkedKeyVaultKey;
-  /// The SAS URI. Conflicts with `connection_string_insecure`, `connection_string` and `service_endpoint`.
+  /// The SAS URI. Conflicts with `connectionStringInsecure`, `connectionString` and `serviceEndpoint`.
   late final pulumi.Output<String?> sasUri;
   late final pulumi.Output<String?> serviceEndpoint;
   late final pulumi.Output<String?> servicePrincipalId;

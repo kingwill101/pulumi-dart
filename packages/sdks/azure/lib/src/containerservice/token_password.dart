@@ -211,6 +211,46 @@ import 'token_password_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resource-group"
+///   location = "West Europe"
+/// }
+/// resource "azure_containerservice_registry" "example" {
+///   name                     = "example-registry"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   sku                      = "Basic"
+///   admin_enabled            = false
+///   georeplication_locations = ["East US", "West Europe"]
+/// }
+/// resource "azure_containerservice_registryscopemap" "example" {
+///   name                    = "example-scope-map"
+///   container_registry_name = azure_containerservice_registry.example.name
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   actions                 = ["repositories/repo1/content/read", "repositories/repo1/content/write"]
+/// }
+/// resource "azure_containerservice_registrytoken" "example" {
+///   name                    = "exampletoken"
+///   container_registry_name = azure_containerservice_registry.example.name
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   scope_map_id            = azure_containerservice_registryscopemap.example.id
+/// }
+/// resource "azure_containerservice_tokenpassword" "example" {
+///   container_registry_token_id = azure_containerservice_registrytoken.example.id
+///   password1 = {
+///     expiry = "2023-03-22T17:57:36+08:00"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +268,8 @@ import 'token_password_state.dart';
 /// import com.pulumi.azure.containerservice.TokenPassword;
 /// import com.pulumi.azure.containerservice.TokenPasswordArgs;
 /// import com.pulumi.azure.containerservice.inputs.TokenPasswordPassword1Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -252,7 +292,7 @@ import 'token_password_state.dart';
 ///             .location(example.location())
 ///             .sku("Basic")
 ///             .adminEnabled(false)
-///             .georeplicationLocations(List.of(
+///             .georeplicationLocations(Arrays.asList(
 ///                 "East US",
 ///                 "West Europe"))
 ///             .build());

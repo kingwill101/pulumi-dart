@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_collection_rule_data_sources_data_import_event_hub_data_source.dart';
 
 class DataCollectionRuleDataSourcesDataImport {
-  /// An `event_hub_data_source` block as defined below.
+  /// An `eventHubDataSource` block as defined below.
   final pulumi.Input<List<DataCollectionRuleDataSourcesDataImportEventHubDataSource>> eventHubDataSources;
 
   /// Creates a new [DataCollectionRuleDataSourcesDataImport].
-  /// [eventHubDataSources] An `event_hub_data_source` block as defined below.
+  /// [eventHubDataSources] An `eventHubDataSource` block as defined below.
   const DataCollectionRuleDataSourcesDataImport({
     required this.eventHubDataSources,
   });
@@ -25,4 +25,3 @@ class DataCollectionRuleDataSourcesDataImport {
     );
   }
 }
-

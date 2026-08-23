@@ -17,7 +17,7 @@ class JobTemplateInitContainer {
   final pulumi.Input<List<JobTemplateInitContainerEnv>>? envs;
   /// The amount of ephemeral storage available to the Container App.
   ///
-  /// &gt; **Note:** `ephemeral_storage` is currently in preview and not configurable at this time.
+  /// &gt; **Note:** `ephemeralStorage` is currently in preview and not configurable at this time.
   final pulumi.Input<String>? ephemeralStorage;
   /// The image to use to create the container.
   final pulumi.Input<String> image;
@@ -27,7 +27,7 @@ class JobTemplateInitContainer {
   final pulumi.Input<String>? memory;
   /// The name of the container.
   final pulumi.Input<String> name;
-  /// A `volume_mounts` block as detailed below.
+  /// A `volumeMounts` block as detailed below.
   final pulumi.Input<List<JobTemplateInitContainerVolumeMount>>? volumeMounts;
 
   /// Creates a new [JobTemplateInitContainer].
@@ -39,7 +39,7 @@ class JobTemplateInitContainer {
   /// [image] The image to use to create the container.
   /// [memory] The amount of memory to allocate to the container.
   /// [name] The name of the container.
-  /// [volumeMounts] A `volume_mounts` block as detailed below.
+  /// [volumeMounts] A `volumeMounts` block as detailed below.
   const JobTemplateInitContainer({
     this.args,
     this.commands,
@@ -80,4 +80,3 @@ class JobTemplateInitContainer {
     );
   }
 }
-

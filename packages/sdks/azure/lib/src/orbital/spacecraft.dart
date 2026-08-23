@@ -52,8 +52,8 @@ import 'spacecraft_state.dart';
 ///     location="westeurope",
 ///     norad_id="12345",
 ///     links=[{
-///         "bandwidth_mhz": 30,
-///         "center_frequency_mhz": 2050,
+///         "bandwidth_mhz": float(30),
+///         "center_frequency_mhz": float(2050),
 ///         "direction": "Uplink",
 ///         "polarization": "LHCP",
 ///         "name": "examplename",
@@ -160,6 +160,38 @@ import 'spacecraft_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_orbital_spacecraft" "example" {
+///   name                = "example-spacecraft"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = "westeurope"
+///   norad_id            = "12345"
+///   links {
+///     bandwidth_mhz        = 30
+///     center_frequency_mhz = 2050
+///     direction            = "Uplink"
+///     polarization         = "LHCP"
+///     name                 = "examplename"
+///   }
+///   two_line_elements = ["1 23455U 94089A   97320.90946019  .00000140  00000-0  10191-3 0  2621", "2 23455  99.0090 272.6745 0008546 223.1686 136.8816 14.11711747148495"]
+///   title_line        = "AQUA"
+///   tags = {
+///     "aks-managed-cluster-name" = "9a57225d-a405-4d40-aa46-f13d2342abef"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,8 +203,8 @@ import 'spacecraft_state.dart';
 /// import com.pulumi.azure.orbital.Spacecraft;
 /// import com.pulumi.azure.orbital.SpacecraftArgs;
 /// import com.pulumi.azure.orbital.inputs.SpacecraftLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

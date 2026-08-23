@@ -15,7 +15,7 @@ class FluxConfigurationGitRepository {
   final pulumi.Input<String> referenceType;
   /// Specifies the source reference value for the GitRepository object.
   final pulumi.Input<String> referenceValue;
-  /// Specifies the Base64-encoded known_hosts value containing public SSH keys required to access private git repositories over SSH.
+  /// Specifies the Base64-encoded knownHosts value containing public SSH keys required to access private git repositories over SSH.
   final pulumi.Input<String>? sshKnownHostsBase64;
   /// Specifies the Base64-encoded SSH private key in PEM format.
   final pulumi.Input<String>? sshPrivateKeyBase64;
@@ -33,7 +33,7 @@ class FluxConfigurationGitRepository {
   /// [localAuthReference] Specifies the name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets. It must be between 1 and 63 characters. It can contain only lowercase letters, numbers, and hyphens (-). It must start and end with a lowercase letter or number.
   /// [referenceType] Specifies the source reference type for the GitRepository object. Possible values are `branch`, `commit`, `semver` and `tag`.
   /// [referenceValue] Specifies the source reference value for the GitRepository object.
-  /// [sshKnownHostsBase64] Specifies the Base64-encoded known_hosts value containing public SSH keys required to access private git repositories over SSH.
+  /// [sshKnownHostsBase64] Specifies the Base64-encoded knownHosts value containing public SSH keys required to access private git repositories over SSH.
   /// [sshPrivateKeyBase64] Specifies the Base64-encoded SSH private key in PEM format.
   /// [syncIntervalInSeconds] Specifies the interval at which to re-reconcile the cluster git repository source with the remote. Defaults to `600`.
   /// [timeoutInSeconds] Specifies the maximum time to attempt to reconcile the cluster git repository source with the remote. Defaults to `600`.
@@ -84,4 +84,3 @@ class FluxConfigurationGitRepository {
     );
   }
 }
-

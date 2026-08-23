@@ -290,6 +290,68 @@ import 'linked_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_kind             = "BlobStorage"
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// resource "azure_synapse_workspace" "example" {
+///   name                                 = "example"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   location                             = azure_core_resourcegroup.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   sql_administrator_login              = "sqladminuser"
+///   sql_administrator_login_password     = "H@Sh1CoR3!"
+///   managed_virtual_network_enabled      = true
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_synapse_firewallrule" "example" {
+///   name                 = "allowAll"
+///   synapse_workspace_id = azure_synapse_workspace.example.id
+///   start_ip_address     = "0.0.0.0"
+///   end_ip_address       = "255.255.255.255"
+/// }
+/// resource "azure_synapse_integrationruntimeazure" "example" {
+///   name                 = "example"
+///   synapse_workspace_id = azure_synapse_workspace.example.id
+///   location             = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_synapse_linkedservice" "example" {
+///   depends_on           = [azure_synapse_firewallrule.example]
+///   name                 = "example"
+///   synapse_workspace_id = azure_synapse_workspace.example.id
+///   type                 = "AzureBlobStorage"
+///   type_properties_json ="{
+///   \"connectionString\": \"${azure_storage_account.example.primary_connection_string}\"
+/// }
+/// "
+///   integration_runtime = {
+///     name = azure_synapse_integrationruntimeazure.example.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -313,8 +375,8 @@ import 'linked_service_state.dart';
 /// import com.pulumi.azure.synapse.LinkedServiceArgs;
 /// import com.pulumi.azure.synapse.inputs.LinkedServiceIntegrationRuntimeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -474,7 +536,7 @@ class LinkedService extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> annotations;
   /// The description for the Synapse Linked Service.
   late final pulumi.Output<String?> description;
-  /// A `integration_runtime` block as defined below.
+  /// A `integrationRuntime` block as defined below.
   late final pulumi.Output<LinkedServiceIntegrationRuntime?> integrationRuntime;
   /// The name which should be used for this Synapse Linked Service. Changing this forces a new Synapse Linked Service to be created.
   late final pulumi.Output<String> name;

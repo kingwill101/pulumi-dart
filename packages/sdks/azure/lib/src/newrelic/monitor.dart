@@ -140,6 +140,37 @@ import 'monitor_user.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "East US"
+/// }
+/// resource "azure_newrelic_monitor" "example" {
+///   name                = "example-nrm"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   plan = {
+///     effective_date = "2023-06-06T00:00:00Z"
+///   }
+///   user = {
+///     email        = "user@example.com"
+///     first_name   = "Example"
+///     last_name    = "User"
+///     phone_number = "+12313803556"
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -153,8 +184,8 @@ import 'monitor_user.dart';
 /// import com.pulumi.azure.newrelic.inputs.MonitorPlanArgs;
 /// import com.pulumi.azure.newrelic.inputs.MonitorUserArgs;
 /// import com.pulumi.azure.newrelic.inputs.MonitorIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -312,6 +343,27 @@ import 'monitor_user.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "primary" {
+/// }
+/// data "azure_authorization_getroledefinition" "monitoringReader" {
+///   name = "Monitoring Reader"
+/// }
+///
+/// resource "azure_authorization_assignment" "example" {
+///   scope              = data.azure_core_getsubscription.primary.id
+///   role_definition_id ="${data.azure_core_getsubscription.primary.id}${data.azure_authorization_getroledefinition.monitoringReader.id}"
+///   principal_id       = exampleAzurermNewRelicMonitor.identity[0].principalId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -324,8 +376,8 @@ import 'monitor_user.dart';
 /// import com.pulumi.azure.authorization.inputs.GetRoleDefinitionArgs;
 /// import com.pulumi.azure.authorization.Assignment;
 /// import com.pulumi.azure.authorization.AssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -393,7 +445,7 @@ class Monitor extends pulumi.CustomResource {
   late final pulumi.Output<String?> accountCreationSource;
   /// Specifies the account id. Changing this forces a new Azure Native New Relic Monitor to be created.
   ///
-  /// &gt; **Note:** The value of `account_id` must come from an Azure Native New Relic Monitor instance of another different subscription.
+  /// &gt; **Note:** The value of `accountId` must come from an Azure Native New Relic Monitor instance of another different subscription.
   late final pulumi.Output<String> accountId;
   /// An `identity` block as defined below. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<MonitorIdentity?> identity;
@@ -407,7 +459,7 @@ class Monitor extends pulumi.CustomResource {
   late final pulumi.Output<String?> orgCreationSource;
   /// Specifies the organization id. Changing this forces a new Azure Native New Relic Monitor to be created.
   ///
-  /// &gt; **Note:** The value of `organization_id` must come from an Azure Native New Relic Monitor instance of another different subscription.
+  /// &gt; **Note:** The value of `organizationId` must come from an Azure Native New Relic Monitor instance of another different subscription.
   late final pulumi.Output<String> organizationId;
   /// A `plan` block as defined below. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<MonitorPlan> plan;

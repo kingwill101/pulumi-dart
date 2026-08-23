@@ -6,7 +6,7 @@ import 'workflow_identity.dart';
 
 /// Input properties used for looking up and filtering Workflow resources.
 class WorkflowState {
-  /// A `access_control` block as defined below.
+  /// A `accessControl` block as defined below.
   final pulumi.Input<WorkflowAccessControl>? accessControl;
   /// The Access Endpoint for the Logic App Workflow.
   final pulumi.Input<String>? accessEndpoint;
@@ -28,7 +28,7 @@ class WorkflowState {
   final pulumi.Input<String>? name;
   /// A map of Key-Value pairs.
   ///
-  /// &gt; **Note:** Any parameters specified must exist in the Schema defined in `workflow_parameters`.
+  /// &gt; **Note:** Any parameters specified must exist in the Schema defined in `workflowParameters`.
   final pulumi.Input<Map<String, String>>? parameters;
   /// The name of the Resource Group in which the Logic App Workflow should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
@@ -46,7 +46,7 @@ class WorkflowState {
   final pulumi.Input<String>? workflowVersion;
 
   /// Creates a new [WorkflowState].
-  /// [accessControl] A `access_control` block as defined below.
+  /// [accessControl] A `accessControl` block as defined below.
   /// [accessEndpoint] The Access Endpoint for the Logic App Workflow.
   /// [connectorEndpointIpAddresses] The list of access endpoint IP addresses of connector.
   /// [connectorOutboundIpAddresses] The list of outgoing IP addresses of connector.
@@ -131,4 +131,3 @@ class WorkflowState {
     );
   }
 }
-

@@ -22,11 +22,11 @@ class WorkspaceNamedValueArgs {
   final pulumi.Input<List<String>>? tags;
   /// The value of this API Management Workspace Named Value.
   ///
-  /// &gt; **Note:** Exactly one of `value` or `value_from_key_vault` must be specified.
+  /// &gt; **Note:** Exactly one of `value` or `valueFromKeyVault` must be specified.
   final pulumi.Input<String>? value;
-  /// A `value_from_key_vault` block as defined below.
+  /// A `valueFromKeyVault` block as defined below.
   ///
-  /// &gt; **Note:** Exactly one of `value` or `value_from_key_vault` must be specified. If `value_from_key_vault` is specified, `secret` must also be set to `true`.
+  /// &gt; **Note:** Exactly one of `value` or `valueFromKeyVault` must be specified. If `valueFromKeyVault` is specified, `secret` must also be set to `true`.
   final pulumi.Input<WorkspaceNamedValueValueFromKeyVault>? valueFromKeyVault;
 
   /// Creates a new [WorkspaceNamedValueArgs].
@@ -36,7 +36,7 @@ class WorkspaceNamedValueArgs {
   /// [secret] Specifies whether the API Management Workspace Named Value is secret. Defaults to `false`.
   /// [tags] A list of tags to be applied to the API Management Workspace Named Value.
   /// [value] The value of this API Management Workspace Named Value.
-  /// [valueFromKeyVault] A `value_from_key_vault` block as defined below.
+  /// [valueFromKeyVault] A `valueFromKeyVault` block as defined below.
   const WorkspaceNamedValueArgs({
     required this.apiManagementWorkspaceId,
     required this.displayName,
@@ -71,4 +71,3 @@ class WorkspaceNamedValueArgs {
     );
   }
 }
-

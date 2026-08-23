@@ -180,10 +180,10 @@ import 'reference_input_mssql_state.dart';
 /// 		_, err = streamanalytics.NewReferenceInputMssql(ctx, "example", &streamanalytics.ReferenceInputMssqlArgs{
 /// 			Name: pulumi.String("example-reference-input"),
 /// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return &example.ResourceGroupName, nil
+/// 				return example.ResourceGroupName, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			StreamAnalyticsJobName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return &example.Name, nil
+/// 				return example.Name, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			Server:                  exampleServer.FullyQualifiedDomainName,
 /// 			Database:                exampleDatabase.Name,
@@ -198,6 +198,49 @@ import 'reference_input_mssql_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_streamanalytics_getjob" "example" {
+///   name                = "example-job"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "example-sqlserver"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "admin"
+///   administrator_login_password = "password"
+/// }
+/// resource "azure_mssql_database" "example" {
+///   name      = "example-db"
+///   server_id = azure_mssql_server.example.id
+/// }
+/// resource "azure_streamanalytics_referenceinputmssql" "example" {
+///   name                      = "example-reference-input"
+///   resource_group_name       = data.azure_streamanalytics_getjob.example.resource_group_name
+///   stream_analytics_job_name = data.azure_streamanalytics_getjob.example.name
+///   server                    = azure_mssql_server.example.fully_qualified_domain_name
+///   database                  = azure_mssql_database.example.name
+///   username                  = "exampleuser"
+///   password                  = "examplepassword"
+///   refresh_type              = "RefreshPeriodicallyWithFull"
+///   refresh_interval_duration = "00:20:00"
+///   full_snapshot_query       = "    SELECT *\n    INTO [YourOutputAlias]\n    FROM [YourInputAlias]\n"
 /// }
 /// ```
 /// ```java
@@ -216,8 +259,8 @@ import 'reference_input_mssql_state.dart';
 /// import com.pulumi.azure.mssql.DatabaseArgs;
 /// import com.pulumi.azure.streamanalytics.ReferenceInputMssql;
 /// import com.pulumi.azure.streamanalytics.ReferenceInputMssqlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -341,7 +384,7 @@ import 'reference_input_mssql_state.dart';
 class ReferenceInputMssql extends pulumi.CustomResource {
   /// The MS SQL database name where the reference data exists.
   late final pulumi.Output<String> database;
-  /// The query used to retrieve incremental changes in the reference data from the MS SQL database. Cannot be set when `refresh_type` is `Static`.
+  /// The query used to retrieve incremental changes in the reference data from the MS SQL database. Cannot be set when `refreshType` is `Static`.
   late final pulumi.Output<String?> deltaSnapshotQuery;
   /// The query used to retrieve the reference data from the MS SQL database.
   late final pulumi.Output<String> fullSnapshotQuery;
@@ -349,7 +392,7 @@ class ReferenceInputMssql extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The password to connect to the MS SQL database.
   late final pulumi.Output<String> password;
-  /// The frequency in `hh:mm:ss` with which the reference data should be retrieved from the MS SQL database e.g. `00:20:00` for every 20 minutes. Must be set when `refresh_type` is `RefreshPeriodicallyWithFull` or `RefreshPeriodicallyWithDelta`.
+  /// The frequency in `hh:mm:ss` with which the reference data should be retrieved from the MS SQL database e.g. `00:20:00` for every 20 minutes. Must be set when `refreshType` is `RefreshPeriodicallyWithFull` or `RefreshPeriodicallyWithDelta`.
   late final pulumi.Output<String?> refreshIntervalDuration;
   /// Defines whether and how the reference data should be refreshed. Accepted values are `Static`, `RefreshPeriodicallyWithFull` and `RefreshPeriodicallyWithDelta`.
   late final pulumi.Output<String> refreshType;

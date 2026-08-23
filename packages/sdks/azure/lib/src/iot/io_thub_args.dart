@@ -24,11 +24,11 @@ class IoTHubArgs {
   final pulumi.Input<int>? eventHubPartitionCount;
   /// The event hub retention to use in days. Must be between `1` and `7`. Defaults to `1`.
   final pulumi.Input<int>? eventHubRetentionInDays;
-  /// A `fallback_route` block as defined below. If the fallback route is enabled, messages that don't match any of the supplied routes are automatically sent to this route. Defaults to messages/events.
+  /// A `fallbackRoute` block as defined below. If the fallback route is enabled, messages that don't match any of the supplied routes are automatically sent to this route. Defaults to messages/events.
   ///
-  /// &gt; **Note:** If `fallback_route` isn't explicitly specified, the fallback route wouldn't be enabled by default.
+  /// &gt; **Note:** If `fallbackRoute` isn't explicitly specified, the fallback route wouldn't be enabled by default.
   final pulumi.Input<IoTHubFallbackRoute>? fallbackRoute;
-  /// A `file_upload` block as defined below.
+  /// A `fileUpload` block as defined below.
   final pulumi.Input<IoTHubFileUpload>? fileUpload;
   /// An `identity` block as defined below.
   final pulumi.Input<IoTHubIdentity>? identity;
@@ -39,7 +39,7 @@ class IoTHubArgs {
   final pulumi.Input<String>? minTlsVersion;
   /// Specifies the name of the IotHub resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// A `network_rule_set` block as defined below.
+  /// A `networkRuleSet` block as defined below.
   final pulumi.Input<List<IoTHubNetworkRuleSet>>? networkRuleSets;
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
   /// The name of the resource group under which the IotHub resource has to be created. Changing this forces a new resource to be created.
@@ -55,14 +55,14 @@ class IoTHubArgs {
   /// [enrichments] Optional.
   /// [eventHubPartitionCount] The number of device-to-cloud partitions used by backing event hubs. Must be between `2` and `128`. Defaults to `4`.
   /// [eventHubRetentionInDays] The event hub retention to use in days. Must be between `1` and `7`. Defaults to `1`.
-  /// [fallbackRoute] A `fallback_route` block as defined below. If the fallback route is enabled, messages that don't match any of the supplied routes are automatically sent to this route. Defaults to messages/events.
-  /// [fileUpload] A `file_upload` block as defined below.
+  /// [fallbackRoute] A `fallbackRoute` block as defined below. If the fallback route is enabled, messages that don't match any of the supplied routes are automatically sent to this route. Defaults to messages/events.
+  /// [fileUpload] A `fileUpload` block as defined below.
   /// [identity] An `identity` block as defined below.
   /// [localAuthenticationEnabled] If false, SAS tokens with Iot hub scoped SAS keys cannot be used for authentication. Defaults to `true`.
   /// [location] Specifies the supported Azure location where the resource has to be created. Changing this forces a new resource to be created.
   /// [minTlsVersion] Optional.
   /// [name] Specifies the name of the IotHub resource. Changing this forces a new resource to be created.
-  /// [networkRuleSets] A `network_rule_set` block as defined below.
+  /// [networkRuleSets] A `networkRuleSet` block as defined below.
   /// [publicNetworkAccessEnabled] Optional.
   /// [resourceGroupName] The name of the resource group under which the IotHub resource has to be created. Changing this forces a new resource to be created.
   /// [routes] Optional.
@@ -135,4 +135,3 @@ class IoTHubArgs {
     );
   }
 }
-

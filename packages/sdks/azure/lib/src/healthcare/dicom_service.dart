@@ -118,6 +118,32 @@ import 'dicom_service_storage.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_healthcare_workspace" "test" {
+///   name                = "tfexworkspace"
+///   resource_group_name = "tfex-resource_group"
+///   location            = "east us"
+/// }
+/// resource "azure_healthcare_dicomservice" "test" {
+///   name         = "tfexDicom"
+///   workspace_id = azure_healthcare_workspace.test.id
+///   location     = "east us"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "environment" = "None"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -129,8 +155,8 @@ import 'dicom_service_storage.dart';
 /// import com.pulumi.azure.healthcare.DicomService;
 /// import com.pulumi.azure.healthcare.DicomServiceArgs;
 /// import com.pulumi.azure.healthcare.inputs.DicomServiceIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

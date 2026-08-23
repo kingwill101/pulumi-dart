@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StandardIdentity {
   /// Specifies a list of User Assigned Managed Identity IDs to be assigned to this Logic App Standard.
   ///
-  /// &gt; **Note:** When `type` is set to `SystemAssigned`, The assigned `principal_id` and `tenant_id` can be retrieved after the Logic App has been created. More details are available below.
+  /// &gt; **Note:** When `type` is set to `SystemAssigned`, The assigned `principalId` and `tenantId` can be retrieved after the Logic App has been created. More details are available below.
   ///
-  /// &gt; **Note:** The `identity_ids` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
+  /// &gt; **Note:** The `identityIds` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
   final pulumi.Input<List<String>>? identityIds;
   /// The Principal ID for the Service Principal associated with the Managed Service Identity of this App Service.
   final pulumi.Input<String>? principalId;
@@ -46,4 +46,3 @@ class StandardIdentity {
     );
   }
 }
-

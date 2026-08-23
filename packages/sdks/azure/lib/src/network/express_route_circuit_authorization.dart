@@ -156,6 +156,41 @@ import 'express_route_circuit_authorization_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "exprtTest"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_expressroutecircuit" "example" {
+///   name                  = "expressRoute1"
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   location              = azure_core_resourcegroup.example.location
+///   service_provider_name = "Equinix"
+///   peering_location      = "Silicon Valley"
+///   bandwidth_in_mbps     = 50
+///   sku = {
+///     tier   = "Standard"
+///     family = "MeteredData"
+///   }
+///   allow_classic_operations = false
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// resource "azure_network_expressroutecircuitauthorization" "example" {
+///   name                       = "exampleERCAuth"
+///   express_route_circuit_name = azure_network_expressroutecircuit.example.name
+///   resource_group_name        = azure_core_resourcegroup.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +204,8 @@ import 'express_route_circuit_authorization_state.dart';
 /// import com.pulumi.azure.network.inputs.ExpressRouteCircuitSkuArgs;
 /// import com.pulumi.azure.network.ExpressRouteCircuitAuthorization;
 /// import com.pulumi.azure.network.ExpressRouteCircuitAuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

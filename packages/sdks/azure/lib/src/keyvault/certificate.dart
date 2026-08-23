@@ -353,6 +353,48 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "examplekeyvault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name            = "premium"
+///   access_policies {
+///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
+///     object_id               = data.azure_core_getclientconfig.current.object_id
+///     certificate_permissions = ["Create", "Delete", "DeleteIssuers", "Get", "GetIssuers", "Import", "List", "ListIssuers", "ManageContacts", "ManageIssuers", "SetIssuers", "Update"]
+///     key_permissions         = ["Backup", "Create", "Decrypt", "Delete", "Encrypt", "Get", "Import", "List", "Purge", "Recover", "Restore", "Sign", "UnwrapKey", "Update", "Verify", "WrapKey"]
+///     secret_permissions      = ["Backup", "Delete", "Get", "List", "Purge", "Recover", "Restore", "Set"]
+///   }
+/// }
+/// resource "azure_keyvault_certificate" "example" {
+///   name         = "imported-cert"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   certificate = {
+///     contents = filebase64("certificate-to-import.pfx")
+///     password = ""
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -370,8 +412,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.azure.keyvault.inputs.CertificateCertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1039,6 +1081,73 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                       = "examplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   soft_delete_retention_days = 7
+///   access_policies {
+///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
+///     object_id               = data.azure_core_getclientconfig.current.object_id
+///     certificate_permissions = ["Create", "Delete", "DeleteIssuers", "Get", "GetIssuers", "Import", "List", "ListIssuers", "ManageContacts", "ManageIssuers", "Purge", "SetIssuers", "Update"]
+///     key_permissions         = ["Backup", "Create", "Decrypt", "Delete", "Encrypt", "Get", "Import", "List", "Purge", "Recover", "Restore", "Sign", "UnwrapKey", "Update", "Verify", "WrapKey"]
+///     secret_permissions      = ["Backup", "Delete", "Get", "List", "Purge", "Recover", "Restore", "Set"]
+///   }
+/// }
+/// resource "azure_keyvault_certificate" "example" {
+///   name         = "generated-cert"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   certificate_policy = {
+///     issuer_parameters = {
+///       name = "Self"
+///     }
+///     key_properties = {
+///       exportable = true
+///       key_size   = 2048
+///       key_type   = "RSA"
+///       reuse_key  = true
+///     }
+///     lifetime_actions = [{
+///       "action" = {
+///         "actionType" = "AutoRenew"
+///       }
+///       "trigger" = {
+///         "daysBeforeExpiry" = 30
+///       }
+///     }]
+///     secret_properties = {
+///       content_type = "application/x-pkcs12"
+///     }
+///     x509_certificate_properties = {
+///       extended_key_usages = ["1.3.6.1.5.5.7.3.1"]
+///       key_usages          = ["cRLSign", "dataEncipherment", "digitalSignature", "keyAgreement", "keyCertSign", "keyEncipherment"]
+///       subject_alternative_names = {
+///         dns_names = ["internal.contoso.com", "domain.hello.world"]
+///       }
+///       subject            = "CN=hello-world"
+///       validity_in_months = 12
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1056,11 +1165,14 @@ import 'certificate_state.dart';
 /// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyArgs;
 /// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyIssuerParametersArgs;
 /// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyKeyPropertiesArgs;
+/// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyLifetimeActionArgs;
+/// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyLifetimeActionActionArgs;
+/// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyLifetimeActionTriggerArgs;
 /// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicySecretPropertiesArgs;
 /// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyX509CertificatePropertiesArgs;
 /// import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1294,15 +1406,15 @@ import 'certificate_state.dart';
 class Certificate extends pulumi.CustomResource {
   /// A `certificate` block as defined below, used to Import an existing certificate. Changing this will create a new version of the Key Vault Certificate.
   late final pulumi.Output<CertificateCertificate?> certificate;
-  /// A `certificate_attribute` block as defined below.
+  /// A `certificateAttribute` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> certificateAttributes;
   /// The raw Key Vault Certificate data represented as a hexadecimal string.
   late final pulumi.Output<String> certificateData;
   /// The Base64 encoded Key Vault Certificate data.
   late final pulumi.Output<String> certificateDataBase64;
-  /// A `certificate_policy` block as defined below. Changing this (except the `lifetime_action` field) will create a new version of the Key Vault Certificate.
+  /// A `certificatePolicy` block as defined below. Changing this (except the `lifetimeAction` field) will create a new version of the Key Vault Certificate.
   ///
-  /// &gt; **NOTE:** When creating a Key Vault Certificate, at least one of `certificate` or `certificate_policy` is required. Provide `certificate` to import an existing certificate, `certificate_policy` to generate a new certificate.
+  /// &gt; **NOTE:** When creating a Key Vault Certificate, at least one of `certificate` or `certificatePolicy` is required. Provide `certificate` to import an existing certificate, `certificatePolicy` to generate a new certificate.
   late final pulumi.Output<CertificateCertificatePolicy> certificatePolicy;
   /// The ID of the Key Vault where the Certificate should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> keyVaultId;

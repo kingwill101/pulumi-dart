@@ -4,7 +4,7 @@ import 'cache_nfs_target_state.dart';
 
 /// Manages a NFS Target within a HPC Cache.
 ///
-/// !&gt; **Note:** The `azure.hpc.CacheNfsTarget` resource has been deprecated because the service is retiring on 2025-09-30. This resource will be removed in v5.0 of the AzureRM Provider. See https://aka.ms/hpccacheretirement for more information.
+/// &gt; **Note:** The `azure.hpc.CacheNfsTarget` resource has been deprecated because the service is retiring on 2025-09-30. This resource will be removed in v5.0 of the AzureRM Provider. See https://aka.ms/hpccacheretirement for more information.
 ///
 /// &gt; **Note:** By request of the service team the provider no longer automatically registering the `Microsoft.StorageCache` Resource Provider for this resource. To register it you can run `az provider register --namespace 'Microsoft.StorageCache'`.
 ///
@@ -520,6 +520,101 @@ import 'cache_nfs_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "examplevn"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example_hpc" {
+///   name                 = "examplesubnethpc"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.1.0/24"]
+/// }
+/// resource "azure_hpc_cache" "example" {
+///   name                = "examplehpccache"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cache_size_in_gb    = 3072
+///   subnet_id           = azure_network_subnet.example_hpc.id
+///   sku_name            = "Standard_2G"
+/// }
+/// resource "azure_network_subnet" "example_vm" {
+///   name                 = "examplesubnetvm"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "example" {
+///   name                = "examplenic"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "internal"
+///     subnet_id                     = azure_network_subnet.example_vm.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_linuxvirtualmachine" "example" {
+///   name                  = "examplevm"
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   location              = azure_core_resourcegroup.example.location
+///   size                  = "Standard_F2"
+///   admin_username        = "adminuser"
+///   network_interface_ids = [azure_network_networkinterface.example.id]
+///   admin_ssh_keys {
+///     username   = "adminuser"
+///     public_key = file("~/.ssh/id_rsa.pub")
+///   }
+///   os_disk = {
+///     caching              = "ReadWrite"
+///     storage_account_type = "Standard_LRS"
+///   }
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+///   custom_data = base64encode(local.customData)
+/// }
+/// resource "azure_hpc_cachenfstarget" "example" {
+///   name                = "examplehpcnfstarget"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   cache_name          = azure_hpc_cache.example.name
+///   target_host_name    = azure_compute_linuxvirtualmachine.example.private_ip_address
+///   usage_model         = "READ_HEAVY_INFREQ"
+///   namespace_junctions {
+///     namespace_path = "/nfs/a1"
+///     nfs_export     = "/export/a"
+///     target_path    = "1"
+///   }
+///   namespace_junctions {
+///     namespace_path = "/nfs/b"
+///     nfs_export     = "/export/b"
+///   }
+/// }
+/// locals {
+///   customData = "#!/bin/bash\nsudo -i \napt-get install -y nfs-kernel-server\nmkdir -p /export/a/1\nmkdir -p /export/a/2\nmkdir -p /export/b\ncat << EOF > /etc/exports\n/export/a *(rw,fsid=0,insecure,no_subtree_check,async)\n/export/b *(rw,fsid=0,insecure,no_subtree_check,async)\nEOF\nsystemctl start nfs-server\nexportfs -arv\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -548,8 +643,8 @@ import 'cache_nfs_target_state.dart';
 /// import com.pulumi.azure.hpc.CacheNfsTarget;
 /// import com.pulumi.azure.hpc.CacheNfsTargetArgs;
 /// import com.pulumi.azure.hpc.inputs.CacheNfsTargetNamespaceJunctionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -798,7 +893,7 @@ class CacheNfsTarget extends pulumi.CustomResource {
   late final pulumi.Output<String> cacheName;
   /// The name of the HPC Cache NFS Target. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// Can be specified multiple times to define multiple `namespace_junction`. Each `namespace_junction` block supports fields documented below.
+  /// Can be specified multiple times to define multiple `namespaceJunction`. Each `namespaceJunction` block supports fields documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> namespaceJunctions;
   /// The name of the Resource Group in which to create the HPC Cache NFS Target. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;

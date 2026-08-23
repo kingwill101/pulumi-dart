@@ -3,22 +3,22 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointPrivateDnsZoneConfigRecordSet {
-  /// The fully qualified domain name to the `private_dns_zone`.
+  /// The fully qualified domain name to the `privateDnsZone`.
   final pulumi.Input<String>? fqdn;
-  /// A list of all IP Addresses that map to the `private_dns_zone` fqdn.
+  /// A list of all IP Addresses that map to the `privateDnsZone` fqdn.
   final pulumi.Input<List<String>>? ipAddresses;
   /// Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// The time to live for each connection to the `private_dns_zone`.
+  /// The time to live for each connection to the `privateDnsZone`.
   final pulumi.Input<int>? ttl;
   /// The type of DNS record.
   final pulumi.Input<String>? type;
 
   /// Creates a new [EndpointPrivateDnsZoneConfigRecordSet].
-  /// [fqdn] The fully qualified domain name to the `private_dns_zone`.
-  /// [ipAddresses] A list of all IP Addresses that map to the `private_dns_zone` fqdn.
+  /// [fqdn] The fully qualified domain name to the `privateDnsZone`.
+  /// [ipAddresses] A list of all IP Addresses that map to the `privateDnsZone` fqdn.
   /// [name] Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
-  /// [ttl] The time to live for each connection to the `private_dns_zone`.
+  /// [ttl] The time to live for each connection to the `privateDnsZone`.
   /// [type] The type of DNS record.
   const EndpointPrivateDnsZoneConfigRecordSet({
     this.fqdn,
@@ -48,4 +48,3 @@ class EndpointPrivateDnsZoneConfigRecordSet {
     );
   }
 }
-

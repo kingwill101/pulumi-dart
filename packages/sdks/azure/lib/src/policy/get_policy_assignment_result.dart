@@ -21,9 +21,9 @@ class GetPolicyAssignmentResult {
   /// A JSON mapping of any Metadata for this Policy.
   final String metadata;
   final String name;
-  /// A `non_compliance_message` block as defined below.
+  /// A `nonComplianceMessage` block as defined below.
   final List<GetPolicyAssignmentNonComplianceMessage> nonComplianceMessages;
-  /// A `not_scopes` block as defined below.
+  /// A `notScopes` block as defined below.
   final List<String> notScopes;
   /// A JSON mapping of any Parameters for this Policy.
   final String parameters;
@@ -40,8 +40,8 @@ class GetPolicyAssignmentResult {
   /// [location] The Azure Region where the Policy Assignment exists.
   /// [metadata] A JSON mapping of any Metadata for this Policy.
   /// [name] Required.
-  /// [nonComplianceMessages] A `non_compliance_message` block as defined below.
-  /// [notScopes] A `not_scopes` block as defined below.
+  /// [nonComplianceMessages] A `nonComplianceMessage` block as defined below.
+  /// [notScopes] A `notScopes` block as defined below.
   /// [parameters] A JSON mapping of any Parameters for this Policy.
   /// [policyDefinitionId] The ID of the assigned Policy Definition.
   /// [scopeId] Required.
@@ -97,4 +97,3 @@ class GetPolicyAssignmentResult {
     );
   }
 }
-

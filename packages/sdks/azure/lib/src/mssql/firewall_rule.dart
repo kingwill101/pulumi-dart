@@ -126,6 +126,34 @@ import 'firewall_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "mysqlserver"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "4dm1n157r470r"
+///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
+/// }
+/// resource "azure_mssql_firewallrule" "example" {
+///   name             = "FirewallRule1"
+///   server_id        = azure_mssql_server.example.id
+///   start_ip_address = "10.0.17.62"
+///   end_ip_address   = "10.0.17.62"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +166,8 @@ import 'firewall_rule_state.dart';
 /// import com.pulumi.azure.mssql.ServerArgs;
 /// import com.pulumi.azure.mssql.FirewallRule;
 /// import com.pulumi.azure.mssql.FirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,7 +248,7 @@ import 'firewall_rule_state.dart';
 class FirewallRule extends pulumi.CustomResource {
   /// The ending IP address to allow through the firewall for this rule.
   ///
-  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
+  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `startIpAddress` and `endIpAddress` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
   late final pulumi.Output<String> endIpAddress;
   /// The name of the firewall rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;

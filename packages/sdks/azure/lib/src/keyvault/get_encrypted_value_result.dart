@@ -4,7 +4,7 @@
 /// Result data returned by getEncryptedValue.
 class GetEncryptedValueResult {
   final String algorithm;
-  /// The Base64URL decoded string of `plain_text_value`. Because the API would remove padding characters of `plain_text_value` when encrypting, this attribute is useful to get the original value.
+  /// The Base64URL decoded string of `plainTextValue`. Because the API would remove padding characters of `plainTextValue` when encrypting, this attribute is useful to get the original value.
   final String decodedPlainTextValue;
   final String? encryptedData;
   /// The provider-assigned unique ID for this managed resource.
@@ -14,7 +14,7 @@ class GetEncryptedValueResult {
 
   /// Creates a new [GetEncryptedValueResult].
   /// [algorithm] Required.
-  /// [decodedPlainTextValue] The Base64URL decoded string of `plain_text_value`. Because the API would remove padding characters of `plain_text_value` when encrypting, this attribute is useful to get the original value.
+  /// [decodedPlainTextValue] The Base64URL decoded string of `plainTextValue`. Because the API would remove padding characters of `plainTextValue` when encrypting, this attribute is useful to get the original value.
   /// [encryptedData] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [keyVaultKeyId] Required.
@@ -50,4 +50,3 @@ class GetEncryptedValueResult {
     );
   }
 }
-

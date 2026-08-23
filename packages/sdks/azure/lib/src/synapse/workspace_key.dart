@@ -417,10 +417,10 @@ import 'workspace_key_state.dart';
 /// 		workspacePolicy, err := keyvault.NewAccessPolicy(ctx, "workspace_policy", &keyvault.AccessPolicyArgs{
 /// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			TenantId: pulumi.String(exampleWorkspace.Identity.ApplyT(func(identity synapse.WorkspaceIdentity) (*string, error) {
-/// 				return &identity.TenantId, nil
+/// 				return identity.TenantId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ObjectId: pulumi.String(exampleWorkspace.Identity.ApplyT(func(identity synapse.WorkspaceIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Get"),
@@ -444,6 +444,89 @@ import 'workspace_key_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   account_kind             = "StorageV2"
+///   is_hns_enabled           = "true"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                     = "example"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                 = "standard"
+///   purge_protection_enabled = true
+/// }
+/// resource "azure_keyvault_accesspolicy" "deployer" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
+///   object_id       = data.azure_core_getclientconfig.current.object_id
+///   key_permissions = ["Create", "Get", "Delete", "Purge", "GetRotationPolicy"]
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_accesspolicy.deployer]
+///   name         = "workspaceEncryptionKey"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["unwrapKey", "wrapKey"]
+/// }
+/// resource "azure_synapse_workspace" "example" {
+///   name                                 = "example"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   location                             = azure_core_resourcegroup.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   sql_administrator_login              = "sqladminuser"
+///   sql_administrator_login_password     = "H@Sh1CoR3!"
+///   customer_managed_key = {
+///     key_versionless_id = azure_keyvault_key.example.versionless_id
+///     key_name           = "enckey"
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "Env" = "production"
+///   }
+/// }
+/// resource "azure_keyvault_accesspolicy" "workspace_policy" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = azure_synapse_workspace.example.identity.tenant_id
+///   object_id       = azure_synapse_workspace.example.identity.principal_id
+///   key_permissions = ["Get", "WrapKey", "UnwrapKey"]
+/// }
+/// resource "azure_synapse_workspacekey" "example" {
+///   depends_on                          = [azure_keyvault_accesspolicy.workspace_policy]
+///   customer_managed_key_versionless_id = azure_keyvault_key.example.versionless_id
+///   synapse_workspace_id                = azure_synapse_workspace.example.id
+///   active                              = true
+///   customer_managed_key_name           = "enckey"
 /// }
 /// ```
 /// ```java
@@ -472,8 +555,8 @@ import 'workspace_key_state.dart';
 /// import com.pulumi.azure.synapse.WorkspaceKey;
 /// import com.pulumi.azure.synapse.WorkspaceKeyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

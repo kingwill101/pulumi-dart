@@ -365,13 +365,13 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		databricks, err := keyvault.NewAccessPolicy(ctx, "databricks", &keyvault.AccessPolicyArgs{
+/// 		databricks2, err := keyvault.NewAccessPolicy(ctx, "databricks", &keyvault.AccessPolicyArgs{
 /// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			TenantId: pulumi.String(exampleWorkspace.StorageAccountIdentities.ApplyT(func(storageAccountIdentities []databricks.WorkspaceStorageAccountIdentity) (*string, error) {
-/// 				return &storageAccountIdentities[0].TenantId, nil
+/// 				return storageAccountIdentities[0].TenantId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ObjectId: pulumi.String(exampleWorkspace.StorageAccountIdentities.ApplyT(func(storageAccountIdentities []databricks.WorkspaceStorageAccountIdentity) (*string, error) {
-/// 				return &storageAccountIdentities[0].PrincipalId, nil
+/// 				return storageAccountIdentities[0].PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Create"),
@@ -394,13 +394,72 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 /// 			WorkspaceId:   exampleWorkspace.ID(),
 /// 			KeyVaultKeyId: exampleKey.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			databricks,
+/// 			databricks2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                       = "examplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
+///   purge_protection_enabled   = true
+///   soft_delete_retention_days = 7
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_accesspolicy.terraform]
+///   name         = "example-certificate"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_keyvault_accesspolicy" "terraform" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = azure_keyvault_keyvault.example.tenant_id
+///   object_id       = data.azure_core_getclientconfig.current.object_id
+///   key_permissions = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "List", "Decrypt", "Sign", "GetRotationPolicy"]
+/// }
+/// resource "azure_keyvault_accesspolicy" "databricks" {
+///   depends_on      = [azure_databricks_workspace.example]
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = azure_databricks_workspace.example.storage_account_identities[0].tenant_id
+///   object_id       = azure_databricks_workspace.example.storage_account_identities[0].principal_id
+///   key_permissions = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "List", "Decrypt", "Sign"]
+/// }
+/// resource "azure_databricks_workspace" "example" {
+///   name                         = "example-workspace"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   sku                          = "premium"
+///   customer_managed_key_enabled = true
+/// }
+/// resource "azure_databricks_workspacerootdbfscustomermanagedkey" "example" {
+///   depends_on       = [azure_keyvault_accesspolicy.databricks]
+///   workspace_id     = azure_databricks_workspace.example.id
+///   key_vault_key_id = azure_keyvault_key.example.id
 /// }
 /// ```
 /// ```java
@@ -423,8 +482,8 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 /// import com.pulumi.azure.databricks.WorkspaceRootDbfsCustomerManagedKey;
 /// import com.pulumi.azure.databricks.WorkspaceRootDbfsCustomerManagedKeyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -631,7 +690,7 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Databricks` - 2024-05-01
+/// * `Microsoft.Databricks` - 2026-01-01
 ///
 /// ## Import
 ///
@@ -641,9 +700,9 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 /// $ pulumi import azure:databricks/workspaceRootDbfsCustomerManagedKey:WorkspaceRootDbfsCustomerManagedKey workspace1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Databricks/workspaces/workspace1
 /// ```
 class WorkspaceRootDbfsCustomerManagedKey extends pulumi.CustomResource {
-  /// Specifies the Resource ID of the Key Vault which contains the `key_vault_key_id`.
+  /// Specifies the Resource ID of the Key Vault which contains the `keyVaultKeyId`.
   ///
-  /// &gt; **Note:** The `key_vault_id` field only needs to be specified if the Key Vault which contains the `key_vault_key_id` exists in a different subscription than the Databricks Workspace. If the `key_vault_id` field is not specified it is assumed that the `key_vault_key_id` is hosted in the same subscription as the Databricks Workspace. Does not apply to managed HSM vaults.
+  /// &gt; **Note:** The `keyVaultId` field only needs to be specified if the Key Vault which contains the `keyVaultKeyId` exists in a different subscription than the Databricks Workspace. If the `keyVaultId` field is not specified it is assumed that the `keyVaultKeyId` is hosted in the same subscription as the Databricks Workspace. Does not apply to managed HSM vaults.
   ///
   /// &gt; **Note:** If you are using multiple service principals to execute Terraform across subscriptions you will need to add an additional `azure.keyvault.AccessPolicy` resource granting the service principal access to the key vault in that subscription.
   late final pulumi.Output<String?> keyVaultId;

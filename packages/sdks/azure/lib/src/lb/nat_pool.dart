@@ -185,6 +185,45 @@ import 'nat_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "LoadBalancerRG"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_publicip" "example" {
+///   name                = "PublicIPForLB"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   allocation_method   = "Static"
+/// }
+/// resource "azure_lb_loadbalancer" "example" {
+///   name                = "TestLoadBalancer"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   frontend_ip_configurations {
+///     name                 = "PublicIPAddress"
+///     public_ip_address_id = azure_network_publicip.example.id
+///   }
+/// }
+/// resource "azure_lb_natpool" "example" {
+///   resource_group_name            = azure_core_resourcegroup.example.name
+///   loadbalancer_id                = azure_lb_loadbalancer.example.id
+///   name                           = "SampleApplicationPool"
+///   protocol                       = "Tcp"
+///   frontend_port_start            = 80
+///   frontend_port_end              = 81
+///   backend_port                   = 8080
+///   frontend_ip_configuration_name = "PublicIPAddress"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +239,8 @@ import 'nat_pool_state.dart';
 /// import com.pulumi.azure.lb.inputs.LoadBalancerFrontendIpConfigurationArgs;
 /// import com.pulumi.azure.lb.NatPool;
 /// import com.pulumi.azure.lb.NatPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

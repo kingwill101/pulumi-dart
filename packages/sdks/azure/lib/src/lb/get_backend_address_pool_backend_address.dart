@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_backend_address_pool_backend_address_inbound_nat_rule_port_mapping.dart';
 
 class GetBackendAddressPoolBackendAddress {
-  /// A list of `inbound_nat_rule_port_mapping` block as defined below.
+  /// A list of `inboundNatRulePortMapping` block as defined below.
   final pulumi.Input<List<GetBackendAddressPoolBackendAddressInboundNatRulePortMapping>> inboundNatRulePortMappings;
   /// The Static IP address for this Load Balancer within the Virtual Network.
   final pulumi.Input<String> ipAddress;
@@ -14,7 +14,7 @@ class GetBackendAddressPoolBackendAddress {
   final pulumi.Input<String> virtualNetworkId;
 
   /// Creates a new [GetBackendAddressPoolBackendAddress].
-  /// [inboundNatRulePortMappings] A list of `inbound_nat_rule_port_mapping` block as defined below.
+  /// [inboundNatRulePortMappings] A list of `inboundNatRulePortMapping` block as defined below.
   /// [ipAddress] The Static IP address for this Load Balancer within the Virtual Network.
   /// [name] Specifies the name of the Backend Address Pool.
   /// [virtualNetworkId] The ID of the Virtual Network where the Backend Address of the Load Balancer exists.
@@ -43,4 +43,3 @@ class GetBackendAddressPoolBackendAddress {
     );
   }
 }
-

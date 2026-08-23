@@ -4,7 +4,7 @@ import 'route_table_state.dart';
 
 /// Manages a Route Table
 ///
-/// &gt; **NOTE on Route Tables and Routes:** There is both a standalone `route` resource, and allows for Routes to be defined in-line within the `route_table` resource.
+/// &gt; **NOTE on Route Tables and Routes:** There is both a standalone `route` resource, and allows for Routes to be defined in-line within the `routeTable` resource.
 /// At this time you cannot use a Route Table with in-line Routes in conjunction with any Route resources. Doing so will cause a conflict of Route configurations and will overwrite Routes.
 ///
 /// ## Example Usage
@@ -128,6 +128,33 @@ import 'route_table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_routetable" "example" {
+///   name                = "example-route-table"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   routes {
+///     name           = "route1"
+///     address_prefix = "10.1.0.0/16"
+///     next_hop_type  = "VnetLocal"
+///   }
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -139,8 +166,8 @@ import 'route_table_state.dart';
 /// import com.pulumi.azure.network.RouteTable;
 /// import com.pulumi.azure.network.RouteTableArgs;
 /// import com.pulumi.azure.network.inputs.RouteTableRouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

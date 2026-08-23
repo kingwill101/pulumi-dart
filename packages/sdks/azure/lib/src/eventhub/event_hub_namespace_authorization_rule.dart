@@ -143,6 +143,38 @@ import 'event_hub_namespace_authorization_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "resourcegroup"
+///   location = "West Europe"
+/// }
+/// resource "azure_eventhub_eventhubnamespace" "example" {
+///   name                = "acceptanceTestEventHubNamespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Basic"
+///   capacity            = 2
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// resource "azure_eventhub_eventhubnamespaceauthorizationrule" "example" {
+///   name                = "navi"
+///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   listen              = true
+///   send                = false
+///   manage              = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -155,8 +187,8 @@ import 'event_hub_namespace_authorization_rule_state.dart';
 /// import com.pulumi.azure.eventhub.EventHubNamespaceArgs;
 /// import com.pulumi.azure.eventhub.EventHubNamespaceAuthorizationRule;
 /// import com.pulumi.azure.eventhub.EventHubNamespaceAuthorizationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

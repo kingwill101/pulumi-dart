@@ -141,7 +141,7 @@ import 'dataset_azure_blob_state.dart';
 /// 			Name:          pulumi.String("example"),
 /// 			DataFactoryId: exampleFactory.ID(),
 /// 			ConnectionString: pulumi.String(example.ApplyT(func(example storage.GetAccountResult) (*string, error) {
-/// 				return &example.PrimaryConnectionString, nil
+/// 				return example.PrimaryConnectionString, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -161,6 +161,42 @@ import 'dataset_azure_blob_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_storage_getaccount" "example" {
+///   name                = "storageaccountname"
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedserviceazureblobstorage" "example" {
+///   name              = "example"
+///   data_factory_id   = azure_datafactory_factory.example.id
+///   connection_string = data.azure_storage_getaccount.example.primary_connection_string
+/// }
+/// resource "azure_datafactory_datasetazureblob" "example" {
+///   name                = "example"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   linked_service_name = azure_datafactory_linkedserviceazureblobstorage.example.name
+///   path                = "foo"
+///   filename            = "bar.png"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +213,8 @@ import 'dataset_azure_blob_state.dart';
 /// import com.pulumi.azure.datafactory.LinkedServiceAzureBlobStorageArgs;
 /// import com.pulumi.azure.datafactory.DatasetAzureBlob;
 /// import com.pulumi.azure.datafactory.DatasetAzureBlobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -298,7 +334,7 @@ class DatasetAzureBlob extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> parameters;
   /// The path of the Azure Blob.
   late final pulumi.Output<String?> path;
-  /// A `schema_column` block as defined below.
+  /// A `schemaColumn` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
 
   /// Creates a new [DatasetAzureBlob].

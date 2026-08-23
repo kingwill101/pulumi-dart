@@ -13,38 +13,38 @@ class AppIngress {
   final pulumi.Input<String>? clientCertificateMode;
   /// A `cors` block as defined below.
   final pulumi.Input<AppIngressCors>? cors;
-  /// One or more `custom_domain` block as detailed below.
+  /// One or more `customDomain` block as detailed below.
   final pulumi.Input<List<AppIngressCustomDomain>>? customDomains;
   /// The exposed port on the container for the Ingress traffic.
   ///
-  /// &gt; **Note:** `exposed_port` can only be specified when `transport` is set to `tcp`.
+  /// &gt; **Note:** `exposedPort` can only be specified when `transport` is set to `tcp`.
   final pulumi.Input<int>? exposedPort;
   /// Are connections to this Ingress from outside the Container App Environment enabled? Defaults to `false`.
   final pulumi.Input<bool>? externalEnabled;
   /// The FQDN of the ingress.
   final pulumi.Input<String>? fqdn;
-  /// One or more `ip_security_restriction` blocks for IP-filtering rules as defined below.
+  /// One or more `ipSecurityRestriction` blocks for IP-filtering rules as defined below.
   final pulumi.Input<List<AppIngressIpSecurityRestriction>>? ipSecurityRestrictions;
   /// The target port on the container for the Ingress traffic.
   final pulumi.Input<int> targetPort;
-  /// One or more `traffic_weight` blocks as detailed below.
+  /// One or more `trafficWeight` blocks as detailed below.
   final pulumi.Input<List<AppIngressTrafficWeight>> trafficWeights;
   /// The transport method for the Ingress. Possible values are `auto`, `http`, `http2` and `tcp`. Defaults to `auto`.
   ///
-  /// &gt; **Note:** if `transport` is set to `tcp`, `exposed_port` and `target_port` should be set at the same time.
+  /// &gt; **Note:** if `transport` is set to `tcp`, `exposedPort` and `targetPort` should be set at the same time.
   final pulumi.Input<String>? transport;
 
   /// Creates a new [AppIngress].
   /// [allowInsecureConnections] Should this ingress allow insecure connections?
   /// [clientCertificateMode] The client certificate mode for the Ingress. Possible values are `require`, `accept`, and `ignore`.
   /// [cors] A `cors` block as defined below.
-  /// [customDomains] One or more `custom_domain` block as detailed below.
+  /// [customDomains] One or more `customDomain` block as detailed below.
   /// [exposedPort] The exposed port on the container for the Ingress traffic.
   /// [externalEnabled] Are connections to this Ingress from outside the Container App Environment enabled? Defaults to `false`.
   /// [fqdn] The FQDN of the ingress.
-  /// [ipSecurityRestrictions] One or more `ip_security_restriction` blocks for IP-filtering rules as defined below.
+  /// [ipSecurityRestrictions] One or more `ipSecurityRestriction` blocks for IP-filtering rules as defined below.
   /// [targetPort] The target port on the container for the Ingress traffic.
-  /// [trafficWeights] One or more `traffic_weight` blocks as detailed below.
+  /// [trafficWeights] One or more `trafficWeight` blocks as detailed below.
   /// [transport] The transport method for the Ingress. Possible values are `auto`, `http`, `http2` and `tcp`. Defaults to `auto`.
   const AppIngress({
     this.allowInsecureConnections,
@@ -92,4 +92,3 @@ class AppIngress {
     );
   }
 }
-

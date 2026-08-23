@@ -11,7 +11,7 @@ class ResourceGroupTemplateDeploymentArgs {
   final pulumi.Input<String>? debugLevel;
   /// The Deployment Mode for this Resource Group Template Deployment. Possible values are `Complete` (where resources in the Resource Group not specified in the ARM Template will be destroyed) and `Incremental` (where resources are additive only).
   ///
-  /// &gt; **Note:** If `deployment_mode` is set to `Complete` then resources within this Resource Group which are not defined in the ARM Template will be deleted.
+  /// &gt; **Note:** If `deploymentMode` is set to `Complete` then resources within this Resource Group which are not defined in the ARM Template will be deleted.
   final pulumi.Input<String> deploymentMode;
   /// The name which should be used for this Resource Group Template Deployment. Changing this forces a new Resource Group Template Deployment to be created.
   final pulumi.Input<String>? name;
@@ -23,9 +23,9 @@ class ResourceGroupTemplateDeploymentArgs {
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Resource Group Template Deployment.
   final pulumi.Input<Map<String, String>>? tags;
-  /// The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `template_spec_version_id`.
+  /// The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `templateSpecVersionId`.
   final pulumi.Input<String>? templateContent;
-  /// The ID of the Template Spec Version to deploy. Cannot be specified with `template_content`.
+  /// The ID of the Template Spec Version to deploy. Cannot be specified with `templateContent`.
   final pulumi.Input<String>? templateSpecVersionId;
 
   /// Creates a new [ResourceGroupTemplateDeploymentArgs].
@@ -35,8 +35,8 @@ class ResourceGroupTemplateDeploymentArgs {
   /// [parametersContent] The contents of the ARM Template parameters file - containing a JSON list of parameters.
   /// [resourceGroupName] The name of the Resource Group where the Resource Group Template Deployment should exist. Changing this forces a new Resource Group Template Deployment to be created.
   /// [tags] A mapping of tags which should be assigned to the Resource Group Template Deployment.
-  /// [templateContent] The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `template_spec_version_id`.
-  /// [templateSpecVersionId] The ID of the Template Spec Version to deploy. Cannot be specified with `template_content`.
+  /// [templateContent] The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `templateSpecVersionId`.
+  /// [templateSpecVersionId] The ID of the Template Spec Version to deploy. Cannot be specified with `templateContent`.
   const ResourceGroupTemplateDeploymentArgs({
     this.debugLevel,
     required this.deploymentMode,
@@ -74,4 +74,3 @@ class ResourceGroupTemplateDeploymentArgs {
     );
   }
 }
-

@@ -260,6 +260,63 @@ import 'sql_pool_extended_auditing_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplestorageacc"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+///   account_kind             = "BlobStorage"
+/// }
+/// resource "azure_storage_datalakegen2filesystem" "example" {
+///   name               = "example"
+///   storage_account_id = azure_storage_account.example.id
+/// }
+/// resource "azure_synapse_workspace" "example" {
+///   name                                 = "example"
+///   resource_group_name                  = azure_core_resourcegroup.example.name
+///   location                             = azure_core_resourcegroup.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   sql_administrator_login              = "sqladminuser"
+///   sql_administrator_login_password     = "H@Sh1CoR3!"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_synapse_sqlpool" "example" {
+///   name                 = "examplesqlpool"
+///   synapse_workspace_id = azure_synapse_workspace.example.id
+///   sku_name             = "DW100c"
+///   create_mode          = "Default"
+/// }
+/// resource "azure_storage_account" "audit_logs" {
+///   name                     = "examplesa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_synapse_sqlpoolextendedauditingpolicy" "example" {
+///   sql_pool_id                             = azure_synapse_sqlpool.example.id
+///   storage_endpoint                        = azure_storage_account.audit_logs.primary_blob_endpoint
+///   storage_account_access_key              = azure_storage_account.audit_logs.primary_access_key
+///   storage_account_access_key_is_secondary = false
+///   retention_in_days                       = 6
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -279,8 +336,8 @@ import 'sql_pool_extended_auditing_policy_state.dart';
 /// import com.pulumi.azure.synapse.SqlPoolArgs;
 /// import com.pulumi.azure.synapse.SqlPoolExtendedAuditingPolicy;
 /// import com.pulumi.azure.synapse.SqlPoolExtendedAuditingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -429,7 +486,7 @@ class SqlPoolExtendedAuditingPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> sqlPoolId;
   /// The access key to use for the auditing storage account.
   late final pulumi.Output<String?> storageAccountAccessKey;
-  /// Is `storage_account_access_key` value the storage's secondary key?
+  /// Is `storageAccountAccessKey` value the storage's secondary key?
   late final pulumi.Output<bool?> storageAccountAccessKeyIsSecondary;
   /// The blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all extended auditing logs.
   late final pulumi.Output<String?> storageEndpoint;

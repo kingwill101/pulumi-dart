@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_account_azure_files_authentication_active_directory.dart';
 
 class GetAccountAzureFilesAuthentication {
-  /// An `active_directory` block as documented below.
+  /// An `activeDirectory` block as documented below.
   final pulumi.Input<List<GetAccountAzureFilesAuthenticationActiveDirectory>> activeDirectories;
   /// The default share level permissions applied to all users.
   final pulumi.Input<String> defaultShareLevelPermission;
@@ -12,7 +12,7 @@ class GetAccountAzureFilesAuthentication {
   final pulumi.Input<String> directoryType;
 
   /// Creates a new [GetAccountAzureFilesAuthentication].
-  /// [activeDirectories] An `active_directory` block as documented below.
+  /// [activeDirectories] An `activeDirectory` block as documented below.
   /// [defaultShareLevelPermission] The default share level permissions applied to all users.
   /// [directoryType] The directory service used for this Storage Account.
   const GetAccountAzureFilesAuthentication({
@@ -37,4 +37,3 @@ class GetAccountAzureFilesAuthentication {
     );
   }
 }
-

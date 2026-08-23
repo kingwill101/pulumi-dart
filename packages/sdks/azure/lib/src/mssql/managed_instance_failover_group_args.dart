@@ -16,7 +16,7 @@ class ManagedInstanceFailoverGroupArgs {
   final pulumi.Input<String>? name;
   /// The ID of the Azure SQL Managed Instance which will be replicated to. Changing this forces a new resource to be created.
   final pulumi.Input<String> partnerManagedInstanceId;
-  /// A `read_write_endpoint_failover_policy` block as defined below.
+  /// A `readWriteEndpointFailoverPolicy` block as defined below.
   final pulumi.Input<ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy> readWriteEndpointFailoverPolicy;
   /// Failover policy for the read-only endpoint. Defaults to `true`.
   final pulumi.Input<bool>? readonlyEndpointFailoverPolicyEnabled;
@@ -28,7 +28,7 @@ class ManagedInstanceFailoverGroupArgs {
   /// [managedInstanceId] The ID of the Azure SQL Managed Instance which will be replicated using a Managed Instance Failover Group. Changing this forces a new resource to be created.
   /// [name] The name which should be used for this Managed Instance Failover Group. Changing this forces a new resource to be created.
   /// [partnerManagedInstanceId] The ID of the Azure SQL Managed Instance which will be replicated to. Changing this forces a new resource to be created.
-  /// [readWriteEndpointFailoverPolicy] A `read_write_endpoint_failover_policy` block as defined below.
+  /// [readWriteEndpointFailoverPolicy] A `readWriteEndpointFailoverPolicy` block as defined below.
   /// [readonlyEndpointFailoverPolicyEnabled] Failover policy for the read-only endpoint. Defaults to `true`.
   /// [secondaryType] The type of the secondary Managed Instance. Possible values are `Geo`, `Standby`. Defaults to `Geo`.
   const ManagedInstanceFailoverGroupArgs({
@@ -65,4 +65,3 @@ class ManagedInstanceFailoverGroupArgs {
     );
   }
 }
-

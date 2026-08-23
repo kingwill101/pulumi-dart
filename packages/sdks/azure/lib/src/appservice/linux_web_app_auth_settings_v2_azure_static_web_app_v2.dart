@@ -24,4 +24,3 @@ class LinuxWebAppAuthSettingsV2AzureStaticWebAppV2 {
     );
   }
 }
-

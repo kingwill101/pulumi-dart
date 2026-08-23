@@ -6,7 +6,7 @@ import 'backend_service_fabric_cluster_server_x509_name.dart';
 class BackendServiceFabricCluster {
   /// The client certificate resource id for the management endpoint.
   ///
-  /// &gt; **Note:** At least one of `client_certificate_thumbprint`, and `client_certificate_id` must be set.
+  /// &gt; **Note:** At least one of `clientCertificateThumbprint`, and `clientCertificateId` must be set.
   final pulumi.Input<String>? clientCertificateId;
   /// The client certificate thumbprint for the management endpoint.
   final pulumi.Input<String>? clientCertificateThumbprint;
@@ -16,7 +16,7 @@ class BackendServiceFabricCluster {
   final pulumi.Input<int> maxPartitionResolutionRetries;
   /// A list of thumbprints of the server certificates of the Service Fabric cluster.
   final pulumi.Input<List<String>>? serverCertificateThumbprints;
-  /// One or more `server_x509_name` blocks as documented below.
+  /// One or more `serverX509Name` blocks as documented below.
   final pulumi.Input<List<BackendServiceFabricClusterServerX509Name>>? serverX509Names;
 
   /// Creates a new [BackendServiceFabricCluster].
@@ -25,7 +25,7 @@ class BackendServiceFabricCluster {
   /// [managementEndpoints] A list of cluster management endpoints.
   /// [maxPartitionResolutionRetries] The maximum number of retries when attempting resolve the partition.
   /// [serverCertificateThumbprints] A list of thumbprints of the server certificates of the Service Fabric cluster.
-  /// [serverX509Names] One or more `server_x509_name` blocks as documented below.
+  /// [serverX509Names] One or more `serverX509Name` blocks as documented below.
   const BackendServiceFabricCluster({
     this.clientCertificateId,
     this.clientCertificateThumbprint,
@@ -57,4 +57,3 @@ class BackendServiceFabricCluster {
     );
   }
 }
-

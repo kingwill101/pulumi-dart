@@ -5,7 +5,7 @@ import 'account_project_state.dart';
 
 /// Manages a Cognitive Account Project.
 ///
-/// &gt; **Note:** Cognitive Account Projects can only be created under a Cognitive Account that has `project_management_enabled = true`, `kind = "AIServices"`, a managed identity configured, and a `custom_subdomain_name` specified.
+/// &gt; **Note:** Cognitive Account Projects can only be created under a Cognitive Account that has `projectManagementEnabled = true`, `kind = "AIServices"`, a managed identity configured, and a `customSubdomainName` specified.
 ///
 /// ## Example Usage
 ///
@@ -176,6 +176,45 @@ import 'account_project_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_cognitive_account" "example" {
+///   name                       = "example-account"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   kind                       = "AIServices"
+///   sku_name                   = "S0"
+///   project_management_enabled = true
+///   custom_subdomain_name      = "example-account-subdomain"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_cognitive_accountproject" "example" {
+///   name                 = "example-project"
+///   cognitive_account_id = azure_cognitive_account.example.id
+///   location             = azure_core_resourcegroup.example.location
+///   description          = "Example cognitive services project"
+///   display_name         = "Example Project"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "Environment" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -190,8 +229,8 @@ import 'account_project_state.dart';
 /// import com.pulumi.azure.cognitive.AccountProject;
 /// import com.pulumi.azure.cognitive.AccountProjectArgs;
 /// import com.pulumi.azure.cognitive.inputs.AccountProjectIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -277,7 +316,7 @@ import 'account_project_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.CognitiveServices` - 2025-06-01
+/// * `Microsoft.CognitiveServices` - 2026-03-01
 ///
 /// ## Import
 ///

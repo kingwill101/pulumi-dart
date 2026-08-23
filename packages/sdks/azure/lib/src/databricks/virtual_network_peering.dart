@@ -192,6 +192,47 @@ import 'virtual_network_peering_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "remote" {
+///   name                = "remote-vnet"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.1.0/24"]
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_databricks_workspace" "example" {
+///   name                = "example-workspace"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "standard"
+/// }
+/// resource "azure_databricks_virtualnetworkpeering" "example" {
+///   name                          = "databricks-vnet-peer"
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   workspace_id                  = azure_databricks_workspace.example.id
+///   remote_address_space_prefixes = azure_network_virtualnetwork.remote.address_spaces
+///   remote_virtual_network_id     = azure_network_virtualnetwork.remote.id
+///   allow_virtual_network_access  = true
+/// }
+/// resource "azure_network_virtualnetworkpeering" "remote" {
+///   name                         = "peer-to-databricks"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   virtual_network_name         = azure_network_virtualnetwork.remote.name
+///   remote_virtual_network_id    = azure_databricks_virtualnetworkpeering.example.virtual_network_id
+///   allow_virtual_network_access = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -204,8 +245,8 @@ import 'virtual_network_peering_state.dart';
 /// import com.pulumi.azure.network.VirtualNetworkArgs;
 /// import com.pulumi.azure.databricks.Workspace;
 /// import com.pulumi.azure.databricks.WorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -306,7 +347,7 @@ import 'virtual_network_peering_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Databricks` - 2024-05-01
+/// * `Microsoft.Databricks` - 2026-01-01
 ///
 /// ## Import
 ///
@@ -336,11 +377,11 @@ class VirtualNetworkPeering extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// Can remote gateways be used on the Databricks virtual network? Defaults to `false`.
   ///
-  /// &gt; **Note:** If the `use_remote_gateways` is set to `true`, and `allow_gateway_transit` on the remote peering is also `true`, the virtual network will use the gateways of the remote virtual network for transit. Only one peering can have this flag set to `true`. `use_remote_gateways` cannot be set if the virtual network already has a gateway.
+  /// &gt; **Note:** If the `useRemoteGateways` is set to `true`, and `allowGatewayTransit` on the remote peering is also `true`, the virtual network will use the gateways of the remote virtual network for transit. Only one peering can have this flag set to `true`. `useRemoteGateways` cannot be set if the virtual network already has a gateway.
   late final pulumi.Output<bool?> useRemoteGateways;
   /// The ID of the internal Virtual Network used by the DataBricks Workspace.
   ///
-  /// &gt; **Note:** The `virtual_network_id` field is the value you must supply to the `azure.network.VirtualNetworkPeering` resources `remote_virtual_network_id` field to successfully peer the Databricks Virtual Network with the remote virtual network.
+  /// &gt; **Note:** The `virtualNetworkId` field is the value you must supply to the `azure.network.VirtualNetworkPeering` resources `remoteVirtualNetworkId` field to successfully peer the Databricks Virtual Network with the remote virtual network.
   late final pulumi.Output<String> virtualNetworkId;
   /// The ID of the Databricks Workspace that this Databricks Virtual Network Peering is bound. Changing this forces a new resource to be created.
   late final pulumi.Output<String> workspaceId;

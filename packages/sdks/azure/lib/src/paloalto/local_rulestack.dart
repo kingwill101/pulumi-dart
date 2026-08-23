@@ -86,6 +86,25 @@ import 'local_rulestack_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_paloalto_localrulestack" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +115,8 @@ import 'local_rulestack_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.paloalto.LocalRulestack;
 /// import com.pulumi.azure.paloalto.LocalRulestackArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -145,7 +164,7 @@ import 'local_rulestack_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `PaloAltoNetworks.Cloudngfw` - 2022-08-29
+/// * `PaloAltoNetworks.Cloudngfw` - 2025-10-08
 ///
 /// ## Import
 ///

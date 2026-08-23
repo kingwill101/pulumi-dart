@@ -5,14 +5,14 @@ import 'windows_web_app_slot_logs_http_logs_azure_blob_storage.dart';
 import 'windows_web_app_slot_logs_http_logs_file_system.dart';
 
 class WindowsWebAppSlotLogsHttpLogs {
-  /// A `azure_blob_storage_http` block as defined above.
+  /// A `azureBlobStorageHttp` block as defined above.
   final pulumi.Input<WindowsWebAppSlotLogsHttpLogsAzureBlobStorage>? azureBlobStorage;
-  /// A `file_system` block as defined above.
+  /// A `fileSystem` block as defined above.
   final pulumi.Input<WindowsWebAppSlotLogsHttpLogsFileSystem>? fileSystem;
 
   /// Creates a new [WindowsWebAppSlotLogsHttpLogs].
-  /// [azureBlobStorage] A `azure_blob_storage_http` block as defined above.
-  /// [fileSystem] A `file_system` block as defined above.
+  /// [azureBlobStorage] A `azureBlobStorageHttp` block as defined above.
+  /// [fileSystem] A `fileSystem` block as defined above.
   const WindowsWebAppSlotLogsHttpLogs({
     this.azureBlobStorage,
     this.fileSystem,
@@ -32,4 +32,3 @@ class WindowsWebAppSlotLogsHttpLogs {
     );
   }
 }
-

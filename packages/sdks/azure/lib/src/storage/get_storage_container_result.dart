@@ -21,6 +21,8 @@ class GetStorageContainerResult {
   final String resourceManagerId;
   final String? storageAccountId;
   final String? storageAccountName;
+  /// The data plane URL of the Storage Container in the format of `&lt;storage blob endpoint&gt;/&lt;container name&gt;`. E.g. `https://example.blob.core.windows.net/mycontainer`.
+  final String url;
 
   /// Creates a new [GetStorageContainerResult].
   /// [containerAccessType] The Access Level configured for this Container.
@@ -34,6 +36,7 @@ class GetStorageContainerResult {
   /// [resourceManagerId] Required.
   /// [storageAccountId] Optional.
   /// [storageAccountName] Optional.
+  /// [url] The data plane URL of the Storage Container in the format of `&lt;storage blob endpoint&gt;/&lt;container name&gt;`. E.g. `https://example.blob.core.windows.net/mycontainer`.
   const GetStorageContainerResult({
     required this.containerAccessType,
     required this.defaultEncryptionScope,
@@ -46,6 +49,7 @@ class GetStorageContainerResult {
     required this.resourceManagerId,
     this.storageAccountId,
     this.storageAccountName,
+    required this.url,
   });
 
   Map<String, dynamic> toMap() {
@@ -61,6 +65,7 @@ class GetStorageContainerResult {
       'resourceManagerId': resourceManagerId,
       'storageAccountId': ?storageAccountId,
       'storageAccountName': ?storageAccountName,
+      'url': url,
     };
   }
 
@@ -77,7 +82,7 @@ class GetStorageContainerResult {
       resourceManagerId: map['resourceManagerId'] as String,
       storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      url: map['url'] as String,
     );
   }
 }
-

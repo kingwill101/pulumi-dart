@@ -182,6 +182,45 @@ import 'subscription_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tfex-servicebus-subscription-rule-sql"
+///   location = "West Europe"
+/// }
+/// resource "azure_servicebus_namespace" "example" {
+///   name                = "tfex-servicebus-namespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+///   tags = {
+///     "source" = "example"
+///   }
+/// }
+/// resource "azure_servicebus_topic" "example" {
+///   name                = "tfex_servicebus_topic"
+///   namespace_id        = azure_servicebus_namespace.example.id
+///   enable_partitioning = true
+/// }
+/// resource "azure_servicebus_subscription" "example" {
+///   name               = "tfex_servicebus_subscription"
+///   topic_id           = azure_servicebus_topic.example.id
+///   max_delivery_count = 1
+/// }
+/// resource "azure_servicebus_subscriptionrule" "example" {
+///   name            = "tfex_servicebus_rule"
+///   subscription_id = azure_servicebus_subscription.example.id
+///   filter_type     = "SqlFilter"
+///   sql_filter      = "colour = 'red'"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -198,8 +237,8 @@ import 'subscription_rule_state.dart';
 /// import com.pulumi.azure.servicebus.SubscriptionArgs;
 /// import com.pulumi.azure.servicebus.SubscriptionRule;
 /// import com.pulumi.azure.servicebus.SubscriptionRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -490,6 +529,51 @@ import 'subscription_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tfex-servicebus-subscription-rule-cor"
+///   location = "West Europe"
+/// }
+/// resource "azure_servicebus_namespace" "example" {
+///   name                = "tfex-servicebus-namespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+///   tags = {
+///     "source" = "example"
+///   }
+/// }
+/// resource "azure_servicebus_topic" "example" {
+///   name                = "tfex_servicebus_topic"
+///   namespace_id        = azure_servicebus_namespace.example.id
+///   enable_partitioning = true
+/// }
+/// resource "azure_servicebus_subscription" "example" {
+///   name               = "tfex_servicebus_subscription"
+///   topic_id           = azure_servicebus_topic.example.id
+///   max_delivery_count = 1
+/// }
+/// resource "azure_servicebus_subscriptionrule" "example" {
+///   name            = "tfex_servicebus_rule"
+///   subscription_id = azure_servicebus_subscription.example.id
+///   filter_type     = "CorrelationFilter"
+///   correlation_filter = {
+///     correlation_id = "high"
+///     label          = "red"
+///     properties = {
+///       "customProperty" = "value"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -507,8 +591,8 @@ import 'subscription_rule_state.dart';
 /// import com.pulumi.azure.servicebus.SubscriptionRule;
 /// import com.pulumi.azure.servicebus.SubscriptionRuleArgs;
 /// import com.pulumi.azure.servicebus.inputs.SubscriptionRuleCorrelationFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -622,13 +706,13 @@ import 'subscription_rule_state.dart';
 class SubscriptionRule extends pulumi.CustomResource {
   /// Represents set of actions written in SQL language-based syntax that is performed against a BrokeredMessage.
   late final pulumi.Output<String?> action;
-  /// A `correlation_filter` block as documented below to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `CorrelationFilter`.
+  /// A `correlationFilter` block as documented below to be evaluated against a BrokeredMessage. Required when `filterType` is set to `CorrelationFilter`.
   late final pulumi.Output<SubscriptionRuleCorrelationFilter?> correlationFilter;
   /// Type of filter to be applied to a BrokeredMessage. Possible values are `SqlFilter` and `CorrelationFilter`.
   late final pulumi.Output<String> filterType;
   /// Specifies the name of the ServiceBus Subscription Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// Represents a filter written in SQL language-based syntax that to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `SqlFilter`.
+  /// Represents a filter written in SQL language-based syntax that to be evaluated against a BrokeredMessage. Required when `filterType` is set to `SqlFilter`.
   late final pulumi.Output<String?> sqlFilter;
   late final pulumi.Output<int> sqlFilterCompatibilityLevel;
   /// The ID of the ServiceBus Subscription in which this Rule should be created. Changing this forces a new resource to be created.

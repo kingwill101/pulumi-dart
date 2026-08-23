@@ -19,8 +19,9 @@ class GetServiceResult {
   final String location;
   /// The name of private link service NAT IP configuration.
   final String name;
-  /// The `nat_ip_configuration` block as defined below.
+  /// The `natIpConfiguration` block as defined below.
   final List<GetServiceNatIpConfiguration> natIpConfigurations;
+  final bool proxyProtocolEnabled;
   final String resourceGroupName;
   /// A mapping of tags to assign to the resource.
   final Map<String, String> tags;
@@ -35,7 +36,8 @@ class GetServiceResult {
   /// [loadBalancerFrontendIpConfigurationIds] The list of Standard Load Balancer(SLB) resource IDs. The Private Link service is tied to the frontend IP address of a SLB. All traffic destined for the private link service will reach the frontend of the SLB. You can configure SLB rules to direct this traffic to appropriate backend pools where your applications are running.
   /// [location] The supported Azure location where the resource exists.
   /// [name] The name of private link service NAT IP configuration.
-  /// [natIpConfigurations] The `nat_ip_configuration` block as defined below.
+  /// [natIpConfigurations] The `natIpConfiguration` block as defined below.
+  /// [proxyProtocolEnabled] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags to assign to the resource.
   /// [visibilitySubscriptionIds] The list of subscription(s) globally unique identifiers(GUID) that will be able to see the private link service.
@@ -48,6 +50,7 @@ class GetServiceResult {
     required this.location,
     required this.name,
     required this.natIpConfigurations,
+    required this.proxyProtocolEnabled,
     required this.resourceGroupName,
     required this.tags,
     required this.visibilitySubscriptionIds,
@@ -63,6 +66,7 @@ class GetServiceResult {
       'location': location,
       'name': name,
       'natIpConfigurations': pulumi.Input.encodeList<GetServiceNatIpConfiguration, Map<String, dynamic>>(natIpConfigurations, (value) => value.toMap()),
+      'proxyProtocolEnabled': proxyProtocolEnabled,
       'resourceGroupName': resourceGroupName,
       'tags': tags,
       'visibilitySubscriptionIds': visibilitySubscriptionIds,
@@ -79,10 +83,10 @@ class GetServiceResult {
       location: map['location'] as String,
       name: map['name'] as String,
       natIpConfigurations: pulumi.Input.decodeList<GetServiceNatIpConfiguration>(map['natIpConfigurations']!, (value) => GetServiceNatIpConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      proxyProtocolEnabled: map['proxyProtocolEnabled'] as bool,
       resourceGroupName: map['resourceGroupName'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       visibilitySubscriptionIds: (map['visibilitySubscriptionIds'] as List).cast<String>(),
     );
   }
 }
-

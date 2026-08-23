@@ -5,9 +5,9 @@ import 'source_control_slot_github_action_configuration_code_configuration.dart'
 import 'source_control_slot_github_action_configuration_container_configuration.dart';
 
 class SourceControlSlotGithubActionConfiguration {
-  /// A `code_configuration` block as detailed below. Changing this forces a new resource to be created.
+  /// A `codeConfiguration` block as detailed below. Changing this forces a new resource to be created.
   final pulumi.Input<SourceControlSlotGithubActionConfigurationCodeConfiguration>? codeConfiguration;
-  /// A `container_configuration` block as detailed below.
+  /// A `containerConfiguration` block as detailed below.
   final pulumi.Input<SourceControlSlotGithubActionConfigurationContainerConfiguration>? containerConfiguration;
   /// Should the service generate the GitHub Action Workflow file. Defaults to `true` Changing this forces a new resource to be created.
   final pulumi.Input<bool>? generateWorkflowFile;
@@ -15,8 +15,8 @@ class SourceControlSlotGithubActionConfiguration {
   final pulumi.Input<bool>? linuxAction;
 
   /// Creates a new [SourceControlSlotGithubActionConfiguration].
-  /// [codeConfiguration] A `code_configuration` block as detailed below. Changing this forces a new resource to be created.
-  /// [containerConfiguration] A `container_configuration` block as detailed below.
+  /// [codeConfiguration] A `codeConfiguration` block as detailed below. Changing this forces a new resource to be created.
+  /// [containerConfiguration] A `containerConfiguration` block as detailed below.
   /// [generateWorkflowFile] Should the service generate the GitHub Action Workflow file. Defaults to `true` Changing this forces a new resource to be created.
   /// [linuxAction] Denotes this action uses a Linux base image.
   const SourceControlSlotGithubActionConfiguration({
@@ -44,4 +44,3 @@ class SourceControlSlotGithubActionConfiguration {
     );
   }
 }
-

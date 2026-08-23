@@ -150,6 +150,38 @@ import 'registry_credential_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_containerservice_registry" "example" {
+///   name                = "exampleContainerRegistry"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Basic"
+/// }
+/// resource "azure_containerservice_registrycredentialset" "example" {
+///   name                  = "exampleCredentialSet"
+///   container_registry_id = azure_containerservice_registry.example.id
+///   login_server          = "docker.io"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   authentication_credentials = {
+///     username_secret_id = "https://example-keyvault.vault.azure.net/secrets/example-user-name"
+///     password_secret_id = "https://example-keyvault.vault.azure.net/secrets/example-user-password"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +196,8 @@ import 'registry_credential_set_state.dart';
 /// import com.pulumi.azure.containerservice.RegistryCredentialSetArgs;
 /// import com.pulumi.azure.containerservice.inputs.RegistryCredentialSetIdentityArgs;
 /// import com.pulumi.azure.containerservice.inputs.RegistryCredentialSetAuthenticationCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -547,10 +579,10 @@ import 'registry_credential_set_state.dart';
 /// 		_, err = keyvault.NewAccessPolicy(ctx, "read_secrets", &keyvault.AccessPolicyArgs{
 /// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			TenantId: pulumi.String(exampleRegistryCredentialSet.Identity.ApplyT(func(identity containerservice.RegistryCredentialSetIdentity) (*string, error) {
-/// 				return &identity.TenantId, nil
+/// 				return identity.TenantId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			ObjectId: pulumi.String(exampleRegistryCredentialSet.Identity.ApplyT(func(identity containerservice.RegistryCredentialSetIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			SecretPermissions: pulumi.StringArray{
 /// 				pulumi.String("Get"),
@@ -561,6 +593,72 @@ import 'registry_credential_set_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                       = "examplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   soft_delete_retention_days = 7
+///   access_policies {
+///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
+///     object_id               = data.azure_core_getclientconfig.current.object_id
+///     certificate_permissions = []
+///     key_permissions         = []
+///     secret_permissions      = ["Get", "Set", "Delete", "Purge"]
+///   }
+/// }
+/// resource "azure_keyvault_secret" "example_user" {
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   name         = "example-user-name"
+///   value        = "name"
+/// }
+/// resource "azure_keyvault_secret" "example_password" {
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   name         = "example-user-password"
+///   value        = "password"
+/// }
+/// resource "azure_containerservice_registry" "example" {
+///   name                = "exampleContainerRegistry"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Basic"
+/// }
+/// resource "azure_containerservice_registrycredentialset" "example" {
+///   name                  = "exampleCredentialSet"
+///   container_registry_id = azure_containerservice_registry.example.id
+///   login_server          = "docker.io"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   authentication_credentials = {
+///     username_secret_id = azure_keyvault_secret.example_user.versionless_id
+///     password_secret_id = azure_keyvault_secret.example_password.versionless_id
+///   }
+/// }
+/// resource "azure_keyvault_accesspolicy" "read_secrets" {
+///   key_vault_id       = azure_keyvault_keyvault.example.id
+///   tenant_id          = azure_containerservice_registrycredentialset.example.identity.tenant_id
+///   object_id          = azure_containerservice_registrycredentialset.example.identity.principal_id
+///   secret_permissions = ["Get"]
 /// }
 /// ```
 /// ```java
@@ -585,8 +683,8 @@ import 'registry_credential_set_state.dart';
 /// import com.pulumi.azure.containerservice.inputs.RegistryCredentialSetAuthenticationCredentialsArgs;
 /// import com.pulumi.azure.keyvault.AccessPolicy;
 /// import com.pulumi.azure.keyvault.AccessPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -760,7 +858,7 @@ import 'registry_credential_set_state.dart';
 /// $ pulumi import azure:containerservice/registryCredentialSet:RegistryCredentialSet example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.ContainerRegistry/registries/registry1/credentialSets/credentialSet1
 /// ```
 class RegistryCredentialSet extends pulumi.CustomResource {
-  /// A `authentication_credentials` block as defined below.
+  /// A `authenticationCredentials` block as defined below.
   late final pulumi.Output<RegistryCredentialSetAuthenticationCredentials> authenticationCredentials;
   /// The ID of the Container Registry. Changing this forces a new Container Registry Credential Set to be created.
   late final pulumi.Output<String> containerRegistryId;

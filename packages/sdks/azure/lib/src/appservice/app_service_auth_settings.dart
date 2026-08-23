@@ -8,7 +8,7 @@ import 'app_service_auth_settings_microsoft.dart';
 import 'app_service_auth_settings_twitter.dart';
 
 class AppServiceAuthSettings {
-  /// A `active_directory` block as defined below.
+  /// A `activeDirectory` block as defined below.
   final pulumi.Input<AppServiceAuthSettingsActiveDirectory>? activeDirectory;
   /// Login parameters to send to the OpenID Connect authorization endpoint when a user logs in. Each parameter must be in the form "key=value".
   final pulumi.Input<Map<String, String>>? additionalLoginParams;
@@ -16,7 +16,7 @@ class AppServiceAuthSettings {
   final pulumi.Input<List<String>>? allowedExternalRedirectUrls;
   /// The default provider to use when multiple providers have been set up. Possible values are `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount` and `Twitter`.
   ///
-  /// &gt; **NOTE:** When using multiple providers, the default provider must be set for settings like `unauthenticated_client_action` to work.
+  /// &gt; **NOTE:** When using multiple providers, the default provider must be set for settings like `unauthenticatedClientAction` to work.
   final pulumi.Input<String>? defaultProvider;
   /// Is Authentication enabled?
   final pulumi.Input<bool> enabled;
@@ -40,7 +40,7 @@ class AppServiceAuthSettings {
   final pulumi.Input<String>? unauthenticatedClientAction;
 
   /// Creates a new [AppServiceAuthSettings].
-  /// [activeDirectory] A `active_directory` block as defined below.
+  /// [activeDirectory] A `activeDirectory` block as defined below.
   /// [additionalLoginParams] Login parameters to send to the OpenID Connect authorization endpoint when a user logs in. Each parameter must be in the form "key=value".
   /// [allowedExternalRedirectUrls] External URLs that can be redirected to as part of logging in or logging out of the app.
   /// [defaultProvider] The default provider to use when multiple providers have been set up. Possible values are `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount` and `Twitter`.
@@ -109,4 +109,3 @@ class AppServiceAuthSettings {
     );
   }
 }
-

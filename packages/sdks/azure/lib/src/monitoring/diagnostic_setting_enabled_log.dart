@@ -12,7 +12,7 @@ class DiagnosticSettingEnabledLog {
   ///
   /// &gt; **NOTE:** Not all resources have category groups available.
   ///
-  /// &gt; **NOTE:** Exactly one of `category` or `category_group` must be specified.
+  /// &gt; **NOTE:** Exactly one of `category` or `categoryGroup` must be specified.
   final pulumi.Input<String>? categoryGroup;
   final pulumi.Input<DiagnosticSettingEnabledLogRetentionPolicy>? retentionPolicy;
 
@@ -42,4 +42,3 @@ class DiagnosticSettingEnabledLog {
     );
   }
 }
-

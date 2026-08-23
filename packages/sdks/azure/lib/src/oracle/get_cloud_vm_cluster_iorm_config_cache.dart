@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_cloud_vm_cluster_iorm_config_cache_db_plan.dart';
 
 class GetCloudVmClusterIormConfigCache {
-  /// A `db_plans` block as defined above.
+  /// A `dbPlans` block as defined above.
   final pulumi.Input<List<GetCloudVmClusterIormConfigCacheDbPlan>> dbPlans;
   /// Additional information about the current `lifecycleState`.
   final pulumi.Input<String> lifecycleDetails;
@@ -14,7 +14,7 @@ class GetCloudVmClusterIormConfigCache {
   final pulumi.Input<String> objective;
 
   /// Creates a new [GetCloudVmClusterIormConfigCache].
-  /// [dbPlans] A `db_plans` block as defined above.
+  /// [dbPlans] A `dbPlans` block as defined above.
   /// [lifecycleDetails] Additional information about the current `lifecycleState`.
   /// [lifecycleState] The current state of IORM configuration for the Exadata DB system.
   /// [objective] The current value for the IORM objective. The default is `AUTO`.
@@ -43,4 +43,3 @@ class GetCloudVmClusterIormConfigCache {
     );
   }
 }
-

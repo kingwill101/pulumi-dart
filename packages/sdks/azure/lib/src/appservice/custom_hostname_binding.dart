@@ -48,7 +48,7 @@ import 'custom_hostname_binding_state.dart';
 /// import pulumi_azure as azure
 /// import pulumi_random as random
 ///
-/// server = random.index.Id("server",
+/// server = random.Id("server",
 ///     keepers={
 ///         aziId: 1,
 ///     },
@@ -83,7 +83,7 @@ import 'custom_hostname_binding_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var server = new Random.Index.Id("server", new()
+///     var server = new Random.Id("server", new()
 ///     {
 ///         Keepers =
 ///         {
@@ -188,6 +188,49 @@ import 'custom_hostname_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_id" "server" {
+///   keepers = {
+///     "aziId" = 1
+///   }
+///   byte_length = 8
+/// }
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "some-resource-group"
+///   location = "West Europe"
+/// }
+/// resource "azure_appservice_plan" "example" {
+///   name                = "some-app-service-plan"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     tier = "Standard"
+///     size = "S1"
+///   }
+/// }
+/// resource "azure_appservice_appservice" "example" {
+///   name                = random_id.server.hex
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   app_service_plan_id = azure_appservice_plan.example.id
+/// }
+/// resource "azure_appservice_customhostnamebinding" "example" {
+///   hostname            = "www.mywebsite.com"
+///   app_service_name    = azure_appservice_appservice.example.name
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -205,8 +248,8 @@ import 'custom_hostname_binding_state.dart';
 /// import com.pulumi.azure.appservice.AppServiceArgs;
 /// import com.pulumi.azure.appservice.CustomHostnameBinding;
 /// import com.pulumi.azure.appservice.CustomHostnameBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -295,6 +338,13 @@ import 'custom_hostname_binding_state.dart';
 /// ```
 ///
 ///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.Web` - 2023-12-01
+///
 /// ## Import
 ///
 /// App Service Custom Hostname Bindings can be imported using the `resource id`, e.g.
@@ -315,7 +365,7 @@ class CustomHostnameBinding extends pulumi.CustomResource {
   late final pulumi.Output<String> sslState;
   /// The SSL certificate thumbprint. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `thumbprint` must be specified when `ssl_state` is set.
+  /// &gt; **Note:** `thumbprint` must be specified when `sslState` is set.
   late final pulumi.Output<String> thumbprint;
   /// The virtual IP address assigned to the hostname if IP based SSL is enabled.
   late final pulumi.Output<String> virtualIp;

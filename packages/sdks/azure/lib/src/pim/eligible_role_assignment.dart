@@ -166,6 +166,45 @@ import 'eligible_role_assignment_ticket.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "primary" {
+/// }
+/// data "azure_core_getclientconfig" "example" {
+/// }
+/// data "azure_authorization_getroledefinition" "exampleGetRoleDefinition" {
+///   name = "Reader"
+/// }
+///
+/// resource "time_static" "example" {
+/// }
+/// resource "azure_pim_eligibleroleassignment" "example" {
+///   scope              = data.azure_core_getsubscription.primary.id
+///   role_definition_id ="${data.azure_core_getsubscription.primary.id}${data.azure_authorization_getroledefinition.exampleGetRoleDefinition.id}"
+///   principal_id       = data.azure_core_getclientconfig.example.object_id
+///   schedule = {
+///     start_date_time = time_static.example.rfc3339
+///     expiration = {
+///       duration_hours = 8
+///     }
+///   }
+///   justification = "Expiration Duration Set"
+///   ticket = {
+///     number = "1"
+///     system = "example ticket system"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +221,8 @@ import 'eligible_role_assignment_ticket.dart';
 /// import com.pulumi.azure.pim.inputs.EligibleRoleAssignmentScheduleArgs;
 /// import com.pulumi.azure.pim.inputs.EligibleRoleAssignmentScheduleExpirationArgs;
 /// import com.pulumi.azure.pim.inputs.EligibleRoleAssignmentTicketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -423,6 +462,46 @@ import 'eligible_role_assignment_ticket.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "example" {
+/// }
+/// data "azure_authorization_getroledefinition" "exampleGetRoleDefinition" {
+///   name = "Reader"
+/// }
+///
+/// resource "azure_management_group" "example" {
+///   name = "Example-Management-Group"
+/// }
+/// resource "time_static" "example" {
+/// }
+/// resource "azure_pim_eligibleroleassignment" "example" {
+///   scope              = azure_management_group.example.id
+///   role_definition_id = data.azure_authorization_getroledefinition.exampleGetRoleDefinition.id
+///   principal_id       = data.azure_core_getclientconfig.example.object_id
+///   schedule = {
+///     start_date_time = time_static.example.rfc3339
+///     expiration = {
+///       duration_hours = 8
+///     }
+///   }
+///   justification = "Expiration Duration Set"
+///   ticket = {
+///     number = "1"
+///     system = "example ticket system"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -440,8 +519,8 @@ import 'eligible_role_assignment_ticket.dart';
 /// import com.pulumi.azure.pim.inputs.EligibleRoleAssignmentScheduleArgs;
 /// import com.pulumi.azure.pim.inputs.EligibleRoleAssignmentScheduleExpirationArgs;
 /// import com.pulumi.azure.pim.inputs.EligibleRoleAssignmentTicketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -544,7 +623,7 @@ class EligibleRoleAssignment extends pulumi.CustomResource {
   late final pulumi.Output<String?> condition;
   /// The version of the condition. Supported values include `2.0`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `condition_version` is required when specifying `condition` and vice versa.
+  /// &gt; **Note:** `conditionVersion` is required when specifying `condition` and vice versa.
   late final pulumi.Output<String?> conditionVersion;
   /// The justification of the role assignment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> justification;

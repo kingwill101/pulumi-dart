@@ -6,17 +6,17 @@ import 'hbase_cluster_roles_worker_node.dart';
 import 'hbase_cluster_roles_zookeeper_node.dart';
 
 class HBaseClusterRoles {
-  /// A `head_node` block as defined above.
+  /// A `headNode` block as defined above.
   final pulumi.Input<HBaseClusterRolesHeadNode> headNode;
-  /// A `worker_node` block as defined below.
+  /// A `workerNode` block as defined below.
   final pulumi.Input<HBaseClusterRolesWorkerNode> workerNode;
-  /// A `zookeeper_node` block as defined below.
+  /// A `zookeeperNode` block as defined below.
   final pulumi.Input<HBaseClusterRolesZookeeperNode> zookeeperNode;
 
   /// Creates a new [HBaseClusterRoles].
-  /// [headNode] A `head_node` block as defined above.
-  /// [workerNode] A `worker_node` block as defined below.
-  /// [zookeeperNode] A `zookeeper_node` block as defined below.
+  /// [headNode] A `headNode` block as defined above.
+  /// [workerNode] A `workerNode` block as defined below.
+  /// [zookeeperNode] A `zookeeperNode` block as defined below.
   const HBaseClusterRoles({
     required this.headNode,
     required this.workerNode,
@@ -39,4 +39,3 @@ class HBaseClusterRoles {
     );
   }
 }
-

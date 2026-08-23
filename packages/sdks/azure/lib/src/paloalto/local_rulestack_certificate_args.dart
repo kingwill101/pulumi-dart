@@ -11,7 +11,7 @@ class LocalRulestackCertificateArgs {
   final pulumi.Input<String>? auditComment;
   /// The description for the Certificate.
   final pulumi.Input<String>? description;
-  /// The `versionles_id` of the Key Vault Certificate to use. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
+  /// The `versionlesId` of the Key Vault Certificate to use. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   final pulumi.Input<String>? keyVaultCertificateId;
   /// The name which should be used for this Palo Alto Networks Rulestack Certificate.
   final pulumi.Input<String>? name;
@@ -19,13 +19,13 @@ class LocalRulestackCertificateArgs {
   final pulumi.Input<String> rulestackId;
   /// Should a Self Signed Certificate be used. Defaults to `false`. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   ///
-  /// &gt; **Note:** One and only one of `self_signed` or `key_vault_certificate_id` must be specified.
+  /// &gt; **Note:** One and only one of `selfSigned` or `keyVaultCertificateId` must be specified.
   final pulumi.Input<bool>? selfSigned;
 
   /// Creates a new [LocalRulestackCertificateArgs].
   /// [auditComment] The comment for Audit purposes.
   /// [description] The description for the Certificate.
-  /// [keyVaultCertificateId] The `versionles_id` of the Key Vault Certificate to use. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
+  /// [keyVaultCertificateId] The `versionlesId` of the Key Vault Certificate to use. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   /// [name] The name which should be used for this Palo Alto Networks Rulestack Certificate.
   /// [rulestackId] The ID of the TODO. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   /// [selfSigned] Should a Self Signed Certificate be used. Defaults to `false`. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
@@ -60,4 +60,3 @@ class LocalRulestackCertificateArgs {
     );
   }
 }
-

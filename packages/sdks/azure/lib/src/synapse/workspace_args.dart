@@ -11,17 +11,17 @@ import 'workspace_identity.dart';
 /// {@endtemplate}
 /// {@macro pulumi_synapse_workspace_workspace_args_doc}
 class WorkspaceArgs {
-  /// An `azure_devops_repo` block as defined below.
+  /// An `azureDevopsRepo` block as defined below.
   final pulumi.Input<WorkspaceAzureDevopsRepo>? azureDevopsRepo;
   /// Is Azure Active Directory Authentication the only way to authenticate with resources inside this synapse Workspace. Defaults to `false`.
   final pulumi.Input<bool>? azureadAuthenticationOnly;
   /// Subnet ID used for computes in workspace Changing this forces a new resource to be created.
   final pulumi.Input<String>? computeSubnetId;
-  /// A `customer_managed_key` block as defined below.
+  /// A `customerManagedKey` block as defined below.
   final pulumi.Input<WorkspaceCustomerManagedKey>? customerManagedKey;
-  /// Is data exfiltration protection enabled in this workspace? If set to `true`, `managed_virtual_network_enabled` must also be set to `true`. Changing this forces a new resource to be created.
+  /// Is data exfiltration protection enabled in this workspace? If set to `true`, `managedVirtualNetworkEnabled` must also be set to `true`. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? dataExfiltrationProtectionEnabled;
-  /// A `github_repo` block as defined below.
+  /// A `githubRepo` block as defined below.
   final pulumi.Input<WorkspaceGithubRepo>? githubRepo;
   /// An `identity` block as defined below.
   final pulumi.Input<WorkspaceIdentity>? identity;
@@ -41,9 +41,9 @@ class WorkspaceArgs {
   final pulumi.Input<String>? purviewId;
   /// Specifies the name of the Resource Group where the synapse Workspace should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-  /// Specifies The login name of the SQL administrator. Changing this forces a new resource to be created. If this is not provided `customer_managed_key` must be provided.
+  /// Specifies The login name of the SQL administrator. Changing this forces a new resource to be created. If this is not provided `customerManagedKey` must be provided.
   final pulumi.Input<String>? sqlAdministratorLogin;
-  /// The Password associated with the `sql_administrator_login` for the SQL administrator. If this is not provided `customer_managed_key` must be provided.
+  /// The Password associated with the `sqlAdministratorLogin` for the SQL administrator. If this is not provided `customerManagedKey` must be provided.
   final pulumi.Input<String>? sqlAdministratorLoginPassword;
   /// Are pipelines (running as workspace's system assigned identity) allowed to access SQL pools?
   final pulumi.Input<bool>? sqlIdentityControlEnabled;
@@ -53,12 +53,12 @@ class WorkspaceArgs {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [WorkspaceArgs].
-  /// [azureDevopsRepo] An `azure_devops_repo` block as defined below.
+  /// [azureDevopsRepo] An `azureDevopsRepo` block as defined below.
   /// [azureadAuthenticationOnly] Is Azure Active Directory Authentication the only way to authenticate with resources inside this synapse Workspace. Defaults to `false`.
   /// [computeSubnetId] Subnet ID used for computes in workspace Changing this forces a new resource to be created.
-  /// [customerManagedKey] A `customer_managed_key` block as defined below.
-  /// [dataExfiltrationProtectionEnabled] Is data exfiltration protection enabled in this workspace? If set to `true`, `managed_virtual_network_enabled` must also be set to `true`. Changing this forces a new resource to be created.
-  /// [githubRepo] A `github_repo` block as defined below.
+  /// [customerManagedKey] A `customerManagedKey` block as defined below.
+  /// [dataExfiltrationProtectionEnabled] Is data exfiltration protection enabled in this workspace? If set to `true`, `managedVirtualNetworkEnabled` must also be set to `true`. Changing this forces a new resource to be created.
+  /// [githubRepo] A `githubRepo` block as defined below.
   /// [identity] An `identity` block as defined below.
   /// [linkingAllowedForAadTenantIds] Allowed AAD Tenant Ids For Linking.
   /// [location] Specifies the Azure Region where the synapse Workspace should exist. Changing this forces a new resource to be created.
@@ -68,8 +68,8 @@ class WorkspaceArgs {
   /// [publicNetworkAccessEnabled] Whether public network access is allowed for the Cognitive Account. Defaults to `true`.
   /// [purviewId] The ID of purview account.
   /// [resourceGroupName] Specifies the name of the Resource Group where the synapse Workspace should exist. Changing this forces a new resource to be created.
-  /// [sqlAdministratorLogin] Specifies The login name of the SQL administrator. Changing this forces a new resource to be created. If this is not provided `customer_managed_key` must be provided.
-  /// [sqlAdministratorLoginPassword] The Password associated with the `sql_administrator_login` for the SQL administrator. If this is not provided `customer_managed_key` must be provided.
+  /// [sqlAdministratorLogin] Specifies The login name of the SQL administrator. Changing this forces a new resource to be created. If this is not provided `customerManagedKey` must be provided.
+  /// [sqlAdministratorLoginPassword] The Password associated with the `sqlAdministratorLogin` for the SQL administrator. If this is not provided `customerManagedKey` must be provided.
   /// [sqlIdentityControlEnabled] Are pipelines (running as workspace's system assigned identity) allowed to access SQL pools?
   /// [storageDataLakeGen2FilesystemId] Specifies the ID of storage data lake gen2 filesystem resource. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Synapse Workspace.
@@ -146,4 +146,3 @@ class WorkspaceArgs {
     );
   }
 }
-

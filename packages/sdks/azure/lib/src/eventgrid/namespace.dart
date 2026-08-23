@@ -100,6 +100,28 @@ import 'namespace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_eventgrid_namespace" "example" {
+///   name                = "my-eventgrid-namespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +132,8 @@ import 'namespace_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.eventgrid.Namespace;
 /// import com.pulumi.azure.eventgrid.NamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -176,7 +198,7 @@ class Namespace extends pulumi.CustomResource {
   late final pulumi.Output<int?> capacity;
   /// An `identity` block as defined below.
   late final pulumi.Output<NamespaceIdentity?> identity;
-  /// One or more `inbound_ip_rule` blocks as defined below.
+  /// One or more `inboundIpRule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
   /// Specifies the supported Azure location where the resource should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
@@ -190,7 +212,7 @@ class Namespace extends pulumi.CustomResource {
   late final pulumi.Output<String?> sku;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A `topic_spaces_configuration` block as defined below. Changing this forces a new resource to be created.
+  /// A `topicSpacesConfiguration` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> topicSpacesConfigurations;
 
   /// Creates a new [Namespace].

@@ -34,7 +34,7 @@ class SocketioState {
   final pulumi.Input<String>? primaryConnectionString;
   /// Whether public network access is enabled. Defaults to `Enabled`. Possible values are `Enabled` and `Disabled`.
   ///
-  /// &gt; **Note:** `public_network_access` cannot be set to `Disabled` when `sku` is `Free_F1`.
+  /// &gt; **Note:** `publicNetworkAccess` cannot be set to `Disabled` when `sku` is `Free_F1`.
   final pulumi.Input<String>? publicNetworkAccess;
   /// The publicly accessible port for client-side usage of the Web PubSub Service.
   final pulumi.Input<int>? publicPort;
@@ -54,7 +54,7 @@ class SocketioState {
   final pulumi.Input<Map<String, String>>? tags;
   /// Whether the service should request a client certificate during a TLS handshake. Defaults to `false`.
   ///
-  /// &gt; **Note:** `tls_client_cert_enabled` cannot be set to `true` when `sku` is `Free_F1`.
+  /// &gt; **Note:** `tlsClientCertEnabled` cannot be set to `true` when `sku` is `Free_F1`.
   final pulumi.Input<bool>? tlsClientCertEnabled;
 
   /// Creates a new [SocketioState].
@@ -163,4 +163,3 @@ class SocketioState {
     );
   }
 }
-

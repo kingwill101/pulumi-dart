@@ -141,6 +141,36 @@ import 'security_solution_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_iot_iothub" "example" {
+///   name                = "example-IoTHub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku = {
+///     name     = "S1"
+///     capacity = "1"
+///   }
+/// }
+/// resource "azure_iot_securitysolution" "example" {
+///   name                = "example-Iot-Security-Solution"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   display_name        = "Iot Security Solution"
+///   iothub_ids          = [azure_iot_iothub.example.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +184,8 @@ import 'security_solution_state.dart';
 /// import com.pulumi.azure.iot.inputs.IoTHubSkuArgs;
 /// import com.pulumi.azure.iot.SecuritySolution;
 /// import com.pulumi.azure.iot.SecuritySolutionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,7 +261,7 @@ import 'security_solution_state.dart';
 /// $ pulumi import azure:iot/securitySolution:SecuritySolution example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resGroup1/providers/Microsoft.Security/iotSecuritySolutions/solution1
 /// ```
 class SecuritySolution extends pulumi.CustomResource {
-  /// A `additional_workspace` block as defined below.
+  /// A `additionalWorkspace` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> additionalWorkspaces;
   /// A list of disabled data sources for the Iot Security Solution. Possible value is `TwinData`.
   late final pulumi.Output<List<String>?> disabledDataSources;
@@ -255,7 +285,7 @@ class SecuritySolution extends pulumi.CustomResource {
   late final pulumi.Output<String> queryForResources;
   /// A list of subscription Ids on which the user defined resources query should be executed.
   late final pulumi.Output<List<String>> querySubscriptionIds;
-  /// A `recommendations_enabled` block of options to enable or disable as defined below.
+  /// A `recommendationsEnabled` block of options to enable or disable as defined below.
   late final pulumi.Output<SecuritySolutionRecommendationsEnabled> recommendationsEnabled;
   /// Specifies the name of the resource group in which to create the Iot Security Solution. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;

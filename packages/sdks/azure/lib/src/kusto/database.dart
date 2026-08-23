@@ -4,7 +4,7 @@ import 'database_state.dart';
 
 /// Manages a Kusto (also known as Azure Data Explorer) Database
 ///
-/// !&gt; **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `prevent_destroy` lifecycle argument in your configuration file for this resource. For more information on the `prevent_destroy` lifecycle argument please see the terraform documentation.
+/// &gt; **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `preventDestroy` lifecycle argument in your configuration file for this resource. For more information on the `preventDestroy` lifecycle argument please see the terraform documentation.
 ///
 /// ## Example Usage
 ///
@@ -141,6 +141,37 @@ import 'database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "my-kusto-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_kusto_cluster" "cluster" {
+///   name                = "kustocluster"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Standard_D13_v2"
+///     capacity = 2
+///   }
+/// }
+/// resource "azure_kusto_database" "database" {
+///   name                = "my-kusto-database"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cluster_name        = azure_kusto_cluster.cluster.name
+///   hot_cache_period    = "P7D"
+///   soft_delete_period  = "P31D"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +185,8 @@ import 'database_state.dart';
 /// import com.pulumi.azure.kusto.inputs.ClusterSkuArgs;
 /// import com.pulumi.azure.kusto.Database;
 /// import com.pulumi.azure.kusto.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

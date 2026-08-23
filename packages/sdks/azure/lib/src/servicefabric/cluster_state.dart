@@ -17,25 +17,25 @@ import 'cluster_upgrade_policy.dart';
 class ClusterState {
   /// A List of one or more features which should be enabled, such as `DnsService`.
   final pulumi.Input<List<String>>? addOnFeatures;
-  /// An `azure_active_directory` block as defined below.
+  /// An `azureActiveDirectory` block as defined below.
   final pulumi.Input<ClusterAzureActiveDirectory>? azureActiveDirectory;
-  /// A `certificate` block as defined below. Conflicts with `certificate_common_names`.
+  /// A `certificate` block as defined below. Conflicts with `certificateCommonNames`.
   final pulumi.Input<ClusterCertificate>? certificate;
-  /// A `certificate_common_names` block as defined below. Conflicts with `certificate`.
+  /// A `certificateCommonNames` block as defined below. Conflicts with `certificate`.
   final pulumi.Input<ClusterCertificateCommonNames>? certificateCommonNames;
-  /// A `client_certificate_common_name` block as defined below.
+  /// A `clientCertificateCommonName` block as defined below.
   ///
   /// &gt; **Note:** If Client Certificates are enabled then at a Certificate must be configured on the cluster.
   final pulumi.Input<List<ClusterClientCertificateCommonName>>? clientCertificateCommonNames;
-  /// One or more `client_certificate_thumbprint` blocks as defined below.
+  /// One or more `clientCertificateThumbprint` blocks as defined below.
   final pulumi.Input<List<ClusterClientCertificateThumbprint>>? clientCertificateThumbprints;
   /// Required if Upgrade Mode set to `Manual`, Specifies the Version of the Cluster Code of the cluster.
   final pulumi.Input<String>? clusterCodeVersion;
   /// The Cluster Endpoint for this Service Fabric Cluster.
   final pulumi.Input<String>? clusterEndpoint;
-  /// A `diagnostics_config` block as defined below.
+  /// A `diagnosticsConfig` block as defined below.
   final pulumi.Input<ClusterDiagnosticsConfig>? diagnosticsConfig;
-  /// One or more `fabric_settings` blocks as defined below.
+  /// One or more `fabricSettings` blocks as defined below.
   final pulumi.Input<List<ClusterFabricSetting>>? fabricSettings;
   /// Specifies the Azure Region where the Service Fabric Cluster should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
@@ -43,7 +43,7 @@ class ClusterState {
   final pulumi.Input<String>? managementEndpoint;
   /// The name of the Service Fabric Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// One or more `node_type` blocks as defined below.
+  /// One or more `nodeType` blocks as defined below.
   final pulumi.Input<List<ClusterNodeType>>? nodeTypes;
   /// Specifies the Reliability Level of the Cluster. Possible values include `None`, `Bronze`, `Silver`, `Gold` and `Platinum`.
   ///
@@ -51,9 +51,9 @@ class ClusterState {
   final pulumi.Input<String>? reliabilityLevel;
   /// The name of the Resource Group in which the Service Fabric Cluster exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-  /// A `reverse_proxy_certificate` block as defined below. Conflicts with `reverse_proxy_certificate_common_names`.
+  /// A `reverseProxyCertificate` block as defined below. Conflicts with `reverseProxyCertificateCommonNames`.
   final pulumi.Input<ClusterReverseProxyCertificate>? reverseProxyCertificate;
-  /// A `reverse_proxy_certificate_common_names` block as defined below. Conflicts with `reverse_proxy_certificate`.
+  /// A `reverseProxyCertificateCommonNames` block as defined below. Conflicts with `reverseProxyCertificate`.
   final pulumi.Input<ClusterReverseProxyCertificateCommonNames>? reverseProxyCertificateCommonNames;
   /// Specifies the logical grouping of VMs in upgrade domains. Possible values are `Hierarchical` or `Parallel`.
   final pulumi.Input<String>? serviceFabricZonalUpgradeMode;
@@ -61,7 +61,7 @@ class ClusterState {
   final pulumi.Input<Map<String, String>>? tags;
   /// Specifies the Upgrade Mode of the cluster. Possible values are `Automatic` or `Manual`.
   final pulumi.Input<String>? upgradeMode;
-  /// A `upgrade_policy` block as defined below.
+  /// A `upgradePolicy` block as defined below.
   final pulumi.Input<ClusterUpgradePolicy>? upgradePolicy;
   /// Specifies the Image expected for the Service Fabric Cluster, such as `Windows`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? vmImage;
@@ -70,27 +70,27 @@ class ClusterState {
 
   /// Creates a new [ClusterState].
   /// [addOnFeatures] A List of one or more features which should be enabled, such as `DnsService`.
-  /// [azureActiveDirectory] An `azure_active_directory` block as defined below.
-  /// [certificate] A `certificate` block as defined below. Conflicts with `certificate_common_names`.
-  /// [certificateCommonNames] A `certificate_common_names` block as defined below. Conflicts with `certificate`.
-  /// [clientCertificateCommonNames] A `client_certificate_common_name` block as defined below.
-  /// [clientCertificateThumbprints] One or more `client_certificate_thumbprint` blocks as defined below.
+  /// [azureActiveDirectory] An `azureActiveDirectory` block as defined below.
+  /// [certificate] A `certificate` block as defined below. Conflicts with `certificateCommonNames`.
+  /// [certificateCommonNames] A `certificateCommonNames` block as defined below. Conflicts with `certificate`.
+  /// [clientCertificateCommonNames] A `clientCertificateCommonName` block as defined below.
+  /// [clientCertificateThumbprints] One or more `clientCertificateThumbprint` blocks as defined below.
   /// [clusterCodeVersion] Required if Upgrade Mode set to `Manual`, Specifies the Version of the Cluster Code of the cluster.
   /// [clusterEndpoint] The Cluster Endpoint for this Service Fabric Cluster.
-  /// [diagnosticsConfig] A `diagnostics_config` block as defined below.
-  /// [fabricSettings] One or more `fabric_settings` blocks as defined below.
+  /// [diagnosticsConfig] A `diagnosticsConfig` block as defined below.
+  /// [fabricSettings] One or more `fabricSettings` blocks as defined below.
   /// [location] Specifies the Azure Region where the Service Fabric Cluster should exist. Changing this forces a new resource to be created.
   /// [managementEndpoint] Specifies the Management Endpoint of the cluster such as `http://example.com`. Changing this forces a new resource to be created.
   /// [name] The name of the Service Fabric Cluster. Changing this forces a new resource to be created.
-  /// [nodeTypes] One or more `node_type` blocks as defined below.
+  /// [nodeTypes] One or more `nodeType` blocks as defined below.
   /// [reliabilityLevel] Specifies the Reliability Level of the Cluster. Possible values include `None`, `Bronze`, `Silver`, `Gold` and `Platinum`.
   /// [resourceGroupName] The name of the Resource Group in which the Service Fabric Cluster exists. Changing this forces a new resource to be created.
-  /// [reverseProxyCertificate] A `reverse_proxy_certificate` block as defined below. Conflicts with `reverse_proxy_certificate_common_names`.
-  /// [reverseProxyCertificateCommonNames] A `reverse_proxy_certificate_common_names` block as defined below. Conflicts with `reverse_proxy_certificate`.
+  /// [reverseProxyCertificate] A `reverseProxyCertificate` block as defined below. Conflicts with `reverseProxyCertificateCommonNames`.
+  /// [reverseProxyCertificateCommonNames] A `reverseProxyCertificateCommonNames` block as defined below. Conflicts with `reverseProxyCertificate`.
   /// [serviceFabricZonalUpgradeMode] Specifies the logical grouping of VMs in upgrade domains. Possible values are `Hierarchical` or `Parallel`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [upgradeMode] Specifies the Upgrade Mode of the cluster. Possible values are `Automatic` or `Manual`.
-  /// [upgradePolicy] A `upgrade_policy` block as defined below.
+  /// [upgradePolicy] A `upgradePolicy` block as defined below.
   /// [vmImage] Specifies the Image expected for the Service Fabric Cluster, such as `Windows`. Changing this forces a new resource to be created.
   /// [vmssZonalUpgradeMode] Specifies the upgrade mode for the virtual machine scale set updates that happen in all availability zones at once. Possible values are `Hierarchical` or `Parallel`.
   const ClusterState({
@@ -178,4 +178,3 @@ class ClusterState {
     );
   }
 }
-

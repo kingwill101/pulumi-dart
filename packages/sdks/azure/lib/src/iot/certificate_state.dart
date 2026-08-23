@@ -49,4 +49,3 @@ class CertificateState {
     );
   }
 }
-

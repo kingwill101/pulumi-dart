@@ -16,9 +16,9 @@ import 'get_windows_web_app_storage_account.dart';
 class GetWindowsWebAppResult {
   /// A map of key-value pairs of App Settings.
   final Map<String, String> appSettings;
-  /// A `auth_settings` block as defined below.
+  /// A `authSettings` block as defined below.
   final List<GetWindowsWebAppAuthSetting> authSettings;
-  /// An `auth_settings_v2` block as defined below.
+  /// An `authSettingsV2` block as defined below.
   final List<GetWindowsWebAppAuthSettingsV2> authSettingsV2s;
   /// A `backup` block as defined below.
   final List<GetWindowsWebAppBackup> backups;
@@ -30,7 +30,7 @@ class GetWindowsWebAppResult {
   final String clientCertificateExclusionPaths;
   /// The Client Certificate mode.
   final String clientCertificateMode;
-  /// A `connection_string` block as defined below.
+  /// A `connectionString` block as defined below.
   final List<GetWindowsWebAppConnectionString> connectionStrings;
   /// The identifier used by App Service to perform domain ownership verification via DNS TXT record.
   final String customDomainVerificationId;
@@ -69,13 +69,13 @@ class GetWindowsWebAppResult {
   final String resourceGroupName;
   /// The ID of the Service Plan in which this Windows Web App resides.
   final String servicePlanId;
-  /// A `site_config` block as defined below.
+  /// A `siteConfig` block as defined below.
   final List<GetWindowsWebAppSiteConfig> siteConfigs;
-  /// A `site_credential` block as defined below.
+  /// A `siteCredential` block as defined below.
   final List<GetWindowsWebAppSiteCredential> siteCredentials;
-  /// A `sticky_settings` block as defined below.
+  /// A `stickySettings` block as defined below.
   final List<GetWindowsWebAppStickySetting> stickySettings;
-  /// A `storage_account` block as defined below.
+  /// A `storageAccount` block as defined below.
   final List<GetWindowsWebAppStorageAccount> storageAccounts;
   /// A mapping of tags assigned to the Windows Web App.
   final Map<String, String> tags;
@@ -87,14 +87,14 @@ class GetWindowsWebAppResult {
 
   /// Creates a new [GetWindowsWebAppResult].
   /// [appSettings] A map of key-value pairs of App Settings.
-  /// [authSettings] A `auth_settings` block as defined below.
-  /// [authSettingsV2s] An `auth_settings_v2` block as defined below.
+  /// [authSettings] A `authSettings` block as defined below.
+  /// [authSettingsV2s] An `authSettingsV2` block as defined below.
   /// [backups] A `backup` block as defined below.
   /// [clientAffinityEnabled] Is Client Affinity enabled?
   /// [clientCertificateEnabled] Are Client Certificates enabled?
   /// [clientCertificateExclusionPaths] Paths to exclude when using client certificates, separated by ;
   /// [clientCertificateMode] The Client Certificate mode.
-  /// [connectionStrings] A `connection_string` block as defined below.
+  /// [connectionStrings] A `connectionString` block as defined below.
   /// [customDomainVerificationId] The identifier used by App Service to perform domain ownership verification via DNS TXT record.
   /// [defaultHostname] The Default Hostname of the Windows Web App.
   /// [enabled] Is the Backup enabled?
@@ -114,10 +114,10 @@ class GetWindowsWebAppResult {
   /// [publicNetworkAccessEnabled] Is Public Network Access enabled for the Windows Web App.
   /// [resourceGroupName] Required.
   /// [servicePlanId] The ID of the Service Plan in which this Windows Web App resides.
-  /// [siteConfigs] A `site_config` block as defined below.
-  /// [siteCredentials] A `site_credential` block as defined below.
-  /// [stickySettings] A `sticky_settings` block as defined below.
-  /// [storageAccounts] A `storage_account` block as defined below.
+  /// [siteConfigs] A `siteConfig` block as defined below.
+  /// [siteCredentials] A `siteCredential` block as defined below.
+  /// [stickySettings] A `stickySettings` block as defined below.
+  /// [storageAccounts] A `storageAccount` block as defined below.
   /// [tags] A mapping of tags assigned to the Windows Web App.
   /// [virtualNetworkBackupRestoreEnabled] Required.
   /// [virtualNetworkSubnetId] The subnet id which the Windows Web App is vNet Integrated with.
@@ -243,4 +243,3 @@ class GetWindowsWebAppResult {
     );
   }
 }
-

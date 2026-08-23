@@ -234,10 +234,10 @@ import 'linked_service_kusto_state.dart';
 /// 			ClusterName:       exampleCluster.Name,
 /// 			DatabaseName:      exampleDatabase.Name,
 /// 			TenantId: pulumi.String(exampleFactory.Identity.ApplyT(func(identity datafactory.FactoryIdentity) (*string, error) {
-/// 				return &identity.TenantId, nil
+/// 				return identity.TenantId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			PrincipalId: pulumi.String(exampleFactory.Identity.ApplyT(func(identity datafactory.FactoryIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			PrincipalType: pulumi.String("App"),
 /// 			Role:          pulumi.String("Viewer"),
@@ -247,6 +247,60 @@ import 'linked_service_kusto_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_kusto_cluster" "example" {
+///   name                = "kustocluster"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Standard_D13_v2"
+///     capacity = 2
+///   }
+/// }
+/// resource "azure_kusto_database" "example" {
+///   name                = "my-kusto-database"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cluster_name        = azure_kusto_cluster.example.name
+/// }
+/// resource "azure_datafactory_linkedservicekusto" "example" {
+///   name                 = "example"
+///   data_factory_id      = azure_datafactory_factory.example.id
+///   kusto_endpoint       = azure_kusto_cluster.example.uri
+///   kusto_database_name  = azure_kusto_database.example.name
+///   use_managed_identity = true
+/// }
+/// resource "azure_kusto_databaseprincipalassignment" "example" {
+///   name                = "KustoPrincipalAssignment"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   cluster_name        = azure_kusto_cluster.example.name
+///   database_name       = azure_kusto_database.example.name
+///   tenant_id           = azure_datafactory_factory.example.identity.tenant_id
+///   principal_id        = azure_datafactory_factory.example.identity.principal_id
+///   principal_type      = "App"
+///   role                = "Viewer"
 /// }
 /// ```
 /// ```java
@@ -269,8 +323,8 @@ import 'linked_service_kusto_state.dart';
 /// import com.pulumi.azure.datafactory.LinkedServiceKustoArgs;
 /// import com.pulumi.azure.kusto.DatabasePrincipalAssignment;
 /// import com.pulumi.azure.kusto.DatabasePrincipalAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -427,7 +481,7 @@ class LinkedServiceKusto extends pulumi.CustomResource {
   late final pulumi.Output<String?> servicePrincipalKey;
   /// The service principal tenant id or name in which to authenticate against the Kusto Database.
   ///
-  /// &gt; **Note:** If `service_principal_id` is used, `service_principal_key` and `tenant` is also required.
+  /// &gt; **Note:** If `servicePrincipalId` is used, `servicePrincipalKey` and `tenant` is also required.
   ///
   /// &gt; **Note:** One of Managed Identity authentication and Service Principal authentication must be set.
   late final pulumi.Output<String?> tenant;

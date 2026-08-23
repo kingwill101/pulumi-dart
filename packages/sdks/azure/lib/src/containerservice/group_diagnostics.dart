@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_diagnostics_log_analytics.dart';
 
 class GroupDiagnostics {
-  /// A `log_analytics` block as defined below. Changing this forces a new resource to be created.
+  /// A `logAnalytics` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<GroupDiagnosticsLogAnalytics> logAnalytics;
 
   /// Creates a new [GroupDiagnostics].
-  /// [logAnalytics] A `log_analytics` block as defined below. Changing this forces a new resource to be created.
+  /// [logAnalytics] A `logAnalytics` block as defined below. Changing this forces a new resource to be created.
   const GroupDiagnostics({
     required this.logAnalytics,
   });
@@ -25,4 +25,3 @@ class GroupDiagnostics {
     );
   }
 }
-

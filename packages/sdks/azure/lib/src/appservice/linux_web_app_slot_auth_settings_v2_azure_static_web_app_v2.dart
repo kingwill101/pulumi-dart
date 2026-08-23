@@ -24,4 +24,3 @@ class LinuxWebAppSlotAuthSettingsV2AzureStaticWebAppV2 {
     );
   }
 }
-

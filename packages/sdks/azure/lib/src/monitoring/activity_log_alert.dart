@@ -231,6 +231,54 @@ import 'activity_log_alert_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_monitoring_actiongroup" "main" {
+///   name                = "example-actiongroup"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   short_name          = "p0action"
+///   webhook_receivers {
+///     name        = "callmyapi"
+///     service_uri = "http://example.com/alert"
+///   }
+/// }
+/// resource "azure_storage_account" "to_monitor" {
+///   name                     = "examplesa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+/// }
+/// resource "azure_monitoring_activitylogalert" "main" {
+///   name                = "example-activitylogalert"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   scopes              = [azure_core_resourcegroup.example.id]
+///   description         = "This alert will monitor a specific storage account updates."
+///   criteria = {
+///     resource_id    = azure_storage_account.to_monitor.id
+///     operation_name = "Microsoft.Storage/storageAccounts/write"
+///     category       = "Recommendation"
+///   }
+///   actions {
+///     action_group_id = azure_monitoring_actiongroup.main.id
+///     webhook_properties = {
+///       "from" = "source"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -248,8 +296,8 @@ import 'activity_log_alert_state.dart';
 /// import com.pulumi.azure.monitoring.ActivityLogAlertArgs;
 /// import com.pulumi.azure.monitoring.inputs.ActivityLogAlertCriteriaArgs;
 /// import com.pulumi.azure.monitoring.inputs.ActivityLogAlertActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

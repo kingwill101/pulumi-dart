@@ -5,7 +5,7 @@ import 'get_group_identity.dart';
 
 /// Result data returned by getGroup.
 class GetGroupResult {
-  /// The FQDN of the Container Group instance derived from `dns_name_label`.
+  /// The FQDN of the Container Group instance derived from `dnsNameLabel`.
   final String fqdn;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -25,7 +25,7 @@ class GetGroupResult {
   final List<String>? zones;
 
   /// Creates a new [GetGroupResult].
-  /// [fqdn] The FQDN of the Container Group instance derived from `dns_name_label`.
+  /// [fqdn] The FQDN of the Container Group instance derived from `dnsNameLabel`.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] A `identity` block as defined below.
   /// [ipAddress] The IP address allocated to the Container Group instance.
@@ -78,4 +78,3 @@ class GetGroupResult {
     );
   }
 }
-

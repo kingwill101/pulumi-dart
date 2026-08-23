@@ -6,20 +6,20 @@ import 'frontdoor_backend_pool_backend.dart';
 class FrontdoorBackendPool {
   /// A `backend` block as defined below.
   final pulumi.Input<List<FrontdoorBackendPoolBackend>> backends;
-  /// Specifies the name of the `backend_pool_health_probe` block within this resource to use for this `Backend Pool`.
+  /// Specifies the name of the `backendPoolHealthProbe` block within this resource to use for this `Backend Pool`.
   final pulumi.Input<String> healthProbeName;
   /// The ID of the FrontDoor.
   final pulumi.Input<String>? id;
-  /// Specifies the name of the `backend_pool_load_balancing` block within this resource to use for this `Backend Pool`.
+  /// Specifies the name of the `backendPoolLoadBalancing` block within this resource to use for this `Backend Pool`.
   final pulumi.Input<String> loadBalancingName;
   /// Specifies the name of the Backend Pool.
   final pulumi.Input<String> name;
 
   /// Creates a new [FrontdoorBackendPool].
   /// [backends] A `backend` block as defined below.
-  /// [healthProbeName] Specifies the name of the `backend_pool_health_probe` block within this resource to use for this `Backend Pool`.
+  /// [healthProbeName] Specifies the name of the `backendPoolHealthProbe` block within this resource to use for this `Backend Pool`.
   /// [id] The ID of the FrontDoor.
-  /// [loadBalancingName] Specifies the name of the `backend_pool_load_balancing` block within this resource to use for this `Backend Pool`.
+  /// [loadBalancingName] Specifies the name of the `backendPoolLoadBalancing` block within this resource to use for this `Backend Pool`.
   /// [name] Specifies the name of the Backend Pool.
   const FrontdoorBackendPool({
     required this.backends,
@@ -49,4 +49,3 @@ class FrontdoorBackendPool {
     );
   }
 }
-

@@ -9,7 +9,7 @@ class VirtualNetworkGatewayIpConfiguration {
   final pulumi.Input<String>? privateIpAddressAllocation;
   /// The ID of the public IP address to associate with the Virtual Network Gateway.
   ///
-  /// &gt; **Note:** `public_ip_address_id` should not be specified when `type` is set to `ExpressRoute`.
+  /// &gt; **Note:** `publicIpAddressId` should not be specified when `type` is set to `ExpressRoute`.
   final pulumi.Input<String>? publicIpAddressId;
   /// The ID of the gateway subnet of a virtual network in which the virtual network gateway will be created. It is mandatory that the associated subnet is named `GatewaySubnet`. Therefore, each virtual network can contain at most a single Virtual Network Gateway.
   final pulumi.Input<String> subnetId;
@@ -44,4 +44,3 @@ class VirtualNetworkGatewayIpConfiguration {
     );
   }
 }
-

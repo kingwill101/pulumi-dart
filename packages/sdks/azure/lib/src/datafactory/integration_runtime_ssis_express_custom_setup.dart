@@ -5,7 +5,7 @@ import 'integration_runtime_ssis_express_custom_setup_command_key.dart';
 import 'integration_runtime_ssis_express_custom_setup_component.dart';
 
 class IntegrationRuntimeSsisExpressCustomSetup {
-  /// One or more `command_key` blocks as defined below.
+  /// One or more `commandKey` blocks as defined below.
   final pulumi.Input<List<IntegrationRuntimeSsisExpressCustomSetupCommandKey>>? commandKeys;
   /// One or more `component` blocks as defined below.
   final pulumi.Input<List<IntegrationRuntimeSsisExpressCustomSetupComponent>>? components;
@@ -13,11 +13,11 @@ class IntegrationRuntimeSsisExpressCustomSetup {
   final pulumi.Input<Map<String, String>>? environment;
   /// The version of Azure Powershell installed for the Azure-SSIS Integration Runtime.
   ///
-  /// &gt; **Note:** At least one of `env`, `powershell_version`, `component` and `command_key` should be specified.
+  /// &gt; **Note:** At least one of `env`, `powershellVersion`, `component` and `commandKey` should be specified.
   final pulumi.Input<String>? powershellVersion;
 
   /// Creates a new [IntegrationRuntimeSsisExpressCustomSetup].
-  /// [commandKeys] One or more `command_key` blocks as defined below.
+  /// [commandKeys] One or more `commandKey` blocks as defined below.
   /// [components] One or more `component` blocks as defined below.
   /// [environment] The Environment Variables for the Azure-SSIS Integration Runtime.
   /// [powershellVersion] The version of Azure Powershell installed for the Azure-SSIS Integration Runtime.
@@ -46,4 +46,3 @@ class IntegrationRuntimeSsisExpressCustomSetup {
     );
   }
 }
-

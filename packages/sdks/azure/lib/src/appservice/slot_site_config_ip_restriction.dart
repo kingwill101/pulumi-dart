@@ -6,7 +6,7 @@ import 'slot_site_config_ip_restriction_headers.dart';
 class SlotSiteConfigIpRestriction {
   /// Does this restriction `Allow` or `Deny` access for this IP range. Defaults to `Allow`.
   final pulumi.Input<String>? action;
-  /// The `headers` block for this specific `ip_restriction` as defined below. The HTTP header filters are evaluated after the rule itself and both conditions must be true for the rule to apply.
+  /// The `headers` block for this specific `ipRestriction` as defined below. The HTTP header filters are evaluated after the rule itself and both conditions must be true for the rule to apply.
   final pulumi.Input<SlotSiteConfigIpRestrictionHeaders>? headers;
   /// The IP Address used for this IP Restriction in CIDR notation.
   final pulumi.Input<String>? ipAddress;
@@ -18,12 +18,12 @@ class SlotSiteConfigIpRestriction {
   final pulumi.Input<String>? serviceTag;
   /// The Virtual Network Subnet ID used for this IP Restriction.
   ///
-  /// &gt; **NOTE:** One of either `ip_address`, `service_tag` or `virtual_network_subnet_id` must be specified
+  /// &gt; **NOTE:** One of either `ipAddress`, `serviceTag` or `virtualNetworkSubnetId` must be specified
   final pulumi.Input<String>? virtualNetworkSubnetId;
 
   /// Creates a new [SlotSiteConfigIpRestriction].
   /// [action] Does this restriction `Allow` or `Deny` access for this IP range. Defaults to `Allow`.
-  /// [headers] The `headers` block for this specific `ip_restriction` as defined below. The HTTP header filters are evaluated after the rule itself and both conditions must be true for the rule to apply.
+  /// [headers] The `headers` block for this specific `ipRestriction` as defined below. The HTTP header filters are evaluated after the rule itself and both conditions must be true for the rule to apply.
   /// [ipAddress] The IP Address used for this IP Restriction in CIDR notation.
   /// [name] The name for this IP Restriction.
   /// [priority] The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
@@ -63,4 +63,3 @@ class SlotSiteConfigIpRestriction {
     );
   }
 }
-

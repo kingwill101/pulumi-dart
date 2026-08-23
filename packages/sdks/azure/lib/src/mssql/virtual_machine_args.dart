@@ -16,11 +16,11 @@ import 'virtual_machine_wsfc_domain_credential.dart';
 class VirtualMachineArgs {
   /// An `assessment` block as defined below.
   final pulumi.Input<VirtualMachineAssessment>? assessment;
-  /// An `auto_backup` block as defined below. This block can be added to an existing resource, but removing this block forces a new resource to be created.
+  /// An `autoBackup` block as defined below. This block can be added to an existing resource, but removing this block forces a new resource to be created.
   final pulumi.Input<VirtualMachineAutoBackup>? autoBackup;
-  /// An `auto_patching` block as defined below.
+  /// An `autoPatching` block as defined below.
   final pulumi.Input<VirtualMachineAutoPatching>? autoPatching;
-  /// An `key_vault_credential` block as defined below.
+  /// An `keyVaultCredential` block as defined below.
   final pulumi.Input<VirtualMachineKeyVaultCredential>? keyVaultCredential;
   /// Should R Services be enabled?
   final pulumi.Input<bool>? rServicesEnabled;
@@ -32,38 +32,38 @@ class VirtualMachineArgs {
   final pulumi.Input<String>? sqlConnectivityUpdatePassword;
   /// The SQL Server sysadmin login to create.
   final pulumi.Input<String>? sqlConnectivityUpdateUsername;
-  /// A `sql_instance` block as defined below.
+  /// A `sqlInstance` block as defined below.
   final pulumi.Input<VirtualMachineSqlInstance>? sqlInstance;
   /// The SQL Server license type. Possible values are `AHUB` (Azure Hybrid Benefit), `DR` (Disaster Recovery), and `PAYG` (Pay-As-You-Go). Changing this forces a new resource to be created.
   final pulumi.Input<String>? sqlLicenseType;
   /// The ID of the SQL Virtual Machine Group that the SQL Virtual Machine belongs to.
   final pulumi.Input<String>? sqlVirtualMachineGroupId;
-  /// An `storage_configuration` block as defined below.
+  /// An `storageConfiguration` block as defined below.
   final pulumi.Input<VirtualMachineStorageConfiguration>? storageConfiguration;
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
   /// The ID of the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualMachineId;
-  /// A `wsfc_domain_credential` block as defined below
+  /// A `wsfcDomainCredential` block as defined below
   final pulumi.Input<VirtualMachineWsfcDomainCredential>? wsfcDomainCredential;
 
   /// Creates a new [VirtualMachineArgs].
   /// [assessment] An `assessment` block as defined below.
-  /// [autoBackup] An `auto_backup` block as defined below. This block can be added to an existing resource, but removing this block forces a new resource to be created.
-  /// [autoPatching] An `auto_patching` block as defined below.
-  /// [keyVaultCredential] An `key_vault_credential` block as defined below.
+  /// [autoBackup] An `autoBackup` block as defined below. This block can be added to an existing resource, but removing this block forces a new resource to be created.
+  /// [autoPatching] An `autoPatching` block as defined below.
+  /// [keyVaultCredential] An `keyVaultCredential` block as defined below.
   /// [rServicesEnabled] Should R Services be enabled?
   /// [sqlConnectivityPort] The SQL Server port. Defaults to `1433`.
   /// [sqlConnectivityType] The connectivity type used for this SQL Server. Possible values are `LOCAL`, `PRIVATE` and `PUBLIC`. Defaults to `PRIVATE`.
   /// [sqlConnectivityUpdatePassword] The SQL Server sysadmin login password.
   /// [sqlConnectivityUpdateUsername] The SQL Server sysadmin login to create.
-  /// [sqlInstance] A `sql_instance` block as defined below.
+  /// [sqlInstance] A `sqlInstance` block as defined below.
   /// [sqlLicenseType] The SQL Server license type. Possible values are `AHUB` (Azure Hybrid Benefit), `DR` (Disaster Recovery), and `PAYG` (Pay-As-You-Go). Changing this forces a new resource to be created.
   /// [sqlVirtualMachineGroupId] The ID of the SQL Virtual Machine Group that the SQL Virtual Machine belongs to.
-  /// [storageConfiguration] An `storage_configuration` block as defined below.
+  /// [storageConfiguration] An `storageConfiguration` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   /// [virtualMachineId] The ID of the Virtual Machine. Changing this forces a new resource to be created.
-  /// [wsfcDomainCredential] A `wsfc_domain_credential` block as defined below
+  /// [wsfcDomainCredential] A `wsfcDomainCredential` block as defined below
   const VirtualMachineArgs({
     this.assessment,
     this.autoBackup,
@@ -125,4 +125,3 @@ class VirtualMachineArgs {
     );
   }
 }
-

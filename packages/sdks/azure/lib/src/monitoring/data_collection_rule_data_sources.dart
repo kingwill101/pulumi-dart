@@ -13,38 +13,38 @@ import 'data_collection_rule_data_sources_windows_event_log.dart';
 import 'data_collection_rule_data_sources_windows_firewall_log.dart';
 
 class DataCollectionRuleDataSources {
-  /// A `data_import` block as defined above.
+  /// A `dataImport` block as defined above.
   final pulumi.Input<DataCollectionRuleDataSourcesDataImport>? dataImport;
   /// One or more `extension` blocks as defined below.
   final pulumi.Input<List<DataCollectionRuleDataSourcesExtension>>? extensions;
-  /// One or more `iis_log` blocks as defined below.
+  /// One or more `iisLog` blocks as defined below.
   final pulumi.Input<List<DataCollectionRuleDataSourcesIisLog>>? iisLogs;
-  /// One or more `log_file` blocks as defined below.
+  /// One or more `logFile` blocks as defined below.
   final pulumi.Input<List<DataCollectionRuleDataSourcesLogFile>>? logFiles;
-  /// One or more `performance_counter` blocks as defined below.
+  /// One or more `performanceCounter` blocks as defined below.
   final pulumi.Input<List<DataCollectionRuleDataSourcesPerformanceCounter>>? performanceCounters;
-  /// One or more `platform_telemetry` blocks as defined below.
+  /// One or more `platformTelemetry` blocks as defined below.
   final pulumi.Input<List<DataCollectionRuleDataSourcesPlatformTelemetry>>? platformTelemetries;
-  /// One or more `prometheus_forwarder` blocks as defined below.
+  /// One or more `prometheusForwarder` blocks as defined below.
   final pulumi.Input<List<DataCollectionRuleDataSourcesPrometheusForwarder>>? prometheusForwarders;
   /// One or more `syslog` blocks as defined below.
   final pulumi.Input<List<DataCollectionRuleDataSourcesSyslog>>? syslogs;
-  /// One or more `windows_event_log` blocks as defined below.
+  /// One or more `windowsEventLog` blocks as defined below.
   final pulumi.Input<List<DataCollectionRuleDataSourcesWindowsEventLog>>? windowsEventLogs;
-  /// One or more `windows_firewall_log` blocks as defined below.
+  /// One or more `windowsFirewallLog` blocks as defined below.
   final pulumi.Input<List<DataCollectionRuleDataSourcesWindowsFirewallLog>>? windowsFirewallLogs;
 
   /// Creates a new [DataCollectionRuleDataSources].
-  /// [dataImport] A `data_import` block as defined above.
+  /// [dataImport] A `dataImport` block as defined above.
   /// [extensions] One or more `extension` blocks as defined below.
-  /// [iisLogs] One or more `iis_log` blocks as defined below.
-  /// [logFiles] One or more `log_file` blocks as defined below.
-  /// [performanceCounters] One or more `performance_counter` blocks as defined below.
-  /// [platformTelemetries] One or more `platform_telemetry` blocks as defined below.
-  /// [prometheusForwarders] One or more `prometheus_forwarder` blocks as defined below.
+  /// [iisLogs] One or more `iisLog` blocks as defined below.
+  /// [logFiles] One or more `logFile` blocks as defined below.
+  /// [performanceCounters] One or more `performanceCounter` blocks as defined below.
+  /// [platformTelemetries] One or more `platformTelemetry` blocks as defined below.
+  /// [prometheusForwarders] One or more `prometheusForwarder` blocks as defined below.
   /// [syslogs] One or more `syslog` blocks as defined below.
-  /// [windowsEventLogs] One or more `windows_event_log` blocks as defined below.
-  /// [windowsFirewallLogs] One or more `windows_firewall_log` blocks as defined below.
+  /// [windowsEventLogs] One or more `windowsEventLog` blocks as defined below.
+  /// [windowsFirewallLogs] One or more `windowsFirewallLog` blocks as defined below.
   const DataCollectionRuleDataSources({
     this.dataImport,
     this.extensions,
@@ -88,4 +88,3 @@ class DataCollectionRuleDataSources {
     );
   }
 }
-

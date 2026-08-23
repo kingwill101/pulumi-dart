@@ -10,13 +10,13 @@ import 'share_acl.dart';
 class ShareArgs {
   /// The access tier of the File Share. Possible values are `Hot`, `Cool` and `TransactionOptimized`, `Premium`.
   ///
-  /// &gt; **Note:** The `FileStorage` `account_kind` of the `azure.storage.Account` requires `Premium` `access_tier`.
+  /// &gt; **Note:** The `FileStorage` `accountKind` of the `azure.storage.Account` requires `Premium` `accessTier`.
   final pulumi.Input<String>? accessTier;
   /// One or more `acl` blocks as defined below.
   final pulumi.Input<List<ShareAcl>>? acls;
   /// The protocol used for the share. Possible values are `SMB` and `NFS`. The `SMB` indicates the share can be accessed by SMBv3.0, SMBv2.1 and REST. The `NFS` indicates the share can be accessed by NFSv4.1. Defaults to `SMB`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The `FileStorage` `account_kind` of the `azure.storage.Account` is required for the `NFS` protocol.
+  /// &gt; **Note:** The `FileStorage` `accountKind` of the `azure.storage.Account` is required for the `NFS` protocol.
   final pulumi.Input<String>? enabledProtocol;
   /// A mapping of MetaData for this File Share.
   final pulumi.Input<Map<String, String>>? metadata;
@@ -24,17 +24,17 @@ class ShareArgs {
   final pulumi.Input<String>? name;
   /// The maximum size of the share, in gigabytes.
   ///
-  /// &gt; **Note:** For Standard storage accounts, by default this must be `1` GB (or higher) and at most `5120` GB (`5` TB). This can be set to a value larger than `5120` GB if `large_file_share_enabled` is set to `true` in the parent `azure.storage.Account`.
+  /// &gt; **Note:** For Standard storage accounts, by default this must be `1` GB (or higher) and at most `5120` GB (`5` TB). This can be set to a value larger than `5120` GB if `largeFileShareEnabled` is set to `true` in the parent `azure.storage.Account`.
   ///
   /// &gt; **Note:** For Premium FileStorage storage accounts, this must be greater than `100` GB and at most `102400` GB (`100` TB).
   final pulumi.Input<int> quota;
   /// Specifies the storage account in which to create the share.
   ///
-  /// &gt; **Note:** One of `storage_account_name` or `storage_account_id` must be specified. When specifying `storage_account_id` the resource will use the Resource Manager API, rather than the Data Plane API.
+  /// &gt; **Note:** One of `storageAccountName` or `storageAccountId` must be specified. When specifying `storageAccountId` the resource will use the Resource Manager API, rather than the Data Plane API.
   final pulumi.Input<String>? storageAccountId;
-  /// Specifies the storage account in which to create the share. This property is deprecated in favour of `storage_account_id`.
+  /// Specifies the storage account in which to create the share. This property is deprecated in favour of `storageAccountId`.
   ///
-  /// &gt; **Note:** Migrating from the deprecated `storage_account_name` to `storage_account_id` is supported without recreation. Any other change to either property will result in the resource being recreated.
+  /// &gt; **Note:** Migrating from the deprecated `storageAccountName` to `storageAccountId` is supported without recreation. Any other change to either property will result in the resource being recreated.
   final pulumi.Input<String>? storageAccountName;
 
   /// Creates a new [ShareArgs].
@@ -45,7 +45,7 @@ class ShareArgs {
   /// [name] The name of the share. Must be unique within the storage account where the share is located. Changing this forces a new resource to be created.
   /// [quota] The maximum size of the share, in gigabytes.
   /// [storageAccountId] Specifies the storage account in which to create the share.
-  /// [storageAccountName] Specifies the storage account in which to create the share. This property is deprecated in favour of `storage_account_id`.
+  /// [storageAccountName] Specifies the storage account in which to create the share. This property is deprecated in favour of `storageAccountId`.
   const ShareArgs({
     this.accessTier,
     this.acls,
@@ -83,4 +83,3 @@ class ShareArgs {
     );
   }
 }
-

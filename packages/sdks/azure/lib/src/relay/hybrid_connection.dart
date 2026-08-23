@@ -135,6 +135,36 @@ import 'hybrid_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_relay_namespace" "example" {
+///   name                = "example-relay"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Standard"
+///   tags = {
+///     "source" = "managed"
+///   }
+/// }
+/// resource "azure_relay_hybridconnection" "example" {
+///   name                          = "acctestrnhc-%d"
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   relay_namespace_name          = azure_relay_namespace.example.name
+///   requires_client_authorization = false
+///   user_metadata                 = "testmetadata"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +177,8 @@ import 'hybrid_connection_state.dart';
 /// import com.pulumi.azure.relay.NamespaceArgs;
 /// import com.pulumi.azure.relay.HybridConnection;
 /// import com.pulumi.azure.relay.HybridConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

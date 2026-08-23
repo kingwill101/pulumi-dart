@@ -12,11 +12,11 @@ class PoolStartTask {
   final pulumi.Input<Map<String, String>>? commonEnvironmentProperties;
   /// A `container` block is the settings for the container under which the start task runs as defined below. When this is specified, all directories recursively below the `AZ_BATCH_NODE_ROOT_DIR` (the root of Azure Batch directories on the node) are mapped into the container, all task environment variables are mapped into the container, and the task command line is executed in the container.
   final pulumi.Input<List<PoolStartTaskContainer>>? containers;
-  /// One or more `resource_file` blocks that describe the files to be downloaded to a compute node as defined below.
+  /// One or more `resourceFile` blocks that describe the files to be downloaded to a compute node as defined below.
   final pulumi.Input<List<PoolStartTaskResourceFile>>? resourceFiles;
   /// The number of retry count. If this is set to `0`, the Batch service does not retry Tasks. If this is set to `-1`, the Batch service retries Batch Tasks without limit.
   final pulumi.Input<int>? taskRetryMaximum;
-  /// A `user_identity` block that describes the user identity under which the start task runs as defined below.
+  /// A `userIdentity` block that describes the user identity under which the start task runs as defined below.
   final pulumi.Input<PoolStartTaskUserIdentity> userIdentity;
   /// A flag that indicates if the Batch pool should wait for the start task to be completed. Default to `false`.
   final pulumi.Input<bool>? waitForSuccess;
@@ -25,9 +25,9 @@ class PoolStartTask {
   /// [commandLine] The command line executed by the start task.
   /// [commonEnvironmentProperties] A map of strings (key,value) that represents the environment variables to set in the start task.
   /// [containers] A `container` block is the settings for the container under which the start task runs as defined below. When this is specified, all directories recursively below the `AZ_BATCH_NODE_ROOT_DIR` (the root of Azure Batch directories on the node) are mapped into the container, all task environment variables are mapped into the container, and the task command line is executed in the container.
-  /// [resourceFiles] One or more `resource_file` blocks that describe the files to be downloaded to a compute node as defined below.
+  /// [resourceFiles] One or more `resourceFile` blocks that describe the files to be downloaded to a compute node as defined below.
   /// [taskRetryMaximum] The number of retry count. If this is set to `0`, the Batch service does not retry Tasks. If this is set to `-1`, the Batch service retries Batch Tasks without limit.
-  /// [userIdentity] A `user_identity` block that describes the user identity under which the start task runs as defined below.
+  /// [userIdentity] A `userIdentity` block that describes the user identity under which the start task runs as defined below.
   /// [waitForSuccess] A flag that indicates if the Batch pool should wait for the start task to be completed. Default to `false`.
   const PoolStartTask({
     required this.commandLine,
@@ -63,4 +63,3 @@ class PoolStartTask {
     );
   }
 }
-

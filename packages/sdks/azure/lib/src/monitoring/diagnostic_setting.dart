@@ -204,6 +204,50 @@ import 'diagnostic_setting_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "storageaccountname"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                       = "examplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   soft_delete_retention_days = 7
+///   purge_protection_enabled   = false
+///   sku_name                   = "standard"
+/// }
+/// resource "azure_monitoring_diagnosticsetting" "example" {
+///   name               = "example"
+///   target_resource_id = azure_keyvault_keyvault.example.id
+///   storage_account_id = azure_storage_account.example.id
+///   enabled_logs {
+///     category = "AuditEvent"
+///   }
+///   enabled_metrics {
+///     category = "AllMetrics"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -221,8 +265,8 @@ import 'diagnostic_setting_state.dart';
 /// import com.pulumi.azure.monitoring.DiagnosticSettingArgs;
 /// import com.pulumi.azure.monitoring.inputs.DiagnosticSettingEnabledLogArgs;
 /// import com.pulumi.azure.monitoring.inputs.DiagnosticSettingEnabledMetricArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -337,19 +381,19 @@ import 'diagnostic_setting_state.dart';
 ///
 /// &gt; **Note:** This is an ID specific to this resource provider which uses the format `{resourceId}|{diagnosticSettingName}`
 class DiagnosticSetting extends pulumi.CustomResource {
-  /// One or more `enabled_log` blocks as defined below.
+  /// One or more `enabledLog` blocks as defined below.
   ///
-  /// &gt; **Note:** At least one `enabled_log` or `enabled_metric` block must be specified. At least one type of Log or Metric must be enabled.
+  /// &gt; **Note:** At least one `enabledLog` or `enabledMetric` block must be specified. At least one type of Log or Metric must be enabled.
   late final pulumi.Output<List<Map<String, dynamic>>?> enabledLogs;
-  /// One or more `enabled_metric` blocks as defined below.
+  /// One or more `enabledMetric` blocks as defined below.
   ///
-  /// &gt; **Note:** At least one `enabled_log` or `enabled_metric` block must be specified.
+  /// &gt; **Note:** At least one `enabledLog` or `enabledMetric` block must be specified.
   late final pulumi.Output<List<Map<String, dynamic>>> enabledMetrics;
   /// Specifies the ID of an Event Hub Namespace Authorization Rule used to send Diagnostics Data.
   ///
   /// &gt; **NOTE:** This can be sourced from the `azure.eventhub.EventHubNamespaceAuthorizationRule` resource and is different from a `azure.eventhub.AuthorizationRule` resource.
   ///
-  /// &gt; **NOTE:** At least one of `eventhub_authorization_rule_id`, `log_analytics_workspace_id`, `partner_solution_id` and `storage_account_id` must be specified.
+  /// &gt; **NOTE:** At least one of `eventhubAuthorizationRuleId`, `logAnalyticsWorkspaceId`, `partnerSolutionId` and `storageAccountId` must be specified.
   late final pulumi.Output<String?> eventhubAuthorizationRuleId;
   /// Specifies the name of the Event Hub where Diagnostics Data should be sent.
   ///
@@ -357,11 +401,11 @@ class DiagnosticSetting extends pulumi.CustomResource {
   late final pulumi.Output<String?> eventhubName;
   /// Possible values are `AzureDiagnostics` and `Dedicated`. When set to `Dedicated`, logs sent to a Log Analytics workspace will go into resource specific tables, instead of the legacy `AzureDiagnostics` table.
   ///
-  /// &gt; **NOTE:** This setting will only have an effect if a `log_analytics_workspace_id` is provided. For some target resource type (e.g., Key Vault), this field is unconfigurable. Please see [resource types](https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/azurediagnostics#resource-types) for services that use each method. Please [see the documentation](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#azure-diagnostics-vs-resource-specific) for details on the differences between destination types.
+  /// &gt; **NOTE:** This setting will only have an effect if a `logAnalyticsWorkspaceId` is provided. For some target resource type (e.g., Key Vault), this field is unconfigurable. Please see [resource types](https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/azurediagnostics#resource-types) for services that use each method. Please [see the documentation](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#azure-diagnostics-vs-resource-specific) for details on the differences between destination types.
   late final pulumi.Output<String> logAnalyticsDestinationType;
   /// Specifies the ID of a Log Analytics Workspace where Diagnostics Data should be sent.
   ///
-  /// &gt; **NOTE:** At least one of `eventhub_authorization_rule_id`, `log_analytics_workspace_id`, `partner_solution_id` and `storage_account_id` must be specified.
+  /// &gt; **NOTE:** At least one of `eventhubAuthorizationRuleId`, `logAnalyticsWorkspaceId`, `partnerSolutionId` and `storageAccountId` must be specified.
   late final pulumi.Output<String?> logAnalyticsWorkspaceId;
   late final pulumi.Output<List<Map<String, dynamic>>> metrics;
   /// Specifies the name of the Diagnostic Setting. Changing this forces a new resource to be created.
@@ -370,11 +414,11 @@ class DiagnosticSetting extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The ID of the market partner solution where Diagnostics Data should be sent. For potential partner integrations, [click to learn more about partner integration](https://learn.microsoft.com/en-us/azure/partner-solutions/overview).
   ///
-  /// &gt; **NOTE:** At least one of `eventhub_authorization_rule_id`, `log_analytics_workspace_id`, `partner_solution_id` and `storage_account_id` must be specified.
+  /// &gt; **NOTE:** At least one of `eventhubAuthorizationRuleId`, `logAnalyticsWorkspaceId`, `partnerSolutionId` and `storageAccountId` must be specified.
   late final pulumi.Output<String?> partnerSolutionId;
   /// The ID of the Storage Account where logs should be sent.
   ///
-  /// &gt; **NOTE:** At least one of `eventhub_authorization_rule_id`, `log_analytics_workspace_id`, `partner_solution_id` and `storage_account_id` must be specified.
+  /// &gt; **NOTE:** At least one of `eventhubAuthorizationRuleId`, `logAnalyticsWorkspaceId`, `partnerSolutionId` and `storageAccountId` must be specified.
   late final pulumi.Output<String?> storageAccountId;
   /// The ID of an existing Resource on which to configure Diagnostic Settings. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetResourceId;

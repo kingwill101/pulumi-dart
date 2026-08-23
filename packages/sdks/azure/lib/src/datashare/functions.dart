@@ -77,6 +77,24 @@ import 'get_share_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_datashare_getaccount" "example" {
+///   name                = "example-account"
+///   resource_group_name = "example-resource-group"
+/// }
+///
+/// output "id" {
+///   value = data.azure_datashare_getaccount.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +103,8 @@ import 'get_share_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.datashare.DatashareFunctions;
 /// import com.pulumi.azure.datashare.inputs.GetAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -206,6 +224,24 @@ Future<GetAccountResult> getAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_datashare_getdatasetblobstorage" "example" {
+///   name          = "example-dsbsds"
+///   data_share_id = "example-share-id"
+/// }
+///
+/// output "id" {
+///   value = data.azure_datashare_getdatasetblobstorage.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +250,8 @@ Future<GetAccountResult> getAccount(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.datashare.DatashareFunctions;
 /// import com.pulumi.azure.datashare.inputs.GetDatasetBlobStorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -335,6 +371,24 @@ Future<GetDatasetBlobStorageResult> getDatasetBlobStorage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_datashare_getdatasetdatalakegen2" "example" {
+///   name     = "example-dsdlg2ds"
+///   share_id = "example-share-id"
+/// }
+///
+/// output "id" {
+///   value = data.azure_datashare_getdatasetdatalakegen2.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -343,8 +397,8 @@ Future<GetDatasetBlobStorageResult> getDatasetBlobStorage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.datashare.DatashareFunctions;
 /// import com.pulumi.azure.datashare.inputs.GetDatasetDataLakeGen2Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -464,6 +518,24 @@ Future<GetDatasetDataLakeGen2Result> getDatasetDataLakeGen2(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_datashare_getdatasetkustocluster" "example" {
+///   name     = "example-dskc"
+///   share_id = "example-share-id"
+/// }
+///
+/// output "id" {
+///   value = data.azure_datashare_getdatasetkustocluster.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -472,8 +544,8 @@ Future<GetDatasetDataLakeGen2Result> getDatasetDataLakeGen2(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.datashare.DatashareFunctions;
 /// import com.pulumi.azure.datashare.inputs.GetDatasetKustoClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -593,6 +665,24 @@ Future<GetDatasetKustoClusterResult> getDatasetKustoCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_datashare_getdatasetkustodatabase" "example" {
+///   name     = "example-dskdds"
+///   share_id = "example-share-id"
+/// }
+///
+/// output "id" {
+///   value = data.azure_datashare_getdatasetkustodatabase.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -601,8 +691,8 @@ Future<GetDatasetKustoClusterResult> getDatasetKustoCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.datashare.DatashareFunctions;
 /// import com.pulumi.azure.datashare.inputs.GetDatasetKustoDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -741,6 +831,28 @@ Future<GetDatasetKustoDatabaseResult> getDatasetKustoDatabase(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_datashare_getaccount" "example" {
+///   name                = "example-account"
+///   resource_group_name = "example-resource-group"
+/// }
+/// data "azure_datashare_getshare" "exampleGetShare" {
+///   name       = "existing"
+///   account_id = data.azure_datashare_getaccount.example.id
+/// }
+///
+/// output "id" {
+///   value = data.azure_datashare_getshare.exampleGetShare.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -750,8 +862,8 @@ Future<GetDatasetKustoDatabaseResult> getDatasetKustoDatabase(
 /// import com.pulumi.azure.datashare.DatashareFunctions;
 /// import com.pulumi.azure.datashare.inputs.GetAccountArgs;
 /// import com.pulumi.azure.datashare.inputs.GetShareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

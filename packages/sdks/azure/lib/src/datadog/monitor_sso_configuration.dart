@@ -162,6 +162,42 @@ import 'monitor_sso_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-datadog"
+///   location = "West US 2"
+/// }
+/// resource "azure_datadog_monitor" "example" {
+///   name                = "example-monitor"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   datadog_organization = {
+///     api_key         = "XXXX"
+///     application_key = "XXXX"
+///   }
+///   user = {
+///     name  = "Example"
+///     email = "abc@xyz.com"
+///   }
+///   sku_name = "Linked"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_datadog_monitorssoconfiguration" "example" {
+///   datadog_monitor_id        = azure_datadog_monitor.example.id
+///   single_sign_on            = "Enable"
+///   enterprise_application_id = "00000000-0000-0000-0000-000000000000"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +213,8 @@ import 'monitor_sso_configuration_state.dart';
 /// import com.pulumi.azure.datadog.inputs.MonitorIdentityArgs;
 /// import com.pulumi.azure.datadog.MonitorSsoConfiguration;
 /// import com.pulumi.azure.datadog.MonitorSsoConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

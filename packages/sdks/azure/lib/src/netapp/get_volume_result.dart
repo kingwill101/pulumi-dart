@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_volume_data_protection_advanced_ransomware.dart';
 import 'get_volume_data_protection_backup_policy.dart';
 import 'get_volume_data_protection_replication.dart';
 
@@ -9,6 +10,8 @@ class GetVolumeResult {
   /// The accept grow capacity pool for short term clone split property.
   final String acceptGrowCapacityPoolForShortTermCloneSplit;
   final String accountName;
+  /// An Advanced Ransomware Protection (ARP) data protection block.
+  final List<GetVolumeDataProtectionAdvancedRansomware> dataProtectionAdvancedRansomwares;
   /// A data protecion backup policy block
   final List<GetVolumeDataProtectionBackupPolicy> dataProtectionBackupPolicies;
   /// Volume data protection replication block
@@ -50,6 +53,7 @@ class GetVolumeResult {
   /// Creates a new [GetVolumeResult].
   /// [acceptGrowCapacityPoolForShortTermCloneSplit] The accept grow capacity pool for short term clone split property.
   /// [accountName] Required.
+  /// [dataProtectionAdvancedRansomwares] An Advanced Ransomware Protection (ARP) data protection block.
   /// [dataProtectionBackupPolicies] A data protecion backup policy block
   /// [dataProtectionReplications] Volume data protection replication block
   /// [encryptionKeySource] Required.
@@ -74,6 +78,7 @@ class GetVolumeResult {
   const GetVolumeResult({
     required this.acceptGrowCapacityPoolForShortTermCloneSplit,
     required this.accountName,
+    required this.dataProtectionAdvancedRansomwares,
     required this.dataProtectionBackupPolicies,
     required this.dataProtectionReplications,
     required this.encryptionKeySource,
@@ -101,6 +106,7 @@ class GetVolumeResult {
     return <String, dynamic>{
       'acceptGrowCapacityPoolForShortTermCloneSplit': acceptGrowCapacityPoolForShortTermCloneSplit,
       'accountName': accountName,
+      'dataProtectionAdvancedRansomwares': pulumi.Input.encodeList<GetVolumeDataProtectionAdvancedRansomware, Map<String, dynamic>>(dataProtectionAdvancedRansomwares, (value) => value.toMap()),
       'dataProtectionBackupPolicies': pulumi.Input.encodeList<GetVolumeDataProtectionBackupPolicy, Map<String, dynamic>>(dataProtectionBackupPolicies, (value) => value.toMap()),
       'dataProtectionReplications': pulumi.Input.encodeList<GetVolumeDataProtectionReplication, Map<String, dynamic>>(dataProtectionReplications, (value) => value.toMap()),
       'encryptionKeySource': encryptionKeySource,
@@ -129,6 +135,7 @@ class GetVolumeResult {
     return GetVolumeResult(
       acceptGrowCapacityPoolForShortTermCloneSplit: map['acceptGrowCapacityPoolForShortTermCloneSplit'] as String,
       accountName: map['accountName'] as String,
+      dataProtectionAdvancedRansomwares: pulumi.Input.decodeList<GetVolumeDataProtectionAdvancedRansomware>(map['dataProtectionAdvancedRansomwares']!, (value) => GetVolumeDataProtectionAdvancedRansomware.fromMap((value as Map).cast<String, dynamic>())),
       dataProtectionBackupPolicies: pulumi.Input.decodeList<GetVolumeDataProtectionBackupPolicy>(map['dataProtectionBackupPolicies']!, (value) => GetVolumeDataProtectionBackupPolicy.fromMap((value as Map).cast<String, dynamic>())),
       dataProtectionReplications: pulumi.Input.decodeList<GetVolumeDataProtectionReplication>(map['dataProtectionReplications']!, (value) => GetVolumeDataProtectionReplication.fromMap((value as Map).cast<String, dynamic>())),
       encryptionKeySource: map['encryptionKeySource'] as String,
@@ -153,4 +160,3 @@ class GetVolumeResult {
     );
   }
 }
-

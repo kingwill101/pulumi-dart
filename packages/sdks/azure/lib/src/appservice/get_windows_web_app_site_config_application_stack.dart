@@ -9,7 +9,7 @@ class GetWindowsWebAppSiteConfigApplicationStack {
   final pulumi.Input<String> dockerImageName;
   /// The User Name to use for authentication against the registry to pull the image.
   final pulumi.Input<String> dockerRegistryPassword;
-  /// The URL of the container registry where the `docker_image_name` is located.
+  /// The URL of the container registry where the `dockerImageName` is located.
   final pulumi.Input<String> dockerRegistryUrl;
   /// The User Name to use for authentication against the registry to pull the image.
   final pulumi.Input<String> dockerRegistryUsername;
@@ -36,7 +36,7 @@ class GetWindowsWebAppSiteConfigApplicationStack {
   /// [currentStack] The Current Stack value of the Windows Web App.
   /// [dockerImageName] The docker image, including tag, used by this Windows Web App.
   /// [dockerRegistryPassword] The User Name to use for authentication against the registry to pull the image.
-  /// [dockerRegistryUrl] The URL of the container registry where the `docker_image_name` is located.
+  /// [dockerRegistryUrl] The URL of the container registry where the `dockerImageName` is located.
   /// [dockerRegistryUsername] The User Name to use for authentication against the registry to pull the image.
   /// [dotnetCoreVersion] Required.
   /// [dotnetVersion] The version of .NET in use.
@@ -110,4 +110,3 @@ class GetWindowsWebAppSiteConfigApplicationStack {
     );
   }
 }
-

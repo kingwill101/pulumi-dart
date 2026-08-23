@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobSecret {
   /// The identity to use for accessing the Key Vault secret reference. This can either be the Resource ID of a User Assigned Identity, or `System` for the System Assigned Identity.
   ///
-  /// !&gt; **Note:** `identity` must be used together with `key_vault_secret_id`
+  /// &gt; **Note:** `identity` must be used together with `keyVaultSecretId`
   final pulumi.Input<String>? identity;
   /// The ID of a Key Vault secret. This can be a versioned or version-less ID.
   ///
-  /// !&gt; **Note:** When using `key_vault_secret_id`, `ignore_changes` should be used to ignore any changes to `value`.
+  /// &gt; **Note:** When using `keyVaultSecretId`, `ignoreChanges` should be used to ignore any changes to `value`.
   final pulumi.Input<String>? keyVaultSecretId;
   /// The secret name.
   final pulumi.Input<String> name;
   /// The value for this secret.
   ///
-  /// !&gt; **Note:** `value` will be ignored if `key_vault_secret_id` and `identity` are provided.
+  /// &gt; **Note:** `value` will be ignored if `keyVaultSecretId` and `identity` are provided.
   final pulumi.Input<String>? value;
 
   /// Creates a new [JobSecret].
@@ -48,4 +48,3 @@ class JobSecret {
     );
   }
 }
-

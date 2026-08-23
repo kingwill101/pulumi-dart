@@ -99,6 +99,28 @@ import 'placement_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_proximity_placementgroup" "example" {
+///   name                = "exampleProximityPlacementGroup"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +131,8 @@ import 'placement_group_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.proximity.PlacementGroup;
 /// import com.pulumi.azure.proximity.PlacementGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -173,7 +195,7 @@ import 'placement_group_state.dart';
 class PlacementGroup extends pulumi.CustomResource {
   /// Specifies the supported sizes of Virtual Machines that can be created in the Proximity Placement Group.
   ///
-  /// &gt; **Note:** Removing `allowed_vm_sizes` after it is set forces a new resource to be created.
+  /// &gt; **Note:** Removing `allowedVmSizes` after it is set forces a new resource to be created.
   late final pulumi.Output<List<String>?> allowedVmSizes;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
@@ -185,7 +207,7 @@ class PlacementGroup extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// Specifies the supported zone of the Proximity Placement Group. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `allowed_vm_sizes` must be set when `zone` is specified.
+  /// &gt; **Note:** `allowedVmSizes` must be set when `zone` is specified.
   late final pulumi.Output<String?> zone;
 
   /// Creates a new [PlacementGroup].

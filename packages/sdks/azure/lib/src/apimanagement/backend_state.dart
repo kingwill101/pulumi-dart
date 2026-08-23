@@ -11,7 +11,7 @@ import 'backend_tls.dart';
 class BackendState {
   /// The Name of the API Management Service where this backend should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiManagementName;
-  /// A `circuit_breaker_rule` block as documented below.
+  /// A `circuitBreakerRule` block as documented below.
   final pulumi.Input<BackendCircuitBreakerRule>? circuitBreakerRule;
   /// A `credentials` block as documented below.
   final pulumi.Input<BackendCredentials>? credentials;
@@ -27,7 +27,7 @@ class BackendState {
   final pulumi.Input<String>? resourceGroupName;
   /// The management URI of the backend host in an external system. This URI can be the ARM Resource ID of Logic Apps, Function Apps or API Apps, or the management endpoint of a Service Fabric cluster.
   final pulumi.Input<String>? resourceId;
-  /// A `service_fabric_cluster` block as documented below.
+  /// A `serviceFabricCluster` block as documented below.
   final pulumi.Input<BackendServiceFabricCluster>? serviceFabricCluster;
   /// The title of the backend.
   final pulumi.Input<String>? title;
@@ -38,7 +38,7 @@ class BackendState {
 
   /// Creates a new [BackendState].
   /// [apiManagementName] The Name of the API Management Service where this backend should be created. Changing this forces a new resource to be created.
-  /// [circuitBreakerRule] A `circuit_breaker_rule` block as documented below.
+  /// [circuitBreakerRule] A `circuitBreakerRule` block as documented below.
   /// [credentials] A `credentials` block as documented below.
   /// [description] The description of the backend.
   /// [name] The name of the API Management backend. Changing this forces a new resource to be created.
@@ -46,7 +46,7 @@ class BackendState {
   /// [proxy] A `proxy` block as documented below.
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   /// [resourceId] The management URI of the backend host in an external system. This URI can be the ARM Resource ID of Logic Apps, Function Apps or API Apps, or the management endpoint of a Service Fabric cluster.
-  /// [serviceFabricCluster] A `service_fabric_cluster` block as documented below.
+  /// [serviceFabricCluster] A `serviceFabricCluster` block as documented below.
   /// [title] The title of the backend.
   /// [tls] A `tls` block as documented below.
   /// [url] The backend host URL should be specified in the format `"https://backend.com/api"`, avoiding trailing slashes (/) to minimize misconfiguration risks. Azure API Management instance will append the backend resource name to this URL. This URL typically serves as the `base-url` in the [`set-backend-service`](https://learn.microsoft.com/azure/api-management/set-backend-service-policy) policy, enabling seamless transitions from frontend to backend.
@@ -102,4 +102,3 @@ class BackendState {
     );
   }
 }
-

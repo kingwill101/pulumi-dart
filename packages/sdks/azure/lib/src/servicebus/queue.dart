@@ -127,6 +127,34 @@ import 'queue_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "my-servicebus"
+///   location = "West Europe"
+/// }
+/// resource "azure_servicebus_namespace" "example" {
+///   name                = "tfex-servicebus-namespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+///   tags = {
+///     "source" = "example"
+///   }
+/// }
+/// resource "azure_servicebus_queue" "example" {
+///   name                 = "tfex_servicebus_queue"
+///   namespace_id         = azure_servicebus_namespace.example.id
+///   partitioning_enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -139,8 +167,8 @@ import 'queue_state.dart';
 /// import com.pulumi.azure.servicebus.NamespaceArgs;
 /// import com.pulumi.azure.servicebus.Queue;
 /// import com.pulumi.azure.servicebus.QueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -228,7 +256,7 @@ class Queue extends pulumi.CustomResource {
   late final pulumi.Output<String?> duplicateDetectionHistoryTimeWindow;
   /// Boolean flag which controls whether Express Entities are enabled. An express queue holds a message in memory temporarily before writing it to persistent storage. Defaults to `false` for Basic and Standard. For Premium, it MUST be set to `false`.
   ///
-  /// &gt; **Note:** Service Bus Premium namespaces do not support Express Entities, so `express_enabled` MUST be set to `false`.
+  /// &gt; **Note:** Service Bus Premium namespaces do not support Express Entities, so `expressEnabled` MUST be set to `false`.
   late final pulumi.Output<bool?> expressEnabled;
   /// The name of a Queue or Topic to automatically forward dead lettered messages to.
   late final pulumi.Output<String?> forwardDeadLetteredMessagesTo;
@@ -249,7 +277,7 @@ class Queue extends pulumi.CustomResource {
   late final pulumi.Output<String> namespaceName;
   /// Boolean flag which controls whether to enable the queue to be partitioned across multiple message brokers. Changing this forces a new resource to be created. Defaults to `false` for Basic and Standard.
   ///
-  /// &gt; **Note:** Partitioning is available at entity creation for all queues and topics in Basic or Standard SKUs. For premium namespace, partitioning is available at namespace creation, and all queues and topics in the partitioned namespace will be partitioned, for the premium namespace that has `premium_messaging_partitions` sets to `1`, the namespace is not partitioned.
+  /// &gt; **Note:** Partitioning is available at entity creation for all queues and topics in Basic or Standard SKUs. For premium namespace, partitioning is available at namespace creation, and all queues and topics in the partitioned namespace will be partitioned, for the premium namespace that has `premiumMessagingPartitions` sets to `1`, the namespace is not partitioned.
   late final pulumi.Output<bool?> partitioningEnabled;
   /// Boolean flag which controls whether the Queue requires duplicate detection. Changing this forces a new resource to be created. Defaults to `false`.
   late final pulumi.Output<bool?> requiresDuplicateDetection;

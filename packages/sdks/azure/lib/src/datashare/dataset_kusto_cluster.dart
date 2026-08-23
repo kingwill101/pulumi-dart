@@ -207,7 +207,7 @@ import 'dataset_kusto_cluster_state.dart';
 /// 			Scope:              exampleCluster.ID(),
 /// 			RoleDefinitionName: pulumi.String("Contributor"),
 /// 			PrincipalId: pulumi.String(exampleAccount.Identity.ApplyT(func(identity datashare.AccountIdentity) (*string, error) {
-/// 				return &identity.PrincipalId, nil
+/// 				return identity.PrincipalId, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 		})
 /// 		if err != nil {
@@ -225,6 +225,53 @@ import 'dataset_kusto_cluster_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datashare_account" "example" {
+///   name                = "example-dsa"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_datashare_share" "example" {
+///   name       = "example_ds"
+///   account_id = azure_datashare_account.example.id
+///   kind       = "InPlace"
+/// }
+/// resource "azure_kusto_cluster" "example" {
+///   name                = "examplekc"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku = {
+///     name     = "Dev(No SLA)_Standard_D11_v2"
+///     capacity = 1
+///   }
+/// }
+/// resource "azure_authorization_assignment" "example" {
+///   scope                = azure_kusto_cluster.example.id
+///   role_definition_name = "Contributor"
+///   principal_id         = azure_datashare_account.example.identity.principal_id
+/// }
+/// resource "azure_datashare_datasetkustocluster" "example" {
+///   depends_on       = [azure_authorization_assignment.example]
+///   name             = "example-dskc"
+///   share_id         = azure_datashare_share.example.id
+///   kusto_cluster_id = azure_kusto_cluster.example.id
 /// }
 /// ```
 /// ```java
@@ -248,8 +295,8 @@ import 'dataset_kusto_cluster_state.dart';
 /// import com.pulumi.azure.datashare.DatasetKustoCluster;
 /// import com.pulumi.azure.datashare.DatasetKustoClusterArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountIdentity {
   /// The ID of the User Assigned Identity which should be assigned to this Automation Account.
   ///
-  /// &gt; **Note:** `identity_ids` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
+  /// &gt; **Note:** `identityIds` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
   final pulumi.Input<List<String>>? identityIds;
   /// The Principal ID associated with this Managed Service Identity.
   final pulumi.Input<String>? principalId;
@@ -44,4 +44,3 @@ class AccountIdentity {
     );
   }
 }
-

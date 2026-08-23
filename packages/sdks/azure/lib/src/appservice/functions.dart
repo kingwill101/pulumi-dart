@@ -30,7 +30,7 @@ import 'get_windows_web_app_result.dart';
 
 /// Use this data source to access information about an existing App Service.
 ///
-/// !&gt; **Note:** The `azure.appservice.AppService` data source is deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use the `azure.appservice.LinuxWebApp` and `azure.appservice.WindowsWebApp` data sources instead.
+/// &gt; **Note:** This data source has been deprecated and will be removed in version 6.0 of the provider. Please use the `azure.appservice.LinuxWebApp` and `azure.appservice.WindowsWebApp` data sources instead.
 ///
 /// ## Example Usage
 ///
@@ -95,6 +95,24 @@ import 'get_windows_web_app_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appservice_getappservice" "example" {
+///   name                = "search-app-service"
+///   resource_group_name = "search-service"
+/// }
+///
+/// output "appServiceId" {
+///   value = data.azure_appservice_getappservice.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +121,8 @@ import 'get_windows_web_app_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.AppserviceFunctions;
 /// import com.pulumi.azure.appservice.inputs.GetAppServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -153,7 +171,7 @@ Future<GetAppServiceResult> getAppService(
 
 /// Use this data source to access information about an existing App Service Plan (formerly known as a `Server Farm`).
 ///
-/// !&gt; **Note:** The `azure.appservice.Plan` data source is deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use the `azure.appservice.ServicePlan` data source instead.
+/// &gt; **Note:** This data source has been deprecated and will be removed in version 6.0 of the provider. Please use the `azure.appservice.ServicePlan` data source instead.
 ///
 /// ## Example Usage
 ///
@@ -218,6 +236,24 @@ Future<GetAppServiceResult> getAppService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appservice_getappserviceplan" "example" {
+///   name                = "search-app-service-plan"
+///   resource_group_name = "search-service"
+/// }
+///
+/// output "appServicePlanId" {
+///   value = data.azure_appservice_getappserviceplan.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -226,8 +262,8 @@ Future<GetAppServiceResult> getAppService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.AppserviceFunctions;
 /// import com.pulumi.azure.appservice.inputs.GetAppServicePlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -339,6 +375,24 @@ Future<GetAppServicePlanResult> getAppServicePlan(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appservice_getcertificate" "example" {
+///   name                = "example-app-service-certificate"
+///   resource_group_name = "example-rg"
+/// }
+///
+/// output "appServiceCertificateId" {
+///   value = data.azure_appservice_getcertificate.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -347,8 +401,8 @@ Future<GetAppServicePlanResult> getAppServicePlan(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.AppserviceFunctions;
 /// import com.pulumi.azure.appservice.inputs.GetCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -380,6 +434,14 @@ Future<GetAppServicePlanResult> getAppServicePlan(
 /// outputs:
 ///   appServiceCertificateId: ${example.id}
 /// ```
+///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This data source uses the following Azure API Providers:
+///
+/// * `Microsoft.Web` - 2023-12-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_appservice_get_certificate_get_certificate_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCertificateResult> getCertificate(
@@ -460,6 +522,24 @@ Future<GetCertificateResult> getCertificate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appservice_getcertificateorder" "example" {
+///   name                = "example-cert-order"
+///   resource_group_name = "example-resources"
+/// }
+///
+/// output "certificateOrderId" {
+///   value = data.azure_appservice_getcertificateorder.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -468,8 +548,8 @@ Future<GetCertificateResult> getCertificate(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.AppserviceFunctions;
 /// import com.pulumi.azure.appservice.inputs.GetCertificateOrderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -501,6 +581,14 @@ Future<GetCertificateResult> getCertificate(
 /// outputs:
 ///   certificateOrderId: ${example.id}
 /// ```
+///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This data source uses the following Azure API Providers:
+///
+/// * `Microsoft.CertificateRegistration` - 2023-12-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_appservice_get_certificate_order_get_certificate_order_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCertificateOrderResult> getCertificateOrder(
@@ -581,6 +669,24 @@ Future<GetCertificateOrderResult> getCertificateOrder(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appservice_getenvironmentv3" "example" {
+///   name                = "example-ASE"
+///   resource_group_name = "example-resource-group"
+/// }
+///
+/// output "id" {
+///   value = data.azure_appservice_getenvironmentv3.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -589,8 +695,8 @@ Future<GetCertificateOrderResult> getCertificateOrder(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.AppserviceFunctions;
 /// import com.pulumi.azure.appservice.inputs.GetEnvironmentV3Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -647,7 +753,7 @@ Future<GetEnvironmentV3Result> getEnvironmentV3(
 
 /// Use this data source to access information about a Function App.
 ///
-/// !&gt; **Note:** The `azure.appservice.FunctionApp` data source is deprecated in version 5.0 of the AzureRM provider and will be removed in version 6.0. Please use the `azure.appservice.LinuxFunctionApp` and `azure.appservice.WindowsFunctionApp` data sources instead.
+/// &gt; **Note:** This data source has been deprecated and will be removed in version 6.0 of the provider. Please use the `azure.appservice.LinuxFunctionApp` and `azure.appservice.WindowsFunctionApp` data sources instead.
 ///
 /// ## Example Usage
 ///
@@ -705,6 +811,20 @@ Future<GetEnvironmentV3Result> getEnvironmentV3(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appservice_getfunctionapp" "example" {
+///   name                = "test-azure-functions"
+///   resource_group_name = exampleAzurermResourceGroup.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -713,8 +833,8 @@ Future<GetEnvironmentV3Result> getEnvironmentV3(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.AppserviceFunctions;
 /// import com.pulumi.azure.appservice.inputs.GetFunctionAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -816,6 +936,20 @@ Future<GetFunctionAppResult> getFunctionApp(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appservice_getfunctionapphostkeys" "example" {
+///   name                = "example-function"
+///   resource_group_name = exampleAzurermResourceGroup.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -824,8 +958,8 @@ Future<GetFunctionAppResult> getFunctionApp(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.AppserviceFunctions;
 /// import com.pulumi.azure.appservice.inputs.GetFunctionAppHostKeysArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -854,6 +988,14 @@ Future<GetFunctionAppResult> getFunctionApp(
 ///         name: example-function
 ///         resourceGroupName: ${exampleAzurermResourceGroup.name}
 /// ```
+///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This data source uses the following Azure API Providers:
+///
+/// * `Microsoft.Web` - 2023-12-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_appservice_get_function_app_host_keys_get_function_app_host_keys_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFunctionAppHostKeysResult> getFunctionAppHostKeys(
@@ -934,6 +1076,24 @@ Future<GetFunctionAppHostKeysResult> getFunctionAppHostKeys(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appservice_getlinuxfunctionapp" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_appservice_getlinuxfunctionapp.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -942,8 +1102,8 @@ Future<GetFunctionAppHostKeysResult> getFunctionAppHostKeys(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.AppserviceFunctions;
 /// import com.pulumi.azure.appservice.inputs.GetLinuxFunctionAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1063,6 +1223,24 @@ Future<GetLinuxFunctionAppResult> getLinuxFunctionApp(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appservice_getlinuxwebapp" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_appservice_getlinuxwebapp.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1071,8 +1249,8 @@ Future<GetLinuxFunctionAppResult> getLinuxFunctionApp(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.AppserviceFunctions;
 /// import com.pulumi.azure.appservice.inputs.GetLinuxWebAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1192,6 +1370,24 @@ Future<GetLinuxWebAppResult> getLinuxWebApp(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appservice_getserviceplan" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_appservice_getserviceplan.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1200,8 +1396,8 @@ Future<GetLinuxWebAppResult> getLinuxWebApp(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.AppserviceFunctions;
 /// import com.pulumi.azure.appservice.inputs.GetServicePlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1314,9 +1510,26 @@ Future<GetServicePlanResult> getServicePlan(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("id", exampleAzurermAppServiceGithubToken.Id)
+/// 		ctx.Export("id", pulumi.Any(exampleAzurermAppServiceGithubToken.Id))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appservice_getsourcecontroltoken" "example" {
+///   type = "GitHub"
+/// }
+///
+/// output "id" {
+///   value = exampleAzurermAppServiceGithubToken.id
 /// }
 /// ```
 /// ```java
@@ -1327,8 +1540,8 @@ Future<GetServicePlanResult> getServicePlan(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.AppserviceFunctions;
 /// import com.pulumi.azure.appservice.inputs.GetSourceControlTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1439,6 +1652,20 @@ Future<GetSourceControlTokenResult> getSourceControlToken(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appservice_getstaticwebapp" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1447,8 +1674,8 @@ Future<GetSourceControlTokenResult> getSourceControlToken(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.AppserviceFunctions;
 /// import com.pulumi.azure.appservice.inputs.GetStaticWebAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1565,6 +1792,24 @@ Future<GetStaticWebAppResult> getStaticWebApp(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appservice_getwindowsfunctionapp" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_appservice_getwindowsfunctionapp.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1573,8 +1818,8 @@ Future<GetStaticWebAppResult> getStaticWebApp(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.AppserviceFunctions;
 /// import com.pulumi.azure.appservice.inputs.GetWindowsFunctionAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1694,6 +1939,24 @@ Future<GetWindowsFunctionAppResult> getWindowsFunctionApp(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_appservice_getwindowswebapp" "example" {
+///   name                = "existing"
+///   resource_group_name = "existing"
+/// }
+///
+/// output "id" {
+///   value = data.azure_appservice_getwindowswebapp.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1702,8 +1965,8 @@ Future<GetWindowsFunctionAppResult> getWindowsFunctionApp(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.appservice.AppserviceFunctions;
 /// import com.pulumi.azure.appservice.inputs.GetWindowsWebAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

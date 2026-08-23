@@ -11,7 +11,7 @@ class ExpressRouteCircuitConnectionArgs {
   final pulumi.Input<String> addressPrefixIpv4;
   /// The IPv6 address space from which to allocate customer addresses for global reach.
   ///
-  /// &gt; **Note:** `address_prefix_ipv6` cannot be set when ExpressRoute Circuit Connection with ExpressRoute Circuit based on ExpressRoute Port.
+  /// &gt; **Note:** `addressPrefixIpv6` cannot be set when ExpressRoute Circuit Connection with ExpressRoute Circuit based on ExpressRoute Port.
   final pulumi.Input<String>? addressPrefixIpv6;
   /// The authorization key which is associated with the Express Route Circuit Connection.
   final pulumi.Input<String>? authorizationKey;
@@ -60,4 +60,3 @@ class ExpressRouteCircuitConnectionArgs {
     );
   }
 }
-

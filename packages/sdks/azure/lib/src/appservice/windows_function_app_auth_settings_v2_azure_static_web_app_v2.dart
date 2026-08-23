@@ -24,4 +24,3 @@ class WindowsFunctionAppAuthSettingsV2AzureStaticWebAppV2 {
     );
   }
 }
-

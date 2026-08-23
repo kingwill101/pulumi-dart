@@ -6,12 +6,12 @@ import 'frontdoor_security_policy_security_policies_firewall_association.dart';
 class FrontdoorSecurityPolicySecurityPoliciesFirewall {
   /// An `association` block as defined below.
   final pulumi.Input<FrontdoorSecurityPolicySecurityPoliciesFirewallAssociation> association;
-  /// The Resource Id of the Front Door Firewall Policy that should be linked to this Front Door Security Policy. Changing this forces a new Front Door Security Policy to be created.
+  /// The Resource Id of the Front Door Firewall Policy that should be linked to this Front Door Security Policy. Changing this forces a new resource to be created.
   final pulumi.Input<String> cdnFrontdoorFirewallPolicyId;
 
   /// Creates a new [FrontdoorSecurityPolicySecurityPoliciesFirewall].
   /// [association] An `association` block as defined below.
-  /// [cdnFrontdoorFirewallPolicyId] The Resource Id of the Front Door Firewall Policy that should be linked to this Front Door Security Policy. Changing this forces a new Front Door Security Policy to be created.
+  /// [cdnFrontdoorFirewallPolicyId] The Resource Id of the Front Door Firewall Policy that should be linked to this Front Door Security Policy. Changing this forces a new resource to be created.
   const FrontdoorSecurityPolicySecurityPoliciesFirewall({
     required this.association,
     required this.cdnFrontdoorFirewallPolicyId,
@@ -31,4 +31,3 @@ class FrontdoorSecurityPolicySecurityPoliciesFirewall {
     );
   }
 }
-

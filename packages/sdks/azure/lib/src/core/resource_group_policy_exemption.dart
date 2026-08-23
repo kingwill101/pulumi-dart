@@ -168,6 +168,40 @@ import 'resource_group_policy_exemption_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_policy_getpolicydefintion" "example" {
+///   display_name = "Allowed locations"
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "resourceGroup1"
+///   location = "westus"
+/// }
+/// resource "azure_core_resourcegrouppolicyassignment" "example" {
+///   name                 = "exampleAssignment"
+///   resource_group_id    = azure_core_resourcegroup.example.id
+///   policy_definition_id = data.azure_policy_getpolicydefintion.example.id
+///   parameters = jsonencode({
+///     "listOfAllowedLocations" = {
+///       "value" = [azure_core_resourcegroup.example.location]
+///     }
+///   })
+/// }
+/// resource "azure_core_resourcegrouppolicyexemption" "example" {
+///   name                 = "exampleExemption"
+///   resource_group_id    = azure_core_resourcegroup.example.id
+///   policy_assignment_id = azure_core_resourcegrouppolicyassignment.example.id
+///   exemption_category   = "Mitigated"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +217,8 @@ import 'resource_group_policy_exemption_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupPolicyExemption;
 /// import com.pulumi.azure.core.ResourceGroupPolicyExemptionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

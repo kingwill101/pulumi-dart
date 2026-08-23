@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'frontdoor_security_policy_security_policies_firewall.dart';
 
 class FrontdoorSecurityPolicySecurityPolicies {
-  /// An `firewall` block as defined below.
+  /// A `firewall` block as defined below.
   final pulumi.Input<FrontdoorSecurityPolicySecurityPoliciesFirewall> firewall;
 
   /// Creates a new [FrontdoorSecurityPolicySecurityPolicies].
-  /// [firewall] An `firewall` block as defined below.
+  /// [firewall] A `firewall` block as defined below.
   const FrontdoorSecurityPolicySecurityPolicies({
     required this.firewall,
   });
@@ -25,4 +25,3 @@ class FrontdoorSecurityPolicySecurityPolicies {
     );
   }
 }
-

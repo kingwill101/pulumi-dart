@@ -5,14 +5,14 @@ import 'app_service_logs_http_logs_azure_blob_storage.dart';
 import 'app_service_logs_http_logs_file_system.dart';
 
 class AppServiceLogsHttpLogs {
-  /// An `azure_blob_storage` block as defined below.
+  /// An `azureBlobStorage` block as defined below.
   final pulumi.Input<AppServiceLogsHttpLogsAzureBlobStorage>? azureBlobStorage;
-  /// A `file_system` block as defined below.
+  /// A `fileSystem` block as defined below.
   final pulumi.Input<AppServiceLogsHttpLogsFileSystem>? fileSystem;
 
   /// Creates a new [AppServiceLogsHttpLogs].
-  /// [azureBlobStorage] An `azure_blob_storage` block as defined below.
-  /// [fileSystem] A `file_system` block as defined below.
+  /// [azureBlobStorage] An `azureBlobStorage` block as defined below.
+  /// [fileSystem] A `fileSystem` block as defined below.
   const AppServiceLogsHttpLogs({
     this.azureBlobStorage,
     this.fileSystem,
@@ -32,4 +32,3 @@ class AppServiceLogsHttpLogs {
     );
   }
 }
-

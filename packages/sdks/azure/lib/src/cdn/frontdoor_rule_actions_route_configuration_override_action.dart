@@ -15,13 +15,13 @@ class FrontdoorRuleActionsRouteConfigurationOverrideAction {
   final pulumi.Input<bool>? compressionEnabled;
   /// The forwarding protocol the request will be redirected as. This overrides the configuration specified in the route to be associated with. Possible values include `MatchRequest`, `HttpOnly` or `HttpsOnly`.
   ///
-  /// &gt; **Note:** If the `cdn_frontdoor_origin_group_id` is not defined you cannot set the `forwarding_protocol`.
+  /// &gt; **Note:** If the `cdnFrontdoorOriginGroupId` is not defined you cannot set the `forwardingProtocol`.
   final pulumi.Input<String>? forwardingProtocol;
-  /// `IncludeSpecifiedQueryStrings` query strings specified in the `query_string_parameters` field get included when the cache key gets generated. `UseQueryString` cache every unique URL, each unique URL will have its own cache key. `IgnoreSpecifiedQueryStrings` query strings specified in the `query_string_parameters` field get excluded when the cache key gets generated. `IgnoreQueryString` query strings aren't considered when the cache key gets generated. Possible values include `IgnoreQueryString`, `UseQueryString`, `IgnoreSpecifiedQueryStrings` or `IncludeSpecifiedQueryStrings`.
+  /// `IncludeSpecifiedQueryStrings` query strings specified in the `queryStringParameters` field get included when the cache key gets generated. `UseQueryString` cache every unique URL, each unique URL will have its own cache key. `IgnoreSpecifiedQueryStrings` query strings specified in the `queryStringParameters` field get excluded when the cache key gets generated. `IgnoreQueryString` query strings aren't considered when the cache key gets generated. Possible values include `IgnoreQueryString`, `UseQueryString`, `IgnoreSpecifiedQueryStrings` or `IncludeSpecifiedQueryStrings`.
   final pulumi.Input<String>? queryStringCachingBehavior;
   /// A list of query string parameter names.
   ///
-  /// &gt; **Note:** `query_string_parameters` is a required field when the `query_string_caching_behavior` is set to `IncludeSpecifiedQueryStrings` or `IgnoreSpecifiedQueryStrings`.
+  /// &gt; **Note:** `queryStringParameters` is a required field when the `queryStringCachingBehavior` is set to `IncludeSpecifiedQueryStrings` or `IgnoreSpecifiedQueryStrings`.
   final pulumi.Input<List<String>>? queryStringParameters;
 
   /// Creates a new [FrontdoorRuleActionsRouteConfigurationOverrideAction].
@@ -30,7 +30,7 @@ class FrontdoorRuleActionsRouteConfigurationOverrideAction {
   /// [cdnFrontdoorOriginGroupId] The Front Door Origin Group resource ID that the request should be routed to. This overrides the configuration specified in the Front Door Endpoint route.
   /// [compressionEnabled] Should the Front Door dynamically compress the content? Possible values include `true` or `false`.
   /// [forwardingProtocol] The forwarding protocol the request will be redirected as. This overrides the configuration specified in the route to be associated with. Possible values include `MatchRequest`, `HttpOnly` or `HttpsOnly`.
-  /// [queryStringCachingBehavior] `IncludeSpecifiedQueryStrings` query strings specified in the `query_string_parameters` field get included when the cache key gets generated. `UseQueryString` cache every unique URL, each unique URL will have its own cache key. `IgnoreSpecifiedQueryStrings` query strings specified in the `query_string_parameters` field get excluded when the cache key gets generated. `IgnoreQueryString` query strings aren't considered when the cache key gets generated. Possible values include `IgnoreQueryString`, `UseQueryString`, `IgnoreSpecifiedQueryStrings` or `IncludeSpecifiedQueryStrings`.
+  /// [queryStringCachingBehavior] `IncludeSpecifiedQueryStrings` query strings specified in the `queryStringParameters` field get included when the cache key gets generated. `UseQueryString` cache every unique URL, each unique URL will have its own cache key. `IgnoreSpecifiedQueryStrings` query strings specified in the `queryStringParameters` field get excluded when the cache key gets generated. `IgnoreQueryString` query strings aren't considered when the cache key gets generated. Possible values include `IgnoreQueryString`, `UseQueryString`, `IgnoreSpecifiedQueryStrings` or `IncludeSpecifiedQueryStrings`.
   /// [queryStringParameters] A list of query string parameter names.
   const FrontdoorRuleActionsRouteConfigurationOverrideAction({
     this.cacheBehavior,
@@ -66,4 +66,3 @@ class FrontdoorRuleActionsRouteConfigurationOverrideAction {
     );
   }
 }
-

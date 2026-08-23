@@ -39,7 +39,7 @@ class AutonomousDatabaseCloneFromDatabaseArgs {
   /// * AJD - indicates an Autonomous JSON Database
   /// * APEX - indicates an Autonomous Database with the Oracle APEX Application Development workload type.
   ///
-  /// &gt; **Note:** To clone the database with a different `database_workload` type, please refer to the documentation [here](https://docs.public.oneportal.content.oci.oraclecloud.com/iaas/autonomous-database-serverless/doc/autonomous-clone-cross-workload-type.html#GUID-527A712D-FF82-498B-AB35-8A1623E36EDD) for correct configuration steps.
+  /// &gt; **Note:** To clone the database with a different `databaseWorkload` type, please refer to the documentation [here](https://docs.public.oneportal.content.oci.oraclecloud.com/iaas/autonomous-database-serverless/doc/autonomous-clone-cross-workload-type.html#GUID-527A712D-FF82-498B-AB35-8A1623E36EDD) for correct configuration steps.
   final pulumi.Input<String> databaseWorkload;
   /// The user-friendly name for the Autonomous Database. Changing this forces a new Autonomous Database Clone to be created.
   final pulumi.Input<String> displayName;
@@ -180,4 +180,3 @@ class AutonomousDatabaseCloneFromDatabaseArgs {
     );
   }
 }
-

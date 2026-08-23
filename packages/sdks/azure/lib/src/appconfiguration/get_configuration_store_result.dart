@@ -29,9 +29,9 @@ class GetConfigurationStoreResult {
   final String location;
   /// The name of the App Configuration Replica.
   final String name;
-  /// A `primary_read_key` block as defined below containing the primary read access key.
+  /// A `primaryReadKey` block as defined below containing the primary read access key.
   final List<GetConfigurationStorePrimaryReadKey> primaryReadKeys;
-  /// A `primary_write_key` block as defined below containing the primary write access key.
+  /// A `primaryWriteKey` block as defined below containing the primary write access key.
   final List<GetConfigurationStorePrimaryWriteKey> primaryWriteKeys;
   /// The Public Network Access setting of this App Configuration.
   final String publicNetworkAccess;
@@ -41,9 +41,9 @@ class GetConfigurationStoreResult {
   /// One or more `replica` blocks as defined below.
   final List<GetConfigurationStoreReplica> replicas;
   final String resourceGroupName;
-  /// A `secondary_read_key` block as defined below containing the secondary read access key.
+  /// A `secondaryReadKey` block as defined below containing the secondary read access key.
   final List<GetConfigurationStoreSecondaryReadKey> secondaryReadKeys;
-  /// A `secondary_write_key` block as defined below containing the secondary write access key.
+  /// A `secondaryWriteKey` block as defined below containing the secondary write access key.
   final List<GetConfigurationStoreSecondaryWriteKey> secondaryWriteKeys;
   /// The name of the SKU used for this App Configuration.
   final String sku;
@@ -62,15 +62,15 @@ class GetConfigurationStoreResult {
   /// [localAuthEnabled] Whether local authentication methods are enabled.
   /// [location] The supported Azure location where the App Configuration Replica exists.
   /// [name] The name of the App Configuration Replica.
-  /// [primaryReadKeys] A `primary_read_key` block as defined below containing the primary read access key.
-  /// [primaryWriteKeys] A `primary_write_key` block as defined below containing the primary write access key.
+  /// [primaryReadKeys] A `primaryReadKey` block as defined below containing the primary read access key.
+  /// [primaryWriteKeys] A `primaryWriteKey` block as defined below containing the primary write access key.
   /// [publicNetworkAccess] The Public Network Access setting of this App Configuration.
   /// [publicNetworkAccessEnabled] Required.
   /// [purgeProtectionEnabled] Whether Purge Protection is enabled.
   /// [replicas] One or more `replica` blocks as defined below.
   /// [resourceGroupName] Required.
-  /// [secondaryReadKeys] A `secondary_read_key` block as defined below containing the secondary read access key.
-  /// [secondaryWriteKeys] A `secondary_write_key` block as defined below containing the secondary write access key.
+  /// [secondaryReadKeys] A `secondaryReadKey` block as defined below containing the secondary read access key.
+  /// [secondaryWriteKeys] A `secondaryWriteKey` block as defined below containing the secondary write access key.
   /// [sku] The name of the SKU used for this App Configuration.
   /// [softDeleteRetentionDays] The number of days that items should be retained for once soft-deleted.
   /// [tags] A mapping of tags assigned to the App Configuration.
@@ -150,4 +150,3 @@ class GetConfigurationStoreResult {
     );
   }
 }
-

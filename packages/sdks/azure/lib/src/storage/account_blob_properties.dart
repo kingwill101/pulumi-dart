@@ -15,23 +15,23 @@ class AccountBlobProperties {
   ///
   /// &gt; **Note:** This field cannot be configured when `kind` is set to `Storage` (V1).
   final pulumi.Input<int>? changeFeedRetentionInDays;
-  /// A `container_delete_retention_policy` block as defined below.
+  /// A `containerDeleteRetentionPolicy` block as defined below.
   final pulumi.Input<AccountBlobPropertiesContainerDeleteRetentionPolicy>? containerDeleteRetentionPolicy;
-  /// A `cors_rule` block as defined below.
+  /// A `corsRule` block as defined below.
   final pulumi.Input<List<AccountBlobPropertiesCorsRule>>? corsRules;
   /// The API Version which should be used by default for requests to the Data Plane API if an incoming request doesn't specify an API Version.
   final pulumi.Input<String>? defaultServiceVersion;
-  /// A `delete_retention_policy` block as defined below.
+  /// A `deleteRetentionPolicy` block as defined below.
   final pulumi.Input<AccountBlobPropertiesDeleteRetentionPolicy>? deleteRetentionPolicy;
   /// Is the last access time based tracking enabled? Default to `false`.
   ///
   /// &gt; **Note:** This field cannot be configured when `kind` is set to `Storage` (V1).
   final pulumi.Input<bool>? lastAccessTimeEnabled;
-  /// A `restore_policy` block as defined below. This must be used together with `delete_retention_policy` set, `versioning_enabled` and `change_feed_enabled` set to `true`.
+  /// A `restorePolicy` block as defined below. This must be used together with `deleteRetentionPolicy` set, `versioningEnabled` and `changeFeedEnabled` set to `true`.
   ///
   /// &gt; **Note:** This field cannot be configured when `kind` is set to `Storage` (V1).
   ///
-  /// &gt; **Note:** `restore_policy` can not be configured when `dns_endpoint_type` is `AzureDnsZone`.
+  /// &gt; **Note:** `restorePolicy` can not be configured when `dnsEndpointType` is `AzureDnsZone`.
   final pulumi.Input<AccountBlobPropertiesRestorePolicy>? restorePolicy;
   /// Is versioning enabled? Default to `false`.
   ///
@@ -41,12 +41,12 @@ class AccountBlobProperties {
   /// Creates a new [AccountBlobProperties].
   /// [changeFeedEnabled] Is the blob service properties for change feed events enabled? Default to `false`.
   /// [changeFeedRetentionInDays] The duration of change feed events retention in days. The possible values are between 1 and 146000 days (400 years). Setting this to null (or omit this in the configuration file) indicates an infinite retention of the change feed.
-  /// [containerDeleteRetentionPolicy] A `container_delete_retention_policy` block as defined below.
-  /// [corsRules] A `cors_rule` block as defined below.
+  /// [containerDeleteRetentionPolicy] A `containerDeleteRetentionPolicy` block as defined below.
+  /// [corsRules] A `corsRule` block as defined below.
   /// [defaultServiceVersion] The API Version which should be used by default for requests to the Data Plane API if an incoming request doesn't specify an API Version.
-  /// [deleteRetentionPolicy] A `delete_retention_policy` block as defined below.
+  /// [deleteRetentionPolicy] A `deleteRetentionPolicy` block as defined below.
   /// [lastAccessTimeEnabled] Is the last access time based tracking enabled? Default to `false`.
-  /// [restorePolicy] A `restore_policy` block as defined below. This must be used together with `delete_retention_policy` set, `versioning_enabled` and `change_feed_enabled` set to `true`.
+  /// [restorePolicy] A `restorePolicy` block as defined below. This must be used together with `deleteRetentionPolicy` set, `versioningEnabled` and `changeFeedEnabled` set to `true`.
   /// [versioningEnabled] Is versioning enabled? Default to `false`.
   const AccountBlobProperties({
     this.changeFeedEnabled,
@@ -88,4 +88,3 @@ class AccountBlobProperties {
     );
   }
 }
-

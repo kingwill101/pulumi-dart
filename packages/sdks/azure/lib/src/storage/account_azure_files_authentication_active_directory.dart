@@ -7,22 +7,22 @@ class AccountAzureFilesAuthenticationActiveDirectory {
   final pulumi.Input<String> domainGuid;
   /// Specifies the primary domain that the AD DNS server is authoritative for.
   final pulumi.Input<String> domainName;
-  /// Specifies the security identifier (SID). This is required when `directory_type` is set to `AD`.
+  /// Specifies the security identifier (SID). This is required when `directoryType` is set to `AD`.
   final pulumi.Input<String>? domainSid;
-  /// Specifies the Active Directory forest. This is required when `directory_type` is set to `AD`.
+  /// Specifies the Active Directory forest. This is required when `directoryType` is set to `AD`.
   final pulumi.Input<String>? forestName;
-  /// Specifies the NetBIOS domain name. This is required when `directory_type` is set to `AD`.
+  /// Specifies the NetBIOS domain name. This is required when `directoryType` is set to `AD`.
   final pulumi.Input<String>? netbiosDomainName;
-  /// Specifies the security identifier (SID) for Azure Storage. This is required when `directory_type` is set to `AD`.
+  /// Specifies the security identifier (SID) for Azure Storage. This is required when `directoryType` is set to `AD`.
   final pulumi.Input<String>? storageSid;
 
   /// Creates a new [AccountAzureFilesAuthenticationActiveDirectory].
   /// [domainGuid] Specifies the domain GUID.
   /// [domainName] Specifies the primary domain that the AD DNS server is authoritative for.
-  /// [domainSid] Specifies the security identifier (SID). This is required when `directory_type` is set to `AD`.
-  /// [forestName] Specifies the Active Directory forest. This is required when `directory_type` is set to `AD`.
-  /// [netbiosDomainName] Specifies the NetBIOS domain name. This is required when `directory_type` is set to `AD`.
-  /// [storageSid] Specifies the security identifier (SID) for Azure Storage. This is required when `directory_type` is set to `AD`.
+  /// [domainSid] Specifies the security identifier (SID). This is required when `directoryType` is set to `AD`.
+  /// [forestName] Specifies the Active Directory forest. This is required when `directoryType` is set to `AD`.
+  /// [netbiosDomainName] Specifies the NetBIOS domain name. This is required when `directoryType` is set to `AD`.
+  /// [storageSid] Specifies the security identifier (SID) for Azure Storage. This is required when `directoryType` is set to `AD`.
   const AccountAzureFilesAuthenticationActiveDirectory({
     required this.domainGuid,
     required this.domainName,
@@ -54,4 +54,3 @@ class AccountAzureFilesAuthenticationActiveDirectory {
     );
   }
 }
-

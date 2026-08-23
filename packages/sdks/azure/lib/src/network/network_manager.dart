@@ -147,6 +147,36 @@ import 'network_manager_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-network-manager"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///   }
+///   scope_accesses = ["Connectivity", "SecurityAdmin"]
+///   description    = "example network manager"
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -160,8 +190,8 @@ import 'network_manager_state.dart';
 /// import com.pulumi.azure.network.NetworkManager;
 /// import com.pulumi.azure.network.NetworkManagerArgs;
 /// import com.pulumi.azure.network.inputs.NetworkManagerScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -244,7 +274,7 @@ import 'network_manager_state.dart';
 /// $ pulumi import azure:network/networkManager:NetworkManager example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1/providers/Microsoft.Network/networkManagers/networkManager1
 /// ```
 class NetworkManager extends pulumi.CustomResource {
-  /// One or more `cross_tenant_scopes` blocks as defined below.
+  /// One or more `crossTenantScopes` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> crossTenantScopes;
   /// A description of the Network Manager.
   late final pulumi.Output<String?> description;

@@ -265,6 +265,59 @@ import 'sync_server_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_sync" "example" {
+///   name                = "example-storage-sync"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_storage_syncgroup" "example" {
+///   name            = "example-storage-sync-group"
+///   storage_sync_id = azure_storage_sync.example.id
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example-storage-account"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_share" "example" {
+///   name                 = "example-storage-share"
+///   storage_account_name = azure_storage_account.example.name
+///   quota                = 1
+///   acls {
+///     id = "GhostedRecall"
+///     access_policies {
+///       permissions = "r"
+///     }
+///   }
+/// }
+/// resource "azure_storage_synccloudendpoint" "example" {
+///   name                  = "example-ss-ce"
+///   storage_sync_group_id = azure_storage_syncgroup.example.id
+///   file_share_name       = azure_storage_share.example.name
+///   storage_account_id    = azure_storage_account.example.id
+/// }
+/// resource "azure_storage_syncserverendpoint" "example" {
+///   depends_on            = [azure_storage_synccloudendpoint.example]
+///   name                  = "example-storage-sync-server-endpoint"
+///   storage_sync_group_id = azure_storage_syncgroup.example.id
+///   registered_server_id  = azure_storage_sync.example.registered_servers[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -282,13 +335,14 @@ import 'sync_server_endpoint_state.dart';
 /// import com.pulumi.azure.storage.Share;
 /// import com.pulumi.azure.storage.ShareArgs;
 /// import com.pulumi.azure.storage.inputs.ShareAclArgs;
+/// import com.pulumi.azure.storage.inputs.ShareAclAccessPolicyArgs;
 /// import com.pulumi.azure.storage.SyncCloudEndpoint;
 /// import com.pulumi.azure.storage.SyncCloudEndpointArgs;
 /// import com.pulumi.azure.storage.SyncServerEndpoint;
 /// import com.pulumi.azure.storage.SyncServerEndpointArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

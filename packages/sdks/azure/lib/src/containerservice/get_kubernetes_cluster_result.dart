@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_kubernetes_cluster_aci_connector_linux.dart';
 import 'get_kubernetes_cluster_agent_pool_profile.dart';
 import 'get_kubernetes_cluster_azure_active_directory_role_based_access_control.dart';
+import 'get_kubernetes_cluster_bootstrap_profile.dart';
 import 'get_kubernetes_cluster_identity.dart';
 import 'get_kubernetes_cluster_ingress_application_gateway.dart';
 import 'get_kubernetes_cluster_key_management_service.dart';
@@ -22,16 +23,18 @@ import 'get_kubernetes_cluster_windows_profile.dart';
 
 /// Result data returned by getKubernetesCluster.
 class GetKubernetesClusterResult {
-  /// An `aci_connector_linux` block as documented below.
+  /// An `aciConnectorLinux` block as documented below.
   final List<GetKubernetesClusterAciConnectorLinux> aciConnectorLinuxes;
-  /// An `agent_pool_profile` block as documented below.
+  /// An `agentPoolProfile` block as documented below.
   final List<GetKubernetesClusterAgentPoolProfile> agentPoolProfiles;
   /// The IP ranges to whitelist for incoming traffic to the primaries.
   final List<String> apiServerAuthorizedIpRanges;
-  /// An `azure_active_directory_role_based_access_control` block as documented below.
+  /// An `azureActiveDirectoryRoleBasedAccessControl` block as documented below.
   final List<GetKubernetesClusterAzureActiveDirectoryRoleBasedAccessControl> azureActiveDirectoryRoleBasedAccessControls;
   /// Is Azure Policy enabled on this managed Kubernetes Cluster?
   final bool azurePolicyEnabled;
+  /// A `bootstrapProfile` block as documented below.
+  final List<GetKubernetesClusterBootstrapProfile> bootstrapProfiles;
   /// Contains the current version of Kubernetes running on the Cluster.
   final String currentKubernetesVersion;
   /// The ID of the Disk Encryption Set used for the Nodes and Volumes.
@@ -48,33 +51,33 @@ class GetKubernetesClusterResult {
   final String id;
   /// An `identity` block as documented below.
   final List<GetKubernetesClusterIdentity> identities;
-  /// An `ingress_application_gateway` block as documented below.
+  /// An `ingressApplicationGateway` block as documented below.
   final List<GetKubernetesClusterIngressApplicationGateway> ingressApplicationGateways;
-  /// A `key_management_service` block as documented below.
+  /// A `keyManagementService` block as documented below.
   final List<GetKubernetesClusterKeyManagementService> keyManagementServices;
-  /// A `key_vault_secrets_provider` block as documented below.
+  /// A `keyVaultSecretsProvider` block as documented below.
   final List<GetKubernetesClusterKeyVaultSecretsProvider> keyVaultSecretsProviders;
   /// Raw Kubernetes config for the admin account to be used by [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) and other compatible tools. This is only available when Role Based Access Control with Azure Active Directory is enabled and local accounts are not disabled.
   final String kubeAdminConfigRaw;
-  /// A `kube_admin_config` block as defined below. This is only available when Role Based Access Control with Azure Active Directory is enabled and local accounts are not disabled.
+  /// A `kubeAdminConfig` block as defined below. This is only available when Role Based Access Control with Azure Active Directory is enabled and local accounts are not disabled.
   final List<GetKubernetesClusterKubeAdminConfig> kubeAdminConfigs;
   /// Base64 encoded Kubernetes configuration.
   final String kubeConfigRaw;
-  /// A `kube_config` block as defined below.
+  /// A `kubeConfig` block as defined below.
   final List<GetKubernetesClusterKubeConfig> kubeConfigs;
-  /// A `kubelet_identity` block as documented below.
+  /// A `kubeletIdentity` block as documented below.
   final List<GetKubernetesClusterKubeletIdentity> kubeletIdentities;
   /// The version of Kubernetes used on the managed Kubernetes Cluster.
   final String kubernetesVersion;
-  /// A `linux_profile` block as documented below.
+  /// A `linuxProfile` block as documented below.
   final List<GetKubernetesClusterLinuxProfile> linuxProfiles;
   /// The Azure Region in which the managed Kubernetes Cluster exists.
   final String location;
-  /// A `microsoft_defender` block as defined below.
+  /// A `microsoftDefender` block as defined below.
   final List<GetKubernetesClusterMicrosoftDefender> microsoftDefenders;
   /// The name assigned to this pool of agents.
   final String name;
-  /// A `network_profile` block as documented below.
+  /// A `networkProfile` block as documented below.
   final List<GetKubernetesClusterNetworkProfile> networkProfiles;
   /// Auto-generated Resource Group containing AKS Cluster resources.
   final String nodeResourceGroup;
@@ -84,7 +87,7 @@ class GetKubernetesClusterResult {
   final bool oidcIssuerEnabled;
   /// The OIDC issuer URL that is associated with the cluster.
   final String oidcIssuerUrl;
-  /// An `oms_agent` block as documented below.
+  /// An `omsAgent` block as documented below.
   final List<GetKubernetesClusterOmsAgent> omsAgents;
   /// Is Open Service Mesh enabled for this managed Kubernetes Cluster?
   final bool openServiceMeshEnabled;
@@ -96,21 +99,22 @@ class GetKubernetesClusterResult {
   /// Is Role Based Access Control enabled for this managed Kubernetes Cluster?
   final bool roleBasedAccessControlEnabled;
   final List<GetKubernetesClusterServiceMeshProfile> serviceMeshProfiles;
-  /// A `service_principal` block as documented below.
+  /// A `servicePrincipal` block as documented below.
   final List<GetKubernetesClusterServicePrincipal> servicePrincipals;
-  /// A `storage_profile` block as documented below.
+  /// A `storageProfile` block as documented below.
   final List<GetKubernetesClusterStorageProfile> storageProfiles;
   /// A mapping of tags to assign to the resource.
   final Map<String, String> tags;
-  /// A `windows_profile` block as documented below.
+  /// A `windowsProfile` block as documented below.
   final List<GetKubernetesClusterWindowsProfile> windowsProfiles;
 
   /// Creates a new [GetKubernetesClusterResult].
-  /// [aciConnectorLinuxes] An `aci_connector_linux` block as documented below.
-  /// [agentPoolProfiles] An `agent_pool_profile` block as documented below.
+  /// [aciConnectorLinuxes] An `aciConnectorLinux` block as documented below.
+  /// [agentPoolProfiles] An `agentPoolProfile` block as documented below.
   /// [apiServerAuthorizedIpRanges] The IP ranges to whitelist for incoming traffic to the primaries.
-  /// [azureActiveDirectoryRoleBasedAccessControls] An `azure_active_directory_role_based_access_control` block as documented below.
+  /// [azureActiveDirectoryRoleBasedAccessControls] An `azureActiveDirectoryRoleBasedAccessControl` block as documented below.
   /// [azurePolicyEnabled] Is Azure Policy enabled on this managed Kubernetes Cluster?
+  /// [bootstrapProfiles] A `bootstrapProfile` block as documented below.
   /// [currentKubernetesVersion] Contains the current version of Kubernetes running on the Cluster.
   /// [diskEncryptionSetId] The ID of the Disk Encryption Set used for the Nodes and Volumes.
   /// [dnsPrefix] The DNS Prefix of the managed Kubernetes cluster.
@@ -119,41 +123,42 @@ class GetKubernetesClusterResult {
   /// [httpApplicationRoutingZoneName] The Zone Name of the HTTP Application Routing.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] An `identity` block as documented below.
-  /// [ingressApplicationGateways] An `ingress_application_gateway` block as documented below.
-  /// [keyManagementServices] A `key_management_service` block as documented below.
-  /// [keyVaultSecretsProviders] A `key_vault_secrets_provider` block as documented below.
+  /// [ingressApplicationGateways] An `ingressApplicationGateway` block as documented below.
+  /// [keyManagementServices] A `keyManagementService` block as documented below.
+  /// [keyVaultSecretsProviders] A `keyVaultSecretsProvider` block as documented below.
   /// [kubeAdminConfigRaw] Raw Kubernetes config for the admin account to be used by [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) and other compatible tools. This is only available when Role Based Access Control with Azure Active Directory is enabled and local accounts are not disabled.
-  /// [kubeAdminConfigs] A `kube_admin_config` block as defined below. This is only available when Role Based Access Control with Azure Active Directory is enabled and local accounts are not disabled.
+  /// [kubeAdminConfigs] A `kubeAdminConfig` block as defined below. This is only available when Role Based Access Control with Azure Active Directory is enabled and local accounts are not disabled.
   /// [kubeConfigRaw] Base64 encoded Kubernetes configuration.
-  /// [kubeConfigs] A `kube_config` block as defined below.
-  /// [kubeletIdentities] A `kubelet_identity` block as documented below.
+  /// [kubeConfigs] A `kubeConfig` block as defined below.
+  /// [kubeletIdentities] A `kubeletIdentity` block as documented below.
   /// [kubernetesVersion] The version of Kubernetes used on the managed Kubernetes Cluster.
-  /// [linuxProfiles] A `linux_profile` block as documented below.
+  /// [linuxProfiles] A `linuxProfile` block as documented below.
   /// [location] The Azure Region in which the managed Kubernetes Cluster exists.
-  /// [microsoftDefenders] A `microsoft_defender` block as defined below.
+  /// [microsoftDefenders] A `microsoftDefender` block as defined below.
   /// [name] The name assigned to this pool of agents.
-  /// [networkProfiles] A `network_profile` block as documented below.
+  /// [networkProfiles] A `networkProfile` block as documented below.
   /// [nodeResourceGroup] Auto-generated Resource Group containing AKS Cluster resources.
   /// [nodeResourceGroupId] The ID of the Resource Group containing the resources for this Managed Kubernetes Cluster.
   /// [oidcIssuerEnabled] Whether or not the OIDC feature is enabled or disabled.
   /// [oidcIssuerUrl] The OIDC issuer URL that is associated with the cluster.
-  /// [omsAgents] An `oms_agent` block as documented below.
+  /// [omsAgents] An `omsAgent` block as documented below.
   /// [openServiceMeshEnabled] Is Open Service Mesh enabled for this managed Kubernetes Cluster?
   /// [privateClusterEnabled] If the cluster has the Kubernetes API only exposed on internal IP addresses.
   /// [privateFqdn] The FQDN of this Kubernetes Cluster when private link has been enabled. This name is only resolvable inside the Virtual Network where the Azure Kubernetes Service is located
   /// [resourceGroupName] Required.
   /// [roleBasedAccessControlEnabled] Is Role Based Access Control enabled for this managed Kubernetes Cluster?
   /// [serviceMeshProfiles] Required.
-  /// [servicePrincipals] A `service_principal` block as documented below.
-  /// [storageProfiles] A `storage_profile` block as documented below.
+  /// [servicePrincipals] A `servicePrincipal` block as documented below.
+  /// [storageProfiles] A `storageProfile` block as documented below.
   /// [tags] A mapping of tags to assign to the resource.
-  /// [windowsProfiles] A `windows_profile` block as documented below.
+  /// [windowsProfiles] A `windowsProfile` block as documented below.
   const GetKubernetesClusterResult({
     required this.aciConnectorLinuxes,
     required this.agentPoolProfiles,
     required this.apiServerAuthorizedIpRanges,
     required this.azureActiveDirectoryRoleBasedAccessControls,
     required this.azurePolicyEnabled,
+    required this.bootstrapProfiles,
     required this.currentKubernetesVersion,
     required this.diskEncryptionSetId,
     required this.dnsPrefix,
@@ -200,6 +205,7 @@ class GetKubernetesClusterResult {
       'apiServerAuthorizedIpRanges': apiServerAuthorizedIpRanges,
       'azureActiveDirectoryRoleBasedAccessControls': pulumi.Input.encodeList<GetKubernetesClusterAzureActiveDirectoryRoleBasedAccessControl, Map<String, dynamic>>(azureActiveDirectoryRoleBasedAccessControls, (value) => value.toMap()),
       'azurePolicyEnabled': azurePolicyEnabled,
+      'bootstrapProfiles': pulumi.Input.encodeList<GetKubernetesClusterBootstrapProfile, Map<String, dynamic>>(bootstrapProfiles, (value) => value.toMap()),
       'currentKubernetesVersion': currentKubernetesVersion,
       'diskEncryptionSetId': diskEncryptionSetId,
       'dnsPrefix': dnsPrefix,
@@ -247,6 +253,7 @@ class GetKubernetesClusterResult {
       apiServerAuthorizedIpRanges: (map['apiServerAuthorizedIpRanges'] as List).cast<String>(),
       azureActiveDirectoryRoleBasedAccessControls: pulumi.Input.decodeList<GetKubernetesClusterAzureActiveDirectoryRoleBasedAccessControl>(map['azureActiveDirectoryRoleBasedAccessControls']!, (value) => GetKubernetesClusterAzureActiveDirectoryRoleBasedAccessControl.fromMap((value as Map).cast<String, dynamic>())),
       azurePolicyEnabled: map['azurePolicyEnabled'] as bool,
+      bootstrapProfiles: pulumi.Input.decodeList<GetKubernetesClusterBootstrapProfile>(map['bootstrapProfiles']!, (value) => GetKubernetesClusterBootstrapProfile.fromMap((value as Map).cast<String, dynamic>())),
       currentKubernetesVersion: map['currentKubernetesVersion'] as String,
       diskEncryptionSetId: map['diskEncryptionSetId'] as String,
       dnsPrefix: map['dnsPrefix'] as String,
@@ -287,4 +294,3 @@ class GetKubernetesClusterResult {
     );
   }
 }
-

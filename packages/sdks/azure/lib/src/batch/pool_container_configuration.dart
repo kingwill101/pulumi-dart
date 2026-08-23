@@ -6,14 +6,14 @@ import 'pool_container_configuration_container_registry.dart';
 class PoolContainerConfiguration {
   /// A list of container image names to use, as would be specified by `docker pull`. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>>? containerImageNames;
-  /// One or more `container_registries` blocks as defined below. Additional container registries from which container images can be pulled by the pool's VMs. Changing this forces a new resource to be created.
+  /// One or more `containerRegistries` blocks as defined below. Additional container registries from which container images can be pulled by the pool's VMs. Changing this forces a new resource to be created.
   final pulumi.Input<List<PoolContainerConfigurationContainerRegistry>>? containerRegistries;
   /// The type of container configuration. Possible value is `DockerCompatible`.
   final pulumi.Input<String>? type;
 
   /// Creates a new [PoolContainerConfiguration].
   /// [containerImageNames] A list of container image names to use, as would be specified by `docker pull`. Changing this forces a new resource to be created.
-  /// [containerRegistries] One or more `container_registries` blocks as defined below. Additional container registries from which container images can be pulled by the pool's VMs. Changing this forces a new resource to be created.
+  /// [containerRegistries] One or more `containerRegistries` blocks as defined below. Additional container registries from which container images can be pulled by the pool's VMs. Changing this forces a new resource to be created.
   /// [type] The type of container configuration. Possible value is `DockerCompatible`.
   const PoolContainerConfiguration({
     this.containerImageNames,
@@ -37,4 +37,3 @@ class PoolContainerConfiguration {
     );
   }
 }
-

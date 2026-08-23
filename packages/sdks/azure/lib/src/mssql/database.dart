@@ -9,7 +9,7 @@ import 'database_threat_detection_policy.dart';
 
 /// Manages a MS SQL Database.
 ///
-/// !&gt; **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `prevent_destroy` lifecycle argument in your configuration file for this resource. For more information on the `prevent_destroy` lifecycle argument please see the terraform documentation.
+/// &gt; **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `preventDestroy` lifecycle argument in your configuration file for this resource. For more information on the `preventDestroy` lifecycle argument please see the terraform documentation.
 ///
 /// ## Example Usage
 ///
@@ -62,7 +62,7 @@ import 'database_threat_detection_policy.dart';
 ///     server_id=example_server.id,
 ///     collation="SQL_Latin1_General_CP1_CI_AS",
 ///     license_type="LicenseIncluded",
-///     max_size_gb=2,
+///     max_size_gb=float(2),
 ///     sku_name="S0",
 ///     enclave_type="VBS",
 ///     tags={
@@ -158,6 +158,40 @@ import 'database_threat_detection_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "example-sqlserver"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "4dm1n157r470r"
+///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
+/// }
+/// resource "azure_mssql_database" "example" {
+///   name         = "example-db"
+///   server_id    = azure_mssql_server.example.id
+///   collation    = "SQL_Latin1_General_CP1_CI_AS"
+///   license_type = "LicenseIncluded"
+///   max_size_gb  = 2
+///   sku_name     = "S0"
+///   enclave_type = "VBS"
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -170,8 +204,8 @@ import 'database_threat_detection_policy.dart';
 /// import com.pulumi.azure.mssql.ServerArgs;
 /// import com.pulumi.azure.mssql.Database;
 /// import com.pulumi.azure.mssql.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -417,7 +451,7 @@ import 'database_threat_detection_policy.dart';
 ///     server_id=example_server.id,
 ///     collation="SQL_Latin1_General_CP1_CI_AS",
 ///     license_type="LicenseIncluded",
-///     max_size_gb=4,
+///     max_size_gb=float(4),
 ///     read_scale=True,
 ///     sku_name="S0",
 ///     zone_redundant=True,
@@ -693,6 +727,88 @@ import 'database_threat_detection_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_authorization_userassignedidentity" "example" {
+///   name                = "example-admin"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "examplesa"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_mssql_server" "example" {
+///   name                         = "example-sqlserver"
+///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resourcegroup.example.location
+///   version                      = "12.0"
+///   administrator_login          = "4dm1n157r470r"
+///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
+/// }
+/// resource "azure_mssql_database" "example" {
+///   name           = "example-db"
+///   server_id      = azure_mssql_server.example.id
+///   collation      = "SQL_Latin1_General_CP1_CI_AS"
+///   license_type   = "LicenseIncluded"
+///   max_size_gb    = 4
+///   read_scale     = true
+///   sku_name       = "S0"
+///   zone_redundant = true
+///   enclave_type   = "VBS"
+///   tags = {
+///     "foo" = "bar"
+///   }
+///   identity = {
+///     type         = "UserAssigned"
+///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///   }
+///   transparent_data_encryption_key_vault_key_id = azure_keyvault_key.example.id
+/// }
+/// # Create a key vault with access policies which allow for the current user to get, list, create, delete, update, recover, purge and getRotationPolicy for the key vault key and also add a key vault access policy for the Microsoft Sql Server instance User Managed Identity to get, wrap, and unwrap key(s)
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                        = "mssqltdeexample"
+///   location                    = azure_core_resourcegroup.example.location
+///   resource_group_name         = azure_core_resourcegroup.example.name
+///   enabled_for_disk_encryption = true
+///   tenant_id                   = azure_authorization_userassignedidentity.example.tenant_id
+///   soft_delete_retention_days  = 7
+///   purge_protection_enabled    = true
+///   sku_name                    = "standard"
+///   access_policies {
+///     tenant_id       = current.tenantId
+///     object_id       = current.objectId
+///     key_permissions = ["Get", "List", "Create", "Delete", "Update", "Recover", "Purge", "GetRotationPolicy"]
+///   }
+///   access_policies {
+///     tenant_id       = azure_authorization_userassignedidentity.example.tenant_id
+///     object_id       = azure_authorization_userassignedidentity.example.principal_id
+///     key_permissions = ["Get", "WrapKey", "UnwrapKey"]
+///   }
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_keyvault.example]
+///   name         = "example-key"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["unwrapKey", "wrapKey"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -716,8 +832,8 @@ import 'database_threat_detection_policy.dart';
 /// import com.pulumi.azure.mssql.DatabaseArgs;
 /// import com.pulumi.azure.mssql.inputs.DatabaseIdentityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -947,41 +1063,41 @@ class Database extends pulumi.CustomResource {
   late final pulumi.Output<String> collation;
   /// The create mode of the database. Possible values are `Copy`, `Default`, `OnlineSecondary`, `PointInTimeRestore`, `Recovery`, `Restore`, `RestoreExternalBackup`, `RestoreExternalBackupSecondary`, `RestoreLongTermRetentionBackup` and `Secondary`. Mutually exclusive with `import`. Changing this forces a new resource to be created. Defaults to `Default`.
   late final pulumi.Output<String?> createMode;
-  /// The ID of the source database from which to create the new database. This should only be used for databases with `create_mode` values that use another database as reference. Changing this forces a new resource to be created.
+  /// The ID of the source database from which to create the new database. This should only be used for databases with `createMode` values that use another database as reference. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** When configuring a secondary database, please be aware of the constraints for the `sku_name` property, as noted below, for both the primary and secondary databases. The `sku_name` of the secondary database may be inadvertently changed to match that of the primary when an incompatible combination of SKUs is detected by the provider.
+  /// &gt; **Note:** When configuring a secondary database, please be aware of the constraints for the `skuName` property, as noted below, for both the primary and secondary databases. The `skuName` of the secondary database may be inadvertently changed to match that of the primary when an incompatible combination of SKUs is detected by the provider.
   late final pulumi.Output<String> creationSourceDatabaseId;
   /// Specifies the ID of the elastic pool containing this database.
   late final pulumi.Output<String?> elasticPoolId;
-  /// Specifies the type of enclave to be used by the elastic pool. When `enclave_type` is not specified (e.g., the default) enclaves are not enabled on the database. Once enabled (e.g., by specifying `Default` or `VBS`) removing the `enclave_type` field from the configuration file will force the creation of a new resource. Possible values are `Default` or `VBS`.
+  /// Specifies the type of enclave to be used by the elastic pool. When `enclaveType` is not specified (e.g., the default) enclaves are not enabled on the database. Once enabled (e.g., by specifying `Default` or `VBS`) removing the `enclaveType` field from the configuration file will force the creation of a new resource. Possible values are `Default` or `VBS`.
   ///
-  /// &gt; **Note:** `enclave_type` is currently not supported for DW (e.g, DataWarehouse) and DC-series SKUs.
+  /// &gt; **Note:** `enclaveType` is currently not supported for DW (e.g, DataWarehouse) and DC-series SKUs.
   ///
-  /// &gt; **Note:** Geo Replicated and Failover databases must have the same `enclave_type`.
+  /// &gt; **Note:** Geo Replicated and Failover databases must have the same `enclaveType`.
   ///
-  /// &gt; **Note:** The default value for the `enclave_type` field is unset not `Default`.
+  /// &gt; **Note:** The default value for the `enclaveType` field is unset not `Default`.
   late final pulumi.Output<String> enclaveType;
   /// A boolean that specifies if the Geo Backup Policy is enabled. Defaults to `true`.
   ///
-  /// &gt; **Note:** `geo_backup_enabled` is only applicable for DataWarehouse SKUs (DW*). This setting is ignored for all other SKUs.
+  /// &gt; **Note:** `geoBackupEnabled` is only applicable for DataWarehouse SKUs (DW*). This setting is ignored for all other SKUs.
   late final pulumi.Output<bool?> geoBackupEnabled;
   /// An `identity` block as defined below.
   late final pulumi.Output<DatabaseIdentity?> identity;
-  /// A `import` block as documented below. Mutually exclusive with `create_mode`.
+  /// A `import` block as documented below. Mutually exclusive with `createMode`.
   late final pulumi.Output<DatabaseImport?> import;
   /// A boolean that specifies if this is a ledger database. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool> ledgerEnabled;
   /// Specifies the license type applied to this database. Possible values are `LicenseIncluded` and `BasePrice`.
   late final pulumi.Output<String> licenseType;
-  /// A `long_term_retention_policy` block as defined below.
+  /// A `longTermRetentionPolicy` block as defined below.
   late final pulumi.Output<DatabaseLongTermRetentionPolicy> longTermRetentionPolicy;
   /// The name of the Public Maintenance Configuration window to apply to the database. Valid values include `SQL_Default`, `SQL_EastUS_DB_1`, `SQL_EastUS2_DB_1`, `SQL_SoutheastAsia_DB_1`, `SQL_AustraliaEast_DB_1`, `SQL_NorthEurope_DB_1`, `SQL_SouthCentralUS_DB_1`, `SQL_WestUS2_DB_1`, `SQL_UKSouth_DB_1`, `SQL_WestEurope_DB_1`, `SQL_EastUS_DB_2`, `SQL_EastUS2_DB_2`, `SQL_WestUS2_DB_2`, `SQL_SoutheastAsia_DB_2`, `SQL_AustraliaEast_DB_2`, `SQL_NorthEurope_DB_2`, `SQL_SouthCentralUS_DB_2`, `SQL_UKSouth_DB_2`, `SQL_WestEurope_DB_2`, `SQL_AustraliaSoutheast_DB_1`, `SQL_BrazilSouth_DB_1`, `SQL_CanadaCentral_DB_1`, `SQL_CanadaEast_DB_1`, `SQL_CentralUS_DB_1`, `SQL_EastAsia_DB_1`, `SQL_FranceCentral_DB_1`, `SQL_GermanyWestCentral_DB_1`, `SQL_CentralIndia_DB_1`, `SQL_SouthIndia_DB_1`, `SQL_JapanEast_DB_1`, `SQL_JapanWest_DB_1`, `SQL_NorthCentralUS_DB_1`, `SQL_UKWest_DB_1`, `SQL_WestUS_DB_1`, `SQL_AustraliaSoutheast_DB_2`, `SQL_BrazilSouth_DB_2`, `SQL_CanadaCentral_DB_2`, `SQL_CanadaEast_DB_2`, `SQL_CentralUS_DB_2`, `SQL_EastAsia_DB_2`, `SQL_FranceCentral_DB_2`, `SQL_GermanyWestCentral_DB_2`, `SQL_CentralIndia_DB_2`, `SQL_SouthIndia_DB_2`, `SQL_JapanEast_DB_2`, `SQL_JapanWest_DB_2`, `SQL_NorthCentralUS_DB_2`, `SQL_UKWest_DB_2`, `SQL_WestUS_DB_2`, `SQL_WestCentralUS_DB_1`, `SQL_FranceSouth_DB_1`, `SQL_WestCentralUS_DB_2`, `SQL_FranceSouth_DB_2`, `SQL_SwitzerlandNorth_DB_1`, `SQL_SwitzerlandNorth_DB_2`, `SQL_BrazilSoutheast_DB_1`, `SQL_UAENorth_DB_1`, `SQL_BrazilSoutheast_DB_2`, `SQL_UAENorth_DB_2`, `SQL_SouthAfricaNorth_DB_1`, `SQL_SouthAfricaNorth_DB_2`, `SQL_WestUS3_DB_1`, `SQL_WestUS3_DB_2`, `SQL_SwedenCentral_DB_1`, `SQL_SwedenCentral_DB_2`. Defaults to `SQL_Default`.
   ///
-  /// &gt; **Note:** `maintenance_configuration_name` is only applicable if `elastic_pool_id` is not set.
+  /// &gt; **Note:** `maintenanceConfigurationName` is only applicable if `elasticPoolId` is not set.
   late final pulumi.Output<String> maintenanceConfigurationName;
   /// The max size of the database in gigabytes.
   ///
-  /// &gt; **Note:** This value should not be configured when the `create_mode` is `Secondary` or `OnlineSecondary`, as the sizing of the primary is then used as per [Azure documentation](https://docs.microsoft.com/azure/azure-sql/database/single-database-scale#geo-replicated-database). The value of `max_size_gb` accepts `0.1`, `0.5` and positive integers greater than or equal to 1. `0.1` means `100MB`, and `0.5` means `500MB`.
+  /// &gt; **Note:** This value should not be configured when the `createMode` is `Secondary` or `OnlineSecondary`, as the sizing of the primary is then used as per [Azure documentation](https://docs.microsoft.com/azure/azure-sql/database/single-database-scale#geo-replicated-database). The value of `maxSizeGb` accepts `0.1`, `0.5` and positive integers greater than or equal to 1. `0.1` means `100MB`, and `0.5` means `500MB`.
   late final pulumi.Output<double> maxSizeGb;
   /// Minimal capacity that database will always have allocated, if not paused. This property is only settable for Serverless databases.
   late final pulumi.Output<double> minCapacity;
@@ -991,15 +1107,15 @@ class Database extends pulumi.CustomResource {
   late final pulumi.Output<int> readReplicaCount;
   /// If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica. This property is only settable for Premium and Business Critical databases.
   late final pulumi.Output<bool> readScale;
-  /// The ID of the database to be recovered. This property is only applicable when the `create_mode` is `Recovery`.
+  /// The ID of the database to be recovered. This property is only applicable when the `createMode` is `Recovery`.
   late final pulumi.Output<String?> recoverDatabaseId;
-  /// The ID of the Recovery Services Recovery Point Id to be restored. This property is only applicable when the `create_mode` is `Recovery`.
+  /// The ID of the Recovery Services Recovery Point Id to be restored. This property is only applicable when the `createMode` is `Recovery`.
   late final pulumi.Output<String?> recoveryPointId;
-  /// The ID of the database to be restored. This property is only applicable when the `create_mode` is `Restore`.
+  /// The ID of the database to be restored. This property is only applicable when the `createMode` is `Restore`.
   late final pulumi.Output<String?> restoreDroppedDatabaseId;
-  /// The ID of the long term retention backup to be restored. This property is only applicable when the `create_mode` is `RestoreLongTermRetentionBackup`.
+  /// The ID of the long term retention backup to be restored. This property is only applicable when the `createMode` is `RestoreLongTermRetentionBackup`.
   late final pulumi.Output<String?> restoreLongTermRetentionBackupId;
-  /// Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database. This property is only settable for `create_mode`= `PointInTimeRestore` databases.
+  /// Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database. This property is only settable for `createMode`= `PointInTimeRestore` databases.
   late final pulumi.Output<String> restorePointInTime;
   /// Specifies the name of the sample schema to apply when creating this database. Possible value is `AdventureWorksLT`.
   late final pulumi.Output<String> sampleName;
@@ -1009,27 +1125,27 @@ class Database extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** This setting is still required for "Serverless" SKUs
   late final pulumi.Output<String> serverId;
-  /// A `short_term_retention_policy` block as defined below.
+  /// A `shortTermRetentionPolicy` block as defined below.
   late final pulumi.Output<DatabaseShortTermRetentionPolicy> shortTermRetentionPolicy;
   /// Specifies the name of the SKU used by the database. For example, `GP_S_Gen5_2`,`HS_Gen4_1`,`BC_Gen5_2`, `ElasticPool`, `Basic`,`S0`, `P2` ,`DW100c`, `DS100`. Changing this from the HyperScale service tier to another service tier will create a new resource.
   ///
   /// &gt; **Note:** A full list of supported SKU names by region can be retrieved using the Azure CLI: `az sql db list-editions -l &lt;region&gt; -o table`
   ///
-  /// &gt; **Note:** The default `sku_name` value may differ between Azure locations depending on local availability of Gen4/Gen5 capacity. When databases are replicated using the `creation_source_database_id` property, the source (primary) database cannot have a higher SKU service tier than any secondary databases. When changing the `sku_name` of a database having one or more secondary databases, this resource will first update any secondary databases as necessary. In such cases it's recommended to use the same `sku_name` in your configuration for all related databases, as not doing so may cause an unresolvable diff during subsequent plans.
+  /// &gt; **Note:** The default `skuName` value may differ between Azure locations depending on local availability of Gen4/Gen5 capacity. When databases are replicated using the `creationSourceDatabaseId` property, the source (primary) database cannot have a higher SKU service tier than any secondary databases. When changing the `skuName` of a database having one or more secondary databases, this resource will first update any secondary databases as necessary. In such cases it's recommended to use the same `skuName` in your configuration for all related databases, as not doing so may cause an unresolvable diff during subsequent plans.
   late final pulumi.Output<String> skuName;
   /// Specifies the storage account type used to store backups for this database. Possible values are `Geo`, `GeoZone`, `Local` and `Zone`. Defaults to `Geo`.
   late final pulumi.Output<String?> storageAccountType;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Threat detection policy configuration. The `threat_detection_policy` block supports fields documented below.
+  /// Threat detection policy configuration. The `threatDetectionPolicy` block supports fields documented below.
   late final pulumi.Output<DatabaseThreatDetectionPolicy> threatDetectionPolicy;
   /// If set to true, Transparent Data Encryption will be enabled on the database. Defaults to `true`.
   ///
-  /// &gt; **Note:** `transparent_data_encryption_enabled` can only be set to `false` on DW (e.g, DataWarehouse) server SKUs.
+  /// &gt; **Note:** `transparentDataEncryptionEnabled` can only be set to `false` on DW (e.g, DataWarehouse) server SKUs.
   late final pulumi.Output<bool?> transparentDataEncryptionEnabled;
   /// Boolean flag to specify whether TDE automatically rotates the encryption Key to latest version or not. Possible values are `true` or `false`. Defaults to `false`.
   ///
-  /// &gt; **Note:** When the `sku_name` is `DW100c`, the `transparent_data_encryption_key_automatic_rotation_enabled` and the `transparent_data_encryption_key_vault_key_id` properties should not be specified, as database-level CMK is not supported for Data Warehouse SKUs.
+  /// &gt; **Note:** When the `skuName` is `DW100c`, the `transparentDataEncryptionKeyAutomaticRotationEnabled` and the `transparentDataEncryptionKeyVaultKeyId` properties should not be specified, as database-level CMK is not supported for Data Warehouse SKUs.
   late final pulumi.Output<bool?> transparentDataEncryptionKeyAutomaticRotationEnabled;
   /// The fully versioned `Key Vault` `Key` URL (e.g. `'https://&lt;YourVaultName&gt;.vault.azure.net/keys/&lt;YourKeyName&gt;/&lt;YourKeyVersion&gt;`) to be used as the `Customer Managed Key`(CMK/BYOK) for the `Transparent Data Encryption`(TDE) layer.
   ///

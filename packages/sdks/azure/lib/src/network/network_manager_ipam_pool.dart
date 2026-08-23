@@ -166,6 +166,39 @@ import 'network_manager_ipam_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networkmanager" "example" {
+///   name                = "example-network-manager"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   scope = {
+///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///   }
+///   scope_accesses = ["Connectivity", "SecurityAdmin"]
+/// }
+/// resource "azure_network_networkmanageripampool" "example" {
+///   name               = "example-ipam-pool"
+///   location           = "West Europe"
+///   network_manager_id = azure_network_networkmanager.example.id
+///   display_name       = "example-pool"
+///   address_prefixes   = ["10.0.0.0/24"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +214,8 @@ import 'network_manager_ipam_pool_state.dart';
 /// import com.pulumi.azure.network.inputs.NetworkManagerScopeArgs;
 /// import com.pulumi.azure.network.NetworkManagerIpamPool;
 /// import com.pulumi.azure.network.NetworkManagerIpamPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

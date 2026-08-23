@@ -107,7 +107,7 @@ import 'express_route_connection_state.dart';
 ///     location=example.location,
 ///     resource_group_name=example.name,
 ///     express_route_port_id=example_express_route_port.id,
-///     bandwidth_in_gbps=5,
+///     bandwidth_in_gbps=float(5),
 ///     sku={
 ///         "tier": "Standard",
 ///         "family": "MeteredData",
@@ -306,6 +306,73 @@ import 'express_route_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualwan" "example" {
+///   name                = "example-vwan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_virtualhub" "example" {
+///   name                = "example-vhub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   address_prefix      = "10.0.1.0/24"
+/// }
+/// resource "azure_network_expressroutegateway" "example" {
+///   name                = "example-expressroutegateway"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_hub_id      = azure_network_virtualhub.example.id
+///   scale_units         = 1
+/// }
+/// resource "azure_network_expressrouteport" "example" {
+///   name                = "example-erp"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   peering_location    = "Equinix-Seattle-SE2"
+///   bandwidth_in_gbps   = 10
+///   encapsulation       = "Dot1Q"
+/// }
+/// resource "azure_network_expressroutecircuit" "example" {
+///   name                  = "example-erc"
+///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   express_route_port_id = azure_network_expressrouteport.example.id
+///   bandwidth_in_gbps     = 5
+///   sku = {
+///     tier   = "Standard"
+///     family = "MeteredData"
+///   }
+/// }
+/// resource "azure_network_expressroutecircuitpeering" "example" {
+///   peering_type                  = "AzurePrivatePeering"
+///   express_route_circuit_name    = azure_network_expressroutecircuit.example.name
+///   resource_group_name           = azure_core_resourcegroup.example.name
+///   shared_key                    = "ItsASecret"
+///   peer_asn                      = 100
+///   primary_peer_address_prefix   = "192.168.1.0/30"
+///   secondary_peer_address_prefix = "192.168.2.0/30"
+///   vlan_id                       = 100
+/// }
+/// resource "azure_network_expressrouteconnection" "example" {
+///   name                             = "example-expressrouteconn"
+///   express_route_gateway_id         = azure_network_expressroutegateway.example.id
+///   express_route_circuit_peering_id = azure_network_expressroutecircuitpeering.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -329,8 +396,8 @@ import 'express_route_connection_state.dart';
 /// import com.pulumi.azure.network.ExpressRouteCircuitPeeringArgs;
 /// import com.pulumi.azure.network.ExpressRouteConnection;
 /// import com.pulumi.azure.network.ExpressRouteConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -503,14 +570,15 @@ import 'express_route_connection_state.dart';
 class ExpressRouteConnection extends pulumi.CustomResource {
   /// The authorization key to establish the Express Route Connection.
   late final pulumi.Output<String?> authorizationKey;
-  /// Is Internet security enabled for this Express Route Connection?
-  late final pulumi.Output<bool?> enableInternetSecurity;
+  late final pulumi.Output<bool> enableInternetSecurity;
   /// The ID of the Express Route Circuit Peering that this Express Route Connection connects with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> expressRouteCircuitPeeringId;
   /// Specified whether Fast Path is enabled for Virtual Wan Firewall Hub. Defaults to `false`.
   late final pulumi.Output<bool?> expressRouteGatewayBypassEnabled;
   /// The ID of the Express Route Gateway that this Express Route Connection connects with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> expressRouteGatewayId;
+  /// Is Internet security enabled for this Express Route Connection? Defaults to `false`.
+  late final pulumi.Output<bool> internetSecurityEnabled;
   /// The name which should be used for this Express Route Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   late final pulumi.Output<bool?> privateLinkFastPathEnabled;
@@ -534,10 +602,11 @@ class ExpressRouteConnection extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authorizationKey = registerOutput<String?>('authorizationKey');
-    enableInternetSecurity = registerOutput<bool?>('enableInternetSecurity');
+    enableInternetSecurity = registerOutput<bool>('enableInternetSecurity');
     expressRouteCircuitPeeringId = registerOutput<String>('expressRouteCircuitPeeringId');
     expressRouteGatewayBypassEnabled = registerOutput<bool?>('expressRouteGatewayBypassEnabled');
     expressRouteGatewayId = registerOutput<String>('expressRouteGatewayId');
+    internetSecurityEnabled = registerOutput<bool>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');
     privateLinkFastPathEnabled = registerOutput<bool?>('privateLinkFastPathEnabled');
     routing = registerOutput<ExpressRouteConnectionRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteConnectionRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -568,10 +637,11 @@ class ExpressRouteConnection extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authorizationKey = registerOutput<String?>('authorizationKey');
-    enableInternetSecurity = registerOutput<bool?>('enableInternetSecurity');
+    enableInternetSecurity = registerOutput<bool>('enableInternetSecurity');
     expressRouteCircuitPeeringId = registerOutput<String>('expressRouteCircuitPeeringId');
     expressRouteGatewayBypassEnabled = registerOutput<bool?>('expressRouteGatewayBypassEnabled');
     expressRouteGatewayId = registerOutput<String>('expressRouteGatewayId');
+    internetSecurityEnabled = registerOutput<bool>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');
     privateLinkFastPathEnabled = registerOutput<bool?>('privateLinkFastPathEnabled');
     routing = registerOutput<ExpressRouteConnectionRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteConnectionRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });

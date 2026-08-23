@@ -11,17 +11,17 @@ import 'network_acl_public_network.dart';
 class NetworkAclArgs {
   /// The default action to control the network access when no other rule matches. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
   final pulumi.Input<String>? defaultAction;
-  /// A `private_endpoint` block as defined below.
+  /// A `privateEndpoint` block as defined below.
   final pulumi.Input<List<NetworkAclPrivateEndpoint>>? privateEndpoints;
-  /// A `public_network` block as defined below.
+  /// A `publicNetwork` block as defined below.
   final pulumi.Input<NetworkAclPublicNetwork> publicNetwork;
   /// The ID of the Web Pubsub service. Changing this forces a new resource to be created.
   final pulumi.Input<String> webPubsubId;
 
   /// Creates a new [NetworkAclArgs].
   /// [defaultAction] The default action to control the network access when no other rule matches. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
-  /// [privateEndpoints] A `private_endpoint` block as defined below.
-  /// [publicNetwork] A `public_network` block as defined below.
+  /// [privateEndpoints] A `privateEndpoint` block as defined below.
+  /// [publicNetwork] A `publicNetwork` block as defined below.
   /// [webPubsubId] The ID of the Web Pubsub service. Changing this forces a new resource to be created.
   const NetworkAclArgs({
     this.defaultAction,
@@ -48,4 +48,3 @@ class NetworkAclArgs {
     );
   }
 }
-

@@ -101,6 +101,28 @@ import 'express_route_port_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West US"
+/// }
+/// resource "azure_network_expressrouteport" "example" {
+///   name                = "port1"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   peering_location    = "Airtel-Chennai-CLS"
+///   bandwidth_in_gbps   = 10
+///   encapsulation       = "Dot1Q"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +133,8 @@ import 'express_route_port_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.network.ExpressRoutePort;
 /// import com.pulumi.azure.network.ExpressRoutePortArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

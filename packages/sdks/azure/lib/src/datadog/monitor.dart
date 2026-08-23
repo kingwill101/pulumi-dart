@@ -142,6 +142,37 @@ import 'monitor_user.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-datadog"
+///   location = "West US 2"
+/// }
+/// resource "azure_datadog_monitor" "example" {
+///   name                = "example-monitor"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   datadog_organization = {
+///     api_key         = "XXXX"
+///     application_key = "XXXX"
+///   }
+///   user = {
+///     name  = "Example"
+///     email = "abc@xyz.com"
+///   }
+///   sku_name = "Linked"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -155,8 +186,8 @@ import 'monitor_user.dart';
 /// import com.pulumi.azure.datadog.inputs.MonitorDatadogOrganizationArgs;
 /// import com.pulumi.azure.datadog.inputs.MonitorUserArgs;
 /// import com.pulumi.azure.datadog.inputs.MonitorIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,6 +340,27 @@ import 'monitor_user.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getsubscription" "primary" {
+/// }
+/// data "azure_authorization_getroledefinition" "monitoringReader" {
+///   name = "Monitoring Reader"
+/// }
+///
+/// resource "azure_authorization_assignment" "example" {
+///   scope              = data.azure_core_getsubscription.primary.id
+///   role_definition_id = data.azure_authorization_getroledefinition.monitoringReader.role_definition_id
+///   principal_id       = exampleAzurermDatadogMonitor.identity[0].principalId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -321,8 +373,8 @@ import 'monitor_user.dart';
 /// import com.pulumi.azure.authorization.inputs.GetRoleDefinitionArgs;
 /// import com.pulumi.azure.authorization.Assignment;
 /// import com.pulumi.azure.authorization.AssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -386,7 +438,7 @@ import 'monitor_user.dart';
 /// $ pulumi import azure:datadog/monitor:Monitor example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Datadog/monitors/monitor1
 /// ```
 class Monitor extends pulumi.CustomResource {
-  /// A `datadog_organization` block as defined below.
+  /// A `datadogOrganization` block as defined below.
   late final pulumi.Output<MonitorDatadogOrganization> datadogOrganization;
   /// A `identity` block as defined below.
   late final pulumi.Output<MonitorIdentity?> identity;

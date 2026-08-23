@@ -30,4 +30,3 @@ class GetWindowsWebAppAuthSettingsV2TwitterV2 {
     );
   }
 }
-

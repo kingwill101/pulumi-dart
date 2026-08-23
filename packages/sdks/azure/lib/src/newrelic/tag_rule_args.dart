@@ -13,11 +13,11 @@ class TagRuleArgs {
   final pulumi.Input<bool>? activityLogEnabled;
   /// Whether Azure Active Directory logs should be sent for the Monitor resource. Defaults to `false`.
   final pulumi.Input<bool>? azureActiveDirectoryLogEnabled;
-  /// A `log_tag_filter` block as defined below.
+  /// A `logTagFilter` block as defined below.
   final pulumi.Input<List<TagRuleLogTagFilter>>? logTagFilters;
   /// Whether metrics should be sent for the Monitor resource. Defaults to `false`.
   final pulumi.Input<bool>? metricEnabled;
-  /// A `metric_tag_filter` block as defined below.
+  /// A `metricTagFilter` block as defined below.
   final pulumi.Input<List<TagRuleMetricTagFilter>>? metricTagFilters;
   /// Specifies the ID of the New Relic Monitor this Tag Rule should be created within. Changing this forces a new Azure Native New Relic Tag Rule to be created.
   final pulumi.Input<String> monitorId;
@@ -27,9 +27,9 @@ class TagRuleArgs {
   /// Creates a new [TagRuleArgs].
   /// [activityLogEnabled] Whether activity logs from Azure resources should be sent for the Monitor resource. Defaults to `false`.
   /// [azureActiveDirectoryLogEnabled] Whether Azure Active Directory logs should be sent for the Monitor resource. Defaults to `false`.
-  /// [logTagFilters] A `log_tag_filter` block as defined below.
+  /// [logTagFilters] A `logTagFilter` block as defined below.
   /// [metricEnabled] Whether metrics should be sent for the Monitor resource. Defaults to `false`.
-  /// [metricTagFilters] A `metric_tag_filter` block as defined below.
+  /// [metricTagFilters] A `metricTagFilter` block as defined below.
   /// [monitorId] Specifies the ID of the New Relic Monitor this Tag Rule should be created within. Changing this forces a new Azure Native New Relic Tag Rule to be created.
   /// [subscriptionLogEnabled] Whether subscription logs should be sent for the Monitor resource. Defaults to `false`.
   const TagRuleArgs({
@@ -66,4 +66,3 @@ class TagRuleArgs {
     );
   }
 }
-

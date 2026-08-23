@@ -24,4 +24,3 @@ class WindowsFunctionAppSlotAuthSettingsV2AzureStaticWebAppV2 {
     );
   }
 }
-

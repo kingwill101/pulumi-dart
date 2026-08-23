@@ -90,4 +90,3 @@ class GetWindowsWebAppAuthSettingsV2ActiveDirectoryV2 {
     );
   }
 }
-

@@ -11,7 +11,7 @@ class ScheduledQueryRulesAlertState {
   /// List of Resource IDs referred into query.
   final pulumi.Input<List<String>>? authorizedResourceIds;
   /// Should the alerts in this Metric Alert be auto resolved? Defaults to `false`.
-  /// &gt; **Note:** `auto_mitigation_enabled` and `throttling` are mutually exclusive and cannot both be set.
+  /// &gt; **Note:** `autoMitigationEnabled` and `throttling` are mutually exclusive and cannot both be set.
   final pulumi.Input<bool>? autoMitigationEnabled;
   /// The resource URI over which log search query is to be run. Changing this forces a new resource to be created.
   final pulumi.Input<String>? dataSourceId;
@@ -124,4 +124,3 @@ class ScheduledQueryRulesAlertState {
     );
   }
 }
-

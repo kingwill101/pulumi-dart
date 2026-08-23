@@ -10,7 +10,7 @@ import 'cassandra_keyspace_autoscale_settings.dart';
 class CassandraKeyspaceArgs {
   /// The name of the Cosmos DB Cassandra KeySpace to create the table within. Changing this forces a new resource to be created.
   final pulumi.Input<String> accountName;
-  /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
+  /// An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   final pulumi.Input<CassandraKeyspaceAutoscaleSettings>? autoscaleSettings;
@@ -23,7 +23,7 @@ class CassandraKeyspaceArgs {
 
   /// Creates a new [CassandraKeyspaceArgs].
   /// [accountName] The name of the Cosmos DB Cassandra KeySpace to create the table within. Changing this forces a new resource to be created.
-  /// [autoscaleSettings] An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
+  /// [autoscaleSettings] An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   /// [name] Specifies the name of the Cosmos DB Cassandra KeySpace. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Cosmos DB Cassandra KeySpace is created. Changing this forces a new resource to be created.
   /// [throughput] The throughput of Cassandra KeySpace (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual resource destroy-apply.
@@ -55,4 +55,3 @@ class CassandraKeyspaceArgs {
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'group_container_volume_git_repo.dart';
 class GroupContainerVolume {
   /// Boolean as to whether the mounted volume should be an empty directory. Defaults to `false`. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? emptyDir;
-  /// A `git_repo` block as defined below. Changing this forces a new resource to be created.
+  /// A `gitRepo` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<GroupContainerVolumeGitRepo>? gitRepo;
   /// The path on which this volume is to be mounted. Changing this forces a new resource to be created.
   final pulumi.Input<String> mountPath;
@@ -16,9 +16,9 @@ class GroupContainerVolume {
   final pulumi.Input<bool>? readOnly;
   /// A map of secrets that will be mounted as files in the volume. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** Exactly one of `empty_dir` volume, `git_repo` volume, `secret` volume or storage account volume (`share_name`, `storage_account_name`, and `storage_account_key`) must be specified.
+  /// &gt; **Note:** Exactly one of `emptyDir` volume, `gitRepo` volume, `secret` volume or storage account volume (`shareName`, `storageAccountName`, and `storageAccountKey`) must be specified.
   ///
-  /// &gt; **Note:** when using a storage account volume, all of `share_name`, `storage_account_name`, and `storage_account_key` must be specified.
+  /// &gt; **Note:** when using a storage account volume, all of `shareName`, `storageAccountName`, and `storageAccountKey` must be specified.
   ///
   /// &gt; **Note:** The secret values must be supplied as Base64 encoded strings. The secret values are decoded to their original values when mounted in the volume on the container.
   final pulumi.Input<Map<String, String>>? secret;
@@ -31,7 +31,7 @@ class GroupContainerVolume {
 
   /// Creates a new [GroupContainerVolume].
   /// [emptyDir] Boolean as to whether the mounted volume should be an empty directory. Defaults to `false`. Changing this forces a new resource to be created.
-  /// [gitRepo] A `git_repo` block as defined below. Changing this forces a new resource to be created.
+  /// [gitRepo] A `gitRepo` block as defined below. Changing this forces a new resource to be created.
   /// [mountPath] The path on which this volume is to be mounted. Changing this forces a new resource to be created.
   /// [name] The name of the volume mount. Changing this forces a new resource to be created.
   /// [readOnly] Specify if the volume is to be mounted as read only or not. The default value is `false`. Changing this forces a new resource to be created.
@@ -79,4 +79,3 @@ class GroupContainerVolume {
     );
   }
 }
-

@@ -6,7 +6,9 @@ import 'frontdoor_rule_state.dart';
 
 /// Manages a Front Door (standard/premium) Rule.
 ///
-/// !&gt; **Note:** The Rules resource **must** include a `depends_on` meta-argument which references the `azure.cdn.FrontdoorOrigin` and the `azure.cdn.FrontdoorOriginGroup`.
+/// &gt; **Note:** The Rules resource **must** include a `dependsOn` meta-argument which references the `azure.cdn.FrontdoorOrigin` and the `azure.cdn.FrontdoorOriginGroup`.
+///
+/// &gt; **Note:** Azure Front Door Rule operations are currently affected by a service-side regression where unattached rules or rule sets can fail with `400 Bad Request` until they are associated with a Front Door Route. As a result, unattached and attached scenarios can currently behave differently while the service-side fix is pending.
 ///
 /// ## Example Usage
 ///
@@ -634,6 +636,121 @@ import 'frontdoor_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-cdn-frontdoor"
+///   location = "West Europe"
+/// }
+/// resource "azure_cdn_frontdoorprofile" "example" {
+///   name                = "example-profile"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Premium_AzureFrontDoor"
+/// }
+/// resource "azure_cdn_frontdoorendpoint" "example" {
+///   name                     = "example-endpoint"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   tags = {
+///     "endpoint" = "contoso.com"
+///   }
+/// }
+/// resource "azure_cdn_frontdoororigingroup" "example" {
+///   name                                                      = "example-originGroup"
+///   cdn_frontdoor_profile_id                                  = azure_cdn_frontdoorprofile.example.id
+///   session_affinity_enabled                                  = true
+///   restore_traffic_time_to_healed_or_new_endpoint_in_minutes = 10
+///   health_probe = {
+///     interval_in_seconds = 240
+///     path                = "/healthProbe"
+///     protocol            = "Https"
+///     request_type        = "GET"
+///   }
+///   load_balancing = {
+///     additional_latency_in_milliseconds = 0
+///     sample_size                        = 16
+///     successful_samples_required        = 3
+///   }
+/// }
+/// resource "azure_cdn_frontdoororigin" "example" {
+///   name                           = "example-origin"
+///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoororigingroup.example.id
+///   enabled                        = true
+///   certificate_name_check_enabled = false
+///   host_name                      = azure_cdn_frontdoorendpoint.example.host_name
+///   http_port                      = 80
+///   https_port                     = 443
+///   origin_host_header             = "contoso.com"
+///   priority                       = 1
+///   weight                         = 500
+/// }
+/// resource "azure_cdn_frontdoorruleset" "example" {
+///   name                     = "exampleruleset"
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+/// }
+/// resource "azure_cdn_frontdoorrule" "example" {
+///   depends_on                = [azure_cdn_frontdoororigingroup.example, azure_cdn_frontdoororigin.example]
+///   name                      = "examplerule"
+///   cdn_frontdoor_rule_set_id = azure_cdn_frontdoorruleset.example.id
+///   order                     = 1
+///   behavior_on_match         = "Continue"
+///   actions = {
+///     route_configuration_override_action = {
+///       cdn_frontdoor_origin_group_id = azure_cdn_frontdoororigingroup.example.id
+///       forwarding_protocol           = "HttpsOnly"
+///       query_string_caching_behavior = "IncludeSpecifiedQueryStrings"
+///       query_string_parameters       = ["foo", "clientIp={client_ip}"]
+///       compression_enabled           = true
+///       cache_behavior                = "OverrideIfOriginMissing"
+///       cache_duration                = "365.23:59:59"
+///     }
+///     url_redirect_action = {
+///       redirect_type        = "PermanentRedirect"
+///       redirect_protocol    = "MatchRequest"
+///       query_string         = "clientIp={client_ip}"
+///       destination_path     = "/exampleredirection"
+///       destination_hostname = "contoso.com"
+///       destination_fragment = "UrlRedirect"
+///     }
+///   }
+///   conditions = {
+///     host_name_conditions = [{
+///       "operator"        = "Equal"
+///       "negateCondition" = false
+///       "matchValues"     = ["www.contoso.com", "images.contoso.com", "video.contoso.com"]
+///       "transforms"      = ["Lowercase", "Trim"]
+///     }]
+///     is_device_conditions = [{
+///       "operator"        = "Equal"
+///       "negateCondition" = false
+///       "matchValues"     = "Mobile"
+///     }]
+///     post_args_conditions = [{
+///       "postArgsName" = "customerName"
+///       "operator"     = "BeginsWith"
+///       "matchValues"  = ["J", "K"]
+///       "transforms"   = ["Uppercase"]
+///     }]
+///     request_method_conditions = [{
+///       "operator"        = "Equal"
+///       "negateCondition" = false
+///       "matchValues"     = ["DELETE"]
+///     }]
+///     url_filename_conditions = [{
+///       "operator"        = "Equal"
+///       "negateCondition" = false
+///       "matchValues"     = ["media.mp4"]
+///       "transforms"      = ["Lowercase", "RemoveNulls", "Trim"]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -660,9 +777,14 @@ import 'frontdoor_rule_state.dart';
 /// import com.pulumi.azure.cdn.inputs.FrontdoorRuleActionsRouteConfigurationOverrideActionArgs;
 /// import com.pulumi.azure.cdn.inputs.FrontdoorRuleActionsUrlRedirectActionArgs;
 /// import com.pulumi.azure.cdn.inputs.FrontdoorRuleConditionsArgs;
+/// import com.pulumi.azure.cdn.inputs.FrontdoorRuleConditionsHostNameConditionArgs;
+/// import com.pulumi.azure.cdn.inputs.FrontdoorRuleConditionsIsDeviceConditionArgs;
+/// import com.pulumi.azure.cdn.inputs.FrontdoorRuleConditionsPostArgsConditionArgs;
+/// import com.pulumi.azure.cdn.inputs.FrontdoorRuleConditionsRequestMethodConditionArgs;
+/// import com.pulumi.azure.cdn.inputs.FrontdoorRuleConditionsUrlFilenameConditionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -933,7 +1055,7 @@ import 'frontdoor_rule_state.dart';
 ///
 /// ## Specifying IP Address Ranges
 ///
-/// When specifying IP address ranges in the `socket_address_condition` and the `remote_address_condition` `match_values` use the following format:
+/// When specifying IP address ranges in the `socketAddressCondition` and the `remoteAddressCondition` `matchValues` use the following format:
 ///
 /// Use `CIDR` notation when specifying IP address blocks. This means that the syntax for an IP address block is the base IP address followed by a forward slash and the prefix size For example:
 ///
@@ -955,19 +1077,19 @@ import 'frontdoor_rule_state.dart';
 ///
 /// | Variable name | Description |
 /// |---------------|-------------|
-/// | `socket_ip`      | The IP address of the direct connection to Front Door Profiles edge. If the client used an HTTP proxy or a load balancer to send the request, the value of `socket_ip` is the IP address of the proxy or load balancer. |
-/// | `client_ip`      | The IP address of the client that made the original request. If there was an `X-Forwarded-For` header in the request, then the client IP address is picked from the header. |
-/// | `client_port`    | The IP port of the client that made the request. |
+/// | `socketIp`      | The IP address of the direct connection to Front Door Profiles edge. If the client used an HTTP proxy or a load balancer to send the request, the value of `socketIp` is the IP address of the proxy or load balancer. |
+/// | `clientIp`      | The IP address of the client that made the original request. If there was an `X-Forwarded-For` header in the request, then the client IP address is picked from the header. |
+/// | `clientPort`    | The IP port of the client that made the request. |
 /// | `hostname`       | The host name in the request from the client. |
-/// | `geo_country`    | Indicates the requester's country/region of origin through its country/region code. |
-/// | `http_method`    | The method used to make the URL request, such as `GET` or `POST`. |
-/// | `http_version`   | The request protocol. Usually `HTTP/1.0`, `HTTP/1.1`, or `HTTP/2.0`. |
-/// | `query_string`   | The list of variable/value pairs that follows the "?" in the requested URL. For example, in the request `http://contoso.com:8080/article.aspx?id=123&title=fabrikam`, the `query_string` value will be `id=123&title=fabrikam`. |
-/// | `request_scheme` | The request scheme: `http` or `https`. |
-/// | `request_uri`    | The full original request URI (with arguments). For example, in the request `http://contoso.com:8080/article.aspx?id=123&title=fabrikam`, the `request_uri` value will be `/article.aspx?id=123&title=fabrikam`. |
-/// | `ssl_protocol`   | The protocol of an established TLS connection. |
-/// | `server_port`    | The port of the server that accepted a request. |
-/// | `url_path`       | Identifies the specific resource in the host that the web client wants to access. This is the part of the request URI without the arguments. For example, in the request `http://contoso.com:8080/article.aspx?id=123&title=fabrikam`, the `uri_path` value will be `/article.aspx`. |
+/// | `geoCountry`    | Indicates the requester's country/region of origin through its country/region code. |
+/// | `httpMethod`    | The method used to make the URL request, such as `GET` or `POST`. |
+/// | `httpVersion`   | The request protocol. Usually `HTTP/1.0`, `HTTP/1.1`, or `HTTP/2.0`. |
+/// | `queryString`   | The list of variable/value pairs that follows the "?" in the requested URL. For example, in the request `http://contoso.com:8080/article.aspx?id=123&title=fabrikam`, the `queryString` value will be `id=123&title=fabrikam`. |
+/// | `requestScheme` | The request scheme: `http` or `https`. |
+/// | `requestUri`    | The full original request URI (with arguments). For example, in the request `http://contoso.com:8080/article.aspx?id=123&title=fabrikam`, the `requestUri` value will be `/article.aspx?id=123&title=fabrikam`. |
+/// | `sslProtocol`   | The protocol of an established TLS connection. |
+/// | `serverPort`    | The port of the server that accepted a request. |
+/// | `urlPath`       | Identifies the specific resource in the host that the web client wants to access. This is the part of the request URI without the arguments. For example, in the request `http://contoso.com:8080/article.aspx?id=123&title=fabrikam`, the `uriPath` value will be `/article.aspx`. |
 ///
 /// ### Action Server Variable Format
 ///
@@ -983,11 +1105,11 @@ import 'frontdoor_rule_state.dart';
 ///
 /// Action Server variables are supported on the following actions:
 ///
-/// * `route_configuration_override_action`
-/// * `request_header_action`
-/// * `response_header_action`
-/// * `url_redirect_action`
-/// * `url_rewrite_action`
+/// * `routeConfigurationOverrideAction`
+/// * `requestHeaderAction`
+/// * `responseHeaderAction`
+/// * `urlRedirectAction`
+/// * `urlRewriteAction`
 ///
 /// ---
 ///

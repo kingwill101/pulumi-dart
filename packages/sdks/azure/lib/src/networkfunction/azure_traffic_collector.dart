@@ -99,6 +99,28 @@ import 'azure_traffic_collector_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West US"
+/// }
+/// resource "azure_networkfunction_azuretrafficcollector" "example" {
+///   name                = "example-nfatc"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = "West US"
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +131,8 @@ import 'azure_traffic_collector_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.networkfunction.AzureTrafficCollector;
 /// import com.pulumi.azure.networkfunction.AzureTrafficCollectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

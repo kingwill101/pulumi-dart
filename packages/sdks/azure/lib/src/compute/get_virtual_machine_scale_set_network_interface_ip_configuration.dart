@@ -14,9 +14,9 @@ class GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
   final pulumi.Input<List<String>> loadBalancerInboundNatRulesIds;
   /// The name of this Virtual Machine Scale Set.
   final pulumi.Input<String> name;
-  /// If this ip_configuration is the primary one.
+  /// If this ipConfiguration is the primary one.
   final pulumi.Input<bool> primary;
-  /// A `public_ip_address` block as defined below.
+  /// A `publicIpAddress` block as defined below.
   final pulumi.Input<List<GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress>> publicIpAddresses;
   /// The identifier of the subnet.
   final pulumi.Input<String> subnetId;
@@ -29,8 +29,8 @@ class GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
   /// [loadBalancerBackendAddressPoolIds] An array of references to backend address pools of load balancers.
   /// [loadBalancerInboundNatRulesIds] An array of references to inbound NAT pools for load balancers.
   /// [name] The name of this Virtual Machine Scale Set.
-  /// [primary] If this ip_configuration is the primary one.
-  /// [publicIpAddresses] A `public_ip_address` block as defined below.
+  /// [primary] If this ipConfiguration is the primary one.
+  /// [publicIpAddresses] A `publicIpAddress` block as defined below.
   /// [subnetId] The identifier of the subnet.
   /// [version] The Internet Protocol Version of the public IP address.
   const GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration({
@@ -73,4 +73,3 @@ class GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
     );
   }
 }
-

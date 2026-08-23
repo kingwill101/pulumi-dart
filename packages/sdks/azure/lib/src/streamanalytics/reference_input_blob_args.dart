@@ -10,7 +10,7 @@ import 'reference_input_blob_serialization.dart';
 class ReferenceInputBlobArgs {
   /// The authentication mode for the Stream Analytics Reference Input. Possible values are `Msi` and `ConnectionString`. Defaults to `ConnectionString`.
   final pulumi.Input<String>? authenticationMode;
-  /// The date format. Wherever `{date}` appears in `path_pattern`, the value of this property is used as the date format instead.
+  /// The date format. Wherever `{date}` appears in `pathPattern`, the value of this property is used as the date format instead.
   final pulumi.Input<String> dateFormat;
   /// The name of the Reference Input Blob. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -20,7 +20,7 @@ class ReferenceInputBlobArgs {
   final pulumi.Input<String> resourceGroupName;
   /// A `serialization` block as defined below.
   final pulumi.Input<ReferenceInputBlobSerialization> serialization;
-  /// The Access Key which should be used to connect to this Storage Account. Required if `authentication_mode` is `ConnectionString`.
+  /// The Access Key which should be used to connect to this Storage Account. Required if `authenticationMode` is `ConnectionString`.
   final pulumi.Input<String>? storageAccountKey;
   /// The name of the Storage Account that has the blob container with reference data.
   final pulumi.Input<String> storageAccountName;
@@ -28,21 +28,21 @@ class ReferenceInputBlobArgs {
   final pulumi.Input<String> storageContainerName;
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String> streamAnalyticsJobName;
-  /// The time format. Wherever `{time}` appears in `path_pattern`, the value of this property is used as the time format instead.
+  /// The time format. Wherever `{time}` appears in `pathPattern`, the value of this property is used as the time format instead.
   final pulumi.Input<String> timeFormat;
 
   /// Creates a new [ReferenceInputBlobArgs].
   /// [authenticationMode] The authentication mode for the Stream Analytics Reference Input. Possible values are `Msi` and `ConnectionString`. Defaults to `ConnectionString`.
-  /// [dateFormat] The date format. Wherever `{date}` appears in `path_pattern`, the value of this property is used as the date format instead.
+  /// [dateFormat] The date format. Wherever `{date}` appears in `pathPattern`, the value of this property is used as the date format instead.
   /// [name] The name of the Reference Input Blob. Changing this forces a new resource to be created.
   /// [pathPattern] The blob path pattern. Not a regular expression. It represents a pattern against which blob names will be matched to determine whether or not they should be included as input or output to the job.
   /// [resourceGroupName] The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   /// [serialization] A `serialization` block as defined below.
-  /// [storageAccountKey] The Access Key which should be used to connect to this Storage Account. Required if `authentication_mode` is `ConnectionString`.
+  /// [storageAccountKey] The Access Key which should be used to connect to this Storage Account. Required if `authenticationMode` is `ConnectionString`.
   /// [storageAccountName] The name of the Storage Account that has the blob container with reference data.
   /// [storageContainerName] The name of the Container within the Storage Account.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-  /// [timeFormat] The time format. Wherever `{time}` appears in `path_pattern`, the value of this property is used as the time format instead.
+  /// [timeFormat] The time format. Wherever `{time}` appears in `pathPattern`, the value of this property is used as the time format instead.
   const ReferenceInputBlobArgs({
     this.authenticationMode,
     required this.dateFormat,
@@ -89,4 +89,3 @@ class ReferenceInputBlobArgs {
     );
   }
 }
-

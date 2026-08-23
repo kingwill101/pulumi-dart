@@ -42,4 +42,3 @@ class GetLinuxFunctionAppAuthSettingsV2MicrosoftV2 {
     );
   }
 }
-

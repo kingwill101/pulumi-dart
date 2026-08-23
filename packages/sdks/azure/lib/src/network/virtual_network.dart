@@ -215,6 +215,44 @@ import 'virtual_network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_networksecuritygroup" "example" {
+///   name                = "example-security-group"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "example-network"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   address_spaces      = ["10.0.0.0/16"]
+///   dns_servers         = ["10.0.0.4", "10.0.0.5"]
+///   subnets {
+///     name             = "subnet1"
+///     address_prefixes = ["10.0.1.0/24"]
+///   }
+///   subnets {
+///     name             = "subnet2"
+///     address_prefixes = ["10.0.2.0/24"]
+///     security_group   = azure_network_networksecuritygroup.example.id
+///   }
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +266,8 @@ import 'virtual_network_state.dart';
 /// import com.pulumi.azure.network.VirtualNetwork;
 /// import com.pulumi.azure.network.VirtualNetworkArgs;
 /// import com.pulumi.azure.network.inputs.VirtualNetworkSubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -332,17 +370,17 @@ import 'virtual_network_state.dart';
 class VirtualNetwork extends pulumi.CustomResource {
   /// The address space that is used the virtual network. You can supply more than one address space.
   ///
-  /// &gt; **Note:** Exactly one of `address_space` or `ip_address_pool` must be specified.
+  /// &gt; **Note:** Exactly one of `addressSpace` or `ipAddressPool` must be specified.
   late final pulumi.Output<List<String>?> addressSpaces;
   /// The BGP community attribute in format `&lt;as-number&gt;:&lt;community-value&gt;`.
   ///
   /// &gt; **NOTE** The `as-number` segment is the Microsoft ASN, which is always `12076` for now.
   late final pulumi.Output<String?> bgpCommunity;
-  /// A `ddos_protection_plan` block as documented below.
+  /// A `ddosProtectionPlan` block as documented below.
   late final pulumi.Output<VirtualNetworkDdosProtectionPlan?> ddosProtectionPlan;
   /// List of IP addresses of DNS servers
   ///
-  /// &gt; **NOTE** Since `dns_servers` can be configured both inline and via the separate `azure.network.VirtualNetworkDnsServers` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
+  /// &gt; **NOTE** Since `dnsServers` can be configured both inline and via the separate `azure.network.VirtualNetworkDnsServers` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
   late final pulumi.Output<List<String>> dnsServers;
   /// Specifies the Edge Zone within the Azure Region where this Virtual Network should exist. Changing this forces a new Virtual Network to be created.
   late final pulumi.Output<String?> edgeZone;
@@ -352,9 +390,9 @@ class VirtualNetwork extends pulumi.CustomResource {
   late final pulumi.Output<int?> flowTimeoutInMinutes;
   /// The GUID of the Virtual Network.
   late final pulumi.Output<String> guid;
-  /// One or more `ip_address_pool` blocks as defined below. Only one association of each IP type(IPv4 or IPv6) is allowed.
+  /// One or more `ipAddressPool` blocks as defined below. Only one association of each IP type(IPv4 or IPv6) is allowed.
   ///
-  /// &gt; **Note:** Exactly one of `address_space` or `ip_address_pool` must be specified.
+  /// &gt; **Note:** Exactly one of `addressSpace` or `ipAddressPool` must be specified.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipAddressPools;
   /// The location/region where the virtual network is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;

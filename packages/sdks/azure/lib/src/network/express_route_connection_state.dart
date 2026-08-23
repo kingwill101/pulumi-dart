@@ -7,7 +7,6 @@ import 'express_route_connection_routing.dart';
 class ExpressRouteConnectionState {
   /// The authorization key to establish the Express Route Connection.
   final pulumi.Input<String>? authorizationKey;
-  /// Is Internet security enabled for this Express Route Connection?
   final pulumi.Input<bool>? enableInternetSecurity;
   /// The ID of the Express Route Circuit Peering that this Express Route Connection connects with. Changing this forces a new resource to be created.
   final pulumi.Input<String>? expressRouteCircuitPeeringId;
@@ -15,6 +14,8 @@ class ExpressRouteConnectionState {
   final pulumi.Input<bool>? expressRouteGatewayBypassEnabled;
   /// The ID of the Express Route Gateway that this Express Route Connection connects with. Changing this forces a new resource to be created.
   final pulumi.Input<String>? expressRouteGatewayId;
+  /// Is Internet security enabled for this Express Route Connection? Defaults to `false`.
+  final pulumi.Input<bool>? internetSecurityEnabled;
   /// The name which should be used for this Express Route Connection. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
   final pulumi.Input<bool>? privateLinkFastPathEnabled;
@@ -25,10 +26,11 @@ class ExpressRouteConnectionState {
 
   /// Creates a new [ExpressRouteConnectionState].
   /// [authorizationKey] The authorization key to establish the Express Route Connection.
-  /// [enableInternetSecurity] Is Internet security enabled for this Express Route Connection?
+  /// [enableInternetSecurity] Optional.
   /// [expressRouteCircuitPeeringId] The ID of the Express Route Circuit Peering that this Express Route Connection connects with. Changing this forces a new resource to be created.
   /// [expressRouteGatewayBypassEnabled] Specified whether Fast Path is enabled for Virtual Wan Firewall Hub. Defaults to `false`.
   /// [expressRouteGatewayId] The ID of the Express Route Gateway that this Express Route Connection connects with. Changing this forces a new resource to be created.
+  /// [internetSecurityEnabled] Is Internet security enabled for this Express Route Connection? Defaults to `false`.
   /// [name] The name which should be used for this Express Route Connection. Changing this forces a new resource to be created.
   /// [privateLinkFastPathEnabled] Optional.
   /// [routing] A `routing` block as defined below.
@@ -39,6 +41,7 @@ class ExpressRouteConnectionState {
     this.expressRouteCircuitPeeringId,
     this.expressRouteGatewayBypassEnabled,
     this.expressRouteGatewayId,
+    this.internetSecurityEnabled,
     this.name,
     this.privateLinkFastPathEnabled,
     this.routing,
@@ -52,6 +55,7 @@ class ExpressRouteConnectionState {
       'expressRouteCircuitPeeringId': ?expressRouteCircuitPeeringId,
       'expressRouteGatewayBypassEnabled': ?expressRouteGatewayBypassEnabled,
       'expressRouteGatewayId': ?expressRouteGatewayId,
+      'internetSecurityEnabled': ?internetSecurityEnabled,
       'name': ?name,
       'privateLinkFastPathEnabled': ?privateLinkFastPathEnabled,
       'routing': ?pulumi.Input.mapOptionalInputValue<ExpressRouteConnectionRouting, Map<String, dynamic>>(routing, (value) => value.toMap()),
@@ -66,6 +70,7 @@ class ExpressRouteConnectionState {
       expressRouteCircuitPeeringId: (() { final guardedValue = map['expressRouteCircuitPeeringId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expressRouteGatewayBypassEnabled: (() { final guardedValue = map['expressRouteGatewayBypassEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       expressRouteGatewayId: (() { final guardedValue = map['expressRouteGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      internetSecurityEnabled: (() { final guardedValue = map['internetSecurityEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateLinkFastPathEnabled: (() { final guardedValue = map['privateLinkFastPathEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       routing: (() { final guardedValue = map['routing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExpressRouteConnectionRouting.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -73,4 +78,3 @@ class ExpressRouteConnectionState {
     );
   }
 }
-

@@ -128,6 +128,34 @@ import 'data_connector_microsoft_threat_intelligence_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "east us"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-workspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
+///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// resource "azure_sentinel_dataconnectormicrosoftthreatintelligence" "example" {
+///   name                                         = "example-dc-msti"
+///   log_analytics_workspace_id                   = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+///   microsoft_emerging_threat_feed_lookback_date = "1970-01-01T00:00:00Z"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +170,8 @@ import 'data_connector_microsoft_threat_intelligence_state.dart';
 /// import com.pulumi.azure.sentinel.LogAnalyticsWorkspaceOnboardingArgs;
 /// import com.pulumi.azure.sentinel.DataConnectorMicrosoftThreatIntelligence;
 /// import com.pulumi.azure.sentinel.DataConnectorMicrosoftThreatIntelligenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -255,6 +255,58 @@ import 'trigger_tumbling_window_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_pipeline" "example" {
+///   name            = "example"
+///   data_factory_id = azure_datafactory_factory.example.id
+/// }
+/// resource "azure_datafactory_triggertumblingwindow" "example" {
+///   name            = "example"
+///   data_factory_id = azure_datafactory_factory.example.id
+///   start_time      = "2022-09-21T00:00:00Z"
+///   end_time        = "2022-09-21T08:00:00Z"
+///   frequency       = "Minute"
+///   interval        = 15
+///   delay           = "16:00:00"
+///   annotations     = ["example1", "example2", "example3"]
+///   description     = "example description"
+///   retry = {
+///     count    = 1
+///     interval = 30
+///   }
+///   pipeline = {
+///     name = azure_datafactory_pipeline.example.name
+///     parameters = {
+///       "Env" = "Prod"
+///     }
+///   }
+///   trigger_dependencies {
+///     size   = "24:00:00"
+///     offset = "-24:00:00"
+///   }
+///   additional_properties = {
+///     "foo" = "value1"
+///     "bar" = "value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -272,8 +324,8 @@ import 'trigger_tumbling_window_state.dart';
 /// import com.pulumi.azure.datafactory.inputs.TriggerTumblingWindowRetryArgs;
 /// import com.pulumi.azure.datafactory.inputs.TriggerTumblingWindowPipelineArgs;
 /// import com.pulumi.azure.datafactory.inputs.TriggerTumblingWindowTriggerDependencyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -423,7 +475,7 @@ class TriggerTumblingWindow extends pulumi.CustomResource {
   late final pulumi.Output<TriggerTumblingWindowRetry?> retry;
   /// Specifies the start time of Tumbling Window, formatted as an RFC3339 string. Changing this forces a new resource.
   late final pulumi.Output<String> startTime;
-  /// One or more `trigger_dependency` block as defined below.
+  /// One or more `triggerDependency` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> triggerDependencies;
 
   /// Creates a new [TriggerTumblingWindow].

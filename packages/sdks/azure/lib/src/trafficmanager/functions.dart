@@ -65,6 +65,23 @@ import 'get_geographical_location_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_network_gettrafficmanager" "example" {
+///   name = "World"
+/// }
+///
+/// output "locationCode" {
+///   value = data.azure_network_gettrafficmanager.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +90,8 @@ import 'get_geographical_location_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.network.NetworkFunctions;
 /// import com.pulumi.azure.network.inputs.GetTrafficManagerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

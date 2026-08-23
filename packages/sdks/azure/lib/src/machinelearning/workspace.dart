@@ -221,6 +221,54 @@ import 'workspace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "workspace-example-ai"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                = "workspaceexamplekeyvault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name            = "premium"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "workspacestorageaccount"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+/// }
+/// resource "azure_machinelearning_workspace" "example" {
+///   name                    = "example-workspace"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   application_insights_id = azure_appinsights_insights.example.id
+///   key_vault_id            = azure_keyvault_keyvault.example.id
+///   storage_account_id      = azure_storage_account.example.id
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -239,8 +287,8 @@ import 'workspace_state.dart';
 /// import com.pulumi.azure.machinelearning.Workspace;
 /// import com.pulumi.azure.machinelearning.WorkspaceArgs;
 /// import com.pulumi.azure.machinelearning.inputs.WorkspaceIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -717,6 +765,73 @@ import 'workspace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "workspace-example-ai"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                     = "workspaceexamplekeyvault"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                 = "premium"
+///   purge_protection_enabled = true
+/// }
+/// resource "azure_keyvault_accesspolicy" "example" {
+///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
+///   object_id       = data.azure_core_getclientconfig.current.object_id
+///   key_permissions = ["Create", "Get", "Delete", "Purge", "GetRotationPolicy"]
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "workspacestorageaccount"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   account_tier             = "Standard"
+///   account_replication_type = "GRS"
+/// }
+/// resource "azure_keyvault_key" "example" {
+///   depends_on   = [azure_keyvault_keyvault.example, azure_keyvault_accesspolicy.example]
+///   name         = "workspaceexamplekeyvaultkey"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+/// }
+/// resource "azure_machinelearning_workspace" "example" {
+///   name                    = "example-workspace"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   application_insights_id = azure_appinsights_insights.example.id
+///   key_vault_id            = azure_keyvault_keyvault.example.id
+///   storage_account_id      = azure_storage_account.example.id
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   encryption = {
+///     key_vault_id = azure_keyvault_keyvault.example.id
+///     key_id       = azure_keyvault_key.example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -741,8 +856,8 @@ import 'workspace_state.dart';
 /// import com.pulumi.azure.machinelearning.inputs.WorkspaceIdentityArgs;
 /// import com.pulumi.azure.machinelearning.inputs.WorkspaceEncryptionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -936,7 +1051,7 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String> applicationInsightsId;
   /// The ID of the container registry associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The `admin_enabled` should be `true` in order to associate the Container Registry to this Machine Learning Workspace.
+  /// &gt; **Note:** The `adminEnabled` should be `true` in order to associate the Container Registry to this Machine Learning Workspace.
   late final pulumi.Output<String?> containerRegistryId;
   /// The description of this Machine Learning Workspace.
   late final pulumi.Output<String?> description;
@@ -944,7 +1059,7 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String> discoveryUrl;
   /// An `encryption` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<WorkspaceEncryption?> encryption;
-  /// A `feature_store` block as defined below.
+  /// A `featureStore` block as defined below.
   late final pulumi.Output<WorkspaceFeatureStore?> featureStore;
   /// Display name for this Machine Learning Workspace.
   late final pulumi.Output<String?> friendlyName;
@@ -960,7 +1075,7 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String?> kind;
   /// Specifies the supported Azure location where the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-  /// A `managed_network` block as defined below.
+  /// A `managedNetwork` block as defined below.
   late final pulumi.Output<WorkspaceManagedNetwork> managedNetwork;
   /// Specifies the name of the Machine Learning Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
@@ -968,25 +1083,27 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String?> primaryUserAssignedIdentity;
   /// Enable public access when this Machine Learning Workspace is behind VNet. Defaults to `true`.
   ///
-  /// &gt; **Note:** `public_access_behind_virtual_network_enabled` is deprecated and will be removed in favour of the property `public_network_access_enabled`.
+  /// &gt; **Note:** `publicAccessBehindVirtualNetworkEnabled` is deprecated and will be removed in favour of the property `publicNetworkAccessEnabled`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
   /// Specifies the name of the Resource Group in which the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  /// A `serverless_compute` block as defined below.
+  /// A `serverlessCompute` block as defined below.
   late final pulumi.Output<WorkspaceServerlessCompute?> serverlessCompute;
   /// Whether to enable service-side encryption with customer-managed keys (CMK). Default to `false`. Changing this forces a new resource to be created.
   ///
-  /// !&gt; **Note:** Setting `service_side_encryption_enabled` requires the `encryption` block to be set. When you use service-side encryption, Azure charges will continue to accrue during the soft delete retention period.
+  /// &gt; **Note:** Setting `serviceSideEncryptionEnabled` requires the `encryption` block to be set. When you use service-side encryption, Azure charges will continue to accrue during the soft delete retention period.
   late final pulumi.Output<bool?> serviceSideEncryptionEnabled;
   /// SKU/edition of the Machine Learning Workspace, possible values are `Free`, `Basic`, `Standard` and `Premium`. Defaults to `Basic`.
   late final pulumi.Output<String?> skuName;
+  /// The access type for the system storage account. Possible values are `AccessKey` and `Identity`. Defaults to `AccessKey`.
+  late final pulumi.Output<String?> storageAccountAccessType;
   /// The ID of the Storage Account associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** The `account_tier` cannot be `Premium` in order to associate the Storage Account to this Machine Learning Workspace.
+  /// &gt; **Note:** The `accountTier` cannot be `Premium` in order to associate the Storage Account to this Machine Learning Workspace.
   late final pulumi.Output<String> storageAccountId;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Enable V1 API features, enabling `v1_legacy_mode` may prevent you from using features provided by the v2 API. Defaults to `false`.
+  /// Enable V1 API features, enabling `v1LegacyMode` may prevent you from using features provided by the v2 API. Defaults to `false`.
   late final pulumi.Output<bool?> v1LegacyModeEnabled;
   /// The immutable id associated with this workspace.
   late final pulumi.Output<String> workspaceId;
@@ -1026,6 +1143,7 @@ class Workspace extends pulumi.CustomResource {
     serverlessCompute = registerOutput<WorkspaceServerlessCompute?>('serverlessCompute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceServerlessCompute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceSideEncryptionEnabled = registerOutput<bool?>('serviceSideEncryptionEnabled');
     skuName = registerOutput<String?>('skuName');
+    storageAccountAccessType = registerOutput<String?>('storageAccountAccessType');
     storageAccountId = registerOutput<String>('storageAccountId');
     tags = registerOutput<Map<String, String>?>('tags');
     v1LegacyModeEnabled = registerOutput<bool?>('v1LegacyModeEnabled');
@@ -1076,6 +1194,7 @@ class Workspace extends pulumi.CustomResource {
     serverlessCompute = registerOutput<WorkspaceServerlessCompute?>('serverlessCompute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceServerlessCompute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceSideEncryptionEnabled = registerOutput<bool?>('serviceSideEncryptionEnabled');
     skuName = registerOutput<String?>('skuName');
+    storageAccountAccessType = registerOutput<String?>('storageAccountAccessType');
     storageAccountId = registerOutput<String>('storageAccountId');
     tags = registerOutput<Map<String, String>?>('tags');
     v1LegacyModeEnabled = registerOutput<bool?>('v1LegacyModeEnabled');

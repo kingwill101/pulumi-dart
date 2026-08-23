@@ -118,6 +118,32 @@ import 'registry_agent_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "West Europ"
+/// }
+/// resource "azure_containerservice_registry" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "Premium"
+/// }
+/// resource "azure_containerservice_registryagentpool" "example" {
+///   name                    = "example"
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = azure_core_resourcegroup.example.location
+///   container_registry_name = azure_containerservice_registry.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +156,8 @@ import 'registry_agent_pool_state.dart';
 /// import com.pulumi.azure.containerservice.RegistryArgs;
 /// import com.pulumi.azure.containerservice.RegistryAgentPool;
 /// import com.pulumi.azure.containerservice.RegistryAgentPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -4,7 +4,7 @@ import 'flexible_server_configuration_state.dart';
 
 /// Sets a PostgreSQL Configuration value on a Azure PostgreSQL Flexible Server.
 ///
-/// &gt; **Note:** Changes to static server parameters will automatically trigger Azure Flex Server restart. This behavior can be disabled in the provider `features` block by setting the `restart_server_on_configuration_value_change` field to `false` within the `postgresql_flexible_server` block.
+/// &gt; **Note:** Changes to static server parameters will automatically trigger Azure Flex Server restart. This behavior can be disabled in the provider `features` block by setting the `restartServerOnConfigurationValueChange` field to `false` within the `postgresqlFlexibleServer` block.
 ///
 /// ## Example Usage
 ///
@@ -132,6 +132,35 @@ import 'flexible_server_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_postgresql_flexibleserver" "example" {
+///   name                   = "example-psqlflexibleserver"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resourcegroup.example.location
+///   version                = "12"
+///   administrator_login    = "psqladmin"
+///   administrator_password = "H@Sh1CoR3!"
+///   storage_mb             = 32768
+///   sku_name               = "GP_Standard_D4s_v3"
+/// }
+/// resource "azure_postgresql_flexibleserverconfiguration" "example" {
+///   name      = "backslash_quote"
+///   server_id = azure_postgresql_flexibleserver.example.id
+///   value     = "on"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -144,8 +173,8 @@ import 'flexible_server_configuration_state.dart';
 /// import com.pulumi.azure.postgresql.FlexibleServerArgs;
 /// import com.pulumi.azure.postgresql.FlexibleServerConfiguration;
 /// import com.pulumi.azure.postgresql.FlexibleServerConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -337,6 +366,35 @@ import 'flexible_server_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_postgresql_flexibleserver" "example" {
+///   name                   = "example-psqlflexibleserver"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resourcegroup.example.location
+///   version                = "12"
+///   administrator_login    = "psqladmin"
+///   administrator_password = "H@Sh1CoR3!"
+///   storage_mb             = 32768
+///   sku_name               = "GP_Standard_D4s_v3"
+/// }
+/// resource "azure_postgresql_flexibleserverconfiguration" "example" {
+///   name      = "azure.extensions"
+///   server_id = azure_postgresql_flexibleserver.example.id
+///   value     = "CUBE,CITEXT,BTREE_GIST"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -349,8 +407,8 @@ import 'flexible_server_configuration_state.dart';
 /// import com.pulumi.azure.postgresql.FlexibleServerArgs;
 /// import com.pulumi.azure.postgresql.FlexibleServerConfiguration;
 /// import com.pulumi.azure.postgresql.FlexibleServerConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

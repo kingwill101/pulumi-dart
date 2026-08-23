@@ -7,7 +7,7 @@ import 'spring_cloud_builder_state.dart';
 ///
 /// &gt; **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
 ///
-/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudBuilder` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudBuilder` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -159,6 +159,38 @@ import 'spring_cloud_builder_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appplatform_springcloudservice" "example" {
+///   name                = "example-springcloud"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku_name            = "E0"
+/// }
+/// resource "azure_appplatform_springcloudbuilder" "example" {
+///   name                    = "example"
+///   spring_cloud_service_id = azure_appplatform_springcloudservice.example.id
+///   build_pack_groups {
+///     name           = "mix"
+///     build_pack_ids = ["tanzu-buildpacks/java-azure"]
+///   }
+///   stack = {
+///     id      = "io.buildpacks.stacks.bionic"
+///     version = "base"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -173,8 +205,8 @@ import 'spring_cloud_builder_state.dart';
 /// import com.pulumi.azure.appplatform.SpringCloudBuilderArgs;
 /// import com.pulumi.azure.appplatform.inputs.SpringCloudBuilderBuildPackGroupArgs;
 /// import com.pulumi.azure.appplatform.inputs.SpringCloudBuilderStackArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -253,7 +285,7 @@ import 'spring_cloud_builder_state.dart';
 /// $ pulumi import azure:appplatform/springCloudBuilder:SpringCloudBuilder example /subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/resourceGroup1/providers/Microsoft.AppPlatform/spring/service1/buildServices/buildService1/builders/builder1
 /// ```
 class SpringCloudBuilder extends pulumi.CustomResource {
-  /// One or more `build_pack_group` blocks as defined below.
+  /// One or more `buildPackGroup` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> buildPackGroups;
   /// The name which should be used for this Spring Cloud Builder. Changing this forces a new Spring Cloud Builder to be created.
   late final pulumi.Output<String> name;

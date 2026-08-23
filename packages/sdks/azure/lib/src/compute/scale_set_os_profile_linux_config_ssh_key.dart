@@ -7,7 +7,7 @@ class ScaleSetOsProfileLinuxConfigSshKey {
   ///
   /// &gt; **Note:** Azure only supports RSA SSH2 key signatures of at least 2048 bits in length
   ///
-  /// &gt; **NOTE:** Rather than defining this in-line you can source this from a local file using the `file` function - for example `key_data = file("~/.ssh/id_rsa.pub")`.
+  /// &gt; **NOTE:** Rather than defining this in-line you can source this from a local file using the `file` function - for example `keyData = file("~/.ssh/id_rsa.pub")`.
   final pulumi.Input<String>? keyData;
   /// The path of the destination file on the virtual machine
   ///
@@ -36,4 +36,3 @@ class ScaleSetOsProfileLinuxConfigSshKey {
     );
   }
 }
-

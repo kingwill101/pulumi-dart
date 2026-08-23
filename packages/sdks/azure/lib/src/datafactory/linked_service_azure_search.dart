@@ -166,7 +166,8 @@ import 'linked_service_azure_search_state.dart';
 /// 					pulumi.String(".search.windows.net"),
 /// 				},
 /// 			}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// 				return invoke.Result, nil
+/// 				val := invoke.Result
+/// 				return &val, nil
 /// 			}).(pulumi.StringPtrOutput)),
 /// 			SearchServiceKey: exampleService.PrimaryKey,
 /// 		})
@@ -175,6 +176,40 @@ import 'linked_service_azure_search_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_search_service" "example" {
+///   name                = "example-search-service"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   sku                 = "standard"
+/// }
+/// resource "azure_datafactory_linkedserviceazuresearch" "test" {
+///   name               = "example"
+///   data_factory_id    = azure_datafactory_factory.example.id
+///   url                = join("", ["https://", azure_search_service.example.name, ".search.windows.net"])
+///   search_service_key = azure_search_service.example.primary_key
 /// }
 /// ```
 /// ```java
@@ -193,8 +228,8 @@ import 'linked_service_azure_search_state.dart';
 /// import com.pulumi.azure.datafactory.LinkedServiceAzureSearchArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JoinArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

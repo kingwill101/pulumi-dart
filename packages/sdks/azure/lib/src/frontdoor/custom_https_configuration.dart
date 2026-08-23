@@ -3,19 +3,19 @@ import 'custom_https_configuration_args.dart';
 import 'custom_https_configuration_custom_https_configuration.dart';
 import 'custom_https_configuration_state.dart';
 
-/// !&gt; **Note:** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
+/// &gt; **Note:** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
 ///
 /// Manages the Custom HTTPS Configuration for an Azure Front Door (classic) Frontend Endpoint.
 ///
 /// &gt; **Note:** Defining custom HTTPS configurations using a separate `azure.frontdoor.CustomHttpsConfiguration` resource allows for parallel creation/update.
 ///
-/// !&gt; **Note:** In order to address the ordering issue we have changed the design on how to retrieve existing sub resources such as frontend endpoints. Existing design will be deprecated and will result in an incorrect configuration. Please refer to the updated documentation below for more information.
+/// &gt; **Note:** In order to address the ordering issue we have changed the design on how to retrieve existing sub resources such as frontend endpoints. Existing design will be deprecated and will result in an incorrect configuration. Please refer to the updated documentation below for more information.
 ///
-/// !&gt; **Note:** The `resource_group_name` field has been removed as of the `v2.58.0` provider release. If the `resource_group_name` field has been defined in your current `azure.frontdoor.CustomHttpsConfiguration` resource configuration file please remove it else you will receive a `An argument named "resource_group_name" is not expected here.` error. If your pre-existing Front Door instance contained inline `custom_https_configuration` blocks there are additional steps that will need to be completed to successfully migrate your Front Door onto the `v2.58.0` provider which can be found in this guide.
+/// &gt; **Note:** The `resourceGroupName` field has been removed as of the `v2.58.0` provider release. If the `resourceGroupName` field has been defined in your current `azure.frontdoor.CustomHttpsConfiguration` resource configuration file please remove it else you will receive a `An argument named "resourceGroupName" is not expected here.` error. If your pre-existing Front Door instance contained inline `customHttpsConfiguration` blocks there are additional steps that will need to be completed to successfully migrate your Front Door onto the `v2.58.0` provider which can be found in this guide.
 ///
-/// !&gt; **Note:** Azure rolled out a breaking change on Friday 9th April 2021 which may cause issues with the CDN/FrontDoor resources. More information is available in this GitHub issue - unfortunately this may necessitate a breaking change to the CDN and Front Door resources, more information will be posted in the GitHub issue as the necessary changes are identified.
+/// &gt; **Note:** Azure rolled out a breaking change on Friday 9th April 2021 which may cause issues with the CDN/FrontDoor resources. More information is available in this GitHub issue - unfortunately this may necessitate a breaking change to the CDN and Front Door resources, more information will be posted in the GitHub issue as the necessary changes are identified.
 ///
-/// !&gt; **Note:** The creation of new Azure Front Door (classic) resources is no longer supported following its deprecation on `April 1, 2025`. However, modifications to existing Azure Front Door (classic) resources will continue to be supported until the API reaches full retirement on `March 31, 2027`.
+/// &gt; **Note:** The creation of new Azure Front Door (classic) resources is no longer supported following its deprecation on `April 1, 2025`. However, modifications to existing Azure Front Door (classic) resources will continue to be supported until the API reaches full retirement on `March 31, 2027`.
 ///
 /// ## Example Usage
 ///
@@ -360,7 +360,7 @@ import 'custom_https_configuration_state.dart';
 /// 		}
 /// 		_, err = frontdoor.NewCustomHttpsConfiguration(ctx, "example_custom_https_0", &frontdoor.CustomHttpsConfigurationArgs{
 /// 			FrontendEndpointId: exampleFrontdoor.FrontendEndpointsMap.ApplyT(func(frontendEndpointsMap map[string]string) (string, error) {
-/// 				return frontendEndpointsMap.ExampleFrontendEndpoint1, nil
+/// 				return frontendEndpointsMap["exampleFrontendEndpoint1"], nil
 /// 			}).(pulumi.StringOutput),
 /// 			CustomHttpsProvisioningEnabled: pulumi.Bool(false),
 /// 		})
@@ -369,7 +369,7 @@ import 'custom_https_configuration_state.dart';
 /// 		}
 /// 		_, err = frontdoor.NewCustomHttpsConfiguration(ctx, "example_custom_https_1", &frontdoor.CustomHttpsConfigurationArgs{
 /// 			FrontendEndpointId: exampleFrontdoor.FrontendEndpointsMap.ApplyT(func(frontendEndpointsMap map[string]string) (string, error) {
-/// 				return frontendEndpointsMap.ExampleFrontendEndpoint2, nil
+/// 				return frontendEndpointsMap["exampleFrontendEndpoint2"], nil
 /// 			}).(pulumi.StringOutput),
 /// 			CustomHttpsProvisioningEnabled: pulumi.Bool(true),
 /// 			CustomHttpsConfiguration: &frontdoor.CustomHttpsConfigurationCustomHttpsConfigurationArgs{
@@ -383,6 +383,77 @@ import 'custom_https_configuration_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_keyvault_getkeyvault" "vault" {
+///   name                = "example-vault"
+///   resource_group_name = "example-vault-rg"
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "FrontDoorExampleResourceGroup"
+///   location = "West Europe"
+/// }
+/// resource "azure_frontdoor_frontdoor" "example" {
+///   name                = "example-FrontDoor"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   routing_rules {
+///     name                = "exampleRoutingRule1"
+///     accepted_protocols  = ["Http", "Https"]
+///     patterns_to_matches = ["/*"]
+///     frontend_endpoints  = ["exampleFrontendEndpoint1"]
+///     forwarding_configuration = {
+///       forwarding_protocol = "MatchRequest"
+///       backend_pool_name   = "exampleBackendBing"
+///     }
+///   }
+///   backend_pool_load_balancings {
+///     name = "exampleLoadBalancingSettings1"
+///   }
+///   backend_pool_health_probes {
+///     name = "exampleHealthProbeSetting1"
+///   }
+///   backend_pools {
+///     name = "exampleBackendBing"
+///     backends {
+///       host_header = "www.bing.com"
+///       address     = "www.bing.com"
+///       http_port   = 80
+///       https_port  = 443
+///     }
+///     load_balancing_name = "exampleLoadBalancingSettings1"
+///     health_probe_name   = "exampleHealthProbeSetting1"
+///   }
+///   frontend_endpoints {
+///     name      = "exampleFrontendEndpoint1"
+///     host_name = "example-FrontDoor.azurefd.net"
+///   }
+///   frontend_endpoints {
+///     name      = "exampleFrontendEndpoint2"
+///     host_name = "examplefd1.examplefd.net"
+///   }
+/// }
+/// resource "azure_frontdoor_customhttpsconfiguration" "example_custom_https_0" {
+///   frontend_endpoint_id              = azure_frontdoor_frontdoor.example.frontend_endpoints_map["exampleFrontendEndpoint1"]
+///   custom_https_provisioning_enabled = false
+/// }
+/// resource "azure_frontdoor_customhttpsconfiguration" "example_custom_https_1" {
+///   frontend_endpoint_id              = azure_frontdoor_frontdoor.example.frontend_endpoints_map["exampleFrontendEndpoint2"]
+///   custom_https_provisioning_enabled = true
+///   custom_https_configuration = {
+///     certificate_source                      = "AzureKeyVault"
+///     azure_key_vault_certificate_secret_name = "examplefd1"
+///     azure_key_vault_certificate_vault_id    = data.azure_keyvault_getkeyvault.vault.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -402,12 +473,13 @@ import 'custom_https_configuration_state.dart';
 /// import com.pulumi.azure.frontdoor.inputs.FrontdoorBackendPoolLoadBalancingArgs;
 /// import com.pulumi.azure.frontdoor.inputs.FrontdoorBackendPoolHealthProbeArgs;
 /// import com.pulumi.azure.frontdoor.inputs.FrontdoorBackendPoolArgs;
+/// import com.pulumi.azure.frontdoor.inputs.FrontdoorBackendPoolBackendArgs;
 /// import com.pulumi.azure.frontdoor.inputs.FrontdoorFrontendEndpointArgs;
 /// import com.pulumi.azure.frontdoor.CustomHttpsConfiguration;
 /// import com.pulumi.azure.frontdoor.CustomHttpsConfigurationArgs;
 /// import com.pulumi.azure.frontdoor.inputs.CustomHttpsConfigurationCustomHttpsConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -567,7 +639,7 @@ import 'custom_https_configuration_state.dart';
 /// $ pulumi import azure:frontdoor/customHttpsConfiguration:CustomHttpsConfiguration example_custom_https_1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/frontDoors/frontdoor1/customHttpsConfiguration/endpoint1
 /// ```
 class CustomHttpsConfiguration extends pulumi.CustomResource {
-  /// A `custom_https_configuration` block as defined above.
+  /// A `customHttpsConfiguration` block as defined above.
   late final pulumi.Output<CustomHttpsConfigurationCustomHttpsConfiguration?> customHttpsConfiguration;
   /// Should the HTTPS protocol be enabled for this custom domain associated with the Front Door?
   late final pulumi.Output<bool> customHttpsProvisioningEnabled;

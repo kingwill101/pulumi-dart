@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'single_node_virtual_instance_single_server_configuration_virtual_machine_resource_names_data_disk.dart';
 
 class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNames {
-  /// (Optional) One or more `data_disk` blocks as defined below. Changing this forces a new resource to be created.
+  /// (Optional) One or more `dataDisk` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesDataDisk>>? dataDisks;
   /// The full name of the host of the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String>? hostName;
@@ -16,7 +16,7 @@ class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNa
   final pulumi.Input<String>? virtualMachineName;
 
   /// Creates a new [SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNames].
-  /// [dataDisks] (Optional) One or more `data_disk` blocks as defined below. Changing this forces a new resource to be created.
+  /// [dataDisks] (Optional) One or more `dataDisk` blocks as defined below. Changing this forces a new resource to be created.
   /// [hostName] The full name of the host of the Virtual Machine. Changing this forces a new resource to be created.
   /// [networkInterfaceNames] A list of full names for the Network Interface of the Virtual Machine. Changing this forces a new resource to be created.
   /// [osDiskName] The full name of the OS Disk attached to the Virtual Machine. Changing this forces a new resource to be created.
@@ -49,4 +49,3 @@ class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNa
     );
   }
 }
-

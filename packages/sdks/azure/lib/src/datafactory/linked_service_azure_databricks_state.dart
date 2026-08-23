@@ -19,20 +19,20 @@ class LinkedServiceAzureDatabricksState {
   final pulumi.Input<String>? dataFactoryId;
   /// The description for the Data Factory Linked Service.
   final pulumi.Input<String>? description;
-  /// The cluster_id of an existing cluster within the linked ADB instance.
+  /// The clusterId of an existing cluster within the linked ADB instance.
   final pulumi.Input<String>? existingClusterId;
-  /// Leverages an instance pool within the linked ADB instance as one `instance_pool` block defined below.
+  /// Leverages an instance pool within the linked ADB instance as one `instancePool` block defined below.
   final pulumi.Input<LinkedServiceAzureDatabricksInstancePool>? instancePool;
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   final pulumi.Input<String>? integrationRuntimeName;
-  /// Authenticate to ADB via Azure Key Vault Linked Service as defined in the `key_vault_password` block below.
+  /// Authenticate to ADB via Azure Key Vault Linked Service as defined in the `keyVaultPassword` block below.
   final pulumi.Input<LinkedServiceAzureDatabricksKeyVaultPassword>? keyVaultPassword;
   final pulumi.Input<String>? msiWorkSpaceResourceId;
   /// Authenticate to ADB via managed service identity.
   final pulumi.Input<String>? msiWorkspaceId;
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
-  /// Creates new clusters within the linked ADB instance as defined in the `new_cluster_config` block below.
+  /// Creates new clusters within the linked ADB instance as defined in the `newClusterConfig` block below.
   final pulumi.Input<LinkedServiceAzureDatabricksNewClusterConfig>? newClusterConfig;
   /// A map of parameters to associate with the Data Factory Linked Service.
   final pulumi.Input<Map<String, String>>? parameters;
@@ -44,14 +44,14 @@ class LinkedServiceAzureDatabricksState {
   /// [annotations] List of tags that can be used for describing the Data Factory Linked Service.
   /// [dataFactoryId] The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   /// [description] The description for the Data Factory Linked Service.
-  /// [existingClusterId] The cluster_id of an existing cluster within the linked ADB instance.
-  /// [instancePool] Leverages an instance pool within the linked ADB instance as one `instance_pool` block defined below.
+  /// [existingClusterId] The clusterId of an existing cluster within the linked ADB instance.
+  /// [instancePool] Leverages an instance pool within the linked ADB instance as one `instancePool` block defined below.
   /// [integrationRuntimeName] The integration runtime reference to associate with the Data Factory Linked Service.
-  /// [keyVaultPassword] Authenticate to ADB via Azure Key Vault Linked Service as defined in the `key_vault_password` block below.
+  /// [keyVaultPassword] Authenticate to ADB via Azure Key Vault Linked Service as defined in the `keyVaultPassword` block below.
   /// [msiWorkSpaceResourceId] Optional.
   /// [msiWorkspaceId] Authenticate to ADB via managed service identity.
   /// [name] Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  /// [newClusterConfig] Creates new clusters within the linked ADB instance as defined in the `new_cluster_config` block below.
+  /// [newClusterConfig] Creates new clusters within the linked ADB instance as defined in the `newClusterConfig` block below.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
   const LinkedServiceAzureDatabricksState({
     this.accessToken,
@@ -111,4 +111,3 @@ class LinkedServiceAzureDatabricksState {
     );
   }
 }
-

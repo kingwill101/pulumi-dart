@@ -5,13 +5,13 @@ import 'get_images_image_data_disk.dart';
 import 'get_images_image_os_disk.dart';
 
 class GetImagesImage {
-  /// One or more `data_disk` blocks as defined below.
+  /// One or more `dataDisk` blocks as defined below.
   final pulumi.Input<List<GetImagesImageDataDisk>> dataDisks;
   /// The supported Azure location where the Image exists.
   final pulumi.Input<String> location;
   /// The name of the Image.
   final pulumi.Input<String> name;
-  /// An `os_disk` block as defined below.
+  /// An `osDisk` block as defined below.
   final pulumi.Input<List<GetImagesImageOsDisk>> osDisks;
   /// A mapping of tags assigned to the Image.
   final pulumi.Input<Map<String, String>> tags;
@@ -19,10 +19,10 @@ class GetImagesImage {
   final pulumi.Input<bool> zoneResilient;
 
   /// Creates a new [GetImagesImage].
-  /// [dataDisks] One or more `data_disk` blocks as defined below.
+  /// [dataDisks] One or more `dataDisk` blocks as defined below.
   /// [location] The supported Azure location where the Image exists.
   /// [name] The name of the Image.
-  /// [osDisks] An `os_disk` block as defined below.
+  /// [osDisks] An `osDisk` block as defined below.
   /// [tags] A mapping of tags assigned to the Image.
   /// [zoneResilient] Is zone resiliency enabled?
   const GetImagesImage({
@@ -56,4 +56,3 @@ class GetImagesImage {
     );
   }
 }
-

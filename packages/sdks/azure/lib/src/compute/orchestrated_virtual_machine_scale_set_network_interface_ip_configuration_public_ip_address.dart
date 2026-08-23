@@ -4,28 +4,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'orchestrated_virtual_machine_scale_set_network_interface_ip_configuration_public_ip_address_ip_tag.dart';
 
 class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress {
-  /// The Prefix which should be used for the Domain Name Label for each Virtual Machine Instance. Azure concatenates the Domain Name Label and Virtual Machine Index to create a unique Domain Name Label for each Virtual Machine. Valid values must be between `1` and `26` characters long, start with a lower case letter, end with a lower case letter or number and contains only `a-z`, `0-9` and `hyphens`.
+  /// The Prefix which should be used for the Domain Name Label for each Virtual Machine Instance.
+  ///
+  /// &gt; **Note:** Azure concatenates the Domain Name Label and Virtual Machine Index to create a unique Domain Name Label for each Virtual Machine. Valid values must be between `1` and `26` characters long, start with a lower case letter, end with a lower case letter or number, and contain only `a-z`, `0-9`, and `hyphens`.
   final pulumi.Input<String>? domainNameLabel;
   /// The Idle Timeout in Minutes for the Public IP Address. Possible values are in the range `4` to `32`.
   final pulumi.Input<int>? idleTimeoutInMinutes;
-  /// One or more `ip_tag` blocks as defined above. Changing this forces a new resource to be created.
+  /// One or more `ipTag` blocks as defined above. Changing this forces a new resource to be created.
   final pulumi.Input<List<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>>? ipTags;
   /// The Name of the Public IP Address Configuration.
   final pulumi.Input<String> name;
   /// The ID of the Public IP Address Prefix from where Public IP Addresses should be allocated. Changing this forces a new resource to be created.
   final pulumi.Input<String>? publicIpPrefixId;
-  /// Specifies what Public IP Address SKU the Public IP Address should be provisioned as. Possible vaules include `Basic_Regional`, `Basic_Global`, `Standard_Regional` or `Standard_Global`. For more information about Public IP Address SKU's and their capabilities, please see the [product documentation](https://docs.microsoft.com/azure/virtual-network/ip-services/public-ip-addresses#sku). Changing this forces a new resource to be created.
+  /// Specifies what Public IP Address SKU the Public IP Address should be provisioned as. Possible values are `Basic_Regional`, `Basic_Global`, `Standard_Regional`, and `Standard_Global`. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** For more information about Public IP Address SKUs and their capabilities, please see the [product documentation](https://docs.microsoft.com/azure/virtual-network/ip-services/public-ip-addresses#sku).
   final pulumi.Input<String>? skuName;
   /// The Internet Protocol Version which should be used for this public IP address. Possible values are `IPv4` and `IPv6`. Defaults to `IPv4`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? version;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress].
-  /// [domainNameLabel] The Prefix which should be used for the Domain Name Label for each Virtual Machine Instance. Azure concatenates the Domain Name Label and Virtual Machine Index to create a unique Domain Name Label for each Virtual Machine. Valid values must be between `1` and `26` characters long, start with a lower case letter, end with a lower case letter or number and contains only `a-z`, `0-9` and `hyphens`.
+  /// [domainNameLabel] The Prefix which should be used for the Domain Name Label for each Virtual Machine Instance.
   /// [idleTimeoutInMinutes] The Idle Timeout in Minutes for the Public IP Address. Possible values are in the range `4` to `32`.
-  /// [ipTags] One or more `ip_tag` blocks as defined above. Changing this forces a new resource to be created.
+  /// [ipTags] One or more `ipTag` blocks as defined above. Changing this forces a new resource to be created.
   /// [name] The Name of the Public IP Address Configuration.
   /// [publicIpPrefixId] The ID of the Public IP Address Prefix from where Public IP Addresses should be allocated. Changing this forces a new resource to be created.
-  /// [skuName] Specifies what Public IP Address SKU the Public IP Address should be provisioned as. Possible vaules include `Basic_Regional`, `Basic_Global`, `Standard_Regional` or `Standard_Global`. For more information about Public IP Address SKU's and their capabilities, please see the [product documentation](https://docs.microsoft.com/azure/virtual-network/ip-services/public-ip-addresses#sku). Changing this forces a new resource to be created.
+  /// [skuName] Specifies what Public IP Address SKU the Public IP Address should be provisioned as. Possible values are `Basic_Regional`, `Basic_Global`, `Standard_Regional`, and `Standard_Global`. Changing this forces a new resource to be created.
   /// [version] The Internet Protocol Version which should be used for this public IP address. Possible values are `IPv4` and `IPv6`. Defaults to `IPv4`. Changing this forces a new resource to be created.
   const OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress({
     this.domainNameLabel,
@@ -61,4 +65,3 @@ class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpA
     );
   }
 }
-

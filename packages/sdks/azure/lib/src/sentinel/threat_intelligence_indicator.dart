@@ -144,6 +144,38 @@ import 'threat_intelligence_indicator_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-rg"
+///   location = "east us"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-law"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+///   retention_in_days   = 30
+/// }
+/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
+///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// resource "azure_sentinel_threatintelligenceindicator" "example" {
+///   workspace_id      = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+///   pattern_type      = "domain-name"
+///   pattern           = "http://example.com"
+///   source            = "Microsoft Sentinel"
+///   validate_from_utc = "2022-12-14T16:00:00Z"
+///   display_name      = "example-indicator"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -158,8 +190,8 @@ import 'threat_intelligence_indicator_state.dart';
 /// import com.pulumi.azure.sentinel.LogAnalyticsWorkspaceOnboardingArgs;
 /// import com.pulumi.azure.sentinel.ThreatIntelligenceIndicator;
 /// import com.pulumi.azure.sentinel.ThreatIntelligenceIndicatorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,15 +292,15 @@ class ThreatIntelligenceIndicator extends pulumi.CustomResource {
   late final pulumi.Output<String> externalId;
   /// the External last updated time in UTC.
   late final pulumi.Output<String> externalLastUpdatedTimeUtc;
-  /// One or more `external_reference` blocks as defined below.
+  /// One or more `externalReference` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> externalReferences;
-  /// One or more `granular_marking` blocks as defined below.
+  /// One or more `granularMarking` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> granularMarkings;
   /// The guid of this Sentinel Threat Intelligence Indicator.
   late final pulumi.Output<String> guid;
   /// A list of indicator types of this Threat Intelligence Indicator.
   late final pulumi.Output<List<String>> indicatorTypes;
-  /// One or more `kill_chain_phase` blocks as defined below.
+  /// One or more `killChainPhase` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> killChainPhases;
   /// The language of the Threat Intelligence Indicator.
   late final pulumi.Output<String?> language;
@@ -276,9 +308,9 @@ class ThreatIntelligenceIndicator extends pulumi.CustomResource {
   late final pulumi.Output<String> lastUpdatedTimeUtc;
   /// Specifies a list of Threat Intelligence marking references.
   late final pulumi.Output<List<String>?> objectMarkingRefs;
-  /// A `parsed_pattern` block as defined below.
+  /// A `parsedPattern` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> parsedPatterns;
-  /// The pattern used by the Threat Intelligence Indicator. When `pattern_type` set to `file`, `pattern` must be specified with `&lt;HashName&gt;:&lt;Value&gt;` format, such as `MD5:78ecc5c05cd8b79af480df2f8fba0b9d`.
+  /// The pattern used by the Threat Intelligence Indicator. When `patternType` set to `file`, `pattern` must be specified with `&lt;HashName&gt;:&lt;Value&gt;` format, such as `MD5:78ecc5c05cd8b79af480df2f8fba0b9d`.
   late final pulumi.Output<String> pattern;
   /// The type of pattern used by the Threat Intelligence Indicator. Possible values are `domain-name`, `file`, `ipv4-addr`, `ipv6-addr` and `url`.
   late final pulumi.Output<String> patternType;

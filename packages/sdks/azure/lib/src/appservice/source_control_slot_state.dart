@@ -7,7 +7,7 @@ import 'source_control_slot_github_action_configuration.dart';
 class SourceControlSlotState {
   /// The URL for the repository. Changing this forces a new resource to be created.
   final pulumi.Input<String>? branch;
-  /// A `github_action_configuration` block as detailed below. Changing this forces a new resource to be created.
+  /// A `githubActionConfiguration` block as detailed below. Changing this forces a new resource to be created.
   final pulumi.Input<SourceControlSlotGithubActionConfiguration>? githubActionConfiguration;
   /// The branch name to use for deployments. Changing this forces a new resource to be created.
   final pulumi.Input<String>? repoUrl;
@@ -30,7 +30,7 @@ class SourceControlSlotState {
 
   /// Creates a new [SourceControlSlotState].
   /// [branch] The URL for the repository. Changing this forces a new resource to be created.
-  /// [githubActionConfiguration] A `github_action_configuration` block as detailed below. Changing this forces a new resource to be created.
+  /// [githubActionConfiguration] A `githubActionConfiguration` block as detailed below. Changing this forces a new resource to be created.
   /// [repoUrl] The branch name to use for deployments. Changing this forces a new resource to be created.
   /// [rollbackEnabled] Should the Deployment Rollback be enabled? Defaults to `false` Changing this forces a new resource to be created.
   /// [scmType] The SCM Type in use. This value is decoded by the service from the repository information supplied.
@@ -82,4 +82,3 @@ class SourceControlSlotState {
     );
   }
 }
-

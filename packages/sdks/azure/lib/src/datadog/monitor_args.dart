@@ -10,7 +10,7 @@ import 'monitor_user.dart';
 /// {@endtemplate}
 /// {@macro pulumi_datadog_monitor_monitor_args_doc}
 class MonitorArgs {
-  /// A `datadog_organization` block as defined below.
+  /// A `datadogOrganization` block as defined below.
   final pulumi.Input<MonitorDatadogOrganization> datadogOrganization;
   /// A `identity` block as defined below.
   final pulumi.Input<MonitorIdentity>? identity;
@@ -30,7 +30,7 @@ class MonitorArgs {
   final pulumi.Input<MonitorUser> user;
 
   /// Creates a new [MonitorArgs].
-  /// [datadogOrganization] A `datadog_organization` block as defined below.
+  /// [datadogOrganization] A `datadogOrganization` block as defined below.
   /// [identity] A `identity` block as defined below.
   /// [location] The Azure Region where the Datadog Monitor should exist. Changing this forces a new Datadog Monitor to be created.
   /// [monitoringEnabled] Is monitoring enabled? Defaults to `true`.
@@ -79,4 +79,3 @@ class MonitorArgs {
     );
   }
 }
-

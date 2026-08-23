@@ -121,6 +121,33 @@ import 'resource_bridge_appliance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_arc_resourcebridgeappliance" "example" {
+///   name                    = "example-appliance"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   distro                  = "AKSEdge"
+///   infrastructure_provider = "VMWare"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   tags = {
+///     "hello" = "world"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -132,8 +159,8 @@ import 'resource_bridge_appliance_state.dart';
 /// import com.pulumi.azure.arc.ResourceBridgeAppliance;
 /// import com.pulumi.azure.arc.ResourceBridgeApplianceArgs;
 /// import com.pulumi.azure.arc.inputs.ResourceBridgeApplianceIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -213,7 +240,7 @@ class ResourceBridgeAppliance extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// The Name which should be used for this Arc Resource Bridge Appliance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// The `public_key_base64` is an RSA public key in PKCS1 format encoded in base64. Changing this forces a new resource to be created.
+  /// The `publicKeyBase64` is an RSA public key in PKCS1 format encoded in base64. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> publicKeyBase64;
   /// Specifies the resource group where the Arc Resource Bridge Appliance exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;

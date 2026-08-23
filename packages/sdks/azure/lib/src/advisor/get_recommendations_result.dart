@@ -6,7 +6,9 @@ import 'get_recommendations_recommendation.dart';
 /// Result data returned by getRecommendations.
 class GetRecommendationsResult {
   final List<String>? filterByCategories;
+  final List<String>? filterByRecommendationTypeGuids;
   final List<String>? filterByResourceGroups;
+  final List<String>? filterByResourceIds;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   /// One or more `recommendations` blocks as defined below.
@@ -14,12 +16,16 @@ class GetRecommendationsResult {
 
   /// Creates a new [GetRecommendationsResult].
   /// [filterByCategories] Optional.
+  /// [filterByRecommendationTypeGuids] Optional.
   /// [filterByResourceGroups] Optional.
+  /// [filterByResourceIds] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [recommendations] One or more `recommendations` blocks as defined below.
   const GetRecommendationsResult({
     this.filterByCategories,
+    this.filterByRecommendationTypeGuids,
     this.filterByResourceGroups,
+    this.filterByResourceIds,
     required this.id,
     required this.recommendations,
   });
@@ -27,7 +33,9 @@ class GetRecommendationsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filterByCategories': ?filterByCategories,
+      'filterByRecommendationTypeGuids': ?filterByRecommendationTypeGuids,
       'filterByResourceGroups': ?filterByResourceGroups,
+      'filterByResourceIds': ?filterByResourceIds,
       'id': id,
       'recommendations': pulumi.Input.encodeList<GetRecommendationsRecommendation, Map<String, dynamic>>(recommendations, (value) => value.toMap()),
     };
@@ -36,10 +44,11 @@ class GetRecommendationsResult {
   factory GetRecommendationsResult.fromMap(Map<String, dynamic> map) {
     return GetRecommendationsResult(
       filterByCategories: (() { final guardedValue = map['filterByCategories']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      filterByRecommendationTypeGuids: (() { final guardedValue = map['filterByRecommendationTypeGuids']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       filterByResourceGroups: (() { final guardedValue = map['filterByResourceGroups']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      filterByResourceIds: (() { final guardedValue = map['filterByResourceIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       id: map['id'] as String,
       recommendations: pulumi.Input.decodeList<GetRecommendationsRecommendation>(map['recommendations']!, (value) => GetRecommendationsRecommendation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
-

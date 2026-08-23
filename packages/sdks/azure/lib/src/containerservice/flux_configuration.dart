@@ -269,6 +269,62 @@ import 'flux_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_containerservice_kubernetescluster" "example" {
+///   name                = "example-aks"
+///   location            = "West Europe"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   dns_prefix          = "example-aks"
+///   default_node_pool = {
+///     name       = "default"
+///     node_count = 1
+///     vm_size    = "Standard_DS2_v2"
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_containerservice_kubernetesclusterextension" "example" {
+///   name           = "example-ext"
+///   cluster_id     = test.id
+///   extension_type = "microsoft.flux"
+/// }
+/// resource "azure_containerservice_fluxconfiguration" "example" {
+///   depends_on = [azure_containerservice_kubernetesclusterextension.example]
+///   name       = "example-fc"
+///   cluster_id = test.id
+///   namespace  = "flux"
+///   git_repository = {
+///     url             = "https://github.com/Azure/arc-k8s-demo"
+///     reference_type  = "branch"
+///     reference_value = "main"
+///   }
+///   kustomizations {
+///     name = "kustomization-1"
+///     post_build = {
+///       substitute = {
+///         "example_var" = "substitute_with_this"
+///       }
+///       substitute_froms = [{
+///         "kind" = "ConfigMap"
+///         "name" = "example-configmap"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -288,9 +344,10 @@ import 'flux_configuration_state.dart';
 /// import com.pulumi.azure.containerservice.inputs.FluxConfigurationGitRepositoryArgs;
 /// import com.pulumi.azure.containerservice.inputs.FluxConfigurationKustomizationArgs;
 /// import com.pulumi.azure.containerservice.inputs.FluxConfigurationKustomizationPostBuildArgs;
+/// import com.pulumi.azure.containerservice.inputs.FluxConfigurationKustomizationPostBuildSubstituteFromArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -412,17 +469,17 @@ import 'flux_configuration_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.KubernetesConfiguration` - 2024-11-01
+/// * `Microsoft.KubernetesConfiguration` - 2025-04-01
 ///
 /// ## Import
 ///
-/// Kubernetes Flux Configuration can be imported using the `resource id` for different `cluster_resource_name`, e.g.
+/// Kubernetes Flux Configuration can be imported using the `resource id` for different `clusterResourceName`, e.g.
 ///
 /// ```sh
 /// $ pulumi import azure:containerservice/fluxConfiguration:FluxConfiguration example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1/providers/Microsoft.ContainerService/managedClusters/cluster1/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/fluxConfiguration1
 /// ```
 class FluxConfiguration extends pulumi.CustomResource {
-  /// An `blob_storage` block as defined below.
+  /// An `blobStorage` block as defined below.
   late final pulumi.Output<FluxConfigurationBlobStorage?> blobStorage;
   /// A `bucket` block as defined below.
   late final pulumi.Output<FluxConfigurationBucket?> bucket;
@@ -430,7 +487,7 @@ class FluxConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> clusterId;
   /// Whether the configuration will keep its reconciliation of its kustomizations and sources with the repository. Defaults to `true`.
   late final pulumi.Output<bool?> continuousReconciliationEnabled;
-  /// A `git_repository` block as defined below.
+  /// A `gitRepository` block as defined below.
   late final pulumi.Output<FluxConfigurationGitRepository?> gitRepository;
   /// A `kustomizations` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> kustomizations;

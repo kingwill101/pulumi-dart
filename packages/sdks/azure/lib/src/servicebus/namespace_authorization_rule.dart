@@ -135,6 +135,36 @@ import 'namespace_authorization_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "my-servicebus"
+///   location = "West US"
+/// }
+/// resource "azure_servicebus_namespace" "example" {
+///   name                = "tfex-servicebus-namespace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+///   tags = {
+///     "source" = "example"
+///   }
+/// }
+/// resource "azure_servicebus_namespaceauthorizationrule" "example" {
+///   name         = "examplerule"
+///   namespace_id = azure_servicebus_namespace.example.id
+///   listen       = true
+///   send         = true
+///   manage       = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +177,8 @@ import 'namespace_authorization_rule_state.dart';
 /// import com.pulumi.azure.servicebus.NamespaceArgs;
 /// import com.pulumi.azure.servicebus.NamespaceAuthorizationRule;
 /// import com.pulumi.azure.servicebus.NamespaceAuthorizationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

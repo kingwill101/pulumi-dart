@@ -9,12 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelDirectLineSpeechArgs {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String> botName;
-  /// The ID of the Cognitive Account this Bot Channel should be associated with.
+  /// The ID of the Cognitive Account this Bot Channel should be associated with. Either `cognitiveAccountId` or both `cognitiveServiceAccessKey` and `cognitiveServiceLocation` must be specified.
+  ///
+  /// &gt; **Note:** Once added, `cognitiveAccountId` cannot be removed, doing so forces a new resource to be created.
   final pulumi.Input<String>? cognitiveAccountId;
-  /// The access key to access the Cognitive Service.
-  final pulumi.Input<String> cognitiveServiceAccessKey;
-  /// Specifies the supported Azure location where the Cognitive Service resource exists.
-  final pulumi.Input<String> cognitiveServiceLocation;
+  /// The access key to access the Cognitive Service. Either `cognitiveAccountId` or both `cognitiveServiceAccessKey` and `cognitiveServiceLocation` must be specified.
+  final pulumi.Input<String>? cognitiveServiceAccessKey;
+  /// Specifies the supported Azure location where the Cognitive Service resource exists. Either `cognitiveAccountId` or both `cognitiveServiceAccessKey` and `cognitiveServiceLocation` must be specified.
+  final pulumi.Input<String>? cognitiveServiceLocation;
   /// The custom speech model id for the Direct Line Speech Channel.
   final pulumi.Input<String>? customSpeechModelId;
   /// The custom voice deployment id for the Direct Line Speech Channel.
@@ -26,9 +28,9 @@ class ChannelDirectLineSpeechArgs {
 
   /// Creates a new [ChannelDirectLineSpeechArgs].
   /// [botName] The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
-  /// [cognitiveAccountId] The ID of the Cognitive Account this Bot Channel should be associated with.
-  /// [cognitiveServiceAccessKey] The access key to access the Cognitive Service.
-  /// [cognitiveServiceLocation] Specifies the supported Azure location where the Cognitive Service resource exists.
+  /// [cognitiveAccountId] The ID of the Cognitive Account this Bot Channel should be associated with. Either `cognitiveAccountId` or both `cognitiveServiceAccessKey` and `cognitiveServiceLocation` must be specified.
+  /// [cognitiveServiceAccessKey] The access key to access the Cognitive Service. Either `cognitiveAccountId` or both `cognitiveServiceAccessKey` and `cognitiveServiceLocation` must be specified.
+  /// [cognitiveServiceLocation] Specifies the supported Azure location where the Cognitive Service resource exists. Either `cognitiveAccountId` or both `cognitiveServiceAccessKey` and `cognitiveServiceLocation` must be specified.
   /// [customSpeechModelId] The custom speech model id for the Direct Line Speech Channel.
   /// [customVoiceDeploymentId] The custom voice deployment id for the Direct Line Speech Channel.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
@@ -36,8 +38,8 @@ class ChannelDirectLineSpeechArgs {
   const ChannelDirectLineSpeechArgs({
     required this.botName,
     this.cognitiveAccountId,
-    required this.cognitiveServiceAccessKey,
-    required this.cognitiveServiceLocation,
+    this.cognitiveServiceAccessKey,
+    this.cognitiveServiceLocation,
     this.customSpeechModelId,
     this.customVoiceDeploymentId,
     this.location,
@@ -48,8 +50,8 @@ class ChannelDirectLineSpeechArgs {
     return <String, dynamic>{
       'botName': botName,
       'cognitiveAccountId': ?cognitiveAccountId,
-      'cognitiveServiceAccessKey': cognitiveServiceAccessKey,
-      'cognitiveServiceLocation': cognitiveServiceLocation,
+      'cognitiveServiceAccessKey': ?cognitiveServiceAccessKey,
+      'cognitiveServiceLocation': ?cognitiveServiceLocation,
       'customSpeechModelId': ?customSpeechModelId,
       'customVoiceDeploymentId': ?customVoiceDeploymentId,
       'location': ?location,
@@ -61,8 +63,8 @@ class ChannelDirectLineSpeechArgs {
     return ChannelDirectLineSpeechArgs(
       botName: pulumi.Input.fromValue(map['botName'] as String),
       cognitiveAccountId: (() { final guardedValue = map['cognitiveAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cognitiveServiceAccessKey: pulumi.Input.fromValue(map['cognitiveServiceAccessKey'] as String),
-      cognitiveServiceLocation: pulumi.Input.fromValue(map['cognitiveServiceLocation'] as String),
+      cognitiveServiceAccessKey: (() { final guardedValue = map['cognitiveServiceAccessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cognitiveServiceLocation: (() { final guardedValue = map['cognitiveServiceLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customSpeechModelId: (() { final guardedValue = map['customSpeechModelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customVoiceDeploymentId: (() { final guardedValue = map['customVoiceDeploymentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -70,4 +72,3 @@ class ChannelDirectLineSpeechArgs {
     );
   }
 }
-

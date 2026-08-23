@@ -13,13 +13,13 @@ class EmailServiceDomainState {
   final pulumi.Input<String>? fromSenderDomain;
   /// P1 sender domain that is present on the email envelope [RFC 5321].
   final pulumi.Input<String>? mailFromSenderDomain;
-  /// The name of the Email Communication Service resource. If `domain_management` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
+  /// The name of the Email Communication Service resource. If `domainManagement` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
   final pulumi.Input<String>? name;
   /// A mapping of tags which should be assigned to the Email Communication Service.
   final pulumi.Input<Map<String, String>>? tags;
   /// Describes user engagement tracking is enabled or disabled. Defaults to `false`.
   final pulumi.Input<bool>? userEngagementTrackingEnabled;
-  /// (Optional) An `verification_records` block as defined below.
+  /// (Optional) An `verificationRecords` block as defined below.
   final pulumi.Input<List<EmailServiceDomainVerificationRecord>>? verificationRecords;
 
   /// Creates a new [EmailServiceDomainState].
@@ -27,10 +27,10 @@ class EmailServiceDomainState {
   /// [emailServiceId] The resource ID of the Email Communication Service where the Domain belongs to. Changing this forces a new Email Communication Service to be created.
   /// [fromSenderDomain] P2 sender domain that is displayed to the email recipients [RFC 5322].
   /// [mailFromSenderDomain] P1 sender domain that is present on the email envelope [RFC 5321].
-  /// [name] The name of the Email Communication Service resource. If `domain_management` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
+  /// [name] The name of the Email Communication Service resource. If `domainManagement` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
   /// [tags] A mapping of tags which should be assigned to the Email Communication Service.
   /// [userEngagementTrackingEnabled] Describes user engagement tracking is enabled or disabled. Defaults to `false`.
-  /// [verificationRecords] (Optional) An `verification_records` block as defined below.
+  /// [verificationRecords] (Optional) An `verificationRecords` block as defined below.
   const EmailServiceDomainState({
     this.domainManagement,
     this.emailServiceId,
@@ -68,4 +68,3 @@ class EmailServiceDomainState {
     );
   }
 }
-

@@ -60,6 +60,20 @@ import 'get_service_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_signalr_getservice" "example" {
+///   name                = "test-signalr"
+///   resource_group_name = "signalr-resource-group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +82,8 @@ import 'get_service_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.signalr.SignalrFunctions;
 /// import com.pulumi.azure.signalr.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

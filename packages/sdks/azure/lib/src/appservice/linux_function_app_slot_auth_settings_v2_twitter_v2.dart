@@ -7,7 +7,7 @@ class LinuxFunctionAppSlotAuthSettingsV2TwitterV2 {
   final pulumi.Input<String> consumerKey;
   /// The app setting name that contains the OAuth 1.0a consumer secret of the Twitter application used for sign-in.
   ///
-  /// !&gt; **Note:** A setting with this name must exist in `app_settings` to function correctly.
+  /// &gt; **Note:** A setting with this name must exist in `appSettings` to function correctly.
   final pulumi.Input<String> consumerSecretSettingName;
 
   /// Creates a new [LinuxFunctionAppSlotAuthSettingsV2TwitterV2].
@@ -32,4 +32,3 @@ class LinuxFunctionAppSlotAuthSettingsV2TwitterV2 {
     );
   }
 }
-

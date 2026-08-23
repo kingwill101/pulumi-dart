@@ -126,6 +126,35 @@ import 'gateway_api_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_apimanagement_getservice" "example" {
+///   name                = "example-api"
+///   resource_group_name = "example-resources"
+/// }
+/// data "azure_apimanagement_getapi" "exampleGetApi" {
+///   name                = "search-api"
+///   api_management_name = data.azure_apimanagement_getservice.example.name
+///   resource_group_name = data.azure_apimanagement_getservice.example.resource_group_name
+///   revision            = "2"
+/// }
+/// data "azure_apimanagement_getgateway" "exampleGetGateway" {
+///   name              = "example-gateway"
+///   api_management_id = data.azure_apimanagement_getservice.example.id
+/// }
+///
+/// resource "azure_apimanagement_gatewayapi" "example" {
+///   gateway_id = data.azure_apimanagement_getgateway.exampleGetGateway.id
+///   api_id     = data.azure_apimanagement_getapi.exampleGetApi.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +167,8 @@ import 'gateway_api_state.dart';
 /// import com.pulumi.azure.apimanagement.inputs.GetGatewayArgs;
 /// import com.pulumi.azure.apimanagement.GatewayApi;
 /// import com.pulumi.azure.apimanagement.GatewayApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

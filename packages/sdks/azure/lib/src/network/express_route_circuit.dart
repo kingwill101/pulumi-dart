@@ -129,6 +129,35 @@ import 'express_route_circuit_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "exprtTest"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_expressroutecircuit" "example" {
+///   name                  = "expressRoute1"
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   location              = azure_core_resourcegroup.example.location
+///   service_provider_name = "Equinix"
+///   peering_location      = "Silicon Valley"
+///   bandwidth_in_mbps     = 50
+///   sku = {
+///     tier   = "Standard"
+///     family = "MeteredData"
+///   }
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +169,8 @@ import 'express_route_circuit_state.dart';
 /// import com.pulumi.azure.network.ExpressRouteCircuit;
 /// import com.pulumi.azure.network.ExpressRouteCircuitArgs;
 /// import com.pulumi.azure.network.inputs.ExpressRouteCircuitSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -221,13 +250,13 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
   late final pulumi.Output<String?> authorizationKey;
   /// The bandwidth in Gbps of the circuit being created on the Express Route Port.
   ///
-  /// &gt; **Note:** The `express_route_port_id` and the `bandwidth_in_gbps` should be set together and they conflict with `service_provider_name`, `peering_location` and `bandwidth_in_mbps`.
+  /// &gt; **Note:** The `expressRoutePortId` and the `bandwidthInGbps` should be set together and they conflict with `serviceProviderName`, `peeringLocation` and `bandwidthInMbps`.
   late final pulumi.Output<double?> bandwidthInGbps;
   /// The bandwidth in Mbps of the circuit being created on the Service Provider.
   ///
   /// &gt; **Note:** Once you increase your bandwidth, you will not be able to decrease it to its previous value.
   ///
-  /// &gt; **Note:** The `service_provider_name`, the `peering_location` and the `bandwidth_in_mbps` should be set together and they conflict with `express_route_port_id` and `bandwidth_in_gbps`.
+  /// &gt; **Note:** The `serviceProviderName`, the `peeringLocation` and the `bandwidthInMbps` should be set together and they conflict with `expressRoutePortId` and `bandwidthInGbps`.
   late final pulumi.Output<int?> bandwidthInMbps;
   /// The ID of the Express Route Port this Express Route Circuit is based on. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> expressRoutePortId;

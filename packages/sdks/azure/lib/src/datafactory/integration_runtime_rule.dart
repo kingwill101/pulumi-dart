@@ -110,6 +110,30 @@ import 'integration_runtime_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_integrationruntimerule" "example" {
+///   name            = "example"
+///   data_factory_id = azure_datafactory_factory.example.id
+///   location        = azure_core_resourcegroup.example.location
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +146,8 @@ import 'integration_runtime_rule_state.dart';
 /// import com.pulumi.azure.datafactory.FactoryArgs;
 /// import com.pulumi.azure.datafactory.IntegrationRuntimeRule;
 /// import com.pulumi.azure.datafactory.IntegrationRuntimeRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -204,6 +228,10 @@ class IntegrationRuntimeRule extends pulumi.CustomResource {
   late final pulumi.Output<String> dataFactoryId;
   /// Integration runtime description.
   late final pulumi.Output<String?> description;
+  /// The time to live in minutes for the interactive authoring feature, setting this enables interactive authoring. Possible values are `10`, `30`, `60`, and `120`.
+  ///
+  /// &gt; **Note:** `interactiveAuthoringTimeToLiveInMinutes` can only be set when `virtualNetworkEnabled` is `true`.
+  late final pulumi.Output<int?> interactiveAuthoringTimeToLiveInMinutes;
   /// Specifies the supported Azure location where the resource exists. Use `AutoResolve` to create an auto-resolve integration runtime. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// Specifies the name of the Managed Integration Runtime. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
@@ -232,6 +260,7 @@ class IntegrationRuntimeRule extends pulumi.CustomResource {
     coreCount = registerOutput<int?>('coreCount');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
+    interactiveAuthoringTimeToLiveInMinutes = registerOutput<int?>('interactiveAuthoringTimeToLiveInMinutes');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     timeToLiveMin = registerOutput<int?>('timeToLiveMin');
@@ -266,6 +295,7 @@ class IntegrationRuntimeRule extends pulumi.CustomResource {
     coreCount = registerOutput<int?>('coreCount');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
+    interactiveAuthoringTimeToLiveInMinutes = registerOutput<int?>('interactiveAuthoringTimeToLiveInMinutes');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     timeToLiveMin = registerOutput<int?>('timeToLiveMin');

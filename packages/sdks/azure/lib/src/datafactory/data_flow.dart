@@ -700,6 +700,126 @@ import 'data_flow_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "example"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedcustomservice" "example" {
+///   name                 = "linked_service"
+///   data_factory_id      = azure_datafactory_factory.example.id
+///   type                 = "AzureBlobStorage"
+///   type_properties_json ="{
+///   \"connectionString\": \"${azure_storage_account.example.primary_connection_string}\"
+/// }
+/// "
+/// }
+/// resource "azure_datafactory_datasetjson" "example1" {
+///   name                = "dataset1"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   linked_service_name = azure_datafactory_linkedcustomservice.example.name
+///   azure_blob_storage_location = {
+///     container = "container"
+///     path      = "foo/bar/"
+///     filename  = "foo.txt"
+///   }
+///   encoding = "UTF-8"
+/// }
+/// resource "azure_datafactory_datasetjson" "example2" {
+///   name                = "dataset2"
+///   data_factory_id     = azure_datafactory_factory.example.id
+///   linked_service_name = azure_datafactory_linkedcustomservice.example.name
+///   azure_blob_storage_location = {
+///     container = "container"
+///     path      = "foo/bar/"
+///     filename  = "bar.txt"
+///   }
+///   encoding = "UTF-8"
+/// }
+/// resource "azure_datafactory_dataflow" "example" {
+///   name            = "example"
+///   data_factory_id = azure_datafactory_factory.example.id
+///   sources {
+///     name = "source1"
+///     flowlet = {
+///       name = azure_datafactory_flowletdataflow.example1.name
+///       parameters = {
+///         "Key1" = "value1"
+///       }
+///     }
+///     dataset = {
+///       name = azure_datafactory_datasetjson.example1.name
+///     }
+///   }
+///   sinks {
+///     name = "sink1"
+///     flowlet = {
+///       name = azure_datafactory_flowletdataflow.example2.name
+///       parameters = {
+///         "Key1" = "value1"
+///       }
+///     }
+///     dataset = {
+///       name = azure_datafactory_datasetjson.example2.name
+///     }
+///   }
+///   script = "source(\n  allowSchemaDrift: true, \n  validateSchema: false, \n  limit: 100, \n  ignoreNoFilesFound: false, \n  documentForm: 'documentPerLine') ~> source1 \nsource1 sink(\n  allowSchemaDrift: true, \n  validateSchema: false, \n  skipDuplicateMapInputs: true, \n  skipDuplicateMapOutputs: true) ~> sink1\n"
+/// }
+/// resource "azure_datafactory_flowletdataflow" "example1" {
+///   name            = "example"
+///   data_factory_id = azure_datafactory_factory.example.id
+///   sources {
+///     name = "source1"
+///     linked_service = {
+///       name = azure_datafactory_linkedcustomservice.example.name
+///     }
+///   }
+///   sinks {
+///     name = "sink1"
+///     linked_service = {
+///       name = azure_datafactory_linkedcustomservice.example.name
+///     }
+///   }
+///   script = "source(\n  allowSchemaDrift: true, \n  validateSchema: false, \n  limit: 100, \n  ignoreNoFilesFound: false, \n  documentForm: 'documentPerLine') ~> source1 \nsource1 sink(\n  allowSchemaDrift: true, \n  validateSchema: false, \n  skipDuplicateMapInputs: true, \n  skipDuplicateMapOutputs: true) ~> sink1\n"
+/// }
+/// resource "azure_datafactory_flowletdataflow" "example2" {
+///   name            = "example"
+///   data_factory_id = azure_datafactory_factory.example.id
+///   sources {
+///     name = "source1"
+///     linked_service = {
+///       name = azure_datafactory_linkedcustomservice.example.name
+///     }
+///   }
+///   sinks {
+///     name = "sink1"
+///     linked_service = {
+///       name = azure_datafactory_linkedcustomservice.example.name
+///     }
+///   }
+///   script = "source(\n  allowSchemaDrift: true, \n  validateSchema: false, \n  limit: 100, \n  ignoreNoFilesFound: false, \n  documentForm: 'documentPerLine') ~> source1 \nsource1 sink(\n  allowSchemaDrift: true, \n  validateSchema: false, \n  skipDuplicateMapInputs: true, \n  skipDuplicateMapOutputs: true) ~> sink1\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -731,8 +851,8 @@ import 'data_flow_state.dart';
 /// import com.pulumi.azure.datafactory.inputs.DataFlowSinkArgs;
 /// import com.pulumi.azure.datafactory.inputs.DataFlowSinkFlowletArgs;
 /// import com.pulumi.azure.datafactory.inputs.DataFlowSinkDatasetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

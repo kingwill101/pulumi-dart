@@ -16,23 +16,23 @@ import 'registry_task_timer_trigger.dart';
 class RegistryTaskState {
   /// The name of the dedicated Container Registry Agent Pool for this Container Registry Task.
   final pulumi.Input<String>? agentPoolName;
-  /// A `agent_setting` block as defined below.
+  /// A `agentSetting` block as defined below.
   ///
-  /// &gt; **Note:** Only one of `agent_pool_name` and `agent_setting` can be specified.
+  /// &gt; **Note:** Only one of `agentPoolName` and `agentSetting` can be specified.
   final pulumi.Input<RegistryTaskAgentSetting>? agentSetting;
-  /// A `base_image_trigger` block as defined below.
+  /// A `baseImageTrigger` block as defined below.
   final pulumi.Input<RegistryTaskBaseImageTrigger>? baseImageTrigger;
   /// The ID of the Container Registry that this Container Registry Task resides in. Changing this forces a new Container Registry Task to be created.
   final pulumi.Input<String>? containerRegistryId;
-  /// A `docker_step` block as defined below.
+  /// A `dockerStep` block as defined below.
   final pulumi.Input<RegistryTaskDockerStep>? dockerStep;
   /// Should this Container Registry Task be enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-  /// A `encoded_step` block as defined below.
+  /// A `encodedStep` block as defined below.
   final pulumi.Input<RegistryTaskEncodedStep>? encodedStep;
-  /// A `file_step` block as defined below.
+  /// A `fileStep` block as defined below.
   ///
-  /// &gt; **Note:** For non-system task (when `is_system_task` is set to `false`), one and only one of the `docker_step`, `encoded_step` and `file_step` should be specified.
+  /// &gt; **Note:** For non-system task (when `isSystemTask` is set to `false`), one and only one of the `dockerStep`, `encodedStep` and `fileStep` should be specified.
   final pulumi.Input<RegistryTaskFileStep>? fileStep;
   /// An `identity` block as defined below.
   final pulumi.Input<RegistryTaskIdentity>? identity;
@@ -43,35 +43,35 @@ class RegistryTaskState {
   final pulumi.Input<String>? name;
   /// A `platform` block as defined below.
   ///
-  /// &gt; **Note:** The `platform` is required for non-system task (when `is_system_task` is set to `false`).
+  /// &gt; **Note:** The `platform` is required for non-system task (when `isSystemTask` is set to `false`).
   final pulumi.Input<RegistryTaskPlatform>? platform;
   final pulumi.Input<RegistryTaskRegistryCredential>? registryCredential;
-  /// One or more `source_trigger` blocks as defined below.
+  /// One or more `sourceTrigger` blocks as defined below.
   final pulumi.Input<List<RegistryTaskSourceTrigger>>? sourceTriggers;
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<int>? timeoutInSeconds;
-  /// One or more `timer_trigger` blocks as defined below.
+  /// One or more `timerTrigger` blocks as defined below.
   final pulumi.Input<List<RegistryTaskTimerTrigger>>? timerTriggers;
 
   /// Creates a new [RegistryTaskState].
   /// [agentPoolName] The name of the dedicated Container Registry Agent Pool for this Container Registry Task.
-  /// [agentSetting] A `agent_setting` block as defined below.
-  /// [baseImageTrigger] A `base_image_trigger` block as defined below.
+  /// [agentSetting] A `agentSetting` block as defined below.
+  /// [baseImageTrigger] A `baseImageTrigger` block as defined below.
   /// [containerRegistryId] The ID of the Container Registry that this Container Registry Task resides in. Changing this forces a new Container Registry Task to be created.
-  /// [dockerStep] A `docker_step` block as defined below.
+  /// [dockerStep] A `dockerStep` block as defined below.
   /// [enabled] Should this Container Registry Task be enabled? Defaults to `true`.
-  /// [encodedStep] A `encoded_step` block as defined below.
-  /// [fileStep] A `file_step` block as defined below.
+  /// [encodedStep] A `encodedStep` block as defined below.
+  /// [fileStep] A `fileStep` block as defined below.
   /// [identity] An `identity` block as defined below.
   /// [isSystemTask] Whether this Container Registry Task is a system task. Changing this forces a new Container Registry Task to be created. Defaults to `false`.
   /// [logTemplate] Optional.
   /// [name] The name which should be used for this Container Registry Task. Changing this forces a new Container Registry Task to be created.
   /// [platform] A `platform` block as defined below.
   /// [registryCredential] Optional.
-  /// [sourceTriggers] One or more `source_trigger` blocks as defined below.
+  /// [sourceTriggers] One or more `sourceTrigger` blocks as defined below.
   /// [tags] Optional.
   /// [timeoutInSeconds] Optional.
-  /// [timerTriggers] One or more `timer_trigger` blocks as defined below.
+  /// [timerTriggers] One or more `timerTrigger` blocks as defined below.
   const RegistryTaskState({
     this.agentPoolName,
     this.agentSetting,
@@ -139,4 +139,3 @@ class RegistryTaskState {
     );
   }
 }
-

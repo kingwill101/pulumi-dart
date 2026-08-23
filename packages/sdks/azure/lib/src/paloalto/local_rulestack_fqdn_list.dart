@@ -115,6 +115,30 @@ import 'local_rulestack_fqdn_list_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "West Europe"
+/// }
+/// resource "azure_paloalto_localrulestack" "example" {
+///   name                = "example"
+///   resource_group_name = exampleAzurermResrouceGroup.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_paloalto_localrulestackfqdnlist" "example" {
+///   name                         = "example"
+///   rulestack_id                 = azure_paloalto_localrulestack.example.id
+///   fully_qualified_domain_names = ["contoso.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +151,8 @@ import 'local_rulestack_fqdn_list_state.dart';
 /// import com.pulumi.azure.paloalto.LocalRulestackArgs;
 /// import com.pulumi.azure.paloalto.LocalRulestackFqdnList;
 /// import com.pulumi.azure.paloalto.LocalRulestackFqdnListArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,7 +214,7 @@ import 'local_rulestack_fqdn_list_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `PaloAltoNetworks.Cloudngfw` - 2022-08-29
+/// * `PaloAltoNetworks.Cloudngfw` - 2025-10-08
 ///
 /// ## Import
 ///

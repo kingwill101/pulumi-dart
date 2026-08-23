@@ -10,7 +10,7 @@ class GetLBOutboundRuleResult {
   /// The ID of the Backend Address Pool. Outbound traffic is randomly load balanced across IPs in the backend IPs.
   final String backendAddressPoolId;
   final bool enableTcpReset;
-  /// A `frontend_ip_configuration` block as defined below.
+  /// A `frontendIpConfiguration` block as defined below.
   final List<GetLBOutboundRuleFrontendIpConfiguration> frontendIpConfigurations;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -28,7 +28,7 @@ class GetLBOutboundRuleResult {
   /// [allocatedOutboundPorts] The number of outbound ports used for NAT.
   /// [backendAddressPoolId] The ID of the Backend Address Pool. Outbound traffic is randomly load balanced across IPs in the backend IPs.
   /// [enableTcpReset] Required.
-  /// [frontendIpConfigurations] A `frontend_ip_configuration` block as defined below.
+  /// [frontendIpConfigurations] A `frontendIpConfiguration` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [idleTimeoutInMinutes] The timeout for the TCP idle connection.
   /// [loadbalancerId] Required.
@@ -78,4 +78,3 @@ class GetLBOutboundRuleResult {
     );
   }
 }
-

@@ -3,7 +3,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetManagedDatabaseLongTermRetentionPolicy {
-  /// Specifies if the backups are immutable.
   final pulumi.Input<bool> immutableBackupsEnabled;
   /// The monthly retention policy for an LTR backup in an ISO 8601 format.
   final pulumi.Input<String> monthlyRetention;
@@ -15,7 +14,7 @@ class GetManagedDatabaseLongTermRetentionPolicy {
   final pulumi.Input<String> yearlyRetention;
 
   /// Creates a new [GetManagedDatabaseLongTermRetentionPolicy].
-  /// [immutableBackupsEnabled] Specifies if the backups are immutable.
+  /// [immutableBackupsEnabled] Required.
   /// [monthlyRetention] The monthly retention policy for an LTR backup in an ISO 8601 format.
   /// [weekOfYear] The week of year to take the yearly backup.
   /// [weeklyRetention] The weekly retention policy for an LTR backup in an ISO 8601 format.
@@ -48,4 +47,3 @@ class GetManagedDatabaseLongTermRetentionPolicy {
     );
   }
 }
-

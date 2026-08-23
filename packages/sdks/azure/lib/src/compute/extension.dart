@@ -48,7 +48,7 @@ import 'extension_state.dart';
 ///     name: "example-machine",
 ///     resourceGroupName: example.name,
 ///     location: example.location,
-///     size: "Standard_F2",
+///     size: "Standard_D4_v5",
 ///     adminUsername: "adminuser",
 ///     networkInterfaceIds: [exampleNetworkInterface.id],
 ///     adminSshKeys: [{
@@ -114,7 +114,7 @@ import 'extension_state.dart';
 ///     name="example-machine",
 ///     resource_group_name=example.name,
 ///     location=example.location,
-///     size="Standard_F2",
+///     size="Standard_D4_v5",
 ///     admin_username="adminuser",
 ///     network_interface_ids=[example_network_interface.id],
 ///     admin_ssh_keys=[{
@@ -203,7 +203,7 @@ import 'extension_state.dart';
 ///         Name = "example-machine",
 ///         ResourceGroupName = example.Name,
 ///         Location = example.Location,
-///         Size = "Standard_F2",
+///         Size = "Standard_D4_v5",
 ///         AdminUsername = "adminuser",
 ///         NetworkInterfaceIds = new[]
 ///         {
@@ -320,7 +320,7 @@ import 'extension_state.dart';
 /// 			Name:              pulumi.String("example-machine"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			Size:              pulumi.String("Standard_F2"),
+/// 			Size:              pulumi.String("Standard_D4_v5"),
 /// 			AdminUsername:     pulumi.String("adminuser"),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
 /// 				exampleNetworkInterface.ID(),
@@ -363,6 +363,78 @@ import 'extension_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualnetwork" "example" {
+///   name                = "acctvn"
+///   address_spaces      = ["10.0.0.0/16"]
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_network_subnet" "example" {
+///   name                 = "acctsub"
+///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   address_prefixes     = ["10.0.2.0/24"]
+/// }
+/// resource "azure_network_networkinterface" "example" {
+///   name                = "acctni"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   ip_configurations {
+///     name                          = "testconfiguration1"
+///     subnet_id                     = azure_network_subnet.example.id
+///     private_ip_address_allocation = "Dynamic"
+///   }
+/// }
+/// resource "azure_compute_linuxvirtualmachine" "example" {
+///   name                  = "example-machine"
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   location              = azure_core_resourcegroup.example.location
+///   size                  = "Standard_D4_v5"
+///   admin_username        = "adminuser"
+///   network_interface_ids = [azure_network_networkinterface.example.id]
+///   admin_ssh_keys {
+///     username   = "adminuser"
+///     public_key = file("~/.ssh/id_rsa.pub")
+///   }
+///   os_disk = {
+///     caching              = "ReadWrite"
+///     storage_account_type = "Standard_LRS"
+///   }
+///   source_image_reference = {
+///     publisher = "Canonical"
+///     offer     = "0001-com-ubuntu-server-jammy"
+///     sku       = "22_04-lts"
+///     version   = "latest"
+///   }
+/// }
+/// resource "azure_compute_extension" "example" {
+///   name                 = "hostname"
+///   virtual_machine_id   = azure_compute_linuxvirtualmachine.example.id
+///   publisher            = "Microsoft.Azure.Extensions"
+///   type                 = "CustomScript"
+///   type_handler_version = "2.0"
+///   settings             = " {\n  \\\"commandToExecute\\\": \\\"hostname && uptime\\\"\n }\n"
+///   tags = {
+///     "environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -387,8 +459,8 @@ import 'extension_state.dart';
 /// import com.pulumi.std.inputs.FileArgs;
 /// import com.pulumi.azure.compute.Extension;
 /// import com.pulumi.azure.compute.ExtensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -434,7 +506,7 @@ import 'extension_state.dart';
 ///             .name("example-machine")
 ///             .resourceGroupName(example.name())
 ///             .location(example.location())
-///             .size("Standard_F2")
+///             .size("Standard_D4_v5")
 ///             .adminUsername("adminuser")
 ///             .networkInterfaceIds(exampleNetworkInterface.id())
 ///             .adminSshKeys(LinuxVirtualMachineAdminSshKeyArgs.builder()
@@ -515,7 +587,7 @@ import 'extension_state.dart';
 ///       name: example-machine
 ///       resourceGroupName: ${example.name}
 ///       location: ${example.location}
-///       size: Standard_F2
+///       size: Standard_D4_v5
 ///       adminUsername: adminuser
 ///       networkInterfaceIds:
 ///         - ${exampleNetworkInterface.id}
@@ -568,23 +640,23 @@ import 'extension_state.dart';
 /// $ pulumi import azure:compute/extension:Extension example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Compute/virtualMachines/myVM/extensions/extensionName
 /// ```
 class Extension extends pulumi.CustomResource {
-  /// Specifies if the platform deploys the latest minor version update to the `type_handler_version` specified.
+  /// Specifies if the platform deploys the latest minor version update to the `typeHandlerVersion` specified.
   late final pulumi.Output<bool?> autoUpgradeMinorVersion;
   /// Should the Extension be automatically updated whenever the Publisher releases a new version of this VM Extension?
   late final pulumi.Output<bool?> automaticUpgradeEnabled;
   /// Should failures from the extension be suppressed? Possible values are `true` or `false`. Defaults to `false`.
   ///
-  /// &gt; **Note:** Operational failures such as not connecting to the VM will not be suppressed regardless of the `failure_suppression_enabled` value.
+  /// &gt; **Note:** Operational failures such as not connecting to the VM will not be suppressed regardless of the `failureSuppressionEnabled` value.
   late final pulumi.Output<bool?> failureSuppressionEnabled;
   /// The name of the virtual machine extension peering. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  /// The protected_settings passed to the extension, like settings, these are specified as a JSON object in a string.
+  /// The protectedSettings passed to the extension, like settings, these are specified as a JSON object in a string.
   ///
-  /// &gt; **Note:** Certain VM Extensions require that the keys in the `protected_settings` block are case sensitive. If you're seeing unhelpful errors, please ensure the keys are consistent with how Azure is expecting them (for instance, for the `JsonADDomainExtension` extension, the keys are expected to be in `TitleCase`.)
+  /// &gt; **Note:** Certain VM Extensions require that the keys in the `protectedSettings` block are case sensitive. If you're seeing unhelpful errors, please ensure the keys are consistent with how Azure is expecting them (for instance, for the `JsonADDomainExtension` extension, the keys are expected to be in `TitleCase`.)
   late final pulumi.Output<String?> protectedSettings;
-  /// A `protected_settings_from_key_vault` block as defined below.
+  /// A `protectedSettingsFromKeyVault` block as defined below.
   ///
-  /// &gt; **Note:** `protected_settings_from_key_vault` cannot be used with `protected_settings`
+  /// &gt; **Note:** `protectedSettingsFromKeyVault` cannot be used with `protectedSettings`
   late final pulumi.Output<ExtensionProtectedSettingsFromKeyVault?> protectedSettingsFromKeyVault;
   /// Specifies the collection of extension names after which this extension needs to be provisioned.
   late final pulumi.Output<List<String>?> provisionAfterExtensions;

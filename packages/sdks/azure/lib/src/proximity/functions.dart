@@ -67,6 +67,24 @@ import 'get_placement_group_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_proximity_getplacementgroup" "example" {
+///   name                = "tf-appsecuritygroup"
+///   resource_group_name = "my-resource-group"
+/// }
+///
+/// output "proximityPlacementGroupId" {
+///   value = data.azure_proximity_getplacementgroup.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +93,8 @@ import 'get_placement_group_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.proximity.ProximityFunctions;
 /// import com.pulumi.azure.proximity.inputs.GetPlacementGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

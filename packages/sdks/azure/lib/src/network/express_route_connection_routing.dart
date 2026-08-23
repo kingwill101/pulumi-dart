@@ -10,14 +10,14 @@ class ExpressRouteConnectionRouting {
   final pulumi.Input<String>? inboundRouteMapId;
   /// The ID of the Route Map associated with this Express Route Connection for outbound routes.
   final pulumi.Input<String>? outboundRouteMapId;
-  /// A `propagated_route_table` block as defined below.
+  /// A `propagatedRouteTable` block as defined below.
   final pulumi.Input<ExpressRouteConnectionRoutingPropagatedRouteTable>? propagatedRouteTable;
 
   /// Creates a new [ExpressRouteConnectionRouting].
   /// [associatedRouteTableId] The ID of the Virtual Hub Route Table associated with this Express Route Connection.
   /// [inboundRouteMapId] The ID of the Route Map associated with this Express Route Connection for inbound routes.
   /// [outboundRouteMapId] The ID of the Route Map associated with this Express Route Connection for outbound routes.
-  /// [propagatedRouteTable] A `propagated_route_table` block as defined below.
+  /// [propagatedRouteTable] A `propagatedRouteTable` block as defined below.
   const ExpressRouteConnectionRouting({
     this.associatedRouteTableId,
     this.inboundRouteMapId,
@@ -43,4 +43,3 @@ class ExpressRouteConnectionRouting {
     );
   }
 }
-

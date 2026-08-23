@@ -7,14 +7,14 @@ import 'get_virtual_machine_manager_inventory_items_inventory_item.dart';
 class GetVirtualMachineManagerInventoryItemsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// One or more `inventory_items` blocks as defined below.
+  /// One or more `inventoryItems` blocks as defined below.
   final List<GetVirtualMachineManagerInventoryItemsInventoryItem> inventoryItems;
   final String inventoryType;
   final String systemCenterVirtualMachineManagerServerId;
 
   /// Creates a new [GetVirtualMachineManagerInventoryItemsResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [inventoryItems] One or more `inventory_items` blocks as defined below.
+  /// [inventoryItems] One or more `inventoryItems` blocks as defined below.
   /// [inventoryType] Required.
   /// [systemCenterVirtualMachineManagerServerId] Required.
   const GetVirtualMachineManagerInventoryItemsResult({
@@ -42,4 +42,3 @@ class GetVirtualMachineManagerInventoryItemsResult {
     );
   }
 }
-

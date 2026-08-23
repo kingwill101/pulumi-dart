@@ -88,6 +88,25 @@ import 'server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_fluidrelay_server" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +117,8 @@ import 'server_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.fluidrelay.Server;
 /// import com.pulumi.azure.fluidrelay.ServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -157,7 +176,7 @@ import 'server_state.dart';
 /// $ pulumi import azure:fluidrelay/server:Server example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.FluidRelay/fluidRelayServers/server1
 /// ```
 class Server extends pulumi.CustomResource {
-  /// A `customer_managed_key` block as defined below. Changing this forces a new resource to be created.
+  /// A `customerManagedKey` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ServerCustomerManagedKey?> customerManagedKey;
   /// The Fluid tenantId for this server.
   late final pulumi.Output<String> frsTenantId;

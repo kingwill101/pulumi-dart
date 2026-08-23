@@ -7,15 +7,15 @@ class IoTHubFileUpload {
   final pulumi.Input<String>? authenticationType;
   /// The connection string for the Azure Storage account to which files are uploaded.
   final pulumi.Input<String> connectionString;
-  /// The name of the root container where the files should be uploaded to. The container need not exist but should be creatable using the connection_string specified.
+  /// The name of the root container where the files should be uploaded to. The container need not exist but should be creatable using the connectionString specified.
   final pulumi.Input<String> containerName;
   /// The period of time for which a file upload notification message is available to consume before it expires, specified as an [ISO 8601 timespan duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). This value must be between 1 minute and 48 hours. Defaults to `PT1H`.
   final pulumi.Input<String>? defaultTtl;
   /// The ID of the User Managed Identity used to authenticate against the storage account.
   ///
-  /// &gt; **Note:** `identity_id` can only be specified when `authentication_type` is `identityBased`. It must be one of the `identity_ids` of the IoT Hub. If `identity_id` is omitted when `authentication_type` is `identityBased`, then the System-Assigned Managed Identity of the IoT Hub will be used.
+  /// &gt; **Note:** `identityId` can only be specified when `authenticationType` is `identityBased`. It must be one of the `identityIds` of the IoT Hub. If `identityId` is omitted when `authenticationType` is `identityBased`, then the System-Assigned Managed Identity of the IoT Hub will be used.
   ///
-  /// &gt; **Note:** An IoT Hub can only be updated to use the System-Assigned Managed Identity for `file_upload` since it is not possible to grant access to the endpoint until after creation.
+  /// &gt; **Note:** An IoT Hub can only be updated to use the System-Assigned Managed Identity for `fileUpload` since it is not possible to grant access to the endpoint until after creation.
   final pulumi.Input<String>? identityId;
   /// The lock duration for the file upload notifications queue, specified as an [ISO 8601 timespan duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). This value must be between 5 and 300 seconds. Defaults to `PT1M`.
   final pulumi.Input<String>? lockDuration;
@@ -29,7 +29,7 @@ class IoTHubFileUpload {
   /// Creates a new [IoTHubFileUpload].
   /// [authenticationType] The type used to authenticate against the storage account. Possible values are `keyBased` and `identityBased`. Defaults to `keyBased`.
   /// [connectionString] The connection string for the Azure Storage account to which files are uploaded.
-  /// [containerName] The name of the root container where the files should be uploaded to. The container need not exist but should be creatable using the connection_string specified.
+  /// [containerName] The name of the root container where the files should be uploaded to. The container need not exist but should be creatable using the connectionString specified.
   /// [defaultTtl] The period of time for which a file upload notification message is available to consume before it expires, specified as an [ISO 8601 timespan duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). This value must be between 1 minute and 48 hours. Defaults to `PT1H`.
   /// [identityId] The ID of the User Managed Identity used to authenticate against the storage account.
   /// [lockDuration] The lock duration for the file upload notifications queue, specified as an [ISO 8601 timespan duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). This value must be between 5 and 300 seconds. Defaults to `PT1M`.
@@ -76,4 +76,3 @@ class IoTHubFileUpload {
     );
   }
 }
-

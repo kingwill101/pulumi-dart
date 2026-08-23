@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PortalTenantConfigurationState {
   /// Is the private tile markdown storage which used to display custom dynamic and static content enabled?
   ///
-  /// &gt; **Note:** When `private_markdown_storage_enforced` is set to `true`, only external storage configuration (URI) is allowed for Markdown tiles. Inline content configuration will be prohibited.
+  /// &gt; **Note:** When `privateMarkdownStorageEnforced` is set to `true`, only external storage configuration (URI) is allowed for Markdown tiles. Inline content configuration will be prohibited.
   final pulumi.Input<bool>? privateMarkdownStorageEnforced;
 
   /// Creates a new [PortalTenantConfigurationState].
@@ -27,4 +27,3 @@ class PortalTenantConfigurationState {
     );
   }
 }
-

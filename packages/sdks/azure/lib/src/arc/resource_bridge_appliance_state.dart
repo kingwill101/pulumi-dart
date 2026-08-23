@@ -15,7 +15,7 @@ class ResourceBridgeApplianceState {
   final pulumi.Input<String>? location;
   /// The Name which should be used for this Arc Resource Bridge Appliance. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// The `public_key_base64` is an RSA public key in PKCS1 format encoded in base64. Changing this forces a new resource to be created.
+  /// The `publicKeyBase64` is an RSA public key in PKCS1 format encoded in base64. Changing this forces a new resource to be created.
   final pulumi.Input<String>? publicKeyBase64;
   /// Specifies the resource group where the Arc Resource Bridge Appliance exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
@@ -28,7 +28,7 @@ class ResourceBridgeApplianceState {
   /// [infrastructureProvider] The infrastructure provider about the connected Arc Resource Bridge Appliance. Possible values are `HCI`,`SCVMM` and `VMWare`. Changing this forces a new resource to be created.
   /// [location] The Azure Region where the Arc Resource Bridge Appliance should exist. Changing this forces a new resource to be created.
   /// [name] The Name which should be used for this Arc Resource Bridge Appliance. Changing this forces a new resource to be created.
-  /// [publicKeyBase64] The `public_key_base64` is an RSA public key in PKCS1 format encoded in base64. Changing this forces a new resource to be created.
+  /// [publicKeyBase64] The `publicKeyBase64` is an RSA public key in PKCS1 format encoded in base64. Changing this forces a new resource to be created.
   /// [resourceGroupName] Specifies the resource group where the Arc Resource Bridge Appliance exists. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Arc Resource Bridge Appliance.
   const ResourceBridgeApplianceState({
@@ -68,4 +68,3 @@ class ResourceBridgeApplianceState {
     );
   }
 }
-

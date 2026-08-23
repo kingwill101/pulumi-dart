@@ -9,9 +9,9 @@ import 'tag_rules_metric_rule.dart';
 /// {@endtemplate}
 /// {@macro pulumi_dynatrace_tag_rules_tag_rules_args_doc}
 class TagRulesArgs {
-  /// Set of rules for sending logs for the Monitor resource. A `log_rule` block as defined below.
+  /// Set of rules for sending logs for the Monitor resource. A `logRule` block as defined below.
   final pulumi.Input<TagRulesLogRule>? logRule;
-  /// Set of rules for sending metrics for the Monitor resource. A `metric_rule` block as defined below.
+  /// Set of rules for sending metrics for the Monitor resource. A `metricRule` block as defined below.
   final pulumi.Input<TagRulesMetricRule>? metricRule;
   /// Name of the Dynatrace monitor. Changing this forces a new resource to be created.
   final pulumi.Input<String> monitorId;
@@ -19,8 +19,8 @@ class TagRulesArgs {
   final pulumi.Input<String>? name;
 
   /// Creates a new [TagRulesArgs].
-  /// [logRule] Set of rules for sending logs for the Monitor resource. A `log_rule` block as defined below.
-  /// [metricRule] Set of rules for sending metrics for the Monitor resource. A `metric_rule` block as defined below.
+  /// [logRule] Set of rules for sending logs for the Monitor resource. A `logRule` block as defined below.
+  /// [metricRule] Set of rules for sending metrics for the Monitor resource. A `metricRule` block as defined below.
   /// [monitorId] Name of the Dynatrace monitor. Changing this forces a new resource to be created.
   /// [name] Name of the Dynatrace tag rules. Currently, the only supported value is `default`. Changing this forces a new resource to be created.
   const TagRulesArgs({
@@ -48,4 +48,3 @@ class TagRulesArgs {
     );
   }
 }
-

@@ -113,6 +113,30 @@ import 'workspace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tfex-security-workspace"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "tfex-security-workspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "PerGB2018"
+/// }
+/// resource "azure_securitycenter_workspace" "example" {
+///   scope        = "/subscriptions/00000000-0000-0000-0000-000000000000"
+///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -125,8 +149,8 @@ import 'workspace_state.dart';
 /// import com.pulumi.azure.operationalinsights.AnalyticsWorkspaceArgs;
 /// import com.pulumi.azure.securitycenter.Workspace;
 /// import com.pulumi.azure.securitycenter.WorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

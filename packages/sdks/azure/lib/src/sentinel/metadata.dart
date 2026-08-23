@@ -220,6 +220,51 @@ import 'metadata_support.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+///   name                = "example-workspace"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "pergb2018"
+/// }
+/// resource "azure_operationalinsights_analyticssolution" "example" {
+///   solution_name         = "SecurityInsights"
+///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resourcegroup.example.name
+///   workspace_resource_id = azure_operationalinsights_analyticsworkspace.example.id
+///   workspace_name        = azure_operationalinsights_analyticsworkspace.example.name
+///   plan = {
+///     publisher = "Microsoft"
+///     product   = "OMSGallery/SecurityInsights"
+///   }
+/// }
+/// resource "azure_sentinel_alertrulenrt" "example" {
+///   name                       = "example"
+///   log_analytics_workspace_id = azure_operationalinsights_analyticssolution.example.workspace_resource_id
+///   display_name               = "example"
+///   severity                   = "High"
+///   query                      = "AzureActivity |\n  where OperationName == \\\"Create or Update Virtual Machine\\\" or OperationName ==\\\"Create Deployment\\\" |\n  where ActivityStatus == \\\"Succeeded\\\" |\n  make-series dcount(ResourceId) default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller\n"
+/// }
+/// resource "azure_sentinel_metadata" "example" {
+///   name         = "exampl"
+///   workspace_id = azure_operationalinsights_analyticssolution.example.workspace_resource_id
+///   content_id   = azure_sentinel_alertrulenrt.example.name
+///   kind         = "AnalyticsRule"
+///   parent_id    = azure_sentinel_alertrulenrt.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -237,8 +282,8 @@ import 'metadata_support.dart';
 /// import com.pulumi.azure.sentinel.AlertRuleNrtArgs;
 /// import com.pulumi.azure.sentinel.Metadata;
 /// import com.pulumi.azure.sentinel.MetadataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

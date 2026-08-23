@@ -83,7 +83,7 @@ import 'budget_resource_group_time_period.dart';
 /// example_budget_resource_group = azure.consumption.BudgetResourceGroup("example",
 ///     name="example",
 ///     resource_group_id=example.id,
-///     amount=1000,
+///     amount=float(1000),
 ///     time_grain="Monthly",
 ///     time_period={
 ///         "start_date": "2022-06-01T00:00:00Z",
@@ -312,6 +312,60 @@ import 'budget_resource_group_time_period.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example"
+///   location = "eastus"
+/// }
+/// resource "azure_monitoring_actiongroup" "example" {
+///   name                = "example"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   short_name          = "example"
+/// }
+/// resource "azure_consumption_budgetresourcegroup" "example" {
+///   name              = "example"
+///   resource_group_id = azure_core_resourcegroup.example.id
+///   amount            = 1000
+///   time_grain        = "Monthly"
+///   time_period = {
+///     start_date = "2022-06-01T00:00:00Z"
+///     end_date   = "2022-07-01T00:00:00Z"
+///   }
+///   filter = {
+///     dimensions = [{
+///       "name"   = "ResourceId"
+///       "values" = [azure_monitoring_actiongroup.example.id]
+///     }]
+///     tags = [{
+///       "name"   = "foo"
+///       "values" = ["bar", "baz"]
+///     }]
+///   }
+///   notifications {
+///     enabled        = true
+///     threshold      = 90
+///     operator       = "EqualTo"
+///     threshold_type = "Forecasted"
+///     contact_emails = ["foo@example.com", "bar@example.com"]
+///     contact_groups = [azure_monitoring_actiongroup.example.id]
+///     contact_roles  = ["Owner"]
+///   }
+///   notifications {
+///     enabled        = false
+///     threshold      = 100
+///     operator       = "GreaterThan"
+///     contact_emails = ["foo@example.com", "bar@example.com"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -326,9 +380,11 @@ import 'budget_resource_group_time_period.dart';
 /// import com.pulumi.azure.consumption.BudgetResourceGroupArgs;
 /// import com.pulumi.azure.consumption.inputs.BudgetResourceGroupTimePeriodArgs;
 /// import com.pulumi.azure.consumption.inputs.BudgetResourceGroupFilterArgs;
+/// import com.pulumi.azure.consumption.inputs.BudgetResourceGroupFilterDimensionArgs;
+/// import com.pulumi.azure.consumption.inputs.BudgetResourceGroupFilterTagArgs;
 /// import com.pulumi.azure.consumption.inputs.BudgetResourceGroupNotificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -482,7 +538,7 @@ class BudgetResourceGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupId;
   /// The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> timeGrain;
-  /// A `time_period` block as defined below.
+  /// A `timePeriod` block as defined below.
   late final pulumi.Output<BudgetResourceGroupTimePeriod> timePeriod;
 
   /// Creates a new [BudgetResourceGroup].

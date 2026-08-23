@@ -374,6 +374,86 @@ import 'alert_prometheus_rule_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_monitoring_actiongroup" "example" {
+///   name                = "example-mag"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   short_name          = "testag"
+/// }
+/// resource "azure_monitoring_workspace" "example" {
+///   name                = "example-amw"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_containerservice_kubernetescluster" "example" {
+///   name                = "example-cluster"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   dns_prefix          = "example-aks"
+///   default_node_pool = {
+///     name                    = "default"
+///     node_count              = 1
+///     vm_size                 = "Standard_DS2_v2"
+///     host_encryption_enabled = true
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+/// }
+/// resource "azure_monitoring_alertprometheusrulegroup" "example" {
+///   name                = "example-amprg"
+///   location            = "West Europe"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   cluster_name        = azure_containerservice_kubernetescluster.example.name
+///   description         = "This is the description of the following rule group"
+///   rule_group_enabled  = false
+///   interval            = "PT1M"
+///   scopes              = [azure_monitoring_workspace.example.id]
+///   rules {
+///     enabled    = false
+///     expression = "histogram_quantile(0.99, sum(rate(jobs_duration_seconds_bucket{service=\\\"billing-processing\\\"}[5m])) by (job_type))\n"
+///     record     = "job_type:billing_jobs_duration_seconds:99p5m"
+///     labels = {
+///       "team" = "prod"
+///     }
+///   }
+///   rules {
+///     alert      = "Billing_Processing_Very_Slow"
+///     enabled    = true
+///     expression = "histogram_quantile(0.99, sum(rate(jobs_duration_seconds_bucket{service=\\\"billing-processing\\\"}[5m])) by (job_type))\n"
+///     for        = "PT5M"
+///     severity   = 2
+///     actions {
+///       action_group_id = azure_monitoring_actiongroup.example.id
+///     }
+///     alert_resolution = {
+///       auto_resolved   = true
+///       time_to_resolve = "PT10M"
+///     }
+///     annotations = {
+///       "annotationName" = "annotationValue"
+///     }
+///     labels = {
+///       "team" = "prod"
+///     }
+///   }
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -393,9 +473,10 @@ import 'alert_prometheus_rule_group_state.dart';
 /// import com.pulumi.azure.monitoring.AlertPrometheusRuleGroup;
 /// import com.pulumi.azure.monitoring.AlertPrometheusRuleGroupArgs;
 /// import com.pulumi.azure.monitoring.inputs.AlertPrometheusRuleGroupRuleArgs;
+/// import com.pulumi.azure.monitoring.inputs.AlertPrometheusRuleGroupRuleActionArgs;
 /// import com.pulumi.azure.monitoring.inputs.AlertPrometheusRuleGroupRuleAlertResolutionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

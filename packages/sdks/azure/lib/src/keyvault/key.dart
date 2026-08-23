@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_args.dart';
+import 'key_release_policy.dart';
 import 'key_rotation_policy.dart';
 import 'key_state.dart';
 
@@ -9,7 +10,7 @@ import 'key_state.dart';
 ///
 /// &gt; **Note:** To use this resource, your client should have RBAC roles with permissions like `Key Vault Crypto Officer` or `Key Vault Administrator` or an assigned Key Vault Access Policy with permissions `Create`,`Delete`,`Get`,`Purge`,`Recover`,`Update` and `GetRotationPolicy` for keys without Rotation Policy. Include `SetRotationPolicy` for keys with Rotation Policy.
 ///
-/// &gt; **Note:** The Azure Provider includes a Feature Toggle which will purge a Key Vault Key resource on destroy, rather than the default soft-delete. See `purge_soft_deleted_keys_on_destroy` for more information.
+/// &gt; **Note:** The Azure Provider includes a Feature Toggle which will purge a Key Vault Key resource on destroy, rather than the default soft-delete. See `purgeSoftDeletedKeysOnDestroy` for more information.
 ///
 ///
 /// ### Additional Examples
@@ -277,6 +278,51 @@ import 'key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_keyvault_keyvault" "example" {
+///   name                       = "examplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
+///   soft_delete_retention_days = 7
+///   access_policies {
+///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     key_permissions    = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "GetRotationPolicy", "SetRotationPolicy"]
+///     secret_permissions = ["Set"]
+///   }
+/// }
+/// resource "azure_keyvault_key" "generated" {
+///   name         = "generated-certificate"
+///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_type     = "RSA"
+///   key_size     = 2048
+///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
+///   rotation_policy = {
+///     automatic = {
+///       time_before_expiry = "P30D"
+///     }
+///     expire_after         = "P90D"
+///     notify_before_expiry = "P29D"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -293,8 +339,8 @@ import 'key_state.dart';
 /// import com.pulumi.azure.keyvault.KeyArgs;
 /// import com.pulumi.azure.keyvault.inputs.KeyRotationPolicyArgs;
 /// import com.pulumi.azure.keyvault.inputs.KeyRotationPolicyAutomaticArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -426,7 +472,7 @@ import 'key_state.dart';
 /// $ pulumi import azure:keyvault/key:Key example "https://example-keyvault.vault.azure.net/keys/example/fdf067c93bbb4b22bff4d8b7a9a56217"
 /// ```
 class Key extends pulumi.CustomResource {
-  /// Specifies the curve to use when creating an `EC` key. Possible values are `P-256`, `P-256K`, `P-384`, and `P-521`. This field will be required in a future release if `key_type` is `EC` or `EC-HSM`. The API will default to `P-256` if nothing is specified. Changing this forces a new resource to be created.
+  /// Specifies the curve to use when creating an `EC` key. Possible values are `P-256`, `P-256K`, `P-384`, and `P-521`. This field will be required in a future release if `keyType` is `EC` or `EC-HSM`. The API will default to `P-256` if nothing is specified. Changing this forces a new resource to be created.
   late final pulumi.Output<String> curve;
   /// The RSA public exponent of this Key Vault Key.
   late final pulumi.Output<String> e;
@@ -434,9 +480,9 @@ class Key extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Removing this field from the config forces a new resource to be created.
   late final pulumi.Output<String?> expirationDate;
-  /// A list of JSON web key operations. Possible values include: `decrypt`, `encrypt`, `sign`, `unwrapKey`, `verify` and `wrapKey`. Please note these values are case sensitive.
+  /// A list of JSON web key operations. Possible values include: `decrypt`, `encrypt`, `sign`, `unwrapKey`, `verify` and `wrapKey`. Please note these values are case-sensitive.
   late final pulumi.Output<List<String>> keyOpts;
-  /// Specifies the Size of the RSA key to create in bytes. For example, 1024 or 2048. *Note*: This field is required if `key_type` is `RSA` or `RSA-HSM`. Changing this forces a new resource to be created.
+  /// Specifies the Size of the RSA key to create in bytes. For example, 1024 or 2048. *Note*: This field is required if `keyType` is `RSA` or `RSA-HSM`. Changing this forces a new resource to be created.
   late final pulumi.Output<int?> keySize;
   /// Specifies the Key Type to use for this Key Vault Key. Possible values are `EC` (Elliptic Curve), `EC-HSM`, `RSA` and `RSA-HSM`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> keyType;
@@ -448,17 +494,21 @@ class Key extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Key not usable before the provided UTC datetime (Y-m-d'T'H:M:S'Z').
   ///
-  /// &gt; **Note:** Once `expiration_date` is set, it's not possible to unset the key even if it is deleted & recreated as underlying Azure API uses the restore of the purged key.
+  /// &gt; **Note:** Once `expirationDate` is set, it's not possible to unset the key even if it is deleted & recreated as underlying Azure API uses the restore of the purged key.
   late final pulumi.Output<String?> notBeforeDate;
   /// The OpenSSH encoded public key of this Key Vault Key.
   late final pulumi.Output<String> publicKeyOpenssh;
   /// The PEM encoded public key of this Key Vault Key.
   late final pulumi.Output<String> publicKeyPem;
+  /// A `releasePolicy` block as defined below. Changing this forces a new resource to be created.
+  ///
+  /// &gt; **Note:** When `releasePolicy` is set, the key is automatically set as exportable by the provider as this is an API requirement.
+  late final pulumi.Output<KeyReleasePolicy?> releasePolicy;
   /// The (Versioned) ID for this Key Vault Key. This property points to a specific version of a Key Vault Key, as such using this won't auto-rotate values if used in other Azure Services.
   late final pulumi.Output<String> resourceId;
   /// The Versionless ID of the Key Vault Key. This property allows other Azure Services (that support it) to auto-rotate their value when the Key Vault Key is updated.
   late final pulumi.Output<String> resourceVersionlessId;
-  /// A `rotation_policy` block as defined below.
+  /// A `rotationPolicy` block as defined below.
   late final pulumi.Output<KeyRotationPolicy?> rotationPolicy;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -497,6 +547,7 @@ class Key extends pulumi.CustomResource {
     notBeforeDate = registerOutput<String?>('notBeforeDate');
     publicKeyOpenssh = registerOutput<String>('publicKeyOpenssh');
     publicKeyPem = registerOutput<String>('publicKeyPem');
+    releasePolicy = registerOutput<KeyReleasePolicy?>('releasePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyReleasePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceId = registerOutput<String>('resourceId');
     resourceVersionlessId = registerOutput<String>('resourceVersionlessId');
     rotationPolicy = registerOutput<KeyRotationPolicy?>('rotationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyRotationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -542,6 +593,7 @@ class Key extends pulumi.CustomResource {
     notBeforeDate = registerOutput<String?>('notBeforeDate');
     publicKeyOpenssh = registerOutput<String>('publicKeyOpenssh');
     publicKeyPem = registerOutput<String>('publicKeyPem');
+    releasePolicy = registerOutput<KeyReleasePolicy?>('releasePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyReleasePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceId = registerOutput<String>('resourceId');
     resourceVersionlessId = registerOutput<String>('resourceVersionlessId');
     rotationPolicy = registerOutput<KeyRotationPolicy?>('rotationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyRotationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

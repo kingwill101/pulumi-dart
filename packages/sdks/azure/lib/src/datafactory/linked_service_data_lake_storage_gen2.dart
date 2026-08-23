@@ -130,6 +130,36 @@ import 'linked_service_data_lake_storage_gen2_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedservicedatalakestoragegen2" "example" {
+///   name                  = "example"
+///   data_factory_id       = azure_datafactory_factory.example.id
+///   service_principal_id  = data.azure_core_getclientconfig.current.client_id
+///   service_principal_key = "exampleKey"
+///   tenant                = "11111111-1111-1111-1111-111111111111"
+///   url                   = "https://datalakestoragegen2"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +173,8 @@ import 'linked_service_data_lake_storage_gen2_state.dart';
 /// import com.pulumi.azure.core.CoreFunctions;
 /// import com.pulumi.azure.datafactory.LinkedServiceDataLakeStorageGen2;
 /// import com.pulumi.azure.datafactory.LinkedServiceDataLakeStorageGen2Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -237,21 +267,21 @@ class LinkedServiceDataLakeStorageGen2 extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A map of parameters to associate with the Data Factory Linked Service.
   late final pulumi.Output<Map<String, String>?> parameters;
-  /// The service principal id with which to authenticate against the Azure Data Lake Storage Gen2 account. Incompatible with `storage_account_key` and `use_managed_identity`.
+  /// The service principal id with which to authenticate against the Azure Data Lake Storage Gen2 account. Incompatible with `storageAccountKey` and `useManagedIdentity`.
   late final pulumi.Output<String?> servicePrincipalId;
   /// The service principal key with which to authenticate against the Azure Data Lake Storage Gen2 account.
   late final pulumi.Output<String?> servicePrincipalKey;
-  /// The Storage Account Key with which to authenticate against the Azure Data Lake Storage Gen2 account. Incompatible with `service_principal_id`, `service_principal_key`, `tenant` and `use_managed_identity`.
+  /// The Storage Account Key with which to authenticate against the Azure Data Lake Storage Gen2 account. Incompatible with `servicePrincipalId`, `servicePrincipalKey`, `tenant` and `useManagedIdentity`.
   late final pulumi.Output<String?> storageAccountKey;
   /// The tenant id or name in which the service principal exists to authenticate against the Azure Data Lake Storage Gen2 account.
   ///
-  /// &gt; **Note:** If `service_principal_id` is used, `service_principal_key` and `tenant` are also required.
+  /// &gt; **Note:** If `servicePrincipalId` is used, `servicePrincipalKey` and `tenant` are also required.
   late final pulumi.Output<String?> tenant;
   /// The endpoint for the Azure Data Lake Storage Gen2 service.
   ///
   /// &gt; **Note:** Users should specify only one of the following three authentication strategies: storage account key, managed identity, service principal.
   late final pulumi.Output<String> url;
-  /// Whether to use the Data Factory's managed identity to authenticate against the Azure Data Lake Storage Gen2 account. Incompatible with `service_principal_id`, `service_principal_key`, `tenant` and `storage_account_key`.
+  /// Whether to use the Data Factory's managed identity to authenticate against the Azure Data Lake Storage Gen2 account. Incompatible with `servicePrincipalId`, `servicePrincipalKey`, `tenant` and `storageAccountKey`.
   late final pulumi.Output<bool?> useManagedIdentity;
 
   /// Creates a new [LinkedServiceDataLakeStorageGen2].

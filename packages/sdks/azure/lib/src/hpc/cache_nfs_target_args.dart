@@ -12,7 +12,7 @@ class CacheNfsTargetArgs {
   final pulumi.Input<String> cacheName;
   /// The name of the HPC Cache NFS Target. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// Can be specified multiple times to define multiple `namespace_junction`. Each `namespace_junction` block supports fields documented below.
+  /// Can be specified multiple times to define multiple `namespaceJunction`. Each `namespaceJunction` block supports fields documented below.
   final pulumi.Input<List<CacheNfsTargetNamespaceJunction>> namespaceJunctions;
   /// The name of the Resource Group in which to create the HPC Cache NFS Target. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
@@ -28,7 +28,7 @@ class CacheNfsTargetArgs {
   /// Creates a new [CacheNfsTargetArgs].
   /// [cacheName] The name HPC Cache, which the HPC Cache NFS Target will be added to. Changing this forces a new resource to be created.
   /// [name] The name of the HPC Cache NFS Target. Changing this forces a new resource to be created.
-  /// [namespaceJunctions] Can be specified multiple times to define multiple `namespace_junction`. Each `namespace_junction` block supports fields documented below.
+  /// [namespaceJunctions] Can be specified multiple times to define multiple `namespaceJunction`. Each `namespaceJunction` block supports fields documented below.
   /// [resourceGroupName] The name of the Resource Group in which to create the HPC Cache NFS Target. Changing this forces a new resource to be created.
   /// [targetHostName] The IP address or fully qualified domain name (FQDN) of the HPC Cache NFS target. Changing this forces a new resource to be created.
   /// [usageModel] The type of usage of the HPC Cache NFS Target. Possible values are: `READ_HEAVY_INFREQ`, `READ_HEAVY_CHECK_180`, `READ_ONLY`, `READ_WRITE`, `WRITE_WORKLOAD_15`, `WRITE_AROUND`, `WRITE_WORKLOAD_CHECK_30`, `WRITE_WORKLOAD_CHECK_60` and `WRITE_WORKLOAD_CLOUDWS`.
@@ -71,4 +71,3 @@ class CacheNfsTargetArgs {
     );
   }
 }
-

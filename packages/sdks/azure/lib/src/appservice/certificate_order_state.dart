@@ -15,7 +15,7 @@ class CertificateOrderState {
   final pulumi.Input<String>? csr;
   /// The Distinguished Name for the App Service Certificate Order.
   ///
-  /// &gt; **Note:** Either `csr` or `distinguished_name` must be set - but not both.
+  /// &gt; **Note:** Either `csr` or `distinguishedName` must be set - but not both.
   final pulumi.Input<String>? distinguishedName;
   /// Domain verification token.
   final pulumi.Input<String>? domainVerificationToken;
@@ -136,4 +136,3 @@ class CertificateOrderState {
     );
   }
 }
-

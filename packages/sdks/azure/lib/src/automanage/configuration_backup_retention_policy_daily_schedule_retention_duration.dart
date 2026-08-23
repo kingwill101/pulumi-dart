@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationBackupRetentionPolicyDailyScheduleRetentionDuration {
-  /// The count of the retention duration of the backup policy. Valid value inside `daily_schedule` is `7` to `9999` and inside `weekly_schedule` is `1` to `5163`.
+  /// The count of the retention duration of the backup policy. Valid value inside `dailySchedule` is `7` to `9999` and inside `weeklySchedule` is `1` to `5163`.
   final pulumi.Input<int>? count;
-  /// The duration type of the retention duration of the backup policy. Valid value inside `daily_schedule` is `Days` and inside `weekly_schedule` is `Weeks`. Defaults to `Days`.
+  /// The duration type of the retention duration of the backup policy. Valid value inside `dailySchedule` is `Days` and inside `weeklySchedule` is `Weeks`. Defaults to `Days`.
   final pulumi.Input<String>? durationType;
 
   /// Creates a new [ConfigurationBackupRetentionPolicyDailyScheduleRetentionDuration].
-  /// [count] The count of the retention duration of the backup policy. Valid value inside `daily_schedule` is `7` to `9999` and inside `weekly_schedule` is `1` to `5163`.
-  /// [durationType] The duration type of the retention duration of the backup policy. Valid value inside `daily_schedule` is `Days` and inside `weekly_schedule` is `Weeks`. Defaults to `Days`.
+  /// [count] The count of the retention duration of the backup policy. Valid value inside `dailySchedule` is `7` to `9999` and inside `weeklySchedule` is `1` to `5163`.
+  /// [durationType] The duration type of the retention duration of the backup policy. Valid value inside `dailySchedule` is `Days` and inside `weeklySchedule` is `Weeks`. Defaults to `Days`.
   const ConfigurationBackupRetentionPolicyDailyScheduleRetentionDuration({
     this.count,
     this.durationType,
@@ -30,4 +30,3 @@ class ConfigurationBackupRetentionPolicyDailyScheduleRetentionDuration {
     );
   }
 }
-

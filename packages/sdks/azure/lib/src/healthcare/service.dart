@@ -212,6 +212,47 @@ import 'service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_core_getclientconfig" "current" {
+/// }
+///
+/// resource "azure_healthcare_service" "example" {
+///   name                = "uniquefhirname"
+///   resource_group_name = "sample-resource-group"
+///   location            = "westus2"
+///   kind                = "fhir-R4"
+///   cosmosdb_throughput = "2000"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   access_policy_object_ids                  = data.azure_core_getclientconfig.current.object_id
+///   configuration_export_storage_account_name = "teststorage"
+///   tags = {
+///     "environment" = "testenv"
+///     "purpose"     = "AcceptanceTests"
+///   }
+///   authentication_configuration = {
+///     authority           = "https://login.microsoftonline.com/$%7Bdata.azurerm_client_config.current.tenant_id%7D"
+///     audience            = "https://azurehealthcareapis.com/"
+///     smart_proxy_enabled = "true"
+///   }
+///   cors_configuration = {
+///     allowed_origins    = ["http://www.example.com", "http://www.example2.com"]
+///     allowed_headers    = ["x-tempo-*", "x-tempo2-*"]
+///     allowed_methods    = ["GET", "PUT"]
+///     max_age_in_seconds = "500"
+///     allow_credentials  = "true"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +265,8 @@ import 'service_state.dart';
 /// import com.pulumi.azure.healthcare.inputs.ServiceIdentityArgs;
 /// import com.pulumi.azure.healthcare.inputs.ServiceAuthenticationConfigurationArgs;
 /// import com.pulumi.azure.healthcare.inputs.ServiceCorsConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -335,11 +376,11 @@ import 'service_state.dart';
 class Service extends pulumi.CustomResource {
   /// A set of Azure object IDs that are allowed to access the Service. If not configured, the default value is the object id of the service principal or user that is running Terraform.
   late final pulumi.Output<List<String>?> accessPolicyObjectIds;
-  /// An `authentication_configuration` block as defined below.
+  /// An `authenticationConfiguration` block as defined below.
   late final pulumi.Output<ServiceAuthenticationConfiguration> authenticationConfiguration;
   /// Specifies the name of the storage account which the operation configuration information is exported to.
   late final pulumi.Output<String?> configurationExportStorageAccountName;
-  /// A `cors_configuration` block as defined below.
+  /// A `corsConfiguration` block as defined below.
   late final pulumi.Output<ServiceCorsConfiguration> corsConfiguration;
   /// A versionless Key Vault Key ID for CMK encryption of the backing database. Changing this forces a new resource to be created.
   ///

@@ -12,7 +12,7 @@ class ApiConnectionState {
   final pulumi.Input<String>? name;
   /// A map of parameter values associated with this API Connection.
   ///
-  /// &gt; **Note:** The Azure API doesn't return sensitive parameters in the API response which can lead to a diff, as such you may need to use Terraform's `ignore_changes` functionality on this field as shown in the Example Usage above.
+  /// &gt; **Note:** The Azure API doesn't return sensitive parameters in the API response which can lead to a diff, as such you may need to use Terraform's `ignoreChanges` functionality on this field as shown in the Example Usage above.
   final pulumi.Input<Map<String, String>>? parameterValues;
   /// The name of the Resource Group where this API Connection should exist. Changing this forces a new API Connection to be created.
   final pulumi.Input<String>? resourceGroupName;
@@ -57,4 +57,3 @@ class ApiConnectionState {
     );
   }
 }
-

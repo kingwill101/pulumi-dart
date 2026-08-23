@@ -67,6 +67,24 @@ import 'get_workspace_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_synapse_getworkspace" "example" {
+///   name                = "existing"
+///   resource_group_name = "example-resource-group"
+/// }
+///
+/// output "id" {
+///   value = data.azure_synapse_getworkspace.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +93,8 @@ import 'get_workspace_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.synapse.SynapseFunctions;
 /// import com.pulumi.azure.synapse.inputs.GetWorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

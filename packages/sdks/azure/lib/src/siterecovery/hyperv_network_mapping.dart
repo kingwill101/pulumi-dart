@@ -157,6 +157,39 @@ import 'hyperv_network_mapping_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "target" {
+///   name     = "tfex-network-mapping"
+///   location = "East US"
+/// }
+/// resource "azure_recoveryservices_vault" "vault" {
+///   name                = "example-recovery-vault"
+///   location            = azure_core_resourcegroup.target.location
+///   resource_group_name = azure_core_resourcegroup.target.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_network_virtualnetwork" "target" {
+///   name                = "network"
+///   resource_group_name = azure_core_resourcegroup.target.name
+///   address_spaces      = ["192.168.2.0/24"]
+///   location            = azure_core_resourcegroup.target.location
+/// }
+/// resource "azure_siterecovery_hypervnetworkmapping" "recovery-mapping" {
+///   name                                              = "recovery-network-mapping"
+///   recovery_vault_id                                 = azure_recoveryservices_vault.vault.id
+///   source_system_center_virtual_machine_manager_name = "my-vmm-server"
+///   source_network_name                               = "my-vmm-network"
+///   target_network_id                                 = azure_network_virtualnetwork.target.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,8 +204,8 @@ import 'hyperv_network_mapping_state.dart';
 /// import com.pulumi.azure.network.VirtualNetworkArgs;
 /// import com.pulumi.azure.siterecovery.HypervNetworkMapping;
 /// import com.pulumi.azure.siterecovery.HypervNetworkMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

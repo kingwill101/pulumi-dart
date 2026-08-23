@@ -15,7 +15,7 @@ class NetworkManagerRoutingRuleArgs {
   final pulumi.Input<NetworkManagerRoutingRuleDestination> destination;
   /// The name of the Network Manager Routing Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// A `next_hop` block as defined below.
+  /// A `nextHop` block as defined below.
   final pulumi.Input<NetworkManagerRoutingRuleNextHop> nextHop;
   /// The ID of the Network Manager Routing Rule Collection to which this rule belongs. Changing this forces a new resource to be created.
   final pulumi.Input<String> ruleCollectionId;
@@ -24,7 +24,7 @@ class NetworkManagerRoutingRuleArgs {
   /// [description] A description for the routing rule.
   /// [destination] A `destination` block as defined below.
   /// [name] The name of the Network Manager Routing Rule. Changing this forces a new resource to be created.
-  /// [nextHop] A `next_hop` block as defined below.
+  /// [nextHop] A `nextHop` block as defined below.
   /// [ruleCollectionId] The ID of the Network Manager Routing Rule Collection to which this rule belongs. Changing this forces a new resource to be created.
   const NetworkManagerRoutingRuleArgs({
     this.description,
@@ -54,4 +54,3 @@ class NetworkManagerRoutingRuleArgs {
     );
   }
 }
-

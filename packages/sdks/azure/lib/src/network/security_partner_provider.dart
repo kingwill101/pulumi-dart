@@ -202,6 +202,49 @@ import 'security_partner_provider_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_virtualwan" "example" {
+///   name                = "example-vwan"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// resource "azure_network_virtualhub" "example" {
+///   name                = "example-vhub"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   address_prefix      = "10.0.2.0/24"
+/// }
+/// resource "azure_network_vpngateway" "example" {
+///   name                = "example-vpngw"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   virtual_hub_id      = azure_network_virtualhub.example.id
+/// }
+/// resource "azure_network_securitypartnerprovider" "example" {
+///   depends_on             = [azure_network_vpngateway.example]
+///   name                   = "example-spp"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resourcegroup.example.location
+///   virtual_hub_id         = azure_network_virtualhub.example.id
+///   security_provider_name = "IBoss"
+///   tags = {
+///     "ENV" = "Prod"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -219,8 +262,8 @@ import 'security_partner_provider_state.dart';
 /// import com.pulumi.azure.network.SecurityPartnerProvider;
 /// import com.pulumi.azure.network.SecurityPartnerProviderArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -212,6 +212,50 @@ import 'mongo_user_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_cosmosdb_account" "example" {
+///   name                = "example-ca"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   offer_type          = "Standard"
+///   kind                = "MongoDB"
+///   capabilities {
+///     name = "EnableMongo"
+///   }
+///   capabilities {
+///     name = "EnableMongoRoleBasedAccessControl"
+///   }
+///   consistency_policy = {
+///     consistency_level = "Strong"
+///   }
+///   geo_locations {
+///     location          = azure_core_resourcegroup.example.location
+///     failover_priority = 0
+///   }
+/// }
+/// resource "azure_cosmosdb_mongodatabase" "example" {
+///   name                = "example-mongodb"
+///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
+///   account_name        = azure_cosmosdb_account.example.name
+/// }
+/// resource "azure_cosmosdb_mongouserdefinition" "example" {
+///   cosmos_mongo_database_id = azure_cosmosdb_mongodatabase.example.id
+///   username                 = "myUserName"
+///   password                 = "myPassword"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -229,8 +273,8 @@ import 'mongo_user_definition_state.dart';
 /// import com.pulumi.azure.cosmosdb.MongoDatabaseArgs;
 /// import com.pulumi.azure.cosmosdb.MongoUserDefinition;
 /// import com.pulumi.azure.cosmosdb.MongoUserDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -330,7 +374,7 @@ import 'mongo_user_definition_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.DocumentDB` - 2022-11-15
+/// * `Microsoft.DocumentDB` - 2025-10-15
 ///
 /// ## Import
 ///
@@ -344,7 +388,7 @@ class MongoUserDefinition extends pulumi.CustomResource {
   late final pulumi.Output<String> cosmosMongoDatabaseId;
   /// A list of Mongo Roles that are inherited to the Mongo User Definition.
   ///
-  /// &gt; **Note:** The role that needs to be inherited should exist in the Mongo DB of `cosmos_mongo_database_id`.
+  /// &gt; **Note:** The role that needs to be inherited should exist in the Mongo DB of `cosmosMongoDatabaseId`.
   late final pulumi.Output<List<String>?> inheritedRoleNames;
   /// The password for the Mongo User Definition.
   late final pulumi.Output<String> password;

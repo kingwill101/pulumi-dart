@@ -7,7 +7,7 @@ import 'rules_engine_rule_match_condition.dart';
 class RulesEngineRule {
   /// An `action` block as defined below.
   final pulumi.Input<RulesEngineRuleAction>? action;
-  /// One or more `match_condition` block as defined below.
+  /// One or more `matchCondition` block as defined below.
   final pulumi.Input<List<RulesEngineRuleMatchCondition>>? matchConditions;
   /// The name of the rule.
   final pulumi.Input<String> name;
@@ -16,7 +16,7 @@ class RulesEngineRule {
 
   /// Creates a new [RulesEngineRule].
   /// [action] An `action` block as defined below.
-  /// [matchConditions] One or more `match_condition` block as defined below.
+  /// [matchConditions] One or more `matchCondition` block as defined below.
   /// [name] The name of the rule.
   /// [priority] Priority of the rule, must be unique per rules engine definition.
   const RulesEngineRule({
@@ -44,4 +44,3 @@ class RulesEngineRule {
     );
   }
 }
-

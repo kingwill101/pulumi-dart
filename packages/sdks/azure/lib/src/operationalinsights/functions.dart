@@ -67,6 +67,24 @@ import 'get_analytics_workspace_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_operationalinsights_getanalyticsworkspace" "example" {
+///   name                = "acctest-01"
+///   resource_group_name = "acctest"
+/// }
+///
+/// output "logAnalyticsWorkspaceId" {
+///   value = data.azure_operationalinsights_getanalyticsworkspace.example.workspace_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +93,8 @@ import 'get_analytics_workspace_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azure.operationalinsights.OperationalinsightsFunctions;
 /// import com.pulumi.azure.operationalinsights.inputs.GetAnalyticsWorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -13,7 +13,7 @@ class EligibleRoleAssignmentArgs {
   final pulumi.Input<String>? condition;
   /// The version of the condition. Supported values include `2.0`. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `condition_version` is required when specifying `condition` and vice versa.
+  /// &gt; **Note:** `conditionVersion` is required when specifying `condition` and vice versa.
   final pulumi.Input<String>? conditionVersion;
   /// The justification of the role assignment. Changing this forces a new resource to be created.
   final pulumi.Input<String>? justification;
@@ -74,4 +74,3 @@ class EligibleRoleAssignmentArgs {
     );
   }
 }
-

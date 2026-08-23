@@ -93,6 +93,25 @@ import 'firewall_policy_tls_certificate.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_network_firewallpolicy" "example" {
+///   name                = "example-policy"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +122,8 @@ import 'firewall_policy_tls_certificate.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.network.FirewallPolicy;
 /// import com.pulumi.azure.network.FirewallPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,7 +189,7 @@ class FirewallPolicy extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> childPolicies;
   /// A `dns` block as defined below.
   late final pulumi.Output<FirewallPolicyDns?> dns;
-  /// A `explicit_proxy` block as defined below.
+  /// A `explicitProxy` block as defined below.
   late final pulumi.Output<FirewallPolicyExplicitProxy?> explicitProxy;
   /// A list of references to Azure Firewalls that this Firewall Policy is associated with.
   late final pulumi.Output<List<String>> firewalls;
@@ -178,7 +197,7 @@ class FirewallPolicy extends pulumi.CustomResource {
   late final pulumi.Output<FirewallPolicyIdentity?> identity;
   /// An `insights` block as defined below.
   late final pulumi.Output<FirewallPolicyInsights?> insights;
-  /// A `intrusion_detection` block as defined below.
+  /// A `intrusionDetection` block as defined below.
   late final pulumi.Output<FirewallPolicyIntrusionDetection?> intrusionDetection;
   /// The Azure Region where the Firewall Policy should exist. Changing this forces a new Firewall Policy to be created.
   late final pulumi.Output<String> location;
@@ -196,11 +215,11 @@ class FirewallPolicy extends pulumi.CustomResource {
   late final pulumi.Output<bool?> sqlRedirectAllowed;
   /// A mapping of tags which should be assigned to the Firewall Policy.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A `threat_intelligence_allowlist` block as defined below.
+  /// A `threatIntelligenceAllowlist` block as defined below.
   late final pulumi.Output<FirewallPolicyThreatIntelligenceAllowlist?> threatIntelligenceAllowlist;
   /// The operation mode for Threat Intelligence. Possible values are `Alert`, `Deny` and `Off`. Defaults to `Alert`.
   late final pulumi.Output<String?> threatIntelligenceMode;
-  /// A `tls_certificate` block as defined below.
+  /// A `tlsCertificate` block as defined below.
   late final pulumi.Output<FirewallPolicyTlsCertificate?> tlsCertificate;
 
   /// Creates a new [FirewallPolicy].

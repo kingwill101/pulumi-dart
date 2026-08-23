@@ -135,7 +135,7 @@ import 'scheduled_query_rules_alert_trigger.dart';
 ///     time_window=30,
 ///     trigger={
 ///         "operator": "GreaterThan",
-///         "threshold": 3,
+///         "threshold": float(3),
 ///     },
 ///     tags={
 ///         "foo": "bar",
@@ -166,7 +166,7 @@ import 'scheduled_query_rules_alert_trigger.dart';
 ///     time_window=30,
 ///     trigger={
 ///         "operator": "GreaterThan",
-///         "threshold": 3,
+///         "threshold": float(3),
 ///     },
 ///     tags={
 ///         "foo": "bar",
@@ -399,6 +399,93 @@ import 'scheduled_query_rules_alert_trigger.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "std_format" "invoke_0" {
+///   input = "let a=requests\n  | where toint(resultCode) >= 500\n  | extend fail=1; let b=app('%s').requests\n  | where toint(resultCode) >= 500 | extend fail=1; a\n  | join b on fail\n"
+///   args  = [azure_appinsights_insights.example2.id]
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "monitoring-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_appinsights_insights" "example" {
+///   name                = "appinsights"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// resource "azure_appinsights_insights" "example2" {
+///   name                = "appinsights2"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   application_type    = "web"
+/// }
+/// # Example: Alerting Action with result count trigger
+/// resource "azure_monitoring_scheduledqueryrulesalert" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   action = {
+///     action_groups          = []
+///     email_subject          = "Email Header"
+///     custom_webhook_payload = "{}"
+///   }
+///   data_source_id = azure_appinsights_insights.example.id
+///   description    = "Alert when total results cross threshold"
+///   enabled        = true
+///   # Count all requests with server error result code grouped into 5-minute bins
+///   query       = "requests\n  | where tolong(resultCode) >= 500\n  | summarize count() by bin(timestamp, 5m)\n"
+///   severity    = 1
+///   frequency   = 5
+///   time_window = 30
+///   trigger = {
+///     operator  = "GreaterThan"
+///     threshold = 3
+///   }
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// # Example: Alerting Action Cross-Resource
+/// resource "azure_monitoring_scheduledqueryrulesalert" "example2" {
+///   name                    = "example"
+///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   authorized_resource_ids = [azure_appinsights_insights.example2.id]
+///   action = {
+///     action_groups          = []
+///     email_subject          = "Email Header"
+///     custom_webhook_payload = "{}"
+///   }
+///   data_source_id = azure_appinsights_insights.example.id
+///   description    = "Query may access data within multiple resources"
+///   enabled        = true
+///   # Count requests in multiple log resources and group into 5-minute bins by HTTP operation
+///   query       = data.std_format.invoke_0.result
+///   severity    = 1
+///   frequency   = 5
+///   time_window = 30
+///   trigger = {
+///     operator  = "GreaterThan"
+///     threshold = 3
+///   }
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -415,8 +502,8 @@ import 'scheduled_query_rules_alert_trigger.dart';
 /// import com.pulumi.azure.monitoring.inputs.ScheduledQueryRulesAlertTriggerArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FormatArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -622,7 +709,7 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
   /// List of Resource IDs referred into query.
   late final pulumi.Output<List<String>?> authorizedResourceIds;
   /// Should the alerts in this Metric Alert be auto resolved? Defaults to `false`.
-  /// &gt; **Note:** `auto_mitigation_enabled` and `throttling` are mutually exclusive and cannot both be set.
+  /// &gt; **Note:** `autoMitigationEnabled` and `throttling` are mutually exclusive and cannot both be set.
   late final pulumi.Output<bool?> autoMitigationEnabled;
   /// The resource URI over which log search query is to be run. Changing this forces a new resource to be created.
   late final pulumi.Output<String> dataSourceId;

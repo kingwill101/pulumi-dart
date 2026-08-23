@@ -134,6 +134,36 @@ import 'flexible_server_firewall_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_postgresql_flexibleserver" "example" {
+///   name                   = "example-psqlflexibleserver"
+///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resourcegroup.example.location
+///   version                = "12"
+///   administrator_login    = "psqladmin"
+///   administrator_password = "H@Sh1CoR3!"
+///   storage_mb             = 32768
+///   sku_name               = "GP_Standard_D4s_v3"
+/// }
+/// resource "azure_postgresql_flexibleserverfirewallrule" "example" {
+///   name             = "example-fw"
+///   server_id        = azure_postgresql_flexibleserver.example.id
+///   start_ip_address = "122.122.0.0"
+///   end_ip_address   = "122.122.0.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +176,8 @@ import 'flexible_server_firewall_rule_state.dart';
 /// import com.pulumi.azure.postgresql.FlexibleServerArgs;
 /// import com.pulumi.azure.postgresql.FlexibleServerFirewallRule;
 /// import com.pulumi.azure.postgresql.FlexibleServerFirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

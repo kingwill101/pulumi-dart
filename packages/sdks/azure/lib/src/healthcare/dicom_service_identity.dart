@@ -7,14 +7,14 @@ class DicomServiceIdentity {
   final pulumi.Input<List<String>>? identityIds;
   final pulumi.Input<String>? principalId;
   final pulumi.Input<String>? tenantId;
-  /// The type of identity used for the Healthcare DICOM service. Possible values are `UserAssigned`, `SystemAssigned` and `SystemAssigned, UserAssigned`. If `UserAssigned` is set, an `identity_ids` must be set as well.
+  /// The type of identity used for the Healthcare DICOM service. Possible values are `UserAssigned`, `SystemAssigned` and `SystemAssigned, UserAssigned`. If `UserAssigned` is set, an `identityIds` must be set as well.
   final pulumi.Input<String> type;
 
   /// Creates a new [DicomServiceIdentity].
   /// [identityIds] A list of User Assigned Identity IDs which should be assigned to this Healthcare DICOM service.
   /// [principalId] Optional.
   /// [tenantId] Optional.
-  /// [type] The type of identity used for the Healthcare DICOM service. Possible values are `UserAssigned`, `SystemAssigned` and `SystemAssigned, UserAssigned`. If `UserAssigned` is set, an `identity_ids` must be set as well.
+  /// [type] The type of identity used for the Healthcare DICOM service. Possible values are `UserAssigned`, `SystemAssigned` and `SystemAssigned, UserAssigned`. If `UserAssigned` is set, an `identityIds` must be set as well.
   const DicomServiceIdentity({
     this.identityIds,
     this.principalId,
@@ -40,4 +40,3 @@ class DicomServiceIdentity {
     );
   }
 }
-

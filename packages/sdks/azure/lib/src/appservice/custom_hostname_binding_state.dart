@@ -16,7 +16,7 @@ class CustomHostnameBindingState {
   final pulumi.Input<String>? sslState;
   /// The SSL certificate thumbprint. Changing this forces a new resource to be created.
   ///
-  /// &gt; **Note:** `thumbprint` must be specified when `ssl_state` is set.
+  /// &gt; **Note:** `thumbprint` must be specified when `sslState` is set.
   final pulumi.Input<String>? thumbprint;
   /// The virtual IP address assigned to the hostname if IP based SSL is enabled.
   final pulumi.Input<String>? virtualIp;
@@ -59,4 +59,3 @@ class CustomHostnameBindingState {
     );
   }
 }
-

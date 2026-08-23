@@ -113,6 +113,30 @@ import 'linked_service_azure_sql_database_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_datafactory_factory" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+/// }
+/// resource "azure_datafactory_linkedserviceazuresqldatabase" "example" {
+///   name              = "example"
+///   data_factory_id   = azure_datafactory_factory.example.id
+///   connection_string = "data source=serverhostname;initial catalog=master;user id=testUser;Password=test;integrated security=False;encrypt=True;connection timeout=30"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -125,8 +149,8 @@ import 'linked_service_azure_sql_database_state.dart';
 /// import com.pulumi.azure.datafactory.FactoryArgs;
 /// import com.pulumi.azure.datafactory.LinkedServiceAzureSqlDatabase;
 /// import com.pulumi.azure.datafactory.LinkedServiceAzureSqlDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -194,7 +218,7 @@ class LinkedServiceAzureSqlDatabase extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service Azure SQL Database.
   late final pulumi.Output<List<String>?> annotations;
-  /// The connection string in which to authenticate with Azure SQL Database. Exactly one of either `connection_string` or `key_vault_connection_string` is required.
+  /// The connection string in which to authenticate with Azure SQL Database. Exactly one of either `connectionString` or `keyVaultConnectionString` is required.
   late final pulumi.Output<String?> connectionString;
   /// The name of a User-assigned Managed Identity. Use this argument to authenticate against the linked resource using a User-assigned Managed Identity.
   late final pulumi.Output<String?> credentialName;
@@ -204,21 +228,21 @@ class LinkedServiceAzureSqlDatabase extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The integration runtime reference to associate with the Data Factory Linked Service Azure SQL Database.
   late final pulumi.Output<String?> integrationRuntimeName;
-  /// A `key_vault_connection_string` block as defined below. Use this argument to store Azure SQL Database connection string in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `connection_string` or `key_vault_connection_string` is required.
+  /// A `keyVaultConnectionString` block as defined below. Use this argument to store Azure SQL Database connection string in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `connectionString` or `keyVaultConnectionString` is required.
   late final pulumi.Output<LinkedServiceAzureSqlDatabaseKeyVaultConnectionString?> keyVaultConnectionString;
-  /// A `key_vault_password` block as defined below. Use this argument to store SQL Server password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
+  /// A `keyVaultPassword` block as defined below. Use this argument to store SQL Server password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
   late final pulumi.Output<LinkedServiceAzureSqlDatabaseKeyVaultPassword?> keyVaultPassword;
   /// Specifies the name of the Data Factory Linked Service Azure SQL Database. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
   /// A map of parameters to associate with the Data Factory Linked Service Azure SQL Database.
   late final pulumi.Output<Map<String, String>?> parameters;
-  /// The service principal id in which to authenticate against the Azure SQL Database. Required if `service_principal_key` is set.
+  /// The service principal id in which to authenticate against the Azure SQL Database. Required if `servicePrincipalKey` is set.
   late final pulumi.Output<String?> servicePrincipalId;
-  /// The service principal key in which to authenticate against the Azure SQL Database. Required if `service_principal_id` is set.
+  /// The service principal key in which to authenticate against the Azure SQL Database. Required if `servicePrincipalId` is set.
   late final pulumi.Output<String?> servicePrincipalKey;
   /// The tenant id or name in which to authenticate against the Azure SQL Database.
   late final pulumi.Output<String?> tenantId;
-  /// Whether to use the Data Factory's managed identity to authenticate against the Azure SQL Database. Incompatible with `service_principal_id` and `service_principal_key`
+  /// Whether to use the Data Factory's managed identity to authenticate against the Azure SQL Database. Incompatible with `servicePrincipalId` and `servicePrincipalKey`
   late final pulumi.Output<bool?> useManagedIdentity;
 
   /// Creates a new [LinkedServiceAzureSqlDatabase].

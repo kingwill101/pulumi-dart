@@ -294,6 +294,69 @@ import 'hadoop_cluster_storage_account_gen2.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "example-resources"
+///   location = "West Europe"
+/// }
+/// resource "azure_storage_account" "example" {
+///   name                     = "hdinsightstor"
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resourcegroup.example.location
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_storage_container" "example" {
+///   name                  = "hdinsight"
+///   storage_account_name  = azure_storage_account.example.name
+///   container_access_type = "private"
+/// }
+/// resource "azure_hdinsight_hadoopcluster" "example" {
+///   name                = "example-hdicluster"
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resourcegroup.example.location
+///   cluster_version     = "3.6"
+///   tier                = "Standard"
+///   component_version = {
+///     hadoop = "2.7"
+///   }
+///   gateway = {
+///     username = "acctestusrgw"
+///     password = "PAssword123!"
+///   }
+///   storage_accounts {
+///     storage_container_id = azure_storage_container.example.id
+///     storage_account_key  = azure_storage_account.example.primary_access_key
+///     is_default           = true
+///   }
+///   roles = {
+///     head_node = {
+///       vm_size  = "Standard_D3_V2"
+///       username = "acctestusrvm"
+///       password = "AccTestvdSC4daf986!"
+///     }
+///     worker_node = {
+///       vm_size               = "Standard_D4_V2"
+///       username              = "acctestusrvm"
+///       password              = "AccTestvdSC4daf986!"
+///       target_instance_count = 3
+///     }
+///     zookeeper_node = {
+///       vm_size  = "Standard_D3_V2"
+///       username = "acctestusrvm"
+///       password = "AccTestvdSC4daf986!"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -315,8 +378,8 @@ import 'hadoop_cluster_storage_account_gen2.dart';
 /// import com.pulumi.azure.hdinsight.inputs.HadoopClusterRolesHeadNodeArgs;
 /// import com.pulumi.azure.hdinsight.inputs.HadoopClusterRolesWorkerNodeArgs;
 /// import com.pulumi.azure.hdinsight.inputs.HadoopClusterRolesZookeeperNodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -463,11 +526,11 @@ import 'hadoop_cluster_storage_account_gen2.dart';
 class HadoopCluster extends pulumi.CustomResource {
   /// Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterVersion;
-  /// A `component_version` block as defined below.
+  /// A `componentVersion` block as defined below.
   late final pulumi.Output<HadoopClusterComponentVersion> componentVersion;
-  /// A `compute_isolation` block as defined below.
+  /// A `computeIsolation` block as defined below.
   late final pulumi.Output<HadoopClusterComputeIsolation?> computeIsolation;
-  /// One or more `disk_encryption` block as defined below.
+  /// One or more `diskEncryption` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> diskEncryptions;
   /// An `extension` block as defined below.
   late final pulumi.Output<HadoopClusterExtension?> extension;
@@ -485,19 +548,19 @@ class HadoopCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// A `network` block as defined below.
   late final pulumi.Output<HadoopClusterNetwork?> network;
-  /// A `private_link_configuration` block as defined below.
+  /// A `privateLinkConfiguration` block as defined below.
   late final pulumi.Output<HadoopClusterPrivateLinkConfiguration?> privateLinkConfiguration;
   /// Specifies the name of the Resource Group in which this HDInsight Hadoop Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A `roles` block as defined below.
   late final pulumi.Output<HadoopClusterRoles> roles;
-  /// A `security_profile` block as defined below. Changing this forces a new resource to be created.
+  /// A `securityProfile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<HadoopClusterSecurityProfile?> securityProfile;
   /// The SSH Connectivity Endpoint for this HDInsight Hadoop Cluster.
   late final pulumi.Output<String> sshEndpoint;
-  /// A `storage_account_gen2` block as defined below.
+  /// A `storageAccountGen2` block as defined below.
   late final pulumi.Output<HadoopClusterStorageAccountGen2?> storageAccountGen2;
-  /// One or more `storage_account` block as defined below.
+  /// One or more `storageAccount` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
   /// A map of Tags which should be assigned to this HDInsight Hadoop Cluster.
   late final pulumi.Output<Map<String, String>?> tags;

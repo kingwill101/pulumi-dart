@@ -5,7 +5,7 @@ import 'get_db_system_shapes_db_system_shape.dart';
 
 /// Result data returned by getDbSystemShapes.
 class GetDbSystemShapesResult {
-  /// A `db_system_shapes` block as defined below.
+  /// A `dbSystemShapes` block as defined below.
   final List<GetDbSystemShapesDbSystemShape> dbSystemShapes;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -13,7 +13,7 @@ class GetDbSystemShapesResult {
   final String? zone;
 
   /// Creates a new [GetDbSystemShapesResult].
-  /// [dbSystemShapes] A `db_system_shapes` block as defined below.
+  /// [dbSystemShapes] A `dbSystemShapes` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
   /// [zone] Optional.
@@ -42,4 +42,3 @@ class GetDbSystemShapesResult {
     );
   }
 }
-

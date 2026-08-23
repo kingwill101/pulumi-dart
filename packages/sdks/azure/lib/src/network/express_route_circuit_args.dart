@@ -14,13 +14,13 @@ class ExpressRouteCircuitArgs {
   final pulumi.Input<String>? authorizationKey;
   /// The bandwidth in Gbps of the circuit being created on the Express Route Port.
   ///
-  /// &gt; **Note:** The `express_route_port_id` and the `bandwidth_in_gbps` should be set together and they conflict with `service_provider_name`, `peering_location` and `bandwidth_in_mbps`.
+  /// &gt; **Note:** The `expressRoutePortId` and the `bandwidthInGbps` should be set together and they conflict with `serviceProviderName`, `peeringLocation` and `bandwidthInMbps`.
   final pulumi.Input<double>? bandwidthInGbps;
   /// The bandwidth in Mbps of the circuit being created on the Service Provider.
   ///
   /// &gt; **Note:** Once you increase your bandwidth, you will not be able to decrease it to its previous value.
   ///
-  /// &gt; **Note:** The `service_provider_name`, the `peering_location` and the `bandwidth_in_mbps` should be set together and they conflict with `express_route_port_id` and `bandwidth_in_gbps`.
+  /// &gt; **Note:** The `serviceProviderName`, the `peeringLocation` and the `bandwidthInMbps` should be set together and they conflict with `expressRoutePortId` and `bandwidthInGbps`.
   final pulumi.Input<int>? bandwidthInMbps;
   /// The ID of the Express Route Port this Express Route Circuit is based on. Changing this forces a new resource to be created.
   final pulumi.Input<String>? expressRoutePortId;
@@ -107,4 +107,3 @@ class ExpressRouteCircuitArgs {
     );
   }
 }
-

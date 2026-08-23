@@ -148,6 +148,38 @@ import 'container_storage_account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tfex-network-mapping-primary"
+///   location = "West Europe"
+/// }
+/// resource "azure_recoveryservices_vault" "vault" {
+///   name                = "example-recovery-vault"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku                 = "Standard"
+/// }
+/// resource "azure_storage_account" "sa" {
+///   name                     = "examplesa"
+///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resourcegroup.example.name
+///   account_tier             = "Standard"
+///   account_replication_type = "LRS"
+/// }
+/// resource "azure_backup_containerstorageaccount" "container" {
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   recovery_vault_name = azure_recoveryservices_vault.vault.name
+///   storage_account_id  = azure_storage_account.sa.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -162,8 +194,8 @@ import 'container_storage_account_state.dart';
 /// import com.pulumi.azure.storage.AccountArgs;
 /// import com.pulumi.azure.backup.ContainerStorageAccount;
 /// import com.pulumi.azure.backup.ContainerStorageAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

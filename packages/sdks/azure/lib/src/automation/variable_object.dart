@@ -140,6 +140,35 @@ import 'variable_object_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "tfex-example-rg"
+///   location = "West Europe"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "tfex-example-account"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_automation_variableobject" "example" {
+///   name                    = "tfex-example-var"
+///   resource_group_name     = azure_core_resourcegroup.example.name
+///   automation_account_name = azure_automation_account.example.name
+///   value = jsonencode({
+///     "greeting" = "Hello, Terraform Basic Test."
+///     "language" = "en"
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -153,8 +182,8 @@ import 'variable_object_state.dart';
 /// import com.pulumi.azure.automation.VariableObject;
 /// import com.pulumi.azure.automation.VariableObjectArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

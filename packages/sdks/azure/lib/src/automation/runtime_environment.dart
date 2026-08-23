@@ -156,6 +156,41 @@ import 'runtime_environment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// resource "azure_core_resourcegroup" "example" {
+///   name     = "rg-example"
+///   location = "westeurope"
+/// }
+/// resource "azure_automation_account" "example" {
+///   name                = "example"
+///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resourcegroup.example.name
+///   sku_name            = "Basic"
+/// }
+/// resource "azure_automation_runtimeenvironment" "example" {
+///   name                  = "powershell_environment_custom_config"
+///   automation_account_id = azure_automation_account.example.id
+///   runtime_language      = "PowerShell"
+///   runtime_version       = "7.2"
+///   location              = azure_core_resourcegroup.example.location
+///   description           = "example description"
+///   runtime_default_packages = {
+///     "az"        = "11.2.0"
+///     "azure cli" = "2.56.0"
+///   }
+///   tags = {
+///     "key" = "foo"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +203,8 @@ import 'runtime_environment_state.dart';
 /// import com.pulumi.azure.automation.AccountArgs;
 /// import com.pulumi.azure.automation.RuntimeEnvironment;
 /// import com.pulumi.azure.automation.RuntimeEnvironmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

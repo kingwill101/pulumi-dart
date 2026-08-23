@@ -10,7 +10,7 @@ import 'table_autoscale_settings.dart';
 class TableArgs {
   /// The name of the Cosmos DB Table to create the table within. Changing this forces a new resource to be created.
   final pulumi.Input<String> accountName;
-  /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
+  /// An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   final pulumi.Input<TableAutoscaleSettings>? autoscaleSettings;
@@ -25,7 +25,7 @@ class TableArgs {
 
   /// Creates a new [TableArgs].
   /// [accountName] The name of the Cosmos DB Table to create the table within. Changing this forces a new resource to be created.
-  /// [autoscaleSettings] An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
+  /// [autoscaleSettings] An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   /// [name] Specifies the name of the Cosmos DB Table. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Cosmos DB Table is created. Changing this forces a new resource to be created.
   /// [throughput] The throughput of Table (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual resource destroy-apply.
@@ -57,4 +57,3 @@ class TableArgs {
     );
   }
 }
-

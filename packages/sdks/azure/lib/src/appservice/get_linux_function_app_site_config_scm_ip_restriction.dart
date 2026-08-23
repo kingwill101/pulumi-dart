@@ -14,7 +14,7 @@ class GetLinuxFunctionAppSiteConfigScmIpRestriction {
   final pulumi.Input<String> ipAddress;
   /// The name which should be used for this Linux Function App.
   final pulumi.Input<String> name;
-  /// The priority value of this `ip_restriction`.
+  /// The priority value of this `ipRestriction`.
   final pulumi.Input<int> priority;
   /// The Service Tag used for this IP Restriction.
   final pulumi.Input<String> serviceTag;
@@ -27,7 +27,7 @@ class GetLinuxFunctionAppSiteConfigScmIpRestriction {
   /// [headers] A `headers` block as defined above.
   /// [ipAddress] The CIDR notation of the IP or IP Range matched.
   /// [name] The name which should be used for this Linux Function App.
-  /// [priority] The priority value of this `ip_restriction`.
+  /// [priority] The priority value of this `ipRestriction`.
   /// [serviceTag] The Service Tag used for this IP Restriction.
   /// [virtualNetworkSubnetId] The Virtual Network Subnet ID used for this IP Restriction.
   const GetLinuxFunctionAppSiteConfigScmIpRestriction({
@@ -67,4 +67,3 @@ class GetLinuxFunctionAppSiteConfigScmIpRestriction {
     );
   }
 }
-

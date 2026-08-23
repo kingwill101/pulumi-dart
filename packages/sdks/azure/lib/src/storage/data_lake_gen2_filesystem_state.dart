@@ -11,7 +11,7 @@ class DataLakeGen2FilesystemState {
   final pulumi.Input<String>? defaultEncryptionScope;
   /// Specifies the Object ID of the Azure Active Directory Group to make the owning group of the root path (i.e. `/`). Possible values also include `$superuser`.
   ///
-  /// &gt; **Note:** The Storage Account requires `account_kind` to be either `StorageV2` or `BlobStorage`. In addition, `is_hns_enabled` has to be set to `true`.
+  /// &gt; **Note:** The Storage Account requires `accountKind` to be either `StorageV2` or `BlobStorage`. In addition, `isHnsEnabled` has to be set to `true`.
   final pulumi.Input<String>? group;
   /// The name of the Data Lake Gen2 File System which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
@@ -64,4 +64,3 @@ class DataLakeGen2FilesystemState {
     );
   }
 }
-

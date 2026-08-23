@@ -22,13 +22,13 @@ class ConfigurationKeyState {
   final pulumi.Input<String>? type;
   /// The value of the App Configuration Key. This should only be set when type is set to `kv`.
   ///
-  /// &gt; **Note:** `value` and `vault_key_reference` are mutually exclusive.
+  /// &gt; **Note:** `value` and `vaultKeyReference` are mutually exclusive.
   final pulumi.Input<String>? value;
   /// The ID of the vault secret this App Configuration Key refers to. This should only be set when `type` is set to `vault`.
   ///
-  /// &gt; **Note:** `vault_key_reference` and `value` are mutually exclusive.
+  /// &gt; **Note:** `vaultKeyReference` and `value` are mutually exclusive.
   ///
-  /// &gt; **Note:** When setting the `vault_key_reference` using the `id` will pin the value to specific version of the secret, to reference latest secret value use `versionless_id`
+  /// &gt; **Note:** When setting the `vaultKeyReference` using the `id` will pin the value to specific version of the secret, to reference latest secret value use `versionlessId`
   final pulumi.Input<String>? vaultKeyReference;
 
   /// Creates a new [ConfigurationKeyState].
@@ -85,4 +85,3 @@ class ConfigurationKeyState {
     );
   }
 }
-

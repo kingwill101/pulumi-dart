@@ -15,11 +15,11 @@ class GetFirewallResult {
   final String firewallPolicyId;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// A `ip_configuration` block as defined below.
+  /// A `ipConfiguration` block as defined below.
   final List<GetFirewallIpConfiguration> ipConfigurations;
   /// The Azure location where the Azure Firewall exists.
   final String location;
-  /// A `management_ip_configuration` block as defined below, which allows force-tunnelling of traffic to be performed by the firewall.
+  /// A `managementIpConfiguration` block as defined below, which allows force-tunnelling of traffic to be performed by the firewall.
   final List<GetFirewallManagementIpConfiguration> managementIpConfigurations;
   final String name;
   final String resourceGroupName;
@@ -31,7 +31,7 @@ class GetFirewallResult {
   final Map<String, String> tags;
   /// The operation mode for threat intelligence-based filtering.
   final String threatIntelMode;
-  /// A `virtual_hub` block as defined below.
+  /// A `virtualHub` block as defined below.
   final List<GetFirewallVirtualHub> virtualHubs;
   /// A list of Availability Zones in which this Azure Firewall is located.
   final List<String> zones;
@@ -41,16 +41,16 @@ class GetFirewallResult {
   /// [dnsServers] The list of DNS servers that the Azure Firewall will direct DNS traffic to for name resolution.
   /// [firewallPolicyId] The ID of the Firewall Policy applied to the Azure Firewall.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ipConfigurations] A `ip_configuration` block as defined below.
+  /// [ipConfigurations] A `ipConfiguration` block as defined below.
   /// [location] The Azure location where the Azure Firewall exists.
-  /// [managementIpConfigurations] A `management_ip_configuration` block as defined below, which allows force-tunnelling of traffic to be performed by the firewall.
+  /// [managementIpConfigurations] A `managementIpConfiguration` block as defined below, which allows force-tunnelling of traffic to be performed by the firewall.
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [skuName] The SKU name of the Azure Firewall.
   /// [skuTier] The SKU tier of the Azure Firewall.
   /// [tags] A mapping of tags assigned to the Azure Firewall.
   /// [threatIntelMode] The operation mode for threat intelligence-based filtering.
-  /// [virtualHubs] A `virtual_hub` block as defined below.
+  /// [virtualHubs] A `virtualHub` block as defined below.
   /// [zones] A list of Availability Zones in which this Azure Firewall is located.
   const GetFirewallResult({
     required this.dnsProxyEnabled,
@@ -110,4 +110,3 @@ class GetFirewallResult {
     );
   }
 }
-

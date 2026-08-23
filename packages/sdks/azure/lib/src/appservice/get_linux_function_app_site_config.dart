@@ -18,13 +18,13 @@ class GetLinuxFunctionAppSiteConfig {
   final pulumi.Input<String> appCommandLine;
   /// The number of workers this function app can scale out to.
   final pulumi.Input<int> appScaleLimit;
-  /// An `app_service_logs` block as defined above.
+  /// An `appServiceLogs` block as defined above.
   final pulumi.Input<List<GetLinuxFunctionAppSiteConfigAppServiceLog>> appServiceLogs;
   /// The Connection String that links the Linux Function App to Application Insights.
   final pulumi.Input<String> applicationInsightsConnectionString;
   /// The Instrumentation Key that connects the Linux Function App to Application Insights.
   final pulumi.Input<String> applicationInsightsKey;
-  /// An `application_stack` block as defined above.
+  /// An `applicationStack` block as defined above.
   final pulumi.Input<List<GetLinuxFunctionAppSiteConfigApplicationStack>> applicationStacks;
   /// The Client ID of the Managed Service Identity that is used for connections to the Azure Container Registry.
   final pulumi.Input<String> containerRegistryManagedIdentityClientId;
@@ -45,15 +45,16 @@ class GetLinuxFunctionAppSiteConfig {
   final pulumi.Input<String> healthCheckPath;
   /// Is the HTTP2 protocol enabled?
   final pulumi.Input<bool> http2Enabled;
-  /// The Default action for traffic that does not match any `ip_restriction` rule.
+  /// The Default action for traffic that does not match any `ipRestriction` rule.
   final pulumi.Input<String> ipRestrictionDefaultAction;
-  /// One or more `ip_restriction` blocks as defined above.
+  /// One or more `ipRestriction` blocks as defined above.
   final pulumi.Input<List<GetLinuxFunctionAppSiteConfigIpRestriction>> ipRestrictions;
   final pulumi.Input<String> linuxFxVersion;
   /// The Site load balancing mode.
   final pulumi.Input<String> loadBalancingMode;
   /// Managed pipeline mode.
   final pulumi.Input<String> managedPipelineMode;
+  final pulumi.Input<String> minimumTlsCipherSuite;
   /// The minimum version of TLS required for SSL requests.
   final pulumi.Input<String> minimumTlsVersion;
   /// The number of pre-warmed instances for this function app.
@@ -64,14 +65,14 @@ class GetLinuxFunctionAppSiteConfig {
   final pulumi.Input<String> remoteDebuggingVersion;
   /// Is Scale Monitoring of the Functions Runtime enabled?
   final pulumi.Input<bool> runtimeScaleMonitoringEnabled;
-  /// The Default action for traffic that does not match any `scm_ip_restriction` rule.
+  /// The Default action for traffic that does not match any `scmIpRestriction` rule.
   final pulumi.Input<String>? scmIpRestrictionDefaultAction;
-  /// One or more `scm_ip_restriction` blocks as defined above.
+  /// One or more `scmIpRestriction` blocks as defined above.
   final pulumi.Input<List<GetLinuxFunctionAppSiteConfigScmIpRestriction>> scmIpRestrictions;
   /// The minimum version of TLS for SSL requests to the SCM site.
   final pulumi.Input<String> scmMinimumTlsVersion;
   final pulumi.Input<String> scmType;
-  /// Is the Linux Function App `ip_restriction` configuration used for the SCM also?
+  /// Is the Linux Function App `ipRestriction` configuration used for the SCM also?
   final pulumi.Input<bool> scmUseMainIpRestriction;
   /// Does the Linux Web App use a 32-bit worker process?
   final pulumi.Input<bool> use32BitWorker;
@@ -88,10 +89,10 @@ class GetLinuxFunctionAppSiteConfig {
   /// [apiManagementApiId] The ID of the API Management API for this Linux Function App.
   /// [appCommandLine] The App command line that is launched.
   /// [appScaleLimit] The number of workers this function app can scale out to.
-  /// [appServiceLogs] An `app_service_logs` block as defined above.
+  /// [appServiceLogs] An `appServiceLogs` block as defined above.
   /// [applicationInsightsConnectionString] The Connection String that links the Linux Function App to Application Insights.
   /// [applicationInsightsKey] The Instrumentation Key that connects the Linux Function App to Application Insights.
-  /// [applicationStacks] An `application_stack` block as defined above.
+  /// [applicationStacks] An `applicationStack` block as defined above.
   /// [containerRegistryManagedIdentityClientId] The Client ID of the Managed Service Identity that is used for connections to the Azure Container Registry.
   /// [containerRegistryUseManagedIdentity] Do connections for Azure Container Registry use Managed Identity?
   /// [cors] A `cors` block as defined above.
@@ -102,21 +103,22 @@ class GetLinuxFunctionAppSiteConfig {
   /// [healthCheckEvictionTimeInMin] The amount of time in minutes that a node can be unhealthy before being removed from the load balancer.
   /// [healthCheckPath] The path that is checked for this function app health.
   /// [http2Enabled] Is the HTTP2 protocol enabled?
-  /// [ipRestrictionDefaultAction] The Default action for traffic that does not match any `ip_restriction` rule.
-  /// [ipRestrictions] One or more `ip_restriction` blocks as defined above.
+  /// [ipRestrictionDefaultAction] The Default action for traffic that does not match any `ipRestriction` rule.
+  /// [ipRestrictions] One or more `ipRestriction` blocks as defined above.
   /// [linuxFxVersion] Required.
   /// [loadBalancingMode] The Site load balancing mode.
   /// [managedPipelineMode] Managed pipeline mode.
+  /// [minimumTlsCipherSuite] Required.
   /// [minimumTlsVersion] The minimum version of TLS required for SSL requests.
   /// [preWarmedInstanceCount] The number of pre-warmed instances for this function app.
   /// [remoteDebuggingEnabled] Is Remote Debugging enabled?
   /// [remoteDebuggingVersion] The Remote Debugging Version.
   /// [runtimeScaleMonitoringEnabled] Is Scale Monitoring of the Functions Runtime enabled?
-  /// [scmIpRestrictionDefaultAction] The Default action for traffic that does not match any `scm_ip_restriction` rule.
-  /// [scmIpRestrictions] One or more `scm_ip_restriction` blocks as defined above.
+  /// [scmIpRestrictionDefaultAction] The Default action for traffic that does not match any `scmIpRestriction` rule.
+  /// [scmIpRestrictions] One or more `scmIpRestriction` blocks as defined above.
   /// [scmMinimumTlsVersion] The minimum version of TLS for SSL requests to the SCM site.
   /// [scmType] Required.
-  /// [scmUseMainIpRestriction] Is the Linux Function App `ip_restriction` configuration used for the SCM also?
+  /// [scmUseMainIpRestriction] Is the Linux Function App `ipRestriction` configuration used for the SCM also?
   /// [use32BitWorker] Does the Linux Web App use a 32-bit worker process?
   /// [vnetRouteAllEnabled] Are all outbound traffic to NAT Gateways, Network Security Groups and User Defined Routes applied?
   /// [websocketsEnabled] Are Web Sockets enabled?
@@ -146,6 +148,7 @@ class GetLinuxFunctionAppSiteConfig {
     required this.linuxFxVersion,
     required this.loadBalancingMode,
     required this.managedPipelineMode,
+    required this.minimumTlsCipherSuite,
     required this.minimumTlsVersion,
     required this.preWarmedInstanceCount,
     required this.remoteDebuggingEnabled,
@@ -188,6 +191,7 @@ class GetLinuxFunctionAppSiteConfig {
       'linuxFxVersion': linuxFxVersion,
       'loadBalancingMode': loadBalancingMode,
       'managedPipelineMode': managedPipelineMode,
+      'minimumTlsCipherSuite': minimumTlsCipherSuite,
       'minimumTlsVersion': minimumTlsVersion,
       'preWarmedInstanceCount': preWarmedInstanceCount,
       'remoteDebuggingEnabled': remoteDebuggingEnabled,
@@ -231,6 +235,7 @@ class GetLinuxFunctionAppSiteConfig {
       linuxFxVersion: pulumi.Input.fromValue(map['linuxFxVersion'] as String),
       loadBalancingMode: pulumi.Input.fromValue(map['loadBalancingMode'] as String),
       managedPipelineMode: pulumi.Input.fromValue(map['managedPipelineMode'] as String),
+      minimumTlsCipherSuite: pulumi.Input.fromValue(map['minimumTlsCipherSuite'] as String),
       minimumTlsVersion: pulumi.Input.fromValue(map['minimumTlsVersion'] as String),
       preWarmedInstanceCount: pulumi.Input.fromValue(map['preWarmedInstanceCount'] as int),
       remoteDebuggingEnabled: pulumi.Input.fromValue(map['remoteDebuggingEnabled'] as bool),
@@ -248,4 +253,3 @@ class GetLinuxFunctionAppSiteConfig {
     );
   }
 }
-

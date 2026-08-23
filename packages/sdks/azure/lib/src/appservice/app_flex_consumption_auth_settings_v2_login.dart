@@ -86,4 +86,3 @@ class AppFlexConsumptionAuthSettingsV2Login {
     );
   }
 }
-
