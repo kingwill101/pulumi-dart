@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package_version.dart';
+import 'pubspec_dependencies.dart';
 
 final class ProviderSchema {
   ProviderSchema({
@@ -77,11 +78,15 @@ Future<void> main(List<String> args) async {
     final destinationDir = Directory(
       _resolveGeneratedPackageDir(repoRoot.path, provider),
     );
+    final destinationPubspec = File(
+      _joinPath([destinationDir.path, 'pubspec.yaml']),
+    );
+    final dependencyConstraints = readPulumiProviderDependencyConstraints(
+      destinationPubspec,
+    );
     final sdkVersion = parsed.sdkVersion.isNotEmpty
         ? parsed.sdkVersion
-        : readPackageVersion(
-            File(_joinPath([destinationDir.path, 'pubspec.yaml'])),
-          );
+        : readPackageVersion(destinationPubspec);
     final providerEnvironment = {...generationEnvironment};
     if (sdkVersion case final version?) {
       providerEnvironment['PULUMI_DART_SDK_VERSION'] = version;
@@ -147,6 +152,10 @@ Future<void> main(List<String> args) async {
     // without leaving the package half-deleted if replacement fails.
     _replaceGeneratedLib(generatedDartDir, destinationDir);
     _mergeDirectory(generatedDartDir, destinationDir);
+    preservePulumiProviderDependencyConstraints(
+      destinationPubspec,
+      dependencyConstraints,
+    );
   }
 
   if (!parsed.keepSdks) {
