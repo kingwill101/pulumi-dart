@@ -2,7 +2,7 @@
 
 All notable changes to this package will be documented in this file.
 
-## 3.2.1
+## 3.8.0
 
 - Initial generated release.
 

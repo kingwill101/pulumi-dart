@@ -65,6 +65,7 @@ class _Ec2ModuleNamespace {
   final ResolvedSubnetSpec = module_ec2.ResolvedSubnetSpec.new;
   final ResolvedSubnetSpecArgs = module_ec2.ResolvedSubnetSpec.new;
   final SubnetAllocationStrategy = module_ec2.SubnetAllocationStrategy.values;
+  final SubnetNameTagStrategy = module_ec2.SubnetNameTagStrategy.values;
   final SubnetSpec = module_ec2.SubnetSpec.new;
   final SubnetSpecArgs = module_ec2.SubnetSpec.new;
   final SubnetType = module_ec2.SubnetType.values;
@@ -72,6 +73,7 @@ class _Ec2ModuleNamespace {
   final VpcArgs = module_ec2.VpcArgs.new;
   final VpcEndpointSpec = module_ec2.VpcEndpointSpec.new;
   final VpcEndpointSpecArgs = module_ec2.VpcEndpointSpec.new;
+  final VpcEndpointStrategy = module_ec2.VpcEndpointStrategy.values;
   final getDefaultVpc = module_ec2.getDefaultVpc;
 }
 

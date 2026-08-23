@@ -31,28 +31,28 @@ class EC2ServiceTaskDefinition {
   final pulumi.Input<DefaultRoleWithPolicy>? executionRole;
   /// An optional unique name for your task definition. If not specified, then a default will be created.
   final pulumi.Input<String>? family;
-  /// IPC resource namespace to be used for the containers in the task The valid values are `host`, `task`, and `none`.
+  /// IPC resource namespace to be used for the containers in the task. Valid values: `host`, `task`, `none`.
   final pulumi.Input<String>? ipcMode;
   /// A set of volume blocks that containers in your task may use.
   final pulumi.Input<DefaultLogGroup>? logGroup;
   /// The amount (in MiB) of memory used by the task.  If not provided, a default will be computed
   /// based on the cumulative needs specified by [containerDefinitions]
   final pulumi.Input<String>? memory;
-  /// Docker networking mode to use for the containers in the task. Valid values are `none`, `bridge`, `awsvpc`, and `host`.
+  /// Docker networking mode to use for the containers in the task. Valid values: `awsvpc`, `bridge`, `host`, and `none`.
   final pulumi.Input<String>? networkMode;
-  /// Process namespace to use for the containers in the task. The valid values are `host` and `task`.
+  /// Process namespace to use for the containers in the task. Valid values: host`, `task`.
   final pulumi.Input<String>? pidMode;
-  /// Configuration block for rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`. Detailed below.
+  /// Configuration block for rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`. Detailed below.
   final pulumi.Input<List<pulumi_aws_ecs.TaskDefinitionPlacementConstraint>>? placementConstraints;
   /// Configuration block for the App Mesh proxy. Detailed below.
   final pulumi.Input<pulumi_aws_ecs.TaskDefinitionProxyConfiguration>? proxyConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Configuration block for runtime_platform that containers in your task may use.
+  /// Configuration block for runtimePlatform that containers in your task may use.
   final pulumi.Input<pulumi_aws_ecs.TaskDefinitionRuntimePlatform>? runtimePlatform;
   /// Whether to retain the old revision when the resource is destroyed or replacement is necessary. Default is `false`.
   final pulumi.Input<bool>? skipDestroy;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   /// Will be created automatically if not defined.
@@ -74,17 +74,17 @@ class EC2ServiceTaskDefinition {
   /// [ephemeralStorage] The amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See Ephemeral Storage.
   /// [executionRole] The execution role that the Amazon ECS container agent and the Docker daemon can assume.
   /// [family] An optional unique name for your task definition. If not specified, then a default will be created.
-  /// [ipcMode] IPC resource namespace to be used for the containers in the task The valid values are `host`, `task`, and `none`.
+  /// [ipcMode] IPC resource namespace to be used for the containers in the task. Valid values: `host`, `task`, `none`.
   /// [logGroup] A set of volume blocks that containers in your task may use.
   /// [memory] The amount (in MiB) of memory used by the task.  If not provided, a default will be computed
-  /// [networkMode] Docker networking mode to use for the containers in the task. Valid values are `none`, `bridge`, `awsvpc`, and `host`.
-  /// [pidMode] Process namespace to use for the containers in the task. The valid values are `host` and `task`.
-  /// [placementConstraints] Configuration block for rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`. Detailed below.
+  /// [networkMode] Docker networking mode to use for the containers in the task. Valid values: `awsvpc`, `bridge`, `host`, and `none`.
+  /// [pidMode] Process namespace to use for the containers in the task. Valid values: host`, `task`.
+  /// [placementConstraints] Configuration block for rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`. Detailed below.
   /// [proxyConfiguration] Configuration block for the App Mesh proxy. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [runtimePlatform] Configuration block for runtime_platform that containers in your task may use.
+  /// [runtimePlatform] Configuration block for runtimePlatform that containers in your task may use.
   /// [skipDestroy] Whether to retain the old revision when the resource is destroyed or replacement is necessary. Default is `false`.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [taskRole] IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   /// [trackLatest] Whether should track latest `ACTIVE` task definition on AWS or the one created with the resource stored in state. Default is `false`. Useful in the event the task definition is modified outside of this resource.
   /// [volumes] Repeatable configuration block for volumes that containers in your task may use. Detailed below.
@@ -164,4 +164,3 @@ class EC2ServiceTaskDefinition {
     );
   }
 }
-

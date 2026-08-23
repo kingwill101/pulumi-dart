@@ -8,7 +8,7 @@ environment:
 dependencies:
   pulumi: 3.0.0
   pulumi_aws: ^7.20.0
-  pulumi_awsx: 3.2.1
+  pulumi_awsx: 3.8.0
   pulumi_docker: 4.11.0
 
 dev_dependencies:

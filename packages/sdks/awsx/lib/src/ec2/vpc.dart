@@ -127,6 +127,10 @@ import 'package:pulumi_aws/ec2.dart' as pulumi_aws_ec2;
 ///
 /// The "Auto" strategy divides the VPC space evenly between the availability zones. Within each availability zone it allocates each subnet in the order they were specified. If a CIDR mask or size was not specified it will default to an even division of the availability zone range. If subnets have different sizes, spaces will be automatically added to ensure subnets don't overlap (e.g. where a previous subnet is smaller than the next).
 ///
+/// ### AutoMerge
+///
+/// The "AutoMerge" strategy starts from the default auto-generated public/private layout and then merges any user-provided subnet settings into the matching subnet types. This is useful when you want the standard default layout but need to customize one or more default subnet types with tags, IPv6 assignment, or sizing overrides. Explicit `cidrBlocks` layouts are not supported with this strategy; use "Auto" or "Exact" when fully specifying subnet ranges yourself.
+///
 /// ### Exact
 ///
 /// The "Exact" strategy is the same as "Auto" with the additional requirement to explicitly specify what the whole of each zone's range will be used for. Where you expect to have a gap between or after subnets, these must be passed using the subnet specification type "Unused" to show all space has been properly accounted for.
@@ -144,10 +148,16 @@ class Vpc extends pulumi.ComponentResource {
   /// The Internet Gateway for the VPC.
   late final pulumi.Output<pulumi_aws_ec2.InternetGateway?> internetGateway;
   late final pulumi.Output<List<String>?> isolatedSubnetIds;
+  /// The VPC's isolated subnets.
+  late final pulumi.Output<List<Map<String, dynamic>>?> isolatedSubnets;
   /// The NAT Gateways for the VPC. If no NAT Gateways are specified, this will be an empty list.
   late final pulumi.Output<List<Map<String, dynamic>>?> natGateways;
   late final pulumi.Output<List<String>?> privateSubnetIds;
+  /// The VPC's private subnets.
+  late final pulumi.Output<List<Map<String, dynamic>>?> privateSubnets;
   late final pulumi.Output<List<String>?> publicSubnetIds;
+  /// The VPC's public subnets.
+  late final pulumi.Output<List<Map<String, dynamic>>?> publicSubnets;
   /// The Route Table Associations for the VPC.
   late final pulumi.Output<List<Map<String, dynamic>>?> routeTableAssociations;
   /// The Route Tables for the VPC.
@@ -182,9 +192,12 @@ class Vpc extends pulumi.ComponentResource {
     eips = registerOutput<List<Map<String, dynamic>>?>('eips');
     internetGateway = registerOutput<pulumi_aws_ec2.InternetGateway?>('internetGateway');
     isolatedSubnetIds = registerOutput<List<String>?>('isolatedSubnetIds');
+    isolatedSubnets = registerOutput<List<Map<String, dynamic>>?>('isolatedSubnets');
     natGateways = registerOutput<List<Map<String, dynamic>>?>('natGateways');
     privateSubnetIds = registerOutput<List<String>?>('privateSubnetIds');
+    privateSubnets = registerOutput<List<Map<String, dynamic>>?>('privateSubnets');
     publicSubnetIds = registerOutput<List<String>?>('publicSubnetIds');
+    publicSubnets = registerOutput<List<Map<String, dynamic>>?>('publicSubnets');
     routeTableAssociations = registerOutput<List<Map<String, dynamic>>?>('routeTableAssociations');
     routeTables = registerOutput<List<Map<String, dynamic>>?>('routeTables');
     routes = registerOutput<List<Map<String, dynamic>>?>('routes');

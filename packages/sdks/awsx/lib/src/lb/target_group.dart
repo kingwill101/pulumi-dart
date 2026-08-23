@@ -88,6 +88,25 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_targetgroup" "test" {
+///   name     = "tf-example-lb-tg"
+///   port     = 80
+///   protocol = "HTTP"
+///   vpc_id   = aws_ec2_vpc.main.id
+/// }
+/// resource "aws_ec2_vpc" "main" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +117,8 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.lb.TargetGroup;
 /// import com.pulumi.aws.lb.TargetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -224,6 +243,26 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_targetgroup" "ip-example" {
+///   name        = "tf-example-lb-tg"
+///   port        = 80
+///   protocol    = "HTTP"
+///   target_type = "ip"
+///   vpc_id      = aws_ec2_vpc.main.id
+/// }
+/// resource "aws_ec2_vpc" "main" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -234,8 +273,8 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.lb.TargetGroup;
 /// import com.pulumi.aws.lb.TargetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,6 +375,20 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_targetgroup" "lambda-example" {
+///   name        = "tf-example-lb-tg"
+///   target_type = "lambda"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -344,8 +397,8 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lb.TargetGroup;
 /// import com.pulumi.aws.lb.TargetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -444,6 +497,23 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_targetgroup" "alb-example" {
+///   name        = "tf-example-lb-alb-tg"
+///   target_type = "alb"
+///   port        = 80
+///   protocol    = "TCP"
+///   vpc_id      = main.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -452,8 +522,8 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lb.TargetGroup;
 /// import com.pulumi.aws.lb.TargetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -572,6 +642,25 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_targetgroup" "tcp-example" {
+///   name     = "tf-example-lb-nlb-tg"
+///   port     = 25
+///   protocol = "TCP"
+///   vpc_id   = main.id
+///   target_health_states {
+///     enable_unhealthy_connection_termination = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -581,8 +670,8 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// import com.pulumi.aws.lb.TargetGroup;
 /// import com.pulumi.aws.lb.TargetGroupArgs;
 /// import com.pulumi.aws.lb.inputs.TargetGroupTargetHealthStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -729,6 +818,32 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_targetgroup" "tcp-example" {
+///   name     = "tf-example-lb-nlb-tg"
+///   port     = 80
+///   protocol = "TCP"
+///   vpc_id   = main.id
+///   target_group_health = {
+///     dns_failover = {
+///       minimum_healthy_targets_count      = "1"
+///       minimum_healthy_targets_percentage = "off"
+///     }
+///     unhealthy_state_routing = {
+///       minimum_healthy_targets_count      = "1"
+///       minimum_healthy_targets_percentage = "off"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -740,8 +855,8 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// import com.pulumi.aws.lb.inputs.TargetGroupTargetGroupHealthArgs;
 /// import com.pulumi.aws.lb.inputs.TargetGroupTargetGroupHealthDnsFailoverArgs;
 /// import com.pulumi.aws.lb.inputs.TargetGroupTargetGroupHealthUnhealthyStateRoutingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -800,9 +915,12 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 ///
 /// - `arn` (String) Amazon Resource Name (ARN) of the target group.
 ///
+///
 /// Using `pulumi import`, import Target Groups using their ARN. For example:
 ///
-/// % pulumi import aws_lb_target_group.app_front_end arn:aws:elasticloadbalancing:us-west-2:187416307283:targetgroup/app-front-end/20cfe21448b66314
+/// ```sh
+/// $ pulumi import aws:lb/targetGroup:TargetGroup app_front_end arn:aws:elasticloadbalancing:us-west-2:187416307283:targetgroup/app-front-end/20cfe21448b66314
+/// ```
 class TargetGroup {
   /// Whether to terminate connections at the end of the deregistration timeout on Network Load Balancers. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#deregistration-delay) for more information. Default is `false`.
   final pulumi.Input<bool>? connectionTermination;
@@ -812,26 +930,26 @@ class TargetGroup {
   final pulumi.Input<pulumi_aws_lb.TargetGroupHealthCheck>? healthCheck;
   /// The type of IP addresses used by the target group, only supported when target type is set to `ip`. Possible values are `ipv4` or `ipv6`.
   final pulumi.Input<String>? ipAddressType;
-  /// Whether the request and response headers exchanged between the load balancer and the Lambda function include arrays of values or strings. Only applies when `target_type` is `lambda`. Default is `false`.
+  /// Whether the request and response headers exchanged between the load balancer and the Lambda function include arrays of values or strings. Only applies when `targetType` is `lambda`. Default is `false`.
   final pulumi.Input<bool>? lambdaMultiValueHeadersEnabled;
-  /// Determines how the load balancer selects targets when routing requests. Only applicable for Application Load Balancer Target Groups. The value is `round_robin`, `least_outstanding_requests`, or `weighted_random`. The default is `round_robin`.
+  /// Determines how the load balancer selects targets when routing requests. Only applicable for Application Load Balancer Target Groups. The value is `roundRobin`, `leastOutstandingRequests`, or `weightedRandom`. The default is `roundRobin`.
   final pulumi.Input<String>? loadBalancingAlgorithmType;
-  /// Determines whether to enable target anomaly mitigation.  Target anomaly mitigation is only supported by the `weighted_random` load balancing algorithm type.  See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#automatic-target-weights) for more information.  The value is `"on"` or `"off"`. The default is `"off"`.
+  /// Determines whether to enable target anomaly mitigation.  Target anomaly mitigation is only supported by the `weightedRandom` load balancing algorithm type.  See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#automatic-target-weights) for more information.  The value is `"on"` or `"off"`. The default is `"off"`.
   final pulumi.Input<String>? loadBalancingAnomalyMitigation;
-  /// Indicates whether cross zone load balancing is enabled. The value is `"true"`, `"false"` or `"use_load_balancer_configuration"`. The default is `"use_load_balancer_configuration"`.
+  /// Indicates whether cross zone load balancing is enabled. The value is `"true"`, `"false"` or `"useLoadBalancerConfiguration"`. The default is `"useLoadBalancerConfiguration"`.
   final pulumi.Input<String>? loadBalancingCrossZoneEnabled;
   /// Name of the target group. If omitted, this provider will assign a random, unique name. This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
   final pulumi.Input<String>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Cannot be longer than 6 characters.
   final pulumi.Input<String>? namePrefix;
-  /// Port on which targets receive traffic, unless overridden when registering a specific target. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
+  /// Port on which targets receive traffic, unless overridden when registering a specific target. Required when `targetType` is `instance`, `ip` or `alb`. Does not apply when `targetType` is `lambda`.
   final pulumi.Input<int>? port;
   /// Whether client IP preservation is enabled. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#client-ip-preservation) for more information.
   final pulumi.Input<String>? preserveClientIp;
   /// Protocol to use for routing traffic to the targets.
-  /// Should be one of `GENEVE`, `HTTP`, `HTTPS`, `TCP`, `TCP_UDP`, `TLS`, or `UDP`.
-  /// Required when `target_type` is `instance`, `ip`, or `alb`.
-  /// Does not apply when `target_type` is `lambda`.
+  /// Should be one of `GENEVE`, `HTTP`, `HTTPS`, `TCP`, `TCP_UDP`, `TLS`, `UDP`, `QUIC`, or `TCP_QUIC`.
+  /// Required when `targetType` is `instance`, `ip`, or `alb`.
+  /// Does not apply when `targetType` is `lambda`.
   final pulumi.Input<String>? protocol;
   /// Only applicable when `protocol` is `HTTP` or `HTTPS`. The protocol version. Specify `GRPC` to send requests to targets using gRPC. Specify `HTTP2` to send requests to targets using HTTP/2. The default is `HTTP1`, which sends requests to targets using HTTP/1.1
   final pulumi.Input<String>? protocolVersion;
@@ -843,15 +961,15 @@ class TargetGroup {
   final pulumi.Input<int>? slowStart;
   /// Stickiness configuration block. Detailed below.
   final pulumi.Input<pulumi_aws_lb.TargetGroupStickiness>? stickiness;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Port on which the target control agent and application load balancer exchange management traffic for the target optimizer feature. Only applicable for Application Load Balancer target groups when `target_type` is `instance` or `ip`.
+  /// Port on which the target control agent and application load balancer exchange management traffic for the target optimizer feature. Only applicable for Application Load Balancer target groups when `targetType` is `instance` or `ip`.
   final pulumi.Input<int>? targetControlPort;
-  /// Target failover block. Only applicable for Gateway Load Balancer target groups. See target_failover for more information.
+  /// Target failover block. Only applicable for Gateway Load Balancer target groups. See targetFailover for more information.
   final pulumi.Input<List<pulumi_aws_lb.TargetGroupTargetFailover>>? targetFailovers;
-  /// Target health requirements block. See target_group_health for more information.
+  /// Target health requirements block. See targetGroupHealth for more information.
   final pulumi.Input<pulumi_aws_lb.TargetGroupTargetGroupHealth>? targetGroupHealth;
-  /// Target health state block. Only applicable for Network Load Balancer target groups when `protocol` is `TCP` or `TLS`. See target_health_state for more information.
+  /// Target health state block. Only applicable for Network Load Balancer target groups when `protocol` is `TCP` or `TLS`. See targetHealthState for more information.
   final pulumi.Input<List<pulumi_aws_lb.TargetGroupTargetHealthState>>? targetHealthStates;
   /// Type of target that you must specify when registering targets with this target group.
   /// See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_CreateTargetGroup.html) for supported values.
@@ -865,7 +983,7 @@ class TargetGroup {
   ///
   /// Application Load Balancers do not support the `alb` target type.
   final pulumi.Input<String>? targetType;
-  /// Identifier of the VPC in which to create the target group. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
+  /// Identifier of the VPC in which to create the target group. Required when `targetType` is `instance`, `ip` or `alb`. Does not apply when `targetType` is `lambda`.
   final pulumi.Input<String>? vpcId;
 
   /// Creates a new [TargetGroup].
@@ -873,13 +991,13 @@ class TargetGroup {
   /// [deregistrationDelay] Amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds.
   /// [healthCheck] Health Check configuration block. Detailed below.
   /// [ipAddressType] The type of IP addresses used by the target group, only supported when target type is set to `ip`. Possible values are `ipv4` or `ipv6`.
-  /// [lambdaMultiValueHeadersEnabled] Whether the request and response headers exchanged between the load balancer and the Lambda function include arrays of values or strings. Only applies when `target_type` is `lambda`. Default is `false`.
-  /// [loadBalancingAlgorithmType] Determines how the load balancer selects targets when routing requests. Only applicable for Application Load Balancer Target Groups. The value is `round_robin`, `least_outstanding_requests`, or `weighted_random`. The default is `round_robin`.
-  /// [loadBalancingAnomalyMitigation] Determines whether to enable target anomaly mitigation.  Target anomaly mitigation is only supported by the `weighted_random` load balancing algorithm type.  See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#automatic-target-weights) for more information.  The value is `"on"` or `"off"`. The default is `"off"`.
-  /// [loadBalancingCrossZoneEnabled] Indicates whether cross zone load balancing is enabled. The value is `"true"`, `"false"` or `"use_load_balancer_configuration"`. The default is `"use_load_balancer_configuration"`.
+  /// [lambdaMultiValueHeadersEnabled] Whether the request and response headers exchanged between the load balancer and the Lambda function include arrays of values or strings. Only applies when `targetType` is `lambda`. Default is `false`.
+  /// [loadBalancingAlgorithmType] Determines how the load balancer selects targets when routing requests. Only applicable for Application Load Balancer Target Groups. The value is `roundRobin`, `leastOutstandingRequests`, or `weightedRandom`. The default is `roundRobin`.
+  /// [loadBalancingAnomalyMitigation] Determines whether to enable target anomaly mitigation.  Target anomaly mitigation is only supported by the `weightedRandom` load balancing algorithm type.  See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#automatic-target-weights) for more information.  The value is `"on"` or `"off"`. The default is `"off"`.
+  /// [loadBalancingCrossZoneEnabled] Indicates whether cross zone load balancing is enabled. The value is `"true"`, `"false"` or `"useLoadBalancerConfiguration"`. The default is `"useLoadBalancerConfiguration"`.
   /// [name] Name of the target group. If omitted, this provider will assign a random, unique name. This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`. Cannot be longer than 6 characters.
-  /// [port] Port on which targets receive traffic, unless overridden when registering a specific target. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
+  /// [port] Port on which targets receive traffic, unless overridden when registering a specific target. Required when `targetType` is `instance`, `ip` or `alb`. Does not apply when `targetType` is `lambda`.
   /// [preserveClientIp] Whether client IP preservation is enabled. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#client-ip-preservation) for more information.
   /// [protocol] Protocol to use for routing traffic to the targets.
   /// [protocolVersion] Only applicable when `protocol` is `HTTP` or `HTTPS`. The protocol version. Specify `GRPC` to send requests to targets using gRPC. Specify `HTTP2` to send requests to targets using HTTP/2. The default is `HTTP1`, which sends requests to targets using HTTP/1.1
@@ -887,13 +1005,13 @@ class TargetGroup {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [slowStart] Amount time for targets to warm up before the load balancer sends them a full share of requests. The range is 30-900 seconds or 0 to disable. The default value is 0 seconds.
   /// [stickiness] Stickiness configuration block. Detailed below.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [targetControlPort] Port on which the target control agent and application load balancer exchange management traffic for the target optimizer feature. Only applicable for Application Load Balancer target groups when `target_type` is `instance` or `ip`.
-  /// [targetFailovers] Target failover block. Only applicable for Gateway Load Balancer target groups. See target_failover for more information.
-  /// [targetGroupHealth] Target health requirements block. See target_group_health for more information.
-  /// [targetHealthStates] Target health state block. Only applicable for Network Load Balancer target groups when `protocol` is `TCP` or `TLS`. See target_health_state for more information.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [targetControlPort] Port on which the target control agent and application load balancer exchange management traffic for the target optimizer feature. Only applicable for Application Load Balancer target groups when `targetType` is `instance` or `ip`.
+  /// [targetFailovers] Target failover block. Only applicable for Gateway Load Balancer target groups. See targetFailover for more information.
+  /// [targetGroupHealth] Target health requirements block. See targetGroupHealth for more information.
+  /// [targetHealthStates] Target health state block. Only applicable for Network Load Balancer target groups when `protocol` is `TCP` or `TLS`. See targetHealthState for more information.
   /// [targetType] Type of target that you must specify when registering targets with this target group.
-  /// [vpcId] Identifier of the VPC in which to create the target group. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
+  /// [vpcId] Identifier of the VPC in which to create the target group. Required when `targetType` is `instance`, `ip` or `alb`. Does not apply when `targetType` is `lambda`.
   const TargetGroup({
     this.connectionTermination,
     this.deregistrationDelay,
@@ -982,4 +1100,3 @@ class TargetGroup {
     );
   }
 }
-
