@@ -122,14 +122,14 @@ func generatedResourceFile(
 			if resource.ArgsClass != "" {
 				ctorParamNames = []string{"name", "args", "options"}
 			}
-				for _, property := range resource.OutputProperties {
-					fmt.Fprintf(
-						&b,
-						"    %s = %s;\n",
-						registerOutputAssignmentTarget(property.FieldName, ctorParamNames...),
-						resourceRegisterOutputExpression(property),
-					)
-				}
+			for _, property := range resource.OutputProperties {
+				fmt.Fprintf(
+					&b,
+					"    %s = %s;\n",
+					registerOutputAssignmentTarget(property.FieldName, ctorParamNames...),
+					resourceRegisterOutputExpression(property),
+				)
+			}
 			b.WriteString("  }\n")
 		}
 		writeGeneratedResourceMethods(&b, token, resource, hasPackageRegistration)
@@ -190,14 +190,14 @@ func generatedResourceFile(
 			if resource.ArgsClass != "" {
 				ctorParamNames = []string{"name", "args", "options"}
 			}
-				for _, property := range resource.OutputProperties {
-					fmt.Fprintf(
-						&b,
-						"    %s = %s;\n",
-						registerOutputAssignmentTarget(property.FieldName, ctorParamNames...),
-						resourceRegisterOutputExpression(property),
-					)
-				}
+			for _, property := range resource.OutputProperties {
+				fmt.Fprintf(
+					&b,
+					"    %s = %s;\n",
+					registerOutputAssignmentTarget(property.FieldName, ctorParamNames...),
+					resourceRegisterOutputExpression(property),
+				)
+			}
 			b.WriteString("  }\n")
 		}
 		writeGeneratedResourceMethods(&b, token, resource, hasPackageRegistration)
@@ -265,14 +265,14 @@ func generatedResourceFile(
 	} else {
 		b.WriteString(" {\n")
 		ctorParamNames := []string{"name", "args", "options"}
-			for _, property := range resource.OutputProperties {
-				fmt.Fprintf(
-					&b,
-					"    %s = %s;\n",
-					registerOutputAssignmentTarget(property.FieldName, ctorParamNames...),
-					resourceRegisterOutputExpression(property),
-				)
-			}
+		for _, property := range resource.OutputProperties {
+			fmt.Fprintf(
+				&b,
+				"    %s = %s;\n",
+				registerOutputAssignmentTarget(property.FieldName, ctorParamNames...),
+				resourceRegisterOutputExpression(property),
+			)
+		}
 		b.WriteString("  }\n")
 	}
 	writeGeneratedResourceMethods(&b, token, resource, hasPackageRegistration)
