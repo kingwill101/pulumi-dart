@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
 )
 
 func generatedPackageRootLibrary(packageName string, spec *packageSchema, moduleSymbols map[string][]moduleAliasSpec) []byte {
@@ -29,53 +32,10 @@ func generatedPackageRootLibrary(packageName string, spec *packageSchema, module
 		}
 	}
 
-	var b strings.Builder
-	fmt.Fprintf(&b, "// ignore_for_file: non_constant_identifier_names\n\n")
+	modules := make([]dartir.ModuleNamespace, 0, len(modulePaths))
 	for _, modulePath := range modulePaths {
-		moduleName := strings.TrimSuffix(modulePath, ".dart")
-		if moduleName == "" ||
-			strings.Contains(moduleName, "/") ||
-			strings.HasPrefix(moduleName, "internal") ||
-			strings.HasPrefix(moduleName, "config") {
-			continue
-		}
-		fmt.Fprintf(
-			&b,
-			"import 'package:%s/%s.dart' as %s;\n",
-			packageName,
-			moduleName,
-			moduleImportPrefix(moduleName),
-		)
-	}
-	if len(modulePaths) == 0 {
-		b.WriteString("// No generated modules.\n")
-		return []byte(b.String())
-	}
-
-	b.WriteString("\n")
-	for _, modulePath := range modulePaths {
-		moduleName := strings.TrimSuffix(modulePath, ".dart")
-		if moduleName == "" ||
-			strings.Contains(moduleName, "/") ||
-			strings.HasPrefix(moduleName, "internal") ||
-			strings.HasPrefix(moduleName, "config") {
-			continue
-		}
-		moduleObjectName := sanitizeCallableIdentifier(strings.ReplaceAll(moduleName, "/", "_"))
-		if moduleObjectName == "" {
-			continue
-		}
-		namespaceClass := "_" + toDartClassName(moduleObjectName) + "ModuleNamespace"
-		fmt.Fprintf(&b, "final %s = const %s();\n", moduleObjectName, namespaceClass)
-	}
-
-	b.WriteString("\n")
-	for _, modulePath := range modulePaths {
-		moduleName := strings.TrimSuffix(modulePath, ".dart")
-		if moduleName == "" ||
-			strings.Contains(moduleName, "/") ||
-			strings.HasPrefix(moduleName, "internal") ||
-			strings.HasPrefix(moduleName, "config") {
+		moduleName, ok := rootLibraryModuleName(modulePath)
+		if !ok {
 			continue
 		}
 		moduleObjectName := sanitizeCallableIdentifier(strings.ReplaceAll(moduleName, "/", "_"))
@@ -84,42 +44,48 @@ func generatedPackageRootLibrary(packageName string, spec *packageSchema, module
 		}
 		namespaceClass := "_" + toDartClassName(moduleObjectName) + "ModuleNamespace"
 		modulePrefix := moduleImportPrefix(moduleName)
-		fmt.Fprintf(&b, "class %s {\n", namespaceClass)
-		fmt.Fprintf(&b, "  const %s();\n", namespaceClass)
-
-		symbols := moduleSymbols[modulePath]
+		symbols := make([]dartir.NamespaceSymbol, 0, len(moduleSymbols[modulePath]))
 		enumNames := enumSymbolsByModule[modulePath]
-		for _, symbol := range symbols {
+		for _, symbol := range moduleSymbols[modulePath] {
 			fieldName := symbol.CanonicalName
 			targetName := symbol.GeneratedName
 			if fieldName == "" || targetName == "" {
 				continue
 			}
-
+			expressionSuffix := ".new"
 			if symbol.Kind == "function" {
-				fmt.Fprintf(&b, "  final %s = %s.%s;\n", fieldName, modulePrefix, targetName)
-				continue
+				expressionSuffix = ""
+			} else if _, isEnum := enumNames[fieldName]; isEnum {
+				expressionSuffix = ".values"
+			} else if _, isEnum := enumNames[targetName]; isEnum {
+				expressionSuffix = ".values"
 			}
-
-			if _, isEnum := enumNames[fieldName]; isEnum {
-				fmt.Fprintf(&b, "  final %s = %s.%s.values;\n", fieldName, modulePrefix, targetName)
-				continue
-			}
-			if _, isEnum := enumNames[targetName]; isEnum {
-				fmt.Fprintf(&b, "  final %s = %s.%s.values;\n", fieldName, modulePrefix, targetName)
-				continue
-			}
-
-			fmt.Fprintf(&b, "  final %s = %s.%s.new;\n", fieldName, modulePrefix, targetName)
+			symbols = append(symbols, dartir.NamespaceSymbol{
+				Name:       fieldName,
+				Expression: fmt.Sprintf("%s.%s%s", modulePrefix, targetName, expressionSuffix),
+			})
 		}
-		b.WriteString("}\n\n")
+		modules = append(modules, dartir.ModuleNamespace{
+			ImportURI:    fmt.Sprintf("package:%s/%s.dart", packageName, moduleName),
+			ImportPrefix: modulePrefix,
+			ObjectName:   moduleObjectName,
+			ClassName:    namespaceClass,
+			Symbols:      symbols,
+		})
 	}
+	return render.RootLibrary(dartir.RootLibrary{
+		HasGeneratedModules: len(modulePaths) > 0,
+		Modules:             modules,
+	})
+}
 
-	out := b.String()
-	if strings.HasSuffix(out, "\n\n") {
-		out = strings.TrimSuffix(out, "\n")
+func rootLibraryModuleName(modulePath string) (string, bool) {
+	moduleName := strings.TrimSuffix(modulePath, ".dart")
+	if moduleName == "" || strings.Contains(moduleName, "/") ||
+		strings.HasPrefix(moduleName, "internal") || strings.HasPrefix(moduleName, "config") {
+		return "", false
 	}
-	return []byte(out)
+	return moduleName, true
 }
 
 func moduleImportPrefix(moduleName string) string {
