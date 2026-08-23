@@ -39,7 +39,7 @@ func (lowerer programLowerer) providerResource(
 	}
 	inputs := make([]dartProgramResourceInput, len(resource.Inputs))
 	for index, input := range resource.Inputs {
-		expression, err := lowerer.expression(input.Value)
+		expression, err := lowerer.providerInputExpression(resource, input.Name, input.Value)
 		if err != nil {
 			return dartProgramResource{}, fmt.Errorf("input %q: %w", input.Name, err)
 		}

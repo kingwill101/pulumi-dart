@@ -69,6 +69,7 @@ var initialConformanceTests = []string{
 	"l2-resource-simple",
 	"l2-logical-name",
 	"l2-parallel-resources",
+	"l2-resource-primitives",
 	"l1-keyword-overlap",
 	"l1-output-array",
 	"l1-output-bool",
