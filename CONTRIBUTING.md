@@ -25,7 +25,7 @@ Use these as the source of truth for contributor workflows:
 - `packages/README.md`: generated provider package workflow and conventions
 - `packages/sdks/schema_sources.json`: provider schema sources and local mapping
 - `packages/sdk_dependency_registry.yaml`: cross-provider dependency mapping for generated pubspecs
-- `tool/check_schema_drift.dart`: upstream schema drift detection
+- `repodoc schema:check`: upstream schema drift detection
 - `scripts/install-pulumi-language-dart.sh`: install script for language host releases
 - `website/README.md`: docs site development commands
 
@@ -62,9 +62,12 @@ task smoke:preview PACKAGE=gcp
 ### Check Schema Drift
 
 ```bash
-dart run tool/check_schema_drift.dart --pretty
-dart run tool/check_schema_drift.dart --provider aws --pretty
-dart run tool/check_schema_drift.dart --fail-on-drift
+repodoc schema:check
+repodoc schema:check --provider aws
+repodoc schema:check --fail-on-drift
+
+# Machine-readable output for automation
+repodoc schema:check --provider aws --json --pretty
 ```
 
 ## Pull Request Checklist

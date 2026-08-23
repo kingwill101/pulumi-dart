@@ -21,7 +21,7 @@ func TestDefaultPulumiPubspecDependencyPathOverride(t *testing.T) {
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_GIT_PATH", "")
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_GIT_REF", "")
 
-	dep, ok := codegen.DefaultPulumiPubspecDependency().(map[string]string)
+	dep, ok := configuredPulumiDependency().(map[string]string)
 	require.True(t, ok)
 	assert.Equal(t, "/tmp/local-pulumi", dep["path"])
 }
@@ -34,7 +34,7 @@ func TestDefaultPulumiPubspecDependencyVersionOverride(t *testing.T) {
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_GIT_PATH", "")
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_GIT_REF", "")
 
-	dep, ok := codegen.DefaultPulumiPubspecDependency().(string)
+	dep, ok := configuredPulumiDependency().(string)
 	require.True(t, ok)
 	assert.Equal(t, "^0.1.0", dep)
 }
@@ -47,12 +47,12 @@ func TestDefaultPulumiPubspecDependencyGitDefault(t *testing.T) {
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_GIT_PATH", "")
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_GIT_REF", "")
 
-	dep, ok := codegen.DefaultPulumiPubspecDependency().(map[string]interface{})
+	dep, ok := configuredPulumiDependency().(map[string]interface{})
 	require.True(t, ok)
 	gitSpec, ok := dep["git"].(map[string]interface{})
 	require.True(t, ok)
-	assert.Equal(t, codegen.DefaultPulumiGitURL, gitSpec["url"])
-	assert.Equal(t, codegen.DefaultPulumiGitPath, gitSpec["path"])
+	assert.Equal(t, defaultPulumiGitURL, gitSpec["url"])
+	assert.Equal(t, defaultPulumiGitPath, gitSpec["path"])
 	_, hasRef := gitSpec["ref"]
 	assert.False(t, hasRef)
 }
@@ -65,7 +65,7 @@ func TestDefaultPulumiPubspecDependencyGitOverride(t *testing.T) {
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_GIT_PATH", "sdk/pulumi")
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_GIT_REF", "release/v1")
 
-	dep, ok := codegen.DefaultPulumiPubspecDependency().(map[string]interface{})
+	dep, ok := configuredPulumiDependency().(map[string]interface{})
 	require.True(t, ok)
 	gitSpec, ok := dep["git"].(map[string]interface{})
 	require.True(t, ok)
@@ -88,7 +88,7 @@ func TestDefaultPulumiPubspecDependencyPubDevDefault(t *testing.T) {
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_GIT_PATH", "")
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_GIT_REF", "")
 
-	dep, ok := codegen.DefaultPulumiPubspecDependency().(string)
+	dep, ok := configuredPulumiDependency().(string)
 	require.True(t, ok)
 	assert.Equal(t, "1.2.3", dep)
 }
@@ -107,7 +107,7 @@ func TestDefaultPulumiPubspecDependencyPubDevFailureFallsBackToGit(t *testing.T)
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_GIT_PATH", "pulumi-dart")
 	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_GIT_REF", "main")
 
-	dep, ok := codegen.DefaultPulumiPubspecDependency().(map[string]interface{})
+	dep, ok := configuredPulumiDependency().(map[string]interface{})
 	require.True(t, ok)
 	gitSpec, ok := dep["git"].(map[string]interface{})
 	require.True(t, ok)
@@ -119,29 +119,29 @@ func TestDefaultPulumiPubspecDependencyPubDevFailureFallsBackToGit(t *testing.T)
 func TestShouldRewriteTemplatePulumiDependency(t *testing.T) {
 	t.Setenv("PULUMI_DART_TEMPLATE_REWRITE_PULUMI", "")
 
-	assert.True(t, codegen.ShouldRewriteTemplatePulumiDependency(nil))
-	assert.True(t, codegen.ShouldRewriteTemplatePulumiDependency("^1.0.0"))
-	assert.False(t, codegen.ShouldRewriteTemplatePulumiDependency("path:/tmp/pulumi"))
+	assert.True(t, codegen.ShouldRewriteTemplatePulumiDependency(nil, true))
+	assert.True(t, codegen.ShouldRewriteTemplatePulumiDependency("^1.0.0", true))
+	assert.False(t, codegen.ShouldRewriteTemplatePulumiDependency("path:/tmp/pulumi", true))
 	assert.False(t, codegen.ShouldRewriteTemplatePulumiDependency(map[string]interface{}{
 		"path": "/tmp/pulumi",
-	}))
+	}, true))
 	assert.False(t, codegen.ShouldRewriteTemplatePulumiDependency(map[string]interface{}{
 		"git": map[string]interface{}{"url": "https://example.com/p.git"},
-	}))
+	}, true))
 	assert.True(t, codegen.ShouldRewriteTemplatePulumiDependency(map[string]interface{}{
 		"version": "^1.0.0",
-	}))
+	}, true))
 }
 
 func TestShouldRewriteTemplatePulumiDependencyDisabled(t *testing.T) {
 	t.Setenv("PULUMI_DART_TEMPLATE_REWRITE_PULUMI", "false")
-	assert.False(t, codegen.ShouldRewriteTemplatePulumiDependency("^1.0.0"))
+	assert.False(t, codegen.ShouldRewriteTemplatePulumiDependency("^1.0.0", false))
 }
 
 func TestShouldRewriteTemplatePulumiDependencyRespectsTruthyVariants(t *testing.T) {
 	_ = os.Unsetenv("PULUMI_DART_TEMPLATE_REWRITE_PULUMI")
 	t.Setenv("PULUMI_DART_TEMPLATE_REWRITE_PULUMI", "0")
-	assert.False(t, codegen.ShouldRewriteTemplatePulumiDependency("^1.0.0"))
+	assert.False(t, codegen.ShouldRewriteTemplatePulumiDependency("^1.0.0", false))
 }
 
 func TestIsSourceDependencySpec(t *testing.T) {
@@ -185,6 +185,6 @@ dependency_overrides:
 	err := os.WriteFile(pubspecPath, []byte(pubspec), 0o600)
 	require.NoError(t, err)
 
-	inferred := codegen.InferLocalPulumiDependencyFromProject(projectDir)
+	inferred := inferLocalPulumiDependencyFromProject(projectDir)
 	assert.Equal(t, filepath.Clean(pulumiPath), inferred)
 }

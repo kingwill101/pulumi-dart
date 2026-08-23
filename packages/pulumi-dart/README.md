@@ -34,6 +34,20 @@ dart pub global activate pulumi
 pulumi-dart install-language-host
 ```
 
+Pub-generated executable launchers require `dart` to be available on `PATH`.
+A shell alias such as `alias dart="fvm dart"` is not inherited by the launcher.
+When using FVM, run the installed command in FVM's SDK environment instead:
+
+```bash
+fvm exec pulumi-dart install-language-host
+```
+
+Alternatively, invoke the package executable directly through FVM:
+
+```bash
+fvm dart pub global run pulumi:pulumi_dart install-language-host
+```
+
 Useful options:
 
 ```bash

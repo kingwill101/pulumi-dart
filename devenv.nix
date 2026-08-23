@@ -77,6 +77,38 @@ in
     pkgs.uv
   ];
 
+  scripts.repodoc.exec = ''
+    set -eu
+    repo_root="$DEVENV_ROOT"
+    binary_dir="$DEVENV_STATE/repodoc/bin"
+    binary="$binary_dir/repodoc"
+    rebuild=false
+
+    if [ ! -x "$binary" ]; then
+      rebuild=true
+    elif [ -n "$(find "$repo_root/repodoc/bin" "$repo_root/repodoc/lib" -type f -newer "$binary" -print -quit)" ]; then
+      rebuild=true
+    else
+      for dependency_file in \
+        "$repo_root/pubspec.yaml" \
+        "$repo_root/pubspec.lock" \
+        "$repo_root/repodoc/pubspec.yaml"; do
+        if [ "$dependency_file" -nt "$binary" ]; then
+          rebuild=true
+          break
+        fi
+      done
+    fi
+
+    if [ "$rebuild" = true ]; then
+      mkdir -p "$binary_dir"
+      echo "Compiling repodoc…" >&2
+      (cd "$repo_root" && dart compile exe repodoc/bin/repodoc.dart -o "$binary" >&2)
+    fi
+
+    exec "$binary" "$@"
+  '';
+
   scripts.integration-check.exec = ''
     set -eu
     echo "Go: $(go version)"
@@ -129,7 +161,7 @@ in
     set -eu
     integration-build-host
     dart pub get
-    dart run tool/pulumi_dart.dart integration prewarm \
+    dart run repodoc integration:prewarm \
       --root integration_tests \
       --output .local-prewarm \
       --language-host "$PWD/pulumi-language-dart/pulumi-language-dart" \
@@ -146,18 +178,18 @@ in
     mkdir -p "$artifact_root/bin"
 
     dart pub get
-    dart compile exe tool/pulumi_dart.dart -o "$artifact_root/bin/pulumi-dart-tool"
+    dart compile exe repodoc/bin/repodoc.dart -o "$artifact_root/bin/repodoc"
     (cd pulumi-language-dart && go build -buildvcs=false -o "$artifact_root/bin/pulumi-language-dart" .)
     (cd integration_tests && GOFLAGS=-buildvcs=false go test -c \
       -o "$artifact_root/bin/pulumi-dart-integration-tests" .)
 
-    "$artifact_root/bin/pulumi-dart-tool" integration prewarm \
+    "$artifact_root/bin/repodoc" integration:prewarm \
       --root integration_tests \
       --output "$artifact_root/prewarm" \
       --language-host "$artifact_root/bin/pulumi-language-dart" \
       --dart-sdk-version 3.11.0 \
       --jobs "''${PREWARM_JOBS:-4}"
-    "$artifact_root/bin/pulumi-dart-tool" integration matrix \
+    "$artifact_root/bin/repodoc" integration:matrix \
       --package-dir integration_tests \
       --binary "$artifact_root/bin/pulumi-dart-integration-tests" \
       --partitions "''${INTEGRATION_PARTITIONS:-8}" > "$artifact_root/matrix.json"
@@ -175,7 +207,7 @@ in
     export PULUMI_DART_PREWARM_CACHE="$artifact_root/prewarm"
     export PULUMI_SKIP_UPDATE_CHECK=true
     export PULUMI_CONFIG_PASSPHRASE="''${PULUMI_CONFIG_PASSPHRASE:-pulumi-dart-test-passphrase}"
-    "$artifact_root/bin/pulumi-dart-tool" integration run \
+    "$artifact_root/bin/repodoc" integration:run \
       --package-dir integration_tests \
       --binary "$artifact_root/bin/pulumi-dart-integration-tests" \
       --tests "$INTEGRATION_TESTS" \

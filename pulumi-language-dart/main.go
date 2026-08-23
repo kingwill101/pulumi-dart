@@ -375,8 +375,8 @@ func resolveProgramEntryPoint(info *pulumirpc.ProgramInfo, fallback string, prog
 				return filepath.ToSlash(filepath.Join("bin", "main.dart"))
 			}
 
-			if pubspecPath, err := codegen.FindPubspecYaml(lookupDirectory); err == nil {
-				pubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
+			if pubspecPath, err := findPubspecYaml(lookupDirectory); err == nil {
+				pubspec, err := readAndParsePubspec(pubspecPath)
 				if err == nil && strings.TrimSpace(pubspec.Name) != "" {
 					candidate := filepath.Join("bin", strings.TrimSpace(pubspec.Name)+".dart")
 					if _, err := os.Stat(filepath.Join(lookupDirectory, candidate)); err == nil {
@@ -598,7 +598,7 @@ func appendLocalDependencyFingerprints(entries *[]string, programDirectory strin
 	}
 
 	pubspecPath := filepath.Join(programDirectory, "pubspec.yaml")
-	pubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
+	pubspec, err := readAndParsePubspec(pubspecPath)
 	if err != nil || pubspec == nil {
 		return nil
 	}
@@ -1079,13 +1079,13 @@ func (host *dartLanguageHost) GetRequiredPackages(
 		return nil, status.Error(codes.InvalidArgument, "program directory or root directory must be set in program info")
 	}
 
-	pubspecPath, err := codegen.FindPubspecYaml(searchDir)
+	pubspecPath, err := findPubspecYaml(searchDir)
 	if err != nil {
 		logging.V(5).Infof("GetRequiredPackages: no pubspec found from %s: %v", searchDir, err)
 		return &pulumirpc.GetRequiredPackagesResponse{}, nil
 	}
 
-	pubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
+	pubspec, err := readAndParsePubspec(pubspecPath)
 	if err != nil {
 		return nil, err
 	}
@@ -1324,7 +1324,7 @@ func (host *dartLanguageHost) DeterminePossiblePulumiPackages(
 	}
 
 	// Use pubspec dependency declarations as the deterministic plugin discovery source.
-	pubspecPath, err := codegen.FindPubspecYaml(searchDir)
+	pubspecPath, err := findPubspecYaml(searchDir)
 	if err != nil {
 		return nil, fmt.Errorf("failed to find pubspec.yaml: %v", err)
 	}
@@ -1332,7 +1332,7 @@ func (host *dartLanguageHost) DeterminePossiblePulumiPackages(
 	logging.V(5).Infof("Found pubspec.yaml at: %s", pubspecPath)
 
 	// Read and parse the pubspec.yaml file
-	pubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
+	pubspec, err := readAndParsePubspec(pubspecPath)
 	if err != nil {
 		logging.V(7).Infof("failed to find pubspec.yaml: %v", err)
 		return nil, err
@@ -2149,7 +2149,7 @@ func (host *dartLanguageHost) Template(
 	}
 
 	pubspecPath := filepath.Join(programDir, "pubspec.yaml")
-	pubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
+	pubspec, err := readAndParsePubspec(pubspecPath)
 	if err != nil || pubspec == nil {
 		return &pulumirpc.TemplateResponse{}, nil
 	}
@@ -2158,9 +2158,11 @@ func (host *dartLanguageHost) Template(
 	}
 
 	currentPulumiDep, hasPulumiDependency := pubspec.Dependencies["pulumi"]
-	if hasPulumiDependency && !codegen.ShouldRewriteTemplatePulumiDependency(currentPulumiDep) {
+	rewritePulumi := environmentFlag("PULUMI_DART_TEMPLATE_REWRITE_PULUMI", true)
+	forcePulumiOverride := environmentFlag("PULUMI_DART_FORCE_PULUMI_DEPENDENCY_OVERRIDE", false)
+	if hasPulumiDependency && !codegen.ShouldRewriteTemplatePulumiDependency(currentPulumiDep, rewritePulumi) {
 		if codegen.IsSourceDependencySpec(currentPulumiDep) {
-			if codegen.ShouldApplyPulumiDependencyOverride(pubspec) {
+			if codegen.ShouldApplyPulumiDependencyOverride(pubspec, forcePulumiOverride) {
 				if pubspec.DependencyOverrides == nil {
 					pubspec.DependencyOverrides = map[string]interface{}{}
 				}
@@ -2177,10 +2179,10 @@ func (host *dartLanguageHost) Template(
 		return &pulumirpc.TemplateResponse{}, nil
 	}
 
-	pulumiSpec := codegen.DefaultPulumiPubspecDependency()
+	pulumiSpec := configuredPulumiDependency()
 	pubspec.Dependencies["pulumi"] = pulumiSpec
 	if codegen.IsSourceDependencySpec(pulumiSpec) {
-		if codegen.ShouldApplyPulumiDependencyOverride(pubspec) {
+		if codegen.ShouldApplyPulumiDependencyOverride(pubspec, forcePulumiOverride) {
 			if pubspec.DependencyOverrides == nil {
 				pubspec.DependencyOverrides = map[string]interface{}{}
 			}
@@ -2574,7 +2576,7 @@ func (host *dartLanguageHost) Pack(ctx context.Context, req *pulumirpc.PackReque
 	}
 
 	packageName := codegen.SanitizeDartIdentifier(filepath.Base(packageDir))
-	if pubspec, err := codegen.ReadAndParsePubspec(filepath.Join(packageDir, "pubspec.yaml")); err == nil && pubspec != nil && pubspec.Name != "" {
+	if pubspec, err := readAndParsePubspec(filepath.Join(packageDir, "pubspec.yaml")); err == nil && pubspec != nil && pubspec.Name != "" {
 		packageName = codegen.SanitizeDartIdentifier(pubspec.Name)
 	}
 
@@ -2650,7 +2652,7 @@ func (host *dartLanguageHost) Link(
 	}
 
 	pubspecPath := filepath.Join(info.GetProgramDirectory(), "pubspec.yaml")
-	pubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
+	pubspec, err := readAndParsePubspec(pubspecPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read project pubspec.yaml: %w", err)
 	}
@@ -2660,7 +2662,7 @@ func (host *dartLanguageHost) Link(
 
 	var importLines []string
 	for _, dep := range req.GetPackages() {
-		dependencyName := codegen.DependencyPackageName(info.GetRootDirectory(), dep.GetPath(), dep.GetPackage().GetName())
+		dependencyName := dependencyPackageName(info.GetRootDirectory(), dep.GetPath(), dep.GetPackage().GetName())
 		pubspec.Dependencies[dependencyName] = map[string]string{
 			"path": filepath.ToSlash(dep.GetPath()),
 		}

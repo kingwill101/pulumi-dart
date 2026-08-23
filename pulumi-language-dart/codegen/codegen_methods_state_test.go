@@ -90,7 +90,7 @@ func TestParsePackageSchemaParsesResourceStateAndMethods(t *testing.T) {
 		}
 	}`
 
-	spec, err := parsePackageSchema(raw, t.TempDir())
+	spec, err := parsePackageSchema(raw, nil)
 	require.NoError(t, err)
 
 	resourceSpec, ok := spec.Resources["sample:index:Widget"]

@@ -1,0 +1,79 @@
+package codegen_test
+
+import (
+	"bufio"
+	"os"
+	"path/filepath"
+	"runtime"
+	"strings"
+	"testing"
+
+	"github.com/stretchr/testify/require"
+)
+
+const (
+	productionFileCeiling = 120
+	testFileCeiling       = 450
+)
+
+// These predate the staged generator architecture. Delete entries as each
+// responsibility is migrated; do not add entries for new code.
+var legacyOversizedFiles = map[string]string{}
+
+func TestGeneratorFilesRemainFocused(t *testing.T) {
+	_, currentFile, _, ok := runtime.Caller(0)
+	require.True(t, ok)
+	moduleRoot := filepath.Dir(filepath.Dir(currentFile))
+
+	err := filepath.WalkDir(moduleRoot, func(path string, entry os.DirEntry, err error) error {
+		require.NoError(t, err)
+		if entry.IsDir() || filepath.Ext(path) != ".go" {
+			return nil
+		}
+		relative, err := filepath.Rel(moduleRoot, path)
+		require.NoError(t, err)
+		relative = filepath.ToSlash(relative)
+		if !isGeneratorFile(relative) {
+			return nil
+		}
+
+		lines := lineCount(t, path)
+		ceiling := productionFileCeiling
+		if strings.HasSuffix(relative, "_test.go") {
+			ceiling = testFileCeiling
+		}
+		if lines > ceiling {
+			_, allowed := legacyOversizedFiles[relative]
+			require.Truef(t, allowed, "%s has %d lines; split it below the %d-line ceiling", relative, lines, ceiling)
+		}
+		return nil
+	})
+	require.NoError(t, err)
+}
+
+func isGeneratorFile(relative string) bool {
+	return strings.HasPrefix(relative, "codegen/") ||
+		strings.HasPrefix(relative, "dartpub/") ||
+		strings.HasPrefix(relative, "generator/") ||
+		strings.HasPrefix(relative, "host_generate") ||
+		strings.HasPrefix(relative, "generate_package") ||
+		relative == "host_codegen_environment.go" ||
+		relative == "host_external_schemas.go" ||
+		relative == "host_pubspec_files.go" ||
+		relative == "generate_program_pack_test.go"
+}
+
+func lineCount(t *testing.T, path string) int {
+	t.Helper()
+	file, err := os.Open(path)
+	require.NoError(t, err)
+	defer file.Close()
+
+	count := 0
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		count++
+	}
+	require.NoError(t, scanner.Err())
+	return count
+}

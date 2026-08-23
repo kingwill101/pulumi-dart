@@ -1,9 +1,11 @@
 package codegen
 
 import (
-	"fmt"
 	"sort"
-	"strings"
+
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/lower"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
 )
 
 // generatedConfigFile renders the generated config accessors file for provider
@@ -21,35 +23,33 @@ func generatedConfigFile(
 		return nil
 	}
 
-	var b strings.Builder
 	_ = packageName
-	b.WriteString("// ignore_for_file: unused_element, unnecessary_cast\n\n")
-
+	imports := []dartir.Import{}
 	configNeedsJSONDecode := false
 	for _, property := range spec.Config.Properties {
-		if configTypeRequiresJSONDecode(propertyTypeSpec(property)) {
+		if lower.ConfigTypeRequiresJSONDecode(lower.PropertyType(property)) {
 			configNeedsJSONDecode = true
 			break
 		}
 	}
 	if configNeedsJSONDecode {
-		b.WriteString("import 'dart:convert';\n")
+		imports = append(imports, dartir.Import{URI: "dart:convert"})
 	}
-	b.WriteString("import 'package:pulumi/pulumi.dart' as pulumi;\n")
+	imports = append(imports, dartir.Import{URI: "package:pulumi/pulumi.dart", Prefix: "pulumi"})
 
-	imports := map[string]struct{}{}
+	localImports := map[string]struct{}{}
 	for _, ref := range referencedTypesFromProperties(spec.Config.Properties) {
 		if path, ok := resolveTypeFilePath(typeFilesByName, ref, "config"); ok {
-			imports[relativeDartImportPath(filePath, path)] = struct{}{}
+			localImports[relativeDartImportPath(filePath, path)] = struct{}{}
 		}
 	}
-	importPaths := make([]string, 0, len(imports))
-	for path := range imports {
+	importPaths := make([]string, 0, len(localImports))
+	for path := range localImports {
 		importPaths = append(importPaths, path)
 	}
 	sort.Strings(importPaths)
 	for _, path := range importPaths {
-		fmt.Fprintf(&b, "import '%s';\n", path)
+		imports = append(imports, dartir.Import{URI: path})
 	}
 	externalImports := externalImportsFromProperties(spec.Config.Properties)
 	externalImportPaths := make([]string, 0, len(externalImports))
@@ -58,10 +58,14 @@ func generatedConfigFile(
 	}
 	sort.Strings(externalImportPaths)
 	for _, path := range externalImportPaths {
-		fmt.Fprintf(&b, "import '%s' as %s;\n", path, externalImports[path])
+		imports = append(imports, dartir.Import{URI: path, Prefix: externalImports[path]})
 	}
-	b.WriteString("\n")
 
-	writeGeneratedConfigClass(&b, *spec.Config)
-	return []byte(b.String())
+	requiredMethodNames := map[string]string{}
+	for _, property := range spec.Config.Properties {
+		if property.Required {
+			requiredMethodNames[property.FieldName] = "require" + toDartClassName(property.FieldName)
+		}
+	}
+	return render.Config(lower.Config(*spec.Config, imports, requiredMethodNames))
 }

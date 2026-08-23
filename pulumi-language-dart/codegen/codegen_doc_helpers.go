@@ -3,6 +3,8 @@ package codegen
 import (
 	"fmt"
 	"strings"
+
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/darttext"
 )
 
 func escapeDartDocInline(text string) string {
@@ -12,7 +14,7 @@ func escapeDartDocInline(text string) string {
 }
 
 func firstDartDocLine(comment string) string {
-	comment = sanitizeDartDocComment(comment)
+	comment = darttext.SanitizeDocComment(comment)
 	if comment == "" {
 		return ""
 	}
@@ -44,16 +46,4 @@ func argsClassDocMacroName(modulePath, className string) string {
 	moduleSegment := strings.ReplaceAll(normalizedModule, "/", "_")
 	classSegment := toSnakeCaseIdentifier(className)
 	return sanitizeDartIdentifier(fmt.Sprintf("pulumi_%s_%s_doc", moduleSegment, classSegment))
-}
-
-func writeGeneratedResourceConstructorDoc(
-	b *strings.Builder,
-	indent, className, argsName, argsDoc string,
-) {
-	fmt.Fprintf(b, "%s/// Creates a new [%s].\n", indent, className)
-	fmt.Fprintf(b, "%s/// [name] The Pulumi resource name.\n", indent)
-	if argsName != "" {
-		fmt.Fprintf(b, "%s/// [%s] %s\n", indent, argsName, argsDoc)
-	}
-	fmt.Fprintf(b, "%s/// [options] Resource options controlling this resource's behavior.\n", indent)
 }

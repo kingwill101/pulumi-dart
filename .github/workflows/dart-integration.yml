@@ -4,6 +4,18 @@ on:
   workflow_dispatch:
   merge_group:
   pull_request:
+    paths:
+      - ".github/workflows/dart-integration.yml"
+      - "devenv.lock"
+      - "devenv.nix"
+      - "devenv.yaml"
+      - "integration_tests/**"
+      - "packages/pulumi-dart/**"
+      - "pulumi-language-dart/**"
+      - "repodoc/**"
+      - "pubspec.lock"
+      - "pubspec.yaml"
+      - "thirdparty/pulumi"
   push:
     branches: [master]
 

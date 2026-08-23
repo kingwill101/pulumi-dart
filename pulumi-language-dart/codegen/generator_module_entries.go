@@ -1,41 +1,84 @@
 package codegen
 
-import codegenerator "github.com/kingwill101/pulumi-dart/pulumi-language-dart/generator"
+import (
+	"fmt"
+	"path/filepath"
+	"sort"
+	"strings"
 
-// moduleAliasSpec aliases the generator-layer alias descriptor type.
-type moduleAliasSpec = codegenerator.AliasSpec
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
+)
 
-// moduleLibraryPathForSymbolFile maps a generated symbol file path to its
-// module library entry file path.
-func moduleLibraryPathForSymbolFile(symbolFilePath string) string {
-	return codegenerator.ModuleLibraryPathForSymbolFile(symbolFilePath)
+type moduleAliasSpec struct {
+	Kind          string
+	CanonicalName string
+	GeneratedName string
+	ImportPath    string
 }
 
-// moduleExportPathsFromContent parses export directives from a module library
-// file body.
-func moduleExportPathsFromContent(content []byte) []string {
-	return codegenerator.ModuleExportPathsFromContent(content)
+func generatedAliasedModuleLibraryFile(_ string, baseContent []byte, aliases []moduleAliasSpec) []byte {
+	imports := map[string]struct{}{}
+	aliasesByName := map[string]moduleAliasSpec{}
+	for _, alias := range aliases {
+		if alias.Kind != "function" || alias.CanonicalName == "" || alias.GeneratedName == "" ||
+			alias.ImportPath == "" || alias.CanonicalName == alias.GeneratedName {
+			continue
+		}
+		if _, exists := aliasesByName[alias.CanonicalName]; exists {
+			continue
+		}
+		aliasesByName[alias.CanonicalName] = alias
+		imports[alias.ImportPath] = struct{}{}
+	}
+	aliasNames := make([]string, 0, len(aliasesByName))
+	for name := range aliasesByName {
+		aliasNames = append(aliasNames, name)
+	}
+	sort.Strings(aliasNames)
+	loweredAliases := make([]dartir.ModuleAlias, len(aliasNames))
+	for index, name := range aliasNames {
+		loweredAliases[index] = dartir.ModuleAlias{Name: name, Expression: aliasesByName[name].GeneratedName}
+	}
+	return render.ModuleLibrary(dartir.ModuleLibrary{
+		Imports: sortedStringSet(imports),
+		Exports: moduleExportPathsFromContent(baseContent),
+		Aliases: loweredAliases,
+	})
 }
 
-// generatedAliasedModuleLibraryFile builds a module library source that exports
-// both original and alias paths.
-func generatedAliasedModuleLibraryFile(moduleFilePath string, baseContent []byte, aliases []moduleAliasSpec) []byte {
-	return codegenerator.GeneratedAliasedModuleLibraryFile(moduleFilePath, baseContent, aliases)
-}
-
-// generatedModuleLibraryFiles builds library files for all symbol file paths.
 func generatedModuleLibraryFiles(symbolFilePaths []string) map[string][]byte {
-	return codegenerator.GeneratedModuleLibraryFiles(symbolFilePaths)
+	filesByModule := map[string]map[string]struct{}{}
+	for _, filePath := range symbolFilePaths {
+		normalized := filepath.ToSlash(strings.TrimSpace(filePath))
+		modulePath := moduleLibraryPathForSymbolFile(normalized)
+		if normalized == "" || !strings.HasSuffix(normalized, ".dart") ||
+			modulePath == "" || !strings.Contains(normalized, "/") {
+			continue
+		}
+		if filesByModule[modulePath] == nil {
+			filesByModule[modulePath] = map[string]struct{}{}
+		}
+		filesByModule[modulePath][relativeImportPath(modulePath, normalized)] = struct{}{}
+	}
+	result := map[string][]byte{}
+	for modulePath, exports := range filesByModule {
+		result[modulePath] = render.ModuleLibrary(dartir.ModuleLibrary{Exports: sortedStringSet(exports)})
+	}
+	return result
 }
 
-// generatedPublicModuleEntryPoints creates top-level entry points (for example
-// package imports like package:provider/provider.dart) from generated sources.
 func generatedPublicModuleEntryPoints(packageName string, sdkSources map[string][]byte) map[string][]byte {
-	return codegenerator.GeneratedPublicModuleEntryPoints(packageName, sdkSources)
-}
-
-// relativeImportPath returns the normalized relative import path from one file
-// to another.
-func relativeImportPath(fromFile, toFile string) string {
-	return codegenerator.RelativeImportPath(fromFile, toFile)
+	result := map[string][]byte{}
+	for relativePath := range sdkSources {
+		normalized := filepath.ToSlash(relativePath)
+		if !publicModuleEntryPoint(normalized) {
+			continue
+		}
+		moduleName := strings.TrimSuffix(normalized, ".dart")
+		result[normalized] = render.ModuleLibrary(dartir.ModuleLibrary{
+			Exports: []string{fmt.Sprintf("package:%s/src/%s.dart", packageName, moduleName)},
+		})
+	}
+	return result
 }

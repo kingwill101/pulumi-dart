@@ -29,6 +29,27 @@ func readFileString(t *testing.T, path string) string {
 	return string(data)
 }
 
+func assertTraceWorkingDirectory(t *testing.T, trace, label, expected string) {
+	t.Helper()
+	for _, line := range strings.Split(trace, "\n") {
+		if !strings.HasPrefix(line, label+"=") {
+			continue
+		}
+		actual := strings.TrimPrefix(line, label+"=")
+		assert.Equal(t, canonicalTestPath(expected), canonicalTestPath(actual))
+		return
+	}
+	t.Errorf("trace does not contain %s: %s", label, trace)
+}
+
+func canonicalTestPath(path string) string {
+	resolved, err := filepath.EvalSymlinks(path)
+	if err == nil {
+		return filepath.Clean(resolved)
+	}
+	return filepath.Clean(path)
+}
+
 func writeFakeDartCompilerScript(t *testing.T, tracePath string) string {
 	t.Helper()
 	path := filepath.Join(t.TempDir(), "dart.sh")
@@ -84,9 +105,9 @@ func TestRunUsesProgramDirectoryFromInfoAndEntryPoint(t *testing.T) {
 	assert.Empty(t, resp.GetError())
 
 	trace := readFileString(t, tracePath)
-	assert.Contains(t, trace, "COMPILE_PWD="+runDir)
+	assertTraceWorkingDirectory(t, trace, "COMPILE_PWD", runDir)
 	assert.Contains(t, trace, "COMPILE_ARGS=compile exe bin/app.dart -o ")
-	assert.Contains(t, trace, "RUN_PWD="+runDir)
+	assertTraceWorkingDirectory(t, trace, "RUN_PWD", runDir)
 	assert.Contains(t, trace, "RUN_ARGS=--flag value")
 }
 
@@ -109,9 +130,9 @@ func TestRunFallsBackToLegacyProgramAndPwd(t *testing.T) {
 	assert.Empty(t, resp.GetError())
 
 	trace := readFileString(t, tracePath)
-	assert.Contains(t, trace, "COMPILE_PWD="+runDir)
+	assertTraceWorkingDirectory(t, trace, "COMPILE_PWD", runDir)
 	assert.Contains(t, trace, "COMPILE_ARGS=compile exe bin/legacy.dart -o ")
-	assert.Contains(t, trace, "RUN_PWD="+runDir)
+	assertTraceWorkingDirectory(t, trace, "RUN_PWD", runDir)
 	assert.Contains(t, trace, "RUN_ARGS=")
 }
 
@@ -142,9 +163,9 @@ func TestRunResolvesSimpleEntrypointToBinDart(t *testing.T) {
 	assert.Empty(t, resp.GetError())
 
 	trace := readFileString(t, tracePath)
-	assert.Contains(t, trace, "COMPILE_PWD="+runDir)
+	assertTraceWorkingDirectory(t, trace, "COMPILE_PWD", runDir)
 	assert.Contains(t, trace, "COMPILE_ARGS=compile exe bin/infra.dart -o ")
-	assert.Contains(t, trace, "RUN_PWD="+runDir)
+	assertTraceWorkingDirectory(t, trace, "RUN_PWD", runDir)
 	assert.Contains(t, trace, "RUN_ARGS=")
 }
 
@@ -175,9 +196,9 @@ func TestRunFallsBackToMainDartWhenDot(t *testing.T) {
 	assert.Empty(t, resp.GetError())
 
 	trace := readFileString(t, tracePath)
-	assert.Contains(t, trace, "COMPILE_PWD="+runDir)
+	assertTraceWorkingDirectory(t, trace, "COMPILE_PWD", runDir)
 	assert.Contains(t, trace, "COMPILE_ARGS=compile exe bin/main.dart -o ")
-	assert.Contains(t, trace, "RUN_PWD="+runDir)
+	assertTraceWorkingDirectory(t, trace, "RUN_PWD", runDir)
 	assert.Contains(t, trace, "RUN_ARGS=")
 }
 
@@ -208,9 +229,9 @@ func TestRunTreatsEmptyProgramAsDotForEntrypointResolution(t *testing.T) {
 	assert.Empty(t, resp.GetError())
 
 	trace := readFileString(t, tracePath)
-	assert.Contains(t, trace, "COMPILE_PWD="+runDir)
+	assertTraceWorkingDirectory(t, trace, "COMPILE_PWD", runDir)
 	assert.Contains(t, trace, "COMPILE_ARGS=compile exe bin/main.dart -o ")
-	assert.Contains(t, trace, "RUN_PWD="+runDir)
+	assertTraceWorkingDirectory(t, trace, "RUN_PWD", runDir)
 }
 
 func TestRunBinaryHonorsArgsAndProgramDirectory(t *testing.T) {
@@ -240,7 +261,7 @@ func TestRunBinaryHonorsArgsAndProgramDirectory(t *testing.T) {
 	assert.Empty(t, resp.GetError())
 
 	trace := readFileString(t, tracePath)
-	assert.Contains(t, trace, "PWD="+runDir)
+	assertTraceWorkingDirectory(t, trace, "PWD", runDir)
 	assert.Contains(t, trace, "ARGS=--mode smoke")
 }
 
@@ -276,7 +297,7 @@ func TestRunUsesRuntimeOptionBinary(t *testing.T) {
 	assert.Empty(t, resp.GetError())
 
 	trace := readFileString(t, tracePath)
-	assert.Contains(t, trace, "PWD="+runDir)
+	assertTraceWorkingDirectory(t, trace, "PWD", runDir)
 	assert.Contains(t, trace, "ARGS=--mode runtime")
 }
 
@@ -335,7 +356,8 @@ func TestRunReusesCompiledCacheWhenProgramUnchanged(t *testing.T) {
 
 	trace := readFileString(t, tracePath)
 	assert.Equal(t, 1, strings.Count(trace, "COMPILE_ARGS=compile exe bin/main.dart -o "))
-	assert.Equal(t, 2, strings.Count(trace, "RUN_PWD="+runDir))
+	assert.Equal(t, 2, strings.Count(trace, "RUN_PWD="))
+	assertTraceWorkingDirectory(t, trace, "RUN_PWD", runDir)
 }
 
 func TestRunUsesExactSharedKernel(t *testing.T) {
